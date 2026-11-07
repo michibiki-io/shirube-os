@@ -12,6 +12,33 @@ GENERATED={'.git','__pycache__','.pytest_cache','.debhelper'}
 SUFFIXES={'.o','.ko','.a','.so','.cmi','.cmo','.cmx','.pyc','.deb'}
 
 
+def http_dependencies(rootfs):
+    from email.parser import BytesParser
+    normalize=lambda value:re.sub('[-_.]+','-',value).lower()
+    doc=path_in_root(rootfs,'usr/share/doc/vyos-http-api-tools')
+    bom=doc/'components.json'
+    declarations=json.loads(bom.read_text())['components']
+    actual=set()
+    site=path_in_root(rootfs,'usr/share/vyos-http-api-tools/lib/python3.11/site-packages')
+    for metadata in site.glob('*.dist-info/METADATA'):
+        parsed=BytesParser().parsebytes(metadata.read_bytes())
+        actual.add((normalize(parsed['Name']),parsed['Version']))
+    expected={(normalize(record['name']),record['version']) for record in declarations}
+    if not expected or actual!=expected or len(expected)!=len(declarations):
+        raise ValueError('API dependency inventory does not match installed distributions')
+    result=[]
+    for record in declarations:
+        name=normalize(record['name'])
+        if not re.fullmatch('[a-z0-9][a-z0-9-]*',name):raise ValueError('Invalid API dependency name')
+        expected_path='third-party/'+record['name']+'/copyright'
+        if record['license_notice']['path']!=expected_path:raise ValueError('Unexpected dependency notice path')
+        notice=path_in_root(rootfs,'usr/share/doc/vyos-http-api-tools/'+expected_path)
+        if not notice.is_file() or sha256(notice)!=record['license_notice']['sha256']:
+            raise ValueError('Missing or differing dependency legal notice')
+        result.append((record,notice,'third-party-notices/'+name+'/copyright'))
+    return bom,result
+
+
 def files(root):
     root=Path(root).resolve()
     for path in sorted(root.rglob('*')):
@@ -60,7 +87,7 @@ def collect(rootfs, package_output, output, arch, version, work):
             if source is None:
                 match=next((path for prefix,path in extras.items() if name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
-            inputs=[]
+            inputs=[];nested=[]
             if name=='shirube-integration':
                 source=Path('/src/guest');origin=source_identity
                 # Include the pinned headless client's exact published source.
@@ -80,6 +107,10 @@ def collect(rootfs, package_output, output, arch, version, work):
                 origin=sha256(dsc[0]);source=component
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
             for path,relative in files(source):inputs.append((path,'source/'+relative,'sources'))
+            if name=='vyos-http-api-tools':
+                bom,nested=http_dependencies(rootfs)
+                inputs.append((bom,'bundled-components.json','build_inputs'))
+                for dependency,notice,member in nested:inputs.append((notice,member,'license_files'))
             inputs.extend([(copyright_file,'copyright','license_files'),(project,'project-source.tar','build_inputs')])
             archive=output/f'shirube-os-{version}-{arch}-source-{len(cached):04d}.tar.gz'
             common=rootfs/'usr/share/common-licenses'
@@ -97,15 +128,39 @@ def collect(rootfs, package_output, output, arch, version, work):
                 provenance={'netbird_source_commit':lock['source_commit'],'netbird_source_sha256':lock['source_sha256'],'headless_asset_sha256':lock['assets'][arch]['sha256'],'integration_license_sha256':sha256(Path('/src/LICENSE'))}
                 origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             if keys:origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
+            if name=='vyos-http-api-tools':
+                provenance={'packaging_recipe_sha256':sha256(Path('/src/native/http_api.py')),
+                    'dependency_lock_sha256':sha256(Path('/src/native/http-api.lock.json')),
+                    'packaging_license_sha256':sha256(Path('/src/LICENSE')),
+                    'dependency_baseline':json.loads(Path('/src/native/http-api.lock.json').read_text())['dependency_baseline']}
+                origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
+            children=[]
+            for dependency,notice,member in nested:
+                child_name='pypi:'+re.sub('[-_.]+','-',dependency['name']).lower()
+                reviewed=approvals.get(child_name+'@'+dependency['version'],{})
+                child_clear=(reviewed.get('source_identity')==dependency['source']['sha256']
+                    and reviewed.get('copyright_sha256')==sha256(notice)
+                    and reviewed.get('redistributable') is True
+                    and isinstance(reviewed.get('license'),str) and bool(reviewed.get('license')))
+                source_member='source/inputs/'+dependency['source']['filename']
+                source_refs=[record for record in records['sources'] if record['member']==source_member and record['sha256']==dependency['source']['sha256']]
+                if len(source_refs)!=1:raise ValueError('Exact bundled dependency source is missing')
+                children.append({'name':child_name,'version':dependency['version'],
+                    'source_identity':dependency['source']['sha256'],'license':reviewed.get('license','UNREVIEWED'),
+                    'redistributable':child_clear,'sources':source_refs,
+                    'license_files':[record for record in records['license_files'] if record['member']==member],
+                    'build_inputs':records['build_inputs'],'binary_input':dependency['wheel']})
             approval=approvals.get(source_name+'@'+source_version,{})
             cleared=(approval.get('source_identity')==origin and approval.get('redistributable') is True
                      and approval.get('copyright_sha256')==sha256(copyright_file)
                      and isinstance(approval.get('license'),str) and bool(approval.get('license')))
-            cached[key]=(records,approval.get('license','UNREVIEWED'),cleared,origin,provenance)
+            cleared=cleared and all(child['redistributable'] for child in children)
+            cached[key]=(records,approval.get('license','UNREVIEWED'),cleared,origin,provenance,children)
             assets.append(archive)
-        records,license_name,cleared,origin,provenance=cached[key]
+        records,license_name,cleared,origin,provenance,children=cached[key]
         components.append({**package,'source_package':source_name,'source_version':source_version,
-                           'source_identity':origin,'source_origin':provenance,'license':license_name,'redistributable':cleared,**records})
+                           'source_identity':origin,'source_origin':provenance,'license':license_name,'redistributable':cleared,
+                           'bundled_components':children,**records})
     inventory={'schema_version':1,'shipped_packages':shipped,'components':components}
     path=output/f'shirube-os-{version}-{arch}-licenses.json';path.write_text(json.dumps(inventory,indent=2)+'\n')
     return {'inventory':path,'archives':assets,'cleared':all(x['redistributable'] for x in components)}

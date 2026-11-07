@@ -87,3 +87,14 @@ an existing test disk. The ISO-only admission budget is 40 GiB free storage and
 8 GiB available memory; the task stops if host headroom falls below 12 GiB disk
 or 2 GiB memory. These are conservative operating budgets, not validated minimums.
 An ISO build receipt leaves local boot, OCI and distribution clearance unverified.
+
+An optional `python-inputs-amd64` or `python-inputs-arm64` subdirectory in that
+public-input cache holds the pinned HTTP API wheels/source archives. Each file
+is rechecked against the architecture-specific lock before use. It contains no
+build-internal keys or guest state and is mounted read-only. The dependency
+environment can be packaged offline from this complete verified input set.
+
+Sequential package jobs remove only their generated dependency metapackages
+before resolving the next job; libraries are retained unless the next job's
+dependency resolver replaces conflicting development headers. This prevents
+one job's libedit/readline constraints from blocking a later routing build.

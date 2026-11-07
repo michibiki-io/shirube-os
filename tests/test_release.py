@@ -66,6 +66,17 @@ class ReleaseTests(unittest.TestCase):
     def test_complete_metadata_contract(self):
         validate(self.root, self.commit, self.version)
 
+    def test_parent_clearance_cannot_hide_unreviewed_bundled_dependency(self):
+        path=self.root/'amd64-licenses.json'
+        inventory=json.loads(path.read_text());parent=inventory['components'][0]
+        parent['bundled_components']=[{**copy.deepcopy(parent),'name':'pypi:unreviewed',
+            'version':'1','redistributable':False}]
+        path.write_text(json.dumps(inventory))
+        asset=next(item for item in self.manifest['assets'] if item['name']==path.name)
+        asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+        with self.assertRaisesRegex(ValueError,'license clearance'):
+            validate(self.root,self.commit,self.version)
+
     def test_required_skips_failures_missing_checks_block(self):
         for value in ['SKIP', 'FAIL', 'NOT_RUN', None]:
             with self.subTest(value=value):

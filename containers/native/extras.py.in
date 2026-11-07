@@ -113,7 +113,7 @@ def base(work):
     i2util=git('i2util',work/'i2util'); debian(i2util)
     owamp=snapshot('owamp_v4.4.6/owamp',work/'owamp'); debian(owamp)
     otp=snapshot('openvpn-otp_9781ff1/openvpn-otp',work/'otp')
-    shell('apt-get install -y --no-install-recommends openvpn; ./autogen.sh; ./configure --prefix=/usr; make -j2; mkdir -p package/usr/lib/openvpn; cp src/.libs/openvpn-otp.so package/usr/lib/openvpn/; fpm -s dir -t deb -n openvpn-otp -v 9781ff1 --depends openvpn --architecture @ARCH@ -C package --package ..',otp)
+    shell('apt-get install -y --no-install-recommends openvpn; ./autogen.sh; ./configure --prefix=/usr; make -j2; mkdir -p package/usr/lib/openvpn; cp src/.libs/openvpn-otp.so package/usr/lib/openvpn/; python3 /src/native/fpm_package.py -s dir -t deb -n openvpn-otp -v 9781ff1 --depends openvpn --architecture @ARCH@ -C package --package ..',otp)
     relay=snapshot('udp-broadcast-relay_9a0f13b4b5938bfe0af0d0d4e99dfc127c068e28/udp-broadcast-relay',work/'relay')
     for patch in sorted(Path('/sources/vyos-build/vyos-build/scripts/package-build/udp-broadcast-relay/patches').glob('**/*.patch')):
         shell('patch --fuzz=0 -p1 < '+str(patch),relay)
@@ -127,9 +127,9 @@ def go_packages(work):
           ('blackbox_exporter_v0.26.0/blackbox_exporter','blackbox_exporter','blackbox-exporter','0.26.0')]
     for path,binary,name,version in jobs:
         source=snapshot(path,work/name)
-        shell(f'go build -o {binary}; mkdir -p package/usr/sbin; cp {binary} package/usr/sbin/; fpm -s dir -t deb -n {name} -v {version} --architecture @ARCH@ -C package --package ..',source)
+        shell(f'go build -o {binary}; mkdir -p package/usr/sbin; cp {binary} package/usr/sbin/; python3 /src/native/fpm_package.py -s dir -t deb -n {name} -v {version} --architecture @ARCH@ -C package --package ..',source)
     source=snapshot('telegraf_v1.28.3/telegraf',work/'telegraf')
-    shell('go build -o telegraf ./cmd/telegraf; mkdir -p package/usr/bin; cp telegraf package/usr/bin/; fpm -s dir -t deb -n telegraf -v 1.28.3-1 --architecture @ARCH@ -C package --package ..',source)
+    shell('go build -o telegraf ./cmd/telegraf; mkdir -p package/usr/bin; cp telegraf package/usr/bin/; python3 /src/native/fpm_package.py -s dir -t deb -n telegraf -v 1.28.3-1 --architecture @ARCH@ -C package --package ..',source)
     copy_debs(work)
 
 
@@ -174,7 +174,7 @@ make -j1 install.tools
 make -j1 podman-release RELEASE_NUMBER=4.9.5
 archive=podman-release-@ARCH@.tar.gz
 tar -xf "$archive"
-fpm -s dir -t deb -n podman -v 4.9.5 --architecture @ARCH@ --depends conmon --depends crun --depends netavark --depends libgpgme11 --depends fuse-overlayfs --depends golang-github-containers-common -C podman-v4.9.5 --package ..
+python3 /src/native/fpm_package.py -s dir -t deb -n podman -v 4.9.5 --architecture @ARCH@ --depends conmon --depends crun --depends netavark --depends libgpgme11 --depends fuse-overlayfs --depends golang-github-containers-common -C podman-v4.9.5 --package ..
 ''',source)
     copy_debs(work)
 
@@ -208,14 +208,14 @@ make -j2 KERNEL_SRC={kernel}
 mkdir -p package/lib/modules/6.6.128-vyos/extra
 cp drivers/net/ovpn-dco/ovpn-dco-v2.ko package/lib/modules/6.6.128-vyos/extra/
 python3 /opt/stream/sign-modules.py package
-fpm -s dir -t deb -n openvpn-dco -v 0.2.20231117 --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',ovpn)
+python3 /src/native/fpm_package.py -s dir -t deb -n openvpn-dco -v 0.2.20231117 --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',ovpn)
     rtsp=git('nat-rtsp',work/'rtsp')
     shell(f'''make KERNELDIR={kernel} clean
 make -j2 KERNELDIR={kernel}
 mkdir -p package/lib/modules/6.6.128-vyos/extra
 cp nf_conntrack_rtsp.ko nf_nat_rtsp.ko package/lib/modules/6.6.128-vyos/extra/
 python3 /opt/stream/sign-modules.py package
-fpm -s dir -t deb -n nat-rtsp -v 5.3-2-g475af0a --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',rtsp)
+python3 /src/native/fpm_package.py -s dir -t deb -n nat-rtsp -v 5.3-2-g475af0a --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',rtsp)
     netflow=git('ipt-netflow',work/'netflow')
     for patch in sorted((common/'patches/ipt-netflow').glob('*.patch')):
         shell('patch --fuzz=0 -p1 < '+str(patch),netflow)
@@ -226,7 +226,7 @@ mkdir -p package/lib/modules/6.6.128-vyos/extra package/lib/@MULTIARCH@/xtables
 cp ipt_NETFLOW.ko package/lib/modules/6.6.128-vyos/extra/
 cp libipt_NETFLOW.so libip6t_NETFLOW.so package/lib/@MULTIARCH@/xtables/
 python3 /opt/stream/sign-modules.py package
-fpm -s dir -t deb -n vyos-ipt-netflow -v 2.6-67-g6135551 --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',netflow)
+python3 /src/native/fpm_package.py -s dir -t deb -n vyos-ipt-netflow -v 2.6-67-g6135551 --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',netflow)
     jool=snapshot(JOOL_SOURCE,work/'jool')
     shell(f'''apt-get install -y --no-install-recommends libnl-genl-3-dev
 ./autogen.sh
@@ -240,7 +240,7 @@ make DESTDIR=$PWD/package install
 mkdir -p package/lib/modules/6.6.128-vyos/extra
 cp src/mod/common/jool_common.ko src/mod/nat64/jool.ko src/mod/siit/jool_siit.ko package/lib/modules/6.6.128-vyos/extra/
 python3 /opt/stream/sign-modules.py package
-fpm -s dir -t deb -n jool -v {jool_version()} --architecture @ARCH@ --depends linux-image-6.6.128-vyos --depends libnl-3-200 --depends libnl-genl-3-200 -C package --package ..''',jool)
+python3 /src/native/fpm_package.py -s dir -t deb -n jool -v {jool_version()} --architecture @ARCH@ --depends linux-image-6.6.128-vyos --depends libnl-3-200 --depends libnl-genl-3-200 -C package --package ..''',jool)
     copy_debs(work)
 
 

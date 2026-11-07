@@ -51,6 +51,11 @@ if grep -R -E '^[[:space:]]*deb.*packages\.vyos\.net|^[[:space:]]*URIs:.*package
     echo 'Private VyOS APT repository configured; refusing bootstrap' >&2
     exit 1
 fi
+if [ "$BUILD_RECIPE" = http-api ]; then
+    # The upstream wrapper ships an empty copyright notice. Build our own
+    # packaging from the exact dependency facts; do not copy its wrapper code.
+    exec python3 /src/native/http_api.py "$DEB_ARCH" /output
+fi
 mkdir /output/source
 cp -a /snapshot/. /output/source/
 cd /output/source
@@ -117,6 +122,7 @@ override_dh_auto_install:
 RULES
     chmod +x debian/rules
     printf '3.0 (native)\n' > debian/source/format
+    cp COPYRIGHT debian/copyright
     printf 'radvd (2.20) unstable; urgency=medium\n\n  * Build verified Stream 2026.03 source with Debian metadata.\n\n -- VyOS Package Maintainers <maintainers@vyos.net>  Wed, 18 Mar 2026 00:00:00 +0000\n' > debian/changelog
 fi
 snapshot_git_import() {
@@ -140,6 +146,14 @@ snapshot_git_import() {
     printf 'Filesystem fixture only: /dev/input/event0\n' > /output/test-fixtures.txt
 }
 apt-get update
+# Jobs share a private runtime, while generated dependency metapackages must not
+# pin an earlier job's mutually exclusive development headers (for example
+# nftables' libedit versus FRR's readline). Keep installed libraries; remove only
+# these task-generated metapackages before resolving the next job.
+mapfile -t old_build_deps < <(dpkg-query -W -f='${binary:Package}\t${db:Status-Status}\n' 2>/dev/null | awk '$2 == "installed" && $1 ~ /-build-deps$/ {print $1}')
+if (( ${#old_build_deps[@]} )); then
+    apt-get -o APT::Get::AutomaticRemove=false remove -y "${old_build_deps[@]}"
+fi
 if [ "$BUILD_RECIPE" = nftables ]; then
     # The signed snapshot's documentation target invokes a2x even though the
     # minimal bootstrap build dependencies do not install its XML toolchain.

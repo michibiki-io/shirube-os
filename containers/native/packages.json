@@ -29,7 +29,8 @@
     },
     {
       "name": "vyos-http-api-tools",
-      "source": "vyos-http-api-tools_2.3/vyos-http-api-tools"
+      "source": "vyos-http-api-tools_2.3/vyos-http-api-tools",
+      "recipe": "http-api"
     },
     {
       "name": "libtacplus-map",

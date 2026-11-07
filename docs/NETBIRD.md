@@ -81,3 +81,19 @@ exit; cleanup verifies ownership labels before deleting resources.
 This is preliminary client verification. Its evidence explicitly leaves guest
 configuration commit/save/reboot and image acceptance as `NOT_RUN`. Those tests
 must still run through the actual OS CLI on both architecture-specific images.
+
+## Component source reconstruction
+
+`containers/native/rebuild_netbird.py` prepares the exact pinned NetBird source,
+the verified Go 1.26.10 compiler/source archives, and vendored dependency sources.
+Its `prepare` phase fails if vendoring changes the pinned `go.mod` or `go.sum`.
+The `offline` phase uses a fresh compiler/module cache, vendored inputs and
+disabled module fetching. Run this phase in a network-disabled native toolchain
+container. It builds the headless client and checks its actual version and ELF
+architecture; the AMD64 prepare/offline builds have passed.
+
+This is a component reconstruction proof. It neither establishes complete OS
+source coverage nor clears NetBird's linked-dependency licenses. The upstream
+published client remains the pinned ISO input; its source commit and compiler
+were inspected from its build information. Identical release bytes are not
+claimed for a reconstructed client or complete OS.

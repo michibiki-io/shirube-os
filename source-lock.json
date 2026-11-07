@@ -28,7 +28,25 @@
     },
     "source_commit": "3c00a97878e6af537d28c3bdd4f42cb4286aa883",
     "source_url": "https://codeload.github.com/netbirdio/netbird/tar.gz/3c00a97878e6af537d28c3bdd4f42cb4286aa883",
-    "source_sha256": "a02eee7a4e7072eed8f74b4fcc5a8637f4243bf2848a70f1d1d5097b74bbafe4"
+    "source_sha256": "a02eee7a4e7072eed8f74b4fcc5a8637f4243bf2848a70f1d1d5097b74bbafe4",
+    "build_toolchain": {
+      "version": "1.26.10",
+      "authority": "https://go.dev/dl/?mode=json&include=all",
+      "source": {
+        "url": "https://go.dev/dl/go1.26.10.src.tar.gz",
+        "sha256": "fd63e883ba2f2bfca93c1646b31ebef63e2b1e4d2b317c9789d976a68d81f36f"
+      },
+      "assets": {
+        "amd64": {
+          "url": "https://go.dev/dl/go1.26.10.linux-amd64.tar.gz",
+          "sha256": "ccfe7ae822d2c2f41f4fe7c956199967a4dac22d0ee0d2b2bfdb440aab3b20c5"
+        },
+        "arm64": {
+          "url": "https://go.dev/dl/go1.26.10.linux-arm64.tar.gz",
+          "sha256": "3f4227ce7b206a513e794f1393adb473a07b46e94d18bd15d1c684bbb7319797"
+        }
+      }
+    }
   },
   "external_git": {
     "vpp": {
@@ -42,7 +60,8 @@
   },
   "substitutions": [
     "Public VPP 25.10 with public VyOS VPP patches replaces vendor VPP; vendor-byte-identical output is not claimed.",
-    "AMD64 virtual-appliance profile omits vendor-only physical NIC/QAT packages; UEFI and virtio NIC/disk support use the matching source-built kernel. Physical hardware parity is not claimed."
+    "AMD64 virtual-appliance profile omits vendor-only physical NIC/QAT packages; UEFI and virtio NIC/disk support use the matching source-built kernel. Physical hardware parity is not claimed.",
+    "The HTTP API dependency wrapper is independently packaged as 2.3+shirube1; the Stream dependency versions and compatible installation path are retained. Upstream wrapper code with an empty copyright notice is not redistributed."
   ],
   "debian_security_snapshot": "https://snapshot.debian.org/archive/debian-security/20261105T000000Z/",
   "opam_repository": {
@@ -65,5 +84,10 @@
   "j2lint": {
     "url": "https://github.com/aristanetworks/j2lint.git",
     "commit": "341b5d5db86e095b622f09770cb6367a1583620e"
+  },
+  "http_api": {
+    "dependency_lock": "containers/native/http-api.lock.json",
+    "version": "2.3+shirube1",
+    "scope": "Own MIT packaging replaces the empty-notice upstream wrapper; the same 26 pinned API dependency versions are retained with exact source/wheel hashes for both architectures."
   }
 }

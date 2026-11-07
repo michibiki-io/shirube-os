@@ -39,6 +39,9 @@ docker run --rm --network none --entrypoint python3 -v "$output:/output" "$image
 cache_args=()
 if [[ -n ${SHIRUBE_SOURCE_CACHE:-} ]]; then
   cache_args=(-v "$SHIRUBE_SOURCE_CACHE:/verified:ro")
+  if [[ -d "$SHIRUBE_SOURCE_CACHE/python-inputs-$architecture" ]]; then
+    cache_args+=(-v "$SHIRUBE_SOURCE_CACHE/python-inputs-$architecture:/public-inputs:ro")
+  fi
   source_args=(--verified-input /verified)
 else
   source_args=()

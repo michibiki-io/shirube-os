@@ -34,9 +34,10 @@ def audit(package, architecture, certificate=None):
                             modules += 1
                         else:
                             first = source.read(1024**2)
-                            if (first[:4] == b'\x7fELF' and '/firmware/' not in '/'+name
-                                    and name.startswith(('usr/bin/', 'usr/sbin/', 'usr/lib/', 'usr/libexec/',
-                                                         'bin/', 'sbin/', 'lib/', 'lib64/', 'opt/'))):
+                            # Python/runtime environments may install native
+                            # extensions below /usr/share. Audit every ELF
+                            # payload, with only firmware's declared exception.
+                            if first[:4] == b'\x7fELF' and not name.startswith(('lib/firmware/','usr/lib/firmware/')):
                                 check_elf(first, architecture)
                             tail = b''
                             chunk = first

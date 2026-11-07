@@ -66,12 +66,8 @@ def verify_sources(root, inventory, assets):
                         digest.update(chunk)
                         tail = (tail + chunk)[-1024:]
                 members[key] = digest.hexdigest()
-    for component in inventory['components']:
-        identity = (component['name'], component['version'], component['architecture'])
-        if identity in components or component['architecture'] not in ARCHES | {'all'}:
-            raise ValueError('Duplicate or invalid component identity')
-        components.add(identity)
-        if not component.get('license') or component.get('redistributable') is not True:
+    def check_references(component):
+        if not isinstance(component.get('license'),str) or not component.get('license') or component.get('redistributable') is not True:
             raise ValueError('Missing or unresolved component license clearance')
         for category in ('sources', 'license_files', 'build_inputs'):
             if not component.get(category):
@@ -80,6 +76,20 @@ def verify_sources(root, inventory, assets):
                 key = (filename(reference['asset']), reference['member'])
                 if members.get(key) != reference['sha256']:
                     raise ValueError('Missing or differing corresponding-source member')
+        children=component.get('bundled_components',[])
+        if component['name']=='vyos-http-api-tools' and not children:
+            raise ValueError('Bundled API dependencies need their own source/license inventory')
+        identities=set()
+        for child in children:
+            identity=(child['name'],child['version'])
+            if identity in identities:raise ValueError('Duplicate bundled component')
+            identities.add(identity);check_references(child)
+    for component in inventory['components']:
+        identity = (component['name'], component['version'], component['architecture'])
+        if identity in components or component['architecture'] not in ARCHES | {'all'}:
+            raise ValueError('Duplicate or invalid component identity')
+        components.add(identity)
+        check_references(component)
     shipped = {(x['name'], x['version'], x['architecture']) for x in inventory['shipped_packages']}
     if not shipped or shipped != components:
         raise ValueError('Component inventory does not cover the exact shipped package set')
