@@ -26,6 +26,153 @@
         "Supply complete corresponding source and build inputs with binary releases."
       ],
       "scope": "Exact component source/license only; full-release source and redistribution gates remain mandatory."
+    },
+    "pypi:annotated-types@0.7.0": {
+      "source_identity": "aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89",
+      "copyright_sha256": "5b1e330be4460980ee5fd51c3ef6d546df2ca76ac2aecfdf4270326e785bd87e",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/annotated-types/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:anyio@4.6.2.post1": {
+      "source_identity": "4c8bc31ccdb51c7f7bd251f51c609e038d63e34219b44aa86e47576389880b4c",
+      "copyright_sha256": "5be86ad60605a303d3f37a2efab59bc81fd3a35942f1b8e26bcbcab9bf6cccc4",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/anyio/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:ariadne@0.23.0": {
+      "source_identity": "84c46ae27fad98e1a6553c8930e6fc8e755f8dcd54a959d33caf04ecfe026a93",
+      "copyright_sha256": "17286189148e62353d8549de962c2abe6ebd579d72f0974bdfc52e53ad3e1d8c",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/ariadne/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Do not imply upstream endorsement."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:click@8.1.7": {
+      "source_identity": "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de",
+      "copyright_sha256": "5695549f19016fd196a50f584aef674752d4c4a5df4ad655cc465f1e16159ebe",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/click/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Do not imply upstream endorsement."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:fastapi@0.115.5": {
+      "source_identity": "0e7a4d0dc0d01c68df21887cce0945e72d3c48b9f4f79dfe7a7d53aa08fbb289",
+      "copyright_sha256": "f6581e040b6bf88f96e23c3f6b860231fdf10513f03e67826f5edb62c5a8463d",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/fastapi/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:graphql-core@3.2.5": {
+      "source_identity": "e671b90ed653c808715645e3998b7ab67d382d55467b7e2978549111bbabf8d5",
+      "copyright_sha256": "bb52fb0f8fbc574862ec3782b782584928bb5a7cd7e3f09507502b65969e6fb5",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/graphql-core/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:h11@0.16.0": {
+      "source_identity": "4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1",
+      "copyright_sha256": "6dc49e423427e0832483275fde12969701bf9e14f87d6648d41c674671df0e51",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/h11/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:idna@3.10": {
+      "source_identity": "12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9",
+      "copyright_sha256": "223211f1674a177aa1158b79d31179ef6bca973336bd4c2c51538a2f3ca9f088",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/idna/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Do not imply upstream endorsement."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:makefun@1.15.6": {
+      "source_identity": "26bc63442a6182fb75efed8b51741dd2d1db2f176bec8c64e20a586256b8f149",
+      "copyright_sha256": "743b8264cfab9b448427c25c7c05a821151e7fc273cf5e6765c26a954a5901c9",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/makefun/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Do not imply upstream endorsement."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:pydantic@2.10.2": {
+      "source_identity": "2bc2d7f17232e0841cbba4641e65ba1eb6fafb3a08de3a091ff3ce14a197c4fa",
+      "copyright_sha256": "1ee4a8d36dee569033aee7e7ba630be16dc665bbdd1f54eea730a32d8ad29579",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/pydantic/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "pypi:pyjwt@2.10.1": {
+      "source_identity": "3cc5772eb20009233caf06e9d8a0577824723b44e6648ee0a2aedb6cf9381953",
+      "copyright_sha256": "98d95fc1f552f847703db1a89f2bcca53ee615761170e694e523875f07a22947",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "third-party-notices/pyjwt/copyright",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer in binary and source distributions.",
+        "Include the exact source archive and hashed build inputs in the component inventory."
+      ],
+      "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
