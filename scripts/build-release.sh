@@ -38,6 +38,6 @@ docker run --rm --network none --device /dev/kvm --entrypoint python3 -v "$outpu
 # Mount only the new task directory and the exact public project source archive.
 # Runtime privileges are needed by live-build mounts; no host PID/network,
 # credentials, Docker socket, SSH agent or unrelated filesystem is shared.
-python3 scripts/run-release-container.py --architecture "$architecture" --image "$image" \
+python3 "$private/source/scripts/run-release-container.py" --architecture "$architecture" --image "$image" \
   --output "$output" --project-source "$private/project-source.tar" --private "$private/netbird-fixture" \
   --version "$version" --commit "$commit"
