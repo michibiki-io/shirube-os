@@ -28,6 +28,7 @@ RUN opam init --root=/opt/opam --bare --disable-sandboxing --no-setup default \
       git+https://github.com/ocaml/opam-repository.git#d74e2449deccd679e0a28814bfc75ba47656a7b2 && \
     opam switch create --root=/opt/opam --jobs=2 4.14.2 && \
     opam install --root=/opt/opam --jobs=2 -y re pcre2 num ctypes ctypes-foreign ctypes-build containers fileutils xml-light
+COPY containers/native/install_gems.py containers/native/rubygems.lock.json /tmp/shirube-gems/
 RUN apt-get -o APT::Update::Error-Mode=any update && apt-get install -y --no-install-recommends \
       python3-guestfs openssh-client ruby ruby-dev libgdbm-dev liblzma-dev libffi-dev libpcap0.8-dev clang \
       libseccomp-dev libgpgme-dev libapparmor-dev go-md2man libguestfs-tools \
@@ -35,7 +36,9 @@ RUN apt-get -o APT::Update::Error-Mode=any update && apt-get install -y --no-ins
       python3-psutil python3-netaddr python3-paramiko python3-passlib python3-tabulate \
       python3-zmq python3-fastapi python3-pyudev python3-systemd python3-dbus \
       python3-pyroute2 python3-voluptuous python3-cracklib python3-pam python3-certbot-nginx \
-      whois pylint libffi-dev libpcre2-dev && gem install --no-document fpm -v 1.17.0
+      whois pylint libffi-dev libpcre2-dev && \
+    python3 /tmp/shirube-gems/install_gems.py /tmp/shirube-gems/rubygems.lock.json && \
+    rm -rf /tmp/shirube-gems
 RUN case "$TARGETARCH" in \
       amd64) digest=542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e ;; \
       arm64) digest=f626cdd92fc21a88b31c1251f419c17782933a42903db87a174ce74eeecc66a9 ;; \
