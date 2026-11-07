@@ -49,7 +49,7 @@ def fetch(lock, destination):
     return archive
 
 
-def extract(archive, destination, prefixes=None):
+def extract(archive, destination, prefixes=None, exclude=()):
     """Extract regular source files then confined links, including on Python 3.11.
 
     Optional prefixes select complete component roots and exclude unrelated
@@ -60,11 +60,18 @@ def extract(archive, destination, prefixes=None):
         members = source.getmembers()
         selected = []
         names = set()
+        excluded = []
+        excluded_roots = tuple(PurePosixPath(path) for path in exclude)
+        if any(path.is_absolute() or '..' in path.parts or not path.parts for path in excluded_roots):
+            raise ValueError('Invalid generated-output exclusion')
         for member in members:
             name = PurePosixPath(member.name)
             if name.is_absolute() or '..' in name.parts or '\\' in member.name:
                 raise ValueError('Unsafe source archive member path')
             if prefixes and (not name.parts or name.parts[0] not in prefixes):
+                continue
+            if any(name == path or path in name.parents for path in excluded_roots):
+                excluded.append(str(name))
                 continue
             if not (member.isdir() or member.isfile() or member.issym() or member.islnk()) or str(name) in names:
                 raise ValueError('Unsafe or duplicate source archive member')
@@ -115,3 +122,4 @@ def extract(archive, destination, prefixes=None):
             confined(target.parent / member.linkname)
             target.parent.mkdir(parents=True, exist_ok=True)
             target.symlink_to(member.linkname)
+        return {'excluded_generated_members': excluded, 'exclusion_roots': [str(path) for path in excluded_roots]}

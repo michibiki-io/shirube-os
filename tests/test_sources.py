@@ -8,6 +8,21 @@ from producer.sources import extract, fetch
 
 
 class SourceTests(unittest.TestCase):
+    def test_explicit_generated_directory_exclusion_keeps_sources_and_safety(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary); archive = root/'source.tar'
+            with tarfile.open(archive, 'w') as source:
+                regular = tarfile.TarInfo('source/file'); regular.size = 4
+                source.addfile(regular, io.BytesIO(b'data'))
+                link = tarfile.TarInfo('source/build/link'); link.type = tarfile.SYMTYPE
+                link.linkname = '/outside'; source.addfile(link)
+            receipt = extract(archive, root/'extracted', exclude=('source/build',))
+            self.assertEqual((root/'extracted/source/file').read_bytes(), b'data')
+            self.assertFalse((root/'extracted/source/build').exists())
+            self.assertEqual(receipt['excluded_generated_members'], ['source/build/link'])
+            with self.assertRaises(ValueError):
+                extract(archive, root/'unsafe', exclude=('source/other-build',))
+
     def test_rejects_traversal_links_devices_before_writing(self):
         for name, kind in [('../escape', tarfile.REGTYPE), ('/absolute', tarfile.REGTYPE),
                            ('source/link', tarfile.SYMTYPE), ('source/device', tarfile.CHRTYPE)]:

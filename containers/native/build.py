@@ -90,7 +90,14 @@ def main():
     roots = {job['source'].split('/')[0] for job in jobs} | {'vyos-build'}
     if args.target in {'iso','release'}:
         roots |= {'jool-4.1.9+bf4c7e3669','libpam-radius-auth_1.5.0-cl3u7','humps_v3.8.0','ddclient_debian_3.11.2-1','owamp_v4.4.6','openvpn-otp_9781ff1','udp-broadcast-relay_9a0f13b4b5938bfe0af0d0d4e99dfc127c068e28','node_exporter_v1.9.1','frr_exporter_v1.5.0','blackbox_exporter_v0.26.0','telegraf_v1.28.3','isc-kea_Kea-3.0.2','salt_v3006.21','podman_v4.9.5','ovpn-dco-v0.2.20231117','accel-ppp-ng-3e30d9b','host-sflow_v2.1.21-1'}
-    extract(nested, sources, prefixes=roots)
+    # These signed-archive directories contain previous compiler output, including
+    # absolute build-host links. Rebuild them from the adjacent original sources;
+    # never follow or rewrite archived external links into the build host.
+    preparation = extract(nested, sources, prefixes=roots, exclude=(
+        'linux-kernel-6.6.128/linux-6.6.128/debian/linux-headers',
+        'accel-ppp-ng-3e30d9b/accel-ppp-ng/build',
+    ))
+    (args.output/'source-preparation.json').write_text(json.dumps(preparation, indent=2)+'\n')
     default=sources/'vyos-1x/vyos-1x/data/config.boot.default'
     if default.is_file():
         console='ttyAMA0' if args.architecture=='arm64' else 'ttyS0'
