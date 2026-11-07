@@ -11,6 +11,7 @@ def main():
     subs = parser.add_subparsers(dest='command', required=True)
     check = subs.add_parser('preflight')
     check.add_argument('architecture', choices=['amd64', 'arm64'])
+    check.add_argument('--stage', choices=['iso','release'], default='release')
     check.add_argument('--require-kvm', action='store_true')
     check.add_argument('--storage', type=Path, default=Path('.'))
     acquire = subs.add_parser('fetch-stream')
@@ -21,7 +22,7 @@ def main():
     labels.add_argument('--setting', default='')
     args = parser.parse_args()
     if args.command == 'preflight':
-        preflight(args.architecture, args.storage, require_kvm=args.require_kvm)
+        preflight(args.architecture, args.storage, minimum_disk_gib=40 if args.stage=='iso' else 160, require_kvm=args.require_kvm)
     elif args.command == 'runner':
         print(json.dumps(runner(args.architecture, args.setting)))
     else:

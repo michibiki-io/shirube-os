@@ -64,3 +64,14 @@ Remaining producer validation, complete toolchain/source closure and real
 per-architecture verification are listed in `VALIDATION.md`. Toolchain image
 creation, package compilation, ISO assembly, installed-disk boot and OCI execution
 are different milestones.
+
+## ISO-first execution
+
+`scripts/build-iso.sh` builds an ISO independently of VM validation. It needs
+`SHIRUBE_ARCHITECTURE`, `SHIRUBE_VERSION`, `SHIRUBE_SOURCE_COMMIT` and a new
+`SHIRUBE_ISO_DIRECTORY`. An optional `SHIRUBE_SOURCE_CACHE` contains only the
+public archive/signature and is reverified inside the container. It never accepts
+an existing test disk. The ISO-only admission budget is 40 GiB free storage and
+8 GiB available memory; the task stops if host headroom falls below 12 GiB disk
+or 2 GiB memory. These are conservative operating budgets, not validated minimums.
+An ISO build receipt leaves local boot, OCI and distribution clearance unverified.

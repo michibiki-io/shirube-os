@@ -131,10 +131,10 @@ def offline_cleanup(disk,work,arch):
         # journal afterwards. The appliance sees only this task-owned disk.
         features=g.tune2fs_l('/dev/sda3').get('Filesystem features','')
         if 'inline_data' in features:raise ValueError('Inline inode data requires additional erasure validation')
-        g.debug('sh','e2fsck -fy /dev/sda3')
-        g.debug('sh','tune2fs -O ^has_journal /dev/sda3')
+        g.debug('sh',['e2fsck -fy /dev/sda3'])
+        g.debug('sh',['tune2fs -O ^has_journal /dev/sda3'])
         g.mount('/dev/sda3','/');g.zero_free_space('/');g.fstrim('/');g.umount_all()
-        g.debug('sh','tune2fs -j /dev/sda3');g.debug('sh','e2fsck -fy /dev/sda3')
+        g.debug('sh',['tune2fs -j /dev/sda3']);g.debug('sh',['e2fsck -fy /dev/sda3'])
     finally:g.shutdown();g.close()
 
 

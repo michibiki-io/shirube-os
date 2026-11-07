@@ -147,6 +147,7 @@ def assemble(sources, packages, arch, version, output):
     shutil.copy2(kernel/'signing_key.pem',signing/'key.pem');(signing/'key.pem').chmod(0o600)
     shutil.copy2(kernel/'signing_key.x509',signing/'cert.der')
     for job in ['vpp','base','go','kea','salt','podman','modules','accel']:
+        print('STAGE: native runtime '+job,flush=True)
         run('python3',str(root/'extras.py'),job)
     guest_package(arch,version)
     audited=list(debs.glob('*.deb'))
