@@ -1,0 +1,16 @@
+[Unit]
+Description=Shirube OS NetBird client
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/run/shirube-netbird/settings.json
+
+[Service]
+Type=simple
+UMask=0077
+Environment=NB_STATE_DIR=/config/netbird
+ExecStart=/usr/libexec/shirube/netbird-control daemon
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+StandardOutput=null
+StandardError=null

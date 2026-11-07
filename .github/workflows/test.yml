@@ -1,0 +1,22 @@
+name: Test
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Unit and failure-path tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Shell syntax
+        run: bash -n scripts/build-packages.sh containers/native/package.sh
+      - name: Whitespace validation
+        run: git diff --check

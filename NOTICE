@@ -1,0 +1,21 @@
+Shirube OS
+Built and maintained by michibiki-io.
+
+Original repository-owned code and the supplied Shirube OS SVG are covered by
+LICENSE. This does not relicense bundled or derived upstream components.
+
+containers/native/package.sh and its package catalog retain MIT-licensed
+implementation portions: Copyright (c) 2026 michibiki.io.
+Modified 2026-11-08 for native AMD64/ARM64 architecture selection and a
+container-only producer. See LICENSE for the MIT text.
+
+VyOS, Linux, Debian, VPP and NetBird retain their own copyright and licenses.
+Shirube OS is an independent distribution based on VyOS Stream; it is not an
+official VyOS product and does not imply endorsement. Public source links are
+provenance, not a replacement for complete corresponding source distribution.
+No binary distribution is cleared by this notice alone.
+
+patches/kernel/0001-perf-unwind-libdw-stable-6.6-fix.patch is a Linux stable
+6.6 perf fix, under GPL-2.0-only (LICENSES/GPL-2.0.txt). Original authorship,
+commit and Signed-off-by records are retained. Public provenance:
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/stable-queue/+/271080340126e030ca379be32e892ced47966fe5/queue-6.6/revert-perf-unwind-libdw-fix-invalid-reference-count.patch

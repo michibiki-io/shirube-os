@@ -1,0 +1,5 @@
+.git
+.work
+output
+__pycache__
+.pytest_cache

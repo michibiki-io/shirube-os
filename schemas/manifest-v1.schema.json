@@ -1,0 +1,395 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "manifest_kind": {
+      "enum": [
+        "release",
+        "example"
+      ]
+    },
+    "project": {
+      "const": "Shirube OS"
+    },
+    "provider": {
+      "const": "michibiki-io"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "source_clean": {
+      "type": "boolean"
+    },
+    "upstream": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "2026.03"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "signature": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_RUN"
+          ]
+        },
+        "vpp_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "vpp_patches_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "substitution": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "version",
+        "sha256",
+        "signature",
+        "vpp_commit",
+        "vpp_patches_commit",
+        "substitution"
+      ],
+      "additionalProperties": false
+    },
+    "architectures": {
+      "type": "object",
+      "properties": {
+        "amd64": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/candidate"
+            },
+            {
+              "properties": {
+                "console": {
+                  "properties": {
+                    "device": {
+                      "const": "ttyS0"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "arm64": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/candidate"
+            },
+            {
+              "properties": {
+                "console": {
+                  "properties": {
+                    "device": {
+                      "const": "ttyAMA0"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "amd64",
+        "arm64"
+      ],
+      "additionalProperties": false
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "manifest_kind",
+    "project",
+    "provider",
+    "version",
+    "source_commit",
+    "source_clean",
+    "upstream",
+    "architectures",
+    "assets"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/michibiki-io/shirube-os/blob/main/schemas/manifest-v1.schema.json",
+  "title": "Shirube OS release manifest v1",
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "properties": {
+        "checks": {
+          "type": "object",
+          "properties": {
+            "architecture": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "branding": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "build": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "corresponding_source": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "disk_equivalence": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "identity_regeneration": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "licenses": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "local_boot": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "module_signatures": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "netbird": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "provisioned_access": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "sanitization": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "unprovisioned_boot": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            }
+          },
+          "required": [
+            "architecture",
+            "branding",
+            "build",
+            "corresponding_source",
+            "disk_equivalence",
+            "identity_regeneration",
+            "licenses",
+            "local_boot",
+            "module_signatures",
+            "netbird",
+            "provisioned_access",
+            "sanitization",
+            "unprovisioned_boot"
+          ],
+          "additionalProperties": false
+        },
+        "oci": {
+          "const": "NOT_RUN"
+        },
+        "virtual_size": {
+          "const": 53687091200
+        },
+        "standalone": {
+          "const": true
+        },
+        "vmdk_subformat": {
+          "const": "streamOptimized"
+        },
+        "signing_certificate_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "repository_fingerprint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "firmware": {
+          "const": "UEFI"
+        },
+        "console": {
+          "type": "object",
+          "properties": {
+            "device": {
+              "enum": [
+                "ttyS0",
+                "ttyAMA0"
+              ]
+            },
+            "baud": {
+              "const": 115200
+            }
+          },
+          "required": [
+            "device",
+            "baud"
+          ],
+          "additionalProperties": false
+        },
+        "provisioning": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "const": "console-enrollment-v1"
+            },
+            "default_credentials": {
+              "const": false
+            }
+          },
+          "required": [
+            "method",
+            "default_credentials"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "checks",
+        "oci",
+        "virtual_size",
+        "standalone",
+        "vmdk_subformat",
+        "signing_certificate_sha256",
+        "repository_fingerprint",
+        "generation",
+        "firmware",
+        "console",
+        "provisioning"
+      ],
+      "additionalProperties": false
+    },
+    "asset": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$"
+        },
+        "role": {
+          "enum": [
+            "iso",
+            "qcow2",
+            "vmdk",
+            "source",
+            "licenses",
+            "evidence"
+          ]
+        },
+        "architecture": {
+          "enum": [
+            "amd64",
+            "arm64",
+            "all"
+          ]
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1,
+          "exclusiveMaximum": 2147483648
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "generation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "name",
+        "role",
+        "architecture",
+        "size",
+        "sha256"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

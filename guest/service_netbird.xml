@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<interfaceDefinition>
+  <node name="service">
+    <children>
+      <node name="netbird" owner="/usr/libexec/vyos/conf_mode/service_netbird.py">
+        <properties><help>Shirube OS NetBird overlay client</help><priority>999</priority></properties>
+        <children>
+          <leafNode name="disable">
+            <properties><help>Stop client and retain peer identity</help><valueless/></properties>
+          </leafNode>
+          <leafNode name="management-url">
+            <properties><help>HTTPS management URL</help><valueHelp><format>txt</format><description>HTTPS management URL without credentials</description></valueHelp></properties>
+          </leafNode>
+        </children>
+      </node>
+    </children>
+  </node>
+</interfaceDefinition>
