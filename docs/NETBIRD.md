@@ -61,3 +61,23 @@ schema and template compilers. Configuration changes run through the native
 configuration handler and configuration daemon; boot restores saved non-secret
 settings through the same handler. The setup key is intentionally excluded from
 the saved configuration to satisfy the one-time enrollment contract.
+
+## Container client verification
+
+`scripts/test-netbird-container.py` runs the real pinned headless client against
+a digest-pinned, temporary local management/signal server. Supply the native
+toolchain image ID with `--helper-image`, `--architecture amd64` or `arm64`, and a
+new `--work` directory. It requires Docker and the task's TUN device; compilers
+and test dependencies remain inside containers. No external account, deployment
+credential or cloud operation is used.
+
+The test checks actual registration, management/signal connectivity, identity
+retention after daemon/container restart, and absence of the one-use setup key
+from persistent client state and its error log. The management server runs on
+an internal Docker network with no published host ports. Admin credentials,
+setup keys and the temporary CA private key are task-private and removed on
+exit; cleanup verifies ownership labels before deleting resources.
+
+This is preliminary client verification. Its evidence explicitly leaves guest
+configuration commit/save/reboot and image acceptance as `NOT_RUN`. Those tests
+must still run through the actual OS CLI on both architecture-specific images.

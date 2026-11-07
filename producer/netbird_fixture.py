@@ -10,6 +10,7 @@ from pathlib import Path
 import secrets
 import subprocess
 import time
+from .architecture import ARCHITECTURES
 
 SERVER_IMAGES = {
     'amd64': 'netbirdio/netbird-server@sha256:a3f620738a83bc98a1cd4508178f82d51f18bb6ad85311767546bac0b6a9c808',
@@ -20,6 +21,7 @@ LABEL = 'io.michibiki.shirube.fixture'
 
 class Fixture:
     def __init__(self, architecture, helper_image, work):
+        self.architecture = architecture
         self.image = SERVER_IMAGES[architecture]
         self.helper = helper_image
         self.work = Path(work).resolve()
@@ -27,7 +29,7 @@ class Fixture:
         self.nonce = secrets.token_hex(12)
         self.network = 'shirube-netbird-' + self.nonce
         self.hostname = 'netbird-' + self.nonce + '.test'
-        self.url = 'https://' + self.hostname
+        self.url = 'https://' + self.hostname + ':443'
         self.container = None
         self.network_created = False
         self.token = None
@@ -54,7 +56,7 @@ try:
 except Exception:
  sys.exit(1)
 '''
-        result = self.docker('run', '--rm', '-i', '--network', self.network,
+        result = self.helper_run('--network', self.network,
             '--log-driver', 'none', '--cpus=1', '--memory=128m', '--pids-limit=64',
             '-v', str(self.work/'cert.pem')+':/fixture/cert.pem:ro',
             '--entrypoint', 'python3', self.helper, '-c', program,
@@ -62,9 +64,25 @@ except Exception:
                               'token': self.token if authenticated else None}).encode())
         return json.loads(result)
 
+    def helper_run(self, *args, input=None):
+        identity = self.docker('create', '-i', '--label', LABEL+'='+self.nonce, *args).decode().strip()
+        try:
+            return self.docker('start', '-a', '-i', identity, input=input)
+        finally:
+            label = self.docker('inspect', '--format', '{{index .Config.Labels "'+LABEL+'"}}', identity).decode().strip()
+            if label != self.nonce:
+                raise RuntimeError('Refusing to remove an unowned fixture helper')
+            self.docker('rm', '-f', identity)
+
     def __enter__(self):
         try:
-            self.docker('run', '--rm', '--network', 'none', '--log-driver', 'none',
+            actual = self.docker('info', '--format', '{{.Architecture}}').decode().strip()
+            if actual not in ARCHITECTURES[self.architecture]['aliases']:
+                raise ValueError('A native Docker daemon is required for the management fixture')
+            helper_arch = self.docker('image', 'inspect', '--format', '{{.Architecture}}', self.helper).decode().strip()
+            if helper_arch != self.architecture:
+                raise ValueError('Wrong native fixture helper image architecture')
+            self.helper_run('--network', 'none', '--log-driver', 'none',
                 '--user', str(os.getuid())+':'+str(os.getgid()),
                 '--cpus=1', '--memory=128m', '--pids-limit=64',
                 '-v', str(self.work)+':/fixture', '--entrypoint', 'openssl', self.helper,
@@ -128,12 +146,14 @@ except Exception:
 
     def close(self):
         self.token = None
-        if self.container:
-            label = self.docker('inspect', '--format', '{{index .Config.Labels "'+LABEL+'"}}', self.container).decode().strip()
+        identities = [self.container] if self.container else []
+        identities += self.docker('ps', '-aq', '--no-trunc', '--filter', 'label='+LABEL+'='+self.nonce).decode().split()
+        for identity in dict.fromkeys(identities):
+            label = self.docker('inspect', '--format', '{{index .Config.Labels "'+LABEL+'"}}', identity).decode().strip()
             if label != self.nonce:
                 raise RuntimeError('Refusing to remove an unowned fixture container')
-            self.docker('rm', '-f', self.container)
-            self.container = None
+            self.docker('rm', '-f', identity)
+        self.container = None
         if self.network_created:
             label = self.docker('network', 'inspect', '--format', '{{index .Labels "'+LABEL+'"}}', self.network).decode().strip()
             if label != self.nonce:
