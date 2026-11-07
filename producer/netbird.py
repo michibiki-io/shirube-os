@@ -128,6 +128,12 @@ def main():
             raise ValueError('Root is required')
         if sys.argv[1:] == ['daemon']:
             daemon()
+        elif sys.argv[1:] == ['status']:
+            if not (RUNTIME / 'settings.json').is_file():
+                print('NetBird is inactive')
+            else:
+                return subprocess.run([BINARY, 'status'], env=dict(os.environ, NB_STATE_DIR=str(STATE)),
+                                      stderr=subprocess.DEVNULL, timeout=15).returncode
         elif sys.argv[1:] == ['enroll']:
             if sys.stdin.isatty():
                 import getpass
@@ -136,7 +142,7 @@ def main():
             else:
                 enroll(sys.stdin)
         else:
-            raise ValueError('Expected daemon or enroll')
+            raise ValueError('Expected daemon, enroll or status')
     except Exception:
         print('NetBird operation failed; secret details suppressed', file=sys.stderr)
         return 1

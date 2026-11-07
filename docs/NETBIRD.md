@@ -13,9 +13,28 @@ client belongs at `/usr/libexec/shirube/netbird`. The integration package genera
 compiler and registers its configuration handler. These guest changes still need
 actual runtime verification.
 
+Use the OS configuration CLI for persistent service settings:
+
+```text
+configure
+set service netbird management-url 'https://api.netbird.io:443'
+commit
+save
+exit
+generate netbird enrollment
+show netbird
+```
+
+`generate netbird enrollment` prompts for a one-time setup key without echoing
+it or adding it to command history. From configuration mode use
+`run generate netbird enrollment`. Disable with `set service netbird disable`,
+then `commit` and `save`; re-enable with `delete service netbird disable`,
+then `commit` and `save`. Delete the entire `service netbird` tree and commit/save
+to remove the persistent service settings.
+
 Without configuration the client remains inactive. An enabled configuration
-creates non-secret runtime settings. Enrollment is a separate root-only action:
-`sudo /usr/libexec/shirube/netbird-control enroll`. It reads a hidden prompt or
+creates non-secret runtime settings. Enrollment is a separate privileged action
+through the OS operational CLI. It reads a hidden prompt or
 stdin from a secure provider. Never put the key in a shell command, environment
 assignment, saved configuration or script history. The controller writes a
 0600 task file only under `/run`, passes its filename to the client, suppresses
@@ -36,3 +55,9 @@ setup-key rejection, and one-shot erasure on success/failure/timeout. Actual
 client enrollment, reconnection, save/reboot, upgrade compatibility and both
 architectures still require guest runtime evidence. Unit mocks do not establish
 those results.
+
+The configuration and operational XML are compiled with the pinned upstream
+schema and template compilers. Configuration changes run through the native
+configuration handler and configuration daemon; boot restores saved non-secret
+settings through the same handler. The setup key is intentionally excluded from
+the saved configuration to satisfy the one-time enrollment contract.
