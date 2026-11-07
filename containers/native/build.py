@@ -131,7 +131,13 @@ def main():
             if actual not in {args.architecture, 'all'}:
                 raise ValueError('Wrong package architecture')
             certificate = output/'source/certs/signing_key.x509' if job['name'] == 'kernel' else None
-            audit(deb, args.architecture, certificate)
+            try:
+                audit(deb, args.architecture, certificate)
+            except ValueError as error:
+                # Audit ValueErrors contain fixed diagnostic text, never payload
+                # bytes, enrollment input or private signing-key material.
+                print('Package audit rejected '+deb.name+': '+str(error),flush=True)
+                raise
             shutil.copy2(deb, exported/deb.name)
             artifacts.append({'name': deb.name, 'sha256': sha256(deb), 'architecture': actual})
         if not artifacts:

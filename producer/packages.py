@@ -43,7 +43,7 @@ def audit(package, architecture, certificate=None):
                             while chunk:
                                 if SECRET.search(tail + chunk):
                                     raise ValueError('Private key in Debian package payload')
-                                tail = chunk[-128:]
+                                tail = (tail + chunk)[-1024:]
                                 chunk = source.read(1024**2)
         finally:
             process.stdout.close()

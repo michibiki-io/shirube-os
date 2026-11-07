@@ -17,21 +17,24 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 24 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Unit/failure-path tests | PASS | 30 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
+| NetBird native CLI schema/templates | PASS | Configuration and operational definitions compiled with authenticated Stream schemas/compilers in a container; guest commit/save/reboot unverified |
+| Local NetBird management fixture | PASS | Digest-pinned real server bootstrap and one-use key issuance on an isolated Docker network; no client enrollment or guest lifecycle claim |
 | Python compilation / shell syntax | PASS | Current Python files, both recipe architecture renderings and producer scripts |
 | Workflow validation | PASS | YAML parsing and actionlint v1.7.12; current release/Test workflows |
 | Module cryptography primitive | PASS | Real CMS signature, tampering/wrong-certificate rejection and private-directory removal in container; not a real kernel build |
 | Supplied SVG conversion | PASS | Native-container rsvg conversion to 824×320 PNG and filesystem identity helper; not a guest boot |
 | Source-built python3-vici package | PASS | AMD64 container, authenticated Stream sources; 5.9.11-2 all-architecture package; not an ISO |
 | Native package-toolchain container | PASS | Native AMD64 toolchain image built after correcting package-name/snapshot dependency failures; package/ISO build success is not implied |
-| Complete native AMD64 ISO | NOT_BUILT | Runtime recipes/ISO pipeline now wired; complete build not exercised |
+| Complete native AMD64 ISO | NOT_BUILT | Full attempt reached Dropbear compilation, then stopped at package audit; corrected delimiter detection requires the next actual full build |
 | Complete native ARM64 ISO | NOT_BUILT | Native ARM64 runner also unavailable in this execution environment |
 | Installed QCOW2/VMDK | NOT_CREATED | Fresh ISO install, conversion and whole-disk sanitization unverified |
 | Local unprovisioned/provisioned boots | NOT_RUN | Actual KVM/guest integration and access evidence missing |
 | Live OCI, AMD64 and ARM64 | NOT_RUN | No cloud operation performed; outside this task's deployment scope |
 
-The observed local free storage was below the conservative complete-build budget.
-No usable KVM device was observed. These constrain runtime verification; they do
+No usable KVM device was observed. Runtime resource availability is checked again
+at each invocation. These constrain runtime verification; they do
 not explain away remaining implementation gaps.
 
 ## Acceptance criteria mapping

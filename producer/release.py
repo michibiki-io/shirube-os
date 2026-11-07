@@ -11,7 +11,13 @@ CHECKS = {'build', 'architecture', 'module_signatures', 'branding', 'licenses',
           'unprovisioned_boot', 'provisioned_access', 'identity_regeneration', 'netbird'}
 ROLES = {'iso', 'qcow2', 'vmdk', 'source', 'licenses', 'evidence'}
 LIMIT = 2 * 1024**3
-SECRET = re.compile(rb'-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----')
+# A format delimiter is also ordinary text in SSH/key-parser source and ELF
+# executables. Require following armored key bytes, including encrypted PEM
+# headers, so those programs remain buildable without allowing actual keys.
+SECRET = re.compile(
+    rb'-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----[ \t]*'
+    rb'(?:\r?\n|\\n)(?:(?:Proc-Type|DEK-Info):[^\r\n]{1,256}\r?\n)*'
+    rb'(?:\r?\n)*[A-Za-z0-9/+]{32}')
 
 
 def filename(name):
@@ -28,7 +34,7 @@ def scan_secrets(path):
             data = tail + chunk
             if SECRET.search(data):
                 raise ValueError('Private key material in release content')
-            tail = data[-128:]
+            tail = data[-1024:]
 
 
 def verify_sources(root, inventory, assets):
@@ -58,7 +64,7 @@ def verify_sources(root, inventory, assets):
                         if SECRET.search(tail + chunk):
                             raise ValueError('Private signing key in source bundle')
                         digest.update(chunk)
-                        tail = chunk[-128:]
+                        tail = (tail + chunk)[-1024:]
                 members[key] = digest.hexdigest()
     for component in inventory['components']:
         identity = (component['name'], component['version'], component['architecture'])
