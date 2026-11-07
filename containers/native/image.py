@@ -18,6 +18,7 @@ from producer.architecture import check_elf, check_kernel, check_pe
 from producer.branding import install as install_brand
 from producer.sources import download, sha256
 from producer.packages import audit
+from producer.notices import snapshot, mark_changed
 
 
 def run(*args, **kwargs):
@@ -78,9 +79,14 @@ def guest_package(arch, version):
     templates=work/'templates';templates.mkdir()
     run(str(source/'scripts/build-command-templates'),'/src/guest/service_netbird.xml',str(source/'schema/interface_definition.rng'),str(templates))
     shutil.copytree(templates/'service/netbird',package/'opt/vyatta/share/vyatta-cfg/templates/service/netbird')
+    op_templates=work/'templates-op';op_templates.mkdir()
+    run(str(source/'scripts/build-command-op-templates'),'/src/guest/netbird_op.xml',str(source/'schema/op-mode-definition.rng'),str(op_templates))
+    for branch in ['generate/netbird','show/netbird']:
+        shutil.copytree(op_templates/branch,package/'opt/vyatta/share/vyatta-op/templates'/branch)
     candidates=list(debs.glob(f'vyos-1x_*_{arch}.deb'))
     if len(candidates)!=1:raise ValueError('Exactly one native core package required')
     original=candidates[0];core=work/'core';run('dpkg-deb','-R',str(original),str(core))
+    original_core=snapshot(core)
     native=work/'native';native.mkdir()
     libraries=list(debs.glob(f'libvyosconfig0_*_{arch}.deb'))
     if len(libraries)!=1:raise ValueError('Exactly one native configuration library required')
@@ -133,6 +139,16 @@ def guest_package(arch, version):
             elif file.suffix=='.png':shutil.copyfile(core/'usr/share/shirube/logo.png',file)
             else:file.unlink()
     old_version=subprocess.check_output(['dpkg-deb','-f',str(original),'Version'],text=True).strip()
+    changed=mark_changed(original_core)
+    copyright_file=core/'usr/share/doc/vyos-1x/copyright'
+    if not copyright_file.resolve().is_relative_to(core.resolve()) or not copyright_file.is_file():
+        raise ValueError('Core copyright notice must be available within the extracted package')
+    if copyright_file.is_symlink():
+        original_notice=copyright_file.read_bytes();copyright_file.unlink();copyright_file.write_bytes(original_notice)
+    with copyright_file.open('a') as notice:
+        notice.write('\nShirube OS modifications by michibiki-io, 2026-11-08.\n'
+                     'Upstream copyright and license terms remain applicable.\n')
+        for path in changed:notice.write('Modified: '+str(path.relative_to(core))+'\n')
     new_version=old_version+'+shirube1'
     control=core/'DEBIAN/control';control.write_text(control.read_text().replace('Version: '+old_version+'\n','Version: '+new_version+'\n'))
     (core/'DEBIAN/md5sums').unlink(missing_ok=True)
@@ -172,6 +188,7 @@ def assemble(sources, packages, arch, version, output):
         run('gpg','--batch','--yes','--armor','--detach-sign','--output',str(release)+'.gpg',str(release),env=env)
         run('gpg','--batch','--yes','--clearsign','--output',str(release.parent/'InRelease'),str(release),env=env)
         source=work/'vyos-build';shutil.copytree(sources/'vyos-build/vyos-build',source,symlinks=True)
+        original_build=snapshot(source)
         one=work/'vyos-1x';shutil.copytree(sources/'vyos-1x/vyos-1x',one,symlinks=True)
         for tree in [source,one]:
             run('git','init','-q',cwd=tree);run('git','add','.',cwd=tree)
@@ -207,6 +224,7 @@ def assemble(sources, packages, arch, version, output):
         hook.write_text('#!/bin/sh\nset -eu\npython3 /usr/lib/python3/dist-packages/vyos/xml_ref/update_cache.py\ndepmod -a 6.6.128-vyos\nSHIRUBE_BUILD_CHROOT=1 python3 /usr/libexec/shirube/factory_prepare.py '+arch+'\nrm /usr/libexec/shirube/factory_prepare.py\n')
         hook.chmod(0o755)
         with (source/'data/live-build-config/environment.chroot').open('a') as target:target.write('\nVPP_INSTALL_SKIP_SYSCTL=1\n')
+        mark_changed(original_build)
         handler=functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(repo))
         server=http.server.ThreadingHTTPServer(('127.0.0.1',18080),handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         try:
