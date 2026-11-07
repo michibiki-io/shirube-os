@@ -17,10 +17,14 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 18 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
-| Python compilation / shell syntax | PASS | Current Python files and package-stage scripts |
-| Native package-toolchain container | PENDING | Initial package-name/snapshot dependency failures corrected; new build in progress |
-| Complete native AMD64 ISO | NOT_BUILT | ISO/runtime closure integration missing |
+| Unit/failure-path tests | PASS | 24 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Python compilation / shell syntax | PASS | Current Python files, both recipe architecture renderings and producer scripts |
+| Workflow validation | PASS | YAML parsing and actionlint v1.7.12; current release/Test workflows |
+| Module cryptography primitive | PASS | Real CMS signature, tampering/wrong-certificate rejection and private-directory removal in container; not a real kernel build |
+| Supplied SVG conversion | PASS | Native-container rsvg conversion to 824×320 PNG and filesystem identity helper; not a guest boot |
+| Source-built python3-vici package | PASS | AMD64 container, authenticated Stream sources; 5.9.11-2 all-architecture package; not an ISO |
+| Native package-toolchain container | PASS | Native AMD64 toolchain image built after correcting package-name/snapshot dependency failures; package/ISO build success is not implied |
+| Complete native AMD64 ISO | NOT_BUILT | Runtime recipes/ISO pipeline now wired; complete build not exercised |
 | Complete native ARM64 ISO | NOT_BUILT | Native ARM64 runner also unavailable in this execution environment |
 | Installed QCOW2/VMDK | NOT_CREATED | Fresh ISO install, conversion and whole-disk sanitization unverified |
 | Local unprovisioned/provisioned boots | NOT_RUN | Actual KVM/guest integration and access evidence missing |
@@ -34,19 +38,33 @@ not explain away remaining implementation gaps.
 
 | AC | Implemented primitives | Remaining acceptance work |
 | --- | --- | --- |
-| 1 | Public source lock, authenticated acquisition, ephemeral signing-key API, safe source extraction, native checks | Complete fixed toolchain/dependency closure and integrated fresh-checkout builds |
-| 2 | Native package recipes/config selection, ELF/EFI/kernel helpers, module-signature verification | Complete runtime packages and both actual ISO builds/audits |
-| 3 | Supplied SVG, conversion/OS identity helper, attribution/license separation | Installer/version/boot-template integration and final-image branding audit |
-| 4 | Non-secret service schema, controller, separate one-shot enrollment, failure-path tests | Install package/templates, actual both-architecture NetBird lifecycle/save/reboot tests |
-| 5 | Standalone 50 GiB conversion/integrity/equivalence helper | Fresh ISO installer automation, actual QCOW2/VMDK results |
-| 6 | Offline logical cleanup, console enrollment implementation | Guest integration, secure free-space/full-disk cleanup, fresh-firmware/access/DHCP/identity tests |
-| 7 | Component archive/member integrity and inventory validators | Complete source collector, exact component/license audit, real reconstruction |
-| 8 | Both runner-variable/default/label policies and native checks | Full Actions integration and actual supported runner/resource/virtualization evidence |
-| 9 | Tested merged-PR eligibility, commit-only semantic version policy, immutable-set comparison | Exact-commit/version resolution, full build/recovery and GitHub release orchestration |
-| 10 | Manifest v1 schema/example, complete-set/evidence/hash/source gates and failure injection | Real coherent assets/evidence, workflow staging/publishing; OCI remains independent |
+| 1 | Public source lock, authenticated acquisition, ephemeral signing-key API, safe source extraction, native checks | Complete fixed transitive dependency closure and integrated fresh-checkout validation |
+| 2 | Native package recipes/config selection, ELF/EFI/kernel helpers, module-signature verification | Both actual full ISO builds/audits and verification of all runtime recipes |
+| 3 | Supplied SVG, conversion/OS identity helper, attribution/license separation | Final-image branding/license audit and actual UI/installer verification |
+| 4 | Non-secret service schema, controller, separate one-shot enrollment, failure-path tests | Actual both-architecture NetBird enrollment/lifecycle/save/reboot tests |
+| 5 | Standalone 50 GiB conversion/integrity/equivalence helper | Actual installer, whole-disk cleanup and QCOW2/VMDK results |
+| 6 | Offline logical cleanup, console enrollment implementation | Actual proof of guest integration, free-space/journal cleanup and fresh-firmware/access/DHCP/identity tests |
+| 7 | Component archive/member integrity and inventory validators | Complete source/dependency coverage, exact component/license audit, real reconstruction |
+| 8 | Both runner-variable/default/label policies and native checks | Actual supported runner/resource/virtualization evidence for the wired workflow |
+| 9 | Tested merged-PR eligibility, commit-only semantic version policy, immutable-set comparison | Real end-to-end build/recovery/publication verification of the wired orchestration |
+| 10 | Manifest v1 schema/example, complete-set/evidence/hash/source gates and failure injection | Real coherent assets/evidence and staging/publication verification; OCI remains independent |
 | 11 | Task-only mounts/work, runtime-only private signing keys, enrollment erasure and payload key checks | End-to-end source/binary/log/cache/whole-disk audits |
 | 12 | Build/release/first-boot/NetBird/license docs and explicit limits | Update runnable reconstruction/recovery instructions after complete integration/validation |
 
 Every AC remains open. The PR must remain a draft while these gaps exist. Green
 static CI does not make it merge-ready. Merge and cloud deployment are not part
 of this implementation run.
+
+## Release workflow state
+
+The release workflow is implemented and statically validated: merged-only base
+commit selection, both native runner variables/defaults, individual-commit
+version/notes, draft reservation, full candidate build invocation, per-architecture
+staging, aggregate verification, Actions artifact upload and final promotion.
+Published reruns take a verification-only path before any build.
+
+This does **not** make publication ready. `license-audit.json` currently clears no
+components. Full source reconstruction and actual NetBird enrollment/save/reboot
+evidence are still NOT_RUN and block the pipeline. The runtime installation,
+repacking/journal/free-space sanitization and both-format boot code are not yet
+validated on real native KVM runners. They must not be inferred from static CI.

@@ -77,6 +77,7 @@ CONTROL
     printf '10\n' > "$vici/debian/compat"
     printf 'vici /usr/lib/python3/dist-packages/\n' > "$vici/debian/install"
     cp debian/changelog "$vici/debian/changelog"
+    cp debian/copyright "$vici/debian/copyright"
     cd "$vici"
 fi
 if [ "$BUILD_RECIPE" = libyang ]; then

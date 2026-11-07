@@ -18,7 +18,7 @@ class SourceTests(unittest.TestCase):
                     if kind == tarfile.SYMTYPE:
                         member.linkname = '/outside'
                     source.addfile(member, io.BytesIO())
-                with self.assertRaises((ValueError, tarfile.FilterError)):
+                with self.assertRaises(ValueError):
                     extract(archive, root/'extracted')
                 self.assertFalse((root/'extracted/source/link').exists())
 
@@ -31,3 +31,13 @@ class SourceTests(unittest.TestCase):
                     fetch({'url': 'https://example.com/source', 'sha256': '0'*64}, Path(temporary)/'result')
                 run.assert_not_called()
                 self.assertFalse((Path(temporary)/'result/verification.json').exists())
+
+    def test_safe_relative_source_link_preserved_on_python_311(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);archive=root/'source.tar'
+            with tarfile.open(archive,'w') as source:
+                regular=tarfile.TarInfo('source/file');regular.size=4;source.addfile(regular,io.BytesIO(b'data'))
+                link=tarfile.TarInfo('source/link');link.type=tarfile.SYMTYPE;link.linkname='file';source.addfile(link)
+            extract(archive,root/'extracted')
+            self.assertTrue((root/'extracted/source/link').is_symlink())
+            self.assertEqual((root/'extracted/source/link').read_bytes(),b'data')

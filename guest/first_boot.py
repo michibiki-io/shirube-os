@@ -11,7 +11,8 @@ MARKER = Path('/config/shirube-first-boot')
 
 
 def main():
-    if not MARKER.exists():
+    factory=Path('/usr/share/shirube/needs-enrollment')
+    if not MARKER.exists() and not factory.exists():
         return
     print('Shirube OS — built by michibiki-io\nCreate this instance administrator at the local console.')
     username = input('Administrator name: ')
@@ -36,15 +37,15 @@ def main():
     script = ('source /opt/vyatta/etc/functions/script-template\n'
               'configure\n'
               f"set system login user {username} authentication encrypted-password '{hashed}'\n"
-              f'set system login user {username} level admin\n'
               'set service ssh\ncommit\nsave\nexit\n')
-    subprocess.run(['/bin/vbash', '-se'], input=script, text=True, check=True,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(['systemd-machine-id-setup'], check=True,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(['ssh-keygen', '-A'], check=True,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    MARKER.unlink()
+    subprocess.run(['/usr/bin/sg', 'vyattacfg', '-c', '/bin/vbash -se'], input=script, text=True, check=True,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    MARKER.unlink(missing_ok=True)
+    factory.unlink(missing_ok=True)
     print('Instance administrator created. Continue with the normal login prompt.')
 
 

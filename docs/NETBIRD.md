@@ -9,8 +9,9 @@ The `service netbird` XML and commit handler are under `guest/`. The lifecycle
 controller is `producer/netbird.py`; intended installation names are
 `/usr/libexec/shirube/netbird_control.py` for the imported module and
 `/usr/libexec/shirube/netbird-control` for its executable entry point. The pinned
-client belongs at `/usr/libexec/shirube/netbird`. Package/template generation and
-installation wiring are not yet complete.
+client belongs at `/usr/libexec/shirube/netbird`. The integration package generates templates/cache with the pinned Stream
+compiler and registers its configuration handler. These guest changes still need
+actual runtime verification.
 
 Without configuration the client remains inactive. An enabled configuration
 creates non-secret runtime settings. Enrollment is a separate root-only action:

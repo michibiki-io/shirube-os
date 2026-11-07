@@ -19,3 +19,9 @@ patches/kernel/0001-perf-unwind-libdw-stable-6.6-fix.patch is a Linux stable
 6.6 perf fix, under GPL-2.0-only (LICENSES/GPL-2.0.txt). Original authorship,
 commit and Signed-off-by records are retained. Public provenance:
 https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/stable-queue/+/271080340126e030ca379be32e892ced47966fe5/queue-6.6/revert-perf-unwind-libdw-fix-invalid-reference-count.patch
+
+Native extras/signature/repository/ARM console recipe helpers also retain
+MIT-licensed portions: Copyright (c) 2026 michibiki.io. Modified 2026-11-08 for
+Shirube OS native architecture selection and task-private runtime builds.
+Modified VyOS display/installer/boot artifacts retain upstream licensing; the
+producer's modification scripts and this date accompany corresponding sources.

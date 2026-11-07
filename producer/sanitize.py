@@ -7,23 +7,42 @@ REMOVE = ('config/auth', 'config/netbird', 'config/archive', 'config/user-data',
           'root/.ssh', 'root/.bash_history', 'home', 'var/log', 'var/lib/cloud',
           'var/lib/netbird', 'var/lib/dhcp', 'var/lib/NetworkManager',
           'var/lib/systemd/random-seed', 'var/lib/dbus/machine-id',
-          'etc/udev/rules.d/70-persistent-net.rules')
+          'etc/udev/rules.d/70-persistent-net.rules', 'etc/ssl/private')
 
 
 def path_in_root(root, relative):
+    """Resolve symlinks using guest-root semantics, never host absolute paths."""
     root = Path(root).resolve()
     if root == Path('/') or not (root / 'etc').is_dir():
-        raise ValueError('A mounted offline guest root is required')
+        raise ValueError('A mounted guest root is required')
     relative = Path(relative)
     if relative.is_absolute() or '..' in relative.parts:
         raise ValueError('Unsafe guest path')
-    target = root / relative
-    for parent in target.parents:
-        if parent == root:
-            break
-        if parent.is_symlink():
-            raise ValueError('Unexpected symlink in offline guest path')
-    return target
+    pending = list(relative.parts)
+    resolved = []
+    links = 0
+    while pending:
+        part = pending.pop(0)
+        if part in ('', '.'):
+            continue
+        if part == '..':
+            if not resolved:
+                raise ValueError('Guest link escapes root')
+            resolved.pop(); continue
+        target = root.joinpath(*resolved, part)
+        if target.is_symlink():
+            links += 1
+            if links > 40:
+                raise ValueError('Cyclic guest symlinks')
+            link = Path(target.readlink())
+            if link.is_absolute():
+                resolved = []
+                pending = list(link.parts[1:]) + pending
+            else:
+                pending = list(link.parts) + pending
+        else:
+            resolved.append(part)
+    return root.joinpath(*resolved)
 
 
 def erase(path):
@@ -42,20 +61,46 @@ def sanitize(root, architecture):
     for relative in REMOVE:
         erase(path_in_root(root, relative))
     configuration = path_in_root(root, 'config')
-    if configuration.is_symlink():
-        raise ValueError('Mount the writable merged guest root with a physical config directory')
-    for entry in configuration.iterdir():
-        erase(entry)
+    if configuration.is_dir():
+        for entry in configuration.iterdir():
+            erase(entry)
+    else:
+        configuration.mkdir(parents=True)
     for pattern in ('etc/ssh/ssh_host_*', 'config/*history*', 'root/.*history'):
         for path in root.glob(pattern):
             erase(path_in_root(root, str(path.relative_to(root))))
     # Lock every installed account, including installer/default users.
+    passwd=path_in_root(root,'etc/passwd')
+    removed=set()
+    if passwd.is_file():
+        records=[]
+        for record in passwd.read_text().splitlines():
+            fields=record.split(':')
+            if len(fields)!=7:raise ValueError('Unexpected guest account record')
+            if 1000 <= int(fields[2]) < 65534 and fields[0]!='vyos':
+                removed.add(fields[0])
+            else:records.append(record)
+        passwd.write_text('\n'.join(records)+'\n')
+    for database in ['etc/group','etc/gshadow']:
+        file=path_in_root(root,database)
+        if not file.is_file():continue
+        records=[]
+        for record in file.read_text().splitlines():
+            fields=record.split(':')
+            if len(fields)!=4:raise ValueError('Unexpected guest group record')
+            if fields[0] in removed:continue
+            fields[3]=','.join(x for x in fields[3].split(',') if x and x not in removed)
+            if database.endswith('gshadow'):
+                fields[1]='!';fields[2]=','.join(x for x in fields[2].split(',') if x and x not in removed)
+            records.append(':'.join(fields))
+        file.write_text('\n'.join(records)+'\n')
     shadow = path_in_root(root, 'etc/shadow')
     rows = []
     for line in shadow.read_text().splitlines():
         fields = line.split(':')
         if len(fields) != 9:
             raise ValueError('Unexpected guest shadow record')
+        if fields[0] in removed:continue
         fields[1] = '!'
         rows.append(':'.join(fields))
     shadow.write_text('\n'.join(rows)+'\n')

@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "components": {},
+  "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
+}

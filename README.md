@@ -8,7 +8,8 @@ Shirube OS is an independent, unaffiliated distribution. VyOS and other upstream
 projects retain their copyrights, licenses and compatibility interfaces.
 
 **Implementation in progress. There is no validated Shirube OS ISO or public disk
-release yet.** Input verification, package-stage tooling and static validation do
+release yet.** The merged-PR release workflow and producer are implemented but still require
+full acceptance evidence. Input verification, package-stage results and static validation do
 not establish a successful OS build or boot. See [validation status](docs/VALIDATION.md).
 
 - [Build inputs and native runners](docs/BUILD.md)

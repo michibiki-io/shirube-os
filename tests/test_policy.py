@@ -7,6 +7,7 @@ class PolicyTests(unittest.TestCase):
     def test_only_relevant_merged_pr_is_eligible(self):
         event = {'action': 'closed', 'pull_request': {'merged': True, 'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40}}
         self.assertTrue(eligible('pull_request', event, ['producer/disks.py']))
+        self.assertTrue(eligible('pull_request_target', event, ['producer/disks.py']))
         self.assertFalse(eligible('push', event, ['producer/disks.py']))
         self.assertFalse(eligible('pull_request', event, ['docs/build.md']))
         event['pull_request']['merged'] = False

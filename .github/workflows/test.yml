@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - name: Unit and failure-path tests
         run: python3 -m unittest discover -s tests -v
       - name: Shell syntax
-        run: bash -n scripts/build-packages.sh containers/native/package.sh
-      - name: Whitespace validation
-        run: git diff --check
+        run: bash -n scripts/*.sh containers/native/package.sh
+      - name: Workflow structure, expressions and security context
+        run: bash scripts/check-workflows.sh

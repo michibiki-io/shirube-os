@@ -123,7 +123,10 @@
     {
       "name": "vyos-1x",
       "source": "vyos-1x/vyos-1x",
-      "recipe": "vyos-1x"
+      "recipe": "vyos-1x",
+      "requires": [
+        "python3-vici"
+      ]
     },
     {
       "name": "kernel",

@@ -25,7 +25,10 @@
         "url": "https://github.com/netbirdio/netbird/releases/download/v0.82.0/netbird_0.82.0_linux_arm64.tar.gz",
         "sha256": "c2e5ccb5824cb29fe008a5a54854fd5926b89d3aaff7ab8721f77abf8e8b3e62"
       }
-    }
+    },
+    "source_commit": "3c00a97878e6af537d28c3bdd4f42cb4286aa883",
+    "source_url": "https://codeload.github.com/netbirdio/netbird/tar.gz/3c00a97878e6af537d28c3bdd4f42cb4286aa883",
+    "source_sha256": "a02eee7a4e7072eed8f74b4fcc5a8637f4243bf2848a70f1d1d5097b74bbafe4"
   },
   "external_git": {
     "vpp": {
@@ -38,7 +41,8 @@
     }
   },
   "substitutions": [
-    "Public VPP 25.10 with public VyOS VPP patches replaces vendor VPP; vendor-byte-identical output is not claimed."
+    "Public VPP 25.10 with public VyOS VPP patches replaces vendor VPP; vendor-byte-identical output is not claimed.",
+    "AMD64 virtual-appliance profile omits vendor-only physical NIC/QAT packages; UEFI and virtio NIC/disk support use the matching source-built kernel. Physical hardware parity is not claimed."
   ],
   "debian_security_snapshot": "https://snapshot.debian.org/archive/debian-security/20261105T000000Z/",
   "opam_repository": {
@@ -50,5 +54,16 @@
     "version": "3.8.0",
     "wheel_sha256": "060e1954d9069f428232a1adda165db0b9d8dfdce1d265d36df7fbff540acfd6",
     "source_sha256": "498026258f7ee1a8e447c2e28526c0bea9407f9a59c03260aee4bd6c04d681a3"
+  },
+  "go": {
+    "version": "1.23.2",
+    "sha256": {
+      "amd64": "542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e",
+      "arm64": "f626cdd92fc21a88b31c1251f419c17782933a42903db87a174ce74eeecc66a9"
+    }
+  },
+  "j2lint": {
+    "url": "https://github.com/aristanetworks/j2lint.git",
+    "commit": "341b5d5db86e095b622f09770cb6367a1583620e"
   }
 }

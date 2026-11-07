@@ -11,7 +11,7 @@ def relevant(paths):
 
 def eligible(event_name, event, paths):
     pr = event.get('pull_request', {})
-    return (event_name == 'pull_request' and event.get('action') == 'closed'
+    return (event_name in {'pull_request','pull_request_target'} and event.get('action') == 'closed'
             and pr.get('merged') is True and pr.get('base', {}).get('ref') == 'main'
             and bool(re.fullmatch('[0-9a-f]{40}', pr.get('merge_commit_sha') or ''))
             and relevant(paths))
@@ -40,4 +40,10 @@ def next_version(previous, messages):
 
 def release_notes(commits):
     """Commit IDs/messages supplied by git, never a PR title."""
-    return '\n'.join(f'- {c["subject"]} ({c["sha"]})' for c in commits) + '\n'
+    entries=[]
+    for commit in commits:
+        entry=f'- {commit["subject"]} ({commit["sha"]})'
+        body=commit.get('message','').partition('\n')[2].strip()
+        if body:entry+='\n'+ '\n'.join('  '+line for line in body.splitlines())
+        entries.append(entry)
+    return '\n'.join(entries)+'\n'

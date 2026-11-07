@@ -29,7 +29,6 @@ class SanitizeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary); (root/'etc').mkdir()
             (root/'config').symlink_to('/tmp')
-            with self.assertRaises(ValueError):
-                path_in_root(root, 'config/config.boot')
+            self.assertEqual(path_in_root(root, 'config/config.boot'), root/'tmp/config.boot')
             with self.assertRaises(ValueError):
                 path_in_root('/', 'etc/shadow')

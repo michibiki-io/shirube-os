@@ -1,0 +1,114 @@
+name: Build and release images
+on:
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: shirube-os-release
+  cancel-in-progress: false
+jobs:
+  resolve:
+    if: github.event.pull_request.merged == true
+    runs-on: ${{ fromJSON(startsWith(vars.ACTIONS_RUNNER_AMD64, '[') && vars.ACTIONS_RUNNER_AMD64 || toJSON(vars.ACTIONS_RUNNER_AMD64 || 'ubuntu-24.04')) }}
+    permissions:
+      contents: write
+      pull-requests: read
+    outputs:
+      eligible: ${{ steps.plan.outputs.eligible }}
+      noop: ${{ steps.plan.outputs.noop }}
+      commit: ${{ steps.plan.outputs.commit }}
+      version: ${{ steps.plan.outputs.version }}
+      matrix: ${{ steps.plan.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+          # Closed + merged guard; this is the base-repository merge SHA, never the fork head.
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+          clean: false
+      - name: Validate exact merged source before expensive builds
+        run: |
+          python3 -m unittest discover -s tests -v
+          bash -n scripts/build-packages.sh scripts/build-release.sh containers/native/package.sh
+      - id: plan
+        name: Resolve merged commit, version and native runners once
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ACTIONS_RUNNER_AMD64: ${{ vars.ACTIONS_RUNNER_AMD64 }}
+          ACTIONS_RUNNER_ARM64: ${{ vars.ACTIONS_RUNNER_ARM64 }}
+        run: python3 -m producer.actions resolve
+  build:
+    needs: resolve
+    if: needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.resolve.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 720
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ needs.resolve.outputs.commit }}
+          # Closed + merged guard; this is the base-repository merge SHA, never the fork head.
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+          clean: false
+      - name: Build ISO, fresh installed QCOW2 and OCI-importable VMDK
+        env:
+          SHIRUBE_CANDIDATE_DIRECTORY: ${{ runner.temp }}/shirube-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.architecture }}
+          SHIRUBE_ARCHITECTURE: ${{ matrix.architecture }}
+          SHIRUBE_VERSION: ${{ needs.resolve.outputs.version }}
+          SHIRUBE_SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
+        run: bash scripts/build-release.sh
+      - name: Validate and stage complete architecture candidate in unpublished draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHIRUBE_CANDIDATE_DIRECTORY: ${{ runner.temp }}/shirube-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.architecture }}
+          SHIRUBE_ARCHITECTURE: ${{ matrix.architecture }}
+          SHIRUBE_VERSION: ${{ needs.resolve.outputs.version }}
+          SHIRUBE_SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
+        run: python3 -m producer.actions stage
+  publish:
+    needs: [resolve, build]
+    if: always() && needs.resolve.result == 'success' && needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true' && needs.build.result == 'success'
+    runs-on: ${{ fromJSON(startsWith(vars.ACTIONS_RUNNER_AMD64, '[') && vars.ACTIONS_RUNNER_AMD64 || toJSON(vars.ACTIONS_RUNNER_AMD64 || 'ubuntu-24.04')) }}
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ needs.resolve.outputs.commit }}
+          # Closed + merged guard; this is the base-repository merge SHA, never the fork head.
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+          clean: false
+      - name: Verify both candidates, sources, checksums and every required gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHIRUBE_PUBLIC_DIRECTORY: ${{ runner.temp }}/shirube-public-${{ github.run_id }}-${{ github.run_attempt }}
+          SHIRUBE_VERSION: ${{ needs.resolve.outputs.version }}
+          SHIRUBE_SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
+        run: python3 -m producer.actions publish
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        id: assets
+        with:
+          name: shirube-os-${{ needs.resolve.outputs.version }}-${{ needs.resolve.outputs.commit }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/shirube-public-${{ github.run_id }}-${{ github.run_attempt }}/*
+          if-no-files-found: error
+          compression-level: 0
+      - name: Publish only after successful verified Actions artifact upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHIRUBE_VERSION: ${{ needs.resolve.outputs.version }}
+          SHIRUBE_SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
+          SHIRUBE_ACTIONS_ARTIFACT_ID: ${{ steps.assets.outputs.artifact-id }}
+          SHIRUBE_ACTIONS_ARTIFACT_DIGEST: ${{ steps.assets.outputs.artifact-digest }}
+        run: python3 -m producer.actions promote

@@ -53,7 +53,14 @@ KVM is a separate boot-stage requirement. TCG has not been validated and cannot
 satisfy the boot gate. The hosted runner defaults are selection defaults, not
 claims that their available resources or nested virtualization meet these needs.
 
-Remaining producer integration, complete toolchain/source closure and real
+The full workflow calls `scripts/build-release.sh` for each selected native runner.
+It requires the exact clean merged source commit and runs the ISO, fresh-install,
+sanitization, conversion, source and publication gates in containers. Outputs use
+fresh run/attempt-specific task directories; incomplete candidates are not staged.
+The AMD64 virtual profile omits vendor-only physical NIC/QAT packages; this
+difference is explicit in the source lock. Physical hardware parity is not claimed.
+
+Remaining producer validation, complete toolchain/source closure and real
 per-architecture verification are listed in `VALIDATION.md`. Toolchain image
 creation, package compilation, ISO assembly, installed-disk boot and OCI execution
 are different milestones.

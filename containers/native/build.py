@@ -41,12 +41,22 @@ def main():
     parser.add_argument('--output', type=Path, default=Path('/output'))
     parser.add_argument('--verified-input', type=Path)
     parser.add_argument('--job', action='append')
+    parser.add_argument('--target', choices=['packages','release'], default='packages')
+    parser.add_argument('--version')
+    parser.add_argument('--commit')
     args = parser.parse_args()
     native(args.architecture)
     if any(args.output.iterdir()):
         raise ValueError('A new empty task output directory is required')
     work = Path('/build-private')
     work.mkdir(mode=0o700)
+    public_output = args.output
+    if args.target == 'release':
+        import re
+        if args.job or not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+',args.version or '') or not re.fullmatch('[0-9a-f]{40}',args.commit or ''):
+            raise ValueError('Release requires all packages, a project version and exact source commit')
+        args.output = work/'package-output'
+        args.output.mkdir()
     lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
     if args.verified_input:
         archive = args.verified_input/'stream.tar.gz'
@@ -58,7 +68,6 @@ def main():
         archive = fetch(lock, work/'input')
     extract(archive, work/'stream')
     nested = work/'stream'/f'vyos-{lock["version"]}-sources/vyos-tarballs/vyos_tarballs.tar.gz'
-    extract(nested, work/'sources')
     sources = work/'sources'
     catalog = json.loads(Path('/src/native/packages.json').read_text())
     if catalog['source_sha256'] != lock['sha256']:
@@ -78,6 +87,14 @@ def main():
         for name in args.job:
             select(name)
         jobs = [job for job in jobs if job['name'] in selected]
+    roots = {job['source'].split('/')[0] for job in jobs} | {'vyos-build'}
+    if args.target == 'release':
+        roots |= {'jool-4.1.9+bf4c7e3669','libpam-radius-auth_1.5.0-cl3u7','humps_v3.8.0','ddclient_debian_3.11.2-1','owamp_v4.4.6','openvpn-otp_9781ff1','udp-broadcast-relay_9a0f13b4b5938bfe0af0d0d4e99dfc127c068e28','node_exporter_v1.9.1','frr_exporter_v1.5.0','blackbox_exporter_v0.26.0','telegraf_v1.28.3','isc-kea_Kea-3.0.2','salt_v3006.21','podman_v4.9.5','ovpn-dco-v0.2.20231117','accel-ppp-ng-3e30d9b','host-sflow_v2.1.21-1'}
+    extract(nested, sources, prefixes=roots)
+    default=sources/'vyos-1x/vyos-1x/data/config.boot.default'
+    if default.is_file():
+        console='ttyAMA0' if args.architecture=='arm64' else 'ttyS0'
+        default.write_text('// Modified by michibiki-io for Shirube OS on 2026-11-08.\ninterfaces {\n ethernet eth0 { address dhcp }\n loopback lo {}\n}\nsystem {\n host-name shirube-os\n console { device '+console+' { speed 115200 } }\n}\n')
     for job in jobs:
         output = work/job['name']
         output.mkdir()
@@ -115,7 +132,14 @@ def main():
             'source_sha256':lock['sha256'], 'artifacts':artifacts, 'iso':'NOT_BUILT',
             'local_boot':'NOT_RUN', 'oci':'NOT_RUN'}, indent=2)+'\n')
         completed[job['name']] = output
+    if args.target == 'release':
+        from producer.pipeline import release_candidate
+        release_candidate(sources,args.output,public_output,args.architecture,args.version,args.commit)
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as error:
+        print('Producer failed ('+type(error).__name__+'); no candidate is cleared for publication',file=sys.stderr)
+        raise SystemExit(1) from None

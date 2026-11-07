@@ -95,6 +95,14 @@ class ReleaseTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate(self.root, self.commit, self.version)
 
+    def test_unreviewed_license_blocks_even_when_all_claimed_checks_pass(self):
+        path=self.root/'amd64-licenses.json'
+        inventory=json.loads(path.read_text());inventory['components'][0]['redistributable']=False
+        path.write_text(json.dumps(inventory))
+        asset=next(x for x in self.manifest['assets'] if x['name']==path.name)
+        asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+        with self.assertRaises(ValueError):validate(self.root,self.commit,self.version)
+
     def test_published_release_is_immutable(self):
         existing = {'manifest.json':'a'*64, 'SHA256SUMS':'b'*64, 'image.iso':'c'*64}
         self.assertEqual(reconcile_published(existing, dict(existing)), 'NO_OP')

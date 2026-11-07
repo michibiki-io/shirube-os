@@ -79,7 +79,7 @@ def verify_sources(root, inventory, assets):
         raise ValueError('Component inventory does not cover the exact shipped package set')
 
 
-def validate(root, expected_commit, expected_version):
+def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
     root = Path(root)
     manifest = json.loads((root / 'manifest.json').read_text())
     if (manifest.get('schema_version') != 1 or manifest.get('manifest_kind') != 'release'
@@ -97,7 +97,7 @@ def validate(root, expected_commit, expected_version):
             or upstream.get('vpp_patches_commit') != '9cab3c94679592ef27a58e6a0e9becdd9f847754'
             or not upstream.get('substitution')):
         raise ValueError('Unexpected upstream baseline')
-    if set(manifest.get('architectures', {})) != ARCHES:
+    if not architectures or not set(architectures) <= ARCHES or set(manifest.get('architectures', {})) != set(architectures):
         raise ValueError('Both native architecture candidates are mandatory')
     assets = manifest.get('assets', [])
     names = set()

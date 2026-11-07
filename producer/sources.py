@@ -49,21 +49,69 @@ def fetch(lock, destination):
     return archive
 
 
-def extract(archive, destination):
-    """Reject traversal, external links and special members; preserve safe source links."""
+def extract(archive, destination, prefixes=None):
+    """Extract regular source files then confined links, including on Python 3.11.
+
+    Optional prefixes select complete component roots and exclude unrelated
+    archived build output. They are not source authentication: fetch() must pass.
+    """
+    import os
     with tarfile.open(archive) as source:
         members = source.getmembers()
+        selected = []
         names = set()
         for member in members:
             name = PurePosixPath(member.name)
-            if (name.is_absolute() or '..' in name.parts or '\\' in member.name
-                    or not (member.isdir() or member.isfile() or member.issym() or member.islnk()) or str(name) in names):
+            if name.is_absolute() or '..' in name.parts or '\\' in member.name:
+                raise ValueError('Unsafe source archive member path')
+            if prefixes and (not name.parts or name.parts[0] not in prefixes):
+                continue
+            if not (member.isdir() or member.isfile() or member.issym() or member.islnk()) or str(name) in names:
                 raise ValueError('Unsafe or duplicate source archive member')
             names.add(str(name))
+            if member.issym() or member.islnk():
+                link = PurePosixPath(member.linkname)
+                if link.is_absolute() or '\\' in member.linkname:
+                    raise ValueError('External source link')
+            selected.append(member)
         destination = Path(destination)
         destination.mkdir(parents=True, exist_ok=False)
-        if not hasattr(tarfile, 'data_filter'):
-            raise ValueError('Python tarfile.data_filter security support is required')
-        # Filter again at each extraction, after prior symlinks have been created.
-        for member in members:
-            source.extract(member, destination, filter='data')
+        root = destination.resolve()
+        def confined(path):
+            resolved = path.resolve()
+            if not resolved.is_relative_to(root):
+                raise ValueError('Source link escapes extraction root')
+            return resolved
+        # No links exist during file writes. A conflicting directory/file/link
+        # fails rather than replacing or following an earlier archive member.
+        for member in selected:
+            target = destination / member.name
+            confined(target)
+            if member.isdir():
+                target.mkdir(parents=True, exist_ok=True)
+            elif member.isfile():
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with source.extractfile(member) as data, target.open('xb') as output:
+                    shutil.copyfileobj(data, output)
+                target.chmod(0o755 if member.mode & 0o111 else 0o644)
+        pending = [m for m in selected if m.islnk()]
+        while pending:
+            remaining = []
+            for member in pending:
+                target = destination / member.name
+                origin = confined(destination / member.linkname)
+                if not origin.is_file():
+                    remaining.append(member)
+                    continue
+                target.parent.mkdir(parents=True, exist_ok=True)
+                os.link(origin, target, follow_symlinks=False)
+            if len(remaining) == len(pending):
+                raise ValueError('Missing or cyclic source hard link')
+            pending = remaining
+        for member in selected:
+            if not member.issym():
+                continue
+            target = destination / member.name
+            confined(target.parent / member.linkname)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.symlink_to(member.linkname)

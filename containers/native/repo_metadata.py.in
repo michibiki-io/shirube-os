@@ -1,0 +1,52 @@
+# Copyright (c) 2026 michibiki.io; MIT. Modified 2026-11-08 for native architectures.
+"""Repair a renamed NSS package's compatibility metadata without changing data."""
+import hashlib
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+
+
+def mapuser_compatibility(pool):
+    packages=list(pool.glob('vyos-libnss-mapuser_[0-9]*_@ARCH@.deb'))
+    if len(packages)!=1: raise ValueError('Exactly one native mapuser package required')
+    package=packages[0]
+    def field(name):
+        return subprocess.check_output(['dpkg-deb','-f',str(package),name],text=True).strip()
+    if field('Package')!='vyos-libnss-mapuser' or field('Architecture')!='@ARCH@':
+        raise ValueError('Unexpected mapuser package identity')
+    if 'libnss-mapuser' in field('Provides').replace(',',' ').split(): return None
+    if field('Version')!='1.1.0-cl3u3.1': raise ValueError('Unexpected mapuser source version')
+    original_hash=hashlib.sha256(package.read_bytes()).hexdigest()
+    members=subprocess.check_output(['ar','t',str(package)],text=True).splitlines()
+    data_members=[name for name in members if name.startswith('data.tar')]
+    if len(members)!=3 or len(data_members)!=1: raise ValueError('Unexpected Debian archive layout')
+    data_name=data_members[0]
+    payload=subprocess.check_output(['ar','p',str(package),data_name])
+    payload_hash=hashlib.sha256(payload).hexdigest()
+    version='1.1.0-cl3u3.1+local1'
+    target=pool/f'vyos-libnss-mapuser_{version}_@ARCH@.deb'
+    if target.exists(): raise ValueError('Corrected package already exists')
+    with tempfile.TemporaryDirectory() as temporary:
+        work=Path(temporary)
+        subprocess.run(['dpkg-deb','-e',str(package),str(work/'control')],check=True)
+        control=work/'control/control'
+        lines=control.read_text().splitlines()
+        if any(line.startswith(('Provides:','Conflicts:','Replaces:')) for line in lines):
+            raise ValueError('Unexpected existing compatibility fields')
+        lines=[('Version: '+version) if line.startswith('Version:') else line for line in lines]
+        lines[0:0]=['Provides: libnss-mapuser','Conflicts: libnss-mapuser','Replaces: libnss-mapuser']
+        control.write_text('\n'.join(lines)+'\n')
+        subprocess.run(['tar','--sort=name','--mtime=@1773859634','--owner=0','--group=0','--numeric-owner',
+                        '-C',str(work/'control'),'-cJf',str(work/'control.tar.xz'),'.'],check=True)
+        (work/'debian-binary').write_bytes(subprocess.check_output(['ar','p',str(package),'debian-binary']))
+        (work/data_name).write_bytes(payload)
+        subprocess.run(['ar','qc',str(work/'corrected.deb'),'debian-binary','control.tar.xz',data_name],cwd=work,check=True)
+        after=subprocess.check_output(['ar','p',str(work/'corrected.deb'),data_name])
+        if hashlib.sha256(after).hexdigest()!=payload_hash: raise ValueError('Package data changed')
+        shutil.copy2(work/'corrected.deb',target)
+    package.unlink()
+    return {'package':'vyos-libnss-mapuser','original_file':package.name,'original_sha256':original_hash,
+            'file':target.name,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),
+            'data_archive_sha256':payload_hash,'payload':'BYTE_IDENTICAL_TO_AUDITED_INPUT',
+            'change':'Declare legacy libnss-mapuser compatibility for the same NSS implementation'}
