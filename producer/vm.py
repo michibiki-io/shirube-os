@@ -1,4 +1,4 @@
-"""Native KVM installation, fresh-firmware boots and per-instance console access."""
+"""Native QEMU installation and access; KVM default, explicit TCG probe support."""
 import base64
 import json
 import os
@@ -18,8 +18,10 @@ from .sanitize import audit, sanitize
 
 
 class VM:
-    def __init__(self, arch, disk, work, iso=None):
+    def __init__(self, arch, disk, work, iso=None, accelerator='kvm'):
         native(arch);self.work=Path(work);self.work.mkdir()
+        if accelerator not in {'kvm','tcg'}:raise ValueError('Unsupported QEMU accelerator')
+        self.accelerator=accelerator
         self.disk=Path(disk);self.iso=iso;self.arch=arch
         options=([('/usr/share/AAVMF/AAVMF_CODE.fd','/usr/share/AAVMF/AAVMF_VARS.fd')] if arch=='arm64' else
                  [('/usr/share/OVMF/OVMF_CODE_4M.fd','/usr/share/OVMF/OVMF_VARS_4M.fd'),('/usr/share/OVMF/OVMF_CODE.fd','/usr/share/OVMF/OVMF_VARS.fd')])
@@ -31,7 +33,9 @@ class VM:
         machine='virt' if arch=='arm64' else 'q35'
         serial=self.work/'serial.sock'
         mac='52:54:'+':'.join(f'{byte:02x}' for byte in secrets.token_bytes(4))
-        args=[executable,'-machine',machine+',accel=kvm','-cpu','host','-smp','2','-m','2048','-display','none',
+        cpu='host' if accelerator=='kvm' else ('cortex-a72' if arch=='arm64' else 'max')
+        accel='kvm' if accelerator=='kvm' else 'tcg,thread=multi'
+        args=[executable,'-machine',machine,'-accel',accel,'-cpu',cpu,'-smp','2','-m','2048','-display','none',
               '-serial',f'unix:{serial},server=on,wait=on','-qmp',f'unix:{self.work}/qmp.sock,server=on,wait=off',
               '-drive',f'if=pflash,format=raw,unit=0,readonly=on,file={code}',
               '-drive',f'if=pflash,format=raw,unit=1,file={nvram}',
@@ -45,10 +49,12 @@ class VM:
         self.process=subprocess.Popen(args,stdout=self.log,stderr=subprocess.STDOUT)
         deadline=time.monotonic()+15
         while not serial.exists():
-            if self.process.poll() is not None or time.monotonic()>deadline:raise RuntimeError('QEMU failed to start with KVM')
+            if self.process.poll() is not None or time.monotonic()>deadline:
+                self.close()
+                raise RuntimeError('QEMU failed to start with '+accelerator)
             time.sleep(.1)
         self.socket=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM);self.socket.connect(str(serial))
-        self.child=fdspawn(self.socket.fileno(),encoding='utf-8',codec_errors='replace',timeout=300)
+        self.child=fdspawn(self.socket.fileno(),encoding='utf-8',codec_errors='replace',timeout=1200 if accelerator=='tcg' else 300)
         self.child.logfile=None
         self.username=None;self.password=None
 
