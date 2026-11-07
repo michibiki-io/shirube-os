@@ -24,10 +24,15 @@ cleanup() {
   fi
   if [[ -n $log_pid ]]; then wait "$log_pid" || true; fi
   rm -f "$private/image.id"
+  rm -rf "$private/source"
   rmdir "$private"
 }
 trap cleanup EXIT
-docker build --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f containers/native/Dockerfile .
+# Freeze the exact committed input before a long Docker metadata/build wait.
+# Concurrent implementation edits must never enter an older-head ISO candidate.
+mkdir "$private/source"
+git archive "$commit" | tar -x -C "$private/source"
+docker build --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
 image=$(cat "$private/image.id")
 docker run --rm --network none --entrypoint python3 -v "$output:/output" "$image" \
   -m producer.cli preflight "$architecture" --storage /output --stage iso
