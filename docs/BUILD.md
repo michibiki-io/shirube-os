@@ -88,6 +88,14 @@ an existing test disk. The ISO-only admission budget is 40 GiB free storage and
 or 2 GiB memory. These are conservative operating budgets, not validated minimums.
 An ISO build receipt leaves local boot, OCI and distribution clearance unverified.
 
+Set `SHIRUBE_INCLUDE_SOURCES=1` for source/license collection immediately after
+ISO assembly, using the same private build tree and exact project archive. This
+path requires no KVM and preserves the ISO receipt if collection fails. A
+successful collection records inventory/archive names and individual license
+clearance separately; complete source reconstruction remains `NOT_RUN` until
+demonstrated. The optional audit has not yet run on a completed ISO. It does not
+clear binary publication or replace installed-disk tests.
+
 An optional `python-inputs-amd64` or `python-inputs-arm64` subdirectory in that
 public-input cache holds the pinned HTTP API wheels/source archives. Each file
 is rechecked against the architecture-specific lock before use. It contains no

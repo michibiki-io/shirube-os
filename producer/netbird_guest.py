@@ -76,9 +76,6 @@ def verify(vm, url, certificate, key):
     vm.command('sudo -n update-ca-certificates >/dev/null')
     configure(vm,['set service netbird management-url '+shlex.quote(url)])
     inactive(vm)
-    vm.secret_command('generate netbird enrollment','NetBird one-shot enrollment key: ',key,timeout=150)
-    identity=connected(vm)
-    vm.command('show netbird')
     scan='''import getpass
 from pathlib import Path
 key=getpass.getpass('Secret scan input: ').encode()
@@ -96,6 +93,23 @@ for root in ['/config','/home','/root','/var/log']:
 print('SECRET_ABSENT')
 '''
     scan_command='sudo -n python3 -c '+shlex.quote(scan)
+    # A syntactically valid, unregistered key exercises a real enrollment
+    # rejection, not only a mocked subprocess or local input validation.
+    import uuid
+    failed_key=str(uuid.uuid4())
+    try:
+        vm.secret_command('generate netbird enrollment','NetBird one-shot enrollment key: ',failed_key,timeout=150)
+    except RuntimeError:
+        pass
+    else:
+        raise ValueError('Guest accepted an unregistered enrollment key')
+    inactive(vm)
+    vm.command('sudo -n test ! -e /config/netbird/enrolled.json')
+    if 'SECRET_ABSENT' not in vm.secret_command(scan_command,'Secret scan input: ',failed_key):
+        raise ValueError('Failed-enrollment secret audit did not complete')
+    vm.secret_command('generate netbird enrollment','NetBird one-shot enrollment key: ',key,timeout=150)
+    identity=connected(vm)
+    vm.command('show netbird')
     if 'SECRET_ABSENT' not in vm.secret_command(scan_command,'Secret scan input: ',key):
         raise ValueError('Guest secret audit did not complete')
     configure(vm,['set service netbird disable']);inactive(vm)
@@ -107,10 +121,13 @@ print('SECRET_ABSENT')
     vm.command('show netbird')
     if 'SECRET_ABSENT' not in vm.secret_command(scan_command,'Secret scan input: ',key):
         raise ValueError('Post-reboot secret audit did not complete')
+    if 'SECRET_ABSENT' not in vm.secret_command(scan_command,'Secret scan input: ',failed_key):
+        raise ValueError('Post-reboot failed-enrollment secret audit did not complete')
     configure(vm,['delete service netbird']);inactive(vm)
     vm.command('sudo -n test ! -e /run/shirube-netbird/settings.json && sudo -n test -f /config/netbird/enrolled.json')
     vm.reboot();inactive(vm)
     return {'native_config_commit_save':'PASS','real_enrollment':'PASS',
+        'real_enrollment_rejection_and_cleanup':'PASS',
         'management_and_signal':'PASS','disable_enable_identity':'PASS',
         'saved_configuration_reboot_identity':'PASS','removed_configuration_reboot_inactive':'PASS',
         'setup_key_absence_in_config_state_history_logs':'PASS'}

@@ -95,8 +95,10 @@ not change release acceleration requirements.
 
 The harness starts a local isolated management fixture and boots a new overlay
 with fresh firmware and instance credentials. It uses the native configuration
-CLI for set/commit/save, the operational hidden prompt for registration, then
-checks real management/signal connectivity, disable/enable identity retention,
+CLI for set/commit/save and the operational hidden prompt for registration. It
+first attempts an unregistered key and requires failure, temporary-key erasure,
+inactivity and absence of that input from configuration/state/history/logs.
+It then checks successful enrollment, management/signal connectivity, disable/enable identity retention,
 saved settings after reboot, key absence from state/config/history/logs and
 inactivity after configuration removal and another reboot. Fixture keys enter
 only through private stdin and the guest's hidden prompt. The original disk is

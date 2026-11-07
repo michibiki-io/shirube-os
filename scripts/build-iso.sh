@@ -5,6 +5,12 @@ architecture=${SHIRUBE_ARCHITECTURE:?}
 version=${SHIRUBE_VERSION:?}
 commit=${SHIRUBE_SOURCE_COMMIT:?}
 output=${SHIRUBE_ISO_DIRECTORY:?}
+source_audit_args=()
+case ${SHIRUBE_INCLUDE_SOURCES:-0} in
+  1) source_audit_args=(--include-sources) ;;
+  0) ;;
+  *) echo 'SHIRUBE_INCLUDE_SOURCES must be 0 or 1' >&2; exit 2 ;;
+esac
 [[ $(git rev-parse HEAD) == "$commit" && -z $(git status --porcelain) ]] || { echo 'Exact clean source checkout required' >&2; exit 1; }
 case "$architecture" in
   amd64) base=debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018; aliases='^(x86_64|amd64)$' ;;
@@ -23,7 +29,7 @@ cleanup() {
     docker rm -f "$container_id" >/dev/null
   fi
   if [[ -n $log_pid ]]; then wait "$log_pid" || true; fi
-  rm -f "$private/image.id"
+  rm -f "$private/image.id" "$private/project-source.tar"
   rm -rf "$private/source"
   rmdir "$private"
 }
@@ -31,7 +37,8 @@ trap cleanup EXIT
 # Freeze the exact committed input before a long Docker metadata/build wait.
 # Concurrent implementation edits must never enter an older-head ISO candidate.
 mkdir "$private/source"
-git archive "$commit" | tar -x -C "$private/source"
+git archive --format=tar "$commit" > "$private/project-source.tar"
+tar -xf "$private/project-source.tar" -C "$private/source"
 docker build --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
 image=$(cat "$private/image.id")
 docker run --rm --network none --entrypoint python3 -v "$output:/output" "$image" \
@@ -48,8 +55,8 @@ else
 fi
 container_id=$(docker create --label "io.michibiki.shirube.task=$task_nonce" --privileged \
   --cpus=2 --memory=8g --memory-swap=8g --pids-limit=4096 \
-  -v "$output:/output" "${cache_args[@]}" "$image" "$architecture" \
-  --target iso --version "$version" --commit "$commit" "${source_args[@]}")
+  -v "$output:/output" -v "$private/project-source.tar:/project-source.tar:ro" "${cache_args[@]}" "$image" "$architecture" \
+  --target iso --version "$version" --commit "$commit" "${source_args[@]}" "${source_audit_args[@]}")
 if [[ -n ${SHIRUBE_BUILD_STATE_FILE:-} ]]; then
   [[ ! -e "$SHIRUBE_BUILD_STATE_FILE" ]] || { echo 'Build state file must be new' >&2; exit 1; }
   printf '%s\n' "$container_id" > "$SHIRUBE_BUILD_STATE_FILE"

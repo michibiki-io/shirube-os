@@ -45,8 +45,11 @@ def main():
     parser.add_argument('--version')
     parser.add_argument('--commit')
     parser.add_argument('--netbird-fixture-stdin',action='store_true')
+    parser.add_argument('--include-sources',action='store_true')
     args = parser.parse_args()
     native(args.architecture)
+    if args.include_sources and args.target!='iso':
+        raise ValueError('Separate source audit is only valid for a complete ISO target')
     management=None
     if args.target=='release':
         if not args.netbird_fixture_stdin:raise ValueError('Full release requires a real local guest fixture')
@@ -172,12 +175,27 @@ def main():
         result=assemble(sources,args.output,args.architecture,args.version,public_output)
         image=result['iso']
         (public_output/'ISO-SHA256SUMS').write_text(sha256(image)+'  '+image.name+'\n')
-        (public_output/'iso-build.json').write_text(json.dumps({'kind':'iso-build','project':'Shirube OS',
+        receipt={'kind':'iso-build','project':'Shirube OS',
             'version':args.version,'source_commit':args.commit,'architecture':args.architecture,
             'upstream_stream_version':'2026.03','source_sha256':lock['sha256'],'source_signature':'PASS',
             'iso':image.name,'sha256':sha256(image),'local_boot':'NOT_RUN','oci':'NOT_RUN',
-            'release_clearance':'NOT_CLEARED'},indent=2)+'\n')
+            'release_clearance':'NOT_CLEARED','source_collection':'NOT_RUN',
+            'complete_source_reconstruction':'NOT_RUN','license_clearance':'NOT_RUN'}
+        receipt_path=public_output/'iso-build.json'
+        receipt_path.write_text(json.dumps(receipt,indent=2)+'\n')
         print('ISO BUILT: '+image.name+' SHA256 '+sha256(image),flush=True)
+        if args.include_sources:
+            from producer.pipeline import collect_iso_sources
+            print('STAGE: ISO source/license audit without VM acceptance',flush=True)
+            try:
+                _,source=collect_iso_sources(image,args.output,public_output,args.architecture,args.version)
+            except Exception:
+                receipt['source_collection']='FAIL'
+                receipt_path.write_text(json.dumps(receipt,indent=2)+'\n')
+                raise
+            receipt.update(source_collection='PASS',license_clearance='PASS' if source['cleared'] else 'FAIL',
+                source_inventory=source['inventory'].name,source_archives=[path.name for path in source['archives']])
+            receipt_path.write_text(json.dumps(receipt,indent=2)+'\n')
     elif args.target == 'release':
         from producer.pipeline import release_candidate
         release_candidate(sources,args.output,public_output,args.architecture,args.version,args.commit,management)
