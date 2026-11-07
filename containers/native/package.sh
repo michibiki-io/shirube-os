@@ -135,7 +135,7 @@ snapshot_git_import() {
     export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"
     git init
     git add .
-    git -c user.name='Stream source bootstrap' -c user.email='maintainers@vyos.net' commit -m 'Import verified Stream source snapshot'
+    git -c user.name='michibiki-io source bootstrap' -c user.email='maintainers@michibiki.io' commit --quiet -m 'Import verified Stream source snapshot'
     git tag "vyos/${STREAM_VERSION}-source"
     git rev-parse HEAD > /output/snapshot-git-commit.txt
     # Upstream's pathname-discovery test assumes an input device pathname.
@@ -223,7 +223,12 @@ else
     # Quilt patches can change Build-Depends (e.g. Dropbear adds PAM).
     dpkg-source --before-build .
     mk-build-deps --install --remove --tool 'apt-get -y --no-install-recommends' debian/control
-    if [ "$BUILD_RECIPE" = vyos-1x ]; then snapshot_git_import; fi
+    if [ "$BUILD_RECIPE" = vyos-1x ]; then
+        snapshot_git_import
+        # Keep upstream build-time tests, but never build the optional on-image
+        # smoketest toolkit, which carries fixed VPN/private-key test fixtures.
+        export DH_OPTIONS='-Nvyos-1x-smoketest'
+    fi
     if [ "$BUILD_RECIPE" = frr ]; then
         dpkg-buildpackage -b -us -uc -Ppkg.frr.rtrlib,pkg.frr.lua
     else

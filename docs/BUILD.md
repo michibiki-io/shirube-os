@@ -98,3 +98,9 @@ Sequential package jobs remove only their generated dependency metapackages
 before resolving the next job; libraries are retained unless the next job's
 dependency resolver replaces conflicting development headers. This prevents
 one job's libedit/readline constraints from blocking a later routing build.
+
+Core build-time lint/unit tests still run. The optional `vyos-1x-smoketest`
+on-image toolkit is excluded from Debian package generation because it contains
+fixed private-key/VPN test fixtures. Generating that forbidden package or finding
+it in the assembled filesystem package list fails the producer. The ordinary
+private-key payload audit remains unchanged for every generated runtime package.

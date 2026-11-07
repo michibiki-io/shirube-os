@@ -236,6 +236,8 @@ def assemble(sources, packages, arch, version, output):
         verify=work/'verify';verify.mkdir()
         for item,name in [('/boot/grub/efi.img','efi.img'),('/live/vmlinuz-6.6.128-vyos','vmlinuz'),('/live/filesystem.packages','filesystem.packages')]:
             run('xorriso','-osirrox','on','-indev',str(image),'-extract',item,str(verify/name))
+        if any(line.split()[0]=='vyos-1x-smoketest' for line in (verify/'filesystem.packages').read_text().splitlines() if line.strip()):
+            raise ValueError('On-image smoketest fixtures must not enter the distribution')
         efi='BOOTAA64.EFI' if arch=='arm64' else 'BOOTX64.EFI'
         run('mcopy','-i',str(verify/'efi.img'),f'::/EFI/BOOT/{efi}',str(verify/'boot.efi'));check_pe((verify/'boot.efi').read_bytes(),arch)
         kernel=verify/'vmlinuz';data=kernel.read_bytes()

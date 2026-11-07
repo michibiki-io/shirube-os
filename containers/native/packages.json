@@ -122,6 +122,7 @@
       "name": "vyos-1x",
       "source": "vyos-1x/vyos-1x",
       "recipe": "vyos-1x",
+      "forbidden_binary_packages": ["vyos-1x-smoketest"],
       "requires": [
         "python3-vici"
       ]

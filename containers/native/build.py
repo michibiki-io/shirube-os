@@ -138,6 +138,9 @@ def main():
         for deb in output.glob('*.deb'):
             if '-build-deps_' in deb.name:
                 continue
+            name = subprocess.check_output(['dpkg-deb','-f',str(deb),'Package'],text=True).strip()
+            if name in job.get('forbidden_binary_packages',[]):
+                raise ValueError('Forbidden non-runtime test package was generated')
             actual = subprocess.check_output(['dpkg-deb', '-f', str(deb), 'Architecture'], text=True).strip()
             if actual not in {args.architecture, 'all'}:
                 raise ValueError('Wrong package architecture')
