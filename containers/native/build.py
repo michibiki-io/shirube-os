@@ -98,6 +98,8 @@ def main():
         'accel-ppp-ng-3e30d9b/accel-ppp-ng/build',
     ))
     (args.output/'source-preparation.json').write_text(json.dumps(preparation, indent=2)+'\n')
+    from producer.branding import prepare_source_artwork
+    prepare_source_artwork(sources,Path('/src/shirube-os-logo.svg'),Path('/src/LICENSE'))
     default=sources/'vyos-1x/vyos-1x/data/config.boot.default'
     if default.is_file():
         console='ttyAMA0' if args.architecture=='arm64' else 'ttyS0'

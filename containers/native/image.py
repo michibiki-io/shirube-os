@@ -136,7 +136,7 @@ def guest_package(arch, version):
     for file in (core/'usr/share/vyos').rglob('*'):
         if file.is_file() and file.suffix.lower() in {'.png','.svg','.jpg','.jpeg','.ico'}:
             if file.suffix=='.svg':shutil.copyfile('/src/shirube-os-logo.svg',file)
-            elif file.suffix=='.png':shutil.copyfile(core/'usr/share/shirube/logo.png',file)
+            elif file.suffix=='.png':shutil.copyfile(core/'usr/share/shirube/boot-background.png',file)
             else:file.unlink()
     old_version=subprocess.check_output(['dpkg-deb','-f',str(original),'Version'],text=True).strip()
     changed=mark_changed(original_core)
@@ -208,7 +208,7 @@ def assemble(sources, packages, arch, version, output):
         flavor=source/'data/build-flavors/generic.toml';flavor.write_text(flavor.read_text().replace('packages = []','packages = ["shirube-integration"]'))
         for image in (source/'data/live-build-config/bootloaders').rglob('*'):
             if image.is_file() and image.suffix.lower() in {'.png','.svg','.jpg','.jpeg'}:
-                if image.suffix=='.png':shutil.copy2('/guest-package/core/usr/share/shirube/logo.png',image)
+                if image.suffix=='.png':shutil.copy2('/guest-package/core/usr/share/shirube/boot-background.png',image)
                 elif image.suffix=='.svg':shutil.copy2('/src/shirube-os-logo.svg',image)
                 else:image.unlink()
             elif image.is_file() and image.suffix in {'.cfg','.txt'}:
