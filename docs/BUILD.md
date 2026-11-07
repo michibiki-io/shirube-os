@@ -53,6 +53,18 @@ KVM is a separate boot-stage requirement. TCG has not been validated and cannot
 satisfy the boot gate. The hosted runner defaults are selection defaults, not
 claims that their available resources or nested virtualization meet these needs.
 
+An explicit experimental TCG live-ISO probe is available in
+`scripts/test-iso-console.py`, executed with the native toolchain container.
+It uses two virtual CPUs, 2 GiB guest RAM and a 1200-second boot timeout,
+fresh firmware and a new temporary disk. It checks console enrollment/access
+and a live default route. It has not yet been exercised against a completed ISO
+and does not relax the release KVM requirement or establish final-disk acceptance.
+
+The FPM bootstrap installs all ten gems from
+`containers/native/rubygems.lock.json`, verifying their public archive hashes
+before installing locally with dependency resolution disabled. The native
+toolchain containing that locked bootstrap has been built on AMD64.
+
 The full workflow calls `scripts/build-release.sh` for each selected native runner.
 It requires the exact clean merged source commit and runs the ISO, fresh-install,
 sanitization, conversion, source and publication gates in containers. Outputs use

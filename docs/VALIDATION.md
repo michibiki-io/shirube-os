@@ -17,17 +17,21 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 30 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Unit/failure-path tests | PASS | 35 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
 | NetBird native CLI schema/templates | PASS | Configuration and operational definitions compiled with authenticated Stream schemas/compilers in a container; guest commit/save/reboot unverified |
 | Local NetBird management fixture | PASS | Digest-pinned real server bootstrap and one-use key issuance on an isolated Docker network; no client enrollment or guest lifecycle claim |
+| AMD64 container NetBird client | PASS | Real registration, management/signal connectivity, same peer identity after daemon/container restart, setup-key absence in client state/error log; guest configuration save/reboot and ARM64 remain NOT_RUN |
 | Python compilation / shell syntax | PASS | Current Python files, both recipe architecture renderings and producer scripts |
 | Workflow validation | PASS | YAML parsing and actionlint v1.7.12; current release/Test workflows |
 | Module cryptography primitive | PASS | Real CMS signature, tampering/wrong-certificate rejection and private-directory removal in container; not a real kernel build |
 | Supplied SVG conversion | PASS | Native-container rsvg conversion to 824×320 PNG and filesystem identity helper; not a guest boot |
 | Source-built python3-vici package | PASS | AMD64 container, authenticated Stream sources; 5.9.11-2 all-architecture package; not an ISO |
+| Source-built nftables package tranche | PASS | AMD64 libnftnl 1.2.6-2 and nftables 1.0.9-1, including documentation, after adding the missing XML/a2x toolchain; package audits passed |
+| Streaming source extraction | PASS | Authenticated outer archive and selected upstream build component; all 260 regular-file hashes matched the earlier extraction; late unsafe members remove private staging without exposing partial results |
 | Native package-toolchain container | PASS | Native AMD64 toolchain image built after correcting package-name/snapshot dependency failures; package/ISO build success is not implied |
-| Complete native AMD64 ISO | NOT_BUILT | Full attempt reached Dropbear compilation, then stopped at package audit; corrected delimiter detection requires the next actual full build |
+| Complete native AMD64 ISO | NOT_BUILT | Dropbear audit passed after correcting delimiter detection; later run stopped at nftables documentation dependencies, whose targeted source build now passes; complete ISO still pending |
 | Complete native ARM64 ISO | NOT_BUILT | Native ARM64 runner also unavailable in this execution environment |
 | Installed QCOW2/VMDK | NOT_CREATED | Fresh ISO install, conversion and whole-disk sanitization unverified |
 | Local unprovisioned/provisioned boots | NOT_RUN | Actual KVM/guest integration and access evidence missing |
@@ -66,8 +70,8 @@ version/notes, draft reservation, full candidate build invocation, per-architect
 staging, aggregate verification, Actions artifact upload and final promotion.
 Published reruns take a verification-only path before any build.
 
-This does **not** make publication ready. `license-audit.json` currently clears no
-components. Full source reconstruction and actual NetBird enrollment/save/reboot
+This does **not** make publication ready. `license-audit.json` currently records
+only the first individually audited components. Full source reconstruction and actual NetBird enrollment/save/reboot
 evidence are still NOT_RUN and block the pipeline. The runtime installation,
 repacking/journal/free-space sanitization and both-format boot code are not yet
 validated on real native KVM runners. They must not be inferred from static CI.

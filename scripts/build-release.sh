@@ -23,11 +23,14 @@ cleanup() {
     docker rm -f "$container_id" >/dev/null
   fi
   rm -f "$private/image.id" "$private/project-source.tar"
+  rm -rf "$private/source"
   rmdir "$private"
 }
 trap cleanup EXIT
 git archive --format=tar HEAD > "$private/project-source.tar"
-docker build --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f containers/native/Dockerfile .
+mkdir "$private/source"
+tar -xf "$private/project-source.tar" -C "$private/source"
+docker build --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
 image=$(cat "$private/image.id")
 [[ $(docker image inspect "$image" --format '{{.Architecture}}') == "$architecture" ]]
 docker run --rm --network none --device /dev/kvm --entrypoint python3 -v "$output:/output" "$image" \

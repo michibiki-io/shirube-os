@@ -103,6 +103,7 @@
     {
       "name": "nftables",
       "source": "pkg-nftables_debian_1.0.9-1/pkg-nftables",
+      "recipe": "nftables",
       "requires": [
         "libnftnl"
       ]

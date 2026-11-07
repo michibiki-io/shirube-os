@@ -8,6 +8,27 @@ from producer.sources import extract, fetch
 
 
 class SourceTests(unittest.TestCase):
+    def test_late_unsafe_member_never_publishes_partial_destination(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);archive=root/'source.tar.gz'
+            with tarfile.open(archive,'w:gz') as source:
+                regular=tarfile.TarInfo('source/file');regular.size=4;source.addfile(regular,io.BytesIO(b'data'))
+                unsafe=tarfile.TarInfo('source/escape');unsafe.type=tarfile.SYMTYPE;unsafe.linkname='../../outside'
+                source.addfile(unsafe)
+            with self.assertRaises(ValueError):extract(archive,root/'extracted')
+            self.assertFalse((root/'extracted').exists())
+            self.assertEqual(list(root.glob('.shirube-extract-*')),[])
+
+    def test_forward_hard_link_survives_streaming_extraction(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);archive=root/'source.tar.gz'
+            with tarfile.open(archive,'w:gz') as source:
+                link=tarfile.TarInfo('source/link');link.type=tarfile.LNKTYPE;link.linkname='source/file';source.addfile(link)
+                regular=tarfile.TarInfo('source/file');regular.size=4;source.addfile(regular,io.BytesIO(b'data'))
+            extract(archive,root/'extracted')
+            self.assertEqual((root/'extracted/source/link').read_bytes(),b'data')
+            self.assertEqual((root/'extracted/source/link').stat().st_ino,(root/'extracted/source/file').stat().st_ino)
+
     def test_explicit_generated_directory_exclusion_keeps_sources_and_safety(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary); archive = root/'source.tar'

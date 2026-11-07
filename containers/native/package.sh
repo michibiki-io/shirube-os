@@ -140,6 +140,12 @@ snapshot_git_import() {
     printf 'Filesystem fixture only: /dev/input/event0\n' > /output/test-fixtures.txt
 }
 apt-get update
+if [ "$BUILD_RECIPE" = nftables ]; then
+    # The signed snapshot's documentation target invokes a2x even though the
+    # minimal bootstrap build dependencies do not install its XML toolchain.
+    apt-get install -y --no-install-recommends asciidoc-base docbook-xml docbook-xsl xsltproc libxml2-utils
+    command -v a2x
+fi
 if [ -d /local-debs ] && find /local-debs -maxdepth 1 -name '*.deb' -print -quit | grep -q .; then
     apt-get install -y --no-install-recommends /local-debs/*.deb
 fi

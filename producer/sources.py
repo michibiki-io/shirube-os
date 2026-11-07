@@ -50,63 +50,64 @@ def fetch(lock, destination):
 
 
 def extract(archive, destination, prefixes=None, exclude=()):
-    """Extract regular source files then confined links, including on Python 3.11.
+    """Stream authenticated sources into private staging, then publish atomically.
 
-    Optional prefixes select complete component roots and exclude unrelated
-    archived build output. They are not source authentication: fetch() must pass.
+    Links are created only after regular writes finish. Late unsafe members or
+    link failures leave neither partial destination content nor staging output.
     """
     import os
-    with tarfile.open(archive) as source:
-        members = source.getmembers()
-        selected = []
-        names = set()
-        excluded = []
-        excluded_roots = tuple(PurePosixPath(path) for path in exclude)
-        if any(path.is_absolute() or '..' in path.parts or not path.parts for path in excluded_roots):
-            raise ValueError('Invalid generated-output exclusion')
-        for member in members:
-            name = PurePosixPath(member.name)
-            if name.is_absolute() or '..' in name.parts or '\\' in member.name:
-                raise ValueError('Unsafe source archive member path')
-            if prefixes and (not name.parts or name.parts[0] not in prefixes):
-                continue
-            if any(name == path or path in name.parents for path in excluded_roots):
-                excluded.append(str(name))
-                continue
-            if not (member.isdir() or member.isfile() or member.issym() or member.islnk()) or str(name) in names:
-                raise ValueError('Unsafe or duplicate source archive member')
-            names.add(str(name))
-            if member.issym() or member.islnk():
-                link = PurePosixPath(member.linkname)
-                if link.is_absolute() or '\\' in member.linkname:
-                    raise ValueError('External source link')
-            selected.append(member)
-        destination = Path(destination)
-        destination.mkdir(parents=True, exist_ok=False)
-        root = destination.resolve()
-        def confined(path):
-            resolved = path.resolve()
-            if not resolved.is_relative_to(root):
-                raise ValueError('Source link escapes extraction root')
-            return resolved
-        # No links exist during file writes. A conflicting directory/file/link
-        # fails rather than replacing or following an earlier archive member.
-        for member in selected:
-            target = destination / member.name
-            confined(target)
-            if member.isdir():
-                target.mkdir(parents=True, exist_ok=True)
-            elif member.isfile():
-                target.parent.mkdir(parents=True, exist_ok=True)
-                with source.extractfile(member) as data, target.open('xb') as output:
-                    shutil.copyfileobj(data, output)
-                target.chmod(0o755 if member.mode & 0o111 else 0o644)
-        pending = [m for m in selected if m.islnk()]
+    import tempfile
+    destination = Path(destination)
+    if destination.exists() or destination.is_symlink():
+        raise FileExistsError('Source destination already exists')
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    excluded_roots = tuple(PurePosixPath(path) for path in exclude)
+    if any(path.is_absolute() or '..' in path.parts or not path.parts for path in excluded_roots):
+        raise ValueError('Invalid generated-output exclusion')
+    stage = Path(tempfile.mkdtemp(prefix='.shirube-extract-', dir=destination.parent))
+    root = stage.resolve()
+    def confined(path):
+        resolved = path.resolve()
+        if not resolved.is_relative_to(root):
+            raise ValueError('Source link escapes extraction root')
+        return resolved
+    names, links, excluded = set(), [], []
+    try:
+        # One sequential decompression pass avoids rewinding large nested gzip
+        # archives and retaining metadata for every unrelated component.
+        with tarfile.open(archive, mode='r|*') as source:
+            for member in source:
+                name = PurePosixPath(member.name)
+                if name.is_absolute() or '..' in name.parts or '\\' in member.name:
+                    raise ValueError('Unsafe source archive member path')
+                if prefixes and (not name.parts or name.parts[0] not in prefixes):
+                    continue
+                if any(name == path or path in name.parents for path in excluded_roots):
+                    excluded.append(str(name))
+                    continue
+                if not (member.isdir() or member.isfile() or member.issym() or member.islnk()) or str(name) in names:
+                    raise ValueError('Unsafe or duplicate source archive member')
+                names.add(str(name))
+                target = stage / str(name)
+                confined(target)
+                if member.issym() or member.islnk():
+                    link = PurePosixPath(member.linkname)
+                    if link.is_absolute() or '\\' in member.linkname:
+                        raise ValueError('External source link')
+                    links.append(member)
+                elif member.isdir():
+                    target.mkdir(parents=True, exist_ok=True)
+                else:
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    with source.extractfile(member) as data, target.open('xb') as output:
+                        shutil.copyfileobj(data, output)
+                    target.chmod(0o755 if member.mode & 0o111 else 0o644)
+        pending = [member for member in links if member.islnk()]
         while pending:
             remaining = []
             for member in pending:
-                target = destination / member.name
-                origin = confined(destination / member.linkname)
+                target = stage / member.name
+                origin = confined(stage / member.linkname)
                 if not origin.is_file():
                     remaining.append(member)
                     continue
@@ -115,11 +116,16 @@ def extract(archive, destination, prefixes=None, exclude=()):
             if len(remaining) == len(pending):
                 raise ValueError('Missing or cyclic source hard link')
             pending = remaining
-        for member in selected:
-            if not member.issym():
-                continue
-            target = destination / member.name
-            confined(target.parent / member.linkname)
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.symlink_to(member.linkname)
+        for member in links:
+            if member.issym():
+                target = stage / member.name
+                confined(target.parent / member.linkname)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.symlink_to(member.linkname)
+        if destination.exists() or destination.is_symlink():
+            raise FileExistsError('Source destination appeared during extraction')
+        stage.rename(destination)
         return {'excluded_generated_members': excluded, 'exclusion_roots': [str(path) for path in excluded_roots]}
+    finally:
+        if stage.exists():
+            shutil.rmtree(stage)
