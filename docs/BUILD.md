@@ -104,3 +104,10 @@ on-image toolkit is excluded from Debian package generation because it contains
 fixed private-key/VPN test fixtures. Generating that forbidden package or finding
 it in the assembled filesystem package list fails the producer. The ordinary
 private-key payload audit remains unchanged for every generated runtime package.
+
+After verifying the entire public Stream archive, the producer extracts only
+the nested `vyos_tarballs.tar.gz` needed by the declared recipes. Unused outer
+source bundles are not written into the build container. The preparation receipt
+records both archive hashes, the exact selected member and the generated-output
+exclusions applied inside it. This selection was checked against the actual
+pinned public input; it does not establish complete corresponding-source closure.

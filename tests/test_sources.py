@@ -8,6 +8,17 @@ from producer.sources import extract, fetch
 
 
 class SourceTests(unittest.TestCase):
+    def test_exact_nested_member_selection_omits_unrelated_source_bundle(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);archive=root/'outer.tar'
+            with tarfile.open(archive,'w') as source:
+                for name,data in [('release/src/src.tar.gz',b'unused'),('release/tarballs/input.tar.gz',b'needed')]:
+                    member=tarfile.TarInfo(name);member.size=len(data);source.addfile(member,io.BytesIO(data))
+            receipt=extract(archive,root/'selected',prefixes=['release/tarballs/input.tar.gz'])
+            self.assertEqual((root/'selected/release/tarballs/input.tar.gz').read_bytes(),b'needed')
+            self.assertFalse((root/'selected/release/src').exists())
+            self.assertEqual(receipt['selected_roots'],['release/tarballs/input.tar.gz'])
+
     def test_late_unsafe_member_never_publishes_partial_destination(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);archive=root/'source.tar.gz'

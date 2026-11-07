@@ -78,6 +78,8 @@ class VM:
 
     def secret_command(self, command, prompt, secret, timeout=180):
         """Deliver a secret only after a program's hidden-input prompt."""
+        if not isinstance(secret,str) or any(char in secret for char in '\r\n\0'):
+            raise ValueError('Hidden console input must be a single line')
         return self._command(command,timeout,(prompt,secret))
 
     def _command(self, command, timeout, secret_input=None):

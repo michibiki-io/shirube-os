@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import shlex
 import time
+import re
 from urllib.parse import urlsplit
 
 
@@ -30,6 +31,8 @@ class Management:
         try:
             with urllib.request.urlopen(request,context=ssl.create_default_context(cafile=str(self.certificate)),timeout=15) as response:
                 key=json.load(response)['key']
+            if not isinstance(key,str) or not re.fullmatch(r'[A-Za-z0-9._=~-]{1,512}',key):
+                raise ValueError('Invalid fixture key response')
         except Exception:
             raise RuntimeError('Local guest fixture key issuance failed') from None
         hostname=urlsplit(self.url).hostname

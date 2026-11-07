@@ -77,8 +77,11 @@ def main():
                         str(args.verified_input/'stream.tar.gz.minisig'), '-P', lock['minisign_public_key']], check=True)
     else:
         archive = fetch(lock, work/'input')
-    extract(archive, work/'stream')
-    nested = work/'stream'/f'vyos-{lock["version"]}-sources/vyos-tarballs/vyos_tarballs.tar.gz'
+    nested_member=f'vyos-{lock["version"]}-sources/vyos-tarballs/vyos_tarballs.tar.gz'
+    # Source compilation uses this authenticated member, not the unrelated
+    # outer Debian source bundle. Avoid writing that large unused input.
+    outer_preparation=extract(archive, work/'stream',prefixes=[nested_member])
+    nested = work/'stream'/nested_member
     sources = work/'sources'
     catalog = json.loads(Path('/src/native/packages.json').read_text())
     if catalog['source_sha256'] != lock['sha256']:
@@ -108,6 +111,9 @@ def main():
         'linux-kernel-6.6.128/linux-6.6.128/debian/linux-headers',
         'accel-ppp-ng-3e30d9b/accel-ppp-ng/build',
     ))
+    preparation['authenticated_input']={'archive_sha256':lock['sha256'],
+        'nested_member':nested_member,'nested_sha256':sha256(nested),
+        'outer_selection':outer_preparation['selected_roots']}
     (args.output/'source-preparation.json').write_text(json.dumps(preparation, indent=2)+'\n')
     from producer.branding import prepare_source_artwork
     prepare_source_artwork(sources,Path('/src/shirube-os-logo.svg'),Path('/src/LICENSE'))

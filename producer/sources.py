@@ -64,6 +64,9 @@ def extract(archive, destination, prefixes=None, exclude=()):
     excluded_roots = tuple(PurePosixPath(path) for path in exclude)
     if any(path.is_absolute() or '..' in path.parts or not path.parts for path in excluded_roots):
         raise ValueError('Invalid generated-output exclusion')
+    selected_roots = tuple(PurePosixPath(path) for path in prefixes) if prefixes else ()
+    if any(path.is_absolute() or '..' in path.parts or not path.parts or '\\' in str(path) for path in selected_roots):
+        raise ValueError('Invalid source selection')
     stage = Path(tempfile.mkdtemp(prefix='.shirube-extract-', dir=destination.parent))
     root = stage.resolve()
     def confined(path):
@@ -80,7 +83,7 @@ def extract(archive, destination, prefixes=None, exclude=()):
                 name = PurePosixPath(member.name)
                 if name.is_absolute() or '..' in name.parts or '\\' in member.name:
                     raise ValueError('Unsafe source archive member path')
-                if prefixes and (not name.parts or name.parts[0] not in prefixes):
+                if selected_roots and not any(name==path or path in name.parents for path in selected_roots):
                     continue
                 if any(name == path or path in name.parents for path in excluded_roots):
                     excluded.append(str(name))
@@ -125,7 +128,8 @@ def extract(archive, destination, prefixes=None, exclude=()):
         if destination.exists() or destination.is_symlink():
             raise FileExistsError('Source destination appeared during extraction')
         stage.rename(destination)
-        return {'excluded_generated_members': excluded, 'exclusion_roots': [str(path) for path in excluded_roots]}
+        return {'excluded_generated_members': excluded, 'exclusion_roots': [str(path) for path in excluded_roots],
+                'selected_roots': sorted(map(str,selected_roots))}
     finally:
         if stage.exists():
             shutil.rmtree(stage)
