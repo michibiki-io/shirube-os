@@ -23,6 +23,8 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | NetBird native CLI schema/templates | PASS | Configuration and operational definitions compiled with authenticated Stream schemas/compilers in a container; guest commit/save/reboot unverified |
 | Local NetBird management fixture | PASS | Digest-pinned real server bootstrap and one-use key issuance on an isolated Docker network; no client enrollment or guest lifecycle claim |
 | AMD64 container NetBird client | PASS | Real registration, management/signal connectivity, same peer identity after daemon/container restart, setup-key absence in client state/error log; guest configuration save/reboot and ARM64 remain NOT_RUN |
+| Hidden console input transport | PASS | Actual container PTY prompt/input, secret absence from shell history and nonzero command status propagation; installed-OS lifecycle remains NOT_RUN |
+| NetBird installed-guest harness | NOT_RUN | Native set/commit/save and operational enrollment, disable/enable, reboot, removal and secret scans implemented; no completed Shirube OS disk is available yet |
 | NetBird component source rebuild | PASS | Exact public source and pinned Go 1.26.10; prepared dependency sources rebuilt again with a fresh cache in a network-disabled AMD64 container; complete OS reconstruction and license clearance remain incomplete |
 | HTTP API dependency environment | PASS | Own packaging with the same 26 dependency versions, exact source/wheel hashes, per-dependency notices, native extension imports and actual GraphQL execution; ARM64 and guest API service integration remain unverified |
 | Python compilation / shell syntax | PASS | Current Python files, both recipe architecture renderings and producer scripts |
