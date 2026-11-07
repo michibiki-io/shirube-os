@@ -71,6 +71,10 @@ def guest_package(arch, version):
     for name in ['shirube-netbird.service','shirube-first-boot.service']:
         target=package/'lib/systemd/system'/name;target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(Path('/src/guest')/name,target)
+    console='ttyAMA0' if arch=='arm64' else 'ttyS0'
+    dropin=package/'etc/systemd/system/shirube-first-boot.service.d/console.conf'
+    dropin.parent.mkdir(parents=True)
+    dropin.write_text('[Service]\nTTYPath=/dev/'+console+'\n')
     templates=work/'templates';templates.mkdir()
     run(str(source/'scripts/build-command-templates'),'/src/guest/service_netbird.xml',str(source/'schema/interface_definition.rng'),str(templates))
     shutil.copytree(templates/'service/netbird',package/'opt/vyatta/share/vyatta-cfg/templates/service/netbird')
