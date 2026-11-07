@@ -52,10 +52,6 @@
       ]
     },
     {
-      "name": "vyos-libnss-mapuser",
-      "source": "vyos-libnss-mapuser_1.1.0-cl3u3.1/libnss-mapuser"
-    },
-    {
       "name": "libnss-mapuser",
       "source": "libnss-mapuser_circinus/libnss-mapuser"
     },
