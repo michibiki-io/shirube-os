@@ -20,7 +20,7 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | Unit/failure-path tests | PASS | 45 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
 | FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
-| NetBird native CLI schema/templates | PASS | Configuration and operational definitions compiled with authenticated Stream schemas/compilers in a container; guest commit/save/reboot unverified |
+| NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; guest commit/save/reboot unverified |
 | Local NetBird management fixture | PASS | Digest-pinned real server bootstrap and one-use key issuance on an isolated Docker network; no client enrollment or guest lifecycle claim |
 | AMD64 container NetBird client | PASS | Real registration, management/signal connectivity, same peer identity after daemon/container restart, setup-key absence in client state/error log; guest configuration save/reboot and ARM64 remain NOT_RUN |
 | Fixture connection for guest tests | PASS | Actual default-bridge plus internal-network connection, fixture TLS and fresh one-use key issuance; no guest runtime claim |
@@ -35,7 +35,7 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | Source-built python3-vici package | PASS | AMD64 container, authenticated Stream sources; 5.9.11-2 all-architecture package; not an ISO |
 | Source-built nftables package tranche | PASS | AMD64 libnftnl 1.2.6-2 and nftables 1.0.9-1, including documentation, after adding the missing XML/a2x toolchain; package audits passed |
 | Sequential routing package build | PASS | libnftnl, nftables, libyang 3.13.6 and FRR 10.5.2 built/audited in one native runtime after removing stale generated dependency metapackages between jobs |
-| Native core package tranche | PARTIAL | Native configuration library, schema generation and upstream build-time tests passed; package audit rejected fixed keys in the optional on-image smoketest toolkit. Its generation is now excluded; the corrected tranche must be rerun |
+| Native core package tranche | PASS | Native configuration library, schema generation, upstream build-time tests and all generated runtime payload audits passed; optional fixed-key smoketest toolkit was not generated |
 | Runtime-extra notice/source helper | PARTIAL | Real FPM notice-retention fixture and actual Go source ZIP/h1 comparison passed; all real runtime-extra recipes still require their integrated build |
 | Boot artwork source preparation | PASS | Both restricted boot PNG inputs replaced before compilation/source export; supplied SVG rendered onto a 640x480 canvas, visually inspected, theme contrast and dated provenance recorded; actual firmware UI remains unverified |
 | Streaming source extraction | PASS | Authenticated outer archive and selected upstream build component; all 260 regular-file hashes matched the earlier extraction; late unsafe members remove private staging without exposing partial results |
