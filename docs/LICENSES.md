@@ -44,11 +44,12 @@ the exact shipped copyright file SHA256, retains its notices, and still requires
 complete corresponding source alongside binaries. An empty copyright file is
 rejected. These component records do not clear the complete operating system.
 
-Eleven pure Python HTTP dependencies now have separate exact-source/notice
+Seventeen pure Python HTTP dependencies now have separate exact-source/notice
 decisions: annotated-types, anyio, ariadne, click, fastapi, graphql-core, h11,
-idna, makefun, pydantic and pyjwt. Their actual wheel and source notices were
+idna, makefun, pydantic, pyjwt, python-dotenv, python-pam, sgqlc, starlette,
+uvicorn and wsproto. Their actual wheel and source notices were
 read, their shared architecture-independent wheel inputs checked, and their
-MIT or BSD-3-Clause notice/disclaimer conditions retained. This does not clear
+MIT, BSD-3-Clause or ISC notice/disclaimer conditions retained. This does not clear
 pydantic-core, other native/embedded dependencies or the parent environment.
 
 Upstream display/installer/boot source modifications receive dated notices in

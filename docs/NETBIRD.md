@@ -50,8 +50,10 @@ the service; state is retained until explicitly erased. Image upgrades must
 preserve the persistent config area, including peer state, while public base
 images must contain none of that state.
 
-Unit tests cover default inactivity, disabling with identity retention, persistent
-setup-key rejection, and one-shot erasure on success/failure/timeout. Actual
+Unit tests cover default inactivity, disabling with identity retention, restoration
+of saved settings after volatile runtime loss, rejection of an old enrollment
+receipt for a changed server, persistent setup-key rejection, and one-shot
+erasure on success/failure/timeout. These use mocked service operations. Actual
 client enrollment, reconnection, save/reboot, upgrade compatibility and both
 architectures still require guest runtime evidence. Unit mocks do not establish
 those results.
