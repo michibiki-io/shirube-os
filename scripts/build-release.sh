@@ -38,8 +38,6 @@ docker run --rm --network none --device /dev/kvm --entrypoint python3 -v "$outpu
 # Mount only the new task directory and the exact public project source archive.
 # Runtime privileges are needed by live-build mounts; no host PID/network,
 # credentials, Docker socket, SSH agent or unrelated filesystem is shared.
-container_id=$(docker create --label "io.michibiki.shirube.task=$task_nonce" --privileged --device /dev/kvm --cpus=2 --memory=8g --memory-swap=8g \
-  --pids-limit=4096 -v "$output:/output" -v "$private/project-source.tar:/project-source.tar:ro" \
-  "$image" "$architecture" --target release --version "$version" --commit "$commit")
-docker start --attach "$container_id"
-[[ $(docker inspect --format '{{.State.ExitCode}}' "$container_id") == 0 ]]
+python3 scripts/run-release-container.py --architecture "$architecture" --image "$image" \
+  --output "$output" --project-source "$private/project-source.tar" --private "$private/netbird-fixture" \
+  --version "$version" --commit "$commit"

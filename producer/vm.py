@@ -162,7 +162,7 @@ def offline_cleanup(disk,work,arch):
     finally:g.shutdown();g.close()
 
 
-def build_disks(iso,arch,version,work,output):
+def build_disks(iso,arch,version,work,output,netbird_verify=None):
     work=Path(work);work.mkdir();disk=work/'fresh.qcow2'
     subprocess.run(['qemu-img','create','-f','qcow2',str(disk),'50G'],check=True,stdout=subprocess.DEVNULL)
     live=VM(arch,disk,work/'live',iso)
@@ -189,7 +189,7 @@ def build_disks(iso,arch,version,work,output):
     finally:installed.close()
     offline_cleanup(disk,work,arch)
     converted=convert(disk,work/'converted')
-    images={};identities=[];observations=[]
+    images={};identities=[];observations=[];netbird_results=[]
     for image in converted:
         target=Path(output)/f'shirube-os-{version}-{arch}{image.suffix}';shutil.copy2(image,target)
         images[image.suffix.removeprefix('.')]=target
@@ -215,8 +215,14 @@ def build_disks(iso,arch,version,work,output):
                     identities.append(identity);observations.append(name+': actual console login, sudo, DHCP, route, virtio NIC and identity checks passed')
                     version_text=vm.command('show version')
                     if version[1:] not in version_text or not re.search(r'Version:\s+Shirube OS',version_text):raise ValueError('Wrong installed product identity/version')
+                    if netbird_verify is not None:
+                        proof=netbird_verify(vm)
+                        if not proof or any(value!='PASS' for value in proof.values()):
+                            raise ValueError('Guest NetBird lifecycle proof incomplete')
+                        netbird_results.append(proof)
                     vm.poweroff()
             finally:vm.close()
         if sha256(target)!=before:raise ValueError('Boot tests modified an immutable export')
     if identities[0][0]==identities[1][0] or identities[0][1]==identities[1][1]:raise ValueError('Per-instance identities were reused')
-    return {'images':images,'observations':observations,'identity_regeneration':'PASS','netbird':'NOT_RUN'}
+    return {'images':images,'observations':observations,'identity_regeneration':'PASS',
+            'netbird':'PASS' if len(netbird_results)==2 else 'NOT_RUN'}

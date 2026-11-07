@@ -107,6 +107,15 @@ This harness has not yet run against a completed Shirube OS disk. Its existence
 does not establish a successful guest test, and the publication gate remains
 closed until genuine runtime evidence is integrated and all other checks pass.
 
+The full `build-release.sh` path starts the same ephemeral fixture through
+`run-release-container.py`. It passes only the public CA as a file and the
+temporary authorization through private stdin, consumed before any build
+subprocess starts. Each provisioned QCOW2/VMDK test clone requests its own
+one-use key at test time, so an hours-long build cannot consume the key's
+enrollment lifetime. Both clones must complete the native guest checks before
+the producer can record a NetBird `PASS`. This integration remains unrun until
+complete images and a suitable native virtualization environment are available.
+
 ## Component source reconstruction
 
 `containers/native/rebuild_netbird.py` prepares the exact pinned NetBird source,

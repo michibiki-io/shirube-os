@@ -44,8 +44,19 @@ def main():
     parser.add_argument('--target', choices=['packages','iso','release'], default='packages')
     parser.add_argument('--version')
     parser.add_argument('--commit')
+    parser.add_argument('--netbird-fixture-stdin',action='store_true')
     args = parser.parse_args()
     native(args.architecture)
+    management=None
+    if args.target=='release':
+        if not args.netbird_fixture_stdin:raise ValueError('Full release requires a real local guest fixture')
+        from producer.netbird_guest import Management
+        management=Management(json.load(sys.stdin))
+        # Do not leave private input available to third-party build commands.
+        descriptor=os.open(os.devnull,os.O_RDONLY)
+        os.dup2(descriptor,0);os.close(descriptor)
+    elif args.netbird_fixture_stdin:
+        raise ValueError('Guest fixture input is only valid for a full release')
     if any(args.output.iterdir()):
         raise ValueError('A new empty task output directory is required')
     work = Path('/build-private')
@@ -108,11 +119,9 @@ def main():
         print('STAGE: native source package '+job['name'],flush=True)
         output = work/job['name']
         output.mkdir()
-        script = Path('/src/native/package.sh').read_text()
-        for old, new in [('/output', str(output)), ('/snapshot', str(sources/job['source'])),
-                         ('/stream-build', str(sources/'vyos-build/vyos-build')),
-                         ('/local-debs', str(work/'dependencies'))]:
-            script = script.replace(old, new)
+        from producer.recipes import package_script
+        script = package_script(Path('/src/native/package.sh').read_text(),output,
+            sources/job['source'],sources/'vyos-build/vyos-build',work/'dependencies')
         dependencies = work/'dependencies'
         if dependencies.exists():
             shutil.rmtree(dependencies)
@@ -162,7 +171,7 @@ def main():
         print('ISO BUILT: '+image.name+' SHA256 '+sha256(image),flush=True)
     elif args.target == 'release':
         from producer.pipeline import release_candidate
-        release_candidate(sources,args.output,public_output,args.architecture,args.version,args.commit)
+        release_candidate(sources,args.output,public_output,args.architecture,args.version,args.commit,management)
 
 
 if __name__ == '__main__':

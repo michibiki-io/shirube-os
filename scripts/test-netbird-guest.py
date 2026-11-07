@@ -35,7 +35,7 @@ def main():
             program='''import json,subprocess,sys
 from pathlib import Path
 from producer.vm import VM
-from producer.netbird_guest import verify
+from producer.netbird_guest import Management
 payload=json.load(sys.stdin)
 metadata=json.loads(subprocess.check_output(['qemu-img','info','--output=json','/input/base.qcow2']))
 if metadata.get('format')!='qcow2' or metadata.get('virtual-size')!=50*1024**3 or metadata.get('backing-filename'):
@@ -46,15 +46,17 @@ vm=VM(payload['architecture'],clone,Path('/private/vm'),accelerator=payload['acc
 try:
  vm.enroll()
  if payload['version'].removeprefix('v') not in vm.command('show version'):raise ValueError('Wrong image version')
- checks=verify(vm,payload['url'],'/fixture/cert.pem',payload['key'])
+ checks=Management(payload).verify(vm)
  vm.poweroff()
 finally:vm.close()
 Path('/result/evidence.json').write_text(json.dumps({'kind':'guest-netbird-lifecycle','architecture':payload['architecture'],
  'version':payload['version'],'input_qcow2_sha256':payload['disk_sha256'],'accelerator':payload['accelerator'],
  'checks':checks,'complete_image_acceptance':'NOT_RUN','oci':'NOT_RUN'},indent=2)+'\\n')
 '''
+            address=fixture.docker('inspect','--format','{{(index .NetworkSettings.Networks "'+fixture.network+'").IPAddress}}',fixture.container).decode().strip()
             devices=['--device','/dev/kvm'] if args.accelerator=='kvm' else []
             fixture.helper_run('--network',fixture.network,'--log-driver','none',
+                '--add-host',fixture.hostname+':'+address,
                 '--cpus=2','--memory=4g','--pids-limit=512',*devices,
                 '-v',str(disk)+':/input/base.qcow2:ro',
                 '-v',str(fixture.work/'cert.pem')+':/fixture/cert.pem:ro',
@@ -62,7 +64,7 @@ Path('/result/evidence.json').write_text(json.dumps({'kind':'guest-netbird-lifec
                 '--entrypoint','python3',args.helper_image,'-c',program,
                 input=json.dumps({'architecture':args.architecture,'version':args.version,
                     'accelerator':args.accelerator,'disk_sha256':before,
-                    'url':fixture.url,'key':fixture.setup_key()}).encode(),timeout=7200)
+                    'url':fixture.url,'address':address,'token':fixture.token}).encode(),timeout=7200)
     finally:
         # Remove root-owned, disposable guest data with the same owned helper;
         # never delete the read-only input or another task's directory.

@@ -4,6 +4,40 @@ import json
 from pathlib import Path
 import shlex
 import time
+from urllib.parse import urlsplit
+
+
+class Management:
+    """Ephemeral fixture access passed privately by the host orchestrator."""
+    def __init__(self, payload):
+        from .netbird import validate
+        import ipaddress
+        validate({'management_url':payload['url']})
+        if not ipaddress.ip_address(payload['address']).is_private:
+            raise ValueError('A local fixture address is required')
+        self.url=payload['url'];self.address=payload['address']
+        self.token=payload['token'];self.certificate=Path('/fixture/cert.pem')
+        if not isinstance(self.token,str) or not self.token or not self.certificate.is_file():
+            raise ValueError('Private fixture authorization and public CA are required')
+
+    def verify(self, vm):
+        import ssl
+        import urllib.request
+        body={'name':'Ephemeral guest acceptance key','type':'one-off','expires_in':3600,
+              'usage_limit':1,'auto_groups':[],'ephemeral':False}
+        request=urllib.request.Request(self.url+'/api/setup-keys',data=json.dumps(body).encode(),
+            headers={'Content-Type':'application/json','Authorization':'Token '+self.token})
+        try:
+            with urllib.request.urlopen(request,context=ssl.create_default_context(cafile=str(self.certificate)),timeout=15) as response:
+                key=json.load(response)['key']
+        except Exception:
+            raise RuntimeError('Local guest fixture key issuance failed') from None
+        hostname=urlsplit(self.url).hostname
+        # The QEMU user network need not forward Docker's embedded DNS. This is
+        # public fixture routing data, installed in a disposable clone only.
+        vm.command('printf %s '+shlex.quote(self.address+' '+hostname+'\n')+
+                   ' | sudo -n tee -a /etc/hosts >/dev/null')
+        return verify(vm,self.url,self.certificate,key)
 
 
 def configure(vm, commands):

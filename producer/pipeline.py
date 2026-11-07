@@ -8,7 +8,7 @@ from .release import CHECKS, validate
 from .sources import sha256
 
 
-def release_candidate(sources, packages, output, architecture, version, commit):
+def release_candidate(sources, packages, output, architecture, version, commit, management):
     sys.path.insert(0,'/src/native')
     from image import assemble
     from .vm import build_disks
@@ -16,7 +16,7 @@ def release_candidate(sources, packages, output, architecture, version, commit):
     print('STAGE: native ISO assembly and architecture/signature inspection',flush=True)
     result=assemble(sources,packages,architecture,version,output)
     print('STAGE: fresh install, sanitization, conversions and fresh-instance boot/access tests',flush=True)
-    disks=build_disks(result['iso'],architecture,version,Path('/build-private/disk'),output)
+    disks=build_disks(result['iso'],architecture,version,Path('/build-private/disk'),output,management.verify)
     print('STAGE: exact corresponding source collection and component/license clearance',flush=True)
     rootfs=Path('/build-private/release-rootfs')
     subprocess.run(['xorriso','-osirrox','on','-indev',str(result['iso']),'-extract','/live/filesystem.squashfs','/build-private/iso-root.squashfs'],check=True)
@@ -41,6 +41,7 @@ def release_candidate(sources, packages, output, architecture, version, commit):
     observations['branding']=['Supplied SVG and os-release inspected; actual installed version output checked on both disk formats']
     observations['sanitization']=['Guest root repacked; second offline filesystem audit, journal recreation and free-space zero/discard completed']
     observations['disk_equivalence']=['Both standalone 50 GiB conversions passed qemu-img checks and source content comparison']
+    observations['netbird']=['Actual native CLI commit/save, enrollment, disable/enable, reboot identity, removal/reboot inactivity and secret scans passed for both disk-format clones'] if disks['netbird']=='PASS' else ['Required guest NetBird validation not completed']
     evidence={'source_commit':commit,'version':version,'architecture':architecture,'generation':generation,
               'checks':{name:{'status':status,'observations':observations[name] if status=='PASS' else ['Required validation not completed']} for name,status in checks.items()}}
     evidence_path=output/f'shirube-os-{version}-{architecture}-evidence.json';evidence_path.write_text(json.dumps(evidence,indent=2)+'\n')
