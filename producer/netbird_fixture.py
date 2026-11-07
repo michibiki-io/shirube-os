@@ -64,10 +64,10 @@ except Exception:
                               'token': self.token if authenticated else None}).encode())
         return json.loads(result)
 
-    def helper_run(self, *args, input=None):
+    def helper_run(self, *args, input=None, timeout=120):
         identity = self.docker('create', '-i', '--label', LABEL+'='+self.nonce, *args).decode().strip()
         try:
-            return self.docker('start', '-a', '-i', identity, input=input)
+            return self.docker('start', '-a', '-i', identity, input=input, timeout=timeout)
         finally:
             label = self.docker('inspect', '--format', '{{index .Config.Labels "'+LABEL+'"}}', identity).decode().strip()
             if label != self.nonce:

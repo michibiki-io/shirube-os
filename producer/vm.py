@@ -66,19 +66,37 @@ class VM:
         self.child.sendline(self.username);self.child.expect('New instance password');self.child.sendline(self.password)
         self.child.expect('Repeat password:');self.child.sendline(self.password)
         self.child.expect('Instance administrator created.')
+        self.login()
+
+    def login(self):
         self.child.expect('login:');self.child.sendline(self.username);self.child.expect('Password:');self.child.sendline(self.password)
         self.prompt=re.escape(self.username)+r'@[^\r\n]+[#$] '
         self.child.expect(self.prompt);self.child.sendline('stty -echo');self.child.expect(self.prompt)
 
     def command(self, command, timeout=180):
+        return self._command(command,timeout)
+
+    def secret_command(self, command, prompt, secret, timeout=180):
+        """Deliver a secret only after a program's hidden-input prompt."""
+        return self._command(command,timeout,(prompt,secret))
+
+    def _command(self, command, timeout, secret_input=None):
         start='START_'+secrets.token_hex(12);end='END_'+secrets.token_hex(12)
         script="printf '\\n"+start+"\\n'; "+command+"; printf '\\n"+end+"%s\\n' \"$?\""
         encoded=base64.b64encode(script.encode()).decode()
         self.child.sendline('eval "$(printf %s '+encoded+' | base64 -d)"')
-        self.child.expect(start);self.child.expect(end+r'(\d+)',timeout=timeout)
+        self.child.expect(start)
+        if secret_input is not None:
+            prompt,secret=secret_input
+            self.child.expect_exact(prompt,timeout=timeout);self.child.sendline(secret)
+        self.child.expect(end+r'(\d+)',timeout=timeout)
         data=self.child.before;status=int(self.child.match.group(1));self.child.expect(self.prompt)
         if status:raise RuntimeError('Private guest command failed')
         return re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]','',data).strip()
+
+    def reboot(self):
+        self.child.sendline('sudo -n systemctl reboot --no-block')
+        self.login()
 
     def install(self):
         self.child.sendline('install image')

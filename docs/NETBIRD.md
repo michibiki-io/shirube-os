@@ -84,6 +84,29 @@ This is preliminary client verification. Its evidence explicitly leaves guest
 configuration commit/save/reboot and image acceptance as `NOT_RUN`. Those tests
 must still run through the actual OS CLI on both architecture-specific images.
 
+## Installed guest lifecycle verification
+
+`scripts/test-netbird-guest.py` is the separate installed-OS test orchestrator.
+Supply an immutable native toolchain image built from the current checkout,
+`--disk` with a standalone, unprovisioned 50 GiB QCOW2, `--version`,
+`--architecture`, and a new private `--work` directory. KVM is the default;
+explicit `--accelerator tcg` is an experimental component test only and does
+not change release acceleration requirements.
+
+The harness starts a local isolated management fixture and boots a new overlay
+with fresh firmware and instance credentials. It uses the native configuration
+CLI for set/commit/save, the operational hidden prompt for registration, then
+checks real management/signal connectivity, disable/enable identity retention,
+saved settings after reboot, key absence from state/config/history/logs and
+inactivity after configuration removal and another reboot. Fixture keys enter
+only through private stdin and the guest's hidden prompt. The original disk is
+read-only and its hash is checked again. Temporary peer disks, firmware, CA
+private key and management state are removed; only component evidence remains.
+
+This harness has not yet run against a completed Shirube OS disk. Its existence
+does not establish a successful guest test, and the publication gate remains
+closed until genuine runtime evidence is integrated and all other checks pass.
+
 ## Component source reconstruction
 
 `containers/native/rebuild_netbird.py` prepares the exact pinned NetBird source,
