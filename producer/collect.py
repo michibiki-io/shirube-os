@@ -52,7 +52,7 @@ def collect(rootfs, package_output, output, arch, version, work):
         package={'name':name,'version':binary_version,'architecture':architecture};shipped.append(package)
         source_name=source_name or name;source_version=source_version or binary_version
         copyright_file=path_in_root(rootfs,'usr/share/doc/'+name+'/copyright')
-        if not copyright_file.is_file():raise ValueError('Exact shipped copyright/license notice missing')
+        if not copyright_file.is_file() or not copyright_file.read_bytes().strip():raise ValueError('Exact shipped copyright/license notice missing or empty')
         key=(source_name,source_version,sha256(copyright_file))
         if key not in cached:
             component=work/re.sub('[^A-Za-z0-9_.-]','_',source_name+'-'+source_version+'-'+str(len(cached)));component.mkdir()
@@ -99,6 +99,7 @@ def collect(rootfs, package_output, output, arch, version, work):
             if keys:origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             approval=approvals.get(source_name+'@'+source_version,{})
             cleared=(approval.get('source_identity')==origin and approval.get('redistributable') is True
+                     and approval.get('copyright_sha256')==sha256(copyright_file)
                      and isinstance(approval.get('license'),str) and bool(approval.get('license')))
             cached[key]=(records,approval.get('license','UNREVIEWED'),cleared,origin,provenance)
             assets.append(archive)

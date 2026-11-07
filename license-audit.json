@@ -1,5 +1,32 @@
 {
   "schema_version": 1,
-  "components": {},
+  "components": {
+    "ipaddrcheck@1.4": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "ab69a1b4884a7f83ee3e4e50f7ffa12ed398e59d55cad699616e74beeae0e2b2",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "ipaddrcheck_1.4/ipaddrcheck/debian/copyright",
+      "conditions": [
+        "Retain upstream copyright and license notices.",
+        "Supply complete corresponding source and build inputs with binary releases."
+      ],
+      "scope": "Exact component source/license only; full-release source and redistribution gates remain mandatory."
+    },
+    "hvinfo@1.2.0": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "05d9c34372c29a59ab5016e59a33effb9901cab97698c4678e067b53089bcd21",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "hvinfo_1.2.0/hvinfo/debian/copyright",
+      "conditions": [
+        "Retain upstream copyright and license notices.",
+        "Supply complete corresponding source and build inputs with binary releases."
+      ],
+      "scope": "Exact component source/license only; full-release source and redistribution gates remain mandatory."
+    }
+  },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
 }
