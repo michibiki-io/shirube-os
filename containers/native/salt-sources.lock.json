@@ -214,6 +214,19 @@
         {
           "member": "contextvars-2.4/LICENSE",
           "sha256": "345d681f653494674852fed7b4958e27ac1d7a699daca244db764c491c24aa61"
+        },
+        {
+          "member": "contextvars-2.4/tests/test_basics.py",
+          "sha256": "4555683956e3ad9b735c684ff87f080c85ce65081de65211a7e89407553e596a",
+          "prefix_bytes": 120,
+          "notice_sha256": "a1a77464cae00f2eb53c2b77dc9007b84c0ecfe66a416573b985d62632023211"
+        }
+      ],
+      "additional_notices": [
+        {
+          "url": "https://raw.githubusercontent.com/python/cpython/v3.11.14/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+          "filename": "cpython-3.11.14-LICENSE"
         }
       ]
     },

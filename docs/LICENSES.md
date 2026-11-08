@@ -272,3 +272,8 @@ pinned; these notices are retained separately from pycparser's root BSD notice.
 This closes a notice-retention gap without clearing that dependency or the SDK.
 The exact looseversion 1.0.2 PSF-2.0 and packaging 24.0 BSD-2-Clause/Apache-2.0
 source/notice pairs have individual decisions with their redistribution conditions.
+
+Exact Apache-2.0 decisions also cover requests 2.32.5 (including its NOTICE),
+distro 1.5.0 and importlib-metadata 8.7.0. Their license terms, archive legal
+members and source-level license/attribution markers were inspected; these
+records do not clear dependencies or the complete distribution. Contextvars' PSF-licensed test header and the complete matching public CPython license are now separately pinned for retention; that component remains outside these approvals.

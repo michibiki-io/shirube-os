@@ -2132,6 +2132,51 @@
         "Retain both upstream alternative license texts and all attribution; the BSD-2-Clause option permits redistribution under its notice conditions."
       ],
       "scope": "Exact Python distribution at the recorded source hash only. Dependencies, the SDK and complete OS remain subject to independent source/license gates."
+    },
+    "pypi:requests@2.32.5": {
+      "source_identity": "dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf",
+      "copyright_sha256": "52700ea043742b6e75c76823158caccec98ebfd528c706f166fd3c37dd21db8f",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf.copyright",
+      "conditions": [
+        "Retain the full Apache-2.0 license and original copyright/attribution in source distributions.",
+        "Retain all upstream NOTICE content in the binary/source notice set; requests includes its Kenneth Reitz NOTICE.",
+        "Record modifications prominently and do not imply trademark endorsement.",
+        "Include exact source archives and reconstruction inputs; independently audit dependencies and the complete distribution."
+      ],
+      "scope": "Exact Python source/combined-notice pair only. Source license headers and packaged legal members inspected; no SDK, dependency or complete-OS clearance."
+    },
+    "pypi:distro@1.5.0": {
+      "source_identity": "0e58756ae38fbd8fc3020d54badb8eae17c5b9dcbed388b17bb55b8a5928df92",
+      "copyright_sha256": "50348d528e85c3657937c758cea8976509b8e1c9d39db649e63067c140e2f0ee",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/0e58756ae38fbd8fc3020d54badb8eae17c5b9dcbed388b17bb55b8a5928df92.copyright",
+      "conditions": [
+        "Retain the full Apache-2.0 license and original copyright/attribution in source distributions.",
+        "Retain all upstream NOTICE content in the binary/source notice set; requests includes its Kenneth Reitz NOTICE.",
+        "Record modifications prominently and do not imply trademark endorsement.",
+        "Include exact source archives and reconstruction inputs; independently audit dependencies and the complete distribution."
+      ],
+      "scope": "Exact Python source/combined-notice pair only. Source license headers and packaged legal members inspected; no SDK, dependency or complete-OS clearance."
+    },
+    "pypi:importlib-metadata@8.7.0": {
+      "source_identity": "d13b81ad223b890aa16c5471f2ac3056cf76c5f10f82d6f9292f0b415f389000",
+      "copyright_sha256": "a79e6ac72c50726466fdcab8c930e5d9c9b1c86818e71efbebf5ddd2be988623",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/d13b81ad223b890aa16c5471f2ac3056cf76c5f10f82d6f9292f0b415f389000.copyright",
+      "conditions": [
+        "Retain the full Apache-2.0 license and original copyright/attribution in source distributions.",
+        "Retain all upstream NOTICE content in the binary/source notice set; requests includes its Kenneth Reitz NOTICE.",
+        "Record modifications prominently and do not imply trademark endorsement.",
+        "Include exact source archives and reconstruction inputs; independently audit dependencies and the complete distribution."
+      ],
+      "scope": "Exact Python source/combined-notice pair only. Source license headers and packaged legal members inspected; no SDK, dependency or complete-OS clearance."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
