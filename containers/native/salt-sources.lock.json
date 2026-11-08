@@ -127,6 +127,12 @@
         {
           "member": "backports_tarfile-1.2.0/LICENSE",
           "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741"
+        },
+        {
+          "member": "backports_tarfile-1.2.0/backports/tarfile/__init__.py",
+          "sha256": "3f07f6a9421f0744a89493c229cc77bf3dd412efda89db38838b007f1cbde2a8",
+          "prefix_bytes": 1368,
+          "notice_sha256": "13d8bece0ca98d87a405d27f47fa4844fc657d473fa79b35d86ea423456df967"
         }
       ]
     },

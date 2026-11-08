@@ -2633,6 +2633,48 @@
         "Retain the complete applicable GNU GPL text, source availability and modification notices; do not impose additional restrictions."
       ],
       "scope": "Exact Debian source/copyright pair. Full notice and primary source legal files inspected; source notice matched installed bytes. GNU texts compared with complete retained common-license text, including all differences. Dependencies and complete OS remain independently gated."
+    },
+    "pypi:markupsafe@2.1.2": {
+      "source_identity": "abcabc8c2b26036d62d4c746381a6f7cf60aafcc653198ad678306986b09450d",
+      "copyright_sha256": "ca0268f8e2c7d591c069912af26a1a9a2fa6378f4a64d4020361e57d3d80e231",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/abcabc8c2b26036d62d4c746381a6f7cf60aafcc653198ad678306986b09450d.copyright",
+      "conditions": [
+        "Retain complete original copyright, licenses, conditions and disclaimers in binary and source notices.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Retain Pallets copyright, all conditions and disclaimer in source and binary documentation; do not imply upstream endorsement."
+      ],
+      "scope": "Exact Python distribution at the recorded source hash only. Dependencies, the SDK and complete OS remain subject to independent source/license gates."
+    },
+    "pypi:zc-lockfile@1.4": {
+      "source_identity": "95a8e3846937ab2991b61703d6e0251d5abb9604e18412e2714e1b90db173253",
+      "copyright_sha256": "1f16d9c2258913f264b592c855f70fbc0238c09c6572bee479792fb3b4673bde",
+      "redistributable": true,
+      "license": "ZPL-2.1",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/95a8e3846937ab2991b61703d6e0251d5abb9604e18412e2714e1b90db173253.copyright",
+      "conditions": [
+        "Retain complete original copyright, licenses, conditions and disclaimers in binary and source notices.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Retain Zope Foundation and Contributors copyright and the complete ZPL 2.1. Do not use protected names or marks for endorsement; date and identify any future file modifications."
+      ],
+      "scope": "Exact Python distribution at the recorded source hash only. Dependencies, the SDK and complete OS remain subject to independent source/license gates."
+    },
+    "build-pypi:pathspec@1.1.1": {
+      "source_identity": "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a",
+      "copyright_sha256": "2b86efc82a023c496a7ad63544a60920ddd1e8c46bba09f3ca58454c08cbc9ed",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a.copyright",
+      "conditions": [
+        "Retain complete original copyright, licenses, conditions and disclaimers in binary and source notices.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Preserve original source-file notices and the complete MPL 2.0; distribute the exact covered source under MPL 2.0 and tell recipients how to obtain it. This decision covers the retained build-tool source only."
+      ],
+      "scope": "Exact Python distribution at the recorded source hash only. Dependencies, the SDK and complete OS remain subject to independent source/license gates."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

@@ -328,3 +328,14 @@ is not a complete offline Git build environment.
 HTTP APIのRust依存も上流の固定lockと照合し、原本と許諾表示を保持します。
 AMD64でパッケージ生成と実インポートを確認しました。ソースの保持をバイナリの再構築や
 全体の配布許諾へ読み替えず、未確認のコンパイラー・標準ライブラリ等は公開ゲートで止めます。
+
+Exact source/combined-notice decisions now also cover MarkupSafe 2.1.2
+(BSD-3-Clause), zc.lockfile 1.4 (ZPL-2.1) and the retained pathspec 1.1.1
+build-tool source (MPL-2.0). Original notices, trademark/non-endorsement limits,
+ZPL modification dates and MPL covered-source availability remain conditions.
+A missing Lars Gustaebel copyright/permission header in backports.tarfile 1.2.0
+is separately pinned for the next collection; that component remains uncleared.
+Earlier diagnostic source receipts do not include this new notice binding.
+
+上記3件は原本と表示のハッシュへ限定した個別判断です。backports.tarfileの
+埋め込み著作権表示は保持対象へ追加しましたが、コンポーネント全体の許諾判断は保留します。
