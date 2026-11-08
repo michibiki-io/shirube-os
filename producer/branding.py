@@ -46,10 +46,18 @@ def boot_menus(root, architecture, version):
     for path in (Path(root)/'boot/grub').rglob('*.cfg'):
         if path.is_symlink():raise ValueError('Boot configuration must be a regular file')
         text=path.read_text()
+        # ARM's generic expansion can duplicate the local-console arguments in
+        # its final normal entry. Make that entry explicitly select PL011.
+        normal=[entry for entry in pattern.finditer(text)
+                if re.search(r'(?m)^\s*linux\s+/live/vmlinuz',entry[4]) and 'nomodeset' not in entry[4]]
+        arm_serial=normal[-1].start() if architecture=='arm64' and normal else None
         def replace(match):
             nonlocal changed
             body=match[4]
             if not re.search(r'(?m)^\s*linux\s+/live/vmlinuz',body):return match[0]
+            if match.start()==arm_serial:
+                body=re.sub(r'(?m)^(\s*linux\s+/live/vmlinuz[^\n]*)$',
+                    lambda line:re.sub(r'[ \t]+console=[^ \t\r\n]+','',line[0]).rstrip()+' console=tty0 console=ttyAMA0,115200',body)
             consoles=re.findall(r'(?:^|\s)console=([^,\s]+)',body)
             if not consoles or consoles[-1] not in {'tty0',serial}:
                 raise ValueError('Unexpected generated live-console selection')
@@ -57,12 +65,20 @@ def boot_menus(root, architecture, version):
             safe='fail-safe' in match[2] or 'nomodeset' in body
             title='Shirube OS '+version+' Live ('+console+(', safe mode' if safe else '')+')'
             attributes=match[3]
-            if console=='serial console' and not safe and '--hotkey=' not in attributes:
-                attributes+=' --hotkey=s '
+            if match.start()==arm_serial and '--id=shirube-live-serial' not in attributes:
+                if '--id=' in attributes:raise ValueError('Unexpected ARM live entry identifier')
+                attributes+=' --id=shirube-live-serial '
+            if console=='serial console' and not safe:
+                if '--hotkey=' in attributes:
+                    attributes=re.sub(r'--hotkey=\S+','--hotkey=s',attributes)
+                else:attributes+=' --hotkey=s '
             body=body.replace('hostname=vyos','hostname=shirube-os')
             changed+=1
             return 'menuentry "'+title+'"'+attributes+'{\n'+body+'}'
         updated=pattern.sub(replace,text)
+        if arm_serial is not None:
+            updated,count=re.subn(r'(?m)^set default=.*$','set default=shirube-live-serial',updated,count=1)
+            if count!=1:raise ValueError('Missing ARM live default selection')
         if updated!=text:
             notice='# Modified by michibiki-io for Shirube OS on 2026-11-09.\n'
             path.write_text(updated if notice in updated else notice+updated)

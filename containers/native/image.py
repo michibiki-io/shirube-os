@@ -121,6 +121,8 @@ def guest_package(arch, version):
     from producer.branding import defer_factory_identity,runtime_displays
     defer_factory_identity(core)
     runtime_displays(core)
+    from producer.installer_admin import patch_installer
+    patch_installer(core)
     # Change display strings only in UI/installer files. Keep copyright/license
     # headers and compatibility module/CLI/filesystem names intact.
     for base in ['usr/share/vyos/templates/grub','usr/libexec/vyos/op_mode','usr/lib/python3/dist-packages/vyos/system']:

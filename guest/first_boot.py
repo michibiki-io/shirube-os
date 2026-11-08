@@ -9,6 +9,7 @@ import subprocess
 import time
 
 MARKER = Path('/config/shirube-first-boot')
+ENROLLED = Path('/config/shirube-enrolled')
 
 
 def wait_for_router(timeout=300):
@@ -29,11 +30,37 @@ def wait_for_router(timeout=300):
     raise RuntimeError('Router initialization timed out')
 
 
+
+def saved_password(username):
+    result=subprocess.run(['/usr/libexec/vyos/read-saved-value.py','--path',
+        'system','login','user',username,'authentication','encrypted-password'],
+        text=True,capture_output=True,check=True)
+    return result.stdout.strip()
+
+
+def enable_logins():
+    subprocess.run(['systemctl','--no-block','restart','getty.target'],check=True,
+                   stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+
+
 def main():
     factory=Path('/usr/share/shirube/needs-enrollment')
     if not MARKER.exists() and not factory.exists():
         return
     wait_for_router()
+    if ENROLLED.is_file():
+        username=ENROLLED.read_text().strip()
+        if not re.fullmatch(r'[a-z][a-z0-9_]{0,30}',username) or username in {'root','vyos'}:
+            raise RuntimeError('Invalid saved enrollment state')
+        hashed=saved_password(username)
+        if not hashed or hashed.startswith(('!','*')):
+            raise RuntimeError('Saved administrator authentication is unavailable')
+        pwd.getpwnam(username)
+        MARKER.unlink(missing_ok=True)
+        factory.unlink(missing_ok=True)
+        enable_logins()
+        print('Saved administrator verified. Continue with the normal login prompt.',flush=True)
+        return
     print('Shirube OS — built by michibiki-io\nCreate this instance administrator at the local console.')
     while True:
         username = input('Administrator name: ')
@@ -91,16 +118,14 @@ def main():
         else:
             print(f'Administrator configuration did not complete after {phase}.', flush=True)
         raise RuntimeError('Native administrator configuration failed')
-    saved=subprocess.run(['/usr/libexec/vyos/read-saved-value.py','--path',
-        'system','login','user',username,'authentication','encrypted-password'],
-        text=True,capture_output=True,check=True)
-    if saved.stdout.strip()!=hashed:
+    if saved_password(username)!=hashed:
         raise RuntimeError('Administrator configuration was not saved')
     pwd.getpwnam(username)
+    ENROLLED.write_text(username+'\n')
+    ENROLLED.chmod(0o600)
     MARKER.unlink(missing_ok=True)
     factory.unlink(missing_ok=True)
-    subprocess.run(['systemctl','--no-block','restart','getty.target'],check=True,
-                   stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    enable_logins()
     print('Instance administrator created. Continue with the normal login prompt.')
 
 

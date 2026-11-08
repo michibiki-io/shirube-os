@@ -110,21 +110,24 @@ class VM:
 
     def install(self):
         self.child.sendline('install image')
-        password=secrets.token_urlsafe(24)
         steps=[(r'Would you like to continue.*','y'),(r'What would you like to name this image.*',''),
-               (r'Please enter a password.*',password),(r'Please confirm password.*',password),
                (r'What console should be used.*','S'),
                (r'Which one should be used for installation.*Default: /dev/vda','/dev/vda'),
                (r'Installation will delete all data.*','y'),(r'Would you like to use all the free space.*','y'),
                (r'Which file would you like as boot config.*','1')]
         for prompt,answer in steps:self.child.expect(prompt);self.child.sendline(answer)
         self.child.expect('The image installed successfully; please reboot now.',timeout=600);self.child.expect(self.prompt)
-        return password
+        return None
 
     def poweroff(self):
         self.child.sendline('sudo -n systemctl poweroff --no-block')
-        try:self.process.wait(timeout=600 if self.accelerator=='tcg' else 120)
-        except subprocess.TimeoutExpired:raise RuntimeError('Guest did not shut down cleanly') from None
+        try:
+            # Drain serial output while shutdown proceeds; an unread socket can
+            # block the guest console and prevent QEMU from terminating.
+            self.child.expect(EOF,timeout=600 if self.accelerator=='tcg' else 120)
+            self.process.wait(timeout=30)
+        except (TIMEOUT,subprocess.TimeoutExpired):
+            raise RuntimeError('Guest did not shut down cleanly') from None
         self.close()
 
     def close(self):

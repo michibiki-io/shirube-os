@@ -42,3 +42,20 @@ class FirstBootTests(unittest.TestCase):
         self.assertNotIn(password_hash, output.getvalue())
         marker.unlink.assert_not_called()
         factory.unlink.assert_not_called()
+
+    def test_saved_enrollment_resumes_login_without_creating_another_user(self):
+        factory=MagicMock();marker=MagicMock();marker.exists.return_value=True
+        enrolled=MagicMock();enrolled.read_text.return_value='instanceadmin\n'
+        with patch.object(first_boot,'Path',return_value=factory), \
+             patch.object(first_boot,'MARKER',marker), \
+             patch.object(first_boot,'ENROLLED',enrolled), \
+             patch.object(first_boot,'wait_for_router'), \
+             patch.object(first_boot,'saved_password',return_value='$6$test$already-configured'), \
+             patch.object(first_boot.pwd,'getpwnam'), \
+             patch.object(first_boot,'enable_logins') as logins, \
+             patch('builtins.input',side_effect=AssertionError('Enrollment must not repeat')):
+            first_boot.main()
+        factory.unlink.assert_called_once_with(missing_ok=True)
+        logins.assert_called_once()
+        marker.unlink.assert_called_once_with(missing_ok=True)
+        enrolled.write_text.assert_not_called()

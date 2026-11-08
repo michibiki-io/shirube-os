@@ -4,6 +4,7 @@ import shutil
 
 REMOVE = ('config/auth', 'config/netbird', 'config/archive', 'config/user-data',
           'config/config.boot', 'config/config.boot.default', 'config/.history',
+          'config/shirube-enrolled',
           'root/.ssh', 'root/.bash_history', 'home', 'var/log', 'var/lib/cloud',
           'var/lib/netbird', 'var/lib/dhcp', 'var/lib/NetworkManager',
           'var/lib/systemd/random-seed', 'var/lib/dbus/machine-id',
