@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import tarfile
 import zipfile
+import os
 from .architecture import native
 from .bundles import bundle
 from .go_modules import build_info,retain_inputs
@@ -14,6 +15,32 @@ from .sources import extract,sha256
 
 def inspect(go,binary,strict=True):
     return build_info(subprocess.check_output([str(go),'version','-m',str(binary)],text=True),require_sums=strict)
+
+
+def internal_package_map(text,source):
+    """Map actual selected client files to the upstream directory license scopes."""
+    source=Path(source).resolve();decoder=json.JSONDecoder();position=0;packages=[]
+    prefix='github.com/netbirdio/netbird/'
+    while position<len(text):
+        while position<len(text) and text[position].isspace():position+=1
+        if position==len(text):break
+        item,position=decoder.raw_decode(text,position)
+        if not item['ImportPath'].startswith(prefix):continue
+        directory=Path(item['Dir']).resolve()
+        if not directory.is_relative_to(source):raise ValueError('Client package source escapes retained project')
+        relative=directory.relative_to(source)
+        if str(relative)!=item['ImportPath'][len(prefix):]:raise ValueError('Client package/source path mismatch')
+        selected=[]
+        for field in ['GoFiles','CgoFiles','CFiles','HFiles','SFiles','SysoFiles','EmbedFiles']:
+            for name in item.get(field,[]):
+                path=(directory/name).resolve()
+                if not path.is_relative_to(directory) or not path.is_file():raise ValueError('Invalid selected client source file')
+                selected.append({'path':str(path.relative_to(source)),'sha256':sha256(path)})
+        packages.append({'import':item['ImportPath'],'directory':str(relative),'files':selected})
+    if not packages:raise ValueError('Actual headless client package map is empty')
+    exceptions={'management','signal','relay','combined'}
+    return {'packages':packages,'agpl_directory_packages':[
+        item['import'] for item in packages if Path(item['directory']).parts[0] in exceptions]}
 
 
 def vendor_files(vendor,info,linked):
@@ -92,7 +119,8 @@ def collect_prepared(binary,asset_archive,arch,prepared,output,restore):
     go=restore/'sdk/go/bin/go'
     actual=inspect(go,binary)
     if (actual['compiler']!=compiler['version'] or actual['settings'].get('vcs.revision')!=lock['source_commit']
-            or actual['settings'].get('CGO_ENABLED')!='0'):
+            or actual['settings'].get('CGO_ENABLED')!='0' or actual['settings'].get('GOOS')!='linux'
+            or actual['settings'].get('GOARCH')!=arch or actual['settings'].get('-tags')!='load_wgnt_from_rsrc'):
         raise ValueError('Client compiler/source/build mode differs from reconstruction baseline')
     records=retain_inputs(actual,prepared/'prepare-modules',output/'linked')
     vendor=prepared/'source'/('netbird-'+lock['source_commit'])/'vendor'
@@ -117,6 +145,15 @@ def collect_prepared(binary,asset_archive,arch,prepared,output,restore):
     rebuilt=inspect(go,restore/'netbird-offline',False)
     if {(r['module'],r['version']) for r in rebuilt['modules']}!={(r['module'],r['version']) for r in actual['modules']}:
         raise ValueError('Restored client links different dependency versions')
+    environment=dict(os.environ,GOTOOLCHAIN='local',CGO_ENABLED='0',GOOS='linux',GOARCH=arch,
+        GOPROXY='off',GOSUMDB='off',GOCACHE=str(restore/'license-map-cache'),
+        GOMODCACHE=str(restore/'license-map-modules'),GOMAXPROCS='2',GOMEMLIMIT='768MiB')
+    selected=subprocess.check_output([str(go),'list','-deps','-json','-mod=vendor',
+        '-tags','load_wgnt_from_rsrc','./client'],cwd=source,env=environment,text=True)
+    package_map=internal_package_map(selected,source)
+    if package_map['agpl_directory_packages']:
+        raise ValueError('Headless client includes directory-license exceptions; additional audit required')
+    (output/'internal-packages.json').write_text(json.dumps(package_map,indent=2)+'\n')
     shutil.copy2(restore/'offline-evidence.json',output/'reconstruction.json')
     go_notice(inputs/'go-source.tar.gz',output/'go-copyright')
     result={'schema_version':1,'architecture':arch,'version':lock['version'],
@@ -124,6 +161,9 @@ def collect_prepared(binary,asset_archive,arch,prepared,output,restore):
         'source_sha256':lock['source_sha256'],'compiler':compiler['version'],
         'go_source_sha256':compiler['source']['sha256'],'go_notice_sha256':sha256(output/'go-copyright'),
         'linked_modules':records,'vendor_archive_sha256':sha256(output/'vendor-source.tar.gz'),
+        'internal_package_count':len(package_map['packages']),
+        'internal_package_map_sha256':sha256(output/'internal-packages.json'),
+        'agpl_directory_packages':package_map['agpl_directory_packages'],
         'restored_offline_component_rebuild':'PASS','complete_os_reconstruction':'NOT_RUN',
         'license_clearance':'NOT_CLEARED','byte_reproducibility':'NOT_CLAIMED'}
     (output/'components.json').write_text(json.dumps(result,indent=2)+'\n')

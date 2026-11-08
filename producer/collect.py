@@ -48,6 +48,13 @@ def netbird_dependencies(rootfs,correspondence,arch):
     if (data['architecture']!=arch or data['restored_offline_component_rebuild']!='PASS'
             or data['reference_binary_sha256']!=sha256(path_in_root(rootfs,'usr/libexec/shirube/netbird'))):
         raise ValueError('NetBird source proof does not match the shipped binary')
+    mapping=correspondence/'internal-packages.json'
+    if not mapping.is_file() or sha256(mapping)!=data.get('internal_package_map_sha256'):
+        raise ValueError('Actual NetBird client source/license package map is missing or differs')
+    selected=json.loads(mapping.read_text())
+    if (not selected['packages'] or len(selected['packages'])!=data.get('internal_package_count')
+            or selected['agpl_directory_packages'] or data.get('agpl_directory_packages')!=[]):
+        raise ValueError('NetBird directory-license coverage requires additional audit')
     children=[];seen=set()
     for record in data['linked_modules']:
         identity=(record['module'],record['version'])

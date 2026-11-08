@@ -121,7 +121,7 @@ retention check covers 44 concrete packages. Their separate license decisions
 and an offline reconstruction demonstration are still required. An approval for
 the main configuration package cannot hide unresolved OCaml dependencies.
 
-Thirty-three actual linked NetBird modules now have exact source/notice decisions
+Forty-four actual linked NetBird modules now have exact source/notice decisions
 under MIT, ISC, BSD-2-Clause, BSD-3-Clause or Zlib. The inventory preserves each
 module's own grant, conditions and disclaimer; BSD non-endorsement and Zlib
 origin/modification restrictions remain applicable. Other modules and the Go
@@ -143,3 +143,12 @@ is rejected. This source-only recognition never applies to binaries, build signi
 keys, enrollment material or unknown keys. The optional fixed-key core smoketest
 binary package remains forbidden. The detector is not a general credential
 scanner; complete release source/binary/log/cache audits remain separate gates.
+
+The restored headless-client build additionally records the actual selected
+internal source packages/files and their hashes, using the same pinned compiler,
+Linux architecture, CGO setting and build tags as the reference client. It checks
+the root license's management/signal/relay/combined directory exceptions explicitly;
+selecting one stops this BSD-client audit path for additional review. The AMD64
+map selects 174 internal packages and no exception directory. This scope check
+is not permission for third-party dependencies or the complete distribution.
+The installed component inventory must bind to the exact retained package map.

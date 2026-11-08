@@ -845,6 +845,154 @@
         "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory."
       ],
       "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:github.com/spf13/pflag@v1.0.10": {
+      "source_identity": "h1:4EBh2KAYBwaONj6b2Ye1GiHfwjqyROoF4RwYO+vPwFk=",
+      "copyright_sha256": "3994cc9cb61214607c261b9ff688ebacd453db725e3c74ca7104885eac630dc1",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/80d3641cd70fc7138cc072e7d656690d751f5d566f18d340b3ba5bf6a84fa970.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory.",
+        "Do not use upstream or contributor names to endorse or promote the derived product without permission."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:github.com/things-go/go-socks5@v0.0.4": {
+      "source_identity": "h1:jMQjIc+qhD4z9cITOMnBiwo9dDmpGuXmBlkRFrl/qD0=",
+      "copyright_sha256": "af7b8971f3724e6b5384d782bd51db7f58a010d2d8fb81248507fd48e5ad251c",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/b68523246040bce62ea13dd5bba32b228b0a0dfad524af0f87f17db541f16dd3.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:github.com/ti-mo/conntrack@v0.5.1": {
+      "source_identity": "h1:opEwkFICnDbQc0BUXl73PHBK0h23jEIFVjXsqvF4GY0=",
+      "copyright_sha256": "7ebe160a6111472166e2af172da7029fbae0c8fd4a0740403433b0e2a1b7102b",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/3ffd97dabf55d443e921c02777e21dc5f00643c29616b59f6f50441176f113fe.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:github.com/ti-mo/netfilter@v0.5.2": {
+      "source_identity": "h1:CTjOwFuNNeZ9QPdRXt1MZFLFUf84cKtiQutNauHWd40=",
+      "copyright_sha256": "77b0b7bbb2c0c0a778d702f7422a01c3b93bb78ef59ba26e74003ec441e39aea",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/cfd5066dc21e02599dd3497057bcbb83c111dbd123194a8169ca67397c81c494.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:github.com/tklauser/go-sysconf@v0.3.15": {
+      "source_identity": "h1:VE89k0criAymJ/Os65CSn1IXaol+1wrsFHEB8Ol49K4=",
+      "copyright_sha256": "0bcabce848d9c80f99bec0246a68da6c14519ce0d6e379df9f0b7a0ec4ae4064",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/7f214713f681235801b3c2210165582bc223f26be066609b78ad207af7916044.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory.",
+        "Do not use upstream or contributor names to endorse or promote the derived product without permission."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:github.com/wlynxg/anet@v0.0.5": {
+      "source_identity": "h1:J3VJGi1gvo0JwZ/P1/Yc/8p63SoW98B5dHkYDmpgvvU=",
+      "copyright_sha256": "754efc8e8a7e90610ae28899bcede72536992382089e185bd808affaf9d0b8c1",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/06e29a1706cb774e78990d2a9c10fa1eec71b3539cf54cf7aa3936f3ab34e2b1.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory.",
+        "Do not use upstream or contributor names to endorse or promote the derived product without permission."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:go.uber.org/multierr@v1.11.0": {
+      "source_identity": "h1:blXXJkSxSSfBVBlC76pxqeO+LN3aDfLQo+309xJstO0=",
+      "copyright_sha256": "4a2cfcdc7af6770a2e2fc28d8b54f0fe15bcfe1b660fa0ac61b86c6de2c0113b",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/3cc09eaf82cd75d74ad9a427490b437beca410ba1363bd82f87cb58ee76313cc.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:go.uber.org/zap@v1.27.0": {
+      "source_identity": "h1:aJMhYGrd5QSmlpLMr2MftRKl7t8J8PTZPA732ud/XR8=",
+      "copyright_sha256": "4f1e9d6ecfeb6e01fa56ec9ac46b2e39dc7004748c96aa140833cbe071098666",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/d6738ba2e5fbe072b44b096d4ca9317c8af114c63cd4e8b7347066a7b0cce4b7.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:golang.org/x/oauth2@v0.36.0": {
+      "source_identity": "h1:peZ/1z27fi9hUOFCAZaHyrpWG5lwe0RJEEEeH0ThlIs=",
+      "copyright_sha256": "60e8735a09f654e42a92e393a702b23cfcae9e035a6cc50f6b3e154ab169c191",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/cd1e020970123f4df5ff7b6af3918e092268d7de30cf71cfe71e936636a9cfac.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory.",
+        "Do not use upstream or contributor names to endorse or promote the derived product without permission."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:golang.zx2c4.com/wireguard/wgctrl@v0.0.0-20241231184526-a9ab2273dd10": {
+      "source_identity": "h1:3GDAcqdIg1ozBNLgPy4SLT84nfcBjr6rhGtXYtrkWLU=",
+      "copyright_sha256": "e954e85ab732144f730cda218007ec15815d885c58bba39a907eab6d54c61d0c",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/699f4344c664a5e33c30c4036bc23489a46c74f0f9604545dbd45c3dc04850b9.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
+    },
+    "go:rsc.io/qr@v0.2.0": {
+      "source_identity": "h1:6vBLea5/NRMVTz8V66gipeLycZMl/+UlFmk8DvqQ6WY=",
+      "copyright_sha256": "f0c6cae1e5f604f89245de8560774e7d44111a42751d2ea37feed96b39669111",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "netbird/linked/notices/0f098cdd7dee49a844adad07670f231ebee949d33326c438e958a0ec1682f4ba.txt",
+      "conditions": [
+        "Retain the complete upstream copyright, permission/conditions and disclaimer with binary and source distributions.",
+        "Retain the exact h1-verified source ZIP and notice bindings in the corresponding-source inventory.",
+        "Do not use upstream or contributor names to endorse or promote the derived product without permission."
+      ],
+      "scope": "Exact linked module and retained notices only; other modules, standard library, NetBird parent and whole-release source gates remain separate."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

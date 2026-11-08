@@ -60,15 +60,18 @@ class ComponentInventoryTests(unittest.TestCase):
             notice=doc/'netbird-licenses/notices'/('a'*64+'.txt');notice.parent.mkdir(parents=True);notice.write_bytes(b'fixture module notice')
             standard=doc/'netbird-licenses/go-copyright';standard.write_bytes(b'fixture Go notice')
             digest=lambda path:hashlib.sha256(path.read_bytes()).hexdigest()
+            mapping=correspondence/'internal-packages.json'
+            mapping.write_text(json.dumps({'packages':[{'import':'fixture client package'}],'agpl_directory_packages':[]}))
             data={'architecture':'amd64','restored_offline_component_rebuild':'PASS',
                 'reference_binary_sha256':digest(binary),'compiler':'1.26.10','go_source_sha256':'b'*64,
+                'internal_package_map_sha256':digest(mapping),'internal_package_count':1,'agpl_directory_packages':[],
                 'go_notice_sha256':digest(standard),'linked_modules':[{'module':'example.test/module','version':'v1.0.0',
                 'source_identity':'h1:fixture','source':{'path':'inputs/'+archive.name,'sha256':digest(archive)},
                 'license_notice':{'path':'notices/'+notice.name,'sha256':digest(notice)}}]}
             bom=doc/'netbird-components.json';bom.write_text(json.dumps(data))
             (correspondence/'components.json').write_bytes(bom.read_bytes())
             self.assertEqual(len(netbird_dependencies(root,correspondence,'amd64')),2)
-            for victim in [binary,notice,standard]:
+            for victim in [binary,notice,standard,mapping]:
                 original=victim.read_bytes();victim.write_bytes(b'changed')
                 with self.assertRaises(ValueError):netbird_dependencies(root,correspondence,'amd64')
                 victim.write_bytes(original)
