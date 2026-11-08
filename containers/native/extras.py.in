@@ -301,6 +301,7 @@ python3 /src/native/fpm_package.py -s dir -t deb -n nat-rtsp -v 5.3-2-g475af0a -
     netflow=git('ipt-netflow',work/'netflow')
     for patch in sorted((common/'patches/ipt-netflow').glob('*.patch')):
         shell('patch --fuzz=0 -p1 < '+str(patch),netflow)
+    retain_embedded_notices(netflow,'vyos-ipt-netflow',Path('/src/source-lock.json'))
     shell(f'''./configure --enable-direction --enable-macaddress --enable-vlan --enable-sampler --enable-aggregation --kdir={kernel}
 make clean
 make -j2 all

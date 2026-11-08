@@ -17,7 +17,7 @@ def legal(root,exclude=()):
     return [path for path in sorted(Path(root).rglob('*')) if path.is_file() and not path.is_symlink()
             and '.git' not in path.relative_to(root).parts
             and not any(part in exclude for part in path.relative_to(root).parts)
-            and (path.name.lower().startswith(('license','licence','unlicense','copying','copyright','notice','authors','contributors','patents'))
+            and (path.name.lower().startswith(('license','licence','unlicense','copying','copyright','notice','authors','contributors','credits','patents'))
                  or path.name.lower().endswith(('-license','-license.txt','-license.md')))
             and path.stat().st_size and path.stat().st_size<4*1024**2]
 

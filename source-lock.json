@@ -425,6 +425,63 @@
           "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
         }
       ]
+    },
+    "vyos-ipt-netflow": {
+      "stream_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "origin": {
+        "url": "https://github.com/nuclearcat/ipt-netflow",
+        "commit": "613555120416fe23f914db7333f9ced19d5e58f9"
+      },
+      "files": [
+        {
+          "path": "compat.h",
+          "sha256": "6b38aaacdca047e0a6aab51be163ebbd5845bb7f589da98ec816291e24ff4cc9",
+          "prefix_bytes": 244,
+          "notice_sha256": "d65599f3a3e188ad393ee51709a2a29b66dde16a1d7c07b9a6de85587abefe9d"
+        },
+        {
+          "path": "ipt_NETFLOW.c",
+          "sha256": "43e26ff62ac136c900db6ca077b53f951564c512edb34610641d87a029259cb5",
+          "prefix_bytes": 823,
+          "notice_sha256": "b014a1aec34ff7b124d7578de83b237bd888921ca2ea6c8be01b6ba08034c144"
+        },
+        {
+          "path": "ipt_NETFLOW.h",
+          "sha256": "fdc5d92349e7100d1262a90f98727c69714e130f05547fc4df47d6e6480f2c6b",
+          "prefix_bytes": 773,
+          "notice_sha256": "49eae4bb1de926547613b33abe00a95d031083bf5921c9f8bd7635cd1b86a5cf"
+        },
+        {
+          "path": "libipt_NETFLOW.c",
+          "sha256": "7094e07a932409e3edd59198a7733cb93d44b20b53b36eb7d9a3894dffc95531",
+          "prefix_bytes": 837,
+          "notice_sha256": "437185ef195ef123986a664b2dc3de05a8be2cedb3f69440b1cb4626af83cae3"
+        },
+        {
+          "path": "murmur3.h",
+          "sha256": "93a40bd8e85cf60a67bae6c6cdc0cbd2eee3cbf097be9a40a7caeedc4e9a55dd",
+          "prefix_bytes": 83,
+          "notice_sha256": "425de3270c393fb461d4c3897b02a0a91ad6ece5333f633674d0bdacd277fc8b"
+        },
+        {
+          "path": "snmp_NETFLOW.c",
+          "sha256": "81ad383605936a865d39276bef178d2e6d8f78dc3a7c9a17c19259da738f1e7e",
+          "prefix_bytes": 358,
+          "notice_sha256": "5a4fa8cbd6a6e3a0fa35c27bc5d899ff330e92d7ad531d8df034f01e06817baf"
+        },
+        {
+          "path": "CREDITS",
+          "sha256": "9e99f694fab03ed25d8328e981709961240b3d57d4ef2cf5edcee6c4138dbc9a",
+          "prefix_bytes": 3254,
+          "notice_sha256": "9e99f694fab03ed25d8328e981709961240b3d57d4ef2cf5edcee6c4138dbc9a"
+        }
+      ],
+      "full_licenses": [
+        {
+          "source": "common:GPL-2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
     }
   }
 }
