@@ -139,9 +139,23 @@ snapshot_git_import() {
     git tag "vyos/${STREAM_VERSION}-source"
     git rev-parse HEAD > /output/snapshot-git-commit.txt
     # Upstream's pathname-discovery test assumes an input device pathname.
-    # Provide a filesystem-only fixture inside this container: no host input
-    # devices are exposed and this is not a hardware/driver verification.
+    # Provide a filesystem-only fixture inside this container; never open a
+    # host input device. This is not a hardware/driver verification.
     mkdir -p /dev/input
+    # Privileged Docker populates host device nodes after configured tmpfs
+    # mounts. Hide any such node with a new mount in this container namespace
+    # before opening the filesystem-only fixture. Ordinary package containers
+    # have no input devices and do not require mount privileges.
+    if [[ ( -e /dev/input/event0 || -L /dev/input/event0 ) &&
+          ( ! -f /dev/input/event0 || -L /dev/input/event0 ) ]]; then
+        mount -t tmpfs -o nodev,nosuid,noexec,size=1m shirube-test-input /dev/input
+    fi
+    if [[ -e /dev/input/event0 || -L /dev/input/event0 ]]; then
+        [[ -f /dev/input/event0 && ! -L /dev/input/event0 ]] || {
+            echo 'Refusing to open a real input device as a test fixture' >&2
+            exit 1
+        }
+    fi
     : > /dev/input/event0
     printf 'Filesystem fixture only: /dev/input/event0\n' > /output/test-fixtures.txt
 }

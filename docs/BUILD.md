@@ -133,3 +133,10 @@ Public VPP patch application preserves upstream authors and fixes the local
 preparer identity/timestamp. This avoids introducing host identity or wall-clock
 changes into the generated local patch commit identifiers. These local preparation
 commits are not described as upstream commits.
+
+The core pathname-discovery test uses a regular filesystem-only dummy at
+`/dev/input/event0`. A privileged Docker runtime can populate real device nodes
+after its configured tmpfs mounts. Before opening the dummy, the recipe detects
+non-regular/link entries and hides them with a fresh nodev tmpfs inside the
+container namespace, then verifies that only a regular file is used. Failure
+to isolate the path stops the build. No host input device is opened for this test.
