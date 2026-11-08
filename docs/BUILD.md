@@ -257,3 +257,18 @@ It verifies the package cohort hashes, loads the upstream plugins, forwards
 packets between two temporary network namespaces, and fetches Prometheus
 metrics through http_static. Native ARM64 execution passed. This component
 probe does not establish installed Shirube OS boot, OCI or release readiness.
+
+Salt's Rust dependencies are prepared from the 48 exact crate archives in the
+source lock. The producer verifies each archive hash, rejects changed caches,
+links and unexpected roots, and generates Cargo's per-file/package checksums in
+private staging. Only Salt's two SDK installation environments use that vendor
+directory with Cargo offline mode; host and unrelated build settings are not
+changed. Native AMD64 Cargo dependency resolution matched all 48 registry crates
+inside a network namespace without network access. This component check does
+not establish a complete SDK rebuild or OS source reconstruction.
+
+SaltのRust依存は、ソース固定ファイルにある48個のcrateから準備する。各アーカイブの
+ハッシュを確認し、変更されたキャッシュ、リンク、想定外のルートを拒否して、Cargoの
+ファイル・パッケージ別チェックサムを一時作業領域へ生成する。オフライン設定はSaltの
+2つのSDKインストール処理だけへ適用する。AMD64上のネットワークを持たない名前空間で、
+48個すべての依存解決が一致した。SDK全体の再ビルドやOS全体のソース再構築は別途確認する。
