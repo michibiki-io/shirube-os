@@ -50,7 +50,7 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     observations['architecture']=['Native ELF/package audit count: '+str(result['audited_packages']), 'Architecture-specific EFI PE and kernel headers verified: '+architecture]
     observations['module_signatures']=['Verified signed modules: '+str(result['signed_modules_verified']),'Matching kernel certificate SHA256: '+result['kernel_certificate_sha256']]
     observations['branding']=['Supplied SVG and os-release inspected; actual installed version output checked on both disk formats']
-    observations['sanitization']=['Guest root repacked; second offline filesystem audit, journal recreation and free-space zero/discard completed']
+    observations['sanitization']=['Installed immutable root matched the input ISO; runtime overlay discarded offline; factory root sanitized and audited; journal recreated and free space zeroed/discarded']
     observations['disk_equivalence']=['Both standalone 50 GiB conversions passed qemu-img checks and source content comparison']
     observations['netbird']=['Actual native CLI commit/save, successful/failed enrollment cleanup, disable/enable, reboot identity, removal/reboot inactivity and secret scans passed for both disk-format clones'] if disks['netbird']=='PASS' else ['Required guest NetBird validation not completed']
     evidence={'source_commit':commit,'version':version,'architecture':architecture,'generation':generation,

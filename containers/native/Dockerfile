@@ -58,6 +58,7 @@ RUN printf '%s\n' \
     >> /etc/apt/sources.list && \
     apt-get -o APT::Update::Error-Mode=any update && \
     apt-get install -y --no-install-recommends initramfs-tools-core && \
+    mkdir -p /lib/modules && \
     rm -rf /var/lib/apt/lists/*
 COPY producer /src/producer
 COPY guest /src/guest

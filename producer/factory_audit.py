@@ -1,8 +1,9 @@
 """Inspect factory root and initramfs contents without executing guest payloads."""
 from pathlib import Path, PurePosixPath
 import subprocess
+import re
 from .sources import sha256
-from .sanitize import path_in_root
+from .sanitize import path_in_root, host_key_paths
 from .release import SECRET
 from .public_test_keys import allowed, allowed_file, cached_fixture_keys, scan
 
@@ -31,10 +32,8 @@ def inspect_filesystems(root, initramfs, architecture):
         raise ValueError('Factory has a reusable password credential')
     if not path_in_root(root, 'usr/share/shirube/needs-enrollment').is_file():
         raise ValueError('Factory enrollment marker is missing')
-    for parent, pattern in [('etc/ssh', 'ssh_host_*'), ('etc/dropbear', '*host_key*'),
-                            ('etc/dropbear-initramfs', '*host_key*')]:
-        if list(path_in_root(root, parent).glob(pattern)):
-            raise ValueError('Factory contains a host key file')
+    if list(host_key_paths(root)):
+        raise ValueError('Factory contains a host key file')
     for member in ['config/shirube-enrolled','opt/vyatta/etc/config/shirube-enrolled']:
         if path_in_root(root,member).exists() or (root/member).is_symlink():
             raise ValueError('Factory contains completed instance enrollment state')
@@ -59,6 +58,8 @@ def inspect_filesystems(root, initramfs, architecture):
         # Debian may prepend a microcode archive; unmkinitramfs then places the
         # compressed filesystem below main/. Only byte-identical root payloads
         # can borrow that package's narrowly scoped public self-test allowances.
+        if re.search(r'(^|/)etc/(ssh/ssh_host_|dropbear(?:-initramfs)?/.*host_key)',member):
+            raise ValueError('Initramfs contains a host key file')
         relative = member.removeprefix('main/')
         permits = set()
         if owners.get(relative) == 'libgnutls30':

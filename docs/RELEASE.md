@@ -17,7 +17,7 @@ artifact ID/digest and checks its exact workflow source commit.
 The pipeline is not yet accepted: complete source reconstruction evidence,
 component license clearance and actual NetBird enrollment/save/reboot evidence
 remain blocking work. These are explicitly FAIL/NOT_RUN, not automatic waivers.
-The currently empty `license-audit.json` cannot clear a distribution.
+`license-audit.json` records individually audited components; its partial coverage cannot clear the complete distribution.
 
 `Test` is static validation. Its success does not establish image acceptance.
 

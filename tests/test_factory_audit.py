@@ -7,7 +7,7 @@ from producer.factory_audit import inspect_filesystems
 
 class FactoryAuditTests(unittest.TestCase):
     def test_reusable_identity_password_and_initramfs_keys_are_rejected(self):
-        for mutation in ['none', 'machine-id', 'password', 'initramfs-key', 'missing-init', 'completed-enrollment']:
+        for mutation in ['none', 'machine-id', 'password', 'initramfs-key', 'missing-init', 'completed-enrollment', 'initramfs-dropbear-key']:
             with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as temporary:
                 root = Path(temporary)/'root'
                 initrd = Path(temporary)/'initramfs'
@@ -27,6 +27,9 @@ class FactoryAuditTests(unittest.TestCase):
                 elif mutation == 'completed-enrollment':
                     state=root/'opt/vyatta/etc/config/shirube-enrolled'
                     state.parent.mkdir(parents=True);state.write_text('instanceadmin\n')
+                elif mutation == 'initramfs-dropbear-key':
+                    key=initrd/'etc/dropbear/initramfs/dropbear_rsa_host_key'
+                    key.parent.mkdir(parents=True);key.write_bytes(b'binary-host-key')
                 elif mutation == 'missing-init':
                     (initrd/'init').unlink()
                 if mutation == 'none':

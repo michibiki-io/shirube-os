@@ -5,10 +5,11 @@ import shutil
 REMOVE = ('config/auth', 'config/netbird', 'config/archive', 'config/user-data',
           'config/config.boot', 'config/config.boot.default', 'config/.history',
           'config/shirube-enrolled',
-          'root/.ssh', 'root/.bash_history', 'home', 'var/log', 'var/lib/cloud',
+          'root/.ssh', 'root/.bash_history', 'home', 'var/log', 'tmp', 'var/tmp', 'var/lib/cloud',
           'var/lib/netbird', 'var/lib/dhcp', 'var/lib/NetworkManager',
           'var/lib/systemd/random-seed', 'var/lib/dbus/machine-id',
-          'etc/udev/rules.d/70-persistent-net.rules', 'etc/ssl/private')
+          'etc/udev/rules.d/70-persistent-net.rules', 'etc/ssl/private',
+          'etc/shadow-', 'etc/gshadow-', 'etc/passwd-', 'etc/group-')
 
 
 def path_in_root(root, relative):
@@ -53,6 +54,24 @@ def erase(path):
         shutil.rmtree(path)
 
 
+
+CONFIG_ROOTS = ('config', 'opt/vyatta/etc/config')
+
+
+def factory_config(architecture):
+    console = 'ttyAMA0' if architecture == 'arm64' else 'ttyS0'
+    return 'interfaces {\n ethernet eth0 {\n  address dhcp\n }\n loopback lo {\n }\n}\nsystem {\n host-name shirube-os\n console {\n  device '+console+' {\n   speed 115200\n  }\n }\n}\n'
+
+
+
+def host_key_paths(root):
+    for parent, pattern in [('etc/ssh','ssh_host_*'),('etc/dropbear','*host_key*'),
+                            ('etc/dropbear-initramfs','*host_key*')]:
+        for path in path_in_root(root,parent).rglob(pattern):
+            if path.is_file() or path.is_symlink():
+                yield path
+
+
 def sanitize(root, architecture):
     if architecture not in {'amd64', 'arm64'}:
         raise ValueError('Unsupported architecture')
@@ -61,13 +80,17 @@ def sanitize(root, architecture):
         raise ValueError('Guest account database is missing')
     for relative in REMOVE:
         erase(path_in_root(root, relative))
-    configuration = path_in_root(root, 'config')
-    if configuration.is_dir():
+    # /config is a runtime bind mount of the native persistent directory.
+    # A non-recursive offline root view contains both underlying directories.
+    configurations={path_in_root(root,relative) for relative in CONFIG_ROOTS}
+    for configuration in configurations:
+        configuration.mkdir(parents=True,exist_ok=True)
         for entry in configuration.iterdir():
             erase(entry)
-    else:
-        configuration.mkdir(parents=True)
-    for pattern in ('etc/ssh/ssh_host_*', 'config/*history*', 'root/.*history'):
+    for path in list(host_key_paths(root)):
+        relative=path.relative_to(root)
+        erase(path_in_root(root,relative.parent)/relative.name)
+    for pattern in ('config/*history*', 'root/.*history'):
         for path in root.glob(pattern):
             erase(path_in_root(root, str(path.relative_to(root))))
     # Lock every installed account, including installer/default users.
@@ -111,12 +134,15 @@ def sanitize(root, architecture):
     identity.write_text('')
     for relative in ('var/log', 'home', 'config'):
         path_in_root(root, relative).mkdir(parents=True, exist_ok=True)
-    # Persistent settings contain no account, MAC, address or peer identity.
-    console = 'ttyAMA0' if architecture == 'arm64' else 'ttyS0'
-    path_in_root(root, 'config/config.boot').write_text('interfaces {\n ethernet eth0 {\n  address dhcp\n }\n loopback lo {\n }\n}\nsystem {\n host-name shirube-os\n console {\n  device '+console+' {\n   speed 115200\n  }\n }\n}\n')
-    marker = path_in_root(root, 'config/shirube-first-boot')
-    marker.write_text('pending\n')
-    marker.chmod(0o600)
+    for relative in ('tmp','var/tmp'):
+        path_in_root(root,relative).mkdir(parents=True,exist_ok=True)
+        path_in_root(root,relative).chmod(0o1777)
+    # Each native/offline configuration view receives the same credential-free
+    # defaults; no enrollment completion, peer identity or saved user remains.
+    for configuration in configurations:
+        (configuration/'config.boot').write_text(factory_config(architecture))
+        marker=configuration/'shirube-first-boot'
+        marker.write_text('pending\n');marker.chmod(0o600)
     return audit(root)
 
 
@@ -125,14 +151,20 @@ def audit(root):
     for relative in REMOVE:
         if relative == 'config/config.boot':
             continue
-        if relative in ('home', 'var/log') and not any(path_in_root(root, relative).iterdir()):
+        if relative in ('home', 'var/log', 'tmp', 'var/tmp') and not any(path_in_root(root, relative).iterdir()):
             continue
         path = path_in_root(root, relative)
         if path.exists() or path.is_symlink():
-            raise ValueError('Forbidden state remains in export')
+            raise ValueError('Forbidden state remains in export: '+relative)
+    for relative in CONFIG_ROOTS:
+        configuration=path_in_root(root,relative)
+        if {entry.name for entry in configuration.iterdir()}!={'config.boot','shirube-first-boot'}:
+            raise ValueError('Instance state remains in a native configuration directory: '+relative)
+        if (configuration/'config.boot').read_text() not in {factory_config('amd64'),factory_config('arm64')}:
+            raise ValueError('Export configuration differs from credential-free factory defaults')
     if path_in_root(root, 'etc/machine-id').read_bytes():
         raise ValueError('Fixed machine identity remains')
-    if list((root / 'etc/ssh').glob('ssh_host_*')):
+    if list(host_key_paths(root)):
         raise ValueError('SSH host identity remains')
     for line in path_in_root(root, 'etc/shadow').read_text().splitlines():
         if line.split(':')[1] not in ('!', '*', '!!'):

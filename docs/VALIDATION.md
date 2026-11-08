@@ -33,7 +33,7 @@ the changed criteria belong in the latest PR review after release readiness.
 | Salt preferred source retention | PASS | Actual tracked Salt source (6671 members) and pinned public packaging-tool source (26 members) exported with member-hash verification; generated virtualenvs and compiled SDK archives excluded. Nineteen unchanged public test/documentation files recognized against signed Stream input. Complete dependency source closure/reconstruction remains NOT_RUN |
 | Salt upstream runtime packages | PASS | The native AMD64 build generated eight packages with the expected Salt 3006.21+0.ge35fd3e and all 55 SDK distributions matched. An earlier copied-source probe produced the wrong Salt version and its original DEBs are not accepted. Exact public test fixtures are classified by source/hash; injected fresh private keys are rejected. Full SDK reconstruction, license clearance and guest services remain incomplete |
 | Salt SDK fixed-input Python build | PASS | Native AMD64 component build with 77 fixed Python source inputs plus the architecture-specific PPBT build wheel and 48 Cargo crates; dependency/Salt compilation ran in a network-disabled namespace. All 55 installed versions and 425 pip/Relenv bootstrap Python files matched; cryptography/CFFI/ZeroMQ checks passed. SDK native libraries/compiler and whole OS were not rebuilt |
-| Salt SDK source/legal retention | PARTIAL | 144 components/146 inputs and 144 combined legal records passed archive integrity checks against actual SDK inventory; full MPL/Apache/PHP supplements and embedded msgpack notices retained. Individual decisions cover 48 crates and 29 Python runtime/build distributions; 67 SDK components and full release remain uncleared. Previously verified downloads and inherited compiler inventory were used for this retention check; full reconstruction is NOT_RUN |
+| Salt SDK source/legal retention | PARTIAL | 144 components/146 inputs and 144 combined legal records passed archive integrity checks against actual SDK inventory; full MPL/Apache/PHP supplements and embedded msgpack notices retained. Individual decisions cover 48 crates and 32 Python runtime/build distributions; 64 SDK components and full release remain uncleared. Previously verified downloads and inherited compiler inventory were used for this retention check; full reconstruction is NOT_RUN |
 | Embedded module notices and signatures | PASS | Exact upstream OpenVPN DCO, NAT RTSP and NetFlow headers/README/CREDITS plus full GPL/exception texts retained without removing features or granting release clearance. Native module compilation, matching signatures and package audits passed in the same-cohort diagnostic recovery |
 | sFlow parallel cJSON dependency | PASS | Unpatched standalone parallel shared-library build reproduced missing cJSON.o; explicit prerequisite fixed the link and native make/test plus actual JSON pointer access passed. All configured sFlow features remain enabled |
 | Transient ISO download retry | PASS | Only wget network exit 4 retried, at most three attempts with unchanged URL/arguments and downstream signature/hash checks; recovery/exhaustion and non-network failure tests passed. Native debootstrap integration checked; this is not completed ISO evidence |
@@ -67,28 +67,27 @@ the changed criteria belong in the latest PR review after release readiness.
 | Boot artwork source preparation | PASS | Both restricted boot PNG inputs replaced before compilation/source export; supplied SVG rendered onto a 640x480 canvas, visually inspected, theme contrast and dated provenance recorded; actual firmware UI remains unverified |
 | Streaming source extraction | PASS | Authenticated outer archive and selected upstream build component; all 260 regular-file hashes matched the earlier extraction; late unsafe members remove private staging without exposing partial results |
 | Native package-toolchain container | PASS | Native AMD64 toolchain image built after correcting package-name/snapshot dependency failures; package/ISO build success is not implied |
-| Complete native AMD64 ISO | INCOMPLETE | Frozen baseline de086d34bf50cf1a4ee762871ac689697ebf7344 completed core/kernel/VPP/base/Go/Kea/Salt/Podman, then stopped on embedded module-notice packaging. Same-cohort diagnostic recovery with targeted module-notice and sFlow dependency fixes passed all 169 package audits and reached ISO assembly. Transient snapshot downloads recovered and base-system installation passed. A conflicting EFI/BIOS GRUB metapackage selection was corrected to grub-efi-amd64 plus grub-pc-bin; actual signed-snapshot APT dependency simulation passed, and ISO assembly is being retried. This is not a current-head release candidate; no complete ISO exists yet |
-| Complete native ARM64 ISO | INCOMPLETE | Frozen baseline de086d34bf50cf1a4ee762871ac689697ebf7344 completed core/kernel/VPP/base/Go/Kea generation and is compiling Salt dependencies within a measured 3 GiB hard memory limit. No completed ISO/current-head acceptance exists; targeted later packaging fixes are not retroactively applied to the running build |
+| Diagnostic native AMD64 ISO | PASS | Same-cohort recovery completed 169 package audits and ISO assembly. Targeted guest/installer fixes passed actual fresh OVMF/TCG boot, individual enrollment, native installation, retained administrator login without ISO, reboot and clean shutdown. Empty-name/short-password/mismatch retries passed. This is not a clean current-head release candidate |
+| Diagnostic native ARM64 ISO | PASS | Same-cohort recovery completed 169 package audits and ISO assembly. Durable serial GRUB selection and targeted guest fixes passed actual fresh AAVMF/KVM boot, enrollment, installation, retained administrator login without ISO, reboot and clean shutdown. Factory SquashFS remained byte-identical to the input ISO after installation. This is not a clean current-head release candidate |
 | Disk-format conversion primitive | PASS | Actual patterned 50 GiB sparse disk converted to standalone QCOW2 and streamOptimized VMDK; qemu-img checks and full content comparisons passed. Synthetic data only, no operating system or boot/OCI evidence |
-| Installed QCOW2/VMDK | NOT_CREATED | Fresh ISO install, conversion and whole-disk sanitization unverified |
-| Local unprovisioned/provisioned boots | NOT_RUN | Actual KVM/guest integration and access evidence missing |
+| Sanitized OS QCOW2/VMDK | INCOMPLETE | Fresh installation works. Earlier live-root repacking failed; distribution cleanup now requires the installed immutable layer to match the ISO, discards the runtime overlay only after clean shutdown, sanitizes the factory layer offline and clears journal/free blocks. Actual conversion and final-clone acceptance remain incomplete |
+| Final exported-image boots | NOT_RUN | Diagnostic installed disks boot and retain the original administrator on both architectures. Final sanitized exports still require separate unprovisioned/provisioned boots, identity regeneration and NetBird lifecycle validation |
 | Live OCI, AMD64 and ARM64 | NOT_RUN | No cloud operation performed; outside this task's deployment scope |
 
 The AMD64 environment has no KVM device. The native ARM64 environment exposes
 a KVM device; usable virtualization and sufficient memory still require checks
 at the actual invocation. Its limited free memory requires measured resource
-bounds. Runtime availability is checked at invocation. Full disk/access
-validation has not yet run on either environment.
+bounds. Runtime availability is checked at invocation. Diagnostic ISO/install/access/reboot checks passed with native AMD64 TCG and ARM64 KVM. Final sanitized-disk acceptance remains incomplete.
 
 ## Acceptance criteria mapping
 
 | AC | Implemented primitives | Remaining acceptance work |
 | --- | --- | --- |
 | 1 | Public source lock, authenticated acquisition, ephemeral signing-key API, safe source extraction, native checks | Complete fixed transitive dependency closure and integrated fresh-checkout validation |
-| 2 | Native package recipes/config selection, ELF/EFI/kernel helpers, module-signature verification | Both actual full ISO builds/audits and verification of all runtime recipes |
+| 2 | Native package recipes/config selection, ELF/EFI/kernel helpers, module-signature verification | Clean current-head candidates and complete runtime verification; diagnostic ISO builds passed |
 | 3 | Supplied SVG, conversion/OS identity helper, attribution/license separation | Final-image branding/license audit and actual UI/installer verification |
 | 4 | Non-secret service schema, controller, separate one-shot enrollment, failure-path tests | Actual both-architecture NetBird enrollment/lifecycle/save/reboot tests |
-| 5 | Standalone 50 GiB conversion/integrity/equivalence helper | Actual installer, whole-disk cleanup and QCOW2/VMDK results |
+| 5 | Standalone 50 GiB conversion/integrity/equivalence helper | Whole-disk cleanup and real OS QCOW2/VMDK results; actual installers passed |
 | 6 | Offline logical cleanup, console enrollment implementation | Actual proof of guest integration, free-space/journal cleanup and fresh-firmware/access/DHCP/identity tests |
 | 7 | Component archive/member integrity and inventory validators | Complete source/dependency coverage, exact component/license audit, real reconstruction |
 | 8 | Both runner-variable/default/label policies and native checks | Actual supported runner/resource/virtualization evidence for the wired workflow |
@@ -111,6 +110,4 @@ Published reruns take a verification-only path before any build.
 
 This does **not** make publication ready. `license-audit.json` currently records
 only the first individually audited components. Full source reconstruction and actual NetBird enrollment/save/reboot
-evidence are still NOT_RUN and block the pipeline. The runtime installation,
-repacking/journal/free-space sanitization and both-format boot code are not yet
-validated on real native KVM runners. They must not be inferred from static CI.
+evidence are still NOT_RUN and block the pipeline. Diagnostic native installations and disk-only access/reboot passed on both architectures. Offline overlay removal, journal/free-space sanitization and both-format boot acceptance remain incomplete. They must not be inferred from static CI.

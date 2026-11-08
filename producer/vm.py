@@ -15,6 +15,7 @@ from .architecture import native
 from .disks import convert
 from .sources import sha256
 from .sanitize import audit, sanitize
+from .guest_diagnostics import GuestCommandError
 
 
 class VM:
@@ -101,7 +102,7 @@ class VM:
             self.child.expect_exact(prompt,timeout=timeout);self.child.sendline(secret)
         self.child.expect(end+r'(\d+)',timeout=timeout)
         data=self.child.before;status=int(self.child.match.group(1));self.child.expect(self.prompt)
-        if status:raise RuntimeError('Private guest command failed')
+        if status:raise GuestCommandError(status,data)
         return re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]','',data).strip()
 
     def reboot(self):
@@ -121,6 +122,9 @@ class VM:
 
     def poweroff(self):
         self.child.sendline('sudo -n systemctl poweroff --no-block')
+        self.wait_for_poweroff()
+
+    def wait_for_poweroff(self):
         try:
             # Drain serial output while shutdown proceeds; an unread socket can
             # block the guest console and prevent QEMU from terminating.
@@ -140,39 +144,53 @@ class VM:
         self.password=None
 
 
-def offline_cleanup(disk,work,arch):
+def require_factory_layer(guestfs, image, expected_sha256):
+    """Reject a modified installed base before discarding the runtime overlay."""
+    if not re.fullmatch(r'[0-9a-f]{64}',expected_sha256):
+        raise ValueError('A factory root SHA256 is required')
+    if guestfs.checksum('sha256',image)!=expected_sha256:
+        raise ValueError('Installed immutable root differs from the input ISO')
+
+
+def offline_cleanup(disk,work,arch,expected_root_sha256):
     import guestfs
-    os.environ['LIBGUESTFS_BACKEND']='direct'
-    os.environ['LIBGUESTFS_BACKEND_SETTINGS']='force_kvm'
-    g=guestfs.GuestFS(python_return_dict=True)
-    g.add_drive_opts(str(disk),format='qcow2',discard='enable');g.launch()
-    try:
-        partitions=g.list_partitions()
-        if len(partitions)!=3 or g.vfs_type('/dev/sda3')!='ext4':raise ValueError('Unexpected installed disk layout')
-        g.mount('/dev/sda3','/')
-        images=g.glob_expand('/boot/*/*.squashfs')
-        if len(images)!=1:raise ValueError('Expected one installed squashfs')
-        parent=str(Path(images[0]).parent)
-        for path in [parent+'/rw',parent+'/work','/config','/opt/vyatta/etc/config']:
-            if g.exists(path):g.rm_rf(path)
-        for path in [parent+'/rw',parent+'/work']:g.mkdir_p(path)
-        source=Path(work)/'sanitized.squashfs';g.download(images[0],str(source))
-        root=Path(work)/'offline-root'
-        subprocess.run(['unsquashfs','-d',str(root),str(source)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        sanitize(root,arch);audit(root)
-        rebuilt=Path(work)/'final.squashfs'
-        subprocess.run(['mksquashfs',str(root),str(rebuilt),'-noappend','-comp','xz','-processors','2','-mem','512M','-no-progress'],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-        g.upload(str(rebuilt),images[0])
-        g.umount_all()
-        # Clear the old journal before zeroing free blocks. Recreate an empty
-        # journal afterwards. The appliance sees only this task-owned disk.
-        features=g.tune2fs_l('/dev/sda3').get('Filesystem features','')
-        if 'inline_data' in features:raise ValueError('Inline inode data requires additional erasure validation')
-        g.debug('sh',['e2fsck -fy /dev/sda3'])
-        g.debug('sh',['tune2fs -O ^has_journal /dev/sda3'])
-        g.mount('/dev/sda3','/');g.zero_free_space('/');g.fstrim('/');g.umount_all()
-        g.debug('sh',['tune2fs -j /dev/sda3']);g.debug('sh',['e2fsck -fy /dev/sda3'])
-    finally:g.shutdown();g.close()
+    from .guestfs_kernel import appliance_kernel
+    with appliance_kernel(Path('/debs'),arch,Path(work)/'guestfs-appliance'):
+        g=guestfs.GuestFS(python_return_dict=True)
+        g.set_trace(False);g.set_verbose(False);g.set_memsize(768)
+        launched=False
+        try:
+            g.add_drive_opts(str(disk),format='qcow2',discard='enable');g.launch();launched=True
+            partitions=g.list_partitions()
+            if len(partitions)!=3 or g.vfs_type('/dev/sda3')!='ext4':raise ValueError('Unexpected installed disk layout')
+            g.mount('/dev/sda3','/')
+            images=g.glob_expand('/boot/*/*.squashfs')
+            if len(images)!=1:raise ValueError('Expected one installed squashfs')
+            require_factory_layer(g,images[0],expected_root_sha256)
+            parent=str(Path(images[0]).parent)
+            for path in [parent+'/rw',parent+'/work','/config','/opt/vyatta/etc/config']:
+                if g.exists(path):g.rm_rf(path)
+            for path in [parent+'/rw',parent+'/work']:g.mkdir_p(path)
+            source=Path(work)/'sanitized.squashfs';g.download(images[0],str(source))
+            root=Path(work)/'offline-root'
+            subprocess.run(['unsquashfs','-processors','2','-d',str(root),str(source)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            sanitize(root,arch);audit(root)
+            rebuilt=Path(work)/'final.squashfs'
+            subprocess.run(['mksquashfs',str(root),str(rebuilt),'-noappend','-comp','xz','-processors','2','-mem','512M','-no-progress'],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            g.upload(str(rebuilt),images[0])
+            g.umount_all()
+            # Clear the old journal before zeroing free blocks. Recreate an empty
+            # journal afterwards. The appliance sees only this task-owned disk.
+            features=g.tune2fs_l('/dev/sda3').get('Filesystem features','')
+            if 'inline_data' in features:raise ValueError('Inline inode data requires additional erasure validation')
+            g.debug('sh',['e2fsck -fy /dev/sda3'])
+            g.debug('sh',['tune2fs -O ^has_journal /dev/sda3'])
+            g.mount('/dev/sda3','/');g.zero_free_space('/');g.fstrim('/');g.umount_all()
+            g.debug('sh',['tune2fs -j /dev/sda3']);g.debug('sh',['e2fsck -fy /dev/sda3'])
+        finally:
+            try:
+                if launched:g.shutdown()
+            finally:g.close()
 
 
 def build_disks(iso,arch,version,work,output,netbird_verify=None):
@@ -181,26 +199,19 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None):
     live=VM(arch,disk,work/'live',iso)
     try:
         live.enroll();live_user=live.username;live_password=live.password
-        installer_password=live.install();live.poweroff()
+        live.install();live.poweroff()
     finally:live.close()
     installed=VM(arch,disk,work/'installed')
     try:
-        installed.enroll()
-        installed.command('sudo -n mkdir /tmp/shirube-export; sudo -n touch /run/shirube-private-export-session')
-        for source,name in [('/src/producer/sanitize.py','sanitize.py'),('/src/guest/export_prepare.py','prepare.py')]:
-            data=base64.b64encode(Path(source).read_bytes()).decode()
-            # Transfer in bounded commands; never transfer a password or key.
-            installed.command('sudo -n touch /tmp/shirube-export/'+name+'.b64')
-            for offset in range(0,len(data),512):
-                installed.command('printf %s '+data[offset:offset+512]+' | sudo -n tee -a /tmp/shirube-export/'+name+'.b64 >/dev/null')
-            installed.command('sudo -n sh -c "base64 -d /tmp/shirube-export/'+name+'.b64 > /tmp/shirube-export/'+name+'"')
-        if 'SHIRUBE_ROOT_REPACKED' not in installed.command('sudo -n python3 /tmp/shirube-export/prepare.py '+arch,timeout=1200):
-            raise ValueError('Root sanitization/repacking did not finish')
-        installed.process.wait(timeout=120)
-        installed.close()
-        live_password=installer_password=None
+        installed.username=live_user;installed.password=live_password;installed.login()
+        installed.poweroff()
+        live_password=None
     finally:installed.close()
-    offline_cleanup(disk,work,arch)
+    factory=work/'iso-factory.squashfs'
+    subprocess.run(['xorriso','-osirrox','on','-indev',str(iso),'-extract',
+                    '/live/filesystem.squashfs',str(factory)],check=True,
+                   stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    offline_cleanup(disk,work,arch,sha256(factory))
     converted=convert(disk,work/'converted')
     images={};identities=[];observations=[];netbird_results=[]
     for image in converted:

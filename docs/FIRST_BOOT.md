@@ -41,3 +41,19 @@ old ext4 journal, zeroes/discards free space, recreates the journal and checks b
 conversions. Fresh-firmware unprovisioned/provisioned tests use disposable
 backing overlays and compare new machine/SSH identities. These paths still need
 actual native KVM validation before any sanitization/boot gate can be accepted.
+
+## Distribution disk preparation
+
+The producer installs into a new disposable disk, confirms access with the
+originally enrolled administrator and shuts the guest down cleanly. Offline
+inspection requires the installed immutable SquashFS to match the input ISO
+by SHA256 before deleting its runtime overlay. The factory filesystem is then
+sanitized and audited, and the ext4 journal/free space are cleared before
+conversion. Existing test disks are never distribution inputs. Tests boot
+separate overlays with fresh firmware; the exported files remain unchanged.
+
+配布用には新規ディスクへインストールし、最初の管理者でアクセスを確認して正常停止します。
+インストール済みの読み取り専用OS領域がISOとSHA256で一致することを確認してから、
+実行時の書き込み領域をオフラインで削除します。工場出荷用ファイルシステムの消去・監査と
+journal／空き領域の消去後に変換します。既存の試験ディスクは配布用に転用しません。
+起動試験は新しいfirmwareと別の書き込み領域を使用し、配布ファイルを変更しません。
