@@ -154,5 +154,226 @@
       },
       "salt_example_origin": "stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910"
     }
+  },
+  "embedded_legal_notices": {
+    "openvpn-dco": {
+      "stream_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "files": [
+        {
+          "path": "README",
+          "sha256": "b252a1e25bcbc115325e825d0fbad9ee940a63df5ce28fc680ac3c74fcfd5822",
+          "prefix_bytes": 3851,
+          "notice_sha256": "b252a1e25bcbc115325e825d0fbad9ee940a63df5ce28fc680ac3c74fcfd5822"
+        },
+        {
+          "path": "compat-include/net/gso.h",
+          "sha256": "d1de121bd7e79572163421bab8c174ef96d6d486c96f25bdb328307414528913",
+          "prefix_bytes": 180,
+          "notice_sha256": "02fbb60fcf9c9ed40b360dd4181a4ca188415acba8ddbf38d6547b90b10a9928"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/addr.h",
+          "sha256": "b5e8f8a0f0b50c4e02ec0fb197bece34305a5a478440df6563d18700a70031af",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/bind.c",
+          "sha256": "53dc90f9d9714a5e4c09d8e16ed7e1aa4894a8ac587fef0dfaaa8a3ca03063e9",
+          "prefix_bytes": 214,
+          "notice_sha256": "4d58c3911e616a15283b2ddec98e420d7a4114483db2489981dc5375275f0f2e"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/bind.h",
+          "sha256": "f3b0c7fd62a292c06a25f95f6622d8721fe4f2850308f7dbfab1ad0b0776bdcc",
+          "prefix_bytes": 211,
+          "notice_sha256": "98f77a7fb03d6a33d4a0c1aae1a745cef7cd6503aff8a5511a7a9cd9f02981a1"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto.c",
+          "sha256": "56c24ac4a4a7b50a4600b5baa44ce5985998812f0196e226ec8e71f55d400b1a",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto.h",
+          "sha256": "9c4e55f3da0379562b7b9e344586209f2a9fca3dd69deca6b18cc310c7b9cfa1",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto_aead.c",
+          "sha256": "18aff5dd0e6a04f570990d1a4f2eda4bfd1529969f69fabb6d8335a8140dda2b",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto_aead.h",
+          "sha256": "78692a2872850fefad19f2bdbb25b2d12d0510d9395f73c644e85b10bfa1e5d2",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/main.c",
+          "sha256": "b515d1f58b6b21e8659ad4394ec16769997853463cffd8594eec0d08b6dbec92",
+          "prefix_bytes": 214,
+          "notice_sha256": "8c84d773299b2d20fe07f67c1af532f8918082d8e8f701d0eb527855d7bb2da3"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/main.h",
+          "sha256": "ba9d2badf13d02969aebe39031debd53bd5b9c0e9e60a2657aabcdf20828492f",
+          "prefix_bytes": 222,
+          "notice_sha256": "39414a81880430c65315e098b4fcae2d77f8c0a37ab2aa3fd035fa6c3a7d9b4f"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/netlink.c",
+          "sha256": "b957287bffb25367a47ac1751b6e54f37a460f4b41edd9258c34fb7749f2f1fa",
+          "prefix_bytes": 178,
+          "notice_sha256": "c6cffc89e8a9c859c0f13119b8da0377c217bb1dcbb417973539e33f7dd7b926"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/netlink.h",
+          "sha256": "16857c2dec2f2c7a605db0266ad7f20b7727d953f95748c8f493365389a52c99",
+          "prefix_bytes": 186,
+          "notice_sha256": "c9a49238d22ba873d9ec12c3f79e667c8393145e15337194bf7f2f3d583ca0a5"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/ovpn.c",
+          "sha256": "ed94b2f7d48aa9c7ed4121e2c210a8bbee20130ebf0688151132105cca51adba",
+          "prefix_bytes": 214,
+          "notice_sha256": "2f21f7aac3169fa141c63d22975a848d3fe32e0f8435cb7d88be6cf8131df3a5"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/ovpn.h",
+          "sha256": "f0e7036c64dc53c80f8eaca7c64ef12f6fa7997c3138f085a90f02883e92d704",
+          "prefix_bytes": 221,
+          "notice_sha256": "c43bba6aca471eb116c3cce01a601fdb45db51c6d6fb5963801b47135330b073"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/ovpnstruct.h",
+          "sha256": "a6df65c30e9c76d311379b67aa5d5447a1ac185e1baa0607ee44360f8f9baf65",
+          "prefix_bytes": 222,
+          "notice_sha256": "39414a81880430c65315e098b4fcae2d77f8c0a37ab2aa3fd035fa6c3a7d9b4f"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/peer.c",
+          "sha256": "79d5d9beed7077288553fd9a3151fe832427a2de09a17ed3ecfc19cd8274e26d",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/peer.h",
+          "sha256": "0d26861f1643db5a8d67e860f093b3ab364bba460c1fd4f762524ab6c5fc687a",
+          "prefix_bytes": 221,
+          "notice_sha256": "b10efb6e8b5d1c0a97419960f59678bd45c54034d05cabc8f890b7c8f4887564"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/pktid.c",
+          "sha256": "fb03252a9a1cd439383aef500ec737a36c6fb2f23a8e1074bf42b47bb71d0834",
+          "prefix_bytes": 214,
+          "notice_sha256": "8c84d773299b2d20fe07f67c1af532f8918082d8e8f701d0eb527855d7bb2da3"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/pktid.h",
+          "sha256": "bd2c57e1f31a8a36fc4934189e7178fbad18549eba8cdb562be0c359cf3e9e80",
+          "prefix_bytes": 222,
+          "notice_sha256": "21d8ee4edaca142c73be41caea3815b3f8d9346b306678873879a004565ea204"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/proto.h",
+          "sha256": "41132f7d32a546eef257dd5520ca816db0dd91e552ee24214d2ecf82200361fa",
+          "prefix_bytes": 222,
+          "notice_sha256": "21d8ee4edaca142c73be41caea3815b3f8d9346b306678873879a004565ea204"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/rcu.h",
+          "sha256": "dc30764cb7e04224139c1558e21caec5f5cd4d2fa85c3732d9264d50fba5d6c8",
+          "prefix_bytes": 222,
+          "notice_sha256": "39414a81880430c65315e098b4fcae2d77f8c0a37ab2aa3fd035fa6c3a7d9b4f"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/skb.h",
+          "sha256": "e8342c983ea9c64a56e50c088f6829fabfdd70788b4d6bf07ee33fc457cde47e",
+          "prefix_bytes": 222,
+          "notice_sha256": "21d8ee4edaca142c73be41caea3815b3f8d9346b306678873879a004565ea204"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/sock.c",
+          "sha256": "d3a92fa0c0540ab7607589671326b4ce6424660a52341e49827c3c7fc027049e",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/sock.h",
+          "sha256": "a2eff2bce16135a8a38abb5df49e9301bdc484d558ec4300fdae88d446982835",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/stats.c",
+          "sha256": "85809b89d62b17562b15b22c81effe0f7ade8592853d3f7077c5e930afafd259",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/stats.h",
+          "sha256": "a27298b261ff41508e87065a0084466cd56a7a2558b1c8be890d415248ec749b",
+          "prefix_bytes": 257,
+          "notice_sha256": "33d76525acb0028eae717252745a713520e04ed7b3a341ee6a82957c2e486167"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/tcp.c",
+          "sha256": "b87fe3824e09434ebc7107908fdfe87402177a1828e6590950c4bb48abfd9226",
+          "prefix_bytes": 178,
+          "notice_sha256": "6b3df0a6cc86bef3020b4b764bc3489a248a71d30f95fe9be8d2e79040753f64"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/tcp.h",
+          "sha256": "fccbbea4e99c5d4c007cbd2f37c6780e49aea79f2e29d1fbdca29faec446d8f5",
+          "prefix_bytes": 186,
+          "notice_sha256": "dda93d038ece95280faadaf3ef9c4658ceb3f0869eb8e43881fa6637db832426"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/udp.c",
+          "sha256": "4a32eb82d3c56ad4b4ed4cc7341551f8d266c0164c2c2a2ebe2fe7574b5ce823",
+          "prefix_bytes": 178,
+          "notice_sha256": "6b3df0a6cc86bef3020b4b764bc3489a248a71d30f95fe9be8d2e79040753f64"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/udp.h",
+          "sha256": "6ba43888311928c2e978566e1d5b119f1590c97fff8dae4c7b6fa62c184b1f1c",
+          "prefix_bytes": 186,
+          "notice_sha256": "dda93d038ece95280faadaf3ef9c4658ceb3f0869eb8e43881fa6637db832426"
+        },
+        {
+          "path": "include/uapi/linux/ovpn_dco.h",
+          "sha256": "92c86ba6c37fde7205232825fb3429360bfc291817a88f4b5ddc6218d0daf982",
+          "prefix_bytes": 258,
+          "notice_sha256": "2410d78f4c8649fe68c9776050d41ad72f5acdcf4b9433cc72c096f4b1e00e2b"
+        },
+        {
+          "path": "linux-compat.h",
+          "sha256": "15daa68f940dd7228e9301a91d829bc9a935b5d1b08350c492e756d06c556e41",
+          "prefix_bytes": 220,
+          "notice_sha256": "53e08319be3d89887689ece29930fb08a051f95584d7025d02ea2c364e3f0758"
+        },
+        {
+          "path": "tests/ovpn-cli.c",
+          "sha256": "b9d8d988be1c6973a8bf5cfd777869de58b1474a3463f97ae040228a4374c782",
+          "prefix_bytes": 178,
+          "notice_sha256": "c6cffc89e8a9c859c0f13119b8da0377c217bb1dcbb417973539e33f7dd7b926"
+        }
+      ],
+      "full_licenses": [
+        {
+          "source": "common:GPL-2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "source": "kernel:exceptions/Linux-syscall-note",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ]
+    }
   }
 }

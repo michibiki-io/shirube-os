@@ -279,6 +279,8 @@ def modules(work):
     kernel=headers()
     common=Path('/sources/vyos-build/vyos-build/scripts/package-build/linux-kernel')
     ovpn=snapshot('ovpn-dco-v0.2.20231117/ovpn-dco',work/'ovpn')
+    from producer.embedded_notices import retain as retain_embedded_notices
+    retain_embedded_notices(ovpn,'openvpn-dco',Path('/src/source-lock.json'))
     shell(f'''make KERNEL_SRC={kernel} clean
 make -j2 KERNEL_SRC={kernel}
 mkdir -p package/lib/modules/6.6.128-vyos/extra
