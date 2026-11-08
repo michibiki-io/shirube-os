@@ -188,7 +188,9 @@ original source and original notices, with a combined source identity.
 The timelib archive lacks a standalone complete PHP license, so its original
 README notices and a separately hashed full upstream PHP-3.01 license are both
 retained. The openssl Rust crate's short Apache header is supplemented with a
-separately hashed complete upstream Apache-2.0 license. Original copyright
+separately hashed complete upstream Apache-2.0 license. The Python msgpack Apache
+header and certifi MPL-2.0 header are also supplemented with full upstream license
+texts, while their original headers remain intact. Original copyright
 headers remain in the complete source archive.
 Source retention and archive verification do not clear redistribution. The lock
 explicitly records the remaining toolchain/source-closure work and reconstruction
@@ -214,3 +216,20 @@ Salt SDKの実際のPython依存一覧を固定入力と照合し、対応ソー
 48個のRust依存については、固定したソースと完全なライセンス資料に対する配布条件を
 監査記録へ追加した。これは各crateの未変更ソースに限った判断であり、cryptography全体、
 OpenSSL本体、Rust標準ライブラリ、SDKの残りの依存、OS全体の配布許諾を意味しない。
+
+msgpackのApacheヘッダーとcertifiのMPL-2.0ヘッダーについても、元の表示を保持し、
+ハッシュを固定した上流のライセンス全文を追加で収録する。
+
+The original charset-normalizer 3.2.0 source has a separate `data/NOTICE.md`
+covering mixed Wikipedia CC-BY-SA/public-domain test files. It does not identify
+per-file origins or the CC-BY-SA version. The complete original source archive
+therefore remains uncleared pending fixture attribution or a scoped source export;
+the library MIT notice does not establish permission for those separate files.
+Runtime functionality is preserved while this source-distribution question is
+resolved.
+
+charset-normalizer 3.2.0の元ソースでは、テストデータのNOTICEがライブラリ本体の
+MIT表示と分かれている。WikipediaのCC-BY-SAまたはpublic domainと説明されるが、
+ファイルごとの由来とCC-BY-SAの版が不明なため、元ソース全体は配布許諾未確認として
+記録した。帰属の確認または対象を明示したソース出力を整えるまで公開条件を通さず、
+実行時の機能は維持する。

@@ -1663,6 +1663,20 @@
         "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
       ],
       "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "pypi:charset-normalizer@3.2.0": {
+      "source_identity": "3bb3d25a8e6c0aedd251753a79ae98a093c7e7b471faa3aa9a93a81431987ace",
+      "copyright_sha256": "9fe78914ac1f5b478bcc3145813693aa2f079723cec489c8a60b358b00802986",
+      "redistributable": false,
+      "license": "MIT AND LicenseRef-Unresolved-Test-Data",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/3bb3d25a8e6c0aedd251753a79ae98a093c7e7b471faa3aa9a93a81431987ace.copyright",
+      "conditions": [
+        "The library code has an MIT notice; data/NOTICE.md separately describes Wikipedia CC-BY-SA or public-domain test data without per-file source attribution or a CC-BY-SA version.",
+        "Resolve the exact fixture attribution/license or prepare an explicitly scoped corresponding-source export before redistributing the complete source archive.",
+        "Do not infer fixture redistribution permission from the library MIT notice or alter runtime functionality to avoid this audit."
+      ],
+      "scope": "The exact original source archive remains uncleared; this is a recorded source-distribution question, not a finding that the runtime library is unusable."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
