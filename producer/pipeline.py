@@ -23,7 +23,9 @@ def collect_iso_sources(iso,packages,output,architecture,version):
     return rootfs,source
 
 
-def release_candidate(sources, packages, output, architecture, version, commit, management):
+def release_candidate(sources, packages, output, architecture, version, commit, management,qemu_accelerator='kvm'):
+    from .architecture import release_accelerator
+    qemu_accelerator=release_accelerator(architecture,qemu_accelerator)
     sys.path.insert(0,'/src/native')
     from image import assemble
     from .vm import build_disks
@@ -32,7 +34,7 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     print('STAGE: exact corresponding source collection and component/license clearance',flush=True)
     rootfs,source=collect_iso_sources(result['iso'],packages,output,architecture,version)
     print('STAGE: fresh install, sanitization, conversions and fresh-instance boot/access tests',flush=True)
-    disks=build_disks(result['iso'],architecture,version,Path('/build-private/disk'),output,management.verify)
+    disks=build_disks(result['iso'],architecture,version,Path('/build-private/disk'),output,management.verify,accelerator=qemu_accelerator)
     checks={name:'NOT_RUN' for name in CHECKS}
     for name in ['build','architecture','module_signatures','sanitization','disk_equivalence','local_boot',
                  'unprovisioned_boot','provisioned_access','identity_regeneration']:
@@ -47,6 +49,7 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     generation=secrets.token_hex(32)
     observations={name:list(disks['observations']) for name in checks}
     observations['build']=['Source-built ISO SHA256: '+sha256(result['iso'])]
+    observations['local_boot'].append('Explicit QEMU accelerator: '+qemu_accelerator)
     observations['architecture']=['Native ELF/package audit count: '+str(result['audited_packages']), 'Architecture-specific EFI PE and kernel headers verified: '+architecture]
     observations['module_signatures']=['Verified signed modules: '+str(result['signed_modules_verified']),'Matching kernel certificate SHA256: '+result['kernel_certificate_sha256']]
     observations['branding']=['Supplied SVG and os-release inspected; actual installed version output checked on both disk formats']
@@ -54,6 +57,7 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     observations['disk_equivalence']=['Both standalone 50 GiB conversions passed qemu-img checks and source content comparison']
     observations['netbird']=['Actual native CLI commit/save, successful/failed enrollment cleanup, disable/enable, reboot identity, removal/reboot inactivity and secret scans passed for both disk-format clones'] if disks['netbird']=='PASS' else ['Required guest NetBird validation not completed']
     evidence={'source_commit':commit,'version':version,'architecture':architecture,'generation':generation,
+              'qemu_accelerator':qemu_accelerator,
               'factory_content_audit':source['factory_content_audit'],
               'checks':{name:{'status':status,'observations':observations[name] if status=='PASS' else ['Required validation not completed']} for name,status in checks.items()}}
     evidence_path=output/f'shirube-os-{version}-{architecture}-evidence.json';evidence_path.write_text(json.dumps(evidence,indent=2)+'\n')
@@ -66,6 +70,7 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
                           'vpp_commit':lock['external_git']['vpp']['commit'],'vpp_patches_commit':lock['external_git']['vpp-patches']['commit'],
                           'substitution':'; '.join(lock['substitutions'])},
               'architectures':{architecture:{'checks':checks,'oci':'NOT_RUN','virtual_size':50*1024**3,
+                  'qemu_accelerator':qemu_accelerator,
                   'standalone':True,'vmdk_subformat':'streamOptimized','signing_certificate_sha256':result['kernel_certificate_sha256'],
                   'repository_fingerprint':result['repository_fingerprint'],'generation':generation,'firmware':'UEFI',
                   'console':{'device':'ttyAMA0' if architecture=='arm64' else 'ttyS0','baud':115200},

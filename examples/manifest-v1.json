@@ -46,7 +46,8 @@
       "provisioning": {
         "method": "console-enrollment-v1",
         "default_credentials": false
-      }
+      },
+      "qemu_accelerator": "kvm"
     },
     "arm64": {
       "checks": {
@@ -79,7 +80,8 @@
       "provisioning": {
         "method": "console-enrollment-v1",
         "default_credentials": false
-      }
+      },
+      "qemu_accelerator": "kvm"
     }
   },
   "assets": [

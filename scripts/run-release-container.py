@@ -10,6 +10,7 @@ import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from producer.netbird_fixture import Fixture
 from producer.policy import version_parts
+from producer.architecture import release_accelerator,container_runtime
 
 
 def main():
@@ -24,7 +25,11 @@ def main():
     parser.add_argument('--cpus',type=int,default=4)
     parser.add_argument('--memory-gib',type=int,default=8)
     parser.add_argument('--cached-libraries',type=Path)
+    parser.add_argument('--qemu-accelerator',choices=['kvm','tcg'],default='kvm')
+    parser.add_argument('--docker-runtime',default='')
     args=parser.parse_args()
+    release_accelerator(args.architecture,args.qemu_accelerator)
+    container_runtime(args.docker_runtime,registered=True)
     if not re.fullmatch('sha256:[0-9a-f]{64}',args.image):raise ValueError('Immutable native toolchain image required')
     version_parts(args.version)
     if not re.fullmatch('[0-9a-f]{40}',args.commit):
@@ -39,7 +44,8 @@ def main():
     if args.cached_libraries:
         library_mounts=['-v',str(args.cached_libraries.resolve())+':/library-cache:ro']
         library_args=['--cached-libraries','/library-cache']
-    with Fixture(args.architecture,args.image,args.private) as fixture:
+    devices=['--device','/dev/kvm'] if args.qemu_accelerator=='kvm' else []
+    with Fixture(args.architecture,args.image,args.private,runtime=args.docker_runtime) as fixture:
         address=fixture.docker('inspect','--format',
             '{{(index .NetworkSettings.Networks "'+fixture.network+'").IPAddress}}',fixture.container).decode().strip()
         # The candidate retains public-input network access. Only its
@@ -47,12 +53,13 @@ def main():
         build=fixture.docker('create','-i','--network','bridge',
             '--label','io.michibiki.shirube.fixture='+fixture.nonce,
             '--add-host',fixture.hostname+':'+address,
-            '--privileged','--device','/dev/kvm','--cpus='+str(args.cpus),'--memory='+str(args.memory_gib)+'g',
+            '--privileged',*devices,'--cpus='+str(args.cpus),'--memory='+str(args.memory_gib)+'g',
             '--memory-swap='+str(args.memory_gib)+'g','--pids-limit=4096',
             '-v',str(output)+':/output','-v',str(project)+':/project-source.tar:ro',
             '-v',str(fixture.work/'cert.pem')+':/fixture/cert.pem:ro',
             *library_mounts,args.image,args.architecture,'--target','release','--version',args.version,
-            '--commit',args.commit,'--netbird-fixture-stdin',*library_args).decode().strip()
+            '--commit',args.commit,'--netbird-fixture-stdin','--qemu-accelerator',args.qemu_accelerator,
+            *library_args).decode().strip()
         fixture.docker('network','connect',fixture.network,build)
         # The producer consumes this before spawning any build subprocess.
         # No token or setup key appears in argv, environment or build logs.

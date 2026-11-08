@@ -84,3 +84,12 @@ Relevant merged PRs are selected by actual changed paths rather than PR-title
 formatting. `scripts/release/compute_release.py` and
 `scripts/release/generate_release_notes.py` expose the same canonical policy for
 local inspection.
+
+Release manifests and per-architecture evidence bind the explicitly selected
+`qemu_accelerator` (`kvm` or validated `tcg`). A missing or differing value fails
+validation. Architecture-specific virtualization/runtime/resource variables are
+documented in [BUILD.md](BUILD.md); resource or virtualization failure does not
+choose another runner or publish a partial result. ARM64 TCG is not yet accepted.
+
+manifestと検証記録の仮想化方式も照合します。不足・不一致は公開を拒否し、資源や
+仮想化の不足を別runnerへの自動切替で隠しません。ARM64のTCGは未合格です。

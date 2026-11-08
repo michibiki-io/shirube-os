@@ -329,6 +329,12 @@
             "default_credentials"
           ],
           "additionalProperties": false
+        },
+        "qemu_accelerator": {
+          "enum": [
+            "kvm",
+            "tcg"
+          ]
         }
       },
       "required": [
@@ -342,7 +348,8 @@
         "generation",
         "firmware",
         "console",
-        "provisioning"
+        "provisioning",
+        "qemu_accelerator"
       ],
       "additionalProperties": false
     },

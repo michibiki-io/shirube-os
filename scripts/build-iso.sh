@@ -9,6 +9,7 @@ memory_reserve=${SHIRUBE_HOST_MEMORY_RESERVE_MIB:-2048}
 architecture=${SHIRUBE_ARCHITECTURE:?}
 version=${SHIRUBE_VERSION:?}
 commit=${SHIRUBE_SOURCE_COMMIT:?}
+docker_runtime=${SHIRUBE_DOCKER_RUNTIME:-}
 output=${SHIRUBE_ISO_DIRECTORY:?}
 preserve_failed=${SHIRUBE_PRESERVE_FAILED_BUILD:-0}
 case "$preserve_failed" in
@@ -29,6 +30,11 @@ case "$architecture" in
   *) exit 2 ;;
 esac
 [[ $(docker info --format '{{.Architecture}}') =~ $aliases ]] || { echo 'Native Docker daemon required' >&2; exit 1; }
+runtime_args=()
+if [[ -n $docker_runtime ]]; then
+  [[ $docker_runtime =~ ^[A-Za-z0-9][A-Za-z0-9_.-]*$ ]] || { echo 'Invalid scoped Docker runtime name' >&2; exit 2; }
+  runtime_args=(--runtime="$docker_runtime")
+fi
 [[ ! -e "$output" ]] || { echo 'New ISO output directory required' >&2; exit 1; }
 mkdir -p "$output"
 private_root=${SHIRUBE_BUILD_STATE_DIRECTORY:-$PWD/.work/build-state}
@@ -64,7 +70,7 @@ git archive --format=tar "$commit" > "$private/project-source.tar"
 tar -xf "$private/project-source.tar" -C "$private/source"
 docker buildx build --load --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
 image=$(cat "$private/image.id")
-docker run --rm --network none --entrypoint python3 -v "$output:/output" "$image" \
+docker run --rm --network none "${runtime_args[@]}" --entrypoint python3 -v "$output:/output" "$image" \
   -m producer.cli preflight "$architecture" --storage /output --stage iso --memory-gib "$build_memory"
 cache_args=()
 library_args=()
@@ -86,7 +92,7 @@ if [[ -n ${SHIRUBE_SOURCE_CACHE:-} ]]; then
 else
   source_args=()
 fi
-container_id=$(docker create --label "io.michibiki.shirube.task=$task_nonce" --privileged \
+container_id=$(docker create "${runtime_args[@]}" --label "io.michibiki.shirube.task=$task_nonce" --privileged \
   --cpus="$build_cpus" --memory="${build_memory}g" --memory-swap="${build_memory}g" --pids-limit=4096 \
   -v "$output:/output" -v "$private/project-source.tar:/project-source.tar:ro" "${cache_args[@]}" "$image" "$architecture" \
   --target iso --version "$version" --commit "$commit" "${source_args[@]}" "${source_audit_args[@]}" "${library_args[@]}")

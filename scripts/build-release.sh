@@ -7,6 +7,8 @@ build_memory=${SHIRUBE_BUILD_MEMORY_GIB:-8}
 architecture=${SHIRUBE_ARCHITECTURE:?}
 version=${SHIRUBE_VERSION:?}
 commit=${SHIRUBE_SOURCE_COMMIT:?}
+qemu_accelerator=${SHIRUBE_QEMU_ACCELERATOR:-kvm}
+docker_runtime=${SHIRUBE_DOCKER_RUNTIME:-}
 [[ $(git rev-parse HEAD) == "$commit" && -z $(git status --porcelain) ]] || { echo 'Exact clean merged checkout required' >&2; exit 1; }
 case "$architecture" in
   amd64) base=debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018; aliases='^(x86_64|amd64)$' ;;
@@ -14,7 +16,14 @@ case "$architecture" in
   *) echo 'Unsupported architecture' >&2; exit 1 ;;
 esac
 [[ $(docker info --format '{{.Architecture}}') =~ $aliases ]] || { echo 'Native Docker daemon required' >&2; exit 1; }
-[[ -r /dev/kvm && -w /dev/kvm ]] || { echo 'KVM unavailable; TCG is not validated' >&2; exit 1; }
+python3 -c 'from producer.architecture import release_accelerator,container_runtime; import sys; release_accelerator(sys.argv[1],sys.argv[2]); container_runtime(sys.argv[3],registered=True)' "$architecture" "$qemu_accelerator" "$docker_runtime"
+devices=()
+runtime_args=()
+if [[ $qemu_accelerator == kvm ]]; then
+  [[ -r /dev/kvm && -w /dev/kvm ]] || { echo 'Selected KVM mode requires a usable KVM device; no automatic fallback' >&2; exit 1; }
+  devices=(--device /dev/kvm)
+fi
+if [[ -n $docker_runtime ]]; then runtime_args=(--runtime="$docker_runtime"); fi
 output=${SHIRUBE_CANDIDATE_DIRECTORY:?}
 [[ ! -e "$output" ]] || { echo 'Fresh task-owned candidate directory required' >&2; exit 1; }
 mkdir -p "$output"
@@ -37,8 +46,8 @@ tar -xf "$private/project-source.tar" -C "$private/source"
 docker buildx build --load --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
 image=$(cat "$private/image.id")
 [[ $(docker image inspect "$image" --format '{{.Architecture}}') == "$architecture" ]]
-docker run --rm --network none --device /dev/kvm --entrypoint python3 -v "$output:/output" "$image" \
-  -m producer.cli preflight "$architecture" --storage /output --require-kvm --memory-gib "$build_memory"
+docker run --rm --network none "${runtime_args[@]}" "${devices[@]}" --entrypoint python3 -v "$output:/output" "$image" \
+  -m producer.cli preflight "$architecture" --storage /output --qemu-accelerator "$qemu_accelerator" --memory-gib "$build_memory"
 # Mount only the new task directory and the exact public project source archive.
 # Runtime privileges are needed by live-build mounts; no host PID/network,
 # credentials, Docker socket, SSH agent or unrelated filesystem is shared.
@@ -53,4 +62,5 @@ if [[ -n ${SHIRUBE_LIBRARY_CACHE_STORE:-} ]]; then
 fi
 python3 "$private/source/scripts/run-release-container.py" --architecture "$architecture" --image "$image" \
   --output "$output" --project-source "$private/project-source.tar" --private "$private/netbird-fixture" \
-  --version "$version" --commit "$commit" --cpus "$build_cpus" --memory-gib "$build_memory" "${library_args[@]}"
+  --version "$version" --commit "$commit" --cpus "$build_cpus" --memory-gib "$build_memory" \
+  --qemu-accelerator "$qemu_accelerator" --docker-runtime "$docker_runtime" "${library_args[@]}"

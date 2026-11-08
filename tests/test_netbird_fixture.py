@@ -8,6 +8,15 @@ from producer.netbird_fixture import Fixture
 
 
 class NetbirdFixtureTests(unittest.TestCase):
+    def test_scoped_runtime_only_affects_owned_container_creation(self):
+        with tempfile.TemporaryDirectory() as root:
+            fixture=Fixture('amd64','sha256:'+'a'*64,Path(root)/'private',runtime='runc')
+            with patch('producer.netbird_fixture.subprocess.run',return_value=subprocess.CompletedProcess([],0,b'id',b'')) as run:
+                fixture.docker('create','helper');self.assertIn('--runtime=runc',run.call_args.args[0])
+                fixture.docker('inspect','id');self.assertNotIn('--runtime=runc',run.call_args.args[0])
+            with self.assertRaises(ValueError):Fixture('amd64','image',Path(root)/'invalid',runtime='--other')
+            self.assertFalse((Path(root)/'invalid').exists())
+
     def fixture(self, root):
         return Fixture('amd64', 'sha256:'+'a'*64, Path(root)/'private')
 

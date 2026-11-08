@@ -35,7 +35,7 @@ class ReleaseTests(unittest.TestCase):
         for architecture in ['amd64', 'arm64']:
             generation = ('b' if architecture == 'amd64' else 'c')*64
             self.manifest['architectures'][architecture] = {
-                'checks':{x:'PASS' for x in CHECKS}, 'oci':'NOT_RUN', 'virtual_size':50*1024**3,
+                'checks':{x:'PASS' for x in CHECKS}, 'oci':'NOT_RUN', 'virtual_size':50*1024**3,'qemu_accelerator':'kvm',
                 'standalone':True, 'vmdk_subformat':'streamOptimized', 'signing_certificate_sha256':'d'*64,
                 'repository_fingerprint':'TEST-FIXTURE', 'generation':generation, 'firmware':'UEFI',
                 'console':{'device':'ttyAMA0' if architecture=='arm64' else 'ttyS0','baud':115200},
@@ -51,7 +51,7 @@ class ReleaseTests(unittest.TestCase):
             self.add(inventory, 'licenses', architecture, generation)
             evidence = self.root/f'{architecture}-evidence.json'
             evidence.write_text(json.dumps({'source_commit':self.commit, 'version':self.version,
-                'architecture':architecture, 'generation':generation,
+                'architecture':architecture, 'generation':generation,'qemu_accelerator':'kvm',
                 'checks':{x:{'status':'PASS','observations':['synthetic validator fixture only']} for x in CHECKS}}))
             self.add(evidence, 'evidence', architecture, generation)
         self.write()
@@ -70,6 +70,19 @@ class ReleaseTests(unittest.TestCase):
 
     def test_complete_metadata_contract(self):
         validate(self.root, self.commit, self.version)
+
+    def test_explicit_accelerator_must_match_actual_candidate_evidence(self):
+        self.manifest['architectures']['amd64']['qemu_accelerator']='tcg'
+        evidence=self.root/'amd64-evidence.json'
+        data=json.loads(evidence.read_text());data['qemu_accelerator']='tcg'
+        evidence.write_text(json.dumps(data))
+        asset=next(item for item in self.manifest['assets'] if item['name']==evidence.name)
+        asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
+        validate(self.root,self.commit,self.version)
+        data['qemu_accelerator']='kvm';evidence.write_text(json.dumps(data))
+        asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
+        with self.assertRaisesRegex(ValueError,'accelerator differs'):
+            validate(self.root,self.commit,self.version)
 
     def test_parent_clearance_cannot_hide_unreviewed_bundled_dependency(self):
         path=self.root/'amd64-licenses.json'

@@ -156,3 +156,14 @@ decisions are recorded; remaining groups and the complete OS remain uncleared.
 
 AMD64のDebian由来658パッケージも、復元済み原本と表示へ対応することを確認しました。
 独自ビルド72パッケージと残る許諾判断は、別の未達事項として扱います。
+
+Explicit release accelerator/runtime selection is implemented and focused checks
+passed for native mode policy, absent/invalid runtime handling, fixture argument
+scope, appliance environment restoration, candidate/evidence mode matching and
+workflow/schema structure. Existing AMD64 TCG diagnostic runtime evidence is
+separate from the complete clean-head production entry point, which remains
+unverified. ARM64 TCG is under additional diagnostic testing and is not accepted
+by the release entry point. KVM failure never triggers an automatic switch.
+
+実行方式とruntimeの明示選択を追加しました。設定・失敗時の拒否・環境復元の試験と、
+実機の起動試験は区別します。最新コミット全体のリリース実行とARM64のTCGは未合格です。

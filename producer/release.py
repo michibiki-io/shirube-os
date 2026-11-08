@@ -138,6 +138,8 @@ def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
             raise ValueError('Missing, differing or oversized release asset')
         scan_secrets(path)
     for architecture, candidate in manifest['architectures'].items():
+        from .architecture import release_accelerator
+        release_accelerator(architecture,candidate.get('qemu_accelerator'))
         if set(candidate.get('checks', {})) != CHECKS or any(
                 value != 'PASS' for value in candidate['checks'].values()):
             raise ValueError('A required check failed, was skipped or was not run')
@@ -176,6 +178,8 @@ def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
                 or evidence.get('architecture') != architecture or evidence.get('generation') != generation
                 or set(evidence.get('checks', {})) != CHECKS):
             raise ValueError('Evidence is not bound to this candidate')
+        if evidence.get('qemu_accelerator')!=candidate['qemu_accelerator']:
+            raise ValueError('Evidence accelerator differs from this candidate')
         for check, result in evidence['checks'].items():
             if result.get('status') != 'PASS' or not result.get('observations'):
                 raise ValueError('Missing actual observations for a required check')

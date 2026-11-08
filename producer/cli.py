@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from .architecture import preflight, runner
+from .architecture import preflight, runner, release_accelerator, container_runtime
 from .sources import fetch
 
 
@@ -13,6 +13,8 @@ def main():
     check.add_argument('architecture', choices=['amd64', 'arm64'])
     check.add_argument('--stage', choices=['iso','release'], default='release')
     check.add_argument('--require-kvm', action='store_true')
+    check.add_argument('--qemu-accelerator',choices=['kvm','tcg'])
+    check.add_argument('--docker-runtime',default='')
     check.add_argument('--memory-gib',type=int,default=8)
     check.add_argument('--storage', type=Path, default=Path('.'))
     acquire = subs.add_parser('fetch-stream')
@@ -24,8 +26,14 @@ def main():
     args = parser.parse_args()
     if args.command == 'preflight':
         if not 2<=args.memory_gib<=256:raise ValueError('Invalid native memory budget')
+        container_runtime(args.docker_runtime,registered=True)
+        need_kvm=args.require_kvm
+        if args.qemu_accelerator:
+            mode=release_accelerator(args.architecture,args.qemu_accelerator)
+            if args.require_kvm and mode!='kvm':raise ValueError('Conflicting explicit virtualization requirements')
+            need_kvm=mode=='kvm'
         preflight(args.architecture,args.storage,minimum_disk_gib=40 if args.stage=='iso' else 160,
-                  minimum_memory_gib=args.memory_gib,require_kvm=args.require_kvm)
+                  minimum_memory_gib=args.memory_gib,require_kvm=need_kvm)
     elif args.command == 'runner':
         print(json.dumps(runner(args.architecture, args.setting)))
     else:

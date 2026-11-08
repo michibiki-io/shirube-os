@@ -9,7 +9,7 @@ from .sources import sha256
 
 
 @contextmanager
-def appliance_kernel(packages, architecture, work):
+def appliance_kernel(packages, architecture, work, accelerator='kvm'):
     """Select matching kernel/modules without requiring the host's /boot.
 
     Supermin's custom-kernel interface is documented at
@@ -18,6 +18,7 @@ def appliance_kernel(packages, architecture, work):
     """
     if architecture not in {'amd64', 'arm64'}:
         raise ValueError('Unsupported appliance architecture')
+    if accelerator not in {'kvm','tcg'}:raise ValueError('Unsupported appliance accelerator')
     if not Path('/lib/modules').is_dir():
         raise ValueError('Producer image lacks the module directory required by supermin')
     work = Path(work)
@@ -55,14 +56,14 @@ def appliance_kernel(packages, architecture, work):
                 'SUPERMIN_MODULES': str(modules.resolve()),
                 'SUPERMIN_KERNEL_VERSION': version,
                 'LIBGUESTFS_BACKEND': 'direct',
-                'LIBGUESTFS_BACKEND_SETTINGS': 'force_kvm',
+                'LIBGUESTFS_BACKEND_SETTINGS': 'force_'+accelerator,
                 'LIBGUESTFS_CACHEDIR': str(cache.resolve()),
                 'LIBGUESTFS_TMPDIR': str(temporary.resolve())}
     previous = {name: os.environ.get(name) for name in settings}
     try:
         os.environ.update(settings)
         yield {'kernel_package_sha256': sha256(package), 'kernel_version': version,
-               'architecture': architecture}
+               'architecture': architecture, 'accelerator':accelerator}
     finally:
         for name, value in previous.items():
             if value is None:

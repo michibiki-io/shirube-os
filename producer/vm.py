@@ -152,10 +152,10 @@ def require_factory_layer(guestfs, image, expected_sha256):
         raise ValueError('Installed immutable root differs from the input ISO')
 
 
-def offline_cleanup(disk,work,arch,expected_root_sha256):
+def offline_cleanup(disk,work,arch,expected_root_sha256,accelerator='kvm'):
     import guestfs
     from .guestfs_kernel import appliance_kernel
-    with appliance_kernel(Path('/debs'),arch,Path(work)/'guestfs-appliance'):
+    with appliance_kernel(Path('/debs'),arch,Path(work)/'guestfs-appliance',accelerator=accelerator):
         g=guestfs.GuestFS(python_return_dict=True)
         g.set_trace(False);g.set_verbose(False);g.set_memsize(768)
         launched=False
@@ -193,15 +193,17 @@ def offline_cleanup(disk,work,arch,expected_root_sha256):
             finally:g.close()
 
 
-def build_disks(iso,arch,version,work,output,netbird_verify=None):
+def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kvm'):
+    from .architecture import release_accelerator
+    accelerator=release_accelerator(arch,accelerator)
     work=Path(work);work.mkdir();disk=work/'fresh.qcow2'
     subprocess.run(['qemu-img','create','-f','qcow2',str(disk),'50G'],check=True,stdout=subprocess.DEVNULL)
-    live=VM(arch,disk,work/'live',iso)
+    live=VM(arch,disk,work/'live',iso,accelerator=accelerator)
     try:
         live.enroll();live_user=live.username;live_password=live.password
         live.install();live.poweroff()
     finally:live.close()
-    installed=VM(arch,disk,work/'installed')
+    installed=VM(arch,disk,work/'installed',accelerator=accelerator)
     try:
         installed.username=live_user;installed.password=live_password;installed.login()
         installed.poweroff()
@@ -211,7 +213,7 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None):
     subprocess.run(['xorriso','-osirrox','on','-indev',str(iso),'-extract',
                     '/live/filesystem.squashfs',str(factory)],check=True,
                    stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    offline_cleanup(disk,work,arch,sha256(factory))
+    offline_cleanup(disk,work,arch,sha256(factory),accelerator=accelerator)
     converted=convert(disk,work/'converted')
     images={};identities=[];observations=[];netbird_results=[]
     for image in converted:
@@ -222,7 +224,7 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None):
             name=image.suffix.removeprefix('.')+('-provisioned' if provisioned else '-unprovisioned')
             clone=work/(name+'.qcow2')
             subprocess.run(['qemu-img','create','-f','qcow2','-F',image.suffix.removeprefix('.'),'-b',str(target),str(clone)],check=True,stdout=subprocess.DEVNULL)
-            vm=VM(arch,clone,work/name)
+            vm=VM(arch,clone,work/name,accelerator=accelerator)
             try:
                 if not provisioned:
                     vm.enrollment_prompt();observations.append(name+': fresh firmware, no ISO, enrollment prompt with no reusable login')
@@ -248,5 +250,5 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None):
             finally:vm.close()
         if sha256(target)!=before:raise ValueError('Boot tests modified an immutable export')
     if identities[0][0]==identities[1][0] or identities[0][1]==identities[1][1]:raise ValueError('Per-instance identities were reused')
-    return {'images':images,'observations':observations,'identity_regeneration':'PASS',
+    return {'images':images,'observations':observations,'identity_regeneration':'PASS','qemu_accelerator':accelerator,
             'netbird':'PASS' if len(netbird_results)==2 else 'NOT_RUN'}

@@ -363,3 +363,45 @@ never a wholesale work-directory export. Complete release integration remains op
 両アーキテクチャで同じ試験コードの再構築と動作確認を通過しました。取得用キャッシュを
 作業領域ごと公開せず、対応ソースには宣言済みの原本と必要な設定・表示だけを含めます。
 OS全体の再構築と配布ゲートへの組み込みは未完了です。
+
+## Explicit release virtualization and container runtime
+
+Release builds default to `SHIRUBE_QEMU_ACCELERATOR=kvm`. Missing KVM fails
+without selecting another accelerator. Native AMD64 can explicitly select `tcg`;
+diagnostic ISO/install/export/NetBird checks have passed in that mode. Production
+configuration now propagates the choice through installation, exported-image
+clones and the libguestfs appliance (`force_tcg`). The complete clean-head
+release path remains unverified. ARM64 TCG acceptance is still incomplete and
+is rejected by the release entry point; native ARM64 KVM remains the supported
+validated guest-test mode. No QEMU emulation is used to compile either OS.
+
+`SHIRUBE_DOCKER_RUNTIME=runc` selects an already registered runtime for this
+build's containers only. With an empty value the daemon default is preserved.
+There is no automatic runtime retry, daemon reconfiguration or provider switch.
+The fixture's management/helper/candidate containers receive the same explicit
+selection and retain their task ownership/cleanup checks. ISO-only builds support
+the same scoped runtime selection without requiring KVM.
+
+The release workflow accepts architecture-specific repository variables
+`SHIRUBE_QEMU_ACCELERATOR_AMD64` / `_ARM64`, `SHIRUBE_DOCKER_RUNTIME_AMD64` /
+`_ARM64`, `SHIRUBE_BUILD_CPUS_AMD64` / `_ARM64` and
+`SHIRUBE_BUILD_MEMORY_GIB_AMD64` / `_ARM64`. Unset virtualization/runtime values
+mean KVM and the daemon default; CPU/memory defaults remain four CPUs and 8 GiB.
+One architecture's values do not supply the other's defaults. Native resource
+preflight uses the configured memory budget. Label selection and queued offline
+runner semantics remain unchanged; a selected runner must meet the actual storage,
+memory, native Docker and virtualization requirements.
+
+The manifest and matching per-architecture evidence record `qemu_accelerator`.
+Missing, unsupported or mismatched values reject publication. Static mode-policy
+and environment-restoration tests are separate from runtime boot evidence.
+
+## 仮想化方式とコンテナーruntimeの明示選択
+
+既定はKVMです。AMD64では明示的にTCGを選べますが、最新コミット全体のリリース候補は
+まだ未検証です。ARM64のTCGは未合格のためリリース用コマンドで拒否します。
+コンパイル自体は、両方ともネイティブのCPU上で行います。
+runtime指定は今回のコンテナーだけへ渡し、Docker全体の設定は変更しません。
+Actionsの設定はアーキテクチャ別に選択し、片方の値をもう片方へ流用しません。
+初期設定値はCPU 4・メモリー8 GiBです。資源不足や選択方式の未対応時は停止し、
+別のrunner・方式へ自動で切り替えません。

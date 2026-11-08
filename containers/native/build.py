@@ -48,6 +48,7 @@ def main():
     parser.add_argument('--netbird-fixture-stdin',action='store_true')
     parser.add_argument('--include-sources',action='store_true')
     parser.add_argument('--cached-libraries',type=Path)
+    parser.add_argument('--qemu-accelerator',choices=['kvm','tcg'],default='kvm')
     args = parser.parse_args()
     native(args.architecture)
     lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
@@ -55,6 +56,8 @@ def main():
         raise ValueError('Separate source audit is only valid for a complete ISO target')
     management=None
     if args.target=='release':
+        from producer.architecture import release_accelerator
+        release_accelerator(args.architecture,args.qemu_accelerator)
         if not args.netbird_fixture_stdin:raise ValueError('Full release requires a real local guest fixture')
         from producer.netbird_guest import Management
         management=Management(json.load(sys.stdin))
@@ -63,6 +66,8 @@ def main():
         os.dup2(descriptor,0);os.close(descriptor)
     elif args.netbird_fixture_stdin:
         raise ValueError('Guest fixture input is only valid for a full release')
+    if args.target!='release' and args.qemu_accelerator!='kvm':
+        raise ValueError('Guest accelerator selection only applies to a full release')
     if any(args.output.iterdir()):
         raise ValueError('A new empty task output directory is required')
     work = Path('/build-private')
@@ -225,7 +230,8 @@ def main():
             receipt_path.write_text(json.dumps(receipt,indent=2)+'\n')
     elif args.target == 'release':
         from producer.pipeline import release_candidate
-        release_candidate(sources,args.output,public_output,args.architecture,args.version,args.commit,management)
+        release_candidate(sources,args.output,public_output,args.architecture,args.version,args.commit,management,
+                          qemu_accelerator=args.qemu_accelerator)
 
 
 if __name__ == '__main__':

@@ -39,6 +39,29 @@ def runner(architecture, setting=''):
     return setting
 
 
+def release_accelerator(architecture, setting='kvm'):
+    if architecture not in ARCHITECTURES or setting not in {'kvm','tcg'}:
+        raise ValueError('Explicit supported native architecture/QEMU accelerator required')
+    if setting=='tcg' and architecture!='amd64':
+        raise ValueError('ARM64 TCG release acceptance is incomplete; use a validated KVM runner')
+    return setting
+
+
+def container_runtime(setting='', *, registered=False):
+    """An explicit per-container selection never changes the daemon default."""
+    if setting and not re.fullmatch('[A-Za-z0-9][A-Za-z0-9_.-]*',setting):
+        raise ValueError('Invalid scoped Docker runtime name')
+    if setting and registered:
+        import subprocess
+        try:
+            available=json.loads(subprocess.check_output(['docker','info','--format','{{json .Runtimes}}'],
+                                                        text=True,stderr=subprocess.DEVNULL))
+        except (OSError,subprocess.CalledProcessError,json.JSONDecodeError):
+            raise ValueError('Could not inspect registered Docker runtimes') from None
+        if setting not in available:raise ValueError('Selected Docker runtime is not registered')
+    return setting
+
+
 def check_elf(data, architecture):
     if (len(data) < 20 or data[:4] != b'\x7fELF' or data[4:6] != b'\x02\x01'
             or int.from_bytes(data[18:20], 'little') != ARCHITECTURES[architecture]['elf']):
@@ -75,4 +98,4 @@ def preflight(architecture, root=Path('.'), minimum_disk_gib=160, minimum_memory
     if available < minimum_memory_gib * 1024**3:
         raise ValueError(f'Build needs at least {minimum_memory_gib} GiB available memory')
     if require_kvm and not os.access('/dev/kvm', os.R_OK | os.W_OK):
-        raise ValueError('Usable KVM is required; TCG has not been validated')
+        raise ValueError('Selected KVM mode requires a usable KVM device; no automatic accelerator fallback')

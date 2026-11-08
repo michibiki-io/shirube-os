@@ -10,7 +10,7 @@ from pathlib import Path
 import secrets
 import subprocess
 import time
-from .architecture import ARCHITECTURES
+from .architecture import ARCHITECTURES, container_runtime
 
 SERVER_IMAGES = {
     'amd64': 'netbirdio/netbird-server@sha256:a3f620738a83bc98a1cd4508178f82d51f18bb6ad85311767546bac0b6a9c808',
@@ -20,7 +20,8 @@ LABEL = 'io.michibiki.shirube.fixture'
 
 
 class Fixture:
-    def __init__(self, architecture, helper_image, work):
+    def __init__(self, architecture, helper_image, work, runtime=''):
+        self.runtime=container_runtime(runtime)
         self.architecture = architecture
         self.image = SERVER_IMAGES[architecture]
         self.helper = helper_image
@@ -35,6 +36,8 @@ class Fixture:
         self.token = None
 
     def docker(self, *args, input=None, timeout=120):
+        if self.runtime and args and args[0] in {'create','run'}:
+            args=(args[0],'--runtime='+self.runtime,*args[1:])
         result = subprocess.run(['docker', *args], input=input, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE, timeout=timeout)
         if result.returncode:
