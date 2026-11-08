@@ -31,6 +31,10 @@ apply_kernel_tool_fixes() {
     done
 }
 package_kernel() {
+    # Modified 2026-11-09: generated metadata must identify the distributor,
+    # never a transient build-container account or hostname.
+    export KBUILD_BUILD_USER=michibiki-io KBUILD_BUILD_HOST=shirube-os
+    export DEBFULLNAME=michibiki-io DEBEMAIL=maintainers@michibiki.io
     # perf's wrapper ignores MAKEFLAGS and otherwise selects all online CPUs.
     make ARCH="$KERNEL_ARCH" -j2 bindeb-pkg JOBS=2 PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config BUILD_TOOLS=1 LOCALVERSION=-vyos KDEB_PKGVERSION=6.6.128-1 KDEB_CHANGELOG_DIST=unstable
     # The snapshot's perf packaging hardcodes only three dependencies, despite
@@ -68,7 +72,7 @@ if [ "$BUILD_RECIPE" = vici ]; then
 Source: strongswan
 Section: python
 Priority: optional
-Maintainer: VyOS Package Maintainers <maintainers@vyos.net>
+Maintainer: michibiki-io <maintainers@michibiki.io>
 Build-Depends: debhelper (>= 10), dh-python, python3, python3-setuptools
 Standards-Version: 3.9.6
 

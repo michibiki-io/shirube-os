@@ -169,6 +169,10 @@ def main():
             if '-build-deps_' in deb.name:
                 continue
             name = subprocess.check_output(['dpkg-deb','-f',str(deb),'Package'],text=True).strip()
+            if job['name']=='kernel':
+                maintainer=subprocess.check_output(['dpkg-deb','-f',str(deb),'Maintainer'],text=True).strip()
+                if maintainer!='michibiki-io <maintainers@michibiki.io>':
+                    raise ValueError('Kernel package has noncanonical generated distributor metadata')
             if name in job.get('forbidden_binary_packages',[]):
                 raise ValueError('Forbidden non-runtime test package was generated')
             actual = subprocess.check_output(['dpkg-deb', '-f', str(deb), 'Architecture'], text=True).strip()
