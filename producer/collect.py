@@ -134,6 +134,10 @@ def collect(rootfs, package_output, output, arch, version, work):
     shared=shared_build_inputs(project,Path('/sources/vyos-build/vyos-build'),
         Path('/extra/vpp/patches'),shared_archive)
     assets.append(shared_archive)
+    from .ocaml_sources import retain as retain_ocaml
+    ocaml_archive=output/f'shirube-os-{version}-{arch}-ocaml-source.tar.gz'
+    ocaml_records,ocaml_dependencies=retain_ocaml(Path('/opt/opam'),ocaml_archive,work/'ocaml',files)
+    assets.append(ocaml_archive)
     source_identity=json.loads(Path('/src/source-lock.json').read_text())['stream']['sha256']
     for line in listing.splitlines():
         name,binary_version,architecture,source_name,source_version=line.split('\t')
@@ -150,6 +154,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 match=next((path for prefix,path in extras.items() if name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
             inputs=[];nested=[]
+            if source_name=='vyos-1x':nested.extend(ocaml_dependencies)
             if name=='shirube-integration':
                 source=Path('/src/guest');origin=source_identity
                 lock=json.loads(Path('/src/source-lock.json').read_text())['netbird']
@@ -187,6 +192,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
             records=bundle(inputs,archive,1773859634)
             records['build_inputs'].extend(shared)
+            if source_name=='vyos-1x':records['build_inputs'].extend(ocaml_records['build_inputs'])
             external=json.loads(Path('/src/native/external-sources.lock.json').read_text())
             keys=[]
             location=str(source)
@@ -210,9 +216,14 @@ def collect(rootfs, package_output, output, arch, version, work):
                     and reviewed.get('copyright_sha256')==sha256(dependency['notice'])
                     and reviewed.get('redistributable') is True
                     and isinstance(reviewed.get('license'),str) and bool(reviewed.get('license')))
-                source_refs=[record for record in records['sources'] if record['member']==dependency['source_member'] and record['sha256']==dependency['source_sha256']]
-                if len(source_refs)!=1:raise ValueError('Exact bundled dependency source is missing')
-                notice_refs=[record for record in records['license_files'] if record['member']==dependency['notice_member'] and record['sha256']==sha256(dependency['notice'])]
+                if 'sources' in dependency:
+                    source_refs=dependency['sources'];legal_records=dependency['license_files']
+                    if not source_refs:raise ValueError('Exact bundled dependency sources are missing')
+                else:
+                    source_refs=[record for record in records['sources'] if record['member']==dependency['source_member'] and record['sha256']==dependency['source_sha256']]
+                    if len(source_refs)!=1:raise ValueError('Exact bundled dependency source is missing')
+                    legal_records=records['license_files']
+                notice_refs=[record for record in legal_records if record['member']==dependency['notice_member'] and record['sha256']==sha256(dependency['notice'])]
                 if len(notice_refs)!=1:raise ValueError('Exact bundled dependency legal notice is missing')
                 children.append({'name':dependency['name'],'version':dependency['version'],
                     'source_identity':dependency['source_identity'],'license':reviewed.get('license','UNREVIEWED'),

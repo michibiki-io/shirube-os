@@ -110,3 +110,20 @@ configuration/scripts and the fixed public VPP patches as a shared archive.
 All package inventories bind to its exact members. This preserves shared inputs
 that are outside an individual component tree; retaining these inputs is not a
 claim that the remaining dependency closure or full OS reconstruction has passed.
+
+The native configuration library's OCaml switch is now included separately:
+concrete installed package sources, their exact OPAM metadata, original
+content-addressed downloads and per-component notices. Virtual capability/system
+check packages retain metadata without being misrepresented as additional
+runtime libraries. Git download caches/history are excluded; Git-fetched code
+is supplied as its prepared source tree with pinned package metadata. The native
+retention check covers 44 concrete packages. Their separate license decisions
+and an offline reconstruction demonstration are still required. An approval for
+the main configuration package cannot hide unresolved OCaml dependencies.
+
+Sixteen actual linked NetBird modules now have exact source/notice decisions
+under MIT, ISC, BSD-2-Clause, BSD-3-Clause or Zlib. The inventory preserves each
+module's own grant, conditions and disclaimer; BSD non-endorsement and Zlib
+origin/modification restrictions remain applicable. Other modules and the Go
+standard library remain separate unresolved decisions. These records do not
+approve the NetBird parent or an OS release.

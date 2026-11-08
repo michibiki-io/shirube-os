@@ -78,7 +78,8 @@ def verify_sources(root, inventory, assets):
                 if members.get(key) != reference['sha256']:
                     raise ValueError('Missing or differing corresponding-source member')
         children=component.get('bundled_components',[])
-        if component['name'] in {'vyos-http-api-tools','shirube-integration'} and not children:
+        if (component['name'] in {'vyos-http-api-tools','shirube-integration','vyos-1x'}
+                or component['name'].startswith('libvyosconfig')) and not children:
             raise ValueError('Bundled dependencies need their own source/license inventory')
         identities=set()
         for child in children:

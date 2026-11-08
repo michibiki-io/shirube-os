@@ -82,6 +82,19 @@ class ReleaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'license clearance'):
             validate(self.root,self.commit,self.version)
 
+    def test_configuration_library_requires_its_own_dependency_inventory(self):
+        path=self.root/'amd64-licenses.json'
+        inventory=json.loads(path.read_text())
+        for name in ['vyos-1x','libvyosconfig0']:
+            with self.subTest(name=name):
+                inventory['components'][0]['name']=name
+                inventory['shipped_packages'][0]['name']=name
+                path.write_text(json.dumps(inventory))
+                asset=next(item for item in self.manifest['assets'] if item['name']==path.name)
+                asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+                with self.assertRaisesRegex(ValueError,'own source/license inventory'):
+                    validate(self.root,self.commit,self.version)
+
     def test_required_skips_failures_missing_checks_block(self):
         for value in ['SKIP', 'FAIL', 'NOT_RUN', None]:
             with self.subTest(value=value):

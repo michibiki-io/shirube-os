@@ -25,7 +25,7 @@ the changed criteria belong in the latest PR review after release readiness.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 53 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Unit/failure-path tests | PASS | 56 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
 | FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
 | NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; guest commit/save/reboot unverified |
@@ -45,6 +45,7 @@ the changed criteria belong in the latest PR review after release readiness.
 | Source-built nftables package tranche | PASS | AMD64 libnftnl 1.2.6-2 and nftables 1.0.9-1, including documentation, after adding the missing XML/a2x toolchain; package audits passed |
 | Sequential routing package build | PASS | libnftnl, nftables, libyang 3.13.6 and FRR 10.5.2 built/audited in one native runtime after removing stale generated dependency metapackages between jobs |
 | Native core package tranche | PASS | Native configuration library, schema generation, upstream build-time tests and all generated runtime payload audits passed; optional fixed-key smoketest toolkit was not generated |
+| OCaml switch source retention | PASS | Actual 44 concrete installed components, 27,183 original/prepared source members, exact installed metadata and upstream notices retained; cache content addresses verified and Git histories omitted. Offline OCaml reconstruction and component license audit remain NOT_RUN |
 | Shared reconstruction inputs | PASS | Actual prepared Stream builder configuration/scripts and the fixed public VPP patch repository retained in one hashed archive; every source package receives member bindings. This does not prove full dependency closure or complete OS reconstruction |
 | Runtime-extra notice/source helper | PARTIAL | Real FPM notice-retention fixture and actual Go source ZIP/h1 comparison passed; all real runtime-extra recipes still require their integrated build |
 | Boot artwork source preparation | PASS | Both restricted boot PNG inputs replaced before compilation/source export; supplied SVG rendered onto a 640x480 canvas, visually inspected, theme contrast and dated provenance recorded; actual firmware UI remains unverified |
