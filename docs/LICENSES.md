@@ -195,6 +195,13 @@ explicitly records the remaining toolchain/source-closure work and reconstructio
 as unrun; no corresponding-source or license gate may infer success from this
 component inventory.
 
+The audit records redistribution conditions for the 48 exact crate source/notice
+pairs. This covers the retained unmodified crate contents only. It does not clear
+cryptography as a whole, the native OpenSSL library, Rust standard library,
+remaining SDK dependencies, build backends or full OS reconstruction. The BSD
+non-endorsement, Apache attribution/change notices and LLVM exception, and Unicode
+copyright/non-promotion requirements remain attached to their component records.
+
 Salt SDKの実際のPython依存一覧を固定入力と照合し、対応ソースと完全なライセンス
 資料を別アーカイブへ保持する。両アーキテクチャのSDKは利用前にハッシュとサイズを
 検証する。cryptography の Cargo.lock にある48個のRust依存は、版とチェックサムを
@@ -203,3 +210,7 @@ Salt SDKの実際のPython依存一覧を固定入力と照合し、対応ソー
 上流の機能・公開テスト資材・版は維持する。ソース保持とアーカイブ検証は、
 配布許諾や完全な再構築の合格を意味しない。固定ファイルに記載した未解決のソース入力、
 再構築試験、個別ライセンス確認が残る間は公開条件を通過できない。
+
+48個のRust依存については、固定したソースと完全なライセンス資料に対する配布条件を
+監査記録へ追加した。これは各crateの未変更ソースに限った判断であり、cryptography全体、
+OpenSSL本体、Rust標準ライブラリ、SDKの残りの依存、OS全体の配布許諾を意味しない。
