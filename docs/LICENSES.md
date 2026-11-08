@@ -84,3 +84,15 @@ established. Never publish original source archives containing archived private
 signing keys unchanged: remove obsolete key material in the source preparation
 stage and include the exact preparation/reconstruction scripts and modification
 records instead.
+
+NetBird's linked Go modules are inventoried from the actual pinned binary,
+including replacement module identities. Each full source ZIP must match the
+embedded h1 checksum; its source and retained notices have separate hashes.
+The Go source/SDK and restored offline component rebuild are included alongside
+these inputs. The integration package contains the notices. Module/source
+retention and reconstruction do not themselves grant redistribution clearance.
+
+When one package/version has architecture-specific source provenance, an audit
+entry may use `name@version#source_identity`. Its declared source identity and
+actual notice hash must still match exactly; a different architecture/source
+variant cannot inherit that decision.

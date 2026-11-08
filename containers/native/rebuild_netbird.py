@@ -50,6 +50,8 @@ def run(args):
         subprocess.run([str(sdk/'bin/go'),'mod','vendor'],cwd=source,env=env,check=True)
         if before!={name:sha256(source/name) for name in before}:
             raise ValueError('Vendoring changed the pinned dependency declarations')
+        if sha256(source/'vendor/modules.txt')!=lock['vendor_modules_sha256']:
+            raise ValueError('Unexpected generated vendor declarations')
         (work/'prepared.json').write_text(json.dumps({'source_sha256':lock['source_sha256'],
             'compiler':compiler,'dependency_declarations':before,
             'vendor_modules_sha256':sha256(source/'vendor/modules.txt')},indent=2)+'\n')

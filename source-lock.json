@@ -46,7 +46,8 @@
           "sha256": "3f4227ce7b206a513e794f1393adb473a07b46e94d18bd15d1c684bbb7319797"
         }
       }
-    }
+    },
+    "vendor_modules_sha256": "7778f311eebdb243e5c74394147b9d64e47b17ec687f88e6600ea3f5c26fe9a5"
   },
   "external_git": {
     "vpp": {

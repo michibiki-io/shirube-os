@@ -62,6 +62,16 @@ def guest_package(arch, version):
     copyright_path.write_bytes(b'Shirube OS integration: Copyright (c) 2026 michibiki-io. MIT License.\n\n'+Path('/src/LICENSE').read_bytes()+b'\n\nNetBird headless client upstream notice (directory exceptions retained):\n'+license_data)
     actual=subprocess.check_output([str(lib/'netbird'),'version'],text=True).strip()
     if actual!=lock['version']:raise ValueError('NetBird version mismatch')
+    from producer.netbird_sources import prepare
+    correspondence=work/'netbird-correspondence'
+    print('STAGE: NetBird exact linked sources, notices and restored offline rebuild',flush=True)
+    prepare(lib/'netbird',archive,arch,work/'netbird-source-build',correspondence)
+    notices=copyright_path.parent/'netbird-licenses';notices.mkdir()
+    shutil.copytree(correspondence/'linked/notices',notices/'notices')
+    shutil.copy2(correspondence/'go-copyright',notices/'go-copyright')
+    shutil.copy2(correspondence/'components.json',copyright_path.parent/'netbird-components.json')
+    with copyright_path.open('a') as target:
+        target.write('\nExact linked Go dependency and standard-library notices are retained under netbird-licenses/.\n')
     for source_file,target in [('/src/producer/netbird.py','netbird_control.py'),('/src/producer/netbird.py','netbird-control'),('/src/guest/first_boot.py','first-boot')]:
         shutil.copy2(source_file,lib/target);(lib/target).chmod(0o755)
     conf=package/'usr/libexec/vyos/conf_mode/service_netbird.py';conf.parent.mkdir(parents=True)

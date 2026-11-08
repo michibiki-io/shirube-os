@@ -17,7 +17,7 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 50 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Unit/failure-path tests | PASS | 52 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
 | FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
 | NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; guest commit/save/reboot unverified |
@@ -26,7 +26,7 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | Fixture connection for guest tests | PASS | Actual default-bridge plus internal-network connection, fixture TLS and fresh one-use key issuance; no guest runtime claim |
 | Hidden console input transport | PASS | Actual container PTY prompt/input, secret absence from shell history and nonzero command status propagation; installed-OS lifecycle remains NOT_RUN |
 | NetBird installed-guest harness | NOT_RUN | Full release path now creates a real fixture and calls the harness on both disk-format clones; native set/commit/save and operational enrollment, disable/enable, reboot, removal and secret scans implemented; no completed Shirube OS disk is available yet |
-| NetBird component source rebuild | PASS | Exact public source and pinned Go 1.26.10; prepared dependency sources rebuilt again with a fresh cache in a network-disabled AMD64 container; complete OS reconstruction and license clearance remain incomplete |
+| NetBird component source rebuild | PASS | Exact source/SDK, h1-verified ZIPs for all 121 actual linked modules, pinned generated vendor declarations and full notices retained; these assets restored and rebuilt with fresh caches/network namespace disabled on AMD64; installed package mappings cover 121 modules plus standard library. Complete OS reconstruction and license clearance remain incomplete |
 | HTTP API dependency environment | PASS | Own packaging with the same 26 dependency versions, exact source/wheel hashes, per-dependency notices, native extension imports and actual GraphQL execution; ARM64 and guest API service integration remain unverified |
 | Python compilation / shell syntax | PASS | Current Python files, both recipe architecture renderings and producer scripts |
 | Workflow validation | PASS | YAML parsing and actionlint v1.7.12; current release/Test workflows |

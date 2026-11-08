@@ -133,3 +133,15 @@ source coverage nor clears NetBird's linked-dependency licenses. The upstream
 published client remains the pinned ISO input; its source commit and compiler
 were inspected from its build information. Identical release bytes are not
 claimed for a reconstructed client or complete OS.
+
+The producer retains the exact source ZIP and notices of every dependency linked
+by the verified reference client, checking its embedded Go h1 identities. The
+Go compiler/source archives and generated vendor declarations are also pinned.
+Retained vendor files are checked byte-for-byte against those original ZIPs.
+The producer restores a new source/SDK tree from these materials and compiles
+it with a fresh cache in a network namespace without connectivity. Its linked
+module versions must match the reference client. Dependency and standard-library
+notices are installed in the integration package and mapped individually in
+the source/license inventory. Each requires its own license decision; parent
+approval cannot waive an unresolved linked component. This component proof does
+not establish a complete OS reconstruction or byte-identical upstream output.

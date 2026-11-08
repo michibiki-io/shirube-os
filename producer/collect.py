@@ -39,6 +39,46 @@ def http_dependencies(rootfs):
     return bom,result
 
 
+def netbird_dependencies(rootfs,correspondence,arch):
+    prefix='usr/share/doc/shirube-integration/'
+    bom=path_in_root(rootfs,prefix+'netbird-components.json')
+    if not bom.is_file() or sha256(bom)!=sha256(correspondence/'components.json'):
+        raise ValueError('Installed NetBird dependency inventory differs from build inputs')
+    data=json.loads(bom.read_text())
+    if (data['architecture']!=arch or data['restored_offline_component_rebuild']!='PASS'
+            or data['reference_binary_sha256']!=sha256(path_in_root(rootfs,'usr/libexec/shirube/netbird'))):
+        raise ValueError('NetBird source proof does not match the shipped binary')
+    children=[];seen=set()
+    for record in data['linked_modules']:
+        identity=(record['module'],record['version'])
+        if identity in seen:raise ValueError('Duplicate linked NetBird module')
+        seen.add(identity)
+        member=record['source']['path'];notice_member=record['license_notice']['path']
+        if not re.fullmatch(r'inputs/[0-9a-f]{64}\.zip',member) or not re.fullmatch(r'notices/[0-9a-f]{64}\.txt',notice_member):
+            raise ValueError('Invalid linked module input path')
+        notice=path_in_root(rootfs,prefix+'netbird-licenses/'+notice_member)
+        if (not notice.is_file() or sha256(notice)!=record['license_notice']['sha256']
+                or sha256(correspondence/'linked'/member)!=record['source']['sha256']):
+            raise ValueError('Missing or differing linked module source/notice')
+        children.append({'name':'go:'+record['module'],'version':record['version'],
+            'source_identity':record['source_identity'],'source_member':'netbird/linked/'+member,
+            'source_sha256':record['source']['sha256'],'notice':notice,
+            'notice_member':'netbird/linked/'+notice_member})
+    if not children:raise ValueError('Empty linked NetBird module inventory')
+    notice=path_in_root(rootfs,prefix+'netbird-licenses/go-copyright')
+    if not notice.is_file() or sha256(notice)!=data['go_notice_sha256']:
+        raise ValueError('Missing or differing Go source legal notices')
+    children.append({'name':'go-stdlib','version':data['compiler'],'source_identity':data['go_source_sha256'],
+        'source_member':'netbird/inputs/go-source.tar.gz','source_sha256':data['go_source_sha256'],
+        'notice':notice,'notice_member':'netbird/go-copyright'})
+    return children
+
+
+def approval_for(approvals,name,version,identity):
+    key=name+'@'+version
+    return approvals.get(key+'#'+identity,approvals.get(key,{}))
+
+
 def files(root):
     root=Path(root).resolve()
     for path in sorted(root.rglob('*')):
@@ -76,6 +116,7 @@ def collect(rootfs, package_output, output, arch, version, work):
     source_identity=json.loads(Path('/src/source-lock.json').read_text())['stream']['sha256']
     for line in listing.splitlines():
         name,binary_version,architecture,source_name,source_version=line.split('\t')
+        print('SOURCE: '+name+' '+binary_version+' '+architecture,flush=True)
         package={'name':name,'version':binary_version,'architecture':architecture};shipped.append(package)
         source_name=source_name or name;source_version=source_version or binary_version
         copyright_file=path_in_root(rootfs,'usr/share/doc/'+name+'/copyright')
@@ -90,14 +131,14 @@ def collect(rootfs, package_output, output, arch, version, work):
             inputs=[];nested=[]
             if name=='shirube-integration':
                 source=Path('/src/guest');origin=source_identity
-                # Include the pinned headless client's exact published source.
-                # Licensing/linked-component clearance is still explicit policy.
                 lock=json.loads(Path('/src/source-lock.json').read_text())['netbird']
-                from .sources import download
-                netbird=component/'netbird-source.tar.gz'
-                download(lock['source_url'],netbird)
-                if sha256(netbird)!=lock['source_sha256']:raise ValueError('NetBird source checksum mismatch')
-                inputs.append((netbird,'netbird-source.tar.gz','sources'))
+                correspondence=Path('/guest-package/netbird-correspondence')
+                nested=netbird_dependencies(rootfs,correspondence,arch)
+                for path,relative in files(correspondence):
+                    category=('license_files' if relative.startswith('linked/notices/') or relative=='go-copyright'
+                              else 'sources' if relative.startswith(('inputs/','linked/inputs/')) or relative=='vendor-source.tar.gz'
+                              else 'build_inputs')
+                    inputs.append((path,'netbird/'+relative,category))
             elif source is not None:
                 origin=source_identity
             else:
@@ -108,9 +149,15 @@ def collect(rootfs, package_output, output, arch, version, work):
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
             for path,relative in files(source):inputs.append((path,'source/'+relative,'sources'))
             if name=='vyos-http-api-tools':
-                bom,nested=http_dependencies(rootfs)
+                bom,dependencies=http_dependencies(rootfs)
                 inputs.append((bom,'bundled-components.json','build_inputs'))
-                for dependency,notice,member in nested:inputs.append((notice,member,'license_files'))
+                for dependency,notice,member in dependencies:
+                    inputs.append((notice,member,'license_files'))
+                    nested.append({'name':'pypi:'+re.sub('[-_.]+','-',dependency['name']).lower(),
+                        'version':dependency['version'],'source_identity':dependency['source']['sha256'],
+                        'source_member':'source/inputs/'+dependency['source']['filename'],
+                        'source_sha256':dependency['source']['sha256'],'notice':notice,'notice_member':member,
+                        'binary_input':dependency['wheel']})
             inputs.extend([(copyright_file,'copyright','license_files'),(project,'project-source.tar','build_inputs')])
             archive=output/f'shirube-os-{version}-{arch}-source-{len(cached):04d}.tar.gz'
             common=rootfs/'usr/share/common-licenses'
@@ -135,22 +182,23 @@ def collect(rootfs, package_output, output, arch, version, work):
                     'dependency_baseline':json.loads(Path('/src/native/http-api.lock.json').read_text())['dependency_baseline']}
                 origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             children=[]
-            for dependency,notice,member in nested:
-                child_name='pypi:'+re.sub('[-_.]+','-',dependency['name']).lower()
-                reviewed=approvals.get(child_name+'@'+dependency['version'],{})
-                child_clear=(reviewed.get('source_identity')==dependency['source']['sha256']
-                    and reviewed.get('copyright_sha256')==sha256(notice)
+            for dependency in nested:
+                reviewed=approval_for(approvals,dependency['name'],dependency['version'],dependency['source_identity'])
+                child_clear=(reviewed.get('source_identity')==dependency['source_identity']
+                    and reviewed.get('copyright_sha256')==sha256(dependency['notice'])
                     and reviewed.get('redistributable') is True
                     and isinstance(reviewed.get('license'),str) and bool(reviewed.get('license')))
-                source_member='source/inputs/'+dependency['source']['filename']
-                source_refs=[record for record in records['sources'] if record['member']==source_member and record['sha256']==dependency['source']['sha256']]
+                source_refs=[record for record in records['sources'] if record['member']==dependency['source_member'] and record['sha256']==dependency['source_sha256']]
                 if len(source_refs)!=1:raise ValueError('Exact bundled dependency source is missing')
-                children.append({'name':child_name,'version':dependency['version'],
-                    'source_identity':dependency['source']['sha256'],'license':reviewed.get('license','UNREVIEWED'),
+                notice_refs=[record for record in records['license_files'] if record['member']==dependency['notice_member'] and record['sha256']==sha256(dependency['notice'])]
+                if len(notice_refs)!=1:raise ValueError('Exact bundled dependency legal notice is missing')
+                children.append({'name':dependency['name'],'version':dependency['version'],
+                    'source_identity':dependency['source_identity'],'license':reviewed.get('license','UNREVIEWED'),
                     'redistributable':child_clear,'sources':source_refs,
-                    'license_files':[record for record in records['license_files'] if record['member']==member],
-                    'build_inputs':records['build_inputs'],'binary_input':dependency['wheel']})
-            approval=approvals.get(source_name+'@'+source_version,{})
+                    'license_files':notice_refs,
+                    'build_inputs':records['build_inputs'],
+                    **({'binary_input':dependency['binary_input']} if 'binary_input' in dependency else {})})
+            approval=approval_for(approvals,source_name,source_version,origin)
             cleared=(approval.get('source_identity')==origin and approval.get('redistributable') is True
                      and approval.get('copyright_sha256')==sha256(copyright_file)
                      and isinstance(approval.get('license'),str) and bool(approval.get('license')))
