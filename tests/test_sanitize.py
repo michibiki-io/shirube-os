@@ -13,6 +13,8 @@ class SanitizeTests(unittest.TestCase):
                 (root/relative/'state').write_text('private-instance-data')
             (root/'etc/shadow').write_text('root:$6$reusable:1:0:99999:7:::\nvyos:$6$test:1:0:99999:7:::\n')
             (root/'etc/machine-id').write_text('fixed-machine-id')
+            (root/'etc/hostname').write_text('build-host-fixture\n')
+            (root/'etc/hosts').write_text('127.0.1.1 build-host-fixture\n')
             (root/'etc/ssh/ssh_host_rsa_key').write_text('private-key')
             native=root/'opt/vyatta/etc/config'
             (native/'config.boot').write_text('saved-private-config')
@@ -33,6 +35,8 @@ class SanitizeTests(unittest.TestCase):
             self.assertFalse(any((root/'tmp').iterdir()))
             self.assertFalse(any((root/'var/tmp').iterdir()))
             self.assertEqual((root/'etc/shadow').read_text().split(':')[1], '!')
+            self.assertEqual((root/'etc/hostname').read_text(),'shirube-os\n')
+            self.assertNotIn('build-host-fixture',(root/'etc/hosts').read_text())
             audit(root)
             (root/'etc/machine-id').write_text('fixed-again')
             with self.assertRaises(ValueError):

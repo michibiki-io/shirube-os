@@ -19,6 +19,10 @@ def main():
         target=Path('/etc')/name
         if target.is_symlink():target.unlink()
         target.write_bytes(source.read_bytes())
+    Path('/etc/hostname').write_text('shirube-os\n')
+    Path('/etc/hosts').write_text('127.0.0.1 localhost\n127.0.1.1 shirube-os\n'
+        '::1 localhost ip6-localhost ip6-loopback\n'
+        'ff02::1 ip6-allnodes\nff02::2 ip6-allrouters\n')
     config='interfaces {\n ethernet eth0 {\n  address dhcp\n }\n loopback lo {\n }\n}\nsystem {\n host-name shirube-os\n console {\n  device '+console+' {\n   speed 115200\n  }\n }\n}\n'
     root=Path('/opt/vyatta/etc/config');root.mkdir(parents=True,exist_ok=True)
     for name in ['config.boot','config.boot.default']:(root/name).write_text(config)

@@ -3,7 +3,7 @@ from pathlib import Path, PurePosixPath
 import subprocess
 import re
 from .sources import sha256
-from .sanitize import path_in_root, host_key_paths
+from .sanitize import path_in_root, host_key_paths, HOSTS
 from .release import SECRET
 from .public_test_keys import allowed, allowed_file, cached_fixture_keys, scan
 
@@ -27,6 +27,9 @@ def inspect_filesystems(root, initramfs, architecture):
             owners[line.removeprefix('/')] = package
     if path_in_root(root, 'etc/machine-id').read_bytes():
         raise ValueError('Factory machine identity is not empty')
+    if (path_in_root(root,'etc/hostname').read_text()!='shirube-os\n' or
+            path_in_root(root,'etc/hosts').read_text()!=HOSTS):
+        raise ValueError('Factory contains unexpected hostname or hosts defaults')
     shadow = path_in_root(root, 'etc/shadow').read_text().splitlines()
     if not shadow or any(len(row.split(':')) != 9 or row.split(':')[1] not in {'!', '*', '!!'} for row in shadow):
         raise ValueError('Factory has a reusable password credential')

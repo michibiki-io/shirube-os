@@ -2,6 +2,10 @@
 from pathlib import Path
 import shutil
 
+HOSTS = ('127.0.0.1 localhost\n127.0.1.1 shirube-os\n'
+         '::1 localhost ip6-localhost ip6-loopback\n'
+         'ff02::1 ip6-allnodes\nff02::2 ip6-allrouters\n')
+
 REMOVE = ('config/auth', 'config/netbird', 'config/archive', 'config/user-data',
           'config/config.boot', 'config/config.boot.default', 'config/.history',
           'config/shirube-enrolled',
@@ -132,6 +136,8 @@ def sanitize(root, architecture):
     identity = path_in_root(root, 'etc/machine-id')
     erase(identity)
     identity.write_text('')
+    path_in_root(root,'etc/hostname').write_text('shirube-os\n')
+    path_in_root(root,'etc/hosts').write_text(HOSTS)
     for relative in ('var/log', 'home', 'config'):
         path_in_root(root, relative).mkdir(parents=True, exist_ok=True)
     for relative in ('tmp','var/tmp'):
@@ -162,6 +168,9 @@ def audit(root):
             raise ValueError('Instance state remains in a native configuration directory: '+relative)
         if (configuration/'config.boot').read_text() not in {factory_config('amd64'),factory_config('arm64')}:
             raise ValueError('Export configuration differs from credential-free factory defaults')
+    if (path_in_root(root,'etc/hostname').read_text()!='shirube-os\n' or
+            path_in_root(root,'etc/hosts').read_text()!=HOSTS):
+        raise ValueError('Build-instance hostname or hosts data remains')
     if path_in_root(root, 'etc/machine-id').read_bytes():
         raise ValueError('Fixed machine identity remains')
     if list(host_key_paths(root)):

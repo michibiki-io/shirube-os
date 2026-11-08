@@ -39,13 +39,13 @@ the changed criteria belong in the latest PR review after release readiness.
 | Transient ISO download retry | PASS | Only wget network exit 4 retried, at most three attempts with unchanged URL/arguments and downstream signature/hash checks; recovery/exhaustion and non-network failure tests passed. Native debootstrap integration checked; this is not completed ISO evidence |
 | FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
-| NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; guest commit/save/reboot unverified |
+| NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; diagnostic guests on both architectures subsequently passed commit/save/reboot |
 | Local NetBird management fixture | PASS | Digest-pinned real server bootstrap and one-use key issuance on an isolated Docker network; no client enrollment or guest lifecycle claim |
 | AMD64 container NetBird client | PASS | Real registration, management/signal connectivity, same peer identity after daemon/container restart, setup-key absence in client state/error log; guest configuration save/reboot and ARM64 remain NOT_RUN |
 | Fixture connection for guest tests | PASS | Actual default-bridge plus internal-network connection, fixture TLS and fresh one-use key issuance; no guest runtime claim |
 | Input-path fixture isolation | PASS | Exact fixture guard exercised in native privileged ARM64 and ordinary AMD64 containers; only a regular dummy file opened after host-device masking. Not a hardware/input-driver test |
 | Hidden console input transport | PASS | Actual container PTY prompt/input, secret absence from shell history and nonzero command status propagation; installed-OS lifecycle remains NOT_RUN |
-| NetBird installed-guest harness | INCOMPLETE | ARM64 sanitized QCOW2 reached real native set/commit/save and rejected an unregistered key. The upstream operational shell returns zero for failed internal commands; the harness now additionally requires the controller failure response, then independently checks inactive/no-receipt state and secret erasure. Native ARM64 QCOW2 then passed real registration, management/signal connectivity, disable/enable, saved reboot identity, secret scans and removal/reboot inactivity. ARM64 diagnostic acceptance passed on both formats; AMD64 and clean-head acceptance remain incomplete |
+| NetBird installed-guest harness | INCOMPLETE | ARM64 sanitized QCOW2 reached real native set/commit/save and rejected an unregistered key. The upstream operational shell returns zero for failed internal commands; the harness now additionally requires the controller failure response, then independently checks inactive/no-receipt state and secret erasure. Native ARM64 QCOW2 then passed real registration, management/signal connectivity, disable/enable, saved reboot identity, secret scans and removal/reboot inactivity. Diagnostic acceptance passed on both formats on AMD64/TCG and ARM64/KVM; clean-head acceptance remains incomplete |
 | NetBird client directory-license scope | PASS | Actual pinned Go compiler/build tags selected 174 AMD64 internal client packages; source-file hashes mapped and no management/signal/relay/combined AGPL directory selected. Other dependencies and full redistribution clearance remain unresolved |
 | NetBird component source rebuild | PASS | Exact source/SDK, h1-verified ZIPs for all 121 actual linked modules, pinned generated vendor declarations and full notices retained; these assets restored and rebuilt with fresh caches/network namespace disabled on AMD64; installed package mappings cover 121 modules plus standard library. Complete OS reconstruction and license clearance remain incomplete |
 | HTTP API dependency environment | PASS | Own packaging with the same 26 dependency versions, exact source/wheel hashes, per-dependency notices, native extension imports and actual GraphQL execution; ARM64 and guest API service integration remain unverified |
@@ -71,14 +71,15 @@ the changed criteria belong in the latest PR review after release readiness.
 | Diagnostic native AMD64 ISO | PASS | Same-cohort recovery completed 169 package audits and ISO assembly. Targeted guest/installer fixes passed actual fresh OVMF/TCG boot, individual enrollment, native installation, retained administrator login without ISO, reboot and clean shutdown. Empty-name/short-password/mismatch retries passed. This is not a clean current-head release candidate |
 | Diagnostic native ARM64 ISO | PASS | Same-cohort recovery completed 169 package audits and ISO assembly. Durable serial GRUB selection and targeted guest fixes passed actual fresh AAVMF/KVM boot, enrollment, installation, retained administrator login without ISO, reboot and clean shutdown. Factory SquashFS remained byte-identical to the input ISO after installation. This is not a clean current-head release candidate |
 | Disk-format conversion primitive | PASS | Actual patterned 50 GiB sparse disk converted to standalone QCOW2 and streamOptimized VMDK; qemu-img checks and full content comparisons passed. Synthetic data only, no operating system or boot/OCI evidence |
-| Sanitized OS QCOW2/VMDK | PARTIAL | Native ARM64 fresh installation, clean shutdown, immutable-layer match, offline cleanup and both 50 GiB format/integrity/content comparisons passed. Both retained formats are diagnostic; ARM64 lifecycle acceptance passed, while AMD64 equivalents and clean current-head candidates remain incomplete |
-| Final exported-image boots | PARTIAL | ARM64 sanitized QCOW2 passed fresh-firmware/no-ISO unprovisioned prompt and separate individual enrollment/login, architecture/version, sudo, DHCP/default route, virtio NIC and generated machine/SSH identity checks. Both formats subsequently passed the complete NetBird lifecycle and distinct identity comparison. AMD64 final export tests remain in progress |
+| Sanitized OS QCOW2/VMDK | PASS, diagnostic scope | Fresh installations, clean shutdown, immutable-layer matching, offline cleanup and both 50 GiB format/integrity/content comparisons passed on AMD64 and ARM64. These retained formats are diagnostic; clean current-head candidates remain incomplete |
+| Final exported-image boots | PASS, diagnostic scope | AMD64/TCG and ARM64/KVM sanitized QCOW2 and VMDK passed fresh-firmware/no-ISO unprovisioned prompt and individual enrollment/login, architecture/version, sudo, DHCP/default route, virtio NIC, distinct machine/SSH identities, complete NetBird lifecycle and clean shutdown |
+| User-reported VMware installation | PASS, reported scope | The user confirmed login to the installed disk using the administrator created before installation. This is independent confirmation of account continuity, not a complete release acceptance or OCI result |
 | Live OCI, AMD64 and ARM64 | NOT_RUN | No cloud operation performed; outside this task's deployment scope |
 
 The AMD64 environment has no KVM device. The native ARM64 environment exposes
 a KVM device; usable virtualization and sufficient memory still require checks
 at the actual invocation. Its limited free memory requires measured resource
-bounds. Runtime availability is checked at invocation. Diagnostic ISO/install/access/reboot checks passed with native AMD64 TCG and ARM64 KVM. Final sanitized-disk acceptance remains incomplete.
+bounds. Runtime availability is checked at invocation. Diagnostic ISO/install/access/reboot checks passed with native AMD64 TCG and ARM64 KVM. Both diagnostic sanitized-disk formats passed; clean current-head release acceptance remains incomplete.
 
 The [ARM64 diagnostic receipt](evidence/diagnostic-arm64-v2026.03.0.json)
 binds the exact diagnostic ISO/export hashes and runtime helper file hashes.
@@ -100,9 +101,9 @@ ARM64の診断用記録はISO・配布形式・試験コードのハッシュを
 | 1 | Public source lock, authenticated acquisition, ephemeral signing-key API, safe source extraction, native checks | Complete fixed transitive dependency closure and integrated fresh-checkout validation |
 | 2 | Native package recipes/config selection, ELF/EFI/kernel helpers, module-signature verification | Clean current-head candidates and complete runtime verification; diagnostic ISO builds passed |
 | 3 | Supplied SVG, conversion/OS identity helper, attribution/license separation | Final-image branding/license audit and actual UI/installer verification |
-| 4 | Non-secret service schema, controller, separate one-shot enrollment, failure-path tests | Actual both-architecture NetBird enrollment/lifecycle/save/reboot tests |
-| 5 | Standalone 50 GiB conversion/integrity/equivalence helper | Whole-disk cleanup and real OS QCOW2/VMDK results; actual installers passed |
-| 6 | Offline logical cleanup, console enrollment implementation | Actual proof of guest integration, free-space/journal cleanup and fresh-firmware/access/DHCP/identity tests |
+| 4 | Non-secret service schema, controller, separate one-shot enrollment; actual diagnostic enrollment/lifecycle/save/reboot passed on both architectures and formats | Repeat integrated acceptance on clean current-head candidates |
+| 5 | Standalone 50 GiB conversion/integrity/equivalence, fresh installation, offline cleanup and real diagnostic QCOW2/VMDK boots passed on both architectures | Clean current-head candidates |
+| 6 | Offline cleanup, console enrollment, journal/free-space cleanup and fresh-firmware/access/DHCP/identity tests passed for diagnostic exports | Clean current-head integration and identity audit |
 | 7 | Component archive/member integrity and inventory validators | Complete source/dependency coverage, exact component/license audit, real reconstruction |
 | 8 | Both runner-variable/default/label policies and native checks | Actual supported runner/resource/virtualization evidence for the wired workflow |
 | 9 | Tested merged-PR eligibility, Stream-aligned version/revision policy, immutable-set comparison | Real end-to-end build/recovery/publication verification of the wired orchestration |
@@ -123,8 +124,7 @@ staging, aggregate verification, Actions artifact upload and final promotion.
 Published reruns take a verification-only path before any build.
 
 This does **not** make publication ready. `license-audit.json` currently records
-only the first individually audited components. Full source reconstruction and actual NetBird enrollment/save/reboot
-evidence are still NOT_RUN and block the pipeline. Diagnostic native installations and disk-only access/reboot passed on both architectures. Offline overlay removal, journal/free-space sanitization and both-format boot acceptance remain incomplete. They must not be inferred from static CI.
+only the first individually audited components. Full source reconstruction remains NOT_RUN and blocks the pipeline. Actual diagnostic NetBird enrollment/save/reboot, native installations, offline overlay removal, journal/free-space sanitization and both-format disk access/reboot passed on both architectures. Clean current-head integration remains incomplete; these results must not be inferred from static CI.
 
 The [Debian diagnostic source receipt](evidence/diagnostic-debian-source-v2026.03.0-arm64.json)
 records source-tree restoration, original archive checks and copyright/notice
@@ -134,3 +134,11 @@ members. Missing, modified or undeclared source inputs stop collection.
 
 Debian分の記録は、ソースの復元・原本のハッシュ・表示の一致を、OS全体のバイナリ再構築や
 配布許諾の完了と区別します。未確認の独自ビルド分や依存分へ合格を流用しません。
+
+The [AMD64 diagnostic receipt](evidence/diagnostic-amd64-v2026.03.0.json) records
+the corresponding TCG tests on both immutable export formats. The later factory
+hostname/hosts normalization and additional distributor notices require a new
+image; they are not claimed to have been included in either diagnostic receipt.
+
+AMD64も両形式の起動・個別設定・NetBirdの保存と再起動を通過しました。
+診断用成果物の後に追加したhostnameの初期化と配布者の許諾表示は、次のビルドで確認します。
