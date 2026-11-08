@@ -65,7 +65,8 @@
     "The HTTP API dependency wrapper is independently packaged as 2.3+shirube1; the Stream dependency versions and compatible installation path are retained. Upstream wrapper code with an empty copyright notice is not redistributed.",
     "Node exporter 1.9.1 uses the upstream nobtrfs build tag on both architectures: its optional btrfs collector links github.com/dennwc/ioctl v1.0.0, whose exact verified source ZIP lacks a permission notice. Btrfs-specific metrics are omitted; unresolved code is not linked or cleared for redistribution.",
     "Telegraf keeps version 1.28.3 and all plugins; its RCON dependency is fixed to upstream MIT-license-only commit 34a67ca2b2d65052cacddc7a1415b568f8b932a1 (both Go source files unchanged).",
-    "Salt stays at upstream 3006.21 with downstream package revision +shirube1: unused Cryptodome SelfTest runtime files and incomplete private-key documentation examples are excluded; cryptographic APIs remain present and full preferred source remains required."
+    "Salt stays at upstream 3006.21 with downstream package revision +shirube1: unused Cryptodome SelfTest runtime files and incomplete private-key documentation examples are excluded; cryptographic APIs remain present and full preferred source remains required.",
+    "VPP retains the VCL libraries and forwarding plugins; optional hs_apps and http_static sample/test applications are excluded on both architectures because installed binaries embed fixed public TLS test private keys. Full preferred sources remain required."
   ],
   "debian_security_snapshot": "https://snapshot.debian.org/archive/debian-security/20261105T000000Z/",
   "opam_repository": {
@@ -141,5 +142,15 @@
       "lib/python3.11/site-packages/Cryptodome/SelfTest"
     ],
     "scope": "Unused cryptographic self-test key fixtures excluded from runtime; incomplete private-key documentation examples redacted. Full corresponding dependency source remains required."
+  },
+  "vpp_runtime_profile": {
+    "excluded_plugins": [
+      "hs_apps",
+      "http_static"
+    ],
+    "reason": "Exclude optional sample/test applications and the installed test-only SDK header containing fixed TLS private keys; retain full preferred source and do not waive binary secret inspection.",
+    "excluded_development_headers": [
+      "vnet/tls/tls_test.h"
+    ]
   }
 }

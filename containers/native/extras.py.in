@@ -107,7 +107,17 @@ def vpp(work):
     # CMake also invokes pip in an isolated PEP 517 environment for vpp-papi.
     # That environment must resolve setuptools from these same fixed wheels.
     wheelhouse=source/'build/external/downloads'
-    shell('export PIP_NO_INDEX=1 PIP_NO_CACHE_DIR=1 PIP_FIND_LINKS='+shlex.quote(str(wheelhouse))+'; make UNATTENDED=yes VPP_ENABLE_SYSTEMD_NOTIFY=ON install-dep; make MAKE_PARALLEL_JOBS="$MAKE_PARALLEL_JOBS" VPP_EXTRA_CMAKE_ARGS="-DVPP_ENABLE_SYSTEMD_NOTIFY=ON" pkg-deb',source)
+    # This development header also contains the sample private key as C string
+    # literals. Retain it in preferred sources, but never install it in the SDK.
+    cmake=source/'src/vnet/CMakeLists.txt';text=cmake.read_text()
+    entry='  tls/tls_test.h\n'
+    if text.count(entry)!=1:raise ValueError('Unexpected VPP TLS test-header installation')
+    cmake.write_text('# Modified by michibiki-io for Shirube OS: omit fixed TLS test header from installed SDK.\n'+text.replace(entry,''))
+    # These upstream sample/test applications embed a fixed TLS private key.
+    # Keep VCL and the forwarding plugins, but omit the optional sample apps
+    # and HTTP demonstration server from the production binary profile.
+    cmake_flags='-DVPP_ENABLE_SYSTEMD_NOTIFY=ON -DVPP_EXCLUDED_PLUGINS=hs_apps,http_static'
+    shell('export PIP_NO_INDEX=1 PIP_NO_CACHE_DIR=1 PIP_FIND_LINKS='+shlex.quote(str(wheelhouse))+'; make UNATTENDED=yes VPP_ENABLE_SYSTEMD_NOTIFY=ON install-dep; make MAKE_PARALLEL_JOBS="$MAKE_PARALLEL_JOBS" VPP_EXTRA_CMAKE_ARGS='+shlex.quote(cmake_flags)+' pkg-deb',source)
     copy_debs(source/'build-root')
 
 
@@ -242,7 +252,7 @@ def podman(work):
     shell(r'''apt-get install -y --no-install-recommends libseccomp-dev libgpgme-dev libapparmor-dev libsystemd-dev libsubid-dev go-md2man
 # The release target only needs the snapshot's packaged manual generator;
 # install.tools also downloads unrelated test/lint executables.
-make -j1 podman-release RELEASE_NUMBER=4.9.5 GOMD2MAN=/usr/bin/go-md2man GIT_COMMIT= RELEASE_PREFIX=/usr SOURCE_DATE_EPOCH=1773859634
+make -j1 podman-release RELEASE_NUMBER=4.9.5 GOMD2MAN=/usr/bin/go-md2man GIT_COMMIT= PREFIX=/usr RELEASE_PREFIX=/usr SOURCE_DATE_EPOCH=1773859634
 archive=podman-release-@ARCH@.tar.gz
 tar -xf "$archive"
 python3 /src/native/fpm_package.py -s dir -t deb -n podman -v 4.9.5 --architecture @ARCH@ --depends conmon --depends crun --depends netavark --depends libgpgme11 --depends fuse-overlayfs --depends golang-github-containers-common -C podman-v4.9.5 --package ..
