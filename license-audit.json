@@ -254,6 +254,160 @@
         "Include exact source and hashed build inputs in the inventory."
       ],
       "scope": "Exact pure Python distribution and retained wheel/source notices only; separately packaged dependencies, native extensions and the complete OS are not cleared by this entry."
+    },
+    "vyos-user-utils@1.4.0+vyos1+current": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "078380c1bd18f1dc920c09ed94484ccc7489f579ccf4d3e35d4e913191b1be45",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "vyos-user-utils_1.4.0+vyos1+current/vyos-user-utils/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "vyatta-biosdevname@1:0.3.11+vyos2+current2": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "8cf94e5b842da57794d09bc9e1a6a8cf70ea45e6f26569c606e0ba75cb00ddbc",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "vyatta-biosdevname_0.3.11+vyos2+current2/vyatta-biosdevname/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "vyatta-cfg@0.102.0+vyos2+current6": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "c8734ec5196e7ed3e925cd230c77c7687698a08026d94bd3b4b3507d02a10232",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "vyatta-cfg_0.102.0+vyos2+current6/vyatta-cfg/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "libtacplus-map@1.0.1-cl5.1.0u9": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "08a982a4142d8478f7822b510c03b6abf9dd06fdca918191f5d2d563e49548a9",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "libtacplus-map_master/libtacplus-map/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "libpam-tacplus@1.4.3-cl5.1.0u5": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "94b8c1c3fa0f9ff4c088dc86a575cd9af3a28300ddea04732aa61d0b59da4144",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "libpam-tacplus_master/libpam-tacplus/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "libnss-tacplus@1.0.4-cl5.1.0u11.1": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "9c1bb48b2a0d80fc6903efb8cc49a3ede2ebc2255d14df37a6dc059edb3e718d",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "libnss-tacplus_master/libnss-tacplus/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "vyos-libnss-mapuser@1.1.0-cl3u3.1": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "libnss-mapuser_circinus/libnss-mapuser/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "libpam-radius-auth@1.5.0-cl3u7": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "libpam-radius-auth_1.5.0-cl3u7/libpam-radius-auth/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "ndppd@0.2.5-6": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "101f8d6c65248e118294314a178c396df62909d9de14a945f7f1a8470863b50b",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "ndppd_debian_0.2.5-6/ndppd/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "live-boot@20151213": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "887000673dc14584c43ac43fdff2614d6fb91b0d552d4c2a4f40e06f935749dc",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "live-boot_20151213/live-boot/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
+    },
+    "bash-completion@1:2.8-6": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "52d34c5e7a2bff21fea4a8fffcc90e05c603e042b526105f4b9795e21d8e4da0",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "bash-completion_debian_2.8-6/bash-completion/debian/copyright",
+      "conditions": [
+        "Retain all upstream copyright, license and disclaimer notices, including Debian packaging notices.",
+        "Supply complete corresponding source, modifications and required build/install inputs alongside binary distributions.",
+        "Maintain dated modification notices; downstream recipients retain the applicable GPL rights."
+      ],
+      "scope": "Exact source-package notice and version only; this does not approve linked or embedded dependencies, artwork, or the complete OS source/release gates."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

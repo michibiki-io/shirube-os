@@ -96,3 +96,17 @@ When one package/version has architecture-specific source provenance, an audit
 entry may use `name@version#source_identity`. Its declared source identity and
 actual notice hash must still match exactly; a different architecture/source
 variant cannot inherit that decision.
+
+Eleven additional exact source-package notices have been reviewed: vyos-user-utils,
+vyatta-biosdevname, vyatta-cfg, libtacplus-map, libpam-tacplus, libnss-tacplus,
+vyos-libnss-mapuser, libpam-radius-auth, ndppd, live-boot and bash-completion.
+Their source identities, versions and notice hashes were matched to actual
+native binary packages. The recorded GPL grants remain conditional on preserving
+notices and supplying complete corresponding sources; they do not clear other
+linked components or the whole distribution.
+
+The collector additionally retains the prepared upstream Stream builder's
+configuration/scripts and the fixed public VPP patches as a shared archive.
+All package inventories bind to its exact members. This preserves shared inputs
+that are outside an individual component tree; retaining these inputs is not a
+claim that the remaining dependency closure or full OS reconstruction has passed.

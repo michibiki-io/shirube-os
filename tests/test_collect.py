@@ -4,10 +4,29 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from producer.collect import netbird_dependencies,approval_for
+from producer.collect import netbird_dependencies,approval_for,shared_build_inputs
+import tarfile
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_shared_sources_preserve_real_recipe_patch_and_notice_bytes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base=Path(temporary);project=base/'project.tar';project.write_bytes(b'project fixture')
+            builder=base/'builder';patches=base/'patches'
+            for root in [builder,patches]:
+                root.mkdir();(root/'LICENSE').write_text('fixture upstream notice')
+            (builder/'kernel.cfg').write_text('fixture kernel configuration')
+            (patches/'change.patch').write_text('fixture upstream patch')
+            archive=base/'shared.tar.gz'
+            refs=shared_build_inputs(project,builder,patches,archive)
+            with tarfile.open(archive) as source:
+                for ref in refs:
+                    self.assertEqual(hashlib.sha256(source.extractfile(ref['member']).read()).hexdigest(),ref['sha256'])
+            self.assertTrue({'stream-builder/kernel.cfg','vpp-patches/change.patch',
+                'stream-builder/LICENSE','vpp-patches/LICENSE','project-source.tar'}.issubset({r['member'] for r in refs}))
+            (patches/'LICENSE').unlink()
+            with self.assertRaises(ValueError):shared_build_inputs(project,builder,patches,base/'missing.tar.gz')
+
     def test_netbird_inventory_is_bound_to_shipped_binary_and_notices(self):
         with tempfile.TemporaryDirectory() as temporary:
             base=Path(temporary);root=base/'root';(root/'etc').mkdir(parents=True)

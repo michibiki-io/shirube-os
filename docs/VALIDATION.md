@@ -4,12 +4,20 @@ This is an incomplete implementation of issue #1, not a release acceptance repor
 No Shirube OS binary is cleared for distribution. Static fixtures never substitute
 for a source build, disk boot or actual access test.
 
-The latest issue body was fetched with all ten comments on 2026-11-08. Its SHA256
+The original issue body was fetched with all ten comments on 2026-11-08. Its SHA256
 was `50285b1247cfd070536260408efc0f6765de0b1afde00604d7db7b4da27d7546`, matching
-the completed plan review:
+the historical completed plan review:
 https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709861384.
 The final Claude issue-plan review is historical plan evidence, not a PR review:
 https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
+
+The user subsequently selected Stream-aligned versions (`v2026.03.0`,
+`v2026.03.1`, then `v2026.04.0`). The updated body was fetched with all eleven
+comments and has SHA256
+`9e230e81c26e9ccc2500b31f1ad77a408c95009e8820aaa2d0693a582e77bee3`.
+The earlier plan approval does not apply to this changed body. The change record is
+https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6715232251;
+the changed criteria belong in the latest PR review after release readiness.
 
 ## Actual observations
 
@@ -17,7 +25,7 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 52 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Unit/failure-path tests | PASS | 53 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
 | FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
 | NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; guest commit/save/reboot unverified |
@@ -37,19 +45,21 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | Source-built nftables package tranche | PASS | AMD64 libnftnl 1.2.6-2 and nftables 1.0.9-1, including documentation, after adding the missing XML/a2x toolchain; package audits passed |
 | Sequential routing package build | PASS | libnftnl, nftables, libyang 3.13.6 and FRR 10.5.2 built/audited in one native runtime after removing stale generated dependency metapackages between jobs |
 | Native core package tranche | PASS | Native configuration library, schema generation, upstream build-time tests and all generated runtime payload audits passed; optional fixed-key smoketest toolkit was not generated |
+| Shared reconstruction inputs | PASS | Actual prepared Stream builder configuration/scripts and the fixed public VPP patch repository retained in one hashed archive; every source package receives member bindings. This does not prove full dependency closure or complete OS reconstruction |
 | Runtime-extra notice/source helper | PARTIAL | Real FPM notice-retention fixture and actual Go source ZIP/h1 comparison passed; all real runtime-extra recipes still require their integrated build |
 | Boot artwork source preparation | PASS | Both restricted boot PNG inputs replaced before compilation/source export; supplied SVG rendered onto a 640x480 canvas, visually inspected, theme contrast and dated provenance recorded; actual firmware UI remains unverified |
 | Streaming source extraction | PASS | Authenticated outer archive and selected upstream build component; all 260 regular-file hashes matched the earlier extraction; late unsafe members remove private staging without exposing partial results |
 | Native package-toolchain container | PASS | Native AMD64 toolchain image built after correcting package-name/snapshot dependency failures; package/ISO build success is not implied |
-| Complete native AMD64 ISO | NOT_BUILT | Latest full attempt passed FRR and stopped at core source-import receipt path rendering; the filename/root substitution bug is corrected, with a focused core build pending |
-| Complete native ARM64 ISO | NOT_BUILT | Native ARM64 runner also unavailable in this execution environment |
+| Complete native AMD64 ISO | BUILDING | Full attempt has passed core and kernel, and is compiling VPP dependencies; no complete ISO yet. This diagnostic attempt predates the Stream-aligned product version change and cannot serve as the final release candidate |
+| Complete native ARM64 ISO | BUILDING | Native toolchain built successfully with a 2 GiB memory/no-swap limit; full ISO build started with the same memory limit and two CPUs. This low-memory path is experimental until the entire build succeeds |
 | Installed QCOW2/VMDK | NOT_CREATED | Fresh ISO install, conversion and whole-disk sanitization unverified |
 | Local unprovisioned/provisioned boots | NOT_RUN | Actual KVM/guest integration and access evidence missing |
 | Live OCI, AMD64 and ARM64 | NOT_RUN | No cloud operation performed; outside this task's deployment scope |
 
-No usable KVM device was observed. Runtime resource availability is checked again
-at each invocation. These constrain runtime verification; they do
-not explain away remaining implementation gaps.
+The AMD64 environment has no usable KVM device. A native ARM64 environment with
+usable KVM is now available; its limited free memory requires measured resource
+bounds. Runtime availability is checked at invocation. Full disk/access
+validation has not yet run on either environment.
 
 ## Acceptance criteria mapping
 
@@ -75,8 +85,8 @@ of this implementation run.
 ## Release workflow state
 
 The release workflow is implemented and statically validated: merged-only base
-commit selection, both native runner variables/defaults, individual-commit
-version/notes, draft reservation, full candidate build invocation, per-architecture
+commit selection, both native runner variables/defaults, Stream-aligned version selection and individual-commit
+release notes, draft reservation, full candidate build invocation, per-architecture
 staging, aggregate verification, Actions artifact upload and final promotion.
 Published reruns take a verification-only path before any build.
 

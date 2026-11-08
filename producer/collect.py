@@ -91,6 +91,23 @@ def files(root):
             yield resolved,str(relative)
 
 
+def shared_build_inputs(project,builder,patches,destination):
+    """Retain shared upstream recipes/patches once, with all component bindings.
+
+    Project scripts alone cannot reconstruct the generated kernel configuration,
+    ISO defaults or VPP patches used by the public build.
+    """
+    inputs=[(Path(project),'project-source.tar','build_inputs')]
+    for prefix,root in [('stream-builder',Path(builder)),('vpp-patches',Path(patches))]:
+        if not root.is_dir() or not (root/'LICENSE').is_file():
+            raise ValueError('Required shared upstream build source/license is missing')
+        for path,relative in files(root):
+            legal=path.name.lower().startswith(('license','licence','copying','copyright','notice'))
+            inputs.append((path,prefix+'/'+relative,'license_files' if legal else 'sources'))
+    records=bundle(inputs,destination,1773859634)
+    return [reference for category in records.values() for reference in category]
+
+
 def collect(rootfs, package_output, output, arch, version, work):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
@@ -113,6 +130,10 @@ def collect(rootfs, package_output, output, arch, version, work):
     shipped=[];components=[];assets=[];cached={}
     project=Path('/project-source.tar')
     if not project.is_file():raise ValueError('Exact project reconstruction source archive missing')
+    shared_archive=output/f'shirube-os-{version}-{arch}-shared-build-inputs.tar.gz'
+    shared=shared_build_inputs(project,Path('/sources/vyos-build/vyos-build'),
+        Path('/extra/vpp/patches'),shared_archive)
+    assets.append(shared_archive)
     source_identity=json.loads(Path('/src/source-lock.json').read_text())['stream']['sha256']
     for line in listing.splitlines():
         name,binary_version,architecture,source_name,source_version=line.split('\t')
@@ -165,6 +186,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
             records=bundle(inputs,archive,1773859634)
+            records['build_inputs'].extend(shared)
             external=json.loads(Path('/src/native/external-sources.lock.json').read_text())
             keys=[]
             location=str(source)
