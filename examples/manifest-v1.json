@@ -3,7 +3,7 @@
   "manifest_kind": "example",
   "project": "Shirube OS",
   "provider": "michibiki-io",
-  "version": "v0.1.0",
+  "version": "v2026.03.0",
   "source_commit": "0000000000000000000000000000000000000000",
   "source_clean": true,
   "upstream": {
@@ -84,7 +84,7 @@
   },
   "assets": [
     {
-      "name": "shirube-os-v0.1.0-amd64.iso",
+      "name": "shirube-os-v2026.03.0-amd64.iso",
       "role": "iso",
       "architecture": "amd64",
       "size": 1,
@@ -92,7 +92,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-amd64.qcow2",
+      "name": "shirube-os-v2026.03.0-amd64.qcow2",
       "role": "qcow2",
       "architecture": "amd64",
       "size": 1,
@@ -100,7 +100,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-amd64.vmdk",
+      "name": "shirube-os-v2026.03.0-amd64.vmdk",
       "role": "vmdk",
       "architecture": "amd64",
       "size": 1,
@@ -108,7 +108,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-amd64.source.tar.gz",
+      "name": "shirube-os-v2026.03.0-amd64.source.tar.gz",
       "role": "source",
       "architecture": "amd64",
       "size": 1,
@@ -116,7 +116,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-amd64.licenses.json",
+      "name": "shirube-os-v2026.03.0-amd64.licenses.json",
       "role": "licenses",
       "architecture": "amd64",
       "size": 1,
@@ -124,7 +124,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-amd64.evidence.json",
+      "name": "shirube-os-v2026.03.0-amd64.evidence.json",
       "role": "evidence",
       "architecture": "amd64",
       "size": 1,
@@ -132,7 +132,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-arm64.iso",
+      "name": "shirube-os-v2026.03.0-arm64.iso",
       "role": "iso",
       "architecture": "arm64",
       "size": 1,
@@ -140,7 +140,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-arm64.qcow2",
+      "name": "shirube-os-v2026.03.0-arm64.qcow2",
       "role": "qcow2",
       "architecture": "arm64",
       "size": 1,
@@ -148,7 +148,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-arm64.vmdk",
+      "name": "shirube-os-v2026.03.0-arm64.vmdk",
       "role": "vmdk",
       "architecture": "arm64",
       "size": 1,
@@ -156,7 +156,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-arm64.source.tar.gz",
+      "name": "shirube-os-v2026.03.0-arm64.source.tar.gz",
       "role": "source",
       "architecture": "arm64",
       "size": 1,
@@ -164,7 +164,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-arm64.licenses.json",
+      "name": "shirube-os-v2026.03.0-arm64.licenses.json",
       "role": "licenses",
       "architecture": "arm64",
       "size": 1,
@@ -172,7 +172,7 @@
       "generation": "0000000000000000000000000000000000000000000000000000000000000000"
     },
     {
-      "name": "shirube-os-v0.1.0-arm64.evidence.json",
+      "name": "shirube-os-v2026.03.0-arm64.evidence.json",
       "role": "evidence",
       "architecture": "arm64",
       "size": 1,

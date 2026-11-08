@@ -26,16 +26,24 @@ The currently empty `license-audit.json` cannot clear a distribution.
 excluded from expensive builds and publication. Relevant paths are producer,
 containers, source lock, patches, guest integration, tests, workflow/schema and
 logo changes. The project policy intentionally uses native AMD64/ARM64 runner variables and
-requires at least a patch release for relevant no-bump commits. Those issue-specific
+requires a new Shirube revision for every relevant eligible merged commit. Those issue-specific
 rules override generic container-registry/QEMU release defaults.
 
-Versions come from commit messages, never PR titles. The first release is
-`v0.1.0`. Subsequent Conventional Commit breaking changes bump major, `feat`
-bumps minor, and every other eligible image change receives at least a patch
-bump. Individual PR commit subjects, bodies and SHAs form release notes. GitHub commit
-metadata is checked for complete coverage; a squash subject derived from the PR
-title is not substituted for the original commits. A completed workflow must
-resolve the immutable merged source commit/version once for both architectures.
+Release versions follow `v<Stream YYYY.MM>.<Shirube revision>`. With pinned
+Stream `2026.03`, the first release is `v2026.03.0`; each new eligible merged
+commit on that baseline advances the revision (`v2026.03.1`, `v2026.03.2`, ...).
+Updating the pinned baseline to `2026.04` starts `v2026.04.0`. A baseline downgrade
+is rejected. The month keeps its leading zero; this is a Stream-aligned version
+scheme, not strict SemVer. Tags, release titles, ISO/disk/source names, Shirube integration-package
+versions, manifests and OS version output use the same resolved value. Third-party
+component versions remain at their exact pinned upstream values.
+
+Conventional Commit subjects/bodies and SHAs form release notes, including
+breaking-change notices. Their type does not change Stream's year/month. PR
+titles do not determine versions or substitute for individual commits. GitHub
+commit metadata is checked for complete coverage. The exact eligible merged
+commit/version is resolved once and shared by both architectures; reruns keep
+the reserved version and follow the immutable asset checks above.
 
 `producer.release.validate` validates the metadata contract against actual files:
 identity, complete architecture/role sets, physical sizes, hashes, checksum

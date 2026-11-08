@@ -3,6 +3,25 @@ import re
 
 RELEVANT = ('producer/', 'containers/', 'source-lock.json', 'patches/', 'guest/',
             'tests/', '.github/workflows/', 'schemas/', 'shirube-os-logo.svg')
+VERSION_PATTERN=r'v([1-9][0-9]{3})\.(0[1-9]|1[0-2])\.(0|[1-9][0-9]*)'
+
+
+def stream_parts(version):
+    if not isinstance(version,str) or not re.fullmatch(r'[1-9][0-9]{3}\.(?:0[1-9]|1[0-2])',version):
+        raise ValueError('Stream version must be YYYY.MM')
+    return tuple(map(int,version.split('.')))
+
+
+def version_parts(version):
+    if not isinstance(version,str):raise ValueError('Project version must be vYYYY.MM.REVISION')
+    match=re.fullmatch(VERSION_PATTERN,version or '')
+    if not match:raise ValueError('Project version must be vYYYY.MM.REVISION')
+    return tuple(map(int,match.groups()))
+
+
+def require_stream_version(version,stream_version):
+    if version_parts(version)[:2]!=stream_parts(stream_version):
+        raise ValueError('Product release version does not match its pinned Stream baseline')
 
 
 def relevant(paths):
@@ -17,25 +36,13 @@ def eligible(event_name, event, paths):
             and relevant(paths))
 
 
-def next_version(previous, messages):
-    if previous is None:
-        return 'v0.1.0'
-    if not re.fullmatch(r'v(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)', previous):
-        raise ValueError('Previous version must be a stable project semantic version')
-    major, minor, patch = map(int, previous[1:].split('.'))
-    bump = 1  # Every eligible change receives at least a unique patch version.
-    for message in messages:
-        header = message.splitlines()[0] if message.splitlines() else ''
-        match = re.match(r'([a-z]+)(\([^\r\n()]+\))?(!)?: .+', header)
-        if match and (match[3] or re.search(r'^BREAKING[ -]CHANGE: ', message, re.M)):
-            bump = 3
-        elif match and match[1] == 'feat':
-            bump = max(bump, 2)
-    if bump == 3:
-        return f'v{major+1}.0.0'
-    if bump == 2:
-        return f'v{major}.{minor+1}.0'
-    return f'v{major}.{minor}.{patch+1}'
+def next_version(previous, stream_version):
+    """Stream selects year/month; every new eligible commit advances revision."""
+    current=stream_parts(stream_version)
+    if previous is None:return 'v'+stream_version+'.0'
+    year,month,revision=version_parts(previous)
+    if (year,month)>current:raise ValueError('Stream baseline downgrade cannot create a release')
+    return 'v'+stream_version+'.'+str(revision+1 if (year,month)==current else 0)
 
 
 def release_notes(commits):

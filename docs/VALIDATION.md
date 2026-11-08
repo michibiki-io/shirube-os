@@ -17,7 +17,7 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 45 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Unit/failure-path tests | PASS | 50 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
 | FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
 | NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; guest commit/save/reboot unverified |
@@ -30,6 +30,7 @@ https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6709846136.
 | HTTP API dependency environment | PASS | Own packaging with the same 26 dependency versions, exact source/wheel hashes, per-dependency notices, native extension imports and actual GraphQL execution; ARM64 and guest API service integration remain unverified |
 | Python compilation / shell syntax | PASS | Current Python files, both recipe architecture renderings and producer scripts |
 | Workflow validation | PASS | YAML parsing and actionlint v1.7.12; current release/Test workflows |
+| Native AMD64 kernel tranche | PASS | Linux 6.6.128 image/headers/libc-dev/perf built; actual module signatures verified against the fresh matching certificate and runtime payloads audited; not an ISO/boot result |
 | Module cryptography primitive | PASS | Real CMS signature, tampering/wrong-certificate rejection and private-directory removal in container; not a real kernel build |
 | Supplied SVG conversion | PASS | Native-container rsvg conversion to 824×320 PNG and filesystem identity helper; not a guest boot |
 | Source-built python3-vici package | PASS | AMD64 container, authenticated Stream sources; 5.9.11-2 all-architecture package; not an ISO |
@@ -62,7 +63,7 @@ not explain away remaining implementation gaps.
 | 6 | Offline logical cleanup, console enrollment implementation | Actual proof of guest integration, free-space/journal cleanup and fresh-firmware/access/DHCP/identity tests |
 | 7 | Component archive/member integrity and inventory validators | Complete source/dependency coverage, exact component/license audit, real reconstruction |
 | 8 | Both runner-variable/default/label policies and native checks | Actual supported runner/resource/virtualization evidence for the wired workflow |
-| 9 | Tested merged-PR eligibility, commit-only semantic version policy, immutable-set comparison | Real end-to-end build/recovery/publication verification of the wired orchestration |
+| 9 | Tested merged-PR eligibility, Stream-aligned version/revision policy, immutable-set comparison | Real end-to-end build/recovery/publication verification of the wired orchestration |
 | 10 | Manifest v1 schema/example, complete-set/evidence/hash/source gates and failure injection | Real coherent assets/evidence and staging/publication verification; OCI remains independent |
 | 11 | Task-only mounts/work, runtime-only private signing keys, enrollment erasure and payload key checks | End-to-end source/binary/log/cache/whole-disk audits |
 | 12 | Build/release/first-boot/NetBird/license docs and explicit limits | Update runnable reconstruction/recovery instructions after complete integration/validation |

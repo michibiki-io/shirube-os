@@ -18,7 +18,8 @@
     },
     "version": {
       "type": "string",
-      "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+      "pattern": "^v[1-9][0-9]{3}\\.(0[1-9]|1[0-2])\\.(0|[1-9][0-9]*)$",
+      "description": "v<Stream YYYY.MM>.<Shirube revision>; month is zero-padded, not strict SemVer."
     },
     "source_commit": {
       "type": "string",
@@ -31,7 +32,8 @@
       "type": "object",
       "properties": {
         "version": {
-          "const": "2026.03"
+          "type": "string",
+          "pattern": "^[1-9][0-9]{3}\\.(0[1-9]|1[0-2])$"
         },
         "sha256": {
           "type": "string",

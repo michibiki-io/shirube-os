@@ -48,6 +48,7 @@ def main():
     parser.add_argument('--include-sources',action='store_true')
     args = parser.parse_args()
     native(args.architecture)
+    lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
     if args.include_sources and args.target!='iso':
         raise ValueError('Separate source audit is only valid for a complete ISO target')
     management=None
@@ -67,11 +68,12 @@ def main():
     public_output = args.output
     if args.target in {'iso','release'}:
         import re
-        if args.job or not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+',args.version or '') or not re.fullmatch('[0-9a-f]{40}',args.commit or ''):
+        if args.job or not re.fullmatch('[0-9a-f]{40}',args.commit or ''):
             raise ValueError('Release requires all packages, a project version and exact source commit')
+        from producer.policy import require_stream_version
+        require_stream_version(args.version,lock['version'])
         args.output = work/'package-output'
         args.output.mkdir()
-    lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
     if args.verified_input:
         archive = args.verified_input/'stream.tar.gz'
         if sha256(archive) != lock['sha256']:

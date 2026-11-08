@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 import tarfile
 from .sources import sha256
+from .policy import version_parts,require_stream_version
 
 ARCHES = {'amd64', 'arm64'}
 CHECKS = {'build', 'architecture', 'module_signatures', 'branding', 'licenses',
@@ -98,19 +99,21 @@ def verify_sources(root, inventory, assets):
 def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
     root = Path(root)
     manifest = json.loads((root / 'manifest.json').read_text())
+    version_parts(expected_version)
     if (manifest.get('schema_version') != 1 or manifest.get('manifest_kind') != 'release'
             or manifest.get('provider') != 'michibiki-io' or manifest.get('project') != 'Shirube OS'
             or manifest.get('version') != expected_version
             or manifest.get('source_commit') != expected_commit or manifest.get('source_clean') is not True
-            or not re.fullmatch('[0-9a-f]{40}', expected_commit)
-            or not re.fullmatch(r'v(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)', expected_version)):
+            or not re.fullmatch('[0-9a-f]{40}', expected_commit)):
         raise ValueError('Release identity/clean-source mismatch')
     upstream = manifest.get('upstream', {})
-    if (upstream.get('version') != '2026.03'
-            or upstream.get('sha256') != 'e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910'
+    lock=json.loads((Path(__file__).resolve().parents[1]/'source-lock.json').read_text())
+    require_stream_version(expected_version,lock['stream']['version'])
+    if (upstream.get('version') != lock['stream']['version']
+            or upstream.get('sha256') != lock['stream']['sha256']
             or upstream.get('signature') != 'PASS'
-            or upstream.get('vpp_commit') != '8a3f587695fe6ad4d8297bd4b2f331b7262698d9'
-            or upstream.get('vpp_patches_commit') != '9cab3c94679592ef27a58e6a0e9becdd9f847754'
+            or upstream.get('vpp_commit') != lock['external_git']['vpp']['commit']
+            or upstream.get('vpp_patches_commit') != lock['external_git']['vpp-patches']['commit']
             or not upstream.get('substitution')):
         raise ValueError('Unexpected upstream baseline')
     if not architectures or not set(architectures) <= ARCHES or set(manifest.get('architectures', {})) != set(architectures):

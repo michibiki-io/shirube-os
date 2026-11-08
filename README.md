@@ -21,3 +21,11 @@ not establish a successful OS build or boot. See [validation status](docs/VALIDA
 Run safe static checks with `python3 -m unittest discover -s tests -v`.
 Build tools, firmware and QEMU belong in containers. No cloud upload, image import
 or deployment is provided by this repository.
+
+Release versions follow the pinned Stream baseline: `2026.03` → `v2026.03.0`,
+then `v2026.03.1` for the next Shirube revision. A new Stream baseline `2026.04`
+starts `v2026.04.0`.
+
+リリース版は固定したStream版に合わせます。`2026.03`の初回は`v2026.03.0`、
+同じStream内の次の修正版は`v2026.03.1`、Streamを`2026.04`へ更新した初回は
+`v2026.04.0`です。

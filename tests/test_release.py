@@ -11,10 +11,15 @@ from producer.sources import sha256
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_release_version_must_match_stream_month(self):
+        self.manifest['version']='v2026.04.0';self.write()
+        with self.assertRaisesRegex(ValueError,'Stream baseline'):
+            validate(self.root,self.commit,'v2026.04.0')
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        self.commit, self.version = 'a'*40, 'v0.1.0'
+        self.commit, self.version = 'a'*40, 'v2026.03.0'
         self.manifest = {'schema_version':1, 'manifest_kind':'release', 'provider':'michibiki-io', 'project':'Shirube OS', 'version':self.version,
                          'source_commit':self.commit, 'source_clean':True, 'upstream':{'version':'2026.03', 'sha256':'e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910', 'signature':'PASS', 'vpp_commit':'8a3f587695fe6ad4d8297bd4b2f331b7262698d9', 'vpp_patches_commit':'9cab3c94679592ef27a58e6a0e9becdd9f847754', 'substitution':'public VPP substitute, not vendor-identical'},
                          'architectures':{}, 'assets':[]}

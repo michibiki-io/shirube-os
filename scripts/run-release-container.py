@@ -9,6 +9,7 @@ import subprocess
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from producer.netbird_fixture import Fixture
+from producer.policy import version_parts
 
 
 def main():
@@ -22,7 +23,8 @@ def main():
     parser.add_argument('--commit',required=True)
     args=parser.parse_args()
     if not re.fullmatch('sha256:[0-9a-f]{64}',args.image):raise ValueError('Immutable native toolchain image required')
-    if not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+',args.version) or not re.fullmatch('[0-9a-f]{40}',args.commit):
+    version_parts(args.version)
+    if not re.fullmatch('[0-9a-f]{40}',args.commit):
         raise ValueError('Exact candidate version and commit required')
     output=args.output.resolve();project=args.project_source.resolve()
     if not output.is_dir() or any(output.iterdir()) or not project.is_file():

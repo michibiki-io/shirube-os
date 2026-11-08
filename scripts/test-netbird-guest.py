@@ -12,6 +12,7 @@ import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from producer.netbird_fixture import Fixture
 from producer.sources import sha256
+from producer.policy import version_parts
 
 
 def main():
@@ -24,7 +25,7 @@ def main():
     parser.add_argument('--accelerator',choices=['kvm','tcg'],default='kvm')
     args=parser.parse_args()
     if not re.fullmatch(r'sha256:[0-9a-f]{64}',args.helper_image):raise ValueError('Immutable toolchain image required')
-    if not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+',args.version):raise ValueError('Exact project version required')
+    version_parts(args.version)
     disk=args.disk.resolve();before=sha256(disk)
     root=args.work.resolve();root.mkdir(parents=True,mode=0o700,exist_ok=False)
     result=root/'result';result.mkdir(mode=0o700)

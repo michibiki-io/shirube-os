@@ -7,7 +7,7 @@ import re
 import subprocess
 import tempfile
 from .architecture import runner
-from .policy import eligible, next_version, release_notes
+from .policy import eligible, next_version, release_notes, VERSION_PATTERN, version_parts, require_stream_version
 from .release import validate
 from .sources import sha256
 
@@ -92,10 +92,11 @@ def resolve():
         emit({'eligible':'false'}); return
     commit = pr['merge_commit_sha']
     identity(commit)
+    stream_version=json.loads(Path('source-lock.json').read_text())['stream']['version']
     existing = releases()
     matching=[]
     for record in existing:
-        if not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+',record['tag_name']):continue
+        if not re.fullmatch(VERSION_PATTERN,record['tag_name']):continue
         target=record['target_commitish'] if record['draft'] else git('rev-parse',record['tag_name']+'^{commit}')
         if target==commit:matching.append(record)
     if len(matching)>1:
@@ -103,14 +104,15 @@ def resolve():
     if matching:
         selected = matching[0]
         version = selected['tag_name']
+        require_stream_version(version,stream_version)
         if not selected['draft']:
             verify_published(version, commit)
             emit({'eligible':'true','noop':'true','commit':commit,'version':version})
             return
     else:
         published = [r for r in existing if not r['draft'] and not r['prerelease'] and
-                     re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+',r['tag_name'])]
-        published.sort(key=lambda r:tuple(map(int,r['tag_name'][1:].split('.'))))
+                     re.fullmatch(VERSION_PATTERN,r['tag_name'])]
+        published.sort(key=lambda r:version_parts(r['tag_name']))
         previous = published[-1] if published else None
         if previous:
             previous_commit = git('rev-parse', previous['tag_name']+'^{commit}')
@@ -124,12 +126,12 @@ def resolve():
             raise ValueError('Incomplete individual PR commit metadata; refusing PR-title classification')
         commits=[{'sha':item['sha'],'subject':item['commit']['message'].splitlines()[0],
                   'message':item['commit']['message']} for item in raw_commits]
-        version = next_version(previous['tag_name'] if previous else None,[c['message'] for c in commits])
+        version = next_version(previous['tag_name'] if previous else None,stream_version)
         tag_exists=subprocess.run(['git','show-ref','--verify','--quiet','refs/tags/'+version]).returncode==0
         if tag_exists and git('rev-parse',version+'^{commit}')!=commit:
             raise ValueError('Computed version already points to a different source commit')
         with tempfile.NamedTemporaryFile(mode='w',suffix='.md') as notes:
-            notes.write('Shirube OS '+version+'\n\nSource commit: `'+commit+'`\n\n'+release_notes(commits)); notes.flush()
+            notes.write('Shirube OS '+version+'\n\nUpstream Stream: `'+stream_version+'`\n\nSource commit: `'+commit+'`\n\n'+release_notes(commits)); notes.flush()
             # Reserve this version/commit durably before compilation. A rerun
             # finds this draft and cannot allocate a different version.
             gh('release','create',version,'--repo',REPO,'--draft','--target',commit,

@@ -1,5 +1,5 @@
 import unittest
-from producer.policy import eligible, next_version
+from producer.policy import eligible, next_version,require_stream_version
 from producer.architecture import runner, native, check_elf, check_pe, check_kernel
 
 
@@ -16,15 +16,18 @@ class PolicyTests(unittest.TestCase):
         event['pull_request']['base']['ref'] = 'other'
         self.assertFalse(eligible('pull_request', event, ['source-lock.json']))
 
-    def test_versions_use_commits_and_minimum_patch(self):
-        self.assertEqual(next_version(None, ['feat!: initial']), 'v0.1.0')
-        for message in ['fix: driver', 'chore: recipe', 'unstructured message']:
-            self.assertEqual(next_version('v0.1.0', [message]), 'v0.1.1')
-        self.assertEqual(next_version('v0.1.0', ['feat(netbird): integrate']), 'v0.2.0')
-        self.assertEqual(next_version('v1.2.3', ['fix: change\n\nBREAKING CHANGE: config']), 'v2.0.0')
-        self.assertEqual(next_version('v1.2.3', ['feat!: protocol']), 'v2.0.0')
-        with self.assertRaises(ValueError):
-            next_version('v01.2.3', [])
+    def test_stream_version_selects_baseline_and_shirube_revision(self):
+        self.assertEqual(next_version(None,'2026.03'),'v2026.03.0')
+        self.assertEqual(next_version('v2026.03.0','2026.03'),'v2026.03.1')
+        self.assertEqual(next_version('v2026.03.9','2026.03'),'v2026.03.10')
+        self.assertEqual(next_version('v2026.03.99','2026.04'),'v2026.04.0')
+        self.assertEqual(next_version('v2026.12.4','2027.01'),'v2027.01.0')
+
+    def test_stream_downgrade_or_malformed_release_is_rejected(self):
+        for previous,stream in [('v2026.04.0','2026.03'),('v2026.3.0','2026.03'),
+            ('v2026.03.01','2026.03'),('v2026.03.0','2026.13'),(None,'2026.3')]:
+            with self.assertRaises(ValueError):next_version(previous,stream)
+        with self.assertRaises(ValueError):require_stream_version('v2026.04.0','2026.03')
 
     def test_runner_variables_independent_without_fallback(self):
         self.assertEqual(runner('amd64'), 'ubuntu-24.04')

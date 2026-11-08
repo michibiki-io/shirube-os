@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import hashlib
 import json
+from .policy import version_parts
 
 DESCRIPTION = 'An open-source router OS based on VyOS Stream, built and maintained by michibiki-io.'
 
@@ -54,8 +55,7 @@ def prepare_source_artwork(sources, logo, license_file):
 
 def install(root, version, logo):
     root, logo = Path(root), Path(logo)
-    if not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+', version):
-        raise ValueError('Independent project semantic version required')
+    version_parts(version)
     if b'<svg ' not in logo.read_bytes() or b'Shirube OS' not in logo.read_bytes():
         raise ValueError('Expected repository-supplied Shirube OS SVG')
     identity = path_in_root(root, 'etc/os-release')
