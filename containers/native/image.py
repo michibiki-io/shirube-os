@@ -168,6 +168,8 @@ def guest_package(arch, version):
 
 
 def assemble(sources, packages, arch, version, output):
+    from producer.debootstrap import configure_retry
+    configure_retry()
     root=generate(arch)
     Path('/sources').symlink_to(sources)
     debs=Path('/debs');debs.mkdir()
