@@ -233,3 +233,14 @@ MIT表示と分かれている。WikipediaのCC-BY-SAまたはpublic domainと�
 ファイルごとの由来とCC-BY-SAの版が不明なため、元ソース全体は配布許諾未確認として
 記録した。帰属の確認または対象を明示したソース出力を整えるまで公開条件を通さず、
 実行時の機能は維持する。
+
+Twenty-one exact Python source/notice pairs have individual MIT, BSD-3-Clause or
+Unlicense decisions. Original ApacheBench sample-output attribution in CherryPy
+is retained. These entries cover only the declared unmodified distributions;
+external programs, native libraries, vendored tools, remaining SDK dependencies
+and full OS reconstruction remain separate checks.
+
+Python依存21件は、固定した元ソースとライセンス資料に対するMIT・BSD-3-Clause・
+Unlicenseの判断を個別に記録した。CherryPyのApacheBench出力例にある帰属も保持する。
+各記録の対象は宣言した未変更の配布物に限り、外部プログラム、ネイティブライブラリ、
+同梱ツール、SDKの残る依存、OS全体の再構築は別途確認する。

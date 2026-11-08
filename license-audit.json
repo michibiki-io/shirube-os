@@ -1677,6 +1677,285 @@
         "Do not infer fixture redistribution permission from the library MIT notice or alter runtime functionality to avoid this audit."
       ],
       "scope": "The exact original source archive remains uncleared; this is a recorded source-distribution question, not a finding that the runtime library is unusable."
+    },
+    "pypi:cheroot@11.1.2": {
+      "source_identity": "bfb70c49663f63b0440f2b54dbc6b0d1650e56dfe4e2641f59b2c6f727b44aca",
+      "copyright_sha256": "01087282150e20502de6b053a4d56c0e907686584a96fba5e49bfaec9115f469",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/bfb70c49663f63b0440f2b54dbc6b0d1650e56dfe4e2641f59b2c6f727b44aca.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit.",
+        "Do not use upstream or contributor names to endorse or promote derived products without permission."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:cherrypy@18.10.0": {
+      "source_identity": "6c70e78ee11300e8b21c0767c542ae6b102a49cac5cfd4e3e313d7bb907c5891",
+      "copyright_sha256": "d6d6a968f457144b5be6fdc54524c629ffd60ebbc614b3806263c310650fd4e4",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/6c70e78ee11300e8b21c0767c542ae6b102a49cac5cfd4e3e313d7bb907c5891.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit.",
+        "Do not use upstream or contributor names to endorse or promote derived products without permission.",
+        "Preserve the original ApacheBench sample-output attribution in the unmodified benchmark documentation."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:croniter@2.0.5": {
+      "source_identity": "f1f8ca0af64212fbe99b1bee125ee5a1b53a9c1b433968d8bca8817b79d237f3",
+      "copyright_sha256": "9ceab3deeb5cf180b9101ebfac2f32b37680c9631ced2076c319e3b117ed2605",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/f1f8ca0af64212fbe99b1bee125ee5a1b53a9c1b433968d8bca8817b79d237f3.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:filelock@3.20.3": {
+      "source_identity": "18c57ee915c7ec61cff0ecf7f0f869936c7c30191bb0cf406f1341778d0834e1",
+      "copyright_sha256": "c5b5f13cad5f1c41d70447979a99e94c07e331cb279077df28eb88bb5295c9a0",
+      "redistributable": true,
+      "license": "Unlicense",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/18c57ee915c7ec61cff0ecf7f0f869936c7c30191bb0cf406f1341778d0834e1.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:idna@3.7": {
+      "source_identity": "028ff3aadf0609c1fd278d8ea3089299412a7a8b9bd005dd08b9f8285bcb5cfc",
+      "copyright_sha256": "28d7b10505df045823a110047c32b60da5f19512d4c94bd2df923741735840cd",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/028ff3aadf0609c1fd278d8ea3089299412a7a8b9bd005dd08b9f8285bcb5cfc.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit.",
+        "Do not use upstream or contributor names to endorse or promote derived products without permission."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:jaraco-classes@3.2.1": {
+      "source_identity": "ed54b728af1937dc16b7236fbaf34ba561ba1ace572b03fffa5486ed363ecf34",
+      "copyright_sha256": "385db5fc1e330d2063baceefeae3a1d10e35f754eca2f768c2b2f201805b8a46",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/ed54b728af1937dc16b7236fbaf34ba561ba1ace572b03fffa5486ed363ecf34.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:jaraco-collections@3.4.0": {
+      "source_identity": "344d14769d716e7496af879ac71b3c6ebdd46abc64bd9ec21d15248365aa3ac9",
+      "copyright_sha256": "bd8d74b2ca5e09dbec33e0aa645afa651c3a6e8ddec9aae90f2209719889fc00",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/344d14769d716e7496af879ac71b3c6ebdd46abc64bd9ec21d15248365aa3ac9.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:jaraco-context@6.0.1": {
+      "source_identity": "9bae4ea555cf0b14938dc0aee7c9f32ed303aa20a3b73e7dc80111628792d1b3",
+      "copyright_sha256": "bd10b44f99bfd8b2401b75e0fb59c87d10f66d2d43cc7199a6652202b36ff818",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/9bae4ea555cf0b14938dc0aee7c9f32ed303aa20a3b73e7dc80111628792d1b3.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:jaraco-functools@4.2.1": {
+      "source_identity": "be634abfccabce56fa3053f8c7ebe37b682683a4ee7793670ced17bab0087353",
+      "copyright_sha256": "88ece084d57bd9c5d6a11857447a77bb6996efd1e303e9efb18e25534d3d634b",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/be634abfccabce56fa3053f8c7ebe37b682683a4ee7793670ced17bab0087353.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:jaraco-text@4.0.0": {
+      "source_identity": "5b71fecea69ab6f939d4c906c04fee1eda76500d1641117df6ec45b865f10db0",
+      "copyright_sha256": "818861becf19ea3a0db253e8757401498ffcd5a0e5905ca5c2c29ad842f8897b",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/5b71fecea69ab6f939d4c906c04fee1eda76500d1641117df6ec45b865f10db0.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:jinja2@3.1.6": {
+      "source_identity": "0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d",
+      "copyright_sha256": "7906523abd334e86d273c7d4b107ef3dcc594a1847cb76e1ba776f21d465befb",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit.",
+        "Do not use upstream or contributor names to endorse or promote derived products without permission."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:jmespath@1.0.1": {
+      "source_identity": "90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe",
+      "copyright_sha256": "14c91d6d2a617878d2ebb480ed86c658282fb92e01a35ad775f48ae031358157",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:more-itertools@10.7.0": {
+      "source_identity": "9fddd5403be01a94b204faadcff459ec3568cf110265d3c54323e1e866ad29d3",
+      "copyright_sha256": "58542ac4244d76146428c103592c89dc4ad4a1aa4cbbeca06d2cbf9bfb368873",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/9fddd5403be01a94b204faadcff459ec3568cf110265d3c54323e1e866ad29d3.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:platformdirs@4.5.1": {
+      "source_identity": "61d5cdcc6065745cdd94f0f878977f8de9437be93de97c1c12f853c9c0cdcbda",
+      "copyright_sha256": "aed1da6941360f69d28ae026c1bde6fde89fab99f3108140cf87cc9a37e77a2a",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/61d5cdcc6065745cdd94f0f878977f8de9437be93de97c1c12f853c9c0cdcbda.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:portend@2.4": {
+      "source_identity": "507e1f76eb6deec0cc15045d1140a07874f44d02eec021e8fd383557d99fe93d",
+      "copyright_sha256": "757deae18ad5cf7dff621598912e17d216ab2dfc7ff028b44b227adeb18eeee1",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/507e1f76eb6deec0cc15045d1140a07874f44d02eec021e8fd383557d99fe93d.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:python-gnupg@0.4.8": {
+      "source_identity": "b64de1ae5cedf872b437201a566fa2c62ce0c95ea2e30177eb53aee1258507d7",
+      "copyright_sha256": "1f9f506714fea7f5a6fba59f82c5c676f16f0789cdc468b413da64ba253e0c3a",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/b64de1ae5cedf872b437201a566fa2c62ce0c95ea2e30177eb53aee1258507d7.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit.",
+        "Do not use upstream or contributor names to endorse or promote derived products without permission."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:pytz@2022.1": {
+      "source_identity": "1e760e2fe6a8163bc0b3d9a19c4f84342afa0a2affebfaa84b01b978a02ecaa7",
+      "copyright_sha256": "a383cd71429922e775b237d7476c44214ea47d96c5d9ec0c5b5f10012ea10a11",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/1e760e2fe6a8163bc0b3d9a19c4f84342afa0a2affebfaa84b01b978a02ecaa7.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:six@1.16.0": {
+      "source_identity": "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
+      "copyright_sha256": "9e17a92b4b57bde70483f7dc20a233454496e8cfc822c36acb300c7ce7e265ff",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:tempora@4.1.1": {
+      "source_identity": "c54da0f05405f04eb67abbb1dff4448fd91428b58cb00f0f645ea36f6a927950",
+      "copyright_sha256": "8ea50c68a2b3462f1f134c122462b54718392bf9e1423c6ac9e530f05f049b22",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/c54da0f05405f04eb67abbb1dff4448fd91428b58cb00f0f645ea36f6a927950.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:urllib3@2.6.3": {
+      "source_identity": "1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed",
+      "copyright_sha256": "2c8a85f4d8db8ea56161a841045e2a568dd51b5b83a91c1509f164fbdb98140c",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:zipp@3.23.0": {
+      "source_identity": "a07157588a12518c9d4034df3fbbee09c814741a33ff63c05fa29d26a2404166",
+      "copyright_sha256": "3445041c28eac194d83f0a99f4bdc36f1ade972503f0812f336886b94d2551c0",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/a07157588a12518c9d4034df3fbbee09c814741a33ff63c05fa29d26a2404166.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission/conditions and disclaimer in source and binary release materials.",
+        "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
+      ],
+      "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
