@@ -1,0 +1,205 @@
+"""Retain exact Salt SDK dependency sources; this never grants license clearance."""
+from email.parser import BytesParser
+import hashlib
+import json
+from pathlib import Path, PurePosixPath
+import re
+import shutil
+import tarfile
+import zipfile
+
+from .bundles import bundle
+from .sanitize import path_in_root
+from .sources import download, sha256
+
+
+def seed_sdk(architecture, data_directory, lock_path, cache=None):
+    lock = json.loads(Path(lock_path).read_text())
+    triplets = {'amd64': 'x86_64-linux-gnu', 'arm64': 'aarch64-linux-gnu'}
+    if architecture not in triplets:
+        raise ValueError('Unsupported Salt SDK architecture')
+    name = lock['python'] + '-' + triplets[architecture] + '.tar.xz'
+    selected = [item for item in lock['sdk_assets'] if item['name'] == name]
+    if len(selected) != 1:
+        raise ValueError('Exact architecture-specific Salt SDK input missing')
+    record = selected[0]
+    expected_url = 'https://github.com/saltstack/relenv/releases/download/v' + lock['relenv'] + '/' + name
+    if (record['url'] != expected_url or not re.fullmatch('sha256:[0-9a-f]{64}', record['digest'])
+            or type(record['size']) is not int or record['size'] <= 0):
+        raise ValueError('Invalid fixed Salt SDK asset declaration')
+    directory = Path(data_directory) / 'build'
+    directory.mkdir(parents=True, exist_ok=True)
+    destination = directory / name
+    if destination.is_symlink():
+        raise ValueError('Salt SDK input must be a regular private-staging file')
+    if not destination.exists():
+        original=Path(cache)/name if cache else None
+        if original is not None and original.is_file() and not original.is_symlink():
+            shutil.copyfile(original,destination)
+        else:download(record['url'], destination)
+    if (not destination.is_file() or destination.stat().st_size != record['size']
+            or sha256(destination) != record['digest'][7:]):
+        raise ValueError('Salt SDK asset hash/size mismatch')
+    return destination
+
+
+def pin_build(source, architecture, lock_path):
+    """Replace only unverified SDK acquisition, preserving upstream features."""
+    if architecture not in {'amd64', 'arm64'}:
+        raise ValueError('Unsupported Salt SDK architecture')
+    source = Path(source)
+    lock = json.loads(Path(lock_path).read_text())
+    rules = source / 'pkg/debian/rules'
+    text = rules.read_text()
+    original = '\tbuild/onedir/venv/bin/relenv fetch --python=$${SALT_PYTHON_VERSION}'
+    if text.count(original) != 1:
+        raise ValueError('Upstream Salt SDK acquisition recipe differs')
+    replacement = ('\tPYTHONPATH=/src python3 -m producer.salt_sources seed-sdk --architecture '
+                   + architecture + ' --data-directory "$${RELENV_DATA}"'
+                   + ' --lock /src/native/salt-sources.lock.json --cache /public-inputs/salt-sdk')
+    text = text.replace(original, replacement)
+    text = text.replace('#!/usr/bin/make -f\n', '#!/usr/bin/make -f\n'
+                        '# Modified by michibiki-io 2026-11-08: verify the fixed public SDK before use.\n', 1)
+    rules.write_text(text)
+    constraints = source / 'requirements/constraints.txt'
+    pins = ['# Shirube OS: fixed runtime SDK inputs; upstream component versions retained.']
+    # The upstream SDK package requirements already pin every other runtime
+    # distribution. CI/build tools intentionally have a different dependency
+    # environment (for example certifi), so do not constrain it to SDK versions.
+    pins += [name + '==' + version for name, version in sorted(lock['installed_distributions'].items())
+             if name in {'pip', 'relenv', 'setuptools', 'wheel'}]
+    pins.append('ppbt==0.1.8')
+    constraints.write_text(constraints.read_text() + '\n' + '\n'.join(pins) + '\n')
+
+
+def normalized(name):
+    return re.sub('[-_.]+', '-', name).lower()
+
+
+def installed_distributions(rootfs):
+    site = path_in_root(rootfs, 'opt/saltstack/salt/lib/python3.11/site-packages')
+    result = {}
+    for metadata in sorted(site.glob('*.dist-info/METADATA')):
+        # Resolve according to guest semantics before opening installed files.
+        metadata = path_in_root(rootfs, str(metadata.relative_to(Path(rootfs).resolve())))
+        data = BytesParser().parsebytes(metadata.read_bytes())
+        name, version = data['Name'], data['Version']
+        if not name or not version or normalized(name) in result:
+            raise ValueError('Missing or duplicate Salt SDK distribution identity')
+        result[normalized(name)] = version
+    if not result:
+        raise ValueError('Salt SDK distribution metadata is missing')
+    return result
+
+
+def notice_members(archive, declarations):
+    """Read only explicitly pinned regular legal files, without extraction."""
+    expected = {item['member']: item['sha256'] for item in declarations}
+    if not expected or len(expected) != len(declarations):
+        raise ValueError('Missing or duplicate Salt source legal notice')
+    for member in expected:
+        path = PurePosixPath(member)
+        if path.is_absolute() or '..' in path.parts or str(path) != member or '\\' in member:
+            raise ValueError('Unsafe Salt source notice path')
+    found = {}
+    def accept(name, size, regular, read):
+        if name not in expected:
+            return
+        if name in found or not regular or not 0 < size <= 4 * 1024**2:
+            raise ValueError('Invalid or duplicate Salt source legal file')
+        content = read()
+        if hashlib.sha256(content).hexdigest() != expected[name]:
+            raise ValueError('Salt source legal notice hash differs')
+        found[name] = content
+    if zipfile.is_zipfile(archive):
+        with zipfile.ZipFile(archive) as source:
+            for member in source.infolist():
+                mode = member.external_attr >> 16
+                regular = not member.is_dir() and mode & 0o170000 in {0, 0o100000}
+                accept(member.filename, member.file_size, regular, lambda: source.read(member))
+    else:
+        with tarfile.open(archive, mode='r|*') as source:
+            for member in source:
+                accept(member.name, member.size, member.isfile(),
+                       lambda: source.extractfile(member).read())
+    if found.keys() != expected.keys():
+        raise ValueError('Salt source legal notice is incomplete')
+    return found
+
+
+def retain(rootfs, destination, work, lock_path):
+    """Bind the installed SDK inventory to fixed sources and full notices.
+
+    The upstream Salt tree and packaging scripts are collected separately.
+    Keeping this archive does not establish SDK reconstruction or permission
+    to redistribute; the normal per-component audit remains mandatory.
+    """
+    lock_path = Path(lock_path)
+    lock = json.loads(lock_path.read_text())
+    if lock.get('schema_version') != 1:
+        raise ValueError('Unsupported Salt dependency source lock')
+    actual = installed_distributions(rootfs)
+    if actual != lock['installed_distributions']:
+        raise ValueError('Salt SDK distributions differ from pinned source inventory')
+    work = Path(work)
+    work.mkdir(parents=True, exist_ok=False)
+    inputs = [(lock_path, 'salt-sdk/source-lock.json', 'build_inputs')]
+    children = []
+    identities = set()
+    for record in lock['components']:
+        identity = (record['name'], record['version'])
+        if identity in identities or not re.fullmatch('[a-zA-Z0-9][a-zA-Z0-9+_.:-]*', record['name']):
+            raise ValueError('Invalid or duplicate Salt source component')
+        identities.add(identity)
+        if record['name'].startswith('pypi:') and actual.get(record['name'][5:]) != record['version']:
+            raise ValueError('Salt Python source version differs from installed distribution')
+        digest = record['sha256']
+        if not re.fullmatch('[0-9a-f]{64}', digest):
+            raise ValueError('Invalid Salt source digest')
+        source = work / (digest + '.source')
+        download(record['url'], source)
+        if sha256(source) != digest:
+            raise ValueError('Salt dependency source SHA256 mismatch')
+        member = 'salt-sdk/inputs/' + source.name
+        inputs.append((source, member, 'sources'))
+        notice = work / (digest + '.copyright')
+        with notice.open('xb') as output:
+            output.write((record['name'] + ' ' + record['version'] + '\n').encode())
+            for name, content in sorted(notice_members(source, record['notices']).items()):
+                output.write(('\nOriginal notice: ' + name + '\n').encode() + content + b'\n')
+            for legal in record.get('additional_notices', []):
+                if not re.fullmatch('[0-9a-f]{64}', legal['sha256']):
+                    raise ValueError('Invalid additional Salt legal notice digest')
+                path = work / (legal['sha256'] + '.notice')
+                download(legal['url'], path)
+                if sha256(path) != legal['sha256'] or not 0 < path.stat().st_size <= 4 * 1024**2:
+                    raise ValueError('Additional Salt legal notice missing or differs')
+                output.write(('\nAdditional upstream license: ' + legal['url'] + '\n').encode()
+                             + path.read_bytes() + b'\n')
+        notice_member = 'salt-sdk/notices/' + notice.name
+        inputs.append((notice, notice_member, 'license_files'))
+        children.append({'name': record['name'], 'version': record['version'],
+                         'source_identity': digest, 'source_member': member,
+                         'source_sha256': digest, 'notice': notice,
+                         'notice_member': notice_member})
+    expected = {'pypi:' + name for name in actual if name != 'salt'}
+    provided = {item['name'] for item in children if item['name'].startswith('pypi:')}
+    if expected != provided:
+        raise ValueError('Salt dependency source coverage is incomplete')
+    records = bundle(inputs, destination, 1773859634)
+    for child in children:
+        child['sources'] = [ref for ref in records['sources'] if ref['member'] == child['source_member']]
+        child['license_files'] = [ref for ref in records['license_files'] if ref['member'] == child['notice_member']]
+    return records, children
+
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('command', choices=['seed-sdk'])
+    parser.add_argument('--architecture', choices=['amd64', 'arm64'], required=True)
+    parser.add_argument('--data-directory', required=True)
+    parser.add_argument('--lock', required=True)
+    parser.add_argument('--cache')
+    args = parser.parse_args()
+    seed_sdk(args.architecture, args.data_directory, args.lock, args.cache)

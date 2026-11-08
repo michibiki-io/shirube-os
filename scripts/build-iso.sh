@@ -31,7 +31,9 @@ esac
 [[ $(docker info --format '{{.Architecture}}') =~ $aliases ]] || { echo 'Native Docker daemon required' >&2; exit 1; }
 [[ ! -e "$output" ]] || { echo 'New ISO output directory required' >&2; exit 1; }
 mkdir -p "$output"
-private=$(mktemp -d)
+private_root=${SHIRUBE_BUILD_STATE_DIRECTORY:-$PWD/.work/build-state}
+mkdir -p "$private_root"
+private=$(mktemp -d "$private_root/iso.XXXXXXXXXX")
 container_id=
 log_pid=
 task_nonce=$(basename "$private")

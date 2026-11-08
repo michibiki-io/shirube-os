@@ -211,6 +211,21 @@ failed or older-source output into an accepted candidate. The retained container
 may contain build signing keys and must stay private; remove that exact owned
 container and its private inputs when diagnosis is complete.
 
+ISO investigations keep their frozen project source and selected public inputs
+under `.work/build-state` by default. `SHIRUBE_BUILD_STATE_DIRECTORY` may select
+another private task directory. These inputs no longer depend on `/tmp` surviving
+a host restart. Keep this directory out of uploaded artifacts/shared caches.
+A stopped compiler container is diagnostic state, not a completed release
+candidate; recovery must preserve signing-cohort boundaries and re-run every
+required candidate gate. Put operator-captured logs in persistent private task
+storage as well.
+
+The optional public-input directory additionally accepts `vpp-python`,
+`vpp-external` and `salt-sdk` subdirectories. Their fixed source/asset hashes are
+checked before use; corrupt files fail without a network fallback. Missing files
+use their fixed public HTTPS URLs. Native VPP inputs are preseeded before its
+upstream downloader, so HTTP error pages cannot enter the compiler as archives.
+
 ## Release duration and runner limits
 
 Complete clean-build and repeat-build durations have not yet been established.

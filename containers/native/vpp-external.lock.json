@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "source_commit": "8a3f587695fe6ad4d8297bd4b2f331b7262698d9",
+  "patches_commit": "9cab3c94679592ef27a58e6a0e9becdd9f847754",
+  "hash_authority": "Prepared public VPP build/external/packages/*.mk at the pinned revisions",
+  "inputs": [
+    {
+      "filename": "daq-3.0.21.tar.gz",
+      "url": "https://github.com/snort3/libdaq/archive/refs/tags/v3.0.21.tar.gz",
+      "sha256": "60ad9405c1c6b75955e0784511b173570a601491ccdb6399da53ca811c446a96"
+    },
+    {
+      "filename": "dpdk-25.07.tar.xz",
+      "url": "https://fast.dpdk.org/rel/dpdk-25.07.tar.xz",
+      "sha256": "6886cbedc350bb8cbef347d10367d6259e36435627fbb27d578adbdc0d3b410d"
+    },
+    {
+      "filename": "v2.0.tar.gz",
+      "url": "https://github.com/intel/intel-ipsec-mb/archive/v2.0.tar.gz",
+      "sha256": "0c60e56f63b14212c7b388668acc219cbc6b79e5e79732aff7542fefbb498413"
+    },
+    {
+      "filename": "v25.09.tar.gz",
+      "url": "https://github.com/MarvellEmbeddedProcessors/marvell-octeon-roc/archive/refs/tags/v25.09.tar.gz",
+      "sha256": "39caf74eded46a01286dfbc6a90f8ddbf76d59764f89a574206afbf51b9d5613"
+    },
+    {
+      "filename": "quicly_0.1.5-vpp.tar.gz",
+      "url": "https://github.com/vpp-quic/quicly/releases/download/v0.1.5-vpp/quicly_0.1.5-vpp.tar.gz",
+      "sha256": "fb50ad8ce1136561ee08df02131030d89e38acd2cf8e36c65c074f3bd5034938"
+    },
+    {
+      "filename": "rdma-core-58.0.tar.gz",
+      "url": "https://github.com/linux-rdma/rdma-core/releases/download/v58.0/rdma-core-58.0.tar.gz",
+      "sha256": "88d67897b793f42d2004eec2629ab8464e425e058f22afabd29faac0a2f54ce4"
+    },
+    {
+      "filename": "xdp-tools-1.5.5.tar.gz",
+      "url": "https://github.com/xdp-project/xdp-tools/releases/download/v1.5.5/xdp-tools-1.5.5.tar.gz",
+      "sha256": "9a4339ffc40df178c4ddf919cb2b23585a75b3023517c75e82c4dfb0899249c7"
+    }
+  ]
+}

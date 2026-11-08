@@ -263,6 +263,13 @@ def collect(rootfs, package_output, output, arch, version, work):
                 # separately pinned packaging-tool source instead.
                 for path,relative in tracked_source_files(source/'python-tools-scripts'):
                     inputs.append((path,'build-tools/python-tools-scripts/'+relative,'build_inputs'))
+                if 'salt-sdk' not in static:
+                    from .salt_sources import retain as retain_salt
+                    sdk_archive=output/f'shirube-os-{version}-{arch}-salt-sdk-source.tar.gz'
+                    static['salt-sdk']=retain_salt(rootfs,sdk_archive,work/'salt-sdk',
+                                                   Path('/src/native/salt-sources.lock.json'))
+                    assets.append(sdk_archive)
+                nested.extend(static['salt-sdk'][1])
             binary_map=source/'shirube-corresponding-inputs/binary-info.json'
             generated={Path(item['path']).name:item['sha256'] for item in json.loads(binary_map.read_text())} if binary_map.is_file() else {}
             for path,relative in source_files:
@@ -297,6 +304,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 if kind=='vpp' else 'stream:'+source_identity if kind in {'vyos-1x','salt'} or source_name=='telegraf' else None)
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
+            if kind=='salt':records['build_inputs'].extend(static['salt-sdk'][0]['build_inputs'])
             if source_name=='vyos-1x':records['build_inputs'].extend(ocaml_records['build_inputs'])
             external=json.loads(Path('/src/native/external-sources.lock.json').read_text())
             keys=[]
