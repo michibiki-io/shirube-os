@@ -278,6 +278,9 @@ def collect(rootfs, package_output, output, arch, version, work):
                         'source_member':'source/inputs/'+dependency['source']['filename'],
                         'source_sha256':dependency['source']['sha256'],'notice':notice,'notice_member':member,
                         'binary_input':dependency['wheel']})
+            cached_recipe=source.parent/'cache-build-inputs'
+            if cached_recipe.is_dir():
+                for path,relative in files(cached_recipe):inputs.append((path,'library-cache/'+relative,'build_inputs'))
             inputs.extend([(copyright_file,'copyright','license_files'),(project,'project-source.tar','build_inputs')])
             archive=output/f'shirube-os-{version}-{arch}-source-{len(cached):04d}.tar.gz'
             common=rootfs/'usr/share/common-licenses'
@@ -285,7 +288,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
             fixture_origin=('vpp:'+json.loads(Path('/src/source-lock.json').read_text())['external_git']['vpp']['commit']
-                if kind=='vpp' else 'stream:'+source_identity if kind=='vyos-1x' else None)
+                if kind=='vpp' else 'stream:'+source_identity if kind=='vyos-1x' or source_name=='telegraf' else None)
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if source_name=='vyos-1x':records['build_inputs'].extend(ocaml_records['build_inputs'])
@@ -329,8 +332,9 @@ def collect(rootfs, package_output, output, arch, version, work):
                 children.append({'name':dependency['name'],'version':dependency['version'],
                     'source_identity':dependency['source_identity'],'license':reviewed.get('license','UNREVIEWED'),
                     'redistributable':child_clear,'sources':source_refs,
-                    'license_files':notice_refs,
-                    'build_inputs':records['build_inputs'],
+                    'license_files':legal_records if 'sources' in dependency else notice_refs,
+                    'build_inputs':list({(item['asset'],item['member'],item['sha256']):item
+                        for item in dependency.get('build_inputs',[])+records['build_inputs']}.values()),
                     **({'binary_input':dependency['binary_input']} if 'binary_input' in dependency else {})})
             approval=approval_for(approvals,source_name,source_version,origin)
             cleared=(approval.get('source_identity')==origin and approval.get('redistributable') is True

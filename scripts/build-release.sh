@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Full architecture candidate; only a validated directory can leave this stage.
 set -euo pipefail
+build_cpus=${SHIRUBE_BUILD_CPUS:-4}
+build_memory=${SHIRUBE_BUILD_MEMORY_GIB:-8}
+[[ $build_cpus =~ ^[1-9][0-9]?$ && $build_cpus -le 64 && $build_memory =~ ^[1-9][0-9]*$ && $build_memory -ge 2 && $build_memory -le 256 ]] || { echo 'Invalid native resource budget' >&2; exit 2; }
 architecture=${SHIRUBE_ARCHITECTURE:?}
 version=${SHIRUBE_VERSION:?}
 commit=${SHIRUBE_SOURCE_COMMIT:?}
@@ -24,20 +27,30 @@ cleanup() {
   fi
   rm -f "$private/image.id" "$private/project-source.tar"
   rm -rf "$private/source"
+  if [[ -d "$private/libraries" ]]; then rm -rf "$private/libraries"; fi
   rmdir "$private"
 }
 trap cleanup EXIT
 git archive --format=tar HEAD > "$private/project-source.tar"
 mkdir "$private/source"
 tar -xf "$private/project-source.tar" -C "$private/source"
-docker build --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
+docker buildx build --load --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
 image=$(cat "$private/image.id")
 [[ $(docker image inspect "$image" --format '{{.Architecture}}') == "$architecture" ]]
 docker run --rm --network none --device /dev/kvm --entrypoint python3 -v "$output:/output" "$image" \
-  -m producer.cli preflight "$architecture" --storage /output --require-kvm
+  -m producer.cli preflight "$architecture" --storage /output --require-kvm --memory-gib "$build_memory"
 # Mount only the new task directory and the exact public project source archive.
 # Runtime privileges are needed by live-build mounts; no host PID/network,
 # credentials, Docker socket, SSH agent or unrelated filesystem is shared.
+library_args=()
+if [[ -n ${SHIRUBE_LIBRARY_CACHE_STORE:-} ]]; then
+  shared_args=()
+  if [[ -n ${SHIRUBE_LIBRARY_CACHE_SHARED_OUTPUT:-} ]]; then shared_args=(--shared-output "$SHIRUBE_LIBRARY_CACHE_SHARED_OUTPUT"); fi
+  python3 "$private/source/scripts/prepare-library-cache.py" --project "$private/source" --image "$image" \
+    --architecture "$architecture" --store "$SHIRUBE_LIBRARY_CACHE_STORE" --output "$private/libraries" \
+    --cpus "$build_cpus" --memory-gib "$build_memory" "${shared_args[@]}"
+  library_args=(--cached-libraries "$private/libraries")
+fi
 python3 "$private/source/scripts/run-release-container.py" --architecture "$architecture" --image "$image" \
   --output "$output" --project-source "$private/project-source.tar" --private "$private/netbird-fixture" \
-  --version "$version" --commit "$commit"
+  --version "$version" --commit "$commit" --cpus "$build_cpus" --memory-gib "$build_memory" "${library_args[@]}"

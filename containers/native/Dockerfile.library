@@ -1,0 +1,17 @@
+# Build contexts contain only one library's authenticated source, recipe and
+# exact dependency packages. Product version, guest code and artwork are absent.
+ARG TOOLCHAIN_IMAGE
+FROM ${TOOLCHAIN_IMAGE} AS compile
+COPY snapshot/ /snapshot/
+COPY dependencies/ /local-debs/
+COPY common.sh /common.sh
+COPY prepare.sh /prepare.sh
+COPY context.json /context.json
+COPY worker.py /worker.py
+COPY resources.py /resources.py
+RUN python3 /worker.py
+
+# Only independently auditable artifacts leave the compiler stage. Never export
+# a release/runtime container or a kernel/private signing-key workspace.
+FROM scratch AS artifacts
+COPY --from=compile /export/ /library/

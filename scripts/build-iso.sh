@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # ISO generation is independent of KVM/local disk acceptance.
 set -euo pipefail
+build_cpus=${SHIRUBE_BUILD_CPUS:-4}
+build_memory=${SHIRUBE_BUILD_MEMORY_GIB:-8}
+[[ $build_cpus =~ ^[1-9][0-9]?$ && $build_cpus -le 64 && $build_memory =~ ^[1-9][0-9]*$ && $build_memory -ge 2 && $build_memory -le 256 ]] || { echo 'Invalid native resource budget' >&2; exit 2; }
 architecture=${SHIRUBE_ARCHITECTURE:?}
 version=${SHIRUBE_VERSION:?}
 commit=${SHIRUBE_SOURCE_COMMIT:?}
@@ -46,6 +49,7 @@ cleanup() {
   if [[ -n $log_pid ]]; then wait "$log_pid" || true; fi
   rm -f "$private/image.id" "$private/project-source.tar"
   rm -rf "$private/source"
+  if [[ -d "$private/libraries" ]]; then rm -rf "$private/libraries"; fi
   rmdir "$private"
 }
 trap cleanup EXIT
@@ -54,13 +58,23 @@ trap cleanup EXIT
 mkdir "$private/source"
 git archive --format=tar "$commit" > "$private/project-source.tar"
 tar -xf "$private/project-source.tar" -C "$private/source"
-docker build --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
+docker buildx build --load --platform "linux/$architecture" --build-arg "BASE=$base" --iidfile "$private/image.id" -f "$private/source/containers/native/Dockerfile" "$private/source"
 image=$(cat "$private/image.id")
 docker run --rm --network none --entrypoint python3 -v "$output:/output" "$image" \
-  -m producer.cli preflight "$architecture" --storage /output --stage iso
+  -m producer.cli preflight "$architecture" --storage /output --stage iso --memory-gib "$build_memory"
 cache_args=()
+library_args=()
+if [[ -n ${SHIRUBE_LIBRARY_CACHE_STORE:-} ]]; then
+  library_source_args=()
+  if [[ -n ${SHIRUBE_SOURCE_CACHE:-} ]]; then library_source_args=(--verified-input "$SHIRUBE_SOURCE_CACHE"); fi
+  python3 "$private/source/scripts/prepare-library-cache.py" --project "$private/source" --image "$image" \
+    --architecture "$architecture" --store "$SHIRUBE_LIBRARY_CACHE_STORE" --output "$private/libraries" \
+    --cpus "$build_cpus" --memory-gib "$build_memory" "${library_source_args[@]}"
+  library_args=(--cached-libraries /library-cache)
+  cache_args+=(-v "$private/libraries:/library-cache:ro")
+fi
 if [[ -n ${SHIRUBE_SOURCE_CACHE:-} ]]; then
-  cache_args=(-v "$SHIRUBE_SOURCE_CACHE:/verified:ro")
+  cache_args+=(-v "$SHIRUBE_SOURCE_CACHE:/verified:ro")
   if [[ -d "$SHIRUBE_SOURCE_CACHE/python-inputs-$architecture" ]]; then
     cache_args+=(-v "$SHIRUBE_SOURCE_CACHE/python-inputs-$architecture:/public-inputs:ro")
   fi
@@ -69,9 +83,9 @@ else
   source_args=()
 fi
 container_id=$(docker create --label "io.michibiki.shirube.task=$task_nonce" --privileged \
-  --cpus=2 --memory=8g --memory-swap=8g --pids-limit=4096 \
+  --cpus="$build_cpus" --memory="${build_memory}g" --memory-swap="${build_memory}g" --pids-limit=4096 \
   -v "$output:/output" -v "$private/project-source.tar:/project-source.tar:ro" "${cache_args[@]}" "$image" "$architecture" \
-  --target iso --version "$version" --commit "$commit" "${source_args[@]}" "${source_audit_args[@]}")
+  --target iso --version "$version" --commit "$commit" "${source_args[@]}" "${source_audit_args[@]}" "${library_args[@]}")
 if [[ -n ${SHIRUBE_BUILD_STATE_FILE:-} ]]; then
   [[ ! -e "$SHIRUBE_BUILD_STATE_FILE" ]] || { echo 'Build state file must be new' >&2; exit 1; }
   printf '%s\n' "$container_id" > "$SHIRUBE_BUILD_STATE_FILE"

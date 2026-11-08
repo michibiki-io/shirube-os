@@ -34,11 +34,45 @@ runs in a container. OPAM uses a pinned public repository revision and OCaml
 4.14.2. Python pyhumps uses a fixed wheel hash. No host compiler, libraries or
 QEMU installation is required by the package-stage wrapper.
 
-The wrapper bounds runtime compilation to two CPUs and 8 GiB memory without swap
-expansion. Compilation parallelism is two. Private build work stays inside its
-own disposable container. Only the new task output directory is mounted. It
+The wrappers default to four CPUs and 8 GiB memory without swap expansion.
+`SHIRUBE_BUILD_CPUS` and `SHIRUBE_BUILD_MEMORY_GIB` set explicit task limits.
+Compiler concurrency also respects the actual cgroup CPU and memory limits;
+C/C++ jobs receive a conservative 1.5 GiB budget per job. Kernel and Go jobs have
+separate memory budgets. These are operating policies, not measured peak-memory
+guarantees for every upstream compiler. Private build work stays inside its
+own disposable container. Task outputs and explicitly selected public-input caches are mounted. It
 never mounts host credentials, the Docker socket or sibling checkouts. It never
 prunes shared Docker state or stops unrelated workloads.
+
+## Reusing compiler and library builds
+
+The native Dockerfile separates the `toolchain` stage from the final producer
+code, guest integration and logo copies. The merged-release workflow exports
+public compiler layers to the architecture-specific GitHub Actions BuildKit cache.
+Runtime containers, signing keys and guest enrollment state never enter those
+layers. Cache eviction can still cause a cold compiler build.
+
+Unsigned library jobs have independent minimal Docker contexts. Their cache keys
+bind the authenticated preferred-source tree, patches, compiler-stage inputs,
+actual compiler/package fingerprints, architecture, recipe and dependency DEB
+hashes. Product version, logo and guest configuration changes do not invalidate
+an otherwise identical library. Kernel and core jobs remain outside this cache.
+The artifact image contains only library DEBs, preferred sources, notices,
+recipes and hash receipts; compiler workspaces are not exported.
+
+Set `SHIRUBE_LIBRARY_CACHE_STORE` to opt into this path for a local ISO build.
+The release workflow configures it automatically and restores/saves only curated
+artifact image archives. Before import, image configuration and archive members
+are checked. Before consumption, the producer recomputes its current source and
+dependency identities and audits the actual packages. Changed inputs cause a
+fresh build; corrupt matching entries fail rather than weakening validation.
+
+Native AMD64 probes built two libraries, saved their artifact images, removed
+their local tags, and restored them with version/artwork/guest-code changes.
+Both package sets retained identical hashes without recompilation. A separate
+native package producer consumed both validated entries successfully. Full ISO
+use and cross-run Actions persistence still require execution; these component
+checks do not establish complete image or release readiness.
 
 Runner policy accepts `ACTIONS_RUNNER_AMD64` and `ACTIONS_RUNNER_ARM64`, individually
 set or unset. Defaults are `ubuntu-24.04` and `ubuntu-24.04-arm`. A value may be a

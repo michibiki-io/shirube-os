@@ -64,7 +64,8 @@
     "AMD64 virtual-appliance profile omits vendor-only physical NIC/QAT packages; UEFI and virtio NIC/disk support use the matching source-built kernel. Physical hardware parity is not claimed.",
     "The HTTP API dependency wrapper is independently packaged as 2.3+shirube1; the Stream dependency versions and compatible installation path are retained. Upstream wrapper code with an empty copyright notice is not redistributed.",
     "Node exporter 1.9.1 uses the upstream nobtrfs build tag on both architectures: its optional btrfs collector links github.com/dennwc/ioctl v1.0.0, whose exact verified source ZIP lacks a permission notice. Btrfs-specific metrics are omitted; unresolved code is not linked or cleared for redistribution.",
-    "Telegraf keeps version 1.28.3 and all plugins; its RCON dependency is fixed to upstream MIT-license-only commit 34a67ca2b2d65052cacddc7a1415b568f8b932a1 (both Go source files unchanged)."
+    "Telegraf keeps version 1.28.3 and all plugins; its RCON dependency is fixed to upstream MIT-license-only commit 34a67ca2b2d65052cacddc7a1415b568f8b932a1 (both Go source files unchanged).",
+    "Salt stays at upstream 3006.21 with downstream package revision +shirube1: unused Cryptodome SelfTest runtime files and incomplete private-key documentation examples are excluded; cryptographic APIs remain present and full preferred source remains required."
   ],
   "debian_security_snapshot": "https://snapshot.debian.org/archive/debian-security/20261105T000000Z/",
   "opam_repository": {
@@ -130,5 +131,15 @@
         "reason": "Upstream MIT-license-only commit; both Go files identical to the former unlicensed snapshot."
       }
     }
+  },
+  "salt_profile": {
+    "upstream_version": "3006.21",
+    "package_version": "3006.21+shirube1",
+    "key_module_source_sha256": "fc48476e5ad95c98537171cf86b709a60772263a9f935ad1809632381f83f78f",
+    "key_module_patched_sha256": "3a9717617f17fe2b3676b360b7e702870d749182c2d36d0b79f30a383bfa8b6c",
+    "runtime_exclusions": [
+      "lib/python3.11/site-packages/Cryptodome/SelfTest"
+    ],
+    "scope": "Unused cryptographic self-test key fixtures excluded from runtime; incomplete private-key documentation examples redacted. Full corresponding dependency source remains required."
   }
 }

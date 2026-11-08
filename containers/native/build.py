@@ -11,6 +11,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import time
 sys.path.insert(0, '/src')
 from producer.architecture import native
 from producer.packages import audit
@@ -46,6 +47,7 @@ def main():
     parser.add_argument('--commit')
     parser.add_argument('--netbird-fixture-stdin',action='store_true')
     parser.add_argument('--include-sources',action='store_true')
+    parser.add_argument('--cached-libraries',type=Path)
     args = parser.parse_args()
     native(args.architecture)
     lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
@@ -91,6 +93,10 @@ def main():
     catalog = json.loads(Path('/src/native/packages.json').read_text())
     if catalog['source_sha256'] != lock['sha256']:
         raise ValueError('Package catalog does not match verified source')
+    compiler_fingerprint=None
+    if args.cached_libraries:
+        from producer.library_cache import compiler_fingerprint as identify_compiler
+        compiler_fingerprint=identify_compiler()
     completed = {}
     jobs = order(catalog['jobs'])
     if args.job:
@@ -128,11 +134,15 @@ def main():
         default.write_text('// Modified by michibiki-io for Shirube OS on 2026-11-08.\ninterfaces {\n ethernet eth0 { address dhcp }\n loopback lo {}\n}\nsystem {\n host-name shirube-os\n console { device '+console+' { speed 115200 } }\n}\n')
     for job in jobs:
         print('STAGE: native source package '+job['name'],flush=True)
+        started=time.monotonic()
+        from producer.resources import profile
+        resources=profile()
         output = work/job['name']
         output.mkdir()
         from producer.recipes import package_script
         script = package_script(Path('/src/native/package.sh').read_text(),output,
-            sources/job['source'],sources/'vyos-build/vyos-build',work/'dependencies')
+            sources/job['source'],sources/'vyos-build/vyos-build',work/'dependencies',
+            jobs=resources['kernel_jobs'] if job['name']=='kernel' else resources['compile_jobs'])
         dependencies = work/'dependencies'
         if dependencies.exists():
             shutil.rmtree(dependencies)
@@ -142,7 +152,13 @@ def main():
                 shutil.copy2(deb, dependencies/deb.name)
         env = dict(os.environ, BUILD_RECIPE=job.get('recipe', 'debian'), STREAM_VERSION=lock['version'],
                    HOST_UID='0', HOST_GID='0')
-        subprocess.run(['bash', '-c', script], env=env, check=True)
+        cached=None
+        if args.cached_libraries:
+            from producer.library_cache import restore,eligible
+            if eligible(job):
+                cached=restore(Path('/src'),job,sources/job['source'],
+                    list(dependencies.glob('*.deb')),args.architecture,compiler_fingerprint,args.cached_libraries,output)
+        if cached is None:subprocess.run(['bash', '-c', script], env=env, check=True)
         exported = args.output/job['name']
         exported.mkdir()
         artifacts = []
@@ -168,6 +184,8 @@ def main():
         if not artifacts:
             raise ValueError('No package outputs')
         (exported/'manifest.json').write_text(json.dumps({'status':'PASS', 'stage':'package-tranche',
+            'resources':resources,'elapsed_seconds':round(time.monotonic()-started,3),
+            'library_cache':cached or {'status':'MISS'},
             'source_sha256':lock['sha256'], 'artifacts':artifacts, 'iso':'NOT_BUILT',
             'local_boot':'NOT_RUN', 'oci':'NOT_RUN'}, indent=2)+'\n')
         completed[job['name']] = output

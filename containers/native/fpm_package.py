@@ -13,9 +13,10 @@ from producer.go_modules import module_hash,escape,build_info
 from producer.sources import download,sha256
 
 
-def legal(root):
+def legal(root,exclude=()):
     return [path for path in sorted(Path(root).rglob('*')) if path.is_file() and not path.is_symlink()
             and '.git' not in path.relative_to(root).parts
+            and not any(part in exclude for part in path.relative_to(root).parts)
             and (path.name.lower().startswith(('license','licence','unlicense','copying','copyright','notice','authors','contributors','patents'))
                  or path.name.lower().endswith(('-license','-license.txt','-license.md')))
             and path.stat().st_size and path.stat().st_size<4*1024**2]
@@ -32,9 +33,9 @@ def prepare(args):
     native(arch)
     if not re.fullmatch('[a-z0-9][a-z0-9+.-]+',name):raise ValueError('Invalid runtime package name')
     source=Path.cwd().resolve();package=Path(argument(args,'-C','--chdir')).resolve()
-    if not source.is_relative_to('/extra') or not package.is_relative_to(source) or not package.is_dir():
+    if not source.is_relative_to('/extra') or not package.is_relative_to(source) or package==source or not package.is_dir():
         raise ValueError('Runtime packaging must use its private source/staging tree')
-    notices=[('Upstream source',legal(source))]
+    notices=[('Upstream source',legal(source,exclude={package.relative_to(source).parts[0],'shirube-corresponding-inputs'}))]
     if not notices[0][1]:raise ValueError('Runtime component has no upstream legal notice')
     inputs=source/'shirube-corresponding-inputs';inputs.mkdir(exist_ok=True)
     records=[];seen=set();compiler_seen=False;binary_reports=[]

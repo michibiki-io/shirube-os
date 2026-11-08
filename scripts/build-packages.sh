@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Native package stage only. No ISO/distribution validation is implied.
 set -euo pipefail
+build_cpus=${SHIRUBE_BUILD_CPUS:-4}
+build_memory=${SHIRUBE_BUILD_MEMORY_GIB:-8}
+[[ $build_cpus =~ ^[1-9][0-9]?$ && $build_cpus -le 64 && $build_memory =~ ^[1-9][0-9]*$ && $build_memory -ge 2 && $build_memory -le 256 ]] || { echo 'Invalid native resource budget' >&2; exit 2; }
 if [[ $# != 2 ]]; then
   echo 'Usage: scripts/build-packages.sh amd64|arm64 NEW_OUTPUT_DIRECTORY' >&2
   exit 2
@@ -22,5 +25,5 @@ docker build --platform "linux/$architecture" --build-arg "BASE=$base" \
   --iidfile "$work/image.id" -f containers/native/Dockerfile .
 image=$(cat "$work/image.id")
 [[ $(docker image inspect "$image" --format '{{.Architecture}}') == "$architecture" ]]
-docker run --rm --platform "linux/$architecture" --cpus=2 --memory=8g --memory-swap=8g \
+docker run --rm --platform "linux/$architecture" --cpus="$build_cpus" --memory="${build_memory}g" --memory-swap="${build_memory}g" \
   --pids-limit=4096 -v "$output:/output" "$image" "$architecture"

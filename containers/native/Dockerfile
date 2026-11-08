@@ -1,5 +1,5 @@
 ARG BASE=debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018
-FROM ${BASE}
+FROM ${BASE} AS toolchain
 ARG TARGETARCH
 ENV DEBIAN_FRONTEND=noninteractive OPAMJOBS=2 MAKEFLAGS=-j2 GOMAXPROCS=2
 # APT verifies signed metadata and package hashes. HTTP bootstraps CA certificates.
@@ -17,7 +17,7 @@ RUN rm -f /etc/apt/sources.list.d/debian.sources && \
       libtool pkg-config quilt bc rsync kmod cpio bison flex libelf-dev libssl-dev \
       dwarves libdw-dev libslang2-dev libtraceevent-dev libpfm4-dev python3-dev \
       cmake libffi-dev libpcre2-dev libzmq3-dev opam gnupg apt-utils squashfs-tools \
-      xorriso mtools debootstrap live-build dosfstools gdisk parted udev sudo \
+      xorriso mtools debootstrap live-build pbuilder dosfstools gdisk kpartx parted udev sudo \
       librsvg2-bin qemu-utils qemu-system-x86 qemu-system-arm ovmf qemu-efi-aarch64 \
       liblua5.3-dev libpcre3-dev libnl-genl-3-dev libsnmp-dev libxtables-dev \
       libcap-dev libunwind-dev llvm zstd locales && \
@@ -49,6 +49,7 @@ RUN pip install --break-system-packages --no-deps --no-build-isolation git+https
 ENV PATH=/opt/go/bin:$PATH GOTOOLCHAIN=local
 RUN printf '#!/bin/sh\nexit 101\n' > /usr/sbin/policy-rc.d && chmod 755 /usr/sbin/policy-rc.d
 WORKDIR /src
+FROM toolchain AS producer
 COPY producer /src/producer
 COPY guest /src/guest
 COPY containers/native /src/native

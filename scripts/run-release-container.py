@@ -21,16 +21,24 @@ def main():
     parser.add_argument('--private',type=Path,required=True)
     parser.add_argument('--version',required=True)
     parser.add_argument('--commit',required=True)
+    parser.add_argument('--cpus',type=int,default=4)
+    parser.add_argument('--memory-gib',type=int,default=8)
+    parser.add_argument('--cached-libraries',type=Path)
     args=parser.parse_args()
     if not re.fullmatch('sha256:[0-9a-f]{64}',args.image):raise ValueError('Immutable native toolchain image required')
     version_parts(args.version)
     if not re.fullmatch('[0-9a-f]{40}',args.commit):
         raise ValueError('Exact candidate version and commit required')
+    if not 1<=args.cpus<=64 or not 2<=args.memory_gib<=256:raise ValueError('Invalid native resource budget')
     output=args.output.resolve();project=args.project_source.resolve()
     if not output.is_dir() or any(output.iterdir()) or not project.is_file():
         raise ValueError('Empty candidate output and exact project source archive required')
     def interrupted(signum, frame):raise KeyboardInterrupt
     signal.signal(signal.SIGTERM,interrupted)
+    library_mounts=[];library_args=[]
+    if args.cached_libraries:
+        library_mounts=['-v',str(args.cached_libraries.resolve())+':/library-cache:ro']
+        library_args=['--cached-libraries','/library-cache']
     with Fixture(args.architecture,args.image,args.private) as fixture:
         address=fixture.docker('inspect','--format',
             '{{(index .NetworkSettings.Networks "'+fixture.network+'").IPAddress}}',fixture.container).decode().strip()
@@ -39,12 +47,12 @@ def main():
         build=fixture.docker('create','-i','--network','bridge',
             '--label','io.michibiki.shirube.fixture='+fixture.nonce,
             '--add-host',fixture.hostname+':'+address,
-            '--privileged','--device','/dev/kvm','--cpus=2','--memory=8g',
-            '--memory-swap=8g','--pids-limit=4096',
+            '--privileged','--device','/dev/kvm','--cpus='+str(args.cpus),'--memory='+str(args.memory_gib)+'g',
+            '--memory-swap='+str(args.memory_gib)+'g','--pids-limit=4096',
             '-v',str(output)+':/output','-v',str(project)+':/project-source.tar:ro',
             '-v',str(fixture.work/'cert.pem')+':/fixture/cert.pem:ro',
-            args.image,args.architecture,'--target','release','--version',args.version,
-            '--commit',args.commit,'--netbird-fixture-stdin').decode().strip()
+            *library_mounts,args.image,args.architecture,'--target','release','--version',args.version,
+            '--commit',args.commit,'--netbird-fixture-stdin',*library_args).decode().strip()
         fixture.docker('network','connect',fixture.network,build)
         # The producer consumes this before spawning any build subprocess.
         # No token or setup key appears in argv, environment or build logs.
