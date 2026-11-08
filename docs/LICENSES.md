@@ -178,10 +178,13 @@ verified by SHA256 and size before the upstream packaging process consumes them;
 unverified Relenv host fallback is replaced by this fixed-input acquisition step.
 Upstream Salt features, test fixtures and component versions are preserved.
 
-The source lock covers 121 components, including 54 runtime Python dependencies,
+The source lock covers 144 components, including 54 runtime Python dependencies,
 CPython, GCC, the declared Relenv native inputs/build recipe, 48 Rust crates from
 cryptography's exact Cargo.lock, and the Debian-patched Rust standard-library
-source. Crate versions and checksums must match the retained parent Cargo.lock;
+source, plus 23 observed isolated Python build-tool source inputs. Those build
+inputs are retained and hash-verified; enforcing their consumption and proving
+complete SDK reconstruction remain outstanding. Crate versions and checksums
+must match the retained parent Cargo.lock;
 the compiler and Debian source-package identity must match the actual builder.
 The Rust source descriptor and Debian patch archive are retained alongside the
 original source and original notices, with a combined source identity.
@@ -244,3 +247,7 @@ Python依存21件は、固定した元ソースとライセンス資料に対す
 Unlicenseの判断を個別に記録した。CherryPyのApacheBench出力例にある帰属も保持する。
 各記録の対象は宣言した未変更の配布物に限り、外部プログラム、ネイティブライブラリ、
 同梱ツール、SDKの残る依存、OS全体の再構築は別途確認する。
+
+SDKのビルド時に実際に使われたPythonツール23件も、元ソースとライセンス資料を固定し、
+保持対象へ追加した。固定入力だけを実際に使わせる処理とSDK全体の再構築確認は未完了であり、
+ソースの保持をビルドの合格として扱わない。

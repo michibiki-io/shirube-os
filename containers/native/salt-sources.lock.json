@@ -2378,11 +2378,443 @@
           "sha256": "bf8819414af73093f2227658da8a77b5ae6cf04697cdc01cae8b877392b917a4"
         }
       ]
+    },
+    {
+      "name": "build-pypi:calver",
+      "version": "2025.10.20",
+      "url": "https://files.pythonhosted.org/packages/4a/96/0c57e3e228ffc54074867406b659b197678674f1f0bf600d114965289834/calver-2025.10.20.tar.gz",
+      "sha256": "c98b376c2424642224d456b2f70c51402343e008c63d204634665e1a2a2835f5",
+      "notices": [
+        {
+          "member": "calver-2025.10.20/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:cffi",
+      "version": "2.1.1",
+      "url": "https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz",
+      "sha256": "dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be",
+      "notices": [
+        {
+          "member": "cffi-2.1.1/LICENSE",
+          "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:coherent-licensed",
+      "version": "0.5.2",
+      "url": "https://files.pythonhosted.org/packages/cd/e9/63d2dcccb5496cc99d96f29a8a5f3e2c6ed0bba7fedb840862f92816ee17/coherent_licensed-0.5.2.tar.gz",
+      "sha256": "d8071403ce742d3ac3592ddc4fb7057a46caffb415b928b4d52802e5f208416d",
+      "notices": [
+        {
+          "member": "coherent_licensed-0.5.2/LICENSE",
+          "sha256": "5a57cb4db85e2a2dd88c290628908add57e3451449e0a9a71fdfb38776fd759d"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:cython",
+      "version": "0.29.37",
+      "url": "https://files.pythonhosted.org/packages/2a/97/8cc3fe7c6de4796921236a64d00ca8a95565772e57f0d3caae68d880b592/Cython-0.29.37.tar.gz",
+      "sha256": "f813d4a6dd94adee5d4ff266191d1d95bf6d4164a4facc535422c021b2504cfb",
+      "notices": [
+        {
+          "member": "Cython-0.29.37/COPYING.txt",
+          "sha256": "e1eb1c49a8508e8173dac30157e4a6439a44ad8846194746c424fbc3fc2b95d7"
+        },
+        {
+          "member": "Cython-0.29.37/LICENSE.txt",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:cython",
+      "version": "3.3.1",
+      "url": "https://files.pythonhosted.org/packages/99/ca/18e324972e5cac914816fdd7bb03e19a455b90039c277a538f7781b50c85/cython-3.3.1.tar.gz",
+      "sha256": "e0e45989e821bef6aa9ae15c7d583ab5e055f7406c4b3624e49e06d24e90375a",
+      "notices": [
+        {
+          "member": "cython-3.3.1/COPYING.txt",
+          "sha256": "e1eb1c49a8508e8173dac30157e4a6439a44ad8846194746c424fbc3fc2b95d7"
+        },
+        {
+          "member": "cython-3.3.1/LICENSE.txt",
+          "sha256": "9568a2b155e66ac3e0ba1fd80b52b827b9460e6cf6f233125e7cbca8e206ddc3"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:expandvars",
+      "version": "1.1.2",
+      "url": "https://files.pythonhosted.org/packages/9c/64/a9d8ea289d663a44b346203a24bf798507463db1e76679eaa72ee6de1c7a/expandvars-1.1.2.tar.gz",
+      "sha256": "6c5822b7b756a99a356b915dd1267f52ab8a4efaa135963bd7f4bd5d368f71d7",
+      "notices": [
+        {
+          "member": "expandvars-1.1.2/LICENSE",
+          "sha256": "b8a43c35080fc5855e4f8171e4d0d002f6ff1633d8cfc0b5dee0ac4ced2deac7"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:flit-core",
+      "version": "3.12.0",
+      "url": "https://files.pythonhosted.org/packages/69/59/b6fc2188dfc7ea4f936cd12b49d707f66a1cb7a1d2c16172963534db741b/flit_core-3.12.0.tar.gz",
+      "sha256": "18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2",
+      "notices": [
+        {
+          "member": "flit_core-3.12.0/LICENSE",
+          "sha256": "35b4f1dec512e617077fd6980dbb43ef8c2887adc5d0185edb4c04da175dd816"
+        },
+        {
+          "member": "flit_core-3.12.0/flit_core/vendor/tomli-1.2.3.dist-info/LICENSE",
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep517/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep621/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep621_license_files/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep621_license_files/module/vendor/LICENSE_VENDOR",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/with_data_dir/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:flit-core",
+      "version": "4.2.0",
+      "url": "https://files.pythonhosted.org/packages/d3/8b/0370578a456986d6995344967a479dd5c9d4e064681550c2a9594bb58b4a/flit_core-4.2.0.tar.gz",
+      "sha256": "84e4e4d8fdd45ba2613800a3ebc6834de26d47ec9746efc3719f94181137b460",
+      "notices": [
+        {
+          "member": "flit_core-4.2.0/LICENSE",
+          "sha256": "35b4f1dec512e617077fd6980dbb43ef8c2887adc5d0185edb4c04da175dd816"
+        },
+        {
+          "member": "flit_core-4.2.0/flit_core/vendor/tomli-1.2.3.dist-info/LICENSE",
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep517/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep621/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep621_license_files/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep621_license_files/module/vendor/LICENSE_VENDOR",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/with_data_dir/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:hatch-vcs",
+      "version": "0.5.0",
+      "url": "https://files.pythonhosted.org/packages/6b/b0/4cc743d38adbee9d57d786fa496ed1daadb17e48589b6da8fa55717a0746/hatch_vcs-0.5.0.tar.gz",
+      "sha256": "0395fa126940340215090c344a2bf4e2a77bcbe7daab16f41b37b98c95809ff9",
+      "notices": [
+        {
+          "member": "hatch_vcs-0.5.0/LICENSE.txt",
+          "sha256": "117aa5006d8475562f04442ab06dd2a4c501af3a77255eae0deef1f0c2499a1a"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:hatchling",
+      "version": "1.33.0",
+      "url": "https://files.pythonhosted.org/packages/7a/f1/e47b937226ae3b093bbd0132eb0b7ee5bfad12c2b5324afd10ae49946b05/hatchling-1.33.0.tar.gz",
+      "sha256": "4c422bd4d554fcff5de5b73e9596f85e41e9f97f7e553d8f7595ecb31a627bef",
+      "notices": [
+        {
+          "member": "hatchling-1.33.0/LICENSE.txt",
+          "sha256": "7f143a8127ad4873862d70854b5bd2abd0085aa73e64fd2b08704a3b9f5c07fc"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:packaging",
+      "version": "26.3",
+      "url": "https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz",
+      "sha256": "94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+      "notices": [
+        {
+          "member": "packaging-26.3/LICENSE",
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+        },
+        {
+          "member": "packaging-26.3/LICENSE.APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "member": "packaging-26.3/LICENSE.BSD",
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+        },
+        {
+          "member": "packaging-26.3/docs/licenses.rst",
+          "sha256": "763abb29c53e906e1e8d839deff7cca19c98d1c6c2bbf576ddc7394baeacf9c3"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:pathspec",
+      "version": "1.1.1",
+      "url": "https://files.pythonhosted.org/packages/5a/82/42f767fc1c1143d6fd36efb827202a2d997a375e160a71eb2888a925aac1/pathspec-1.1.1.tar.gz",
+      "sha256": "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a",
+      "notices": [
+        {
+          "member": "pathspec-1.1.1/LICENSE",
+          "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:pbr",
+      "version": "7.1.3",
+      "url": "https://files.pythonhosted.org/packages/6b/8d/ce438c28c7958e33184e8ac851ea2225b47a41e5e9e708fa3bddba631135/pbr-7.1.3.tar.gz",
+      "sha256": "9a4a85b84e906337708009af0b5f5cdabeeb72d4dc213c9e97974da54fd9acc5",
+      "notices": [
+        {
+          "member": "pbr-7.1.3/LICENSE",
+          "sha256": "5df2a0d87d6c562f0ea11c688ac52532aa28d744cabc7994ff0537f64b3b3320"
+        },
+        {
+          "member": "pbr-7.1.3/pbr/tests/testpackage/LICENSE.txt",
+          "sha256": "eb4a8c8791f6caab1cf36df26db2b6f4e2ddda52657b060ff7f02abc63910aef"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:pluggy",
+      "version": "1.7.0",
+      "url": "https://files.pythonhosted.org/packages/bf/db/7fc19e6f2dc92a966727031389fc2e08b558f0f25eb7403c1119ad4713cd/pluggy-1.7.0.tar.gz",
+      "sha256": "d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8",
+      "notices": [
+        {
+          "member": "pluggy-1.7.0/LICENSE",
+          "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:poetry-core",
+      "version": "2.5.0",
+      "url": "https://files.pythonhosted.org/packages/42/b5/50f1fda26c4fe5b1d6ce5cdf0391bdfa1ca12fdcb8ad68344d5cf678fc90/poetry_core-2.5.0.tar.gz",
+      "sha256": "81d04c9253b19d0604718268d781867c8f7b2128e5b25bbf1e84141eec6b89c4",
+      "notices": [
+        {
+          "member": "poetry_core-2.5.0/LICENSE",
+          "sha256": "f1978133782b90f4733bc308ddb19267c3fe04797c88d9ed3bc219032495a982"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/_vendor/fastjsonschema/LICENSE",
+          "sha256": "9ccddf69eb3998a60148debe85b94c5afed53691b6474692e78abcc0a0e544f1"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/_vendor/lark/LICENSE",
+          "sha256": "2eee60f52d4e11357bf89e72b034d050e285e47fda1361e5662fb322ee27d771"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/_vendor/packaging/LICENSE",
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/_vendor/packaging/LICENSE.APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/_vendor/packaging/LICENSE.BSD",
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/_vendor/tomli/LICENSE",
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/spdx/data/licenses.json",
+          "sha256": "31505f05a41ebcb0886a7637bc5c4d60e27e8f0ebeffb653dc5092875292b20b"
+        },
+        {
+          "member": "poetry_core-2.5.0/src/poetry/core/spdx/license.py",
+          "sha256": "4da848668547c6b02131c1dcff0c58cdbfe96458905409eec056581b9f8658cf"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/fixtures/with_license_type_file/LICENSE",
+          "sha256": "80f3a4cfbce936fd32b3fa0bc4e20074c436b1118619246b8fa86a6d0427ab28"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/case_sensitive_exclusions/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/complete/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/complete_dynamic/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/complete_new/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/default_src_with_excluded_data/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/default_with_excluded_data/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/default_with_excluded_data_toml/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/exclude_nested_data_toml/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/invalid_case_sensitive_exclusions/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/licenses_and_copying/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/with-include/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:pycparser",
+      "version": "3.12",
+      "url": "https://files.pythonhosted.org/packages/cb/27/eeb9f307bf07060f3d9f9aa0fb8c15b01bdfded0a941e4b2719c7f94cacd/pycparser-3.12.tar.gz",
+      "sha256": "f03387877eab82ce01bbdfd0ba7252ee55a90b1c708d5129e2ce915475cf1db6",
+      "notices": [
+        {
+          "member": "pycparser-3.12/LICENSE",
+          "sha256": "0a9e78156ae8b96caf1b4f11ac2df424b83de29736f9e757630548a6272fdf90"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:semantic-version",
+      "version": "2.10.0",
+      "url": "https://files.pythonhosted.org/packages/7d/31/f2289ce78b9b473d582568c234e104d2a342fd658cc288a7553d83bb8595/semantic_version-2.10.0.tar.gz",
+      "sha256": "bdabb6d336998cbb378d4b9db3a4b56a1e3235701dc05ea2690d9a997ed5041c",
+      "notices": [
+        {
+          "member": "semantic_version-2.10.0/LICENSE",
+          "sha256": "a85e7ef2fbc670d26781ed6844cd31a7e8ada65d21328f75a0b02402faae37ea"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:setuptools-rust",
+      "version": "1.13.0",
+      "url": "https://files.pythonhosted.org/packages/68/ba/b31781d61bf9ee3c232a1d1160db11c11cdeae1d44e06c90723b25a8279f/setuptools_rust-1.13.0.tar.gz",
+      "sha256": "f2afcf4baeee689910ce49cfa8aad4e08cce72f417449bcc32891b8664fdc726",
+      "notices": [
+        {
+          "member": "setuptools_rust-1.13.0/LICENSE",
+          "sha256": "b20668c1590582b3882854050ccfbdb7aee1f71a1ffe9eacc4c5aeb08a14161b"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:setuptools-scm",
+      "version": "10.3.4",
+      "url": "https://files.pythonhosted.org/packages/85/d8/fc143f88819ccf10ba2388ba86732ee2de193e578234e25a783f6cc14bf7/setuptools_scm-10.3.4.tar.gz",
+      "sha256": "a69f28bfc245608781205e912faae437c2b2165773afa4e7b979d77447a69dd2",
+      "notices": [
+        {
+          "member": "setuptools_scm-10.3.4/LICENSE",
+          "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:setuptools-scm",
+      "version": "9.2.2",
+      "url": "https://files.pythonhosted.org/packages/7b/b1/19587742aad604f1988a8a362e660e8c3ac03adccdb71c96d86526e5eb62/setuptools_scm-9.2.2.tar.gz",
+      "sha256": "1c674ab4665686a0887d7e24c03ab25f24201c213e82ea689d2f3e169ef7ef57",
+      "notices": [
+        {
+          "member": "setuptools_scm-9.2.2/LICENSE",
+          "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:tomlkit",
+      "version": "0.15.2",
+      "url": "https://files.pythonhosted.org/packages/08/72/fc01563df95c189a9f65850096bdc205bc2fe37da6c740cd64afaf18d07e/tomlkit-0.15.2.tar.gz",
+      "sha256": "83e32755ba1d20d9340bd069ee97e9f6232ba2346b63ffcba425de01f7e327a6",
+      "notices": [
+        {
+          "member": "tomlkit-0.15.2/LICENSE",
+          "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+        },
+        {
+          "member": "tomlkit-0.15.2/tests/toml-test/LICENSE",
+          "sha256": "01ef58ee6449fa01a284c10808e27800d66bfea271bc29281125ff8e5642b86f"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:trove-classifiers",
+      "version": "2026.9.21.13",
+      "url": "https://files.pythonhosted.org/packages/bf/93/af436dfaa845cab5d96f0adbc1e4f3730532d37fa249e4eb796fb1d7fc82/trove_classifiers-2026.9.21.13.tar.gz",
+      "sha256": "0a9ebc8d4e2f3e8a22848c5258033035bec17a3012ac3fea16dbaa764489eb71",
+      "notices": [
+        {
+          "member": "trove_classifiers-2026.9.21.13/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:vcs-versioning",
+      "version": "2.6.0",
+      "url": "https://files.pythonhosted.org/packages/ad/e7/2a691db7d076b75d099fdba1a14cd966931f2aeb591e77f6d22f15097326/vcs_versioning-2.6.0.tar.gz",
+      "sha256": "22e9159288e2d8bca2fa6f6c31c34c9c66aec157f60e9e526f5d160d2516d60f",
+      "notices": [
+        {
+          "member": "vcs_versioning-2.6.0/LICENSE.txt",
+          "sha256": "f52f6085a2f4acdb7f425fac78d4bb013b2d723616792fb173a9f8aea191d8f0"
+        }
+      ]
     }
   ],
   "complete_sdk_reconstruction": "NOT_RUN",
   "unresolved_source_inputs": [
-    "Python build-backend source closure and full SDK reconstruction"
+    "Enforce fixed Python build-input consumption and verify complete SDK reconstruction"
   ],
   "cargo_parent": {
     "component": "pypi:cryptography",
@@ -2394,5 +2826,6 @@
     "version_output": "rustc 1.63.0",
     "source_package": "rustc",
     "source_version": "1.63.0+dfsg1-2"
-  }
+  },
+  "python_build_input_scope": "Observed isolated SDK build backend inputs from native AMD64 compilation; input consumption enforcement and complete SDK reconstruction remain unverified."
 }
