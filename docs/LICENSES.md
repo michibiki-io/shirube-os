@@ -178,11 +178,18 @@ verified by SHA256 and size before the upstream packaging process consumes them;
 unverified Relenv host fallback is replaced by this fixed-input acquisition step.
 Upstream Salt features, test fixtures and component versions are preserved.
 
-The initial retention check covers 72 source inputs, including 54 runtime Python
-dependencies, CPython, GCC and the declared Relenv native inputs/build recipe.
+The source lock covers 121 components, including 54 runtime Python dependencies,
+CPython, GCC, the declared Relenv native inputs/build recipe, 48 Rust crates from
+cryptography's exact Cargo.lock, and the Debian-patched Rust standard-library
+source. Crate versions and checksums must match the retained parent Cargo.lock;
+the compiler and Debian source-package identity must match the actual builder.
+The Rust source descriptor and Debian patch archive are retained alongside the
+original source and original notices, with a combined source identity.
 The timelib archive lacks a standalone complete PHP license, so its original
 README notices and a separately hashed full upstream PHP-3.01 license are both
-retained. Original copyright headers remain in the complete source archive.
+retained. The openssl Rust crate's short Apache header is supplemented with a
+separately hashed complete upstream Apache-2.0 license. Original copyright
+headers remain in the complete source archive.
 Source retention and archive verification do not clear redistribution. The lock
 explicitly records the remaining toolchain/source-closure work and reconstruction
 as unrun; no corresponding-source or license gate may infer success from this
@@ -190,6 +197,9 @@ component inventory.
 
 Salt SDKの実際のPython依存一覧を固定入力と照合し、対応ソースと完全なライセンス
 資料を別アーカイブへ保持する。両アーキテクチャのSDKは利用前にハッシュとサイズを
-検証する。上流の機能・公開テスト資材・版は維持する。ソース保持とアーカイブ検証は、
+検証する。cryptography の Cargo.lock にある48個のRust依存は、版とチェックサムを
+照合する。Rust標準ライブラリは、実際のコンパイラとDebianソースパッケージの版を
+確認し、元ソース・Debianパッチ・ソース記述子・元の著作権表示を一緒に保持する。
+上流の機能・公開テスト資材・版は維持する。ソース保持とアーカイブ検証は、
 配布許諾や完全な再構築の合格を意味しない。固定ファイルに記載した未解決のソース入力、
 再構築試験、個別ライセンス確認が残る間は公開条件を通過できない。

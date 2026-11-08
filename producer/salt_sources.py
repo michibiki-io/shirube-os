@@ -7,6 +7,8 @@ import re
 import shutil
 import tarfile
 import zipfile
+import tomllib
+import subprocess
 
 from .bundles import bundle
 from .sanitize import path_in_root
@@ -127,6 +129,33 @@ def notice_members(archive, declarations):
     return found
 
 
+def validate_cargo_sources(lock,work):
+    parent=lock.get('cargo_parent')
+    if parent is None:return
+    records=[r for r in lock['components'] if r['name']==parent['component']]
+    if len(records)!=1 or records[0]['sha256']!=parent['source_sha256']:
+        raise ValueError('Rust dependency parent source differs')
+    archive=Path(work)/(parent['source_sha256']+'.source')
+    found=[]
+    with tarfile.open(archive,mode='r|*') as source:
+        for member in source:
+            if member.name!=parent['member']:continue
+            if not member.isfile() or not 0<member.size<=4*1024**2:
+                raise ValueError('Invalid SDK Cargo lock member')
+            found.append(source.extractfile(member).read())
+    if len(found)!=1 or hashlib.sha256(found[0]).hexdigest()!=parent['lock_sha256']:
+        raise ValueError('SDK Cargo lock missing or differs')
+    expected=set()
+    for package in tomllib.loads(found[0].decode())['package']:
+        if not package.get('source'):continue
+        if package['source']!='registry+https://github.com/rust-lang/crates.io-index':
+            raise ValueError('Unsupported non-registry SDK Rust source')
+        expected.add(('cargo:'+package['name'],package['version'],package['checksum']))
+    provided={(r['name'],r['version'],r['sha256']) for r in lock['components'] if r['name'].startswith('cargo:')}
+    if not expected or provided!=expected:
+        raise ValueError('SDK Rust source coverage differs from actual Cargo lock')
+
+
 def retain(rootfs, destination, work, lock_path):
     """Bind the installed SDK inventory to fixed sources and full notices.
 
@@ -141,6 +170,13 @@ def retain(rootfs, destination, work, lock_path):
     actual = installed_distributions(rootfs)
     if actual != lock['installed_distributions']:
         raise ValueError('Salt SDK distributions differ from pinned source inventory')
+    compiler=lock.get('rust_compiler')
+    if compiler is not None:
+        version=subprocess.check_output(['rustc','--version'],text=True).strip()
+        package=subprocess.check_output(['dpkg-query','-W','-f=${source:Package}\t${source:Version}',
+                                         'libstd-rust-dev'],text=True).strip()
+        if version!=compiler['version_output'] or package!=compiler['source_package']+'\t'+compiler['source_version']:
+            raise ValueError('Actual Rust standard-library compiler/source differs from SDK lock')
     work = Path(work)
     work.mkdir(parents=True, exist_ok=False)
     inputs = [(lock_path, 'salt-sdk/source-lock.json', 'build_inputs')]
@@ -162,11 +198,31 @@ def retain(rootfs, destination, work, lock_path):
             raise ValueError('Salt dependency source SHA256 mismatch')
         member = 'salt-sdk/inputs/' + source.name
         inputs.append((source, member, 'sources'))
+        source_members=[member]
+        extra_archives=[]
+        source_set=[digest]
+        for extra in record.get('extra_sources', []):
+            extra_digest=extra['sha256']
+            if not re.fullmatch('[0-9a-f]{64}',extra_digest) or extra_digest in source_set:
+                raise ValueError('Invalid or duplicate supplemental SDK source')
+            target=work/(extra_digest+'.source')
+            download(extra['url'],target)
+            if sha256(target)!=extra_digest:raise ValueError('Supplemental SDK source SHA256 mismatch')
+            extra_member='salt-sdk/inputs/'+target.name
+            inputs.append((target,extra_member,'sources'));source_members.append(extra_member)
+            source_set.append(extra_digest)
+            if extra.get('notices'):extra_archives.append((target,extra['notices']))
+        identity=digest
+        if extra_archives or record.get('extra_sources'):
+            identity=hashlib.sha256(json.dumps(source_set,separators=(',',':')).encode()).hexdigest()
         notice = work / (digest + '.copyright')
         with notice.open('xb') as output:
             output.write((record['name'] + ' ' + record['version'] + '\n').encode())
             for name, content in sorted(notice_members(source, record['notices']).items()):
                 output.write(('\nOriginal notice: ' + name + '\n').encode() + content + b'\n')
+            for extra,declarations in extra_archives:
+                for name,content in sorted(notice_members(extra,declarations).items()):
+                    output.write(('\nOriginal supplemental notice: '+name+'\n').encode()+content+b'\n')
             for legal in record.get('additional_notices', []):
                 if not re.fullmatch('[0-9a-f]{64}', legal['sha256']):
                     raise ValueError('Invalid additional Salt legal notice digest')
@@ -179,16 +235,18 @@ def retain(rootfs, destination, work, lock_path):
         notice_member = 'salt-sdk/notices/' + notice.name
         inputs.append((notice, notice_member, 'license_files'))
         children.append({'name': record['name'], 'version': record['version'],
-                         'source_identity': digest, 'source_member': member,
+                         'source_identity': identity, 'source_member': member,
                          'source_sha256': digest, 'notice': notice,
-                         'notice_member': notice_member})
+                         'notice_member': notice_member,'retained_members':source_members})
     expected = {'pypi:' + name for name in actual if name != 'salt'}
     provided = {item['name'] for item in children if item['name'].startswith('pypi:')}
     if expected != provided:
         raise ValueError('Salt dependency source coverage is incomplete')
+    validate_cargo_sources(lock,work)
     records = bundle(inputs, destination, 1773859634)
     for child in children:
-        child['sources'] = [ref for ref in records['sources'] if ref['member'] == child['source_member']]
+        wanted=set(child.pop('retained_members'))
+        child['sources'] = [ref for ref in records['sources'] if ref['member'] in wanted]
         child['license_files'] = [ref for ref in records['license_files'] if ref['member'] == child['notice_member']]
     return records, children
 

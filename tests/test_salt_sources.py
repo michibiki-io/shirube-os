@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from producer.salt_sources import installed_distributions, notice_members, retain, seed_sdk, pin_build
+from producer.salt_sources import installed_distributions, notice_members, retain, seed_sdk, pin_build, validate_cargo_sources
 from producer.sources import sha256
 
 
@@ -170,3 +170,62 @@ class SaltSourceTests(unittest.TestCase):
             self.assertNotIn('certifi==', constraints.read_text())
             with self.assertRaisesRegex(ValueError, 'recipe differs'):
                 pin_build(root, 'arm64', lock)
+
+    def test_rust_sources_are_bound_to_the_actual_parent_cargo_lock(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);content=('version = 3\n[[package]]\nname = "native-dependency"\n'
+                'version = "1.2.3"\nsource = "registry+https://github.com/rust-lang/crates.io-index"\n'
+                'checksum = "'+'a'*64+'"\n').encode()
+            archive=root/'original.tar.gz'
+            with tarfile.open(archive,'w:gz') as source:
+                member=tarfile.TarInfo('parent/Cargo.lock');member.size=len(content)
+                source.addfile(member,io.BytesIO(content))
+            digest=sha256(archive);archive.rename(root/(digest+'.source'))
+            lock={'cargo_parent':{'component':'pypi:parent','source_sha256':digest,
+                                 'member':member.name,'lock_sha256':hashlib.sha256(content).hexdigest()},
+                  'components':[{'name':'pypi:parent','sha256':digest},
+                                {'name':'cargo:native-dependency','version':'1.2.3','sha256':'a'*64}]}
+            validate_cargo_sources(lock,root)
+            lock['components'][1]['sha256']='b'*64
+            with self.assertRaisesRegex(ValueError,'coverage differs'):
+                validate_cargo_sources(lock,root)
+
+    def test_actual_rust_compiler_and_debian_source_drift_stop_retention(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            guest, _, lock, _ = self.fixture(root)
+            lock['rust_compiler'] = {'version_output': 'rustc 1.63.0',
+                                     'source_package': 'rustc',
+                                     'source_version': '1.63.0+dfsg1-2'}
+            lock_path = root / 'lock.json'
+            lock_path.write_text(json.dumps(lock))
+            for responses in [('rustc 1.64.0', 'rustc\t1.63.0+dfsg1-2'),
+                              ('rustc 1.63.0', 'rustc\t1.63.0+dfsg1-3')]:
+                with patch('producer.salt_sources.subprocess.check_output', side_effect=responses), \
+                        patch('producer.salt_sources.download') as download:
+                    with self.assertRaisesRegex(ValueError, 'compiler/source differs'):
+                        retain(guest, root / 'result.tar.gz', root / 'work', lock_path)
+                    download.assert_not_called()
+
+    def test_supplemental_source_and_patch_hashes_are_part_of_one_component_identity(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);guest,original,lock,_=self.fixture(root)
+            patch_archive=root/'patches.tar.gz';content=b'Original patch copyright and grant.\n'
+            with tarfile.open(patch_archive,'w:gz') as source:
+                member=tarfile.TarInfo('debian/copyright');member.size=len(content)
+                source.addfile(member,io.BytesIO(content))
+            extra={'url':'https://example.org/patches.tar.gz','sha256':sha256(patch_archive),
+                   'notices':[{'member':member.name,'sha256':hashlib.sha256(content).hexdigest()}]}
+            lock['components'][0]['extra_sources']=[extra]
+            lock_path=root/'lock.json';lock_path.write_text(json.dumps(lock))
+            def fetch(url,destination):
+                shutil.copyfile(patch_archive if url==extra['url'] else original,destination)
+            with patch('producer.salt_sources.download',side_effect=fetch):
+                _,children=retain(guest,root/'result.tar.gz',root/'work',lock_path)
+            self.assertEqual(len(children[0]['sources']),2)
+            self.assertNotEqual(children[0]['source_identity'],sha256(original))
+            self.assertIn(content,children[0]['notice'].read_bytes())
+            patch_archive.write_bytes(b'changed patch')
+            with patch('producer.salt_sources.download',side_effect=fetch):
+                with self.assertRaisesRegex(ValueError,'Supplemental SDK source SHA256 mismatch'):
+                    retain(guest,root/'bad.tar.gz',root/'bad-work',lock_path)

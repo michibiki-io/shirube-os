@@ -1577,10 +1577,808 @@
           "sha256": "07bc0ccd386469c748c4cf6c8faca5667fbf8c4400386714287fa233acfd68ba"
         }
       ]
+    },
+    {
+      "name": "cargo:asn1",
+      "version": "0.15.5",
+      "url": "https://static.crates.io/crates/asn1/asn1-0.15.5.crate",
+      "sha256": "ae3ecbce89a22627b5e8e6e11d69715617138290289e385cde773b1fe50befdb",
+      "notices": [
+        {
+          "member": "asn1-0.15.5/LICENSE",
+          "sha256": "c6deb2d156619439e147f8b62e1b3928598c8e3652ec8b56cc039490696b3985"
+        }
+      ]
+    },
+    {
+      "name": "cargo:asn1_derive",
+      "version": "0.15.5",
+      "url": "https://static.crates.io/crates/asn1_derive/asn1_derive-0.15.5.crate",
+      "sha256": "861af988fac460ac69a09f41e6217a8fb9178797b76fcc9478444be6a59be19c",
+      "notices": [
+        {
+          "member": "asn1_derive-0.15.5/LICENSE",
+          "sha256": "c6deb2d156619439e147f8b62e1b3928598c8e3652ec8b56cc039490696b3985"
+        }
+      ]
+    },
+    {
+      "name": "cargo:autocfg",
+      "version": "1.1.0",
+      "url": "https://static.crates.io/crates/autocfg/autocfg-1.1.0.crate",
+      "sha256": "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa",
+      "notices": [
+        {
+          "member": "autocfg-1.1.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "autocfg-1.1.0/LICENSE-MIT",
+          "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac"
+        }
+      ]
+    },
+    {
+      "name": "cargo:base64",
+      "version": "0.21.7",
+      "url": "https://static.crates.io/crates/base64/base64-0.21.7.crate",
+      "sha256": "9d297deb1925b89f2ccc13d7635fa0714f12c87adce1c75356b39ca9b7178567",
+      "notices": [
+        {
+          "member": "base64-0.21.7/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "base64-0.21.7/LICENSE-MIT",
+          "sha256": "0dd882e53de11566d50f8e8e2d5a651bcf3fabee4987d70f306233cf39094ba7"
+        }
+      ]
+    },
+    {
+      "name": "cargo:bitflags",
+      "version": "1.3.2",
+      "url": "https://static.crates.io/crates/bitflags/bitflags-1.3.2.crate",
+      "sha256": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a",
+      "notices": [
+        {
+          "member": "bitflags-1.3.2/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "bitflags-1.3.2/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ]
+    },
+    {
+      "name": "cargo:bitflags",
+      "version": "2.4.2",
+      "url": "https://static.crates.io/crates/bitflags/bitflags-2.4.2.crate",
+      "sha256": "ed570934406eb16438a4e976b1b4500774099c13b8cb96eec99f620f05090ddf",
+      "notices": [
+        {
+          "member": "bitflags-2.4.2/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "bitflags-2.4.2/LICENSE-MIT",
+          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+        }
+      ]
+    },
+    {
+      "name": "cargo:cc",
+      "version": "1.0.83",
+      "url": "https://static.crates.io/crates/cc/cc-1.0.83.crate",
+      "sha256": "f1174fb0b6ec23863f8b971027804a42614e347eafb0a95bf0b12cdae21fc4d0",
+      "notices": [
+        {
+          "member": "cc-1.0.83/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "cc-1.0.83/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+        }
+      ]
+    },
+    {
+      "name": "cargo:cfg-if",
+      "version": "1.0.0",
+      "url": "https://static.crates.io/crates/cfg-if/cfg-if-1.0.0.crate",
+      "sha256": "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd",
+      "notices": [
+        {
+          "member": "cfg-if-1.0.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "cfg-if-1.0.0/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+        }
+      ]
+    },
+    {
+      "name": "cargo:foreign-types",
+      "version": "0.3.2",
+      "url": "https://static.crates.io/crates/foreign-types/foreign-types-0.3.2.crate",
+      "sha256": "f6f339eb8adc052cd2ca78910fda869aefa38d22d5cb648e6485e4d3fc06f3b1",
+      "notices": [
+        {
+          "member": "foreign-types-0.3.2/LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "member": "foreign-types-0.3.2/LICENSE-MIT",
+          "sha256": "333ea3aaa3cadb819f4acd9f9153f9feee060a995ca8710f32bc5bd9a4b91734"
+        }
+      ]
+    },
+    {
+      "name": "cargo:foreign-types-shared",
+      "version": "0.1.1",
+      "url": "https://static.crates.io/crates/foreign-types-shared/foreign-types-shared-0.1.1.crate",
+      "sha256": "00b0228411908ca8685dba7fc2cdd70ec9990a6e753e89b6ac91a84c40fbaf4b",
+      "notices": [
+        {
+          "member": "foreign-types-shared-0.1.1/LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "member": "foreign-types-shared-0.1.1/LICENSE-MIT",
+          "sha256": "333ea3aaa3cadb819f4acd9f9153f9feee060a995ca8710f32bc5bd9a4b91734"
+        }
+      ]
+    },
+    {
+      "name": "cargo:heck",
+      "version": "0.4.1",
+      "url": "https://static.crates.io/crates/heck/heck-0.4.1.crate",
+      "sha256": "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8",
+      "notices": [
+        {
+          "member": "heck-0.4.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "heck-0.4.1/LICENSE-MIT",
+          "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
+        }
+      ]
+    },
+    {
+      "name": "cargo:indoc",
+      "version": "2.0.4",
+      "url": "https://static.crates.io/crates/indoc/indoc-2.0.4.crate",
+      "sha256": "1e186cfbae8084e513daff4240b4797e342f988cecda4fb6c939150f96315fd8",
+      "notices": [
+        {
+          "member": "indoc-2.0.4/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "indoc-2.0.4/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
+      "name": "cargo:libc",
+      "version": "0.2.152",
+      "url": "https://static.crates.io/crates/libc/libc-0.2.152.crate",
+      "sha256": "13e3bf6590cbc649f4d1a3eefc9d5d6eb746f5200ffb04e5e142700b8faa56e7",
+      "notices": [
+        {
+          "member": "libc-0.2.152/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "libc-0.2.152/LICENSE-MIT",
+          "sha256": "a8d47ff51ca256f56a8932dba07660672dbfe3004257ca8de708aac1415937a1"
+        }
+      ]
+    },
+    {
+      "name": "cargo:lock_api",
+      "version": "0.4.11",
+      "url": "https://static.crates.io/crates/lock_api/lock_api-0.4.11.crate",
+      "sha256": "3c168f8615b12bc01f9c17e2eb0cc07dcae1940121185446edc3744920e8ef45",
+      "notices": [
+        {
+          "member": "lock_api-0.4.11/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "lock_api-0.4.11/LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+        }
+      ]
+    },
+    {
+      "name": "cargo:memoffset",
+      "version": "0.9.0",
+      "url": "https://static.crates.io/crates/memoffset/memoffset-0.9.0.crate",
+      "sha256": "5a634b1c61a95585bd15607c6ab0c4e5b226e695ff2800ba0cdccddf208c406c",
+      "notices": [
+        {
+          "member": "memoffset-0.9.0/LICENSE",
+          "sha256": "3234ac55816264ee7b6c7ee27efd61cf0a1fe775806870e3d9b4c41ea73c5cb1"
+        }
+      ]
+    },
+    {
+      "name": "cargo:once_cell",
+      "version": "1.19.0",
+      "url": "https://static.crates.io/crates/once_cell/once_cell-1.19.0.crate",
+      "sha256": "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92",
+      "notices": [
+        {
+          "member": "once_cell-1.19.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "once_cell-1.19.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
+      "name": "cargo:openssl",
+      "version": "0.10.63",
+      "url": "https://static.crates.io/crates/openssl/openssl-0.10.63.crate",
+      "sha256": "15c9d69dd87a29568d4d017cfe8ec518706046a05184e5aea92d0af890b803c8",
+      "notices": [
+        {
+          "member": "openssl-0.10.63/LICENSE",
+          "sha256": "f3d4287b4a21c5176fea2f9bd4ae800696004e2fb8e05cbc818be513f188a941"
+        }
+      ],
+      "additional_notices": [
+        {
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "filename": "apache-2.0.txt"
+        }
+      ]
+    },
+    {
+      "name": "cargo:openssl-macros",
+      "version": "0.1.1",
+      "url": "https://static.crates.io/crates/openssl-macros/openssl-macros-0.1.1.crate",
+      "sha256": "a948666b637a0f465e8564c73e89d4dde00d72d4d473cc972f390fc3dcee7d9c",
+      "notices": [
+        {
+          "member": "openssl-macros-0.1.1/LICENSE-APACHE",
+          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+        },
+        {
+          "member": "openssl-macros-0.1.1/LICENSE-MIT",
+          "sha256": "ea5ab440900ab271811d5c2dc02a9de6e03a6956ac5727e85c11d76df5883d30"
+        }
+      ]
+    },
+    {
+      "name": "cargo:openssl-sys",
+      "version": "0.9.99",
+      "url": "https://static.crates.io/crates/openssl-sys/openssl-sys-0.9.99.crate",
+      "sha256": "22e1bf214306098e4832460f797824c05d25aacdf896f64a985fb0fd992454ae",
+      "notices": [
+        {
+          "member": "openssl-sys-0.9.99/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+        }
+      ]
+    },
+    {
+      "name": "cargo:parking_lot",
+      "version": "0.12.1",
+      "url": "https://static.crates.io/crates/parking_lot/parking_lot-0.12.1.crate",
+      "sha256": "3742b2c103b9f06bc9fff0a37ff4912935851bee6d36f3c02bcc755bcfec228f",
+      "notices": [
+        {
+          "member": "parking_lot-0.12.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "parking_lot-0.12.1/LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+        }
+      ]
+    },
+    {
+      "name": "cargo:parking_lot_core",
+      "version": "0.9.9",
+      "url": "https://static.crates.io/crates/parking_lot_core/parking_lot_core-0.9.9.crate",
+      "sha256": "4c42a9226546d68acdd9c0a280d17ce19bfe27a46bf68784e4066115788d008e",
+      "notices": [
+        {
+          "member": "parking_lot_core-0.9.9/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "parking_lot_core-0.9.9/LICENSE-MIT",
+          "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+        }
+      ]
+    },
+    {
+      "name": "cargo:pem",
+      "version": "3.0.3",
+      "url": "https://static.crates.io/crates/pem/pem-3.0.3.crate",
+      "sha256": "1b8fcc794035347fb64beda2d3b462595dd2753e3f268d89c5aae77e8cf2c310",
+      "notices": [
+        {
+          "member": "pem-3.0.3/LICENSE.md",
+          "sha256": "b7c76ff4466a3aeb6a7d903e81b651335e97d64ecb857e2ee9812a36c6fd1acf"
+        }
+      ]
+    },
+    {
+      "name": "cargo:pkg-config",
+      "version": "0.3.29",
+      "url": "https://static.crates.io/crates/pkg-config/pkg-config-0.3.29.crate",
+      "sha256": "2900ede94e305130c13ddd391e0ab7cbaeb783945ae07a279c268cb05109c6cb",
+      "notices": [
+        {
+          "member": "pkg-config-0.3.29/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "pkg-config-0.3.29/LICENSE-MIT",
+          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+        }
+      ]
+    },
+    {
+      "name": "cargo:portable-atomic",
+      "version": "1.6.0",
+      "url": "https://static.crates.io/crates/portable-atomic/portable-atomic-1.6.0.crate",
+      "sha256": "7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0",
+      "notices": [
+        {
+          "member": "portable-atomic-1.6.0/LICENSE-APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "member": "portable-atomic-1.6.0/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
+      "name": "cargo:proc-macro2",
+      "version": "1.0.78",
+      "url": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.78.crate",
+      "sha256": "e2422ad645d89c99f8f3e6b88a9fdeca7fabeac836b1002371c4367c8f984aae",
+      "notices": [
+        {
+          "member": "proc-macro2-1.0.78/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "proc-macro2-1.0.78/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
+      "name": "cargo:pyo3",
+      "version": "0.20.3",
+      "url": "https://static.crates.io/crates/pyo3/pyo3-0.20.3.crate",
+      "sha256": "53bdbb96d49157e65d45cc287af5f32ffadd5f4761438b527b055fb0d4bb8233",
+      "notices": [
+        {
+          "member": "pyo3-0.20.3/LICENSE-APACHE",
+          "sha256": "71073d492e996de196dbe1eb1e4c94c27c014c841b288161265b2efd06d0af28"
+        },
+        {
+          "member": "pyo3-0.20.3/LICENSE-MIT",
+          "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6"
+        },
+        {
+          "member": "pyo3-0.20.3/pyo3-runtime/LICENSE-APACHE",
+          "sha256": "71073d492e996de196dbe1eb1e4c94c27c014c841b288161265b2efd06d0af28"
+        },
+        {
+          "member": "pyo3-0.20.3/pyo3-runtime/LICENSE-MIT",
+          "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6"
+        }
+      ]
+    },
+    {
+      "name": "cargo:pyo3-build-config",
+      "version": "0.20.3",
+      "url": "https://static.crates.io/crates/pyo3-build-config/pyo3-build-config-0.20.3.crate",
+      "sha256": "deaa5745de3f5231ce10517a1f5dd97d53e5a2fd77aa6b5842292085831d48d7",
+      "notices": [
+        {
+          "member": "pyo3-build-config-0.20.3/LICENSE-APACHE",
+          "sha256": "71073d492e996de196dbe1eb1e4c94c27c014c841b288161265b2efd06d0af28"
+        },
+        {
+          "member": "pyo3-build-config-0.20.3/LICENSE-MIT",
+          "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6"
+        }
+      ]
+    },
+    {
+      "name": "cargo:pyo3-ffi",
+      "version": "0.20.3",
+      "url": "https://static.crates.io/crates/pyo3-ffi/pyo3-ffi-0.20.3.crate",
+      "sha256": "62b42531d03e08d4ef1f6e85a2ed422eb678b8cd62b762e53891c05faf0d4afa",
+      "notices": [
+        {
+          "member": "pyo3-ffi-0.20.3/LICENSE-APACHE",
+          "sha256": "71073d492e996de196dbe1eb1e4c94c27c014c841b288161265b2efd06d0af28"
+        },
+        {
+          "member": "pyo3-ffi-0.20.3/LICENSE-MIT",
+          "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6"
+        }
+      ]
+    },
+    {
+      "name": "cargo:pyo3-macros",
+      "version": "0.20.3",
+      "url": "https://static.crates.io/crates/pyo3-macros/pyo3-macros-0.20.3.crate",
+      "sha256": "7305c720fa01b8055ec95e484a6eca7a83c841267f0dd5280f0c8b8551d2c158",
+      "notices": [
+        {
+          "member": "pyo3-macros-0.20.3/LICENSE-APACHE",
+          "sha256": "71073d492e996de196dbe1eb1e4c94c27c014c841b288161265b2efd06d0af28"
+        },
+        {
+          "member": "pyo3-macros-0.20.3/LICENSE-MIT",
+          "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6"
+        }
+      ]
+    },
+    {
+      "name": "cargo:pyo3-macros-backend",
+      "version": "0.20.3",
+      "url": "https://static.crates.io/crates/pyo3-macros-backend/pyo3-macros-backend-0.20.3.crate",
+      "sha256": "7c7e9b68bb9c3149c5b0cade5d07f953d6d125eb4337723c4ccdb665f1f96185",
+      "notices": [
+        {
+          "member": "pyo3-macros-backend-0.20.3/LICENSE-APACHE",
+          "sha256": "71073d492e996de196dbe1eb1e4c94c27c014c841b288161265b2efd06d0af28"
+        },
+        {
+          "member": "pyo3-macros-backend-0.20.3/LICENSE-MIT",
+          "sha256": "afcbe3b2e6b37172b5a9ca869ee4c0b8cdc09316e5d4384864154482c33e5af6"
+        }
+      ]
+    },
+    {
+      "name": "cargo:quote",
+      "version": "1.0.35",
+      "url": "https://static.crates.io/crates/quote/quote-1.0.35.crate",
+      "sha256": "291ec9ab5efd934aaf503a6466c5d5251535d108ee747472c3977cc5acc868ef",
+      "notices": [
+        {
+          "member": "quote-1.0.35/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "quote-1.0.35/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
+      "name": "cargo:redox_syscall",
+      "version": "0.4.1",
+      "url": "https://static.crates.io/crates/redox_syscall/redox_syscall-0.4.1.crate",
+      "sha256": "4722d768eff46b75989dd134e5c353f0d6296e5aaa3132e776cbdb56be7731aa",
+      "notices": [
+        {
+          "member": "redox_syscall-0.4.1/LICENSE",
+          "sha256": "efcfee7981ff72431fffb06925cad00a23dce079ed4354f61030ad5abdb78829"
+        }
+      ]
+    },
+    {
+      "name": "cargo:scopeguard",
+      "version": "1.2.0",
+      "url": "https://static.crates.io/crates/scopeguard/scopeguard-1.2.0.crate",
+      "sha256": "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49",
+      "notices": [
+        {
+          "member": "scopeguard-1.2.0/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "scopeguard-1.2.0/LICENSE-MIT",
+          "sha256": "fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7"
+        }
+      ]
+    },
+    {
+      "name": "cargo:self_cell",
+      "version": "1.0.3",
+      "url": "https://static.crates.io/crates/self_cell/self_cell-1.0.3.crate",
+      "sha256": "58bf37232d3bb9a2c4e641ca2a11d83b5062066f88df7fed36c28772046d65ba",
+      "notices": [
+        {
+          "member": "self_cell-1.0.3/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      ]
+    },
+    {
+      "name": "cargo:smallvec",
+      "version": "1.13.1",
+      "url": "https://static.crates.io/crates/smallvec/smallvec-1.13.1.crate",
+      "sha256": "e6ecd384b10a64542d77071bd64bd7b231f4ed5940fba55e98c3de13824cf3d7",
+      "notices": [
+        {
+          "member": "smallvec-1.13.1/LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "member": "smallvec-1.13.1/LICENSE-MIT",
+          "sha256": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9"
+        }
+      ]
+    },
+    {
+      "name": "cargo:syn",
+      "version": "2.0.48",
+      "url": "https://static.crates.io/crates/syn/syn-2.0.48.crate",
+      "sha256": "0f3531638e407dfc0814761abb7c00a5b54992b849452a0646b7f65c9f770f3f",
+      "notices": [
+        {
+          "member": "syn-2.0.48/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "syn-2.0.48/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
+      "name": "cargo:target-lexicon",
+      "version": "0.12.13",
+      "url": "https://static.crates.io/crates/target-lexicon/target-lexicon-0.12.13.crate",
+      "sha256": "69758bda2e78f098e4ccb393021a0963bb3442eac05f135c30f61b7370bbafae",
+      "notices": [
+        {
+          "member": "target-lexicon-0.12.13/LICENSE",
+          "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5"
+        }
+      ]
+    },
+    {
+      "name": "cargo:unicode-ident",
+      "version": "1.0.12",
+      "url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.12.crate",
+      "sha256": "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b",
+      "notices": [
+        {
+          "member": "unicode-ident-1.0.12/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "unicode-ident-1.0.12/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "member": "unicode-ident-1.0.12/LICENSE-UNICODE",
+          "sha256": "68f5b9f5ea36881a0942ba02f558e9e1faf76cc09cb165ad801744c61b738844"
+        }
+      ]
+    },
+    {
+      "name": "cargo:unindent",
+      "version": "0.2.3",
+      "url": "https://static.crates.io/crates/unindent/unindent-0.2.3.crate",
+      "sha256": "c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce",
+      "notices": [
+        {
+          "member": "unindent-0.2.3/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "unindent-0.2.3/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
+      "name": "cargo:vcpkg",
+      "version": "0.2.15",
+      "url": "https://static.crates.io/crates/vcpkg/vcpkg-0.2.15.crate",
+      "sha256": "accd4ea62f7bb7a82fe23066fb0957d48ef677f6eeb8215f372f52e48bb32426",
+      "notices": [
+        {
+          "member": "vcpkg-0.2.15/LICENSE-APACHE",
+          "sha256": "60c93a31f490375aadf64098b75f10715010379541021e00261045d7800611d3"
+        },
+        {
+          "member": "vcpkg-0.2.15/LICENSE-MIT",
+          "sha256": "016d20f335060a70e79d9fcf8dfaa6201114d65d592211f4bdfb8ae9ca2bc1dc"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows-targets",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows-targets/windows-targets-0.48.5.crate",
+      "sha256": "9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c",
+      "notices": [
+        {
+          "member": "windows-targets-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows-targets-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows_aarch64_gnullvm",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows_aarch64_gnullvm/windows_aarch64_gnullvm-0.48.5.crate",
+      "sha256": "2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8",
+      "notices": [
+        {
+          "member": "windows_aarch64_gnullvm-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows_aarch64_gnullvm-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows_aarch64_msvc",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows_aarch64_msvc/windows_aarch64_msvc-0.48.5.crate",
+      "sha256": "dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc",
+      "notices": [
+        {
+          "member": "windows_aarch64_msvc-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows_aarch64_msvc-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows_i686_gnu",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows_i686_gnu/windows_i686_gnu-0.48.5.crate",
+      "sha256": "a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e",
+      "notices": [
+        {
+          "member": "windows_i686_gnu-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows_i686_gnu-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows_i686_msvc",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows_i686_msvc/windows_i686_msvc-0.48.5.crate",
+      "sha256": "8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406",
+      "notices": [
+        {
+          "member": "windows_i686_msvc-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows_i686_msvc-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows_x86_64_gnu",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows_x86_64_gnu/windows_x86_64_gnu-0.48.5.crate",
+      "sha256": "53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e",
+      "notices": [
+        {
+          "member": "windows_x86_64_gnu-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows_x86_64_gnu-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows_x86_64_gnullvm",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows_x86_64_gnullvm/windows_x86_64_gnullvm-0.48.5.crate",
+      "sha256": "0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc",
+      "notices": [
+        {
+          "member": "windows_x86_64_gnullvm-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows_x86_64_gnullvm-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "cargo:windows_x86_64_msvc",
+      "version": "0.48.5",
+      "url": "https://static.crates.io/crates/windows_x86_64_msvc/windows_x86_64_msvc-0.48.5.crate",
+      "sha256": "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538",
+      "notices": [
+        {
+          "member": "windows_x86_64_msvc-0.48.5/license-apache-2.0",
+          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b"
+        },
+        {
+          "member": "windows_x86_64_msvc-0.48.5/license-mit",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ]
+    },
+    {
+      "name": "rust-stdlib",
+      "version": "1.63.0+dfsg1-2",
+      "url": "https://snapshot.debian.org/archive/debian/20261105T000000Z/pool/main/r/rustc/rustc_1.63.0+dfsg1.orig.tar.xz",
+      "sha256": "ad79e62b57ab06516595da2513369b0285b6e2bde1331c00a4197f492f7fad3d",
+      "notices": [
+        {
+          "member": "rustc-1.63.0-src/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "rustc-1.63.0-src/COPYRIGHT",
+          "sha256": "401266ab45019fe25d501eb10f11b85140ecf54a739fc1e3d26800ed276f899a"
+        },
+        {
+          "member": "rustc-1.63.0-src/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ],
+      "extra_sources": [
+        {
+          "url": "https://snapshot.debian.org/archive/debian/20261105T000000Z/pool/main/r/rustc/rustc_1.63.0+dfsg1-2.debian.tar.xz",
+          "sha256": "523aaadf48741ad0d47bfba0dc677d9f50d114f5913794dafd00ae01ea74acff",
+          "notices": [
+            {
+              "member": "debian/copyright",
+              "sha256": "adc1fc569f91e8c20ab9a753b515154f69c1769ea8c500b10ef1ae4b5fa88c34"
+            }
+          ]
+        },
+        {
+          "url": "https://snapshot.debian.org/archive/debian/20261105T000000Z/pool/main/r/rustc/rustc_1.63.0+dfsg1-2.dsc",
+          "sha256": "bf8819414af73093f2227658da8a77b5ae6cf04697cdc01cae8b877392b917a4"
+        }
+      ]
     }
   ],
   "complete_sdk_reconstruction": "NOT_RUN",
   "unresolved_source_inputs": [
-    "Transitive Rust build inputs and Python build-backend source closure"
-  ]
+    "Python build-backend source closure and full SDK reconstruction"
+  ],
+  "cargo_parent": {
+    "component": "pypi:cryptography",
+    "source_sha256": "6fe07eec95dfd477eb9530aef5bead34fec819b3aaf6c5bd6d20565da607bfe1",
+    "member": "cryptography-42.0.5/src/rust/Cargo.lock",
+    "lock_sha256": "8a7badf148f4238044027a07456bf8e9568890aea7f2b03c92cceadc0a72cbb1"
+  },
+  "rust_compiler": {
+    "version_output": "rustc 1.63.0",
+    "source_package": "rustc",
+    "source_version": "1.63.0+dfsg1-2"
+  }
 }
