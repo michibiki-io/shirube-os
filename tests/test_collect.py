@@ -82,3 +82,37 @@ class ComponentInventoryTests(unittest.TestCase):
         self.assertEqual(approval_for(entries,'component','1','a')['source_identity'],'a')
         self.assertEqual(approval_for(entries,'component','1','b')['source_identity'],'b')
         self.assertNotEqual(approval_for(entries,'component','1','c')['source_identity'],'c')
+
+class DistributorNoticeTests(unittest.TestCase):
+    def test_required_notice_hash_and_retained_members_gate_clearance(self):
+        from producer.collect import distribution_notices
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);(root/'LICENSES').mkdir()
+            (root/'NOTICE').write_text('required attribution')
+            (root/'LICENSE').write_text('own license')
+            extra=root/'LICENSES/extra.txt';extra.write_text('original upstream license')
+            record={'source_identity':'source-fixture','redistributable':True,
+                    'required_notice_files':[{'path':'LICENSES/extra.txt','sha256':hashlib.sha256(extra.read_bytes()).hexdigest()}]}
+            approvals={'example@1':record}
+            self.assertEqual(approval_for(approvals,'example','1','source-fixture',root),record)
+            self.assertEqual({name for _,name in distribution_notices(root)}, {'NOTICE','LICENSE','LICENSES/extra.txt'})
+            extra.write_text('changed terms')
+            self.assertEqual(approval_for(approvals,'example','1','source-fixture',root),{})
+            extra.unlink()
+            self.assertEqual(approval_for(approvals,'example','1','source-fixture',root),{})
+            record['required_notice_files'][0]['path']='../outside.txt'
+            with self.assertRaisesRegex(ValueError,'Unsafe required'):
+                approval_for(approvals,'example','1','source-fixture',root)
+
+    def test_image_must_contain_the_exact_required_distributor_notices(self):
+        from producer.collect import verify_distribution_notices
+        with tempfile.TemporaryDirectory() as temporary:
+            base=Path(temporary);project=base/'project';guest=base/'guest'
+            (project/'LICENSES').mkdir(parents=True);(guest/'etc').mkdir(parents=True)
+            doc=guest/'usr/share/doc/shirube-integration';(doc/'distribution-licenses').mkdir(parents=True)
+            for original,installed,text in [('LICENSE','distributor-LICENSE','own grant'),('NOTICE','NOTICE','required acknowledgement'),('LICENSES/extra.txt','distribution-licenses/extra.txt','original inherited conditions')]:
+                (project/original).write_text(text);(doc/installed).write_text(text)
+            verify_distribution_notices(guest,project)
+            (doc/'distribution-licenses/extra.txt').write_text('incomplete conditions')
+            with self.assertRaisesRegex(ValueError,'absent or differs'):
+                verify_distribution_notices(guest,project)

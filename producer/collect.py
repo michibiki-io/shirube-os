@@ -81,9 +81,20 @@ def netbird_dependencies(rootfs,correspondence,arch):
     return children
 
 
-def approval_for(approvals,name,version,identity):
+def approval_for(approvals,name,version,identity,notice_root=Path('/src')):
     key=name+'@'+version
-    return approvals.get(key+'#'+identity,approvals.get(key,{}))
+    approval=approvals.get(key+'#'+identity,approvals.get(key,{}))
+    for notice in approval.get('required_notice_files',[]):
+        relative=Path(notice['path'])
+        if (not relative.parts or relative.is_absolute() or '..' in relative.parts or
+                not (relative.parts[0]=='LICENSES' or str(relative) in {'NOTICE','LICENSE'})):
+            raise ValueError('Unsafe required distribution notice path')
+        path=Path(notice_root)/relative
+        if (path.is_symlink() or not path.is_file() or
+                not path.resolve().is_relative_to(Path(notice_root).resolve()) or
+                sha256(path)!=notice['sha256']):
+            return {}
+    return approval
 
 
 def files(root):
@@ -174,8 +185,33 @@ def static_i2util(output,arch,version,project,shared):
                     'notice':notice,'notice_member':'copyright',**records}
 
 
+def distribution_notices(project):
+    """Give every component an explicit binding to retained distributor notices."""
+    project=Path(project)
+    if (project/'LICENSES').is_symlink() or not (project/'LICENSES').is_dir():
+        raise ValueError('Missing regular distributor license directory')
+    for member in ['LICENSE','NOTICE']:
+        path=project/member
+        if not path.is_file() or path.is_symlink():
+            raise ValueError('Missing distributor license/notice')
+        yield path,member
+    for path,relative in files(project/'LICENSES'):
+        yield path,'LICENSES/'+relative
+
+
+def verify_distribution_notices(rootfs, project):
+    prefix='usr/share/doc/shirube-integration/'
+    for original,member in distribution_notices(project):
+        installed=('distributor-LICENSE' if member=='LICENSE' else
+                   'distribution-licenses/'+member.removeprefix('LICENSES/') if member.startswith('LICENSES/') else member)
+        actual=path_in_root(rootfs,prefix+installed)
+        if not actual.is_file() or sha256(actual)!=sha256(original):
+            raise ValueError('Required distributor notice is absent or differs in the image')
+
+
 def collect(rootfs, package_output, output, arch, version, work):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
+    verify_distribution_notices(rootfs,Path('/src'))
     subprocess.run(['apt-get','-o','Acquire::Retries=3','-o','APT::Update::Error-Mode=any','update'],check=True)
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
         '-f=${Package}\t${Version}\t${Architecture}\t${source:Package}\t${source:Version}\n'],text=True)
@@ -296,6 +332,8 @@ def collect(rootfs, package_output, output, arch, version, work):
             if cached_recipe.is_dir():
                 for path,relative in files(cached_recipe):inputs.append((path,'library-cache/'+relative,'build_inputs'))
             inputs.extend([(copyright_file,'copyright','license_files'),(project,'project-source.tar','build_inputs')])
+            for notice,member in distribution_notices(Path('/src')):
+                inputs.append((notice,'distribution-notices/'+member,'license_files'))
             archive=output/f'shirube-os-{version}-{arch}-source-{len(cached):04d}.tar.gz'
             common=rootfs/'usr/share/common-licenses'
             if common.is_dir():

@@ -2177,6 +2177,132 @@
         "Include exact source archives and reconstruction inputs; independently audit dependencies and the complete distribution."
       ],
       "scope": "Exact Python source/combined-notice pair only. Source license headers and packaged legal members inspected; no SDK, dependency or complete-OS clearance."
+    },
+    "acpid@1:2.0.33-2": {
+      "source_identity": "2605fb7fc5253650b46c7afa726654a581d7ae6d512e75b6f550c490b7597a62",
+      "copyright_sha256": "7a8f0c4796bc4ff2b328586de780427bb6d6126b645f1cd509b33b499033c2a8",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the exact original upstream/Debian copyright, license, conditions and disclaimer in source and binary notice sets.",
+        "Supply the exact authenticated Debian source descriptor, original archives, Debian patches and reconstruction/build inputs with the binary release.",
+        "Retain the full applicable GNU GPL text; preserve modification notices and provide complete corresponding source under the applicable GPL version."
+      ],
+      "scope": "Exact Debian source descriptor and original copyright pair only; full notice read and restored-source notice matched byte-for-byte. Dependencies and the complete OS remain subject to independent source/license gates."
+    },
+    "aptitude@0.8.13-5": {
+      "source_identity": "32750ad518b10458242b1b75f9bc1c64204bd82a3e066502d1156f279899019b",
+      "copyright_sha256": "4d5aec32d25ef7c71e6b287e40510506bf5a4c834a8486f57a54956730279467",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the exact original upstream/Debian copyright, license, conditions and disclaimer in source and binary notice sets.",
+        "Supply the exact authenticated Debian source descriptor, original archives, Debian patches and reconstruction/build inputs with the binary release.",
+        "Retain the full applicable GNU GPL text; preserve modification notices and provide complete corresponding source under the applicable GPL version."
+      ],
+      "scope": "Exact Debian source descriptor and original copyright pair only; full notice read and restored-source notice matched byte-for-byte. Dependencies and the complete OS remain subject to independent source/license gates."
+    },
+    "bmon@1:4.0-10": {
+      "source_identity": "248357c10f2212c2d829cb1426fbe5bd05b32523df8665f3ff3a7e4c0040125a",
+      "copyright_sha256": "d9aae5812e5cde235b035cac4786ebb1b23da60a7fe443756d48ff5284158501",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the exact original upstream/Debian copyright, license, conditions and disclaimer in source and binary notice sets.",
+        "Supply the exact authenticated Debian source descriptor, original archives, Debian patches and reconstruction/build inputs with the binary release."
+      ],
+      "scope": "Exact Debian source descriptor and original copyright pair only; full notice read and restored-source notice matched byte-for-byte. Dependencies and the complete OS remain subject to independent source/license gates."
+    },
+    "configobj@5.0.8-1": {
+      "source_identity": "a92e282ddbf3a58c422d570ba81b83a023f9b4d53c5d2d3ef3a60124d86a97fd",
+      "copyright_sha256": "f08beec002c5415897c678e1727d81bdc8fc3c04761eb356895b8c4ce3c3c2ce",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the exact original upstream/Debian copyright, license, conditions and disclaimer in source and binary notice sets.",
+        "Supply the exact authenticated Debian source descriptor, original archives, Debian patches and reconstruction/build inputs with the binary release.",
+        "Do not use upstream authors or project names to endorse this distribution."
+      ],
+      "scope": "Exact Debian source descriptor and original copyright pair only; full notice read and restored-source notice matched byte-for-byte. Dependencies and the complete OS remain subject to independent source/license gates."
+    },
+    "conntrack-tools@1:1.4.7-1": {
+      "source_identity": "8051b8d30d9cabedb6ffe29a0228c0b866d9f06220ef41f00c4691bda1774f12",
+      "copyright_sha256": "6cf8fc91006b2049f67c0f19e539954738a2d0654525f4345c4ba730cd711f47",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the exact original upstream/Debian copyright, license, conditions and disclaimer in source and binary notice sets.",
+        "Supply the exact authenticated Debian source descriptor, original archives, Debian patches and reconstruction/build inputs with the binary release.",
+        "Retain the full applicable GNU GPL text; preserve modification notices and provide complete corresponding source under the applicable GPL version."
+      ],
+      "scope": "Exact Debian source descriptor and original copyright pair only; full notice read and restored-source notice matched byte-for-byte. Dependencies and the complete OS remain subject to independent source/license gates."
+    },
+    "cwidget@0.5.18-6": {
+      "source_identity": "4ed3ad026c380621aff21f64dca5bc49c2fe502610aca8464793a7ba06f9e4b6",
+      "copyright_sha256": "8d5a2b6015d67cff68fb1a6ffa3f85d14efe62effbe397c300c046b23c8acd1a",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the exact original upstream/Debian copyright, license, conditions and disclaimer in source and binary notice sets.",
+        "Supply the exact authenticated Debian source descriptor, original archives, Debian patches and reconstruction/build inputs with the binary release.",
+        "Retain the full applicable GNU GPL text; preserve modification notices and provide complete corresponding source under the applicable GPL version."
+      ],
+      "scope": "Exact Debian source descriptor and original copyright pair only; full notice read and restored-source notice matched byte-for-byte. Dependencies and the complete OS remain subject to independent source/license gates."
+    },
+    "debconf@1.5.82": {
+      "source_identity": "ed6e8cc6e073344a25ab932602b3b814f25cfa1a7bfd69e464f9bad65f250dea",
+      "copyright_sha256": "57163c71bd8a5289660892827dd0dfaa7fef47f89deedc9dc6711ced7d0a28d7",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the exact original upstream/Debian copyright, license, conditions and disclaimer in source and binary notice sets.",
+        "Supply the exact authenticated Debian source descriptor, original archives, Debian patches and reconstruction/build inputs with the binary release."
+      ],
+      "scope": "Exact Debian source descriptor and original copyright pair only; full notice read and restored-source notice matched byte-for-byte. Dependencies and the complete OS remain subject to independent source/license gates."
+    },
+    "conserver@8.2.7-2": {
+      "source_identity": "b02a59d8101320fdd9f62629ddf542f56e4fcd1651c0fd80be6f76e8febba569",
+      "copyright_sha256": "a887aee30637d0fd5c0a41bab3a3e2e9987817f24887b3c1eaba4ee38c989f87",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND LicenseRef-Conserver-Purdue AND LicenseRef-Conserver-Ohio-State",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Conserver-8.2.7.txt",
+          "sha256": "7d0d5ac33846b4d3e358338a98acd34720f6a5d72a2dbaecfb887c66e5d7879e"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "be98d9a573296e3d040e7cd71f8c53d3816f45dab0e0933db81dd790af801af8"
+        }
+      ],
+      "supplemental_origin": {
+        "archive_sha256": "b88f1880f4090b42370e075ca9c8a6062fb553ee33f155b204714c43dc71cef3",
+        "member": "conserver-8.2.7/LICENSES",
+        "license_sha256": "7d0d5ac33846b4d3e358338a98acd34720f6a5d72a2dbaecfb887c66e5d7879e"
+      },
+      "conditions": [
+        "Retain the complete original conserver.com, GNAC, Purdue and Ohio State copyright/license chain, including its acknowledgement and non-endorsement terms.",
+        "Include the Ohio State acknowledgement in distribution documentation/materials and all advertising mentioning Conserver features/use; retain Purdue and author credit.",
+        "Preserve the original source/notice files and clearly mark any alterations; the current shipped Conserver is the unmodified Debian binary.",
+        "Include full notices in the integration package and component source/legal inventory; missing or changed supplemental notices invalidate this decision."
+      ],
+      "scope": "Exact Debian source/copyright and unchanged binary redistribution, with original source LICENSE, LICENSES and maintainer clarification inspected. This record does not collapse the complete chain into BSD-3-Clause or relicense original works."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

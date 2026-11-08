@@ -60,6 +60,9 @@ def guest_package(arch, version):
     copyright_path=package/'usr/share/doc/shirube-integration/copyright'
     copyright_path.parent.mkdir(parents=True,exist_ok=True)
     copyright_path.write_bytes(b'Shirube OS integration: Copyright (c) 2026 michibiki-io. MIT License.\n\n'+Path('/src/LICENSE').read_bytes()+b'\n\nNetBird headless client upstream notice (directory exceptions retained):\n'+license_data)
+    shutil.copy2('/src/LICENSE',copyright_path.parent/'distributor-LICENSE')
+    shutil.copy2('/src/NOTICE',copyright_path.parent/'NOTICE')
+    shutil.copytree('/src/LICENSES',copyright_path.parent/'distribution-licenses')
     actual=subprocess.check_output([str(lib/'netbird'),'version'],text=True).strip()
     if actual!=lock['version']:raise ValueError('NetBird version mismatch')
     from producer.netbird_sources import prepare

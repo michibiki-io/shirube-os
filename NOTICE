@@ -25,3 +25,10 @@ MIT-licensed portions: Copyright (c) 2026 michibiki.io. Modified 2026-11-08 for
 Shirube OS native architecture selection and task-private runtime builds.
 Modified VyOS display/installer/boot artifacts retain upstream licensing; the
 producer's modification scripts and this date accompany corresponding sources.
+
+Conserver 8.2.7 retains its upstream copyright/license chain, including
+conserver.com, GNAC, Purdue Research Foundation and The Ohio State University.
+See LICENSES/Conserver-8.2.7.txt for the complete original terms.
+This product includes software developed by The Ohio State University and its contributors.
+Credit is retained for the original Conserver authors and Purdue University.
+These acknowledgements do not imply endorsement.

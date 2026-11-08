@@ -277,3 +277,22 @@ Exact Apache-2.0 decisions also cover requests 2.32.5 (including its NOTICE),
 distro 1.5.0 and importlib-metadata 8.7.0. Their license terms, archive legal
 members and source-level license/attribution markers were inspected; these
 records do not clear dependencies or the complete distribution. Contextvars' PSF-licensed test header and the complete matching public CPython license are now separately pinned for retention; that component remains outside these approvals.
+
+Eight exact Debian source/notice pairs have initial individual decisions: acpid,
+aptitude, bmon, configobj, conntrack-tools, cwidget, debconf and conserver. Their complete
+notices were read and their restored-source notices matched installed notices
+byte-for-byte, including epoch-bearing source versions. The source descriptor
+and copyright hashes bind each decision. GPL source obligations, permissive
+notice conditions and non-endorsement conditions remain mandatory; this is not
+a blanket approval of Debian packages or the complete OS.
+
+Conserver's root BSD notice does not replace its original licensing chain.
+`LICENSES/Conserver-8.2.7.txt` retains the exact authenticated source `LICENSES`
+bytes, including the Purdue and Ohio State terms (identified as the
+LicenseRef-Conserver-Purdue and LicenseRef-Conserver-Ohio-State terms in the
+inventory). The required Ohio State acknowledgement and Purdue credit appear
+in `NOTICE`. The integration package carries these full distributor notices,
+and every component source archive includes explicit legal-file bindings.
+Required supplemental notice hashes are checked before a decision can clear.
+The decision covers the unchanged Debian binary; it is not a blanket BSD
+relicensing of contributed code or a noncommercial-use exception.
