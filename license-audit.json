@@ -1984,6 +1984,84 @@
         "Mark any future modified files prominently and preserve source attribution; no upstream trademark or endorsement rights are granted."
       ],
       "scope": "Exact unmodified component source and complete retained notices only; separately packaged dependencies, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:expandvars@1.1.2": {
+      "source_identity": "6c5822b7b756a99a356b915dd1267f52ab8a4efaa135963bd7f4bd5d368f71d7",
+      "copyright_sha256": "e8177e8e0713526f5902bedd6a48fea8686cc1b6dbde78bf5999cf1cee0b41f0",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/6c5822b7b756a99a356b915dd1267f52ab8a4efaa135963bd7f4bd5d368f71d7.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission notice and disclaimer in source and binary release materials.",
+        "Retain the exact source archive and all hash-bound legal files, including the separately attributed TOML test suite when present; separately packaged dependencies need their own audit."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; other SDK components, compiler/native libraries and full OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:hatch-vcs@0.5.0": {
+      "source_identity": "0395fa126940340215090c344a2bf4e2a77bcbe7daab16f41b37b98c95809ff9",
+      "copyright_sha256": "67996eb8c5b751d6a3618fccce02e6eaa102483a3c229342115a6a3371302cea",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/0395fa126940340215090c344a2bf4e2a77bcbe7daab16f41b37b98c95809ff9.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission notice and disclaimer in source and binary release materials.",
+        "Retain the exact source archive and all hash-bound legal files, including the separately attributed TOML test suite when present; separately packaged dependencies need their own audit."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; other SDK components, compiler/native libraries and full OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:hatchling@1.33.0": {
+      "source_identity": "4c422bd4d554fcff5de5b73e9596f85e41e9f97f7e553d8f7595ecb31a627bef",
+      "copyright_sha256": "d3096910dd03bf6e6d7d9ea60cc17e6cc4241fafc6f07c67e004aea00f2b1e59",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/4c422bd4d554fcff5de5b73e9596f85e41e9f97f7e553d8f7595ecb31a627bef.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission notice and disclaimer in source and binary release materials.",
+        "Retain the exact source archive and all hash-bound legal files, including the separately attributed TOML test suite when present; separately packaged dependencies need their own audit."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; other SDK components, compiler/native libraries and full OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:pluggy@1.7.0": {
+      "source_identity": "d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8",
+      "copyright_sha256": "f078c59ac721ad54053af53792bd88bba9ce7e1e2ee096fca8b240867cef2e8c",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/d1eaa46ebb595891b860ab086b4d09c8588af65ebd4361b8e8f4bb8920b90ba8.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission notice and disclaimer in source and binary release materials.",
+        "Retain the exact source archive and all hash-bound legal files, including the separately attributed TOML test suite when present; separately packaged dependencies need their own audit."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; other SDK components, compiler/native libraries and full OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:tomlkit@0.15.2": {
+      "source_identity": "83e32755ba1d20d9340bd069ee97e9f6232ba2346b63ffcba425de01f7e327a6",
+      "copyright_sha256": "02adaeba34029f6316468fd4def2bf38fedc0b480212fbc0b417b12b06ab679e",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/83e32755ba1d20d9340bd069ee97e9f6232ba2346b63ffcba425de01f7e327a6.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission notice and disclaimer in source and binary release materials.",
+        "Retain the exact source archive and all hash-bound legal files, including the separately attributed TOML test suite when present; separately packaged dependencies need their own audit."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; other SDK components, compiler/native libraries and full OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:vcs-versioning@2.6.0": {
+      "source_identity": "22e9159288e2d8bca2fa6f6c31c34c9c66aec157f60e9e526f5d160d2516d60f",
+      "copyright_sha256": "42e88afcd101d5459cf3969d7593d8452294d729427dc50e2bfd99b33ceddaa7",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/22e9159288e2d8bca2fa6f6c31c34c9c66aec157f60e9e526f5d160d2516d60f.copyright",
+      "conditions": [
+        "Retain complete original copyright, permission notice and disclaimer in source and binary release materials.",
+        "Retain the exact source archive and all hash-bound legal files, including the separately attributed TOML test suite when present; separately packaged dependencies need their own audit."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; other SDK components, compiler/native libraries and full OS reconstruction are not cleared by this entry."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
