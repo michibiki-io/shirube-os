@@ -272,3 +272,31 @@ SaltのRust依存は、ソース固定ファイルにある48個のcrateから�
 ファイル・パッケージ別チェックサムを一時作業領域へ生成する。オフライン設定はSaltの
 2つのSDKインストール処理だけへ適用する。AMD64上のネットワークを持たない名前空間で、
 48個すべての依存解決が一致した。SDK全体の再ビルドやOS全体のソース再構築は別途確認する。
+
+Salt's runtime SDK Python installation now uses a verified local input directory
+with 77 fixed Python source archives and one architecture-specific PPBT compiler
+wheel. Both SDK installation functions, including their compiler bootstrap calls,
+receive local pip index policy and Cargo offline policy. The outer packaging-tool
+environment is separate. Source, compiler hash/size or architecture mismatches fail
+without an index fallback. The compiler assets for AMD64 and ARM64 are independently
+pinned; an AMD64 compiler wheel cannot enter the ARM64 input set.
+
+The native AMD64 component test rebuilt the runtime Python dependencies and exact
+Salt wheel without network access after fixed inputs were staged. It removed PPBT
+as upstream packaging does, matched all 55 distributions and 425 pip/Relenv Python
+source files, then passed EC signature verification, a CFFI native call and ZeroMQ
+in-process transfer. Both Python and cryptography used OpenSSL 3.6.1. This test used
+the verified prebuilt CPython/native-library SDK; it is not complete SDK native
+source reconstruction, DEB packaging, guest OS or ARM64 runtime acceptance.
+
+SaltのSDK内のPython依存は、固定した元ソース77件とアーキテクチャ別のPPBTコンパイラ
+wheel 1件を検証してから使う。2つのSDKインストール関数とコンパイラ導入処理に、ローカル
+入力だけを使うpip設定とCargoのオフライン設定を渡す。外側の梱包ツール用環境とは分け、
+入力のハッシュ・容量・アーキテクチャが不一致なら外部indexへ切り替えずに失敗する。
+
+AMD64の個別試験では、入力の準備後にネットワークを遮断してPython依存と想定版のSalt
+wheelを構築した。上流と同じくPPBTを除去した後、55件の配布物と425個のPythonファイルを
+照合し、暗号署名・検証、CFFIのネイティブ呼び出し、ZeroMQのプロセス内送受信を確認した。
+PythonとcryptographyはいずれもOpenSSL 3.6.1を使用した。この試験では検証済みの
+CPython・ネイティブライブラリを含むSDKを使っており、それら自体のソース再構築、DEB梱包、
+ゲストOS、ARM64の実行確認を合格とするものではない。

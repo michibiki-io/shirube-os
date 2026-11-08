@@ -76,7 +76,7 @@ def prepare(lock_path, destination, cache=None):
     return home
 
 
-def patch_sdk_environment(source, home):
+def patch_sdk_environment(source, home, python_inputs=None):
     """Keep registry policy local to Salt's two SDK installation functions."""
     import ast
     source = Path(source)
@@ -99,7 +99,20 @@ def patch_sdk_environment(source, home):
         insertions.append((assignment.end_lineno,
                            indent + '# Modified by michibiki-io 2026-11-08: fixed offline Rust inputs.\n'
                            + indent + 'env["CARGO_HOME"] = ' + json.dumps(str(home)) + '\n'
-                           + indent + 'env["CARGO_NET_OFFLINE"] = "true"\n'))
+                           + indent + 'env["CARGO_NET_OFFLINE"] = "true"\n'
+                           + (indent + 'env["PIP_NO_INDEX"] = "1"\n'
+                              + indent + 'env["PIP_FIND_LINKS"] = ' + json.dumps(str(python_inputs)) + '\n'
+                              if python_inputs is not None else '')))
+        if python_inputs is not None:
+            bootstrap = [node for node in ast.walk(functions[0])
+                         if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
+                         and node.func.attr == 'run'
+                         and any(isinstance(arg, ast.Constant) and arg.value == 'relenv[toolchain]'
+                                 for arg in node.args)]
+            if len(bootstrap) != 1 or any(k.arg == 'env' for k in bootstrap[0].keywords):
+                raise ValueError('Upstream SDK compiler bootstrap differs')
+            call = bootstrap[0]
+            insertions.append((call.end_lineno - 1, ' ' * (call.col_offset + 4) + 'env=env,\n'))
     lines = text.splitlines(keepends=True)
     for index, content in sorted(insertions, reverse=True):
         lines.insert(index, content)

@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from producer.salt_sources import installed_distributions, notice_members, retain, seed_sdk, pin_build, validate_cargo_sources
+from producer.salt_sources import installed_distributions, notice_members, retain, seed_sdk, pin_build, validate_cargo_sources, validate_bootstrap_python_sources
 from producer.sources import sha256
 
 
@@ -229,3 +229,42 @@ class SaltSourceTests(unittest.TestCase):
             with patch('producer.salt_sources.download',side_effect=fetch):
                 with self.assertRaisesRegex(ValueError,'Supplemental SDK source SHA256 mismatch'):
                     retain(guest,root/'bad.tar.gz',root/'bad-work',lock_path)
+
+
+class BootstrapPythonBindingTests(unittest.TestCase):
+    def test_same_version_does_not_hide_changed_added_or_linked_sdk_python_files(self):
+        for variant in ['matching', 'changed', 'added', 'linked']:
+            with self.subTest(variant=variant), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                guest = root / 'guest'
+                (guest / 'etc').mkdir(parents=True)
+                package = guest / 'opt/saltstack/salt/lib/python3.11/site-packages/sample'
+                package.mkdir(parents=True)
+                content = b'# Original package code.\nvalue = 1\n'
+                installed = package / '__init__.py'
+                installed.write_bytes(content)
+                (package / 'subpackage').mkdir()
+                (package / 'subpackage/__init__.py').write_bytes(b'')
+                archive = root / 'source.tar.gz'
+                with tarfile.open(archive, 'w:gz') as target:
+                    member = tarfile.TarInfo('sample-1.0/src/sample/__init__.py')
+                    member.size = len(content)
+                    target.addfile(member, io.BytesIO(content))
+                    empty = tarfile.TarInfo('sample-1.0/src/sample/subpackage/__init__.py')
+                    empty.size = 0
+                    target.addfile(empty, io.BytesIO(b''))
+                digest = sha256(archive)
+                archive.rename(root / (digest + '.source'))
+                lock = {'components': [{'name': 'pypi:sample', 'sha256': digest}],
+                        'bootstrap_python_sources': [{'component': 'pypi:sample',
+                            'source_prefix': 'sample-1.0/src/sample/',
+                            'installed_prefix': str(package.relative_to(guest))}]}
+                if variant == 'changed': installed.write_bytes(b'value = 2\n')
+                if variant == 'added': (package / 'extra.py').write_bytes(b'extra = True\n')
+                if variant == 'linked':
+                    installed.rename(package / 'original.py')
+                    installed.symlink_to('original.py')
+                if variant == 'matching': validate_bootstrap_python_sources(guest, lock, root)
+                else:
+                    with self.assertRaises(ValueError):
+                        validate_bootstrap_python_sources(guest, lock, root)

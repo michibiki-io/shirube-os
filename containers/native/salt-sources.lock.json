@@ -2814,7 +2814,7 @@
   ],
   "complete_sdk_reconstruction": "NOT_RUN",
   "unresolved_source_inputs": [
-    "Enforce fixed Python build-input consumption and verify complete SDK reconstruction"
+    "Rebuild SDK native libraries and toolchain from retained sources; verify full OS reconstruction"
   ],
   "cargo_parent": {
     "component": "pypi:cryptography",
@@ -2827,5 +2827,31 @@
     "source_package": "rustc",
     "source_version": "1.63.0+dfsg1-2"
   },
-  "python_build_input_scope": "Observed isolated SDK build backend inputs from native AMD64 compilation; input consumption enforcement and complete SDK reconstruction remain unverified."
+  "python_build_input_scope": "Fixed Python sources and architecture-specific compiler assets for SDK installation; complete native SDK reconstruction remains separate.",
+  "ppbt_assets": {
+    "amd64": {
+      "name": "ppbt-0.1.8-py3-none-manylinux_2_17_x86_64.whl",
+      "url": "https://files.pythonhosted.org/packages/d7/bd/e3bc4d8de3e78cc7e6920b1237b92c2d973a1d08c5d6915b66fe7644402f/ppbt-0.1.8-py3-none-manylinux_2_17_x86_64.whl",
+      "sha256": "cdc534b53f052ff32812ea7167afd3393068b1dab92c63546b38353c286aac73",
+      "size": 48348354
+    },
+    "arm64": {
+      "name": "ppbt-0.1.8-py3-none-manylinux_2_17_aarch64.whl",
+      "url": "https://files.pythonhosted.org/packages/0a/62/d0a781614bfca5afaa084b6087376f63c27627de78147fa3de2c39069fa4/ppbt-0.1.8-py3-none-manylinux_2_17_aarch64.whl",
+      "sha256": "e5447e55f6a51811481dcd41b580fd2f58450dcfd17a5871f8b7051d710f51c0",
+      "size": 40192975
+    }
+  },
+  "bootstrap_python_sources": [
+    {
+      "component": "pypi:pip",
+      "source_prefix": "pip-25.2/src/pip/",
+      "installed_prefix": "opt/saltstack/salt/lib/python3.11/site-packages/pip"
+    },
+    {
+      "component": "pypi:relenv",
+      "source_prefix": "relenv-0.22.3/relenv/",
+      "installed_prefix": "opt/saltstack/salt/lib/python3.11/site-packages/relenv"
+    }
+  ]
 }

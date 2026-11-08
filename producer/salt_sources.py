@@ -129,6 +129,42 @@ def notice_members(archive, declarations):
     return found
 
 
+def validate_bootstrap_python_sources(rootfs, lock, work):
+    """Bind source Python files supplied by the SDK asset to retained archives."""
+    for declaration in lock.get('bootstrap_python_sources', []):
+        selected = [r for r in lock['components'] if r['name'] == declaration['component']]
+        if len(selected) != 1:
+            raise ValueError('SDK bootstrap source identity is missing')
+        record = selected[0]
+        archive = Path(work) / (record['sha256'] + '.source')
+        if sha256(archive) != record['sha256']:
+            raise ValueError('SDK bootstrap source archive differs')
+        prefix = declaration['source_prefix']
+        prefix_path = PurePosixPath(prefix)
+        if prefix_path.is_absolute() or '..' in prefix_path.parts or '\\' in prefix or not prefix.endswith('/'):
+            raise ValueError('Unsafe SDK bootstrap source prefix')
+        expected = {}
+        with tarfile.open(archive, mode='r|*') as source:
+            for member in source:
+                if not member.name.startswith(prefix) or not member.name.endswith('.py'):
+                    continue
+                relative = PurePosixPath(member.name[len(prefix):])
+                if (not member.isfile() or not 0 <= member.size <= 4 * 1024**2
+                        or relative.is_absolute() or '..' in relative.parts
+                        or '\\' in str(relative) or str(relative) in expected):
+                    raise ValueError('Invalid SDK bootstrap Python source member')
+                expected[str(relative)] = hashlib.sha256(source.extractfile(member).read()).hexdigest()
+        package = path_in_root(rootfs, declaration['installed_prefix'])
+        actual = {}
+        for path in package.rglob('*'):
+            if path.is_symlink():
+                raise ValueError('Installed SDK bootstrap source contains a link')
+            if path.is_file() and path.suffix == '.py':
+                actual[str(path.relative_to(package))] = sha256(path)
+        if not expected or actual != expected:
+            raise ValueError('Installed SDK bootstrap Python source differs from retained input')
+
+
 def validate_cargo_sources(lock,work):
     parent=lock.get('cargo_parent')
     if parent is None:return
@@ -243,6 +279,7 @@ def retain(rootfs, destination, work, lock_path):
     if expected != provided:
         raise ValueError('Salt dependency source coverage is incomplete')
     validate_cargo_sources(lock,work)
+    validate_bootstrap_python_sources(rootfs,lock,work)
     records = bundle(inputs, destination, 1773859634)
     for child in children:
         wanted=set(child.pop('retained_members'))

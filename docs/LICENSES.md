@@ -182,8 +182,9 @@ The source lock covers 144 components, including 54 runtime Python dependencies,
 CPython, GCC, the declared Relenv native inputs/build recipe, 48 Rust crates from
 cryptography's exact Cargo.lock, and the Debian-patched Rust standard-library
 source, plus 23 observed isolated Python build-tool source inputs. Those build
-inputs are retained and hash-verified; enforcing their consumption and proving
-complete SDK reconstruction remain outstanding. Crate versions and checksums
+inputs are retained and hash-verified. Fixed-input Python SDK reconstruction
+passed as an isolated native AMD64 component test; complete native SDK and OS
+reconstruction remain outstanding. Crate versions and checksums
 must match the retained parent Cargo.lock;
 the compiler and Debian source-package identity must match the actual builder.
 The Rust source descriptor and Debian patch archive are retained alongside the
@@ -249,5 +250,18 @@ Unlicenseの判断を個別に記録した。CherryPyのApacheBench出力例に�
 同梱ツール、SDKの残る依存、OS全体の再構築は別途確認する。
 
 SDKのビルド時に実際に使われたPythonツール23件も、元ソースとライセンス資料を固定し、
-保持対象へ追加した。固定入力だけを実際に使わせる処理とSDK全体の再構築確認は未完了であり、
-ソースの保持をビルドの合格として扱わない。
+保持対象へ追加した。固定入力だけを使うPython部分の再構築はAMD64の個別試験で通過したが、
+SDKのネイティブライブラリやOS全体の再構築は未完了である。ソースの保持だけで
+ビルドの合格と判断しない。
+
+The SDK collector also compares the installed pip and Relenv Python files against
+their retained exact source archives, rejecting changed, added or linked files
+even when distribution versions still match. Empty Python package initializers
+are valid source files. The native AMD64 component check matched all 425 files.
+This binds those asset-provided bootstrap sources; it does not clear licenses or
+prove native-library reconstruction.
+
+SDKに含まれるpipとRelenvは、版だけでなく、保持した元ソースと実際のPythonファイルを
+照合する。同じ版でも変更・追加・リンクがあれば拒否し、空の初期化ファイルは有効な
+ソースとして扱う。AMD64の個別試験では425ファイルが一致した。これは起動用ツールの
+ソース照合であり、配布許諾やネイティブライブラリの再構築の合格とは別である。
