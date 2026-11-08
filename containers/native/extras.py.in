@@ -349,6 +349,8 @@ def accel(work):
     shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR=6.6.128-vyos -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/extra/vpp/vpp/src/vpp-api:/extra/vpp/vpp/src:/extra/vpp/vpp/build-root/build-vpp-native/vpp/CMakeFiles/vpp-api LIBRARY_PATH=/extra/vpp/vpp/build-root/install-vpp-native/vpp/lib/@MULTIARCH@ make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')
     copy_debs(work)
     sflow=snapshot('host-sflow_v2.1.21-1/host-sflow',work/'sflow')
+    from producer.sflow import prepare as prepare_sflow
+    prepare_sflow(sflow)
     shell('apt-get install -y --no-install-recommends libpcap0.8-dev clang; make clean; make -j2 deb FEATURES="PCAP DROPMON DBUS PSAMPLE VPP"',sflow)
     copy_debs(sflow,'hsflowd_*_@ARCH@.deb')
 
