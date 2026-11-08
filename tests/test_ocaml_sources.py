@@ -5,10 +5,37 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from producer.collect import files
-from producer.ocaml_sources import retain
+from producer.ocaml_sources import retain,seed_download_cache
 
 
 class OcamlSourceTests(unittest.TestCase):
+    def test_public_source_cache_checks_content_and_excludes_git_state(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base=Path(temporary);root,_,archive=self.fixture(base);destination=base/'private-cache'
+            self.assertEqual(seed_download_cache(root/'download-cache',destination),1)
+            target=destination/archive.relative_to(root/'download-cache')
+            self.assertEqual(target.read_bytes(),archive.read_bytes())
+            self.assertFalse((destination/'git').exists())
+            original=archive.read_bytes();archive.write_bytes(b'changed source archive')
+            with self.assertRaisesRegex(ValueError,'cache checksum mismatch'):
+                seed_download_cache(root/'download-cache',destination)
+            self.assertEqual(target.read_bytes(),original)
+            archive.write_bytes(original);target.write_bytes(b'changed private cache')
+            with self.assertRaisesRegex(ValueError,'Existing OCaml'):
+                seed_download_cache(root/'download-cache',destination)
+
+    def test_source_cache_rejects_links_and_wrong_content_addresses(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base=Path(temporary);cache=base/'cache';directory=cache/'sha512/ab';directory.mkdir(parents=True)
+            source=base/'source';source.write_bytes(b'source fixture')
+            target=directory/('ab'*64);target.symlink_to(source)
+            with self.assertRaisesRegex(ValueError,'links'):
+                seed_download_cache(cache,base/'output')
+            target.unlink();target.write_bytes(b'changed bytes')
+            with self.assertRaisesRegex(ValueError,'checksum mismatch'):
+                seed_download_cache(cache,base/'output')
+            self.assertEqual(seed_download_cache(base/'missing',base/'output'),0)
+
     def fixture(self,base):
         root=base/'opam';switch=root/'4.14.2/.opam-switch'
         for name in ['base-unix.base','vyos1x-config.0.3']:

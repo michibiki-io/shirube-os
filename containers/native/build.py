@@ -132,6 +132,9 @@ def main():
     if default.is_file():
         console='ttyAMA0' if args.architecture=='arm64' else 'ttyS0'
         default.write_text('// Modified by michibiki-io for Shirube OS on 2026-11-08.\ninterfaces {\n ethernet eth0 { address dhcp }\n loopback lo {}\n}\nsystem {\n host-name shirube-os\n console { device '+console+' { speed 115200 } }\n}\n')
+    from producer.ocaml_sources import seed_download_cache
+    cached=seed_download_cache(Path('/public-inputs/opam-download-cache'),Path('/opt/opam/download-cache'))
+    if cached:print('OCAML INPUT CACHE: '+str(cached)+' verified public sources',flush=True)
     for job in jobs:
         print('STAGE: native source package '+job['name'],flush=True)
         started=time.monotonic()

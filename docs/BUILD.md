@@ -221,10 +221,14 @@ required candidate gate. Put operator-captured logs in persistent private task
 storage as well.
 
 The optional public-input directory additionally accepts `vpp-python`,
-`vpp-external` and `salt-sdk` subdirectories. Their fixed source/asset hashes are
+`vpp-external`, `salt-sdk` and `opam-download-cache` subdirectories. Their fixed source/asset hashes are
 checked before use; corrupt files fail without a network fallback. Missing files
 use their fixed public HTTPS URLs. Native VPP inputs are preseeded before its
 upstream downloader, so HTTP error pages cannot enter the compiler as archives.
+The OPAM cache imports only SHA256/SHA512-addressed public source files. Git
+caches and compiler workspaces are excluded. OPAM independently checks selected
+archives against the pinned package metadata before compiling the configuration
+library.
 
 ## Release duration and runner limits
 

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import shutil
 from .bundles import bundle
 from .sources import sha256
 
@@ -12,6 +13,42 @@ from .sources import sha256
 # metadata is retained, but they contain no additional OCaml runtime source.
 VIRTUAL={'base-bigarray','base-threads','base-unix','ocaml','ocaml-config',
     'ocaml-options-vanilla','conf-libffi','conf-libpcre2-8','conf-pkg-config'}
+
+
+def seed_download_cache(cache,destination):
+    """Copy verified public source archives, never Git or compiler workspaces.
+
+    OPAM still checks each selected input against its pinned package metadata.
+    Source-only cache misses follow OPAM's ordinary fixed repository recipes.
+    """
+    cache,destination=map(Path,(cache,destination))
+    if not cache.exists():return 0
+    if cache.is_symlink() or not cache.is_dir():raise ValueError('Invalid OCaml input cache')
+    count=0
+    for path in sorted(cache.rglob('*')):
+        relative=path.relative_to(cache);algorithm=relative.parts[0]
+        if algorithm in {'git','md5'}:continue
+        if algorithm not in {'sha256','sha512'}:raise ValueError('Unexpected OCaml source cache digest')
+        if path.is_symlink():raise ValueError('OCaml source cache links are not supported')
+        if path.is_dir():continue
+        digest=path.name
+        if (not path.is_file() or len(relative.parts) not in {2,3}
+                or not re.fullmatch('[0-9a-f]{'+str(hashlib.new(algorithm).digest_size*2)+'}',digest)
+                or len(relative.parts)==3 and relative.parts[1]!=digest[:2]):
+            raise ValueError('Invalid OCaml source cache content address')
+        with path.open('rb') as stream:actual=hashlib.file_digest(stream,algorithm).hexdigest()
+        if actual!=digest:raise ValueError('OCaml source cache checksum mismatch')
+        target=destination/relative
+        if target.is_symlink() or not target.resolve().is_relative_to(destination.resolve()):
+            raise ValueError('Unsafe OCaml source cache destination')
+        if target.exists():
+            if not target.is_file():raise ValueError('Invalid OCaml source cache destination')
+            with target.open('rb') as stream:existing=hashlib.file_digest(stream,algorithm).hexdigest()
+            if existing!=digest:raise ValueError('Existing OCaml source cache checksum mismatch')
+        else:
+            target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(path,target)
+        count+=1
+    return count
 
 
 def retain(root,destination,work,source_files):
