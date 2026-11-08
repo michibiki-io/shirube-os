@@ -146,3 +146,13 @@ image; they are not claimed to have been included in either diagnostic receipt.
 
 AMD64も両形式の起動・個別設定・NetBirdの保存と再起動を通過しました。
 診断用成果物の後に追加したhostnameの初期化と配布者の許諾表示は、次のビルドで確認します。
+
+The [AMD64 Debian source correspondence receipt](evidence/diagnostic-debian-source-amd64-correspondence.json)
+checks the diagnostic AMD64 package inventory independently: all 459 required
+source groups occur in the authenticated/restored source set and all 658 installed
+copyright files match the corresponding records. The same 72 custom binary
+packages remain outside this Debian-only result. Forty exact Debian source/notice
+decisions are recorded; remaining groups and the complete OS remain uncleared.
+
+AMD64のDebian由来658パッケージも、復元済み原本と表示へ対応することを確認しました。
+独自ビルド72パッケージと残る許諾判断は、別の未達事項として扱います。
