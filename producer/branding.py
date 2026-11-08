@@ -11,6 +11,22 @@ from .policy import version_parts
 DESCRIPTION = 'An open-source router OS based on VyOS Stream, built and maintained by michibiki-io.'
 
 
+def defer_factory_identity(root):
+    """Keep base-files-owned paths out of the core DEB payload.
+
+    Live-build applies these templates after package installation, like its
+    generated os-release, without claiming another package's files.
+    """
+    root = Path(root)
+    destination = root / 'usr/share/shirube/factory-identity'
+    destination.mkdir()
+    for name in ('os-release', 'issue', 'issue.net'):
+        source = root / 'etc' / name
+        if source.is_symlink() or not source.is_file():
+            raise ValueError('Expected generated regular factory identity file')
+        source.replace(destination / name)
+
+
 def boot_background(logo, target):
     # Fit the supplied 824x320 artwork onto the boot menu's 640x480 canvas.
     subprocess.run(['rsvg-convert','--background-color=#ffffff','--width','480','--height','480',

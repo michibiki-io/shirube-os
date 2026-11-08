@@ -114,6 +114,8 @@ def guest_package(arch, version):
         from arm_grub import patch_grub
         patch_core(core);patch_grub(core)
     install_brand(core,version,Path('/src/shirube-os-logo.svg'))
+    from producer.branding import defer_factory_identity
+    defer_factory_identity(core)
     # Change display strings only in UI/installer files. Keep copyright/license
     # headers and compatibility module/CLI/filesystem names intact.
     for base in ['usr/share/vyos/templates/grub','usr/libexec/vyos/op_mode','usr/lib/python3/dist-packages/vyos/system']:
@@ -159,7 +161,7 @@ def guest_package(arch, version):
         notice.write('\nShirube OS modifications by michibiki-io, 2026-11-08.\n'
                      'Upstream copyright and license terms remain applicable.\n')
         for path in changed:notice.write('Modified: '+str(path.relative_to(core))+'\n')
-    new_version=old_version+'+shirube1'
+    new_version=old_version+'+shirube2'
     control=core/'DEBIAN/control';control.write_text(control.read_text().replace('Version: '+old_version+'\n','Version: '+new_version+'\n'))
     (core/'DEBIAN/md5sums').unlink(missing_ok=True)
     repaired=debs/f'vyos-1x_{new_version}_{arch}.deb';run('dpkg-deb','--root-owner-group','-b',str(core),str(repaired));original.unlink()

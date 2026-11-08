@@ -12,6 +12,13 @@ def main():
     arch=sys.argv[1]
     if arch not in {'amd64','arm64'}:raise ValueError('Unsupported architecture')
     console='ttyAMA0' if arch=='arm64' else 'ttyS0'
+    for name in ('os-release','issue','issue.net'):
+        source=Path('/usr/share/shirube/factory-identity')/name
+        if source.is_symlink() or not source.is_file():
+            raise ValueError('Missing factory identity template')
+        target=Path('/etc')/name
+        if target.is_symlink():target.unlink()
+        target.write_bytes(source.read_bytes())
     config='interfaces {\n ethernet eth0 {\n  address dhcp\n }\n loopback lo {\n }\n}\nsystem {\n host-name shirube-os\n console {\n  device '+console+' {\n   speed 115200\n  }\n }\n}\n'
     root=Path('/opt/vyatta/etc/config');root.mkdir(parents=True,exist_ok=True)
     for name in ['config.boot','config.boot.default']:(root/name).write_text(config)
