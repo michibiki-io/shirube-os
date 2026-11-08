@@ -17,7 +17,18 @@ def http_dependencies(rootfs):
     normalize=lambda value:re.sub('[-_.]+','-',value).lower()
     doc=path_in_root(rootfs,'usr/share/doc/vyos-http-api-tools')
     bom=doc/'components.json'
-    declarations=json.loads(bom.read_text())['components']
+    data=json.loads(bom.read_text());declarations=data['components']
+    lock=json.loads(Path('/src/native/http-api.lock.json').read_text())
+    fixed={normalize(item['name']):item for item in lock['packages']}
+    if data.get('architecture') not in {'amd64','arm64'}:
+        raise ValueError('Missing HTTP dependency architecture')
+    if {(normalize(r['name']),r['version']) for r in declarations}!={(name,r['version']) for name,r in fixed.items()}:
+        raise ValueError('API dependency versions differ from the fixed source baseline')
+    for record in declarations:
+        expected=fixed[normalize(record['name'])]
+        if (record['source']!=expected['source'] or
+                record['wheel']!=expected['wheels'][data['architecture']]):
+            raise ValueError('API original source or wheel differs from the fixed input')
     actual=set()
     site=path_in_root(rootfs,'usr/share/vyos-http-api-tools/lib/python3.11/site-packages')
     for metadata in site.glob('*.dist-info/METADATA'):
@@ -79,6 +90,36 @@ def http_cargo_dependencies(rootfs, source, record):
             'source_member':'source/'+prefix+member,'notice':notice,
             'notice_member':'third-party-notices/'+record['name']+'/cargo/'+name+'/copyright'})
     return result
+
+
+def http_rust_standard_library(rootfs,source,work):
+    from .http_rust_sources import extensions,write_notices
+    bom=json.loads(path_in_root(rootfs,'usr/share/doc/vyos-http-api-tools/components.json').read_text())
+    record=bom.get('rust_stdlib',{})
+    lock=json.loads(Path('/src/native/http-rust.lock.json').read_text())
+    if (record.get('name')!='rust-stdlib' or record.get('version')!=lock['version'] or
+            record.get('source')!=lock['source']):
+        raise ValueError('Rust standard-library corresponding source inventory differs')
+    original=source/'inputs'/lock['source']['filename']
+    if original.is_symlink() or sha256(original)!=lock['source']['sha256']:
+        raise ValueError('Rust standard-library original source missing or differs')
+    compiler='rustc version '+lock['rustc_version_output'].removeprefix('rustc ')
+    site=path_in_root(rootfs,'usr/share/vyos-http-api-tools/lib/python3.11/site-packages')
+    actual=extensions(site,source,bom['components'],compiler)
+    if record.get('extensions')!=actual or record.get('compiler_identity')!=compiler:
+        raise ValueError('Rust standard-library source does not correspond to the shipped extensions')
+    work.mkdir(parents=True,exist_ok=False)
+    recreated=work/'copyright'
+    members=write_notices(original,lock['version'],recreated)
+    installed='third-party/rust-stdlib/copyright'
+    notice=path_in_root(rootfs,'usr/share/doc/vyos-http-api-tools/'+installed)
+    if (record.get('source_legal_members')!=members or record.get('license_notice')!={'path':installed,'sha256':sha256(recreated)}
+            or record.get('notice_sha256')!=sha256(recreated) or sha256(notice)!=sha256(recreated)
+            or sha256(source/'rust-notices/copyright')!=sha256(recreated)):
+        raise ValueError('Rust standard-library original legal notices are incomplete or differ')
+    return {'name':'rust-stdlib','version':lock['version'],'source_identity':lock['source']['sha256'],
+        'source_sha256':lock['source']['sha256'],'source_member':'source/inputs/'+original.name,
+        'notice':notice,'notice_member':'third-party-notices/rust-stdlib/copyright'}
 
 
 def netbird_dependencies(rootfs,correspondence,arch):
@@ -376,6 +417,9 @@ def collect(rootfs, package_output, output, arch, version, work):
                     for crate in http_cargo_dependencies(rootfs,source,dependency):
                         inputs.append((crate['notice'],crate['notice_member'],'license_files'))
                         nested.append(crate)
+                standard=http_rust_standard_library(rootfs,source,work/'http-rust-standard-library')
+                inputs.append((standard['notice'],standard['notice_member'],'license_files'))
+                nested.append(standard)
             cached_recipe=source.parent/'cache-build-inputs'
             if cached_recipe.is_dir():
                 for path,relative in files(cached_recipe):inputs.append((path,'library-cache/'+relative,'build_inputs'))

@@ -349,3 +349,16 @@ including its newer upstream copyright range, is separately retained under
 
 Debian分の追加8件も原本と表示へ限定した判断です。Minisignの上流表示は配布用の
 追加表示として保持し、不足・変更時は許諾判断を無効にします。全体の合格とは別です。
+
+The HTTP package now includes the full Rust 1.82.0 compiler/standard-library
+preferred-source archive in its corresponding-source inputs. Both native package
+builds checked actual extension bytes against their fixed wheels and embedded
+compiler identity. Original source legal files and confined aliases are retained
+as installed notices, regenerated independently by the collector and bound to a
+separate standard-library component. See the [source-binding receipt](evidence/diagnostic-http-rust-standard-library.json).
+Missing or changed source/notice/compiler bindings reject collection. This closes
+a source inventory gap; it does not approve the complete Rust legal set or the OS.
+
+HTTP拡張へ取り込まれた標準ライブラリも原本へ対応付け、両アーキテクチャで確認しました。
+不足した原本・表示・コンパイラー情報は収集時に拒否します。保持と照合の成功を
+許諾確認の完了へ読み替えません。
