@@ -176,6 +176,7 @@ def static_i2util(output,arch,version,project,shared):
 
 def collect(rootfs, package_output, output, arch, version, work):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
+    subprocess.run(['apt-get','-o','Acquire::Retries=3','-o','APT::Update::Error-Mode=any','update'],check=True)
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
         '-f=${Package}\t${Version}\t${Architecture}\t${source:Package}\t${source:Version}\n'],text=True)
     custom={}

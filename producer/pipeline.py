@@ -16,7 +16,11 @@ def collect_iso_sources(iso,packages,output,architecture,version):
         '/live/filesystem.squashfs','/build-private/iso-root.squashfs'],check=True)
     subprocess.run(['unsquashfs','-d',str(rootfs),'/build-private/iso-root.squashfs'],
         check=True,stdout=subprocess.DEVNULL)
-    return rootfs,collect(rootfs,packages,output,architecture,version,Path('/build-private/corresponding-source'))
+    from .factory_audit import audit_iso
+    factory=audit_iso(iso,rootfs,architecture,Path('/build-private/factory-content-audit'))
+    source=collect(rootfs,packages,output,architecture,version,Path('/build-private/corresponding-source'))
+    source['factory_content_audit']=factory
+    return rootfs,source
 
 
 def release_candidate(sources, packages, output, architecture, version, commit, management):
@@ -50,6 +54,7 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     observations['disk_equivalence']=['Both standalone 50 GiB conversions passed qemu-img checks and source content comparison']
     observations['netbird']=['Actual native CLI commit/save, successful/failed enrollment cleanup, disable/enable, reboot identity, removal/reboot inactivity and secret scans passed for both disk-format clones'] if disks['netbird']=='PASS' else ['Required guest NetBird validation not completed']
     evidence={'source_commit':commit,'version':version,'architecture':architecture,'generation':generation,
+              'factory_content_audit':source['factory_content_audit'],
               'checks':{name:{'status':status,'observations':observations[name] if status=='PASS' else ['Required validation not completed']} for name,status in checks.items()}}
     evidence_path=output/f'shirube-os-{version}-{architecture}-evidence.json';evidence_path.write_text(json.dumps(evidence,indent=2)+'\n')
     files=[(result['iso'],'iso'),(disks['images']['qcow2'],'qcow2'),(disks['images']['vmdk'],'vmdk'),

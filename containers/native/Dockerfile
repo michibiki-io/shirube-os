@@ -50,6 +50,15 @@ ENV PATH=/opt/go/bin:$PATH GOTOOLCHAIN=local
 RUN printf '#!/bin/sh\nexit 101\n' > /usr/sbin/policy-rc.d && chmod 755 /usr/sbin/policy-rc.d
 WORKDIR /src
 FROM toolchain AS producer
+# Source collection must cover every suite used by the ISO. Keep source-only
+# indexes outside the compiler stage so this cannot invalidate library caches.
+RUN printf '%s\n' \
+    'deb-src [check-valid-until=no] http://snapshot.debian.org/archive/debian/20261105T000000Z/ bookworm-updates main' \
+    'deb-src [check-valid-until=no] http://snapshot.debian.org/archive/debian/20261105T000000Z/ bookworm-backports main' \
+    >> /etc/apt/sources.list && \
+    apt-get -o APT::Update::Error-Mode=any update && \
+    apt-get install -y --no-install-recommends initramfs-tools-core && \
+    rm -rf /var/lib/apt/lists/*
 COPY producer /src/producer
 COPY guest /src/guest
 COPY containers/native /src/native

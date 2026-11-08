@@ -2062,6 +2062,48 @@
         "Retain the exact source archive and all hash-bound legal files, including the separately attributed TOML test suite when present; separately packaged dependencies need their own audit."
       ],
       "scope": "Exact unmodified Python build-tool source and retained notices only; other SDK components, compiler/native libraries and full OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:semantic-version@2.10.0": {
+      "source_identity": "bdabb6d336998cbb378d4b9db3a4b56a1e3235701dc05ea2690d9a997ed5041c",
+      "copyright_sha256": "7f14d94b5c2c7b55eaf124978b60270c46925928d75975a30b6eb752e632ce44",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/bdabb6d336998cbb378d4b9db3a4b56a1e3235701dc05ea2690d9a997ed5041c.copyright",
+      "conditions": [
+        "Retain the original copyright, complete license conditions and disclaimer in source and binary redistribution materials.",
+        "Retain the exact hash-bound source archive and its original attribution files; separately packaged dependencies require their own license decisions.",
+        "Preserve the original project copyright, two-clause BSD LICENSE and CREDITS contributor attribution/grant in the retained source archive."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; dependent projects, other SDK components, compiler/native libraries and complete OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:setuptools-scm@10.3.4": {
+      "source_identity": "a69f28bfc245608781205e912faae437c2b2165773afa4e7b979d77447a69dd2",
+      "copyright_sha256": "408f7cf16c159724c3b6ff84a9ac79b869024ae0e316c5fce145f4cd5d2c7148",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/a69f28bfc245608781205e912faae437c2b2165773afa4e7b979d77447a69dd2.copyright",
+      "conditions": [
+        "Retain the original copyright, complete license conditions and disclaimer in source and binary redistribution materials.",
+        "Retain the exact hash-bound source archive and its original attribution files; separately packaged dependencies require their own license decisions.",
+        "Preserve the Ronny Pfannschmidt copyright and MIT attribution in src/setuptools_scm/__init__.py as well as the original LICENSE file."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; dependent projects, other SDK components, compiler/native libraries and complete OS reconstruction are not cleared by this entry."
+    },
+    "build-pypi:setuptools-scm@9.2.2": {
+      "source_identity": "1c674ab4665686a0887d7e24c03ab25f24201c213e82ea689d2f3e169ef7ef57",
+      "copyright_sha256": "bd854e18f1224563c764d1763a81b1f8213ac46b75de5a701b32b74e5d61d3f7",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/1c674ab4665686a0887d7e24c03ab25f24201c213e82ea689d2f3e169ef7ef57.copyright",
+      "conditions": [
+        "Retain the original copyright, complete license conditions and disclaimer in source and binary redistribution materials.",
+        "Retain the exact hash-bound source archive and its original attribution files; separately packaged dependencies require their own license decisions.",
+        "Preserve the Ronny Pfannschmidt copyright and MIT attribution in src/setuptools_scm/__init__.py as well as the original LICENSE file."
+      ],
+      "scope": "Exact unmodified Python build-tool source and retained notices only; dependent projects, other SDK components, compiler/native libraries and complete OS reconstruction are not cleared by this entry."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

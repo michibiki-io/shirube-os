@@ -1,5 +1,8 @@
 """Identify exact published test fixtures without allowing deployment keys."""
 import hashlib
+from pathlib import PurePosixPath
+import re
+import types
 
 # Independently compared with the pinned public FD.io source, not extracted
 # from a candidate binary. No private key bytes are stored in this policy.
@@ -24,12 +27,79 @@ SALT_PUBLIC_TEST_FILES={
     'salt/wheel/key.py':'fc48476e5ad95c98537171cf86b709a60772263a9f935ad1809632381f83f78f',
 }
 
+# Exact public Certbot 2.1.0 test data, compared with the authenticated Debian
+# source archive. These are fixtures, never permitted deployment identities.
+CERTBOT_SOURCE_SHA256='1f4409739f8454956963b4c78fc1c959db2bef85ea6fc6f08951d7275ec2595d'
+CERTBOT_PUBLIC_TEST_FILES={'usr/lib/python3/dist-packages/certbot/tests/testdata/rsa256_key.pem': '46f3e0fcf6488d15ebf1de5f8a64dde7fa8f2a7be15c0ba1b445b96e9902e9be',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/ec_prime256v1_key.pem': '7a0eed03e6d113e022cb8e3a8e4f560be4d67ad674846074f0c081cf51e0a123',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/ec_secp521r1_key.pem': '161ba1691d597ad9d8be97d9434750789a9c6896e76321009c5dd83858a329ab',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/nistp256_key.pem': '28abe3d19cac33314d6ccb3cc1e3c1f77432be4af7f3c309a335c733eab5b93d',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/ec_secp384r1_key.pem': 'e713d97aa1bdb35daf8f5e2031ec4b9ec78ce8665c41a010376cf1f2e73d8cb6',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/rsa512_key.pem': '7b54761d622672c438bdb6876b6f08921e255728e76e490a66e24c52fe085f83',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/rsa2048_key.pem': '69f2a589a1e7f78095eeb2a34e415245f6cfa70354faf7c5d73128aa929436fa',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/sample-archive-ec/privkey1.pem': '4800e846fb91e8708c382446da26f7044373904c9d0e86270926219bb32ee7a3',
+ 'usr/lib/python3/dist-packages/certbot/tests/testdata/sample-archive/privkey1.pem': 'd906bdbbe56441124cf9a6790c9877bf4dbe901779d84199cab94ae01e8f6f80'}
+
+# GnuTLS 3.7.9 lib/crypto-selftests-pk.c: public cryptographic self-test keys.
+GNUTLS_SELFTEST_SOURCE_SHA256='c3d79122e072177f55dc30a98f68b949c0f36f6159a363aae9512a22a9280ed0'
+GNUTLS_SELFTEST_KEYS=set(['7c4c63ee462e0e700cd9e29c8e0f730b3f1b484c4abdd83f1e69fcd477c061fa',
+ '91ea1699ff6b1a34b4a1d500a9c75a808441e47b9ea68da6fb0195e01ce1dc61',
+ 'a4d138d7ef9748464117b44fb9c0a4b5b85a1599a127d02690abaa96d03c16e6',
+ 'd039c8119a029ab9f9c83c04d67002d887b6bc6026c4264402ab27cdf24cf138',
+ 'ef237ea8db4f2ae9ee100e8ced96d29b5dceb0e6a948443e6b8a00b1791f9ec9',
+ 'fa0b06a72461ec0a963dcfccb8d5b61bd88a6074fc7271573bff68ab86b8c1af'])
+
 
 def allowed_file(package,member):
     prefix='opt/saltstack/salt/lib/python3.11/site-packages/'
     member=member.removeprefix('./')
+    if package=='python3-certbot':return CERTBOT_PUBLIC_TEST_FILES.get(member)
     if package!='salt-common' or not member.startswith(prefix):return None
     return SALT_PUBLIC_TEST_FILES.get(member.removeprefix(prefix))
+
+
+def pem_hashes(data, pattern):
+    """Fingerprint complete PEM blocks without retaining their key bytes."""
+    result=set()
+    for match in pattern.finditer(data):
+        header=data[match.start():match.end()].split(b'-----',2)[1]
+        end=b'-----'+header.replace(b'BEGIN ',b'END ',1)+b'-----'
+        finish=data.find(end,match.end(),match.start()+8192)
+        if finish>=0:
+            result.add(hashlib.sha256(data[match.start():finish+len(end)].replace(b'\r\n',b'\n')).hexdigest())
+    return result
+
+
+def cached_fixture_keys(root, member, package):
+    """Authorize only public key constants from a hash-bound source fixture.
+
+    This classifies PEM constants, not bytecode correctness or source rebuilds.
+    No candidate bytecode is loaded or executed. Unknown extra keys still fail
+    the ordinary streaming scan of the complete cache file.
+    """
+    from .sanitize import path_in_root
+    from .release import SECRET
+    member=PurePosixPath(member)
+    match=re.fullmatch(r'(.+)\.cpython-311\.pyc',member.name)
+    if member.parent.name!='__pycache__' or not match:return set()
+    original=str(member.parent.parent/(match[1]+'.py'))
+    expected=allowed_file(package,original)
+    if expected is None:return set()
+    source=path_in_root(root,original)
+    if not source.is_file() or not 0<source.stat().st_size<=4*1024**2:
+        raise ValueError('Published source fixture is unavailable')
+    data=source.read_bytes()
+    if hashlib.sha256(data).hexdigest()!=expected:
+        raise ValueError('Changed source cannot authorize a compiled fixture')
+    pending=[compile(data,'<published fixture>','exec',dont_inherit=True,optimize=0)]
+    result=set()
+    while pending:
+        value=pending.pop()
+        if isinstance(value,types.CodeType):pending.extend(value.co_consts)
+        elif isinstance(value,(tuple,frozenset)):pending.extend(value)
+        elif isinstance(value,(str,bytes)):
+            result.update(pem_hashes(value.encode('utf-8','surrogatepass') if isinstance(value,str) else value,SECRET))
+    return result
 
 
 def allowed(package,member,architecture):
@@ -40,6 +110,8 @@ def allowed(package,member,architecture):
         'vpp-plugin-core':{f'usr/lib/{triplet}/vpp_plugins/hs_apps_plugin.so',
                            f'usr/lib/{triplet}/vpp_plugins/http_static_plugin.so'},
     }
+    if package=='libgnutls30' and member==f'usr/lib/{triplet}/libgnutls.so.30.34.3':
+        return GNUTLS_SELFTEST_KEYS.copy()
     return {VPP_TLS_FIXTURE['pem_sha256']} if member in paths.get(package,set()) else set()
 
 
