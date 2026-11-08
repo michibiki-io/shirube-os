@@ -255,8 +255,14 @@ def collect(rootfs, package_output, output, arch, version, work):
                 if len(dsc)!=1:raise ValueError('Exact Debian source descriptor missing')
                 origin=sha256(dsc[0]);source=component
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
-            kind='vpp' if str(source)=='/extra/vpp/vpp' else 'vyos-1x' if source_name=='vyos-1x' else None
-            source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind=='vyos-1x' else files(source)
+            kind='vpp' if str(source)=='/extra/vpp/vpp' else 'vyos-1x' if source_name=='vyos-1x' else 'salt' if source_name=='salt' else None
+            source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind in {'vyos-1x','salt'} else files(source)
+            if kind=='salt':
+                # Build virtualenvs and generated SDK archives are not the
+                # preferred Salt source. Keep the tracked input and the exact
+                # separately pinned packaging-tool source instead.
+                for path,relative in tracked_source_files(source/'python-tools-scripts'):
+                    inputs.append((path,'build-tools/python-tools-scripts/'+relative,'build_inputs'))
             binary_map=source/'shirube-corresponding-inputs/binary-info.json'
             generated={Path(item['path']).name:item['sha256'] for item in json.loads(binary_map.read_text())} if binary_map.is_file() else {}
             for path,relative in source_files:
@@ -288,7 +294,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
             fixture_origin=('vpp:'+json.loads(Path('/src/source-lock.json').read_text())['external_git']['vpp']['commit']
-                if kind=='vpp' else 'stream:'+source_identity if kind=='vyos-1x' or source_name=='telegraf' else None)
+                if kind=='vpp' else 'stream:'+source_identity if kind in {'vyos-1x','salt'} or source_name=='telegraf' else None)
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if source_name=='vyos-1x':records['build_inputs'].extend(ocaml_records['build_inputs'])

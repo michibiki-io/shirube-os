@@ -122,6 +122,13 @@ an existing test disk. The ISO-only admission budget is 40 GiB free storage and
 or 2 GiB memory. These are conservative operating budgets, not validated minimums.
 An ISO build receipt leaves local boot, OCI and distribution clearance unverified.
 
+The ISO wrapper defaults to a 2048 MiB host-memory reserve. For an explicitly
+dedicated host, `SHIRUBE_HOST_MEMORY_RESERVE_MIB` may select a reserve from
+512 to 65536 MiB; the container budget must still pass available-memory
+admission. This adjusts only the owned task's stop threshold, never host kernel
+settings or another workload. Choose the task budget from available RAM rather
+than total installed RAM.
+
 Set `SHIRUBE_INCLUDE_SOURCES=1` for source/license collection immediately after
 ISO assembly, using the same private build tree and exact project archive. This
 path requires no KVM and preserves the ISO receipt if collection fails. A

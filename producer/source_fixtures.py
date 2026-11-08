@@ -28,6 +28,31 @@ KNOWN={
         'source/testutil/pki/serverkey.pem':'9654446dc1a053996ea5bacd06374ce68c8348495a8784def7258772ec62fb5e'}}
 
 
+# Unmodified Salt tests/documentation from the authenticated public Stream
+# source, compared before any build or test generated local state.
+KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910'].update({
+    "source/salt/ext/tornado/test/test.key": "29b02b5cee62cb34894524fb02d5648f94d4e735d99499f1bee1bffc153804d5",
+    "source/salt/wheel/key.py": "fc48476e5ad95c98537171cf86b709a60772263a9f935ad1809632381f83f78f",
+    "source/tests/integration/files/file/base/git_pillar/ssh/server/files/ssh_host_rsa_key": "c2e53fc7e579516b552365b0663b8ae6033a57d134ba216d6afc8bc6b6f2fd27",
+    "source/tests/integration/files/file/base/git_pillar/ssh/user/files/id_rsa_nopass": "1f7d4068e283a8249e20fd30ac8dea3d7d87a4be1cab88d6e07bfcb23746c41a",
+    "source/tests/integration/files/file/base/git_pillar/ssh/user/files/id_rsa_withpass": "5051ab9a5205238f4e923ad5b0b124e2810c1638aff4c3d7e31a0851921d0e97",
+    "source/tests/integration/states/test_x509.py": "e5d20d4b4c6eecdee3a0cf5d28609171e21419de5cbaab8a787cfe31fafdbeb1",
+    "source/tests/pytests/functional/modules/test_x509_v2.py": "00c351bdcd06315efcb28f586da7210808036780a24aa068f93100ff4165443a",
+    "source/tests/pytests/functional/states/test_x509_v2.py": "91050a0897de7f532345d0e2becb6235a9ddcc2df0b807ad43d216dafc030250",
+    "source/tests/pytests/integration/files/https/key.pem": "ff3d4dfe108af661358ccde88d12708f49029d48d1d6894957f39bfbe4f6ec91",
+    "source/tests/pytests/integration/modules/test_x509_v2.py": "23d8523b65979fe8ed2e519fac0850865d17c4e2816fb7291a7e4a477bdf93d5",
+    "source/tests/pytests/integration/states/test_x509_v2.py": "66cbfbcf3d72f98cbd403c109650157a8da7706d87dcacaae584e7d131bb6d23",
+    "source/tests/pytests/unit/crypt/__init__.py": "728070e036b76c959af9418e1644da88822e059fbb0efe7b58ae0b5b2fb0d5f7",
+    "source/tests/pytests/unit/crypt/test_crypt.py": "276166b91c70fa4dced8b1a33b47511cb1ca258bfbc34cbad8b5543c1b99ab58",
+    "source/tests/pytests/unit/crypt/test_crypt_cryptography.py": "977cb4a8adde85db2e47e7ce55dba36c2ca353bff639b32c72a9423b1cb6f016",
+    "source/tests/pytests/unit/modules/test_tls.py": "76d6388be4c2c12bfec2a534b96b222778caca6acd3845c9f631883e97565168",
+    "source/tests/pytests/unit/transport/test_zeromq.py": "3e6ac25e0e65a36fc71bfc5992c64b46c8ade7b1b98d85f31ab6f6e94bf9bb1a",
+    "source/tests/pytests/unit/utils/test_x509.py": "8d262a98aeee17003a3262aae224d268d3d7c9bc0775d829fe8a7824347e4113",
+    "source/tests/unit/modules/test_x509.py": "5fddf532eb7411562a164570c13ef4d3eb2e90710a21d12996a994b778150daa",
+    "source/tests/unit/test_crypt.py": "21fab3badc192359a625b3630a41af9eb203bde4218429f3306e8d0aeae73842"
+})
+
+
 def allowed(origin,member,digest):
     return origin in KNOWN and KNOWN[origin].get(member)==digest
 

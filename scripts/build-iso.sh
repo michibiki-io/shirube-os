@@ -3,7 +3,9 @@
 set -euo pipefail
 build_cpus=${SHIRUBE_BUILD_CPUS:-4}
 build_memory=${SHIRUBE_BUILD_MEMORY_GIB:-8}
+memory_reserve=${SHIRUBE_HOST_MEMORY_RESERVE_MIB:-2048}
 [[ $build_cpus =~ ^[1-9][0-9]?$ && $build_cpus -le 64 && $build_memory =~ ^[1-9][0-9]*$ && $build_memory -ge 2 && $build_memory -le 256 ]] || { echo 'Invalid native resource budget' >&2; exit 2; }
+[[ $memory_reserve =~ ^[1-9][0-9]*$ && $memory_reserve -ge 512 && $memory_reserve -le 65536 ]] || { echo 'Invalid host memory reserve' >&2; exit 2; }
 architecture=${SHIRUBE_ARCHITECTURE:?}
 version=${SHIRUBE_VERSION:?}
 commit=${SHIRUBE_SOURCE_COMMIT:?}
@@ -102,8 +104,8 @@ while [[ $(docker inspect --format '{{.State.Running}}' "$container_id") == true
     exit 1
   fi
   memory_kib=$(awk '/^MemAvailable:/ {print $2}' /proc/meminfo)
-  if (( memory_kib < 2 * 1024 * 1024 )); then
-    echo 'Stopping owned build: less than 2 GiB host memory headroom remains' >&2
+  if (( memory_kib < memory_reserve * 1024 )); then
+    echo "Stopping owned build: less than $memory_reserve MiB host memory headroom remains" >&2
     docker stop --time 30 "$container_id" >/dev/null
     exit 1
   fi
