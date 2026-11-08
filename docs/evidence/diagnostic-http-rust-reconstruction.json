@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "kind": "diagnostic-both-architecture-http-rust-component-reconstruction",
+  "status": "PASS",
+  "reference_wheel_compiler_identity": "rustc version 1.82.0 (f6e511eec 2024-10-15)",
+  "reference_identity_inspected_on": [
+    "amd64",
+    "arm64"
+  ],
+  "architectures": {
+    "amd64": {
+      "schema_version": 1,
+      "kind": "diagnostic-http-rust-component-reconstruction",
+      "architecture": "amd64",
+      "status": "PASS",
+      "compiler": "rustc 1.82.0 (f6e511eec 2024-10-15)",
+      "compiler_source_sha256": "1276a0bb8fa12288ba6fa96597d28b40e74c44257c051d3bc02c2b049bb38210",
+      "recipe_sha256": "260da9cdf2f08d8bf0f7f6f057dbc28d203ecad7bdd5599b147349496f6e0747",
+      "components": [
+        {
+          "name": "pydantic-core",
+          "version": "2.27.1",
+          "source_sha256": "62a763352879b84aa31058fc931884055fd75089cccbd9d58bb6afd01141b235",
+          "rebuilt_library_sha256": "c5054f26db4c73c729ccc22a5043d9b079ca0095340f97689ff1637ea93551d2",
+          "compile_network": "disabled namespace",
+          "native_probe": "PASS"
+        },
+        {
+          "name": "watchfiles",
+          "version": "1.0.0",
+          "source_sha256": "37566c844c9ce3b5deb964fe1a23378e575e74b114618d211fbda8f59d7b5dab",
+          "rebuilt_library_sha256": "359a1522db394750ceafff0cb99568b41537ac9ddff3dbc74b5ee16987980373",
+          "compile_network": "disabled namespace",
+          "native_probe": "PASS"
+        }
+      ],
+      "reference_environment_modified": false,
+      "byte_identical_to_reference_wheels": "NOT_CLAIMED",
+      "full_os_reconstruction": "NOT_RUN",
+      "release_clearance": "NOT_CLEARED"
+    },
+    "arm64": {
+      "schema_version": 1,
+      "kind": "diagnostic-http-rust-component-reconstruction",
+      "architecture": "arm64",
+      "status": "PASS",
+      "compiler": "rustc 1.82.0 (f6e511eec 2024-10-15)",
+      "compiler_source_sha256": "1276a0bb8fa12288ba6fa96597d28b40e74c44257c051d3bc02c2b049bb38210",
+      "recipe_sha256": "260da9cdf2f08d8bf0f7f6f057dbc28d203ecad7bdd5599b147349496f6e0747",
+      "components": [
+        {
+          "name": "pydantic-core",
+          "version": "2.27.1",
+          "source_sha256": "62a763352879b84aa31058fc931884055fd75089cccbd9d58bb6afd01141b235",
+          "rebuilt_library_sha256": "249b5df5ff406b4c16ea690e8428d5d88b1039f54dc9ca05f76c35b76f4fe10b",
+          "compile_network": "disabled namespace",
+          "native_probe": "PASS"
+        },
+        {
+          "name": "watchfiles",
+          "version": "1.0.0",
+          "source_sha256": "37566c844c9ce3b5deb964fe1a23378e575e74b114618d211fbda8f59d7b5dab",
+          "rebuilt_library_sha256": "8302581b36c31377184b621396a5317ff7b9e1ae15990e44f60965bf1f8e7198",
+          "compile_network": "disabled namespace",
+          "native_probe": "PASS"
+        }
+      ],
+      "reference_environment_modified": false,
+      "byte_identical_to_reference_wheels": "NOT_CLAIMED",
+      "full_os_reconstruction": "NOT_RUN",
+      "release_clearance": "NOT_CLEARED"
+    }
+  },
+  "limits": [
+    "The prepared component environment uses fixed public reference wheels; these tests do not replace the shipped libraries.",
+    "Compiler and standard-library source archives are retained in reconstruction work, but their release-bundle/license integration is not complete.",
+    "No full clean-current-head OS or binary reconstruction, release/license clearance, or OCI live acceptance is claimed."
+  ]
+}

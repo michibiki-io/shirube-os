@@ -298,3 +298,68 @@ wheelを構築した。上流と同じくPPBTを除去した後、55件の配布
 PythonとcryptographyはいずれもOpenSSL 3.6.1を使用した。この試験では検証済みの
 CPython・ネイティブライブラリを含むSDKを使っており、それら自体のソース再構築、DEB梱包、
 ゲストOS、ARM64の実行確認を合格とするものではない。
+
+## HTTP Rust component reconstruction
+
+`containers/native/reconstruct_http_rust.py` reconstructs pydantic-core 2.27.1
+and watchfiles 1.0.0 in a native producer container. It verifies all original
+parent/crate/Git archives, restores the registry sources, compares fetched Git
+package bytes with the retained fixed-commit archive and compiles with the network
+namespace disabled. Rust 1.82.0 matches the compiler identity inspected in both
+architectures' pinned wheels. Its compiler, Cargo, standard library and full
+compiler/standard-library source archive are fixed in `http-rust.lock.json`.
+This isolated toolchain does not replace Salt's compiler.
+
+Use a prepared output directory from `http_api.py` as the read-only reference.
+The work directory passed to the reconstruction command must not exist. For
+example, with a native `shirube-producer` image built as described above:
+
+```sh
+docker build -f containers/native/Dockerfile -t shirube-producer .
+mkdir -p .work/http-reference .work/http-rebuild .work/public-http-inputs
+docker run --rm --cpus=4 --memory=3g \
+  -v "$PWD/producer:/src/producer:ro" \
+  -v "$PWD/containers/native:/src/native:ro" \
+  -v "$PWD/.work/http-reference:/output" \
+  --entrypoint python3 shirube-producer /src/native/http_api.py amd64 /output
+docker run --rm --cap-add SYS_ADMIN --cpus=4 --memory=3g \
+  -v "$PWD/producer:/src/producer:ro" \
+  -v "$PWD/containers/native:/src/native:ro" \
+  -v "$PWD/.work/http-reference:/reference:ro" \
+  -v "$PWD/.work/http-rebuild:/work" \
+  -v "$PWD/.work/public-http-inputs:/public-inputs:ro" \
+  --entrypoint python3 shirube-producer /src/native/reconstruct_http_rust.py \
+    amd64 /reference /work/reconstruction --public-input-cache /public-inputs
+```
+
+Use `arm64` on a native ARM64 runner. Acquisition needs public network access;
+each compilation uses `unshare --net` and offline Cargo. `SYS_ADMIN` is scoped
+to this container for that namespace operation. A supplied cache is optional in
+content but every present input is rechecked; it must contain only regular public
+archives. The reference package is never modified. The work output includes the
+fixed compiler source archive, reconstructed libraries and component evidence.
+The native probes exercise Pydantic validation and actual file-change notification.
+A component PASS is not bit reproducibility, full OS reconstruction or a license
+clearance. This command does not open the release gate.
+
+## HTTPのRustコンポーネント再構築
+
+上記コマンドは、公開された固定入力からRust拡張2件を再構築し、データ検証と実際の
+ファイル変更通知を確認します。取得後のコンパイルはネットワークを遮断します。
+参照パッケージは変更せず、コンパイラーはSalt用とは別の作業領域へ配置します。
+ARM64ではネイティブrunner上で引数を`arm64`へ変更します。入力キャッシュの原本も
+毎回ハッシュを照合し、作業領域にはコンパイラーと標準ライブラリのソースを保持します。
+コンポーネント単位の成功を、OS全体の再構築や配布許諾の完了へ読み替えません。
+
+The [both-architecture component receipt](evidence/diagnostic-http-rust-reconstruction.json)
+records actual AMD64 and ARM64 executions of the same recipe hash. Both native
+probes passed. Earlier diagnostic failures exposed Cargo source-directory deletion
+and an incorrect assumption that Cargo emits an original Git manifest; the current
+recipe verifies a read-only registry against freshly restored archives and checks
+Git checkout manifests independently. The work contains acquisition caches: retain
+only declared original archives and source/notice/build records for a source bundle,
+never a wholesale work-directory export. Complete release integration remains open.
+
+両アーキテクチャで同じ試験コードの再構築と動作確認を通過しました。取得用キャッシュを
+作業領域ごと公開せず、対応ソースには宣言済みの原本と必要な設定・表示だけを含めます。
+OS全体の再構築と配布ゲートへの組み込みは未完了です。

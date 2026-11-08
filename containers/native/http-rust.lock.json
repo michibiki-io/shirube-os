@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "version": "1.82.0",
+  "rustc_version_output": "rustc 1.82.0 (f6e511eec 2024-10-15)",
+  "reason": "Matches the Rust compiler identity embedded in the pinned HTTP API native extension wheels; isolated from the Salt SDK compiler.",
+  "source": {
+    "filename": "rustc-1.82.0-src.tar.xz",
+    "url": "https://static.rust-lang.org/dist/2024-10-17/rustc-1.82.0-src.tar.xz",
+    "sha256": "1276a0bb8fa12288ba6fa96597d28b40e74c44257c051d3bc02c2b049bb38210"
+  },
+  "architectures": {
+    "amd64": {
+      "rustc": {
+        "filename": "rustc-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2024-10-17/rustc-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "90b61494f5ccfd4d1ca9a5ce4a0af49a253ca435c701d9c44e3e44b5faf70cb8"
+      },
+      "cargo": {
+        "filename": "cargo-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2024-10-17/cargo-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "97aeae783874a932c4500f4d36473297945edf6294d63871784217d608718e70"
+      },
+      "rust-std": {
+        "filename": "rust-std-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2024-10-17/rust-std-1.82.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "2eca3d36f7928f877c334909f35fe202fbcecce109ccf3b439284c2cb7849594"
+      }
+    },
+    "arm64": {
+      "rustc": {
+        "filename": "rustc-1.82.0-aarch64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2024-10-17/rustc-1.82.0-aarch64-unknown-linux-gnu.tar.xz",
+        "sha256": "2958e667202819f6ba1ea88a2a36d7b6a49aad7e460b79ebbb5cf9221b96f599"
+      },
+      "cargo": {
+        "filename": "cargo-1.82.0-aarch64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2024-10-17/cargo-1.82.0-aarch64-unknown-linux-gnu.tar.xz",
+        "sha256": "05c0d904a82cddb8a00b0bbdd276ad7e24dea62a7b6c380413ab1e5a4ed70a56"
+      },
+      "rust-std": {
+        "filename": "rust-std-1.82.0-aarch64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2024-10-17/rust-std-1.82.0-aarch64-unknown-linux-gnu.tar.xz",
+        "sha256": "1359ac1f3a123ae5da0ee9e47b98bb9e799578eefd9f347ff9bafd57a1d74a7f"
+      }
+    }
+  }
+}
