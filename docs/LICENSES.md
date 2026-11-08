@@ -265,3 +265,10 @@ SDKに含まれるpipとRelenvは、版だけでなく、保持した元ソー�
 照合する。同じ版でも変更・追加・リンクがあれば拒否し、空の初期化ファイルは有効な
 ソースとして扱う。AMD64の個別試験では425ファイルが一致した。これは起動用ツールの
 ソース照合であり、配布許諾やネイティブライブラリの再構築の合格とは別である。
+
+Salt SDK source inspection also identified embedded PLY notices inside pycparser
+2.21. Their full original file hashes and complete notice-prefix hashes are
+pinned; these notices are retained separately from pycparser's root BSD notice.
+This closes a notice-retention gap without clearing that dependency or the SDK.
+The exact looseversion 1.0.2 PSF-2.0 and packaging 24.0 BSD-2-Clause/Apache-2.0
+source/notice pairs have individual decisions with their redistribution conditions.

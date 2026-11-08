@@ -2104,6 +2104,34 @@
         "Preserve the Ronny Pfannschmidt copyright and MIT attribution in src/setuptools_scm/__init__.py as well as the original LICENSE file."
       ],
       "scope": "Exact unmodified Python build-tool source and retained notices only; dependent projects, other SDK components, compiler/native libraries and complete OS reconstruction are not cleared by this entry."
+    },
+    "pypi:looseversion@1.0.2": {
+      "source_identity": "8b9f2e649eb81620c4527ba33ba87505eb69d4bb3f66523b34182a0450c294bc",
+      "copyright_sha256": "2db44e7fd0c865e030e74211adbb366410f977c8aec1f0bd18a00e534f0d72a5",
+      "redistributable": true,
+      "license": "PSF-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/8b9f2e649eb81620c4527ba33ba87505eb69d4bb3f66523b34182a0450c294bc.copyright",
+      "conditions": [
+        "Retain complete original copyright, licenses, conditions and disclaimers in binary and source notices.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Retain the PSF copyright and license agreement; summarize modifications and do not imply trademark endorsement."
+      ],
+      "scope": "Exact Python distribution at the recorded source hash only. Dependencies, the SDK and complete OS remain subject to independent source/license gates."
+    },
+    "pypi:packaging@24.0": {
+      "source_identity": "eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9",
+      "copyright_sha256": "d5a96d97c24aca9b047c74dbd3f06cbc4f73e0e7d8e6af04ec00d8426e356ea8",
+      "redistributable": true,
+      "license": "BSD-2-Clause OR Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9.copyright",
+      "conditions": [
+        "Retain complete original copyright, licenses, conditions and disclaimers in binary and source notices.",
+        "Include the exact source archive and hashed build inputs in the component inventory.",
+        "Retain both upstream alternative license texts and all attribution; the BSD-2-Clause option permits redistribution under its notice conditions."
+      ],
+      "scope": "Exact Python distribution at the recorded source hash only. Dependencies, the SDK and complete OS remain subject to independent source/license gates."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

@@ -729,6 +729,24 @@
         {
           "member": "pycparser-2.21/LICENSE",
           "sha256": "3e7df25b8dfb658c9a91501930d4d943b05087a8347c7e2b4325616af535047b"
+        },
+        {
+          "member": "pycparser-2.21/pycparser/ply/lex.py",
+          "sha256": "ed0a25e7bc7bd361d9c2303764ba7ef38094116ab511e856f8debb5b38218be3",
+          "prefix_bytes": 1713,
+          "notice_sha256": "9d116dbd98353b928552d38a1079046e00240ea0842255f17e825694cd3d68c7"
+        },
+        {
+          "member": "pycparser-2.21/pycparser/ply/yacc.py",
+          "sha256": "79ab520e444b811afa5f7fa1a0393f49042fd3ae51d0174bd8aedf439e028153",
+          "prefix_bytes": 1714,
+          "notice_sha256": "d9290f9c057aa28f633fb72522937b3ecef3df5f0339fb932956e1db66e725ea"
+        },
+        {
+          "member": "pycparser-2.21/pycparser/ply/cpp.py",
+          "sha256": "52d0b7ca54d6a79ff530a03e3cb0aec0a411f3348e9e51ae18621dce3f314bdf",
+          "prefix_bytes": 336,
+          "notice_sha256": "b3c28d35224c7a5a2611c94b900e863d3b2d105222d997bdfe5dc678e9159015"
         }
       ]
     },
