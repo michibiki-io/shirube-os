@@ -15,6 +15,7 @@ class PackageArchitectureTests(unittest.TestCase):
         payload.seek(0)
         process=MagicMock();process.stdout=payload;process.wait.return_value=0
         process.__enter__.return_value=process
-        with patch('producer.packages.subprocess.Popen',return_value=process):
+        with patch('producer.packages.subprocess.Popen',return_value=process), \
+                patch('producer.packages.subprocess.check_output',return_value='vyos-http-api-tools\n'):
             with self.assertRaisesRegex(ValueError,'Wrong ELF architecture'):
                 audit('synthetic-package.deb','amd64')

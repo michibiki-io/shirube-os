@@ -64,9 +64,7 @@
     "AMD64 virtual-appliance profile omits vendor-only physical NIC/QAT packages; UEFI and virtio NIC/disk support use the matching source-built kernel. Physical hardware parity is not claimed.",
     "The HTTP API dependency wrapper is independently packaged as 2.3+shirube1; the Stream dependency versions and compatible installation path are retained. Upstream wrapper code with an empty copyright notice is not redistributed.",
     "Node exporter 1.9.1 uses the upstream nobtrfs build tag on both architectures: its optional btrfs collector links github.com/dennwc/ioctl v1.0.0, whose exact verified source ZIP lacks a permission notice. Btrfs-specific metrics are omitted; unresolved code is not linked or cleared for redistribution.",
-    "Telegraf keeps version 1.28.3 and all plugins; its RCON dependency is fixed to upstream MIT-license-only commit 34a67ca2b2d65052cacddc7a1415b568f8b932a1 (both Go source files unchanged).",
-    "Salt stays at upstream 3006.21 with downstream package revision +shirube1: unused Cryptodome SelfTest runtime files and incomplete private-key documentation examples are excluded; cryptographic APIs remain present and full preferred source remains required.",
-    "VPP retains the VCL libraries and forwarding plugins; optional hs_apps and http_static sample/test applications are excluded on both architectures because installed binaries embed fixed public TLS test private keys. Full preferred sources remain required."
+    "Telegraf keeps version 1.28.3 and all plugins; its RCON dependency is fixed to upstream MIT-license-only commit 34a67ca2b2d65052cacddc7a1415b568f8b932a1 (both Go source files unchanged)."
   ],
   "debian_security_snapshot": "https://snapshot.debian.org/archive/debian-security/20261105T000000Z/",
   "opam_repository": {
@@ -133,24 +131,28 @@
       }
     }
   },
-  "salt_profile": {
-    "upstream_version": "3006.21",
-    "package_version": "3006.21+shirube1",
-    "key_module_source_sha256": "fc48476e5ad95c98537171cf86b709a60772263a9f935ad1809632381f83f78f",
-    "key_module_patched_sha256": "3a9717617f17fe2b3676b360b7e702870d749182c2d36d0b79f30a383bfa8b6c",
-    "runtime_exclusions": [
-      "lib/python3.11/site-packages/Cryptodome/SelfTest"
-    ],
-    "scope": "Unused cryptographic self-test key fixtures excluded from runtime; incomplete private-key documentation examples redacted. Full corresponding dependency source remains required."
-  },
-  "vpp_runtime_profile": {
-    "excluded_plugins": [
-      "hs_apps",
-      "http_static"
-    ],
-    "reason": "Exclude optional sample/test applications and the installed test-only SDK header containing fixed TLS private keys; retain full preferred source and do not waive binary secret inspection.",
-    "excluded_development_headers": [
-      "vnet/tls/tls_test.h"
-    ]
+  "public_test_fixtures": {
+    "vpp_tls_sample": {
+      "source_commit": "8a3f587695fe6ad4d8297bd4b2f331b7262698d9",
+      "source_path": "src/vnet/tls/tls_test.h",
+      "source_sha256": "d8b30ffb02e16b3d530caa4e629de53bb39f96da187bfd1eab54a750e43b318e",
+      "pem_sha256": "ccc1b38f71b762cbc276b07134072549643cbc9423142b2ddd347960e2617c78"
+    },
+    "scope": "Exact published upstream test fixture only; preserve upstream functionality. Build signing, enrollment and actual instance credentials are never exempt.",
+    "salt": {
+      "pycryptodomex_version": "3.19.1",
+      "source_url": "https://files.pythonhosted.org/packages/3f/13/84f2aea851d75e12e7f32ccc11a00f1defc3d285b4ed710e5d049f31c5a6/pycryptodomex-3.19.1.tar.gz",
+      "source_sha256": "0b7154aff2272962355f8941fd514104a88cb29db2d8f43a29af900d6398eb1c",
+      "files": {
+        "Cryptodome/SelfTest/Cipher/test_pkcs1_15.py": "dc699df4f6e1829bd2bbc73a618cc9f6e911c0b687895aff017fb0b10ab78638",
+        "Cryptodome/SelfTest/Protocol/test_ecdh.py": "6305e54259cf60bef2e740b41c8a7b5034a41764b56113a3c16c17aae93f8f87",
+        "Cryptodome/SelfTest/PublicKey/test_import_DSA.py": "e9f2e62884d2a0fd7976568a66ad5db77f201e952c8e663a678811d07e417247",
+        "Cryptodome/SelfTest/PublicKey/test_import_ECC.py": "c3518afba34480a1cbdb82aecfadd88c0b0adbb6334b48ca3990d9634a58ce0f",
+        "Cryptodome/SelfTest/PublicKey/test_import_RSA.py": "5e5c9936dd02cdce24cd28e0082d328caa9978255bec39cf383aaad7ad6f90f2",
+        "Cryptodome/SelfTest/Signature/test_pss.py": "536e4123b0b734ece634b4ec241e444a1eda5a13b4ec5e3d5750957daa23951a",
+        "salt/wheel/key.py": "fc48476e5ad95c98537171cf86b709a60772263a9f935ad1809632381f83f78f"
+      },
+      "salt_example_origin": "stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910"
+    }
   }
 }

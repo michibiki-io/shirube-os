@@ -107,17 +107,7 @@ def vpp(work):
     # CMake also invokes pip in an isolated PEP 517 environment for vpp-papi.
     # That environment must resolve setuptools from these same fixed wheels.
     wheelhouse=source/'build/external/downloads'
-    # This development header also contains the sample private key as C string
-    # literals. Retain it in preferred sources, but never install it in the SDK.
-    cmake=source/'src/vnet/CMakeLists.txt';text=cmake.read_text()
-    entry='  tls/tls_test.h\n'
-    if text.count(entry)!=1:raise ValueError('Unexpected VPP TLS test-header installation')
-    cmake.write_text('# Modified by michibiki-io for Shirube OS: omit fixed TLS test header from installed SDK.\n'+text.replace(entry,''))
-    # These upstream sample/test applications embed a fixed TLS private key.
-    # Keep VCL and the forwarding plugins, but omit the optional sample apps
-    # and HTTP demonstration server from the production binary profile.
-    cmake_flags='-DVPP_ENABLE_SYSTEMD_NOTIFY=ON -DVPP_EXCLUDED_PLUGINS=hs_apps,http_static'
-    shell('export PIP_NO_INDEX=1 PIP_NO_CACHE_DIR=1 PIP_FIND_LINKS='+shlex.quote(str(wheelhouse))+'; make UNATTENDED=yes VPP_ENABLE_SYSTEMD_NOTIFY=ON install-dep; make MAKE_PARALLEL_JOBS="$MAKE_PARALLEL_JOBS" VPP_EXTRA_CMAKE_ARGS='+shlex.quote(cmake_flags)+' pkg-deb',source)
+    shell('export PIP_NO_INDEX=1 PIP_NO_CACHE_DIR=1 PIP_FIND_LINKS='+shlex.quote(str(wheelhouse))+'; make UNATTENDED=yes VPP_ENABLE_SYSTEMD_NOTIFY=ON install-dep; make MAKE_PARALLEL_JOBS="$MAKE_PARALLEL_JOBS" VPP_EXTRA_CMAKE_ARGS="-DVPP_ENABLE_SYSTEMD_NOTIFY=ON" pkg-deb',source)
     copy_debs(source/'build-root')
 
 
@@ -232,7 +222,6 @@ rm -f debian/isc-kea-doc.install debian/isc-kea-subscriber* debian/isc-kea-premi
 
 def salt(work):
     source=snapshot('salt_v3006.21/salt',work/'salt')
-    subprocess.run(['python3','/src/native/salt_profile.py','source',str(source)],check=True)
     shell("git init -q; git add .; GIT_AUTHOR_DATE=2026-03-18T00:00:00Z GIT_COMMITTER_DATE=2026-03-18T00:00:00Z git -c user.name='Stream snapshot' -c user.email=maintainers@vyos.net commit -qm 'Verified source snapshot'; git tag v3006.21",source)
     git('salt-tools',source/'python-tools-scripts')
     runtime_arch='x86_64' if '@ARCH@'=='amd64' else 'arm64'
@@ -243,7 +232,6 @@ venv-build/bin/python3 -m pip install -r requirements/static/ci/py3.11/tools.txt
 export PYTHONPATH=$PWD
 venv-build/bin/tools pkg build deb --relenv-version=0.22.3 --python-version=3.11.14 --arch=@SALT_ARCH@
 '''.replace('@SALT_ARCH@',runtime_arch),source)
-    subprocess.run(['python3','/src/native/salt_package.py',str(source.parent),'@ARCH@'],check=True)
     copy_debs(work)
 
 

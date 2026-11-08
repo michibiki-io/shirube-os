@@ -217,3 +217,17 @@ runners have a six-hour job execution limit ([GitHub Actions limits](https://doc
 These deadlines are bounds, not measured build-time estimates. Explicit labels
 and preflight checks must still establish sufficient native resources and usable
 virtualization; default runner selection does not establish release support.
+
+## VPP component forwarding probe
+
+`scripts/test-vpp-forwarding.sh` runs inside a fresh native compiler container
+with the VPP package directory mounted read-only at `/packages`. Supply
+`--cap-add NET_ADMIN --cap-add SYS_ADMIN --cap-add IPC_LOCK` and
+`--ulimit memlock=-1:-1`; retain ordinary container PID, network and filesystem
+isolation. No host networking, credentials or writable host mount is needed.
+The packet ring is still bounded by the container memory limit.
+
+It verifies the package cohort hashes, loads the upstream plugins, forwards
+packets between two temporary network namespaces, and fetches Prometheus
+metrics through http_static. Native ARM64 execution passed. This component
+probe does not establish installed Shirube OS boot, OCI or release readiness.

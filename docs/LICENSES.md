@@ -152,3 +152,17 @@ selecting one stops this BSD-client audit path for additional review. The AMD64
 map selects 174 internal packages and no exception directory. This scope check
 is not permission for third-party dependencies or the complete distribution.
 The installed component inventory must bind to the exact retained package map.
+
+## Published test fixtures
+
+Published upstream test keys/examples are distinguished from build and instance
+credentials. VPP hs_apps/http_static, sample tools and development headers are
+retained. The exact TLS sample is bound to its public source commit/file hash
+and PEM-content hash. Cryptodome test files are bound to the public 3.19.1 source
+archive and complete file hashes; Salt documentation is bound to signed Stream
+source. The policy is in `producer/public_test_keys.py` and `source-lock.json`.
+
+The package scanner accepts only these identified fixture contents at declared
+payload paths. Changed or additional keys undergo ordinary secret inspection.
+This classification does not clear licenses or permit build signing keys,
+enrollment keys, guest accounts or instance identities in exported images.
