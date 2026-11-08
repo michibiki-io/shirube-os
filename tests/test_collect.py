@@ -4,11 +4,34 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from producer.collect import netbird_dependencies,approval_for,shared_build_inputs
+from producer.collect import netbird_dependencies,approval_for,shared_build_inputs,vpp_source_files
 import tarfile
+import subprocess
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_vpp_export_keeps_patched_sources_and_original_external_archives(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary)
+            subprocess.run(['git','init','-q',str(root)],check=True)
+            (root/'source.c').write_text('original source')
+            (root/'build-root').mkdir();(root/'build-root/Makefile').write_text('upstream recipe')
+            (root/'build-root/alias').symlink_to('..',target_is_directory=True)
+            subprocess.run(['git','-C',str(root),'add','.'],check=True)
+            (root/'source.c').write_text('patched source')
+            (root/'build-root/generated-binary').write_bytes(b'generated runtime')
+            cache=root/'build/external/downloads';cache.mkdir(parents=True)
+            (cache/'dependency.tar.gz').write_bytes(b'original dependency archive')
+            selected=dict((member,path.read_bytes()) for path,member in vpp_source_files(root))
+            self.assertEqual(selected['source.c'],b'patched source')
+            self.assertIn('build-root/Makefile',selected)
+            self.assertIn('build/external/downloads/dependency.tar.gz',selected)
+            self.assertNotIn('build-root/generated-binary',selected)
+            self.assertNotIn('build-root/alias/build-root/generated-binary',selected)
+            self.assertEqual(selected['build-root/alias/source.c'],b'patched source')
+            (root/'source.c').unlink()
+            with self.assertRaisesRegex(ValueError,'Missing patched'):list(vpp_source_files(root))
+
     def test_shared_sources_preserve_real_recipe_patch_and_notice_bytes(self):
         with tempfile.TemporaryDirectory() as temporary:
             base=Path(temporary);project=base/'project.tar';project.write_bytes(b'project fixture')

@@ -108,6 +108,46 @@ def shared_build_inputs(project,builder,patches,destination):
     return [reference for category in records.values() for reference in category]
 
 
+def tracked_source_files(root):
+    """Export patched tracked source, materializing confined directory aliases."""
+    root=Path(root).resolve()
+    names=subprocess.check_output(['git','-C',str(root),'ls-files','-z']).decode().split('\0')
+    for name in sorted(filter(None,names)):
+        path=Path(name)
+        if path.is_absolute() or '..' in path.parts or '.git' in path.parts:
+            raise ValueError('Unsafe tracked source path')
+        source=root/path
+        if source.is_symlink():
+            if not source.resolve().is_relative_to(root):raise ValueError('External VPP source link')
+            if source.is_dir():
+                # Materialize this confined directory alias from the same
+                # tracked tree; archives intentionally contain regular files.
+                prefix=source.resolve().relative_to(root)
+                for tracked in sorted(filter(None,names)):
+                    try:relative=Path(tracked).relative_to(prefix)
+                    except ValueError:continue
+                    target=root/tracked
+                    if target.is_file():
+                        if not target.resolve().is_relative_to(root):raise ValueError('External VPP source link')
+                        yield target.resolve(),name+'/'+str(relative)
+                continue
+        if not source.is_file():raise ValueError('Missing patched tracked source')
+        yield source.resolve(),name
+
+
+def vpp_source_files(root):
+    """Export patched tracked source and original external inputs, not build trees."""
+    root=Path(root).resolve()
+    yield from tracked_source_files(root)
+    cache=root/'build/external/downloads'
+    if not cache.is_dir():raise ValueError('Original VPP external source inputs missing')
+    found=False
+    for source,relative in files(cache):
+        found=True;yield source,'build/external/downloads/'+relative
+    if not found:raise ValueError('Empty VPP external source input set')
+
+
+
 def collect(rootfs, package_output, output, arch, version, work):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
@@ -173,7 +213,9 @@ def collect(rootfs, package_output, output, arch, version, work):
                 if len(dsc)!=1:raise ValueError('Exact Debian source descriptor missing')
                 origin=sha256(dsc[0]);source=component
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
-            for path,relative in files(source):inputs.append((path,'source/'+relative,'sources'))
+            kind='vpp' if str(source)=='/extra/vpp/vpp' else 'vyos-1x' if source_name=='vyos-1x' else None
+            source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind=='vyos-1x' else files(source)
+            for path,relative in source_files:inputs.append((path,'source/'+relative,'sources'))
             if name=='vyos-http-api-tools':
                 bom,dependencies=http_dependencies(rootfs)
                 inputs.append((bom,'bundled-components.json','build_inputs'))
@@ -190,7 +232,9 @@ def collect(rootfs, package_output, output, arch, version, work):
             if common.is_dir():
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
-            records=bundle(inputs,archive,1773859634)
+            fixture_origin=('vpp:'+json.loads(Path('/src/source-lock.json').read_text())['external_git']['vpp']['commit']
+                if kind=='vpp' else 'stream:'+source_identity if kind=='vyos-1x' else None)
+            records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if source_name=='vyos-1x':records['build_inputs'].extend(ocaml_records['build_inputs'])
             external=json.loads(Path('/src/native/external-sources.lock.json').read_text())

@@ -25,7 +25,9 @@ the changed criteria belong in the latest PR review after release readiness.
 | --- | --- | --- |
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
-| Unit/failure-path tests | PASS | 56 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| Unit/failure-path tests | PASS | 59 tests; metadata/policy/source/NetBird/cleanup primitives, synthetic fixtures |
+| VPP Python bootstrap | PASS | Five actual public PyPI inputs pinned by version/file/hash; Meson 0.57.2 and pyelftools 0.33 installed and executed from those inputs in a network-disabled namespace with pip cache disabled. The new pins are not retroactively applied to running older-head builds |
+| Patched VPP/core source archives | PASS | 4,690 VPP and 2,533 core source members retained and hash-verified, excluding generated build/staging trees. Full preferred source/test code retained; six exact known public test-vector files independently recognized by origin/member/full-file SHA. Unknown or changed keys and unreviewed licenses still rejected. Full OS reconstruction remains NOT_RUN |
 | FPM dependency pinning | PASS | Ten exact gem archives matched RubyGems-published hashes and installed locally without dependency resolution; FPM version checked |
 | Private-key scanner regression | PASS | Native compiled ELF containing a key-format delimiter accepted; actual newly generated RSA private key rejected; chunk-boundary cases tested |
 | NetBird native CLI schema/templates | PASS | Actual source-built core/integration packages, configuration daemon registration, merged native schema owner/management-url/disable lookups and setup-key node absence checked in a container; guest commit/save/reboot unverified |

@@ -10,6 +10,8 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import sys
+sys.path.insert(0,'/src')
 
 ROOT = Path('/opt/stream')
 OUT = Path('/debs')
@@ -87,7 +89,11 @@ def vpp(work):
     patches = git('vpp-patches',work/'patches')
     for patch in sorted((patches/'patches/vpp').glob('*.patch')):
         subprocess.run(['git','-c','user.name=Stream local build','-c','user.email=maintainers@vyos.net','am',str(patch)],cwd=source,check=True)
-    shell('make UNATTENDED=yes VPP_ENABLE_SYSTEMD_NOTIFY=ON install-dep; make MAKE_PARALLEL_JOBS=2 VPP_EXTRA_CMAKE_ARGS="-DVPP_ENABLE_SYSTEMD_NOTIFY=ON" pkg-deb',source)
+    from producer.vpp_inputs import prepare
+    prepare(json.loads(Path('/src/native/vpp-python.lock.json').read_text()),source/'build/external/downloads')
+    # Upstream skips its unpinned pip download when the fixed Meson archive is
+    # already present. Disable index access as well: missing inputs must fail.
+    shell('export PIP_NO_INDEX=1 PIP_NO_CACHE_DIR=1; make UNATTENDED=yes VPP_ENABLE_SYSTEMD_NOTIFY=ON install-dep; make MAKE_PARALLEL_JOBS=2 VPP_EXTRA_CMAKE_ARGS="-DVPP_ENABLE_SYSTEMD_NOTIFY=ON" pkg-deb',source)
     copy_debs(source/'build-root')
 
 

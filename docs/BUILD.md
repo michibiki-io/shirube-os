@@ -119,3 +119,12 @@ source bundles are not written into the build container. The preparation receipt
 records both archive hashes, the exact selected member and the generated-output
 exclusions applied inside it. This selection was checked against the actual
 pinned public input; it does not establish complete corresponding-source closure.
+
+VPP's DPDK Meson bootstrap is preseeded from
+`containers/native/vpp-python.lock.json`: exact public Meson, setuptools, wheel,
+packaging and pyelftools archives. All hashes are verified before the upstream
+recipe runs. pip index access and persistent pip caching are disabled for this
+stage, so an unavailable fixed input fails rather than resolving a newer one.
+The fixed inputs have passed an actual cache-disabled, network-disabled Meson
+bootstrap check on AMD64; the full modified VPP recipe still requires integrated
+build validation.

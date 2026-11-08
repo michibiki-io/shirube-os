@@ -8,6 +8,9 @@ class PolicyTests(unittest.TestCase):
         event = {'action': 'closed', 'pull_request': {'merged': True, 'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40}}
         self.assertTrue(eligible('pull_request', event, ['producer/disks.py']))
         self.assertTrue(eligible('pull_request_target', event, ['producer/disks.py']))
+        self.assertTrue(eligible('pull_request_target', event, ['license-audit.json']))
+        self.assertTrue(eligible('pull_request_target', event, ['NOTICE']))
+        self.assertTrue(eligible('pull_request_target', event, ['scripts/build-release.sh']))
         self.assertFalse(eligible('push', event, ['producer/disks.py']))
         self.assertFalse(eligible('pull_request', event, ['docs/build.md']))
         event['pull_request']['merged'] = False

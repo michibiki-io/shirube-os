@@ -121,9 +121,25 @@ retention check covers 44 concrete packages. Their separate license decisions
 and an offline reconstruction demonstration are still required. An approval for
 the main configuration package cannot hide unresolved OCaml dependencies.
 
-Sixteen actual linked NetBird modules now have exact source/notice decisions
+Thirty-three actual linked NetBird modules now have exact source/notice decisions
 under MIT, ISC, BSD-2-Clause, BSD-3-Clause or Zlib. The inventory preserves each
 module's own grant, conditions and disclaimer; BSD non-endorsement and Zlib
 origin/modification restrictions remain applicable. Other modules and the Go
 standard library remain separate unresolved decisions. These records do not
 approve the NetBird parent or an OS release.
+
+VPP and core source exports use patched tracked files instead of generated
+build/staging trees. VPP's original downloaded external source/bootstrap inputs
+are also retained; its tracked `build-root/Makefile` is preserved. Confined
+directory aliases are materialized from tracked source only.
+
+`producer.source_fixtures` identifies six exact, already-public upstream
+cryptographic test-vector files by public source identity, archive member and
+whole-file SHA256. Their source/test code is preserved. VPP bytes were compared
+with the pinned public Git revision, and core bytes with the authenticated Stream
+source. Both bundle creation and independent inventory/archive validation enforce
+those bindings. Any changed file, different member or different source identity
+is rejected. This source-only recognition never applies to binaries, build signing
+keys, enrollment material or unknown keys. The optional fixed-key core smoketest
+binary package remains forbidden. The detector is not a general credential
+scanner; complete release source/binary/log/cache audits remain separate gates.

@@ -44,6 +44,8 @@ def verify_sources(root, inventory, assets):
         raise ValueError('Empty component inventory')
     components = set()
     members = {}
+    from .source_fixtures import allowances
+    public_vectors=allowances(inventory)
     for asset in assets:
         if asset['role'] != 'source':
             continue
@@ -60,12 +62,14 @@ def verify_sources(root, inventory, assets):
                 import hashlib
                 digest = hashlib.sha256()
                 tail = b''
+                key_match=False
                 with archive.extractfile(member) as stream:
                     while chunk := stream.read(1024**2):
-                        if SECRET.search(tail + chunk):
-                            raise ValueError('Private signing key in source bundle')
+                        if SECRET.search(tail + chunk):key_match=True
                         digest.update(chunk)
                         tail = (tail + chunk)[-1024:]
+                if key_match and (asset['name'],member.name,digest.hexdigest()) not in public_vectors:
+                    raise ValueError('Private signing key in source bundle')
                 members[key] = digest.hexdigest()
     def check_references(component):
         if not isinstance(component.get('license'),str) or not component.get('license') or component.get('redistributable') is not True:

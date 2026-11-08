@@ -7,7 +7,7 @@ from .release import LIMIT, filename, scan_secrets
 from .sources import sha256
 
 
-def bundle(inputs, destination, epoch):
+def bundle(inputs, destination, epoch, source_origin=None):
     """inputs = [(regular_file, archive_member, category), ...].
 
     The caller must supply the exact source/license/recipe set for a shipped
@@ -27,8 +27,12 @@ def bundle(inputs, destination, epoch):
                 or category not in records or not path.is_file() or path.is_symlink()):
             raise ValueError('Unsafe, duplicate or missing source bundle input')
         names.add(member)
-        scan_secrets(path)
-        checked.append((path, member, category, sha256(path)))
+        digest=sha256(path)
+        try:scan_secrets(path)
+        except ValueError:
+            from .source_fixtures import allowed
+            if category!='sources' or not allowed(source_origin,member,digest):raise
+        checked.append((path, member, category, digest))
     if not all(any(x[2] == category for x in checked) for category in records):
         raise ValueError('Source, license and reconstruction inputs are all mandatory')
     with destination.open('xb') as raw:

@@ -1,8 +1,9 @@
 """Commit-based releases for relevant merged PRs; no PR-title classification."""
 import re
 
-RELEVANT = ('producer/', 'containers/', 'source-lock.json', 'patches/', 'guest/',
-            'tests/', '.github/workflows/', 'schemas/', 'shirube-os-logo.svg')
+RELEVANT = ('producer/', 'containers/', 'scripts/', 'source-lock.json', 'patches/', 'guest/',
+            'tests/', '.github/workflows/', 'schemas/', 'shirube-os-logo.svg',
+            'license-audit.json', 'LICENSE', 'NOTICE')
 VERSION_PATTERN=r'v([1-9][0-9]{3})\.(0[1-9]|1[0-2])\.(0|[1-9][0-9]*)'
 
 
