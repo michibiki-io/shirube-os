@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "diagnostic-http-api-component-source-retention",
+  "architecture": "amd64",
+  "status": "PASS",
+  "package_sha256": "3d20efb0612bd788b12a79044e103f849f328961ca2e3e02c6c1388379cfeb40",
+  "http_distributions": 26,
+  "cargo_dependency_bindings": 158,
+  "registry_bindings": 156,
+  "fixed_git_package_bindings": 2,
+  "exact_installed_notices": "PASS",
+  "parent_lock_checksums": "PASS",
+  "native_imports_and_graphql_execution": "PASS",
+  "binary_reconstruction": "NOT_RUN",
+  "complete_corresponding_source": "NOT_CLEARED",
+  "license_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "implementation_files": {
+    "producer/cargo_sources.py": "8f7ce31c9e7559e1d9e86306d72b1e7acf2c56e3c72a3c5ecae539cb42a5d48a",
+    "producer/collect.py": "a58589a836399ce32e905e8b0f3d4cdca93fd3e1686db4bc6247f587ee7dc571",
+    "containers/native/http_api.py": "f6c4c62f7be1dc420d33e8fa574ae6c4c750a931747b50867f6477ecb7da60ee",
+    "containers/native/http-api.lock.json": "a1124328d2bf33866226a1e492e6d2a0c6b041d920752bc599035343fd36933f"
+  }
+}

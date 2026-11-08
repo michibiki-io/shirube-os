@@ -39,6 +39,48 @@ def http_dependencies(rootfs):
     return bom,result
 
 
+def http_cargo_dependencies(rootfs, source, record):
+    from .cargo_sources import inventory
+    # Compare against the tracked parent declaration as well as the installed
+    # BOM: a missing/transitively shortened BOM must not hide static Rust code.
+    lock=json.loads(Path('/src/native/http-api.lock.json').read_text())
+    fixed=next(item for item in lock['packages'] if item['name']==record['name'])
+    if 'cargo_lock' not in fixed:
+        if 'cargo' in record:raise ValueError('Undeclared API Cargo inventory')
+        return []
+    declaration={**fixed['cargo_lock'],'source_sha256':fixed['source']['sha256']}
+    cargo=record.get('cargo',{})
+    if cargo.get('parent')!=declaration:raise ValueError('API Cargo parent inventory differs')
+    expected=inventory(source/'inputs'/fixed['source']['filename'],declaration)
+    actual=cargo.get('components',[])
+    if len(actual)!=len(expected):raise ValueError('API Cargo dependency inventory is incomplete')
+    result=[]
+    for crate,original in zip(actual,expected):
+        if any(crate.get(key)!=value for key,value in original.items()):
+            raise ValueError('API Cargo dependency differs from the original lock')
+        name=crate['name'][6:]+'-'+crate['version']
+        member=('git-archives/'+crate['sha256']+'.tar.gz' if 'git_source' in original
+                else 'restored/archives/'+name+'.crate')
+        notice_member='notices/'+name+'.txt'
+        installed='third-party/'+record['name']+'/cargo/'+name+'/copyright'
+        if (crate['source_member']!=member or crate['notice_member']!=notice_member or
+                crate['license_notice']['path']!=installed):
+            raise ValueError('Unexpected API Cargo source or notice path')
+        prefix='cargo/'+record['name']+'/'
+        archive=source/prefix/member
+        notice=path_in_root(rootfs,'usr/share/doc/vyos-http-api-tools/'+installed)
+        retained=source/prefix/notice_member
+        if (archive.is_symlink() or sha256(archive)!=original['sha256'] or
+                sha256(notice)!=crate['notice_sha256'] or sha256(retained)!=sha256(notice) or
+                crate['license_notice']['sha256']!=sha256(notice)):
+            raise ValueError('API Cargo original source or legal notice differs')
+        result.append({'name':crate['name'],'version':crate['version'],
+            'source_identity':original['sha256'],'source_sha256':original['sha256'],
+            'source_member':'source/'+prefix+member,'notice':notice,
+            'notice_member':'third-party-notices/'+record['name']+'/cargo/'+name+'/copyright'})
+    return result
+
+
 def netbird_dependencies(rootfs,correspondence,arch):
     prefix='usr/share/doc/shirube-integration/'
     bom=path_in_root(rootfs,prefix+'netbird-components.json')
@@ -331,6 +373,9 @@ def collect(rootfs, package_output, output, arch, version, work):
                         'source_member':'source/inputs/'+dependency['source']['filename'],
                         'source_sha256':dependency['source']['sha256'],'notice':notice,'notice_member':member,
                         'binary_input':dependency['wheel']})
+                    for crate in http_cargo_dependencies(rootfs,source,dependency):
+                        inputs.append((crate['notice'],crate['notice_member'],'license_files'))
+                        nested.append(crate)
             cached_recipe=source.parent/'cache-build-inputs'
             if cached_recipe.is_dir():
                 for path,relative in files(cached_recipe):inputs.append((path,'library-cache/'+relative,'build_inputs'))

@@ -21,6 +21,7 @@ sys.path.insert(0,'/src')
 from producer.architecture import native
 from producer.sources import download, sha256
 from producer.packages import audit
+from producer.cargo_sources import retain as retain_cargo
 
 NAME='vyos-http-api-tools'
 INSTALL='/usr/share/'+NAME
@@ -78,7 +79,13 @@ def build(arch,output):
         if not legal:raise ValueError('Python dependency has no usable legal notice')
         notices.append((component['name']+'=='+component['version'],legal))
         requirements.append(component['name']+'=='+component['version']+' --hash=sha256:'+wheel['sha256'])
-        records.append({'name':component['name'],'version':component['version'],'wheel':wheel,'source':sdist})
+        record={'name':component['name'],'version':component['version'],'wheel':wheel,'source':sdist}
+        if 'cargo_lock' in component:
+            declaration={**component['cargo_lock'],'source_sha256':sdist['sha256']}
+            _,crates=retain_cargo(inputs/sdist['filename'],declaration,
+                source/'cargo'/component['name'],Path('/public-inputs'))
+            record['cargo']={'parent':declaration,'components':crates}
+        records.append(record)
     requirements_file=source/'requirements.lock';requirements_file.write_text('\n'.join(requirements)+'\n')
     subprocess.run([sys.executable,'-m','pip','install','--break-system-packages','--no-index',
         '--find-links',str(inputs),'--only-binary=:all:','--ignore-installed','--no-deps','--no-compile',
@@ -127,6 +134,15 @@ def build(arch,output):
             next(record for record in records if record['name']==name)['license_notice']={
                 'path':'third-party/'+name+'/copyright','sha256':sha256(path)}
             target.write(('\nComponent: '+component+'\nLicense/copyright: third-party/'+name+'/copyright\n').encode())
+        for record in records:
+            for crate in record.get('cargo',{}).get('components',[]):
+                crate_name=crate['name'][6:]+'-'+crate['version']
+                member='third-party/'+record['name']+'/cargo/'+crate_name+'/copyright'
+                path=doc/member;path.parent.mkdir(parents=True)
+                shutil.copy2(source/'cargo'/record['name']/crate['notice_member'],path)
+                if sha256(path)!=crate['notice_sha256']:raise ValueError('Cargo notice changed during packaging')
+                crate['license_notice']={'path':member,'sha256':sha256(path)}
+                target.write(('\nComponent: '+crate['name']+'@'+crate['version']+'\nLicense/copyright: '+member+'\n').encode())
     (doc/'components.json').write_text(json.dumps({'schema_version':1,'dependency_baseline':lock['dependency_baseline'],
         'architecture':arch,'components':records},indent=2)+'\n')
     control=package/'DEBIAN';control.mkdir()

@@ -312,3 +312,19 @@ mandatory. Liblinear's excluded Windows/BLAS trees were absent. These decisions
 do not approve their dependencies or the whole image. The collector now
 reconstructs each exact Debian source tree and explicitly includes named
 original legal files in its source/legal archive, alongside installed notices.
+
+The HTTP API source collector now retains the Cargo.lock closure for pydantic-core
+2.27.1 and watchfiles 1.0.0: 156 registry bindings plus two Git package bindings
+from the exact notify commit declared by watchfiles. All registry checksums,
+parent archive/lock hashes, fixed Git archive hash and original legal files are
+checked. Each dependency has an installed notice and a separately denied-by-default
+license inventory entry. See the [diagnostic component receipt](evidence/diagnostic-http-api-source-retention.json).
+Actual AMD64 packaging, native imports and GraphQL execution passed. This closes
+an original-source inventory gap; it does not establish native-extension or full
+OS reconstruction, compiler/standard-library closure, or distribution clearance.
+The Git workspace is preserved intact; the returned registry Cargo home alone
+is not a complete offline Git build environment.
+
+HTTP APIのRust依存も上流の固定lockと照合し、原本と許諾表示を保持します。
+AMD64でパッケージ生成と実インポートを確認しました。ソースの保持をバイナリの再構築や
+全体の配布許諾へ読み替えず、未確認のコンパイラー・標準ライブラリ等は公開ゲートで止めます。

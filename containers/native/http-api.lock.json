@@ -258,6 +258,14 @@
           "url": "https://files.pythonhosted.org/packages/01/de/df51b3bac9820d38371f5a261020f505025df732ce566c2a2e7970b84c8c/pydantic_core-2.27.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
           "sha256": "7f7059ca8d64fea7f238994c97d91f75965216bcbe5f695bb44f354893f11d52"
         }
+      },
+      "cargo_lock": {
+        "member": "pydantic_core-2.27.1/Cargo.lock",
+        "sha256": "8dab5d85450afe07bfdfcb38e0cc378b1273316c75a3f4f9e8b3a2c668724599",
+        "package": {
+          "name": "pydantic-core",
+          "version": "2.27.1"
+        }
       }
     },
     {
@@ -510,6 +518,26 @@
           "url": "https://files.pythonhosted.org/packages/d6/88/393b33c6da4963933e810eb0b8d6b44c7ba52ed2aaf6bb7709db377289f8/watchfiles-1.0.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
           "sha256": "9b4fb98100267e6a5ebaff6aaa5d20aea20240584647470be39fe4823012ac96"
         }
+      },
+      "cargo_lock": {
+        "member": "watchfiles-1.0.0/Cargo.lock",
+        "sha256": "b2f902250e6a0bb20c3c140e635ae240d91db38fdd3f1e9aef85955b53464fb5",
+        "package": {
+          "name": "watchfiles_rust_notify",
+          "version": "1.0.0"
+        },
+        "git_sources": [
+          {
+            "source": "git+https://github.com/samuelcolvin/notify.git?branch=keep-io-error#0f87ab12707d231fa44180454d59478d3992eb59",
+            "url": "https://codeload.github.com/samuelcolvin/notify/tar.gz/0f87ab12707d231fa44180454d59478d3992eb59",
+            "sha256": "02e2a902f328cffcf7cfcee56e70720f8c80d4b50877183a332cac725c35dc95",
+            "archive_root": "notify-0f87ab12707d231fa44180454d59478d3992eb59",
+            "packages": {
+              "notify": "notify",
+              "notify-types": "notify-types"
+            }
+          }
+        ]
       }
     },
     {
