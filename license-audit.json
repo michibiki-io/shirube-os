@@ -2675,6 +2675,130 @@
         "Preserve original source-file notices and the complete MPL 2.0; distribute the exact covered source under MPL 2.0 and tell recipients how to obtain it. This decision covers the retained build-tool source only."
       ],
       "scope": "Exact Python distribution at the recorded source hash only. Dependencies, the SDK and complete OS remain subject to independent source/license gates."
+    },
+    "localepurge@0.7.3.10": {
+      "source_identity": "db02ac8af611dd71eecc78b2337553ee62fb45c72bf3e3c56b6f36e3dfc89859",
+      "copyright_sha256": "d13bc73e0e535ef08e4016ca10fa7da516a4c143b4e59126d0652a5ee54b5c89",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain the complete applicable GNU GPL text, source availability and modification notices; impose no additional restrictions."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
+    },
+    "lsb-release-minimal@12.0-1": {
+      "source_identity": "3efb81797061d3c089bad306f04c37b353edfaa64f595473ed2b093258e3306d",
+      "copyright_sha256": "ddac6703da50dd2819e7769e5cdcc2db0a3dadd7be1155dcf03e7c0b5d63b61b",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain full original ISC or MIT copyright/permission notices in all copies and substantial portions; no upstream endorsement or relicensing is implied."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
+    },
+    "lsscsi@0.31-1": {
+      "source_identity": "652c0732c9976984e1b07f42b329b56ef87705f211d8014afde7e27e0e50d2eb",
+      "copyright_sha256": "97ae051787c934f2cd819536ce6147a540ad9d9814c91b8935bebfb42edb976b",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain the complete applicable GNU GPL text, source availability and modification notices; impose no additional restrictions."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
+    },
+    "lua5.3@5.3.6-2": {
+      "source_identity": "2241dc732aa15a4d09c3c87aaf154eb14d873b8f6eb824faf8313a492a4e14b6",
+      "copyright_sha256": "f4a404a022b1158e458b64d8ccd91749fb5262558043039def89eeaa40c2c1b2",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain full original ISC or MIT copyright/permission notices in all copies and substantial portions; no upstream endorsement or relicensing is implied."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
+    },
+    "lzo2@2.10-2": {
+      "source_identity": "65a35d9d2511a88f30d4b10313f807c184d1906062e2421833797dafc2682166",
+      "copyright_sha256": "3c412f0f1b0e1aa51d1f7efed5c02f30811bd5d26ddccfcc6760669cd4bc8c93",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain the complete applicable GNU GPL text, source availability and modification notices; impose no additional restrictions."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
+    },
+    "mdadm@4.2-5": {
+      "source_identity": "188e0c6519fa57c26d045f1d503f9087b5e5363137d778a263353221cd7ed72f",
+      "copyright_sha256": "4a27c9f791acaaf5fc01563d0c24174ebface163b753231a185e98a521a5797a",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain the complete applicable GNU GPL text, source availability and modification notices; impose no additional restrictions."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
+    },
+    "minisign@0.11-1": {
+      "source_identity": "bad4bf60ff1be0c75a817ef08f01e0c1bc80b23ce912b53aaf467941e228e684",
+      "copyright_sha256": "7cde88164abb76f82dcc098749819ee23d36dcc89cf43205dc65910bb37cb2f3",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain full original ISC or MIT copyright/permission notices in all copies and substantial portions; no upstream endorsement or relicensing is implied.",
+        "Retain the full original Minisign LICENSE, including the 2015-2023 upstream copyright range, in distribution notices; the installed Debian notice alone has an older range."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Minisign-0.11.txt",
+          "sha256": "d775d155cbf31638714c31c6f990f9fdc5f07998d91e42d1bf15483bd2d1706b"
+        }
+      ],
+      "supplemental_origin": {
+        "archive_sha256": "74c2c78a1cd51a43a6c98f46a4eabefbc8668074ca9aa14115544276b663fc55",
+        "member": "minisign-0.11/LICENSE",
+        "license_sha256": "d775d155cbf31638714c31c6f990f9fdc5f07998d91e42d1bf15483bd2d1706b"
+      }
+    },
+    "mtr@0.95-1": {
+      "source_identity": "e8197d82ac9870b56c1f5afcf382a964f7040fecf691415718acdfc6249de518",
+      "copyright_sha256": "c59d7d95c211c38d7f5a796d3630cb6f1ba82538c36989952cae35fded164f41",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original upstream/Debian copyright, permission conditions and warranty disclaimers in binary and source materials.",
+        "Include the exact authenticated descriptor, original source archives, Debian patches and build/install scripts with binary distribution.",
+        "Retain the complete applicable GNU GPL text, source availability and modification notices; impose no additional restrictions."
+      ],
+      "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

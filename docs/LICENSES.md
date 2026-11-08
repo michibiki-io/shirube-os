@@ -339,3 +339,13 @@ Earlier diagnostic source receipts do not include this new notice binding.
 
 上記3件は原本と表示のハッシュへ限定した個別判断です。backports.tarfileの
 埋め込み著作権表示は保持対象へ追加しましたが、コンポーネント全体の許諾判断は保留します。
+
+Eight additional exact Debian source/copyright decisions cover localepurge,
+lsb-release-minimal, lsscsi, Lua 5.3, LZO2, mdadm, Minisign and MTR. GPL source
+availability and full notices remain mandatory. Minisign's full original LICENSE,
+including its newer upstream copyright range, is separately retained under
+`LICENSES/Minisign-0.11.txt` and required by its exact-source decision. These
+40 Debian decisions do not clear the remaining source groups or the complete OS.
+
+Debian分の追加8件も原本と表示へ限定した判断です。Minisignの上流表示は配布用の
+追加表示として保持し、不足・変更時は許諾判断を無効にします。全体の合格とは別です。
