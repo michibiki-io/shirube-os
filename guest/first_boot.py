@@ -34,16 +34,36 @@ def main():
         raise ValueError('Password hashing failed')
     # Secret/password hash stays out of argv, console output, shell history and logs.
     # Only this instance saved configuration receives the resulting password hash.
-    script = ('source /opt/vyatta/etc/functions/script-template\n'
-              'configure\n'
+    script = ('printf "SHIRUBE_ENROLL_SOURCE\\n"\n'
+              'source /opt/vyatta/etc/functions/script-template\n'
+              'printf "SHIRUBE_ENROLL_CONFIGURE\\n"\nconfigure\n'
+              'printf "SHIRUBE_ENROLL_ADMINISTRATOR\\n"\n'
               f"set system login user {username} authentication encrypted-password '{hashed}'\n"
-              'set service ssh\ncommit\nsave\nexit\n')
+              'printf "SHIRUBE_ENROLL_SSH\\n"\nset service ssh\n'
+              'printf "SHIRUBE_ENROLL_COMMIT\\n"\ncommit\n'
+              'printf "SHIRUBE_ENROLL_SAVE\\n"\nsave\n'
+              'printf "SHIRUBE_ENROLL_DONE\\n"\nexit\n')
+    print('Preparing this instance identity...', flush=True)
     subprocess.run(['systemd-machine-id-setup'], check=True,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    print('Generating this instance SSH host keys...', flush=True)
     subprocess.run(['ssh-keygen', '-A'], check=True,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(['/usr/bin/sg', 'vyattacfg', '-c', '/bin/vbash -se'], input=script, text=True, check=True,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    print('Applying administrator configuration...', flush=True)
+    result = subprocess.run(['/usr/bin/sg', 'vyattacfg', '-c', '/bin/vbash -se'],
+                            input=script, text=True, capture_output=True)
+    if result.returncode or 'SHIRUBE_ENROLL_DONE' not in result.stdout.splitlines():
+        # Native diagnostics may contain the password hash. Report only a fixed
+        # phase and integer status; never print captured stdout/stderr.
+        phases = {'SHIRUBE_ENROLL_'+name: name.lower() for name in
+                  ['SOURCE', 'CONFIGURE', 'ADMINISTRATOR', 'SSH', 'COMMIT', 'SAVE']}
+        completed = [phases[line] for line in result.stdout.splitlines() if line in phases]
+        phase = completed[-1] if completed else 'session'
+        if result.returncode:
+            print(f'Administrator configuration failed at {phase} (exit {result.returncode}).', flush=True)
+        else:
+            print(f'Administrator configuration did not complete after {phase}.', flush=True)
+        raise RuntimeError('Native administrator configuration failed')
     MARKER.unlink(missing_ok=True)
     factory.unlink(missing_ok=True)
     print('Instance administrator created. Continue with the normal login prompt.')
