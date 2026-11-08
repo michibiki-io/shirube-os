@@ -35,6 +35,8 @@ def descriptor(directory, source, version):
                 or sha256(path)!=digest):
             raise ValueError('Debian source archive is missing or differs')
     if not seen:raise ValueError('Empty Debian corresponding source set')
+    if {path.name for path in directory.iterdir()}!=seen|{dsc.name}:
+        raise ValueError('Unverified files remain in the Debian source input directory')
     return dsc
 
 

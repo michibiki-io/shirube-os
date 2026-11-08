@@ -61,6 +61,7 @@ the changed criteria belong in the latest PR review after release readiness.
 | Sequential routing package build | PASS | libnftnl, nftables, libyang 3.13.6 and FRR 10.5.2 built/audited in one native runtime after removing stale generated dependency metapackages between jobs |
 | Native core package tranche | PASS | Native configuration library, schema generation, upstream build-time tests and all generated runtime payload audits passed; optional fixed-key smoketest toolkit was not generated |
 | OCaml switch source retention | PASS | Actual 44 concrete installed components, 27,183 original/prepared source members, exact installed metadata and upstream notices retained; cache content addresses verified and Git histories omitted. Offline OCaml reconstruction and component license audit remain NOT_RUN |
+| Diagnostic Debian source restoration | PASS | Actual ARM64 diagnostic inventory: 658 Debian binaries mapped to 460 exact source groups/998 original archive members from the fixed signed snapshot. All source trees restored offline and all 460 copyright files matched installed bytes; libxcb/libxcrypt notice generation reproduced from upstream rules. Named original legal-file discovery retained 1,497 file bindings. The 72 custom binary packages, complete OS binary reconstruction and full license decisions are outside this result |
 | Static I2util corresponding source | PASS | Actual 102 tracked source members, full upstream license and Debian copyright retained from the fixed public revision; generated binaries and Git history omitted. This closes a static-link source inventory gap, not the remaining license-clearance or full-reconstruction gates |
 | Shared reconstruction inputs | PASS | Actual prepared Stream builder configuration/scripts and the fixed public VPP patch repository retained in one hashed archive; every source package receives member bindings. This does not prove full dependency closure or complete OS reconstruction |
 | Runtime-extra notice/source helper | PARTIAL | Actual source ZIP/h1 retention, base components, four Go packages, Kea and Podman generation/audits passed. The same-cohort AMD64 diagnostic recovery completed runtime generation and 169 package audits. Complete transitive license clearance and full ISO integration remain incomplete |
@@ -124,3 +125,12 @@ Published reruns take a verification-only path before any build.
 This does **not** make publication ready. `license-audit.json` currently records
 only the first individually audited components. Full source reconstruction and actual NetBird enrollment/save/reboot
 evidence are still NOT_RUN and block the pipeline. Diagnostic native installations and disk-only access/reboot passed on both architectures. Offline overlay removal, journal/free-space sanitization and both-format boot acceptance remain incomplete. They must not be inferred from static CI.
+
+The [Debian diagnostic source receipt](evidence/diagnostic-debian-source-v2026.03.0-arm64.json)
+records source-tree restoration, original archive checks and copyright/notice
+correspondence separately from binary reconstruction and distribution clearance.
+The source collector now retains original named legal files as explicit legal
+members. Missing, modified or undeclared source inputs stop collection.
+
+Debian分の記録は、ソースの復元・原本のハッシュ・表示の一致を、OS全体のバイナリ再構築や
+配布許諾の完了と区別します。未確認の独自ビルド分や依存分へ合格を流用しません。
