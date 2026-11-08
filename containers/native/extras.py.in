@@ -291,6 +291,7 @@ cp drivers/net/ovpn-dco/ovpn-dco-v2.ko package/lib/modules/6.6.128-vyos/extra/
 python3 /opt/stream/sign-modules.py package
 python3 /src/native/fpm_package.py -s dir -t deb -n openvpn-dco -v 0.2.20231117 --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',ovpn)
     rtsp=git('nat-rtsp',work/'rtsp')
+    retain_embedded_notices(rtsp,'nat-rtsp',Path('/src/source-lock.json'))
     shell(f'''make KERNELDIR={kernel} clean
 make -j2 KERNELDIR={kernel}
 mkdir -p package/lib/modules/6.6.128-vyos/extra

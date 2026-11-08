@@ -374,6 +374,57 @@
           "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
         }
       ]
+    },
+    "nat-rtsp": {
+      "stream_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "origin": {
+        "url": "https://github.com/maru-sama/rtsp-linux",
+        "commit": "475af0aa62dc30f1b823126eceed4eb32de52e5b"
+      },
+      "files": [
+        {
+          "path": "netfilter_helpers.h",
+          "sha256": "3dba81ff9d1e49911500167cd5367a4013b351e9db116f435111f45edaede04c",
+          "prefix_bytes": 401,
+          "notice_sha256": "c00fc9f940906d6ebac56da73d2ccdff6fcd3dbe01c746baf3e10ddc48b957ab"
+        },
+        {
+          "path": "netfilter_mime.h",
+          "sha256": "cb34a3615cd6c53ade334e09fcb4620082a669f061af00f28fe2813620253707",
+          "prefix_bytes": 370,
+          "notice_sha256": "6180e10727d9aadbba15588501f054ffd5a620f35373d578312dfe50ae4fe961"
+        },
+        {
+          "path": "nf_conntrack_rtsp.c",
+          "sha256": "8fc7ae99f236bb6d56f52ef8bf953b04167fcd50597013792a4e621543bc8162",
+          "prefix_bytes": 1487,
+          "notice_sha256": "3ed59d613dcc7995848689c23785cea8247d320c92738f3198e4f99517bccb8b"
+        },
+        {
+          "path": "nf_conntrack_rtsp.h",
+          "sha256": "45d4465a0513edbeaeb1de9cf82916d4ce489e454f03e35d885076e09b8f3405",
+          "prefix_bytes": 566,
+          "notice_sha256": "113db5b5550a68679cba709e11a5e9585a3e0ca99490aca2599b29a589549f55"
+        },
+        {
+          "path": "nf_nat_rtsp.c",
+          "sha256": "bd79a264e1a47d3e89d9086483d365cf0e412d423887399cdb24e41b3ea50062",
+          "prefix_bytes": 1706,
+          "notice_sha256": "3a39d3696bf79d9839d9afba17c9c67831b09257274d55f28463dd73354ab6ff"
+        },
+        {
+          "path": "README.rst",
+          "sha256": "26933779ff39c3f74f75b0d8ee09414f75e6c2056e499809ed075344b784f576",
+          "prefix_bytes": 1337,
+          "notice_sha256": "26933779ff39c3f74f75b0d8ee09414f75e6c2056e499809ed075344b784f576"
+        }
+      ],
+      "full_licenses": [
+        {
+          "source": "common:GPL-2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
     }
   }
 }
