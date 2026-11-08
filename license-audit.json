@@ -1956,6 +1956,34 @@
         "Retain the exact original source archive and all hash-bound legal files; separately distributed dependencies and external programs require their own audit."
       ],
       "scope": "Exact unmodified Python distribution source and complete retained notices only; transitive dependencies, external programs, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:certifi@2024.7.4": {
+      "source_identity": "5a1e7645bc0ec61a09e26c36f6106dd4cf40c6db3a1fb6352b0244e7fb057c7b",
+      "copyright_sha256": "a4e8814c14602f50c1aba5b157d33454ee57dd910ef07ef619046788a70f1aec",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/5a1e7645bc0ec61a09e26c36f6106dd4cf40c6db3a1fb6352b0244e7fb057c7b.copyright",
+      "conditions": [
+        "Retain the complete original MPL notice and full MPL-2.0 license text without restricting recipients' source-code rights.",
+        "Distribute the exact unmodified covered source, including the CA bundle, in the release source assets; identify its hash-bound source member in the component inventory.",
+        "Keep source and executable distribution terms consistent with MPL-2.0 sections 3.1 through 3.4; no upstream trademark or endorsement rights are granted."
+      ],
+      "scope": "Exact unmodified component source and complete retained notices only; separately packaged dependencies, remaining SDK components and full OS reconstruction are not cleared by this entry."
+    },
+    "pypi:msgpack@1.0.2": {
+      "source_identity": "fae04496f5bc150eefad4e9571d1a76c55d021325dcd484ce45065ebbdd00984",
+      "copyright_sha256": "7f8186a57a9504da6d21ce833a571913fad296ac57277a3ff6efe48d2f0460a9",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/fae04496f5bc150eefad4e9571d1a76c55d021325dcd484ce45065ebbdd00984.copyright",
+      "conditions": [
+        "Retain the complete Apache-2.0 license and all original INADA Naoki and FURUHASHI Sadayuki copyright and attribution notices, including embedded C header notices.",
+        "Distribute the exact original source archive and hash-bound legal files with release materials; preserve any applicable upstream NOTICE notices.",
+        "Mark any future modified files prominently and preserve source attribution; no upstream trademark or endorsement rights are granted."
+      ],
+      "scope": "Exact unmodified component source and complete retained notices only; separately packaged dependencies, remaining SDK components and full OS reconstruction are not cleared by this entry."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
