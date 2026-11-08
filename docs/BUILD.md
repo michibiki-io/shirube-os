@@ -169,3 +169,17 @@ outputs. It is opt-in, is not enabled by release automation, and does not turn
 failed or older-source output into an accepted candidate. The retained container
 may contain build signing keys and must stay private; remove that exact owned
 container and its private inputs when diagnosis is complete.
+
+## Release duration and runner limits
+
+Complete clean-build and repeat-build durations have not yet been established.
+AMD64 and ARM64 candidates run in parallel; publication waits for both complete
+candidates and their source, disk and runtime gates. Individual package results
+and diagnostic retries do not establish a production release duration.
+
+The job deadline is 360 minutes for default or other labels, and 720 minutes
+when the selected label array explicitly includes `self-hosted`. GitHub-hosted
+runners have a six-hour job execution limit ([GitHub Actions limits](https://docs.github.com/en/actions/reference/limits)).
+These deadlines are bounds, not measured build-time estimates. Explicit labels
+and preflight checks must still establish sufficient native resources and usable
+virtualization; default runner selection does not establish release support.

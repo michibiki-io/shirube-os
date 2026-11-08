@@ -136,8 +136,12 @@ def resolve():
             # finds this draft and cannot allocate a different version.
             gh('release','create',version,'--repo',REPO,'--draft','--target',commit,
                '--title','Shirube OS '+version,'--notes-file',notes.name)
-    matrix = {'include':[{'architecture':a,'runner':runner(a,os.getenv('ACTIONS_RUNNER_'+a.upper(),''))}
-                         for a in ['amd64','arm64']]}
+    matrix={'include':[]}
+    for architecture in ['amd64','arm64']:
+        labels=runner(architecture,os.getenv('ACTIONS_RUNNER_'+architecture.upper(),''))
+        explicit_self_hosted='self-hosted' in (labels if isinstance(labels,list) else [labels])
+        matrix['include'].append({'architecture':architecture,'runner':labels,
+                                  'timeout_minutes':720 if explicit_self_hosted else 360})
     emit({'eligible':'true','noop':'false','commit':commit,'version':version,'matrix':matrix})
 
 
