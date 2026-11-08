@@ -296,3 +296,19 @@ and every component source archive includes explicit legal-file bindings.
 Required supplemental notice hashes are checked before a decision can clear.
 The decision covers the unchanged Debian binary; it is not a blanket BSD
 relicensing of contributed code or a noncommercial-use exception.
+
+A second exact Debian batch covers dh-runit, dmidecode, gawk, grep, hostname,
+htop, iotop and ipcalc under their stated GNU GPL versions. The declared
+excluded GFDL documentation was absent from the restored gawk tree. Iotop's
+upstream COPYING confirmed GNU GPL version 2 alongside its GPL-2+ grant. Each
+decision remains bound to its source descriptor and complete copyright hash.
+
+A further batch covers ipmitool, iproute2, iw, jansson, json-c, libcbor,
+libconfig-model-perl, libedit, libestr, liblinear, libndp, libnetfilter-conntrack,
+libnetfilter-queue, libnginx-mod-http-echo, libtry-tiny-perl and live-config.
+Complete Debian notices and primary source legal files were inspected; retained
+GNU texts were compared in full, and LGPL source/relinking conditions remain
+mandatory. Liblinear's excluded Windows/BLAS trees were absent. These decisions
+do not approve their dependencies or the whole image. The collector now
+reconstructs each exact Debian source tree and explicitly includes named
+original legal files in its source/legal archive, alongside installed notices.

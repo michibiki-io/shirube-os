@@ -288,9 +288,12 @@ def collect(rootfs, package_output, output, arch, version, work):
                 origin=source_identity
             else:
                 subprocess.run(['apt-get','source','--download-only','--only-source',source_name+'='+source_version],cwd=component,check=True)
-                dsc=list(component.glob('*.dsc'))
-                if len(dsc)!=1:raise ValueError('Exact Debian source descriptor missing')
-                origin=sha256(dsc[0]);source=component
+                from .debian_sources import unpack,legal_files
+                preferred=work/('debian-source-tree-'+str(len(cached)))
+                dsc=unpack(component,source_name,source_version,preferred)
+                origin=sha256(dsc);source=component
+                for legal_file,member in legal_files(preferred):
+                    inputs.append((legal_file,'upstream-notices/'+member,'license_files'))
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
             kind='vpp' if str(source)=='/extra/vpp/vpp' else 'vyos-1x' if source_name=='vyos-1x' else 'salt' if source_name=='salt' else None
             source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind in {'vyos-1x','salt'} else files(source)
