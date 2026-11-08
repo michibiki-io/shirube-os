@@ -155,6 +155,25 @@ def vpp_source_files(root):
 
 
 
+def static_i2util(output,arch,version,project,shared):
+    """OWAMP links I2util statically even when no I2util package is installed."""
+    source=Path('/extra/base/i2util')
+    lock=json.loads(Path('/src/native/external-sources.lock.json').read_text())['i2util']
+    actual=subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],text=True).strip()
+    if actual!=lock['commit']:raise ValueError('Static I2util source revision differs')
+    notice=source/'debian/copyright'
+    if not notice.is_file():raise ValueError('Static I2util notice missing')
+    inputs=[(path,'source/'+relative,'sources') for path,relative in tracked_source_files(source)]
+    inputs.extend([(notice,'copyright','license_files'),(source/'LICENSE','upstream-LICENSE','license_files'),
+                   (project,'project-source.tar','build_inputs')])
+    archive=Path(output)/f'shirube-os-{version}-{arch}-static-i2util-source.tar.gz'
+    records=bundle(inputs,archive,1773859634)
+    records['build_inputs'].extend(shared)
+    identity=hashlib.sha256(json.dumps(lock,sort_keys=True).encode()).hexdigest()
+    return archive,{'name':'i2util','version':'4.4.6-2','source_identity':identity,
+                    'notice':notice,'notice_member':'copyright',**records}
+
+
 def collect(rootfs, package_output, output, arch, version, work):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
@@ -172,9 +191,17 @@ def collect(rootfs, package_output, output, arch, version, work):
       'node-exporter':'go/node-exporter','frr-exporter':'go/frr-exporter','blackbox-exporter':'go/blackbox-exporter',
       'vyos-utils':'base/utils','python3-humps':'base/humps','ddclient':'base/ddclient','i2util':'base/i2util',
       'libi2util':'base/i2util','owamp':'base/owamp','openvpn-otp':'base/otp','udp-broadcast-relay':'base/relay','vyos-libpam-radius-auth':'base/pam'}
+    # Bind custom source recipes to exact built binary identities. A Debian
+    # package with a similar source/name must use its own exact Debian source.
+    produced={}
+    for deb in Path('/debs').glob('*.deb'):
+        values=subprocess.check_output(['dpkg-deb','--show',
+            '--showformat=${Package}\t${Version}\t${Architecture}',str(deb)],text=True).split('\t')
+        if len(values)!=3:raise ValueError('Invalid produced package identity')
+        produced.setdefault(values[0],set()).add((values[1],values[2]))
     audit_path=Path('/src/license-audit.json')
     approvals=json.loads(audit_path.read_text())['components'] if audit_path.is_file() else {}
-    shipped=[];components=[];assets=[];cached={}
+    shipped=[];components=[];assets=[];cached={};static={}
     project=Path('/project-source.tar')
     if not project.is_file():raise ValueError('Exact project reconstruction source archive missing')
     shared_archive=output/f'shirube-os-{version}-{arch}-shared-build-inputs.tar.gz'
@@ -196,13 +223,20 @@ def collect(rootfs, package_output, output, arch, version, work):
         key=(source_name,source_version,sha256(copyright_file))
         if key not in cached:
             component=work/re.sub('[^A-Za-z0-9_.-]','_',source_name+'-'+source_version+'-'+str(len(cached)));component.mkdir()
-            source=custom.get(name)
-            if source is None:
+            matching=(binary_version,architecture) in produced.get(name,set())
+            if name in produced and not matching:raise ValueError('Installed custom package differs from produced binary version')
+            source=custom.get(name) if matching else None
+            if source is None and matching:
                 match=next((path for prefix,path in extras.items()
                     if name.startswith(prefix) or source_name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
             inputs=[];nested=[]
             if source_name=='vyos-1x':nested.extend(ocaml_dependencies)
+            if source_name=='owamp':
+                if 'i2util' not in static:
+                    archive,dependency=static_i2util(output,arch,version,project,shared)
+                    assets.append(archive);static['i2util']=dependency
+                nested.append(static['i2util'])
             if name=='shirube-integration':
                 source=Path('/src/guest');origin=source_identity
                 lock=json.loads(Path('/src/source-lock.json').read_text())['netbird']

@@ -218,7 +218,7 @@ def salt(work):
     source=snapshot('salt_v3006.21/salt',work/'salt')
     shell("git init -q; git add .; GIT_AUTHOR_DATE=2026-03-18T00:00:00Z GIT_COMMITTER_DATE=2026-03-18T00:00:00Z git -c user.name='Stream snapshot' -c user.email=maintainers@vyos.net commit -qm 'Verified source snapshot'; git tag v3006.21",source)
     git('salt-tools',source/'python-tools-scripts')
-    shell(r'''apt-get install -y --no-install-recommends libssl-dev libffi-dev python3-dev python3-pip python3-venv patchelf fakeroot dpkg-dev cargo dh-make libgdbm-dev liblzma-dev libzmq3-dev pkg-config
+    shell(r'''apt-get install -y --no-install-recommends libssl-dev libffi-dev python3-dev python3-pip python3-venv patchelf fakeroot dpkg-dev cargo dh-make libgdbm-dev liblzma-dev libzmq3-dev pkg-config bash-completion
 python3 -m venv venv-build
 venv-build/bin/python3 -m pip install pip==25.2
 venv-build/bin/python3 -m pip install -r requirements/static/ci/py3.11/tools.txt ./python-tools-scripts relenv==0.22.3 build msgpack-python ppbt setuptools tornado
