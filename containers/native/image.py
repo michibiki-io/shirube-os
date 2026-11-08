@@ -226,7 +226,7 @@ def assemble(sources, packages, arch, version, output):
             elif image.is_file() and image.suffix in {'.cfg','.txt'}:
                 image.write_text(image.read_text().replace('VyOS','Shirube OS'))
         if arch=='amd64':
-            (source/'data/architectures/amd64.toml').write_text('packages = ["grub-efi-amd64", "grub-pc", "openvpn-dco", "telegraf", "vyos-ipt-netflow"]\nbootloaders = "grub-efi"\nsquashfs_compression_type = "xz -processors 2 -mem 1G -b 256k -always-use-fragments -no-recovery"\n')
+            (source/'data/architectures/amd64.toml').write_text('packages = ["grub-efi-amd64", "grub-pc-bin", "openvpn-dco", "telegraf", "vyos-ipt-netflow"]\nbootloaders = "grub-efi"\nsquashfs_compression_type = "xz -processors 2 -mem 1G -b 256k -always-use-fragments -no-recovery"\n')
         if arch=='arm64':
             (source/'data/live-build-config/bootloaders/grub-pc/grub.cfg').write_text('set default=0\nset timeout=5\nterminal_input console\nterminal_output console\nLINUX_LIVE\nLINUX_INSTALL\n')
         config=source/f'data/architectures/{arch}.toml';config.write_text(config.read_text().replace('xz -b 256k','xz -processors 2 -mem 1G -b 256k').replace('xz -Xbcj x86','xz -processors 2 -mem 1G -Xbcj x86'))
