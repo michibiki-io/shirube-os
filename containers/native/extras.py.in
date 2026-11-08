@@ -88,7 +88,8 @@ def vpp(work):
     source = git('vpp',work/'vpp')
     patches = git('vpp-patches',work/'patches')
     for patch in sorted((patches/'patches/vpp').glob('*.patch')):
-        subprocess.run(['git','-c','user.name=Stream local build','-c','user.email=maintainers@vyos.net','am',str(patch)],cwd=source,check=True)
+        subprocess.run(['git','-c','user.name=michibiki-io source preparation','-c','user.email=maintainers@michibiki.io','am',str(patch)],
+            cwd=source,env=dict(os.environ,GIT_COMMITTER_DATE='2026-03-18T00:00:00Z'),check=True)
     from producer.vpp_inputs import prepare
     prepare(json.loads(Path('/src/native/vpp-python.lock.json').read_text()),source/'build/external/downloads')
     # Upstream skips its unpinned pip download when the fixed Meson archive is

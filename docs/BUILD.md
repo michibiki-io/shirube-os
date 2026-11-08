@@ -128,3 +128,8 @@ stage, so an unavailable fixed input fails rather than resolving a newer one.
 The fixed inputs have passed an actual cache-disabled, network-disabled Meson
 bootstrap check on AMD64; the full modified VPP recipe still requires integrated
 build validation.
+
+Public VPP patch application preserves upstream authors and fixes the local
+preparer identity/timestamp. This avoids introducing host identity or wall-clock
+changes into the generated local patch commit identifiers. These local preparation
+commits are not described as upstream commits.
