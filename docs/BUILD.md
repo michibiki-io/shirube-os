@@ -140,3 +140,32 @@ after its configured tmpfs mounts. Before opening the dummy, the recipe detects
 non-regular/link entries and hides them with a fresh nodev tmpfs inside the
 container namespace, then verifies that only a regular file is used. Failure
 to isolate the path stops the build. No host input device is opened for this test.
+
+## Runtime component build inputs
+
+OWAMP uses the source-built, pinned I2util development package and executes
+its daemon tests as an unprivileged build user with normal fakeroot packaging.
+Kea uses its own hash-pinned Meson 1.9.2 source, separately from VPP's Meson.
+The tool source is retained with Kea's corresponding build inputs.
+
+Node exporter 1.9.1 uses the upstream `nobtrfs` tag on both architectures,
+excluding Btrfs metrics because the exact optional ioctl dependency lacks a
+permission notice. Other collectors remain available. Telegraf stays at 1.28.3
+with all plugins; RCON is fixed to the upstream MIT-license-only commit recorded
+in `source-lock.json`, which leaves its two Go files unchanged. Kinesis parent
+license and NOTICE files are pinned to the exact Go submodule commit. Embedded
+README license notices are retained only through explicit file/hash mappings.
+
+Each packaged Go runtime retains its actual linked module sources, upstream
+notices and compiler/standard-library source. The collector checks these against
+the installed inventory, executable hash and actual Go build information;
+missing dependency clearance blocks release. Source retention does not itself
+establish license clearance or a completed whole-OS reconstruction.
+
+For a local ISO investigation, `SHIRUBE_PRESERVE_FAILED_BUILD=1` together with a
+new `SHIRUBE_BUILD_STATE_FILE` preserves the stopped, task-owned container and
+its private inputs after failure. This avoids discarding diagnostic compiler
+outputs. It is opt-in, is not enabled by release automation, and does not turn
+failed or older-source output into an accepted candidate. The retained container
+may contain build signing keys and must stay private; remove that exact owned
+container and its private inputs when diagnosis is complete.

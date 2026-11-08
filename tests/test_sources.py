@@ -4,10 +4,42 @@ import tarfile
 import tempfile
 import unittest
 from unittest.mock import patch
-from producer.sources import extract, fetch
+from producer.sources import extract, fetch, download
+import socket
+import urllib.error
 
 
 class SourceTests(unittest.TestCase):
+    @patch('producer.sources.time.sleep')
+    def test_transient_get_retry_uses_same_input_and_discards_partial_bytes(self,_):
+        class Interrupted(io.BytesIO):
+            url='https://example.test/fixed-input'
+            def read(self,*args):
+                if self.tell():raise ConnectionResetError('transient fixture')
+                return super().read(3)
+        with tempfile.TemporaryDirectory() as temporary:
+            target=Path(temporary)/'source'
+            good=io.BytesIO(b'complete input');good.url='https://example.test/fixed-input'
+            with patch('producer.sources.urllib.request.urlopen',side_effect=[Interrupted(b'partial'),good]) as request:
+                download(good.url,target)
+            self.assertEqual(target.read_bytes(),b'complete input')
+            self.assertFalse(target.with_name('source.partial').exists())
+            self.assertEqual([call.args[0].full_url for call in request.call_args_list],[good.url,good.url])
+
+    @patch('producer.sources.time.sleep')
+    def test_permission_errors_are_not_retried_and_dns_retry_is_bounded(self,sleep):
+        with tempfile.TemporaryDirectory() as temporary:
+            target=Path(temporary)/'source'
+            denied=urllib.error.HTTPError('https://example.test/input',403,'Forbidden',{},None)
+            with patch('producer.sources.urllib.request.urlopen',side_effect=denied) as request:
+                with self.assertRaises(urllib.error.HTTPError):download(denied.url,target)
+            self.assertEqual(request.call_count,1);sleep.assert_not_called()
+            transient=urllib.error.URLError(socket.gaierror(socket.EAI_AGAIN,'transient fixture'))
+            with patch('producer.sources.urllib.request.urlopen',side_effect=transient) as request:
+                with self.assertRaises(urllib.error.URLError):download('https://example.test/input',target)
+            self.assertEqual(request.call_count,3);self.assertEqual(sleep.call_count,2)
+            self.assertFalse(target.exists());self.assertFalse(target.with_name('source.partial').exists())
+
     def test_exact_nested_member_selection_omits_unrelated_source_bundle(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);archive=root/'outer.tar'

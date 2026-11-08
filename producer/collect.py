@@ -171,7 +171,7 @@ def collect(rootfs, package_output, output, arch, version, work):
       'isc-kea':'kea/isc-kea','salt':'salt/salt','podman':'podman/podman','telegraf':'go/telegraf',
       'node-exporter':'go/node-exporter','frr-exporter':'go/frr-exporter','blackbox-exporter':'go/blackbox-exporter',
       'vyos-utils':'base/utils','python3-humps':'base/humps','ddclient':'base/ddclient','i2util':'base/i2util',
-      'owamp':'base/owamp','openvpn-otp':'base/otp','udp-broadcast-relay':'base/relay','vyos-libpam-radius-auth':'base/pam'}
+      'libi2util':'base/i2util','owamp':'base/owamp','openvpn-otp':'base/otp','udp-broadcast-relay':'base/relay','vyos-libpam-radius-auth':'base/pam'}
     audit_path=Path('/src/license-audit.json')
     approvals=json.loads(audit_path.read_text())['components'] if audit_path.is_file() else {}
     shipped=[];components=[];assets=[];cached={}
@@ -198,7 +198,8 @@ def collect(rootfs, package_output, output, arch, version, work):
             component=work/re.sub('[^A-Za-z0-9_.-]','_',source_name+'-'+source_version+'-'+str(len(cached)));component.mkdir()
             source=custom.get(name)
             if source is None:
-                match=next((path for prefix,path in extras.items() if name.startswith(prefix)),None)
+                match=next((path for prefix,path in extras.items()
+                    if name.startswith(prefix) or source_name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
             inputs=[];nested=[]
             if source_name=='vyos-1x':nested.extend(ocaml_dependencies)
@@ -222,7 +223,17 @@ def collect(rootfs, package_output, output, arch, version, work):
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
             kind='vpp' if str(source)=='/extra/vpp/vpp' else 'vyos-1x' if source_name=='vyos-1x' else None
             source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind=='vyos-1x' else files(source)
-            for path,relative in source_files:inputs.append((path,'source/'+relative,'sources'))
+            binary_map=source/'shirube-corresponding-inputs/binary-info.json'
+            generated={Path(item['path']).name:item['sha256'] for item in json.loads(binary_map.read_text())} if binary_map.is_file() else {}
+            for path,relative in source_files:
+                if (source/'shirube-corresponding-inputs/inventory.json').is_file():
+                    if relative.startswith('package/'):continue
+                    if relative in generated and sha256(path)==generated[relative]:continue
+                category='license_files' if relative.startswith('shirube-corresponding-inputs/notices/') or relative=='shirube-corresponding-inputs/go-copyright' else 'sources'
+                inputs.append((path,'source/'+relative,category))
+            if (source/'shirube-corresponding-inputs/inventory.json').is_file():
+                from .runtime_sources import dependencies as runtime_dependencies
+                nested.extend(runtime_dependencies(rootfs,source,name))
             if name=='vyos-http-api-tools':
                 bom,dependencies=http_dependencies(rootfs)
                 inputs.append((bom,'bundled-components.json','build_inputs'))
@@ -270,6 +281,11 @@ def collect(rootfs, package_output, output, arch, version, work):
                 if 'sources' in dependency:
                     source_refs=dependency['sources'];legal_records=dependency['license_files']
                     if not source_refs:raise ValueError('Exact bundled dependency sources are missing')
+                elif 'source_members' in dependency:
+                    expected={(item['member'],item['sha256']) for item in dependency['source_members']}
+                    source_refs=[record for record in records['sources'] if (record['member'],record['sha256']) in expected]
+                    if len(source_refs)!=len(expected):raise ValueError('Vendored runtime dependency source is incomplete')
+                    legal_records=records['license_files']
                 else:
                     source_refs=[record for record in records['sources'] if record['member']==dependency['source_member'] and record['sha256']==dependency['source_sha256']]
                     if len(source_refs)!=1:raise ValueError('Exact bundled dependency source is missing')

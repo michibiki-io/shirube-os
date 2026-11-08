@@ -5,6 +5,12 @@ architecture=${SHIRUBE_ARCHITECTURE:?}
 version=${SHIRUBE_VERSION:?}
 commit=${SHIRUBE_SOURCE_COMMIT:?}
 output=${SHIRUBE_ISO_DIRECTORY:?}
+preserve_failed=${SHIRUBE_PRESERVE_FAILED_BUILD:-0}
+case "$preserve_failed" in
+  0) ;;
+  1) [[ -n ${SHIRUBE_BUILD_STATE_FILE:-} ]] || { echo 'Private diagnosis requires a new build state file' >&2; exit 2; } ;;
+  *) echo 'SHIRUBE_PRESERVE_FAILED_BUILD must be 0 or 1' >&2; exit 2 ;;
+esac
 source_audit_args=()
 case ${SHIRUBE_INCLUDE_SOURCES:-0} in
   1) source_audit_args=(--include-sources) ;;
@@ -25,7 +31,16 @@ container_id=
 log_pid=
 task_nonce=$(basename "$private")
 cleanup() {
+  result=$?
   if [[ -n $container_id ]] && [[ $(docker inspect --format '{{index .Config.Labels "io.michibiki.shirube.task"}}' "$container_id" 2>/dev/null || true) == "$task_nonce" ]]; then
+    if (( result != 0 )) && [[ $preserve_failed == 1 ]]; then
+      if [[ $(docker inspect --format '{{.State.Running}}' "$container_id") == true ]]; then
+        docker stop --time 30 "$container_id" >/dev/null
+      fi
+      if [[ -n $log_pid ]]; then wait "$log_pid" || true; fi
+      echo 'Owned failed build preserved for private diagnosis; this is not a distributable artifact.' >&2
+      return "$result"
+    fi
     docker rm -f "$container_id" >/dev/null
   fi
   if [[ -n $log_pid ]]; then wait "$log_pid" || true; fi

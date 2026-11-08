@@ -6,6 +6,9 @@ import shutil
 import subprocess
 import tarfile
 import urllib.request
+import urllib.error
+import socket
+import time
 from urllib.parse import urlsplit
 
 
@@ -20,15 +23,26 @@ def download(url, target):
         raise ValueError('Only public HTTPS inputs without embedded credentials are supported')
     target = Path(target)
     temporary = target.with_name(target.name + '.partial')
-    try:
-        request = urllib.request.Request(url, headers={'User-Agent': 'shirube-os/0.1'})
-        with urllib.request.urlopen(request, timeout=60) as source, temporary.open('xb') as output:
-            if urlsplit(source.url).scheme != 'https':
-                raise ValueError('Input redirected away from HTTPS')
-            shutil.copyfileobj(source, output)
-        temporary.replace(target)
-    finally:
-        temporary.unlink(missing_ok=True)
+    for attempt in range(3):
+        try:
+            request = urllib.request.Request(url, headers={'User-Agent': 'shirube-os'})
+            with urllib.request.urlopen(request, timeout=60) as source, temporary.open('xb') as output:
+                if urlsplit(source.url).scheme != 'https':
+                    raise ValueError('Input redirected away from HTTPS')
+                shutil.copyfileobj(source, output)
+            temporary.replace(target)
+            return
+        except (urllib.error.URLError,TimeoutError,ConnectionResetError) as error:
+            retry=(isinstance(error,urllib.error.HTTPError) and error.code in {429,500,502,503,504})
+            reason=getattr(error,'reason',error)
+            retry=retry or isinstance(reason,(TimeoutError,ConnectionResetError)) or (
+                isinstance(reason,socket.gaierror) and reason.errno==socket.EAI_AGAIN)
+            if not retry or attempt==2:raise
+        finally:
+            temporary.unlink(missing_ok=True)
+        # Retry the same fixed public GET only; never switch inputs, relax
+        # hashes, change DNS, or retry authentication/permission failures.
+        time.sleep(attempt+1)
 
 
 def fetch(lock, destination):
