@@ -11,6 +11,65 @@ from .policy import version_parts
 DESCRIPTION = 'An open-source router OS based on VyOS Stream, built and maintained by michibiki-io.'
 
 
+def runtime_displays(root):
+    """Brand the native producers of banners and boot progress messages."""
+    root=Path(root)
+    banner=root/'usr/libexec/vyos/conf_mode/system_login_banner.py'
+    text=banner.read_text()
+    if text.count('Welcome to VyOS -')!=1:raise ValueError('Unexpected native login banner')
+    text=text.replace('Welcome to VyOS -','Welcome to Shirube OS -')
+    first,rest=text.split('\n',1)
+    banner.write_text(first+'\n# Modified by michibiki-io for Shirube OS on 2026-11-09.\n'+rest)
+    router=root/'usr/libexec/vyos/init/vyos-router'
+    lines=router.read_text().splitlines(True)
+    router.write_text(lines[0]+'# Modified by michibiki-io for Shirube OS on 2026-11-09.\n'+''.join(
+        line.replace('VyOS','Shirube OS') if line.lstrip().startswith('log_') else line for line in lines[1:]))
+    for template in (root/'usr/share/vyos/templates/login').glob('*.j2'):
+        if template.name=='default_motd.j2':continue
+        template.write_text(''.join(line if 'copyright' in line.lower() else line.replace('VyOS','Shirube OS')
+            for line in template.read_text().splitlines(True)))
+    motd=root/'usr/share/vyos/templates/login/default_motd.j2'
+    motd.write_text('{# Modified by michibiki-io for Shirube OS on 2026-11-09. #}\n'
+        'Shirube OS {{ version_data.version }}\n\n'+DESCRIPTION+'\n\n'
+        'Documentation: {{ version_data.documentation_url }}\n'
+        'Bug reports: {{ version_data.bugtracker_url }}\n\n'
+        'Upstream component copyrights and licenses: /usr/share/doc/*/copyright\n')
+
+
+def boot_menus(root, architecture, version):
+    """Brand generated GRUB entries after live-build expands its placeholders."""
+    version_parts(version)
+    if architecture not in {'amd64','arm64'}:raise ValueError('Unsupported boot-menu architecture')
+    serial='ttyAMA0' if architecture=='arm64' else 'ttyS0'
+    changed=0
+    pattern=re.compile(r'(?m)^menuentry (["\'])(.*?)\1([^\n]*)\{\n(.*?)^}',re.S)
+    for path in (Path(root)/'boot/grub').rglob('*.cfg'):
+        if path.is_symlink():raise ValueError('Boot configuration must be a regular file')
+        text=path.read_text()
+        def replace(match):
+            nonlocal changed
+            body=match[4]
+            if not re.search(r'(?m)^\s*linux\s+/live/vmlinuz',body):return match[0]
+            consoles=re.findall(r'(?:^|\s)console=([^,\s]+)',body)
+            if not consoles or consoles[-1] not in {'tty0',serial}:
+                raise ValueError('Unexpected generated live-console selection')
+            console='serial console' if consoles[-1]==serial else 'local console'
+            safe='fail-safe' in match[2] or 'nomodeset' in body
+            title='Shirube OS '+version+' Live ('+console+(', safe mode' if safe else '')+')'
+            attributes=match[3]
+            if console=='serial console' and not safe and '--hotkey=' not in attributes:
+                attributes+=' --hotkey=s '
+            body=body.replace('hostname=vyos','hostname=shirube-os')
+            changed+=1
+            return 'menuentry "'+title+'"'+attributes+'{\n'+body+'}'
+        updated=pattern.sub(replace,text)
+        if updated!=text:
+            notice='# Modified by michibiki-io for Shirube OS on 2026-11-09.\n'
+            path.write_text(updated if notice in updated else notice+updated)
+    if not changed:raise ValueError('No generated live GRUB entries were branded')
+    return changed
+
+
 def defer_factory_identity(root):
     """Keep base-files-owned paths out of the core DEB payload.
 

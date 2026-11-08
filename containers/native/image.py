@@ -82,10 +82,14 @@ def guest_package(arch, version):
     for name in ['shirube-netbird.service','shirube-first-boot.service']:
         target=package/'lib/systemd/system'/name;target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(Path('/src/guest')/name,target)
-    console='ttyAMA0' if arch=='arm64' else 'ttyS0'
-    dropin=package/'etc/systemd/system/shirube-first-boot.service.d/console.conf'
-    dropin.parent.mkdir(parents=True)
-    dropin.write_text('[Service]\nTTYPath=/dev/'+console+'\n')
+    for unit in ['getty@.service','serial-getty@.service']:
+        dropin=package/'etc/systemd/system'/(unit+'.d')/'shirube-enrollment.conf'
+        dropin.parent.mkdir(parents=True)
+        dropin.write_text('[Unit]\nConditionPathExists=!/config/shirube-first-boot\nConditionPathExists=!/usr/share/shirube/needs-enrollment\n')
+    for unit,description in [('vyos-router.service','Shirube OS Router'),('vyos.target','Shirube OS target')]:
+        dropin=package/'etc/systemd/system'/(unit+'.d')/'shirube-branding.conf'
+        dropin.parent.mkdir(parents=True)
+        dropin.write_text('[Unit]\nDescription='+description+'\n'+('[Service]\nSyslogIdentifier=shirube-router\n' if unit.endswith('.service') else ''))
     templates=work/'templates';templates.mkdir()
     run(str(source/'scripts/build-command-templates'),'/src/guest/service_netbird.xml',str(source/'schema/interface_definition.rng'),str(templates))
     shutil.copytree(templates/'service/netbird',package/'opt/vyatta/share/vyatta-cfg/templates/service/netbird')
@@ -114,8 +118,9 @@ def guest_package(arch, version):
         from arm_grub import patch_grub
         patch_core(core);patch_grub(core)
     install_brand(core,version,Path('/src/shirube-os-logo.svg'))
-    from producer.branding import defer_factory_identity
+    from producer.branding import defer_factory_identity,runtime_displays
     defer_factory_identity(core)
+    runtime_displays(core)
     # Change display strings only in UI/installer files. Keep copyright/license
     # headers and compatibility module/CLI/filesystem names intact.
     for base in ['usr/share/vyos/templates/grub','usr/libexec/vyos/op_mode','usr/lib/python3/dist-packages/vyos/system']:
@@ -161,7 +166,7 @@ def guest_package(arch, version):
         notice.write('\nShirube OS modifications by michibiki-io, 2026-11-08.\n'
                      'Upstream copyright and license terms remain applicable.\n')
         for path in changed:notice.write('Modified: '+str(path.relative_to(core))+'\n')
-    new_version=old_version+'+shirube2'
+    new_version=old_version+'+shirube3'
     control=core/'DEBIAN/control';control.write_text(control.read_text().replace('Version: '+old_version+'\n','Version: '+new_version+'\n'))
     (core/'DEBIAN/md5sums').unlink(missing_ok=True)
     repaired=debs/f'vyos-1x_{new_version}_{arch}.deb';run('dpkg-deb','--root-owner-group','-b',str(core),str(repaired));original.unlink()
@@ -237,6 +242,9 @@ def assemble(sources, packages, arch, version, output):
         factory.parent.mkdir(parents=True,exist_ok=True);shutil.copy2('/src/guest/factory_prepare.py',factory)
         hook.write_text('#!/bin/sh\nset -eu\npython3 /usr/lib/python3/dist-packages/vyos/xml_ref/update_cache.py\ndepmod -a 6.6.128-vyos\nSHIRUBE_BUILD_CHROOT=1 python3 /usr/libexec/shirube/factory_prepare.py '+arch+'\nrm /usr/libexec/shirube/factory_prepare.py\n')
         hook.chmod(0o755)
+        binary_hook=source/'data/live-build-config/hooks/live/100-shirube.binary'
+        binary_hook.write_text('#!/usr/bin/python3\nimport sys\nfrom pathlib import Path\nsys.path.insert(0,"/src")\nfrom producer.branding import boot_menus\nboot_menus(Path.cwd(),'+repr(arch)+','+repr(version)+')\n')
+        binary_hook.chmod(0o755)
         with (source/'data/live-build-config/environment.chroot').open('a') as target:target.write('\nVPP_INSTALL_SKIP_SYSCTL=1\n')
         mark_changed(original_build)
         handler=functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(repo))

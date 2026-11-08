@@ -1,7 +1,6 @@
 [Unit]
 Description=Shirube OS per-instance local-console enrollment
 After=vyos-router.service
-Before=getty.target getty@tty1.service serial-getty@ttyS0.service serial-getty@ttyAMA0.service
 ConditionPathExists=|/config/shirube-first-boot
 ConditionPathExists=|/usr/share/shirube/needs-enrollment
 

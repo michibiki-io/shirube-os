@@ -18,9 +18,10 @@ from .sanitize import audit, sanitize
 
 
 class VM:
-    def __init__(self, arch, disk, work, iso=None, accelerator='kvm'):
+    def __init__(self, arch, disk, work, iso=None, accelerator='kvm', boot_console='serial'):
         native(arch);self.work=Path(work);self.work.mkdir()
         if accelerator not in {'kvm','tcg'}:raise ValueError('Unsupported QEMU accelerator')
+        if boot_console not in {'serial','local'}:raise ValueError('Unsupported boot console')
         self.accelerator=accelerator
         self.disk=Path(disk);self.iso=iso;self.arch=arch
         options=([('/usr/share/AAVMF/AAVMF_CODE.fd','/usr/share/AAVMF/AAVMF_VARS.fd')] if arch=='arm64' else
@@ -57,6 +58,13 @@ class VM:
         self.child=fdspawn(self.socket.fileno(),encoding='utf-8',codec_errors='replace',timeout=1200 if accelerator=='tcg' else 300)
         self.child.logfile=None
         self.username=None;self.password=None
+        if iso and boot_console=='serial':
+            try:
+                self.child.expect(r'Live \(serial console\)',timeout=120 if accelerator=='tcg' else 30)
+                self.child.send('s')
+            except Exception:
+                self.close()
+                raise
 
     def enrollment_prompt(self):
         self.child.expect('Administrator name:')
@@ -115,7 +123,7 @@ class VM:
 
     def poweroff(self):
         self.child.sendline('sudo -n systemctl poweroff --no-block')
-        try:self.process.wait(timeout=120)
+        try:self.process.wait(timeout=600 if self.accelerator=='tcg' else 120)
         except subprocess.TimeoutExpired:raise RuntimeError('Guest did not shut down cleanly') from None
         self.close()
 
