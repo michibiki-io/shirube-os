@@ -85,6 +85,25 @@ class SaltSourceTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'source SHA256 mismatch'):
                     retain(guest, root / 'changed.tar.gz', root / 'work', lock_path)
 
+    def test_embedded_sdk_notice_keeps_exact_header_and_checks_the_entire_source(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            archive = root / 'source.tar.gz'
+            header = b'/* Copyright upstream. Apache-2.0. */\n'
+            content = header + b'int original_code;\n'
+            with tarfile.open(archive, 'w:gz') as target:
+                member = tarfile.TarInfo('source/header.h')
+                member.size = len(content)
+                target.addfile(member, io.BytesIO(content))
+            declaration = {'member': member.name, 'sha256': hashlib.sha256(content).hexdigest(),
+                           'prefix_bytes': len(header),
+                           'notice_sha256': hashlib.sha256(header).hexdigest()}
+            self.assertEqual(notice_members(archive, [declaration]), {member.name: header})
+            for field, value in [('sha256', '0' * 64), ('notice_sha256', '0' * 64),
+                                 ('prefix_bytes', len(content) + 1)]:
+                changed = {**declaration, field: value}
+                with self.assertRaises(ValueError): notice_members(archive, [changed])
+
     def test_notice_symlinks_and_duplicate_members_are_rejected(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

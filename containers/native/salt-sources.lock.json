@@ -510,6 +510,42 @@
         {
           "member": "msgpack-1.0.2/COPYING",
           "sha256": "492dedba85da5872f78e6091bcd1fea474d660d35acb4dee964b8aab3f007427"
+        },
+        {
+          "member": "msgpack-1.0.2/msgpack/pack.h",
+          "sha256": "56c566812002a484c0f4a0aa003f035474f47bfe19e9c448a3a9578954a44cdb",
+          "prefix_bytes": 672,
+          "notice_sha256": "f2069e4431286eb31ef3d939462b6b69c965fe4ac9128d584838282a4ce19441"
+        },
+        {
+          "member": "msgpack-1.0.2/msgpack/pack_template.h",
+          "sha256": "15ecdd73704df3554ae55e8f9995b7ee03033654a93ef6edef0f35de58110479",
+          "prefix_bytes": 682,
+          "notice_sha256": "1c7207a3ec3492b3308d141172b3cb9e4f3bb52a547ca831d607737be05b3265"
+        },
+        {
+          "member": "msgpack-1.0.2/msgpack/sysdep.h",
+          "sha256": "0608ba6aa97c6b1eb0435ba9538b1cce5661ff4bb6dc637434fc9f7e36a56d77",
+          "prefix_bytes": 676,
+          "notice_sha256": "80dfc29d7f17f9dbe9a23fcbc4d1429a39fca1a7bc3d58be4970553e8372688c"
+        },
+        {
+          "member": "msgpack-1.0.2/msgpack/unpack.h",
+          "sha256": "3ca8c5ca91d8688bbfe1842c61ab97935d6b522af285aed818abdf31b2bdbbcb",
+          "prefix_bytes": 674,
+          "notice_sha256": "3ab2869c3a1b477020562c9e8de9ed6b93f2b54413f192a0ffe4562028214820"
+        },
+        {
+          "member": "msgpack-1.0.2/msgpack/unpack_define.h",
+          "sha256": "79bb8a9638fab7679bed454cf9c97a72bda5d282b43dc331de5ed986aabac044",
+          "prefix_bytes": 683,
+          "notice_sha256": "2221b28c62757d588d5447c9b756c77bb72aa8be7025d116024e388ef80b19d6"
+        },
+        {
+          "member": "msgpack-1.0.2/msgpack/unpack_template.h",
+          "sha256": "f1fe6642e2e6d58847619850062eba031c39e3f6df3e06e383537f1258e8019a",
+          "prefix_bytes": 684,
+          "notice_sha256": "edd9f5f29eff259c8138f87e393a9f570bb1f028d19b838f83beb74699a742bb"
         }
       ],
       "additional_notices": [

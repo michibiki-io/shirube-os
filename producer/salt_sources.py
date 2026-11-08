@@ -96,7 +96,7 @@ def installed_distributions(rootfs):
 
 def notice_members(archive, declarations):
     """Read only explicitly pinned regular legal files, without extraction."""
-    expected = {item['member']: item['sha256'] for item in declarations}
+    expected = {item['member']: item for item in declarations}
     if not expected or len(expected) != len(declarations):
         raise ValueError('Missing or duplicate Salt source legal notice')
     for member in expected:
@@ -110,8 +110,16 @@ def notice_members(archive, declarations):
         if name in found or not regular or not 0 < size <= 4 * 1024**2:
             raise ValueError('Invalid or duplicate Salt source legal file')
         content = read()
-        if hashlib.sha256(content).hexdigest() != expected[name]:
+        declaration = expected[name]
+        if hashlib.sha256(content).hexdigest() != declaration['sha256']:
             raise ValueError('Salt source legal notice hash differs')
+        if 'prefix_bytes' in declaration:
+            length = declaration['prefix_bytes']
+            if type(length) is not int or not 0 < length <= len(content):
+                raise ValueError('Invalid embedded SDK notice extent')
+            content = content[:length]
+            if hashlib.sha256(content).hexdigest() != declaration['notice_sha256']:
+                raise ValueError('Embedded SDK legal notice hash differs')
         found[name] = content
     if zipfile.is_zipfile(archive):
         with zipfile.ZipFile(archive) as source:
