@@ -65,6 +65,21 @@ def inactive(vm):
     vm.command('test "$(sudo -n systemctl is-active shirube-netbird.service)" = inactive')
 
 
+def rejected_enrollment(vm, key):
+    """The native op-mode shell returns zero even when its command fails.
+
+    Require the controller's fixed failure response as well as the caller's
+    subsequent inactive/no-receipt and secret-erasure checks.
+    """
+    try:
+        response=vm.secret_command('generate netbird enrollment',
+            'NetBird one-shot enrollment key: ',key,timeout=150)
+    except RuntimeError:
+        return
+    if 'NetBird operation failed; secret details suppressed' not in response:
+        raise ValueError('Guest did not reject an unregistered enrollment key')
+
+
 def verify(vm, url, certificate, key):
     """Exercise native OS commands, keeping setup material out of shell input."""
     from .netbird import validate
@@ -97,12 +112,7 @@ print('SECRET_ABSENT')
     # rejection, not only a mocked subprocess or local input validation.
     import uuid
     failed_key=str(uuid.uuid4())
-    try:
-        vm.secret_command('generate netbird enrollment','NetBird one-shot enrollment key: ',failed_key,timeout=150)
-    except RuntimeError:
-        pass
-    else:
-        raise ValueError('Guest accepted an unregistered enrollment key')
+    rejected_enrollment(vm,failed_key)
     inactive(vm)
     vm.command('sudo -n test ! -e /config/netbird/enrolled.json')
     if 'SECRET_ABSENT' not in vm.secret_command(scan_command,'Secret scan input: ',failed_key):

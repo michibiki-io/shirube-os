@@ -83,16 +83,14 @@ architecture checks are separate from label selection.
 
 A conservative complete-build preflight currently requires 160 GiB free storage
 and 8 GiB available memory. This is a planning budget, not an observed minimum.
-KVM is a separate boot-stage requirement. TCG has not been validated and cannot
-satisfy the boot gate. The hosted runner defaults are selection defaults, not
+KVM is a separate boot-stage requirement. Diagnostic AMD64 ISO/install/access/reboot tests passed under explicit TCG, but the complete production TCG disk/lifecycle path and its resource/time budget remain unvalidated; it cannot yet satisfy the release boot gate. The hosted runner defaults are selection defaults, not
 claims that their available resources or nested virtualization meet these needs.
 
 An explicit experimental TCG live-ISO probe is available in
 `scripts/test-iso-console.py`, executed with the native toolchain container.
 It uses two virtual CPUs, 2 GiB guest RAM and a 1200-second boot timeout,
 fresh firmware and a new temporary disk. It checks console enrollment/access
-and a live default route. It has not yet been exercised against a completed ISO
-and does not relax the release KVM requirement or establish final-disk acceptance.
+and a live default route. The underlying VM path passed diagnostic AMD64 ISO/install/access/reboot tests; the standalone probe command is not claimed as separately exercised. These component results do not relax the production KVM requirement or establish complete final-disk acceptance.
 
 The FPM bootstrap installs all ten gems from
 `containers/native/rubygems.lock.json`, verifying their public archive hashes

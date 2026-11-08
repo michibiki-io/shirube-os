@@ -10,8 +10,7 @@ controller is `producer/netbird.py`; intended installation names are
 `/usr/libexec/shirube/netbird_control.py` for the imported module and
 `/usr/libexec/shirube/netbird-control` for its executable entry point. The pinned
 client belongs at `/usr/libexec/shirube/netbird`. The integration package generates templates/cache with the pinned Stream
-compiler and registers its configuration handler. These guest changes still need
-actual runtime verification.
+compiler and registers its configuration handler. Native ARM64 diagnostic QCOW2 guest checks have passed the lifecycle below; AMD64 and both-format acceptance remain incomplete.
 
 Use the OS configuration CLI for persistent service settings:
 
@@ -105,18 +104,14 @@ only through private stdin and the guest's hidden prompt. The original disk is
 read-only and its hash is checked again. Temporary peer disks, firmware, CA
 private key and management state are removed; only component evidence remains.
 
-This harness has not yet run against a completed Shirube OS disk. Its existence
-does not establish a successful guest test, and the publication gate remains
-closed until genuine runtime evidence is integrated and all other checks pass.
+The native ARM64 sanitized diagnostic QCOW2 passed real registration/rejection, native commit/save, disable/enable, saved reboot identity, secret scans and removal/reboot inactivity. This component result does not clear the complete distribution or substitute for AMD64/VMDK evidence. The full publication gate remains closed.
 
 The full `build-release.sh` path starts the same ephemeral fixture through
 `run-release-container.py`. It passes only the public CA as a file and the
 temporary authorization through private stdin, consumed before any build
 subprocess starts. Each provisioned QCOW2/VMDK test clone requests its own
 one-use key at test time, so an hours-long build cannot consume the key's
-enrollment lifetime. Both clones must complete the native guest checks before
-the producer can record a NetBird `PASS`. This integration remains unrun until
-complete images and a suitable native virtualization environment are available.
+enrollment lifetime. Both clones must complete the native guest checks before the producer can record a NetBird `PASS`. Complete clean-head candidates and both-architecture/formats acceptance remain required.
 
 ## Component source reconstruction
 
@@ -145,3 +140,13 @@ notices are installed in the integration package and mapped individually in
 the source/license inventory. Each requires its own license decision; parent
 approval cannot waive an unresolved linked component. This component proof does
 not establish a complete OS reconstruction or byte-identical upstream output.
+
+The pinned native operational shell can return exit status zero when its internal
+command fails. Failed enrollment must display the controller's fixed failure
+message and leave the service inactive, with no enrollment receipt or temporary
+key. Runtime acceptance checks all these conditions and then proves successful
+registration independently; it never infers enrollment from shell status alone.
+
+固定した上流の操作用シェルは、内部コマンドの失敗時にも終了コード0を返す場合があります。
+登録失敗は固定の失敗表示、サービスの停止、登録済み情報と一時キーの不在で確認します。
+実動作試験では、その後の有効なキーによる登録も別に確認します。

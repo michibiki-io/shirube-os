@@ -86,10 +86,27 @@ def guest_package(arch, version):
         dropin=package/'etc/systemd/system'/(unit+'.d')/'shirube-enrollment.conf'
         dropin.parent.mkdir(parents=True)
         dropin.write_text('[Unit]\nConditionPathExists=!/config/shirube-first-boot\nConditionPathExists=!/usr/share/shirube/needs-enrollment\n')
-    for unit,description in [('vyos-router.service','Shirube OS Router'),('vyos.target','Shirube OS target')]:
+    # Keep native unit names/dependencies and upstream notices; override only
+    # the product descriptions and journal display identifiers.
+    displays={
+        'vyos-router.service':'Router',
+        'vyos.target':'target',
+        'vyos-configd.service':'configuration daemon',
+        'vyos-hostsd.service':'DNS configuration keeper',
+        'vyos-event-handler.service':'event handler',
+        'vyos-wan-load-balance.service':'WAN Load Balancer',
+        'vyos-system-update.service':'system update-check service',
+        'vyos-domain-resolver.service':'firewall domain resolver',
+        'vyos-network-event-logger.service':'network-event logger daemon',
+        'vyos-conntrack-logger.service':'conntrack logger daemon',
+        'root-partition-auto-resize.service':'root partition auto resizing',
+    }
+    for unit,description in displays.items():
         dropin=package/'etc/systemd/system'/(unit+'.d')/'shirube-branding.conf'
         dropin.parent.mkdir(parents=True)
-        dropin.write_text('[Unit]\nDescription='+description+'\n'+('[Service]\nSyslogIdentifier=shirube-router\n' if unit.endswith('.service') else ''))
+        identifier='shirube-'+unit.removeprefix('vyos-').removesuffix('.service')
+        dropin.write_text('[Unit]\nDescription=Shirube OS '+description+'\n'+
+            ('[Service]\nSyslogIdentifier='+identifier+'\n' if unit.endswith('.service') else ''))
     templates=work/'templates';templates.mkdir()
     run(str(source/'scripts/build-command-templates'),'/src/guest/service_netbird.xml',str(source/'schema/interface_definition.rng'),str(templates))
     shutil.copytree(templates/'service/netbird',package/'opt/vyatta/share/vyatta-cfg/templates/service/netbird')
