@@ -467,3 +467,11 @@ Mixed grants, license pointers, templates, unknown text and supporting notices
 were deferred. In particular, locating an MIT grant after an Apache license does
 not permit discarding the preceding Apache terms. This is not an SPDX-name
 lookup, a package-repository approval, or clearance for a parent package or OS.
+
+A further [184 exact linked source/notice decisions](evidence/diagnostic-runtime-apache-license-bindings.json)
+cover complete Apache-2.0 grants. Every operative term matched the original
+license text; all appendix/copyright variations and the supporting notice were
+read separately. Original application-instruction omissions do not remove any
+operative condition, and the original full notices remain unchanged in the
+artifacts. Appended BSD/other licenses, mixed terms and unknown supporting
+notices were deferred rather than hidden behind an Apache-only decision.
