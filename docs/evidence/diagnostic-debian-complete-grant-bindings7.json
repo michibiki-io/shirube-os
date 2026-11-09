@@ -1,0 +1,714 @@
+{
+  "kind": "exact-debian-complete-grant-and-path-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 5,
+  "components": [
+    {
+      "source": "freeipmi",
+      "version": "1.6.10-1",
+      "dsc_sha256": "ad17f010151af7f07127b20bfbb31a91ced0480ae23552c92d66549f4f1c590c",
+      "binaries": [
+        {
+          "name": "freeipmi-common",
+          "version": "1.6.10-1",
+          "architecture": "all",
+          "copyright_sha256": "80e19367ced85469d702e01ca551289491b3aa04a926b07ba90faae8579990a4"
+        },
+        {
+          "name": "libfreeipmi17",
+          "version": "1.6.10-1+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "80e19367ced85469d702e01ca551289491b3aa04a926b07ba90faae8579990a4"
+        }
+      ],
+      "copyright_sha256": "80e19367ced85469d702e01ca551289491b3aa04a926b07ba90faae8579990a4",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ZRESEARCH",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.bmc-watchdog",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmi-dcmi",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmi-fru",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmiconsole",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmidetect",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmimonitoring",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmiping",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmipower",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.ipmiseld",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.pstdout",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.sunbmc",
+          "sha256": "48f44386b3f359e70d7e4a5d7f1d529d8591a7c64c47df3f4abdf2ad45a6d537",
+          "read_reference": {
+            "component": "freeipmi",
+            "member": "COPYING.sunbmc",
+            "sha256": "48f44386b3f359e70d7e4a5d7f1d529d8591a7c64c47df3f4abdf2ad45a6d537",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "bec5f974d6fa66cf53499bb100a5efd8092c02f929af5750e369c968ff7135c1",
+          "read_reference": {
+            "component": "freeipmi",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-3+",
+          "full_normalized_body_sha256": "afafc4ca1f2524d7f92a583a7ea74bc899b8bce43acddb40e0e8770fc8586342",
+          "read_reference": {
+            "component": "freeipmi",
+            "label": "LGPL-3+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "freeipmi",
+          "Upstream-Contact": "Albert Chu <chu11@llnl.gov>",
+          "Source": "https://ftp.gnu.org/gnu/freeipmi"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2003-2012 FreeIPMI Core Team\n2004-2007 The Regents of the University of California.\n2007-2009 Lawrence Livermore National Security, LLC"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2007 Matthew Johnson <debian@matthew.ath.cx>\n2008 Jean Parpaillon <jean.parpaillon@kerlabs.com>\n2009-2012 Yaroslav Halchenko <debian@onerussian.com>\n2012 Ferenc W\u00e1gner <wferi@niif.hu>"
+        }
+      ]
+    },
+    {
+      "source": "isc-dhcp",
+      "version": "4.4.3-P1-2",
+      "dsc_sha256": "927cfd9006d3b2b40415c4241cca276f4bc8fdeb8f604cc80ada83735a65a498",
+      "binaries": [
+        {
+          "name": "isc-dhcp-client",
+          "version": "4.4.3-P1-2",
+          "architecture": "arm64",
+          "copyright_sha256": "1ab68a7715e2e10c9ebe76171e9cad352757a43108a6f1f0fece8eb61451f070"
+        },
+        {
+          "name": "isc-dhcp-relay",
+          "version": "4.4.3-P1-2",
+          "architecture": "arm64",
+          "copyright_sha256": "1ab68a7715e2e10c9ebe76171e9cad352757a43108a6f1f0fece8eb61451f070"
+        }
+      ],
+      "copyright_sha256": "1ab68a7715e2e10c9ebe76171e9cad352757a43108a6f1f0fece8eb61451f070",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "45a39c430be0920cb9570f34b32d2378fe6048c034f2f3265b9326d64ada73df",
+          "read_reference": {
+            "component": "isc-dhcp",
+            "member": "LICENSE",
+            "sha256": "45a39c430be0920cb9570f34b32d2378fe6048c034f2f3265b9326d64ada73df",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "MPL-2.0",
+          "full_normalized_body_sha256": "1afe64917115edf41ef406efdfe7113fd26a12652a9ec4c41b84ce2545f6abff",
+          "read_reference": {
+            "component": "isc-dhcp",
+            "label": "MPL-2.0"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "603d9cae458759baa0a3d028b9e972dee8a923668afcbcb291c0f3a8f84dc391",
+          "read_reference": {
+            "component": "isc-dhcp",
+            "label": "GPL-2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Source": "https://www.isc.org/downloads/dhcp"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\n2004-2022 by Internet Systems Consortium, Inc. (\"ISC\")\n1995-2003 by Internet Software Consortium"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n2008-2013 Andrew Pollock <apollock@debian.org>\n2011-2018 Michael Gilbert <mgilbert@debian.org>\n2022 Santiagi Ruano Rinc\u00f3n <santiago@debian.org>"
+        },
+        {
+          "Files": "debian/dhcp-lease-list.8",
+          "Copyright": "\n2008 Christian Hammers <ch@westend.com>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libnvme",
+      "version": "1.3-1+deb12u1",
+      "dsc_sha256": "c8d65529c5ee8f61f84766661257c6f05525d0ed0b9684517b639b1e99522b9c",
+      "binaries": [
+        {
+          "name": "libnvme1",
+          "version": "1.3-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "9fa4b177c0d9df274aadce8df761188b44379bb87f92a18a855f71711483273f"
+        }
+      ],
+      "copyright_sha256": "9fa4b177c0d9df274aadce8df761188b44379bb87f92a18a855f71711483273f",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "fuse",
+            "member": "COPYING.LIB",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "ccan/ccan/array_size/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/ccan/build_assert/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/ccan/check_type/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/ccan/container_of/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/ccan/endian/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/ccan/list/LICENSE",
+          "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e",
+          "read_reference": {
+            "component": "bmon",
+            "member": "LICENSE.MIT",
+            "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+          }
+        },
+        {
+          "member": "ccan/ccan/minmax/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/ccan/short_types/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/ccan/str/LICENSE",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "ccan/licenses/BSD-MIT",
+          "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e",
+          "read_reference": {
+            "component": "bmon",
+            "member": "LICENSE.MIT",
+            "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+          }
+        },
+        {
+          "member": "ccan/licenses/CC0",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "nvme-cli",
+            "member": "ccan/ccan/build_assert/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "b74dc76d07293d7f899278dcc9970fc2faeaf352602460778234e5906fbc94ee",
+          "read_reference": {
+            "component": "libnvme",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "CC0",
+          "full_normalized_body_sha256": "05d9f1a0af61535887a399e161c9d14d1f898043b61d05fe4854ed8c6460179c",
+          "read_reference": {
+            "component": "libnvme",
+            "label": "CC0"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "ccde10bd0a1854680c7dad679cb531bdbdeaaaa73351c188c34316665f517416",
+          "read_reference": {
+            "label": "GPL-2",
+            "component": "fuse"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "410e2ee83de8f15460b7096345301e6dc51dbc03fd0c4135434bef150326528f",
+          "read_reference": {
+            "label": "LGPL-2.1+",
+            "component": "nvme-cli"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libnvme",
+          "Upstream-Contact": "https://github.com/linux-nvme/libnvme/issues",
+          "Source": "https://github.com/linux-nvme/libnvme/releases"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2021-2023 Dell Inc."
+        },
+        {
+          "Files": "ccan/*",
+          "Copyright": "Rusty Russell <rusty@rustcorp.com.au>"
+        },
+        {
+          "Files": "ccan/ccan/list/*",
+          "Copyright": "Rusty Russell <rusty@rustcorp.com.au>"
+        },
+        {
+          "Files": "ccan/ccan/minmax/*",
+          "Copyright": "David Gibson <david@gibson.dropbear.id.au>"
+        },
+        {
+          "Files": "doc/*",
+          "Copyright": "2022-2023 Keith Busch <kbusch@kernel.org>"
+        },
+        {
+          "Files": "doc/kernel-doc",
+          "Copyright": "1998 Michael Zucchi\n2000-2001 Tim Waugh <twaugh@redhat.com>\n2001 Simon Huggins\n2005-2012 Randy Dunlap\n2012 Dan Luedtke"
+        },
+        {
+          "Files": "examples/*",
+          "Copyright": "2020 Western Digital Corp."
+        },
+        {
+          "Files": "examples/discover-loop.py",
+          "Copyright": "2021 Hannes Reinecke, SUSE Software Solutions"
+        },
+        {
+          "Files": "examples/meson.build",
+          "Copyright": "2021 Dell Inc."
+        },
+        {
+          "Files": "libnvme/* pyproject.toml",
+          "Copyright": "2021 SUSE Software Solutions"
+        },
+        {
+          "Files": "libnvme/meson.build",
+          "Copyright": "2021 Dell Inc."
+        },
+        {
+          "Files": "src/*",
+          "Copyright": "2020 Western Digital Corporation"
+        },
+        {
+          "Files": "src/meson.build",
+          "Copyright": "2021 Dell Inc."
+        },
+        {
+          "Files": "src/nvme/log.c",
+          "Copyright": "2021 SUSE LLC"
+        },
+        {
+          "Files": "src/nvme/log.h",
+          "Copyright": "2021 Martin Wilck, SUSE LLC"
+        },
+        {
+          "Files": "src/nvme/private.h src/nvme/json.c",
+          "Copyright": "2021 SUSE Software Solutions"
+        },
+        {
+          "Files": "test/*",
+          "Copyright": "2020 Western Digital Corporation"
+        },
+        {
+          "Files": "test/meson.build",
+          "Copyright": "2021 Dell Inc."
+        },
+        {
+          "Files": "test/tree.py",
+          "Copyright": "2021 SUSE Software Solutions AG"
+        },
+        {
+          "Files": "examples/mi-mctp.c src/nvme/mi-mctp.c src/nvme/api-types.h src/nvme/mi.* src/libnvme-mi.h test/utils.* test/mi-mctp.c test/mi.c",
+          "Copyright": "2021-2022 Code Construct"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2022-2023 Daniel Baumann <daniel.baumann@progress-linux.org>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "nano",
+      "version": "7.2-1+deb12u1",
+      "dsc_sha256": "e7ec15144ec5b984681d079ea4e3a0f6f17eb92895376511df6822bd770e7281",
+      "binaries": [
+        {
+          "name": "nano",
+          "version": "7.2-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "b7d0fd5f3f8805f62b2e67fc8d9f97699ab921b03b3d0d79f402548ad2f5e80e"
+        }
+      ],
+      "copyright_sha256": "b7d0fd5f3f8805f62b2e67fc8d9f97699ab921b03b3d0d79f402548ad2f5e80e",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.DOC",
+          "sha256": "f45cc81b400a048b56c9edbd4c3317f7a8958463dfd55aa96f268ecfd6baa12c",
+          "read_reference": {
+            "component": "nano",
+            "member": "COPYING.DOC",
+            "sha256": "f45cc81b400a048b56c9edbd4c3317f7a8958463dfd55aa96f268ecfd6baa12c",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "0d678d6d9b201dd2397904a48037f08b4515074fd09b52ef46669827b5ad6346",
+          "read_reference": {
+            "component": "nano",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "GFDL-NIV+",
+          "full_normalized_body_sha256": "fbb84a55a1fb113e763815b2d6be08dc3b2364332e60f8fbdade64b3cf698052",
+          "read_reference": {
+            "component": "nano",
+            "label": "GFDL-NIV+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "nano",
+          "Source": "https://nano-editor.org/dist/",
+          "Comment": "\nThis package was debianized by Jordi Mallach <jordi@debian.org> on\nWed,  8 Dec 1999 19:39:12 +0100.\n\nGNU nano main authors are Chris Allegreta <chrisa@asty.org>,\nDavid Lawrence Ramsey <pooka109@cox.net> and\nBenno Schulenberg <bensberg@justemail.net>."
+        },
+        {
+          "Files": "*",
+          "Copyright": "\u00a9 1999-2011, 2013-2016 Free Software Foundation, Inc.\n\u00a9 2014-2023 The contributors to GNU nano"
+        },
+        {
+          "Files": "doc/*.1 doc/*.5 doc/*.texi",
+          "Copyright": "\u00a9 1999-2011, 2013-2023 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\u00a9 1999-2023 Jordi Mallach <jordi@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "tpm2-tss",
+      "version": "3.2.1-3",
+      "dsc_sha256": "878d496e96fb79c19f950649e9a15552dc4fdab8f4ffb64140c2f7209be577e2",
+      "binaries": [
+        {
+          "name": "libtss2-esys-3.0.2-0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-fapi1",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-mu0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-rc0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-sys1",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-tcti-cmd0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-tcti-device0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-tcti-mssim0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-tcti-swtpm0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        },
+        {
+          "name": "libtss2-tctildr0",
+          "version": "3.2.1-3",
+          "architecture": "arm64",
+          "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a"
+        }
+      ],
+      "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "18c1bf4b1ba1fb2c4ffa7398c234d83c0d55475298e470ae1e5e3a8a8bd2e448",
+          "read_reference": {
+            "component": "vpp-inputs",
+            "member": "dpdk-25.07/license/bsd-2-clause.txt",
+            "sha256": "1531b66affc3bae796d755e12850795e56e25ccedd685bf7d2644d8ddfadbad8"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "TCG",
+          "full_normalized_body_sha256": "472867778432c8c9a41ee2c0346a40df93d73342fa2a029159114e444b4d0511",
+          "read_reference": {
+            "component": "tpm2-tss",
+            "label": "TCG"
+          }
+        },
+        {
+          "label": "GPL-3",
+          "full_normalized_body_sha256": "2d71e4fc986124044965eb7db7c90fb1bf82558ecf90919227a86575a7e3a9c4",
+          "read_reference": {
+            "component": "tpm2-tss",
+            "label": "GPL-3"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "971850f7f84e5dc88bd6b52e0d0c1fbffdaec4eae2fd311b1511d42bf7855c51",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "libfido2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "TPM2.0-TSS",
+          "Source": "https://github.com/tpm2-software/tpm2-tss"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2015, Intel Corporation"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2016 Canonical Ltd.\n2016 Mathieu Trudel-Lapierre <mathieu.trudel-lapierre@canonical.com>\n2017 Ivan Hu <ivan.hu@ubuntu.com>\n2017 Ying-Chun Liu (PaulLiU) <paulliu@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,631 @@
+{
+  "kind": "exact-debian-complete-grant-and-path-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 6,
+  "components": [
+    {
+      "source": "bgpq3",
+      "version": "0.1.36.1-1",
+      "dsc_sha256": "920f545a407a0104bfff1d41011f134b01a8ed3ab68c0003e38fb69514371496",
+      "binaries": [
+        {
+          "name": "bgpq3",
+          "version": "0.1.36.1-1",
+          "architecture": "arm64",
+          "copyright_sha256": "db1de3394ab8b11635f718ea012df42d5a539e27ec48d58978234b2b1374bec1"
+        }
+      ],
+      "copyright_sha256": "db1de3394ab8b11635f718ea012df42d5a539e27ec48d58978234b2b1374bec1",
+      "original_legal_matches": [
+        {
+          "member": "COPYRIGHT",
+          "sha256": "da803dd072b08043817d44d8d25543219e69ff41d2014e39ba69f957b703ce4d",
+          "read_reference": {
+            "component": "bgpq3",
+            "member": "COPYRIGHT",
+            "sha256": "da803dd072b08043817d44d8d25543219e69ff41d2014e39ba69f957b703ce4d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "FSFUL",
+          "full_normalized_body_sha256": "6b67719d76b493c426bc94fd9e5385217a85a1c1cbfa7829ff2afdc406750f0e",
+          "read_reference": {
+            "label": "configure",
+            "component": "sensible-utils"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "ba564e1b393e3f2687c91cb17b979ef68d0dd4cde89596d9a6a37b53b34486a7",
+          "read_reference": {
+            "component": "bgpq3",
+            "label": "BSD-2-clause"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "9579693de6a98881a9783401799c415023fb5f5e862d6fca4d689f02e1bec7a0",
+          "read_reference": {
+            "component": "bgpq3",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "MIT-old-NA",
+          "full_normalized_body_sha256": "09577a48de46a68abc3dfb6345a3c903ea2b7e22aa1140983e7407a464408d18",
+          "read_reference": {
+            "component": "bgpq3",
+            "label": "MIT-old-NA"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "bgpq3",
+          "Source": "http://snar.spb.ru/prog/bgpq3/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "(c) 2007-2021 Alexandre Snarskii <snar@snar.spb.ru>"
+        },
+        {
+          "Files": "strlcpy.c",
+          "Copyright": "(c) 1998 Todd C. Miller <Todd.Miller@courtesan.com>"
+        },
+        {
+          "Files": "sys_queue.h",
+          "Copyright": "(c) 1991, 1993 The Regents of the University of California.  All rights reserved."
+        },
+        {
+          "Files": "sys_tree.h",
+          "Copyright": "Copyright 2002 Niels Provos <provos@citi.umich.edu>"
+        },
+        {
+          "Files": "configure",
+          "Copyright": "(C) 1992-1996, 1998-2012 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "install-sh",
+          "Copyright": "1991 by the Massachusetts Institute of Technology"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2015-2023 Apollon Oikonomopoulos <apoikos@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libbpf",
+      "version": "1.1.2-0+deb12u1",
+      "dsc_sha256": "96f81dad2d5f1505ac8c3630249c77f7fcb9ab2f429c4386b2eee2149b7a8c4b",
+      "binaries": [
+        {
+          "name": "libbpf1",
+          "version": "1:1.1.2-0+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "3ea54ea6d9464e208a8011e5cdebbb2ddcd8cf3f8954606f60ff2b168d9a4c22"
+        }
+      ],
+      "copyright_sha256": "3ea54ea6d9464e208a8011e5cdebbb2ddcd8cf3f8954606f60ff2b168d9a4c22",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "847f4addbd56e2d5be20c4ea0845e972672fc07b755fadaae5f7abd35d71e349",
+          "read_reference": {
+            "component": "vpp-inputs",
+            "member": "xdp-tools-1.5.5/lib/libbpf/LICENSE",
+            "sha256": "847f4addbd56e2d5be20c4ea0845e972672fc07b755fadaae5f7abd35d71e349"
+          }
+        },
+        {
+          "member": "LICENSE.BSD-2-Clause",
+          "sha256": "e1638b9a0c68ca90fad3df1d6b4e430804d2fbdc15e58d02cffddfae38953bbf",
+          "read_reference": {
+            "component": "vpp-inputs",
+            "member": "xdp-tools-1.5.5/lib/libbpf/LICENSE.BSD-2-Clause",
+            "sha256": "e1638b9a0c68ca90fad3df1d6b4e430804d2fbdc15e58d02cffddfae38953bbf"
+          }
+        },
+        {
+          "member": "LICENSE.LGPL-2.1",
+          "sha256": "0b9a4febcdee6de55872501d5c1a8f5d8b0d1650cd4d5351995ceb22e889f8ca",
+          "read_reference": {
+            "component": "libbpf",
+            "member": "LICENSE.LGPL-2.1",
+            "sha256": "0b9a4febcdee6de55872501d5c1a8f5d8b0d1650cd4d5351995ceb22e889f8ca",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0",
+          "full_normalized_body_sha256": "78ff43c9e75ed20eb6daa71826d67034d4bac9bd1dc4af23e2e29308736d3555",
+          "read_reference": {
+            "component": "libbpf",
+            "label": "GPL-2.0"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f667f6731b078d75be1065e3bd7db460f3dfa8624da1ce941bf5462733c8bb39",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "atop"
+          }
+        },
+        {
+          "label": "LGPL-2.1",
+          "full_normalized_body_sha256": "b990704dfc9f7b37384f652046eb2ea66ded7669f9fe99f870a0a5971409ea62",
+          "read_reference": {
+            "component": "libbpf",
+            "label": "LGPL-2.1"
+          }
+        },
+        {
+          "label": "BSD-2-Clause",
+          "full_normalized_body_sha256": "971850f7f84e5dc88bd6b52e0d0c1fbffdaec4eae2fd311b1511d42bf7855c51",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "libfido2"
+          }
+        },
+        {
+          "label": "GPL-2 with Linux-syscall-note exception",
+          "full_normalized_body_sha256": "e9682612487aca67e391020b780244436369621d8935597af5a32114800f1eb5",
+          "read_reference": {
+            "component": "libbpf",
+            "label": "GPL-2 with Linux-syscall-note exception"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libbpf",
+          "Source": "https://github.com/libbpf/libbpf"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013-2015 Alexei Starovoitov <ast@kernel.org>\n2015 Wang Nan <wangnan0@huawei.com>\n2015 Huawei Inc.\n2018, 2019, 2021 Facebook\n2017 Nicira, Inc.\n2019 Isovalent, Inc.\n2019 Netronome Systems, Inc.\n2003-2013 Thomas Graf <tgraf@suug.ch>\n2018-2019 Intel Corporation.\n2022 Meta Platforms, Inc. and affiliates."
+        },
+        {
+          "Files": "docs/conf.py",
+          "Copyright": "Grant Seltzer <grantseltzer@gmail.com>"
+        },
+        {
+          "Files": "include/uapi/linux/bpf.h\ninclude/uapi/linux/bpf_common.h\ninclude/uapi/linux/btf.h\ninclude/uapi/linux/if_link.h\ninclude/uapi/linux/if_xdp.h\ninclude/uapi/linux/netlink.h",
+          "Copyright": "2011-2014 PLUMgrid, http://plumgrid.com\n2018 Facebook\n2018 Intel Corporation."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2018 Ben Hutchings <ben@decadent.org.uk>\n2018 Hilko Bengen <bengen@debian.org>\n2018 Luca Boccassi <bluca@debian.org>\n2020 Sudip Mukherjee <sudipm.mukherjee@gmail.com>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libsodium",
+      "version": "1.0.18-1+deb12u1",
+      "dsc_sha256": "2c23c57b5a9385dab5a1916014c9b5f2cdd7dadeb8a35b28c1bfb603ce7095c4",
+      "binaries": [
+        {
+          "name": "libsodium23",
+          "version": "1.0.18-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "10d3576a7a0af8afb5601f358c06eb8c24b02192bb71ed4fb9a328a0979ec74b"
+        }
+      ],
+      "copyright_sha256": "10d3576a7a0af8afb5601f358c06eb8c24b02192bb71ed4fb9a328a0979ec74b",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "dea1855c9809f3faf22aa4a1fba20ec8af5a5587f23115012e5b98279cedc4af",
+          "read_reference": {
+            "component": "libsodium",
+            "member": "LICENSE",
+            "sha256": "dea1855c9809f3faf22aa4a1fba20ec8af5a5587f23115012e5b98279cedc4af",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "b5ae9dd7ed223a4abad7b534db90a1b14e2758916cd21fb01e4c690d8104503e",
+          "read_reference": {
+            "component": "libsodium",
+            "label": "ISC"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f667f6731b078d75be1065e3bd7db460f3dfa8624da1ce941bf5462733c8bb39",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "atop"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "0192a288bef851162f6deedef30ca44816e4d4fd6baed7dd5f3b1b3f8342a9fd",
+          "read_reference": {
+            "component": "libsodium",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "ba564e1b393e3f2687c91cb17b979ef68d0dd4cde89596d9a6a37b53b34486a7",
+          "read_reference": {
+            "component": "bgpq3",
+            "label": "BSD-2-clause"
+          }
+        },
+        {
+          "label": "CC0",
+          "full_normalized_body_sha256": "7be7b739e1bf4a7a3d0e776c56fd00b03c77149b6d800a2d6024cac40e35fd06",
+          "read_reference": {
+            "component": "libsodium",
+            "label": "CC0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "sodium",
+          "Upstream-Contact": "Frank Denis <j at pureftpd dot org>",
+          "Source": "https://github.com/jedisct1/libsodium"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013-2017 Frank Denis <j at pureftpd dot org>"
+        },
+        {
+          "Files": "src/libsodium/crypto_pwhash/scryptsalsa208sha256/crypto_scrypt.h\nsrc/libsodium/crypto_pwhash/scryptsalsa208sha256/nosse/pwhash_scryptsalsa208sha256_nosse.c\nsrc/libsodium/crypto_pwhash/scryptsalsa208sha256/sse/pwhash_scryptsalsa208sha256_sse.c",
+          "Copyright": "2009 Colin Percival\n2012, 2013 Alexander Peslyak"
+        },
+        {
+          "Files": "src/libsodium/crypto_pwhash/scryptsalsa208sha256/crypto_scrypt-common.c\nsrc/libsodium/crypto_pwhash/scryptsalsa208sha256/scrypt_platform.c",
+          "Copyright": "2013 Alexander Peslyak"
+        },
+        {
+          "Files": "src/libsodium/crypto_auth/hmacsha256/cp/hmac_hmacsha256.c\nsrc/libsodium/crypto_auth/hmacsha512/cp/hmac_hmacsha256.c\nsrc/libsodium/crypto_auth/hmacsha512256/cp/hmac_hmacsha512256.c\nsrc/libsodium/crypto_hash/sha256/cp/hash_sha256.c\nsrc/libsodium/crypto_hash/sha512/cp/hash_sha512.c\nsrc/libsodium/crypto_pwhash/scryptsalsa208sha256/pbkdf2-sha256.h\nsrc/libsodium/crypto_pwhash/scryptsalsa208sha256/pbkdf2-sha256.c",
+          "Copyright": "2005,2007,2009 Colin Percival"
+        },
+        {
+          "Files": "src/libsodium/crypto_core/salsa208/ref/core_salsa208.c\nsrc/libsodium/crypto_core/salsa20/ref/core_salsa20.c\nsrc/libsodium/crypto_core/hsalsa20/ref2/core_hsalsa20.c\nsrc/libsodium/crypto_core/salsa2012/ref/core_salsa2012.c\nsrc/libsodium/crypto_onetimeauth/poly1305/53/auth_poly1305_53.c\nsrc/libsodium/crypto_stream/salsa20/ref/stream_salsa20_ref.c\nsrc/libsodium/crypto_stream/salsa20/ref/xor_salsa20_ref.c\nsrc/libsodium/crypto_stream/salsa208/ref/stream_salsa208.c\nsrc/libsodium/crypto_stream/salsa208/ref/xor_salsa208.c\nsrc/libsodium/crypto_stream/salsa2012/ref/stream_salsa2012.c\nsrc/libsodium/crypto_stream/salsa2012/ref/xor_salsa2012.c\nsrc/libsodium/crypto_stream/xsalsa20/ref/stream_xsalsa20.c\nsrc/libsodium/crypto_stream/xsalsa20/ref/xor_xsalsa20.c",
+          "Copyright": "no copyright claimed",
+          "Comment": "Written by Daniel J. Bernstein 2009"
+        },
+        {
+          "Files": "src/libsodium/crypto_stream/aes128ctr/portable/beforenm_aes128ctr.c\nsrc/libsodium/crypto_stream/aes128ctr/portable/xor_afternm_aes128ctr.c\nsrc/libsodium/crypto_stream/aes128ctr/portable/afternm_aes128ctr.c",
+          "Copyright": "no copyright claimed",
+          "Comment": "Written by Peter Schwabe, Emilia K\u00e4sper 2009"
+        },
+        {
+          "Files": "src/libsodium/crypto_scalarmult/curve25519/ref/base_curve25519_ref.c\nsrc/libsodium/crypto_scalarmult/curve25519/ref/smult_curve25519_ref.c",
+          "Copyright": "no copyright claimed",
+          "Comment": "Written by Matthew Dempsky 2008"
+        },
+        {
+          "Files": "src/libsodium/crypto_scalarmult/curve25519/donna_c64/smult_curve25519_donna_c64.c",
+          "Copyright": "2008 Adam Langley, Google Inc."
+        },
+        {
+          "Files": "src/libsodium/crypto_generichash/blake2/ref/blake2b-ref.c",
+          "Copyright": "2012 Samuel Neves <sneves@dei.uc.pt>"
+        },
+        {
+          "Files": "packaging/nuget/package.gsl",
+          "Copyright": "2013-2017 Frank Denis <j at pureftpd dot org>"
+        },
+        {
+          "Files": "src/libsodium/crypto_pwhash/argon2/argon2-encoding.*",
+          "Copyright": "2015 Thomas Pornin <pornin@bolet.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2014- Laszlo Boszormenyi (GCS) <gcs@debian.org>,\n2013-2014 Ra\u00fal S\u00e1nchez Siles <rasasi78@gmail.com>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "python-bcrypt",
+      "version": "3.2.2-1",
+      "dsc_sha256": "0c8f22793c3996fea34913f338d4e8913ac58f74645428f8251123b3200cbb27",
+      "binaries": [
+        {
+          "name": "python3-bcrypt",
+          "version": "3.2.2-1",
+          "architecture": "arm64",
+          "copyright_sha256": "19e2e709e3e79427a2a5ceab6d705ab60ddb463afe57771d8aca3d3bd64bb88f"
+        }
+      ],
+      "copyright_sha256": "19e2e709e3e79427a2a5ceab6d705ab60ddb463afe57771d8aca3d3bd64bb88f",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+          "read_reference": {
+            "component": "aardvark-dns",
+            "member": "LICENSE",
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "d4154d7ac8b609b1d9bcd8e892987be52754c2f40dec242b212e4eddc69c7480",
+          "read_reference": {
+            "component": "python-bcrypt",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "15824d08efdd156a65aeb2cce9fd7ee914b2adc5231f5f2a26d998c8ccf05214",
+          "read_reference": {
+            "label": "ISC",
+            "component": "libfido2"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "b3f97105e25929b33b1c84ddba91cf088e586e1cb2a56a366dcf2039d7f0396d",
+          "read_reference": {
+            "component": "python-bcrypt",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "BSD-3-Clause",
+          "full_normalized_body_sha256": "f2e051bab85f57a6de34dd4c3a1ea8218e8b67cc177c3e4c685f8cb146f6074d",
+          "read_reference": {
+            "component": "python-bcrypt",
+            "label": "BSD-3-Clause"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "631f60bcde2b72c62aa614336f891939287ec8178749378d843f63c33a2384fc",
+          "read_reference": {
+            "label": "GPL-3+",
+            "component": "gawk"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "bcrypt",
+          "Upstream-Contact": "The Python Cryptographic Authority developers <cryptography-dev@python.org>",
+          "Source": "https://pypi.python.org/pypi/bcrypt/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013-2019 Donald Stufft <donald@stufft.io>\nAlex Gaynor <alex.gaynor@gmail.com>\nPaul Kehrer <paul.l.kehrer@gmail.com>"
+        },
+        {
+          "Files": "src/_csrc/bcrypt.c\nsrc/_csrc/bcrypt_pbkdf.c",
+          "Copyright": "1997      Niels Provos <provos@umich.edu>\n2013-2014 Ted Unangst <tedu@openbsd.org>"
+        },
+        {
+          "Files": "src/_csrc/timingsafe_bcmp.c",
+          "Copyright": "2010 Damien Miller"
+        },
+        {},
+        {
+          "Files": "src/_csrc/blf.c\nsrc/_csrc/blf.h",
+          "Copyright": "1997 Niels Provos <provos@physnet.uni-hamburg.de>"
+        },
+        {
+          "Files": "src/_csrc/portable_endian.h",
+          "Copyright": "Mathias Panzenb\u00f6ck"
+        },
+        {
+          "Files": "src/_csrc/sha2.c\nsrc/_csrc/sha2.h",
+          "Copyright": "2000-2001 Aaron D. Gifford <me@aarongifford.com>"
+        },
+        {},
+        {
+          "Files": "debian/*",
+          "Copyright": "2007 Kevin Coyner <kcoyner@debian.org>\n2013 Simon Fondrie-Teitler <simonft@riseup.net>\n2016-2019 Daniel Stender <stender@debian.org>"
+        }
+      ]
+    },
+    {
+      "source": "python-idna",
+      "version": "3.3-1+deb12u1",
+      "dsc_sha256": "7e6deaf1f55c3ff16dde1d0bf26a6eb050535be4abe3b15363655ed4ec93b66a",
+      "binaries": [
+        {
+          "name": "python3-idna",
+          "version": "3.3-1+deb12u1",
+          "architecture": "all",
+          "copyright_sha256": "e2b7d15d793374b6ab415b00d5ad6d4673e115572db3c8ce3adecff87638b0b8"
+        }
+      ],
+      "copyright_sha256": "e2b7d15d793374b6ab415b00d5ad6d4673e115572db3c8ce3adecff87638b0b8",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE.md",
+          "sha256": "a2d6e4d940bd24dbe7b9645cde19a9792cc51db7ae0d5acd301ac860caa3e836",
+          "read_reference": {
+            "component": "python-idna",
+            "member": "LICENSE.md",
+            "sha256": "a2d6e4d940bd24dbe7b9645cde19a9792cc51db7ae0d5acd301ac860caa3e836",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "73e84707e2efa3d3ce7dda8e21479d6a50cee7057cf96eb8cc3db8fa29676986",
+          "read_reference": {
+            "component": "python-idna",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "PSF-2",
+          "full_normalized_body_sha256": "a014d4700726e6a5914f929cd3d5166bf096664f3b509dff5148a16fb71eb2cf",
+          "read_reference": {
+            "component": "python-idna",
+            "label": "PSF-2"
+          }
+        },
+        {
+          "label": "Unicode",
+          "full_normalized_body_sha256": "80fa5e0ea31e751ba05790c3d195efe87a927b273ba5a0aba0c21319efc3b6ff",
+          "read_reference": {
+            "component": "python-idna",
+            "label": "Unicode"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "idna",
+          "Source": "https://github.com/kjd/idna"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013-2017 Kim Davies"
+        },
+        {
+          "Files": "idna/codec.py",
+          "Copyright": "2013-2015 Kim Davies\n2001-2014 Python Software Foundation"
+        },
+        {
+          "Files": "tests/*",
+          "Copyright": "2013-2015 Kim Davies\n2001-2014 Python Software Foundation\n1991-2014 Unicode, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2015 Tristan Seligmann <mithrandi@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "re2",
+      "version": "20220601+dfsg-1",
+      "dsc_sha256": "e0d2eab89a0312e9a0ba4e9a6fb18b081764d6776a28496d389aa3831d970940",
+      "binaries": [
+        {
+          "name": "libre2-9",
+          "version": "20220601+dfsg-1+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "c30c491d4d042543ab134338b83d6d514bff554876b9042b347a2b58dc9f202d"
+        }
+      ],
+      "copyright_sha256": "c30c491d4d042543ab134338b83d6d514bff554876b9042b347a2b58dc9f202d",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "6040cda75d90b1738292a631d89934c411ef7ffd543c4d6a1b7edfc8edf29449",
+          "read_reference": {
+            "component": "re2",
+            "member": "LICENSE",
+            "sha256": "6040cda75d90b1738292a631d89934c411ef7ffd543c4d6a1b7edfc8edf29449",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "re2/fuzzing/compiler-rt/LICENSE",
+          "sha256": "f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd",
+          "read_reference": {
+            "component": "re2",
+            "member": "re2/fuzzing/compiler-rt/LICENSE",
+            "sha256": "f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Lucent",
+          "full_normalized_body_sha256": "04bd071c97678ee23debea0fb67d3e23d02d473f0bd7ba9ec0a4c28583f498df",
+          "read_reference": {
+            "component": "re2",
+            "label": "Lucent"
+          }
+        },
+        {
+          "label": "Apache-2.0 with LLVM exception",
+          "full_normalized_body_sha256": "07bdbd405957289e40448ec9cd90a58e82e677f025fe52acc5160818579a7d16",
+          "read_reference": {
+            "component": "re2",
+            "label": "Apache-2.0 with LLVM exception"
+          }
+        },
+        {
+          "label": "BSD-3-google",
+          "full_normalized_body_sha256": "161d0fa77ed4035d93bed8e1b067c6fdd890e309e40470cef9c3464401c6fc2f",
+          "read_reference": {
+            "component": "re2",
+            "label": "BSD-3-google"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "RE2",
+          "Upstream-Contact": "The RE2 Authors <re2-dev@googlegroups.com>",
+          "Source": "https://github.com/google/re2",
+          "Files-Excluded": "\ndoc/*xkcd*\nre2/perl_groups.cc\nre2/unicode_casefold.cc\nre2/unicode_groups.cc",
+          "Comment": "Source Repackaged:\nThe included XKCD comic (in doc) is under the non-free Creative Commons\nAttribution-NonCommercial 2.5 License. It has been stripped from the Debian\nversion of this package.\n\nThe source files automatically generated from included Perl and Python scripts\nhave been stripped, as they are generated during building."
+        },
+        {
+          "Files": "*",
+          "Copyright": "2002-2020, Google Inc.,\n2014,      Samsung Electronics,\n2010-2016, Stefano Rivera <stefanor@debian.org>"
+        },
+        {
+          "Files": "util/utf.h util/rune.cc",
+          "Copyright": "2002, Lucent Technologies"
+        },
+        {
+          "Files": "re2/fuzzing/compiler-rt/*",
+          "Copyright": "The LLVM Contributors"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2010-2020, Stefano Rivera <stefanor@debian.org>"
+        },
+        {}
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

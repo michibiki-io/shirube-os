@@ -15042,6 +15042,305 @@
         "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated."
       ],
       "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
+    },
+    "freeipmi@1.6.10-1": {
+      "source_identity": "ad17f010151af7f07127b20bfbb31a91ced0480ae23552c92d66549f4f1c590c",
+      "copyright_sha256": "80e19367ced85469d702e01ca551289491b3aa04a926b07ba90faae8579990a4",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND LGPL-3.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyright, notices, complete per-file license terms, disclaimers and exceptions in the accompanying documentation.",
+        "Supply exact preferred sources, patches, build and installation scripts, all applicable complete licenses and library replacement/relinking rights.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Complete original named legal files matched against previously read originals or separately read full-word comparisons. All operative grants and copyright/path/comment fields read; no parent OS approval."
+    },
+    "isc-dhcp@4.4.3-P1-2": {
+      "source_identity": "927cfd9006d3b2b40415c4241cca276f4bc8fdeb8f604cc80ada83735a65a498",
+      "copyright_sha256": "1ab68a7715e2e10c9ebe76171e9cad352757a43108a6f1f0fece8eb61451f070",
+      "redistributable": true,
+      "license": "MPL-2.0 AND GPL-2.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyright, notices, complete per-file license terms, disclaimers and exceptions in the accompanying documentation.",
+        "Supply exact preferred sources, patches, build and installation scripts, all applicable complete licenses and library replacement/relinking rights.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Complete original named legal files matched against previously read originals or separately read full-word comparisons. All operative grants and copyright/path/comment fields read; no parent OS approval."
+    },
+    "libnvme@1.3-1+deb12u1": {
+      "source_identity": "c8d65529c5ee8f61f84766661257c6f05525d0ed0b9684517b639b1e99522b9c",
+      "copyright_sha256": "9fa4b177c0d9df274aadce8df761188b44379bb87f92a18a855f71711483273f",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND Apache-2.0 AND CC0-1.0 AND GPL-2.0-only AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyright, notices, complete per-file license terms, disclaimers and exceptions in the accompanying documentation.",
+        "Supply exact preferred sources, patches, build and installation scripts, all applicable complete licenses and library replacement/relinking rights.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Complete original named legal files matched against previously read originals or separately read full-word comparisons. All operative grants and copyright/path/comment fields read; no parent OS approval."
+    },
+    "nano@7.2-1+deb12u1": {
+      "source_identity": "e7ec15144ec5b984681d079ea4e3a0f6f17eb92895376511df6822bd770e7281",
+      "copyright_sha256": "b7d0fd5f3f8805f62b2e67fc8d9f97699ab921b03b3d0d79f402548ad2f5e80e",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND GFDL-1.2-no-invariants-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyright, notices, complete per-file license terms, disclaimers and exceptions in the accompanying documentation.",
+        "Supply exact preferred sources, patches, build and installation scripts, all applicable complete licenses and library replacement/relinking rights.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred.",
+        "Preserve full GFDL-1.2 terms and unmodified documentation notices, supply transparent document sources, no invariant sections or cover texts, and impose no further restrictions."
+      ],
+      "scope": "Complete original named legal files matched against previously read originals or separately read full-word comparisons. All operative grants and copyright/path/comment fields read; no parent OS approval."
+    },
+    "tpm2-tss@3.2.1-3": {
+      "source_identity": "878d496e96fb79c19f950649e9a15552dc4fdab8f4ffb64140c2f7209be577e2",
+      "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a",
+      "redistributable": true,
+      "license": "LicenseRef-TCG AND GPL-3.0-only AND BSD-2-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyright, notices, complete per-file license terms, disclaimers and exceptions in the accompanying documentation.",
+        "Supply exact preferred sources, patches, build and installation scripts, all applicable complete licenses and library replacement/relinking rights.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Complete original named legal files matched against previously read originals or separately read full-word comparisons. All operative grants and copyright/path/comment fields read; no parent OS approval."
+    },
+    "bgpq3@0.1.36.1-1": {
+      "source_identity": "920f545a407a0104bfff1d41011f134b01a8ed3ab68c0003e38fb69514371496",
+      "copyright_sha256": "db1de3394ab8b11635f718ea012df42d5a539e27ec48d58978234b2b1374bec1",
+      "redistributable": true,
+      "license": "FSFUL AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-MIT-old-NA",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain full original copyright, per-file grants, notices, disclaimers and exact exception scopes in source and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts, full applicable licenses, library replacement/relinking rights and all original alternatives.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read full-word comparisons. All operative grants and all remaining copyright/path/provenance/comment fields read. Separate file obligations retained; no parent OS approval."
+    },
+    "libbpf@1.1.2-0+deb12u1": {
+      "source_identity": "96f81dad2d5f1505ac8c3630249c77f7fcb9ab2f429c4386b2eee2149b7a8c4b",
+      "copyright_sha256": "3ea54ea6d9464e208a8011e5cdebbb2ddcd8cf3f8954606f60ff2b168d9a4c22",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND BSD-2-Clause AND (GPL-2.0-only WITH Linux-syscall-note)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain full original copyright, per-file grants, notices, disclaimers and exact exception scopes in source and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts, full applicable licenses, library replacement/relinking rights and all original alternatives.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read full-word comparisons. All operative grants and all remaining copyright/path/provenance/comment fields read. Separate file obligations retained; no parent OS approval."
+    },
+    "libsodium@1.0.18-1+deb12u1": {
+      "source_identity": "2c23c57b5a9385dab5a1916014c9b5f2cdd7dadeb8a35b28c1bfb603ce7095c4",
+      "copyright_sha256": "10d3576a7a0af8afb5601f358c06eb8c24b02192bb71ed4fb9a328a0979ec74b",
+      "redistributable": true,
+      "license": "ISC AND MIT AND GPL-2.0-or-later AND LicenseRef-Public-Domain AND BSD-2-Clause AND CC0-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain full original copyright, per-file grants, notices, disclaimers and exact exception scopes in source and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts, full applicable licenses, library replacement/relinking rights and all original alternatives.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read full-word comparisons. All operative grants and all remaining copyright/path/provenance/comment fields read. Separate file obligations retained; no parent OS approval."
+    },
+    "python-bcrypt@3.2.2-1": {
+      "source_identity": "0c8f22793c3996fea34913f338d4e8913ac58f74645428f8251123b3200cbb27",
+      "copyright_sha256": "19e2e709e3e79427a2a5ceab6d705ab60ddb463afe57771d8aca3d3bd64bb88f",
+      "redistributable": true,
+      "license": "Apache-2.0 AND ISC AND LicenseRef-Public-Domain AND BSD-3-Clause AND GPL-3.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain full original copyright, per-file grants, notices, disclaimers and exact exception scopes in source and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts, full applicable licenses, library replacement/relinking rights and all original alternatives.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read full-word comparisons. All operative grants and all remaining copyright/path/provenance/comment fields read. Separate file obligations retained; no parent OS approval."
+    },
+    "python-idna@3.3-1+deb12u1": {
+      "source_identity": "7e6deaf1f55c3ff16dde1d0bf26a6eb050535be4abe3b15363655ed4ec93b66a",
+      "copyright_sha256": "e2b7d15d793374b6ab415b00d5ad6d4673e115572db3c8ce3adecff87638b0b8",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND PSF-2.0 AND LicenseRef-Unicode-original",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain full original copyright, per-file grants, notices, disclaimers and exact exception scopes in source and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts, full applicable licenses, library replacement/relinking rights and all original alternatives.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred.",
+        "Retain original PSF agreement and copyright; provide a brief summary of any Python-derived changes. Retain original Unicode copyright and permission in every copy and associated documentation, clearly mark modified data/software and documentation, and do not use holder names to promote the product."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read full-word comparisons. All operative grants and all remaining copyright/path/provenance/comment fields read. Separate file obligations retained; no parent OS approval."
+    },
+    "re2@20220601+dfsg-1": {
+      "source_identity": "e0d2eab89a0312e9a0ba4e9a6fb18b081764d6776a28496d389aa3831d970940",
+      "copyright_sha256": "c30c491d4d042543ab134338b83d6d514bff554876b9042b347a2b58dc9f202d",
+      "redistributable": true,
+      "license": "LicenseRef-Lucent AND (Apache-2.0 WITH LLVM-exception) AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain full original copyright, per-file grants, notices, disclaimers and exact exception scopes in source and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts, full applicable licenses, library replacement/relinking rights and all original alternatives.",
+        "Preserve attribution and modification notices; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read full-word comparisons. All operative grants and all remaining copyright/path/provenance/comment fields read. Separate file obligations retained; no parent OS approval. This exact Debian +dfsg source excludes the noncommercial XKCD material and regenerates removed generated source files; no license permission is inferred for the excluded comic."
+    },
+    "apparmor@3.0.8-3": {
+      "source_identity": "f92c7dc0519e89747148af64d6678f526fde3925eb59d58f6414f8c1262f69e4",
+      "copyright_sha256": "52b7cf37d674ca47296cf6270a95ecda0ecbef976cc090d702acbd741e36b3b4",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "crun@1.8.1-1+deb12u1": {
+      "source_identity": "1123b9a36a95fc2d05966972f7198f20497f466459b07df4e336db5ba1dc8a45",
+      "copyright_sha256": "8e724ad21c317d687a7929d4732740ded06dcc629e076ef366e70991caa8859d",
+      "redistributable": true,
+      "license": "MIT AND Apache-2.0 AND FSFULLR AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND ISC AND LicenseRef-Libtool-exception AND LicenseRef-Autoconf-exception AND LicenseRef-libocispec-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "cryptsetup@2:2.6.1-4~deb12u2": {
+      "source_identity": "9f5fb2d485143099f50ec6cbe3bd92585f8f56bf92bb92a6849aa74e7eff208d",
+      "copyright_sha256": "41650d7a87bcbc5ba394f581876ccdcf3f4cbf31f01168f1584db6b3db532691",
+      "redistributable": true,
+      "license": "LicenseRef-Public-Domain AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LicenseRef-OpenSSL-linking-exception AND CC0-1.0 AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "diffutils@1:3.8-4": {
+      "source_identity": "783af1a151c2a0f42a8a427693cc4bb16037c0d17282d28672d906f2eab424b8",
+      "copyright_sha256": "8654d7cc7cdae1f31bb67a3ce5bf35d512c0bdfffd071df757edc54153cc7930",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND MIT AND FSFAP AND FSFULLR AND LicenseRef-Public-Domain AND GFDL-1.3-no-invariants-or-later AND LicenseRef-Autoconf-exception AND LicenseRef-Texinfo-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred.",
+        "Retain complete applicable GFDL text, original documentation notices and transparent source; grants have no invariant sections or cover texts and no additional restrictions are imposed."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "dnsdist@1.7.3-2": {
+      "source_identity": "d29996f498dd2c8ea23b05a2becdbaf2de3816cb0eaf8f329404c23fae681ed7",
+      "copyright_sha256": "a4ce564ad85ab2f21aa006332f410441079653e6e0c6f136d714fdfc12c03a57",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LicenseRef-OpenSSL-linking-exception AND MIT AND ISC AND BSD-3-Clause AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later AND LicenseRef-Autoconf-exception AND FSFULLR",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "gmp@2:6.2.1+dfsg1-1.1": {
+      "source_identity": "2831ed4f83bc3304c2403474b335652ab2dc507cd517de44414d9142171748f0",
+      "copyright_sha256": "7d366aef5ba325150246de1d7820c4c9926cd27ca61a69948492b26cd3b61601",
+      "redistributable": true,
+      "license": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND GPL-3.0-or-later AND LicenseRef-Bison-generated-parser-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval. Exact Debian +dfsg source excludes the separately licensed documentation with cover texts; this decision does not approve excluded documentation."
+    },
+    "h2o@2.2.5+dfsg2-7": {
+      "source_identity": "5d0acd56b83c9338fbc28e32c4863a19e82f505d86d1807a9f72aa9b961d13d3",
+      "copyright_sha256": "249e70ef801e33fc934a870a9e8715077afd96476b34f2b203a38e47d3a2e6f6",
+      "redistributable": true,
+      "license": "LicenseRef-ISC-UC AND LicenseRef-Public-Domain AND ISC AND Ruby AND BSD-2-Clause AND BSD-3-Clause AND MIT AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred.",
+        "For Ruby terms retain all original notices and disclaimers, accompany executables with machine-readable source under 3(b), and make any modifications freely available under 2(a); preserve separate file licenses listed in clause 4."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "librtr@0.8.0-1": {
+      "source_identity": "ab473a7556cd57ec093116c66196635e4a40b9c423f63aac2c63503ccdd51ecf",
+      "copyright_sha256": "6cc3cdf3b7a157e4253b64d2115773dd64bad52f13609072b3352ffa06e754b3",
+      "redistributable": true,
+      "license": "MIT AND GPL-2.0-only AND GPL-3.0-or-later AND BSD-3-Clause AND BSD-2-Clause AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "libunistring@1.0-2": {
+      "source_identity": "9b9a9d9d4cd1c2118df8cf5ca0dfb787d89afcd99400d7cd01b4c4e9b0bc1ae5",
+      "copyright_sha256": "0035f89e5317f3cec389383e8727788521b0fde3e75cea881fa0e92e1d48cb57",
+      "redistributable": true,
+      "license": "FSFULLR AND LicenseRef-Autoconf-exception AND LGPL-3.0-or-later AND GPL-3.0-or-later AND GPL-2.0-or-later AND GFDL-1.2-no-invariants-or-later AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred.",
+        "Retain complete applicable GFDL text, original documentation notices and transparent source; grants have no invariant sections or cover texts and no additional restrictions are imposed."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "pam@1.5.2-6+deb12u2": {
+      "source_identity": "049316ffb7c8be35b14e6815351397b52d65f283041f90fecf884db2c0bec7b1",
+      "copyright_sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND (GPL-3.0-or-later WITH Bison-exception-2.2) AND LicenseRef-tcp-wrappers AND LGPL-2.0-or-later AND LicenseRef-Public-Domain AND Beerware",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, notice, exception and disclaimer in source and binary documentation.",
+        "Supply exact preferred sources, patches, complete build/install scripts and applicable full license texts; preserve modification notices, source access and library replacement/relinking rights.",
+        "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
+      ],
+      "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
