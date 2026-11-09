@@ -247,6 +247,9 @@ def assemble(sources, packages, arch, version, output):
             raise ValueError('Unexpected package-documentation exclusion policy')
         excludes.write_text(text.replace(excluded_docs+'\n',
             '# Shirube OS retains package documentation, legal notices and source inventories.\n'))
+        from producer.strip_policy import preserve_runtime_bindings
+        preserve_runtime_bindings(source/'data/live-build-config/hooks/live/92-strip-symbols.chroot',
+                                  Path('/extra'))
         env['VYOS1X_REPO_URL']=str(one)
         defaults=source/'data/defaults.toml';text=defaults.read_text()
         text=text.replace('http://deb.debian.org/debian-security','http://snapshot.debian.org/archive/debian-security/20261105T000000Z/').replace('http://deb.debian.org/debian','http://snapshot.debian.org/archive/debian/20261105T000000Z/')
