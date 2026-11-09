@@ -149,3 +149,13 @@ class AptMergedIndexTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 cache_snapshot_package(self.package, 'amd64', self.snapshot, Path(directory),
                     requested.replace('2.28.3-1', '2.28.3-2'))
+
+    def test_epoch_is_preserved_in_apt_cache_filename(self):
+        absent = subprocess.CompletedProcess([], 1, stdout='', stderr='')
+        metadata = self.metadata().replace('Version: 2.28.3-1', 'Version: 1:2.28.3-1')
+        with tempfile.TemporaryDirectory() as directory, \
+                patch('producer.apt_archive.subprocess.check_output', return_value=metadata), \
+                patch('producer.apt_archive.subprocess.run', return_value=absent), \
+                patch('producer.apt_archive.download', side_effect=lambda url, target: Path(target).write_bytes(self.payload)):
+            cache_snapshot_package(self.package, 'amd64', self.snapshot, Path(directory))
+            self.assertEqual((Path(directory) / self.filename.replace('_2.28', '_1%3a2.28')).read_bytes(), self.payload)

@@ -3,18 +3,12 @@ from pathlib import Path
 
 
 RETRY_FUNCTION = '''
-# Modified by michibiki-io 2026-11-08: bounded transient download retries.
+# Modified by michibiki-io: bounded fixed-snapshot object transport recovery.
 shirube_wget () {
- local attempt=1 status=0
- while :; do
-  wget "$@" && return 0 || status=$?
-  [ "$status" -eq 4 ] && [ "$attempt" -lt 3 ] || return "$status"
-  attempt=$((attempt + 1))
-  echo "Shirube: retry transient download ($attempt/3)" >&2
-  sleep 2
- done
+ PYTHONPATH=/src python3 -m producer.snapshot_fetch "$@"
 }
 '''
+
 
 
 def configure_retry(path=Path('/usr/share/debootstrap/functions')):

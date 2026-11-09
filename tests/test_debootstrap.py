@@ -8,30 +8,6 @@ from producer.debootstrap import RETRY_FUNCTION, configure_retry
 
 
 class DebootstrapTests(unittest.TestCase):
-    def test_network_failure_recovers_or_stops_after_three_attempts(self):
-        for failures, status, expected_count, expected_status in [
-            (2, 4, 3, 0), (9, 4, 3, 4), (1, 5, 1, 5), (1, 8, 1, 8),
-        ]:
-            with self.subTest(failures=failures, status=status):
-                script = RETRY_FUNCTION + '''
-count=0
-sleep () { :; }
-wget () {
- count=$((count + 1))
- [ "$#" -eq 3 ] && [ "$1" = '-O' ] && [ "$2" = 'a b' ] &&
- [ "$3" = 'https://example.invalid/fixed' ] || return 99
- [ "$count" -gt "$failures" ] || return "$failure_status"
-}
-shirube_wget -O 'a b' https://example.invalid/fixed
-result=$?
-printf '%s %s' "$count" "$result"
-'''
-                result = subprocess.run(
-                    ['sh', '-c', 'failures=$1; failure_status=$2; ' + script,
-                     'retry-test', str(failures), str(status)],
-                    check=True, capture_output=True, text=True)
-                self.assertEqual(result.stdout, f'{expected_count} {expected_status}')
-
     def test_only_expected_debootstrap_call_sites_are_modified(self):
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / 'functions'

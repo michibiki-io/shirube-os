@@ -67,7 +67,10 @@ def cache_snapshot_package(package, architecture, snapshot,
     cache = Path(cache)
     if cache.is_symlink() or not cache.is_dir():
         raise ValueError('Regular task APT cache directory required')
-    target = cache / filename.name
+    # APT's archive cache includes the epoch, percent-escaping its colon;
+    # Debian pool filenames omit that epoch.
+    cache_name = package + '_' + record['Version'].replace(':', '%3a') + '_' + architecture + '.deb'
+    target = cache / cache_name
     def verify(path):
         if (path.is_symlink() or not path.is_file()
                 or path.stat().st_size != result['size'] or sha256(path) != digest):
