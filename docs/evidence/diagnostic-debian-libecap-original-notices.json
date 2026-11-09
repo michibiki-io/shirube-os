@@ -1,0 +1,78 @@
+{
+  "kind": "exact-debian-original-notice-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": {
+    "source": "libecap",
+    "version": "1.0.1-3.4",
+    "dsc_sha256": "48837111de219b5d7548935412fcc0f9d4ec20dacb7b43ef786dd100d94f090d",
+    "binaries": [
+      {
+        "name": "libecap3",
+        "version": "1.0.1-3.4",
+        "architecture": "arm64",
+        "copyright_sha256": "4f16cebc3e80aeeb6dac6bd890001079d6fb827e27d2aabd35e06815d851260c"
+      }
+    ],
+    "copyright_sha256": "4f16cebc3e80aeeb6dac6bd890001079d6fb827e27d2aabd35e06815d851260c",
+    "original_legal_matches": [
+      {
+        "member": "LICENSE",
+        "sha256": "eaee2fc3ac4ab91a9aa325cf8752b8a087ec562f0b29e305cf8e73c8647c3c3c",
+        "read_reference": {
+          "component": "libecap",
+          "member": "LICENSE",
+          "sha256": "eaee2fc3ac4ab91a9aa325cf8752b8a087ec562f0b29e305cf8e73c8647c3c3c",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "NOTICE",
+        "sha256": "2bf1debc542ee7865aa65aeb57a491ab2e39aee3a42b0865f4b4b61e97c37733",
+        "read_reference": {
+          "component": "libecap",
+          "member": "NOTICE",
+          "sha256": "2bf1debc542ee7865aa65aeb57a491ab2e39aee3a42b0865f4b4b61e97c37733",
+          "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+        }
+      }
+    ],
+    "license_definitions": [
+      {
+        "label": "BSD-2-Clause",
+        "full_normalized_body_sha256": "4665dc82a471cbe8a8e28c2ce63b66d68ec23d85c5122a6192a75a8ded9ebaa7",
+        "read_reference": {
+          "component": "libecap",
+          "label": "BSD-2-Clause"
+        }
+      },
+      {
+        "label": "GPL-2+",
+        "full_normalized_body_sha256": "02041645bcc302c3f9e00ad07aae5c626e6f2c436e16902ea098a7b8dc7a4e56",
+        "read_reference": {
+          "label": "GPL-2+",
+          "component": "conntrack-tools"
+        }
+      }
+    ],
+    "fields_for_reading": [
+      {
+        "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+        "Upstream-Name": "libecap",
+        "Source": "http://www.e-cap.org"
+      },
+      {
+        "Files": "*",
+        "Copyright": "2008 Alex Rousskov and The Measurement Factory"
+      },
+      {
+        "Files": "debian/*",
+        "Copyright": "2011 Luigi Gangitano <luigi@debian.org>"
+      }
+    ]
+  },
+  "required_notice_file": "LICENSES/Libecap-notices.txt",
+  "required_notice_sha256": "2bf1debc542ee7865aa65aeb57a491ab2e39aee3a42b0865f4b4b61e97c37733",
+  "scope": "Complete original legal texts and copyright/path/provenance fields read. Both original upstream acknowledgements retained verbatim. No parent OS approval.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

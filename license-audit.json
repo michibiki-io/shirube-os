@@ -17042,7 +17042,48 @@
         "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives."
       ],
       "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated."
+    },
+    "libecap@1.0.1-3.4": {
+      "source_identity": "48837111de219b5d7548935412fcc0f9d4ec20dacb7b43ef786dd100d94f090d",
+      "copyright_sha256": "4f16cebc3e80aeeb6dac6bd890001079d6fb827e27d2aabd35e06815d851260c",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libecap-notices.txt",
+          "sha256": "2bf1debc542ee7865aa65aeb57a491ab2e39aee3a42b0865f4b4b61e97c37733"
+        }
+      ],
+      "conditions": [
+        "Retain complete original copyrights, BSD2 conditions/disclaimer and both original Measurement Factory/AX_PREFIX_CONFIG_H acknowledgements with source and binary documentation.",
+        "Supply exact preferred sources, Debian patches and complete build/install recipes, preserving packaging GPL2-or-later scope, modification notices and full applicable license text."
+      ],
+      "scope": "Every original named legal file matched to fully read original text, and all copyright/file/provenance fields read. Original source NOTICE additionally retained as a required distributed notice; exact component only."
+    },
+    "salt-sdk:gcc@11.2.0": {
+      "source_identity": "d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b",
+      "copyright_sha256": "37f82f7d11ecd2d4ec7597241840999bbfad1ca23b34c1a021e5711c25d30b43",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND (GPL-3.0-or-later WITH GCC-exception-3.1) AND MIT AND BSD-3-Clause AND BSL-1.0 AND (Apache-2.0 WITH LLVM-exception) AND GFDL-1.3-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "conditions": [
+        "Retain all original copyrights, author lists, full per-file GNU/permissive license terms, exceptions, patent conditions, attribution and disclaimers in source and binary documentation.",
+        "Supply complete exact preferred GCC sources, patches, compiler/build/install scripts and all library source/relinking rights; retain modification notices and source access without restricting original rights.",
+        "GCC runtime exception3.1 applies only to explicitly marked files and eligible compilation processes; preserve the full exception without treating it as a blanket exception for compiler code or unrelated libraries.",
+        "Retain all unmodified transparent documentation, original title/copyright/license notices, every stated invariant section and cover text, and the full GFDL1.3. The Ada template specifies GNAT Reference Manual as front-cover text; libstdc++ manual explicitly has no invariants or cover texts. Do not remove or rewrite either scope.",
+        "Preserve original LLVM/NCSA/Intel and Google named nonendorsement and patent conditions, the full PSTL Apache/LLVM exception and legacy alternatives. Original libsanitizer notice references CREDITS.TXT absent from this fixed upstream release; retain original copyright text as provided and every per-file copyright in the full source, without inventing authors or claiming a recovered credits list."
+      ],
+      "scope": "Every declared complete original legal text matched to read original text, or its complete normalized-word differences read; all remaining GCC runtime exception, Ada/documentation scopes, author list, Google PATENTS, sanitizer and full PSTL grants read. Root project copying context retained. Source-only compiler and independently licensed runtimes/documentation remain separately scoped; no parent SDK/OS clearance."
     }
   },
-  "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
+  "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
 }
