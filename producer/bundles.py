@@ -29,9 +29,12 @@ def bundle(inputs, destination, epoch, source_origin=None):
         names.add(member)
         digest=sha256(path)
         try:scan_secrets(path)
-        except ValueError:
+        except ValueError as error:
             from .source_fixtures import allowed
-            if category!='sources' or not allowed(source_origin,member,digest):raise
+            if category!='sources' or not allowed(source_origin,member,digest):
+                # A logical archive member is enough for diagnosis; never emit
+                # key bytes or the builder's absolute filesystem path.
+                raise ValueError('Private key material in source input: '+member) from error
         checked.append((path, member, category, digest))
     if not all(any(x[2] == category for x in checked) for category in records):
         raise ValueError('Source, license and reconstruction inputs are all mandatory')

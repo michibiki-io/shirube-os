@@ -298,12 +298,14 @@ def collect(rootfs, package_output, output, arch, version, work):
     subprocess.run(['apt-get','-o','Acquire::Retries=3','-o','APT::Update::Error-Mode=any','update'],check=True)
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
         '-f=${Package}\t${Version}\t${Architecture}\t${source:Package}\t${source:Version}\n'],text=True)
-    custom={}
+    custom={};preferred={};native_jobs={}
     catalog=json.loads(Path('/src/native/packages.json').read_text())
     for job in catalog['jobs']:
         for deb in (package_output/job['name']).glob('*.deb'):
             name=subprocess.check_output(['dpkg-deb','-f',str(deb),'Package'],text=True).strip()
             custom[name]=Path('/build-private')/job['name']/'source'
+            preferred[name]=Path('/sources')/job['source']
+            native_jobs[name]=job['name']
     extras={
       'vpp':'vpp/vpp','libvpp':'vpp/vpp','nat-rtsp':'modules/rtsp','vyos-ipt-netflow':'modules/netflow',
       'openvpn-dco':'modules/ovpn','jool':'modules/jool','accel-ppp-ng':'accel/accel','hsflowd':'accel/sflow',
@@ -379,7 +381,19 @@ def collect(rootfs, package_output, output, arch, version, work):
                     inputs.append((legal_file,'upstream-notices/'+member,'license_files'))
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
             kind='vpp' if str(source)=='/extra/vpp/vpp' else 'vyos-1x' if source_name=='vyos-1x' else 'salt' if source_name=='salt' else None
-            source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind in {'vyos-1x','salt'} else files(source)
+            # Compilation/test trees contain generated keys, binaries and
+            # toolchain links. Native packages retain the authenticated original
+            # preferred source plus the exact shared/local patch recipes. API
+            # dependency archives are acquired by its declared source recipe.
+            preferred_root=preferred.get(name) if matching and name!='vyos-http-api-tools' else None
+            if preferred_root is not None:
+                if not preferred_root.is_dir():raise ValueError('Missing authenticated native preferred source')
+                source_files=files(preferred_root)
+                for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256','manifest.json']:
+                    build_input=package_output/native_jobs[name]/member
+                    if build_input.is_file():inputs.append((build_input,'native-build/'+member,'build_inputs'))
+            else:
+                source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind in {'vyos-1x','salt'} else files(source)
             if kind=='salt':
                 # Build virtualenvs and generated SDK archives are not the
                 # preferred Salt source. Keep the tracked input and the exact
@@ -432,7 +446,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
             fixture_origin=('vpp:'+json.loads(Path('/src/source-lock.json').read_text())['external_git']['vpp']['commit']
-                if kind=='vpp' else 'stream:'+source_identity if kind in {'vyos-1x','salt'} or source_name in {'telegraf','ddclient'} else None)
+                if kind=='vpp' else 'stream:'+source_identity if preferred_root is not None or kind in {'vyos-1x','salt'} or source_name in {'telegraf','ddclient'} else None)
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if kind=='salt':records['build_inputs'].extend(static['salt-sdk'][0]['build_inputs'])
@@ -443,6 +457,9 @@ def collect(rootfs, package_output, output, arch, version, work):
             for prefix, names in [('/extra/vpp/',['vpp','vpp-patches']),('/extra/modules/rtsp',['nat-rtsp']),('/extra/modules/netflow',['ipt-netflow']),('/extra/base/utils',['vyos-utils']),('/extra/base/i2util',['i2util']),('/extra/kea/',['kea-packaging']),('/extra/salt/',['salt-tools'])]:
                 if location.startswith(prefix):keys.extend(names)
             provenance={'stream_archive_sha256':source_identity,'external_git':{key:external[key] for key in keys}}
+            if preferred_root is not None:
+                provenance.update(preferred_stream_member=str(preferred_root.relative_to('/sources')),
+                                  native_job=native_jobs[name])
             if name=='shirube-integration':
                 provenance={'netbird_source_commit':lock['source_commit'],'netbird_source_sha256':lock['source_sha256'],'headless_asset_sha256':lock['assets'][arch]['sha256'],'integration_license_sha256':sha256(Path('/src/LICENSE'))}
                 origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()

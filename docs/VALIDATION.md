@@ -167,3 +167,15 @@ by the release entry point. KVM failure never triggers an automatic switch.
 
 実行方式とruntimeの明示選択を追加しました。設定・失敗時の拒否・環境復元の試験と、
 実機の起動試験は区別します。最新コミット全体のリリース実行とARM64のTCGは未合格です。
+
+Native package source collection now selects the authenticated preferred input
+snapshot, retains the shared/local patch recipes and records the native job and
+original Stream member. Captured kernel configuration and recipe receipts are
+retained as build inputs. Generated test keys, compiler output and external
+build-tool links are not preferred source. API dependency inputs remain tied to
+their fixed acquisition recipe. Complete source-set reconstruction is still a
+separate required check.
+
+ネイティブパッケージは認証済みの入力ソースを選び、適用レシピ、元の収録場所、
+カーネル設定を合わせて保持します。ビルドで生成された試験鍵やコンパイラ出力を
+ソースとして配布しません。完全なソース一式の復元確認は別の必須検証です。
