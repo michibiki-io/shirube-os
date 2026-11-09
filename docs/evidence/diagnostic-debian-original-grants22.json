@@ -1,0 +1,256 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 2,
+  "components": [
+    {
+      "source": "duktape",
+      "version": "2.7.0-2",
+      "dsc_sha256": "929e540895cf8711c922fccc9b2e6cb4c6cf07ccff7ceea1fdf673f82002f726",
+      "binaries": [
+        {
+          "name": "libduktape207",
+          "version": "2.7.0-2",
+          "architecture": "arm64",
+          "copyright_sha256": "ffc72ca2383e76328250b48c18a2c87d551174db0334fee34ca895eae5e1bf6b"
+        }
+      ],
+      "copyright_sha256": "ffc72ca2383e76328250b48c18a2c87d551174db0334fee34ca895eae5e1bf6b",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE.txt",
+          "sha256": "c6b6659630ca6cb837afe982ecc79511bfca878b56296d628b02eb6f18789c29",
+          "read_reference": {
+            "component": "duktape",
+            "member": "LICENSE.txt",
+            "sha256": "c6b6659630ca6cb837afe982ecc79511bfca878b56296d628b02eb6f18789c29",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "licenses/commonjs.txt",
+          "sha256": "443da9b5b79878ec2e0545af299b5fa9b73732cd57d9f19eda8bd3cf9f44a59a",
+          "read_reference": {
+            "component": "duktape",
+            "member": "licenses/commonjs.txt",
+            "sha256": "443da9b5b79878ec2e0545af299b5fa9b73732cd57d9f19eda8bd3cf9f44a59a",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        },
+        {
+          "member": "licenses/lua.txt",
+          "sha256": "f2f1b02dc1c72ec85c0c44c25fc30dab4c29e2b6da654e3ad3fc0165a9fdffe6",
+          "read_reference": {
+            "component": "duktape",
+            "member": "licenses/lua.txt",
+            "sha256": "f2f1b02dc1c72ec85c0c44c25fc30dab4c29e2b6da654e3ad3fc0165a9fdffe6",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        },
+        {
+          "member": "licenses/murmurhash2.txt",
+          "sha256": "f5cc7809b02b801c96be4a0464daa9cdba49800f5351ed83eb6acca1c42981fb",
+          "read_reference": {
+            "component": "duktape",
+            "member": "licenses/murmurhash2.txt",
+            "sha256": "f5cc7809b02b801c96be4a0464daa9cdba49800f5351ed83eb6acca1c42981fb",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "licenses/splitmix64.txt",
+          "sha256": "d4f34e2d8d120a2f4a703cfe07aa5d30504db88fa6fe97dd9279da9b4975f5a6",
+          "read_reference": {
+            "component": "duktape",
+            "member": "licenses/splitmix64.txt",
+            "sha256": "d4f34e2d8d120a2f4a703cfe07aa5d30504db88fa6fe97dd9279da9b4975f5a6",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        },
+        {
+          "member": "licenses/xoroshiro128plus.txt",
+          "sha256": "4bebd2fbf91029bb3c4cf5e934683423f8e74ec928a89ac763bf347bcfc53c76",
+          "read_reference": {
+            "component": "duktape",
+            "member": "licenses/xoroshiro128plus.txt",
+            "sha256": "4bebd2fbf91029bb3c4cf5e934683423f8e74ec928a89ac763bf347bcfc53c76",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "unicode",
+          "full_normalized_body_sha256": "e8d726ac11d880bf1d8fef481475d40279ab225589512259d4b10dac69389fa6",
+          "read_reference": {
+            "component": "duktape",
+            "label": "unicode"
+          }
+        },
+        {
+          "label": "CC0",
+          "full_normalized_body_sha256": "72c361cb232fbb001cd5da9614b644b4629bfd23f8b3d4c5cdc6ade5244ce627",
+          "read_reference": {
+            "component": "duktape",
+            "label": "CC0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "duktape",
+          "Source": "http://duktape.org"
+        },
+        {
+          "Files": "*",
+          "Copyright": "(c) 2013-2016 by Duktape authors (see AUTHORS.rst)"
+        },
+        {
+          "Files": "src-input/SpecialCasing.txt src-input/UnicodeData-8bit.txt",
+          "Copyright": "2019 Unicode, Inc. All rights reserved."
+        },
+        {
+          "Files": "src-separate/duk_util_tinyrandom.c",
+          "Copyright": "2016 David Blackman and Sebastiano Vigna (vigna@acm.org)",
+          "Comment": "only the xoroshiro128plus algorithm has this license"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2016 Thorsten Alteholz <debian@alteholz.de>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "norm",
+      "version": "1.5.9+dfsg-2",
+      "dsc_sha256": "50e0856dc5322e67981dacb94822c04b60812c379d6464a0b04e345b0b4ff1ea",
+      "binaries": [
+        {
+          "name": "libnorm1",
+          "version": "1.5.9+dfsg-2",
+          "architecture": "arm64",
+          "copyright_sha256": "6b1c22ab8566721e02c8fb00f508a182ac1898d452473ceb20140e9b38358255"
+        }
+      ],
+      "copyright_sha256": "6b1c22ab8566721e02c8fb00f508a182ac1898d452473ceb20140e9b38358255",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "ba4b7e49b0163d6839830e3f47505696c6eaac77ccd93531831dc837b2160608",
+          "read_reference": {
+            "component": "norm",
+            "member": "LICENSE",
+            "sha256": "ba4b7e49b0163d6839830e3f47505696c6eaac77ccd93531831dc837b2160608"
+          }
+        },
+        {
+          "member": "protolib/LICENSE",
+          "sha256": "ba4b7e49b0163d6839830e3f47505696c6eaac77ccd93531831dc837b2160608",
+          "read_reference": {
+            "component": "norm",
+            "member": "LICENSE",
+            "sha256": "ba4b7e49b0163d6839830e3f47505696c6eaac77ccd93531831dc837b2160608"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "d9bc450107607783fff6d875dc867d3955e8c26fba9a9f20780d756fd2b79344",
+          "read_reference": {
+            "component": "norm",
+            "label": "BSD-2-clause"
+          }
+        },
+        {
+          "label": "BSD-4-clause-UC",
+          "full_normalized_body_sha256": "d56e7bbc81c5e8505749c6aee3ca5c47c0ecb5095f0fa680fcfcb24a2fbbd67c",
+          "read_reference": {
+            "component": "norm",
+            "label": "BSD-4-clause-UC"
+          }
+        },
+        {
+          "label": "NRL-2-clause",
+          "full_normalized_body_sha256": "54634d4b856a5e45e13c4f150dc69a57f1b541be449cdb36ca6f7f707d59f8dd",
+          "read_reference": {
+            "component": "norm",
+            "label": "NRL-2-clause"
+          }
+        },
+        {
+          "label": "NRL-3-clause",
+          "full_normalized_body_sha256": "6253eeb4d82771d176a4ab2021fc8ef02478a16416a9927088743796040593f5",
+          "read_reference": {
+            "component": "norm",
+            "label": "NRL-3-clause"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "b5add324a66cac74248f547fca215e90ca1abf2492e835285750dd4442df4ee7",
+          "read_reference": {
+            "component": "norm",
+            "label": "BSD-3-clause"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "norm",
+          "Upstream-Contact": "https://publists.nrl.navy.mil/pipermail/norm-dev/",
+          "Source": "https://github.com/USNavalResearchLaboratory",
+          "Comment": "Upstream tarball has been repackaged to remove the binary waf files\nand Win-specific sources with an unknown license. Java pre-compiled\nbinaries are also removed.",
+          "Files-Excluded": "protolib/src/java/libprotolibjni.jnilib\nprotolib/src/java/ProtolibJni.dll*\nprotolib/src/java/protolib-jni.jar*\nprotolib/src/win32\nprotolib/src/wince\nprotolib/android\nprotolib/makefiles\nprotolib/waf\nprotolib/wscript\nandroid\nmakefiles\nwaf\nwscript\n_deps"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2005-2015 Naval Research Laboratory (NRL)"
+        },
+        {
+          "Files": "src/sim/opnet/11.5/norm_protolib.pr.cpp\nsrc/sim/opnet/12.0/norm_protolib.pr.cpp",
+          "Copyright": "1992-2006 OPNET Technologies, Inc.\n2005-2015 Naval Research Laboratory (NRL)"
+        },
+        {
+          "Files": "src/unix/unixPostProcess.cpp",
+          "Copyright": "1996 Netscape Communications Corporation\n2005-2015 Naval Research Laboratory (NRL)"
+        },
+        {
+          "Files": "include/galois.h\ninclude/normEncoder.h\ninclude/normEncoderMDP.h\ninclude/normVersion.h\nprotolib/doc/doxygen/mainpages/introduction.h\nprotolib/include/protoDispatcher.h\nprotolib/include/protoTimer.h\nprotolib/include/protoTree.h\nprotolib/src/common/protoDispatcher.cpp\nprotolib/src/common/protoTree.cpp\nprotolib/src/sim/ns/nsProtoManetKernel.cpp\nprotolib/src/sim/ns/nsProtoManetKernel.h\nprotolib/src/sim/ns/nsProtoManetKernel_packet.h\nsrc/common/galois.cpp\nsrc/common/normEncoder.cpp\nsrc/common/normEncoderMDP.cpp\nsrc/sim/ns/nsNormAgent.cpp\nsrc/sim/ns/nsNormAgent.h",
+          "Copyright": "2005-2015 Naval Research Laboratory (NRL)"
+        },
+        {
+          "Files": "src/common/normEncoderRS16.cpp\nsrc/common/normEncoderRS8.cpp",
+          "Copyright": "1997-1998 Luigi Rizzo <luigi@iet.unipi.it>"
+        },
+        {
+          "Files": "protolib/src/sim/ns/ns233/*\nprotolib/src/sim/ns/ns234/*\nprotolib/src/sim/ns/ns235/*",
+          "Copyright": "1994-1997 Regents of the University of California."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2017-2021 Luca Boccassi <bluca@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "scope": "Original complete legal/grant comparisons and full remaining scope-field readings; source and copyright digests remain mandatory.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

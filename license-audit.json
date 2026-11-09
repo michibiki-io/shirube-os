@@ -20934,6 +20934,76 @@
           "sha256": "a88df616121d7623780bee711b6e094ee16396cafb150e5c92ab430aaae12209"
         }
       ]
+    },
+    "duktape@2.7.0-2": {
+      "redistributable": true,
+      "source_identity": "929e540895cf8711c922fccc9b2e6cb4c6cf07ccff7ceea1fdf673f82002f726",
+      "copyright_sha256": "ffc72ca2383e76328250b48c18a2c87d551174db0334fee34ca895eae5e1bf6b",
+      "license": "MIT AND Unicode-DFS-2016 AND CC0-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Retain Unicode data copyright and permission notice, Duktape author credits and MIT notices, and the original CC0 dedication for the specifically scoped xoroshiro128plus implementation; do not extend that dedication to the entire program."
+      ]
+    },
+    "norm@1.5.9+dfsg-2": {
+      "redistributable": true,
+      "source_identity": "50e0856dc5322e67981dacb94822c04b60812c379d6464a0b04e345b0b4ff1ea",
+      "copyright_sha256": "6b1c22ab8566721e02c8fb00f508a182ac1898d452473ceb20140e9b38358255",
+      "license": "BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause-UC AND LicenseRef-NRL-2-Clause AND LicenseRef-NRL-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Use the exact Debian dfsg source with its recorded exclusions already applied. Preserve distinct NRL 2/3-clause permissions, Netscape and Rizzo notices and UC advertising-clause rescission within its stated scope. No excluded Windows/Java binary or waf payload is reintroduced."
+      ]
+    },
+    "argon2@0~20171227-0.3+deb12u1": {
+      "redistributable": true,
+      "source_identity": "64b82cae9e03543f045506391398472f5659a391d626b4ad701c845bd5cfb862",
+      "copyright_sha256": "9482894dde0cdc3eea4abff3a9c54495d2a1ae4c6c87f4f647908ee0078b5b80",
+      "license": "Apache-2.0 AND CC0-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Preserve both original offered CC0/Apache alternatives and the actual third-party scope. The full source and build/install material accompany binaries; no patent or trademark waiver is inferred from CC0."
+      ]
+    },
+    "inetutils@2:2.4-2+deb12u3": {
+      "redistributable": true,
+      "source_identity": "4f6544f84b3fc6940784181d4afedc91304d84bd274f865698953fa44e94d07a",
+      "copyright_sha256": "c4eeea6c40c414860072baa11bbe9199b56d77a43e2b8978017ebee806b1d59f",
+      "license": "GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND BSD-3-Clause AND LicenseRef-Wietse AND LicenseRef-MIT-Export",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Retain the full original MIT export statement verbatim, modification marks and MIT/Wietse/UC attribution; no export-law clearance is inferred from a copyright decision. Supply exact GPL sources and transparent GFDL documentation with the original no-invariant-section grant and complete license."
+      ]
+    },
+    "libevent@2.1.12-stable-8+deb12u1": {
+      "redistributable": true,
+      "source_identity": "acc01f440019a0369c1cf0e6256a22037a65f032b5192ee14bad548889074b55",
+      "copyright_sha256": "d32d223a2f96bb222faa1f6d2b4573b512465b2b234f56e040a4d7daab060d69",
+      "license": "BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND curl AND MIT AND FSFUL AND FSFULLR AND FSFULLRWD AND GPL-2.0-or-later AND GPL-3.0-or-later AND ISC",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval. The original root LICENSE expressly makes Libevent available under BSD-3-Clause, with explicit per-file additional scopes; that root grant and source author attribution are the permission basis, rather than the packaging comment that assumes event_rpcgen.py author intent.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Retain the complete original root grant, each additional ISC/MIT/curl/Boost source notice, and generated-script permissions/exceptions. Preserve full source and GPL notices for the separately scoped packaging/build files; no parent component is relicensed."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
