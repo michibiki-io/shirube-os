@@ -15341,6 +15341,169 @@
         "Keep original alternatives and exception scopes; no author endorsement, trademark rights or broader relicensing is inferred."
       ],
       "scope": "Every original named legal file matched against read originals or separately read complete word differences. All operative license bodies and all copyright, file-path, provenance and comment fields read. Component decision only; no parent OS approval."
+    },
+    "pypi:backports-tarfile@1.2.0": {
+      "source_identity": "d75e02c268746e1b8144c278978b6e98e85de6ad16f8e4b0844a154557eca991",
+      "copyright_sha256": "1b912f63a9b3848a524fb1de59bcc909090e6ea4da6adda28b3622e29d9b4e6d",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/d75e02c268746e1b8144c278978b6e98e85de6ad16f8e4b0844a154557eca991.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "pypi:cffi@2.0.0": {
+      "source_identity": "44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529",
+      "copyright_sha256": "cf739db23d8c4c17eefce9f4274903e523674fbbf7bdab058bcc6e47835aea97",
+      "redistributable": true,
+      "license": "MIT-0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "pypi:pycparser@2.21": {
+      "source_identity": "e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206",
+      "copyright_sha256": "fc0eebb4a8e268bd3e8e8dda33d8f577d033672236dafbceeb2ef2f39a8487f6",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "pypi:timelib@0.3.0": {
+      "source_identity": "d1b22706557186e6058da88ba0f85837401b2ae9de157f59353dc978d825187a",
+      "copyright_sha256": "066f5b1b2c013faa9830356a9920480fc2cca683a8270ee075fbc9eb4cf04df3",
+      "redistributable": true,
+      "license": "Zlib AND PHP-3.01",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/d1b22706557186e6058da88ba0f85837401b2ae9de157f59353dc978d825187a.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement.",
+        "Retain the PHP acknowledgement in every form of redistribution, complete PHP-3.01 terms, avoid PHP in product names and do not use PHP Group names for endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Timelib-PHP-acknowledgement.txt",
+          "sha256": "68721ae4de332b1588dae753177720bbf9703d1f86aff22e2e90b258b5f30a60"
+        }
+      ]
+    },
+    "pypi:virtualenv@20.36.1": {
+      "source_identity": "8befb5c81842c641f8ee658481e42641c68b5eab3521d8e092d18320902466ba",
+      "copyright_sha256": "250a074f2b3ba1f20a85ee1b169e6bdf5db6fe2ff30b0e56f9c142744f01f07a",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/8befb5c81842c641f8ee658481e42641c68b5eab3521d8e092d18320902466ba.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "salt-sdk:zlib@1.3.1": {
+      "source_identity": "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23",
+      "copyright_sha256": "15adddcce0dc2ecc4457f592e33513dec6d908d63107ee28683d15ad57cf75bb",
+      "redistributable": true,
+      "license": "Zlib AND BSL-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "salt-sdk:bzip2@1.0.8": {
+      "source_identity": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269",
+      "copyright_sha256": "6d1ec2a25e39d6a89b778b2fb4f8600a889578a96700052cda564fcc75f08db8",
+      "redistributable": true,
+      "license": "bzip2-1.0.6",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "salt-sdk:expat@2.7.4": {
+      "source_identity": "9e9cabb457c1e09de91db2706d8365645792638eb3be1f94dbb2149301086ac0",
+      "copyright_sha256": "23334ebb5dbbac70861d3f62c5d77275bbfa35e3c14fe490072cc89dfea1b070",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/9e9cabb457c1e09de91db2706d8365645792638eb3be1f94dbb2149301086ac0.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "build-pypi:cffi@2.1.1": {
+      "source_identity": "dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be",
+      "copyright_sha256": "30297127e0b73b68928bd68a013d2828d303807a0a2f77f4f0d05417af425e5b",
+      "redistributable": true,
+      "license": "MIT-0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "build-pypi:coherent-licensed@0.5.2": {
+      "source_identity": "d8071403ce742d3ac3592ddc4fb7057a46caffb415b928b4d52802e5f208416d",
+      "copyright_sha256": "3d5448f56905bf15279aa71cc9ce50a2fc8d1f22b9d5dd5f2cfb35403de81c36",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/d8071403ce742d3ac3592ddc4fb7057a46caffb415b928b4d52802e5f208416d.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance."
+    },
+    "build-pypi:flit-core@3.12.0": {
+      "source_identity": "18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2",
+      "copyright_sha256": "fb76ffa7830e1c9f2a0a2598dbad3d84167fe3043f7dec3a2c76e4a9e90ee1cb",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance. The source test fixture LICENSE strings are sample wheel contents, preserved under the root BSD grant; vendored tomli retains its separate MIT grant."
+    },
+    "build-pypi:flit-core@4.2.0": {
+      "source_identity": "84e4e4d8fdd45ba2613800a3ebc6834de26d47ec9746efc3719f94181137b460",
+      "copyright_sha256": "0b1621523c39a0374588b14286121103b35f744f00d4937f08841d1f796676a3",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/84e4e4d8fdd45ba2613800a3ebc6834de26d47ec9746efc3719f94181137b460.copyright",
+      "conditions": [
+        "Retain complete original copyright, attribution, per-file license notices, all grant conditions and disclaimers in accompanying source and binary documentation.",
+        "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
+      ],
+      "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance. The source test fixture LICENSE strings are sample wheel contents, preserved under the root BSD grant; vendored tomli retains its separate MIT grant."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
