@@ -432,7 +432,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
             fixture_origin=('vpp:'+json.loads(Path('/src/source-lock.json').read_text())['external_git']['vpp']['commit']
-                if kind=='vpp' else 'stream:'+source_identity if kind in {'vyos-1x','salt'} or source_name=='telegraf' else None)
+                if kind=='vpp' else 'stream:'+source_identity if kind in {'vyos-1x','salt'} or source_name in {'telegraf','ddclient'} else None)
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if kind=='salt':records['build_inputs'].extend(static['salt-sdk'][0]['build_inputs'])

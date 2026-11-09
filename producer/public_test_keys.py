@@ -50,10 +50,25 @@ GNUTLS_SELFTEST_KEYS=set(['7c4c63ee462e0e700cd9e29c8e0f730b3f1b484c4abdd83f1e69f
  'fa0b06a72461ec0a963dcfccb8d5b61bd88a6074fc7271573bff68ab86b8c1af'])
 
 
+# Original OpenVPN sample keys, independently compared with the authenticated
+# Debian 2.6.14-0+deb12u2 source (DSC SHA256 below). Never runtime host keys.
+OPENVPN_SAMPLE_SOURCE_DSC='040bba014900f3ff5417c9e049a57b5d36a7e969d2f47933a9b1728e804c76a0'
+OPENVPN_PUBLIC_TEST_FILES={
+    'usr/share/doc/openvpn/examples/sample-keys/client-pass.key':'ce2e700f032c1b3c8147f4080f134337c4658271985392840a91db8201567945',
+    'usr/share/doc/openvpn/examples/sample-keys/ca.key':'0bc5ab537cd0ae0c44bc5a2a985ae9905cb5bcbceb0287e0f7615a84122db547',
+    'usr/share/doc/openvpn/examples/sample-keys/server.key':'328355304020c9bd57353eff239b7007c6f2f4e1e34fb17e41959739cdd71835',
+    'usr/share/doc/openvpn/examples/sample-keys/client.key':'67a74f6a7c6793ced4fae5e95664b328712ac0f9dbe970edcbce9abe1f9e84b9',
+    'usr/share/doc/openvpn/examples/sample-keys/client-ec.key':'aadb33c33085a78d641c80467c67d2dbd584b83b6e4b05c51548c0c5fbd6388c',
+    'usr/share/doc/openvpn/examples/sample-keys/server-ec.key':'0c55ca76ff6d790e9d6c2ec14125986397a66ee3b7f6d3e018b0e61d0776f69f',
+    'usr/share/doc/openvpn/examples/sample-config-files/loopback-client':'0e87bdaa295d5a84ad2228241c16847656b9877441fdaa92aedb16c36e01a8ec',
+}
+
+
 def allowed_file(package,member):
     prefix='opt/saltstack/salt/lib/python3.11/site-packages/'
     member=member.removeprefix('./')
     if package=='python3-certbot':return CERTBOT_PUBLIC_TEST_FILES.get(member)
+    if package=='openvpn':return OPENVPN_PUBLIC_TEST_FILES.get(member)
     if package!='salt-common' or not member.startswith(prefix):return None
     return SALT_PUBLIC_TEST_FILES.get(member.removeprefix(prefix))
 

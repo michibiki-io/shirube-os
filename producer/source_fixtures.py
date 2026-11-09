@@ -31,6 +31,7 @@ KNOWN={
 # Unmodified Salt tests/documentation from the authenticated public Stream
 # source, compared before any build or test generated local state.
 KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910'].update({
+    "source/t/lib/ddclient/Test/Fake/HTTPD/dummy-server-key.pem": "936df28686ed1e5b798d4c58aa5225ad06e16eca67dfe8da81c8ec9026f2bb99",
     "source/salt/ext/tornado/test/test.key": "29b02b5cee62cb34894524fb02d5648f94d4e735d99499f1bee1bffc153804d5",
     "source/salt/wheel/key.py": "fc48476e5ad95c98537171cf86b709a60772263a9f935ad1809632381f83f78f",
     "source/tests/integration/files/file/base/git_pillar/ssh/server/files/ssh_host_rsa_key": "c2e53fc7e579516b552365b0663b8ae6033a57d134ba216d6afc8bc6b6f2fd27",
