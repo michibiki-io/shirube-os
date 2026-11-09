@@ -306,10 +306,10 @@ def collect(rootfs, package_output, output, arch, version, work):
             custom[name]=Path('/build-private')/job['name']/'source'
     extras={
       'vpp':'vpp/vpp','libvpp':'vpp/vpp','nat-rtsp':'modules/rtsp','vyos-ipt-netflow':'modules/netflow',
-      'openvpn-dco':'modules/ovpn','jool':'modules/jool','accel-ppp':'accel/accel','hsflowd':'accel/sflow',
+      'openvpn-dco':'modules/ovpn','jool':'modules/jool','accel-ppp-ng':'accel/accel','hsflowd':'accel/sflow',
       'isc-kea':'kea/isc-kea','salt':'salt/salt','podman':'podman/podman','telegraf':'go/telegraf',
       'node-exporter':'go/node-exporter','frr-exporter':'go/frr-exporter','blackbox-exporter':'go/blackbox-exporter',
-      'vyos-utils':'base/utils','python3-humps':'base/humps','ddclient':'base/ddclient','i2util':'base/i2util',
+      'vyos-utils':'base/utils','python3-pyhumps':'base/humps','ddclient':'base/ddclient','i2util':'base/i2util',
       'libi2util':'base/i2util','owamp':'base/owamp','openvpn-otp':'base/otp','udp-broadcast-relay':'base/relay','vyos-libpam-radius-auth':'base/pam'}
     # Bind custom source recipes to exact built binary identities. A Debian
     # package with a similar source/name must use its own exact Debian source.

@@ -211,6 +211,8 @@ def assemble(sources, packages, arch, version, output):
     for job in ['vpp','base','go','kea','salt','podman','modules','accel']:
         print('STAGE: native runtime '+job,flush=True)
         run('python3',str(root/'extras.py'),job)
+    from producer.package_notices import retain_all
+    retain_all(debs,Path('/build-private/runtime-package-notices'))
     guest_package(arch,version)
     audited=list(debs.glob('*.deb'))
     signed_modules=sum(audit(package,arch,signing/'cert.der')['signed_modules_verified'] for package in audited)
