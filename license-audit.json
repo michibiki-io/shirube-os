@@ -14158,6 +14158,191 @@
         "Preserve Wietse Venema attribution and the whole original notice, BSD non-endorsement restrictions, and the SSH-derived match_pattern_ylo attribution and modification-identification requirement."
       ],
       "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "vpp-native:libdaq@3.0.21#60ad9405c1c6b75955e0784511b173570a601491ccdb6399da53ca811c446a96": {
+      "source_identity": "60ad9405c1c6b75955e0784511b173570a601491ccdb6399da53ca811c446a96",
+      "copyright_sha256": "112aa35d17146072abff260783d9fdd49d619a06bc0f14743f49ab87879dcd89",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/30a9e8892aefdd88d03e1f10cabc00ed773a26bc2554b3319f6603824243e2dc.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary.",
+        "LibDAQ explicitly selects GPL version 2 only and rejects any later version; supply complete corresponding source under GPL2 and retain its entire original preface."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-native:dpdk@25.07#6886cbedc350bb8cbef347d10367d6259e36435627fbb27d578adbdc0d3b410d": {
+      "source_identity": "6886cbedc350bb8cbef347d10367d6259e36435627fbb27d578adbdc0d3b410d",
+      "copyright_sha256": "f29bfa69b18dce9a08e7344705f6b08bda0c810b4e3cc28de2fbb511a797a137",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND BSD-2-Clause AND MIT AND ISC AND GPL-2.0-only AND LGPL-2.1-only AND (GPL-2.0-only WITH Linux-syscall-note)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/2264e75a376744bccd31b036a8c7c739543e8ab24796d772389fa79d0c8da623.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary.",
+        "Keep the complete DPDK exception catalog and exact per-file SPDX scopes, including GPL2 kernel code and Linux-syscall-note UAPI exception. Preserve BSD source/binary conditions and retain full GPL2/LGPL2.1 texts and sources for their own files."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-native:intel-ipsec-mb@2.0#0c60e56f63b14212c7b388668acc219cbc6b79e5e79732aff7542fefbb498413": {
+      "source_identity": "0c60e56f63b14212c7b388668acc219cbc6b79e5e79732aff7542fefbb498413",
+      "copyright_sha256": "fbf1fc4fce991ed3a5f824a0d76ba1afb12ee4a9b15c1e921bcfe1640a94a960",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/84bc2698bf1e83cdbb458bb347dd161b1708316065e5fd1e5bb7304d1fbd4fbf.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-native:marvell-octeon-roc@25.09#39caf74eded46a01286dfbc6a90f8ddbf76d59764f89a574206afbf51b9d5613": {
+      "source_identity": "39caf74eded46a01286dfbc6a90f8ddbf76d59764f89a574206afbf51b9d5613",
+      "copyright_sha256": "db14929f3f009f59faeaf4bfca612b4e6ff19cc9ad40a6f17de0183692c22032",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/ce344f51281ba867dc590c0f86d238b1cf1277bfcfd8aaf3336eda00ec56200d.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-native:quicly@0.1.5-vpp#fb50ad8ce1136561ee08df02131030d89e38acd2cf8e36c65c074f3bd5034938": {
+      "source_identity": "fb50ad8ce1136561ee08df02131030d89e38acd2cf8e36c65c074f3bd5034938",
+      "copyright_sha256": "0ee20b26d4fbdd0ffce45624fc268ddb1ac3169e2b3091756d8350bda463113d",
+      "redistributable": true,
+      "license": "MIT AND BSD-2-Clause AND CC0-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/469ef35617b8fb616a5c0a48f32e414a8c38604a6c6dbf90ca71e424ad8dd4b1.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-native:rdma-core@58.0#88d67897b793f42d2004eec2629ab8464e425e058f22afabd29faac0a2f54ce4": {
+      "source_identity": "88d67897b793f42d2004eec2629ab8464e425e058f22afabd29faac0a2f54ce4",
+      "copyright_sha256": "d099b0c324abe4c9b75cd0b1a08bfa63b290b44f9d3444d0333ef6c3d936c930",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND BSD-3-Clause AND MIT AND CC0-1.0 AND GPL-2.0-only AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/afebfdaa272409ec9bf3607fd8ef9b401885b048e58620711ccb88fcb56f24d6.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary.",
+        "For alternatives use the original BSD grants where offered, including srp_daemon manual; preserve all original GPL/CPL alternatives. Keep ipathverbs patent-combination limitation unchanged, CC0 fallback and patent/trademark exclusions, and complete per-file provider notices."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-native:xdp-tools@1.5.5#9a4339ffc40df178c4ddf919cb2b23585a75b3023517c75e82c4dfb0899249c7": {
+      "source_identity": "9a4339ffc40df178c4ddf919cb2b23585a75b3023517c75e82c4dfb0899249c7",
+      "copyright_sha256": "b69c48b0e79f4a33683a312140bd7eab7ff5de2f21a1263d70abc39aef79ff94",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.1-only AND BSD-2-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/b739147533c0cd15551bceb16961a9beaddc584ee18bce7104262d3e0decee4c.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary.",
+        "Preserve GPL2-only program source and build/install scripts; retain libbpf dual LGPL2.1/BSD2 choice, full license texts, and library replacement rights where applicable."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-bootstrap:meson@0.57.2#3a83e7b1c5de94fa991ec34d9b198d94f38ed699d3524cb0fdf3b99fd23d4cc5": {
+      "source_identity": "3a83e7b1c5de94fa991ec34d9b198d94f38ed699d3524cb0fdf3b99fd23d4cc5",
+      "copyright_sha256": "cef80800e76417f3d27f71749db024b2799884d0d71246ce1122f5820c93afea",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/756927f03f75ae340def9d10291548bdd7d78b9c1227d4c79bfc1af81397667f.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-bootstrap:packaging@26.3#94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79": {
+      "source_identity": "94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+      "copyright_sha256": "01002737908ffd324bc7415fa7b5cb5a3edf140ec9f0c02f162f39f7d5733bd9",
+      "redistributable": true,
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/37a2cbeb4a5cf7c4e53b3b90fc237991c6d9a0bbd7babd482d8d1abdf2937520.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-bootstrap:pyelftools@0.33#660d82dcbeb8e83d1702bd97f223f761625da06111c0cc988eac6b8ab0c1b61f": {
+      "source_identity": "660d82dcbeb8e83d1702bd97f223f761625da06111c0cc988eac6b8ab0c1b61f",
+      "copyright_sha256": "0e6f5dd18556ac65c89920b157e64c7eeba569b676d93f1322a3b31ebea9fb66",
+      "redistributable": true,
+      "license": "Unlicense AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/4298a264fbd2e08f0088fd3a2988aa3bb8868360bcb012cef60dd73f23c905ea.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary.",
+        "Retain Construct original MIT notice and its unchanged full upstream source tree at the exact release commit; every wheel Construct Python file was independently matched byte-for-byte. Preserve pyelftools Unlicense separately."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
+    },
+    "vpp-bootstrap:setuptools@84.2.1#3ff8b3b5492a0aa66960f4419365a86b84e013070d4313e4d4a6894f5d64d6bc": {
+      "source_identity": "3ff8b3b5492a0aa66960f4419365a86b84e013070d4313e4d4a6894f5d64d6bc",
+      "copyright_sha256": "12716f6b5cd6ee2bb441baa711bd7f5f4e0711c957c777e8bdcf65fce51c9969",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause AND Apache-2.0 AND MPL-2.0 AND LGPL-3.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/e9a5dcfd911038325e55ce67847cb72980d615a18b614e9beb602fc03feb594a.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary.",
+        "Retain MPL2-covered schema and validation code, original notices and modification-preferred source plus schema/generation inputs under MPL2. Do not restrict recipient source rights.",
+        "Retain Autocommand LGPL3 notice and full GPL3/LGPL3 texts, exact separate Autocommand preferred source and complete corresponding Setuptools application source/build inputs; permit replacement, recombination and debugging modifications under LGPL3 section 4(d)(0)."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        }
+      ]
+    },
+    "vpp-bootstrap:wheel@0.48.0#94800765601e9171bf5d58d066e640662842bcedcbab982b2c90787a2c987322": {
+      "source_identity": "94800765601e9171bf5d58d066e640662842bcedcbab982b2c90787a2c987322",
+      "copyright_sha256": "2bd7f8c658eace577a8ada63b36d168b5228d67a2b24078442f0ebdff4cce6ed",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "vpp-input-notices/f4d205f37fc35148a710fa3b0cabaff26fe62eddeb3e95931f537804f1216d2a.copyright",
+      "conditions": [
+        "Keep every original copyright, permission condition, patent notice, disclaimer, per-file scope and license alternative in source and installed binary documentation. Do not imply author endorsement.",
+        "Distribute all exact original and preferred input sources, configuration, patches and build/install recipes with the release; retain matching source and notice digests.",
+        "License expressions describe distinct input file scopes; they do not assert every retained build input is linked into every output or relicense the parent binary."
+      ],
+      "scope": "Complete original native/bootstrap and preferred-source legal files read, with independently verified full-normalized matches or fully read word differences for repeated GNU/Apache texts. All original notices installed and independently byte-verified. Only this exact source/aggregate-notice pair is covered."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
