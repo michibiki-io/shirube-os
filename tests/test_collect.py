@@ -10,6 +10,20 @@ import subprocess
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_project_recipe_binds_one_shared_archive_without_copying_it(self):
+        from producer.collect import project_recipe
+        from producer.sources import sha256
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);project=root/'project.tar';project.write_bytes(b'complete project source')
+            ref={'asset':'shared.tar.gz','member':'project-source.tar','sha256':sha256(project)}
+            recipe=project_recipe(project,[ref],root/'recipe.json')
+            self.assertEqual(json.loads(recipe.read_text())['project_source'],ref)
+            with self.assertRaisesRegex(ValueError,'shared project'):
+                project_recipe(project,[],root/'missing.json')
+            project.write_bytes(b'changed')
+            with self.assertRaisesRegex(ValueError,'shared project'):
+                project_recipe(project,[ref],root/'changed.json')
+
     def test_shared_cargo_leaf_keeps_both_build_closure_references(self):
         import copy
         from producer.collect import merge_bundled_components

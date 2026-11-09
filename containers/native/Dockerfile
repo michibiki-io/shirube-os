@@ -66,5 +66,6 @@ COPY containers/native /src/native
 COPY patches/kernel /kernel-patches
 COPY LICENSE NOTICE source-lock.json license-audit.json shirube-os-logo.svg /src/
 COPY LICENSES /src/LICENSES
+COPY third_party/geoip /src/third_party/geoip
 # Keys and source archives are acquired/generated only during docker run.
 ENTRYPOINT ["python3", "/src/native/build.py"]

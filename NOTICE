@@ -41,3 +41,8 @@ This product includes cryptographic software written by Eric Young
 This product includes software written by Tim Hudson (tjh@cryptsoft.com).
 Original terms, including the conditional boringcrypto notices, remain intact
 in each exact corresponding-source archive; these credits imply no endorsement.
+
+IP Geolocation by DB-IP (https://db-ip.com/), Country Lite November 2026.
+Original CSV is provided under CC-BY-4.0; attribution and complete terms are
+retained in third_party/geoip/. Shirube OS converts the data to native SQLite
+range records with lowercase country codes. No endorsement is implied.

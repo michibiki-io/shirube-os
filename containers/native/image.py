@@ -128,6 +128,8 @@ def guest_package(arch, version):
     run('dpkg-deb','-x',str(libraries[0]),str(native))
     for library in native.rglob('libvyosconfig.so*'):
         shutil.copy2(library,Path('/usr/lib')/library.name,follow_symlinks=True)
+    from producer.geoip import install as install_geoip
+    install_geoip(Path('/src'), source, package)
     cache=package/'usr/lib/python3/dist-packages/vyos/xml_ref/pkg_cache';cache.mkdir(parents=True)
     xml=work/'xml';xml.mkdir();shutil.copy2('/src/guest/service_netbird.xml',xml/'service_netbird.xml')
     run('python3',str(source/'python/vyos/xml_ref/generate_cache.py'),'--xml-dir',str(xml),'--package-name','shirube-integration','--output-path',str(cache),env=dict(os.environ,PYTHONPATH=str(source/'python')))
@@ -233,6 +235,8 @@ def assemble(sources, packages, arch, version, output):
         run('gpg','--batch','--yes','--clearsign','--output',str(release.parent/'InRelease'),str(release),env=env)
         source=work/'vyos-build';shutil.copytree(sources/'vyos-build/vyos-build',source,symlinks=True)
         original_build=snapshot(source)
+        from producer.geoip import replace_hook
+        replace_hook(source/'data/live-build-config/hooks/live/40-init-geoip-database.chroot', Path('/src'))
         one=work/'vyos-1x';shutil.copytree(sources/'vyos-1x/vyos-1x',one,symlinks=True)
         for tree in [source,one]:
             run('git','init','-q',cwd=tree);run('git','add','.',cwd=tree)

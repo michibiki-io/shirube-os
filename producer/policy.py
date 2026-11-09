@@ -3,7 +3,7 @@ import re
 
 RELEVANT = ('producer/', 'containers/', 'scripts/', 'source-lock.json', 'patches/', 'guest/',
             'tests/', '.github/workflows/', 'schemas/', 'shirube-os-logo.svg',
-            'license-audit.json', 'LICENSE', 'NOTICE')
+            'license-audit.json', 'LICENSE', 'NOTICE', 'third_party/')
 VERSION_PATTERN=r'v([1-9][0-9]{3})\.(0[1-9]|1[0-2])\.(0|[1-9][0-9]*)'
 
 

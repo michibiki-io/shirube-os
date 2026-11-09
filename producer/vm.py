@@ -248,6 +248,11 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kv
                     identities.append(identity);observations.append(name+': actual console login, sudo, DHCP, route, virtio NIC and identity checks passed')
                     version_text=vm.command('show version')
                     if version[1:] not in version_text or not re.search(r'Version:\s+Shirube OS',version_text):raise ValueError('Wrong installed product identity/version')
+                    geoip_code="import json,sqlite3; from pathlib import Path; from vyos import geoip; p=Path('/usr/share/shirube/geoip'); b=json.loads((p/'components.json').read_text()); c=sqlite3.connect('file:/var/cache/vyos/geoip-lookup.db?mode=ro',uri=True); assert c.execute('PRAGMA quick_check').fetchone()==('ok',); assert c.execute('SELECT count(*) FROM geoip_ranges').fetchone()[0]==b['source']['rows']; assert geoip.db_return_ranges(['us'],4); print('GEOIP_NATIVE_PASS')"
+                    import shlex
+                    if vm.command('sudo python3 -c '+shlex.quote(geoip_code)).strip()!='GEOIP_NATIVE_PASS':
+                        raise ValueError('Native GeoIP cache was not restored on fresh disk boot')
+                    observations.append(name+': native GeoIP cache restored and country lookup passed')
                     if netbird_verify is not None:
                         proof=netbird_verify(vm)
                         if not proof or any(value!='PASS' for value in proof.values()):

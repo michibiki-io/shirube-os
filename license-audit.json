@@ -2288,7 +2288,7 @@
         },
         {
           "path": "NOTICE",
-          "sha256": "be98d9a573296e3d040e7cd71f8c53d3816f45dab0e0933db81dd790af801af8"
+          "sha256": "52a6a9b1783764539bc01aea90b63d2345348831165995451878f019fb209072"
         }
       ],
       "supplemental_origin": {
@@ -11065,7 +11065,7 @@
       "required_notice_files": [
         {
           "path": "NOTICE",
-          "sha256": "a1fae99d451f3d6a63d0ee907861352b23c8f73e2ee5214483ccdb70b621a9b3"
+          "sha256": "52a6a9b1783764539bc01aea90b63d2345348831165995451878f019fb209072"
         }
       ]
     },
@@ -11687,7 +11687,7 @@
       "required_notice_files": [
         {
           "path": "NOTICE",
-          "sha256": "a1fae99d451f3d6a63d0ee907861352b23c8f73e2ee5214483ccdb70b621a9b3"
+          "sha256": "52a6a9b1783764539bc01aea90b63d2345348831165995451878f019fb209072"
         }
       ]
     },
@@ -12187,6 +12187,20 @@
         "Distribute the exact authenticated original source and Debian patches/build recipes."
       ],
       "scope": "Complete installed copyright, upstream COPYING/LICENCE and CMake original legal file read. Exact unchanged Debian source/notice pair only; dependencies and full OS remain gated."
+    },
+    "data:dbip-country-lite@2026-11": {
+      "source_identity": "e5c8459d638a272ece7f4d7cfa49dce18d91b4f403f6940ba9249bf0db3781fd",
+      "copyright_sha256": "e4189eb50081aec67f721bdf97e48fd723c55ffb783c5212c0f215b59cf38462",
+      "redistributable": true,
+      "license": "CC-BY-4.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "geoip/copyright",
+      "conditions": [
+        "Retain DB-IP attribution, publisher and license links, the full CC-BY-4.0 legal text, and source version.",
+        "Identify CSV-to-SQLite and lowercase-country transformations. Do not imply endorsement or impose additional restrictions on the database.",
+        "Retain the unchanged original CSV as the corresponding database source. Applications displaying the data must include the DB-IP attribution link."
+      ],
+      "scope": "Official November 2026 Lite data only; full CC-BY-4.0 sections 1-8 read, publisher MD5/SHA1 matched uncompressed CSV; compressed and logical hashes fixed. Other components remain independently gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

@@ -250,6 +250,18 @@ def shared_build_inputs(project,builder,patches,destination):
     return [reference for category in records.values() for reference in category]
 
 
+def project_recipe(project, shared, destination):
+    """Bind each component to the complete project archive retained once."""
+    references=[item for item in shared if item['member']=='project-source.tar']
+    if len(references)!=1 or references[0]['sha256']!=sha256(Path(project)):
+        raise ValueError('Exact shared project reconstruction input missing')
+    destination=Path(destination)
+    destination.write_text(json.dumps({'project_source':references[0],
+        'instructions':'Restore the referenced project archive and use its documented reconstruction recipes.'},
+        sort_keys=True,indent=2)+'\n')
+    return destination
+
+
 def tracked_source_files(root):
     """Export patched tracked source, materializing confined directory aliases."""
     root=Path(root).resolve()
@@ -459,6 +471,24 @@ def collect(rootfs, package_output, output, arch, version, work):
                               else 'sources' if relative.startswith(('inputs/','linked/inputs/')) or relative=='vendor-source.tar.gz'
                               else 'build_inputs')
                     inputs.append((path,'netbird/'+relative,category))
+                from .geoip import verify_source, verify_database
+                geoip=verify_source(Path('/src'))
+                data=rootfs/'usr/share/shirube/geoip'
+                legal=rootfs/'usr/share/doc/shirube-integration/geoip'
+                for filename,digest in [(geoip['filename'],geoip['sha256'])]:
+                    if sha256(data/filename)!=digest:raise ValueError('Shipped GeoIP source mismatch')
+                    inputs.append((data/filename,'geoip/'+filename,'sources'))
+                for filename,digest in [('copyright',geoip['notice_sha256']),('CC-BY-4.0.txt',geoip['license_sha256'])]:
+                    if sha256(legal/filename)!=digest:raise ValueError('Shipped GeoIP attribution mismatch')
+                    inputs.append((legal/filename,'geoip/'+filename,'license_files'))
+                database=verify_database(data/'geoip-lookup.db',geoip)
+                bom=json.loads((data/'components.json').read_text())
+                if bom!={'source':geoip,'import':database}:raise ValueError('Shipped GeoIP import provenance mismatch')
+                inputs.append((data/'components.json','geoip/components.json','build_inputs'))
+                nested.append({'name':'data:dbip-country-lite','version':geoip['version'],
+                    'source_identity':geoip['sha256'],'source_member':'geoip/'+geoip['filename'],
+                    'source_sha256':geoip['sha256'],'notice':legal/'copyright',
+                    'notice_member':'geoip/copyright'})
             elif source is not None:
                 origin=source_identity
             else:
@@ -546,7 +576,8 @@ def collect(rootfs, package_output, output, arch, version, work):
             cached_recipe=source.parent/'cache-build-inputs'
             if cached_recipe.is_dir():
                 for path,relative in files(cached_recipe):inputs.append((path,'library-cache/'+relative,'build_inputs'))
-            inputs.extend([(copyright_file,'copyright','license_files'),(project,'project-source.tar','build_inputs')])
+            recipe=project_recipe(project,shared,component/'build-reconstruction.json')
+            inputs.extend([(copyright_file,'copyright','license_files'),(recipe,'build-reconstruction.json','build_inputs')])
             for notice,member in distribution_notices(Path('/src')):
                 inputs.append((notice,'distribution-notices/'+member,'license_files'))
             archive=output/f'shirube-os-{version}-{arch}-source-{len(cached):04d}.tar.gz'
@@ -571,6 +602,8 @@ def collect(rootfs, package_output, output, arch, version, work):
                                   native_job=native_jobs[name])
             if name=='shirube-integration':
                 provenance={'netbird_source_commit':lock['source_commit'],'netbird_source_sha256':lock['source_sha256'],'headless_asset_sha256':lock['assets'][arch]['sha256'],'integration_license_sha256':sha256(Path('/src/LICENSE'))}
+                provenance['geoip_source_sha256']=geoip['sha256']
+                provenance['geoip_notice_sha256']=geoip['notice_sha256']
                 origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             if keys:origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             if name=='vyos-http-api-tools':

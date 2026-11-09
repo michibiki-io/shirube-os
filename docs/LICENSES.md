@@ -28,6 +28,17 @@ external dependencies/build/install scripts/generated-source inputs required for
 reconstruction. A URL/hash list or automatic GitHub source archive is insufficient.
 Missing source or uncertain licensing blocks publication.
 
+The factory GeoIP database uses the unchanged DB-IP Country Lite November 2026
+CSV in `third_party/geoip/`, under CC-BY-4.0. The source lock binds its compressed,
+uncompressed and logical-row hashes, publisher checksums and full attribution.
+The native router importer generates the SQLite template; its exact API source
+hash and all imported rows are checked. The integration package retains the CSV,
+full license and credit, and the collector inventories this data separately.
+On first boot, systemd-tmpfiles restores the cache from the immutable template
+after sanitization; existing administrator-updated caches are preserved. Explicit
+runtime GeoIP updates retain the native behavior. Final-image boot validation is
+required independently of the offline importer test.
+
 `producer.bundles.bundle` archives explicit source/license/build input files,
 checks for unsafe paths/private keys/Git history, normalizes archive metadata,
 then verifies the actual member bytes. Oversized components fail before upload;
