@@ -1,0 +1,45 @@
+{
+  "kind": "pyelftools-vendored-construct-original-license-binding",
+  "status": "PASS_SOURCE_AND_NOTICE_BINDING_ONLY",
+  "upstream": {
+    "name": "pyelftools-upstream-tree",
+    "version": "0.33",
+    "authority": "https://api.github.com/repos/eliben/pyelftools/git/ref/tags/v0.33",
+    "commit": "52ce435186022bd6b32012a998931fe86c985ec8",
+    "filename": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8.tar.gz",
+    "url": "https://codeload.github.com/eliben/pyelftools/tar.gz/52ce435186022bd6b32012a998931fe86c985ec8",
+    "sha256": "6d4e36719b23d60d3f2d5bdc9ddf8c9510239da5f2788cee937a02bb2c46d826",
+    "legal_notices": [
+      {
+        "member": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8/LICENSE",
+        "sha256": "ae18bf4cb82f92af7547259177bc28bc48e4fc732518bcedfe690226288d3445"
+      },
+      {
+        "member": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8/elftools/construct/LICENSE",
+        "sha256": "f8d0c347a0dcc6ebe1671640dfae8d2411b6ded892e06a6764f8208b218b2af4"
+      },
+      {
+        "member": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8/elftools/construct/README",
+        "sha256": "a18e2e08b52233d234aa06dd016b9e11e0f076efa609ba1f27b4c80bea985323"
+      }
+    ]
+  },
+  "build_input_sha256": "f215ad5f47d3f1373a21496a6c9e0707c622840d0622f23ff7ce08678b020036",
+  "source_tree_matches_wheel_construct_python_members": [
+    "elftools/construct/__init__.py",
+    "elftools/construct/adapters.py",
+    "elftools/construct/core.py",
+    "elftools/construct/debug.py",
+    "elftools/construct/macros.py",
+    "elftools/construct/lib/__init__.py",
+    "elftools/construct/lib/binary.py",
+    "elftools/construct/lib/bitstream.py",
+    "elftools/construct/lib/container.py",
+    "elftools/construct/lib/hex.py"
+  ],
+  "scope": "The exact release tag resolves to the recorded public commit. Every vendored Construct Python member in the build wheel matches that commit byte-for-byte. The original MIT notice and attribution absent from the PyPI archives are retained from the same public tree without editing the input wheel. Original Unlicense text remains intact. No build or parent OS clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "installed_original_mit_notice_and_independent_recheck": "PASS",
+  "aggregate_notice_sha256": "0e6f5dd18556ac65c89920b157e64c7eeba569b676d93f1322a3b31ebea9fb66"
+}

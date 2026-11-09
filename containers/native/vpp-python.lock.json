@@ -114,6 +114,29 @@
               "sha256": "ae18bf4cb82f92af7547259177bc28bc48e4fc732518bcedfe690226288d3445"
             }
           ]
+        },
+        {
+          "name": "pyelftools-upstream-tree",
+          "version": "0.33",
+          "authority": "https://api.github.com/repos/eliben/pyelftools/git/ref/tags/v0.33",
+          "commit": "52ce435186022bd6b32012a998931fe86c985ec8",
+          "filename": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8.tar.gz",
+          "url": "https://codeload.github.com/eliben/pyelftools/tar.gz/52ce435186022bd6b32012a998931fe86c985ec8",
+          "sha256": "6d4e36719b23d60d3f2d5bdc9ddf8c9510239da5f2788cee937a02bb2c46d826",
+          "legal_notices": [
+            {
+              "member": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8/LICENSE",
+              "sha256": "ae18bf4cb82f92af7547259177bc28bc48e4fc732518bcedfe690226288d3445"
+            },
+            {
+              "member": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8/elftools/construct/LICENSE",
+              "sha256": "f8d0c347a0dcc6ebe1671640dfae8d2411b6ded892e06a6764f8208b218b2af4"
+            },
+            {
+              "member": "pyelftools-52ce435186022bd6b32012a998931fe86c985ec8/elftools/construct/README",
+              "sha256": "a18e2e08b52233d234aa06dd016b9e11e0f076efa609ba1f27b4c80bea985323"
+            }
+          ]
         }
       ]
     },
