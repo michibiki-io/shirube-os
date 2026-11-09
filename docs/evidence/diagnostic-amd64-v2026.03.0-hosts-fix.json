@@ -1,0 +1,51 @@
+{
+  "kind": "diagnostic-amd64-hosts-fix-iso-installation",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "build_source_commit": "3b94e3bfdf8335377c3c03eb3e29e1e1321a5736",
+  "original_iso_sha256": "d575381ec044688c97bfec58508d101034e3728b5be5cbf1c43ace3d990ca249",
+  "iso_sha256": "5ba57652c8d43dec0685723c6cc1f3ac037be6d497c25ad433ba4817b9549eec",
+  "diagnostic_patch_commit": "40ebd6cbdb7f18723995574152575a85709b62f2",
+  "validation_helper_commit": "40ebd6cbdb7f18723995574152575a85709b62f2",
+  "accelerator": "tcg",
+  "firmware": "fresh OVMF",
+  "factory_audit": {
+    "status": "PASS",
+    "scope": "factory root and unpacked initramfs",
+    "machine_id_empty": true,
+    "password_accounts_locked": true,
+    "host_key_files_absent": true,
+    "pem_openssh_scan": "PASS",
+    "counts": {
+      "root_files": 56160,
+      "public_fixture_files": 16,
+      "initramfs_files": 888
+    }
+  },
+  "checks": {
+    "boot": "PASS",
+    "enrollment": "PASS",
+    "installation": "PASS",
+    "shutdown": "PASS",
+    "installed_boot": "PASS",
+    "administrator_retained": "PASS",
+    "reboot": "PASS",
+    "empty_name_retry": "PASS",
+    "short_password_retry": "PASS",
+    "password_mismatch_retry": "PASS",
+    "runtime_hostname_hosts": "PASS",
+    "validation_kept_service_healthy": "PASS",
+    "installed_shutdown": "PASS"
+  },
+  "implementation_files": {
+    "producer/vm.py": "c3af60aa384caf57d1d993853cb8c121a2068bea98bd5f6cdf2a921ca241baca",
+    "guest/first_boot.py": "f9ac623ef69fa0d5445c66b1f077317dbb8449831c918a21cf311106dcfd8bbe",
+    "producer/installer_admin.py": "f989bfaefe938f945e80c3431b142522f6a50434b0985a06443ea3e5d0930518"
+  },
+  "limitations": [
+    "The original ISO was remastered only to restore canonical /etc/hosts. This is not a clean-head release candidate.",
+    "Additional package documentation was excluded by the original assembly configuration; source/license clearance is not established.",
+    "QCOW2/VMDK export and acceptance for this ISO were not run.",
+    "OCI real-machine acceptance was not run."
+  ]
+}

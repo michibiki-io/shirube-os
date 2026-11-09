@@ -1,0 +1,57 @@
+{
+  "kind": "diagnostic-native-arm64-tcg-both-immutable-format-clones",
+  "accelerator": "TCG",
+  "firmware": "fresh AAVMF for each clone",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "status": "PASS",
+  "formats": {
+    "qcow2": {
+      "unprovisioned_prompt": "PASS",
+      "individual_enrollment_login": "PASS",
+      "architecture_sudo_dhcp_route_virtio_version_identity": "PASS",
+      "netbird": {
+        "native_config_commit_save": "PASS",
+        "real_enrollment": "PASS",
+        "real_enrollment_rejection_and_cleanup": "PASS",
+        "management_and_signal": "PASS",
+        "disable_enable_identity": "PASS",
+        "saved_configuration_reboot_identity": "PASS",
+        "removed_configuration_reboot_inactive": "PASS",
+        "setup_key_absence_in_config_state_history_logs": "PASS"
+      },
+      "clean_shutdown": "PASS",
+      "immutable_base": "PASS",
+      "sha256": "378ec1a93fa6e6f840b3333878739a26e8d8d568a3925c26bf1e02fec96a07c8"
+    },
+    "vmdk": {
+      "unprovisioned_prompt": "PASS",
+      "individual_enrollment_login": "PASS",
+      "architecture_sudo_dhcp_route_virtio_version_identity": "PASS",
+      "netbird": {
+        "native_config_commit_save": "PASS",
+        "real_enrollment": "PASS",
+        "real_enrollment_rejection_and_cleanup": "PASS",
+        "management_and_signal": "PASS",
+        "disable_enable_identity": "PASS",
+        "saved_configuration_reboot_identity": "PASS",
+        "removed_configuration_reboot_inactive": "PASS",
+        "setup_key_absence_in_config_state_history_logs": "PASS"
+      },
+      "clean_shutdown": "PASS",
+      "immutable_base": "PASS",
+      "sha256": "fc58dfa804e199652e3d0546be7c90ba8d396ce4d9414726765b73b1b4679f2d"
+    }
+  },
+  "implementation_files": {
+    "producer/vm.py": "3767b675d738fdd85079305dd5c24a40fe79df22715913b4373d82501a57f484",
+    "producer/netbird_guest.py": "6eb0785c190d205585cca161801907f001513d1952fe02b3d3e1b6c472da8e46"
+  },
+  "identity_regeneration": "PASS",
+  "base_diagnostic_evidence": "diagnostic-arm64-v2026.03.0.json",
+  "limitations": [
+    "Uses the earlier diagnostic immutable disk images; not a clean-current-head candidate.",
+    "Successful TCG disk-format checks do not establish the ARM64 TCG guestfs appliance or whole release pipeline.",
+    "Full corresponding-source reconstruction, license clearance and OCI real-machine acceptance remain separate gates."
+  ]
+}
