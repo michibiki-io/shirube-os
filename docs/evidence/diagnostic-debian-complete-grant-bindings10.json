@@ -1,0 +1,298 @@
+{
+  "kind": "exact-debian-complete-grant-and-path-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 8,
+  "components": [
+    {
+      "source": "adduser",
+      "version": "3.134",
+      "source_identity": "608ed02073381a8af28f29c3a2e390ddff7caee6b013a533fffc16b660fa80a4",
+      "copyright_sha256": "b143053a4862ab354831487b5f8bd31dc9ffdc589d15de9d9c764332a0209796",
+      "binaries": [
+        {
+          "name": "adduser",
+          "version": "3.134",
+          "architecture": "all",
+          "copyright_sha256": "b143053a4862ab354831487b5f8bd31dc9ffdc589d15de9d9c764332a0209796"
+        }
+      ],
+      "original_legal_matches": [],
+      "selected_license": "GPL-2.0-or-later"
+    },
+    {
+      "source": "base-passwd",
+      "version": "3.6.1",
+      "source_identity": "b4e5fcdba73369657b241743033e8e7a65c26da43285503c652fa1436ce75d1f",
+      "copyright_sha256": "0f1cde79bd80a75f9029ae9a8c252b642223027ef36f6989c63a8230aae576a7",
+      "binaries": [
+        {
+          "name": "base-passwd",
+          "version": "3.6.1",
+          "architecture": "arm64",
+          "copyright_sha256": "0f1cde79bd80a75f9029ae9a8c252b642223027ef36f6989c63a8230aae576a7"
+        }
+      ],
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "e6d6a009505e345fe949e1310334fcb0747f28dae2856759de102ab66b722cb4",
+          "read_reference": {
+            "component": "iotop",
+            "member": "COPYING",
+            "sha256": "c38aee9e3c8c4d5d594ff548a1be05453023016d6286931f6512db215ec1fd42"
+          }
+        }
+      ],
+      "selected_license": "GPL-2.0-only AND LicenseRef-Public-Domain"
+    },
+    {
+      "source": "cdebconf",
+      "version": "0.270",
+      "source_identity": "d7f396abbbfb2d38fc15589358d05618c9918f4f10facfe1ac259efef91e8a5f",
+      "copyright_sha256": "cf63099896d1c0f6529c41b8d95738e6fea342ffba609187d339c4f38ce36ecc",
+      "binaries": [
+        {
+          "name": "libdebconfclient0",
+          "version": "0.270",
+          "architecture": "arm64",
+          "copyright_sha256": "cf63099896d1c0f6529c41b8d95738e6fea342ffba609187d339c4f38ce36ecc"
+        }
+      ],
+      "original_legal_matches": [],
+      "selected_license": "BSD-2-Clause AND GPL-2.0-or-later AND LicenseRef-Public-Domain"
+    },
+    {
+      "source": "liblist-moreutils-perl",
+      "version": "0.430-2",
+      "source_identity": "3d843801b6f322343178bdb0f87a4139a8308c3501fc51f5295378bfb63a3eec",
+      "copyright_sha256": "ec07d8cc25825e5f40a22f75be3b26282c951d0d9f31244ece3842cc50b63e71",
+      "binaries": [
+        {
+          "name": "liblist-moreutils-perl",
+          "version": "0.430-2",
+          "architecture": "all",
+          "copyright_sha256": "ec07d8cc25825e5f40a22f75be3b26282c951d0d9f31244ece3842cc50b63e71"
+        }
+      ],
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+          "read_reference": {
+            "component": "python-distro",
+            "member": "LICENSE",
+            "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14"
+          }
+        },
+        {
+          "member": "t/LICENSE",
+          "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+          "read_reference": {
+            "component": "python-distro",
+            "member": "LICENSE",
+            "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14"
+          }
+        }
+      ],
+      "selected_license": "Artistic-1.0-Perl AND Apache-2.0"
+    },
+    {
+      "source": "liblist-moreutils-xs-perl",
+      "version": "0.430-3",
+      "source_identity": "df5cd14456020380f204723ff8a8853543be88cf0ea84e6491f2a2577a7192e9",
+      "copyright_sha256": "701442cf3769c37d49c6e531c5c80c69e98fd02e13293ed3c29f3ddaf3f9583a",
+      "binaries": [
+        {
+          "name": "liblist-moreutils-xs-perl",
+          "version": "0.430-3+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "701442cf3769c37d49c6e531c5c80c69e98fd02e13293ed3c29f3ddaf3f9583a"
+        }
+      ],
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+          "read_reference": {
+            "component": "python-distro",
+            "member": "LICENSE",
+            "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14"
+          }
+        },
+        {
+          "member": "t/LICENSE",
+          "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+          "read_reference": {
+            "component": "python-distro",
+            "member": "LICENSE",
+            "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14"
+          }
+        }
+      ],
+      "selected_license": "Artistic-1.0-Perl AND Apache-2.0 AND BSD-3-Clause"
+    },
+    {
+      "source": "libnet",
+      "version": "1.1.6+dfsg-3.2",
+      "source_identity": "ad3fe1b0abbdf4c402c9b730361b3307f6ecd3a4562632fac124b8c74621ea75",
+      "copyright_sha256": "767dcb8cf9128f8a10631b527de9c69563352d1423bec9224a8cd98f94041ee6",
+      "binaries": [
+        {
+          "name": "libnet1",
+          "version": "1.1.6+dfsg-3.2",
+          "architecture": "arm64",
+          "copyright_sha256": "767dcb8cf9128f8a10631b527de9c69563352d1423bec9224a8cd98f94041ee6"
+        }
+      ],
+      "original_legal_matches": [
+        {
+          "member": "doc/COPYING",
+          "sha256": "961355c8bac6de11ecb8f634111986712e80a88272c0bb0954fd1810e6f47cab",
+          "read_reference": {
+            "component": "libnet",
+            "member": "doc/COPYING",
+            "sha256": "961355c8bac6de11ecb8f634111986712e80a88272c0bb0954fd1810e6f47cab",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "selected_license": "BSD-2-Clause AND BSD-4-Clause AND LicenseRef-Libnet-advertising-BSD AND LicenseRef-CMU-permission"
+    },
+    {
+      "source": "libpsl",
+      "version": "0.21.2-1",
+      "source_identity": "1ddb578f5865a447b11078993cef2138107c82f8590ec2516af6f9970a2d4e0f",
+      "copyright_sha256": "bbafb0cf52d34465fc69f5ffd22d724224f6a2f28402c88b045c69d88af06aaf",
+      "binaries": [
+        {
+          "name": "libpsl5",
+          "version": "0.21.2-1",
+          "architecture": "arm64",
+          "copyright_sha256": "bbafb0cf52d34465fc69f5ffd22d724224f6a2f28402c88b045c69d88af06aaf"
+        }
+      ],
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "776cd11d54f0ea3e5efdd25ff1a0d952a1744215bb5858ea7aeb91808e70c9f7",
+          "read_reference": {
+            "component": "libpsl",
+            "member": "COPYING",
+            "sha256": "776cd11d54f0ea3e5efdd25ff1a0d952a1744215bb5858ea7aeb91808e70c9f7",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "776cd11d54f0ea3e5efdd25ff1a0d952a1744215bb5858ea7aeb91808e70c9f7",
+          "read_reference": {
+            "component": "libpsl",
+            "member": "COPYING",
+            "sha256": "776cd11d54f0ea3e5efdd25ff1a0d952a1744215bb5858ea7aeb91808e70c9f7",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "src/LICENSE.chromium",
+          "sha256": "1d7f52747a9169751cdf2641a8299c0098e9ecdf9429296ffd55bdb14c9ed5b3",
+          "read_reference": {
+            "component": "libpsl",
+            "member": "src/LICENSE.chromium",
+            "sha256": "1d7f52747a9169751cdf2641a8299c0098e9ecdf9429296ffd55bdb14c9ed5b3",
+            "review_method": "Every full normalized word difference read; scope and BSD-Clear patent disclaimer retained."
+          }
+        }
+      ],
+      "selected_license": "MIT AND BSD-3-Clause AND FSFULLR"
+    },
+    {
+      "source": "nginx",
+      "version": "1.22.1-9+deb12u10",
+      "source_identity": "cd1966d8ac12a78feb009b0add66dec191c8c561de1cbd3a123594d2e54936ad",
+      "copyright_sha256": "d5458f44f9e2ace963f1d51ab9ecc0d11acdb49b715b73b4d48f11d5f906e052",
+      "binaries": [
+        {
+          "name": "nginx",
+          "version": "1.22.1-9+deb12u10",
+          "architecture": "arm64",
+          "copyright_sha256": "d5458f44f9e2ace963f1d51ab9ecc0d11acdb49b715b73b4d48f11d5f906e052"
+        },
+        {
+          "name": "nginx-common",
+          "version": "1.22.1-9+deb12u10",
+          "architecture": "all",
+          "copyright_sha256": "d5458f44f9e2ace963f1d51ab9ecc0d11acdb49b715b73b4d48f11d5f906e052"
+        },
+        {
+          "name": "nginx-light",
+          "version": "1.22.1-9+deb12u10",
+          "architecture": "all",
+          "copyright_sha256": "d5458f44f9e2ace963f1d51ab9ecc0d11acdb49b715b73b4d48f11d5f906e052"
+        }
+      ],
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "ececed0b0e7243a4766cbc62b26df4bd3513b41de3a07425da1679c836d06320",
+          "read_reference": {
+            "component": "nginx",
+            "member": "LICENSE",
+            "sha256": "ececed0b0e7243a4766cbc62b26df4bd3513b41de3a07425da1679c836d06320",
+            "review_method": "Every full normalized word difference read; scope and BSD-Clear patent disclaimer retained."
+          }
+        }
+      ],
+      "selected_license": "BSD-2-Clause AND MIT AND GPL-2.0-or-later AND LicenseRef-Public-Domain"
+    }
+  ],
+  "new_original_word_comparisons": [
+    {
+      "read_reference": {
+        "component": "systemd",
+        "member": "LICENSES/BSD-3-Clause.txt",
+        "sha256": "83bb6bd9ccd2cf5230cb1807ed16258289768dc4d9cb80069a814e04415a1275"
+      },
+      "ratio": 0.9688715953307393,
+      "full_word_diff": "--- systemd/LICENSES/BSD-3-Clause.txt\n\n+++ libpsl/src/LICENSE.chromium\n\n@@ -1,10 +1,22 @@\n\n+*\n+The\n+following\n+License\n+is\n+for\n+the\n+source\n+code\n+files\n+psl-make-dafsa\n+and\n+lookup_string_in_fixed_set.c.\n //\n Copyright\n-2014\n+2015\n The\n Chromium\n-OS\n Authors.\n All\n rights\n reserved.",
+      "full_normalized_original_sha256": "0313836e8ecdc204ad03dd93804d08904733c22f7cd21d446809f9026b9f8b05",
+      "original": {
+        "component": "libpsl",
+        "member": "src/LICENSE.chromium",
+        "sha256": "1d7f52747a9169751cdf2641a8299c0098e9ecdf9429296ffd55bdb14c9ed5b3"
+      }
+    },
+    {
+      "read_reference": {
+        "component": "linux",
+        "member": "LICENSES/preferred/BSD-3-Clause",
+        "sha256": "7a83b1aeb460458db9a4bd521d7f237c45b1650f6e60ea5ffc71e49472454de3"
+      },
+      "ratio": 0.9007352941176471,
+      "full_word_diff": "--- linux/LICENSES/preferred/BSD-3-Clause\n\n+++ linux/LICENSES/preferred/BSD-3-Clause-Clear\n\n@@ -1,17 +1,15 @@\n\n Valid-License-Identifier:\n-BSD-3-Clause\n+BSD-3-Clause-Clear\n SPDX-URL:\n-https://spdx.org/licenses/BSD-3-Clause.html\n+https://spdx.org/licenses/BSD-3-Clause-Clear.html\n Usage-Guide:\n To\n use\n the\n BSD\n 3-clause\n-\"New\"\n-or\n-\"Revised\"\n+\"Clear\"\n License\n put\n the\n following\n@@ -31,15 +29,19 @@\n\n licensing\n rules\n documentation:\n SPDX-License-Identifier:\n-BSD-3-Clause\n+BSD-3-Clause-Clear\n License-Text:\n+The\n+Clear\n+BSD\n+License\n Copyright\n (c)\n-<year>\n-<owner>\n-.\n+[xxxx]-[xxxx]\n+[Owner\n+Organization]\n All\n rights\n reserved.\n Redistribution\n@@ -55,16 +57,24 @@\n\n without\n modification,\n are\n permitted\n+(subject\n+to\n+the\n+limitations\n+in\n+the\n+disclaimer\n+below)\n provided\n that\n the\n following\n conditions\n are\n met:\n-1.\n+*\n Redistributions\n of\n source\n code\n@@ -81,9 +91,9 @@\n\n and\n the\n following\n disclaimer.\n-2.\n+*\n Redistributions\n in\n binary\n form\n@@ -110,16 +120,15 @@\n\n provided\n with\n the\n distribution.\n-3.\n+*\n Neither\n the\n name\n of\n-the\n-copyright\n-holder\n+[Owner\n+Organization]\n nor\n the\n names\n of\n@@ -141,8 +150,23 @@\n\n specific\n prior\n written\n permission.\n+NO\n+EXPRESS\n+OR\n+IMPLIED\n+LICENSES\n+TO\n+ANY\n+PARTY'S\n+PATENT\n+RIGHTS\n+ARE\n+GRANTED\n+BY\n+THIS\n+LICENSE.\n THIS\n SOFTWARE\n IS\n PROVIDED",
+      "full_normalized_original_sha256": "c161899329989644b0f6b87808964cb5ca4b8bfcd7001e8e79c0ffbcb79426d2",
+      "original": {
+        "component": "linux",
+        "member": "LICENSES/preferred/BSD-3-Clause-Clear",
+        "sha256": "3f8a01d020e77c045e364c4681ee78c591041b7a38aa61972f689f4bc4cb5088"
+      }
+    },
+    {
+      "read_reference": {
+        "component": "bgpq3",
+        "member": "COPYRIGHT",
+        "sha256": "da803dd072b08043817d44d8d25543219e69ff41d2014e39ba69f957b703ce4d"
+      },
+      "ratio": 0.9590909090909091,
+      "full_word_diff": "--- bgpq3/COPYRIGHT\n\n+++ nginx/LICENSE\n\n@@ -1,12 +1,17 @@\n\n-/*-\n+/*\n *\n Copyright\n-(c)\n-2007-2021\n-Alexandre\n-Snarskii\n-<snar@snar.spb.ru>\n+(C)\n+2002-2021\n+Igor\n+Sysoev\n+*\n+Copyright\n+(C)\n+2011-2022\n+Nginx,\n+Inc.\n *\n All\n rights\n reserved.\n@@ -213,6 +218,5 @@\n\n OF\n *\n SUCH\n DAMAGE.\n-*\n */",
+      "full_normalized_original_sha256": "54c5ca56e2107eef3cc7fbf914ea6361546ac5937e83be00be15da386892df16",
+      "original": {
+        "component": "nginx",
+        "member": "LICENSE",
+        "sha256": "ececed0b0e7243a4766cbc62b26df4bd3513b41de3a07425da1679c836d06320"
+      }
+    }
+  ],
+  "scope": "All exact original legal files and entire Debian copyright texts reviewed. Custom advertising clauses, old Perl licensing and separate copyleft scopes preserved. Ambiguous font-source, make_sunver and other unresolved rights remain deferred.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,10 @@
+This product includes software developed by the University of California,
+Lawrence Berkeley Laboratory and its contributors.
+
+This product includes software developed by the University of
+California, Berkeley and its contributors.
+
+Retain these acknowledgements in advertising materials mentioning features
+or use of the relevant libnet code, as the original per-file licenses require.
+All original copyright, conditions and disclaimers remain with the sources and
+binary documentation. No endorsement is implied.

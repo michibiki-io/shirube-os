@@ -15679,6 +15679,139 @@
         "Keep separate wepoll BSD2 conditions, PyZMQ BSD3 example licensing and any file-specific terms; no endorsement or broader relicensing is inferred."
       ],
       "scope": "Complete PyZMQ notices and AUTHORS read. Bundled ZeroMQ lacks its AUTHORS/COPYING.LESSER, so retain the fixed public v4.3.4 originals; every one of 278 shared native source/header files is byte-identical to that source. Actual zmq.h LGPL3-or-later/linking-exception header and full original exception read and retained. Component only; parent SDK and OS remain gated."
+    },
+    "adduser@3.134": {
+      "source_identity": "608ed02073381a8af28f29c3a2e390ddff7caee6b013a533fffc16b660fa80a4",
+      "copyright_sha256": "b143053a4862ab354831487b5f8bd31dc9ffdc589d15de9d9c764332a0209796",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance."
+    },
+    "base-passwd@3.6.1": {
+      "source_identity": "b4e5fcdba73369657b241743033e8e7a65c26da43285503c652fa1436ce75d1f",
+      "copyright_sha256": "0f1cde79bd80a75f9029ae9a8c252b642223027ef36f6989c63a8230aae576a7",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance."
+    },
+    "cdebconf@0.270": {
+      "source_identity": "d7f396abbbfb2d38fc15589358d05618c9918f4f10facfe1ac259efef91e8a5f",
+      "copyright_sha256": "cf63099896d1c0f6529c41b8d95738e6fea342ffba609187d339c4f38ce36ecc",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND GPL-2.0-or-later AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance. The root BSD-2-Clause label and BSD-2-clause definition differ only in label case; the actual two-clause grant is retained. Public-domain apt-derived portions keep the original express designation."
+    },
+    "liblist-moreutils-perl@0.430-2": {
+      "source_identity": "3d843801b6f322343178bdb0f87a4139a8308c3501fc51f5295378bfb63a3eec",
+      "copyright_sha256": "ec07d8cc25825e5f40a22f75be3b26282c951d0d9f31244ece3842cc50b63e71",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred.",
+        "Select Artistic terms for original Perl-derived portions and retain Apache2 for later additions, preserving all prior contributor permissions and the documented license history. Supply all modified source under Artistic4(b), make changes freely available under 3(a), and retain the XS BSD3 attribution where applicable."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "liblist-moreutils-xs-perl@0.430-3": {
+      "source_identity": "df5cd14456020380f204723ff8a8853543be88cf0ea84e6491f2a2577a7192e9",
+      "copyright_sha256": "701442cf3769c37d49c6e531c5c80c69e98fd02e13293ed3c29f3ddaf3f9583a",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl AND Apache-2.0 AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred.",
+        "Select Artistic terms for original Perl-derived portions and retain Apache2 for later additions, preserving all prior contributor permissions and the documented license history. Supply all modified source under Artistic4(b), make changes freely available under 3(a), and retain the XS BSD3 attribution where applicable."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libnet@1.1.6+dfsg-3.2": {
+      "source_identity": "ad3fe1b0abbdf4c402c9b730361b3307f6ecd3a4562632fac124b8c74621ea75",
+      "copyright_sha256": "767dcb8cf9128f8a10631b527de9c69563352d1423bec9224a8cd98f94041ee6",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND BSD-4-Clause AND LicenseRef-Libnet-advertising-BSD AND LicenseRef-CMU-permission",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred.",
+        "The source label BSD-3 includes a mandatory Lawrence Berkeley Laboratory advertising acknowledgement and nonendorsement clause; retain that exact custom grant and the separate UCB BSD4 advertising condition. Preserve CMU permission and supporting documentation notices."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libnet-acknowledgements.txt",
+          "sha256": "a93090c9ed00942ceda4e044f9ed6978927e003135d83a6b5638d102e6d6b12f"
+        }
+      ]
+    },
+    "libpsl@0.21.2-1": {
+      "source_identity": "1ddb578f5865a447b11078993cef2138107c82f8590ec2516af6f9970a2d4e0f",
+      "copyright_sha256": "bbafb0cf52d34465fc69f5ffd22d724224f6a2f28402c88b045c69d88af06aaf",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause AND FSFULLR",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance."
+    },
+    "nginx@1.22.1-9+deb12u10": {
+      "source_identity": "cd1966d8ac12a78feb009b0add66dec191c8c561de1cbd3a123594d2e54936ad",
+      "copyright_sha256": "d5458f44f9e2ace963f1d51ab9ecc0d11acdb49b715b73b4d48f11d5f906e052",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND MIT AND GPL-2.0-or-later AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyright, every per-file grant, exception, notice and disclaimer with sources and binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install recipes with all applicable full license texts; preserve modification notices, source access and any replacement/relinking rights.",
+        "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred."
+      ],
+      "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
