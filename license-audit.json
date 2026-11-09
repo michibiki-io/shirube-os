@@ -2799,6 +2799,188 @@
         "Retain the complete applicable GNU GPL text, source availability and modification notices; impose no additional restrictions."
       ],
       "scope": "Exact Debian source/copyright pair and unchanged Debian binary only. Full installed/source copyright and available primary legal files inspected. GNU complete-text differences were limited to historical address/Library naming and sample-year formatting. Dependencies and the complete OS remain independently gated."
+    },
+    "net-tools@2.10-0.1+deb12u2": {
+      "source_identity": "53306a7debbeaa6ac73371de5b3170559d3c90bf345b35883b0668380fb95074",
+      "copyright_sha256": "54168b9264cc2cf7d74352939256a54aa04eb2fac61fb58df6e06562bbf98348",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Retain the full GNU GPL text and corresponding source; identify modifications and impose no further restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "netbase@6.4": {
+      "source_identity": "dc26cfcaa49fd874cc27c65216b2f8b6d3ad62845b78da4bdf0aea55592af756",
+      "copyright_sha256": "795b66147ea5ad692991caa7008ece551fb0fa88b9c53656223bd1518dc58ab2",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Retain the full GNU GPL text and corresponding source; identify modifications and impose no further restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "netplug@1.2.9.2-3.1": {
+      "source_identity": "d789773a1a062eaf807f4f6836ff32aa009801551bc050d55b6dae6a2d4db6c5",
+      "copyright_sha256": "ecc0c8432193922dc555b733c69f00cc1a00d5a782adb818ded916e281e84842",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Retain the full GNU GPL text and corresponding source; identify modifications and impose no further restrictions.",
+        "The grant explicitly permits GNU GPL version 2 only; do not relabel it as or-later or another license."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "npth@1.6-3": {
+      "source_identity": "002c2a7936d1499ebb5d72dbb9c7ca3e00ed5fe3b0aa48f20b7279fc90aa9e90",
+      "copyright_sha256": "df6909abb38f4e84d237d8617e948bdbb391b2004ecf573863011d54a88ccf22",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Retain full LGPL text and source, preserve the ability to modify/relink the library and supply required application/relink material; permit debugging of library modifications."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "pciutils@1:3.9.0-4": {
+      "source_identity": "b605cd0cfb3e56ebfbc60af4a72aec3d6d60ce514ae2ebd9a8e2e84e61c2aeda",
+      "copyright_sha256": "4da6bc6430fc6604ebe37acd50a7b73fcd92e03d61a29d4326348aac211668c6",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Retain the full GNU GPL text and corresponding source; identify modifications and impose no further restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "pystache@0.6.0-1": {
+      "source_identity": "57f02effcc4e530d24b1c445fdf1ae39fd41ca6971960bed517761667a1a6c32",
+      "copyright_sha256": "8f8f37c2f8b016bc8739b1940a05d297f486401c4188cb5735dff5b76e08ef65",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Keep complete MIT permission/disclaimer and original authorship in all copies and substantial portions, including the libffi architecture-specific copyright notices for CFFI."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "python-cffi@1.15.1-5": {
+      "source_identity": "d97407ade523f88b64905b5fa90e535dd5c6929feaaf5694d9f49b84a4d54c67",
+      "copyright_sha256": "ce38a181b50546a354940a53ef8798c15eb28b8eb03fd6bf72af102ba855caee",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Keep complete MIT permission/disclaimer and original authorship in all copies and substantial portions, including the libffi architecture-specific copyright notices for CFFI."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "python-inotify@0.2.10-4": {
+      "source_identity": "2ca7c682766226bc149ee543b74d3fbb2974ad18cb42f7b1482c418cc58f16d1",
+      "copyright_sha256": "ef79c483fe315aaf41d6159c1e6211a3841837eb73c30cdeaa726e83c3c8032b",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyrights, notices, permission conditions and disclaimers, including source-file notices.",
+        "Provide exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution.",
+        "Retain the full GNU GPL text and corresponding source; identify modifications and impose no further restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source copyright pair only. Complete installed/source notice and original named legal files inspected. Complete GNU license text differences were historical address, Library naming and example boilerplate formatting; no different operative grant was inferred. Dependencies and the full OS remain independently gated."
+    },
+    "pypi:psutil@5.8.0": {
+      "source_identity": "0c9ccb99ab76025f2f0bbecf341d4656e9c1351db8cc8a03ccd62e318ab4b5c6",
+      "copyright_sha256": "f5ddaed9677d058be5727f01e7a3af4ddae21418fd9550409585c6f835822b6c",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/0c9ccb99ab76025f2f0bbecf341d4656e9c1351db8cc8a03ccd62e318ab4b5c6.copyright",
+      "conditions": [
+        "Preserve complete original source-file copyrights, permission conditions, attribution and disclaimers; retain the exact combined original notices with the binary distribution.",
+        "Retain the complete original preferred source archive and exact source/notice hashes; separately review every dependency and the complete distribution.",
+        "Retain source and binary notice/disclaimer requirements and do not use upstream author/contributor names for endorsement without permission."
+      ],
+      "scope": "Exact pinned original Python source and combined legal notice only, independently regenerated from the authenticated hash-pinned source archive. Original named legal files and complete permission terms inspected; Apache license bytes are identical for both Apache components and rpm-vercmp AUTHORS is retained. Dependencies and complete OS remain separately gated."
+    },
+    "pypi:pyopenssl@24.0.0": {
+      "source_identity": "6aa33039a93fffa4563e655b61d11364d01264be8ccb49906101e02a334530bf",
+      "copyright_sha256": "561874f15547c489081d75248c4e494b55c92ea90cd3dc9634185c29ddcb8646",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/6aa33039a93fffa4563e655b61d11364d01264be8ccb49906101e02a334530bf.copyright",
+      "conditions": [
+        "Preserve complete original source-file copyrights, permission conditions, attribution and disclaimers; retain the exact combined original notices with the binary distribution.",
+        "Retain the complete original preferred source archive and exact source/notice hashes; separately review every dependency and the complete distribution.",
+        "Retain the full Apache-2.0 license and applicable NOTICE/attribution material; prominently mark modified files, preserve patent/trademark conditions and offer any additional warranty only on the distributor own behalf."
+      ],
+      "scope": "Exact pinned original Python source and combined legal notice only, independently regenerated from the authenticated hash-pinned source archive. Original named legal files and complete permission terms inspected; Apache license bytes are identical for both Apache components and rpm-vercmp AUTHORS is retained. Dependencies and complete OS remain separately gated."
+    },
+    "pypi:pyyaml@6.0.1": {
+      "source_identity": "bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43",
+      "copyright_sha256": "c52e23be3f7c86ea25cde38d07c6a3e5a763872d8c6397387336c3269738ced5",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43.copyright",
+      "conditions": [
+        "Preserve complete original source-file copyrights, permission conditions, attribution and disclaimers; retain the exact combined original notices with the binary distribution.",
+        "Retain the complete original preferred source archive and exact source/notice hashes; separately review every dependency and the complete distribution."
+      ],
+      "scope": "Exact pinned original Python source and combined legal notice only, independently regenerated from the authenticated hash-pinned source archive. Original named legal files and complete permission terms inspected; Apache license bytes are identical for both Apache components and rpm-vercmp AUTHORS is retained. Dependencies and complete OS remain separately gated."
+    },
+    "pypi:rpm-vercmp@0.1.2": {
+      "source_identity": "73dd583f1ff7a798faff62d39659d8a3e5183099972b2fc028bfadd70a43eda8",
+      "copyright_sha256": "a2c00e9264dc69aeb3afcc6bae52cc882c2a8c9e582d61204e1d1d446ce84d39",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/73dd583f1ff7a798faff62d39659d8a3e5183099972b2fc028bfadd70a43eda8.copyright",
+      "conditions": [
+        "Preserve complete original source-file copyrights, permission conditions, attribution and disclaimers; retain the exact combined original notices with the binary distribution.",
+        "Retain the complete original preferred source archive and exact source/notice hashes; separately review every dependency and the complete distribution.",
+        "Retain the full Apache-2.0 license and applicable NOTICE/attribution material; prominently mark modified files, preserve patent/trademark conditions and offer any additional warranty only on the distributor own behalf."
+      ],
+      "scope": "Exact pinned original Python source and combined legal notice only, independently regenerated from the authenticated hash-pinned source archive. Original named legal files and complete permission terms inspected; Apache license bytes are identical for both Apache components and rpm-vercmp AUTHORS is retained. Dependencies and complete OS remain separately gated."
+    },
+    "pypi:setproctitle@1.3.2": {
+      "source_identity": "b9fb97907c830d260fa0658ed58afd48a86b2b88aac521135c352ff7fd3477fd",
+      "copyright_sha256": "9f173bba9b90b57d6229f98680c5a475dc5cd7f05d8a27fe530d7407213023c6",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/b9fb97907c830d260fa0658ed58afd48a86b2b88aac521135c352ff7fd3477fd.copyright",
+      "conditions": [
+        "Preserve complete original source-file copyrights, permission conditions, attribution and disclaimers; retain the exact combined original notices with the binary distribution.",
+        "Retain the complete original preferred source archive and exact source/notice hashes; separately review every dependency and the complete distribution.",
+        "Retain source and binary notice/disclaimer requirements and do not use upstream author/contributor names for endorsement without permission."
+      ],
+      "scope": "Exact pinned original Python source and combined legal notice only, independently regenerated from the authenticated hash-pinned source archive. Original named legal files and complete permission terms inspected; Apache license bytes are identical for both Apache components and rpm-vercmp AUTHORS is retained. Dependencies and complete OS remain separately gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

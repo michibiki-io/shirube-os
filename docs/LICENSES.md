@@ -345,7 +345,7 @@ lsb-release-minimal, lsscsi, Lua 5.3, LZO2, mdadm, Minisign and MTR. GPL source
 availability and full notices remain mandatory. Minisign's full original LICENSE,
 including its newer upstream copyright range, is separately retained under
 `LICENSES/Minisign-0.11.txt` and required by its exact-source decision. These
-40 Debian decisions do not clear the remaining source groups or the complete OS.
+48 Debian decisions do not clear the remaining source groups or the complete OS.
 
 Debian分の追加8件も原本と表示へ限定した判断です。Minisignの上流表示は配布用の
 追加表示として保持し、不足・変更時は許諾判断を無効にします。全体の合格とは別です。
@@ -362,3 +362,21 @@ a source inventory gap; it does not approve the complete Rust legal set or the O
 HTTP拡張へ取り込まれた標準ライブラリも原本へ対応付け、両アーキテクチャで確認しました。
 不足した原本・表示・コンパイラー情報は収集時に拒否します。保持と照合の成功を
 許諾確認の完了へ読み替えません。
+
+Eight further exact Debian decisions cover net-tools, netbase, netplug, npth,
+pciutils, pystache, python-cffi and python-inotify. Their original notices and
+primary license files were inspected in the recorded audit; these decisions
+remain conditional on complete corresponding-source and notice distribution.
+They do not clear the remaining components or the complete OS.
+
+追加8件も、確認済みの原本・表示・版の組合せに限定します。対応ソースと原文表示の
+配布条件を維持し、未確認の依存関係やOS全体への合格判定には流用しません。
+
+Five further Salt SDK decisions cover psutil 5.8.0, setproctitle 1.3.2,
+PyYAML 6.0.1, pyOpenSSL 24.0.0 and rpm-vercmp 0.1.2. Their complete combined
+notices were regenerated from the fixed original archives and matched the
+reviewed bytes, including rpm-vercmp AUTHORS. These 93 exact SDK decisions
+leave 51 SDK components and complete-distribution clearance unresolved.
+
+SDK分の追加5件は、固定した原本から表示を再生成して確認しました。確認済みは93件、
+未確認は51件です。OS全体の配布可否は、残るソース・依存関係の検証で判断します。
