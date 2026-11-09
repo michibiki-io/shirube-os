@@ -151,7 +151,7 @@ The [AMD64 Debian source correspondence receipt](evidence/diagnostic-debian-sour
 checks the diagnostic AMD64 package inventory independently: all 459 required
 source groups occur in the authenticated/restored source set and all 658 installed
 copyright files match the corresponding records. The same 72 custom binary
-packages remain outside this Debian-only result. Sixty-eight exact Debian source/notice
+packages remain outside this Debian-only result. One hundred and six exact Debian source/notice
 decisions are recorded; remaining groups and the complete OS remain uncleared.
 
 AMD64のDebian由来658パッケージも、復元済み原本と表示へ対応することを確認しました。
@@ -201,5 +201,22 @@ administrator boot, offline sanitization and conversion have completed;
 [Both QCOW2/VMDK guest checks](evidence/diagnostic-arm64-v2026.03.0-notices-fix.json)
 subsequently passed using native KVM, including fresh firmware, no ISO, individual
 access, network/identity checks and complete NetBird lifecycle/erasure. This is
-still not a clean-head release candidate or OCI execution result. Individual Debian source/copyright decisions now cover 92 source groups;
+still not a clean-head release candidate or OCI execution result. Individual Debian source/copyright decisions now cover 106 source groups;
 all remaining source groups and dependency sets remain separately gated.
+
+## Additional source/license and allocation checks
+
+Actual source/binary/notice bindings for the five Go runtime package groups and
+NetBird yielded 771 distinct source/notice pairs. Exact decisions cover 536 pairs;
+235 remain uncleared. Complete Go/compiler notices include the original PATENTS,
+vendored pprof/svgpan and conditional BoringSSL terms. Required Apache/Go license
+texts and acknowledgements are retained as hash-checked distribution notices.
+The decisions do not establish parent-release clearance.
+
+A [focused AMD64 allocation/erasure check](evidence/diagnostic-zero-write-erasure.json)
+retained full zero writes while avoiding temporary physical allocation. Both
+50 GiB conversions matched; a freshly injected test private key was absent from
+the entire logical export. Both formats booted with fresh firmware and passed
+individual enrollment/login, architecture/product checks and clean shutdown.
+The immutable diagnostic reference remained unchanged. This is separate from a
+new clean-head image and from the still-running complete ARM64 TCG trial.

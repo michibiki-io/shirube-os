@@ -162,7 +162,12 @@ def offline_cleanup(disk,work,arch,expected_root_sha256,accelerator='kvm'):
         g.set_trace(False);g.set_verbose(False);g.set_memsize(768)
         launched=False
         try:
-            g.add_drive_opts(str(disk),format='qcow2',discard='enable');g.launch();launched=True
+            g.add_drive_opts(str(disk),format='qcow2',discard='enable')
+            # The pinned direct backend assigns our sole input disk hd0.
+            # Preserve full zero writes while avoiding a 50 GiB temporary
+            # physical allocation; QEMU must still return zero for each write.
+            g.config('-set','drive.hd0.detect-zeroes=unmap')
+            g.launch();launched=True
             partitions=g.list_partitions()
             if len(partitions)!=3 or g.vfs_type('/dev/sda3')!='ext4':raise ValueError('Unexpected installed disk layout')
             g.mount('/dev/sda3','/')

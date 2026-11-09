@@ -1,0 +1,66 @@
+{
+  "kind": "zero-write-sparse-allocation-and-real-os-erasure-diagnostic",
+  "status": "PASS_COMPONENT_SCOPE",
+  "reviewed_on": "2026-11-09",
+  "qemu_reference": "https://www.qemu.org/docs/master/system/qemu-manpage.html",
+  "operation": "Existing complete zero_free_space, trim, journal recreation and filesystem checks are retained; the direct-backend sole disk hd0 detects all-zero writes and deallocates them while preserving zero reads.",
+  "synthetic_2_gib": {
+    "kind": "synthetic-zero-write-allocation-probe",
+    "architecture": "amd64",
+    "status": "PASS",
+    "scope": "Synthetic disk only; not an OS or release acceptance",
+    "release_clearance": "NOT_CLEARED",
+    "oci": "NOT_RUN",
+    "cases": [
+      {
+        "case": "control",
+        "zeroing_seconds": 35.97851180500584,
+        "physical_bytes_after_zero_before_trim": 2092974080,
+        "logical_deleted_canary_absent": "PASS",
+        "journal_recreated_fsck": "PASS"
+      },
+      {
+        "case": "sparse",
+        "zeroing_seconds": 15.938326657997095,
+        "physical_bytes_after_zero_before_trim": 2301952,
+        "logical_deleted_canary_absent": "PASS",
+        "journal_recreated_fsck": "PASS"
+      }
+    ]
+  },
+  "actual_50_gib_os": {
+    "kind": "diagnostic-real-os-zero-write-allocation-and-erasure",
+    "architecture": "amd64",
+    "status": "PASS",
+    "scope": "Disposable copy of a diagnostic export with injected test-only key material, not a distribution base or release candidate",
+    "release_clearance": "NOT_CLEARED",
+    "oci": "NOT_RUN",
+    "runtime_helper_sha256": "d6c6e7cf4f053358c251e4f60d2584a655af852c8a287d52b263a584d2d45fff",
+    "offline_cleanup_seconds": 723.3245449449896,
+    "physical_source_bytes_after_cleanup": 664477696,
+    "diagnostic_caller_correction": "Resume completed real offline cleanup after correcting the diagnostic conversion caller signature; no erasure or acceptance stage bypassed",
+    "conversion_equivalence": "PASS",
+    "injected_private_key_absent_from_logical_export": "PASS",
+    "observations": [
+      "qcow2: fresh firmware, individual enrollment/login, architecture/product identity and clean shutdown PASS",
+      "vmdk: fresh firmware, individual enrollment/login, architecture/product identity and clean shutdown PASS"
+    ],
+    "reference_sha256": "ae5753dd3644f4bfa1bcc931e3646fb4c36da984bcf714babbee98e068f7eb22",
+    "immutable_reference": "UNCHANGED",
+    "images": {
+      "qcow2": "0509a952898843745a5dbf4c80fe0e37c5a1c3a64987258e56ff245640f262f9",
+      "vmdk": "63d7bf0fd162a2f749985746e5a838f7baeb0dc4d11ccf073667c47fec92019b"
+    }
+  },
+  "recipe_sha256": {
+    "synthetic": "73fe0dfdd3498fef94c42e41388c347c3930f67791cf194c9d6da4d9edefb9bd",
+    "os_cleanup": "d6c6e7cf4f053358c251e4f60d2584a655af852c8a287d52b263a584d2d45fff"
+  },
+  "limitations": [
+    "Disposable diagnostic fixture only, not a new release candidate or a reusable distribution disk.",
+    "The diagnostic conversion caller initially used the wrong API signature; that failure was retained and the completed cleanup resumed with the correct caller before scanning and boot acceptance.",
+    "ARM64 50 GiB execution of this allocation option and clean-head production acceptance remain unrun."
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

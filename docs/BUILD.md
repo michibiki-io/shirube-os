@@ -436,3 +436,17 @@ for an installed component. [The actual native batch probe](evidence/diagnostic-
 fetched three fixed source versions in one call, including an epoch-bearing
 version, verified their known descriptors, restored the trees and matched every
 installed copyright. Complete whole-OS reconstruction remains a separate gate.
+
+## Zero writes and temporary disk allocation
+
+The offline appliance retains complete free-space zeroing, trim, journal
+recreation and filesystem checks. For its sole input drive, QEMU
+`detect-zeroes=unmap` avoids allocating a physical block for an all-zero write;
+logical reads still return zero. This changes allocation, not the erasure steps.
+The [actual diagnostic receipt](evidence/diagnostic-zero-write-erasure.json)
+compares a 2 GiB control with the sparse option and records a 50 GiB real-OS
+fixture: a newly injected test private key was absent from the entire logical
+export, both conversions matched, and both formats passed individual enrollment,
+login, product/architecture checks and clean shutdown. The immutable reference
+was unchanged. These are focused AMD64 TCG results, not clean-head release
+acceptance, an ARM64 50 GiB result or OCI execution.
