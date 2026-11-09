@@ -411,8 +411,9 @@ Actionsの設定はアーキテクチャ別に選択し、片方の値をもう�
 Salt's prepared source discovers its exact release revision from Git. Omitting
 repository history without preserving upstream's supported version stamp changes
 this input's reported version to 3007.0. The collector now retains the actual
-installed `salt/_version.txt`, requiring an exact match to the shipped source
-version. Restoring that file alongside the unchanged `salt/version.py` recovers
+installed `salt/_version.txt`, requiring an exact match to the pinned installed
+Python version. The Debian source-package version (3006.21) is checked separately
+against its fixed source baseline; it does not include the Python revision suffix. Restoring that file alongside the unchanged `salt/version.py` recovers
 3006.21+0.ge35fd3e without Git history. [Actual component evidence](evidence/diagnostic-salt-version-reconstruction.json)
 records both the incorrect unstamped result and the restored result. This closes
 a version reconstruction gap, not the remaining SDK/whole-OS reconstruction or

@@ -469,7 +469,10 @@ def collect(rootfs, package_output, output, arch, version, work):
                 # Salt normally discovers the exact +0.g<revision> from Git.
                 # Its upstream-supported _version.txt preserves that identity
                 # in a reconstruction without distributing repository history.
-                inputs.append((salt_version_input(rootfs,source_version),
+                sdk_lock=json.loads(Path('/src/native/salt-sources.lock.json').read_text())
+                if source_version!=sdk_lock['upstream_salt']:
+                    raise ValueError('Salt package source version differs from the fixed source baseline')
+                inputs.append((salt_version_input(rootfs,sdk_lock['installed_distributions']['salt']),
                                'source/salt/_version.txt','sources'))
                 # Build virtualenvs and generated SDK archives are not the
                 # preferred Salt source. Keep the tracked input and the exact

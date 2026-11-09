@@ -10,5 +10,7 @@
   "complete_os_reconstruction": "NOT_RUN",
   "license_clearance": "NOT_RUN",
   "release_clearance": "NOT_CLEARED",
-  "oci": "NOT_RUN"
+  "oci": "NOT_RUN",
+  "debian_source_package_version": "3006.21",
+  "version_fields": "Debian source-package version and installed Python revision are distinct and must be checked against their separate fixed lock values."
 }
