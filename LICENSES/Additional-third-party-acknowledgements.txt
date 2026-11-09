@@ -1,0 +1,21 @@
+University of California / Berkeley-derived code:
+This product includes software developed by the University of California,
+Berkeley and its contributors.
+
+Lsof / Paul Kranenburg:
+This product includes software developed by Paul Kranenburg.
+
+Lsof / Purdue:
+Lsof was developed by the Purdue Research Foundation and its authors.
+The original source and documentation retain their complete credit notices.
+
+Sed test data / PCRE:
+Regular expression support is provided by the PCRE library package,
+which is open source software, written by Philip Hazel, and copyright
+by the University of Cambridge, England.
+Original source location: ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/
+
+These acknowledgements preserve original component obligations and do not imply
+endorsement. Preserve applicable acknowledgements in advertising materials
+that mention the relevant component features or use. All original license
+conditions, including their exact file scopes and alternatives, remain intact.
