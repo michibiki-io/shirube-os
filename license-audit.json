@@ -3255,6 +3255,159 @@
         "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory."
       ],
       "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "pypi:autocommand@2.2.2": {
+      "source_identity": "878de9423c5596491167225c2a455043c3130fb5b7286ac83443d45e74955f34",
+      "copyright_sha256": "ea935011f14e83e7f29bf788488c72466d923f4a30378e77bbae6d2e73128f90",
+      "redistributable": true,
+      "license": "LGPL-3.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/878de9423c5596491167225c2a455043c3130fb5b7286ac83443d45e74955f34.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Retain LGPL-3.0 and incorporated GPL-3.0 text, all preferred library/application source and installation information; permit modification, replacement and debugging of the unmodified Python library. No proprietary/static-link exception is inferred."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "pypi:cryptography@42.0.5": {
+      "source_identity": "6fe07eec95dfd477eb9530aef5bead34fec819b3aaf6c5bd6d20565da607bfe1",
+      "copyright_sha256": "c0d200901db0aba08abc397a1c5c973ecec66a521f0b7c381fc98fc5b623945d",
+      "redistributable": true,
+      "license": "Apache-2.0 OR BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/6fe07eec95dfd477eb9530aef5bead34fec819b3aaf6c5bd6d20565da607bfe1.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Retain the complete Apache 2.0 license and any NOTICE; identify modifications, preserve patent and trademark limits, and do not imply upstream endorsement.",
+        "Reproduce the copyright, conditions and disclaimer with binary distributions; do not use upstream names for endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "pypi:frozenlist@1.7.0": {
+      "source_identity": "2e310d81923c2437ea8670467121cc3e9b0f76d3043cc1d2331d56c7fb7a3a8f",
+      "copyright_sha256": "69e6b8b9e6e0b0b86f9de3ffdcac78d864e0b87ef5099fbe46473f9ce953707b",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/2e310d81923c2437ea8670467121cc3e9b0f76d3043cc1d2331d56c7fb7a3a8f.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Retain the complete Apache 2.0 license and any NOTICE; identify modifications, preserve patent and trademark limits, and do not imply upstream endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "pypi:python-dateutil@2.8.1": {
+      "source_identity": "73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c",
+      "copyright_sha256": "f6ef257291515411c4316b5b8f41f84dd3ef4b679c123ffb45908357b74d889f",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Reproduce the copyright, conditions and disclaimer with binary distributions; do not use upstream names for endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "pypi:relenv@0.22.3": {
+      "source_identity": "647fd7e59b0c681fa1fdc80b7a6e33b1a13bb6287d2b602f7c9fc6e64544e96c",
+      "copyright_sha256": "0878d449abb2b33e0fbecdd55c41b9494671af3d3941c4f31c403c6dd1599695",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/647fd7e59b0c681fa1fdc80b7a6e33b1a13bb6287d2b602f7c9fc6e64544e96c.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Retain the complete Apache 2.0 license and any NOTICE; identify modifications, preserve patent and trademark limits, and do not imply upstream endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "pypi:wheel@0.48.0": {
+      "source_identity": "94800765601e9171bf5d58d066e640662842bcedcbab982b2c90787a2c987322",
+      "copyright_sha256": "4c187ecfa00f7807adb234e586a5fea968693c113a94d1a1721b0ef1b28e6f1c",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/94800765601e9171bf5d58d066e640662842bcedcbab982b2c90787a2c987322.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "salt-sdk-build:ppbt@0.1.8": {
+      "source_identity": "3cba327f1d94351fc26a4af0740fd2787730ba76d407bd4c5219850fb7f22d12",
+      "copyright_sha256": "e4c519354557e9e368d5396ff005d137dce10476c75753eebbafca53ebdbc7e7",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/3cba327f1d94351fc26a4af0740fd2787730ba76d407bd4c5219850fb7f22d12.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Retain the complete Apache 2.0 license and any NOTICE; identify modifications, preserve patent and trademark limits, and do not imply upstream endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "build-pypi:calver@2025.10.20": {
+      "source_identity": "c98b376c2424642224d456b2f70c51402343e008c63d204634665e1a2a2835f5",
+      "copyright_sha256": "552c90acf42869d3f1032bd5a8c7608862556032ba04b400ffdd5959d27a4132",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/c98b376c2424642224d456b2f70c51402343e008c63d204634665e1a2a2835f5.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Retain the complete Apache 2.0 license and any NOTICE; identify modifications, preserve patent and trademark limits, and do not imply upstream endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "build-pypi:pycparser@3.12": {
+      "source_identity": "f03387877eab82ce01bbdfd0ba7252ee55a90b1c708d5129e2ce915475cf1db6",
+      "copyright_sha256": "040097dde9200dfc8b312a2ddee4f9f4924bead34e99ccce7672bfa0f8875866",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/f03387877eab82ce01bbdfd0ba7252ee55a90b1c708d5129e2ce915475cf1db6.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Reproduce the copyright, conditions and disclaimer with binary distributions; do not use upstream names for endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "build-pypi:setuptools-rust@1.13.0": {
+      "source_identity": "f2afcf4baeee689910ce49cfa8aad4e08cce72f417449bcc32891b8664fdc726",
+      "copyright_sha256": "d6d4c57fcb36e8f4437b61203528f0441658be73415031007c0dc0c51ca84257",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/f2afcf4baeee689910ce49cfa8aad4e08cce72f417449bcc32891b8664fdc726.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "build-pypi:trove-classifiers@2026.9.21.13": {
+      "source_identity": "0a9ebc8d4e2f3e8a22848c5258033035bec17a3012ac3fea16dbaa764489eb71",
+      "copyright_sha256": "87c99f62a31031cd2167450feb4d143462f68ba0cdf2eae4e89f10cf171de4af",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/0a9ebc8d4e2f3e8a22848c5258033035bec17a3012ac3fea16dbaa764489eb71.copyright",
+      "conditions": [
+        "Preserve complete original copyrights, grants, conditions, disclaimers, AUTHORS/CONTRIBUTORS and NOTICE files in binary legal materials and exact corresponding source archives.",
+        "Retain exact preferred source and public build/install inputs; bundled dependencies and the full operating system require independent decisions.",
+        "Retain the complete Apache 2.0 license and any NOTICE; identify modifications, preserve patent and trademark limits, and do not imply upstream endorsement."
+      ],
+      "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

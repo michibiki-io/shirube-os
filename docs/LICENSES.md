@@ -390,3 +390,13 @@ These 68 decisions do not clear the remaining Debian groups or the complete OS.
 
 追加20件も原本・表示・版を固定した判断です。同梱された原文表示とGNU条文の差分まで
 確認し、依存関係やOS全体への合格判定とは分けて記録します。
+
+Eleven further fixed Salt runtime/build inputs have separate exact-source and
+complete-notice decisions: autocommand, cryptography, frozenlist,
+python-dateutil, relenv, wheel, ppbt, calver, build pycparser, setuptools-rust and
+trove-classifiers. Autocommand retains its LGPL-3.0 obligations, including the
+incorporated GPL text, library replacement and corresponding application source.
+Cryptography retains both offered license texts; dateutil uses its BSD grant
+that explicitly covers all contributions. Apache NOTICE/copyright conditions
+remain applicable. CFFI's embedded source notices and Immutables' separate header
+license require additional bindings and are not cleared by these decisions.
