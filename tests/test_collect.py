@@ -10,6 +10,33 @@ import subprocess
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_shared_cargo_leaf_keeps_both_build_closure_references(self):
+        import copy
+        from producer.collect import merge_bundled_components
+        first={'name':'cargo:shared','version':'1','source_identity':'a'*64,
+               'license':'UNREVIEWED','redistributable':False,
+               'sources':[{'asset':'source.tar.gz','member':'first/source.crate','sha256':'a'*64}],
+               'license_files':[{'asset':'source.tar.gz','member':'first/notice','sha256':'b'*64}],
+               'build_inputs':[{'asset':'source.tar.gz','member':'recipe','sha256':'c'*64}]}
+        second=copy.deepcopy(first)
+        second['sources'][0]['member']='second/source.crate'
+        second['license_files'][0]['member']='second/notice'
+        merged=merge_bundled_components([first,second])
+        self.assertEqual(len(merged),1)
+        self.assertEqual(len(merged[0]['sources']),2)
+        self.assertEqual(len(merged[0]['license_files']),2)
+        self.assertEqual(len(merged[0]['build_inputs']),1)
+        self.assertFalse(merged[0]['redistributable'])
+        self.assertEqual(len(first['sources']),1)
+        for field,value in [('source_identity','d'*64),('license','MIT'),('redistributable',True)]:
+            other=copy.deepcopy(second);other[field]=value
+            with self.subTest(field=field),self.assertRaisesRegex(ValueError,'Conflicting bundled'):
+                merge_bundled_components([first,other])
+        for category in ['sources','license_files']:
+            other=copy.deepcopy(second);other[category][0]['sha256']='e'*64
+            with self.subTest(category=category),self.assertRaisesRegex(ValueError,'Conflicting bundled'):
+                merge_bundled_components([first,other])
+
     def test_batch_source_plan_distinguishes_exact_custom_packages_from_debian_sources(self):
         from producer.collect import debian_requirements
         listing=('native\t1\tamd64\tnative-source\t1\n'

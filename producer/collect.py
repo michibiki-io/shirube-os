@@ -181,6 +181,36 @@ def approval_for(approvals,name,version,identity,notice_root=Path('/src')):
     return approval
 
 
+def merge_bundled_components(children):
+    """Coalesce the same source leaf used by several bundled build closures.
+
+    Every archive/member binding is retained. Different source bytes, notices
+    or permission decisions are conflicts, never last-writer-wins metadata.
+    """
+    categories=('sources','license_files','build_inputs')
+    result={}
+    for child in children:
+        identity=(child['name'],child['version'])
+        if identity not in result:
+            result[identity]={**child,**{key:list(child[key]) for key in categories}}
+            continue
+        previous=result[identity]
+        if (not child.get('source_identity')
+                or {k:v for k,v in previous.items() if k not in categories}
+                != {k:v for k,v in child.items() if k not in categories}
+                or any({r['sha256'] for r in previous[key]} != {r['sha256'] for r in child[key]}
+                       for key in ('sources','license_files'))):
+            raise ValueError('Conflicting bundled component source, notice or license decision')
+        for key in categories:
+            merged={}
+            for reference in previous[key]+child[key]:
+                if set(reference)!={'asset','member','sha256'}:
+                    raise ValueError('Unexpected bundled component reference fields')
+                merged[(reference['asset'],reference['member'],reference['sha256'])]=reference
+            previous[key]=list(merged.values())
+    return list(result.values())
+
+
 def files(root, exclude=()):
     root=Path(root).resolve()
     excluded=[Path(member) for member in exclude]
@@ -577,6 +607,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                     'build_inputs':list({(item['asset'],item['member'],item['sha256']):item
                         for item in dependency.get('build_inputs',[])+records['build_inputs']}.values()),
                     **({'binary_input':dependency['binary_input']} if 'binary_input' in dependency else {})})
+            children=merge_bundled_components(children)
             approval=approval_for(approvals,source_name,source_version,origin)
             cleared=(approval.get('source_identity')==origin and approval.get('redistributable') is True
                      and approval.get('copyright_sha256')==sha256(copyright_file)
