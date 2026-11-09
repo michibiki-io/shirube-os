@@ -1935,6 +1935,22 @@
         {
           "member": "crosstool-ng-1.26.0/COPYING",
           "sha256": "07bc0ccd386469c748c4cf6c8faca5667fbf8c4400386714287fa233acfd68ba"
+        },
+        {
+          "member": "crosstool-ng-1.26.0/licenses.d/by-sa/legalcode",
+          "sha256": "d62d84b64993fac727272f19c2bbf8f55bd31788d04560250364394541784021"
+        },
+        {
+          "member": "crosstool-ng-1.26.0/licenses.d/by-sa/deed.en",
+          "sha256": "0eeca8b6b28b9cce130bde0cff92574d5e74875f9bc98b866a8cca058a217ae4"
+        },
+        {
+          "member": "crosstool-ng-1.26.0/licenses.d/gpl.txt",
+          "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+        },
+        {
+          "member": "crosstool-ng-1.26.0/licenses.d/lgpl.txt",
+          "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a"
         }
       ]
     },

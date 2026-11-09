@@ -16684,6 +16684,259 @@
           "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
         }
       ]
+    },
+    "go:github.com/golang/snappy@v0.0.4#ea4545ca44ee990554094df6de440386a440a5bd99106e048939409d63beb423": {
+      "source_identity": "ea4545ca44ee990554094df6de440386a440a5bd99106e048939409d63beb423",
+      "copyright_sha256": "3eb83e091b7543dd4db7ce9e5bc2947f862fd7e20b50850dd76df8351dbda2e6",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cae6402753eed30d31cc91431a8492cac944172306abeba5d1c2a1537d07d00d.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "go:google.golang.org/api@v0.147.0#161f13bb1590db645d043f05b0604200161e484aeb9992a9a38d0784ab8e8cd8": {
+      "source_identity": "161f13bb1590db645d043f05b0604200161e484aeb9992a9a38d0784ab8e8cd8",
+      "copyright_sha256": "6bc70de1a7186db5c8cd44822f94978969bea477525064a72f1ec27f49d7d66f",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7539a53f737cd809c8c55930faa8eb2a0cdc9242b3c1596de4b95247296ba3a8.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "go:k8s.io/utils@v0.0.0-20230711102312-30195339c3c7#755df44d714f0c28df51b94f096c1ff5af7625a00c92ca03b5914217a759b391": {
+      "source_identity": "755df44d714f0c28df51b94f096c1ff5af7625a00c92ca03b5914217a759b391",
+      "copyright_sha256": "3369290c5d1a69e2cae4da71c1b3d6721ce6c5ff8e50d8e80a0df5a92131484c",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause AND LicenseRef-Go-Patent-Grant",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7dac5be3eed00e31ca5c5afbd0425e09957875aeadaddb39ec2cdf06a0872c07.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice block, including all copyrights and supporting text, is normalized-word-identical to previously read exact original blocks; comparison references retained in evidence. Only the exact source/notice pair; dependencies and parent distribution remain independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:modernc.org/mathutil@v1.5.0#c17a767eaa5eb62d9bb105b8ece7f249186dd52b9b533301bec140b3d5fd260f": {
+      "source_identity": "c17a767eaa5eb62d9bb105b8ece7f249186dd52b9b533301bec140b3d5fd260f",
+      "copyright_sha256": "e047cf81383b3e50d6d3193614c9e7de5791b4ac5c1549f42ace99d65120679c",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/246e4280be2d254424d36853628fca6874e71e8feed350335d668862c7855811.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "go:modernc.org/memory@v1.5.0#f79e8ada14c36d08817ee2bf6b2103f65c1a61a91b042b59016465869624043c": {
+      "source_identity": "f79e8ada14c36d08817ee2bf6b2103f65c1a61a91b042b59016465869624043c",
+      "copyright_sha256": "5705778869c0fefc1c99b0bed6de65ae3a393c9f4988cc43373450d6d3f663bf",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fa2b135ac783b04bb43f77a9e7cf3b1e7f811e113198d4c006ed2998e329b287.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "go:modernc.org/sqlite@v1.24.0#71a7c6c3cbe0afb01fda12fdd309d896b713875b7a4b86c621b75b1d0e246186": {
+      "source_identity": "71a7c6c3cbe0afb01fda12fdd309d896b713875b7a4b86c621b75b1d0e246186",
+      "copyright_sha256": "6425a95af98d3dee3086dc586eb6afb4f4a620b5b169f5d02746df97406413ff",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND LicenseRef-SQLite-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/1d39f267b5ba2b91177a5432a6658cd962dfbf040916456c7c4b860511f36287.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "go:github.com/go-jose/go-jose/v3@v3.0.3#dc9cbe5065c29a373a7be2fd522267e5b1d073aef0fe32e23907f20140e6d933": {
+      "source_identity": "dc9cbe5065c29a373a7be2fd522267e5b1d073aef0fe32e23907f20140e6d933",
+      "copyright_sha256": "92adb7f65a0f10e6a033a091cfeb6f4c234a0a8940b2dabf0ca3e5cdd940e304",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/815297563d16f80c902c492b45168a7764a544294d3693c248d6e65ab3c76525.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice block, including all copyrights and supporting text, is normalized-word-identical to previously read exact original blocks; comparison references retained in evidence. Only the exact source/notice pair; dependencies and parent distribution remain independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/go-openapi/runtime@v0.26.0#97c985e14b4c12d895c58becbc5397a40b07c507a4ba9725e1c66cafa9ddb19c": {
+      "source_identity": "97c985e14b4c12d895c58becbc5397a40b07c507a4ba9725e1c66cafa9ddb19c",
+      "copyright_sha256": "6db5add53ebca91b380d50f9f0c18f9c4b99ee51b287a3f0ee11af21f9114906",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/646db25d7726a24a227c4251fdb0b44ce31801f20df0561fc9faa3aeabc8750b.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice block, including all copyrights and supporting text, is normalized-word-identical to previously read exact original blocks; comparison references retained in evidence. Only the exact source/notice pair; dependencies and parent distribution remain independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:gopkg.in/go-jose/go-jose.v2@v2.6.3#5003c4bacf33b820d60e647c588b41fe3e2f72cb44534fafe11a9b1066c8ea48": {
+      "source_identity": "5003c4bacf33b820d60e647c588b41fe3e2f72cb44534fafe11a9b1066c8ea48",
+      "copyright_sha256": "92adb7f65a0f10e6a033a091cfeb6f4c234a0a8940b2dabf0ca3e5cdd940e304",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/6a6a6eb98f8749031455f13c383a7f954c0c767d095492926433040ae6c371de.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice block, including all copyrights and supporting text, is normalized-word-identical to previously read exact original blocks; comparison references retained in evidence. Only the exact source/notice pair; dependencies and parent distribution remain independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:codeberg.org/cunicu/circl@v0.0.0-20230801113412-fec58fc7b5f6#h1:b8xUw3004wk+3ipBhu0VU4RtUJsegMIiqjxSK4++lzA=": {
+      "source_identity": "h1:b8xUw3004wk+3ipBhu0VU4RtUJsegMIiqjxSK4++lzA=",
+      "copyright_sha256": "c809ed6e5e57ed45140edb4348df4a31d2a35bcebfd76123e93a8d0792b26b0a",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/0e0413764d5ba44b783ec276886a47eb7ff2486e2994a1a183e8bef3022f06a2.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "go:github.com/google/gopacket@v1.1.19#h1:ves8RnFZPGiFnTS0uPQStjwru6uO6h+nlr9j6fL7kF8=": {
+      "source_identity": "h1:ves8RnFZPGiFnTS0uPQStjwru6uO6h+nlr9j6fL7kF8=",
+      "copyright_sha256": "96144455563046e2a71a618cdd0ff44370bc1415ed151f3cf8d69b9488248785",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/edbe9e0ca15e2673fb1f821d22ba43ab16d4a2a5b722d329a691dc27e3e08d67.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "go:github.com/gopacket/gopacket@v1.4.0#h1:cr1OlFpzksCkZHNO0eLjaSSOrMQnpPXg0j6qHIY3y2U=": {
+      "source_identity": "h1:cr1OlFpzksCkZHNO0eLjaSSOrMQnpPXg0j6qHIY3y2U=",
+      "copyright_sha256": "3ac4b2eb6c0026f41ead8bb3adc1cd03f0bb9be6c8d7eaecc04016382f33aed7",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/c26acd6da94d472aeb96f821ea1b1fabaa677065a18fad440af26e707e432184.txt",
+      "conditions": [
+        "Retain complete original copyright/author/contributor notices, operative permission terms, disclaimers and every named nonendorsement restriction in source and binary documentation.",
+        "Supply exact preferred sources and build/install scripts; retain original changes, applicable Apache notices and full license text, and exact Google patent scope/termination where present.",
+        "SQLite public-domain dedication covers only its stated deliverable code/documentation; do not extend it to third-party build scripts or infer any additional patent/trademark permission."
+      ],
+      "scope": "Every complete original notice read. Only the exact source/notice pair; dependencies and parent distribution remain independently gated."
+    },
+    "bzip2@1.0.8-5": {
+      "source_identity": "ed9c40f4de3f9e064535e15eac1c61a0f606763db98f4579dbc04067b94a8944",
+      "copyright_sha256": "832ed535ff3c3d025a8d2348eb1b697b89addcf2eaadbc17650262040b9145e2",
+      "redistributable": true,
+      "license": "bzip2-1.0.6 AND GPL-2.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyrights, full separately scoped permission conditions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable license texts and complete build/install scripts; retain modification notices, source access and original nonendorsement conditions.",
+        "Do not misrepresent original authorship; mark altered sources plainly and do not use author names for endorsement. Debian packaging remains GPL2."
+      ],
+      "scope": "Complete original Debian copyright read and all original named legal files matched to complete read originals. File scopes, author notices, all operative terms and original alternatives preserved. Exact component only; parent OS remains gated."
+    },
+    "dctrl-tools@2.24-3": {
+      "source_identity": "ac6f33af468f4c46eb101c7081ff4d5cd8ae9c2f8faf3d294339fa584905e11c",
+      "copyright_sha256": "fb6d6843948444b21a6ddda8400a1b1506075a444f481109886682349c07238b",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND BSD-2-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyrights, full separately scoped permission conditions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable license texts and complete build/install scripts; retain modification notices, source access and original nonendorsement conditions."
+      ],
+      "scope": "Complete original Debian copyright read and all original named legal files matched to complete read originals. File scopes, author notices, all operative terms and original alternatives preserved. Exact component only; parent OS remains gated."
+    },
+    "libsub-uplevel-perl@0.2800-3": {
+      "source_identity": "fecaf387e239c4a332bcca323a18efd5388a9579d78834ce15fb6b3569eb8e87",
+      "copyright_sha256": "fb30ec4fb2d35d3e374c1af766538cef01e3619745b776410e60e615584777ab",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyrights, full separately scoped permission conditions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable license texts and complete build/install scripts; retain modification notices, source access and original nonendorsement conditions.",
+        "Select the original Artistic license supplied with Perl; retain both alternatives, provide complete modified source under 4(b), make modifications freely available under 3(a), and preserve aggregation and attribution conditions."
+      ],
+      "scope": "Complete original Debian copyright read and all original named legal files matched to complete read originals. File scopes, author notices, all operative terms and original alternatives preserved. Exact component only; parent OS remains gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libxml2@2.9.14+dfsg-1.3~deb12u6": {
+      "source_identity": "d86ce3efb1b75d2781f72f5cdd187474c148a915d610295c85162681bb070a65",
+      "copyright_sha256": "ee746b96cfa5be73c3ea3e4cfb1285e9b315d4c9267f99b2ee9c5d911d9fe3f4",
+      "redistributable": true,
+      "license": "LicenseRef-Libxml2-MIT-nonadvertising AND ISC",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original copyrights, full separately scoped permission conditions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable license texts and complete build/install scripts; retain modification notices, source access and original nonendorsement conditions.",
+        "Retain the original Daniel Veillard advertising/publicity name restriction; the actual MIT-1 grant is not replaced with generic Expat text."
+      ],
+      "scope": "Complete original Debian copyright read and all original named legal files matched to complete read originals. File scopes, author notices, all operative terms and original alternatives preserved. Exact component only; parent OS remains gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
