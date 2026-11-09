@@ -3434,6 +3434,342 @@
         "Do not redistribute the original full source archive or infer permission for the omitted test samples. All runtime/build source remains byte-identical, and the upstream sample-based pytest suite remains explicitly unavailable."
       ],
       "scope": "Only export 78b587367ca010b1f4e761fc9646f004d9f6928660c265e2433fbbcc2e59ea95 derived from the fixed original source. Original LICENSE and test-data NOTICE read. All 18 actual data/sample-*.txt payloads are omitted by exact member/hash, despite the upstream notice describing 17. Offline wheel reconstruction matched all 13 installed library files and passed ASCII/UTF-8 detection on AMD64. No clearance of the original archive, other SDK inputs or full OS is inferred."
+    },
+    "etherwake@1.09-4": {
+      "source_identity": "e7647d57ca1c06c2e2d7976e08d8fb4b98feb9817910c0dcde50edd30f99dcc6",
+      "copyright_sha256": "d2deefaa74505fa1d5b2ceaecfb7962563b3f4a72e59df4024967e9de7ff7a83",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred.",
+        "GPL-2.0 is the selected redistribution version of the unversioned GPL notice; retain the original notice unchanged rather than rewriting its grant."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "exfatprogs@1.2.0-1+deb12u1": {
+      "source_identity": "e707fe4d47aff0e2b43449a8e28ad6f6f541f4017910e88301e72362df0b322f",
+      "copyright_sha256": "8f5d4c77fe8d87869912d097aca41cb6ce4dee0cf03d63d8a03aee2b220d5471",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "fuse-exfat@1.3.0+git20220115-2": {
+      "source_identity": "29774fa39fcdb99473778031701b6efa27274b34284112b928c361f939e4d2a8",
+      "copyright_sha256": "d55a79540cbd5ce3c7fa7f505cca0807fa17e987e60192fd477cae2343ac7999",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND GPL-3.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "grc@1.13.1-1": {
+      "source_identity": "080b42b7665eecf63fa7c35283ca95896eb64d968544aa8d607cb87550766f0a",
+      "copyright_sha256": "b5b987d717a45abf0337aba8e3f29eec65fd4d0a2ec899ac310b621bef57f8d7",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred.",
+        "Use the explicit GPL-2.0-or-later grant; the following optional, expressly non-license commentary imposes no new restriction and is preserved unchanged."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "grepcidr@2.0-2": {
+      "source_identity": "397a0f55937647d7244f1f00049e2499895d026cf625a2dea920a1b88c582823",
+      "copyright_sha256": "7b8961a736e61efd8cbda3876b425cb272a48454cc10fe18fd537e5504e8dc3a",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "hwloc@2.9.0-1": {
+      "source_identity": "680eca8eb1fa245f90089ac11bb22d7ae1d3b3e3b114cca08617ea986678fd69",
+      "copyright_sha256": "ef9d59c01a1296041369997b7c684867fe58473d02ae575aca6454c9db2297fc",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-3.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred.",
+        "Reproduce all source and binary notices/disclaimers and preserve upstream name/advertising/endorsement restrictions; no upstream endorsement is claimed."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "initramfs-tools@0.142+deb12u3": {
+      "source_identity": "ebe9f0848e4c220222e00961c9e464a01d81630782675de55acc2aa40e5e4ef1",
+      "copyright_sha256": "d8aeb262235288a4d442df0404a8a29acc39375b41d926a04bcca3f34036bff2",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "ipvsadm@1:1.31-1": {
+      "source_identity": "de4950dfbb0ae18fbb75a4ee797d7455cd9ada4709a4408b28d02a9894283470",
+      "copyright_sha256": "e9053150bc374b99ac4399963c6ad3c7b1e678ad72eef06cbe1c10f50978a8cd",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "kexec-tools@1:2.0.25-3+deb12u3": {
+      "source_identity": "1c43e03290f9fff07987a1b3db563b188762ae85110795abecbc319e944c1ff2",
+      "copyright_sha256": "6e381a4f5cab93cc4eb24e46dc1c3cdabbace5cb430e1ca8590c8c89de6679da",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "libconfuse@3.3-3": {
+      "source_identity": "6b711e4cedfd3f032c921b96ee854fdbbcd7df2160f9d2ffde3a728baee63f7f",
+      "copyright_sha256": "cdf0928a30a2bb5c7c586f6cde6886099a2a173f699627dd1474e08ab32fc923",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "libdaemon@0.14-7.1": {
+      "source_identity": "1c50dc83331dc81204e11cfe038c67575ea75dfc9fb2c13cfad2acd39b6f30e9",
+      "copyright_sha256": "f997ae27f25db0ddac1b8c852720175ca6ef6e624de11f02afd46cb3954d66aa",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "libgc@1:8.2.2-3": {
+      "source_identity": "99eebbbf9f5a8fe659504f8cf7c26bc3a43fbe766d2c3b5ad3dfe8997a9a62ff",
+      "copyright_sha256": "b076c9d513a8fe345d003464684d1b502c348ff94ee8d109078a23aaaf25374d",
+      "redistributable": true,
+      "license": "Boehm-GC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain the complete Boehm/Demers/Xerox/SGI/HP and file-specific notices; modified code must carry a modification notice."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "libsemanage@3.4-1": {
+      "source_identity": "be300e01bbd08706fb6f0ecd349b3585a535d9ff0957265a7c634545ac3515c8",
+      "copyright_sha256": "e00e6a86c598f9e24ced0180a70a5f2f2e45e133d93adf2b17ce8a06ce4b1b51",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "libxau@1:1.0.9-1": {
+      "source_identity": "e6e059652cda7e5a49b6c9a70667639f32d629c20320487d16c642a06c1ebf85",
+      "copyright_sha256": "118dd263a7b91c8f21c489f949bf13281dff9e766deea92b829dac4dce66601a",
+      "redistributable": true,
+      "license": "X11",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Reproduce all source and binary notices/disclaimers and preserve upstream name/advertising/endorsement restrictions; no upstream endorsement is claimed."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "libxdmcp@1:1.1.2-3": {
+      "source_identity": "f9697dca6a275aeee9a3eee9fb2d55e0f77485481e8b84efc6950fc9b1988460",
+      "copyright_sha256": "1bcbb50f8603fe8b86d330bfa460b772ea04fbd3c70e4499f0768b5340b9fd6e",
+      "redistributable": true,
+      "license": "X11",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Reproduce all source and binary notices/disclaimers and preserve upstream name/advertising/endorsement restrictions; no upstream endorsement is claimed."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "libxrender@1:0.9.10-1.1": {
+      "source_identity": "348ab15d05f1d802da485e4c6abdb9d5419691fb7c8ce44ca5b17b2b7f889ce8",
+      "copyright_sha256": "ed2a78123a5076b4f11da38cb1ffb85b5cb9fdc26b5746c517b1d7e7a9029704",
+      "redistributable": true,
+      "license": "HPND-sell-variant",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Reproduce all source and binary notices/disclaimers and preserve upstream name/advertising/endorsement restrictions; no upstream endorsement is claimed."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "lua-lpeg@1.0.2-2": {
+      "source_identity": "a189b279af23d30b8018c0315cc0628cfc9485c00e25d12b315b99337981e870",
+      "copyright_sha256": "f5dcdc928d283ac58a9ec187f3063441e38f10ba95c2447cc270f1b79759b284",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "markupsafe@2.1.2-1": {
+      "source_identity": "0becdd87cc1e344b09daaa5cf94267ac467fe75ea831fc28af8cd518af291c42",
+      "copyright_sha256": "a3cd08b17ec1a9b100b2122d9b37537744b38233c733873f42b3b040838500d8",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Reproduce all source and binary notices/disclaimers and preserve upstream name/advertising/endorsement restrictions; no upstream endorsement is claimed."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "ndisc6@1.0.5-1": {
+      "source_identity": "cbbb57686d9c2aeda2d41b0f7719e9a22865e3a7acfa119c9c35db1455518f6c",
+      "copyright_sha256": "ddafad3e8df4c8ad43a3dd383d8258021854adb67642621a007199f1d98e1ec4",
+      "redistributable": true,
+      "license": "GPL-2.0-only OR GPL-3.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "pixman@0.42.2-1": {
+      "source_identity": "393302f5ba22d1206c456902baa02cdd577cb74fe35ec6659f587cce67b91b3d",
+      "copyright_sha256": "1b3fb5690861e15ca4fd6640fd4def4b2576617942eec04b6fcb7d8bc6c4c9da",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "tinycdb@0.78": {
+      "source_identity": "a81960f9d8a2c9de37ef4acdee9fda39f20167381f0757e54b7dfd701ad64bc9",
+      "copyright_sha256": "d5c530e15516f81f98161eea26047ffa5d2e0c640079da6f45135c77beb1f7cd",
+      "redistributable": true,
+      "license": "LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "usb-modeswitch-data@20191128-5": {
+      "source_identity": "5b8809e1406c0aa401fe531f9d3a2e28aba7bcba1486d52852c66fd3dac7a17d",
+      "copyright_sha256": "f83511c0a26bca057b7381dadfaa94cc6c635d360add92fa7964455ebe6aad46",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "whois@5.5.17": {
+      "source_identity": "503a3f60e937a0158b77772f0cfc6670011409645cd5069d95d422d86e1c7093",
+      "copyright_sha256": "8de310a28eb62420fddf909fa0c80f05ec94001442724522309a2729699719fc",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred.",
+        "GPL-2.0 is the selected redistribution version of the unversioned GPL notice; retain the original notice unchanged rather than rewriting its grant."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
+    },
+    "xosd@2.2.14-2.1": {
+      "source_identity": "3de1c19aac4a91635053a0064e2a15feaf58910732d83950cd78b15e607781b8",
+      "copyright_sha256": "b6f2219cf251c03f2f6f659cf303cecffb903cc1a89bc28e2719d746b79c3cc1",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve all complete original source/Debian copyrights, permission conditions and disclaimers, including additional upstream copyright holders and source-file notices.",
+        "Provide exact authenticated source archives, patches and complete build/install scripts with the binary distribution.",
+        "Retain all applicable complete GPL/LGPL texts and preferred source; identify modifications and permit library replacement/relinking where the LGPL applies. No further restrictions or static-link exception is inferred."
+      ],
+      "scope": "Exact unchanged Debian source/binary copyright pair. Complete installed notice and original named legal files read. Full GNU word differences are historical addresses, Library naming, omitted example appendix or nonoperative URL formatting. Applicable packaging terms remain separate. Dependencies and full OS stay independently gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

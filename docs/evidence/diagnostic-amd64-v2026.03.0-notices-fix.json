@@ -1,0 +1,40 @@
+{
+  "kind": "diagnostic-amd64-notices-and-binding-fix-fresh-disks-and-netbird",
+  "architecture": "amd64",
+  "version": "v2026.03.0",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "status": "PASS",
+  "iso_sha256": "d8e54e765ca338f857386bfaec1c10a4d3656a923f040880386102af0ae5513c",
+  "implementation_files": {
+    "producer/vm.py": "c3af60aa384caf57d1d993853cb8c121a2068bea98bd5f6cdf2a921ca241baca",
+    "producer/sanitize.py": "0a3c1b5e6473e10f6c2dccaff380fef953703acd3a6d3f059e745e0f0625cd2a",
+    "producer/guestfs_kernel.py": "ad79c96423c7424c6f635146e0a534433238b1bf12cf1aabe88b5317e96bf90c",
+    "producer/netbird_guest.py": "6eb0785c190d205585cca161801907f001513d1952fe02b3d3e1b6c472da8e46"
+  },
+  "identity_regeneration": "PASS",
+  "netbird": "PASS",
+  "observations": [
+    "qcow2-unprovisioned: fresh firmware, no ISO, enrollment prompt with no reusable login",
+    "qcow2-provisioned: actual console login, sudo, DHCP, route, virtio NIC and identity checks passed",
+    "vmdk-unprovisioned: fresh firmware, no ISO, enrollment prompt with no reusable login",
+    "vmdk-provisioned: actual console login, sudo, DHCP, route, virtio NIC and identity checks passed"
+  ],
+  "images": {
+    "qcow2": {
+      "name": "shirube-os-v2026.03.0-amd64.qcow2",
+      "sha256": "ae5753dd3644f4bfa1bcc931e3646fb4c36da984bcf714babbee98e068f7eb22",
+      "physical_size": 655818752
+    },
+    "vmdk": {
+      "name": "shirube-os-v2026.03.0-amd64.vmdk",
+      "sha256": "40e8cdb6cb0b2ab796dba6a5d524a67298d2132f35d1bafe0fbdbb50d38b589d",
+      "physical_size": 664024576
+    }
+  },
+  "original_build_commit": "3b94e3bfdf8335377c3c03eb3e29e1e1321a5736",
+  "diagnostic_recovery_recipe_commit": "6ae920a6904908976ec2b77669cf33dd089a26d7",
+  "runtime_harness_commit": "7f74e8a9c1582507faf429d1ec67d5d0d4a7db5b",
+  "qemu_accelerator": "tcg",
+  "scope": "Fresh installation from the notices/binary-binding diagnostic remaster. Complete disk conversion and guest acceptance on both formats; not a clean-head candidate or source/license/OCI clearance."
+}

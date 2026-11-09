@@ -436,3 +436,11 @@ and required inputs remain. Five original TLS self-test keys were compared
 byte-for-byte with the authenticated Stream input and receive only exact
 source/member/hash recognition. [Source fixture evidence](evidence/diagnostic-kea-source-fixtures.json)
 does not clear a runtime credential, Kea's license or the complete distribution.
+
+A further 24 exact Debian source/copyright pairs have individual decisions,
+including filesystem/network utilities, initramfs-tools, small X libraries and
+runtime dependencies. Composite terms preserve GPL-licensed packaging alongside
+BSD/LGPL upstream code; X11/HPND name-use restrictions and Boehm GC modification
+notices remain applicable. GRC's explicit GPL grant is retained together with its
+expressly optional commentary. Fontconfig's Unicode terms, Wget's documentation
+license and Dialog's additional source/build grants remain outside this batch.

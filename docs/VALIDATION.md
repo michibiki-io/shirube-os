@@ -33,7 +33,7 @@ the changed criteria belong in the latest PR review after release readiness.
 | Salt preferred source retention | PASS | Actual tracked Salt source (6671 members) and pinned public packaging-tool source (26 members) exported with member-hash verification; generated virtualenvs and compiled SDK archives excluded. Nineteen unchanged public test/documentation files recognized against signed Stream input. Complete dependency source closure/reconstruction remains NOT_RUN |
 | Salt upstream runtime packages | PASS | The native AMD64 build generated eight packages with the expected Salt 3006.21+0.ge35fd3e and all 55 SDK distributions matched. An earlier copied-source probe produced the wrong Salt version and its original DEBs are not accepted. Exact public test fixtures are classified by source/hash; injected fresh private keys are rejected. Full SDK reconstruction, license clearance and guest services remain incomplete |
 | Salt SDK fixed-input Python build | PASS | Native AMD64 component build with 77 fixed Python source inputs plus the architecture-specific PPBT build wheel and 48 Cargo crates; dependency/Salt compilation ran in a network-disabled namespace. All 55 installed versions and 425 pip/Relenv bootstrap Python files matched; cryptography/CFFI/ZeroMQ checks passed. SDK native libraries/compiler and whole OS were not rebuilt |
-| Salt SDK source/legal retention | PARTIAL | 144 components/146 inputs and 144 combined legal records passed archive integrity checks against actual SDK inventory; full MPL/Apache/PHP supplements and embedded msgpack notices retained. Individual decisions cover 48 crates and 45 Python runtime/build distributions; 51 SDK components and full release remain uncleared. Previously verified downloads and inherited compiler inventory were used for this retention check; full reconstruction is NOT_RUN |
+| Salt SDK source/legal retention | PARTIAL | 144 components/146 inputs and 144 combined legal records passed archive integrity checks against actual SDK inventory; full MPL/Apache/PHP supplements and embedded msgpack notices retained. Individual decisions now cover 106 exact scoped runtime/build components; 38 SDK components and the full release remain uncleared. The original full charset-normalizer source remains denied; only its separately pinned source export has a decision. Previously verified downloads and inherited compiler inventory were used for this retention check; full reconstruction is NOT_RUN |
 | Embedded module notices and signatures | PASS | Exact upstream OpenVPN DCO, NAT RTSP and NetFlow headers/README/CREDITS plus full GPL/exception texts retained without removing features or granting release clearance. Native module compilation, matching signatures and package audits passed in the same-cohort diagnostic recovery |
 | sFlow parallel cJSON dependency | PASS | Unpatched standalone parallel shared-library build reproduced missing cJSON.o; explicit prerequisite fixed the link and native make/test plus actual JSON pointer access passed. All configured sFlow features remain enabled |
 | Transient ISO download retry | PASS | Only wget network exit 4 retried, at most three attempts with unchanged URL/arguments and downstream signature/hash checks; recovery/exhaustion and non-network failure tests passed. Native debootstrap integration checked; this is not completed ISO evidence |
@@ -57,7 +57,7 @@ the changed criteria belong in the latest PR review after release readiness.
 | Native ARM64 kernel tranche | PASS | Source-built kernel and matching module-signature audit passed in the earlier frozen full-build attempt; not a complete ISO or current-head acceptance |
 | Native ARM64 VPP component | PASS | All ten packages generated/audited with upstream hs_apps/http_static, sample tools and TLS test header retained. Exact published fixture identity checked against pinned source. In a native Docker probe, VPP started, forwarded five ICMP packets between isolated namespaces with zero loss after neighbor discovery, and served Prometheus metrics through http_static. Not a whole guest OS or OCI test |
 | Native AMD64 kernel tranche | PASS | Linux 6.6.128 image/headers/libc-dev/perf built; actual module signatures verified against the fresh matching certificate and runtime payloads audited; not an ISO/boot result |
-| Generated kernel distributor metadata | IMPLEMENTED, fresh build NOT_RUN | The earlier diagnostic DEB uses a default build-account maintainer. Kernel build user/host and Debian maintainer inputs are now canonical distributor values; the producer rejects a noncanonical generated kernel maintainer without printing its raw value. A new kernel build must verify the change |
+| Generated kernel distributor metadata | PASS, component scope | The source-built AMD64 kernel DEB from commit `3b94e3b` passed canonical distributor maintainer verification. The producer also rejects noncanonical output without exposing raw build-account values. Complete current-head release acceptance remains outstanding |
 | Module cryptography primitive | PASS | Real CMS signature, tampering/wrong-certificate rejection and private-directory removal in container; not a real kernel build |
 | Supplied SVG conversion | PASS | Native-container rsvg conversion to 824×320 PNG and filesystem identity helper; not a guest boot |
 | Source-built python3-vici package | PASS | AMD64 container, authenticated Stream sources; 5.9.11-2 all-architecture package; not an ISO |
@@ -179,3 +179,25 @@ separate required check.
 ネイティブパッケージは認証済みの入力ソースを選び、適用レシピ、元の収録場所、
 カーネル設定を合わせて保持します。ビルドで生成された試験鍵やコンパイラ出力を
 ソースとして配布しません。完全なソース一式の復元確認は別の必須検証です。
+
+## Updated diagnostic cohort
+
+The [AMD64 notices/binary-binding receipt](evidence/diagnostic-amd64-v2026.03.0-notices-fix.json)
+records a fresh installation from ISO SHA256
+`d8e54e765ca338f857386bfaec1c10a4d3656a923f040880386102af0ae5513c`.
+It preserves complete package notices and original source-bound Go executable
+bytes, including the committed fixes to late live-build processing. Both new
+standalone 50 GiB QCOW2 and streamOptimized VMDK passed offline sanitization,
+integrity/content comparison, fresh-firmware/no-ISO boot, individual enrollment,
+access/network/identity checks and the complete real NetBird lifecycle using
+explicit AMD64 TCG. Immutable export bases remained unchanged. This remaster
+combines a frozen compiled cohort with targeted repairs; it is not a clean
+current-head release candidate. Source/license clearance and OCI remain unverified.
+
+ARM64's later frozen cohort also completed native compilation and ISO assembly.
+The diagnostic notice/payload repair passed all five runtime package source
+bindings and the factory root/initramfs audit. Fresh installation, retained
+administrator boot, offline sanitization and conversion have completed;
+QCOW2/VMDK guest acceptance is still in progress. It is not a completed release
+result. Individual Debian source/copyright decisions now cover 92 source groups;
+all remaining source groups and dependency sets remain separately gated.
