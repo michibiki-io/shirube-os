@@ -236,6 +236,15 @@ def assemble(sources, packages, arch, version, output):
             run('git','init','-q',cwd=tree);run('git','add','.',cwd=tree)
             run('git','-c','user.name=Shirube source import','-c','user.email=maintainers@michibiki.io','commit','-qm','Import authenticated Stream snapshot',cwd=tree,env=dict(env,GIT_AUTHOR_DATE='2026-03-18T00:00:00Z',GIT_COMMITTER_DATE='2026-03-18T00:00:00Z'))
             run('git','branch','-M','circinus',cwd=tree)
+        # Keep original notices and the exact dependency/source inventories
+        # installed under package documentation directories in the SquashFS.
+        excludes=source/'data/live-build-config/rootfs/excludes'
+        excluded_docs='usr/share/doc/*/!(copyright*|README*)'
+        text=excludes.read_text()
+        if text.splitlines().count(excluded_docs)!=1:
+            raise ValueError('Unexpected package-documentation exclusion policy')
+        excludes.write_text(text.replace(excluded_docs+'\n',
+            '# Shirube OS retains package documentation, legal notices and source inventories.\n'))
         env['VYOS1X_REPO_URL']=str(one)
         defaults=source/'data/defaults.toml';text=defaults.read_text()
         text=text.replace('http://deb.debian.org/debian-security','http://snapshot.debian.org/archive/debian-security/20261105T000000Z/').replace('http://deb.debian.org/debian','http://snapshot.debian.org/archive/debian/20261105T000000Z/')
