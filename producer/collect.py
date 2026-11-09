@@ -1,6 +1,7 @@
 """Collect exact shipped-package sources, licenses and reconstruction recipes."""
 import json
 import hashlib
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -180,16 +181,23 @@ def approval_for(approvals,name,version,identity,notice_root=Path('/src')):
     return approval
 
 
-def files(root):
+def files(root, exclude=()):
     root=Path(root).resolve()
-    for path in sorted(root.rglob('*')):
-        relative=path.relative_to(root)
-        if any(part in GENERATED for part in relative.parts):continue
-        if path.name in {'signing_key.pem','vmlinux','System.map'} or path.suffix in SUFFIXES:continue
-        if path.is_file():
-            resolved=path.resolve()
-            if not resolved.is_relative_to(root):raise ValueError('Source symlink escapes component')
-            yield resolved,str(relative)
+    excluded=[Path(member) for member in exclude]
+    def omitted(relative):
+        return any(relative==member or member in relative.parents for member in excluded)
+    for directory,children,names in os.walk(root,followlinks=False):
+        base=Path(directory)
+        children[:]=sorted(name for name in children if name not in GENERATED
+                           and not omitted((base/name).relative_to(root)))
+        for name in sorted(names):
+            path=base/name;relative=path.relative_to(root)
+            if name in GENERATED or omitted(relative):continue
+            if name in {'signing_key.pem','vmlinux','System.map'} or path.suffix in SUFFIXES:continue
+            if path.is_file():
+                resolved=path.resolve()
+                if not resolved.is_relative_to(root):raise ValueError('Source symlink escapes component')
+                yield resolved,str(relative)
 
 
 def shared_build_inputs(project,builder,patches,destination):
@@ -388,7 +396,10 @@ def collect(rootfs, package_output, output, arch, version, work):
             preferred_root=preferred.get(name) if matching and name!='vyos-http-api-tools' else None
             if preferred_root is not None:
                 if not preferred_root.is_dir():raise ValueError('Missing authenticated native preferred source')
-                source_files=files(preferred_root)
+                kernel_outputs=('debian','arch/arm64/boot/Image','arch/arm64/boot/Image.gz',
+                                'arch/x86/boot/bzImage','vmlinux.btf','Module.symvers',
+                                'modules.order','modules.builtin','modules.builtin.modinfo')
+                source_files=files(preferred_root,exclude=kernel_outputs if native_jobs[name]=='kernel' else ())
                 for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256','manifest.json']:
                     build_input=package_output/native_jobs[name]/member
                     if build_input.is_file():inputs.append((build_input,'native-build/'+member,'build_inputs'))

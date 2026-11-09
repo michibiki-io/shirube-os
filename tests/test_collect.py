@@ -10,6 +10,20 @@ import subprocess
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_preferred_source_selection_excludes_generated_staging_but_keeps_source_tests(self):
+        from producer.collect import files
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary)/'source';root.mkdir()
+            for member in ['scripts/package/mkdebian','tests/public-vector.pem',
+                           'debian/linux-image/DEBIAN/control','.git/objects/history']:
+                path=root/member;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(member)
+            selected={member for _,member in files(root,exclude=('debian',))}
+            self.assertEqual(selected,{'scripts/package/mkdebian','tests/public-vector.pem'})
+            outside=Path(temporary)/'outside';outside.write_text('not component source')
+            (root/'external.c').symlink_to(outside)
+            with self.assertRaisesRegex(ValueError,'escapes component'):
+                list(files(root,exclude=('debian',)))
+
     def test_vpp_export_keeps_patched_sources_and_original_external_archives(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary)
