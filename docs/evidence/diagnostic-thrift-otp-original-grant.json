@@ -1,0 +1,16 @@
+{
+  "kind": "exact-source-license-scope",
+  "status": "PASS_COMPONENT_SCOPE_ONLY",
+  "source_url": "https://proxy.golang.org/github.com/apache/thrift/@v/v0.18.1.zip",
+  "source_sha256": "e8e7e9118112dc53d01e2acf1c43723ec5c98f50ad67350a107b64d2286b9d67",
+  "source_size": 5156498,
+  "original_notices": [
+    {
+      "member": "github.com/apache/thrift@v0.18.1/doc/licenses/otp-base-license.txt",
+      "sha256": "0f4468a4a88a2b4f5ad5f8bcb33a4f1df1e1bf528537349bc9e7a6f5a6017204"
+    }
+  ],
+  "scope": "Full OTP MIT text read in the exact ZIP at the actual doc/licenses path, retained with complete root Apache and all separately scoped original third-party conditions.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -20846,6 +20846,94 @@
           "sha256": "a5430d5be99ffbfdda88804c05e42d358e5403f0452a8eecb059609e473e1873"
         }
       ]
+    },
+    "go:github.com/apache/arrow/go/v12@v12.0.1#5eb05ed9c2c5e164503b00912b7b2456400578de29e7e8a8956a41acd861ab5b": {
+      "source_identity": "5eb05ed9c2c5e164503b00912b7b2456400578de29e7e8a8956a41acd861ab5b",
+      "copyright_sha256": "d623d6588ebf94bab26e455086b11af2caa7e3e71bfa074fa972660768ae1d27",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/c44904c17d4efc84b2606bb599f9249e804b229660df83521fbae8176063b5ea.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND BSL-1.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated. Exact Go ZIP inspected: the named cpp, Python, R and external benchmark-data distributions in the shared root license are absent. Their retained original notices do not establish that those foreign distributions are shipped. Complete shared license grant coverage is inherited from the recorded exact-segment reading; all actual Go dependencies remain independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Preserve the complete original shared LICENSE.txt, all Arrow NOTICE material and all original per-file notices; do not extend this Go-source decision to foreign-language binaries, benchmark data, wheels, LLVM or OpenSSL distributions."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/apache/arrow/go/v13@v13.0.0#0fe988bf72cdfb2d9b99716575965f4a54920b3579e0f1ef55b260858dc476be": {
+      "source_identity": "0fe988bf72cdfb2d9b99716575965f4a54920b3579e0f1ef55b260858dc476be",
+      "copyright_sha256": "d623d6588ebf94bab26e455086b11af2caa7e3e71bfa074fa972660768ae1d27",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2929f4f1f9ed55a34fc3d94874e39b935f5542beee8d5d8511eddf27045eabe6.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND BSL-1.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated. Exact Go ZIP inspected: the named cpp, Python, R and external benchmark-data distributions in the shared root license are absent. Their retained original notices do not establish that those foreign distributions are shipped. Complete shared license grant coverage is inherited from the recorded exact-segment reading; all actual Go dependencies remain independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Preserve the complete original shared LICENSE.txt, all Arrow NOTICE material and all original per-file notices; do not extend this Go-source decision to foreign-language binaries, benchmark data, wheels, LLVM or OpenSSL distributions."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/apache/thrift@v0.18.1#e8e7e9118112dc53d01e2acf1c43723ec5c98f50ad67350a107b64d2286b9d67": {
+      "source_identity": "e8e7e9118112dc53d01e2acf1c43723ec5c98f50ad67350a107b64d2286b9d67",
+      "copyright_sha256": "4f0048908bf34c3476c5cb9d515da19d00fbdbab03a0eafaf8984c8272aa826e",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/83c324a1a82aa19f1098c882b3a66cd9aba3b03399063bdc4120fbe23ec838fa.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND Apache-2.0 AND MIT AND FSFAP AND LicenseRef-Thrift-SocketPair AND LicenseRef-Thrift-stdint-printed-variant AND LicenseRef-Public-Domain AND MIT",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated. Exact official ZIP inspected, including the actual doc/licenses/otp-base-license.txt resolving the shortened old path in the root license. Original third-party permission scopes and the explicit historical Apache relicensing statement are retained.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Retain the full original Apache license and NOTICE, Erlware OTP MIT grant, Autoconf permissive notices, JSON public-domain statement, SocketPair author/responsibility conditions and the printed stdint permission variant exactly. Do not silently replace the unusual printed endorsement wording with a standard BSD template or relicense third-party code as Apache."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Thrift-OTP-base.txt",
+          "sha256": "0f4468a4a88a2b4f5ad5f8bcb33a4f1df1e1bf528537349bc9e7a6f5a6017204"
+        }
+      ]
+    },
+    "go:gonum.org/v1/gonum@v0.14.0#6956ff2cf9f6d1da2adeb67e5281ad3f66808135aae256e5ef7fdaa1751821e9": {
+      "source_identity": "6956ff2cf9f6d1da2adeb67e5281ad3f66808135aae256e5ef7fdaa1751821e9",
+      "copyright_sha256": "9626906608551f81f114605a1d9df1bb2cd9b5ae303f101d60a42e88994bd5b0",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/ba8c9b9d50c602a4108cccf467bd786c089931596633bbb5eaf1ef76f49377a8.txt",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND BSL-1.0 AND LicenseRef-Bogaert-published-BSD AND LicenseRef-Sun-permissive AND LicenseRef-W3C-TestSuite-unmodified AND MIT",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated. Exact original Gonum ZIP only. The inherited primary-origin investigation binds the Bogaert algorithm attribution to the creator-published BSD project and the Gonum BSD source header, while preserving the original short disclaimer and explicitly recording that no missing grant paragraph was invented. Each complete remaining third-party grant and copyright prefix was read or matched to a previously fully read original.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Retain the complete original ZIP and all third-party license files, including Boost, Cephes, Matsumoto/Nishimura MT19937, Oxford, Sun and W3C notices. The RDF test-data notice offers BSD-3-Clause as well as the W3C Test Suite license; choose its stated BSD option while retaining both original license texts, source links and status. Do not alter W3C test documents under the retained unmodified-document permission or use third-party names for product endorsement. The root BSD grant does not relicense independently scoped material."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Bogaert-source-notice.txt",
+          "sha256": "a88df616121d7623780bee711b6e094ee16396cafb150e5c92ab430aaae12209"
+        }
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
