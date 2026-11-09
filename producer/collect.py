@@ -193,9 +193,12 @@ def files(root, exclude=()):
         for name in sorted(names):
             path=base/name;relative=path.relative_to(root)
             if name in GENERATED or omitted(relative):continue
+            if name.startswith('.') and name.endswith('.cmd'):continue
             if name in {'signing_key.pem','vmlinux','System.map'} or path.suffix in SUFFIXES:continue
             if path.is_file():
-                resolved=path.resolve()
+                # os.walk does not enter directory symlinks. Resolve file
+                # aliases only, avoiding repeated ancestor lookups per file.
+                resolved=path.resolve() if path.is_symlink() else path
                 if not resolved.is_relative_to(root):raise ValueError('Source symlink escapes component')
                 yield resolved,str(relative)
 
@@ -396,7 +399,9 @@ def collect(rootfs, package_output, output, arch, version, work):
             preferred_root=preferred.get(name) if matching and name!='vyos-http-api-tools' else None
             if preferred_root is not None:
                 if not preferred_root.is_dir():raise ValueError('Missing authenticated native preferred source')
-                kernel_outputs=('debian','arch/arm64/boot/Image','arch/arm64/boot/Image.gz',
+                kernel_outputs=('debian','include/generated','arch/arm64/include/generated',
+                                'arch/x86/include/generated','certs/signing_key.x509',
+                                'arch/arm64/boot/Image','arch/arm64/boot/Image.gz',
                                 'arch/x86/boot/bzImage','vmlinux.btf','Module.symvers',
                                 'modules.order','modules.builtin','modules.builtin.modinfo')
                 source_files=files(preferred_root,exclude=kernel_outputs if native_jobs[name]=='kernel' else ())

@@ -54,6 +54,17 @@ KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910']
 })
 
 
+# Native preferred-source self-tests compared with the authenticated Stream
+# snapshot before compiler/test outputs are considered. Whole-file matches only.
+KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910'].update({
+    'source/src/libcharon/plugins/load_tester/load_tester_creds.c': '7ff94823cbf26c497aa94ea97d5f3ee16b16d379d460d160fac4b4a5b771ff11',
+    'source/libtomcrypt/testprof/test.key': '76ec7faebdc42a4de35ca70024c2d273e9f7856ca61612e89f5f66350ba8cf5f',
+    'source/libtomcrypt/tests/test.key': '76ec7faebdc42a4de35ca70024c2d273e9f7856ca61612e89f5f66350ba8cf5f',
+    'source/libtomcrypt/tests/test_dsa.key': '8a44ced5b373b6124f56bb33577a98585cce3d65671e5303384c4236f9b4d41c',
+    'source/tools/testing/selftests/sgx/sign_key.pem': '1f6566d02247dc09d4dcb542ee2399522ceebf9b435ee00fe2053aa5582541e2',
+})
+
+
 def allowed(origin,member,digest):
     return origin in KNOWN and KNOWN[origin].get(member)==digest
 
