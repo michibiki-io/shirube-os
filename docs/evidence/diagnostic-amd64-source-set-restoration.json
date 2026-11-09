@@ -1,0 +1,35 @@
+{
+  "kind": "complete-source-set-restoration",
+  "status": "PASS_SOURCE_SET_ONLY",
+  "architecture": "amd64",
+  "source_commit": "3b94e3bfdf8335377c3c03eb3e29e1e1321a5736",
+  "manifest_sha256": "2bc9cf43a5adc09fa91871a021e8b4ccde01f85101fcd67a0f4bdc0318527cf9",
+  "inventory_sha256": "fe0ecf7c9530aaf520a17690903d477753f115f56e4bfafdcd248f5e49c41fd3",
+  "source_archives": 512,
+  "restored_regular_members": 207262,
+  "shipped_packages": 730,
+  "archive_byte_integrity": "PASS",
+  "all_source_license_recipe_references": "PASS",
+  "binary_reconstruction": "NOT_RUN",
+  "license_clearance": "NOT_ESTABLISHED_BY_RESTORATION",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "consumer_recipe_commit": "d5d0d7ad70066a1b0aca7d3ac76e162e5891dd18",
+  "compiled_cohort_commit": "3b94e3bfdf8335377c3c03eb3e29e1e1321a5736",
+  "collector_recipe_commit": "c7dfdcd3a334cc2b9ee19e260ec590c8e4389883",
+  "diagnostic_inventory_correction": {
+    "kind": "diagnostic-inventory-shared-Cargo-reference-correction",
+    "original_inventory_sha256": "2ba6d8d4fc7954507c93270346bc5228d4e949d90e1cf53f5c99e0f9e578ae0b",
+    "corrected_inventory_sha256": "fe0ecf7c9530aaf520a17690903d477753f115f56e4bfafdcd248f5e49c41fd3",
+    "child_bindings_before": 1373,
+    "child_records_after": 1360,
+    "all_source_notice_recipe_reference_sets": "UNCHANGED",
+    "source_archives": "UNCHANGED",
+    "production_helper_commit": "d5d0d7ad70066a1b0aca7d3ac76e162e5891dd18",
+    "release_clearance": "NOT_CLEARED"
+  },
+  "earlier_failures": [
+    "SDK source namespace confused with shipped Salt package family; fixed without waiving package child inventories.",
+    "Shared Cargo leaf records duplicated across two HTTP Rust closures; exact duplicates coalesced with all original source/notice/recipe references retained, while conflicting or uncoalesced records remain rejected."
+  ]
+}

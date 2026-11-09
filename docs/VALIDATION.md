@@ -220,3 +220,21 @@ the entire logical export. Both formats booted with fresh firmware and passed
 individual enrollment/login, architecture/product checks and clean shutdown.
 The immutable diagnostic reference remained unchanged. This is separate from a
 new clean-head image and from the still-running complete ARM64 TCG trial.
+
+## Complete diagnostic source-set restoration
+
+The [AMD64 source-set consumer receipt](evidence/diagnostic-amd64-source-set-restoration.json)
+records actual complete restoration of 512 component archives covering all 730
+shipped diagnostic packages. Outer asset hashes, every source/license/recipe
+reference and all bytes written were checked. Two real metadata failures were
+fixed first: namespaced SDK leaves were confused with shipped Salt packages,
+and thirteen Cargo leaves were repeated across HTTP extension closures. The
+production collector now merges only identical leaves while preserving every
+original reference; conflicting metadata and remaining duplicates still fail.
+This restores sources; it does not compile the complete OS or clear licenses.
+
+The [ARM64 allocation probe](evidence/diagnostic-arm64-zero-write-allocation.json)
+passed deleted-data erasure and journal/fsck checks with both control and sparse
+zero writes. The 2 GiB control allocated about 1.95 GiB before trim, while the
+sparse option allocated about 2.20 MiB. Both took about 248 seconds under native
+TCG: this is a storage improvement, not measured ARM64 speed improvement.
