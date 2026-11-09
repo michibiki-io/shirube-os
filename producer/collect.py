@@ -336,8 +336,24 @@ def salt_version_input(rootfs, expected):
     return stamp
 
 
+def debian_requirements(listing, produced, custom, extras):
+    """Resolve exact external source sets before any source archive is built."""
+    result=set()
+    for line in listing.splitlines():
+        name,version,architecture,source,source_version=line.split('\t')
+        matching=(version,architecture) in produced.get(name,set())
+        if name in produced and not matching:raise ValueError('Installed custom package differs from produced binary version')
+        source=source or name;source_version=source_version or version
+        if name=='shirube-integration' or matching and name in custom:continue
+        if matching and any(name.startswith(prefix) or source.startswith(prefix) for prefix in extras):continue
+        result.add((source,source_version))
+    return result
+
+
 def collect(rootfs, package_output, output, arch, version, work):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
+    project=Path('/project-source.tar')
+    if not project.is_file():raise ValueError('Exact project reconstruction source archive missing')
     verify_distribution_notices(rootfs,Path('/src'))
     subprocess.run(['apt-get','-o','Acquire::Retries=3','-o','APT::Update::Error-Mode=any','update'],check=True)
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
@@ -365,11 +381,11 @@ def collect(rootfs, package_output, output, arch, version, work):
             '--showformat=${Package}\t${Version}\t${Architecture}',str(deb)],text=True).split('\t')
         if len(values)!=3:raise ValueError('Invalid produced package identity')
         produced.setdefault(values[0],set()).add((values[1],values[2]))
+    from .debian_sources import acquire
+    debian_inputs=acquire(debian_requirements(listing,produced,custom,extras),work/'debian-inputs')
     audit_path=Path('/src/license-audit.json')
     approvals=json.loads(audit_path.read_text())['components'] if audit_path.is_file() else {}
     shipped=[];components=[];assets=[];cached={};static={}
-    project=Path('/project-source.tar')
-    if not project.is_file():raise ValueError('Exact project reconstruction source archive missing')
     shared_archive=output/f'shirube-os-{version}-{arch}-shared-build-inputs.tar.gz'
     shared=shared_build_inputs(project,Path('/sources/vyos-build/vyos-build'),
         Path('/extra/vpp/patches'),shared_archive)
@@ -416,7 +432,8 @@ def collect(rootfs, package_output, output, arch, version, work):
             elif source is not None:
                 origin=source_identity
             else:
-                subprocess.run(['apt-get','source','--download-only','--only-source',source_name+'='+source_version],cwd=component,check=True)
+                for original in debian_inputs[(source_name,source_version)].iterdir():
+                    os.link(original,component/original.name)
                 from .debian_sources import unpack,legal_files
                 preferred=work/('debian-source-tree-'+str(len(cached)))
                 dsc=unpack(component,source_name,source_version,preferred)

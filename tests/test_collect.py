@@ -10,6 +10,18 @@ import subprocess
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_batch_source_plan_distinguishes_exact_custom_packages_from_debian_sources(self):
+        from producer.collect import debian_requirements
+        listing=('native\t1\tamd64\tnative-source\t1\n'
+                 'podman\t4\tamd64\tpodman\t4\n'
+                 'debian-helper\t2+b1\tamd64\tpodman\t2\n'
+                 'simple\t3\tall\t\t\n')
+        produced={'native':{('1','amd64')},'podman':{('4','amd64')}}
+        self.assertEqual(debian_requirements(listing,produced,{'native':Path('native')},{'podman':'podman'}),
+                         {('podman','2'),('simple','3')})
+        with self.assertRaisesRegex(ValueError,'differs from produced'):
+            debian_requirements(listing.replace('native\t1\t','native\t9\t'),produced,{'native':Path('native')},{'podman':'podman'})
+
     def test_salt_version_stamp_must_match_the_shipped_source_version(self):
         from producer.collect import salt_version_input
         with tempfile.TemporaryDirectory() as temporary:

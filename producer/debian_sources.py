@@ -1,9 +1,54 @@
 """Restore authenticated Debian inputs and retain original source legal files."""
 from email.parser import Parser
+import os
 from pathlib import Path
 import re
 import subprocess
 from .sources import sha256
+
+
+def acquire(requirements, destination):
+    """Fetch all exact source versions with one authenticated APT invocation.
+
+    Individual component sets remain independently descriptor/hash verified.
+    No binary version or similarly named source substitutes for an exact pair.
+    """
+    requirements=set(requirements)
+    for name,version in requirements:
+        if (not re.fullmatch(r'[a-z0-9][a-z0-9+.-]*',name) or
+                not re.fullmatch(r'[0-9][A-Za-z0-9.+:~_-]*',version)):
+            raise ValueError('Invalid exact Debian source request')
+    destination=Path(destination);destination.mkdir()
+    if not requirements:return {}
+    pool=destination/'downloads';pool.mkdir()
+    subprocess.run(['apt-get','source','--download-only','--only-source']+
+                   [name+'='+version for name,version in sorted(requirements)],cwd=pool,check=True)
+    result={}
+    for dsc in sorted(pool.glob('*.dsc')):
+        if dsc.is_symlink() or not dsc.is_file():raise ValueError('Nonregular Debian source descriptor')
+        text=dsc.read_text()
+        if text.startswith('-----BEGIN PGP SIGNED MESSAGE-----'):text=text.split('\n\n',1)[1]
+        fields=Parser().parsestr(text.split('-----BEGIN PGP SIGNATURE-----',1)[0])
+        if any(len(fields.get_all(key,[]))!=1 for key in ['Source','Version','Checksums-Sha256']):
+            raise ValueError('Missing or duplicate downloaded Debian source identity')
+        key=(fields['Source'],fields['Version'])
+        if key not in requirements or key in result:raise ValueError('Unexpected or duplicate Debian source set')
+        members={dsc.name}
+        for line in fields['Checksums-Sha256'].splitlines():
+            if not line.strip():continue
+            values=line.split()
+            if len(values)!=3 or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.+_%~=-]*',values[-1]):
+                raise ValueError('Unsafe Debian source set member')
+            members.add(values[-1])
+        component=destination/sha256(dsc);component.mkdir()
+        for name in sorted(members):
+            path=pool/name
+            if path.is_symlink() or not path.is_file():raise ValueError('Missing regular Debian source member')
+            os.link(path,component/name)
+        descriptor(component,*key)
+        result[key]=component
+    if result.keys()!=requirements:raise ValueError('Exact Debian source acquisition is incomplete')
+    return result
 
 
 def descriptor(directory, source, version):

@@ -424,3 +424,14 @@ defines `tb-size` independently of guest RAM. An ARM64 diagnostic using the
 host-sized default cache ended during installation with a task-owned container
 OOM event under its 3 GiB limit. The bounded-cache retry must pass actual guest
 and offline cleanup checks before ARM64 TCG can enter production admission.
+
+Debian corresponding-source acquisition resolves the complete exact-version set
+from the installed package inventory and uses one authenticated APT source
+invocation. Each resulting component is still independently checked against its
+source descriptor, sizes and SHA256 values; hardlinks avoid duplicating shared
+original archives in private staging. Source trees and complete legal files are
+then restored as before. A differently named or versioned source cannot stand in
+for an installed component. [The actual native batch probe](evidence/diagnostic-debian-source-batch.json)
+fetched three fixed source versions in one call, including an epoch-bearing
+version, verified their known descriptors, restored the trees and matched every
+installed copyright. Complete whole-OS reconstruction remains a separate gate.

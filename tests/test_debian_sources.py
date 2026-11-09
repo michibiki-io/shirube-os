@@ -1,11 +1,55 @@
 from pathlib import Path
 import hashlib
+import shutil
 import tempfile
 import unittest
-from producer.debian_sources import descriptor,legal_files
+from unittest.mock import patch
+from producer.debian_sources import acquire,descriptor,legal_files
 
 
 class DebianSourceTests(unittest.TestCase):
+    def source_set(self, directory, name, version):
+        directory.mkdir()
+        archive=directory/(name+'_1.orig.tar.gz');archive.write_bytes(('original '+name).encode())
+        dsc=directory/(name+'_1.dsc')
+        dsc.write_text('Source: '+name+'\nVersion: '+version+'\nChecksums-Sha256:\n '+
+                       hashlib.sha256(archive.read_bytes()).hexdigest()+' '+str(archive.stat().st_size)+' '+archive.name+'\n')
+        return directory
+
+    def test_batch_acquisition_binds_each_exact_version_with_one_apt_call(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary)
+            originals=[self.source_set(root/'one','first','1:1-2'),self.source_set(root/'two','second','2.0')]
+            def fetch(args,**kwargs):
+                self.assertEqual(args,['apt-get','source','--download-only','--only-source','first=1:1-2','second=2.0'])
+                for directory in originals:
+                    for file in directory.iterdir():shutil.copy2(file,kwargs['cwd']/file.name)
+            with patch('producer.debian_sources.subprocess.run',side_effect=fetch) as command:
+                result=acquire({('second','2.0'),('first','1:1-2')},root/'batch')
+                self.assertEqual(command.call_count,1)
+            self.assertEqual(set(result),{('first','1:1-2'),('second','2.0')})
+            for key,directory in result.items():
+                self.assertTrue(descriptor(directory,*key).is_file())
+                archive=next(directory.glob('*.tar.gz'))
+                self.assertEqual(archive.stat().st_ino,(root/'batch/downloads'/archive.name).stat().st_ino)
+
+    def test_batch_rejects_missing_requested_source_and_changed_archive(self):
+        for changed in [False,True]:
+            with self.subTest(changed=changed),tempfile.TemporaryDirectory() as temporary:
+                root=Path(temporary);original=self.source_set(root/'one','first','1')
+                def fetch(args,**kwargs):
+                    for file in original.iterdir():shutil.copy2(file,kwargs['cwd']/file.name)
+                    if changed:(kwargs['cwd']/'first_1.orig.tar.gz').write_bytes(b'changed source')
+                requested={('first','1')} if changed else {('first','1'),('missing','2')}
+                with patch('producer.debian_sources.subprocess.run',side_effect=fetch):
+                    with self.assertRaises(ValueError):acquire(requested,root/'batch')
+
+    def test_batch_rejects_request_options_before_running_apt(self):
+        with tempfile.TemporaryDirectory() as temporary,patch('producer.debian_sources.subprocess.run') as command:
+            with self.assertRaisesRegex(ValueError,'Invalid exact'):
+                acquire({('--untrusted-option','1')},Path(temporary)/'batch')
+            command.assert_not_called()
+
     def test_descriptor_identity_and_archive_integrity(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);data=b'fixed source archive';archive=root/'example_1.orig.tar.gz';archive.write_bytes(data)
