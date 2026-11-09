@@ -405,3 +405,26 @@ Immutables 0.21 now additionally retains the exact pythoncapi_compat header
 notice identified by its root license. Its separate decision covers Apache-2.0
 and 0BSD, including the upstream NOTICE. The CFFI build source also retains its
 original AUTHORS file; that addition does not clear its embedded source terms.
+
+## Scoped charset-normalizer corresponding source
+
+The original charset-normalizer 3.2.0 source archive remains uncleared: its
+`data/NOTICE.md` mixes Wikipedia/public-domain claims without per-file attribution
+and forbids modification of those samples. Its package configuration excludes
+that data from installed libraries, and the notice explicitly says it is
+unnecessary for installation/runtime use.
+
+The source collector instead exports every library/build file and original
+notice unchanged, omitting only the 18 actual `data/sample-*.txt` members by
+exact file hashes. The original notice says 17; the actual archive contains 18.
+The original archive is never included in this scoped public export. An adjacent
+source-export record preserves the original hash, exclusion inventory and scope.
+The exact resulting archive hash has its own MIT decision; it cannot inherit or
+replace approval for the original full source archive. All other source/license
+gates remain in force.
+
+[Actual AMD64 component evidence](evidence/diagnostic-charset-source-export.json)
+records an offline wheel rebuild, exact comparison of all 13 installed library
+files, and ASCII/UTF-8 detection. The original sample-based pytest suite is
+explicitly unavailable; full SDK/OS reconstruction and release clearance are
+separate outstanding checks. Runtime library behavior and features are retained.

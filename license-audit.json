@@ -3421,6 +3421,19 @@
         "Provide exact original preferred source/build inputs; do not infer endorsement or clearance for dependencies or the full OS."
       ],
       "scope": "Exact immutable 0.21 source archive, full Apache license and NOTICE read; the separate original pythoncapi_compat header is now retained by full-file and notice-prefix hashes. Apache differences are removal of the heading only. Runtime dependencies and parent environment remain independently gated."
+    },
+    "pypi:charset-normalizer@3.2.0#78b587367ca010b1f4e761fc9646f004d9f6928660c265e2433fbbcc2e59ea95": {
+      "source_identity": "78b587367ca010b1f4e761fc9646f004d9f6928660c265e2433fbbcc2e59ea95",
+      "copyright_sha256": "9fe78914ac1f5b478bcc3145813693aa2f079723cec489c8a60b358b00802986",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/3bb3d25a8e6c0aedd251753a79ae98a093c7e7b471faa3aa9a93a81431987ace.copyright",
+      "conditions": [
+        "Retain the original MIT copyright/grant/disclaimer and unmodified data/NOTICE.md; distribute the exact scoped source export, omission inventory and reconstruction recipe.",
+        "Do not redistribute the original full source archive or infer permission for the omitted test samples. All runtime/build source remains byte-identical, and the upstream sample-based pytest suite remains explicitly unavailable."
+      ],
+      "scope": "Only export 78b587367ca010b1f4e761fc9646f004d9f6928660c265e2433fbbcc2e59ea95 derived from the fixed original source. Original LICENSE and test-data NOTICE read. All 18 actual data/sample-*.txt payloads are omitted by exact member/hash, despite the upstream notice describing 17. Offline wheel reconstruction matched all 13 installed library files and passed ASCII/UTF-8 detection on AMD64. No clearance of the original archive, other SDK inputs or full OS is inferred."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

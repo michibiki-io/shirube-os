@@ -13,6 +13,35 @@ from producer.sources import sha256
 
 
 class SaltSourceTests(unittest.TestCase):
+    def test_scoped_source_export_replaces_raw_archive_and_requires_the_exact_export_hash(self):
+        from tests.test_charset_source import CharsetSourceExportTests
+        from producer.charset_source import write_export
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary)
+            original,members,policy=CharsetSourceExportTests().fixture(root)
+            guest=root/'guest';(guest/'etc').mkdir(parents=True)
+            metadata=guest/'opt/saltstack/salt/lib/python3.11/site-packages/charset_normalizer-3.2.0.dist-info/METADATA'
+            metadata.parent.mkdir(parents=True);metadata.write_text('Name: charset-normalizer\nVersion: 3.2.0\n')
+            digest=sha256(original)
+            with patch('producer.charset_source.ORIGINAL',digest):
+                policy['sha256']=write_export(original,root/'expected.tar.gz',policy)
+                record={'name':'pypi:charset-normalizer','version':'3.2.0','url':'https://example.org/source.tar.gz',
+                        'sha256':digest,'source_export':policy,'notices':[{'member':'charset-normalizer-3.2.0/LICENSE',
+                        'sha256':hashlib.sha256(members['charset-normalizer-3.2.0/LICENSE']).hexdigest()}]}
+                lock={'schema_version':1,'installed_distributions':{'charset-normalizer':'3.2.0'},'components':[record]}
+                lock_path=root/'lock.json';lock_path.write_text(json.dumps(lock))
+                with patch('producer.salt_sources.download',side_effect=lambda _,p:shutil.copyfile(original,p)):
+                    records,children=retain(guest,root/'bundle.tar.gz',root/'work',lock_path)
+                    self.assertEqual(children[0]['source_identity'],policy['sha256'])
+                    self.assertEqual(children[0]['sources'][0]['sha256'],policy['sha256'])
+                    with tarfile.open(root/'bundle.tar.gz') as bundle:
+                        self.assertNotIn('salt-sdk/inputs/'+digest+'.source',bundle.getnames())
+                        exported=bundle.extractfile(children[0]['sources'][0]['member']).read()
+                        self.assertEqual(hashlib.sha256(exported).hexdigest(),policy['sha256'])
+                    policy['sha256']='0'*64;lock_path.write_text(json.dumps(lock))
+                    with self.assertRaisesRegex(ValueError,'export hash differs'):
+                        retain(guest,root/'bad.tar.gz',root/'bad-work',lock_path)
+
     def fixture(self, root):
         guest = root / 'guest'
         (guest / 'etc').mkdir(parents=True)

@@ -185,7 +185,85 @@
           "member": "charset-normalizer-3.2.0/data/NOTICE.md",
           "sha256": "0cb3efcfd8f7a02a337e98dc3de4b0b57424d7208a332b26e7deb8cb94c13922"
         }
-      ]
+      ],
+      "source_export": {
+        "kind": "charset-normalizer-3.2.0-without-uncleared-test-data",
+        "excluded": [
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-arabic-1.txt",
+            "sha256": "00c83c71aaf34f6c17ee5ed4e6ad868fe7f281c56d96d5f88f21fc5d39203648"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-arabic.txt",
+            "sha256": "3606d50f8dbd20d80aa4470bd89e74696ceda8ec9138f9524330869eb9aafa46"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-bulgarian.txt",
+            "sha256": "d6f347a930569baa7150ab528cfd64420fd9335d89d6617cbed4addec7c4ad30"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-chinese.txt",
+            "sha256": "5f4aa09479ff9366936b242697680f4f0a50dcb3829fb10d855644bc035a7b7a"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-english.bom.txt",
+            "sha256": "4a5850a424c075e25e86fbee489561d5869efdb42297ed08ae074238f312e818"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-french-1.txt",
+            "sha256": "6b88988aa8cfd689df08f91a25ae0ea8032cc28b4557092432849a2712fce716"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-french.txt",
+            "sha256": "ab1b0ebf22b7bd85d2a45600844c0a2c89ba6217b862a6d96b9fa46ce1e132bb"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-greek-2.txt",
+            "sha256": "cf9afae3a58f28a422fa8edecf255744a8cffb559262d3b3f7dfa3e1d6f59cb4"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-greek.txt",
+            "sha256": "cf9afae3a58f28a422fa8edecf255744a8cffb559262d3b3f7dfa3e1d6f59cb4"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-hebrew-2.txt",
+            "sha256": "eb3a0aa5646487ee6b06c7ef8a9223a89cc2c7b920c787f982ba712d8fedf5f4"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-hebrew-3.txt",
+            "sha256": "eb3a0aa5646487ee6b06c7ef8a9223a89cc2c7b920c787f982ba712d8fedf5f4"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-korean.txt",
+            "sha256": "281246aaaefceb47f6bc0120b2646ebe1832d57101cc0d7bfaeedfbfed979329"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-polish.txt",
+            "sha256": "fe130e75df06b484e1a00cfa6c7679f2ab2b2c44f9a69780b89e729c651e5fcf"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-russian-2.txt",
+            "sha256": "2492ff4b9b15c174a998457ff02233cd1367bdfa5d7c066145f15616aaaa941a"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-russian-3.txt",
+            "sha256": "81c49a881b7175f68201edc41966016b5c0f16ddb4ac4a30407af0e4ac8b84e6"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-russian.txt",
+            "sha256": "becee0937e700266497ef4cbe84352be0449476a9299a7fc7c18647344e3ff8c"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-spanish.txt",
+            "sha256": "b43d16b5398e26565153b1c1118a7f040fa2350493eac5cea51721ffe5367edd"
+          },
+          {
+            "member": "charset-normalizer-3.2.0/data/sample-turkish.txt",
+            "sha256": "df265e595aac51e92faafd41afefadbd21b820d1be3eec2e35dab4213fb16fba"
+          }
+        ],
+        "sha256": "78b587367ca010b1f4e761fc9646f004d9f6928660c265e2433fbbcc2e59ea95"
+      }
     },
     {
       "name": "pypi:cheroot",

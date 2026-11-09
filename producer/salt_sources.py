@@ -240,11 +240,20 @@ def retain(rootfs, destination, work, lock_path):
         download(record['url'], source)
         if sha256(source) != digest:
             raise ValueError('Salt dependency source SHA256 mismatch')
-        member = 'salt-sdk/inputs/' + source.name
-        inputs.append((source, member, 'sources'))
+        exported, exported_digest = source, digest
+        if 'source_export' in record:
+            if record['name'] != 'pypi:charset-normalizer' or record['version'] != '3.2.0':
+                raise ValueError('Unexpected scoped SDK source export')
+            from .charset_source import write_export
+            exported = work / (digest + '.export.tar.gz')
+            exported_digest = write_export(source, exported, record['source_export'])
+            if exported_digest != record['source_export']['sha256']:
+                raise ValueError('Scoped SDK source export hash differs')
+        member = 'salt-sdk/inputs/' + exported_digest + '.source'
+        inputs.append((exported, member, 'sources'))
         source_members=[member]
         extra_archives=[]
-        source_set=[digest]
+        source_set=[exported_digest]
         for extra in record.get('extra_sources', []):
             extra_digest=extra['sha256']
             if not re.fullmatch('[0-9a-f]{64}',extra_digest) or extra_digest in source_set:
@@ -256,7 +265,7 @@ def retain(rootfs, destination, work, lock_path):
             inputs.append((target,extra_member,'sources'));source_members.append(extra_member)
             source_set.append(extra_digest)
             if extra.get('notices'):extra_archives.append((target,extra['notices']))
-        identity=digest
+        identity=exported_digest
         if extra_archives or record.get('extra_sources'):
             identity=hashlib.sha256(json.dumps(source_set,separators=(',',':')).encode()).hexdigest()
         notice = work / (digest + '.copyright')
@@ -280,7 +289,7 @@ def retain(rootfs, destination, work, lock_path):
         inputs.append((notice, notice_member, 'license_files'))
         children.append({'name': record['name'], 'version': record['version'],
                          'source_identity': identity, 'source_member': member,
-                         'source_sha256': digest, 'notice': notice,
+                         'source_sha256': exported_digest, 'notice': notice,
                          'notice_member': notice_member,'retained_members':source_members})
     expected = {'pypi:' + name for name in actual if name != 'salt'}
     provided = {item['name'] for item in children if item['name'].startswith('pypi:')}
