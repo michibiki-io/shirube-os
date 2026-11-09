@@ -21058,6 +21058,119 @@
         "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
         "Retain the original MIT permission including distribution with modifications, the author-name publicity restriction and the separately scoped UC BSD notices. Root permission is not extended to separately scoped components."
       ]
+    },
+    "boost1.74@1.74.0+ds1-21": {
+      "redistributable": true,
+      "source_identity": "864ad1a08599ac878b277acbd55cd29602ca575951a986f5f3e5a63f423fef04",
+      "copyright_sha256": "a5b14e71f8c30e113a41b09109a08a0c6371f9085aaeeff53c764eb4f6fa19b9",
+      "license": "BSL-1.0 AND LicenseRef-Boost-1.74-independent-grants",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal files matched to read originals or their entire word differences read; every operative permission body read or fully matched. Copyright/file-scope/comment metadata read except the explicitly described large Boost author/path table. No blanket OS or dependency approval. The 1541-row author/path table is preserved in the original source copyright and mechanically checked; every non-table field and potentially operative copyright-field statement was inspected. Manual reading of every personal-name/path row or independent chain-of-title verification is not claimed. The published original per-file grants, not a root BSL assumption, control separately scoped code. The original comment on trivial files with unclear authorship is retained without inventing an author or missing permission paragraph.",
+      "conditions": [
+        "Retain every original copyright, full license text, separately scoped permission, disclaimer and nonendorsement condition in source and binary documentation.",
+        "Accompany binaries with exact preferred sources, applied Debian patches, configuration and complete build/install scripts. Preserve all original license alternatives and modification notices.",
+        "Retain the original Python-by-reference grant and disclaimer together with the complete Python historical license notices; do not infer a newly specified historical Python version. Preserve Caramel acknowledgement, CrystalClear/HP/Jam/Kempf/NIST/Spencer/SGI notices, all old Boost modification-notice requirements, and exact Debian dfsg exclusions. No omitted binary/document payload is reintroduced."
+      ],
+      "declared_licenses": [
+        "Apache-2.0",
+        "BSD2",
+        "BSD3_DEShaw",
+        "BSD3_Google",
+        "BSL-1.0",
+        "Caramel",
+        "CrystalClear",
+        "HP",
+        "Jam",
+        "Kempf",
+        "MIT",
+        "NIST",
+        "OldBoost1",
+        "OldBoost2",
+        "OldBoost3",
+        "Python",
+        "SGI",
+        "Spencer",
+        "Zlib"
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Boost-Caramel-acknowledgement.txt",
+          "sha256": "28e149caa2857c4a33dd46a38074616adb97d4dcaeadd874696a7f45efecd38a"
+        },
+        {
+          "path": "LICENSES/Python-historical-license.txt",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
+      ]
+    },
+    "libdbi-perl@1.643-4+deb12u3": {
+      "redistributable": true,
+      "source_identity": "73a9c5c956104cd95e478f2f5e145937fe669f43a5b692f017850d32ffcd5aef",
+      "copyright_sha256": "57d2dfda7c353999012ecf14b0a932b734f685df5c684ad04bf86f12f8a954c5",
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal files matched to read originals or their entire word differences read; every operative permission body read or fully matched. Copyright/file-scope/comment metadata read except the explicitly described large Boost author/path table. No blanket OS or dependency approval.",
+      "conditions": [
+        "Retain every original copyright, full license text, separately scoped permission, disclaimer and nonendorsement condition in source and binary documentation.",
+        "Accompany binaries with exact preferred sources, applied Debian patches, configuration and complete build/install scripts. Preserve all original license alternatives and modification notices.",
+        "Choose GPL version 2 or later from the explicit GPL version 1-or-later offer while retaining the original Artistic alternative and complete original LICENSE. Source access, modifications and authorship remain intact."
+      ]
+    },
+    "libregexp-common-perl@2017060201-3": {
+      "redistributable": true,
+      "source_identity": "32afa5b4376cea62397f14e647c1385570c9c4fff198c2ec412d5a88d54f0876",
+      "copyright_sha256": "b7112956cfce06b4f926ed20ef23948742e18b431533f33a69f084069b50fead",
+      "license": "Artistic-2.0 AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal files matched to read originals or their entire word differences read; every operative permission body read or fully matched. Copyright/file-scope/comment metadata read except the explicitly described large Boost author/path table. No blanket OS or dependency approval.",
+      "conditions": [
+        "Retain every original copyright, full license text, separately scoped permission, disclaimer and nonendorsement condition in source and binary documentation.",
+        "Accompany binaries with exact preferred sources, applied Debian patches, configuration and complete build/install scripts. Preserve all original license alternatives and modification notices.",
+        "Retain all upstream Artistic1/Artistic2/BSD/MIT/GPL alternatives. Choose the explicitly offered Artistic2 permission for upstream code, with exact source supplied under its section 4 conditions; keep the Debian packaging GPL-or-Artistic declaration and its original comment rather than claiming additional independently obtained author consents. Choose GPL2-or-later from that packaging GPL1-or-later alternative."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-2.0.txt",
+          "sha256": "9a2c2e9497da62a9a6e735cad9421d479c7657382a54220362253b97842bc43d"
+        }
+      ]
+    },
+    "mawk@1.3.4.20200120-3.1": {
+      "redistributable": true,
+      "source_identity": "ed0543e3111f718e918a73033292fe2616760c8791c13efa0da3818ca835cdc1",
+      "copyright_sha256": "167d04422f2fdf76ab565878c23be8ba0c2ebb2c57a5dac0a5a59ccd27e747a5",
+      "license": "GPL-2.0-only AND LicenseRef-X11-nonendorsement AND CC-BY-3.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal files matched to read originals or their entire word differences read; every operative permission body read or fully matched. Copyright/file-scope/comment metadata read except the explicitly described large Boost author/path table. No blanket OS or dependency approval.",
+      "conditions": [
+        "Retain every original copyright, full license text, separately scoped permission, disclaimer and nonendorsement condition in source and binary documentation.",
+        "Accompany binaries with exact preferred sources, applied Debian patches, configuration and complete build/install scripts. Preserve all original license alternatives and modification notices.",
+        "Keep the GPL version 2-only program grant, separately scoped X11 install script and the CC-BY3 original SVG with original creator, source and license attribution. The icon is retained as third-party component material, not used for product branding; no additional copying restrictions or endorsement claims are introduced."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/CC-BY-3.0.txt",
+          "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+        }
+      ]
+    },
+    "pcsc-lite@1.9.9-2": {
+      "redistributable": true,
+      "source_identity": "7f41763f994336ce4371b5a67fefda900c7f3e61b52e3acb77b3a70632869cba",
+      "copyright_sha256": "458ddd6711f0527ee4c3c2880e2653d053a8b6c6f323964b4897a425ad309a5f",
+      "license": "BSD-3-Clause AND ISC AND GPL-3.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal files matched to read originals or their entire word differences read; every operative permission body read or fully matched. Copyright/file-scope/comment metadata read except the explicitly described large Boost author/path table. No blanket OS or dependency approval.",
+      "conditions": [
+        "Retain every original copyright, full license text, separately scoped permission, disclaimer and nonendorsement condition in source and binary documentation.",
+        "Accompany binaries with exact preferred sources, applied Debian patches, configuration and complete build/install scripts. Preserve all original license alternatives and modification notices.",
+        "Preserve the exact original BSD3 clause reserving license-text changes to the author; do not replace it with a generic BSD template. Keep simclist ISC and GPL3-or-later spy/example/test scopes separate. The short Debian GPL common-file pointer is supported by the explicit full GPL3-or-later grant in the original root COPYING; it is not treated as a standalone permission grant."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
