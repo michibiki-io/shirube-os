@@ -83,6 +83,23 @@ architecture checks are separate from label selection.
 
 A conservative complete-build preflight currently requires 160 GiB free storage
 and 8 GiB available memory. This is a planning budget, not an observed minimum.
+
+The `Test` workflow measures both native GitHub-hosted runner classes with a
+small fixed-base fixture. Its `runner-capability-*` artifacts record CPU, available
+memory/storage, KVM openability, a real BuildKit cache mount/chroot, and privileged
+container mknod/mount/chroot execution. The probe is restricted to ephemeral
+GitHub-hosted Linux runners and removes only the container and image tag it creates.
+It records the PR head separately from the checked-out merge commit. Complete OS
+build, guest boot, elapsed-time feasibility and release clearance remain separate
+gates; the capability receipt explicitly records those as unrun.
+
+`Test` workflowでは、両アーキテクチャのGitHub-hosted runnerで小さな固定入力の
+試験を実行します。`runner-capability-*` artifactにCPU、空きメモリと容量、
+KVMを開けるか、BuildKitのcache mountとchroot、特権コンテナーのmknodとmountの
+結果を記録します。実行対象を一時的なGitHub-hosted Linux runnerに限定し、
+作成したコンテナーとimage tagだけを削除します。PRのheadとcheckoutしたmerge
+commitは別々に記録します。OSビルド、ゲスト起動、所要時間の実用性、公開可否は
+それぞれ別に検証し、この資源試験では未実施として記録します。
 KVM is a separate boot-stage requirement. Diagnostic AMD64 ISO/install/access/reboot tests passed under explicit TCG, but the complete production TCG disk/lifecycle path and its resource/time budget remain unvalidated; it cannot yet satisfy the release boot gate. The hosted runner defaults are selection defaults, not
 claims that their available resources or nested virtualization meet these needs.
 
