@@ -1387,6 +1387,22 @@
         {
           "member": "libffi-3.5.2/LICENSE-BUILDTOOLS",
           "sha256": "e67978cd18816c0cb7d29aaaacde7b7447402c2fb321a051698890a8eaedda94"
+        },
+        {
+          "member": "libffi-3.5.2/msvcc.sh",
+          "sha256": "a1663d73f5cce3d7c1bc5d87c5fa1bc2ddf1e0798f5157ac115f353264acc318",
+          "prefix_bytes": 1718,
+          "notice_sha256": "3dcc68982b9cf763858decc2cc1f137fc0540beb76965cb5f04d89d37c28f252"
+        }
+      ],
+      "additional_notices": [
+        {
+          "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-11.2.0/README",
+          "sha256": "49306c701a64d02dc25de7c89eac5643a3e73c159b4aa9438b47f6b9d86ba0df"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-11.2.0/COPYING3",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
         }
       ]
     },
@@ -1447,6 +1463,12 @@
         {
           "member": "ncurses-6.6/test/package/debian/copyright",
           "sha256": "4635cf9bcc370cbc5320ffc29f11861bb2a60d1949bd28e46156b1a04511baea"
+        },
+        {
+          "member": "ncurses-6.6/test/terminal.xbm",
+          "sha256": "be47eb4b0e460e5abe9e23cc36d5ab0e34630420a9e3b0842f07b5492463b559",
+          "prefix_bytes": 1920,
+          "notice_sha256": "9355804fc66d107b1fbeccebb786ee1cc6e2a1e941622ee32bb51f3b8d41f481"
         }
       ]
     },

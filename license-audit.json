@@ -16400,6 +16400,290 @@
         "Keep liblzma and regular command-line tools under their actual 0BSD scope; separate GNU getopt and gzip-derived scripts retain their own LGPL/GPL terms. Preserve all generated build-script exceptions without applying them to unrelated files."
       ],
       "scope": "Complete original AUTHORS/COPYING/0BSD grant and checker code read. Full original GPL2/LGPL2.1 word differences read; GPL3 matched read complete original. The unmodified original source license checker passes in a read-only bounded native container, including original per-file source tags; its explicitly skipped generated files are not independently certified by that script, and retain the original GNU build-system scope described in COPYING. Component only; no parent SDK/OS clearance."
+    },
+    "salt-sdk:ncurses@6.6": {
+      "source_identity": "355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11",
+      "copyright_sha256": "0811ec3dc9b7f362d81d2bbfb248dcdc4e2a37503a4fd0994fb9eb540472f5d1",
+      "redistributable": true,
+      "license": "X11-distribute-modifications-variant AND X11 AND BSD-3-Clause AND StandardML-NJ",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11.copyright",
+      "conditions": [
+        "Retain all original copyrights, author lists, permission terms, scoped alternatives, nonadvertising/nonendorsement conditions and disclaimers in sources and binary documentation.",
+        "Supply exact preferred sources and complete build/install scripts; preserve applicable copyleft source access and modification notices without relicensing independent runtime libraries."
+      ],
+      "scope": "Complete original root/authors/Ada95/MinGW/test packaging notices read, including actual per-file BSD3 terms. The packaging summary omits the full terminal bitmap grant; its complete actual Evans and Sutherland original header is read and retained. Independent X11 variants and bitmap grant remain separately scoped. Component only; parent SDK/OS remain gated."
+    },
+    "salt-sdk:libffi@3.5.2": {
+      "source_identity": "f3a3082a23b37c293a4fcd1053147b371f2ff91fa7ea1b2a52e335676bac82dc",
+      "copyright_sha256": "42c38341f6dfbbcfce7fd26269894f79276f17bb5392f343b829028ef3997c91",
+      "redistributable": true,
+      "license": "MIT AND GPL-2.0-or-later AND GPL-3.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/f3a3082a23b37c293a4fcd1053147b371f2ff91fa7ea1b2a52e335676bac82dc.copyright",
+      "conditions": [
+        "Retain all original copyrights, author lists, permission terms, scoped alternatives, nonadvertising/nonendorsement conditions and disclaimers in sources and binary documentation.",
+        "Supply exact preferred sources and complete build/install scripts; preserve applicable copyleft source access and modification notices without relicensing independent runtime libraries."
+      ],
+      "scope": "The original libffi runtime grant remains MIT. Its tooling notice is separate; msvcc explicitly permits GPL2-or-later and that option is selected while preserving all alternatives. The complete unlicensed-header make_sunver.pl is byte-identical to GCC11.2 contrib/make_sunver.pl; the original GCC project README directs copying permission to COPYING files, and its original full GPL3 is retained for that independent build tool. No secondary distributor label supplies permission. Component only; parent SDK/OS remain gated."
+    },
+    "go:google.golang.org/protobuf@v1.36.1#227240722a09d5abbf391b014e76200e73f36ded1c0a4636308cedb077cf46cf": {
+      "source_identity": "227240722a09d5abbf391b014e76200e73f36ded1c0a4636308cedb077cf46cf",
+      "copyright_sha256": "758884cdbbb54a2fac43db55adcba5bfa909cc14088b64531329c625ac72c464",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3ab2c172f3fd9bcf7f7555aa2e5c55e9be870a641eb110541705ad611278d033.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:google.golang.org/protobuf@v1.36.6#3294ac8ea5089b3c231351afaea4f012e8027a9beeb523bbf31dcb383cc0ab99": {
+      "source_identity": "3294ac8ea5089b3c231351afaea4f012e8027a9beeb523bbf31dcb383cc0ab99",
+      "copyright_sha256": "758884cdbbb54a2fac43db55adcba5bfa909cc14088b64531329c625ac72c464",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/ab384c4fef8d987826739c6a5168fbc2ed00a899c6a2e615d26c83416c2eb01c.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/gogo/protobuf@v1.3.2#dd2b73f163c8183941626360196c8f844addd95423d341a0412e1b22d0104ff7": {
+      "source_identity": "dd2b73f163c8183941626360196c8f844addd95423d341a0412e1b22d0104ff7",
+      "copyright_sha256": "14eb86598b69fdca4463722d043c6b1a8f76cb55ab2be3adfc0a4c35efde0e88",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fd89cddb3501f62666ab3a5c4256e2b13f4adbb265c543ff6a18e37b1da45ce9.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/golang-sql/sqlexp@v0.1.0#80215592aa894583e72096d7b585ee0635eb39c36667caeeb4a3c79da6c4f7af": {
+      "source_identity": "80215592aa894583e72096d7b585ee0635eb39c36667caeeb4a3c79da6c4f7af",
+      "copyright_sha256": "134bbe70e9c0608d970a1c620b700a40076f432947f2bc1c159bdb000c0d79b7",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/36c52c99494bb820c76af85168d230e9c877939d2f3eb2d54cfcc749de55a6ae.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/google/gopacket@v1.1.19#fc8cbe2239683199e677cb39f9303ae8d4a365f3c8cd8a2dcfa1f14c41bcff88": {
+      "source_identity": "fc8cbe2239683199e677cb39f9303ae8d4a365f3c8cd8a2dcfa1f14c41bcff88",
+      "copyright_sha256": "f352f7080fa189120c2b903ec1c783232d072248e2f6864e3d9dda852b84cc2b",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/edbe9e0ca15e2673fb1f821d22ba43ab16d4a2a5b722d329a691dc27e3e08d67.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/pion/dtls/v2@v2.2.7#db4da7f0f16abd7c503cffa5d9fafde7893a56724ba52a3dde0d529ff3848d36": {
+      "source_identity": "db4da7f0f16abd7c503cffa5d9fafde7893a56724ba52a3dde0d529ff3848d36",
+      "copyright_sha256": "e0781234bb01e5f8a7ab5f7b78f91430289cc7261ce5f1e0173f3f970aa9d080",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/4b59d7037261109c0c15f9bc118c405581af49e23b25f8bb885c599e32644b4b.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/shirou/gopsutil/v3@v3.23.8#7dd542ec698220c8bb8e8a29decb9802c061a2d955433529bf2b6e05751d6147": {
+      "source_identity": "7dd542ec698220c8bb8e8a29decb9802c061a2d955433529bf2b6e05751d6147",
+      "copyright_sha256": "bc47922ce23b48b59ee81aed334c71e433f66959af59d478c269f5dfa5d05c24",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/5a6065d1d79dae1eaad2717abf8944356329773f03de0de8f08ed6faec6ef2d7.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/twmb/murmur3@v1.1.7#471074aad12971eedd65ddd6aa55a2bdf8546e3c561af94ccec24621a323d664": {
+      "source_identity": "471074aad12971eedd65ddd6aa55a2bdf8546e3c561af94ccec24621a323d664",
+      "copyright_sha256": "4f5512aa1247e547b702212fff0224de81f20cf6e18e216a5083787726a314d0",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b6193055f42c0a23f665c03cd03ea15f4f0aa135733d56c732f876d89771cfe0.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:golang.org/x/xerrors@v0.0.0-20220907171357-04be3eba64a2#b9c481db33c4b682ba8ba348018ddbd2155bd227cc38ff9f6b4cb2b74bbc3c14": {
+      "source_identity": "b9c481db33c4b682ba8ba348018ddbd2155bd227cc38ff9f6b4cb2b74bbc3c14",
+      "copyright_sha256": "b7f4421174f1fa4dee409006c3a8b0be328b18ef101926e7135c1ce0c5eeb798",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/43086a93f5a07b270330d15b58c7bbf6e1d2c236f605e24316591e7cbd9fa33c.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:google.golang.org/protobuf@v1.31.0#f01e7df25c79e12e4381b3f770b5fd97d8295e568e3a91b267dacb5b3622c203": {
+      "source_identity": "f01e7df25c79e12e4381b3f770b5fd97d8295e568e3a91b267dacb5b3622c203",
+      "copyright_sha256": "758884cdbbb54a2fac43db55adcba5bfa909cc14088b64531329c625ac72c464",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/8bbba8e8ae668a36aed0479526ef81c93745137ee31f934544d921ddc220531e.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:gopkg.in/fsnotify.v1@v1.4.7#ce003d540f42b3c0a3dec385deb387b255b536b25ea4438baa65b89458b28f75": {
+      "source_identity": "ce003d540f42b3c0a3dec385deb387b255b536b25ea4438baa65b89458b28f75",
+      "copyright_sha256": "634420e50bfb33a9cfd974cf494855a91cd880c2466b35fbc90508ce660039b6",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/5849073ac41fdf3b508d14251c1e9c66250786bbd1672a22c04fd0a26fa89b6b.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/gogo/protobuf@v1.3.2#a592e19a8f8428f11cf5fa573668208ce8d8e10949adc1f9ceb31b93a98df813": {
+      "source_identity": "a592e19a8f8428f11cf5fa573668208ce8d8e10949adc1f9ceb31b93a98df813",
+      "copyright_sha256": "14eb86598b69fdca4463722d043c6b1a8f76cb55ab2be3adfc0a4c35efde0e88",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fd89cddb3501f62666ab3a5c4256e2b13f4adbb265c543ff6a18e37b1da45ce9.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/shirou/gopsutil/v3@v3.23.10#b3a09ede0e2d7852d2b5faff217db578ed6611e225c80886e1143a667cfbbca5": {
+      "source_identity": "b3a09ede0e2d7852d2b5faff217db578ed6611e225c80886e1143a667cfbbca5",
+      "copyright_sha256": "bc47922ce23b48b59ee81aed334c71e433f66959af59d478c269f5dfa5d05c24",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7ea87925e8d53a844e9ec4ab46e4a1c2c3220d4b233d7484aebcd44006e713f3.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:google.golang.org/protobuf@v1.33.0#91d4e96e4594acd1f662d9a289c046e7239137c177e7c7ee73f67414f204506c": {
+      "source_identity": "91d4e96e4594acd1f662d9a289c046e7239137c177e7c7ee73f67414f204506c",
+      "copyright_sha256": "758884cdbbb54a2fac43db55adcba5bfa909cc14088b64531329c625ac72c464",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/563805dbbc57724c133f6e4c1bd98a25476e25858b5825b7cdf15fafde293bbf.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/grpc-ecosystem/grpc-gateway/v2@v2.26.3#h1:5ZPtiqj0JL5oKWmcsq4VMaAW5ukBEgSGXEN89zeH1Jo=": {
+      "source_identity": "h1:5ZPtiqj0JL5oKWmcsq4VMaAW5ukBEgSGXEN89zeH1Jo=",
+      "copyright_sha256": "cf8d80e499f57c36596d8c4fda3b61d05ab9a983899db6181282dc9eeb621e9a",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/f4e4ad6a147039ccc2421086716f895724d8c945f82e2ed9f2243d81ce0af760.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:github.com/shirou/gopsutil/v4@v4.25.8#h1:NnAsw9lN7587WHxjJA9ryDnqhJpFH6A+wagYWTOH970=": {
+      "source_identity": "h1:NnAsw9lN7587WHxjJA9ryDnqhJpFH6A+wagYWTOH970=",
+      "copyright_sha256": "520abcf6706779e539d59a8d52fa341ababd54d8c90a9b84d99340094bd7a7fa",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/0650f055b4fb384a47004b7a36b41a7febe3088f2a2253ca40fe96ece84185fe.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:google.golang.org/protobuf@v1.36.11#h1:fV6ZwhNocDyBLK0dj+fg8ektcVegBBuEolpbTQyBNVE=": {
+      "source_identity": "h1:fV6ZwhNocDyBLK0dj+fg8ektcVegBBuEolpbTQyBNVE=",
+      "copyright_sha256": "6d75a5e5ec69ad4370cdf8e8ecc93f6b52b6a922e59ea7ea4fa66d0dd68db0bb",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/7a39b7b8e4f9f5630fb7b8fe04c12f003984a5ea2bdb984db8b6932bc2f42b26.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated."
+    },
+    "go:gopkg.in/yaml.v3@v3.0.1#h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=": {
+      "source_identity": "h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=",
+      "copyright_sha256": "bf4fb3b540b82f7e855fd077d4c0797602c8d80e3a073d2199c3dcebcef2cf47",
+      "redistributable": true,
+      "license": "MIT AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/491112fe160db255d49baece16433ce52cdebb786b4df71d6e7ad0a093c8f220.txt",
+      "conditions": [
+        "Retain every original copyright, complete permission conditions, author/contributor lists and warranty disclaimers with sources and binary documentation.",
+        "Preserve all named nonendorsement conditions, source/version boundaries and any original Google patent grant including its exact scope and termination conditions.",
+        "Supply exact preferred sources and build/install recipes, preserve original modification notices and do not imply endorsement or additional patent permissions."
+      ],
+      "scope": "Complete original combined notices read, including all copyright/author/contributor text, each scoped operative license, Google PATENTS where present, and source-port provenance. Only this exact source/notice pair; parent distributions remain independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
