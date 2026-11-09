@@ -15839,6 +15839,20 @@
         "Keep Text-Template original notices, make modifications freely available under Artistic1.0 section 3(a), and provide machine-readable source under 4(b); do not rely on Perl-specific aggregation/embedding exceptions absent from the actual grant."
       ],
       "scope": "Complete original current-lock notices read or matched to read complete originals. Exact component decision only; parent SDK/OS remain gated. OpenSSL authors and full Apache2 retained. Vendored Text-Template expressly offers GPL1-or-later OR Artistic1.0; select the actual original Artistic1.0 branch, compare/read every difference from Perl Artistic terms, and preserve the unselected full GPL alternative. No extra embedding permission is inferred."
+    },
+    "base-files@12.4+deb12u15": {
+      "source_identity": "e531274d0c3916dacfe55bbd27148d775b004e1836bc2fbb01549f142d524e8c",
+      "copyright_sha256": "fd7e4aae7e7b05f217bcf2d02322825c360e66c52c4c2f1b28d784d6297a1c23",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LicenseRef-Verbatim-common-license-texts",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain SPI, original Debian authors and all third-party copyright, source access, modification notices and GPL2-or-later terms.",
+        "Preserve complete original common-license texts verbatim under their original document copying permissions, with their distinct versions and copyright. They describe other components and do not relicense the base-files program.",
+        "Accompany binaries with exact preferred sources, Debian patches and full build/install scripts; do not add restrictions or endorsement claims."
+      ],
+      "scope": "Complete package copyright read. All common-license originals read or previously full original matched: GPL1 and MPL1.1 read completely in this round; Artistic1.0Perl byte-word-identical to retained full text; GFDL1.3 exact SHA matches the previously fully read original. GPL/LGPL/GFDL versions and each distinct grant preserved. No parent OS clearance."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
