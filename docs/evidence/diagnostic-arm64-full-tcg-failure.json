@@ -1,0 +1,49 @@
+{
+  "kind": "diagnostic-arm64-explicit-tcg-complete-fresh-disk-acceptance",
+  "architecture": "arm64",
+  "version": "v2026.03.0",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "status": "FAIL",
+  "qemu_accelerator": "tcg",
+  "experimental_admission_only": true,
+  "memory_events_before": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0,
+    "sock_throttled": 0
+  },
+  "iso_sha256": "a36f52ca5b9d9d6661423ad0636c65df71e509e84eae564a7251bdc718f99847",
+  "implementation_files": {
+    "producer/vm.py": "aeddf701ff07036d095307a9dd5845e3a833c20fafb9b512d57d721dd40c18de",
+    "producer/sanitize.py": "0a3c1b5e6473e10f6c2dccaff380fef953703acd3a6d3f059e745e0f0625cd2a",
+    "producer/guestfs_kernel.py": "ad79c96423c7424c6f635146e0a534433238b1bf12cf1aabe88b5317e96bf90c",
+    "producer/netbird_guest.py": "6eb0785c190d205585cca161801907f001513d1952fe02b3d3e1b6c472da8e46"
+  },
+  "error_type": "GuestCommandError",
+  "failure_phase": "netbird_qcow2-provisioned",
+  "safe_guest_diagnostics": {
+    "exit_status": 1
+  },
+  "memory_events_after": {
+    "low": 0,
+    "high": 0,
+    "max": 19190,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0,
+    "sock_throttled": 0
+  },
+  "completed_before_failure": [
+    "fresh ISO individual enrollment and installation",
+    "retained-administrator disk-only boot",
+    "full offline sanitization under TCG",
+    "QCOW2 and VMDK conversion checks",
+    "fresh QCOW2 enrollment and native NetBird registration/disable-enable",
+    "first saved-configuration reboot/login"
+  ],
+  "scope": "Diagnostic frozen source/ISO cohort only. GuestCommandError exit 1 in QCOW2 NetBird lifecycle is unresolved; no full TCG acceptance or production admission is granted. Original images were accessed through disposable overlays; a separate failure-localization trial is running."
+}

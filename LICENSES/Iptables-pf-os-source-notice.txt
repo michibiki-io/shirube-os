@@ -1,0 +1,21 @@
+IPTables 1.8.9 passive OS fingerprint database original source notice
+Source member: iptables-1.8.9/utils/pf.os
+Source SHA256: 1798c2d6e54b967be36162c7245e2aa79070ee7ccc0feac88abb27ec53efec35
+
+(C) Copyright 2000-2003 by Michal Zalewski <lcamtuf@coredump.cx>
+(C) Copyright 2003 by Mike Frantzen <frantzen@w4g.org>
+
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+The original Debian notice is retained; this complete original source notice
+supplements its shortened disclaimer. The original source remains unchanged.
