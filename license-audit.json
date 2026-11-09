@@ -20504,6 +20504,134 @@
         "Bundled patches inherit the licenses of their respective upstream code; do not relicense them all as root GPL-2. Retain GNU GPL-3/GCC Runtime Library Exception 3.1 scopes, GNU LGPL-2.1 glibc/GMP/uClibc code and linking exceptions, and MIT-style ncurses scopes with original notices and full applicable license texts.",
         "Preserve all third-party authorship, warranty disclaimers and nonendorsement conditions. The GCC exception applies only to explicitly covered files and eligible compilation processes, without weakening GCC copyleft."
       ]
+    },
+    "go:github.com/klauspost/compress@v1.17.9#a009d53eecbdb9d6b789e9a0662fa41c87a85ab280291b2b5a5d9664bb1c5e8f": {
+      "source_identity": "a009d53eecbdb9d6b789e9a0662fa41c87a85ab280291b2b5a5d9664bb1c5e8f",
+      "copyright_sha256": "5fc4a96558be19281e12d1a4fc801c6256c847b22e817b0abce348e58041d316",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/1eecadbcc55ee238aef0c3f7324f72e2c187e6b17f93066a3a554661d819de19.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT AND MIT",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/aliyun/alibaba-cloud-sdk-go@v1.62.563#5a7fd6f9bcdc8d4d54d692a94f80854353282bf0b607695007e8932225a79dcb": {
+      "source_identity": "5a7fd6f9bcdc8d4d54d692a94f80854353282bf0b607695007e8932225a79dcb",
+      "copyright_sha256": "b09f9948b87962a2f65e5495d33f843d490cc18498c8cd26063607b9103f5da2",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/c7c93a14e7fbd3118b0d0e0733632e04a20e72b5f0af8cfa2424f624f7b27a1a.txt",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/google/go-github/v32@v32.1.0#1b9617b0d5dd657df83fc2d27e4f3b36d347ede50b8623008ed9a5010506b519": {
+      "source_identity": "1b9617b0d5dd657df83fc2d27e4f3b36d347ede50b8623008ed9a5010506b519",
+      "copyright_sha256": "3b6833e27b07007493486332cda6962122e4b8d09f4ce01645574a0f01093fe3",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/c47cb8d5442e4a506ef176c76352c9e20ec1414d3c5d2f4c9a0ea18fa5fa3b73.txt",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ]
+    },
+    "go:github.com/klauspost/compress@v1.17.0#fa94794543608ad4f600c67994a317173b4e72c1159b8a84ab46a846c7643587": {
+      "source_identity": "fa94794543608ad4f600c67994a317173b4e72c1159b8a84ab46a846c7643587",
+      "copyright_sha256": "5fc4a96558be19281e12d1a4fc801c6256c847b22e817b0abce348e58041d316",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2bf1efe72d54789356c445051444b227245a87ed49e21a479181e300824b64de.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT AND MIT",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/olivere/elastic@v6.2.37+incompatible#0c1d5f0c879889165a27fe3070929fa65e9cf671d35df362091f4009ea14c364": {
+      "source_identity": "0c1d5f0c879889165a27fe3070929fa65e9cf671d35df362091f4009ea14c364",
+      "copyright_sha256": "e70334ebe495389e32ff2ccd82fa072139f6e8a35059dea9137373e6a0cec867",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/e0d7066a20b07d0bda6909852ccb2949e92a921ba04809c8f4dff8d726f1eb4b.txt",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ]
+    },
+    "go:sigs.k8s.io/yaml@v1.4.0#6bbafe3948dca25267794648598dbcd9e93a8445af46a8d0e811c5b3e3e61f99": {
+      "source_identity": "6bbafe3948dca25267794648598dbcd9e93a8445af46a8d0e811c5b3e3e61f99",
+      "copyright_sha256": "ef2eeab30b1d172d83e2c7332f584d3e5b10d4ecd891817a2e9956e833b55c5d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2c0536d14459dd67fc53f7a00326bfc0af5aaee5bfdd6033a0432a9edb43feec.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT AND MIT AND BSD-3-Clause AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/klauspost/compress@v1.18.7#h1:aUyZsS4kH3QTKurYhAOwAHxllVPnOthb3vPfnF1Ehjw=": {
+      "source_identity": "h1:aUyZsS4kH3QTKurYhAOwAHxllVPnOthb3vPfnF1Ehjw=",
+      "copyright_sha256": "efaeba834fce768fcb86ceff16ad3170bd9d960e96b6a9729b7f973ca9b7b346",
+      "evidence_member": "netbird/linked/notices/81c95359c07196fc803349c25492dd84971edcdf961039d26127a079cfb2051e.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT AND MIT",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
