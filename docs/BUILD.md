@@ -481,19 +481,36 @@ fetched three fixed source versions in one call, including an epoch-bearing
 version, verified their known descriptors, restored the trees and matched every
 installed copyright. Complete whole-OS reconstruction remains a separate gate.
 
-## Zero writes and temporary disk allocation
+## Offline erasure and temporary disk allocation
 
-The offline appliance retains complete free-space zeroing, trim, journal
-recreation and filesystem checks. For its sole input drive, QEMU
+Cleanup requires the expected unmounted ext4 partition, rejects inline inode
+data and verifies availability of `zerofree` and `fstrim`. It checks the
+filesystem, removes the old journal, zeroes nonzero unallocated blocks with
+`zerofree`, trims the mounted filesystem, unmounts it, recreates the journal and
+checks the filesystem again. Any failure aborts candidate generation. This
+avoids a filesystem-sized temporary zero file and writes only free blocks that
+need erasure. QEMU still preserves zero-write semantics with sparse allocation.
+
+[Actual erasure trials](evidence/diagnostic-ext4-free-space-erasure.json) passed
+on both architectures with fresh 2 GiB and 50 GiB disks. Each trial first
+confirmed deleted random data remained, then scanned the entire logical disk
+after erasure, preserved an allocated file, checked the recreated journal and
+passed `qemu-img check`. The 50 GiB erasure stage took 282.043 seconds on AMD64
+and 2506.930 seconds on ARM64 under the recorded native TCG trials. These are
+component timings; complete OS generation, final sanitized boots and hosted-job
+budgets require their own evidence.
+
+The earlier full-zero implementation established the sparse-write behavior.
+For its sole input drive, QEMU
 `detect-zeroes=unmap` avoids allocating a physical block for an all-zero write;
-logical reads still return zero. This changes allocation, not the erasure steps.
+logical reads still return zero.
 The [actual diagnostic receipt](evidence/diagnostic-zero-write-erasure.json)
 compares a 2 GiB control with the sparse option and records a 50 GiB real-OS
 fixture: a newly injected test private key was absent from the entire logical
 export, both conversions matched, and both formats passed individual enrollment,
 login, product/architecture checks and clean shutdown. The immutable reference
 was unchanged. These are focused AMD64 TCG results, not clean-head release
-acceptance, an ARM64 50 GiB result or OCI execution.
+acceptance or OCI execution.
 
 ## Restoring the complete source set
 

@@ -26,6 +26,7 @@ the changed criteria belong in the latest PR review after release readiness.
 | Source-verifier container build | PASS | Native AMD64, fixed Debian image/snapshot, Python/minisign |
 | Official Stream archive acquisition | PASS | Exact public 2026.03 archive, SHA256 and minisign signature |
 | Unit/failure-path tests | PASS | Metadata/policy/source/NetBird/cleanup primitives and failure cases; exact-head Test CI recorded on the PR. Synthetic fixtures do not establish OS acceptance |
+| Offline ext4 erasure | PASS, component only | Fresh 2 GiB and 50 GiB disks on both architectures; actual whole-disk deleted-data scans, unchanged allocated file, recreated journal and qemu-img checks. [Receipt](evidence/diagnostic-ext4-free-space-erasure.json). Full current OS candidate acceptance remains separate |
 | VPP Python bootstrap | PASS | Five actual public PyPI inputs pinned by version/file/hash; Meson 0.57.2 and pyelftools 0.33 installed and executed from those inputs in a network-disabled namespace with pip cache disabled. The new pins are not retroactively applied to running older-head builds |
 | Patched VPP/core source archives | PASS | 4,690 VPP and 2,533 core source members retained and hash-verified, excluding generated build/staging trees. Full preferred source/test code retained; six exact known public test-vector files independently recognized by origin/member/full-file SHA. Unknown or changed keys and unreviewed licenses still rejected. Full OS reconstruction remains NOT_RUN |
 | VPP Python API offline packaging | PASS | Actual patched VPP API source built and installed in an isolated environment using only the fixed local wheel inputs with Docker networking disabled; full ARM64 VPP package retry is separate |
@@ -228,7 +229,8 @@ retained full zero writes while avoiding temporary physical allocation. Both
 the entire logical export. Both formats booted with fresh firmware and passed
 individual enrollment/login, architecture/product checks and clean shutdown.
 The immutable diagnostic reference remained unchanged. This is separate from a
-new clean-head image and from the still-running complete ARM64 TCG trial.
+new clean-head image. Subsequent focused current-controller ARM64 TCG trials
+passed on both formats; complete current release acceptance remains separate.
 
 ## Complete diagnostic source-set restoration
 

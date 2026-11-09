@@ -157,6 +157,7 @@ def require_factory_layer(guestfs, image, expected_sha256):
 def offline_cleanup(disk,work,arch,expected_root_sha256,accelerator='kvm'):
     import guestfs
     from .guestfs_kernel import appliance_kernel
+    from .erasure import erase_ext4_free_space
     with appliance_kernel(Path('/debs'),arch,Path(work)/'guestfs-appliance',accelerator=accelerator):
         g=guestfs.GuestFS(python_return_dict=True)
         g.set_trace(False);g.set_verbose(False);g.set_memsize(768)
@@ -164,8 +165,7 @@ def offline_cleanup(disk,work,arch,expected_root_sha256,accelerator='kvm'):
         try:
             g.add_drive_opts(str(disk),format='qcow2',discard='enable')
             # The pinned direct backend assigns our sole input disk hd0.
-            # Preserve full zero writes while avoiding a 50 GiB temporary
-            # physical allocation; QEMU must still return zero for each write.
+            # Preserve zero-write semantics while discarding all-zero extents.
             g.config('-set','drive.hd0.detect-zeroes=unmap')
             g.launch();launched=True
             partitions=g.list_partitions()
@@ -186,14 +186,7 @@ def offline_cleanup(disk,work,arch,expected_root_sha256,accelerator='kvm'):
             subprocess.run(['mksquashfs',str(root),str(rebuilt),'-noappend','-comp','xz','-processors','2','-mem','512M','-no-progress'],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
             g.upload(str(rebuilt),images[0])
             g.umount_all()
-            # Clear the old journal before zeroing free blocks. Recreate an empty
-            # journal afterwards. The appliance sees only this task-owned disk.
-            features=g.tune2fs_l('/dev/sda3').get('Filesystem features','')
-            if 'inline_data' in features:raise ValueError('Inline inode data requires additional erasure validation')
-            g.debug('sh',['e2fsck -fy /dev/sda3'])
-            g.debug('sh',['tune2fs -O ^has_journal /dev/sda3'])
-            g.mount('/dev/sda3','/');g.zero_free_space('/');g.fstrim('/');g.umount_all()
-            g.debug('sh',['tune2fs -j /dev/sda3']);g.debug('sh',['e2fsck -fy /dev/sda3'])
+            erase_ext4_free_space(g)
         finally:
             try:
                 if launched:g.shutdown()
