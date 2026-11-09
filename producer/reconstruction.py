@@ -19,7 +19,7 @@ def restore(root, destination, architecture, expected_commit):
             or manifest.get('source_commit') != expected_commit
             or manifest.get('project') != 'Shirube OS'
             or manifest.get('provider') != 'michibiki-io'
-            or manifest.get('manifest_kind') not in {'release', 'diagnostic-source-set'}):
+            or manifest.get('manifest_kind') not in {'release', 'candidate-source-set', 'diagnostic-source-set'}):
         raise ValueError('Source restoration identity differs from the selected release')
     assets = [item for item in manifest['assets']
               if item.get('architecture') in {architecture, 'all'}

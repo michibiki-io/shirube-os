@@ -36,6 +36,62 @@ class SourceRestorationTests(unittest.TestCase):
             for p,role in [(self.archive,'source'),(path,'licenses')]]
         (self.root/'manifest.json').write_text(json.dumps(self.manifest))
 
+    def project_source(self):
+        project=self.root/'project-source.tar'
+        with tarfile.open(project,'w',format=tarfile.PAX_FORMAT,pax_headers={'comment':self.commit}) as archive:
+            member=tarfile.TarInfo('producer.py');data=b'synthetic project';member.size=len(data)
+            archive.addfile(member,io.BytesIO(data))
+        self.archive.unlink()
+        records=bundle([(self.root/name,name,category) for name,category in [
+            ('source.c','sources'),('COPYING','license_files'),('build.sh','build_inputs')]]+
+            [(project,'project-source.tar','build_inputs')],self.archive,0)
+        self.inventory['components'][0].update(records);self.write()
+        (self.root/'manifest.json').unlink()
+        return project,{'inventory':self.root/'inventory.json','archives':[self.archive],'cleared':False}
+
+    def test_candidate_check_binds_actual_build_project_and_keeps_uncleared_state(self):
+        from producer.pipeline import source_set_evidence
+        project,source=self.project_source()
+        result=source_set_evidence(source,self.root,'amd64','v2026.03.0',self.commit,self.output,project)
+        self.assertEqual(result['proof']['actual_project_build_input_sha256'],sha256(project))
+        self.assertEqual(result['proof']['actual_project_build_input_binding'],'PASS')
+        self.assertFalse(self.output.exists())
+        candidate=json.loads((self.root/'manifest.json').read_text())
+        self.assertEqual(candidate['manifest_kind'],'candidate-source-set')
+        self.assertEqual(candidate['source_license_clearance'],'FAIL')
+        self.assertEqual(candidate['release_clearance'],'NOT_CLEARED')
+        self.assertEqual(candidate['source_set_reconstruction'],result)
+        from producer.release import validate
+        with self.assertRaisesRegex(ValueError,'Release identity/clean-source mismatch'):
+            validate(self.root,self.commit,'v2026.03.0')
+        with self.assertRaisesRegex(ValueError,'license clearance'):
+            verify_sources(self.root,self.inventory,candidate['assets'])
+
+    def test_candidate_check_rejects_wrong_project_revision_or_missing_recipe_binding(self):
+        from producer.pipeline import source_set_evidence
+        project,source=self.project_source()
+        with self.assertRaisesRegex(ValueError,'archive commit differs'):
+            source_set_evidence(source,self.root,'amd64','v2026.03.0','b'*40,self.output,project)
+        self.inventory['components'][0]['build_inputs']=[r for r in self.inventory['components'][0]['build_inputs']
+                                                       if r['member']!='project-source.tar']
+        (self.root/'inventory.json').write_text(json.dumps(self.inventory))
+        with self.assertRaisesRegex(ValueError,'actual project build input'):
+            source_set_evidence(source,self.root,'amd64','v2026.03.0',self.commit,self.output,project)
+        self.assertFalse(self.output.exists())
+
+    def test_uncleared_release_stops_before_expensive_guest_tests(self):
+        import sys
+        from types import SimpleNamespace
+        from unittest import mock
+        from producer.pipeline import release_candidate
+        with mock.patch.dict(sys.modules,{'image':SimpleNamespace(assemble=lambda *args:{'iso':self.root/'os.iso'})}), \
+             mock.patch('producer.pipeline.collect_iso_sources',return_value=(self.root,{'cleared':False})), \
+             mock.patch('producer.pipeline.source_set_evidence',return_value={}), \
+             mock.patch('producer.vm.build_disks') as guests:
+            with self.assertRaisesRegex(ValueError,'redistribution permission'):
+                release_candidate(self.root,self.root,self.root,'amd64','v2026.03.0',self.commit,None,'tcg')
+            guests.assert_not_called()
+
     def test_complete_restoration_does_not_waive_publication_license_gate(self):
         proof = restore(self.root,self.output,'amd64',self.commit)
         self.assertEqual(proof['status'],'PASS_SOURCE_SET_ONLY')

@@ -475,6 +475,14 @@ does not publish its contents or approve unresolved redistribution terms.
 `restoration.json` records **source-set restoration only**. It does not compile
 binaries, approve licenses, or satisfy the complete release reconstruction gate.
 The publication validator still rejects every uncleared parent or dependency.
+For a native release candidate, the pipeline additionally checks the Git commit
+stamp in the actual frozen project archive and requires that exact archive hash
+in every component/dependency's build inputs. It runs the complete restorer before
+guest admission and records the input manifest and actual restoration proof in
+the candidate evidence. The `corresponding_source` check therefore means complete
+source-set restoration and matching actual build recipes. It does not assert
+bit-identical binaries. Unresolved redistribution permission stops the candidate
+before expensive guest tests; the intermediate source manifest cannot publish.
 Restore package originals and apply their retained Debian patches with
 `dpkg-source --no-check -x` inside the native toolchain container; `--no-check`
 does not replace the preceding exact descriptor/archive hash checks. Native

@@ -128,7 +128,15 @@ staging, aggregate verification, Actions artifact upload and final promotion.
 Published reruns take a verification-only path before any build.
 
 This does **not** make publication ready. `license-audit.json` currently records
-only the first individually audited components. Full source reconstruction remains NOT_RUN and blocks the pipeline. Actual diagnostic NetBird enrollment/save/reboot, native installations, offline overlay removal, journal/free-space sanitization and both-format disk access/reboot passed on both architectures. Clean current-head integration remains incomplete; these results must not be inferred from static CI.
+individual audited components; unreviewed parent/dependency permissions still
+block publication. Complete source-set restoration has now passed on the
+diagnostic cohort. The production path runs that real restorer and additionally
+matches every component's project-archive hash to the actual native build input;
+current candidate integration is still outstanding. This check does not claim
+bit-identical binary reproduction. Actual diagnostic NetBird enrollment/save/reboot,
+native installations, offline overlay removal, journal/free-space sanitization
+and both-format disk access/reboot passed on both architectures. Clean current-head
+integration remains incomplete; these results must not be inferred from static CI.
 
 The [Debian diagnostic source receipt](evidence/diagnostic-debian-source-v2026.03.0-arm64.json)
 records source-tree restoration, original archive checks and copyright/notice
