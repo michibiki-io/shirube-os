@@ -12106,6 +12106,87 @@
         "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
       ],
       "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "atop@2.8.1-1+deb12u1": {
+      "source_identity": "3c04fdd4342d2b199d3a8348213e0e839e5eff36ae8b67c4bf5ba57529ccbe50",
+      "copyright_sha256": "f9ca07bfc21abe71606c324dcaa446d0399065819a00b4f025dcf99ba82e0b1e",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every complete original source and Debian copyright, permission condition and disclaimer.",
+        "Distribute exact authenticated original sources, Debian patches and complete build/install recipes with binaries; retain the applicable full GPL text.",
+        "Choose GPL version 2 for both version-2-only and version-2-or-later portions; preserve both original notices unchanged."
+      ],
+      "scope": "All complete original named legal files match previously read original legal texts; all operative Debian license bodies match previously read grants after whitespace/DEP5 continuation formatting only. Copyright/provenance/comment fields were separately read. Other packages and full OS remain gated."
+    },
+    "efibootmgr@17-2": {
+      "source_identity": "4656de6b7865a86f69ea465dc74634a7578dc1723e5d5f1a382c294ef0db4745",
+      "copyright_sha256": "bb4b0640529bb3a7614ef3d8fb6a98960c9cab6c5c786976304bdcaf287ba488",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every complete original source and Debian copyright, permission condition and disclaimer.",
+        "Distribute exact authenticated original sources, Debian patches and complete build/install recipes with binaries; retain the applicable full GPL text."
+      ],
+      "scope": "All complete original named legal files match previously read original legal texts; all operative Debian license bodies match previously read grants after whitespace/DEP5 continuation formatting only. Copyright/provenance/comment fields were separately read. Other packages and full OS remain gated."
+    },
+    "libnetfilter-cthelper@1.0.1-1": {
+      "source_identity": "f23b13b11389ed5135a74cf3e13be67e8ed4dda0bb93f215db6988af46430e9e",
+      "copyright_sha256": "b3f2af6e5877b76e10f1a8c22548fd58c898971c5656e7467f7444792149854f",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every complete original source and Debian copyright, permission condition and disclaimer.",
+        "Distribute exact authenticated original sources, Debian patches and complete build/install recipes with binaries; retain the applicable full GPL text."
+      ],
+      "scope": "All complete original named legal files match previously read original legal texts; all operative Debian license bodies match previously read grants after whitespace/DEP5 continuation formatting only. Copyright/provenance/comment fields were separately read. Other packages and full OS remain gated."
+    },
+    "libnetfilter-cttimeout@1.0.1-1": {
+      "source_identity": "4e5e2597712cb77a54f3b34ee15a081b97aa8f676faeb56b0b435567eb5972ea",
+      "copyright_sha256": "0b5e2b32baac7d1a24e44bab798d8ea0d6416b5d02b21545e17fff3a16aeabef",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every complete original source and Debian copyright, permission condition and disclaimer.",
+        "Distribute exact authenticated original sources, Debian patches and complete build/install recipes with binaries; retain the applicable full GPL text."
+      ],
+      "scope": "All complete original named legal files match previously read original legal texts; all operative Debian license bodies match previously read grants after whitespace/DEP5 continuation formatting only. Copyright/provenance/comment fields were separately read. Other packages and full OS remain gated."
+    },
+    "tuned@2.20.0-1": {
+      "source_identity": "8240f9c3281983fffac802a86ad216a95a967abd2c02683bb2d6098db460c81d",
+      "copyright_sha256": "f8127134c322efbb250906faf8522fe500f99963771164a7abb56d2f5f0d2328",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every complete original source and Debian copyright, permission condition and disclaimer.",
+        "Distribute exact authenticated original sources, Debian patches and complete build/install recipes with binaries; retain the applicable full GPL text."
+      ],
+      "scope": "All complete original named legal files match previously read original legal texts; all operative Debian license bodies match previously read grants after whitespace/DEP5 continuation formatting only. Copyright/provenance/comment fields were separately read. Other packages and full OS remain gated."
+    },
+    "pcre2@10.42-1+deb12u2": {
+      "source_identity": "63be58a94a6d2c7f03324cc0fe1ffb32d1f366d82d0fabef581ba3cc8a8ba5a6",
+      "copyright_sha256": "030511beb4d9d620ad09914c369c36ec0528dcf301d1923cc643c948ee7c6a38",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND BSD-2-Clause AND X11 AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain the complete PCRE2/Cambridge, CMake/KDE, SLJIT and X11 copyright, conditions and disclaimers with source and binary distributions.",
+        "Preserve the original binary-library-like package exemption; no notice removal relies on that optional exemption.",
+        "Preserve non-endorsement restrictions and original public-domain test-data statements.",
+        "Distribute the exact authenticated original source and Debian patches/build recipes."
+      ],
+      "scope": "Complete installed copyright, upstream COPYING/LICENCE and CMake original legal file read. Exact unchanged Debian source/notice pair only; dependencies and full OS remain gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
