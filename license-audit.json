@@ -10708,6 +10708,346 @@
       "reviewed_grant_sha256": [
         "59d8f0ba87ad9a2f1a431123c8d16646e5b89ba53653e818f16d136d77263c99"
       ]
+    },
+    "go:collectd.org@v0.5.0#1a394ea7b2baf56fa4db4ed0496326cd5c4542f7fbf4a1eb2e08cf70696facc9": {
+      "source_identity": "1a394ea7b2baf56fa4db4ed0496326cd5c4542f7fbf4a1eb2e08cf70696facc9",
+      "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7764a2694e01dd3ebd3b840493d9041fcbf071db8e7d9f630209231e0fd13837.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-amqp-common-go/v4@v4.2.0#81477dc1b304b47ee6521e0a1915130121a40c6072082c6511cc0dfe1b1e33cb": {
+      "source_identity": "81477dc1b304b47ee6521e0a1915130121a40c6072082c6511cc0dfe1b1e33cb",
+      "copyright_sha256": "7ee53eb17e7157b518dd0d5ea3324d5dde4c08548c09630d890ab13ef80da174",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/30b82c9b1fcd31eb103ad3927b57513da5e51d5074d74dbf4eb654edbf121288.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-event-hubs-go/v3@v3.6.1#5dd27eb747a2519f0eb428adf72ef22d1f80fc2f05a9d3c4f274e1e6d5b3d66d": {
+      "source_identity": "5dd27eb747a2519f0eb428adf72ef22d1f80fc2f05a9d3c4f274e1e6d5b3d66d",
+      "copyright_sha256": "45df20c77e4f15ef58dcfa30b1c6a9997b2e271a04c3544d8dd0cb5b6277b9d2",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/bfb75c0f0c9455d3b778a7623cc7d119c1189270ae97514a19ce07da6d990014.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-pipeline-go@v0.2.3#5881763a04c7705d2f348bfe18ec56266499265487d99fe448ded9874f4f3672": {
+      "source_identity": "5881763a04c7705d2f348bfe18ec56266499265487d99fe448ded9874f4f3672",
+      "copyright_sha256": "6dda1c1096deb75b82ff958390e234a2664d052e455a8fb2403915b7169a90fd",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cd9b8260cdc3cad556caec1417a8b0b3b938600701d1fb8ad36d69b4e2b988bb.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-sdk-for-go/sdk/azcore@v1.8.0-beta.1#ab936b13ea84ab2c4312a197b6bd23fd7479e8fd41ab14d359843d6db7449bd2": {
+      "source_identity": "ab936b13ea84ab2c4312a197b6bd23fd7479e8fd41ab14d359843d6db7449bd2",
+      "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2094b36522185c5dd5d841f58e790ef126de09fe4567e99bd0d96fbe5beb15de.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-sdk-for-go/sdk/azidentity@v1.3.0#6996c0d2f12cf6d6b108062b399f5a3a546c21267a1601faa772d11b7a6fdce7": {
+      "source_identity": "6996c0d2f12cf6d6b108062b399f5a3a546c21267a1601faa772d11b7a6fdce7",
+      "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/03918a4a59d04bc123d0ecdca1cf4878c30c0408ab4160a66e24ff6b97e0b66c.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-sdk-for-go/sdk/internal@v1.3.0#94617f0ed66bf541976b2360c5689bfb54e03e544adb4d1fe1e03e297b66b64b": {
+      "source_identity": "94617f0ed66bf541976b2360c5689bfb54e03e544adb4d1fe1e03e297b66b64b",
+      "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/312ea992d569d65d0737c9fff95dd9d33099a665832edcae65da838d5eae9448.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-sdk-for-go/sdk/storage/azblob@v1.0.0#9bb69aea32f1d59711701f9562d66432c9c0374205e5009d1d1a62f03fb4fdad": {
+      "source_identity": "9bb69aea32f1d59711701f9562d66432c9c0374205e5009d1d1a62f03fb4fdad",
+      "copyright_sha256": "ed435298a14ed123c22514748b59bb53d47d60129c4908ee63bc44eda38b81b3",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/8f3c2cfc8c46e220f50028f120249856845729a134212b197b42daaec903cc17.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/Azure/azure-storage-queue-go@v0.0.0-20191125232315-636801874cdd#2f21c760124b7036dd56191509a01e9e41924163111b3c0728f21f8a5f202231": {
+      "source_identity": "2f21c760124b7036dd56191509a01e9e41924163111b3c0728f21f8a5f202231",
+      "copyright_sha256": "6dda1c1096deb75b82ff958390e234a2664d052e455a8fb2403915b7169a90fd",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/83ef625bf4e51dca8ce5ad31608459446fc430b980f236c08fc69c45c4414ff4.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/AzureAD/microsoft-authentication-library-for-go@v1.0.0#f286ff84810b1ec9c3cbe5cdcfecdf00f2f04ee58801c2911c837cb75b707ed2": {
+      "source_identity": "f286ff84810b1ec9c3cbe5cdcfecdf00f2f04ee58801c2911c837cb75b707ed2",
+      "copyright_sha256": "fdd30f011c60e7e586dad71338576b09a21f501fd85691735d7cbbab529bbec0",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/133688a309b77790e9f1b5d9e06ab8146cac03ff4c5c1efedf7dac3830cce059.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/antchfx/jsonquery@v1.3.3#d24abc7cfb69875e244278f069bd2ebda12506cae48d1fce687f4206d5b94ed8": {
+      "source_identity": "d24abc7cfb69875e244278f069bd2ebda12506cae48d1fce687f4206d5b94ed8",
+      "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3f0753202de89cd826132020685329b99e2e818c3f6ee862450b040412fa400d.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/antchfx/xmlquery@v1.3.17#5434237255b2e142d7b025734b9f3448ffa080d4198ce4fb647d82c6bdd26b4d": {
+      "source_identity": "5434237255b2e142d7b025734b9f3448ffa080d4198ce4fb647d82c6bdd26b4d",
+      "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/15facf2acf53b50513bd6b2ec2ee18b1854b3e063739b55bd2033a1d2e277564.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/antchfx/xpath@v1.2.5-0.20230505064641-588960cceeac#ccd741afb2755f3490e457780418d7080fadb8bbfc8861ff33fa912893f43272": {
+      "source_identity": "ccd741afb2755f3490e457780418d7080fadb8bbfc8861ff33fa912893f43272",
+      "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/e8071fa59573a386d6e9a2cfbfe9871b77255ff661dc3d0dbf64cb7848d1d13c.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/davecgh/go-spew@v1.1.2-0.20180830191138-d8f796af33cc#b4d0923b169b194f0016ec46f3df1ab0c68e27999743e43fe2de59ecb2484128": {
+      "source_identity": "b4d0923b169b194f0016ec46f3df1ab0c68e27999743e43fe2de59ecb2484128",
+      "copyright_sha256": "ece8785a06338957390aa822631fe6ef5e0eac0fac884b3ef0a2fe83e31ce724",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/565d6be461c4b6b0d58b70106d0c1ba075be176c334b94444630310fea082901.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/dustin/go-humanize@v1.0.1#319404ea84c8a4e2d3d83f30988b006e7dd04976de3e1a1a90484ad94679fa46": {
+      "source_identity": "319404ea84c8a4e2d3d83f30988b006e7dd04976de3e1a1a90484ad94679fa46",
+      "copyright_sha256": "db8b1eb5211b84f2901900aded3f7787317b81c5e4ff2e4223f4dd917982c7cb",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/10387c8852023b6378e2d89740d9500fd989a65102e1957f64e7f862f2fe98a1.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/mattn/go-isatty@v0.0.19#ba8bc1b864325972dc436089351b9dea6262e7fabffdc88e96afb7130ce63da3": {
+      "source_identity": "ba8bc1b864325972dc436089351b9dea6262e7fabffdc88e96afb7130ce63da3",
+      "copyright_sha256": "c040e53b3e32bd6d067a87c7e810373cab31cdff9696f07a9a8e7e75115564c6",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b6c31a7149364fbd3ed8f10dd164db3014c1f0f981ca00688314c7cbf6a7cd81.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/srebhan/protobufquery@v0.0.0-20230803132024-ae4c0d878e55#6a1f69f72415858db47bbb946f407daf4fbb787710a9b65cb95d4e024719eeee": {
+      "source_identity": "6a1f69f72415858db47bbb946f407daf4fbb787710a9b65cb95d4e024719eeee",
+      "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/dfb5af6a985e17ed16ca4f68fd5d1a1341b114e4217eb3ebc09c4aeaf15f9236.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/xrash/smetrics@v0.0.0-20201216005158-039620a65673#bbebb9a00f44ff3e27bec16111effdcf2706d727821a4833ec8da19aad96e26d": {
+      "source_identity": "bbebb9a00f44ff3e27bec16111effdcf2706d727821a4833ec8da19aad96e26d",
+      "copyright_sha256": "39fe506a298cc2a9880f88239aee55cdd786f2b952b7f8508005459f9a6de8a4",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/1155c84cc68e4073e2a6a8f5f245d2dcef2638b62c4e6996fd59948242b8d188.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/davecgh/go-spew@v1.1.1#0d6fe7bc42943a4bd390951f8fe0550c1c17857b5e781a73d5824414fec0bded": {
+      "source_identity": "0d6fe7bc42943a4bd390951f8fe0550c1c17857b5e781a73d5824414fec0bded",
+      "copyright_sha256": "ece8785a06338957390aa822631fe6ef5e0eac0fac884b3ef0a2fe83e31ce724",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/28f11a96bd6d67b115a0199cb9a9fa261696fbf3a1c42dc4c6f6b37dc83bd564.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/netbirdio/wireguard-go@v0.0.0-20261021152105-0de46b309cdb#h1:3X7pVeZeneq4MK7hvvqeSGi1ir6OElgIqHd6cI4KsXo=": {
+      "source_identity": "h1:3X7pVeZeneq4MK7hvvqeSGi1ir6OElgIqHd6cI4KsXo=",
+      "copyright_sha256": "79ea5710e3abd4c77ace3ed7e10671f7a5c12a48633518e40a606ce9d1dbd28a",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/904646b409e0db70f37d954f152a37f7bc754b66f6b8eab79da638015367bf73.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived."
+    },
+    "go:github.com/jmespath/go-jmespath@v0.4.0#d1f77b6790d7c4321a74260f3675683d3ac06b0a614b5f83e870beae0a8b2867": {
+      "source_identity": "d1f77b6790d7c4321a74260f3675683d3ac06b0a614b5f83e870beae0a8b2867",
+      "copyright_sha256": "b83d4001795472bd0f7c77964b009f4f886f930d67fe0dbc0b70fbbc53fb28c4",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/ffd1f0c0187f3995ed27a08f2008c4feeb760f45dd7ccff44d1e7ae05a8a9f1f.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution.",
+        "Also distribute the complete Apache License 2.0 text required by the original incorporated license notice."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/cyberphone/json-canonicalization@v0.0.0-20231011164504-785e29786b46#7c8dba9f870c2b0b4ecf3b947d0b14200d06b66d89b8673fa41f8dbbe9d3c6fd": {
+      "source_identity": "7c8dba9f870c2b0b4ecf3b947d0b14200d06b66d89b8673fa41f8dbbe9d3c6fd",
+      "copyright_sha256": "6af5910989ec91046aa7d80ca8fc7c6312556d005a1940aeacf8e7098682ffd7",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/bf304e6b564679e5697a38cf1658bd966cf29b0fba72e74fae66421020b9c1be.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution.",
+        "Also distribute the complete Apache License 2.0 text required by the original incorporated license notice."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/jackpal/go-nat-pmp@v1.0.2#h1:KzKSgb7qkJvOUTqYl9/Hg/me3pWgBmERKrTGD7BdWus=": {
+      "source_identity": "h1:KzKSgb7qkJvOUTqYl9/Hg/me3pWgBmERKrTGD7BdWus=",
+      "copyright_sha256": "df9debd074dd93319fd25efdf22b6f19b7aa3d8da861b51b7bc874a76424b076",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/95a38a8961e41ffe0aee4433472639cd9be95567d981e25bf54e78c38e95a076.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution.",
+        "Also distribute the complete Apache License 2.0 text required by the original incorporated license notice."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/jmespath/go-jmespath@v0.4.0#h1:BEgLn5cpjn8UN1mAw4NjwDrS35OdebyEtFe+9YPoQUg=": {
+      "source_identity": "h1:BEgLn5cpjn8UN1mAw4NjwDrS35OdebyEtFe+9YPoQUg=",
+      "copyright_sha256": "85ea5a8e8e48f9d119ecebf1fc90aa1f135a988f93adb3f56f2fab1193ddd149",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/ffd1f0c0187f3995ed27a08f2008c4feeb760f45dd7ccff44d1e7ae05a8a9f1f.txt",
+      "conditions": [
+        "Retain all complete original copyright, permission/conditions and warranty disclaimers with binary and source distributions.",
+        "Retain exact source and notice digest bindings; this decision does not approve other source revisions or the parent distribution.",
+        "Also distribute the complete Apache License 2.0 text required by the original incorporated license notice."
+      ],
+      "scope": "Complete original linked-component notices read directly or full operative text compared byte-for-word with separately read copyright/header prefixes. No source, notice, runtime or whole-release gate waived.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
