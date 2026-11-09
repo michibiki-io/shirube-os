@@ -259,6 +259,30 @@ def vpp_source_files(root):
     if not found:raise ValueError('Empty VPP external source input set')
 
 
+def kea_source_files(root, preferred, packaging, tool):
+    """Retain original Kea plus actual prepared recipes, excluding build trees."""
+    root,preferred,packaging=map(Path,[root,preferred,packaging])
+    yield from files(preferred,exclude=('debian','build'))
+    names=subprocess.check_output(['git','-C',str(packaging),'ls-files','-z','--','debian'],text=True).split('\0')
+    recipes=set(filter(None,names))|{'debian/not-installed'}
+    for member in sorted(recipes):
+        relative=Path(member)
+        if relative.is_absolute() or '..' in relative.parts or relative.parts[0]!='debian':
+            raise ValueError('Unsafe Kea packaging recipe')
+        actual=root/relative
+        # The build deliberately removes premium/subscriber/doc install lists.
+        if not actual.exists():continue
+        if actual.is_symlink() or not actual.is_file():raise ValueError('Nonregular Kea packaging recipe')
+        yield actual,member
+    for member in ['debian/rules','debian/control','debian/changelog','debian/not-installed']:
+        if member not in recipes or not (root/member).is_file():raise ValueError('Missing prepared Kea recipe')
+    member='shirube-corresponding-inputs/meson-'+tool['version']+'.tar.gz'
+    archive=root/member
+    if archive.is_symlink() or not archive.is_file() or sha256(archive)!=tool['sha256']:
+        raise ValueError('Original Kea Meson build source differs')
+    yield archive,member
+
+
 
 def static_i2util(output,arch,version,project,shared):
     """OWAMP links I2util statically even when no I2util package is installed."""
@@ -391,7 +415,8 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,member in legal_files(preferred):
                     inputs.append((legal_file,'upstream-notices/'+member,'license_files'))
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
-            kind='vpp' if str(source)=='/extra/vpp/vpp' else 'vyos-1x' if source_name=='vyos-1x' else 'salt' if source_name=='salt' else None
+            kind=('vpp' if str(source)=='/extra/vpp/vpp' else 'kea' if str(source)=='/extra/kea/isc-kea'
+                  else 'vyos-1x' if source_name=='vyos-1x' else 'salt' if source_name=='salt' else None)
             # Compilation/test trees contain generated keys, binaries and
             # toolchain links. Native packages retain the authenticated original
             # preferred source plus the exact shared/local patch recipes. API
@@ -408,6 +433,10 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256','manifest.json']:
                     build_input=package_output/native_jobs[name]/member
                     if build_input.is_file():inputs.append((build_input,'native-build/'+member,'build_inputs'))
+            elif kind=='kea':
+                tool=json.loads(Path('/src/source-lock.json').read_text())['kea_build_tool']
+                source_files=kea_source_files(source,Path('/sources/isc-kea_Kea-3.0.2/isc-kea'),
+                                             Path('/extra/kea/packaging'),tool)
             else:
                 source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind in {'vyos-1x','salt'} else files(source)
             if kind=='salt':
@@ -462,7 +491,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
             fixture_origin=('vpp:'+json.loads(Path('/src/source-lock.json').read_text())['external_git']['vpp']['commit']
-                if kind=='vpp' else 'stream:'+source_identity if preferred_root is not None or kind in {'vyos-1x','salt'} or source_name in {'telegraf','ddclient'} else None)
+                if kind=='vpp' else 'stream:'+source_identity if preferred_root is not None or kind in {'vyos-1x','salt','kea'} or source_name in {'telegraf','ddclient'} else None)
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if kind=='salt':records['build_inputs'].extend(static['salt-sdk'][0]['build_inputs'])

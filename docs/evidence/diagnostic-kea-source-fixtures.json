@@ -1,0 +1,42 @@
+{
+  "kind": "diagnostic-authenticated-kea-source-test-fixtures",
+  "upstream_stream_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+  "status": "PASS",
+  "files": [
+    {
+      "member": "source/src/lib/asiolink/testutils/ca/kea-ca.key",
+      "sha256": "ca8426dff69faf056c267fb4734c05d8410b9eca7fb329d3e37cb2c224a108c5",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "member": "source/src/lib/asiolink/testutils/ca/kea-client.key",
+      "sha256": "30c4a5abe465afd73235bfecf188da58b7a5fafc02bdc6ac9c2fe6ee2b58c061",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "member": "source/src/lib/asiolink/testutils/ca/kea-other.key",
+      "sha256": "f40cfdef15d3ec2f336ba91dc9a281e6d30ac99e1ad3f8b9be26f57a9a7f27b2",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "member": "source/src/lib/asiolink/testutils/ca/kea-self.key",
+      "sha256": "f40cfdef15d3ec2f336ba91dc9a281e6d30ac99e1ad3f8b9be26f57a9a7f27b2",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "member": "source/src/lib/asiolink/testutils/ca/kea-server.key",
+      "sha256": "468a391bc2b1cd23027bfcf1c4fe4f6e4a72293e5c3361f9de6a7702a3e86adf",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    }
+  ],
+  "scope": "Source-only TLS self-test vectors; no runtime, enrollment or build-signing key exception. Preferred Kea source and prepared packaging are retained separately from generated build trees.",
+  "license_clearance": "NOT_RUN",
+  "complete_os_reconstruction": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

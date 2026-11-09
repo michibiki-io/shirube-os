@@ -65,6 +65,16 @@ KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910']
 })
 
 
+# Original Kea TLS test vectors from the authenticated Stream snapshot.
+KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910'].update({
+    "source/src/lib/asiolink/testutils/ca/kea-ca.key": "ca8426dff69faf056c267fb4734c05d8410b9eca7fb329d3e37cb2c224a108c5",
+    "source/src/lib/asiolink/testutils/ca/kea-client.key": "30c4a5abe465afd73235bfecf188da58b7a5fafc02bdc6ac9c2fe6ee2b58c061",
+    "source/src/lib/asiolink/testutils/ca/kea-other.key": "f40cfdef15d3ec2f336ba91dc9a281e6d30ac99e1ad3f8b9be26f57a9a7f27b2",
+    "source/src/lib/asiolink/testutils/ca/kea-self.key": "f40cfdef15d3ec2f336ba91dc9a281e6d30ac99e1ad3f8b9be26f57a9a7f27b2",
+    "source/src/lib/asiolink/testutils/ca/kea-server.key": "468a391bc2b1cd23027bfcf1c4fe4f6e4a72293e5c3361f9de6a7702a3e86adf"
+})
+
+
 def allowed(origin,member,digest):
     return origin in KNOWN and KNOWN[origin].get(member)==digest
 

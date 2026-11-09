@@ -10,6 +10,32 @@ import subprocess
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_kea_export_keeps_preferred_code_and_prepared_recipes_without_build_state(self):
+        from producer.collect import kea_source_files
+        with tempfile.TemporaryDirectory() as temporary:
+            base=Path(temporary);preferred=base/'original';prepared=base/'compiled';packaging=base/'packaging'
+            (preferred/'src').mkdir(parents=True);(preferred/'src/main.cc').write_text('original code')
+            (packaging/'debian').mkdir(parents=True);(prepared/'debian').mkdir(parents=True)
+            for name in ['rules','control','changelog']:
+                (packaging/'debian'/name).write_text('upstream recipe')
+                (prepared/'debian'/name).write_text('prepared '+name)
+            subprocess.run(['git','init','-q',str(packaging)],check=True)
+            subprocess.run(['git','-C',str(packaging),'add','.'],check=True)
+            (prepared/'debian/not-installed').write_text('intentional documentation exclusions')
+            for member in ['build/generated-test-key.pem','debian/isc-kea/usr/bin/generated']:
+                file=prepared/member;file.parent.mkdir(parents=True,exist_ok=True);file.write_text('generated')
+            archive=prepared/'shirube-corresponding-inputs/meson-1.tar.gz'
+            archive.parent.mkdir();archive.write_bytes(b'original Meson source')
+            tool={'version':'1','sha256':hashlib.sha256(archive.read_bytes()).hexdigest()}
+            selected={name:path.read_bytes() for path,name in kea_source_files(prepared,preferred,packaging,tool)}
+            self.assertEqual(selected['src/main.cc'],b'original code')
+            self.assertEqual(selected['debian/rules'],b'prepared rules')
+            self.assertIn('debian/not-installed',selected)
+            self.assertFalse(any(name.startswith('build/') or '/usr/bin/' in name for name in selected))
+            archive.write_bytes(b'changed tool')
+            with self.assertRaisesRegex(ValueError,'Meson build source differs'):
+                list(kea_source_files(prepared,preferred,packaging,tool))
+
     def test_preferred_source_selection_excludes_generated_staging_but_keeps_source_tests(self):
         from producer.collect import files
         with tempfile.TemporaryDirectory() as temporary:

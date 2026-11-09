@@ -428,3 +428,11 @@ records an offline wheel rebuild, exact comparison of all 13 installed library
 files, and ASCII/UTF-8 detection. The original sample-based pytest suite is
 explicitly unavailable; full SDK/OS reconstruction and release clearance are
 separate outstanding checks. Runtime library behavior and features are retained.
+
+Kea source export retains its authenticated preferred source, the actual prepared
+files from the pinned packaging repository and the exact Meson source archive.
+Compiled Meson trees and package staging are excluded; modified Debian recipes
+and required inputs remain. Five original TLS self-test keys were compared
+byte-for-byte with the authenticated Stream input and receive only exact
+source/member/hash recognition. [Source fixture evidence](evidence/diagnostic-kea-source-fixtures.json)
+does not clear a runtime credential, Kea's license or the complete distribution.
