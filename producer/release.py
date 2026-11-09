@@ -47,7 +47,8 @@ def verify_vpp_inputs(component):
             re.search(r'(?:\.tar\.(?:gz|xz|bz2|zst)|\.tgz|\.zip|\.whl)$',r['member'])}
     children=[r for r in component.get('bundled_components',[])
               if r['name'].startswith(('vpp-native:','vpp-bootstrap:'))]
-    references={(r['asset'],r['member'],r['sha256']) for c in children for r in c['sources']}
+    references={(r['asset'],r['member'],r['sha256']) for c in children
+                for r in c['build_inputs'] if r['member'].startswith(prefix)}
     origin=component.get('source_origin',{})
     declared=origin.get('vpp_retained_inputs',{})
     if (not inputs or references!=inputs or len(children)!=len(inputs) or
@@ -56,9 +57,14 @@ def verify_vpp_inputs(component):
         raise ValueError('Complete VPP external source/license inventory is required')
     for child in children:
         entry=declared[child['name']]
+        original=[r for r in child['build_inputs'] if r['member'].startswith(prefix)]
+        expected_sources={(r['member'],r['sha256']) for r in entry.get('sources',[])}
+        actual_sources={(r['member'],r['sha256']) for r in child['sources']}
         if (entry.get('version')!=child['version'] or
                 entry.get('source_identity')!=child['source_identity'] or
-                len(child['sources'])!=1 or child['sources'][0]['sha256']!=child['source_identity'] or
+                len(original)!=1 or entry.get('build_input')!={'member':original[0]['member'],'sha256':original[0]['sha256']} or
+                not expected_sources or actual_sources!=expected_sources or
+                not any(r['sha256']==child['source_identity'] for r in child['sources']) or
                 not any(r['sha256']==entry.get('notice_sha256') for r in child['license_files'])):
             raise ValueError('VPP external source or original notice binding differs')
 

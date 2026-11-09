@@ -562,15 +562,26 @@ def collect(rootfs, package_output, output, arch, version, work):
             if kind=='vpp':
                 from .vpp_legal import verify as verify_vpp_notices
                 legal=rootfs/'usr/share/doc/shirube-integration/vpp-inputs'
-                vpp_inputs=verify_vpp_notices(source/'build/external/downloads',Path('/src/native'),legal)
+                preferred=Path('/guest-package/vpp-input-sources')
+                vpp_inputs=verify_vpp_notices(source/'build/external/downloads',Path('/src/native'),legal,preferred)
                 inputs.append((legal/'components.json','vpp-input-components.json','build_inputs'))
+                retained=set()
                 for dependency in vpp_inputs['components']:
                     notice=dependency['notice'];member='vpp-input-notices/'+notice['filename']
                     inputs.append((legal/notice['filename'],member,'license_files'))
+                    preferred_refs=[]
+                    for original in dependency['preferred_sources']:
+                        preferred_member='vpp-preferred-inputs/'+original['filename']
+                        preferred_refs.append({'member':preferred_member,'sha256':original['sha256']})
+                        if preferred_member not in retained:
+                            retained.add(preferred_member)
+                            inputs.append((preferred/original['filename'],preferred_member,'sources'))
+                    original_ref={'member':'source/build/external/downloads/'+dependency['source']['filename'],
+                                  'sha256':dependency['source']['sha256']}
                     nested.append({'name':dependency['name'],'version':dependency['version'],
-                        'source_identity':dependency['source']['sha256'],
-                        'source_member':'source/build/external/downloads/'+dependency['source']['filename'],
-                        'source_sha256':dependency['source']['sha256'],
+                        'source_identity':dependency['source_identity'],
+                        'source_members':preferred_refs or [original_ref],
+                        'build_input_members':[original_ref],
                         'notice':legal/notice['filename'],'notice_member':member})
             if name=='vyos-http-api-tools':
                 bom,dependencies=http_dependencies(rootfs)
@@ -614,7 +625,13 @@ def collect(rootfs, package_output, output, arch, version, work):
             provenance={'stream_archive_sha256':source_identity,'external_git':{key:external[key] for key in keys}}
             if kind=='vpp':
                 provenance['vpp_retained_inputs']={r['name']:{'version':r['version'],
-                    'source_identity':r['source']['sha256'],'notice_sha256':r['notice']['sha256']}
+                    'source_identity':r['source_identity'],'notice_sha256':r['notice']['sha256'],
+                    'build_input':{'member':'source/build/external/downloads/'+r['source']['filename'],
+                                   'sha256':r['source']['sha256']},
+                    'sources':[{'member':'vpp-preferred-inputs/'+s['filename'],'sha256':s['sha256']}
+                               for s in r['preferred_sources']] or
+                              [{'member':'source/build/external/downloads/'+r['source']['filename'],
+                                'sha256':r['source']['sha256']}]}
                     for r in vpp_inputs['components']}
             if preferred_root is not None:
                 provenance.update(preferred_stream_member=str(preferred_root.relative_to('/sources')),
@@ -652,12 +669,18 @@ def collect(rootfs, package_output, output, arch, version, work):
                     legal_records=records['license_files']
                 notice_refs=[record for record in legal_records if record['member']==dependency['notice_member'] and record['sha256']==sha256(dependency['notice'])]
                 if len(notice_refs)!=1:raise ValueError('Exact bundled dependency legal notice is missing')
+                retained_inputs=[]
+                for expected_input in dependency.get('build_input_members',[]):
+                    matches=[r for r in records['sources'] if
+                             (r['member'],r['sha256'])==(expected_input['member'],expected_input['sha256'])]
+                    if len(matches)!=1:raise ValueError('Exact bundled original build input is missing')
+                    retained_inputs.extend(matches)
                 children.append({'name':dependency['name'],'version':dependency['version'],
                     'source_identity':dependency['source_identity'],'license':reviewed.get('license','UNREVIEWED'),
                     'redistributable':child_clear,'sources':source_refs,
                     'license_files':legal_records if 'sources' in dependency else notice_refs,
                     'build_inputs':list({(item['asset'],item['member'],item['sha256']):item
-                        for item in dependency.get('build_inputs',[])+records['build_inputs']}.values()),
+                        for item in retained_inputs+dependency.get('build_inputs',[])+records['build_inputs']}.values()),
                     **({'binary_input':dependency['binary_input']} if 'binary_input' in dependency else {})})
             children=merge_bundled_components(children)
             approval=approval_for(approvals,source_name,source_version,origin)

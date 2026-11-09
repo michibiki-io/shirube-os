@@ -47,6 +47,11 @@ a missing child inventory even when the parent package names an approved license
 Every dependency still needs its own exact-source permission decision. These are
 retained build inputs; the inventory does not assert every input is linked into
 every VPP binary. Features remain enabled.
+The five Python tools also retain pinned original source distributions, including
+the separate LGPL-3.0 Autocommand source used by Setuptools. Wheel build inputs
+and preferred sources have separate archive references and identities; original
+source notices accompany the wheel notices. Verification rejects missing sources
+or notice differences. No source reconstruction claim relies only on a wheel.
 
 `producer.bundles.bundle` archives explicit source/license/build input files,
 checks for unsafe paths/private keys/Git history, normalizes archive metadata,
