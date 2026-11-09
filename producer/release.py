@@ -38,8 +38,12 @@ def scan_secrets(path):
             tail = data[-1024:]
 
 
-def verify_sources(root, inventory, assets):
-    """Every shipped package needs exact source/license bytes, not only a URL."""
+def verify_source_integrity(root, inventory, assets):
+    """Verify source bytes and complete references, independently of permission.
+
+    This permits local inspection/reconstruction of an uncleared source set.
+    Publication must still call verify_sources(), including its license gate.
+    """
     if not inventory.get('components'):
         raise ValueError('Empty component inventory')
     components = set()
@@ -54,6 +58,7 @@ def verify_sources(root, inventory, assets):
                 if member.isdir():
                     continue
                 if (not member.isfile() or Path(member.name).is_absolute() or '..' in Path(member.name).parts
+                        or '.git' in Path(member.name).parts
                         or str(Path(member.name)) != member.name or '\\' in member.name):
                     raise ValueError('Unsafe source archive member')
                 key = (asset['name'], member.name)
@@ -72,8 +77,6 @@ def verify_sources(root, inventory, assets):
                     raise ValueError('Private signing key in source bundle')
                 members[key] = digest.hexdigest()
     def check_references(component):
-        if not isinstance(component.get('license'),str) or not component.get('license') or component.get('redistributable') is not True:
-            raise ValueError('Missing or unresolved component license clearance')
         for category in ('sources', 'license_files', 'build_inputs'):
             if not component.get(category):
                 raise ValueError('Missing exact corresponding source, license or build inputs')
@@ -100,6 +103,18 @@ def verify_sources(root, inventory, assets):
     shipped = {(x['name'], x['version'], x['architecture']) for x in inventory['shipped_packages']}
     if not shipped or shipped != components:
         raise ValueError('Component inventory does not cover the exact shipped package set')
+    return members
+
+
+def verify_sources(root, inventory, assets):
+    """Publication requires both complete source bytes and license clearance."""
+    verify_source_integrity(root, inventory, assets)
+    def cleared(component):
+        if (not isinstance(component.get('license'),str) or not component.get('license')
+                or component.get('redistributable') is not True):
+            raise ValueError('Missing or unresolved component license clearance')
+        for child in component.get('bundled_components',[]):cleared(child)
+    for component in inventory['components']:cleared(component)
 
 
 def validate(root, expected_commit, expected_version, *, architectures=ARCHES):

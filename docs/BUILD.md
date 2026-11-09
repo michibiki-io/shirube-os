@@ -450,3 +450,33 @@ export, both conversions matched, and both formats passed individual enrollment,
 login, product/architecture checks and clean shutdown. The immutable reference
 was unchanged. These are focused AMD64 TCG results, not clean-head release
 acceptance, an ARM64 50 GiB result or OCI execution.
+
+## Restoring the complete source set
+
+After verifying the selected release commit and downloading its complete
+manifest, component inventories and source assets, the source consumer restores
+every archive into a separate directory under a new destination:
+
+```sh
+python3 -m producer.cli restore-sources \
+  --release-directory ./downloaded-release \
+  --architecture amd64 --commit "$release_commit" \
+  --destination ./restored-sources
+```
+
+Use `arm64` for that architecture. The command verifies outer asset sizes/hashes,
+every component source/license/recipe reference, safe regular-file members and
+the bytes written to disk. Executable scripts remain executable; symlinks, Git
+history, traversal, duplicates and changed inputs fail. A preexisting destination
+is preserved, and a newly created incomplete destination is removed on failure.
+It can also inspect a locally generated diagnostic source-set manifest; this
+does not publish its contents or approve unresolved redistribution terms.
+
+`restoration.json` records **source-set restoration only**. It does not compile
+binaries, approve licenses, or satisfy the complete release reconstruction gate.
+The publication validator still rejects every uncleared parent or dependency.
+Restore package originals and apply their retained Debian patches with
+`dpkg-source --no-check -x` inside the native toolchain container; `--no-check`
+does not replace the preceding exact descriptor/archive hash checks. Native
+component trees, captured configurations, the shared Stream builder/VPP patches
+and the history-free project archive remain separately bound in the inventory.

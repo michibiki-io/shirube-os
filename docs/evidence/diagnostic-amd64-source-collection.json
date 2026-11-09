@@ -1,0 +1,28 @@
+{
+  "kind": "diagnostic-complete-component-source-collection",
+  "architecture": "amd64",
+  "status": "PASS_SOURCE_COLLECTION_ONLY",
+  "compiled_cohort_commit": "3b94e3bfdf8335377c3c03eb3e29e1e1321a5736",
+  "collector_recipe_commit": "c7dfdcd3a334cc2b9ee19e260ec590c8e4389883",
+  "adjustments": [
+    "canonical hosts",
+    "original complete package documentation",
+    "four missing native package notices",
+    "original package source-bound Go binaries"
+  ],
+  "shipped_binary_packages": 730,
+  "top_level_component_records": 730,
+  "bundled_component_bindings": 1373,
+  "source_archives": 512,
+  "source_archive_bytes": 3729600113,
+  "largest_source_archive_bytes": 528454078,
+  "source_asset_index_sha256": "de19a0c432936f463790d956adca14ed3031d340fdd2f10d47d76beac2e4c655",
+  "inventory_sha256": "2ba6d8d4fc7954507c93270346bc5228d4e949d90e1cf53f5c99e0f9e578ae0b",
+  "individual_archive_member_hash_verification": "PASS",
+  "complete_source_set_restoration": "NOT_RUN",
+  "complete_binary_reconstruction": "NOT_RUN",
+  "license_clearance": "FAIL",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "scope": "Frozen compiled cohort with explicit retained-payload repairs; not a clean current-head candidate. Every component archive was created and its member bytes verified; the complete cross-archive reference/restoration check is a separate next step. No uncleared archive was uploaded or published."
+}

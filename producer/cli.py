@@ -23,6 +23,11 @@ def main():
     labels = subs.add_parser('runner')
     labels.add_argument('architecture', choices=['amd64', 'arm64'])
     labels.add_argument('--setting', default='')
+    reconstruction = subs.add_parser('restore-sources')
+    reconstruction.add_argument('--release-directory', type=Path, required=True)
+    reconstruction.add_argument('--destination', type=Path, required=True)
+    reconstruction.add_argument('--architecture', choices=['amd64','arm64'], required=True)
+    reconstruction.add_argument('--commit', required=True)
     args = parser.parse_args()
     if args.command == 'preflight':
         if not 2<=args.memory_gib<=256:raise ValueError('Invalid native memory budget')
@@ -36,6 +41,9 @@ def main():
                   minimum_memory_gib=args.memory_gib,require_kvm=need_kvm)
     elif args.command == 'runner':
         print(json.dumps(runner(args.architecture, args.setting)))
+    elif args.command == 'restore-sources':
+        from .reconstruction import restore
+        print(json.dumps(restore(args.release_directory,args.destination,args.architecture,args.commit),indent=2))
     else:
         fetch(json.loads(args.lock.read_text())['stream'], args.destination)
 
