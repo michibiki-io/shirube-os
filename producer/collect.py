@@ -4,6 +4,7 @@ import hashlib
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 from .bundles import bundle
 from .sources import sha256
@@ -454,7 +455,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 match=next((path for prefix,path in extras.items()
                     if name.startswith(prefix) or source_name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
-            inputs=[];nested=[]
+            inputs=[];nested=[];debian_tree=None
             if source_name=='vyos-1x':nested.extend(ocaml_dependencies)
             if source_name=='owamp':
                 if 'i2util' not in static:
@@ -497,6 +498,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 from .debian_sources import unpack,legal_files
                 preferred=work/('debian-source-tree-'+str(len(cached)))
                 dsc=unpack(component,source_name,source_version,preferred)
+                debian_tree=preferred
                 origin=sha256(dsc);source=component
                 for legal_file,member in legal_files(preferred):
                     inputs.append((legal_file,'upstream-notices/'+member,'license_files'))
@@ -557,6 +559,19 @@ def collect(rootfs, package_output, output, arch, version, work):
             if (source/'shirube-corresponding-inputs/inventory.json').is_file():
                 from .runtime_sources import dependencies as runtime_dependencies
                 nested.extend(runtime_dependencies(rootfs,source,name))
+            if kind=='vpp':
+                from .vpp_legal import verify as verify_vpp_notices
+                legal=rootfs/'usr/share/doc/shirube-integration/vpp-inputs'
+                vpp_inputs=verify_vpp_notices(source/'build/external/downloads',Path('/src/native'),legal)
+                inputs.append((legal/'components.json','vpp-input-components.json','build_inputs'))
+                for dependency in vpp_inputs['components']:
+                    notice=dependency['notice'];member='vpp-input-notices/'+notice['filename']
+                    inputs.append((legal/notice['filename'],member,'license_files'))
+                    nested.append({'name':dependency['name'],'version':dependency['version'],
+                        'source_identity':dependency['source']['sha256'],
+                        'source_member':'source/build/external/downloads/'+dependency['source']['filename'],
+                        'source_sha256':dependency['source']['sha256'],
+                        'notice':legal/notice['filename'],'notice_member':member})
             if name=='vyos-http-api-tools':
                 bom,dependencies=http_dependencies(rootfs)
                 inputs.append((bom,'bundled-components.json','build_inputs'))
@@ -597,6 +612,10 @@ def collect(rootfs, package_output, output, arch, version, work):
             for prefix, names in [('/extra/vpp/',['vpp','vpp-patches']),('/extra/modules/rtsp',['nat-rtsp']),('/extra/modules/netflow',['ipt-netflow']),('/extra/base/utils',['vyos-utils']),('/extra/base/i2util',['i2util']),('/extra/kea/',['kea-packaging']),('/extra/salt/',['salt-tools'])]:
                 if location.startswith(prefix):keys.extend(names)
             provenance={'stream_archive_sha256':source_identity,'external_git':{key:external[key] for key in keys}}
+            if kind=='vpp':
+                provenance['vpp_retained_inputs']={r['name']:{'version':r['version'],
+                    'source_identity':r['source']['sha256'],'notice_sha256':r['notice']['sha256']}
+                    for r in vpp_inputs['components']}
             if preferred_root is not None:
                 provenance.update(preferred_stream_member=str(preferred_root.relative_to('/sources')),
                                   native_job=native_jobs[name])
@@ -648,6 +667,11 @@ def collect(rootfs, package_output, output, arch, version, work):
             cleared=cleared and all(child['redistributable'] for child in children)
             cached[key]=(records,approval.get('license','UNREVIEWED'),cleared,origin,provenance,children)
             assets.append(archive)
+            # bundle() has independently re-read every archived member. Future
+            # package aliases use only immutable archive references, so retain
+            # neither hundreds of unpacked Debian trees nor temporary hardlinks.
+            if debian_tree is not None:shutil.rmtree(debian_tree)
+            shutil.rmtree(component)
         records,license_name,cleared,origin,provenance,children=cached[key]
         components.append({**package,'source_package':source_name,'source_version':source_version,
                            'source_identity':origin,'source_origin':provenance,'license':license_name,'redistributable':cleared,

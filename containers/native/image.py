@@ -64,6 +64,9 @@ def guest_package(arch, version):
     shutil.copy2('/src/LICENSE',copyright_path.parent/'distributor-LICENSE')
     shutil.copy2('/src/NOTICE',copyright_path.parent/'NOTICE')
     shutil.copytree('/src/LICENSES',copyright_path.parent/'distribution-licenses')
+    from producer.vpp_legal import install as install_vpp_notices
+    install_vpp_notices(Path('/extra/vpp/vpp/build/external/downloads'),
+                       Path('/src/native'), copyright_path.parent/'vpp-inputs')
     actual=subprocess.check_output([str(lib/'netbird'),'version'],text=True).strip()
     if actual!=lock['version']:raise ValueError('NetBird version mismatch')
     from producer.netbird_sources import prepare

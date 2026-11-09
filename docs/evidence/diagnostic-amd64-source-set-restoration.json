@@ -32,5 +32,5 @@
     "SDK source namespace confused with shipped Salt package family; fixed without waiving package child inventories.",
     "Shared Cargo leaf records duplicated across two HTTP Rust closures; exact duplicates coalesced with all original source/notice/recipe references retained, while conflicting or uncoalesced records remain rejected."
   ],
-  "scope": "Complete declared 730-package source set only. Subsequent payload audit found unowned floating GeoIP data; this legacy receipt does not establish complete OS data closure. Pinned GeoIP collection requires a new build."
+  "scope": "Complete declared 730-package source set only. Subsequent payload audit found unowned floating GeoIP data; this legacy receipt does not establish complete OS data closure. Pinned GeoIP collection requires a new build. Subsequent VPP auditing also requires individual original external-input notices; this legacy declared-package receipt does not establish that later license-inventory closure."
 }

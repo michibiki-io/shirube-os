@@ -7,37 +7,189 @@
     {
       "filename": "daq-3.0.21.tar.gz",
       "url": "https://github.com/snort3/libdaq/archive/refs/tags/v3.0.21.tar.gz",
-      "sha256": "60ad9405c1c6b75955e0784511b173570a601491ccdb6399da53ca811c446a96"
+      "sha256": "60ad9405c1c6b75955e0784511b173570a601491ccdb6399da53ca811c446a96",
+      "name": "libdaq",
+      "version": "3.0.21",
+      "legal_notices": [
+        {
+          "member": "libdaq-3.0.21/COPYING",
+          "sha256": "64601289158eddad72cb4de72652f9e64dc886942c910b38ddee93ba13b0db26"
+        },
+        {
+          "member": "libdaq-3.0.21/LICENSE",
+          "sha256": "64601289158eddad72cb4de72652f9e64dc886942c910b38ddee93ba13b0db26"
+        }
+      ]
     },
     {
       "filename": "dpdk-25.07.tar.xz",
       "url": "https://fast.dpdk.org/rel/dpdk-25.07.tar.xz",
-      "sha256": "6886cbedc350bb8cbef347d10367d6259e36435627fbb27d578adbdc0d3b410d"
+      "sha256": "6886cbedc350bb8cbef347d10367d6259e36435627fbb27d578adbdc0d3b410d",
+      "name": "dpdk",
+      "version": "25.07",
+      "legal_notices": [
+        {
+          "member": "dpdk-25.07/license/Linux-syscall-note",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        },
+        {
+          "member": "dpdk-25.07/license/README",
+          "sha256": "cae178052c96959741acb7f00634a09a8294e6cafb5ad53e158d63e3510875ab"
+        },
+        {
+          "member": "dpdk-25.07/license/bsd-2-clause.txt",
+          "sha256": "1531b66affc3bae796d755e12850795e56e25ccedd685bf7d2644d8ddfadbad8"
+        },
+        {
+          "member": "dpdk-25.07/license/bsd-3-clause.txt",
+          "sha256": "9acc4bc871a4742550158e3696dcb381953172ef808d04ca248184f9f6322712"
+        },
+        {
+          "member": "dpdk-25.07/license/exceptions.txt",
+          "sha256": "ec514554f1b9e90c4f55167267c22da9d511f884877c32a5b18bee6b7c8b18cd"
+        },
+        {
+          "member": "dpdk-25.07/license/gpl-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "member": "dpdk-25.07/license/isc.txt",
+          "sha256": "be8f198f2e1c9b30226e293255bbe6933ee6607a580ee5874185aa023bcc3c39"
+        },
+        {
+          "member": "dpdk-25.07/license/lgpl-2.1.txt",
+          "sha256": "592987e8510228d546540b84a22444bde98e48d03078d3b2eefcd889bec5ce8c"
+        },
+        {
+          "member": "dpdk-25.07/license/mit.txt",
+          "sha256": "6c54c4d44faf3cba829b3d0c21c6955953e758767018fd7244f809b01d4f4845"
+        }
+      ]
     },
     {
       "filename": "v2.0.tar.gz",
       "url": "https://github.com/intel/intel-ipsec-mb/archive/v2.0.tar.gz",
-      "sha256": "0c60e56f63b14212c7b388668acc219cbc6b79e5e79732aff7542fefbb498413"
+      "sha256": "0c60e56f63b14212c7b388668acc219cbc6b79e5e79732aff7542fefbb498413",
+      "name": "intel-ipsec-mb",
+      "version": "2.0",
+      "legal_notices": [
+        {
+          "member": "intel-ipsec-mb-2.0/LICENSE",
+          "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+        }
+      ]
     },
     {
       "filename": "v25.09.tar.gz",
       "url": "https://github.com/MarvellEmbeddedProcessors/marvell-octeon-roc/archive/refs/tags/v25.09.tar.gz",
-      "sha256": "39caf74eded46a01286dfbc6a90f8ddbf76d59764f89a574206afbf51b9d5613"
+      "sha256": "39caf74eded46a01286dfbc6a90f8ddbf76d59764f89a574206afbf51b9d5613",
+      "name": "marvell-octeon-roc",
+      "version": "25.09",
+      "legal_notices": [
+        {
+          "member": "marvell-octeon-roc-25.09/LICENSE",
+          "sha256": "fbdbe3ad603f5028fad76a43d806941670d318f75a398caff1110841c01681c9"
+        }
+      ]
     },
     {
       "filename": "quicly_0.1.5-vpp.tar.gz",
       "url": "https://github.com/vpp-quic/quicly/releases/download/v0.1.5-vpp/quicly_0.1.5-vpp.tar.gz",
-      "sha256": "fb50ad8ce1136561ee08df02131030d89e38acd2cf8e36c65c074f3bd5034938"
+      "sha256": "fb50ad8ce1136561ee08df02131030d89e38acd2cf8e36c65c074f3bd5034938",
+      "name": "quicly",
+      "version": "0.1.5-vpp",
+      "legal_notices": [
+        {
+          "member": "quicly_0.1.5-vpp/deps/picotls/deps/cifra/COPYING",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        },
+        {
+          "member": "quicly_0.1.5-vpp/deps/picotls/deps/micro-ecc/LICENSE.txt",
+          "sha256": "ffd8b033d2df7568c25a98866bd92b1656f7da82d7f813c0b2eb85ec36611193"
+        },
+        {
+          "member": "quicly_0.1.5-vpp/LICENSE",
+          "sha256": "6e841373420fb35a573e2b547087bdb7a56a5a415fb833a94875493deecd780a"
+        }
+      ]
     },
     {
       "filename": "rdma-core-58.0.tar.gz",
       "url": "https://github.com/linux-rdma/rdma-core/releases/download/v58.0/rdma-core-58.0.tar.gz",
-      "sha256": "88d67897b793f42d2004eec2629ab8464e425e058f22afabd29faac0a2f54ce4"
+      "sha256": "88d67897b793f42d2004eec2629ab8464e425e058f22afabd29faac0a2f54ce4",
+      "name": "rdma-core",
+      "version": "58.0",
+      "legal_notices": [
+        {
+          "member": "rdma-core-58.0/COPYING.BSD_FB",
+          "sha256": "f08d6a4befc1824cc6b88074477d75168a915803ad7f5502f76ab3081dd82ab0"
+        },
+        {
+          "member": "rdma-core-58.0/COPYING.BSD_MIT",
+          "sha256": "99e0df1d009a21d0dfb031600c550fd8f4efc0c6b2a4ef8b34a995aa6f79c9f4"
+        },
+        {
+          "member": "rdma-core-58.0/COPYING.GPL2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "member": "rdma-core-58.0/COPYING.md",
+          "sha256": "c46a557f25b8ef9bec76526c4e593fc13e6cba27e7ba30d73b6497a689cf06f6"
+        },
+        {
+          "member": "rdma-core-58.0/ccan/LICENSE.CCO",
+          "sha256": "70cc15615abc71522fb8c3704cb9f61f84fef283cd165c01fef8c2a51354b7c9"
+        },
+        {
+          "member": "rdma-core-58.0/ccan/LICENSE.MIT",
+          "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e"
+        },
+        {
+          "member": "rdma-core-58.0/debian/copyright",
+          "sha256": "37f80110080a724e03aa331779884c00860d8a0033cd7ca47030dd0f17794b4b"
+        },
+        {
+          "member": "rdma-core-58.0/providers/ipathverbs/COPYING",
+          "sha256": "c5c3db236617a00333ee5a24219a0714b917a8847773e184c5d72df3388eeafe"
+        }
+      ]
     },
     {
       "filename": "xdp-tools-1.5.5.tar.gz",
       "url": "https://github.com/xdp-project/xdp-tools/releases/download/v1.5.5/xdp-tools-1.5.5.tar.gz",
-      "sha256": "9a4339ffc40df178c4ddf919cb2b23585a75b3023517c75e82c4dfb0899249c7"
+      "sha256": "9a4339ffc40df178c4ddf919cb2b23585a75b3023517c75e82c4dfb0899249c7",
+      "name": "xdp-tools",
+      "version": "1.5.5",
+      "legal_notices": [
+        {
+          "member": "xdp-tools-1.5.5/LICENSES/BSD-2-Clause",
+          "sha256": "6313108c23efffa36948f8b2cff1560a5935373b527b0e1a837cc77e6ed1bacd"
+        },
+        {
+          "member": "xdp-tools-1.5.5/LICENSES/GPL-2.0",
+          "sha256": "aaf32cd2d7cbb2af7ddeb3108e87436d36dbdb080e85cf839defa4b36bc830c5"
+        },
+        {
+          "member": "xdp-tools-1.5.5/LICENSES/LGPL-2.1",
+          "sha256": "0b9a4febcdee6de55872501d5c1a8f5d8b0d1650cd4d5351995ceb22e889f8ca"
+        },
+        {
+          "member": "xdp-tools-1.5.5/lib/libbpf/LICENSE.BSD-2-Clause",
+          "sha256": "e1638b9a0c68ca90fad3df1d6b4e430804d2fbdc15e58d02cffddfae38953bbf"
+        },
+        {
+          "member": "xdp-tools-1.5.5/lib/libbpf/LICENSE.LGPL-2.1",
+          "sha256": "0b9a4febcdee6de55872501d5c1a8f5d8b0d1650cd4d5351995ceb22e889f8ca"
+        },
+        {
+          "member": "xdp-tools-1.5.5/lib/libbpf/LICENSE",
+          "sha256": "847f4addbd56e2d5be20c4ea0845e972672fc07b755fadaae5f7abd35d71e349"
+        },
+        {
+          "member": "xdp-tools-1.5.5/LICENSE",
+          "sha256": "734d0b7377af175d51c5ae07c061037862eb8d0d5a335544cfef9861c1895a2a"
+        }
+      ]
     }
   ]
 }

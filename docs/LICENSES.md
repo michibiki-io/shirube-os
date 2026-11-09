@@ -39,6 +39,15 @@ after sanitization; existing administrator-updated caches are preserved. Explici
 runtime GeoIP updates retain the native behavior. Final-image boot validation is
 required independently of the offline importer test.
 
+VPP's seven fixed native archives and five Python bootstrap inputs have separate
+source identities and original-notice inventories. Their 55 original legal files
+are retained verbatim in the integration package under `vpp-inputs/`. Collection
+checks the actual archive hashes and installed notice bytes; publication rejects
+a missing child inventory even when the parent package names an approved license.
+Every dependency still needs its own exact-source permission decision. These are
+retained build inputs; the inventory does not assert every input is linked into
+every VPP binary. Features remain enabled.
+
 `producer.bundles.bundle` archives explicit source/license/build input files,
 checks for unsafe paths/private keys/Git history, normalizes archive metadata,
 then verifies the actual member bytes. Oversized components fail before upload;

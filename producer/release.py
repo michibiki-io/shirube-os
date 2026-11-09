@@ -38,6 +38,31 @@ def scan_secrets(path):
             tail = data[-1024:]
 
 
+def verify_vpp_inputs(component):
+    """Every retained external archive needs its own source/notice decision."""
+    import hashlib
+    prefix='source/build/external/downloads/'
+    inputs={(r['asset'],r['member'],r['sha256']) for r in component['sources']
+            if r['member'].startswith(prefix) and
+            re.search(r'(?:\.tar\.(?:gz|xz|bz2|zst)|\.tgz|\.zip|\.whl)$',r['member'])}
+    children=[r for r in component.get('bundled_components',[])
+              if r['name'].startswith(('vpp-native:','vpp-bootstrap:'))]
+    references={(r['asset'],r['member'],r['sha256']) for c in children for r in c['sources']}
+    origin=component.get('source_origin',{})
+    declared=origin.get('vpp_retained_inputs',{})
+    if (not inputs or references!=inputs or len(children)!=len(inputs) or
+            set(declared)!={r['name'] for r in children} or
+            hashlib.sha256(json.dumps(origin,sort_keys=True).encode()).hexdigest()!=component['source_identity']):
+        raise ValueError('Complete VPP external source/license inventory is required')
+    for child in children:
+        entry=declared[child['name']]
+        if (entry.get('version')!=child['version'] or
+                entry.get('source_identity')!=child['source_identity'] or
+                len(child['sources'])!=1 or child['sources'][0]['sha256']!=child['source_identity'] or
+                not any(r['sha256']==entry.get('notice_sha256') for r in child['license_files'])):
+            raise ValueError('VPP external source or original notice binding differs')
+
+
 def verify_source_integrity(root, inventory, assets):
     """Verify source bytes and complete references, independently of permission.
 
@@ -97,6 +122,8 @@ def verify_source_integrity(root, inventory, assets):
             identity=(child['name'],child['version'])
             if identity in identities:raise ValueError('Duplicate bundled component')
             identities.add(identity);check_references(child)
+        if component.get('source_package')=='vpp':
+            verify_vpp_inputs(component)
     for component in inventory['components']:
         identity = (component['name'], component['version'], component['architecture'])
         if identity in components or component['architecture'] not in ARCHES | {'all'}:
