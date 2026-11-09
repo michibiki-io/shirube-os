@@ -444,3 +444,10 @@ BSD/LGPL upstream code; X11/HPND name-use restrictions and Boehm GC modification
 notices remain applicable. GRC's explicit GPL grant is retained together with its
 expressly optional commentary. Fontconfig's Unicode terms, Wget's documentation
 license and Dialog's additional source/build grants remain outside this batch.
+
+A batch scan of remaining original runtime-extra inputs found two additional
+Podman TLS/verification self-tests. Their whole-file hashes match the signed
+Stream source, including the vendored DSA verification test. They have exact
+source-only recognition; unknown generated keys and runtime credentials remain
+rejected. [Batch source evidence](evidence/diagnostic-runtime-extra-source-fixtures.json)
+is separate from dependency licensing and completed source reconstruction.

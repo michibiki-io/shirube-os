@@ -75,6 +75,13 @@ KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910']
 })
 
 
+# Original Podman TLS and vendored verification self-tests, not runtime keys.
+KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910'].update({
+    "source/test/certs/domain.key": "1340383164554a3fe8fa2d11658467323683c0ab227e02ceddfa9b2b42d18e4e",
+    "source/vendor/go.mozilla.org/pkcs7/verify_test_dsa.go": "f7bf74cda7cf86c74febd919a6a169fd2062fa17ea0a38f2c303b5491e137872"
+})
+
+
 def allowed(origin,member,digest):
     return origin in KNOWN and KNOWN[origin].get(member)==digest
 
