@@ -12,6 +12,7 @@ CHECKS = {'build', 'architecture', 'module_signatures', 'branding', 'licenses',
           'unprovisioned_boot', 'provisioned_access', 'identity_regeneration', 'netbird'}
 ROLES = {'iso', 'qcow2', 'vmdk', 'source', 'licenses', 'evidence'}
 LIMIT = 2 * 1024**3
+RELEASE_ASSET_LIMIT = 1000
 # A format delimiter is also ordinary text in SSH/key-parser source and ELF
 # executables. Require following armored key bytes, including encrypted PEM
 # headers, so those programs remain buildable without allowing actual keys.
@@ -176,6 +177,9 @@ def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
     if not architectures or not set(architectures) <= ARCHES or set(manifest.get('architectures', {})) != set(architectures):
         raise ValueError('Both native architecture candidates are mandatory')
     assets = manifest.get('assets', [])
+    # The manifest and checksum list are physical release assets too.
+    if len(assets)+2 > RELEASE_ASSET_LIMIT:
+        raise ValueError('Complete release exceeds the GitHub release asset count limit')
     names = set()
     for item in assets:
         name = filename(item['name'])

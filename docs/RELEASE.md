@@ -64,6 +64,26 @@ an unpublished draft. Every source component archive must be below the GitHub
 checksums do not include themselves. Verify all source archives and their member
 hashes. Retain source archives with the binaries in the same release.
 
+GitHub permits at most 1000 assets per release, including the manifest and
+checksum list ([release quotas](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)).
+Debian source components are grouped into plain-tar parts of at most 16
+components, with a conservative 1 GiB input budget per part. Their original
+source archives, copyright files and recipes remain byte-identical under separate
+component directories. The inventory gives each exact part/member/hash reference;
+the normal source restoration command handles these parts directly. Custom
+component archives retain their existing format. Each new part is independently
+re-read before original intermediate component archives are removed. Aggregate
+validation counts the manifest/checksum assets, and draft staging rejects an
+over-limit set before deleting or uploading any candidate material.
+
+GitHub Releaseはmanifestとchecksumを含めて最大1000アセットです。
+Debianソースは最大16コンポーネントごとの非圧縮tarにまとめ、各partの入力を
+余裕を持って1 GiB以内に制限します。原本アーカイブ、著作権表示、ビルド手順の
+内容を変更せず、別々のディレクトリーへ収録します。inventoryにpart名、member名、
+ハッシュを記録し、通常のソース復元コマンドで復元できます。新しいpartの全memberを
+再検証してから中間アーカイブを削除します。合計数が上限を超える場合、候補の削除や
+アップロードを始める前に停止します。
+
 After publication, reruns must download and verify the complete recorded set,
 including metadata, before doing any build work. An exact match is a verification-
 only no-op. Missing or changed published material fails without any upload,

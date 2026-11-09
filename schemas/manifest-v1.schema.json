@@ -120,7 +120,8 @@
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/asset"
-      }
+      },
+      "maxItems": 998
     }
   },
   "required": [

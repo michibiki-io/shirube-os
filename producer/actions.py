@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 from .architecture import runner
 from .policy import eligible, next_version, release_notes, VERSION_PATTERN, version_parts, require_stream_version
-from .release import validate
+from .release import validate, RELEASE_ASSET_LIMIT
 from .sources import sha256
 
 REPO = 'michibiki-io/shirube-os'
@@ -154,6 +154,10 @@ def stage():
     prefix = f'shirube-os-{version}-{arch}'
     if any(not item['name'].startswith(prefix) for item in manifest['assets']):
         raise ValueError('Candidate assets must have architecture-specific owned names')
+    retained = sum(not (item['name'].startswith(prefix) or
+                        item['name'] == f'candidate-{arch}.json') for item in live['assets'])
+    if retained+len(manifest['assets'])+1 > RELEASE_ASSET_LIMIT:
+        raise ValueError('Staged candidates exceed the GitHub release asset count limit')
     # Remove only this architecture's previous unpublished candidate. Never
     # reuse part of a signing generation, touch the other architecture or clobber
     # any published material. Workflow-wide concurrency serializes releases.

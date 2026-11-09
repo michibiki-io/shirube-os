@@ -11,6 +11,12 @@ from producer.sources import sha256
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_total_asset_count_includes_manifest_and_checksums(self):
+        self.manifest['assets'] = [{'name': f'asset-{i}', 'role': 'source'} for i in range(999)]
+        (self.root/'manifest.json').write_text(json.dumps(self.manifest))
+        with self.assertRaisesRegex(ValueError, 'release asset count limit'):
+            validate(self.root, self.commit, self.version)
+
     def test_release_version_must_match_stream_month(self):
         self.manifest['version']='v2026.04.0';self.write()
         with self.assertRaisesRegex(ValueError,'Stream baseline'):

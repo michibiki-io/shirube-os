@@ -8,6 +8,18 @@ from producer import actions
 
 
 class ActionsTests(unittest.TestCase):
+    def test_draft_asset_limit_rejected_before_deletion_or_upload(self):
+        manifest = {'assets': [{'name': f'shirube-os-v2026.03.0-amd64-{i}'} for i in range(500)]}
+        live = {'assets': [{'name': f'shirube-os-v2026.03.0-arm64-{i}'} for i in range(500)]}
+        with patch.dict(os.environ, {'SHIRUBE_ARCHITECTURE': 'amd64', 'SHIRUBE_VERSION': 'v2026.03.0',
+                'SHIRUBE_SOURCE_COMMIT': 'a'*40, 'SHIRUBE_CANDIDATE_DIRECTORY': 'unused-fixture'}), \
+                patch.object(actions, 'identity'), patch.object(actions, 'validate', return_value=manifest), \
+                patch.object(actions, 'require_draft', return_value=live), \
+                patch.object(actions, 'gh') as gh:
+            with self.assertRaisesRegex(ValueError, 'release asset count limit'):
+                actions.stage()
+            gh.assert_not_called()
+
     def test_eligible_commit_reserves_one_stream_revision_despite_breaking_subject(self):
         import subprocess
         with tempfile.TemporaryDirectory() as temporary:

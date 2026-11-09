@@ -428,7 +428,7 @@ def collect(rootfs, package_output, output, arch, version, work):
     debian_inputs=acquire(debian_requirements(listing,produced,custom,extras),work/'debian-inputs')
     audit_path=Path('/src/license-audit.json')
     approvals=json.loads(audit_path.read_text())['components'] if audit_path.is_file() else {}
-    shipped=[];components=[];assets=[];cached={};static={}
+    shipped=[];components=[];assets=[];cached={};static={};debian_archives=[]
     shared_archive=output/f'shirube-os-{version}-{arch}-shared-build-inputs.tar.gz'
     shared=shared_build_inputs(project,Path('/sources/vyos-build/vyos-build'),
         Path('/extra/vpp/patches'),shared_archive)
@@ -693,12 +693,17 @@ def collect(rootfs, package_output, output, arch, version, work):
             # bundle() has independently re-read every archived member. Future
             # package aliases use only immutable archive references, so retain
             # neither hundreds of unpacked Debian trees nor temporary hardlinks.
-            if debian_tree is not None:shutil.rmtree(debian_tree)
+            if debian_tree is not None:
+                debian_archives.append(archive)
+                shutil.rmtree(debian_tree)
             shutil.rmtree(component)
         records,license_name,cleared,origin,provenance,children=cached[key]
         components.append({**package,'source_package':source_name,'source_version':source_version,
                            'source_identity':origin,'source_origin':provenance,'license':license_name,'redistributable':cleared,
                            'bundled_components':children,**records})
+    from .source_batches import batch
+    parts,replaced=batch(debian_archives,components,output,arch,version)
+    assets=[path for path in assets if path.name not in replaced]+parts
     inventory={'schema_version':1,'shipped_packages':shipped,'components':components}
     path=output/f'shirube-os-{version}-{arch}-licenses.json';path.write_text(json.dumps(inventory,indent=2)+'\n')
     return {'inventory':path,'archives':assets,'cleared':all(x['redistributable'] for x in components)}
