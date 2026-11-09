@@ -309,13 +309,13 @@ def collect(rootfs, package_output, output, arch, version, work):
     subprocess.run(['apt-get','-o','Acquire::Retries=3','-o','APT::Update::Error-Mode=any','update'],check=True)
     listing=subprocess.check_output(['dpkg-query','--admindir='+str(rootfs/'var/lib/dpkg'),'-W',
         '-f=${Package}\t${Version}\t${Architecture}\t${source:Package}\t${source:Version}\n'],text=True)
-    custom={};preferred={};native_jobs={}
+    custom={};native_preferred={};native_jobs={}
     catalog=json.loads(Path('/src/native/packages.json').read_text())
     for job in catalog['jobs']:
         for deb in (package_output/job['name']).glob('*.deb'):
             name=subprocess.check_output(['dpkg-deb','-f',str(deb),'Package'],text=True).strip()
             custom[name]=Path('/build-private')/job['name']/'source'
-            preferred[name]=Path('/sources')/job['source']
+            native_preferred[name]=Path('/sources')/job['source']
             native_jobs[name]=job['name']
     extras={
       'vpp':'vpp/vpp','libvpp':'vpp/vpp','nat-rtsp':'modules/rtsp','vyos-ipt-netflow':'modules/netflow',
@@ -396,7 +396,7 @@ def collect(rootfs, package_output, output, arch, version, work):
             # toolchain links. Native packages retain the authenticated original
             # preferred source plus the exact shared/local patch recipes. API
             # dependency archives are acquired by its declared source recipe.
-            preferred_root=preferred.get(name) if matching and name!='vyos-http-api-tools' else None
+            preferred_root=native_preferred.get(name) if matching and name!='vyos-http-api-tools' else None
             if preferred_root is not None:
                 if not preferred_root.is_dir():raise ValueError('Missing authenticated native preferred source')
                 kernel_outputs=('debian','include/generated','arch/arm64/include/generated',
