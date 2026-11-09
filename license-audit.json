@@ -11052,21 +11052,25 @@
     "go-stdlib@1.23.2#542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e": {
       "source_identity": "542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e",
       "copyright_sha256": "fc9ce00667cf2c942087846e6df18ab772a028cf6cf6e761a95a360b136ccf70",
-      "redistributable": true,
-      "license": "Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause AND ISC AND OpenSSL AND LicenseRef-Go-Patent-Grant",
-      "reviewed_on": "2026-11-09",
       "evidence_member": "source/shirube-corresponding-inputs/go-copyright",
-      "conditions": [
-        "Retain complete original notices, all copyright holders, source-specific patent grants and disclaimers with source and binary distributions.",
-        "Retain the exact corresponding Go/compiler or linked-module sources and source/notice digest bindings.",
-        "Retain conditional BoringSSL/OpenSSL/SSLeay source terms and acknowledgements where present; never relicense that source under the repository license."
-      ],
-      "scope": "Every original legal block matched a completely read original Go/compiler source notice, including vendored pprof/svgpan, PATENTS and conditional BoringSSL notices. This does not establish whole-distribution source reconstruction or approve other components.",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND Apache-2.0 AND MIT AND ISC AND OpenSSL AND LicenseRef-Go-Patent-Grant",
+      "reviewed_on": "2026-11-10",
       "required_notice_files": [
         {
-          "path": "NOTICE",
-          "sha256": "52a6a9b1783764539bc01aea90b63d2345348831165995451878f019fb209072"
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Go-stdlib-acknowledgements.txt",
+          "sha256": "8e2e78bb762ed632597ec7e8b8dfd9fc7d9da41b6c042bb1b7d6d0e025057d29"
         }
+      ],
+      "scope": "Exact retained Go compiler/standard-library source input and original aggregate notice. All 12 distinct complete original notice blocks read, with canonical Apache2 full-text equality for pprof and the complete BoringSSL version-link difference read. Root and vendored BSD grants, MIT test fixture, Go patent scope and separately licensed optional crypto source remain independent. Parent OS and binary packages independently gated.",
+      "conditions": [
+        "Retain every original copyright, all complete source/binary documentation notices and disclaimers, named nonendorsement restrictions and Go patent grant/termination scope.",
+        "Preserve independent Apache2, MIT, ISC, Intel BSD3 and OpenSSL/SSLeay license scopes; retain both OpenSSL acknowledgements, Eric Young cryptographic credit and Tim Hudson credit with the corresponding source and any covered advertising. Do not rename products OpenSSL or imply endorsement.",
+        "Supply exact source and build/install scripts. Optional BoringSSL source/object licensing does not assert that the distributed client was compiled with GOEXPERIMENT=boringcrypto; actual binary build settings independently establish compilation mode. No GPL relicense of OpenSSL/SSLeay source is asserted."
       ]
     },
     "go:golang.org/x/crypto@v0.32.0#959d6b2fb5ee7d50113a0cb26dbdd8fa06710d4e97fae709be2d2755e827ede7": {
@@ -11674,21 +11678,25 @@
     "go-stdlib@1.26.10#fd63e883ba2f2bfca93c1646b31ebef63e2b1e4d2b317c9789d976a68d81f36f": {
       "source_identity": "fd63e883ba2f2bfca93c1646b31ebef63e2b1e4d2b317c9789d976a68d81f36f",
       "copyright_sha256": "4a4253253f022d293390e62eb27814cff10dff08a2c00fe9353737969326c665",
-      "redistributable": true,
-      "license": "Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause AND ISC AND OpenSSL AND LicenseRef-Go-Patent-Grant AND MIT",
-      "reviewed_on": "2026-11-09",
       "evidence_member": "netbird/go-copyright",
-      "conditions": [
-        "Retain complete original notices, all copyright holders, source-specific patent grants and disclaimers with source and binary distributions.",
-        "Retain the exact corresponding Go/compiler or linked-module sources and source/notice digest bindings.",
-        "Retain conditional BoringSSL/OpenSSL/SSLeay source terms and acknowledgements where present; never relicense that source under the repository license."
-      ],
-      "scope": "Every original legal block matched a completely read original Go/compiler source notice, including vendored pprof/svgpan, PATENTS and conditional BoringSSL notices. This does not establish whole-distribution source reconstruction or approve other components.",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND Apache-2.0 AND MIT AND ISC AND OpenSSL AND LicenseRef-Go-Patent-Grant",
+      "reviewed_on": "2026-11-10",
       "required_notice_files": [
         {
-          "path": "NOTICE",
-          "sha256": "52a6a9b1783764539bc01aea90b63d2345348831165995451878f019fb209072"
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Go-stdlib-acknowledgements.txt",
+          "sha256": "8e2e78bb762ed632597ec7e8b8dfd9fc7d9da41b6c042bb1b7d6d0e025057d29"
         }
+      ],
+      "scope": "Exact retained Go compiler/standard-library source input and original aggregate notice. All 12 distinct complete original notice blocks read, with canonical Apache2 full-text equality for pprof and the complete BoringSSL version-link difference read. Root and vendored BSD grants, MIT test fixture, Go patent scope and separately licensed optional crypto source remain independent. Parent OS and binary packages independently gated.",
+      "conditions": [
+        "Retain every original copyright, all complete source/binary documentation notices and disclaimers, named nonendorsement restrictions and Go patent grant/termination scope.",
+        "Preserve independent Apache2, MIT, ISC, Intel BSD3 and OpenSSL/SSLeay license scopes; retain both OpenSSL acknowledgements, Eric Young cryptographic credit and Tim Hudson credit with the corresponding source and any covered advertising. Do not rename products OpenSSL or imply endorsement.",
+        "Supply exact source and build/install scripts. Optional BoringSSL source/object licensing does not assert that the distributed client was compiled with GOEXPERIMENT=boringcrypto; actual binary build settings independently establish compilation mode. No GPL relicense of OpenSSL/SSLeay source is asserted."
       ]
     },
     "go:github.com/amir/raidman@v0.0.0-20170415203553-1ccc43bfb9c9#9e36be59edd13e4a4850407e1319c49cc8ff1482f25bc211aa96b21ddec13152": {
