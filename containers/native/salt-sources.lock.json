@@ -375,6 +375,30 @@
         {
           "member": "distlib-0.4.0/LICENSE.txt",
           "sha256": "808e10c8a6ab8deb149ff9b3fb19f447a808094606d712a9ca57fead3552599d"
+        },
+        {
+          "member": "distlib-0.4.0/tests/minimext/build_wheels.sh",
+          "sha256": "3576c841a79603bc9d5b11be4a67db53db71f9f814a326085872b924f1d4caa8",
+          "prefix_bytes": 166,
+          "notice_sha256": "1a59f7cf9c0934e4a66514b7c7c835ed8b7a95ce75c62303a77ce4e9452b77fd"
+        },
+        {
+          "member": "distlib-0.4.0/tests/minimext/calculate.c",
+          "sha256": "4d7e066ce3b69ffc5dbe38986473a55ec0468c7bc143d0a25026dbbf412bad64",
+          "prefix_bytes": 154,
+          "notice_sha256": "f05e7b770ea96617273f97e29e3c707af65a909aad4d08eafc0d42540b30a41f"
+        },
+        {
+          "member": "distlib-0.4.0/tests/minimext/minimext/calculate_py.py",
+          "sha256": "a3586a9480d08eb3cc4e895a28a1a826344291d25e11ad95b565087ba605f58e",
+          "prefix_bytes": 151,
+          "notice_sha256": "ec20e01953b12136566d91d94d483e6440cbb09f3d790ee4abfb8358417fbd88"
+        },
+        {
+          "member": "distlib-0.4.0/tests/minimext/setup.py",
+          "sha256": "ffd29527c3656b9803eb5173b18d8af6bd4c64fc9173c79e3dd29c9a788d1359",
+          "prefix_bytes": 151,
+          "notice_sha256": "ec20e01953b12136566d91d94d483e6440cbb09f3d790ee4abfb8358417fbd88"
         }
       ]
     },
@@ -784,6 +808,13 @@
         {
           "member": "pip-25.2/src/pip/_vendor/urllib3/LICENSE.txt",
           "sha256": "c37bf186e27cf9dbe9619e55edfe3cea7b30091ceb3da63c7dacbe0e6d77907b"
+        }
+      ],
+      "additional_notices": [
+        {
+          "url": "https://raw.githubusercontent.com/pygments/pygments/cfca62e6e95136e48a255e8cbffb0bbe1d98456c/AUTHORS",
+          "sha256": "0660e318a6f215802adc8731ab85d0c65ff27cfcca3f5d28597f306476195bd9",
+          "filename": "pygments-2.19.2-AUTHORS"
         }
       ]
     },

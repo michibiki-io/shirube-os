@@ -16330,6 +16330,76 @@
         "Retain all original alternatives and authorship; no endorsement or trademark permission is inferred."
       ],
       "scope": "Every original named legal file matched to read originals or its complete word differences read. All operative bodies and all remaining file/copyright/provenance/comment fields read. Component only; no parent OS clearance. The GPL-3 short label has an explicit version3-or-later operative grant, which governs the recorded scope; original text is unchanged."
+    },
+    "pypi:distlib@0.4.0": {
+      "source_identity": "feec40075be03a04501a973d81f633735b4b69f98b05450592310c0f401a4e0d",
+      "copyright_sha256": "7e9487e96079a7c1719c29cd1c4b3336f9f3b1fb5d352aa561b86d63b2e909b9",
+      "redistributable": true,
+      "license": "Python-2.0 AND LicenseRef-Vinay-Sajip-permission",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/feec40075be03a04501a973d81f633735b4b69f98b05450592310c0f401a4e0d.copyright",
+      "conditions": [
+        "Retain all original PSF/BeOpen/CNRI/CWI agreements, original author/contributor copyrights, permission notices and disclaimers in sources and binary documentation.",
+        "Provide a brief summary of any Python-derived modifications; retain exact preferred sources and build/install recipes, and infer no upstream trademark/endorsement rights.",
+        "Retain the test_testdist sample original Test User copyright, full Vinay Sajip permission/disclaimer and nonadvertising condition. Preserve the minimext fixture license literal unchanged alongside its actual explicit PSF source headers."
+      ],
+      "scope": "Full original root Python license compared to fully read CPython agreements with every version/history difference read. Complete CONTRIBUTORS and sample custom grant read. The short BSD-licensed fixture literal is not used to guess a license variant: every actual minimext implementation/build file explicitly cites the root PSF license/Contributor agreement, and all four complete original headers are inspected and retained. No runtime feature or test fixture is removed. Component only; no parent SDK/OS clearance."
+    },
+    "pypi:pycryptodomex@3.19.1": {
+      "source_identity": "0b7154aff2272962355f8941fd514104a88cb29db2d8f43a29af900d6398eb1c",
+      "copyright_sha256": "b21d1ac560a990304d315944cf7ac0da5dfa74e8111bd6e1151dfcd58edd31e6",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND LicenseRef-PyCrypto-public-domain AND Python-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/0b7154aff2272962355f8941fd514104a88cb29db2d8f43a29af900d6398eb1c.copyright",
+      "conditions": [
+        "Retain complete original copyright/author lists, BSD2 conditions and disclaimers, PyCrypto dedication/fallback permission, LibTomCrypt notice and Python historical agreements in source and binary documentation.",
+        "Retain exact preferred sources, contributor dedication statements and complete build/install recipes; mark changes and include a brief summary of any Python-derived modifications.",
+        "Do not imply author endorsement or replace original licensing history, attributions or separately licensed per-file conditions."
+      ],
+      "scope": "Complete original authors, PyCryptodome BSD2/public-domain grants, PyCrypto licensing clarification and original disclaimer read. Original Python2.2.3 full agreement compared to fully read CPython license with every historical/version/condition difference read. Component only; no parent SDK/OS clearance."
+    },
+    "pypi:pip@25.2": {
+      "source_identity": "578283f006390f85bb6282dffb876454593d637f5d1be494b5202ce4877e71f2",
+      "copyright_sha256": "9aea7b0e1677258f3135822f411e0f8d70b28e5c45f7b7ff0ca392cfe2dc78f1",
+      "redistributable": true,
+      "license": "MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND ISC AND Python-2.0 AND MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/578283f006390f85bb6282dffb876454593d637f5d1be494b5202ce4877e71f2.copyright",
+      "conditions": [
+        "Retain complete pip/Pygments authorship, all vendored copyright, full per-file permission/condition/disclaimer texts, Apache notices, Python historical agreements and Mozilla MPL2 conditions in source and binary documentation.",
+        "Supply exact preferred sources and build/install recipes, retain modification notices and any required Python change summary, make covered MPL sources available under original terms, and impose no further restrictions on source rights.",
+        "Retain original BSD/ISC nonendorsement and notice conditions, keep applicable source/version boundaries, and do not imply upstream endorsement or infer broader relicensing."
+      ],
+      "scope": "All complete original notices matched to read complete originals, with every full word difference and all pip AUTHORS/docs/tomli-header material read. Original distlib historical Python agreement is separately retained. Pinned vendor.txt identifies Pygments2.19.2; its omitted referenced AUTHORS is retained from that public tag's exact commit and rehashed. No runtime feature or upstream code removed. Component only; no parent SDK/OS clearance."
+    },
+    "build-pypi:poetry-core@2.5.0": {
+      "source_identity": "81d04c9253b19d0604718268d781867c8f7b2128e5b25bbf1e84141eec6b89c4",
+      "copyright_sha256": "0d5dbae0bc4dae95f41ed1481b57b63e30e98f6b4dc162477b6174298cc71087",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/81d04c9253b19d0604718268d781867c8f7b2128e5b25bbf1e84141eec6b89c4.copyright",
+      "conditions": [
+        "Retain complete original Poetry/Lark/fastjsonschema copyrights, MIT/BSD3 permission terms and disclaimers with source and binary documentation.",
+        "Retain exact preferred sources and full build/install recipes, identify modifications and preserve original nonendorsement conditions and separately scoped vendor grants.",
+        "Do not treat SPDX classifier names or generated metadata flags as permission to distribute any component named by them."
+      ],
+      "scope": "Complete original root/vendor notices matched to read originals with every copyright/condition difference read. license.py is classifier implementation code under the root MIT grant, not additional license terms; the JSON has only identifier/title and two boolean metadata fields in every row. Synthetic test license text is preserved as fixture data under the root grant; no permission is inferred from that placeholder. Component only; parent SDK/OS remain gated."
+    },
+    "salt-sdk:xz@5.8.2": {
+      "source_identity": "ce09c50a5962786b83e5da389c90dd2c15ecd0980a258dd01f70f9e7ce58a8f1",
+      "copyright_sha256": "4fbcafb992d437cc38795573718bf5c4e5c28e78463dea5b926adf232fb08969",
+      "redistributable": true,
+      "license": "0BSD AND LGPL-2.1-or-later AND GPL-2.0-or-later AND (GPL-3.0-or-later WITH Autoconf-exception-macro) AND FSFULLR AND FSFUL",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/ce09c50a5962786b83e5da389c90dd2c15ecd0980a258dd01f70f9e7ce58a8f1.copyright",
+      "conditions": [
+        "Retain all original author/contributor notices and complete per-file 0BSD/GNU/permissive grants, exceptions and disclaimers in source and binary documentation.",
+        "Supply exact preferred sources and complete build/install scripts, preserve copyleft source access, modification notices and any LGPL replacement/relinking rights; retain all full original GPL2/GPL3/LGPL2.1 texts.",
+        "Keep liblzma and regular command-line tools under their actual 0BSD scope; separate GNU getopt and gzip-derived scripts retain their own LGPL/GPL terms. Preserve all generated build-script exceptions without applying them to unrelated files."
+      ],
+      "scope": "Complete original AUTHORS/COPYING/0BSD grant and checker code read. Full original GPL2/LGPL2.1 word differences read; GPL3 matched read complete original. The unmodified original source license checker passes in a read-only bounded native container, including original per-file source tags; its explicitly skipped generated files are not independently certified by that script, and retain the original GNU build-system scope described in COPYING. Component only; no parent SDK/OS clearance."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

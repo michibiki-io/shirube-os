@@ -1,0 +1,41 @@
+{
+  "kind": "exact-pycryptodomex-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "pypi:pycryptodomex",
+  "version": "3.19.1",
+  "source_identity": "0b7154aff2272962355f8941fd514104a88cb29db2d8f43a29af900d6398eb1c",
+  "copyright_sha256": "b21d1ac560a990304d315944cf7ac0da5dfa74e8111bd6e1151dfcd58edd31e6",
+  "original_notice_members": [
+    {
+      "member": "pycryptodomex-3.19.1/AUTHORS.rst",
+      "normalized_text_sha256": "6aeb8dfd74107a9bf1c35063b1e708058da591dbe8a7c04ff2a7356a2385c8de"
+    },
+    {
+      "member": "pycryptodomex-3.19.1/Doc/LEGAL/COPYRIGHT.pycrypto",
+      "normalized_text_sha256": "bcccf842ef724e81f04754e867fc6a0b2c0330011192a23c32e52cc344712865"
+    },
+    {
+      "member": "pycryptodomex-3.19.1/Doc/LEGAL/copy/LICENSE.libtom",
+      "normalized_text_sha256": "f93c7b684f5504cd291459c70909d779f369103245a30d30b8821d13fb6c0c05"
+    },
+    {
+      "member": "pycryptodomex-3.19.1/Doc/LEGAL/copy/LICENSE.orig",
+      "normalized_text_sha256": "2fb23fa13b8722810f31859c803ecf16cc6d2c2ce3d082e6dbf4d25fa2b4fb70"
+    },
+    {
+      "member": "pycryptodomex-3.19.1/Doc/LEGAL/copy/LICENSE.python-2.2",
+      "normalized_text_sha256": "fdf4152a7eb89d6201a9e908e365844fa710dfc0b669a5e843dfe9bf38d01198"
+    },
+    {
+      "member": "pycryptodomex-3.19.1/Doc/src/license.rst",
+      "normalized_text_sha256": "576b268dd25f774ffc2c784a3311b6bcd3589567e8629ad7e362f92c9a82bc8c"
+    },
+    {
+      "member": "pycryptodomex-3.19.1/LICENSE.rst",
+      "normalized_text_sha256": "58169723918bb7b4f30ca5a552e9f7ae4c2bf2fc0a1918db47ccce2a4fa01a1a"
+    }
+  ],
+  "scope": "All actual operative grants, authors and full Python license differences read, original dedication statements and licensing history retained; no parent SDK/OS clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

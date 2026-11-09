@@ -1,0 +1,98 @@
+{
+  "kind": "exact-poetry-core-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "build-pypi:poetry-core",
+  "version": "2.5.0",
+  "source_identity": "81d04c9253b19d0604718268d781867c8f7b2128e5b25bbf1e84141eec6b89c4",
+  "copyright_sha256": "0d5dbae0bc4dae95f41ed1481b57b63e30e98f6b4dc162477b6174298cc71087",
+  "original_notice_members": [
+    {
+      "member": "poetry_core-2.5.0/LICENSE",
+      "normalized_text_sha256": "bf647c60d72f3beb623637d0a7be3be7d7b21a241ce55c82685c2c9f491407ed"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/_vendor/fastjsonschema/LICENSE",
+      "normalized_text_sha256": "14869cb559366ca52112be1bdaf5b842c3ed15195b81c84e858cd84507399845"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/_vendor/lark/LICENSE",
+      "normalized_text_sha256": "843cd28b681bdb7e175ff162a5f7b61e2b8e19811cb5817a34d6c01b2a1c298e"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/_vendor/packaging/LICENSE",
+      "normalized_text_sha256": "4456c8e282202cfddd8665522fd320e8b7f64d8a1f7d9abfd7802080576cf117"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/_vendor/packaging/LICENSE.APACHE",
+      "normalized_text_sha256": "59d8f0ba87ad9a2f1a431123c8d16646e5b89ba53653e818f16d136d77263c99"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/_vendor/packaging/LICENSE.BSD",
+      "normalized_text_sha256": "13c6a3608faee72d1b3a7aad6d1c8036408ed82d9a28a7cf0ef87d6acc4f91c9"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/_vendor/tomli/LICENSE",
+      "normalized_text_sha256": "dac5dd6340285211dbcd0e7e6c218eee42ea598928803917e8237be43e286184"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/spdx/data/licenses.json",
+      "normalized_text_sha256": "54f111a022e8fbb9bd020b73e9184381790d9a59c71bc740b047c922455e8a46"
+    },
+    {
+      "member": "poetry_core-2.5.0/src/poetry/core/spdx/license.py",
+      "normalized_text_sha256": "d609a9706249e6f585f97b47dfe5814d9de8d79ea4236c0e13a1b8fe08881c80"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/fixtures/with_license_type_file/LICENSE",
+      "normalized_text_sha256": "bf96589d969fd86ab3fd138f73a5a27fa41fdaff53795790bbb28efbaa3453f7"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/case_sensitive_exclusions/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/complete/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/complete_dynamic/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/complete_new/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/default_src_with_excluded_data/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/default_with_excluded_data/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/default_with_excluded_data_toml/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/exclude_nested_data_toml/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/invalid_case_sensitive_exclusions/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/licenses_and_copying/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    },
+    {
+      "member": "poetry_core-2.5.0/tests/masonry/builders/fixtures/with-include/LICENSE",
+      "normalized_text_sha256": "e536e298278973898936a694bb9f39d677203449f2889b415424924f613f16c1"
+    }
+  ],
+  "nonoperative_spdx_metadata_rows": 737,
+  "scope": "All root/vendor legal terms and full word differences read. Classifier code read and all JSON records structurally checked as metadata, not operative permissions; fixture text retained under root grant. No parent SDK/OS clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
