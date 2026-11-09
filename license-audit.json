@@ -17112,6 +17112,30 @@
         "Preserve the source-export manifest and original-source identity, all nine excluded member hashes and both original/modified build-control hashes. Do not distribute the raw upstream source archive or claim the incomplete upstream check suite passed."
       ],
       "scope": "Complete original root licensing/author notices and 86 actual C/H leading legal headers read through complete deduplicated bodies plus every attribution prefix. Overall library LGPL2.1 and separate source grants retained; the original licensing inventory is supplemented by actual headers where its file list is historical. Only the exact source export is cleared: nine existing source-only tests explicitly listed with unknown individual licensing are omitted, two all-am noninstalled header lists adjusted, all library/algorithm/public header/configure/install code unchanged. Normal native library build/install passes from identical exported bytes on both architectures; no installed SDK byte reproduction or full upstream check-suite claim."
+    },
+    "salt-sdk:tirpc@1.3.7": {
+      "source_identity": "b47d3ac19d3549e54a05d0019a6c400674da716123858cfdb6d3bdd70a66c702",
+      "copyright_sha256": "c0a328005242f87601dac3c45d9bbbd41d4bfc2e9a905feb5e7ae1686e052b76",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/b47d3ac19d3549e54a05d0019a6c400674da716123858cfdb6d3bdd70a66c702.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/LibTI-RPC-acknowledgement.txt",
+          "sha256": "3f986183c3614bf08f8d2cec26cec2dcdeff5ca0934789c6213a4475a292ecb4"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "conditions": [
+        "Retain all original Bull/Sun/Oracle/Michigan/NetBSD/individual copyrights, original complete per-file permission terms, authorship, disclaimers and named nonendorsement conditions in source and binary documentation.",
+        "Retain the exact Bill Paul acknowledgement with all advertising materials mentioning the covered software features/use; preserve full original BSD4 terms without replacing them with BSD3.",
+        "Supply exact preferred sources and complete build/install recipes, preserve modification notices, full LGPL2.1 text and library source/replacement/relinking rights for the explicitly LGPL-covered DES implementation."
+      ],
+      "scope": "Complete original project COPYING grant and AUTHORS read, with 105 original C/H/X legal headers read as 12 complete deduplicated permission bodies and every attribution/provenance/context prefix and suffix. The project-wide BSD3 grant covers files without a repeated per-file grant; explicit BSD2/BSD3/BSD4/LGPL2.1 overrides remain separate and intact. No functionality, source code or protocol is removed. Exact component only; parent SDK/OS remain gated."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

@@ -46,3 +46,8 @@ IP Geolocation by DB-IP (https://db-ip.com/), Country Lite November 2026.
 Original CSV is provided under CC-BY-4.0; attribution and complete terms are
 retained in third_party/geoip/. Shirube OS converts the data to native SQLite
 range records with lowercase country codes. No endorsement is implied.
+
+LibTI-RPC retains its original Bull, Sun, Oracle, BSD and LGPL notices.
+This product includes software developed by Bill Paul.
+The original BSD4 acknowledgement must accompany advertising materials that
+mention the features or use of the covered software; no endorsement is implied.

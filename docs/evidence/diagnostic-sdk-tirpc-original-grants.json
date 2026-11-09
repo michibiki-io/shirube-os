@@ -1,0 +1,668 @@
+{
+  "kind": "exact-tirpc-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "salt-sdk:tirpc",
+  "version": "1.3.7",
+  "source_identity": "b47d3ac19d3549e54a05d0019a6c400674da716123858cfdb6d3bdd70a66c702",
+  "aggregate_notice_sha256": "c0a328005242f87601dac3c45d9bbbd41d4bfc2e9a905feb5e7ae1686e052b76",
+  "original_notices": [
+    {
+      "member": "libtirpc-1.3.7/COPYING",
+      "sha256": "17cf6098f95bdbb269f0bbc68e76c88fe20487ca7ec53f454923ab4256ecd2e7"
+    },
+    {
+      "member": "libtirpc-1.3.7/AUTHORS",
+      "sha256": "78d69a6438e771a3154785d7764e1805680cc4d2717d4b05655aa63aaad0d140"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/un-namespace.h",
+      "sha256": "c9492efd11c4f83b963a1c0f45619706a9dac90fc014ded85eef06bb0e3a7f26",
+      "prefix_bytes": 1471,
+      "notice_sha256": "09e293125b622df1812d910dd2516055225f8229038b0d7992a79eb5491167ce"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpcsvc/key_prot.x",
+      "sha256": "21864bcfa4a8445e1935b5780dd60712df9487566ab77fb5b4ece5d3c7c82e77",
+      "prefix_bytes": 2167,
+      "notice_sha256": "b52c546925ed05bb6751ede9e1691a6b533497203f834fa513bb20beec2abe18"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpcsvc/crypt.x",
+      "sha256": "8509fd2159e9de3b87494adf8d2fad6540220ba8fa5c739c0f52268723535c27",
+      "prefix_bytes": 1767,
+      "notice_sha256": "9b3087d9c25ae3ca1aaebc775e3f0e2cc6c2310d2865ee5835df36f64415de0c"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/xdr.h",
+      "sha256": "01222a95488595e35cb5906c2de57c94a6259b35cd5d89b6ecdeca293e3eed43",
+      "prefix_bytes": 1916,
+      "notice_sha256": "f689423f403ed2a94c82d5faebcd916e7d2ee4c847461b9bf26d62f2dafc908c"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/types.h",
+      "sha256": "2d4687cf177197f252b631deb4cb57ea5b5b31a5c9e0f91c1b6276399ad41b28",
+      "prefix_bytes": 1852,
+      "notice_sha256": "83edef18fd2148596e85edff3c2fae6d351e7d268a0ff1508e9cf009f1a87e55"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/svc_soc.h",
+      "sha256": "2feca2d3709e2b9e7b43202a22c43bf187a547dc646c5b21b6c70e89cbaa623e",
+      "prefix_bytes": 1844,
+      "notice_sha256": "eb0eb71d06c4fb99ed2a4dfd681f353a45243d277bdbb00463e247923b50736b"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/svc_mt.h",
+      "sha256": "0e4676550786234922f6401aae8dde1bb7986c0e0753f05d302b4dcc7720dfc4",
+      "prefix_bytes": 1432,
+      "notice_sha256": "73ff2e92ba124dea085eac6dc5a0e241460e12ce823a63131f761707360c19f5"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/svc_dg.h",
+      "sha256": "dfaabff2866f7c84d6a3396d5d4218905b6da5ccbfb60e4f119563f1c777df23",
+      "prefix_bytes": 1936,
+      "notice_sha256": "f0c05d1679d8a35acec0404d8de972769c0e9edef59ef96c39d2b12c4f639132"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/svc_auth_gss.h",
+      "sha256": "70256da717f079234b3ddad04a6eb2707a53c99e9d1d8f8eaf1ea8736ab08bca",
+      "prefix_bytes": 1576,
+      "notice_sha256": "876e0a3aa18f9c8c9ca3c0e1955de42e6335732d37e66bffc1449f0bb83066cd"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/svc_auth.h",
+      "sha256": "6d00b315491a94b223d661923607dddda718d0627f804209c6a9f8cbc724679c",
+      "prefix_bytes": 1913,
+      "notice_sha256": "bb063102bcf9b2909e1179c67c65d0674c0472b1423eb46f1175b41d06fe72e9"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/svc.h",
+      "sha256": "f8d6e4086043363750b94d02fc26c07e37a4b8e14143604f83caa8e0910a75a9",
+      "prefix_bytes": 1914,
+      "notice_sha256": "90aa005d7943f4de7fe7e4f2109e4a756341458aadcb4cbbdf83b7cfe7bbac3d"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/rpcsec_gss.h",
+      "sha256": "5732dfbaf8ef732a285ba4cdd71023cdb73c0329958b15eacd346c998bbda566",
+      "prefix_bytes": 1576,
+      "notice_sha256": "bef0fadad0e3ee1e3fdb25591c26534f8f3414ed38c3c51bdfdfaec9e9df3ab7"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/rpcent.h",
+      "sha256": "37c0e05ecf16a24f1ba67dd59f872b3a6ad50db0853ef9df4b272ebd6e55883c",
+      "prefix_bytes": 1855,
+      "notice_sha256": "9a941cdcb3e88d544b7940819f8e9086263a812de6f71c87b957bdfc2d2741cd"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/rpcb_clnt.h",
+      "sha256": "caa9969ba9af86b633ef28bdffa52888bff85ff47ea9887584b3b29035d09bce",
+      "prefix_bytes": 2326,
+      "notice_sha256": "0cfdfd18e10a91f88b275ff1bb33fc710bc46bd31f1d69c81d7b7d8edf162c09"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/rpc_msg.h",
+      "sha256": "589af4b9d3c2236fb7b5ecdc81b8be100bef16353c1de0190e84d5a0124e6c9a",
+      "prefix_bytes": 1909,
+      "notice_sha256": "57b2fb1074e7cd9ace3c3fc29bce61b7f58733cef577f3d8e307d8c2b074cf5f"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/rpc_com.h",
+      "sha256": "e59cd4008e4adaeeab0e2f9477ab0fce4da9b22a1fad705e8526671efd332f2e",
+      "prefix_bytes": 1902,
+      "notice_sha256": "52389f2909093f12459e6ce7a56c50d0744b35b843f0a4a58300c78c87195fc3"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/rpc.h",
+      "sha256": "be0dbdaa0e433b40f748731107306ddf7587152e7ae835839b3544ed78385caa",
+      "prefix_bytes": 1737,
+      "notice_sha256": "13396a60edd7711a6f6efe355e0502962ff2bd066230eb9b3ce5da39c9200c6a"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/raw.h",
+      "sha256": "9688f209a2d96be18fe0ba5da432760b8095529b4b5a11a5b151cfbb371172df",
+      "prefix_bytes": 1776,
+      "notice_sha256": "815eaeb201eb3dffc5df693f9da800c1250390d479208fe618c76222011c89ed"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/pmap_rmt.h",
+      "sha256": "89193014f05f95ce90d1a40834389ea7dbfeab07ee668bdc3f7817c94fe9038e",
+      "prefix_bytes": 1974,
+      "notice_sha256": "dca418b2bce85faf0835f1437f9ef608e380f6d79edf6ba79baad526e2f86c5d"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/pmap_prot.h",
+      "sha256": "466b36cadf08a30d097a47a2c5495869392a4e1592005b686c9e4c427a5ef1b5",
+      "prefix_bytes": 3183,
+      "notice_sha256": "2b20ba8564717515fb0fedacf2f649b38d5fa19b46ba3e29ba3a1d3567a7f1f3"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/pmap_clnt.h",
+      "sha256": "2f5e6163c3cb3d0184391314dc624c5a4558d56477b8f7bf1b692c8dc115687b",
+      "prefix_bytes": 2791,
+      "notice_sha256": "6902b8723554a83f12318a94277a26b9a8fdcf14a16da9c966fbdb759a9bf9b2"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/nettype.h",
+      "sha256": "3cf334018dfb19a7861fdbef4341615e8cafc8a15abf4065d240e70def63c72f",
+      "prefix_bytes": 1867,
+      "notice_sha256": "c0592d90a51958105cb57bf307086b2b948565be124b09d957b96aac24ca1458"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/des_crypt.h",
+      "sha256": "9fb9973b4c59548fc8c727985ccda671246cb496f0526716c54db8ab1d2c0cce",
+      "prefix_bytes": 1948,
+      "notice_sha256": "2c2e5669786446daaa5492d6d1ae146894640372d846e30bcd86902844ade753"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/des.h",
+      "sha256": "969017886450896f94eda7883ada86014aa961c984c3816dfa66129cc92512fd",
+      "prefix_bytes": 1844,
+      "notice_sha256": "a18fff183bc26ff7ebc8770b39f3c623303e364a6d5d8bc1b6113b3fd10cd68f"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/clnt_stat.h",
+      "sha256": "a3334e901d119c5d0aa6baf1fe0f85cd33193df717c96674bdb7f4f52ef855e1",
+      "prefix_bytes": 253,
+      "notice_sha256": "9ba37580cd7696e5f29758db15b1ba5cc6a5046d26f6b7015e57cef2df6db5bb"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/clnt_soc.h",
+      "sha256": "40363fd7796f3cf66c9fbbbbd09371660954c0f6d6a1cd5ef54078571c98b638",
+      "prefix_bytes": 1848,
+      "notice_sha256": "687a935a61c6b9ffce57c761a1a4b760566fe3877ffe89f739b72d5debf6392c"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/clnt.h",
+      "sha256": "ee2ffe1dd52191c62b62d0e23ffc091a57e9d349a6cee727a0549fbeb288ec52",
+      "prefix_bytes": 1865,
+      "notice_sha256": "5a8a22b02171cf14061ce1f156d7964da749a4ecac7b176bf16af2f7e1f1d618"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/auth_unix.h",
+      "sha256": "2525ee43d352e23aa755f7a4ab2bb92a895fb281dcdecc618a7f7b4e631c375d",
+      "prefix_bytes": 2124,
+      "notice_sha256": "e7aa294a4cee9be801ee7114a9d6fccf8d31a34a20b3fccb4bd4a04b568fc61e"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/auth_gss.h",
+      "sha256": "afd17dea49f744049c8a8628daa7851816174f027536a36430751847bab12232",
+      "prefix_bytes": 1638,
+      "notice_sha256": "66ee206b1bdb237b113e90ca8c50a5162de9170cdb0dfed6127f5c9ac6702eb1"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/auth_des.h",
+      "sha256": "9c8b94265773100bcf451ace338c2b7b2804738c41f3e77afbc11446362452fa",
+      "prefix_bytes": 1954,
+      "notice_sha256": "7f144cbad89a8ccbbec08526b89b0c3e2e778746ec42eea8036ff4529da0df6b"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/rpc/auth.h",
+      "sha256": "9d03bbd02293d95c7b52ddbf206078b37dca60e459cd22dd31492dad3cf68766",
+      "prefix_bytes": 2086,
+      "notice_sha256": "7dca3eee3636797edd22a98dd344a4997587ae5d10083a5d5f2a00d2fc026d5f"
+    },
+    {
+      "member": "libtirpc-1.3.7/tirpc/reentrant.h",
+      "sha256": "184f860f8eaa32fdc0e91643eb9b16d82907a3842d8455aeb2cc2138783ea9d0",
+      "prefix_bytes": 1819,
+      "notice_sha256": "d29f0b35cbdc75d354bea92beef2566f658769caa32432e21f9230e7839a5cb9"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr_stdio.c",
+      "sha256": "0e1c4d293111ea888d96df2a54f3a8c08f25181cf5dfdf6ee9502c63187263b9",
+      "prefix_bytes": 1843,
+      "notice_sha256": "8bb774e486fa9da975af9ed122b6be023a428c02f32d522e76d96858e57cca3a"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr_sizeof.c",
+      "sha256": "3e6d2eee901a4beb9e40be6f06fde937e298f933af7bdabe5268e28e955944df",
+      "prefix_bytes": 1746,
+      "notice_sha256": "f81ad91fabf7b3a4108f95ffb8da2fc72a79ebcfcd08dc0ac1c7d77815f90854"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr_reference.c",
+      "sha256": "9caf685218cdfdacf949ab99f743751dae54b6fce8a5d3074ef2aff38eb9f5cd",
+      "prefix_bytes": 1842,
+      "notice_sha256": "ea68432afcf6b33de76cb6883eff0f07b01cd63590b670a1c3226ba935120391"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr_rec.c",
+      "sha256": "d932e277eb2692bbefb123fd75039968f082a0868140a1a4a789cb9310d816f7",
+      "prefix_bytes": 2336,
+      "notice_sha256": "a135b9f54386969ebb43233cbb35ef0c30e668a29da65c26fd6c1891be63a6d7"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr_mem.c",
+      "sha256": "f38cd7dbad164f19bd17f4a339d3c2a0b011f9aaa10dcb88340d624e27c4bc24",
+      "prefix_bytes": 1883,
+      "notice_sha256": "30f9065cea653ab3cd64ad79b2d9910579bcb68b5ac3f233402d068069d95fab"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr_float.c",
+      "sha256": "78a3848cba753c402dc16afa8bcd31340dec2e2d9adc3cec88be66515d066066",
+      "prefix_bytes": 1842,
+      "notice_sha256": "16439002057fa8a0bf3a202a46e9b01bdbeda6e73e8af936746151188cae9f06"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr_array.c",
+      "sha256": "d86bd1464d63326a136d3a92376664bd6920412cdb78a3fb447a560addcfb780",
+      "prefix_bytes": 1835,
+      "notice_sha256": "0aa73ed133aa1ab2f08df2a6403a4545deef35aca66abc06f6c929ef18f78e6c"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/xdr.c",
+      "sha256": "9187614f595dd510c39d3ff616fa75c03f9b1b603aead5f15380d06111b9bafd",
+      "prefix_bytes": 1841,
+      "notice_sha256": "3a433b715006c0a6ac668e5ead76020a8ebdc0198833329f39516cc5004d5ef0"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_vc.c",
+      "sha256": "243a62f8ed2233ef17e4d30fcefc4c7c611b97b2bccdb42a18345a51b6acbdde",
+      "prefix_bytes": 1793,
+      "notice_sha256": "91565268d83fb446866db41d8fcf701da7b6c0bb489e54a9a10ae1233a8f078d"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_simple.c",
+      "sha256": "d48c09f748388f53c3294eb9360cde7bc0f889420f8d7e3eaf21a4c441c74e82",
+      "prefix_bytes": 1934,
+      "notice_sha256": "483690d4584152dfcbfb777206b6bba5c0bdc1b482638fd88534398c2733bbae"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_run.c",
+      "sha256": "08b800192f7171416347d0cf5815b1287807293fee1fb12da1d5942e0ae228e2",
+      "prefix_bytes": 1667,
+      "notice_sha256": "7ef6de1704b8a530f71e2a9956d58feeac4c1cae32e3bd6d3a7d99a395b6461c"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_raw.c",
+      "sha256": "7355c118dfa0479f9b795b24bda213611353437ec27d600fc581c8dfd286b361",
+      "prefix_bytes": 1891,
+      "notice_sha256": "b387fe80606b99ffd67e409ab9b1cf6479be555b82db11d0996f4ea30fef7e93"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_generic.c",
+      "sha256": "8069d2d495a4f1dc39878f51391980ce6dd9b702d5dd8cd4cf540615403744a1",
+      "prefix_bytes": 1689,
+      "notice_sha256": "233f0f9b50fbdfb7948d5fc5f164491f92cc9f218166889e989573aba35fd18f"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_dg.c",
+      "sha256": "374fa5d332207348cd0426ffc223c539502142e86d3af6b03d7d7bb5a2e254a8",
+      "prefix_bytes": 1779,
+      "notice_sha256": "7e24e6ba2ac30a4b83ba44a6d3a4372f72c847ed8988b8335cd188ed969057a7"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_auth_unix.c",
+      "sha256": "7f0b8ef5413401684012c95d7c0951006245ef1d23b28c8f4142779e425dee5d",
+      "prefix_bytes": 2004,
+      "notice_sha256": "d36b4f7a1e02795ca048930caf79bf0c6ce8004a0c8c552f271e069329b677ca"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_auth_none.c",
+      "sha256": "5f9df0d807236b514b5a521567a34709ca210011667a1995cd8b4737ec7a80f5",
+      "prefix_bytes": 1703,
+      "notice_sha256": "18735de67b98747d96f2fede5152ebb915d9189e8ee96ab3a373fc6e7fdb247c"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_auth_gss.c",
+      "sha256": "7fb1067530069373b14b3f079495fc16e79bf8cbabe5ee6b0909db7acad081dc",
+      "prefix_bytes": 1639,
+      "notice_sha256": "0b9980d1f15bfb25695ea5c1687cd2c95e87ec6257ef5ed55f8f1494b25c31a7"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_auth_des.c",
+      "sha256": "19b794a225583beaaeadd2a5e1ca0ec3e870b7989b2fd96d0820f7d4f9f8ee6f",
+      "prefix_bytes": 2041,
+      "notice_sha256": "6acadc228662278d19d477e2b528d4b25d44a11e99e06200ff645b8994f5b4db"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc_auth.c",
+      "sha256": "d6a98a1b08310d2b343aa196b55946cbac569a842092ee037b9eb3264e2084b5",
+      "prefix_bytes": 1706,
+      "notice_sha256": "1ea16e6549632d18b4168a8d9c7ca5250c7c3e3bb08dcb0bd097dede686f38a7"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/svc.c",
+      "sha256": "9b4d53cbd5418ea1b7b034e33f44d93a7e3295d8861363ffc58fed585f533b3e",
+      "prefix_bytes": 1852,
+      "notice_sha256": "b46757728b6e399c93aaa8978e7194d04eff3baee948a00a625323de6b0e8085"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rtime.c",
+      "sha256": "bc509e43ec68300397887ac54f21c8323d5f1f8ce4cf6a6bb7f80ab3e270a3c3",
+      "prefix_bytes": 1900,
+      "notice_sha256": "72e9114362bb8c11c42a656606fac72ca5dc0c1d99639de14cf939a96fa34328"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpcdname.c",
+      "sha256": "95999da258b296212e09d0228230776f3b2e70f74b06987a798903d80d34cb0c",
+      "prefix_bytes": 1632,
+      "notice_sha256": "687cb413be63381931b0b2a57f06e54d2f02e421ddfea377df28004911df970d"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpcb_st_xdr.c",
+      "sha256": "86be2a0d71fe75cc47a5550352dbc1162dc03f620a4e4afdac55e304839e67f3",
+      "prefix_bytes": 1772,
+      "notice_sha256": "d034aff52457f0ad95430a105fe08d7f0f74a321616828da42c40e2184901f45"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpcb_prot.c",
+      "sha256": "382ba3e557ebb922c9e099e02852ad17aef4a1e5518bf4e72dc758a7db65c89b",
+      "prefix_bytes": 1762,
+      "notice_sha256": "1cd5ca75e40e820da2759b83efc7a0ac35117090b48889a1a2b58ac4529a443c"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpcb_clnt.c",
+      "sha256": "9acc9c21dd4c4cd2b4725273eded9c4d3e5b0e623a61f61beb2b1ccf6ff711a0",
+      "prefix_bytes": 1640,
+      "notice_sha256": "b73fe571153bd717c54e53fd4dfd4d9377b4f03e3de8b9bac249e67e8b82665c"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_soc.c",
+      "sha256": "e3f421b8314d7c3e0ef88cebfeb1a6fd2c0b2be609aef6811c2cd8fdc3775a93",
+      "prefix_bytes": 1789,
+      "notice_sha256": "8160665dc221d3c6f470c497a5f29cfbae97d984076fb7ae78f8c914ec9c9efa"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_prot.c",
+      "sha256": "1c4d2404b0472a5d8c55c3ba612148c1d41476f3d270f4126d3a54fcc2f3a769",
+      "prefix_bytes": 2010,
+      "notice_sha256": "2fabfeb4cc9e5d41e09c29cdef267c5b148fec4b2c51bb466e18117c27e8c9a4"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_gss_utils.c",
+      "sha256": "2d45579f8e1684a9a5204918e910099999aab0764c77e21a32e9eea8b2ce46e9",
+      "prefix_bytes": 1576,
+      "notice_sha256": "bef0fadad0e3ee1e3fdb25591c26534f8f3414ed38c3c51bdfdfaec9e9df3ab7"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_generic.c",
+      "sha256": "fc5ad22253c53ff4a5f72dcf2ea9adbefe16aafd2abd2c26eaf04b98adf7f48e",
+      "prefix_bytes": 1692,
+      "notice_sha256": "c7e89d72c898d243d62b405645cd54913c850b3ac458110e8deec9259910e160"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_dtablesize.c",
+      "sha256": "0d6955e5374abca3f4b092bc3a7235cd229b55bbcb36b86e1315eced752f9852",
+      "prefix_bytes": 1578,
+      "notice_sha256": "0a223225a1a77e38019fd6e5bfad67c900293a1e8446aa4b991248ed2e2f6c96"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_commondata.c",
+      "sha256": "1c89eb5dcfae9f864f5e4a2395ea3add068cc91f7e4c896af66c978fe77846a3",
+      "prefix_bytes": 1578,
+      "notice_sha256": "0a223225a1a77e38019fd6e5bfad67c900293a1e8446aa4b991248ed2e2f6c96"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_com.h",
+      "sha256": "6ebb8855524b478a667c8107a66142796ec22be2cf1157c130bac36e95dbe056",
+      "prefix_bytes": 1899,
+      "notice_sha256": "5c7fb6f99166ca4d03cbd524538ae0c202ddc33c950ac27cd73c921956c90802"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/rpc_callmsg.c",
+      "sha256": "5127475aa6bf2ecf999ac68b7d8f67090305a5de82a26ee8e4941407f560cf9a",
+      "prefix_bytes": 1655,
+      "notice_sha256": "1a788032f12a38552702d0b97a177d07455810eef63fab9431c8ab8c65321038"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/pmap_rmt.c",
+      "sha256": "db3c079fac73b9f414e083e79eff33a1479037e2c9d8feaa951bccf48073c117",
+      "prefix_bytes": 1727,
+      "notice_sha256": "858a6f95f08260eb0b94a06329a9e19429b5283985f9dbf052b03b10676aa3bc"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/pmap_prot2.c",
+      "sha256": "2b98454b6c69117aac411854ec2cae1e14eb63a57f34810c2de4f0d12f747cd5",
+      "prefix_bytes": 1702,
+      "notice_sha256": "b632ee94460dbed1e49e70850aa89a2e2dfcd32ed31c0f69dd69278d59c7f7d4"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/pmap_prot.c",
+      "sha256": "32913a90cae422b96cafcac26c58c1722e5d0042a8ff3bf0f673c06d928409bb",
+      "prefix_bytes": 1701,
+      "notice_sha256": "278e04991a74ca2ca54a418f98b4878488b5d1f3c780dbe5e39e2505bb707742"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/pmap_getport.c",
+      "sha256": "1fa4942d8021050dbc05a55eeb3bb6b76a4df09e78deb75559dadca625a22581",
+      "prefix_bytes": 1693,
+      "notice_sha256": "e80a8597719a9c75b5f8e42884b30aadc9ad318de24afdc1dd082adbf7fa0363"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/pmap_getmaps.c",
+      "sha256": "9c7fa5318b4b9620f0695372cc80f8f7a0c201eb04bbfc16f95378b39833d9ee",
+      "prefix_bytes": 1755,
+      "notice_sha256": "d322c3816f8b48835a7cb481cc8d6bb2c593c4bfc1aa911eb78774d7159aafd4"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/pmap_clnt.c",
+      "sha256": "467ba658539080353518663e7ecdc088537b4773389576a51d01f4b637253b9a",
+      "prefix_bytes": 1692,
+      "notice_sha256": "1dde177c9bc65a794e2e2a87783517267c122b4784e7e0e226acdc838bfdceea"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/nis.h",
+      "sha256": "430989221aa0c6a8f8ce43e96504c0e021927e8399d160f5b48ddea2501aa56a",
+      "prefix_bytes": 1630,
+      "notice_sha256": "c69fd9df8bf525545f7d9e0377df0d7f326b5464fa10b59e80ed2018c8f716f4"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/netnamer.c",
+      "sha256": "fe92ae1a103ee0193d7c6ccc74d4a4775f93010b384b5dd9dd3c1221991fb4bf",
+      "prefix_bytes": 1823,
+      "notice_sha256": "933f7020f6df6a82c067a20d31c57b1ee8e6166acae9c76c13029508d971460f"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/netname.c",
+      "sha256": "0ecad841a024a9d6aeef014971727e581401ad99132241a539831a7014f0cadc",
+      "prefix_bytes": 1826,
+      "notice_sha256": "d3b17b28feffdf7ec0d00efec3e1a56132f1eceadfca68d34934d9f52519ded2"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/key_call.c",
+      "sha256": "461062b8d8368f2b3bde0621e4ebe7f4d246446a419fd3dfcc99a38aa58a4e05",
+      "prefix_bytes": 1910,
+      "notice_sha256": "26f17534be5227146ccd7ee99f380f570c96165fd15eac8c5d4109a743c4d261"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/getrpcport.c",
+      "sha256": "a9a995b5dfb6403542d18e68bd769fe1f5f09cdd31fbc4834e2ead76ab17eee5",
+      "prefix_bytes": 1635,
+      "notice_sha256": "1a1f0926e12d35d9b6b72ff56dbb4e4ab90d39ac21bd714a3f4888069480ac72"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/getrpcent.c",
+      "sha256": "8ffe127fbcdd6caf4cfb8f2541ceab0c35d07054798558c1db5083e56e64893d",
+      "prefix_bytes": 1634,
+      "notice_sha256": "d19ff695afa737aa9a768ac9b831138562f6eaab3d13db5588b83f612fcdacb8"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/getpublickey.c",
+      "sha256": "7f5cebe4864fe320c2b89372a3a139e8f9c8d92e4adafedf2eec5da78c7d668d",
+      "prefix_bytes": 1685,
+      "notice_sha256": "f8d644adc23ab80135d8636e2281a3c71f4f4e24124a66e7ef9354fe595b3520"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/getpeereid.c",
+      "sha256": "27e19a59b1c7080bef4d2acc75781e01fa77511780c51a861b8334927620ee49",
+      "prefix_bytes": 1353,
+      "notice_sha256": "fca56d77250ece89eddb5951fa1d16f45fbd2d379cb69c4865e22de2bed6ab3b"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/getnetpath.c",
+      "sha256": "46494c2cd4c9b02e9e9775063e724b8c0be522485600bf67426328b881a36be7",
+      "prefix_bytes": 1634,
+      "notice_sha256": "9effa73b0b1b21436c053baea3209b7cf8ab3e50513c5fc816b3c2fa13b13242"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/getnetconfig.c",
+      "sha256": "8d4d82f096b407f59799ebd27b51ae9a63b982de9c0ca62fb5b81856ed053de4",
+      "prefix_bytes": 1634,
+      "notice_sha256": "9effa73b0b1b21436c053baea3209b7cf8ab3e50513c5fc816b3c2fa13b13242"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/epoll_sub.c",
+      "sha256": "cb406d1c48a3cab96b86659aba1e3fe2afa53ed36fe245cc3c762df8336e9299",
+      "prefix_bytes": 1487,
+      "notice_sha256": "aa38436aff814954c2692a783bf5c16df55ad9d6f8155be3b442b4989c317509"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/des_impl.c",
+      "sha256": "98e829d5cc603c94802226607bde2d3dcd0e5a9e595ece55aa5e123b27194c26",
+      "prefix_bytes": 402,
+      "notice_sha256": "fb928a5e90a98fb856a7058a6e41e4d2d455c76eb05fe447dad03868296a85a9"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/des_crypt.c",
+      "sha256": "3e9da440c7a6c694d5727ee9c4fae308feb13d8fb60a14cb2666cdbe818f909e",
+      "prefix_bytes": 1679,
+      "notice_sha256": "0ab6110e80bd7266a639bddaf1a4e7a390baf58456c981e5a5f2d7a9dc52834f"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/debug.h",
+      "sha256": "58364fe51a9cfae1ad85fffcc540176146aaae40b702f78dbe8b38f224ee6dce",
+      "prefix_bytes": 1640,
+      "notice_sha256": "b987f30026d4b92012498e0fbaecb39790ee5c4ee518241ce7e1aa5ce2e30dfa"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/debug.c",
+      "sha256": "7fa808225a696af51e596b3e4f12eea39fc5b97e521b672b5503cc12c431b2b5",
+      "prefix_bytes": 1640,
+      "notice_sha256": "87e6cc81f6139c5e3d317a243b0898dce06daac5ac402699842a4cbe491faaf3"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/crypt_client.c",
+      "sha256": "d00ebe3c8433707ad0f2d35cb21511f95b30efdd9cef3ae2eb55f2f1f3dc5ab7",
+      "prefix_bytes": 1757,
+      "notice_sha256": "6edc212c6761a58b5a2a791d3b76c69657dae80cdf94e554723930aded8c915b"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_vc.c",
+      "sha256": "7fbfe032dedb44c1e602c26ec85fa479b80754128ba92e2ae1bc9b28b89af064",
+      "prefix_bytes": 2330,
+      "notice_sha256": "4ffdc447df560c2a82217cd70691576b7887f9dec87babedf64a9e1f1d913560"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_simple.c",
+      "sha256": "f70b3a2367723700b25f28322b4a6fb9a08ac0f8c93f82ec48e824fddd9bdeba",
+      "prefix_bytes": 1703,
+      "notice_sha256": "170acb17a268b04b3a58f1a5c8feb242c45a060666576c962a63b7df17fb430d"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_raw.c",
+      "sha256": "487f0c21bcccb5ad6f40bd07e556e9edea7b62f6ac1ba2f61cdaf3a169cee135",
+      "prefix_bytes": 1875,
+      "notice_sha256": "21c874b2485c28e0988a023759da9e265fc99e117fa851ed78c7d38887ba7706"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_perror.c",
+      "sha256": "00437060ed7ecc2e8f869a78d3dba12fe161ea9ee3d37e485c8ca5742eaba581",
+      "prefix_bytes": 1655,
+      "notice_sha256": "bf8e39be27d1955b4a6f4dc6ae224c730f74aa44e26f93861ffaba08eea06a6b"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_generic.c",
+      "sha256": "484f43309ce2c26f7ec6d60657ff5129add7a0dfca37e8f9e540bb7a02f64509",
+      "prefix_bytes": 1580,
+      "notice_sha256": "f9cb9968893f964e64d392b0db6432d722788af572dd42c3511fa124af2adbb5"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_fd_locks.h",
+      "sha256": "7ce7c7f91f801e2f707175f00e8674cfa108947e3c09f8011381648ef0ad7974",
+      "prefix_bytes": 1616,
+      "notice_sha256": "ca45affe3da6f0d883f0e705e88ff7fe426f7c550d0c0d2e8ae359f35ed78f5c"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_dg.c",
+      "sha256": "130941bf2217b8c52fd98cae89a6c0328b839d2437a417dcfa90d76d67daf1e6",
+      "prefix_bytes": 1694,
+      "notice_sha256": "2ba0159c4b799efc15c04888852a3c19baf9fc951adede0b15d898724be5dbfb"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/clnt_bcast.c",
+      "sha256": "7d859ed590bc369386dc095e97b5b90cc0f6cc28210c2fc629d2c69972af54a1",
+      "prefix_bytes": 1890,
+      "notice_sha256": "cfd5f8db614541feeb927915f61347af46c4e4b8f416b51bd60651296f095dfe"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/bindresvport.c",
+      "sha256": "f80d80c1dff9c4ffa052d2b0726887c269df871b9278a96aeb8d278f54597acc",
+      "prefix_bytes": 1704,
+      "notice_sha256": "ff602b4f1aa5f3e07e6d1c33a79eea9efe4d15e3d3d74061356cedca90077866"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/binddynport.c",
+      "sha256": "3794e2d36e30de54058e00d6bf0aa03666e635d6286e4ef446acb77108b8089e",
+      "prefix_bytes": 1576,
+      "notice_sha256": "298f9ad9af474a1fc9a0624fd41b86f7442da6a7d4319c3d6ce3b9b8e66d5e62"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/authunix_prot.c",
+      "sha256": "3b0ca4bf589448f5c3d8506f17fd0bcbe6c1a728318ee72f138d2d729cba243d",
+      "prefix_bytes": 1711,
+      "notice_sha256": "5735314f0ca796c499085e8eda45354e40a2c0dcff9436da56da93378482747a"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/authgss_prot.c",
+      "sha256": "42c3f6a191f35757aca2c4bfed984a9689169db4fb1260d3fd1d0f19ebed21b8",
+      "prefix_bytes": 1638,
+      "notice_sha256": "1a06d10315129e3aa0c196ae82629f5152deae4809c6915ca2d717dc1a3d70a2"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/authdes_prot.c",
+      "sha256": "7206499a98194b302ea3c41042721e4f3a3adb0ac20af9a229b765ec6b052f8d",
+      "prefix_bytes": 1700,
+      "notice_sha256": "005cd36693ce893ce7fe89eb4fb06953cd92ffe892b1591e6e87260cb45f1090"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/auth_unix.c",
+      "sha256": "1e1f45bccc1879991cffc9780e60f8bffc7c9fe2d1f38bc33af3c07544540657",
+      "prefix_bytes": 1943,
+      "notice_sha256": "37a071312578a13e409f9b45e31b77a70f3956ebd604a85636c3c098fded1224"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/auth_time.c",
+      "sha256": "da62ae6b6e2db3f7c025120687fc1dcc10d5587a39873aecb1f9f1c9bf0d94cc",
+      "prefix_bytes": 1157,
+      "notice_sha256": "8e822e93ce8b886ace24bddccb403e160fe6c9497e53bf48f9fdb116b820e6d0"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/auth_none.c",
+      "sha256": "1fc182d093d138f959c7a0148c8b91e1bc5d6af9388d88e0752b2d640473b77a",
+      "prefix_bytes": 2048,
+      "notice_sha256": "c5cc5045723b39723c224c14b81ee4eed2c6cdfc9ee14faaea819d4517df03cc"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/auth_gss.c",
+      "sha256": "73396d51169bfbe0c9b40d0990e3be34dc31ccb9c5c65d48542c2b755606b62b",
+      "prefix_bytes": 1665,
+      "notice_sha256": "171c8438c51ec45e97df78e900e7e98ba1f60bd851b41601a79f2e4d103ae0fe"
+    },
+    {
+      "member": "libtirpc-1.3.7/src/auth_des.c",
+      "sha256": "b3e9055e2fe40aa7501bfb492b34e3f122ac344b2a396f184af5065a2e5dc51b",
+      "prefix_bytes": 1721,
+      "notice_sha256": "c10e2fbafcb77653260325741c18560f4833c18deddeb179f8febbf9368af222"
+    }
+  ],
+  "complete_original_header_count": 105,
+  "complete_deduplicated_permission_bodies": 12,
+  "required_notice_files": [
+    {
+      "path": "LICENSES/LibTI-RPC-acknowledgement.txt",
+      "sha256": "3f986183c3614bf08f8d2cec26cec2dcdeff5ca0934789c6213a4475a292ecb4"
+    },
+    {
+      "path": "LICENSES/LGPL-2.1.txt",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    }
+  ],
+  "scope": "Complete original project COPYING grant and AUTHORS read, with 105 original C/H/X legal headers read as 12 complete deduplicated permission bodies and every attribution/provenance/context prefix and suffix. The project-wide BSD3 grant covers files without a repeated per-file grant; explicit BSD2/BSD3/BSD4/LGPL2.1 overrides remain separate and intact. No functionality, source code or protocol is removed. Exact component only; parent SDK/OS remain gated.",
+  "project_wide_license_context": {
+    "url": "https://bugs.debian.org/795055#12",
+    "closure_url": "https://bugs.debian.org/795055#19",
+    "role": "Primary packaging discussion distinguishes a project-wide license from repeated per-file text; the report was closed while BSD4 acknowledgement obligations remain. The permission source is the retained upstream COPYING and original per-file grants, not the bug closure."
+  },
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
