@@ -89,9 +89,32 @@ class SourceRestorationTests(unittest.TestCase):
              mock.patch('producer.pipeline.collect_iso_sources',return_value=(self.root,{'cleared':False})), \
              mock.patch('producer.pipeline.source_set_evidence',return_value={}), \
              mock.patch('producer.vm.build_disks') as guests:
+            retire=mock.Mock()
             with self.assertRaisesRegex(ValueError,'redistribution permission'):
-                release_candidate(self.root,self.root,self.root,'amd64','v2026.03.0',self.commit,None,'tcg')
+                release_candidate(self.root,self.root,self.root,'amd64','v2026.03.0',self.commit,None,'tcg',retire)
             guests.assert_not_called()
+            retire.assert_not_called()
+
+    def test_compiler_scratch_is_retired_after_sources_before_guest_work(self):
+        import sys
+        from types import SimpleNamespace
+        from unittest import mock
+        from producer.pipeline import release_candidate
+        order=[]
+        def restored(*args):
+            order.append('source-restoration');return {}
+        def retired():
+            order.append('compiler-retirement');return {}
+        def guests(*args,**kwargs):
+            order.append('guest');raise RuntimeError('stop fixture at guest boundary')
+        with mock.patch.dict(sys.modules,{'image':SimpleNamespace(assemble=lambda *args:{'iso':self.root/'os.iso'})}), \
+             mock.patch('producer.pipeline.collect_iso_sources',return_value=(self.root,{'cleared':True})), \
+             mock.patch('producer.pipeline.source_set_evidence',side_effect=restored), \
+             mock.patch('producer.vm.build_disks',side_effect=guests):
+            with self.assertRaisesRegex(RuntimeError,'guest boundary'):
+                release_candidate(self.root,self.root,self.root,'amd64','v2026.03.0',self.commit,None,'tcg',retired)
+        self.assertEqual(order,['source-restoration','compiler-retirement','guest'])
+        self.assertFalse((self.root/'compiler-scratch-retirement.json').exists())
 
     def test_complete_restoration_does_not_waive_publication_license_gate(self):
         proof = restore(self.root,self.output,'amd64',self.commit)

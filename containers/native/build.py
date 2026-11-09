@@ -230,8 +230,13 @@ def main():
             receipt_path.write_text(json.dumps(receipt,indent=2)+'\n')
     elif args.target == 'release':
         from producer.pipeline import release_candidate
+        from producer.workspace import retire_compiler_scratch
+        def retire_compiler():
+            return retire_compiler_scratch(work,
+                [job['name'] for job in jobs]+
+                ['sources','input','stream','dependencies','corresponding-source'])
         release_candidate(sources,args.output,public_output,args.architecture,args.version,args.commit,management,
-                          qemu_accelerator=args.qemu_accelerator)
+                          qemu_accelerator=args.qemu_accelerator,retire_compiler=retire_compiler)
 
 
 if __name__ == '__main__':

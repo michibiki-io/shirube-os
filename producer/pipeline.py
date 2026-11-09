@@ -79,7 +79,8 @@ def collect_iso_sources(iso,packages,output,architecture,version):
     return rootfs,source
 
 
-def release_candidate(sources, packages, output, architecture, version, commit, management,qemu_accelerator='kvm'):
+def release_candidate(sources, packages, output, architecture, version, commit, management,qemu_accelerator='kvm',
+                      retire_compiler=None):
     from .architecture import release_accelerator
     qemu_accelerator=release_accelerator(architecture,qemu_accelerator)
     sys.path.insert(0,'/src/native')
@@ -95,6 +96,10 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     if source['cleared'] is not True:
         print('SOURCE LICENSE CLEARANCE: FAIL; guest tests and publication are not attempted',flush=True)
         raise ValueError('Unresolved component redistribution permission')
+    # The exact source archives and recipes have been physically restored and
+    # verified. Guest appliances use the retained package-output kernel DEBs;
+    # they do not need compiler object files or private module signing keys.
+    retired=retire_compiler() if retire_compiler is not None else None
     print('STAGE: fresh install, sanitization, conversions and fresh-instance boot/access tests',flush=True)
     disks=build_disks(result['iso'],architecture,version,Path('/build-private/disk'),output,management.verify,accelerator=qemu_accelerator)
     checks={name:'NOT_RUN' for name in CHECKS}
@@ -123,6 +128,7 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
         'Source-set reconstruction; bit-identical binary reproduction is not claimed']
     evidence={'source_commit':commit,'version':version,'architecture':architecture,'generation':generation,
               'qemu_accelerator':qemu_accelerator,
+              'compiler_scratch_retirement':retired,
               'factory_content_audit':source['factory_content_audit'],
               'source_set_reconstruction':reconstruction,
               'checks':{name:{'status':status,'observations':observations[name] if status=='PASS' else ['Required validation not completed']} for name,status in checks.items()}}

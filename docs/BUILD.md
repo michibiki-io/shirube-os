@@ -84,6 +84,21 @@ architecture checks are separate from label selection.
 A conservative complete-build preflight currently requires 160 GiB free storage
 and 8 GiB available memory. This is a planning budget, not an observed minimum.
 
+After complete physical source-set restoration and component license clearance,
+the release producer retires its owned compiler objects, private module-signing
+workspace and temporary downloaded/extracted sources before creating guest disks.
+Exported source archives, kernel DEBs and the inspected factory root remain.
+This prevents compiler scratch and disk-test growth from overlapping. The final
+evidence records free space before/after retirement; no host Docker cache is pruned.
+The complete current-head build still needs measured peak storage and elapsed-time
+acceptance before the planning budget can be replaced with a hosted-runner budget.
+
+全対応ソースの実復元と各コンポーネントのライセンス確認が通った後、ディスク試験の
+前に、このビルド専用のコンパイル中間物、署名用作業領域、一時ソースを削除します。
+配布用ソース、カーネルDEB、検査済みfactory rootは保持し、削除前後の空き容量を
+証拠に記録します。ホストのDocker cacheは削除しません。現行headの全工程で容量と
+時間を実測してから、hosted runner向けの容量条件を確定します。
+
 The `Test` workflow measures both native GitHub-hosted runner classes with a
 small fixed-base fixture. Its `runner-capability-*` artifacts record CPU, available
 memory/storage, KVM openability, a real BuildKit cache mount/chroot, and privileged
