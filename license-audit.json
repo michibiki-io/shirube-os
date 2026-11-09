@@ -14041,6 +14041,123 @@
         "Retain modification notices, library replacement/relinking rights and source access; do not imply endorsement or replace original authorship with the product brand."
       ],
       "scope": "Every original named legal file fully matched to read originals or its full word diff separately read. All operative grant bodies and all remaining copyright, file-path, provenance and comment fields read. Separate source-file licenses are retained as separate obligations; no parent OS approval."
+    },
+    "chrony@4.3-2+deb12u3": {
+      "source_identity": "cdc58b9fcb11d9799dd7c5936c1a1666ff00d60e6cfd2b80687b49e589d7e2b5",
+      "copyright_sha256": "b0bb794030c0d39ee244e59fe963c960b1ef37255341e034c355dab696644235",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND LicenseRef-RSA-MD",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions.",
+        "Preserve the RSA MD5 identification requirement and its full notice; do not represent the digest code as a different algorithm or remove RSA attribution."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "debianutils@5.7-0.5~deb12u1": {
+      "source_identity": "b4340ffd82994d910f625236183d732a7407876cba127d4c824ea82db8ccb400",
+      "copyright_sha256": "fd2d797e208bcfb713510e47a89867191180943e1167d44c2acd8ff1b88e5c10",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LicenseRef-Public-Domain AND LicenseRef-SMAIL-GPL",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions.",
+        "Preserve the entire SMAIL license and savelog notices; accompany executable copies with complete corresponding machine-readable source under paragraphs 1 and 2, rather than a source offer."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "gdbm@1.23-3": {
+      "source_identity": "3e4a52655a1b65c51d33e032913edda3423dcae8cc282c16a455a0afd2d2738d",
+      "copyright_sha256": "8bea8cf2f94cd8b37a0b8b3a2b974122b9194c1165e6ad508e366c74679e8817",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND GPL-2.0-or-later AND GFDL-1.3-no-invariants-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions.",
+        "Retain complete GFDL1.3 and original transparent document source. Explicit grants have no invariant sections or cover texts. Preserve FSF-manpage verbatim, modification and translation conditions where applicable."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "gzip@1.12-1": {
+      "source_identity": "49a287787a0b4fc816eb576c011c472d1f630ec1778dfa120bd7fce4a844c253",
+      "copyright_sha256": "1ca5dd5098fe2e1c0f0d05196f5b3da8b414a807702e6ca8b536eb5fd3059130",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND LicenseRef-FSF-manpages",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions.",
+        "Retain complete GFDL1.3 and original transparent document source. Explicit grants have no invariant sections or cover texts. Preserve FSF-manpage verbatim, modification and translation conditions where applicable."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "libcap-ng@0.8.3-1": {
+      "source_identity": "1bf38dbc0c30bcbc776d2d5c25e31d89202de0858f9ca9379c993d55103d7ef0",
+      "copyright_sha256": "49b5db19990a3e3cc1a9ed716aed231f6f3c1c217e58f62ae4dc2818c6d3e9cc",
+      "redistributable": true,
+      "license": "GPL-3.0-only AND LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "pinentry@1.2.1-1": {
+      "source_identity": "cb45060817fa5563d76591d99f0a7596aa069101710545852ec34a70a387597e",
+      "copyright_sha256": "77de76c8641705a00dd174939155bc26b6cfa03e3d6a2d8d41990940a59fad82",
+      "redistributable": true,
+      "license": "X11 AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-3.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "sensible-utils@0.0.17+nmu1": {
+      "source_identity": "764436dac8b6796ba49e9dd96e3c9ef8612cacad1953e6cd7525a17b99a9e4a1",
+      "copyright_sha256": "a3f046d279b767f56f9bfbd7bdc66561be99da2c52a4d78cda108c58f975f1b5",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LicenseRef-All-permissive AND X11 AND LicenseRef-Autoconf-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
+    },
+    "tcp-wrappers@7.6.q-32": {
+      "source_identity": "c9620a45e897c786b99890b54c6ea916df2380b6f3260e1e6442a1f8b5066997",
+      "copyright_sha256": "3433ea51eb4b9272c97d159c5ae5e0d3f592bbf9fc946dac813e1594aa6fa16f",
+      "redistributable": true,
+      "license": "LicenseRef-TCP-wrappers AND BSD-3-Clause AND SSH-short",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every original copyright, file-specific license, complete grant, disclaimer and exception in source and binary documentation.",
+        "Distribute exact corresponding preferred source, Debian changes, build/install scripts and all applicable complete license texts with the binary release.",
+        "Preserve modification notices, original authorship, library replacement rights and non-endorsement restrictions.",
+        "Preserve Wietse Venema attribution and the whole original notice, BSD non-endorsement restrictions, and the SSH-derived match_pattern_ylo attribution and modification-identification requirement."
+      ],
+      "scope": "All original named legal files matched to previously read complete originals or individually read complete word diffs; all operative grant bodies and copyright, file-scope, provenance and comment fields read. Pinentry LGPL3 grant is explicit despite a version-2.1 common-file pointer typo; original wording and full LGPL3 remain intact. No parent OS clearance."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

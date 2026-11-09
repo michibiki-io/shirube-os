@@ -1,0 +1,872 @@
+{
+  "kind": "exact-debian-source-notice-and-grant-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 8,
+  "reviewed_on": "2026-11-10",
+  "components": [
+    {
+      "source": "chrony",
+      "version": "4.3-2+deb12u3",
+      "dsc_sha256": "cdc58b9fcb11d9799dd7c5936c1a1666ff00d60e6cfd2b80687b49e589d7e2b5",
+      "binaries": [
+        {
+          "name": "chrony",
+          "version": "4.3-2+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "b0bb794030c0d39ee244e59fe963c960b1ef37255341e034c355dab696644235"
+        }
+      ],
+      "copyright_sha256": "b0bb794030c0d39ee244e59fe963c960b1ef37255341e034c355dab696644235",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "RSA-MD",
+          "full_normalized_body_sha256": "55b0510fbadf6ff70a48c6520363e9760e7b44f932aa67340329c9a58eabd9a7",
+          "read_reference": {
+            "label": "RSA-MD",
+            "component": "chrony"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "1feadcd21d518b12f9132d296f04af1184cd0286b790332392f5a85748e198d7",
+          "read_reference": {
+            "label": "GPL-2",
+            "component": "chrony"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "a4a466a436297294746decb9f66d228d01918614ac1a0b63793bdfc1de7c9c30",
+          "read_reference": {
+            "component": "chrony",
+            "label": "GPL-2+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "chrony",
+          "Upstream-Contact": "Miroslav Lichvar <mlichvar@redhat.com>",
+          "Source": "https://download.tuxfamily.org/chrony/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2009-2021, Miroslav Lichvar\n1997-2007, Richard P. Curnow"
+        },
+        {
+          "Files": "main.c\nsys_linux.c",
+          "Copyright": "2012-2020, Miroslav Lichvar\n2009, John G. Hasler\n1997-2003, Richard P. Curnow"
+        },
+        {
+          "Files": "ntp_io.c",
+          "Copyright": "2009, 2013-2016, 2018-2021, Miroslav Lichvar\n2009, Timo Teras\n1997-2003, Richard P. Curnow"
+        },
+        {
+          "Files": "sys_macosx.?",
+          "Copyright": "2015, 2017, 2020, Bryan Christianson\n2001, J. Hannken-Illjes\n1997-2001, Richard P. Curnow"
+        },
+        {
+          "Files": "sys_netbsd.?",
+          "Copyright": "2001, J. Hannken-Illjes\n1997-2001, Richard P. Curnow"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2015-2023, Vincent Blut\n2012-2014, Joachim Wiedorn\n2000-2012, John Hasler"
+        },
+        {
+          "Files": "test/simulation/test.common",
+          "Copyright": "2013-2014, Miroslav Lichvar"
+        },
+        {
+          "Files": "privops.c",
+          "Copyright": "2015, Bryan Christianson\n2017, Miroslav Lichvar"
+        },
+        {
+          "Files": "privops.h",
+          "Copyright": "2015, Bryan Christianson"
+        },
+        {
+          "Files": "contrib/bryan_christianson_1/chronylogrotate.sh",
+          "Copyright": "2015, Bryan Christianson"
+        },
+        {
+          "Files": "test/unit/*",
+          "Copyright": "2016-2022, Miroslav Lichvar"
+        },
+        {
+          "Files": "hwclock.?",
+          "Copyright": "2016-2018, 2022, Miroslav Lichvar"
+        },
+        {
+          "Files": "ntp_io_linux.?",
+          "Copyright": "2016-2019, 2021-2022 Miroslav Lichvar"
+        },
+        {
+          "Files": "ntp_signd.?",
+          "Copyright": "2016, Miroslav Lichvar"
+        },
+        {
+          "Files": "client.c",
+          "Copyright": "1997-2003, Richard P. Curnow\n2016, Lonnie Abelbeck\n2009-2022, Miroslav Lichvar"
+        },
+        {
+          "Files": "configure",
+          "Copyright": "1997-2003, Richard P. Curnow\n2016, Bryan Christianson\n2009, 2012-2021, Miroslav Lichvar\n2019, Stefan R. Filipek"
+        },
+        {
+          "Files": "doc/chrony.conf.adoc",
+          "Copyright": "1997-2003, Richard P. Curnow\n2016, Stephen Wadeley\n2009-2022, Miroslav Lichvar\n2017, Bryan Christianson"
+        },
+        {
+          "Files": "doc/chronyc.adoc",
+          "Copyright": "1997-2003, Richard P. Curnow\n2016, Stephen Wadeley\n2009-2017, 2019-2022, Miroslav Lichvar"
+        },
+        {
+          "Files": "refclock.c",
+          "Copyright": "2009-2011, 2013-2014, 2016-2019, 2022 Miroslav Lichvar"
+        },
+        {
+          "Files": "refclock_phc.c",
+          "Copyright": "2013, 2017, Miroslav Lichvar"
+        },
+        {
+          "Files": "regress.c",
+          "Copyright": "1997-2003, Richard P. Curnow\n2011, 2016-2017, Miroslav Lichvar"
+        },
+        {
+          "Files": "sched.c",
+          "Copyright": "1997-2003, Richard P. Curnow\n2011, 2013-2016, Miroslav Lichvar"
+        },
+        {
+          "Files": "sourcestats.c",
+          "Copyright": "1997-2003, Richard P. Curnow\n2011-2014, 2016-2018, 2021, Miroslav Lichvar"
+        },
+        {
+          "Files": "stubs.c",
+          "Copyright": "2014-2016, Miroslav Lichvar"
+        },
+        {
+          "Files": "hash_nettle.c",
+          "Copyright": "2018, Miroslav Lichvar"
+        },
+        {
+          "Files": "test/system/*",
+          "Copyright": "2019, Miroslav Lichvar"
+        },
+        {
+          "Files": "md5.*",
+          "Copyright": "1990, RSA Data Security, Inc. All rights reserved."
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "debianutils",
+      "version": "5.7-0.5~deb12u1",
+      "dsc_sha256": "b4340ffd82994d910f625236183d732a7407876cba127d4c824ea82db8ccb400",
+      "binaries": [
+        {
+          "name": "debianutils",
+          "version": "5.7-0.5~deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "fd2d797e208bcfb713510e47a89867191180943e1167d44c2acd8ff1b88e5c10"
+        }
+      ],
+      "copyright_sha256": "fd2d797e208bcfb713510e47a89867191180943e1167d44c2acd8ff1b88e5c10",
+      "original_legal_matches": [],
+      "license_definitions": [
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "bb0cd603cae65d3469d8d535c6c7918490781cba062017ae70d42feda61218e2",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "debianutils"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "51d1a79c0b085ee2a4a62af972a22df4b476024e0dd89fc4f9cdd67cbf6b3ccf",
+          "read_reference": {
+            "label": "public-domain",
+            "component": "debianutils"
+          }
+        },
+        {
+          "label": "SMAIL-GPL",
+          "full_normalized_body_sha256": "113046c3a79bbe6b7bc4d1dc9a3724d1ff1becb6aeecea63dcf38055c80a9cab",
+          "read_reference": {
+            "component": "debianutils",
+            "label": "SMAIL-GPL"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Comment": "This is the Debian GNU/Linux package debianutils.\nIt is an original Debian package.  Programs in it were maintained by\nGuy Maor <maor@debian.org>, and are now maintained by Clint Adams\n<schizo@debian.org>."
+        },
+        {
+          "Files": "*",
+          "Copyright": "(see individual files)"
+        },
+        {
+          "Files": "installkernel",
+          "Copyright": "\nCopyright (C) 1995 - 1998, Ian A. Murdock <imurdock@debian.org>\nCopyright (C) 1998, 1999, Guy Maor\nCopyright (C) 2002, Matthew Wilcox\nCopyright (C) 2002, 2004, 2005, 2007, 2009  Clint Adams\nCopyright (C) 2009  Manoj Srivasta"
+        },
+        {
+          "Files": "ischroot.c",
+          "Copyright": "\nCopyright (C) 2011 Aurelien Jarno <aurel32@debian.org>\nCopyright (C) 2015 Andreas Henriksson <andreas@fatal.se>"
+        },
+        {
+          "Files": "run-parts.*",
+          "Copyright": "\nCopyright (C) 1994 Ian Jackson.\nCopyright (C) 1996 Jeff Noxon <jeff@router.patch.net>\nCopyright (C) 1996-1999 Guy Maor <maor@debian.org>\nCopyright (C) 2002-2020 Clint Adams"
+        },
+        {
+          "Files": "update-shells",
+          "Copyright": "2021 Helmut Grohne <helmut@subdivi.de>"
+        },
+        {},
+        {
+          "Files": "which",
+          "Copyright": "public-domain"
+        },
+        {
+          "Files": "savelog",
+          "Copyright": "\nCopyright (C)  1988 Landon Curt Noll & Ronald S. Karr\nCopyright (C)  1992 Ronald S. Karr\nCopyleft (GNU) 1988 Landon Curt Noll & Ronald S. Karr"
+        }
+      ]
+    },
+    {
+      "source": "gdbm",
+      "version": "1.23-3",
+      "dsc_sha256": "3e4a52655a1b65c51d33e032913edda3423dcae8cc282c16a455a0afd2d2738d",
+      "binaries": [
+        {
+          "name": "libgdbm-compat4",
+          "version": "1.23-3",
+          "architecture": "arm64",
+          "copyright_sha256": "8bea8cf2f94cd8b37a0b8b3a2b974122b9194c1165e6ad508e366c74679e8817"
+        },
+        {
+          "name": "libgdbm6",
+          "version": "1.23-3",
+          "architecture": "arm64",
+          "copyright_sha256": "8bea8cf2f94cd8b37a0b8b3a2b974122b9194c1165e6ad508e366c74679e8817"
+        }
+      ],
+      "copyright_sha256": "8bea8cf2f94cd8b37a0b8b3a2b974122b9194c1165e6ad508e366c74679e8817",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "690d762f2e8e149ab1e2d6a409a3853b6151a2533b2382fae549a176d6bedecf",
+          "read_reference": {
+            "component": "gdbm",
+            "member": "COPYING",
+            "sha256": "690d762f2e8e149ab1e2d6a409a3853b6151a2533b2382fae549a176d6bedecf",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "d10965fcb65458bc80b374ae99413391e3b48e44a2c2596f367d978496d4b77a",
+          "read_reference": {
+            "label": "GPL-3+",
+            "component": "gdbm"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "2644d2da5c0c4efd657be8d799a9c4a887e146301a118be488e9d3ae1a56f2cc",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "gdbm"
+          }
+        },
+        {
+          "label": "GFDL-NIV-1.3+",
+          "full_normalized_body_sha256": "d4ff42d778baa0b175c960c01a41bb30edf3eb50e9bb876156f75e6ed7a24e6b",
+          "read_reference": {
+            "component": "gdbm",
+            "label": "GFDL-NIV-1.3+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "gdbm",
+          "Upstream-Contact": "bug-gdbm@gnu.org",
+          "Source": "https://www.gnu.org.ua/software/gdbm/download.html"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1990-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "tests/*",
+          "Copyright": "2011, 2016-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1995      Ray Dassen.\n1996,1997 Mark Eichin\n1996,1997 Christoph Lameter.\n1998-2006 James Troup.\n2016      Dmitry Bogatov <KAction@gnu.org>\n2021-2022 Nicolas Mora <babelouest@debian.org>"
+        },
+        {
+          "Files": "doc/*",
+          "Copyright": "1989-1999, 2007-2011, 2013, 2016-2022 Free Software Foundation, Inc."
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "gzip",
+      "version": "1.12-1",
+      "dsc_sha256": "49a287787a0b4fc816eb576c011c472d1f630ec1778dfa120bd7fce4a844c253",
+      "binaries": [
+        {
+          "name": "gzip",
+          "version": "1.12-1",
+          "architecture": "arm64",
+          "copyright_sha256": "1ca5dd5098fe2e1c0f0d05196f5b3da8b414a807702e6ca8b536eb5fd3059130"
+        }
+      ],
+      "copyright_sha256": "1ca5dd5098fe2e1c0f0d05196f5b3da8b414a807702e6ca8b536eb5fd3059130",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "9c49097414b2484064f2fcc429064f2f1524d26952647cf28cd7086f82ae1bb8",
+          "read_reference": {
+            "label": "GPL-3+",
+            "component": "gzip"
+          }
+        },
+        {
+          "label": "GFDL-1.3+-no-invariant",
+          "full_normalized_body_sha256": "24038ec8565e83f0b6ba1b1ebc29f2fe7cb078d70d80aa2973a6b47bc97e81eb",
+          "read_reference": {
+            "label": "GFDL-1.3+-no-invariant",
+            "component": "gzip"
+          }
+        },
+        {
+          "label": "FSF-manpages",
+          "full_normalized_body_sha256": "824b9347322dd7f0f07287a657c619d521a86a470c4381a35d28648a3079d1ca",
+          "read_reference": {
+            "component": "gzip",
+            "label": "FSF-manpages"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "GNU Gzip",
+          "Upstream-Contact": "http://www.gnu.org/software/gzip/",
+          "Source": "https://ftp.gnu.org/gnu/gzip"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1999-2022 Free Software Foundation, Inc.\n1992-1993 Jean-loup Gailly and Mark Adler"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1995-2017 Bdale Garbee <bdale@gag.com>"
+        },
+        {
+          "Files": "doc/* NEWS README",
+          "Copyright": "1999-2022 Free Software Foundation, Inc. http://fsf.org/\n1992-1993 Jean-loup Gailly"
+        },
+        {
+          "Files": "gzip.1 zless.1",
+          "Copyright": "1998-2022 Free Software Foundation, Inc.\n1992-1993 Jean-loup Gailly"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libcap-ng",
+      "version": "0.8.3-1",
+      "dsc_sha256": "1bf38dbc0c30bcbc776d2d5c25e31d89202de0858f9ca9379c993d55103d7ef0",
+      "binaries": [
+        {
+          "name": "libcap-ng0",
+          "version": "0.8.3-1+b3",
+          "architecture": "arm64",
+          "copyright_sha256": "49b5db19990a3e3cc1a9ed716aed231f6f3c1c217e58f62ae4dc2818c6d3e9cc"
+        }
+      ],
+      "copyright_sha256": "49b5db19990a3e3cc1a9ed716aed231f6f3c1c217e58f62ae4dc2818c6d3e9cc",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
+          "read_reference": {
+            "component": "atop",
+            "member": "COPYING",
+            "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+          }
+        },
+        {
+          "member": "COPYING.LIB",
+          "sha256": "f18a0811fa0e220ccbc42f661545e77f0388631e209585ed582a1c693029c6aa",
+          "read_reference": {
+            "component": "audit",
+            "member": "COPYING.LIB",
+            "sha256": "f18a0811fa0e220ccbc42f661545e77f0388631e209585ed582a1c693029c6aa"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3",
+          "full_normalized_body_sha256": "e66a228996811413219c6ae016f9f04edbee58b94779454c96a56580b85c0bd7",
+          "read_reference": {
+            "label": "GPL-3",
+            "component": "libcap-ng"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "036a8f75e41622f4996463c1da8b4650955cc691d20d88c6b0cd385bfc987fba",
+          "read_reference": {
+            "label": "LGPL-2.1+",
+            "component": "libcap-ng"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "cc40be4bd5a909b05e5131724ee7dc7dafe1dcfc21364ba369ec9efabc810769",
+          "read_reference": {
+            "component": "libcap-ng",
+            "label": "GPL-2+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libcap-ng",
+          "Upstream-Contact": "Steve Grubb <sgrubb@redhat.com>",
+          "Source": "https://people.redhat.com/sgrubb/libcap-ng"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2009-2022 Red Hat Inc."
+        },
+        {
+          "Files": "src/lookup_table.c\nsrc/test/lib_test.c\nsrc/test/Makefile.am\nbindings/Makefile.am\nbindings/python/Makefile.am\nbindings/python3/Makefile.am\nm4/Makefile.am\nutils/Makefile.am",
+          "Copyright": "2009-2017 Red Hat Inc., Durham, North Carolina."
+        },
+        {
+          "Files": "utils/*.c\nutils/*.h\ndocs/Makefile.am",
+          "Copyright": "2009-2020 Red Hat Inc."
+        },
+        {
+          "Files": "Makefile.am",
+          "Copyright": "2009 Red Hat Inc., Durham, North Carolina."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009 Pierre Chifflier <pollux@debian.org>\n2020-2022 H\u00e5vard F. Aasen <havard.f.aasen@pfft.no>"
+        },
+        {
+          "Files": "debian/patches/*",
+          "Copyright": "H\u00e5vard F. Aasen <havard.f.aasen@pfft.no>"
+        },
+        {
+          "Files": "debian/patches/04-log-error.patch",
+          "Copyright": "Steve Grubb <sgrubb@redhat.com>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "pinentry",
+      "version": "1.2.1-1",
+      "dsc_sha256": "cb45060817fa5563d76591d99f0a7596aa069101710545852ec34a70a387597e",
+      "binaries": [
+        {
+          "name": "pinentry-curses",
+          "version": "1.2.1-1",
+          "architecture": "arm64",
+          "copyright_sha256": "77de76c8641705a00dd174939155bc26b6cfa03e3d6a2d8d41990940a59fad82"
+        }
+      ],
+      "copyright_sha256": "77de76c8641705a00dd174939155bc26b6cfa03e3d6a2d8d41990940a59fad82",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "67f82e045cf7acfef853ea0f426575a8359161a0a325e19f02b529a87c4b6c34",
+          "read_reference": {
+            "component": "pinentry",
+            "member": "COPYING",
+            "sha256": "67f82e045cf7acfef853ea0f426575a8359161a0a325e19f02b529a87c4b6c34",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "X11",
+          "full_normalized_body_sha256": "c8c0049710bc4c09f9dcade779915d46ad5c92f5b0cf33ee32a5e0a12c0b2ca7",
+          "read_reference": {
+            "label": "X11",
+            "component": "pcre2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "01ddb1b0dfa0db2a7a2a93499634d5c53b4371577376acebe63b452f49a48696",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "pinentry"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "e74057a19d7320050d72c49d4238ad2b6a6e44f14ddc429a9ae6c76318d7525b",
+          "read_reference": {
+            "label": "GPL-2",
+            "component": "pinentry"
+          }
+        },
+        {
+          "label": "LGPL-3+",
+          "full_normalized_body_sha256": "6bdc113c54eb74e48006087a9ee72ddbe951322d100cd0ea47ed59e50b9a24e0",
+          "read_reference": {
+            "component": "pinentry",
+            "label": "LGPL-3+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Pinentry",
+          "Upstream-Contact": "gnupg-devel@gnupg.org",
+          "Source": "https://gnupg.org/ftp/gcrypt/pinentry/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2002-2021, g10 Code GmbH"
+        },
+        {
+          "Files": "fltk/*",
+          "Copyright": "2016 Anatoly madRat L. Berenblit"
+        },
+        {
+          "Files": "tqt/Makefile.am tqt/main.cpp tqt/pinentrydialog.h tqt/pinentrydialog.cpp",
+          "Copyright": "2002-2015 g10 Code GmbH\n2002 Klar\u00e4lvdalens Datakonsult AB"
+        },
+        {
+          "Files": "tqt/secqinternal.cpp tqt/secqinternal_p.h",
+          "Copyright": "1992-2000 Trolltech AS"
+        },
+        {
+          "Files": "tqt/secqlineedit.cpp tqt/secqlineedit.h tqt/secqstring.cpp tqt/secqstring.h",
+          "Copyright": "1992-2002 Trolltech AS\n2003 g10 Code GmbH"
+        },
+        {
+          "Files": "build-aux/* depcomp doc/mdate-sh doc/texinfo.tex m4/curses.m4 m4/iconv.m4 missing secmem/secmem.c",
+          "Copyright": "1996-2007, Free Software Foundation"
+        },
+        {
+          "Files": "install-sh",
+          "Copyright": "1994 X Consortium"
+        },
+        {
+          "Files": "gtk+-2/pinentry-gtk-2.c",
+          "Copyright": "1999 Robert Bihlmeyer <robbe@orcus.priv.at>\n2001, 2002, 2007 g10 Code GmbH\n2004 Albrecht Dre\u00df"
+        },
+        {
+          "Files": "m4/pkg.m4",
+          "Copyright": "2004 Scott James Remnant <scott@netsplit.com>"
+        },
+        {
+          "Files": "m4/qt.m4",
+          "Copyright": "1997 Janos Farkas (chexum@shadow.banki.hu)o\n1997,98,99 Stephan Kulow (coolo@kde.org)\n2002 g10 Code GmbH"
+        },
+        {
+          "Files": "pinentry/argparse.c",
+          "Copyright": "1998-2001, 2006-2008, 2012 Free Software Foundation, Inc.\n1997-2001, 2006-2008, 2013-2015 Werner Koch"
+        },
+        {
+          "Files": "configure.ac secmem/util.*",
+          "Copyright": "1999, Robert Bihlmeyer <robbe@orcus.priv.at>\n2001, 2002, 2003, 2004, 2007 g10 Code GmbH"
+        },
+        {
+          "Files": "secmem/memory.h",
+          "Copyright": "1998,1999 Free Software Foundation, Inc.\n1999,2000 Robert Bihlmeyer <robbe@orcus.priv.at>"
+        },
+        {
+          "Files": "secmem/secmem++.h",
+          "Copyright": "2008 Marc Mutz <marc@kdab.com>"
+        },
+        {
+          "Files": "tty/pinentry-tty.c",
+          "Copyright": "2014 Serge Voilokov"
+        },
+        {
+          "Files": "qt/pinentrydialog.*",
+          "Copyright": "2002, 2008 Klar\u00e4lvdalens Datakonsult AB <steffen@klaralvdalens-datakonsult.se>\n2007 Ingo Kl\u00f6cker"
+        },
+        {
+          "Files": "qt/pinentryconfirm.*",
+          "Copyright": "2011 Ben Kibbey <bjk@luxsci.net>"
+        },
+        {
+          "Files": "qt/main.cpp",
+          "Copyright": "2002, 2008 Klar\u00e4lvdalens Datakonsult AB (KDAB)\n2003 g10 Code GmbH\n2007 Ingo Kl\u00f6cker"
+        },
+        {
+          "Files": "qt/Makefile.am",
+          "Copyright": "2002 Klar\u00e4lvdalens Datakonsult AB (KDAB)\n2008 g10 Code GmbH"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2004-2022 Peter Eisentraut <petere@debian.org>\nMarcus Brinkmann\nMichael Brame\nDaniel Kahn Gillmor <dkg@fifthhorseman.net>"
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "sensible-utils",
+      "version": "0.0.17+nmu1",
+      "dsc_sha256": "764436dac8b6796ba49e9dd96e3c9ef8612cacad1953e6cd7525a17b99a9e4a1",
+      "binaries": [
+        {
+          "name": "sensible-utils",
+          "version": "0.0.17+nmu1",
+          "architecture": "all",
+          "copyright_sha256": "a3f046d279b767f56f9bfbd7bdc66561be99da2c52a4d78cda108c58f975f1b5"
+        }
+      ],
+      "copyright_sha256": "a3f046d279b767f56f9bfbd7bdc66561be99da2c52a4d78cda108c58f975f1b5",
+      "original_legal_matches": [],
+      "license_definitions": [
+        {
+          "label": "configure",
+          "full_normalized_body_sha256": "6b67719d76b493c426bc94fd9e5385217a85a1c1cbfa7829ff2afdc406750f0e",
+          "read_reference": {
+            "label": "configure",
+            "component": "sensible-utils"
+          }
+        },
+        {
+          "label": "installsh",
+          "full_normalized_body_sha256": "a4ae2100acaa9ea730ada4a3b2d8460114707b012c30f82b5e72b07171bf7cc8",
+          "read_reference": {
+            "label": "installsh",
+            "component": "sensible-utils"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f203de9b47178388c0da6113378d0c22f31face1b97f4cbc45ee515029bf27f4",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "htop"
+          }
+        },
+        {
+          "label": "All-permissive",
+          "full_normalized_body_sha256": "236519e8309d8881985773c6ce2b6063e9aa65fe929e92c8f149c981b77d43ee",
+          "read_reference": {
+            "component": "sensible-utils",
+            "label": "All-permissive"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "sensible-utils",
+          "Source": "https://salsa.debian.org/debian/sensible-utils"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2002-2009, Clint Adams <schizo@debian.org>\n2010- Anibal Monsalve Salazar <anibal@debian.org>\n2012, David Pr\u00e9vot <taffit@debian.org>\n2013, Thorsten Glaser\n2017, J\u00e9r\u00e9my Bobbio\n2017, Ximin Luo\n2017- Bastien Roucari\u00e8s <rouca@debian.org>"
+        },
+        {
+          "Files": "sensible-editor*",
+          "Copyright": "1997,  Guy Maor\n2002, 2004, 2006,  Clint Adams\n2007 Jari Aalto\n2010- Anibal Monsalve Salazar <anibal@debian.org>\n2017- Bastien Roucari\u00e8s <rouca@debian.org>"
+        },
+        {
+          "Files": "sensible-pager*",
+          "Copyright": "1997, 1998,  Guy Maor\n2004,  Clint Adams\n2007 Jari Aalto\n2010- Anibal Monsalve Salazar <anibal@debian.org>\n2017- Bastien Roucari\u00e8s <rouca@debian.org>"
+        },
+        {
+          "Files": "sensible-browser*",
+          "Copyright": "2002,  Joey Hess\n2003, 2007, 2008,  Clint Adams\n2007 Jaari Aalto\n2010- Anibal Monsalve Salazar <anibal@debian.org>\n2017- Bastien Roucari\u00e8s <rouca@debian.org>"
+        },
+        {
+          "Files": "select-editor*",
+          "Copyright": "2009, Dustin Kirkland <kirkland@canonical.com>.\n2010- Anibal Monsalve Salazar <anibal@debian.org>"
+        },
+        {
+          "Files": "man/Makefile.am\nman/utf8toman.sed",
+          "Copyright": "2012-2017, Guillaume Jover",
+          "Comment": "Part of this are copied from dpkg"
+        },
+        {
+          "Files": "man/po4a/cs*",
+          "Copyright": "2012,  Michal Simunek"
+        },
+        {
+          "Files": "man/po4a/de*",
+          "Copyright": "2011, Helge Kreutzmann <debian@helgefjell.de>"
+        },
+        {
+          "Files": "man/po4a/fr*",
+          "Copyright": "Nicolas Fran\u00e7ois <nicolas.francois@centraliens.net>\n2017- Bastien Roucari\u00e8s"
+        },
+        {
+          "Files": "man/po4a/es*",
+          "Copyright": "2010-2012, Omar Campagne"
+        },
+        {
+          "Files": "man/po4a/it*",
+          "Copyright": "2012, Beatrice Torracca"
+        },
+        {
+          "Files": "man/po4a/ja*",
+          "Copyright": "2010, Kurasawa Nozomu"
+        },
+        {
+          "Files": "man/po4a/pl*",
+          "Copyright": "2004, 2010, Robert Luberda <robert@debian.org>."
+        },
+        {
+          "Files": "man/po4a/pt*",
+          "Copyright": "2014, Am\u00e9rico Monteiro <a_monteiro@gmx.com>"
+        },
+        {
+          "Files": "aclocal.m4",
+          "Copyright": "1996-2017, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "*Makefile.in",
+          "Copyright": "1994-2017, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "configure",
+          "Copyright": "1992-1996, 1998-2012, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/missing",
+          "Copyright": "1996-2020, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/test-driver",
+          "Copyright": "2011-2020, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/install-sh",
+          "Copyright": "1994 X Consortium"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "tcp-wrappers",
+      "version": "7.6.q-32",
+      "dsc_sha256": "c9620a45e897c786b99890b54c6ea916df2380b6f3260e1e6442a1f8b5066997",
+      "binaries": [
+        {
+          "name": "libwrap0",
+          "version": "7.6.q-32",
+          "architecture": "arm64",
+          "copyright_sha256": "3433ea51eb4b9272c97d159c5ae5e0d3f592bbf9fc946dac813e1594aa6fa16f"
+        }
+      ],
+      "copyright_sha256": "3433ea51eb4b9272c97d159c5ae5e0d3f592bbf9fc946dac813e1594aa6fa16f",
+      "original_legal_matches": [],
+      "license_definitions": [
+        {
+          "label": "TCP-wrappers",
+          "full_normalized_body_sha256": "231b655d99f03ef79d4022882cd6a34b28fbe927617bae421d9a116ebcef1592",
+          "read_reference": {
+            "label": "TCP-wrappers",
+            "component": "tcp-wrappers"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "f09fc2ffb2f33d4e4ecf81c0af164e351c27f9227bc7695f072c95ba2ef1e821",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "tcp-wrappers"
+          }
+        },
+        {
+          "label": "SSH",
+          "full_normalized_body_sha256": "5da861265506304e53c61b7fea1aa77c8c6b9c2c15d4ce1cd54367d03f0a1f03",
+          "read_reference": {
+            "component": "tcp-wrappers",
+            "label": "SSH"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "TCP Wrapper",
+          "Source": "ftp://ftp.porcupine.org/pub/security/index.html",
+          "Comment": "\nThis package was debianized by Anthony Towns <ajt@debian.org> on\nTue, 10 Aug 1999 12:06:33 +1000."
+        },
+        {
+          "Files": "*",
+          "Copyright": "Copyright 1995 by Wietse Venema.  All rights reserved.",
+          "Comment": "Some individual files may be covered by other copyrights."
+        },
+        {
+          "Files": "strcasecmp.c",
+          "Copyright": "Copyright 1987 Regents of the University of California."
+        },
+        {},
+        {
+          "Files": "debian/patches/05_wildcard_matching",
+          "Copyright": "Copyright 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland",
+          "Comment": "Applies to the function match_pattern_ylo."
+        }
+      ]
+    }
+  ],
+  "scope": "Eight exact source/notice pairs. Complete original terms and all source-file scopes read, including complete SMAIL copyleft and documentation obligations. Unknown non-English test-data licensing and ambiguous Cephes terms remain deferred.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
