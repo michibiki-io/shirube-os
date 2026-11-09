@@ -30,6 +30,11 @@ class DebianSourceTests(unittest.TestCase):
             for name in ['COPYING','COPYING3','LICENSE.md','NOTICE','debian/copyright.in','sub/LICENSES/BSD-3-Clause.txt','license.py']:
                 path=root/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('original notice')
             self.assertEqual({name for _,name in legal_files(root)}, {'COPYING','COPYING3','LICENSE.md','NOTICE','debian/copyright.in','sub/LICENSES/BSD-3-Clause.txt'})
+            (root/'COPYRIGHT').symlink_to('sub/LICENSES/BSD-3-Clause.txt')
+            selected={member:path for path,member in legal_files(root)}
+            self.assertFalse(selected['COPYRIGHT'].is_symlink())
+            self.assertEqual(selected['COPYRIGHT'].read_bytes(),b'original notice')
+            (root/'COPYRIGHT').unlink()
             outside=Path(temporary)/'external';outside.write_text('outside state')
             (root/'COPYRIGHT').symlink_to(outside)
             with self.assertRaisesRegex(ValueError,'outside'):list(legal_files(root))

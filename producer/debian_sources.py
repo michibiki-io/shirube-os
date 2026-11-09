@@ -69,4 +69,7 @@ def legal_files(root):
         if not path.resolve().is_relative_to(root):
             raise ValueError('Original source legal file points outside its source tree')
         if not path.is_file():continue
-        yield path,str(relative)
+        # Debian sources may make COPYING an alias of an SPDX license file.
+        # Preserve its logical member and exact bytes as a regular archive
+        # entry, after the confinement check above.
+        yield path.resolve(),str(relative)
