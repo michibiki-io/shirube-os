@@ -20780,6 +20780,72 @@
           "sha256": "a1d1adec3ba691ef6e377a78bbe9e9e2501f2f4a1723d08857da1ac6564e4fed"
         }
       ]
+    },
+    "go:github.com/prometheus/prometheus@v0.46.0#501c6bafc0e5945acdcc4a859e466cf8160f14c838d3e487ea92d98f8762008a": {
+      "source_identity": "501c6bafc0e5945acdcc4a859e466cf8160f14c838d3e487ea92d98f8762008a",
+      "copyright_sha256": "e90fe3339d856d85c66aff4ed73908b6a0bd24332a526c2e5fb3c7b8a092378b",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3a32ac4ccad08f603dee67229e52500c32a3d281bf73bf6c4166e46357382bfb.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND CC-BY-4.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated. Exact source ZIP and embedded Codicon font inspected against the immutable original creator license predating the font introduction; full license compared with an already read original and every difference read. Original NOTICE scopes and all inline notices remain retained; merely referenced dependencies are not represented as bundled node_modules.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Retain Prometheus/SoundCloud and every original NOTICE acknowledgement. Keep the unmodified Microsoft Codicon font, creator/source links and complete CC-BY4 license, disclose actual modifications and apply no extra restrictions or product-branding use. Third-party Go dependencies remain independently inventoried and gated."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Codicon-CC-BY-4.0.txt",
+          "sha256": "d6239afa918961b465b07bf7411cbe34ff6685854f58553db7966f4881a0211f"
+        }
+      ]
+    },
+    "go:github.com/vmware/govmomi@v0.32.0#337e9a24b97c00ad6e98853e154145160735d5aec1b0267fd33998b229ba4368": {
+      "source_identity": "337e9a24b97c00ad6e98853e154145160735d5aec1b0267fd33998b229ba4368",
+      "copyright_sha256": "021d592f969793bf2665dd958e1a92aa5a8b62620a38df20b5af13e7d44b1e5c",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/d1a8176bac5c02bfdca2617cb2fd84c14bf1c4fa7bd45cb7a0fca7789151e771.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:modernc.org/libc@v1.22.5#cce29930e5f04d9be39525346530215dcf52ae160d6710bd2b26fa51902c6be6": {
+      "source_identity": "cce29930e5f04d9be39525346530215dcf52ae160d6710bd2b26fa51902c6be6",
+      "copyright_sha256": "6512947fae1828049cb7b0d6ef8c9ccaabd0f79b05a4a823057b271d442fea3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b4f423558acab11f075e3a5bb24962db25348d4cd7a36c2dd34307a0a834792f.txt",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND MIT AND MIT AND BSD-2-Clause AND BSD-3-Clause AND SunPro AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants; all new grant prefixes read. Author/contributor lists inspected as retained metadata with all potentially operative term lines reviewed and other rows structurally checked, without claiming manual reading of every personal-name row. Parent distribution and all dependencies independently gated. The exact ZIP contains 1860 original musl source entries, not only generated Go code. Full musl COPYRIGHT and separately scoped original TRE, Sun, Arm/Android, DES, blowfish and smoothsort source grants inspected; representative source-level grants supplement the root summary, without claiming a behavior review of every C file.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Preserve independently scoped third-party grants without extending the root project license to them.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Retain the entire original musl C source tree and all per-file notices alongside generated Go code. Preserve the original BSD-2/BSD-3 and Sun notices, Solar Designer public-domain waiver and fallback grant, modification credits and header/crt attribution exception only within its stated scope; the root MIT grant does not erase those conditions."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Modernc-musl-notices.txt",
+          "sha256": "a5430d5be99ffbfdda88804c05e42d358e5403f0452a8eecb059609e473e1873"
+        }
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
