@@ -198,6 +198,8 @@ ARM64's later frozen cohort also completed native compilation and ISO assembly.
 The diagnostic notice/payload repair passed all five runtime package source
 bindings and the factory root/initramfs audit. Fresh installation, retained
 administrator boot, offline sanitization and conversion have completed;
-QCOW2/VMDK guest acceptance is still in progress. It is not a completed release
-result. Individual Debian source/copyright decisions now cover 92 source groups;
+[Both QCOW2/VMDK guest checks](evidence/diagnostic-arm64-v2026.03.0-notices-fix.json)
+subsequently passed using native KVM, including fresh firmware, no ISO, individual
+access, network/identity checks and complete NetBird lifecycle/erasure. This is
+still not a clean-head release candidate or OCI execution result. Individual Debian source/copyright decisions now cover 92 source groups;
 all remaining source groups and dependency sets remain separately gated.
