@@ -19,6 +19,7 @@ from producer.branding import install as install_brand
 from producer.sources import download, sha256
 from producer.packages import audit
 from producer.notices import snapshot, mark_changed
+from producer.sanitize import HOSTS
 
 
 def run(*args, **kwargs):
@@ -260,6 +261,11 @@ def assemble(sources, packages, arch, version, output):
             (source/'data/live-build-config/bootloaders/grub-pc/grub.cfg').write_text('set default=0\nset timeout=5\nterminal_input console\nterminal_output console\nLINUX_LIVE\nLINUX_INSTALL\n')
         config=source/f'data/architectures/{arch}.toml';config.write_text(config.read_text().replace('xz -b 256k','xz -processors 2 -mem 1G -b 256k').replace('xz -Xbcj x86','xz -processors 2 -mem 1G -Xbcj x86'))
         hook=source/'data/live-build-config/hooks/live/099-shirube.chroot'
+        # live-build restores /etc/hosts after chroot hooks. Its supported
+        # includes override must carry the factory value through that cleanup.
+        hosts=source/'data/live-build-config/includes.chroot/etc/hosts'
+        hosts.parent.mkdir(parents=True,exist_ok=True)
+        hosts.write_text(HOSTS)
         factory=source/'data/live-build-config/includes.chroot/usr/libexec/shirube/factory_prepare.py'
         factory.parent.mkdir(parents=True,exist_ok=True);shutil.copy2('/src/guest/factory_prepare.py',factory)
         hook.write_text('#!/bin/sh\nset -eu\npython3 /usr/lib/python3/dist-packages/vyos/xml_ref/update_cache.py\ndepmod -a 6.6.128-vyos\nSHIRUBE_BUILD_CHROOT=1 python3 /usr/libexec/shirube/factory_prepare.py '+arch+'\nrm /usr/libexec/shirube/factory_prepare.py\n')
