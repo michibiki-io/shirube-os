@@ -1513,8 +1513,589 @@
         {
           "member": "libxcrypt-4.5.2/COPYING.LIB",
           "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-des.h",
+          "sha256": "71bb2fc869d905d15fb3c7c3d090b9abb93b2d0acf9b94998cae0c1172db2aee",
+          "prefix_bytes": 2142,
+          "notice_sha256": "81cb0b43ef5a6b6d464b2f26fb79a64afe55beaf4abf866d3ea54e19933a6eab"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-gost3411-2012-const.h",
+          "sha256": "2a1f4e1457ec3d11cf7f5a9285c02f237f319bc87a68d1843fdca7f5b65341a7",
+          "prefix_bytes": 156,
+          "notice_sha256": "e272037785d1e834839e0e4fc27e766e8bae49d1dfc4f22017d2f40b49c01f50"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-gost3411-2012-core.h",
+          "sha256": "81b28b7fdb90af12fa587e19de01abfefc636ce2149bf2c0d900019318c2805a",
+          "prefix_bytes": 109,
+          "notice_sha256": "35a2b2debf44b1d83c7716c1621e4d6a2f42cf7a38f2aa17710e257c01e2025b"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-gost3411-2012-hmac.h",
+          "sha256": "693e8c28f4e2d6374502ba6167165cf7b650907a634dde5eb53b503b1313ab8a",
+          "prefix_bytes": 984,
+          "notice_sha256": "22ebcdcf06dcfe5c5ce9276b840ee788cd476910401b675af555b9e73097818b"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-gost3411-2012-precalc.h",
+          "sha256": "25963c66fb6cfdf31186b242ee5ea95e995ce88c17489286cf29860d4d663dcd",
+          "prefix_bytes": 158,
+          "notice_sha256": "10aca724143ba6f6fbe91d927aab42264143ac99c1b0caa1a401c62d1318e922"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-gost3411-2012-ref.h",
+          "sha256": "423885d03b7098b2e680195f1a0a67505add8467877a4ea87cce18c736a78b42",
+          "prefix_bytes": 191,
+          "notice_sha256": "58a9b95fb43e092a5325d0bed6580940a8bc187cdf35db273eab96a475afa445"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-hmac-sha1.h",
+          "sha256": "99ad6df7553e55d62fa9b51954e5d1be9ae94bd222800cb5ea0859fac111acee",
+          "prefix_bytes": 1574,
+          "notice_sha256": "a6abb89931fbd2eee4219785e47008b4b00c385f6a5999f60f20b27150a73e68"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-md4.h",
+          "sha256": "244ac7e9974c081a49ac8aaf7962929f85b3fea321fbc39fb0509576b961f101",
+          "prefix_bytes": 922,
+          "notice_sha256": "415fdd95cc77a0de68bac25a06ae6b1b16a4a4d478b995801a5ba2218533b881"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-md5.h",
+          "sha256": "e812f181aee627fa405fa35a4cf166f4d77662db897df79eb70237e1731b197f",
+          "prefix_bytes": 922,
+          "notice_sha256": "407aad5685ffaa4f6fd27b89cde6606629bf081da5bc156841ed22dae998544a"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sha1.h",
+          "sha256": "0ead51c64042d144dd2dd70a5205f1a405d9c0371fd0d78d4690722be7dba686",
+          "prefix_bytes": 235,
+          "notice_sha256": "24b5b5393e514ac6ffb27b026f8ea7ac4c6137c7c5f0d66d44daf8cf1bce9681"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sha256.h",
+          "sha256": "2f2fc40071d3901e82a7d8f45c3eb69eba316ed2301d4bec1ca3a7a7547571c8",
+          "prefix_bytes": 1356,
+          "notice_sha256": "4622cfe3f1ee7ccf4c0511148e6461694a8661a6dc7e602e926545869efc7f8d"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sha512.h",
+          "sha256": "668182d6d7c34246d66681bcbd7cbf019289d07f1be7266ff5ee6f4b400ef864",
+          "prefix_bytes": 1351,
+          "notice_sha256": "8ce83dc7d9875e5c8e69c7c243e356d8b9d6ba20cc348cf9fc44095128ff514b"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sm3.h",
+          "sha256": "ea2ca7d6f1928f50a3a1732c4b572b68be8f2539bb718fedd869a9ff054b4d66",
+          "prefix_bytes": 741,
+          "notice_sha256": "39366951a502289a37fecf390ba561f3b442c9af4fc3bfec9943caebcf733a19"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sm3-hmac.h",
+          "sha256": "84d55d3d30b47732cebe518fbec3a50726735b6604c26f347e6de94a777c4290",
+          "prefix_bytes": 946,
+          "notice_sha256": "a67fe0afc2326533b3808903e0f70bd0f5e282355dc6c5241d539ec63af5ef04"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-yescrypt.h",
+          "sha256": "3ec862334bdf2a3ce746c8b1173da29b25a78121d9baafb1ca8950ad241dc291",
+          "prefix_bytes": 1497,
+          "notice_sha256": "bc77ef8dbf7cf4a688899464acba023a1ad8df4ad17559989ee35f8df8248a39"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/byteorder.h",
+          "sha256": "57105fe2f398b8569373c1a4de4321ab1309d665c2939d93e562c3713cc46cba",
+          "prefix_bytes": 386,
+          "notice_sha256": "0293e12a5272f61e8af25ad122f654f435a7e3732951f1f3dcd488b28445bb50"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-obsolete.h",
+          "sha256": "b10457ca970dc39fdc45c5e70f1515ad026096c2a209473baca1afc1af03f1fd",
+          "prefix_bytes": 781,
+          "notice_sha256": "8d6586ae85c1f5fdfe550855ea75cbc5c721ff9373575e97c5432cca48f9a132"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-port.h",
+          "sha256": "83fdbf4b81c86c12f5b382cdd30d4711afaec0cf07829b0a8f4c1e12bbcc0636",
+          "prefix_bytes": 799,
+          "notice_sha256": "dab6ac502b283fdaf396b811c749dbedd762242e4a57d270512c05bfcd41a672"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-des-tables.c",
+          "sha256": "916d63792bc382d9156a1fd06971c3d033f03429d53ac8b230ac42b588a0468e",
+          "prefix_bytes": 2247,
+          "notice_sha256": "021c2c37d768266ff9ccfce5983b19d6b12fb9c140e1e08770e3ba4f0ec7ca3a"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-des.c",
+          "sha256": "3095b0e5f31fc5548ddaac332da7dae4cd64c325f1a6e58b32d1b89141e92dac",
+          "prefix_bytes": 2948,
+          "notice_sha256": "9f8425b67b949ec402d80c1523650bebce987fd5fb5b8565f8b78311e9d0b0cf"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-gost3411-2012-core.c",
+          "sha256": "6ac2982168e760d795e28fb40b871e7dbe9b3e7736de5886cf46f827d9595e31",
+          "prefix_bytes": 157,
+          "notice_sha256": "eec561004b183df124f0a859455df1306e62e22d98eee25611cd2997c6e72ff5"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-gost3411-2012-hmac.c",
+          "sha256": "39d8ce48068935b7dbe5ee214eb4c4ac67cbe5b326610db922ff76533c7e35c0",
+          "prefix_bytes": 984,
+          "notice_sha256": "22ebcdcf06dcfe5c5ce9276b840ee788cd476910401b675af555b9e73097818b"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-hmac-sha1.c",
+          "sha256": "5841effd71614792c2aef234c3c88b20a9425272745875b2ccfec52365264147",
+          "prefix_bytes": 1459,
+          "notice_sha256": "9ddd0fd6404727149e041faf546253d94b68550e57f0f63cceb7577adb127e84"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-md4.c",
+          "sha256": "71c228b904ea029b0d1dda5371614746af1fee7618b87691b118f40393e2d4ac",
+          "prefix_bytes": 1625,
+          "notice_sha256": "0ee02ed21569442dcbad9a82dcbb8115e71b1efb7c590e49ff7e219b42b86ef8"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-md5.c",
+          "sha256": "4dbd6144d2d7bd337a4b0658ebc3bb4683746ca98561ec837d32615433430b7e",
+          "prefix_bytes": 1625,
+          "notice_sha256": "e97e87921d89f1cd1d912848860a74fcb983ca56b0beda66cc6e3a9c4b6950c1"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sha1.c",
+          "sha256": "287b6b8c1d67ef42784a220f1ab3c585b0368e35bf05de5dd1f30842dbd03d78",
+          "prefix_bytes": 2329,
+          "notice_sha256": "21cd972972902f48e77943cef74bc7f8c8695ed0a4c52ab926d139244fc8bd5e"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sha256.c",
+          "sha256": "7ad6c30f3f421677e5b1610682e4d8232f5101e8f2674e127d30933675478a4b",
+          "prefix_bytes": 1402,
+          "notice_sha256": "65ddc68659feacb0a0c0811fcd6ca3f3265d6035b5b9d314616a21bccf8fec6c"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sha512.c",
+          "sha256": "2c9084ae7dd6606437d85dd4caaecad27ce4563d1e439d2b0a7b336611fc0da7",
+          "prefix_bytes": 1450,
+          "notice_sha256": "ab305d286856796ea2329e1707a25eea0559f692b98a871d4b1419190cb1d072"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sm3.c",
+          "sha256": "f3b12eff736555bd19d997fdc344bbf77580a9c349ef7c9960e8966bb731b736",
+          "prefix_bytes": 741,
+          "notice_sha256": "39366951a502289a37fecf390ba561f3b442c9af4fc3bfec9943caebcf733a19"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-sm3-hmac.c",
+          "sha256": "f861410d873af186209cfb28fc6d5db6f22a5de079cdea6d000ef41f7e89b33f",
+          "prefix_bytes": 946,
+          "notice_sha256": "a67fe0afc2326533b3808903e0f70bd0f5e282355dc6c5241d539ec63af5ef04"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-yescrypt-common.c",
+          "sha256": "01b081a709dfa4d8d6a5556fdd679576319a0e9af45fd76c6bef3705a740c14d",
+          "prefix_bytes": 951,
+          "notice_sha256": "35d80efce523e85a2b88e731c78f217b87894b07b387feb6101d0e6ba85fb2cc"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-yescrypt-opt.c",
+          "sha256": "223f326b5b4ce09d4936dbb7a4b17e5faa64b15a62dddaeded49675f6e467605",
+          "prefix_bytes": 1497,
+          "notice_sha256": "54bdf17d594fb9535b15d967438df0b47bf7aafbf93f1ca3c29a57c10f05317d"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-bcrypt.c",
+          "sha256": "9fb261f6faefb6eab0d43e29ea3a112458599be1917222cf29e13f6afa449d2c",
+          "prefix_bytes": 2039,
+          "notice_sha256": "1ba355fba302670105d9df1c93c606138ca11f2b1f4114b41d4bd1cbfbf35fa3"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-des.c",
+          "sha256": "b227add9f53a4a34eae96671d022ed93dc65198ec73796db2b3af408a3450932",
+          "prefix_bytes": 2117,
+          "notice_sha256": "155eb6647579d736b5883f79d62a9bd097e5fe4fb0012473fbd49dd26a52c71d"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-gensalt-static.c",
+          "sha256": "8680f65e7c2eefeba01ff366c81ce5ff7053f291058562569cdf85924f3a1949",
+          "prefix_bytes": 714,
+          "notice_sha256": "04bfafaac49745cbc0ca61f2ebd6c2dad3769d8f50ebeb9a087a7aadeb35222c"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-gost-yescrypt.c",
+          "sha256": "a4bca98dccf0b74a1a3d027faaef7c79209681b6b8908cf6dfd44ff721255dad",
+          "prefix_bytes": 982,
+          "notice_sha256": "0f34b0ba46888f2e529f1290bd8afe862708db3896b852807c0f6d922d325ab2"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-sm3-yescrypt.c",
+          "sha256": "9ceeee7cbcbf757f09237c94388aa18e01532e5ced60aba454bd8b16141c5519",
+          "prefix_bytes": 944,
+          "notice_sha256": "17a708c796202fa6047790f604c68b38428244e740f1cf01a9f4e7dbd0d29d1b"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-md5.c",
+          "sha256": "ed300c6bf4568424943a6432c367140f4b7514146d3f3e458158d2be561d12a0",
+          "prefix_bytes": 912,
+          "notice_sha256": "85dbfa85ab241a1c1d367ad887f6dade6c114cf2aa7d3d6feb8b1cb12e5a34cf"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-nthash.c",
+          "sha256": "029dc1e5adb6af967c0ae32128dd455c34fe1b4a19cb85bf41871fd5c753e4c0",
+          "prefix_bytes": 1611,
+          "notice_sha256": "fbf6c0b5dbf756ee057b5522097b30c1fa7a07dda213b0d9fdb4e8c78bc49432"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-pbkdf1-sha1.c",
+          "sha256": "322f4b1bbe3025da53a364104478faf85c1f8ab463f873727f2d8c653124bc11",
+          "prefix_bytes": 1587,
+          "notice_sha256": "d15ec2e3a8dc0d216fc8874aa7a98ec9aba11a74a2a12875a1ccc93cf57d60ca"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-scrypt.c",
+          "sha256": "bb75cb007bf2fc841928d99ee89aa22fe2eab36a9521bd1133f3ac6f6475761b",
+          "prefix_bytes": 986,
+          "notice_sha256": "120472c8dd289abc4f350099b57296c5f0232da4c4a6572f434a58edab0d29e5"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-sha256.c",
+          "sha256": "cf7138019a4683f280088127719401d9001911bcd68fb91dd0d84aa8298785fc",
+          "prefix_bytes": 747,
+          "notice_sha256": "71bf592798b1ecb65dadd55d6e6a5252344d807cdfc2669644431a918827c8cb"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-sha512.c",
+          "sha256": "fc111c39dc5b770e81114f343263e0ef3251a0d8a0b1a161b14c90fd984d40be",
+          "prefix_bytes": 749,
+          "notice_sha256": "2664514c54aca3653d6abcc68c6c08f01a82d1a42f37b1cf600e954e6bd0cbad"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-sm3.c",
+          "sha256": "113a1c491a8570656472d5e338b2f1f7a70577de33abf19ed5a0c3f4a766b6d7",
+          "prefix_bytes": 822,
+          "notice_sha256": "abaccf2bace412c64dd4acce6f1e42428f05163f55d798c5bde2d865d9c57e14"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-static.c",
+          "sha256": "bc5497d13ae9923ce22b1019c0c955174ead29bba5ef2c1423b60716b83a2faf",
+          "prefix_bytes": 749,
+          "notice_sha256": "a24b28bcad46965a863e32d5db84e052a871c617e77eed2c18d23e2b07ea9abb"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-sunmd5.c",
+          "sha256": "1eb22caea319e6fa69487a14434870c6569b3214e2424d982f2c6e4bbfc8d187",
+          "prefix_bytes": 1596,
+          "notice_sha256": "c172437f5e0fc3db8915924d03c756a9844481334ce941396493dd1d7fea571e"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-yescrypt.c",
+          "sha256": "63605ac309b94be7098c23b2bad9b4e13af0df2cd1748f38a8fc7903a8f544f1",
+          "prefix_bytes": 920,
+          "notice_sha256": "6e37df4cd4a52b1912317ad7595f20cd84aec981fcef4643a58cdf9e8c698345"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt.c",
+          "sha256": "2ed59f2804be69f53cacf31baf5c092b189cbebd0aa3c5691b2b23a39fbec91d",
+          "prefix_bytes": 800,
+          "notice_sha256": "622e5128e1dcbeafc218023d2e3f39624e5f80b3c6c4127930382d0ac1cac16c"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/util-base64.c",
+          "sha256": "cebcc51f94a3d74daf2d8757515929a763336913e772ed4a4ea9da6773868093",
+          "prefix_bytes": 1002,
+          "notice_sha256": "e2c08290c530dbd912f821e35689cabaf19ae7a588c05bf3f1e7d144f88cf499"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/util-gensalt-sha.c",
+          "sha256": "4fc9008d0bd3eaeec6ae7a05b43c040a16c86e588e1945463349ab73d1c241b5",
+          "prefix_bytes": 381,
+          "notice_sha256": "31a52c40dd028a388870d8085925647f17956a7a8e26a22566d47d852bb829de"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/util-get-random-bytes.c",
+          "sha256": "3f9bca4587185350344be275c111d6b5eb3e29c6963519fbb474aafa5b4b145b",
+          "prefix_bytes": 642,
+          "notice_sha256": "decc5c0e399180a3ed15b4894a16b91eccfda610c11e1ce7a11ec3753bad9fd4"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/util-make-failure-token.c",
+          "sha256": "62590f5b282cdb9b026c5eb7a4a76770ed22136ed2e6ea03942e4023d09bfc4e",
+          "prefix_bytes": 951,
+          "notice_sha256": "596b89c201cdb7e38d0417eaf5be1e868791fb346d3426b97df5b49090e7b81f"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/util-xbzero.c",
+          "sha256": "7b5df56f2529a5531c0517085ab99a711a90e4c3643ccdb0f6fe478d015db7c8",
+          "prefix_bytes": 951,
+          "notice_sha256": "596b89c201cdb7e38d0417eaf5be1e868791fb346d3426b97df5b49090e7b81f"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/util-xstrcpy.c",
+          "sha256": "00d7d7825681de54dce88ce9f63827dbf2f5eb45542c60e461b402865a1266dc",
+          "prefix_bytes": 998,
+          "notice_sha256": "aa1401cca8ed2414796f09094d7d96f9d90eee0252182d34d73bcae57c751007"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/crypt-des-obsolete.c",
+          "sha256": "3ef943464512d8fd26feaa2f21e19c5602efbd95d1b523415fe51ab26ea10a4b",
+          "prefix_bytes": 2293,
+          "notice_sha256": "d60e1a7ac687900bf897d6d427b20f4bf36b24cf8ea9060d906f4759b87aaa9a"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/gen-des-tables.c",
+          "sha256": "335fa8f0e9b8efc7e106698fb1019791717670f23dd3a28633c78cb254896846",
+          "prefix_bytes": 2203,
+          "notice_sha256": "02efca55da69b620bbde4bfe78437c5575e91e055bc20016d94557ecddfe433a"
+        },
+        {
+          "member": "libxcrypt-4.5.2/lib/alg-yescrypt-platform.c",
+          "sha256": "3f22e1b95c1ebef6002175da7621d363a906b35e18f485b71d306a34d4e4e58d",
+          "prefix_bytes": 956,
+          "notice_sha256": "61d8aaf6c1f86ca927b5e774ab483da0d3a3b8271135bd836b8d0d188864473c"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-gost3411-2012.c",
+          "sha256": "fabdcef80f306ee9cede8a4ae3b5621dfc1f550f12438622dfe5cfe7f76f6515",
+          "prefix_bytes": 982,
+          "notice_sha256": "0f34b0ba46888f2e529f1290bd8afe862708db3896b852807c0f6d922d325ab2"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-gost3411-2012-hmac.c",
+          "sha256": "78291502c69b6bc5b8a83896270fffa39e862540ccaecca8ae5edf3d636ecbb8",
+          "prefix_bytes": 982,
+          "notice_sha256": "0f34b0ba46888f2e529f1290bd8afe862708db3896b852807c0f6d922d325ab2"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-hmac-sha1.c",
+          "sha256": "9c7c5d3f2a196798919e9e8c51daf6ef16a42254f6d186391069bc2c2b5d6dd7",
+          "prefix_bytes": 1405,
+          "notice_sha256": "99a099d5d7241fc7a6d55cf04651ee157c019d7d186dbae0af1015dabc8c5d17"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-pbkdf-hmac-sha256.c",
+          "sha256": "c9e154123f674bebfa96e0f5e941ea1f3f4c311926d4f82deafbd49808675d0f",
+          "prefix_bytes": 410,
+          "notice_sha256": "46abab268b948f98ebda76f14ecfc8fcbaecfd6d7819396567093dad1784ff31"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-sha1.c",
+          "sha256": "d12f12d8e867ca5851d4a717652bfaa1f299e49adb0eebab92af450656fd8144",
+          "prefix_bytes": 81,
+          "notice_sha256": "d92ac5ef1e4856b6162c0d66be95af7b100e6f918c7c5bf46242eb428dde54f9"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-sm3.c",
+          "sha256": "6b5dfaea7e17bd1b1e5e61bcd17df74f3c3d57fa65ee0e258a0e7cf9d0aa1445",
+          "prefix_bytes": 1551,
+          "notice_sha256": "1b33558ef6309661d32de55b49bd3c4122fd6abcf7ff406a0bdbc65be8edadcd"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-sm3-hmac.c",
+          "sha256": "9a09b11af9f422f297978e93d54257735ebbbc83a59ff44fb102aa597cbe6a82",
+          "prefix_bytes": 956,
+          "notice_sha256": "1b9c7928c5f603d32c2b17330d5d170425ae5e8afe23cf5ea1598092942d9c6f"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/alg-yescrypt.c",
+          "sha256": "3c075ddbacd0698fcda22b93b4035997e5e35215274567b2b17a988d4ae0cdcb",
+          "prefix_bytes": 951,
+          "notice_sha256": "35d80efce523e85a2b88e731c78f217b87894b07b387feb6101d0e6ba85fb2cc"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/badsalt.c",
+          "sha256": "7036868cd465c9ac269ce729983ef427670e76d33e4dca4f15ba407a0297082e",
+          "prefix_bytes": 836,
+          "notice_sha256": "607aa345dcc35edb05aa22e84fa8695f4d69fce447dacdcb8177fb8a60e58231"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/badsetting.c",
+          "sha256": "ec2642275b5c432bf4622545a8ca714e02659086f0e061fbbba48e6ad3c4008f",
+          "prefix_bytes": 321,
+          "notice_sha256": "07b4036d52ede453e5cb2d280fa3ca6adb9318d345daf5cb506ddd391cebdb17"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/byteorder.c",
+          "sha256": "8f5d8857f66b2893500f7e89cdc8b72bc68a6b96b1a38b7da25508d03dc76d6e",
+          "prefix_bytes": 614,
+          "notice_sha256": "e023a4316f6602d0f71372582c012e51db8e4d3815a0cfe3e3b223e3bf4ae936"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/checksalt.c",
+          "sha256": "fd7e9fb5e357191b765610e5ec5f0cc0149a8f98c175774328b4ca85bb070d39",
+          "prefix_bytes": 951,
+          "notice_sha256": "32b7d955ae15b02c799fa97152f07d93a5ddae24ae17db384a53f56653ef55e5"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/compile-strong-alias.c",
+          "sha256": "d0d69f6079dad0cba9364e34e93e4c61d4101d0b5196139a593db51198420b73",
+          "prefix_bytes": 1244,
+          "notice_sha256": "d71379215ef58cd9dd203205dc3703d0c9ce3138112481ced6f76806d4cc4804"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/crypt-badargs.c",
+          "sha256": "35ff3ac529d5f3ac5f4d1babaa2c1186df32de4a06b3091f07d473dc169e09bc",
+          "prefix_bytes": 319,
+          "notice_sha256": "3b948908585d0ea5ffe4c82a0657e7b6c14687e8612a13f9179ce259e62e81f1"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/crypt-gost-yescrypt.c",
+          "sha256": "33c3be889f4eed864fa2112aad03ddc0b2faf37df434d2bad89c2321c20f4f76",
+          "prefix_bytes": 982,
+          "notice_sha256": "0f34b0ba46888f2e529f1290bd8afe862708db3896b852807c0f6d922d325ab2"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/crypt-nested-call.c",
+          "sha256": "ba549e062af7ae6cc22aae82c3c8ad31b3d7aa4ca1037cfe257fe0f73e5c111f",
+          "prefix_bytes": 741,
+          "notice_sha256": "39366951a502289a37fecf390ba561f3b442c9af4fc3bfec9943caebcf733a19"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/crypt-sm3-yescrypt.c",
+          "sha256": "814cc9ef421c2493a503256dcce3163469c81147d51b7bd21c92c4126afabaa9",
+          "prefix_bytes": 988,
+          "notice_sha256": "8813082ba0e80e7faf593266247af641d7b70e8524d379aad9335e0019b4a201"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/crypt-too-long-phrase.c",
+          "sha256": "f226d07b097dec6b7563a79a354ad0c78925b97c793924b3c5f94a6d51a18778",
+          "prefix_bytes": 741,
+          "notice_sha256": "39366951a502289a37fecf390ba561f3b442c9af4fc3bfec9943caebcf733a19"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/explicit-bzero.c",
+          "sha256": "f978a7fba24e3cc134eff7046ad1cdc7b438d0573d2ba84e5f98836a9523eb02",
+          "prefix_bytes": 2152,
+          "notice_sha256": "51fefe8107fd724ea87f1276ec8458ae62483212cdfed60d3da654b5f2cdd5c7"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/gensalt-bcrypt_x.c",
+          "sha256": "a3d5e1cd2caab091a1880719bb354c6908fadd1a872802c0bfd162a82d7d2f5c",
+          "prefix_bytes": 946,
+          "notice_sha256": "3501a1252e2fc82282620ae910aacf8d9214f9417340aee7fdc8bd5b0264328c"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/gensalt-extradata.c",
+          "sha256": "f03a893c8f9195d8889e841a6a1fce300a5c0cfbe54b108afd97525dc65f62b2",
+          "prefix_bytes": 407,
+          "notice_sha256": "6291e3840f250d1088973e45903780bf1699026aa0cc65d105670f57396941a5"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/gensalt-nested-call.c",
+          "sha256": "23a8d7ff0140f492335f7f856cb3710f226ea499b8eaf7a983572ec6ccc9cdb7",
+          "prefix_bytes": 741,
+          "notice_sha256": "39366951a502289a37fecf390ba561f3b442c9af4fc3bfec9943caebcf733a19"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/gensalt-nthash.c",
+          "sha256": "3b01c9956e50d4772ac4f187654bd65f39cde671d6093d81e7e1437b4efe2390",
+          "prefix_bytes": 946,
+          "notice_sha256": "e7a2256d17ae48d0eb6daa4bbeb9f3c2942007bee36afb50a2f595a159893ffb"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/getrandom-fallbacks.c",
+          "sha256": "b68a5c74b3c91ea3d19a9be016e97c919524c8e97bfe6fdc74aa8700104e443b",
+          "prefix_bytes": 320,
+          "notice_sha256": "1894907ec1749d7cf9622d7c8e3d0c00fe32e36fa71e993a8aa8683096b881fb"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/getrandom-interface.c",
+          "sha256": "1325877e0fe1168096ae3e4e018425fc13550d61a4e197241297d3ddc04bc40b",
+          "prefix_bytes": 323,
+          "notice_sha256": "629fa941605d41a77258a39e9e11e3f0ac646ddb12b43fc99cb3eecae931e7f1"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/ka-tester.c",
+          "sha256": "f1ef9794baea7665b220c1e06469baace822ddcad8a9b6e27b4ecd6ee8e55c1d",
+          "prefix_bytes": 320,
+          "notice_sha256": "6a811ec1207ca1213bbbd1e656edd4313b7efdd6ee708585bc42458e4455ad79"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/preferred-method.c",
+          "sha256": "75847de14d0f436f8d6c02fc5421bbe8c55b49d00ae58ab3b04e242da3f2ef37",
+          "prefix_bytes": 946,
+          "notice_sha256": "e7a2256d17ae48d0eb6daa4bbeb9f3c2942007bee36afb50a2f595a159893ffb"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/short-outbuf.c",
+          "sha256": "0d81ff54c082c60e35eb82d91e0aff6dc1a1ac350019eb6f43dec11e1cbddc08",
+          "prefix_bytes": 946,
+          "notice_sha256": "e7a2256d17ae48d0eb6daa4bbeb9f3c2942007bee36afb50a2f595a159893ffb"
+        },
+        {
+          "member": "libxcrypt-4.5.2/test/special-char-salt.c",
+          "sha256": "6938b2c5e5c0b7ae4428d22af05113a38b84b124e198b014ba571145e3485896",
+          "prefix_bytes": 1340,
+          "notice_sha256": "058a27cb3816c06cbe1b53fe67b99e69ed259d7d6716cf934f62ca8ecc5f0232"
+        },
+        {
+          "member": "libxcrypt-4.5.2/LICENSING",
+          "sha256": "9144e66d8140feb84f0e4e344906ac425378896320032e0248567ef195cf0135"
+        },
+        {
+          "member": "libxcrypt-4.5.2/THANKS",
+          "sha256": "0a0c3a0b671ce1dba142c050b9a31eb86b5edea968f3bce0eac18977b1faf0f5"
+        },
+        {
+          "member": "libxcrypt-4.5.2/README",
+          "sha256": "3a93ea9e3be5a6e1a763a7b9e1b049e22bb3c214419ef2acb09b4f6a6b799a01",
+          "prefix_bytes": 2939,
+          "notice_sha256": "9cf05599f21c8f3872141ec1ee978c3030dc2fcebf5b4fce8bf2999616af3391"
         }
-      ]
+      ],
+      "source_export": {
+        "kind": "libxcrypt-4.5.2-without-unlabelled-source-only-tests",
+        "excluded": [
+          {
+            "member": "libxcrypt-4.5.2/test/alg-des.c",
+            "sha256": "9fea30478d98555dd63e728337d3ee92b39a30a72ae397c3dd2135d315f1b28f",
+            "size": 1552
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/alg-md4.c",
+            "sha256": "523775ade07d802cbbf35e69d1dc7bdfabd58ea18fd65563490434b0e4281629",
+            "size": 2472
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/alg-md5.c",
+            "sha256": "25f7f861de840e1cad25160a248133f2dbfa067bc2be94e0edaa6f061bf2fc91",
+            "size": 3273
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/alg-sha256.c",
+            "sha256": "74c98b743c328afbe4ffcb698522616aaafab5d8d0cc6de60beee7296f995d59",
+            "size": 3813
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/alg-sha512.c",
+            "sha256": "d547c426c733a1f33e42b9b138b978ff601e5bb8089199db4386a878c9b97f4e",
+            "size": 5560
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/des-cases.h",
+            "sha256": "820b821198b2c1d8a67ea2698bb299fc136b6f03bf1c5de1d4b98e432c0e3962",
+            "size": 20116
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/des-obsolete.c",
+            "sha256": "d7e6d50c8187fead250f971cd9d590207c173ffded172e3c9f91cebc4048be7b",
+            "size": 4557
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/des-obsolete_r.c",
+            "sha256": "a52e5c51f63abb8996d23db6bf5a8e48f91f90ca501b205f9939c99a42b04495",
+            "size": 4642
+          },
+          {
+            "member": "libxcrypt-4.5.2/test/gensalt.c",
+            "sha256": "59bc6799ffa390143c82a923e905c703d309aa0702aae49edd8953dab44873ce",
+            "size": 18219
+          }
+        ],
+        "sha256": "47d23d5390c80404bf5aeb6828bb03280e19c69aa02021bcec58ff49945fd690"
+      }
     },
     {
       "name": "salt-sdk:krb5",

@@ -500,3 +500,37 @@ read separately. Original application-instruction omissions do not remove any
 operative condition, and the original full notices remain unchanged in the
 artifacts. Appended BSD/other licenses, mixed terms and unknown supporting
 notices were deferred rather than hidden behind an Apache-only decision.
+
+
+## Scoped libxcrypt corresponding source
+
+The fixed libxcrypt 4.5.2 upstream `LICENSING` inventory explicitly lists
+source-only tests with unknown individual licensing. The source collector
+exports a separately pinned archive omitting only the nine listed files still
+present in that release. Every library algorithm, public header, configure and
+install source remains unchanged. The two original Makefile controls remove the
+absent test header from the noninstalled `all-am` prerequisites and retain their
+original attribution plus a dated modification notice.
+
+The export contains the original archive hash, every omitted file hash, and the
+before/after hashes of both build controls. The complete original licensing
+inventory, authors, acknowledgements, LGPL text and 86 C/H legal headers are
+retained. The collector rejects raw-archive substitution, unexpected exclusions,
+changed test bytes and a different final export hash.
+
+[Native component evidence](evidence/diagnostic-libxcrypt-source-export-native-builds.json)
+records successful normal library builds and installation from the exact same
+exported bytes on AMD64 and ARM64. The upstream check suite is incomplete and
+was not run; SDK binary reproduction, a current complete release candidate and
+OCI validation are separate and remain unverified.
+
+### libxcrypt の対応ソース
+
+上流のライセンス一覧で個別の許諾が不明とされ、当該版に存在する試験用ファイル
+9 件だけを除外したソースを固定します。ハッシュ方式、ライブラリ、公開ヘッダー、
+configure とインストールのコードは保持します。Makefile 2 件では、除外した
+試験用ヘッダーを通常ビルドの前提一覧から外し、変更記録と元の帰属を残します。
+元アーカイブ、除外ファイル、変更前後の制御ファイルのハッシュを記録し、元の
+ライセンス一覧と各ソースの許諾ヘッダーも配布します。同一の出力ソースから
+AMD64 と ARM64 の通常ビルド・インストールを確認済みです。上流の試験一式は
+不完全なため未実施であり、SDK バイナリの再現やリリース全体の合格とは区別します。

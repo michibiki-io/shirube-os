@@ -17083,6 +17083,35 @@
         "Preserve original LLVM/NCSA/Intel and Google named nonendorsement and patent conditions, the full PSTL Apache/LLVM exception and legacy alternatives. Original libsanitizer notice references CREDITS.TXT absent from this fixed upstream release; retain original copyright text as provided and every per-file copyright in the full source, without inventing authors or claiming a recovered credits list."
       ],
       "scope": "Every declared complete original legal text matched to read original text, or its complete normalized-word differences read; all remaining GCC runtime exception, Ada/documentation scopes, author list, Google PATENTS, sanitizer and full PSTL grants read. Root project copying context retained. Source-only compiler and independently licensed runtimes/documentation remain separately scoped; no parent SDK/OS clearance."
+    },
+    "salt-sdk:libxcrypt@4.5.2": {
+      "source_identity": "47d23d5390c80404bf5aeb6828bb03280e19c69aa02021bcec58ff49945fd690",
+      "copyright_sha256": "3ffed616e6c5d331ff379521fb0ac6e7cd0cf0082d76a4b96c45808e8ef8fbc8",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND 0BSD AND LicenseRef-Explicit-Public-Domain AND LicenseRef-CC0-dedication AND FSFULLR AND (GPL-2.0-or-later WITH LicenseRef-GNU-Autoconf-exceptions) AND (GPL-3.0-or-later WITH LicenseRef-GNU-Autoconf-exceptions)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/71513a31c01a428bccd5367a32fd95f115d6dac50fb5b60c779d5c7942aec071.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ],
+      "conditions": [
+        "Retain complete original AUTHORS/THANKS/LICENSING, every retained original per-file copyright/grant/disclaimer, and the full LGPL2.1 with source and binary documentation.",
+        "Supply complete exact preferred library/algorithm/header sources and configure/build/install scripts, mark build-control changes, preserve LGPL source/replacement/relinking rights and all distinct BSD nonendorsement conditions.",
+        "Keep public-domain/CC0 dedications, 0BSD fallback permissions and exact GNU build-macro exceptions in their original scopes. Do not replace per-file permission with a broader generic grant.",
+        "Preserve the source-export manifest and original-source identity, all nine excluded member hashes and both original/modified build-control hashes. Do not distribute the raw upstream source archive or claim the incomplete upstream check suite passed."
+      ],
+      "scope": "Complete original root licensing/author notices and 86 actual C/H leading legal headers read through complete deduplicated bodies plus every attribution prefix. Overall library LGPL2.1 and separate source grants retained; the original licensing inventory is supplemented by actual headers where its file list is historical. Only the exact source export is cleared: nine existing source-only tests explicitly listed with unknown individual licensing are omitted, two all-am noninstalled header lists adjusted, all library/algorithm/public header/configure/install code unchanged. Normal native library build/install passes from identical exported bytes on both architectures; no installed SDK byte reproduction or full upstream check-suite claim."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

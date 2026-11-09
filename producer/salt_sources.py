@@ -250,9 +250,13 @@ def retain(rootfs, destination, work, lock_path):
             raise ValueError('Salt dependency source SHA256 mismatch')
         exported, exported_digest = source, digest
         if 'source_export' in record:
-            if record['name'] != 'pypi:charset-normalizer' or record['version'] != '3.2.0':
+            component = (record['name'], record['version'])
+            if component == ('pypi:charset-normalizer', '3.2.0'):
+                from .charset_source import write_export
+            elif component == ('salt-sdk:libxcrypt', '4.5.2'):
+                from .libxcrypt_source import write_export
+            else:
                 raise ValueError('Unexpected scoped SDK source export')
-            from .charset_source import write_export
             exported = work / (digest + '.export.tar.gz')
             exported_digest = write_export(source, exported, record['source_export'])
             if exported_digest != record['source_export']['sha256']:

@@ -42,6 +42,34 @@ class SaltSourceTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError,'export hash differs'):
                         retain(guest,root/'bad.tar.gz',root/'bad-work',lock_path)
 
+    def test_libxcrypt_export_binds_the_tested_source_and_omits_raw_input(self):
+        from tests.test_libxcrypt_source import LibxcryptSourceExportTests
+        from producer.libxcrypt_source import write_export
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);guest,sample,lock,_=self.fixture(root)
+            original,members,policy=LibxcryptSourceExportTests().fixture(root)
+            digest=sha256(original)
+            with patch('producer.libxcrypt_source.ORIGINAL',digest):
+                policy['sha256']=write_export(original,root/'expected.tar.gz',policy)
+                lock['components'].append({'name':'salt-sdk:libxcrypt','version':'4.5.2',
+                    'url':'https://example.org/libxcrypt.tar.gz','sha256':digest,'source_export':policy,
+                    'notices':[{'member':'libxcrypt-4.5.2/LICENSING',
+                    'sha256':hashlib.sha256(members['libxcrypt-4.5.2/LICENSING']).hexdigest()}]})
+                path=root/'lock.json';path.write_text(json.dumps(lock))
+                def download(url,destination):
+                    shutil.copyfile(original if 'libxcrypt' in url else sample,destination)
+                with patch('producer.salt_sources.download',side_effect=download):
+                    _,children=retain(guest,root/'bundle.tar.gz',root/'work',path)
+                    child=next(r for r in children if r['name']=='salt-sdk:libxcrypt')
+                    self.assertEqual(child['source_identity'],policy['sha256'])
+                    with tarfile.open(root/'bundle.tar.gz') as archive:
+                        self.assertNotIn('salt-sdk/inputs/'+digest+'.source',archive.getnames())
+                        data=archive.extractfile(child['sources'][0]['member']).read()
+                        self.assertEqual(hashlib.sha256(data).hexdigest(),policy['sha256'])
+                    policy['sha256']='0'*64;path.write_text(json.dumps(lock))
+                    with self.assertRaisesRegex(ValueError,'export hash differs'):
+                        retain(guest,root/'bad.tar.gz',root/'bad-work',path)
+
     def fixture(self, root):
         guest = root / 'guest'
         (guest / 'etc').mkdir(parents=True)
