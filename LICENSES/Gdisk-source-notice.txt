@@ -1,0 +1,20 @@
+GPT fdisk (gdisk) 1.0.9 upstream source notices
+
+gpt.cc:
+This program is copyright (c) 2009-2022 by Roderick W. Smith. It is distributed
+under the terms of the GNU GPL version 2, as detailed in the COPYING file.
+
+gdisk.cc:
+This program is copyright (c) 2009-2013 by Roderick W. Smith. It is distributed
+under the terms of the GNU GPL version 2, as detailed in the COPYING file.
+
+crc32.cc retains Copyright (c) 1999,2000 Krzysztof Dabrowski and
+Copyright (c) 1999,2000 ElysiuM deeZine, under GPL version 2 or later.
+
+Shirube OS distributes the upstream program under GPL version 2, retaining the
+full GPL-2.0.txt text, exact source and Debian patches. The installed Debian
+copyright additionally states LGPL-2.0-or-later; that original notice remains
+unchanged. It does not replace the explicit GPL version 2 source-file grants.
+
+Original preferred source: gptfdisk-1.0.9 in gdisk_1.0.9.orig.tar.gz.
+The component source archive and inventory bind the exact original bytes.

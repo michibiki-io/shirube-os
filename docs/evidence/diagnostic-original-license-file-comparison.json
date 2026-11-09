@@ -1,0 +1,1000 @@
+{
+  "kind": "full-original-source-license-file-comparison",
+  "status": "PASS_TEXT_COMPARISON_ONLY",
+  "original_texts_compared": 66,
+  "scope": "Complete original texts compared word-for-word to previously read originals, then every full word diff read. These records do not approve any package by themselves; package grants, per-file exceptions and all other original legal files require separate decisions. Scope/version restrictions and linking exceptions remain unchanged in original distributed texts.",
+  "comparisons": [
+    {
+      "original": {
+        "component": "apparmor",
+        "member": "LICENSE",
+        "sha256": "a7e0cdcbea5c14927cedfc600d46526bdcbb1eb0a4d951e2ea53c2a6de159cb4"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9971442969931127,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ apparmor/LICENSE\n\n@@ -1,4 +1,21 @@\n\n+Unless\n+otherwise\n+noted\n+in\n+separate\n+subdirectories,\n+this\n+license\n+applies\n+to\n+the\n+entire\n+contents\n+of\n+this\n+source\n+tree:\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "be9113a697b4e39babfb46c1187ab731831d065dd0adefdc903421f8ada4415f"
+    },
+    {
+      "original": {
+        "component": "apparmor",
+        "member": "parser/COPYING.GPL",
+        "sha256": "dd54950fa69a3096fe907a466a454d217ccca9bca77398d5232704766d5a0040"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9979825151311366,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ apparmor/parser/COPYING.GPL\n\n@@ -1,4 +1,16 @@\n\n+This\n+license\n+applies\n+to\n+all\n+source\n+files\n+within\n+the\n+AppArmor\n+parser\n+package.\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "9300908edf008cbd958f017ed04fe295ee0021c93f27789b1d571ad0e5f9421c"
+    },
+    {
+      "original": {
+        "component": "audit",
+        "member": "COPYING.LIB",
+        "sha256": "f18a0811fa0e220ccbc42f661545e77f0388631e209585ed582a1c693029c6aa"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9988574040219378,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ audit/COPYING.LIB\n\n@@ -492,8 +492,9 @@\n\n be\n introduced\n by\n others.\n+^L\n Finally,\n software\n patents\n pose\n@@ -983,8 +984,9 @@\n\n in\n order\n to\n run.\n+^L\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -1895,8 +1897,9 @@\n\n change\n in\n these\n notices.\n+^L\n Once\n this\n change\n is\n@@ -2367,8 +2370,9 @@\n\n with\n the\n Library\n itself.\n+^L\n 6.\n As\n an\n exception\n@@ -2901,8 +2905,9 @@\n\n executable\n that\n you\n distribute.\n+^L\n 7.\n You\n may\n place\n@@ -3259,8 +3264,9 @@\n\n parties\n with\n this\n License.\n+^L\n 11.\n If,\n as\n a\n@@ -3741,8 +3747,9 @@\n\n the\n Free\n Software\n Foundation.\n+^L\n 14.\n If\n you\n wish\n@@ -4032,8 +4039,9 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n+^L\n How\n to\n Apply\n These\n@@ -4198,9 +4206,9 @@\n\n Software\n Foundation;\n either\n version\n-2.1\n+2\n of\n the\n License,\n or",
+      "full_normalized_original_sha256": "fd04e47532e3d9bbf5b699f512dd558b7c26cda1f3d67da3dddd209cd5d39759"
+    },
+    {
+      "original": {
+        "component": "base-files",
+        "member": "licenses/LGPL-2",
+        "sha256": "681e386e44a19d7d0674b4320272c90e66b6610b741e7e6305f8219c42e85366"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "missing_d/COPYING.LIB",
+        "sha256": "56bdea73b6145ef6ac5259b3da390b981d840c24cb03b8e1cbc678de7ecfa18d"
+      },
+      "ratio": 0.9994024142464444,
+      "full_word_diff": "--- gawk/missing_d/COPYING.LIB\n\n+++ base-files/licenses/LGPL-2\n\n@@ -20,9 +20,9 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301,\n+02110-1301\n USA\n Everyone\n is\n permitted\n@@ -3843,9 +3843,8 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n-Appendix:\n How\n to\n Apply\n These\n@@ -4093,9 +4092,9 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301,\n+02110-1301\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "935b98482b5729636d7614aff8195e6e6f7bbe81070d54ee72e68b0d43f251ab"
+    },
+    {
+      "original": {
+        "component": "bash",
+        "member": "examples/shellmath/LICENSE",
+        "sha256": "5908bd3b6f430bffa4f8a20290eebdd933b62e2213908b83da1230355f3e9c1a"
+      },
+      "read_reference": {
+        "component": "grep",
+        "member": "COPYING",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+      },
+      "ratio": 0.9992033283172523,
+      "full_word_diff": "--- grep/COPYING\n\n+++ bash/examples/shellmath/LICENSE\n\n@@ -1,4 +1,13 @@\n\n+Shellfloat\n+is\n+copyright\n+(c)\n+2020\n+by\n+Michael\n+Wood.\n+================================================================================\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "1314931c78d3392625ecd3fd38dc6523e2c6500f79c88add4a068fd0fd8031a3"
+    },
+    {
+      "original": {
+        "component": "busybox",
+        "member": "LICENSE",
+        "sha256": "bbfc9843646d483c334664f651c208b9839626891d8f17604db2146962f43548"
+      },
+      "read_reference": {
+        "component": "iotop",
+        "member": "COPYING",
+        "sha256": "c38aee9e3c8c4d5d594ff548a1be05453023016d6286931f6512db215ec1fd42"
+      },
+      "ratio": 0.9919786096256684,
+      "full_word_diff": "--- iotop/COPYING\n\n+++ busybox/LICENSE\n\n@@ -1,4 +1,52 @@\n\n+---\n+A\n+note\n+on\n+GPL\n+versions\n+BusyBox\n+is\n+distributed\n+under\n+version\n+2\n+of\n+the\n+General\n+Public\n+License\n+(included\n+in\n+its\n+entirety,\n+below).\n+Version\n+2\n+is\n+the\n+only\n+version\n+of\n+this\n+license\n+which\n+this\n+version\n+of\n+BusyBox\n+(or\n+modified\n+versions\n+derived\n+from\n+this\n+one)\n+may\n+be\n+distributed\n+under.\n+------------------------------------------------------------------------\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "8dc0777f5fd9155c41b79ccdbb13149ab1be93a033976f8fc1ac2d480aaab0c7"
+    },
+    {
+      "original": {
+        "component": "cairo",
+        "member": "COPYING-LGPL-2.1",
+        "sha256": "9e9e8608c4cdda51a78cc3a385f4ec9a2e4c96d5ecad74ac8bca5fca3e563b7d"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9986276303751144,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ cairo/COPYING-LGPL-2.1\n\n@@ -17,13 +17,13 @@\n\n Inc.\n 51\n Franklin\n Street,\n-Fifth\n-Floor,\n+Suite\n+500,\n Boston,\n MA\n-02110-1301\n+02110-1335,\n USA\n Everyone\n is\n permitted\n@@ -4277,13 +4277,13 @@\n\n Inc.,\n 51\n Franklin\n Street,\n-Fifth\n-Floor,\n+Suite\n+500,\n Boston,\n MA\n-02110-1301\n+02110-1335,\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "1b6b65b3ed55ba7e3a19aa3b4d28f534c38f8497edd236184a875897299959ce"
+    },
+    {
+      "original": {
+        "component": "cme",
+        "member": "LICENSE",
+        "sha256": "7d632c3c2b5ea3f636b13ddd2f233cffea291b9282b9f8a888fb1a5b87b35c37"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.9993856739157144,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ cme/LICENSE\n\n@@ -2,12 +2,13 @@\n\n software\n is\n Copyright\n (c)\n-2005-2022\n+2014-2022\n by\n Dominique\n-Dumont.\n+Dumont\n+<ddumont@cpan.org>.\n This\n is\n free\n software,",
+      "full_normalized_original_sha256": "defa58bc6119a1eb9aaea34bfd5e64288affff72278de2a2f6334c58c577a923"
+    },
+    {
+      "original": {
+        "component": "crun",
+        "member": "libocispec/COPYING",
+        "sha256": "379eb8d7a6cc3ba61820f3cc2a4823e005622852b82f2af1aadcbdf837ee444a"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "COPYING",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      },
+      "ratio": 0.991044776119403,
+      "full_word_diff": "--- gawk/COPYING\n\n+++ crun/libocispec/COPYING\n\n@@ -1,4 +1,106 @@\n\n+The\n+following\n+license\n+covers\n+the\n+parser\n+generator\n+itself.\n+As\n+a\n+special\n+exception,\n+you\n+may\n+create\n+a\n+larger\n+work\n+that\n+contains\n+part\n+or\n+all\n+of\n+the\n+libocispec\n+parser\n+skeleton\n+and\n+distribute\n+that\n+work\n+under\n+terms\n+of\n+your\n+choice,\n+so\n+long\n+as\n+that\n+work\n+isn't\n+itself\n+a\n+parser\n+generator\n+using\n+the\n+skeleton\n+or\n+a\n+modified\n+version\n+thereof\n+as\n+a\n+parser\n+skeleton.\n+Alternatively,\n+if\n+you\n+modify\n+or\n+redistribute\n+the\n+parser\n+skeleton\n+itself,\n+you\n+may\n+(at\n+your\n+option)\n+remove\n+this\n+special\n+exception,\n+which\n+will\n+cause\n+the\n+skeleton\n+and\n+the\n+resulting\n+libocispec\n+output\n+files\n+to\n+be\n+licensed\n+under\n+the\n+GNU\n+General\n+Public\n+License\n+without\n+this\n+special\n+exception.\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "bf0581d6abbdd9c71c44f40ce06ce3a26f807862eb9fe257b70857e3415471af"
+    },
+    {
+      "original": {
+        "component": "cryptsetup",
+        "member": "COPYING",
+        "sha256": "45670cce8b6a0ddd66c8016cd8ccef6cd71f35717cbacc7f1e895b3855207b33"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9800231137526828,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ cryptsetup/COPYING\n\n@@ -2965,4 +2965,125 @@\n\n instead\n of\n this\n License.\n+-----\n+In\n+addition,\n+as\n+a\n+special\n+exception,\n+the\n+copyright\n+holders\n+give\n+permission\n+to\n+link\n+the\n+code\n+of\n+portions\n+of\n+this\n+program\n+with\n+the\n+OpenSSL\n+library\n+under\n+certain\n+conditions\n+as\n+described\n+in\n+each\n+individual\n+source\n+file,\n+and\n+distribute\n+linked\n+combinations\n+including\n+the\n+two.\n+You\n+must\n+obey\n+the\n+GNU\n+General\n+Public\n+License\n+in\n+all\n+respects\n+for\n+all\n+of\n+the\n+code\n+used\n+other\n+than\n+OpenSSL.\n+If\n+you\n+modify\n+file(s)\n+with\n+this\n+exception,\n+you\n+may\n+extend\n+this\n+exception\n+to\n+your\n+version\n+of\n+the\n+file(s),\n+but\n+you\n+are\n+not\n+obligated\n+to\n+do\n+so.\n+If\n+you\n+do\n+not\n+wish\n+to\n+do\n+so,\n+delete\n+this\n+exception\n+statement\n+from\n+your\n+version.\n+If\n+you\n+delete\n+this\n+exception\n+statement\n+from\n+all\n+source\n+files\n+in\n+the\n+program,\n+then\n+also\n+delete\n+it\n+here.",
+      "full_normalized_original_sha256": "c67a7b6052eea2aa76fe2e5e2f1a8cce52230dd07aa3cdc32ac0bf24dba1e1b0"
+    },
+    {
+      "original": {
+        "component": "cryptsetup",
+        "member": "COPYING.LGPL",
+        "sha256": "8c33cc37871654ec7ed87e6fbb896c8cf33ef5ef05b1611a5aed857596ffafa5"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9862395668847281,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ cryptsetup/COPYING.LGPL\n\n@@ -4369,4 +4369,126 @@\n\n there\n is\n to\n it!\n+-----\n+In\n+addition,\n+as\n+a\n+special\n+exception,\n+the\n+copyright\n+holders\n+give\n+permission\n+to\n+link\n+the\n+code\n+of\n+portions\n+of\n+this\n+program\n+with\n+the\n+OpenSSL\n+library\n+under\n+certain\n+conditions\n+as\n+described\n+in\n+each\n+individual\n+source\n+file,\n+and\n+distribute\n+linked\n+combinations\n+including\n+the\n+two.\n+You\n+must\n+obey\n+the\n+GNU\n+Lesser\n+General\n+Public\n+License\n+in\n+all\n+respects\n+for\n+all\n+of\n+the\n+code\n+used\n+other\n+than\n+OpenSSL.\n+If\n+you\n+modify\n+file(s)\n+with\n+this\n+exception,\n+you\n+may\n+extend\n+this\n+exception\n+to\n+your\n+version\n+of\n+the\n+file(s),\n+but\n+you\n+are\n+not\n+obligated\n+to\n+do\n+so.\n+If\n+you\n+do\n+not\n+wish\n+to\n+do\n+so,\n+delete\n+this\n+exception\n+statement\n+from\n+your\n+version.\n+If\n+you\n+delete\n+this\n+exception\n+statement\n+from\n+all\n+source\n+files\n+in\n+the\n+program,\n+then\n+also\n+delete\n+it\n+here.",
+      "full_normalized_original_sha256": "88de0fe2711c14c4c7ad66fcf0cb7a9b71323acdb4b8b02775c81f5e33daf077"
+    },
+    {
+      "original": {
+        "component": "dbus-python",
+        "member": "LICENSES/GPL-3.0-or-later.txt",
+        "sha256": "b6a8bf63ae2c95b0aa256ee774680d7bd18f21f457da75466f7610b3b16acc4e"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "COPYING",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      },
+      "ratio": 0.9875974486180015,
+      "full_word_diff": "--- gawk/COPYING\n\n+++ dbus-python/LICENSES/GPL-3.0-or-later.txt\n\n@@ -7,9 +7,9 @@\n\n 29\n June\n 2007\n Copyright\n-(C)\n+\u00a9\n 2007\n Free\n Software\n Foundation,\n@@ -594,10 +594,10 @@\n\n AND\n CONDITIONS\n 0.\n Definitions.\n-\"This\n-License\"\n+\u201cThis\n+License\u201d\n refers\n to\n version\n 3\n@@ -606,9 +606,9 @@\n\n GNU\n General\n Public\n License.\n-\"Copyright\"\n+\u201cCopyright\u201d\n also\n means\n copyright-like\n laws\n@@ -622,10 +622,10 @@\n\n such\n as\n semiconductor\n masks.\n-\"The\n-Program\"\n+\u201cThe\n+Program\u201d\n refers\n to\n any\n copyrightable\n@@ -638,19 +638,19 @@\n\n licensee\n is\n addressed\n as\n-\"you\".\n-\"Licensees\"\n-and\n-\"recipients\"\n+\u201cyou\u201d.\n+\u201cLicensees\u201d\n+and\n+\u201crecipients\u201d\n may\n be\n individuals\n or\n organizations.\n To\n-\"modify\"\n+\u201cmodify\u201d\n a\n work\n means\n to\n@@ -683,25 +683,25 @@\n\n work\n is\n called\n a\n-\"modified\n-version\"\n+\u201cmodified\n+version\u201d\n of\n the\n earlier\n work\n or\n a\n work\n-\"based\n-on\"\n+\u201cbased\n+on\u201d\n the\n earlier\n work.\n A\n-\"covered\n-work\"\n+\u201ccovered\n+work\u201d\n means\n either\n the\n unmodified\n@@ -713,9 +713,9 @@\n\n on\n the\n Program.\n To\n-\"propagate\"\n+\u201cpropagate\u201d\n a\n work\n means\n to\n@@ -771,9 +771,9 @@\n\n activities\n as\n well.\n To\n-\"convey\"\n+\u201cconvey\u201d\n a\n work\n means\n any\n@@ -811,11 +811,11 @@\n\n interactive\n user\n interface\n displays\n-\"Appropriate\n+\u201cAppropriate\n Legal\n-Notices\"\n+Notices\u201d\n to\n the\n extent\n that\n@@ -900,10 +900,10 @@\n\n 1.\n Source\n Code.\n The\n-\"source\n-code\"\n+\u201csource\n+code\u201d\n for\n a\n work\n means\n@@ -917,20 +917,20 @@\n\n making\n modifications\n to\n it.\n-\"Object\n-code\"\n+\u201cObject\n+code\u201d\n means\n any\n non-source\n form\n of\n a\n work.\n A\n-\"Standard\n-Interface\"\n+\u201cStandard\n+Interface\u201d\n means\n an\n interface\n that\n@@ -968,10 +968,10 @@\n\n in\n that\n language.\n The\n-\"System\n-Libraries\"\n+\u201cSystem\n+Libraries\u201d\n of\n an\n executable\n work\n@@ -1039,10 +1039,10 @@\n\n source\n code\n form.\n A\n-\"Major\n-Component\",\n+\u201cMajor\n+Component\u201d,\n in\n this\n context,\n means\n@@ -1086,10 +1086,10 @@\n\n to\n run\n it.\n The\n-\"Corresponding\n-Source\"\n+\u201cCorresponding\n+Source\u201d\n for\n a\n work\n in\n@@ -1772,12 +1772,12 @@\n\n in\n section\n 4\n to\n-\"keep\n+\u201ckeep\n intact\n all\n-notices\".\n+notices\u201d.\n c)\n You\n must\n license\n@@ -1940,9 +1940,9 @@\n\n medium,\n is\n called\n an\n-\"aggregate\"\n+\u201caggregate\u201d\n if\n the\n compilation\n and\n@@ -2420,16 +2420,16 @@\n\n object\n code\n work.\n A\n-\"User\n-Product\"\n+\u201cUser\n+Product\u201d\n is\n either\n (1)\n a\n-\"consumer\n-product\",\n+\u201cconsumer\n+product\u201d,\n which\n means\n any\n tangible\n@@ -2482,10 +2482,10 @@\n\n by\n a\n particular\n user,\n-\"normally\n-used\"\n+\u201cnormally\n+used\u201d\n refers\n to\n a\n typical\n@@ -2555,10 +2555,10 @@\n\n use\n of\n the\n product.\n-\"Installation\n-Information\"\n+\u201cInstallation\n+Information\u201d\n for\n a\n User\n Product\n@@ -2856,10 +2856,10 @@\n\n copying.\n 7.\n Additional\n Terms.\n-\"Additional\n-permissions\"\n+\u201cAdditional\n+permissions\u201d\n are\n terms\n that\n supplement\n@@ -3204,10 +3204,10 @@\n\n additional\n terms\n are\n considered\n-\"further\n-restrictions\"\n+\u201cfurther\n+restrictions\u201d\n within\n the\n meaning\n of\n@@ -3721,10 +3721,10 @@\n\n with\n this\n License.\n An\n-\"entity\n-transaction\"\n+\u201centity\n+transaction\u201d\n is\n a\n transaction\n transferring\n@@ -3896,9 +3896,9 @@\n\n it.\n 11.\n Patents.\n A\n-\"contributor\"\n+\u201ccontributor\u201d\n is\n a\n copyright\n holder\n@@ -3927,15 +3927,15 @@\n\n is\n called\n the\n contributor's\n-\"contributor\n-version\".\n+\u201ccontributor\n+version\u201d.\n A\n contributor's\n-\"essential\n+\u201cessential\n patent\n-claims\"\n+claims\u201d\n are\n all\n patent\n claims\n@@ -3994,9 +3994,9 @@\n\n purposes\n of\n this\n definition,\n-\"control\"\n+\u201ccontrol\u201d\n includes\n the\n right\n to\n@@ -4054,10 +4054,10 @@\n\n following\n three\n paragraphs,\n a\n-\"patent\n-license\"\n+\u201cpatent\n+license\u201d\n is\n any\n express\n agreement\n@@ -4087,9 +4087,9 @@\n\n for\n patent\n infringement).\n To\n-\"grant\"\n+\u201cgrant\u201d\n such\n a\n patent\n license\n@@ -4209,10 +4209,10 @@\n\n license\n to\n downstream\n recipients.\n-\"Knowingly\n-relying\"\n+\u201cKnowingly\n+relying\u201d\n means\n you\n have\n actual\n@@ -4336,9 +4336,9 @@\n\n A\n patent\n license\n is\n-\"discriminatory\"\n+\u201cdiscriminatory\u201d\n if\n it\n does\n not\n@@ -4806,12 +4806,12 @@\n\n GNU\n General\n Public\n License\n-\"or\n+\u201cor\n any\n later\n-version\"\n+version\u201d\n applies\n to\n it,\n you\n@@ -4972,10 +4972,10 @@\n\n PARTIES\n PROVIDE\n THE\n PROGRAM\n-\"AS\n-IS\"\n+\u201cAS\n+IS\u201d\n WITHOUT\n WARRANTY\n OF\n ANY\n@@ -5300,9 +5300,9 @@\n\n have\n at\n least\n the\n-\"copyright\"\n+\u201ccopyright\u201d\n line\n and\n a\n pointer\n@@ -5538,10 +5538,10 @@\n\n you\n would\n use\n an\n-\"about\n-box\".\n+\u201cabout\n+box\u201d.\n You\n should\n also\n get\n@@ -5559,10 +5559,10 @@\n\n any,\n to\n sign\n a\n-\"copyright\n-disclaimer\"\n+\u201ccopyright\n+disclaimer\u201d\n for\n the\n program,\n if",
+      "full_normalized_original_sha256": "b8ec6c6fb17c08d3e68d8a69a10e275f1cbe20d33a8257d7673cd3dd7e3040d4"
+    },
+    {
+      "original": {
+        "component": "dbus-python",
+        "member": "subprojects/dbus-gmain/LICENSES/GPL-2.0-or-later.txt",
+        "sha256": "aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9863899285471249,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ dbus-python/subprojects/dbus-gmain/LICENSES/GPL-2.0-or-later.txt\n\n@@ -12,17 +12,17 @@\n\n 1991\n Free\n Software\n Foundation,\n-Inc.,\n+Inc.\n 51\n Franklin\n Street,\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n+02110-1301,\n USA\n Everyone\n is\n permitted\n@@ -472,12 +472,8 @@\n\n distribution\n and\n modification\n follow.\n-GNU\n-GENERAL\n-PUBLIC\n-LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -2594,29 +2590,28 @@\n\n full\n notice\n is\n found.\n-<one\n+one\n line\n to\n give\n the\n program's\n name\n and\n-a\n-brief\n+an\n idea\n of\n what\n it\n-does.>\n+does.\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+yyyy\n+name\n+of\n+author\n This\n program\n is\n free\n@@ -2726,9 +2721,9 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n+02110-1301,\n USA.\n Also\n add\n information\n@@ -2900,69 +2895,16 @@\n\n written\n by\n James\n Hacker.\n-<signature\n+signature\n of\n Ty\n-Coon>,\n+Coon,\n 1\n April\n 1989\n Ty\n Coon,\n President\n of\n Vice\n-This\n-General\n-Public\n-License\n-does\n-not\n-permit\n-incorporating\n-your\n-program\n-into\n-proprietary\n-programs.\n-If\n-your\n-program\n-is\n-a\n-subroutine\n-library,\n-you\n-may\n-consider\n-it\n-more\n-useful\n-to\n-permit\n-linking\n-proprietary\n-applications\n-with\n-the\n-library.\n-If\n-this\n-is\n-what\n-you\n-want\n-to\n-do,\n-use\n-the\n-GNU\n-Lesser\n-General\n-Public\n-License\n-instead\n-of\n-this\n-License.",
+      "full_normalized_original_sha256": "00d857bed08903a4f02325061f98ded6340800f1a18706e0473f656ecb884bbe"
+    },
+    {
+      "original": {
+        "component": "e2fsprogs",
+        "member": "ext2ed/COPYRIGHT",
+        "sha256": "3ec9de08738ada1aedf700ce32612a020ea5b402b7d0b92ae54c542780c9b6dc"
+      },
+      "read_reference": {
+        "component": "acpid",
+        "member": "COPYING",
+        "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad"
+      },
+      "ratio": 0.9963037634408602,
+      "full_word_diff": "--- acpid/COPYING\n\n+++ e2fsprogs/ext2ed/COPYRIGHT\n\n@@ -1,4 +1,26 @@\n\n+EXT2ED\n+is\n+hereby\n+placed\n+under\n+the\n+terms\n+of\n+the\n+GNU\n+General\n+Public\n+License.\n+Follows\n+the\n+GNU\n+license.\n+Gadi\n+Oxman,\n+August\n+1995\n+---------------------------------------------------------------------------\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "2d75af2f958d4d0da3458f20c8eab46f8614b50ca1eac311c7bf0cd308b4206c"
+    },
+    {
+      "original": {
+        "component": "efivar",
+        "member": "COPYING",
+        "sha256": "91df770634adc2755e78cae33a0d01e702ce2f69046408ae93d0d934ff29691b"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9967897271268058,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ efivar/COPYING\n\n@@ -14,17 +14,9 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n-Boston,\n-MA\n-02110-1301\n-USA\n+<http://fsf.org/>\n Everyone\n is\n permitted\n to\n@@ -4267,24 +4259,10 @@\n\n this\n library;\n if\n not,\n-write\n-to\n-the\n-Free\n-Software\n-Foundation,\n-Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n-Boston,\n-MA\n-02110-1301\n-USA\n+see\n+<http://www.gnu.org/licenses/>.\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "a13846feb9a7e36b2cdde9750c9d7b2499aaad28ce533b563585c1300a02fdef"
+    },
+    {
+      "original": {
+        "component": "gdbm",
+        "member": "COPYING",
+        "sha256": "690d762f2e8e149ab1e2d6a409a3853b6151a2533b2382fae549a176d6bedecf"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "COPYING",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      },
+      "ratio": 0.9997342545841085,
+      "full_word_diff": "--- gawk/COPYING\n\n+++ gdbm/COPYING\n\n@@ -8,9 +8,10 @@\n\n June\n 2007\n Copyright\n (C)\n-2007\n+2007,\n+2011\n Free\n Software\n Foundation,\n Inc.",
+      "full_normalized_original_sha256": "fb35df8ffa6a40290b7348f8d250d828a9eb90d4370389ea433d09a4f4eb1df0"
+    },
+    {
+      "original": {
+        "component": "gdisk",
+        "member": "COPYING",
+        "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+      },
+      "read_reference": {
+        "component": "iotop",
+        "member": "COPYING",
+        "sha256": "c38aee9e3c8c4d5d594ff548a1be05453023016d6286931f6512db215ec1fd42"
+      },
+      "ratio": 0.9993261455525606,
+      "full_word_diff": "--- iotop/COPYING\n\n+++ gdisk/COPYING\n\n@@ -15,9 +15,9 @@\n\n Foundation,\n Inc.\n 51\n Franklin\n-St,\n+Street,\n Fifth\n Floor,\n Boston,\n MA\n@@ -2721,9 +2721,9 @@\n\n Foundation,\n Inc.,\n 51\n Franklin\n-St,\n+Street,\n Fifth\n Floor,\n Boston,\n MA",
+      "full_normalized_original_sha256": "04747bc19d9eb83b5ba43a81275faed327e38230c2fbc5439496736b3d260d2f"
+    },
+    {
+      "original": {
+        "component": "gettext",
+        "member": "COPYING",
+        "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b"
+      },
+      "read_reference": {
+        "component": "grep",
+        "member": "COPYING",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+      },
+      "ratio": 0.9998228206945429,
+      "full_word_diff": "--- grep/COPYING\n\n+++ gettext/COPYING\n\n@@ -5640,5 +5640,5 @@\n\n But\n first,\n please\n read\n-<https://www.gnu.org/licenses/why-not-lgpl.html>.\n+<https://www.gnu.org/philosophy/why-not-lgpl.html>.",
+      "full_normalized_original_sha256": "cd83b5f465e54b1132f7000d6934b8652da0c2161fd663bdb3ac078f88355c45"
+    },
+    {
+      "original": {
+        "component": "gettext",
+        "member": "gettext-runtime/intl/COPYING.LIB",
+        "sha256": "3fe5361f24b7c49ba12911c08f5a33f9cb18871d95d9fb881f5b8a4793e04288"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.998400365630713,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ gettext/gettext-runtime/intl/COPYING.LIB\n\n@@ -21,9 +21,9 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n+02110-1301,\n USA\n Everyone\n is\n permitted\n@@ -492,8 +492,9 @@\n\n be\n introduced\n by\n others.\n+^L\n Finally,\n software\n patents\n pose\n@@ -983,8 +984,9 @@\n\n in\n order\n to\n run.\n+^L\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -1895,8 +1897,9 @@\n\n change\n in\n these\n notices.\n+^L\n Once\n this\n change\n is\n@@ -2367,8 +2370,9 @@\n\n with\n the\n Library\n itself.\n+^L\n 6.\n As\n an\n exception\n@@ -2901,8 +2905,9 @@\n\n executable\n that\n you\n distribute.\n+^L\n 7.\n You\n may\n place\n@@ -3259,8 +3264,9 @@\n\n parties\n with\n this\n License.\n+^L\n 11.\n If,\n as\n a\n@@ -3741,8 +3747,9 @@\n\n the\n Free\n Software\n Foundation.\n+^L\n 14.\n If\n you\n wish\n@@ -4032,8 +4039,9 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n+^L\n How\n to\n Apply\n These\n@@ -4198,9 +4206,9 @@\n\n Software\n Foundation;\n either\n version\n-2.1\n+2\n of\n the\n License,\n or\n@@ -4281,9 +4289,9 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n+02110-1301,\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "c9bb9c86f24b3d476821b82cdd1d771349e59958f402157c40d22f6bfdf88de2"
+    },
+    {
+      "original": {
+        "component": "git",
+        "member": "COPYING",
+        "sha256": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9790532739567871,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ git/COPYING\n\n@@ -1,4 +1,131 @@\n\n+Note\n+that\n+the\n+only\n+valid\n+version\n+of\n+the\n+GPL\n+as\n+far\n+as\n+this\n+project\n+is\n+concerned\n+is\n+_this_\n+particular\n+version\n+of\n+the\n+license\n+(ie\n+v2,\n+not\n+v2.2\n+or\n+v3.x\n+or\n+whatever),\n+unless\n+explicitly\n+otherwise\n+stated.\n+HOWEVER,\n+in\n+order\n+to\n+allow\n+a\n+migration\n+to\n+GPLv3\n+if\n+that\n+seems\n+like\n+a\n+good\n+idea,\n+I\n+also\n+ask\n+that\n+people\n+involved\n+with\n+the\n+project\n+make\n+their\n+preferences\n+known.\n+In\n+particular,\n+if\n+you\n+trust\n+me\n+to\n+make\n+that\n+decision,\n+you\n+might\n+note\n+so\n+in\n+your\n+copyright\n+message,\n+ie\n+something\n+like\n+This\n+file\n+is\n+licensed\n+under\n+the\n+GPL\n+v2,\n+or\n+a\n+later\n+version\n+at\n+the\n+discretion\n+of\n+Linus.\n+might\n+avoid\n+issues.\n+But\n+we\n+can\n+also\n+just\n+decide\n+to\n+synchronize\n+and\n+contact\n+all\n+copyright\n+holders\n+on\n+record\n+if/when\n+the\n+occasion\n+arises.\n+Linus\n+Torvalds\n+----------------------------------------\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "b6864c1160dd587d287fa8abec88f041cd30eb208f83ca2592f16bddc0d0d338"
+    },
+    {
+      "original": {
+        "component": "glib2.0",
+        "member": "COPYING",
+        "sha256": "fa6f36630bb1e0c571d34b2bbdf188d08495c9dbf58f28cac112f303fc1f58fb"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9974822613870451,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ glib2.0/COPYING\n\n@@ -983,13 +983,8 @@\n\n in\n order\n to\n run.\n-GNU\n-LESSER\n-GENERAL\n-PUBLIC\n-LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -4146,29 +4141,28 @@\n\n full\n notice\n is\n found.\n-<one\n+one\n line\n to\n give\n the\n library's\n name\n and\n-a\n-brief\n+an\n idea\n of\n what\n it\n-does.>\n+does.\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+year\n+name\n+of\n+author\n This\n library\n is\n free\n@@ -4351,12 +4345,12 @@\n\n by\n James\n Random\n Hacker.\n-<signature\n+signature\n of\n Ty\n-Coon>,\n+Coon,\n 1\n April\n 1990\n Ty",
+      "full_normalized_original_sha256": "67263dc9156896be4e2637f9bd5c14c0960aed48b12744ca2cdbca14b500a374"
+    },
+    {
+      "original": {
+        "component": "glib2.0",
+        "member": "subprojects/gvdb/COPYING",
+        "sha256": "bdbcdaa7858872393e9d6b216bbdc8a23e99d98dd6cdb7cda19458025b9e19fc"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9965627864344638,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ glib2.0/subprojects/gvdb/COPYING\n\n@@ -42,9 +42,9 @@\n\n it\n is\n not\n allowed.\n-[This\n+(This\n is\n the\n first\n released\n@@ -70,9 +70,9 @@\n\n hence\n the\n version\n number\n-2.1.]\n+2.1.)\n Preamble\n The\n licenses\n for\n@@ -4146,29 +4146,13 @@\n\n full\n notice\n is\n found.\n-<one\n-line\n-to\n-give\n-the\n-library's\n-name\n-and\n-a\n-brief\n-idea\n-of\n-what\n-it\n-does.>\n+GVDB\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+2019\n+GNOME\n This\n library\n is\n free\n@@ -4351,12 +4335,12 @@\n\n by\n James\n Random\n Hacker.\n-<signature\n+{signature\n of\n Ty\n-Coon>,\n+Coon},\n 1\n April\n 1990\n Ty",
+      "full_normalized_original_sha256": "40d4cf4bad8f4de107eacda55a4db64c6a3680c9b4150f285d046b18360f9945"
+    },
+    {
+      "original": {
+        "component": "gnupg2",
+        "member": "COPYING.LGPL21",
+        "sha256": "d31a714a7ab67eb95ccae12b701e74fe307d771682f8792af7ed4e1ba33074a6"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9950930046787629,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ gnupg2/COPYING.LGPL21\n\n@@ -1,4 +1,15 @@\n\n+[Note\n+that\n+only\n+a\n+few\n+files\n+are\n+distributed\n+under\n+this\n+license.]\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -14,16 +25,16 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -492,8 +503,9 @@\n\n be\n introduced\n by\n others.\n+^L\n Finally,\n software\n patents\n pose\n@@ -983,8 +995,9 @@\n\n in\n order\n to\n run.\n+^L\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -1895,8 +1908,9 @@\n\n change\n in\n these\n notices.\n+^L\n Once\n this\n change\n is\n@@ -2367,8 +2381,9 @@\n\n with\n the\n Library\n itself.\n+^L\n 6.\n As\n an\n exception\n@@ -2901,8 +2916,9 @@\n\n executable\n that\n you\n distribute.\n+^L\n 7.\n You\n may\n place\n@@ -3259,8 +3275,9 @@\n\n parties\n with\n this\n License.\n+^L\n 11.\n If,\n as\n a\n@@ -3741,8 +3758,9 @@\n\n the\n Free\n Software\n Foundation.\n+^L\n 14.\n If\n you\n wish\n@@ -4032,8 +4050,9 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n+^L\n How\n to\n Apply\n These\n@@ -4274,16 +4293,16 @@\n\n Free\n Software\n Foundation,\n Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "741d84b7a9259ce1b4f525378425e2b1a5b39cb44efcacc235820b215aebed93"
+    },
+    {
+      "original": {
+        "component": "gobject-introspection",
+        "member": "COPYING.GPL",
+        "sha256": "4c1cedcbb4a12ea964f1160dbbf36099e5a59b96129a99a1a1a61f2cb09271fb"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9983153638814016,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ gobject-introspection/COPYING.GPL\n\n@@ -12,17 +12,17 @@\n\n 1991\n Free\n Software\n Foundation,\n-Inc.,\n+Inc.\n 51\n Franklin\n Street,\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n+02110-1301,\n USA\n Everyone\n is\n permitted\n@@ -123,9 +123,9 @@\n\n covered\n by\n the\n GNU\n-Lesser\n+Library\n General\n Public\n License\n instead.)\n@@ -2726,10 +2726,10 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n-USA.\n+02110-1301,\n+USA\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "ae027c16ecd8cf1049ed8839cf7c4e1b518e4f8e815a7b305845ba4df72986c9"
+    },
+    {
+      "original": {
+        "component": "gpgme1.0",
+        "member": "COPYING.LESSER",
+        "sha256": "ca0061fc1381a3ab242310e4b3f56389f28e3d460eb2fd822ed7a21c6f030532"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9963436928702011,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ gpgme1.0/COPYING.LESSER\n\n@@ -14,16 +14,16 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -492,8 +492,9 @@\n\n be\n introduced\n by\n others.\n+^L\n Finally,\n software\n patents\n pose\n@@ -983,8 +984,9 @@\n\n in\n order\n to\n run.\n+^L\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -1895,8 +1897,9 @@\n\n change\n in\n these\n notices.\n+^L\n Once\n this\n change\n is\n@@ -2367,8 +2370,9 @@\n\n with\n the\n Library\n itself.\n+^L\n 6.\n As\n an\n exception\n@@ -2901,8 +2905,9 @@\n\n executable\n that\n you\n distribute.\n+^L\n 7.\n You\n may\n place\n@@ -3259,8 +3264,9 @@\n\n parties\n with\n this\n License.\n+^L\n 11.\n If,\n as\n a\n@@ -3741,8 +3747,9 @@\n\n the\n Free\n Software\n Foundation.\n+^L\n 14.\n If\n you\n wish\n@@ -4032,8 +4039,9 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n+^L\n How\n to\n Apply\n These\n@@ -4274,16 +4282,16 @@\n\n Free\n Software\n Foundation,\n Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "3587af1c46b3d1cef4a209f387e4f8884530da9e2098a5cf87ff629803c19c64"
+    },
+    {
+      "original": {
+        "component": "keyutils",
+        "member": "LICENCE.GPL",
+        "sha256": "f46409d4822b2457b39bbd0e7881eecb396130eb8320b7748fa7e9488970aa6d"
+      },
+      "read_reference": {
+        "component": "acpid",
+        "member": "COPYING",
+        "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad"
+      },
+      "ratio": 0.9978088656666105,
+      "full_word_diff": "--- acpid/COPYING\n\n+++ keyutils/LICENCE.GPL\n\n@@ -13,14 +13,17 @@\n\n Free\n Software\n Foundation,\n Inc.\n-675\n-Mass\n-Ave,\n-Cambridge,\n+<http://fsf.org/>\n+51\n+Franklin\n+St,\n+Fifth\n+Floor,\n+Boston,\n MA\n-02139,\n+02110-1301\n USA\n Everyone\n is\n permitted",
+      "full_normalized_original_sha256": "a6a3f472cdbf70f9ea702f6b4e9539c8b05e8976e09f94bc894e7cb3ecf08e9c"
+    },
+    {
+      "original": {
+        "component": "keyutils",
+        "member": "LICENCE.LGPL",
+        "sha256": "0d15593e3a8ad90917f8509b5ac1e4b5e5d196434a68029aa9dc0858a4a4c521"
+      },
+      "read_reference": {
+        "component": "libdaemon",
+        "member": "LICENSE",
+        "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+      },
+      "ratio": 0.9998856489422527,
+      "full_word_diff": "--- libdaemon/LICENSE\n\n+++ keyutils/LICENCE.LGPL\n\n@@ -14,8 +14,9 @@\n\n Free\n Software\n Foundation,\n Inc.\n+<http://fsf.org/>\n 51\n Franklin\n St,\n Fifth",
+      "full_normalized_original_sha256": "d3af909b9f9553296c341e11c9031c49cecf0d21f25b89fd4689c7370af005f8"
+    },
+    {
+      "original": {
+        "component": "lcdproc",
+        "member": "COPYING",
+        "sha256": "1b2a567f289f66a143c56353e7b3d4fa5862514a5e3c5cfdf8b02ee5e5aaa953"
+      },
+      "read_reference": {
+        "component": "acpid",
+        "member": "COPYING",
+        "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad"
+      },
+      "ratio": 0.9998313374936751,
+      "full_word_diff": "--- acpid/COPYING\n\n+++ lcdproc/COPYING\n\n@@ -2491,9 +2491,8 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n-Appendix:\n How\n to\n Apply\n These",
+      "full_normalized_original_sha256": "77d0e97d83d6ed2397c34a4e799f4e7504e8200182ed6646fc95ec914af837a4"
+    },
+    {
+      "original": {
+        "component": "libbpf",
+        "member": "LICENSE.LGPL-2.1",
+        "sha256": "0b9a4febcdee6de55872501d5c1a8f5d8b0d1650cd4d5351995ceb22e889f8ca"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9901170055662842,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ libbpf/LICENSE.LGPL-2.1\n\n@@ -1,4 +1,69 @@\n\n+Valid-License-Identifier:\n+LGPL-2.1\n+Valid-License-Identifier:\n+LGPL-2.1+\n+SPDX-URL:\n+https://spdx.org/licenses/LGPL-2.1.html\n+Usage-Guide:\n+To\n+use\n+this\n+license\n+in\n+source\n+code,\n+put\n+one\n+of\n+the\n+following\n+SPDX\n+tag/value\n+pairs\n+into\n+a\n+comment\n+according\n+to\n+the\n+placement\n+guidelines\n+in\n+the\n+licensing\n+rules\n+documentation.\n+For\n+'GNU\n+Lesser\n+General\n+Public\n+License\n+(LGPL)\n+version\n+2.1\n+only'\n+use:\n+SPDX-License-Identifier:\n+LGPL-2.1\n+For\n+'GNU\n+Lesser\n+General\n+Public\n+License\n+(LGPL)\n+version\n+2.1\n+or\n+any\n+later\n+version'\n+use:\n+SPDX-License-Identifier:\n+LGPL-2.1+\n+License-Text:\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -983,13 +1048,8 @@\n\n in\n order\n to\n run.\n-GNU\n-LESSER\n-GENERAL\n-PUBLIC\n-LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -4146,29 +4206,28 @@\n\n full\n notice\n is\n found.\n-<one\n+one\n line\n to\n give\n the\n library's\n name\n and\n-a\n-brief\n+an\n idea\n of\n what\n it\n-does.>\n+does.\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+year\n+name\n+of\n+author\n This\n library\n is\n free\n@@ -4351,12 +4410,12 @@\n\n by\n James\n Random\n Hacker.\n-<signature\n+signature\n of\n Ty\n-Coon>,\n+Coon,\n 1\n April\n 1990\n Ty",
+      "full_normalized_original_sha256": "8791cac596a0a4ef77423d353bab08bf4cd22496ab08d271b7413cc404f1d0cb"
+    },
+    {
+      "original": {
+        "component": "libconfig-model-lcdproc-perl",
+        "member": "LICENSE",
+        "sha256": "a8d194efab559c6e26450912dd24a17f87efc9a295a4bbe71ae67e98ec303fd6"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.9997542393708528,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ libconfig-model-lcdproc-perl/LICENSE\n\n@@ -2,9 +2,9 @@\n\n software\n is\n Copyright\n (c)\n-2005-2022\n+2013-2021\n by\n Dominique\n Dumont.\n This",
+      "full_normalized_original_sha256": "0281db6a1a2c6d88d05e639429cbb2ac73fb85b30738fc0ac22cf6ef759903c2"
+    },
+    {
+      "original": {
+        "component": "libffi",
+        "member": "LICENSE-BUILDTOOLS",
+        "sha256": "e67978cd18816c0cb7d29aaaacde7b7447402c2fb321a051698890a8eaedda94"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9844112769485904,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ libffi/LICENSE-BUILDTOOLS\n\n@@ -1,4 +1,98 @@\n\n+The\n+libffi\n+source\n+distribution\n+contains\n+certain\n+code\n+that\n+is\n+not\n+part\n+of\n+libffi,\n+and\n+is\n+only\n+used\n+as\n+tooling\n+to\n+assist\n+with\n+the\n+building\n+and\n+testing\n+of\n+libffi.\n+This\n+includes\n+the\n+msvcc.sh\n+script\n+used\n+to\n+wrap\n+the\n+Microsoft\n+compiler\n+with\n+GNU\n+compatible\n+command-line\n+options,\n+make_sunver.pl,\n+and\n+the\n+libffi\n+test\n+code\n+distributed\n+in\n+the\n+testsuite/libffi.bhaible\n+directory.\n+This\n+code\n+is\n+distributed\n+with\n+libffi\n+for\n+the\n+purpose\n+of\n+convenience\n+only,\n+and\n+libffi\n+is\n+in\n+no\n+way\n+derived\n+from\n+this\n+code.\n+msvcc.sh\n+an\n+testsuite/libffi.bhaible\n+are\n+both\n+distributed\n+under\n+the\n+terms\n+of\n+the\n+GNU\n+GPL\n+version\n+2,\n+as\n+below.\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "ef07f97aa2d64b0e76222d41476b4a8e9e2c8bb992ec8f82bc4195c61865e725"
+    },
+    {
+      "original": {
+        "component": "liblognorm",
+        "member": "COPYING",
+        "sha256": "81f60f32d9f580e5dbbdce08a4e45d4200e000a7090e4d89adfde09b627426a7"
+      },
+      "read_reference": {
+        "component": "libestr",
+        "member": "COPYING",
+        "sha256": "835b4793da5cbb8965fbd63905b55a4cb4310b7d1b882077d23066b08f901ff8"
+      },
+      "ratio": 0.9980165674950414,
+      "full_word_diff": "--- libestr/COPYING\n\n+++ liblognorm/COPYING\n\n@@ -1,21 +1,4 @@\n\n-libestr\n-is\n-available\n-under\n-the\n-terms\n-of\n-the\n-GNU\n-LGPL\n-v2.1\n-or\n-above\n-(full\n-text\n-below).\n------------------------------------------------------------------------\n GNU\n LESSER\n GENERAL\n PUBLIC",
+      "full_normalized_original_sha256": "b1b580ddf55d6090dde838c338a306262821259f22b4e38cdc869e73fa05b402"
+    },
+    {
+      "original": {
+        "component": "libseccomp",
+        "member": "LICENSE",
+        "sha256": "102900208eef27b766380135906d431dba87edaa7ec6aa72e6ebd3dd67f3a97b"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.9929620940856896,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ libseccomp/LICENSE\n\n@@ -1,60 +1,21 @@\n\n-This\n-software\n-is\n-Copyright\n-(c)\n-2005-2022\n-by\n-Dominique\n-Dumont.\n-This\n-is\n-free\n-software,\n-licensed\n-under:\n-The\n GNU\n-Lesser\n-General\n-Public\n-License,\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n Version\n 2.1,\n February\n 1999\n-The\n-GNU\n-Lesser\n-General\n-Public\n-License\n-(LGPL)\n-Version\n-2.1,\n-February\n-1999\n-(The\n-master\n-copy\n-of\n-this\n-license\n-lives\n-on\n-the\n-GNU\n-website.)\n Copyright\n (C)\n 1991,\n 1999\n Free\n Software\n Foundation,\n Inc.\n-59\n 51\n Franklin\n Street,\n Fifth\n@@ -1022,8 +983,13 @@\n\n in\n order\n to\n run.\n+GNU\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -4061,9 +4027,4 @@\n\n POSSIBILITY\n OF\n SUCH\n DAMAGES.\n-END\n-OF\n-TERMS\n-AND\n-CONDITIONS",
+      "full_normalized_original_sha256": "01656180988e5d03be5c72a16e46af20c7d303e3bddbe137baaa11b57ba875d7"
+    },
+    {
+      "original": {
+        "component": "libsigc++-2.0",
+        "member": "COPYING",
+        "sha256": "5bbcbb737e60fe9deba08ecbd00920cfcc3403ba2e534c64fdeea49d6bb87509"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9961151736745887,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ libsigc++-2.0/COPYING\n\n@@ -14,16 +14,16 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -492,8 +492,9 @@\n\n be\n introduced\n by\n others.\n+^L\n Finally,\n software\n patents\n pose\n@@ -983,8 +984,9 @@\n\n in\n order\n to\n run.\n+^L\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -1895,8 +1897,9 @@\n\n change\n in\n these\n notices.\n+^L\n Once\n this\n change\n is\n@@ -2367,8 +2370,9 @@\n\n with\n the\n Library\n itself.\n+^L\n 6.\n As\n an\n exception\n@@ -2901,8 +2905,9 @@\n\n executable\n that\n you\n distribute.\n+^L\n 7.\n You\n may\n place\n@@ -3259,8 +3264,9 @@\n\n parties\n with\n this\n License.\n+^L\n 11.\n If,\n as\n a\n@@ -3741,8 +3747,9 @@\n\n the\n Free\n Software\n Foundation.\n+^L\n 14.\n If\n you\n wish\n@@ -4032,8 +4039,9 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n+^L\n How\n to\n Apply\n These\n@@ -4198,9 +4206,9 @@\n\n Software\n Foundation;\n either\n version\n-2.1\n+2\n of\n the\n License,\n or\n@@ -4274,16 +4282,16 @@\n\n Free\n Software\n Foundation,\n Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "6b46dc3779cbdfba9151360b00c35c229a5f48ab9288f6090cc4fa5a01013497"
+    },
+    {
+      "original": {
+        "component": "libsigc++-2.0",
+        "member": "docs/website/license.shtml",
+        "sha256": "e485c9a7a41c9e1a1d5845d700843889c65d90cca9486252f64d0e5dfda2fc57"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "missing_d/COPYING.LIB",
+        "sha256": "56bdea73b6145ef6ac5259b3da390b981d840c24cb03b8e1cbc678de7ecfa18d"
+      },
+      "ratio": 0.9825595097808154,
+      "full_word_diff": "--- gawk/missing_d/COPYING.LIB\n\n+++ libsigc++-2.0/docs/website/license.shtml\n\n@@ -1,4 +1,112 @@\n\n+<!--\n+SSI\n+fragments/htm_declaration.html_fragment\n+begin\n+-->\n+<!--#include\n+virtual=\"fragments/html_declaration.html_fragment\"\n+-->\n+<!--\n+SSI\n+fragments/html_declaration.html_fragment\n+end\n+-->\n+<p>\n+Libsigc++\n+is\n+licensed\n+under\n+the\n+GNU\n+Library\n+General\n+Public\n+License\n+for\n+all\n+platforms.\n+Our\n+intent\n+in\n+licensing\n+it\n+in\n+this\n+way\n+is\n+to\n+provide\n+it\n+for\n+use\n+through\n+shared\n+libraries\n+in\n+all\n+projects\n+both\n+open\n+and\n+proprietary.\n+Other\n+GNU\n+projects\n+may\n+of\n+course\n+integrate\n+and\n+link\n+in\n+a\n+static\n+manner.\n+The\n+full\n+body\n+of\n+the\n+license\n+is\n+provided\n+for\n+your\n+inspection.\n+</p>\n+<p>\n+This\n+is\n+the\n+only\n+license\n+which\n+grants\n+you\n+use\n+of\n+the\n+software,\n+so\n+if\n+you\n+do\n+not\n+agree\n+to\n+its\n+terms,\n+you\n+may\n+not\n+use\n+this\n+software.\n+</p>\n+<p>\n+<hr>\n+<pre>\n GNU\n LIBRARY\n GENERAL\n PUBLIC\n@@ -13,16 +121,14 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n-Boston,\n+675\n+Mass\n+Ave,\n+Cambridge,\n MA\n-02110-1301,\n+02139,\n USA\n Everyone\n is\n permitted\n@@ -4086,17 +4192,15 @@\n\n Free\n Software\n Foundation,\n Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n-Boston,\n+675\n+Mass\n+Ave,\n+Cambridge,\n MA\n-02110-1301,\n-USA\n+02139,\n+USA.\n Also\n add\n information\n on\n@@ -4181,4 +4285,18 @@\n\n there\n is\n to\n it!\n+</pre>\n+<!--\n+SSI\n+fragments/footer.html_fragment\n+begin\n+-->\n+<!--#include\n+virtual=\"fragments/footer.html_fragment\"\n+-->\n+<!--\n+SSI\n+fragments/footer.html_fragment\n+begin\n+-->",
+      "full_normalized_original_sha256": "54e3829d862d2b139fc6a475cf31b23af3feaca773778fa11bf4f2550d62107e"
+    },
+    {
+      "original": {
+        "component": "libssh",
+        "member": "COPYING",
+        "sha256": "1656186e951db1c010a8485481fa94587f7e53a26d24976bef97945ad0c4df5a"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.9792985874330249,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ libssh/COPYING\n\n@@ -1,51 +1,13 @@\n\n-This\n-software\n-is\n-Copyright\n-(c)\n-2005-2022\n-by\n-Dominique\n-Dumont.\n-This\n-is\n-free\n-software,\n-licensed\n-under:\n-The\n GNU\n-Lesser\n-General\n-Public\n-License,\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n Version\n 2.1,\n February\n 1999\n-The\n-GNU\n-Lesser\n-General\n-Public\n-License\n-(LGPL)\n-Version\n-2.1,\n-February\n-1999\n-(The\n-master\n-copy\n-of\n-this\n-license\n-lives\n-on\n-the\n-GNU\n-website.)\n Copyright\n (C)\n 1991,\n 1999\n@@ -53,16 +15,15 @@\n\n Software\n Foundation,\n Inc.\n 59\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -1022,8 +983,13 @@\n\n in\n order\n to\n run.\n+GNU\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -4061,8 +4027,116 @@\n\n POSSIBILITY\n OF\n SUCH\n DAMAGES.\n+Linking\n+with\n+OpenSSL\n+17.\n+In\n+addition,\n+as\n+a\n+special\n+exception,\n+we\n+give\n+permission\n+to\n+link\n+the\n+code\n+of\n+its\n+release\n+of\n+libssh\n+with\n+the\n+OpenSSL\n+project's\n+\"OpenSSL\"\n+library\n+(or\n+with\n+modified\n+versions\n+of\n+it\n+that\n+use\n+the\n+same\n+license\n+as\n+the\n+\"OpenSSL\"\n+library),\n+and\n+distribute\n+the\n+linked\n+executables.\n+You\n+must\n+obey\n+the\n+GNU\n+Lesser\n+General\n+Public\n+License\n+in\n+all\n+respects\n+for\n+all\n+of\n+the\n+code\n+used\n+other\n+than\n+\"OpenSSL\".\n+If\n+you\n+modify\n+this\n+file,\n+you\n+may\n+extend\n+this\n+exception\n+to\n+your\n+version\n+of\n+the\n+file,\n+but\n+you\n+are\n+not\n+obligated\n+to\n+do\n+so.\n+If\n+you\n+do\n+not\n+wish\n+to\n+do\n+so,\n+delete\n+this\n+exception\n+statement\n+from\n+your\n+version.\n END\n OF\n TERMS\n AND",
+      "full_normalized_original_sha256": "0dfd809c2195f1bf125a467395489d2480de18820bad89ca5af581251a52f32a"
+    },
+    {
+      "original": {
+        "component": "linux",
+        "member": "LICENSES/preferred/GPL-2.0",
+        "sha256": "f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79"
+      },
+      "read_reference": {
+        "component": "iotop",
+        "member": "COPYING",
+        "sha256": "c38aee9e3c8c4d5d594ff548a1be05453023016d6286931f6512db215ec1fd42"
+      },
+      "ratio": 0.9878515559993344,
+      "full_word_diff": "--- iotop/COPYING\n\n+++ linux/LICENSES/preferred/GPL-2.0\n\n@@ -1,4 +1,77 @@\n\n+Valid-License-Identifier:\n+GPL-2.0\n+Valid-License-Identifier:\n+GPL-2.0-only\n+Valid-License-Identifier:\n+GPL-2.0+\n+Valid-License-Identifier:\n+GPL-2.0-or-later\n+SPDX-URL:\n+https://spdx.org/licenses/GPL-2.0.html\n+Usage-Guide:\n+To\n+use\n+this\n+license\n+in\n+source\n+code,\n+put\n+one\n+of\n+the\n+following\n+SPDX\n+tag/value\n+pairs\n+into\n+a\n+comment\n+according\n+to\n+the\n+placement\n+guidelines\n+in\n+the\n+licensing\n+rules\n+documentation.\n+For\n+'GNU\n+General\n+Public\n+License\n+(GPL)\n+version\n+2\n+only'\n+use:\n+SPDX-License-Identifier:\n+GPL-2.0\n+or\n+SPDX-License-Identifier:\n+GPL-2.0-only\n+For\n+'GNU\n+General\n+Public\n+License\n+(GPL)\n+version\n+2\n+or\n+any\n+later\n+version'\n+use:\n+SPDX-License-Identifier:\n+GPL-2.0+\n+or\n+SPDX-License-Identifier:\n+GPL-2.0-or-later\n+License-Text:\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "373921bc3e9463c27e22757fbb5f128ca1fcbb9546d04d6427c1ed52bfbe088c"
+    },
+    {
+      "original": {
+        "component": "linux",
+        "member": "LICENSES/preferred/LGPL-2.0",
+        "sha256": "b62fa9feac8de9899cd1738f5845cedbad9ca2acd8056513b77666c9ba1ef600"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "missing_d/COPYING.LIB",
+        "sha256": "56bdea73b6145ef6ac5259b3da390b981d840c24cb03b8e1cbc678de7ecfa18d"
+      },
+      "ratio": 0.9888440541182055,
+      "full_word_diff": "--- gawk/missing_d/COPYING.LIB\n\n+++ linux/LICENSES/preferred/LGPL-2.0\n\n@@ -1,4 +1,69 @@\n\n+Valid-License-Identifier:\n+LGPL-2.0\n+Valid-License-Identifier:\n+LGPL-2.0+\n+SPDX-URL:\n+https://spdx.org/licenses/LGPL-2.0.html\n+Usage-Guide:\n+To\n+use\n+this\n+license\n+in\n+source\n+code,\n+put\n+one\n+of\n+the\n+following\n+SPDX\n+tag/value\n+pairs\n+into\n+a\n+comment\n+according\n+to\n+the\n+placement\n+guidelines\n+in\n+the\n+licensing\n+rules\n+documentation.\n+For\n+'GNU\n+Library\n+General\n+Public\n+License\n+(LGPL)\n+version\n+2.0\n+only'\n+use:\n+SPDX-License-Identifier:\n+LGPL-2.0\n+For\n+'GNU\n+Library\n+General\n+Public\n+License\n+(LGPL)\n+version\n+2.0\n+or\n+any\n+later\n+version'\n+use:\n+SPDX-License-Identifier:\n+LGPL-2.0+\n+License-Text:\n GNU\n LIBRARY\n GENERAL\n PUBLIC\n@@ -15,9 +80,9 @@\n\n Foundation,\n Inc.\n 51\n Franklin\n-Street,\n+St,\n Fifth\n Floor,\n Boston,\n MA\n@@ -875,13 +940,8 @@\n\n by\n this\n special\n one.\n-GNU\n-LIBRARY\n-GENERAL\n-PUBLIC\n-LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -3843,9 +3903,8 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n-Appendix:\n How\n to\n Apply\n These\n@@ -3958,29 +4017,28 @@\n\n full\n notice\n is\n found.\n-<one\n+one\n line\n to\n give\n the\n library's\n name\n and\n-a\n-brief\n+an\n idea\n of\n what\n it\n-does.>\n+does.\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+year\n+name\n+of\n+author\n This\n library\n is\n free\n@@ -4088,15 +4146,15 @@\n\n Foundation,\n Inc.,\n 51\n Franklin\n-Street,\n+St,\n Fifth\n Floor,\n Boston,\n MA\n 02110-1301,\n-USA\n+USA.\n Also\n add\n information\n on\n@@ -4163,12 +4221,12 @@\n\n by\n James\n Random\n Hacker.\n-<signature\n+signature\n of\n Ty\n-Coon>,\n+Coon,\n 1\n April\n 1990\n Ty",
+      "full_normalized_original_sha256": "05f49c65b747da63cd2ebcbbf373241e3ef1ef68ae30e0653b332f4bb66aa1f6"
+    },
+    {
+      "original": {
+        "component": "linux",
+        "member": "LICENSES/preferred/LGPL-2.1",
+        "sha256": "efbaee946ac92a48b89eae36f655844042370d2f0e04eadea1e2998efae24ebd"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9896673100942432,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ linux/LICENSES/preferred/LGPL-2.1\n\n@@ -1,4 +1,73 @@\n\n+Valid-License-Identifier:\n+LGPL-2.1\n+Valid-License-Identifier:\n+LGPL-2.1-only\n+Valid-License-Identifier:\n+LGPL-2.1+\n+Valid-License-Identifier:\n+LGPL-2.1-or-later\n+SPDX-URL:\n+https://spdx.org/licenses/LGPL-2.1.html\n+Usage-Guide:\n+To\n+use\n+this\n+license\n+in\n+source\n+code,\n+put\n+one\n+of\n+the\n+following\n+SPDX\n+tag/value\n+pairs\n+into\n+a\n+comment\n+according\n+to\n+the\n+placement\n+guidelines\n+in\n+the\n+licensing\n+rules\n+documentation.\n+For\n+'GNU\n+Lesser\n+General\n+Public\n+License\n+(LGPL)\n+version\n+2.1\n+only'\n+use:\n+SPDX-License-Identifier:\n+LGPL-2.1\n+For\n+'GNU\n+Lesser\n+General\n+Public\n+License\n+(LGPL)\n+version\n+2.1\n+or\n+any\n+later\n+version'\n+use:\n+SPDX-License-Identifier:\n+LGPL-2.1+\n+License-Text:\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -983,13 +1052,8 @@\n\n in\n order\n to\n run.\n-GNU\n-LESSER\n-GENERAL\n-PUBLIC\n-LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -4146,29 +4210,28 @@\n\n full\n notice\n is\n found.\n-<one\n+one\n line\n to\n give\n the\n library's\n name\n and\n-a\n-brief\n+an\n idea\n of\n what\n it\n-does.>\n+does.\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+year\n+name\n+of\n+author\n This\n library\n is\n free\n@@ -4351,12 +4414,12 @@\n\n by\n James\n Random\n Hacker.\n-<signature\n+signature\n of\n Ty\n-Coon>,\n+Coon,\n 1\n April\n 1990\n Ty",
+      "full_normalized_original_sha256": "44464d35904075e47f97570d022b5e33e5e9ace3ba5af6de912024e65b9abb9f"
+    },
+    {
+      "original": {
+        "component": "lksctp-tools",
+        "member": "COPYING.lib",
+        "sha256": "dee5f35e583183abb9212938643ecb2d858fd89e2e286f4b1d903f65d49d6c76"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.9917273737498457,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ lksctp-tools/COPYING.lib\n\n@@ -1,51 +1,13 @@\n\n-This\n-software\n-is\n-Copyright\n-(c)\n-2005-2022\n-by\n-Dominique\n-Dumont.\n-This\n-is\n-free\n-software,\n-licensed\n-under:\n-The\n GNU\n-Lesser\n-General\n-Public\n-License,\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n Version\n 2.1,\n February\n 1999\n-The\n-GNU\n-Lesser\n-General\n-Public\n-License\n-(LGPL)\n-Version\n-2.1,\n-February\n-1999\n-(The\n-master\n-copy\n-of\n-this\n-license\n-lives\n-on\n-the\n-GNU\n-website.)\n Copyright\n (C)\n 1991,\n 1999\n@@ -53,16 +15,15 @@\n\n Software\n Foundation,\n Inc.\n 59\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -1022,8 +983,13 @@\n\n in\n order\n to\n run.\n+GNU\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -4061,9 +4027,4 @@\n\n POSSIBILITY\n OF\n SUCH\n DAMAGES.\n-END\n-OF\n-TERMS\n-AND\n-CONDITIONS",
+      "full_normalized_original_sha256": "a26acd209954bc46535d8f8752007886706d8abd0762226d05fabba23d54b33e"
+    },
+    {
+      "original": {
+        "component": "lvm2",
+        "member": "COPYING",
+        "sha256": "e76fbcd2fb97cf202da330301327754d2db5c58b5b4bebd3a8a749393e7603d1"
+      },
+      "read_reference": {
+        "component": "iotop",
+        "member": "COPYING",
+        "sha256": "c38aee9e3c8c4d5d594ff548a1be05453023016d6286931f6512db215ec1fd42"
+      },
+      "ratio": 0.998989218328841,
+      "full_word_diff": "--- iotop/COPYING\n\n+++ lvm2/COPYING\n\n@@ -15,15 +15,15 @@\n\n Foundation,\n Inc.\n 51\n Franklin\n-St,\n+Street,\n Fifth\n Floor,\n Boston,\n MA\n 02110-1301\n-USA\n+USA.\n Everyone\n is\n permitted\n to\n@@ -2721,9 +2721,9 @@\n\n Foundation,\n Inc.,\n 51\n Franklin\n-St,\n+Street,\n Fifth\n Floor,\n Boston,\n MA",
+      "full_normalized_original_sha256": "47fb55cadf14d913703317a15078b2c3dba5b508ca1ef9b7dc12663b6785887a"
+    },
+    {
+      "original": {
+        "component": "minicom",
+        "member": "COPYING",
+        "sha256": "cf80a758014eefbf068afffe3d462fc34ff4f528527524d8e100329c42094e15"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9986541049798116,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ minicom/COPYING\n\n@@ -1,4 +1,12 @@\n\n+Minicom\n+is\n+Copyright\n+(C)\n+1991,1992,1993,1994,1995,1996\n+Miquel\n+van\n+Smoorenburg.\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "45236fed5b43894df9980183a1062c1e0879c673274d7cb65b81c2e48fe82edc"
+    },
+    {
+      "original": {
+        "component": "nmap",
+        "member": "docs/licenses/LGPL-2",
+        "sha256": "d245807f90032872d1438d741ed21e2490e1175dc8aa3afa5ddb6c8e529b58e5"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "missing_d/COPYING.LIB",
+        "sha256": "56bdea73b6145ef6ac5259b3da390b981d840c24cb03b8e1cbc678de7ecfa18d"
+      },
+      "ratio": 0.9966539196940727,
+      "full_word_diff": "--- gawk/missing_d/COPYING.LIB\n\n+++ nmap/docs/licenses/LGPL-2\n\n@@ -13,16 +13,16 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301,\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -3843,9 +3843,8 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n-Appendix:\n How\n to\n Apply\n These\n@@ -4086,17 +4085,18 @@\n\n Free\n Software\n Foundation,\n Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place\n+-\n+Suite\n+330,\n Boston,\n MA\n-02110-1301,\n-USA\n+02111-1307\n+USA.\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "d946b268890f5b6e559bf38096015670727415563be92b7771cb0ce359f74263"
+    },
+    {
+      "original": {
+        "component": "nmap",
+        "member": "zenmap/COPYING_HIGWIDGETS",
+        "sha256": "e7d3439f9fbd9450485fa267ac783f5ecaff9574c45e30171b227b37bd8fdf21"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9971477467199087,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ nmap/zenmap/COPYING_HIGWIDGETS\n\n@@ -1,4 +1,25 @@\n\n+COPYING\n+--\n+Describes\n+the\n+terms\n+under\n+which\n+HIGWIDGETS\n+is\n+distributed.\n+A\n+copy\n+of\n+the\n+GNU\n+LGPL\n+is\n+appended\n+to\n+this\n+file.\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -21,9 +42,9 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n+02110-1301,\n USA\n Everyone\n is\n permitted\n@@ -4281,9 +4302,9 @@\n\n Fifth\n Floor,\n Boston,\n MA\n-02110-1301\n+02110-1301,\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "be214625d5b44679a05d5f12446f955b037ae7294dcf10ae24ea67b9e2578e4c"
+    },
+    {
+      "original": {
+        "component": "openvpn",
+        "member": "COPYRIGHT.GPL",
+        "sha256": "1fcb78d7e478bb8a9408010bdc91b36e213b1facfad093df3f7ce7e28af19043"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9971308016877637,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ openvpn/COPYRIGHT.GPL\n\n@@ -2636,28 +2636,17 @@\n\n GNU\n General\n Public\n License\n+version\n+2\n as\n published\n by\n the\n Free\n Software\n-Foundation;\n-either\n-version\n-2\n-of\n-the\n-License,\n-or\n-(at\n-your\n-option)\n-any\n-later\n-version.\n+Foundation.\n This\n program\n is\n distributed",
+      "full_normalized_original_sha256": "f336007949e64eccca4ac1b443d0915bc383a1a762fa03ff3b3be99b1075a901"
+    },
+    {
+      "original": {
+        "component": "openvpn-auth-radius",
+        "member": "COPYING",
+        "sha256": "ddb9db7630752f8fdc6898f7c99a99eaeeac5213627ecb093df9c82f56175dc7"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9993261455525606,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ openvpn-auth-radius/COPYING\n\n@@ -12,9 +12,9 @@\n\n 1991\n Free\n Software\n Foundation,\n-Inc.,\n+Inc.\n 51\n Franklin\n Street,\n Fifth\n@@ -2727,9 +2727,9 @@\n\n Floor,\n Boston,\n MA\n 02110-1301\n-USA.\n+USA\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "c150bd3efd90e07dead67ee6abbac08142f7a263862f2a545c6d5cd269b82421"
+    },
+    {
+      "original": {
+        "component": "paramiko",
+        "member": "LICENSE",
+        "sha256": "5fa25bf5f395fd26e701c2e1de4ca7d162816986dc791c22f8f4226857ad1bb2"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9986276303751144,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ paramiko/LICENSE\n\n@@ -17,13 +17,13 @@\n\n Inc.\n 51\n Franklin\n Street,\n-Fifth\n-Floor,\n+Suite\n+500,\n Boston,\n MA\n-02110-1301\n+02110-1335\n USA\n Everyone\n is\n permitted\n@@ -4277,13 +4277,13 @@\n\n Inc.,\n 51\n Franklin\n Street,\n-Fifth\n-Floor,\n+Suite\n+500,\n Boston,\n MA\n-02110-1301\n+02110-1335\n USA\n Also\n add\n information",
+      "full_normalized_original_sha256": "3ca3990aa30a436c15696d0710bb560bbe29d8416e3d07e484afdbe10d48e0a5"
+    },
+    {
+      "original": {
+        "component": "pinentry",
+        "member": "COPYING",
+        "sha256": "67f82e045cf7acfef853ea0f426575a8359161a0a325e19f02b529a87c4b6c34"
+      },
+      "read_reference": {
+        "component": "grepcidr",
+        "member": "COPYING",
+        "sha256": "c8d47f38980adf051103a9286c7e5a4e221a7b2f19d4706bb4e26ebb076caae6"
+      },
+      "ratio": 0.9975951903807615,
+      "full_word_diff": "--- grepcidr/COPYING\n\n+++ pinentry/COPYING\n\n@@ -13,16 +13,14 @@\n\n Free\n Software\n Foundation,\n Inc.\n-59\n-Temple\n-Place,\n-Suite\n-330,\n-Boston,\n+675\n+Mass\n+Ave,\n+Cambridge,\n MA\n-02111-1307\n+02139,\n USA\n Everyone\n is\n permitted",
+      "full_normalized_original_sha256": "4ac699efd96825298b2db822bd8c298a3e9fc92764d539d231198988e9a15526"
+    },
+    {
+      "original": {
+        "component": "rp-pppoe",
+        "member": "doc/LICENSE",
+        "sha256": "464006ba771074f4022db14f58a29a0b447b6fdde9529cf0331be396b6279162"
+      },
+      "read_reference": {
+        "component": "acpid",
+        "member": "COPYING",
+        "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad"
+      },
+      "ratio": 0.9994943536153716,
+      "full_word_diff": "--- acpid/COPYING\n\n+++ rp-pppoe/doc/LICENSE\n\n@@ -1,4 +1,7 @@\n\n+#\n+LIC:\n+GPL\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "c28cc1c2b68927d528cfa578382b0fd1430debe4b7fac9c83c3e8cec0578f2b6"
+    },
+    {
+      "original": {
+        "component": "rsync",
+        "member": "COPYING",
+        "sha256": "85c19ea50a224c2d0067a69c083584e5717b40b76610ec1218f91385775067dd"
+      },
+      "read_reference": {
+        "component": "grep",
+        "member": "COPYING",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+      },
+      "ratio": 0.9945374449339207,
+      "full_word_diff": "--- grep/COPYING\n\n+++ rsync/COPYING\n\n@@ -1,4 +1,66 @@\n\n+REGARDING\n+OPENSSL\n+AND\n+XXHASH\n+In\n+addition,\n+as\n+a\n+special\n+exception,\n+the\n+copyright\n+holders\n+give\n+permission\n+to\n+dynamically\n+link\n+rsync\n+with\n+the\n+OpenSSL\n+and\n+xxhash\n+libraries\n+when\n+those\n+libraries\n+are\n+being\n+distributed\n+in\n+compliance\n+with\n+their\n+license\n+terms,\n+and\n+to\n+distribute\n+a\n+dynamically\n+linked\n+combination\n+of\n+rsync\n+and\n+these\n+libraries.\n+This\n+is\n+also\n+considered\n+to\n+be\n+covered\n+under\n+the\n+GPL's\n+System\n+Libraries\n+exception.\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "331c7bf76c02a887643f17258531b3fb745a87d7469ab70a8f55ddbd8056428d"
+    },
+    {
+      "original": {
+        "component": "sharutils",
+        "member": "libopts/COPYING.gplv3",
+        "sha256": "a22b2fc0217dcd6e27e3ebe5a5cc7db5688d4af5c951fe2bfefeaa3fa6df25e3"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "COPYING",
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+      },
+      "ratio": 0.9968130311614731,
+      "full_word_diff": "--- gawk/COPYING\n\n+++ sharutils/libopts/COPYING.gplv3\n\n@@ -8,14 +8,16 @@\n\n June\n 2007\n Copyright\n (C)\n-2007\n-Free\n-Software\n-Foundation,\n-Inc.\n-<http://fsf.org/>\n+1992-2015\n+by\n+Bruce\n+Korb\n+-\n+all\n+rights\n+reserved\n Everyone\n is\n permitted\n to\n@@ -5329,12 +5331,15 @@\n\n it\n does.>\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+by\n+Bruce\n+Korb\n+-\n+all\n+rights\n+reserved\n This\n program\n is\n free\n@@ -5469,12 +5474,15 @@\n\n mode:\n <program>\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+by\n+Bruce\n+Korb\n+-\n+all\n+rights\n+reserved\n This\n program\n comes\n with",
+      "full_normalized_original_sha256": "985733cff7a1064b521256d63d45f9956f50716c96879131c35820b3290487ce"
+    },
+    {
+      "original": {
+        "component": "sstp-client",
+        "member": "COPYING",
+        "sha256": "f2b37767c0bc26cca5d8fd9792ce47123edd5903bb1230c82e969cebbb04dfb3"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9801849405548216,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ sstp-client/COPYING\n\n@@ -2965,4 +2965,124 @@\n\n instead\n of\n this\n License.\n+In\n+addition,\n+as\n+a\n+special\n+exception,\n+the\n+copyright\n+holders\n+give\n+permission\n+to\n+link\n+the\n+code\n+of\n+portions\n+of\n+this\n+program\n+with\n+the\n+OpenSSL\n+library\n+under\n+certain\n+conditions\n+as\n+described\n+in\n+each\n+individual\n+source\n+file,\n+and\n+distribute\n+linked\n+combinations\n+including\n+the\n+two.\n+You\n+must\n+obey\n+the\n+GNU\n+General\n+Public\n+License\n+in\n+all\n+respects\n+for\n+all\n+of\n+the\n+code\n+used\n+other\n+than\n+OpenSSL.\n+If\n+you\n+modify\n+file(s)\n+with\n+this\n+exception,\n+you\n+may\n+extend\n+this\n+exception\n+to\n+your\n+version\n+of\n+the\n+file(s),\n+but\n+you\n+are\n+not\n+obligated\n+to\n+do\n+so.\n+If\n+you\n+do\n+not\n+wish\n+to\n+do\n+so,\n+delete\n+this\n+exception\n+statement\n+from\n+your\n+version.\n+If\n+you\n+delete\n+this\n+exception\n+statement\n+from\n+all\n+source\n+files\n+in\n+the\n+program,\n+then\n+also\n+delete\n+it\n+here.",
+      "full_normalized_original_sha256": "ea00e023e7af003f1bf3f5446906502acd800f4afc7b926157fa1543e6d357b6"
+    },
+    {
+      "original": {
+        "component": "stunnel4",
+        "member": "COPYRIGHT.md",
+        "sha256": "62f171d4d8b6726df61f18a6bbc0a70f79c4bc2134d837d35c81fc6289a2d84d"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9816590947332997,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ stunnel4/COPYRIGHT.md\n\n@@ -1,29 +1,30 @@\n\n GNU\n-GENERAL\n-PUBLIC\n-LICENSE\n-Version\n+General\n+Public\n+License\n+==========================\n+_Version\n 2,\n June\n-1991\n-Copyright\n-(C)\n+1991_\n+_Copyright\n+\u00a9\n 1989,\n 1991\n Free\n Software\n Foundation,\n-Inc.,\n-51\n+Inc.,_\n+_51\n Franklin\n Street,\n Fifth\n Floor,\n Boston,\n MA\n 02110-1301\n-USA\n+USA_\n Everyone\n is\n permitted\n to\n@@ -41,8 +42,9 @@\n\n it\n is\n not\n allowed.\n+###\n Preamble\n The\n licenses\n for\n@@ -319,14 +321,14 @@\n\n rights\n with\n two\n steps:\n-(1)\n+**(1)**\n copyright\n the\n software,\n and\n-(2)\n+**(2)**\n offer\n you\n this\n license\n@@ -472,21 +474,18 @@\n\n distribution\n and\n modification\n follow.\n-GNU\n-GENERAL\n-PUBLIC\n-LICENSE\n+###\n TERMS\n AND\n CONDITIONS\n FOR\n COPYING,\n DISTRIBUTION\n AND\n MODIFICATION\n-0.\n+**0.**\n This\n License\n applies\n to\n@@ -517,9 +516,9 @@\n\n General\n Public\n License.\n The\n-\"Program\",\n+\u201cProgram\u201d,\n below,\n refers\n to\n any\n@@ -528,13 +527,13 @@\n\n or\n work,\n and\n a\n-\"work\n+\u201cwork\n based\n on\n the\n-Program\"\n+Program\u201d\n means\n either\n the\n Program\n@@ -577,15 +576,15 @@\n\n limitation\n in\n the\n term\n-\"modification\".)\n+\u201cmodification\u201d.)\n Each\n licensee\n is\n addressed\n as\n-\"you\".\n+\u201cyou\u201d.\n Activities\n other\n than\n copying,\n@@ -649,9 +648,9 @@\n\n what\n the\n Program\n does.\n-1.\n+**1.**\n You\n may\n copy\n and\n@@ -748,9 +747,9 @@\n\n exchange\n for\n a\n fee.\n-2.\n+**2.**\n You\n may\n modify\n your\n@@ -796,9 +795,10 @@\n\n all\n of\n these\n conditions:\n-a)\n+*\n+**a)**\n You\n must\n cause\n the\n@@ -819,9 +819,10 @@\n\n date\n of\n any\n change.\n-b)\n+*\n+**b)**\n You\n must\n cause\n any\n@@ -866,9 +867,10 @@\n\n terms\n of\n this\n License.\n-c)\n+*\n+**c)**\n If\n the\n modified\n program\n@@ -1164,9 +1166,9 @@\n\n scope\n of\n this\n License.\n-3.\n+**3.**\n You\n may\n copy\n and\n@@ -1205,9 +1207,10 @@\n\n one\n of\n the\n following:\n-a)\n+*\n+**a)**\n Accompany\n it\n with\n the\n@@ -1237,9 +1240,10 @@\n\n for\n software\n interchange;\n or,\n-b)\n+*\n+**b)**\n Accompany\n it\n with\n a\n@@ -1298,9 +1302,10 @@\n\n for\n software\n interchange;\n or,\n-c)\n+*\n+**c)**\n Accompany\n it\n with\n the\n@@ -1501,9 +1506,9 @@\n\n with\n the\n object\n code.\n-4.\n+**4.**\n You\n may\n not\n copy,\n@@ -1569,9 +1574,9 @@\n\n remain\n in\n full\n compliance.\n-5.\n+**5.**\n You\n are\n not\n required\n@@ -1655,9 +1660,9 @@\n\n works\n based\n on\n it.\n-6.\n+**6.**\n Each\n time\n you\n redistribute\n@@ -1721,9 +1726,9 @@\n\n parties\n to\n this\n License.\n-7.\n+**7.**\n If,\n as\n a\n consequence\n@@ -2014,9 +2019,9 @@\n\n rest\n of\n this\n License.\n-8.\n+**8.**\n If\n the\n distribution\n and/or\n@@ -2086,9 +2091,9 @@\n\n body\n of\n this\n License.\n-9.\n+**9.**\n The\n Free\n Software\n Foundation\n@@ -2152,11 +2157,11 @@\n\n applies\n to\n it\n and\n-\"any\n+\u201cany\n later\n-version\",\n+version\u201d,\n you\n have\n the\n option\n@@ -2204,9 +2209,9 @@\n\n the\n Free\n Software\n Foundation.\n-10.\n+**10.**\n If\n you\n wish\n to\n@@ -2284,11 +2289,12 @@\n\n reuse\n of\n software\n generally.\n+###\n NO\n WARRANTY\n-11.\n+**11.**\n BECAUSE\n THE\n PROGRAM\n IS\n@@ -2324,10 +2330,10 @@\n\n PARTIES\n PROVIDE\n THE\n PROGRAM\n-\"AS\n-IS\"\n+\u201cAS\n+IS\u201d\n WITHOUT\n WARRANTY\n OF\n ANY\n@@ -2382,9 +2388,9 @@\n\n SERVICING,\n REPAIR\n OR\n CORRECTION.\n-12.\n+**12.**\n IN\n NO\n EVENT\n UNLESS\n@@ -2493,8 +2499,9 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n+###\n How\n to\n Apply\n These\n@@ -2582,9 +2589,9 @@\n\n have\n at\n least\n the\n-\"copyright\"\n+\u201ccopyright\u201d\n line\n and\n a\n pointer\n@@ -2804,12 +2811,12 @@\n\n The\n hypothetical\n commands\n `show\n-w'\n+w`\n and\n `show\n-c'\n+c`\n should\n show\n the\n appropriate\n@@ -2831,12 +2838,12 @@\n\n something\n other\n than\n `show\n-w'\n+w`\n and\n `show\n-c';\n+c`;\n they\n could\n even\n be\n@@ -2866,10 +2873,10 @@\n\n any,\n to\n sign\n a\n-\"copyright\n-disclaimer\"\n+\u201ccopyright\n+disclaimer\u201d\n for\n the\n program,\n if",
+      "full_normalized_original_sha256": "a8e07c28c8c1f67d7d88618f1d5c13e5f317c24df6028a2511840a8b5f5e68d3"
+    },
+    {
+      "original": {
+        "component": "systemd",
+        "member": "LICENSES/LGPL-2.0-or-later.txt",
+        "sha256": "61778e80a2fd85955b626b29aa2bcf06144c714277bded65633e4a81479d9fb3"
+      },
+      "read_reference": {
+        "component": "gawk",
+        "member": "missing_d/COPYING.LIB",
+        "sha256": "56bdea73b6145ef6ac5259b3da390b981d840c24cb03b8e1cbc678de7ecfa18d"
+      },
+      "ratio": 0.996531515368975,
+      "full_word_diff": "--- gawk/missing_d/COPYING.LIB\n\n+++ systemd/LICENSES/LGPL-2.0-or-later.txt\n\n@@ -15,9 +15,9 @@\n\n Foundation,\n Inc.\n 51\n Franklin\n-Street,\n+St,\n Fifth\n Floor,\n Boston,\n MA\n@@ -875,13 +875,8 @@\n\n by\n this\n special\n one.\n-GNU\n-LIBRARY\n-GENERAL\n-PUBLIC\n-LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -3843,9 +3838,8 @@\n\n OF\n TERMS\n AND\n CONDITIONS\n-Appendix:\n How\n to\n Apply\n These\n@@ -3958,29 +3952,28 @@\n\n full\n notice\n is\n found.\n-<one\n+one\n line\n to\n give\n the\n library's\n name\n and\n-a\n-brief\n+an\n idea\n of\n what\n it\n-does.>\n+does.\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+year\n+name\n+of\n+author\n This\n library\n is\n free\n@@ -4088,15 +4081,15 @@\n\n Foundation,\n Inc.,\n 51\n Franklin\n-Street,\n+St,\n Fifth\n Floor,\n Boston,\n MA\n 02110-1301,\n-USA\n+USA.\n Also\n add\n information\n on\n@@ -4163,12 +4156,12 @@\n\n by\n James\n Random\n Hacker.\n-<signature\n+signature\n of\n Ty\n-Coon>,\n+Coon,\n 1\n April\n 1990\n Ty",
+      "full_normalized_original_sha256": "0e30353b0f6c89eddf3e1fda91a924db04cb3cabcce3d4f747a5b9dd788f7ce1"
+    },
+    {
+      "original": {
+        "component": "usb-modeswitch",
+        "member": "COPYING",
+        "sha256": "6195429209313925c0eba6c0da4ee7a6cb4277b99e35c886913f80f91ec20b94"
+      },
+      "read_reference": {
+        "component": "atop",
+        "member": "COPYING",
+        "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+      },
+      "ratio": 0.9608287471673681,
+      "full_word_diff": "--- atop/COPYING\n\n+++ usb-modeswitch/COPYING\n\n@@ -1,4 +1,33 @@\n\n+The\n+files\n+usb_modeswitch.c,\n+usb_modeswitch.h,\n+usb_modeswitch.sh\n+and\n+usb_modeswitch_dispatcher.tcl\n+are\n+released\n+under\n+the\n+conditions\n+of\n+the\n+GPL\n+2\n+(or\n+any\n+later\n+GPL\n+version\n+of\n+your\n+choice).\n+Here\n+is\n+the\n+full\n+text:\n GNU\n GENERAL\n PUBLIC\n LICENSE\n@@ -2965,4 +2994,217 @@\n\n instead\n of\n this\n License.\n+The\n+file\n+dispatcher.c\n+is\n+released\n+under\n+the\n+BSD-2-Clause,\n+as\n+follows:\n+*\n+Redistribution\n+and\n+use\n+in\n+source\n+and\n+binary\n+forms,\n+with\n+or\n+without\n+*\n+modification,\n+are\n+permitted\n+provided\n+that\n+the\n+following\n+conditions\n+*\n+are\n+met:\n+*\n+1.\n+Redistributions\n+of\n+source\n+code\n+must\n+retain\n+the\n+above\n+copyright\n+*\n+notice,\n+this\n+list\n+of\n+conditions\n+and\n+the\n+following\n+disclaimer.\n+*\n+2.\n+Redistributions\n+in\n+binary\n+form\n+must\n+reproduce\n+the\n+above\n+copyright\n+*\n+notice,\n+this\n+list\n+of\n+conditions\n+and\n+the\n+following\n+disclaimer\n+in\n+the\n+*\n+documentation\n+and/or\n+other\n+materials\n+provided\n+with\n+the\n+distribution.\n+*\n+*\n+THIS\n+SOFTWARE\n+IS\n+PROVIDED\n+BY\n+THE\n+AUTHOR\n+AND\n+CONTRIBUTORS\n+``AS\n+IS''\n+AND\n+*\n+ANY\n+EXPRESS\n+OR\n+IMPLIED\n+WARRANTIES,\n+INCLUDING,\n+BUT\n+NOT\n+LIMITED\n+TO,\n+THE\n+*\n+IMPLIED\n+WARRANTIES\n+OF\n+MERCHANTABILITY\n+AND\n+FITNESS\n+FOR\n+A\n+PARTICULAR\n+PURPOSE\n+*\n+ARE\n+DISCLAIMED.\n+IN\n+NO\n+EVENT\n+SHALL\n+THE\n+AUTHOR\n+OR\n+CONTRIBUTORS\n+BE\n+LIABLE\n+*\n+FOR\n+ANY\n+DIRECT,\n+INDIRECT,\n+INCIDENTAL,\n+SPECIAL,\n+EXEMPLARY,\n+OR\n+CONSEQUENTIAL\n+*\n+DAMAGES\n+(INCLUDING,\n+BUT\n+NOT\n+LIMITED\n+TO,\n+PROCUREMENT\n+OF\n+SUBSTITUTE\n+GOODS\n+*\n+OR\n+SERVICES;\n+LOSS\n+OF\n+USE,\n+DATA,\n+OR\n+PROFITS;\n+OR\n+BUSINESS\n+INTERRUPTION)\n+*\n+HOWEVER\n+CAUSED\n+AND\n+ON\n+ANY\n+THEORY\n+OF\n+LIABILITY,\n+WHETHER\n+IN\n+CONTRACT,\n+STRICT\n+*\n+LIABILITY,\n+OR\n+TORT\n+(INCLUDING\n+NEGLIGENCE\n+OR\n+OTHERWISE)\n+ARISING\n+IN\n+ANY\n+WAY\n+*\n+OUT\n+OF\n+THE\n+USE\n+OF\n+THIS\n+SOFTWARE,\n+EVEN\n+IF\n+ADVISED\n+OF\n+THE\n+POSSIBILITY\n+OF\n+*\n+SUCH\n+DAMAGE.",
+      "full_normalized_original_sha256": "31c5e66ddf3c75b17b360966008d32fd2ff7278245f5580466d0bc7c9497b586"
+    },
+    {
+      "original": {
+        "component": "usbutils",
+        "member": "LICENSES/GPL-2.0-only.txt",
+        "sha256": "91412672119c72352b76c1d48fa1a8b7cdc7f70be7929e468c8805db468e23e4"
+      },
+      "read_reference": {
+        "component": "aptitude",
+        "member": "COPYING",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "ratio": 0.9878515559993344,
+      "full_word_diff": "--- aptitude/COPYING\n\n+++ usbutils/LICENSES/GPL-2.0-only.txt\n\n@@ -1,4 +1,77 @@\n\n+Valid-License-Identifier:\n+GPL-2.0\n+Valid-License-Identifier:\n+GPL-2.0-only\n+Valid-License-Identifier:\n+GPL-2.0+\n+Valid-License-Identifier:\n+GPL-2.0-or-later\n+SPDX-URL:\n+https://spdx.org/licenses/GPL-2.0.html\n+Usage-Guide:\n+To\n+use\n+this\n+license\n+in\n+source\n+code,\n+put\n+one\n+of\n+the\n+following\n+SPDX\n+tag/value\n+pairs\n+into\n+a\n+comment\n+according\n+to\n+the\n+placement\n+guidelines\n+in\n+the\n+licensing\n+rules\n+documentation.\n+For\n+'GNU\n+General\n+Public\n+License\n+(GPL)\n+version\n+2\n+only'\n+use:\n+SPDX-License-Identifier:\n+GPL-2.0\n+or\n+SPDX-License-Identifier:\n+GPL-2.0-only\n+For\n+'GNU\n+General\n+Public\n+License\n+(GPL)\n+version\n+2\n+or\n+any\n+later\n+version'\n+use:\n+SPDX-License-Identifier:\n+GPL-2.0+\n+or\n+SPDX-License-Identifier:\n+GPL-2.0-or-later\n+License-Text:\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "10c36671297c0b4ef5f63ec271f29048121452dc60c2afc5dd8cc9949d0da5e2"
+    },
+    {
+      "original": {
+        "component": "usbutils",
+        "member": "LICENSES/GPL-3.0-only.txt",
+        "sha256": "4631da83311d27f99078d0d102e31bd34a4fcbcc2dae2aa40f1454a5b48125dc"
+      },
+      "read_reference": {
+        "component": "grep",
+        "member": "COPYING",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+      },
+      "ratio": 0.9937494497755084,
+      "full_word_diff": "--- grep/COPYING\n\n+++ usbutils/LICENSES/GPL-3.0-only.txt\n\n@@ -1,4 +1,75 @@\n\n+Valid-License-Identifier:\n+GPL-3.0-only\n+Valid-License-Identifier:\n+GPL-3.0+\n+Valid-License-Identifier:\n+GPL-3.0-or-later\n+SPDX-URL:\n+https://spdx.org/licenses/GPL-3.0.html\n+Usage-Guide:\n+To\n+use\n+this\n+license\n+in\n+source\n+code,\n+put\n+one\n+of\n+the\n+following\n+SPDX\n+tag/value\n+pairs\n+into\n+a\n+comment\n+according\n+to\n+the\n+placement\n+guidelines\n+in\n+the\n+licensing\n+rules\n+documentation.\n+For\n+'GNU\n+General\n+Public\n+License\n+(GPL)\n+version\n+3\n+only'\n+use:\n+SPDX-License-Identifier:\n+GPL-3.0\n+or\n+SPDX-License-Identifier:\n+GPL-3.0-only\n+For\n+'GNU\n+General\n+Public\n+License\n+(GPL)\n+version\n+3\n+or\n+any\n+later\n+version'\n+use:\n+SPDX-License-Identifier:\n+GPL-3.0+\n+or\n+SPDX-License-Identifier:\n+GPL-3.0-or-later\n+License-Text:\n GNU\n GENERAL\n PUBLIC\n LICENSE",
+      "full_normalized_original_sha256": "3a0de605673e6df4eb5b661809e14fefebba692c1be9ef2a7db48dfbf13d90fd"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "tools/firmware/vgabios/COPYING",
+        "sha256": "032a25eb621456402a5f8be197fb232002bcc37bfd2a644cbefe81762827b70b"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9961053837342497,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ xen/tools/firmware/vgabios/COPYING\n\n@@ -14,16 +14,16 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -4198,9 +4198,9 @@\n\n Software\n Foundation;\n either\n version\n-2.1\n+2\n of\n the\n License,\n or\n@@ -4265,26 +4265,12 @@\n\n along\n with\n this\n library;\n-if\n+If\n not,\n-write\n-to\n-the\n-Free\n-Software\n-Foundation,\n-Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n-Boston,\n-MA\n-02110-1301\n-USA\n+see\n+<http://www.gnu.org/licenses/>.\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "6140a02c836275037c2bc0c4ccc5503d36fef9c221f07663cba9f314d0f4fbf0"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "tools/libacpi/COPYING",
+        "sha256": "fa863b0eae536ededc2976f44fec3d88a276d95f5837f7db66b20847bc75b68d"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.9837626663411061,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ xen/tools/libacpi/COPYING\n\n@@ -1,60 +1,108 @@\n\n This\n-software\n-is\n-Copyright\n-(c)\n-2005-2022\n-by\n-Dominique\n-Dumont.\n-This\n-is\n-free\n-software,\n+library\n+is\n licensed\n-under:\n-The\n+under\n+LGPL\n+v2.1\n+to\n+allow\n+its\n+usage\n+in\n+LGPL-2.1\n+libraries\n+such\n+as\n+libxl.\n+Note\n+that\n+the\n+only\n+valid\n+version\n+of\n+the\n+LGPL\n+as\n+far\n+as\n+the\n+files\n+in\n+this\n+directory\n+(and\n+its\n+subdirectories)\n+are\n+concerned\n+is\n+_this_\n+particular\n+version\n+of\n+the\n+license\n+(i.e.,\n+*only*\n+v2.1,\n+not\n+v2.2\n+or\n+v3.x,\n+unless\n+explicitly\n+otherwise\n+stated.\n+Where\n+clause\n+3\n+is\n+invoked\n+in\n+order\n+to\n+relicense\n+under\n+the\n+GPL\n+then\n+this\n+shall\n+be\n+considered\n+to\n+be\n+GPL\n+v2\n+only\n+for\n+files\n+which\n+have\n+specified\n+LGPL\n+v2.1\n+only.\n GNU\n-Lesser\n-General\n-Public\n-License,\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n Version\n 2.1,\n February\n 1999\n-The\n-GNU\n-Lesser\n-General\n-Public\n-License\n-(LGPL)\n-Version\n-2.1,\n-February\n-1999\n-(The\n-master\n-copy\n-of\n-this\n-license\n-lives\n-on\n-the\n-GNU\n-website.)\n Copyright\n (C)\n 1991,\n 1999\n Free\n Software\n Foundation,\n Inc.\n-59\n 51\n Franklin\n Street,\n Fifth\n@@ -1022,8 +1070,13 @@\n\n in\n order\n to\n run.\n+GNU\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n TERMS\n AND\n CONDITIONS\n FOR",
+      "full_normalized_original_sha256": "42672d861585365af42188f2d776f6b389658cd245a712c20d87eea689dff99b"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "tools/libs/guest/COPYING",
+        "sha256": "f54616518f5d6e2f34342499b70f07a2c0e05ce3e6e0e4a98cbf53ad5f8bddd4"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.9853228962818004,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ xen/tools/libs/guest/COPYING\n\n@@ -1,60 +1,93 @@\n\n-This\n-software\n-is\n-Copyright\n-(c)\n-2005-2022\n-by\n-Dominique\n-Dumont.\n-This\n-is\n-free\n-software,\n-licensed\n-under:\n-The\n+Note\n+that\n+the\n+only\n+valid\n+version\n+of\n+the\n+LGPL\n+as\n+far\n+as\n+the\n+files\n+in\n+this\n+directory\n+(and\n+its\n+subdirectories)\n+are\n+concerned\n+is\n+_this_\n+particular\n+version\n+of\n+the\n+license\n+(i.e.,\n+*only*\n+v2.1,\n+not\n+v2.2\n+or\n+v3.x\n+or\n+whatever),\n+unless\n+explicitly\n+otherwise\n+stated.\n+Where\n+clause\n+3\n+is\n+invoked\n+in\n+order\n+to\n+relicense\n+under\n+the\n+GPL\n+then\n+this\n+shall\n+be\n+considered\n+to\n+be\n+GPL\n+v2\n+only\n+for\n+files\n+which\n+have\n+specified\n+LGPL\n+v2.1\n+only.\n GNU\n-Lesser\n-General\n-Public\n-License,\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n Version\n 2.1,\n February\n 1999\n-The\n-GNU\n-Lesser\n-General\n-Public\n-License\n-(LGPL)\n-Version\n-2.1,\n-February\n-1999\n-(The\n-master\n-copy\n-of\n-this\n-license\n-lives\n-on\n-the\n-GNU\n-website.)\n Copyright\n (C)\n 1991,\n 1999\n Free\n Software\n Foundation,\n Inc.\n-59\n 51\n Franklin\n Street,\n Fifth\n@@ -1022,8 +1055,13 @@\n\n in\n order\n to\n run.\n+GNU\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n TERMS\n AND\n CONDITIONS\n FOR",
+      "full_normalized_original_sha256": "2c6daa8fb79dec683cc3567ccd0f71349d6f87a2cd9b6c5d6fa0cc5b22bbff55"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "tools/libs/stat/COPYING",
+        "sha256": "9e7d131456a660329bec318f6ebc8870620021c2b07bcf8b355c12c0bb99802b"
+      },
+      "read_reference": {
+        "component": "libdaemon",
+        "member": "LICENSE",
+        "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+      },
+      "ratio": 0.997709049255441,
+      "full_word_diff": "--- libdaemon/LICENSE\n\n+++ xen/tools/libs/stat/COPYING\n\n@@ -4265,26 +4265,12 @@\n\n along\n with\n this\n library;\n-if\n+If\n not,\n-write\n-to\n-the\n-Free\n-Software\n-Foundation,\n-Inc.,\n-51\n-Franklin\n-St,\n-Fifth\n-Floor,\n-Boston,\n-MA\n-02110-1301\n-USA\n+see\n+<http://www.gnu.org/licenses/>.\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "36c766ef2251bc0c63976c9a3fb247c582c44c5a087afb87b91c1179c00319fc"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "tools/ocaml/LICENSE",
+        "sha256": "cae1c4febcfa9c01fb651378a08007fc3410a93267b0afa622f3b796d31c769d"
+      },
+      "read_reference": {
+        "component": "libmnl",
+        "member": "COPYING",
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "ratio": 0.9770114942528736,
+      "full_word_diff": "--- libmnl/COPYING\n\n+++ xen/tools/ocaml/LICENSE\n\n@@ -1,4 +1,154 @@\n\n+This\n+repository\n+is\n+distributed\n+under\n+the\n+terms\n+of\n+the\n+GNU\n+Lesser\n+General\n+Public\n+License\n+version\n+2.1\n+(included\n+below).\n+As\n+a\n+special\n+exception\n+to\n+the\n+GNU\n+Lesser\n+General\n+Public\n+License,\n+you\n+may\n+link,\n+statically\n+or\n+dynamically,\n+a\n+\"work\n+that\n+uses\n+the\n+Library\"\n+with\n+a\n+publicly\n+distributed\n+version\n+of\n+the\n+Library\n+to\n+produce\n+an\n+executable\n+file\n+containing\n+portions\n+of\n+the\n+Library,\n+and\n+distribute\n+that\n+executable\n+file\n+under\n+terms\n+of\n+your\n+choice,\n+without\n+any\n+of\n+the\n+additional\n+requirements\n+listed\n+in\n+clause\n+6\n+of\n+the\n+GNU\n+Lesser\n+General\n+Public\n+License.\n+By\n+\"a\n+publicly\n+distributed\n+version\n+of\n+the\n+Library\",\n+we\n+mean\n+either\n+the\n+unmodified\n+Library\n+as\n+distributed,\n+or\n+a\n+modified\n+version\n+of\n+the\n+Library\n+that\n+is\n+distributed\n+under\n+the\n+conditions\n+defined\n+in\n+clause\n+3\n+of\n+the\n+GNU\n+Library\n+General\n+Public\n+License.\n+This\n+exception\n+does\n+not\n+however\n+invalidate\n+any\n+other\n+reasons\n+why\n+the\n+executable\n+file\n+might\n+be\n+covered\n+by\n+the\n+GNU\n+Lesser\n+General\n+Public\n+License.\n+------------\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -14,16 +164,16 @@\n\n Free\n Software\n Foundation,\n Inc.\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n+59\n+Temple\n+Place,\n+Suite\n+330,\n Boston,\n MA\n-02110-1301\n+02111-1307\n USA\n Everyone\n is\n permitted\n@@ -983,13 +1133,8 @@\n\n in\n order\n to\n run.\n-GNU\n-LESSER\n-GENERAL\n-PUBLIC\n-LICENSE\n TERMS\n AND\n CONDITIONS\n FOR\n@@ -4146,29 +4291,28 @@\n\n full\n notice\n is\n found.\n-<one\n+one\n line\n to\n give\n the\n library's\n name\n and\n-a\n-brief\n+an\n idea\n of\n what\n it\n-does.>\n+does.\n Copyright\n (C)\n-<year>\n-<name\n-of\n-author>\n+year\n+name\n+of\n+author\n This\n library\n is\n free\n@@ -4265,26 +4409,12 @@\n\n along\n with\n this\n library;\n-if\n+If\n not,\n-write\n-to\n-the\n-Free\n-Software\n-Foundation,\n-Inc.,\n-51\n-Franklin\n-Street,\n-Fifth\n-Floor,\n-Boston,\n-MA\n-02110-1301\n-USA\n+see\n+<http://www.gnu.org/licenses/>.\n Also\n add\n information\n on\n@@ -4351,12 +4481,12 @@\n\n by\n James\n Random\n Hacker.\n-<signature\n+signature\n of\n Ty\n-Coon>,\n+Coon,\n 1\n April\n 1990\n Ty",
+      "full_normalized_original_sha256": "2d22e690435bf494bdebbbc4a2f3438dd90669a7e4113f757b8ecbae30ec0814"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "tools/xenmon/COPYING",
+        "sha256": "89533b86bfa836fccee7c610fcdeb36dd9ab660fed55266128ab7d1cdfe783c7"
+      },
+      "read_reference": {
+        "component": "atop",
+        "member": "COPYING",
+        "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+      },
+      "ratio": 0.9966227625802094,
+      "full_word_diff": "--- atop/COPYING\n\n+++ xen/tools/xenmon/COPYING\n\n@@ -2710,26 +2710,12 @@\n\n along\n with\n this\n program;\n-if\n+If\n not,\n-write\n-to\n-the\n-Free\n-Software\n-Foundation,\n-Inc.,\n-59\n-Temple\n-Place,\n-Suite\n-330,\n-Boston,\n-MA\n-02111-1307\n-USA\n+see\n+<http://www.gnu.org/licenses/>.\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "f602eefde227f77df941b79d1c9039766eb6c3b66354fb6e4e2405c99081c65d"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "tools/xenstore/COPYING",
+        "sha256": "c07e7c265b682b5c9e12cbe54274ffaf9ade36911d1eec5d2f893caf701e88a3"
+      },
+      "read_reference": {
+        "component": "libdaemon",
+        "member": "LICENSE",
+        "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+      },
+      "ratio": 0.9929320565435477,
+      "full_word_diff": "--- libdaemon/LICENSE\n\n+++ xen/tools/xenstore/COPYING\n\n@@ -1,4 +1,46 @@\n\n+This\n+license\n+(LGPL)\n+applies\n+to\n+the\n+xenstore\n+library\n+which\n+interfaces\n+with\n+the\n+xenstore\n+daemon\n+(as\n+stated\n+in\n+xs.c,\n+xenstore.h,\n+xs_lib.c\n+and\n+xenstore_lib.h).\n+The\n+remaining\n+files\n+in\n+the\n+directory\n+are\n+licensed\n+as\n+stated\n+in\n+the\n+comments\n+(as\n+of\n+this\n+writing,\n+GPL,\n+see\n+../../COPYING).\n GNU\n LESSER\n GENERAL\n PUBLIC\n@@ -4265,26 +4307,12 @@\n\n along\n with\n this\n library;\n-if\n+If\n not,\n-write\n-to\n-the\n-Free\n-Software\n-Foundation,\n-Inc.,\n-51\n-Franklin\n-St,\n-Fifth\n-Floor,\n-Boston,\n-MA\n-02110-1301\n-USA\n+see\n+<http://www.gnu.org/licenses/>.\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "2ca77351135c7d69bfd879eb20327ed34bce0a6250d90077b031b3977dbda9e9"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "xen/COPYING",
+        "sha256": "ef3ef58353d65cdc29184d6f94ed8e97f880c5d9ec5363db211698ccc9e42637"
+      },
+      "read_reference": {
+        "component": "atop",
+        "member": "COPYING",
+        "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+      },
+      "ratio": 0.9670653776831066,
+      "full_word_diff": "--- atop/COPYING\n\n+++ xen/xen/COPYING\n\n@@ -1,4 +1,185 @@\n\n+XEN\n+NOTICE\n+==========\n+This\n+license\n+does\n+*not*\n+cover\n+guest\n+operating\n+systems\n+that\n+use\n+Xen\n+services\n+via\n+normal\n+hypercalls\n+-\n+this\n+is\n+merely\n+considered\n+normal\n+use\n+of\n+Xen,\n+and\n+does\n+*not*\n+fall\n+under\n+the\n+heading\n+of\n+\"derived\n+work\".\n+Also\n+note\n+that\n+the\n+GPL\n+below\n+is\n+copyrighted\n+by\n+the\n+Free\n+Software\n+Foundation,\n+but\n+the\n+instance\n+of\n+code\n+that\n+it\n+refers\n+to\n+(the\n+Xen\n+virtual\n+machine\n+monitor)\n+is\n+copyrighted\n+by\n+me\n+and\n+others\n+who\n+actually\n+wrote\n+it.\n+A\n+few\n+files\n+are\n+licensed\n+under\n+both\n+GPL\n+and\n+a\n+weaker\n+BSD-style\n+license.\n+This\n+includes\n+all\n+files\n+within\n+the\n+subdirectory\n+include/public,\n+as\n+described\n+in\n+include/public/COPYING.\n+All\n+such\n+files\n+include\n+the\n+non-GPL\n+license\n+text\n+as\n+a\n+source-code\n+comment.\n+Although\n+the\n+license\n+text\n+refers\n+generically\n+to\n+\"the\n+software\",\n+the\n+non-GPL\n+license\n+applies\n+*only*\n+to\n+those\n+source\n+files\n+that\n+explicitly\n+include\n+the\n+non-GPL\n+license\n+text.\n+Note\n+that\n+the\n+only\n+valid\n+version\n+of\n+the\n+GPL\n+as\n+far\n+as\n+Xen\n+is\n+concerned\n+is\n+_this_\n+particular\n+version\n+of\n+the\n+license\n+(i.e.,\n+*only*\n+v2,\n+not\n+v2.2\n+or\n+v3.x\n+or\n+whatever),\n+unless\n+explicitly\n+otherwise\n+stated.\n+--\n+Keir\n+Fraser\n+(on\n+behalf\n+of\n+the\n+Xen\n+team)\n+=====================================================================\n GNU\n GENERAL\n PUBLIC\n LICENSE\n@@ -2710,26 +2891,12 @@\n\n along\n with\n this\n program;\n-if\n+If\n not,\n-write\n-to\n-the\n-Free\n-Software\n-Foundation,\n-Inc.,\n-59\n-Temple\n-Place,\n-Suite\n-330,\n-Boston,\n-MA\n-02111-1307\n-USA\n+see\n+<http://www.gnu.org/licenses/>.\n Also\n add\n information\n on",
+      "full_normalized_original_sha256": "8e83f9c0938d739e1bc0a944a068a0838ca87ca4eac53c7013dbae09ad14e077"
+    },
+    {
+      "original": {
+        "component": "xen",
+        "member": "xen/common/libelf/COPYING",
+        "sha256": "569538499a77e06a8d7b751b19e8df895bf4354ae77fe4274b27d8b3e38f916b"
+      },
+      "read_reference": {
+        "component": "libconfig-model-perl",
+        "member": "LICENSE",
+        "sha256": "d08e1a24817ec0361ba1f49bcefe416acce3c2144fc8def2ac24d34e11960989"
+      },
+      "ratio": 0.985684571148905,
+      "full_word_diff": "--- libconfig-model-perl/LICENSE\n\n+++ xen/xen/common/libelf/COPYING\n\n@@ -1,60 +1,90 @@\n\n-This\n-software\n-is\n-Copyright\n-(c)\n-2005-2022\n-by\n-Dominique\n-Dumont.\n-This\n-is\n-free\n-software,\n-licensed\n-under:\n-The\n+Note\n+that\n+the\n+only\n+valid\n+version\n+of\n+the\n+LGPL\n+as\n+far\n+as\n+the\n+files\n+in\n+this\n+directory\n+are\n+concerned\n+is\n+_this_\n+particular\n+version\n+of\n+the\n+license\n+(i.e.,\n+*only*\n+v2.1,\n+not\n+v2.2\n+or\n+v3.x\n+or\n+whatever),\n+unless\n+explicitly\n+otherwise\n+stated.\n+Where\n+clause\n+3\n+is\n+invoked\n+in\n+order\n+to\n+relicense\n+under\n+the\n+GPL\n+then\n+this\n+shall\n+be\n+considered\n+to\n+be\n+GPL\n+v2\n+only\n+for\n+files\n+which\n+have\n+specified\n+LGPL\n+v2.1\n+only.\n GNU\n-Lesser\n-General\n-Public\n-License,\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n Version\n 2.1,\n February\n 1999\n-The\n-GNU\n-Lesser\n-General\n-Public\n-License\n-(LGPL)\n-Version\n-2.1,\n-February\n-1999\n-(The\n-master\n-copy\n-of\n-this\n-license\n-lives\n-on\n-the\n-GNU\n-website.)\n Copyright\n (C)\n 1991,\n 1999\n Free\n Software\n Foundation,\n Inc.\n-59\n 51\n Franklin\n Street,\n Fifth\n@@ -1022,8 +1052,13 @@\n\n in\n order\n to\n run.\n+GNU\n+LESSER\n+GENERAL\n+PUBLIC\n+LICENSE\n TERMS\n AND\n CONDITIONS\n FOR",
+      "full_normalized_original_sha256": "fb41d9a683e5aa1d888d19ce1499de8498c9e48f4862b88dce280ae69c2da151"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -13498,6 +13498,239 @@
         "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts."
       ],
       "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated. The original BSD-4-labelled paragraph explicitly deletes advertising clause 3; all remaining source, binary notice and non-endorsement conditions are retained unchanged, including original numbering."
+    },
+    "beep@1.4.9-1": {
+      "source_identity": "4d1bb35fcbb69fa2409a3d832e8b99b0cc26d0847da009a059f977b1404318de",
+      "copyright_sha256": "15abb638068fce7fec07c3551bb4418f204deae9b4d5817c75628f5de0cb8194",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "cme@1.038-1": {
+      "source_identity": "344ede16ca063e528b57de81026921b46226cc39bd95ad95a8fc02ea9cbbc3ac",
+      "copyright_sha256": "67afd907bad89844c1881aa5220b359ee11a925b27de3bc0146f053d7f4d79a3",
+      "redistributable": true,
+      "license": "LGPL-2.1-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "cracklib2@2.9.6-5": {
+      "source_identity": "77c50d48e4bfaeb6032f510be7613e51bebe95dacc8b5d2bb847ef79ee07983b",
+      "copyright_sha256": "c4974987a368aa934184d1f176236df13e3dba9d5a9baf1b1a175c399093a615",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "efivar@37-6": {
+      "source_identity": "b0009dd484fdd57dac094775e8aad3608c001a755d64273baf3f98de97c639b6",
+      "copyright_sha256": "277903008f94df81a185a85f1ac33d73de4e576ba2c54dc7b7fa7fc88c70e60f",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement.",
+        "Retain full LGPL-2.1 source COPYING and choose at least version 2.1 for the library, while preserving the original LGPL-2-or-later Debian statement and GPL-2-or-later packaging grant."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "gdisk@1.0.9-2.1": {
+      "source_identity": "9497745371f465e162b7253bdb411fbc7a7e265b18bd76afde468af6ffd1cc2f",
+      "copyright_sha256": "04938ebeb7ec9abb637f37f83891a8093be147bf74eb75e500ac8bbcb4fda5b4",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval. Exact original README, gpt.cc, gdisk.cc and crc32.cc opened: explicit upstream GPL-2-only and CRC GPL-2-or-later prevail for program code; LGPL-labelled Debian notice is retained and not substituted for those primary grants.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Gdisk-source-notice.txt",
+          "sha256": "37b368a2823336cba75cb93a0d5a749ca8bae4ecf17c3b7f851799f30f7a7c00"
+        }
+      ]
+    },
+    "keyutils@1.6.3-2": {
+      "source_identity": "77e6f0e5018f0f6cfb5a3689d7f185a014b2437d0a097609ffda32bfd3a64f28",
+      "copyright_sha256": "c62fe37d22203046611112bc10a9e03a39a7f73bec1b061e7c615326166d9ff5",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "kmod@30+20221128-1": {
+      "source_identity": "82be47e59807b9717641c1a9dd245618a23aa721709bcaf44409579f885f67a3",
+      "copyright_sha256": "e8b534ea455c397714900d701cbdaf20154f02e970607c5bb4d71c4b3d499055",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "libcarp-assert-more-perl@2.2.0-1": {
+      "source_identity": "0ca2ae70f006e05f58617d06ecc608d090ceb4aadcaca14c1409d095065a00e1",
+      "copyright_sha256": "89269a232e2c144b712a67714ae7c237fa1bf41d263b9229617189ee2f0d6eca",
+      "redistributable": true,
+      "license": "Artistic-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement.",
+        "For the Debian-modified version, retain the full Artistic 2.0 terms and documented changes and allow complete modified-source redistribution under section 4(c)(i); preserve trademark and patent conditions, and do not impose a package licensing fee."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "libconfig-model-lcdproc-perl@2.053-2": {
+      "source_identity": "2451b63f3b3c5ba215cd930c1b89369e111e4d1b866dcd14984e536d5917943f",
+      "copyright_sha256": "a923bbf48c82ba0d7a0feae02ee8ff12641675d9dd030ce1c02ad2873acc459b",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.1-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "libgudev@237-2": {
+      "source_identity": "952259cd0bbae391d5f58b823096a0bb5373b463033587329730c75911b9ae12",
+      "copyright_sha256": "e8208610819fd05fca6ea4776156858bb934e29c408ae9bdac4a8266a53178e3",
+      "redistributable": true,
+      "license": "LGPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "libseccomp@2.5.4-1+deb12u1": {
+      "source_identity": "0ab1448c7206ee928f97a24d04300cfd3bb26babb4238c82fb71f507b5148595",
+      "copyright_sha256": "6da0653a365b80ab31478dbfe9e7c358e80d58b6d2b52b4e16b4dbb42d7d9f5c",
+      "redistributable": true,
+      "license": "LGPL-2.1-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "libutempter@1.2.1-3": {
+      "source_identity": "fb49f27a4c635c9d4e3e97d207263777debb6725dea5fdce72e0d5aec1a13f5e",
+      "copyright_sha256": "8d0ad082a8402aa9b432a33ce630f33bc7d076997ace50f3162eece84f896015",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "paramiko@2.12.0-2": {
+      "source_identity": "cc64e7e66e42b63588bbf851ea79a6801922286ad535bde675388ff71dc164d0",
+      "copyright_sha256": "4f1975008cb3f60898ec926d2b37f3dcfa4e4dcbfdf76cd1a01d54003cb6cf0c",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "rp-pppoe@3.15-2": {
+      "source_identity": "24ba5efb72a9809b4ff722313e934cb19f40f1c4d72edca16de8e48a7f004d68",
+      "copyright_sha256": "490a6e404a87cf6303700f632c1bde3633aa8b6373a9ab1d64eb2f5f1ccf9b30",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "sstp-client@1.0.18-1": {
+      "source_identity": "27ef3471f67cbbd2082cffc6be6ec50c3564df71909df16bbe962f4cc7ae616b",
+      "copyright_sha256": "b492fa43c92c1612535ec8e87ea4eb4708e8a2fbf6bf437f9b688eff9f212fd8",
+      "redistributable": true,
+      "license": "LicenseRef-GPL-2.0-or-later-with-SSTP-OpenSSL-exception",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement.",
+        "Retain the exact OpenSSL linking exception, with all GPL obligations for non-OpenSSL code; linked OpenSSL remains independently licensed."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
+    },
+    "systemd-bootchart@234-2": {
+      "source_identity": "d39e85a17cb72465282c52cecb9d6c5ba9d3029c8ce14e293a017ff91c48a2da",
+      "copyright_sha256": "db90ce489c011fbb0b7d064c4a6506ef2ead3246e9cbf5981ca510b98174f3ed",
+      "redistributable": true,
+      "license": "CC0-1.0 AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all complete original source and binary copyright, permission grants, disclaimers, per-file license and exception notices.",
+        "Accompany binaries with exact preferred source, all Debian modifications, and complete build/install scripts; retain every full applicable common license text.",
+        "Preserve library replacement/relinking rights, modification notices and source-access rights; do not imply copyright-holder endorsement."
+      ],
+      "scope": "All original source legal files compared completely against read originals with every full-word difference separately read. All operative Debian grant bodies matched read originals; full copyright, path, comment and provenance fields read. No parent distribution approval."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
