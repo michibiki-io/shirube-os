@@ -1,0 +1,78 @@
+{
+  "kind": "exact-kerberos-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "salt-sdk:krb5",
+  "version": "1.22",
+  "source_identity": "652be617b4647f3c5dcac21547d47c7097101aad4e306f1778fb48e17b220ba3",
+  "aggregate_notice_sha256": "6dfa29317b55ee236c61a52e01e249e4a4d05c5bff35173c55c4f62a67c56c69",
+  "original_notices": [
+    {
+      "member": "krb5-1.22/doc/copyright.rst",
+      "sha256": "f5c2c7eaf0521b7988bece1ac620acaaab1b7d03f5f99184dfd615a74c69b8b9"
+    },
+    {
+      "member": "krb5-1.22/doc/notice.rst",
+      "sha256": "0fcd5f293ef3b6fa806d31147d6cdbc99e5950f0d7615792265c2782e3e28d98"
+    },
+    {
+      "member": "krb5-1.22/doc/html/_sources/copyright.rst.txt",
+      "sha256": "f5c2c7eaf0521b7988bece1ac620acaaab1b7d03f5f99184dfd615a74c69b8b9"
+    },
+    {
+      "member": "krb5-1.22/doc/html/copyright.html",
+      "sha256": "14b3f37180a13ad29c725b920f2d7622844b0d4b16827582c5248e283b0826d6"
+    },
+    {
+      "member": "krb5-1.22/NOTICE",
+      "sha256": "83914195f655de4f4970014a26f38b16bf4c5ff357ea51645ca2aea3a92764eb"
+    },
+    {
+      "member": "krb5-1.22/src/lib/gssapi/LICENSE",
+      "sha256": "c4ab82b506f53b97e7bf7ee2b71152da792e0d5578da4089ed17b4dd8798aedf"
+    },
+    {
+      "member": "krb5-1.22/src/windows/installer/wix/lang/license.rtf",
+      "sha256": "6b4922636669c4f7633ca878ec9a3f48b1294a2f972dbfaf0a9a949cc1ee24e9"
+    },
+    {
+      "member": "krb5-1.22/src/util/ss/copyright.h",
+      "sha256": "52c4f7b5ec0814e6ccae67034de2e547daa16a1a33d18a0d44c41fd955897c71"
+    },
+    {
+      "member": "krb5-1.22/src/plugins/preauth/spake/AUTHORS",
+      "sha256": "66d01f318df5af5ff196304ec80d6ad7eda4d4af0c946d3272629fbe89591bcd"
+    },
+    {
+      "member": "krb5-1.22/src/include/copyright.h",
+      "sha256": "435ef19645770fbb3e9cdd2bead820307768ce1981e5d164622f6faca5333f2d"
+    },
+    {
+      "member": "krb5-1.22/README",
+      "sha256": "d11b7ce3d4727b69d01e80fb020e69427315b3082d34d887e4771edce75e1fc5"
+    }
+  ],
+  "additional_original_notices": [
+    {
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/CC-BY-SA-3.0.txt",
+      "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+    }
+  ],
+  "cc_by_sa_3_source": {
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/CC-BY-SA-3.0.txt",
+    "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f",
+    "size": 22240
+  },
+  "required_notice_files": [
+    {
+      "path": "LICENSES/CC-BY-SA-3.0.txt",
+      "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+    },
+    {
+      "path": "LICENSES/Kerberos-acknowledgements.txt",
+      "sha256": "ce2729744e9060163ef81e33f65931f7bacde7b709983fde67c57d8909a2b075"
+    }
+  ],
+  "scope": "Full original 63,687-character NOTICE read, complete doc/notice.rst word differences read, all remaining original HTML/RST/C/RTF legal notices, fiat-crypto AUTHORS and full root README/acknowledgements read. Root README refers to the retained NOTICE containing the Sun-contributed actual source-path list. Full CC-BY-SA3 legal code matched to a read complete original with every canonical difference read and retained from an immutable public SPDX revision. Unmodified documentation and independently scoped source grants remain separate; no parent SDK/OS clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

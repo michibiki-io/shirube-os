@@ -1,0 +1,7 @@
+This product includes software developed by the University of California, Berkeley and its contributors.
+This product includes software developed by the NetBSD Foundation, Inc. and its contributors.
+This software includes software developed by the University of Southern California.
+
+The retained Kerberos sources include the RSA Data Security, Inc. MD4 Message Digest Algorithm and the RSA Data Security, Inc. MD5 Message-Digest Algorithm. Original and derived implementation identities remain as identified in the upstream notices.
+
+Kerberos and the other original MIT project names retain their MIT trademark status. These factual attributions do not imply endorsement.

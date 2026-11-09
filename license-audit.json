@@ -17136,6 +17136,32 @@
         "Supply exact preferred sources and complete build/install recipes, preserve modification notices, full LGPL2.1 text and library source/replacement/relinking rights for the explicitly LGPL-covered DES implementation."
       ],
       "scope": "Complete original project COPYING grant and AUTHORS read, with 105 original C/H/X legal headers read as 12 complete deduplicated permission bodies and every attribution/provenance/context prefix and suffix. The project-wide BSD3 grant covers files without a repeated per-file grant; explicit BSD2/BSD3/BSD4/LGPL2.1 overrides remain separate and intact. No functionality, source code or protocol is removed. Exact component only; parent SDK/OS remain gated."
+    },
+    "salt-sdk:krb5@1.22": {
+      "source_identity": "652be617b4647f3c5dcac21547d47c7097101aad4e306f1778fb48e17b220ba3",
+      "copyright_sha256": "6dfa29317b55ee236c61a52e01e249e4a4d05c5bff35173c55c4f62a67c56c69",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND MIT AND ISC AND OLDAP-2.8 AND CC-BY-SA-3.0 AND LicenseRef-Kerberos-OpenVision AND LicenseRef-FundsXpress-permission AND LicenseRef-Gladman-AES AND LicenseRef-CMU-permission AND LicenseRef-NRL-permission AND LicenseRef-USC-permission AND LicenseRef-RSA-MD",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/652be617b4647f3c5dcac21547d47c7097101aad4e306f1778fb48e17b220ba3.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        },
+        {
+          "path": "LICENSES/Kerberos-acknowledgements.txt",
+          "sha256": "ce2729744e9060163ef81e33f65931f7bacde7b709983fde67c57d8909a2b075"
+        }
+      ],
+      "conditions": [
+        "Retain complete original copyrights, every per-file permission/exception/disclaimer, all author/contributor credits and nonendorsement/trademark notices with source and binary documentation.",
+        "Supply exact preferred sources and complete build/install recipes, mark modifications, preserve OpenVision derivative copyright notice and NTT notices unchanged at the start of affected source files.",
+        "Keep original BSD4 Berkeley/NetBSD acknowledgements with covered advertising materials and the USC acknowledgement with distribution/use documentation; preserve RSA MD4/MD5 original and derived algorithm identification requirements.",
+        "Keep documentation under original CC-BY-SA3, preserving author/title/source URI, full license, attribution and change identification; apply no additional restrictions or technical access controls. The surrounding distribution is a collection, not a relicense of its independent components.",
+        "Retain original OpenLDAP2.8 full notice and its verbatim-copy obligation, Sun source-path/license notices and all separate custom grants. Preserve original export notices without claiming they grant government authorization; upstream marks remain factual attribution rather than product branding."
+      ],
+      "scope": "Full original 63,687-character NOTICE read, complete doc/notice.rst word differences read, all remaining original HTML/RST/C/RTF legal notices, fiat-crypto AUTHORS and full root README/acknowledgements read. Root README refers to the retained NOTICE containing the Sun-contributed actual source-path list. Full CC-BY-SA3 legal code matched to a read complete original with every canonical difference read and retained from an immutable public SPDX revision. Unmodified documentation and independently scoped source grants remain separate; no parent SDK/OS clearance."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

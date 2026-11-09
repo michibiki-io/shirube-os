@@ -2142,6 +2142,16 @@
         {
           "member": "krb5-1.22/src/include/copyright.h",
           "sha256": "435ef19645770fbb3e9cdd2bead820307768ce1981e5d164622f6faca5333f2d"
+        },
+        {
+          "member": "krb5-1.22/README",
+          "sha256": "d11b7ce3d4727b69d01e80fb020e69427315b3082d34d887e4771edce75e1fc5"
+        }
+      ],
+      "additional_notices": [
+        {
+          "url": "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
         }
       ]
     },
