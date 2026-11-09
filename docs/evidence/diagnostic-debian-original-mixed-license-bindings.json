@@ -1,0 +1,372 @@
+{
+  "kind": "exact-debian-original-mixed-license-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 13,
+  "components": [
+    {
+      "source": "arpwatch",
+      "version": "2.1a15-8",
+      "dsc_sha256": "0391374c71d5e7a0bd9233fc9271873f45846ffb838f389ca81d896eada0e711",
+      "binaries": [
+        {
+          "name": "arpwatch",
+          "version": "2.1a15-8+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "45274f68f7ec94030e050b80d322cce46124a0b4822250525b23bf886cb4bd6b"
+        }
+      ],
+      "license": "BSD-4-Clause-Shortened AND GPL-3.0-only",
+      "original_legal_files": [
+        {
+          "member": "debian/copyright",
+          "sha256": "45274f68f7ec94030e050b80d322cce46124a0b4822250525b23bf886cb4bd6b",
+          "bytes": 2421
+        }
+      ]
+    },
+    {
+      "source": "bsdmainutils",
+      "version": "12.1.8",
+      "dsc_sha256": "514ce88f4fe0393dbd5dbbe546c382b53d1b2b547f07e58a29c9ac3f0c1a2bd2",
+      "binaries": [
+        {
+          "name": "bsdmainutils",
+          "version": "12.1.8",
+          "architecture": "all",
+          "copyright_sha256": "09cda749d84f4edb92f728b3dede077d7c784148d6ea95be42656199e40da0b7"
+        },
+        {
+          "name": "ncal",
+          "version": "12.1.8",
+          "architecture": "arm64",
+          "copyright_sha256": "09cda749d84f4edb92f728b3dede077d7c784148d6ea95be42656199e40da0b7"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "original_legal_files": [
+        {
+          "member": "debian/copyright",
+          "sha256": "09cda749d84f4edb92f728b3dede077d7c784148d6ea95be42656199e40da0b7",
+          "bytes": 2653
+        }
+      ]
+    },
+    {
+      "source": "pci.ids",
+      "version": "0.0~2023.04.11-1",
+      "dsc_sha256": "18c23efcbcd6643adcdb7be7ef31719f0f8071619e821e9af4366f65aaaa72c4",
+      "binaries": [
+        {
+          "name": "pci.ids",
+          "version": "0.0~2023.04.11-1",
+          "architecture": "all",
+          "copyright_sha256": "1ab84371aae54065c087b6d684cb3f221b4829a0269771e156428c5db13d24c9"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "original_legal_files": [
+        {
+          "member": "debian/copyright",
+          "sha256": "1ab84371aae54065c087b6d684cb3f221b4829a0269771e156428c5db13d24c9",
+          "bytes": 2810
+        }
+      ]
+    },
+    {
+      "source": "libdynaloader-functions-perl",
+      "version": "0.003-3",
+      "dsc_sha256": "2d8cbe058f82bc24908dfba3bc946d587e589b0a0122bd8e3dd1830ea071264a",
+      "binaries": [
+        {
+          "name": "libdynaloader-functions-perl",
+          "version": "0.003-3",
+          "architecture": "all",
+          "copyright_sha256": "9bc9c91c52854ff06cd7a8da2e0d73a9f18039f7fff3ac21076f1cac97b3b6aa"
+        }
+      ],
+      "license": "Artistic-1.0-Perl AND GPL-3.0-or-later",
+      "original_legal_files": [
+        {
+          "member": "debian/copyright",
+          "sha256": "9bc9c91c52854ff06cd7a8da2e0d73a9f18039f7fff3ac21076f1cac97b3b6aa",
+          "bytes": 1141
+        },
+        {
+          "member": "debian/copyright-check",
+          "sha256": "fbbda1aa0e55b3bc1ae71dbef2ea3f73cf3f805dd448e830e44a82cf2d9eec74",
+          "bytes": 1052
+        },
+        {
+          "member": "debian/copyright_hints",
+          "sha256": "b36ea72019d0f8421a83116363d0d646d341c727f0883f7200b8d8ec4fbbeec5",
+          "bytes": 795
+        }
+      ]
+    },
+    {
+      "source": "init-system-helpers",
+      "version": "1.65.2+deb12u1",
+      "dsc_sha256": "d4c6d21578b0cc835b8941f2d0f1fc3de6c75af63c840d59e75a9a01a0fd4a09",
+      "binaries": [
+        {
+          "name": "init-system-helpers",
+          "version": "1.65.2+deb12u1",
+          "architecture": "all",
+          "copyright_sha256": "7534601cc4fa513804d16490359f5831e7b6a1212da3bbf948bebdd4c8799783"
+        }
+      ],
+      "license": "BSD-3-Clause AND GPL-2.0-or-later",
+      "original_legal_files": [
+        {
+          "member": "debian/copyright",
+          "sha256": "7534601cc4fa513804d16490359f5831e7b6a1212da3bbf948bebdd4c8799783",
+          "bytes": 3133
+        }
+      ]
+    },
+    {
+      "source": "easy-rsa",
+      "version": "3.1.0-1",
+      "dsc_sha256": "ecbe7a9d274bb96ad7019f07d95dfc59456cd5017d374f0de628ec505b7d4da7",
+      "binaries": [
+        {
+          "name": "easy-rsa",
+          "version": "3.1.0-1",
+          "architecture": "all",
+          "copyright_sha256": "6bf310cf0820f95fa664eaa0792a8d661e4ce5c930aad0866d1e3997f692f6c2"
+        }
+      ],
+      "license": "GPL-2.0-only",
+      "original_legal_files": [
+        {
+          "member": "COPYING.md",
+          "sha256": "7c4a4fc71745d93a87278801f1bca555562ca23f21e18293add64b9e6f6b7bf1",
+          "bytes": 1305
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "6bf310cf0820f95fa664eaa0792a8d661e4ce5c930aad0866d1e3997f692f6c2",
+          "bytes": 1852
+        }
+      ]
+    },
+    {
+      "source": "libdevel-callchecker-perl",
+      "version": "0.008-2",
+      "dsc_sha256": "8a49bb96cf7ca3d5387651c611bf71cd3db180fd3ea9b69ba7f84952ad202798",
+      "binaries": [
+        {
+          "name": "libdevel-callchecker-perl",
+          "version": "0.008-2",
+          "architecture": "arm64",
+          "copyright_sha256": "949e7215260acd89d9fa76b027d9e4c34c391118ea158cbce96adc43f0ffc418"
+        }
+      ],
+      "license": "Artistic-1.0-Perl AND GPL-3.0-or-later",
+      "original_legal_files": [
+        {
+          "member": "debian/copyright",
+          "sha256": "949e7215260acd89d9fa76b027d9e4c34c391118ea158cbce96adc43f0ffc418",
+          "bytes": 1144
+        },
+        {
+          "member": "debian/copyright-check",
+          "sha256": "fbbda1aa0e55b3bc1ae71dbef2ea3f73cf3f805dd448e830e44a82cf2d9eec74",
+          "bytes": 1052
+        },
+        {
+          "member": "debian/copyright_hints",
+          "sha256": "4a66ea9ce8743092ec803bc1e9b27dd17067350e7d874507fdade8835e15e9c1",
+          "bytes": 961
+        }
+      ]
+    },
+    {
+      "source": "squidguard",
+      "version": "1.6.0-4",
+      "dsc_sha256": "a60a210a4cb0e73a6c94bb23b7a52db9c7be7b27d54be95d00f1013ba183d7b9",
+      "binaries": [
+        {
+          "name": "squidguard",
+          "version": "1.6.0-4",
+          "architecture": "arm64",
+          "copyright_sha256": "f6ea72178e965c343a581c53ba6a6b0223cf29c5de204eca31556db0483b90e7"
+        }
+      ],
+      "license": "GPL-2.0-only AND W3C-19980720 AND LicenseRef-CERN-Acknowledgement",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "9fefab4737070a7515c2ef6b94198550c13533ae300ebd75dc9cbd0475a4c050",
+          "bytes": 718
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "f6ea72178e965c343a581c53ba6a6b0223cf29c5de204eca31556db0483b90e7",
+          "bytes": 2484
+        }
+      ]
+    },
+    {
+      "source": "libparams-util-perl",
+      "version": "1.102-2",
+      "dsc_sha256": "5899fbe56ecec4042ae80b0f2579723e9fe6858c28aac6f3470c2fe4ff960efb",
+      "binaries": [
+        {
+          "name": "libparams-util-perl",
+          "version": "1.102-2+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "e0c53f7b70b5d8fca3f083e97ea510eefde70198084fd72213e0f83603ef2bc0"
+        }
+      ],
+      "license": "Artistic-1.0-Perl AND Apache-2.0",
+      "original_legal_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "834c4ebff45be11f35f059b077fdd747dee4b8a747b95049d849fef1c0ccdc62",
+          "bytes": 667
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "e0c53f7b70b5d8fca3f083e97ea510eefde70198084fd72213e0f83603ef2bc0",
+          "bytes": 2583
+        }
+      ]
+    },
+    {
+      "source": "io-stringy",
+      "version": "2.111-3",
+      "dsc_sha256": "b21b87e84a62a9c6fe2b5f421d5937b0af35dca29844c435f8104586c0d0f8c6",
+      "binaries": [
+        {
+          "name": "libio-stringy-perl",
+          "version": "2.111-3",
+          "architecture": "all",
+          "copyright_sha256": "95b9d3c54130731a345105127b5cf1e0b389deb2d7b3a1611b0aa965151538aa"
+        }
+      ],
+      "license": "Artistic-1.0-Perl",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "567545399add02ffb7495d29303d84d24cb1af2c64c0958f0008a581294d1580",
+          "bytes": 1931
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "95b9d3c54130731a345105127b5cf1e0b389deb2d7b3a1611b0aa965151538aa",
+          "bytes": 1368
+        }
+      ]
+    },
+    {
+      "source": "libtommath",
+      "version": "1.2.0-6+deb12u1",
+      "dsc_sha256": "d2220e395dc98c08f1413e71a90cc7f40f3094d3a796c8f84477bb21dc7ee261",
+      "binaries": [
+        {
+          "name": "libtommath1",
+          "version": "1.2.0-6+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "afbb659d7f3af8236ad4bf6f42b6d7152f41fabd7bb516e31f079a420663f593"
+        }
+      ],
+      "license": "Unlicense AND LicenseRef-Public-Domain",
+      "original_legal_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "2fa64b163659f41965c9815882a8296d3d03ff546b76153e11445f9bdecf955a",
+          "bytes": 1257
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "afbb659d7f3af8236ad4bf6f42b6d7152f41fabd7bb516e31f079a420663f593",
+          "bytes": 2058
+        }
+      ]
+    },
+    {
+      "source": "voluptuous",
+      "version": "0.12.2-1",
+      "dsc_sha256": "b12b20cea07d566dc0d5114e8bd9cf150c13f93b99b2a2d493219d8241c871cd",
+      "binaries": [
+        {
+          "name": "python3-voluptuous",
+          "version": "0.12.2-1",
+          "architecture": "all",
+          "copyright_sha256": "5f1c10647cd6c7fd46ac3988ac34189ee6ccede357ad8c4bf2e7f0f6f0dfd745"
+        }
+      ],
+      "license": "BSD-3-Clause AND GPL-2.0-only",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "247b4976b7a7fa4d89d9587caa5095561eb46dc5457f2279f62a62b5452adea9",
+          "bytes": 1486
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "5f1c10647cd6c7fd46ac3988ac34189ee6ccede357ad8c4bf2e7f0f6f0dfd745",
+          "bytes": 1937
+        }
+      ]
+    },
+    {
+      "source": "tftp-hpa",
+      "version": "5.2+20150808-1.4",
+      "dsc_sha256": "ef4773c465199cfbc3ccd455a2674b86411da3a45ceef9594ce20d2497dc253d",
+      "binaries": [
+        {
+          "name": "tftpd-hpa",
+          "version": "5.2+20150808-1.4",
+          "architecture": "arm64",
+          "copyright_sha256": "11d031ee0f2845da8df08144a235c6606dd0b4dd1f05a0deb64bedb819ebe601"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "original_legal_files": [
+        {
+          "member": "debian/copyright",
+          "sha256": "11d031ee0f2845da8df08144a235c6606dd0b4dd1f05a0deb64bedb819ebe601",
+          "bytes": 3494
+        }
+      ]
+    }
+  ],
+  "supplemental_source_inspection": {
+    "easy-rsa": {
+      "source": {
+        "asset": "shirube-os-v2026.03.0-amd64-source-0057.tar.gz",
+        "member": "source/easy-rsa_3.1.0.orig.tar.gz",
+        "sha256": "01b07ecb58dc003e47d4e74f9fc4da35ec6842e96cd003d66ed72a43df983659"
+      },
+      "bundled_windows_binaries_or_license_directories": []
+    },
+    "squidguard": {
+      "source": {
+        "asset": "shirube-os-v2026.03.0-amd64-source-0466.tar.gz",
+        "member": "source/squidguard_1.6.0.orig.tar.gz",
+        "sha256": "3de0d64b7f1b4b69de16d3168a438c8df28419041e0fdaf9446e7a4599e612b5"
+      },
+      "original_W3C_CERN_header_files": [
+        {
+          "member": "squidguard-1.6.0/src/wwwsys.h",
+          "sha256": "a724709a4594ebfe0dabdb0be918c575f571db25410e8d2ba23b2c7ed9d856bb"
+        },
+        {
+          "member": "squidguard-1.6.0/src/HTEscape.h",
+          "sha256": "3f6a5ada58f5557f2d0ba517ea8b138de202c7fe39c8842cd78ad50b0e34dba9"
+        },
+        {
+          "member": "squidguard-1.6.0/src/HTParse.c",
+          "sha256": "090142ec6281abbfbafef8d2b9446c3d0f7f3b0b508dccd01d24f0be53a92d8e"
+        }
+      ]
+    }
+  },
+  "w3c_license_authority": "https://www.w3.org/Consortium/Legal/copyright-software-19980720",
+  "w3c_original_html_sha256": "d4eedcb04dc16687b6d56b49ed06e1b55f599b8bd8e518af9773d1b7d2cf5c76",
+  "scope": "Complete original small legal sets read. Additional full W3C and Artistic terms plus required acknowledgements are retained and hash-bound. No original notices or features removed.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

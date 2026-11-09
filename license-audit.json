@@ -12783,6 +12783,721 @@
         "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
       ],
       "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "media-types@10.0.0": {
+      "source_identity": "d2e34e90508ac2c21c3cc6c01e2cf186093a8d2edcdc279e7d280a0a4ffe132d",
+      "copyright_sha256": "5ded7c53199b6a1d089b0b7e231d77e5c84081c7156b372b3f11ad9c1c2c5cc7",
+      "redistributable": true,
+      "license": "LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "tzdata@2026f-0+deb12u1": {
+      "source_identity": "e9047474a52c30cf914c8b11bbc0f9ceb289c0711c81b5fff277e1f8a4b9ce2e",
+      "copyright_sha256": "cb61132bc0fc7b26ef5a82ee18b2fb644a1362f4f286ed980ff22e408471f59a",
+      "redistributable": true,
+      "license": "LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated. The exact original tzdata_2026f.orig.tar.gz was opened: date.c, newstrftime.3 and strftime.c are absent, so the conditional BSD code exception is not present in this source."
+    },
+    "console-data@2:1.12-9": {
+      "source_identity": "2c8000950bf3a213f1f24d06658e7572549b7eb8741e11571ec6d93741373747",
+      "copyright_sha256": "216d4535a857a309df1075fc7b69ef45b31026ab9ff7503926e3b2b0c3376f2b",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "libmodule-pluggable-perl@5.2-4": {
+      "source_identity": "b1ad543093de12f39f22bf9134850f52a84bd56c7237225bb58d76f890a6ff47",
+      "copyright_sha256": "ed5b2e7622b758f6d5eabbd6fdec905a19a48ecf1e3318cceb3a71a9104acb3c",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libclone-choose-perl@0.010-2": {
+      "source_identity": "9db79da9958c86fc36b4debaee839fe7863bce08089d0348ba2b78b317a2e190",
+      "copyright_sha256": "3b10df5e78d80a85b4551e7fe78c1c7c8ff6b3253486d45681f9002e89ca4983",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libmousex-strictconstructor-perl@0.02-3": {
+      "source_identity": "67633be58c968fc150ad4997e9f2a9ca65465f3ec1cb41144b548428921b3bd9",
+      "copyright_sha256": "864606701853fd1495af7ed79bea0f090c90017029a411812738dd11860a1add",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libhash-merge-perl@0.302-1": {
+      "source_identity": "595e409a08548925df83ae8fee86474f81e88372b80bed905ecae0585587ccf5",
+      "copyright_sha256": "075176f63ddfc999c1a776c3d981e8e8248d649ed1ae4b1a81ee72a357a82775",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libclass-data-inheritable-perl@0.08-3": {
+      "source_identity": "4e7434f3a8a80159d2c1c155030ecd2fe6b749679e8ec0a8389da40f8dea6329",
+      "copyright_sha256": "1c78ac8cb376f8b1121298a0bfe6a8deae2d20b40aacbbb00a594e9db4d71985",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "debian-archive-keyring@2023.3+deb12u2": {
+      "source_identity": "e0b44b75906f4f448bba242294e9191ee796e2553f49cb906d19fc8f199b6e7d",
+      "copyright_sha256": "b32aecaae84643700a33bc9ee83fa9b36938d35aa7b61b5042092eca77ddb732",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "libtest-exception-perl@0.43-3": {
+      "source_identity": "20de4286a4d221dfc33cb9100f020f067b47f993d2c1b33b35424c5d0af55609",
+      "copyright_sha256": "45a4d6839315a56708c567017c72388d525c3660b99cbf0f4e0a3dc3318ad075",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libmodule-runtime-perl@0.016-2": {
+      "source_identity": "d438075879c1ff3bf527c6e20fb5868b9fa4e14486506f4539b4a759d361a9de",
+      "copyright_sha256": "cb85b813403f82d3ac4b3c7b956c645e83f8b50e5f10b32346f67582b7bb2b02",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libparams-classify-perl@0.015-2": {
+      "source_identity": "80555246d0bcfa5bed06bd85192bb15f08c13ffbd94fbb2ee8520226e4a42449",
+      "copyright_sha256": "46a4604df2be2f0cd45c34cdc208bc351bd9e8178fb76ba9b988df3cbf811068",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libmousex-nativetraits-perl@1.09-3": {
+      "source_identity": "810fd1848cd909c3307a4f04b71ead5732653cbdc0bdef138e2bcc9938eae714",
+      "copyright_sha256": "18cd455486aa91bb96d5a0a3e3edcc44a7e06dc2b433754bc6d47d709590a8a7",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libjson-perl@4.10000-1": {
+      "source_identity": "7759c7cc963ae03bd6042dff53fc246843c68097be5a1e264bd810adf9f65b3e",
+      "copyright_sha256": "a386cd51aa512e321a9e132b0db989d19c43b090029f33f554f1c98785992584",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "liblog-log4perl-perl@1.57-1": {
+      "source_identity": "397517c8ac15a41bce7ccbd09a5d20c719684379496f50e73222357881cd8404",
+      "copyright_sha256": "6d813efc65e7cc64ecdd02f1b49ea1939d68f1285c1edaba0cdcee29b2cb667a",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "dns-root-data@2024071801~deb12u1": {
+      "source_identity": "36489ead184379bf7e39d64e3b8f4e3edf1157133f8d768780b5cdb8d1bae58d",
+      "copyright_sha256": "483eb3153928bb296f20093ab61754eaec77f4f6fc01c39c45b59e402245e771",
+      "redistributable": true,
+      "license": "MIT AND LicenseRef-ICANN-Public",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Preserve the IANA source URL and identify distributed registry/root/public-key data as a mirrored copy; no property rights are asserted by ICANN."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "libparse-recdescent-perl@1.967015+dfsg-4": {
+      "source_identity": "a6766a212cbebbf937d74eb451f00af94b84d953c1aa7b6d79fc151001f80acf",
+      "copyright_sha256": "fc6d70f27fc20cb54079a60ff4371b34141af868e61ef4f27997b9d76968a7d2",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl AND GPL-3.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Choose the Artistic license where explicitly offered alongside the GPL. Retain the complete original Artistic text and all dual-license notices unchanged.",
+        "Satisfy Artistic 4(b) by accompanying executables/libraries with complete machine-readable source including all Debian modifications. Preserve modification notices and make modifications freely available under 3(a).",
+        "Aggregate as third-party software, without advertising it as the distributor’s own package or imposing a separate package fee; retain copyright-holder non-endorsement restrictions."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libtomcrypt@1.18.2-6": {
+      "source_identity": "2b8771d043da8926d5c67b88c86122c64e8dbb5871a737f616b5c89f0b6c9b1a",
+      "copyright_sha256": "98d622490555402065ef97b6d5160d7e0233d1b783978b8ca7cad768f56e36fa",
+      "redistributable": true,
+      "license": "LicenseRef-Public-Domain AND GPL-3.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "ieee-data@20220827.1": {
+      "source_identity": "09d9e50500e5949a585d82bdd1041bbaaed9a6c823394a8a86d06157553ac045",
+      "copyright_sha256": "f1a22c2737d856d90a676a553501431b6a77b9e0bb094cf325827ff6a733381c",
+      "redistributable": true,
+      "license": "WTFPL AND GPL-2.0-or-later AND LicenseRef-IEEE-Public-Listing",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Retain IEEE public-listing non-assertion and original-source/update encouragement, which does not restrict distribution."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "python-hurry.filesize@0.9-3": {
+      "source_identity": "36ffb67ea802ee34624890a518dc68ea719331e57a59379ead17062ddcc75ebb",
+      "copyright_sha256": "98e533e582d4d265723971c6be8083361372c547b46c251ac9b8c5a692780495",
+      "redistributable": true,
+      "license": "ZPL-2.1",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding.",
+        "Keep ZPL 2.1 copyright, disclaimer, trademark/no-endorsement conditions; any future changes require prominent dated notices in changed files."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "brotli@1.0.9-2+deb12u1": {
+      "source_identity": "942ab3bccf28fa76d2c98a4e4a3a13390ee4484a2250d95a9ca46e6fbe0d6240",
+      "copyright_sha256": "24a64e5bb83d0960d1835696a1e23c0896ad6055b0ca47c66ab0eb9a766324b1",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "python-configargparse@1.5.3-1": {
+      "source_identity": "8f740bd4ad48a296405c35b672a32f4cd4fffcc8a123160a8ca3a08221ffa478",
+      "copyright_sha256": "6c978a108ae9107bda1b24785190a7a533366467e3ea8ca525b18a61509bceb1",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "python-jmespath@1.0.1-1": {
+      "source_identity": "8f053b557f7d2cd5d60a2e3ff618e7ef097c32cb0803a5ed454de8dffcb3ea00",
+      "copyright_sha256": "b6e5af6e2b62e1073a24c3ebd77961d10c7b057bfd8fc2c12d4ee9697a99bd95",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "pyrfc3339@1.1-4": {
+      "source_identity": "ecebdbf81ff7ecd79cb9a8f5577c3381ba005fdc4ca69e93dda58b910e762746",
+      "copyright_sha256": "819e80b3e1b4cb876525a093def520adc21313cbf857c512d75c1a4e8603b1e3",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "netifaces@0.11.0-2": {
+      "source_identity": "33f31025a90f1c048d21d1cd7587b1d76d3e7e413c88769cfb5d608f416f2971",
+      "copyright_sha256": "4f011c5a0f09e5fb9b74c7d33cbe44b3aaa86eba614dc8fe5ccb2059323b0d7b",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "python-xmltodict@0.13.0-1.1~deb12u1": {
+      "source_identity": "ffac82c35328c4ad0bc524ec4af488b34c7b01f195e3b1e4a416fd302349e971",
+      "copyright_sha256": "be042997595f5f3a4fe2ce611209b461b2d76bbc2a5330b94dfbf2a7fea51656",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "lsb@11.6": {
+      "source_identity": "f8458b93872593fea88a6d7838ffe3b90764012492f6e2566c959549c5528180",
+      "copyright_sha256": "5838867827e001081f2a1884f55614df9fbb303bb03de6087220ac0b6f8ea44b",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain every full original copyright, permission grant, directory-specific terms, disclaimers and public-data provenance.",
+        "Distribute the exact authenticated original source, Debian patches and build/install scripts with binaries; retain all applicable full common license texts.",
+        "Do not imply endorsement or replace original authorship with distributor branding."
+      ],
+      "scope": "Complete original Debian copyright and every named original legal file read; exact source and installed-notice pair only. Dependencies and full distribution remain separately gated."
+    },
+    "arpwatch@2.1a15-8": {
+      "source_identity": "0391374c71d5e7a0bd9233fc9271873f45846ffb838f389ca81d896eada0e711",
+      "copyright_sha256": "45274f68f7ec94030e050b80d322cce46124a0b4822250525b23bf886cb4bd6b",
+      "redistributable": true,
+      "license": "BSD-4-Clause-Shortened AND GPL-3.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts.",
+        "All advertising materials mentioning Arpwatch features or use must display the exact retained University of California, Lawrence Berkeley Laboratory acknowledgement; do not imply endorsement."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Third-party-acknowledgements.txt",
+          "sha256": "d019fe5fa58b36c818c710ba6dc0fbe246bc5c7bffc07253e95b870d33650bc0"
+        }
+      ]
+    },
+    "bsdmainutils@12.1.8": {
+      "source_identity": "514ce88f4fe0393dbd5dbbe546c382b53d1b2b547f07e58a29c9ac3f0c1a2bd2",
+      "copyright_sha256": "09cda749d84f4edb92f728b3dede077d7c784148d6ea95be42656199e40da0b7",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated."
+    },
+    "pci.ids@0.0~2023.04.11-1": {
+      "source_identity": "18c23efcbcd6643adcdb7be7ef31719f0f8071619e821e9af4366f65aaaa72c4",
+      "copyright_sha256": "1ab84371aae54065c087b6d684cb3f221b4829a0269771e156428c5db13d24c9",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts.",
+        "Choose the offered BSD-3-Clause branch for the factual database compilation; preserve both original license alternatives."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated."
+    },
+    "libdynaloader-functions-perl@0.003-3": {
+      "source_identity": "2d8cbe058f82bc24908dfba3bc946d587e589b0a0122bd8e3dd1830ea071264a",
+      "copyright_sha256": "9bc9c91c52854ff06cd7a8da2e0d73a9f18039f7fff3ac21076f1cac97b3b6aa",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl AND GPL-3.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts.",
+        "Choose the explicitly offered Artistic branch, preserve all original dual-license statements, and satisfy 4(b) with complete machine-readable source plus Debian modifications.",
+        "Keep modification notices; publish modifications freely under 3(a); aggregate without advertising the package as distributor-owned or charging a separate package fee."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated. Autogenerated copyright_hints explicitly disclaims authorship/audit completion and does not override the normative module-wide and Debian-wide grants; all hints and original source are retained.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "init-system-helpers@1.65.2+deb12u1": {
+      "source_identity": "d4c6d21578b0cc835b8941f2d0f1fc3de6c75af63c840d59e75a9a01a0fd4a09",
+      "copyright_sha256": "7534601cc4fa513804d16490359f5831e7b6a1212da3bbf948bebdd4c8799783",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated."
+    },
+    "easy-rsa@3.1.0-1": {
+      "source_identity": "ecbe7a9d274bb96ad7019f07d95dfc59456cd5017d374f0de628ec505b7d4da7",
+      "copyright_sha256": "6bf310cf0820f95fa664eaa0792a8d661e4ce5c930aad0866d1e3997f692f6c2",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated. Exact original archive opened: no Windows EXE/DLL/ZIP/7z payload or extra Windows license directory. OpenSSL is separately packaged, not linked or bundled into this shell utility. Choose GPL version 2 for version-2-or-later Debian packaging as well."
+    },
+    "libdevel-callchecker-perl@0.008-2": {
+      "source_identity": "8a49bb96cf7ca3d5387651c611bf71cd3db180fd3ea9b69ba7f84952ad202798",
+      "copyright_sha256": "949e7215260acd89d9fa76b027d9e4c34c391118ea158cbce96adc43f0ffc418",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl AND GPL-3.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts.",
+        "Choose the explicitly offered Artistic branch, preserve all original dual-license statements, and satisfy 4(b) with complete machine-readable source plus Debian modifications.",
+        "Keep modification notices; publish modifications freely under 3(a); aggregate without advertising the package as distributor-owned or charging a separate package fee."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated. Autogenerated copyright_hints explicitly disclaims authorship/audit completion and does not override the normative module-wide and Debian-wide grants; all hints and original source are retained.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "squidguard@1.6.0-4": {
+      "source_identity": "a60a210a4cb0e73a6c94bb23b7a52db9c7be7b27d54be95d00f1013ba183d7b9",
+      "copyright_sha256": "f6ea72178e965c343a581c53ba6a6b0223cf29c5de204eca31556db0483b90e7",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND W3C-19980720 AND LicenseRef-CERN-Acknowledgement",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts.",
+        "Retain the full W3C software notice in a user-viewable location and all existing W3C/CERN copyright, disclaimer and dated modification notices.",
+        "Retain the complete CERN acknowledgement; do not use copyright-holder names or trademarks for advertising/publicity without permission."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated. Original three W3C/CERN source headers and dated 2007 changes read. Official 1998 W3C full grant read and retained; original license pointers are not substitutes for the complete license.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Third-party-acknowledgements.txt",
+          "sha256": "d019fe5fa58b36c818c710ba6dc0fbe246bc5c7bffc07253e95b870d33650bc0"
+        },
+        {
+          "path": "LICENSES/W3C-Software-1998.txt",
+          "sha256": "ba9db502309c485f74fc68bc3cd7007c63f52f52dbb1f61b5afd3c61de39de82"
+        }
+      ]
+    },
+    "libparams-util-perl@1.102-2": {
+      "source_identity": "5899fbe56ecec4042ae80b0f2579723e9fe6858c28aac6f3470c2fe4ff960efb",
+      "copyright_sha256": "e0c53f7b70b5d8fca3f083e97ea510eefde70198084fd72213e0f83603ef2bc0",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl AND Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts.",
+        "Choose the explicitly offered Artistic branch, preserve all original dual-license statements, and satisfy 4(b) with complete machine-readable source plus Debian modifications.",
+        "Keep modification notices; publish modifications freely under 3(a); aggregate without advertising the package as distributor-owned or charging a separate package fee.",
+        "Retain Apache-2.0 terms and the explicit output-is-not-a-Derivative-Work exception for inc/latest and inc_Capture-Tiny; do not classify all files as Artistic."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "io-stringy@2.111-3": {
+      "source_identity": "b21b87e84a62a9c6fe2b5f421d5937b0af35dca29844c435f8104586c0d0f8c6",
+      "copyright_sha256": "95b9d3c54130731a345105127b5cf1e0b389deb2d7b3a1611b0aa965151538aa",
+      "redistributable": true,
+      "license": "Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts.",
+        "Choose the explicitly offered Artistic branch, preserve all original dual-license statements, and satisfy 4(b) with complete machine-readable source plus Debian modifications.",
+        "Keep modification notices; publish modifications freely under 3(a); aggregate without advertising the package as distributor-owned or charging a separate package fee."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libtommath@1.2.0-6+deb12u1": {
+      "source_identity": "d2220e395dc98c08f1413e71a90cc7f40f3094d3a796c8f84477bb21dc7ee261",
+      "copyright_sha256": "afbb659d7f3af8236ad4bf6f42b6d7152f41fabd7bb516e31f079a420663f593",
+      "redistributable": true,
+      "license": "Unlicense AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated."
+    },
+    "voluptuous@0.12.2-1": {
+      "source_identity": "b12b20cea07d566dc0d5114e8bd9cf150c13f93b99b2a2d493219d8241c871cd",
+      "copyright_sha256": "5f1c10647cd6c7fd46ac3988ac34189ee6ccede357ad8c4bf2e7f0f6f0dfd745",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated."
+    },
+    "tftp-hpa@5.2+20150808-1.4": {
+      "source_identity": "ef4773c465199cfbc3ccd455a2674b86411da3a45ceef9594ce20d2497dc253d",
+      "copyright_sha256": "11d031ee0f2845da8df08144a235c6606dd0b4dd1f05a0deb64bedb819ebe601",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, all license terms, per-file grants, non-endorsement conditions and disclaimers in source and binary documentation.",
+        "Accompany binaries with exact authenticated preferred sources, Debian modifications and complete build/install scripts, retaining all full applicable license texts."
+      ],
+      "scope": "Complete original legal set read, preserving different Debian packaging and upstream-code licenses. Exact source/notice only; parent release remains independently gated. The original BSD-4-labelled paragraph explicitly deletes advertising clause 3; all remaining source, binary notice and non-endorsement conditions are retained unchanged, including original numbering."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
