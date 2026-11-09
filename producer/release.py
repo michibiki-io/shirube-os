@@ -85,7 +85,10 @@ def verify_source_integrity(root, inventory, assets):
                 if members.get(key) != reference['sha256']:
                     raise ValueError('Missing or differing corresponding-source member')
         children=component.get('bundled_components',[])
-        if (component['name'] in {'vyos-http-api-tools','shirube-integration','vyos-1x',
+        # Product package families require explicit bundled inventories.
+        # Namespaced leaf components such as salt-sdk:openssl are separate
+        # source records, not shipped salt-* Debian packages.
+        if ':' not in component['name'] and (component['name'] in {'vyos-http-api-tools','shirube-integration','vyos-1x',
                 'node-exporter','frr-exporter','blackbox-exporter','telegraf','podman','salt'}
                 or component['name'].startswith(('libvyosconfig','owamp','twamp','salt-'))) and not children:
             raise ValueError('Bundled dependencies need their own source/license inventory')
