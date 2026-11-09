@@ -36,7 +36,9 @@ class VM:
         serial=self.work/'serial.sock'
         mac='52:54:'+':'.join(f'{byte:02x}' for byte in secrets.token_bytes(4))
         cpu='host' if accelerator=='kvm' else ('cortex-a72' if arch=='arm64' else 'max')
-        accel='kvm' if accelerator=='kvm' else 'tcg,thread=multi'
+        # Bound translated-code memory as well as guest RAM. QEMU's host-sized
+        # default cache can exhaust a 3 GiB container during a live install.
+        accel='kvm' if accelerator=='kvm' else 'tcg,thread=multi,tb-size=128'
         args=[executable,'-machine',machine,'-accel',accel,'-cpu',cpu,'-smp','2','-m','2048','-display','none',
               '-serial',f'unix:{serial},server=on,wait=on','-qmp',f'unix:{self.work}/qmp.sock,server=on,wait=off',
               '-drive',f'if=pflash,format=raw,unit=0,readonly=on,file={code}',

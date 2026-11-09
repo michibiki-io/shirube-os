@@ -417,3 +417,10 @@ version. Restoring that file alongside the unchanged `salt/version.py` recovers
 records both the incorrect unstamped result and the restored result. This closes
 a version reconstruction gap, not the remaining SDK/whole-OS reconstruction or
 license gates.
+
+TCG guests use two vCPUs, 2 GiB guest RAM and an explicit 128 MiB translation
+block cache. [QEMU's accelerator documentation](https://www.qemu.org/docs/master/system/qemu-manpage.html#standard-options)
+defines `tb-size` independently of guest RAM. An ARM64 diagnostic using the
+host-sized default cache ended during installation with a task-owned container
+OOM event under its 3 GiB limit. The bounded-cache retry must pass actual guest
+and offline cleanup checks before ARM64 TCG can enter production admission.
