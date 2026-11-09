@@ -19142,6 +19142,488 @@
           "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
         }
       ]
+    },
+    "salt-sdk:cpython@3.11.14": {
+      "source_identity": "8d3ed8ec5c88c1c95f5e558612a725450d2452813ddad5e58fdb1a53b1209b78",
+      "copyright_sha256": "9161e831e5cb5337c01ce58fce136f318eef5d72d1223eb37436382e224e410e",
+      "redistributable": true,
+      "license": "Python-2.0 AND PSF-2.0 AND 0BSD AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND Apache-2.0 AND MS-RL AND LicenseRef-Python-incorporated-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/8d3ed8ec5c88c1c95f5e558612a725450d2452813ddad5e58fdb1a53b1209b78.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "conditions": [
+        "Retain original PSF, BeOpen, CNRI, CWI and independently scoped third-party copyrights, all historical licenses, complete disclaimers and author/nonendorsement restrictions in source and binary documentation.",
+        "Supply exact preferred source and complete recipes, preserve PSF modification summaries and plainly mark altered zlib sources; do not misrepresent origin or use upstream names for endorsement.",
+        "Windows bootstrap MS-RL applies only to the stated bootstrapper files, with their exact source, reciprocal file license and full notice supplied; it does not relicense Linux Python or unrelated files.",
+        "Preserve Lucent permission in full in covered source and supporting documentation; retain full Apache license and applicable notices for OpenSSL, and all W3C, BSD, MIT, Sun and PSF scopes. No patent or trademark permission is inferred beyond actual grants.",
+        "The original Darwin libffi notice refers to an AUTHORS file absent from this fixed Python source archive. Preserve the complete original notice and all existing per-file credits; no missing author list is represented as recovered."
+      ],
+      "scope": "Exact fixed CPython source and all nine original notices only. Three newly encountered originals fully read (complete documentation license through original-root word comparison plus all incorporated-software clauses, copyright page and Windows bootstrap license); six complete notices match previously read original texts. No SDK or OS parent clearance."
+    },
+    "go:github.com/go-sql-driver/mysql@v1.7.1#5d3436cafe5d147d1f56cca6917f155b0e337b7d5df9f2f8b8be33584a7b1e2d": {
+      "source_identity": "5d3436cafe5d147d1f56cca6917f155b0e337b7d5df9f2f8b8be33584a7b1e2d",
+      "copyright_sha256": "74a8ad8c70f31850547a00dcbc5d11f7f01c0f17751c986b5b63cc68e1b233f1",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/85d9f3b78f4c7857d071134228a362723587d1be51f8af43bf221f114de278d3.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/go-stomp/stomp@v2.1.4+incompatible#821addb3fdb70b9e4a657e48e183977591ad0a9d175706cb4bc3237be81be900": {
+      "source_identity": "821addb3fdb70b9e4a657e48e183977591ad0a9d175706cb4bc3237be81be900",
+      "copyright_sha256": "c3b60ca1d92200201517f76c10267047c1a882af74cb8d7f7401ca37afb130bd",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3486dbe47e2367d4b1d21efe4ff81dde5947f177016146cf15e2b1db64a02147.txt",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/consul/api@v1.24.0#f6bdcc127a279e9767cc206e1dab1c173f9ce3733ce287f6b2ac6890902d2210": {
+      "source_identity": "f6bdcc127a279e9767cc206e1dab1c173f9ce3733ce287f6b2ac6890902d2210",
+      "copyright_sha256": "e30207ea7ad9a9d536c0f1587d29061fb63a7e7cfb114f7026813b0ae6ffb3f5",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3dd3f864f12da6cb946b707dcf2a732c00a4011393552be972b7405669e7c285.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/errwrap@v1.1.0#209ae99bc039443e28e4d6bb66517d1756d9468b7578d31f1b63a28103d8e18c": {
+      "source_identity": "209ae99bc039443e28e4d6bb66517d1756d9468b7578d31f1b63a28103d8e18c",
+      "copyright_sha256": "dbfaaa61c8f308a57629daab7bd6f629af2080e301f6b484d890ee848665dd1d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fea4f57a47313be852dd2cf6ae61ddd99d0c7bd7eaf4d35cf3deb261327218c4.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-cleanhttp@v0.5.2#e9f3dcfcb33172ba499b4f8e888169252d7f1e072082182124a6e2053523f7df": {
+      "source_identity": "e9f3dcfcb33172ba499b4f8e888169252d7f1e072082182124a6e2053523f7df",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/71cdee800ec4f8d848422781eb81dcac9f471826aacb7c1cf032e23ebdc2652c.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-immutable-radix@v1.3.1#47f3d79b57082d5db3f966547ad4de2a00544dfb362790fbf2cef1a161b4de3f": {
+      "source_identity": "47f3d79b57082d5db3f966547ad4de2a00544dfb362790fbf2cef1a161b4de3f",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/aba9fa9f339a6261774e655446c5f9d6289271f3d99bae59ae21c89fc695036c.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-multierror@v1.1.1#972cd841ee51fdeac69c5a301e57f8ea27aebf15fddd7f621d5c240f28c3000c": {
+      "source_identity": "972cd841ee51fdeac69c5a301e57f8ea27aebf15fddd7f621d5c240f28c3000c",
+      "copyright_sha256": "a7f50c28514e3c6dd411935a84df444a57038e7c51cd681401fd084ccf3d9037",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/51a0f1d787e3708b2e5ad8c1754ab1595ace9be5129332ff8a6bc89d321729d2.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-rootcerts@v1.0.2#864a48e642e87a273fb5ef60bb3575bd74a7090510f93143163fa6700be31948": {
+      "source_identity": "864a48e642e87a273fb5ef60bb3575bd74a7090510f93143163fa6700be31948",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/962ad3ed32476a502e29cd97125ee0680a78e0a6db7dca3dfb54b0d7ad1b3c87.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-uuid@v1.0.3#5e9dc2bb3785d69a65d287a4b3fa7e9f583a127e41c6a2fd095ac862fed71dad": {
+      "source_identity": "5e9dc2bb3785d69a65d287a4b3fa7e9f583a127e41c6a2fd095ac862fed71dad",
+      "copyright_sha256": "e22ad8f15b93a50e7db2ab43a5fed9e2e595f73570da898845c5d05cc768a593",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/92a3fe458edc10ead7bb6ceb5f656880b6071064bd4295e2cf42032d6b2cc524.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/golang-lru@v1.0.2#175d78ffe7391f3f6369cf58ddb87fc51016ba61f2de25bf4ea3962a0b4a0fac": {
+      "source_identity": "175d78ffe7391f3f6369cf58ddb87fc51016ba61f2de25bf4ea3962a0b4a0fac",
+      "copyright_sha256": "65beb96aacc05fabfab78046c68194e0b31257ea595b47f65f9d9199b7b14526",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/0b7902f318d82aee5086a1505bafad4577e2f0e380657c1049be524a146fc4d9.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/packer-plugin-sdk@v0.3.2#c362b838a8fa75d3e9c33baaf62c9a7dc7b02e5e59e8095ce34d7fa918b3c673": {
+      "source_identity": "c362b838a8fa75d3e9c33baaf62c9a7dc7b02e5e59e8095ce34d7fa918b3c673",
+      "copyright_sha256": "5e3fc04b62ea530b6fa6b5dc1cbba18bd4186ab1c75e10a6ac164ce8f1ac14b1",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/e1fbfacad5519feb65912ef4c098c2d0be0f94ef58a87243f2ba93539e72cabd.txt",
+      "redistributable": true,
+      "license": "MIT AND MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/thomasklein94/packer-plugin-libvirt@v0.5.0#2bb780b073ac9ad307d4f5e9bf325cfb19d6dc42423c2d09b6f537a2d712c896": {
+      "source_identity": "2bb780b073ac9ad307d4f5e9bf325cfb19d6dc42423c2d09b6f537a2d712c896",
+      "copyright_sha256": "35ffb062fa101c117f2e165f3974fe0e993eecee0dd6c0d5fe0f32f7d61462d3",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/383a8569fe448e64c1322b7d84bc66e0bcc83abc2698404b568f8355791649e4.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:layeh.com/radius@v0.0.0-20221205141417-e7fbddd11d68#ef4a9d5e85c7a30e02c0d1dd8092e76b4e3332cde69504e1216a91989c6a9b84": {
+      "source_identity": "ef4a9d5e85c7a30e02c0d1dd8092e76b4e3332cde69504e1216a91989c6a9b84",
+      "copyright_sha256": "679c945c454f4b493b4d502c562351a474187a3557da54055a0f0919ab92dbab",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/502130eb98818b51e12aa8c6c526335c73ab10ca074c83e1bde92818d446a88b.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/errwrap@v1.1.0#b4e17e2716faac4c3b5d99851ac6dbde1f9c5e0f78bab8bcd0f60b9a6f278ffd": {
+      "source_identity": "b4e17e2716faac4c3b5d99851ac6dbde1f9c5e0f78bab8bcd0f60b9a6f278ffd",
+      "copyright_sha256": "dbfaaa61c8f308a57629daab7bd6f629af2080e301f6b484d890ee848665dd1d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fea4f57a47313be852dd2cf6ae61ddd99d0c7bd7eaf4d35cf3deb261327218c4.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-cleanhttp@v0.5.2#6eda3a71433721586310433c4a88fae804d753847b1e85ba49257abbfd893cbf": {
+      "source_identity": "6eda3a71433721586310433c4a88fae804d753847b1e85ba49257abbfd893cbf",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/71cdee800ec4f8d848422781eb81dcac9f471826aacb7c1cf032e23ebdc2652c.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-multierror@v1.1.1#3122abc25078d36e40b22b6fc77f800178d57e6987be741cdaedc10659b86df8": {
+      "source_identity": "3122abc25078d36e40b22b6fc77f800178d57e6987be741cdaedc10659b86df8",
+      "copyright_sha256": "a7f50c28514e3c6dd411935a84df444a57038e7c51cd681401fd084ccf3d9037",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/51a0f1d787e3708b2e5ad8c1754ab1595ace9be5129332ff8a6bc89d321729d2.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-retryablehttp@v0.7.5#7c94e88c88e5558b55f94c9e4bcc12b29a318e39d5848469467e2e678bbe91ce": {
+      "source_identity": "7c94e88c88e5558b55f94c9e4bcc12b29a318e39d5848469467e2e678bbe91ce",
+      "copyright_sha256": "17ce8151a12714bdc2f54ce3ceea8cd96e357d5ac754134fb7ce77dc20850f8f",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/474c1b23ed1e577205eec738798b8bc6c435d88bcde55a87a117b4f8e0464baf.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/letsencrypt/boulder@v0.0.0-20230213213521-fdfea0d469b6#359bfddd6c6dcdf290de51d5f8ecb22fae92027157c4d0958b4c69e50319c051": {
+      "source_identity": "359bfddd6c6dcdf290de51d5f8ecb22fae92027157c4d0958b4c69e50319c051",
+      "copyright_sha256": "a806042080003e94b6c0f6b9da26eaa21f05ae894d30f6cd12c8b51ad600971f",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/4942f9eb272b69970ef75fca18e1f9956ce39a75a022a302f9a6a405361c8f08.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/errwrap@v1.1.0#h1:OxrOeh75EUXMY8TBjag2fzXGZ40LB6IKw45YeGUDY2I=": {
+      "source_identity": "h1:OxrOeh75EUXMY8TBjag2fzXGZ40LB6IKw45YeGUDY2I=",
+      "copyright_sha256": "3f15857baa46f1d56b0077f360d325a8592d8a15d0dd7781b2c0ca0b613923c1",
+      "evidence_member": "netbird/linked/notices/fea4f57a47313be852dd2cf6ae61ddd99d0c7bd7eaf4d35cf3deb261327218c4.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-multierror@v1.1.1#h1:H5DkEtf6CXdFp0N0Em5UCwQpXMWke8IA0+lD48awMYo=": {
+      "source_identity": "h1:H5DkEtf6CXdFp0N0Em5UCwQpXMWke8IA0+lD48awMYo=",
+      "copyright_sha256": "c374f4165950eeec235df512370d339408f3c88ee7236f32f6c9c9ff6222703c",
+      "evidence_member": "netbird/linked/notices/51a0f1d787e3708b2e5ad8c1754ab1595ace9be5129332ff8a6bc89d321729d2.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:github.com/hashicorp/go-version@v1.7.0#h1:5tqGy27NaOTB8yJKUZELlFAS/LTKJkrmONwQKeRZfjY=": {
+      "source_identity": "h1:5tqGy27NaOTB8yJKUZELlFAS/LTKJkrmONwQKeRZfjY=",
+      "copyright_sha256": "dea00780e1be81f93fb59be28bfa165238f370bec3ec9ea5ab1927bede477761",
+      "evidence_member": "netbird/linked/notices/4bc85634e3d35e57091d035ea49d13229e8d23909e6a43f95185da9f46219dfd.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant.",
+        "Provide exact covered preferred sources and all modifications under MPL2 with the full license; executable recipients receive corresponding source and may obtain it without additional license restrictions. Preserve MPL patent and termination scope and any secondary-license exclusion."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "go:gvisor.dev/gvisor@v0.0.0-20260219192049-0f2374377e89#h1:mGJaeA61P8dEHTqdvAgc70ZIV3QoUoJcXCRyyjO26OA=": {
+      "source_identity": "h1:mGJaeA61P8dEHTqdvAgc70ZIV3QoUoJcXCRyyjO26OA=",
+      "copyright_sha256": "51e8858f919958b92a19d52c19beb003cf1beeb611da3faa0e57506275c9edf6",
+      "evidence_member": "netbird/linked/notices/36f404acdeb7d018981a25058e7ae32306b8cefa276d586669111af7357fcf70.txt",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact source/notice pair only. Complete operative grant bodies compared against fully read original grants, with all new copyright prefixes and supporting notices read. Parent distribution and all dependencies independently gated.",
+      "conditions": [
+        "Retain all original copyrights, contributor lists, complete license texts, notices, disclaimers and nonendorsement conditions in source and binary documentation.",
+        "Supply exact preferred source and build/install scripts; preserve Apache section 4 notices and marked modifications. Export notices are retained without representing government authorization.",
+        "License templates and license-checking scripts are supporting project material, not independent permission grants; apply the actual project grant to them. Third-party code remains under its own retained grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

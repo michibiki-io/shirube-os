@@ -1,0 +1,779 @@
+{
+  "kind": "exact-linked-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 22,
+  "components": [
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/go-sql-driver/mysql",
+      "version": "v1.7.1",
+      "source_identity": "5d3436cafe5d147d1f56cca6917f155b0e337b7d5df9f2f8b8be33584a7b1e2d",
+      "copyright_sha256": "74a8ad8c70f31850547a00dcbc5d11f7f01c0f17751c986b5b63cc68e1b233f1",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/85d9f3b78f4c7857d071134228a362723587d1be51f8af43bf221f114de278d3.txt",
+      "matches": [
+        {
+          "member": "AUTHORS",
+          "previously_read_complete_supporting_notice_sha256": "ab5d1106bd197e94396d3c531202cefc5fa09815668c44979521cbdea7e9f873"
+        },
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "a7fae6cb34ec631564f892e475d03e5d8781b78949caf5c54d404d384e30fffe"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/go-stomp/stomp",
+      "version": "v2.1.4+incompatible",
+      "source_identity": "821addb3fdb70b9e4a657e48e183977591ad0a9d175706cb4bc3237be81be900",
+      "copyright_sha256": "c3b60ca1d92200201517f76c10267047c1a882af74cb8d7f7401ca37afb130bd",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3486dbe47e2367d4b1d21efe4ff81dde5947f177016146cf15e2b1db64a02147.txt",
+      "matches": [
+        {
+          "member": "AUTHORS.md",
+          "previously_read_complete_supporting_notice_sha256": "e42ee65eca7e4180c76d1b1db825e284bf985270a88f565e2092857c172e4bc1"
+        },
+        {
+          "member": "LICENSE.txt",
+          "license": "Apache-2.0",
+          "complete_normalized_original_notice_sha256": "4ae24f5f17110c2f75ba7e51baa99c7e81722472bb78f145f5b969a2ddaf3f72"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/consul/api",
+      "version": "v1.24.0",
+      "source_identity": "f6bdcc127a279e9767cc206e1dab1c173f9ce3733ce287f6b2ac6890902d2210",
+      "copyright_sha256": "e30207ea7ad9a9d536c0f1587d29061fb63a7e7cfb114f7026813b0ae6ffb3f5",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3dd3f864f12da6cb946b707dcf2a732c00a4011393552be972b7405669e7c285.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "45793008343d9a89236c40e0b4aea809278553dc0056d4a59967c61c5db0691a"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/errwrap",
+      "version": "v1.1.0",
+      "source_identity": "209ae99bc039443e28e4d6bb66517d1756d9468b7578d31f1b63a28103d8e18c",
+      "copyright_sha256": "dbfaaa61c8f308a57629daab7bd6f629af2080e301f6b484d890ee848665dd1d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fea4f57a47313be852dd2cf6ae61ddd99d0c7bd7eaf4d35cf3deb261327218c4.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "8f1cb41d4526274cb65fe431fa39362a23777153108ab0608c2160fc762ac068"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/go-cleanhttp",
+      "version": "v0.5.2",
+      "source_identity": "e9f3dcfcb33172ba499b4f8e888169252d7f1e072082182124a6e2053523f7df",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/71cdee800ec4f8d848422781eb81dcac9f471826aacb7c1cf032e23ebdc2652c.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "3d62b6f39ee47f9eaaae31c9c10b4075de9d7425c7b2f190dc5019d75a55fa69"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/go-immutable-radix",
+      "version": "v1.3.1",
+      "source_identity": "47f3d79b57082d5db3f966547ad4de2a00544dfb362790fbf2cef1a161b4de3f",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/aba9fa9f339a6261774e655446c5f9d6289271f3d99bae59ae21c89fc695036c.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "3d62b6f39ee47f9eaaae31c9c10b4075de9d7425c7b2f190dc5019d75a55fa69"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/go-multierror",
+      "version": "v1.1.1",
+      "source_identity": "972cd841ee51fdeac69c5a301e57f8ea27aebf15fddd7f621d5c240f28c3000c",
+      "copyright_sha256": "a7f50c28514e3c6dd411935a84df444a57038e7c51cd681401fd084ccf3d9037",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/51a0f1d787e3708b2e5ad8c1754ab1595ace9be5129332ff8a6bc89d321729d2.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "8f1cb41d4526274cb65fe431fa39362a23777153108ab0608c2160fc762ac068"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/go-rootcerts",
+      "version": "v1.0.2",
+      "source_identity": "864a48e642e87a273fb5ef60bb3575bd74a7090510f93143163fa6700be31948",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/962ad3ed32476a502e29cd97125ee0680a78e0a6db7dca3dfb54b0d7ad1b3c87.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "3d62b6f39ee47f9eaaae31c9c10b4075de9d7425c7b2f190dc5019d75a55fa69"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/go-uuid",
+      "version": "v1.0.3",
+      "source_identity": "5e9dc2bb3785d69a65d287a4b3fa7e9f583a127e41c6a2fd095ac862fed71dad",
+      "copyright_sha256": "e22ad8f15b93a50e7db2ab43a5fed9e2e595f73570da898845c5d05cc768a593",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/92a3fe458edc10ead7bb6ceb5f656880b6071064bd4295e2cf42032d6b2cc524.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "de5e635d687838315077d8ab969fd150ffbf5b3ee695a55ebf863d75321a9da7"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/golang-lru",
+      "version": "v1.0.2",
+      "source_identity": "175d78ffe7391f3f6369cf58ddb87fc51016ba61f2de25bf4ea3962a0b4a0fac",
+      "copyright_sha256": "65beb96aacc05fabfab78046c68194e0b31257ea595b47f65f9d9199b7b14526",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/0b7902f318d82aee5086a1505bafad4577e2f0e380657c1049be524a146fc4d9.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "a63b39eeb1e5b086b9ab6a4fe9ceb8ab4a60944ed91adb5b78e33247583ac24a"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/hashicorp/packer-plugin-sdk",
+      "version": "v0.3.2",
+      "source_identity": "c362b838a8fa75d3e9c33baaf62c9a7dc7b02e5e59e8095ce34d7fa918b3c673",
+      "copyright_sha256": "5e3fc04b62ea530b6fa6b5dc1cbba18bd4186ab1c75e10a6ac164ce8f1ac14b1",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/e1fbfacad5519feb65912ef4c098c2d0be0f94ef58a87243f2ba93539e72cabd.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "a7fae6cb34ec631564f892e475d03e5d8781b78949caf5c54d404d384e30fffe"
+        },
+        {
+          "member": "multistep/LICENSE.md",
+          "license": "MIT",
+          "complete_operative_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5"
+        }
+      ],
+      "selected_licenses": [
+        "MIT",
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/thomasklein94/packer-plugin-libvirt",
+      "version": "v0.5.0",
+      "source_identity": "2bb780b073ac9ad307d4f5e9bf325cfb19d6dc42423c2d09b6f537a2d712c896",
+      "copyright_sha256": "35ffb062fa101c117f2e165f3974fe0e993eecee0dd6c0d5fe0f32f7d61462d3",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/383a8569fe448e64c1322b7d84bc66e0bcc83abc2698404b568f8355791649e4.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "a7fae6cb34ec631564f892e475d03e5d8781b78949caf5c54d404d384e30fffe"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:layeh.com/radius",
+      "version": "v0.0.0-20221205141417-e7fbddd11d68",
+      "source_identity": "ef4a9d5e85c7a30e02c0d1dd8092e76b4e3332cde69504e1216a91989c6a9b84",
+      "copyright_sha256": "679c945c454f4b493b4d502c562351a474187a3557da54055a0f0919ab92dbab",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/502130eb98818b51e12aa8c6c526335c73ab10ca074c83e1bde92818d446a88b.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "a7fae6cb34ec631564f892e475d03e5d8781b78949caf5c54d404d384e30fffe"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "podman",
+      "name": "go:github.com/hashicorp/errwrap",
+      "version": "v1.1.0",
+      "source_identity": "b4e17e2716faac4c3b5d99851ac6dbde1f9c5e0f78bab8bcd0f60b9a6f278ffd",
+      "copyright_sha256": "dbfaaa61c8f308a57629daab7bd6f629af2080e301f6b484d890ee848665dd1d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fea4f57a47313be852dd2cf6ae61ddd99d0c7bd7eaf4d35cf3deb261327218c4.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "8f1cb41d4526274cb65fe431fa39362a23777153108ab0608c2160fc762ac068"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "podman",
+      "name": "go:github.com/hashicorp/go-cleanhttp",
+      "version": "v0.5.2",
+      "source_identity": "6eda3a71433721586310433c4a88fae804d753847b1e85ba49257abbfd893cbf",
+      "copyright_sha256": "ffaa6d1e6238616c2bb2b84194a1cefedeaf4f437e8e1bce9d5ea2029bc83e89",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/71cdee800ec4f8d848422781eb81dcac9f471826aacb7c1cf032e23ebdc2652c.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "3d62b6f39ee47f9eaaae31c9c10b4075de9d7425c7b2f190dc5019d75a55fa69"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "podman",
+      "name": "go:github.com/hashicorp/go-multierror",
+      "version": "v1.1.1",
+      "source_identity": "3122abc25078d36e40b22b6fc77f800178d57e6987be741cdaedc10659b86df8",
+      "copyright_sha256": "a7f50c28514e3c6dd411935a84df444a57038e7c51cd681401fd084ccf3d9037",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/51a0f1d787e3708b2e5ad8c1754ab1595ace9be5129332ff8a6bc89d321729d2.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "8f1cb41d4526274cb65fe431fa39362a23777153108ab0608c2160fc762ac068"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "podman",
+      "name": "go:github.com/hashicorp/go-retryablehttp",
+      "version": "v0.7.5",
+      "source_identity": "7c94e88c88e5558b55f94c9e4bcc12b29a318e39d5848469467e2e678bbe91ce",
+      "copyright_sha256": "17ce8151a12714bdc2f54ce3ceea8cd96e357d5ac754134fb7ce77dc20850f8f",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/474c1b23ed1e577205eec738798b8bc6c435d88bcde55a87a117b4f8e0464baf.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "ae8fe25e43cccb01c4b1f3c114d1e6f705c0512556d635d2bb72fcd0afa3fe0e"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "podman",
+      "name": "go:github.com/letsencrypt/boulder",
+      "version": "v0.0.0-20230213213521-fdfea0d469b6",
+      "source_identity": "359bfddd6c6dcdf290de51d5f8ecb22fae92027157c4d0958b4c69e50319c051",
+      "copyright_sha256": "a806042080003e94b6c0f6b9da26eaa21f05ae894d30f6cd12c8b51ad600971f",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/4942f9eb272b69970ef75fca18e1f9956ce39a75a022a302f9a6a405361c8f08.txt",
+      "matches": [
+        {
+          "member": "LICENSE.txt",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "90f0cfcfa4c82061bb848eb0ff351c121acd7e2ce413a214910963530f401efd"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "netbird",
+      "name": "go:github.com/hashicorp/errwrap",
+      "version": "v1.1.0",
+      "source_identity": "h1:OxrOeh75EUXMY8TBjag2fzXGZ40LB6IKw45YeGUDY2I=",
+      "copyright_sha256": "3f15857baa46f1d56b0077f360d325a8592d8a15d0dd7781b2c0ca0b613923c1",
+      "evidence_member": "netbird/linked/notices/fea4f57a47313be852dd2cf6ae61ddd99d0c7bd7eaf4d35cf3deb261327218c4.txt",
+      "matches": [
+        {
+          "member": "github.com/hashicorp/errwrap@v1.1.0/LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "8f1cb41d4526274cb65fe431fa39362a23777153108ab0608c2160fc762ac068"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "netbird",
+      "name": "go:github.com/hashicorp/go-multierror",
+      "version": "v1.1.1",
+      "source_identity": "h1:H5DkEtf6CXdFp0N0Em5UCwQpXMWke8IA0+lD48awMYo=",
+      "copyright_sha256": "c374f4165950eeec235df512370d339408f3c88ee7236f32f6c9c9ff6222703c",
+      "evidence_member": "netbird/linked/notices/51a0f1d787e3708b2e5ad8c1754ab1595ace9be5129332ff8a6bc89d321729d2.txt",
+      "matches": [
+        {
+          "member": "github.com/hashicorp/go-multierror@v1.1.1/LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "8f1cb41d4526274cb65fe431fa39362a23777153108ab0608c2160fc762ac068"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "netbird",
+      "name": "go:github.com/hashicorp/go-version",
+      "version": "v1.7.0",
+      "source_identity": "h1:5tqGy27NaOTB8yJKUZELlFAS/LTKJkrmONwQKeRZfjY=",
+      "copyright_sha256": "dea00780e1be81f93fb59be28bfa165238f370bec3ec9ea5ab1927bede477761",
+      "evidence_member": "netbird/linked/notices/4bc85634e3d35e57091d035ea49d13229e8d23909e6a43f95185da9f46219dfd.txt",
+      "matches": [
+        {
+          "member": "github.com/hashicorp/go-version@v1.7.0/LICENSE",
+          "license": "MPL-2.0",
+          "complete_normalized_original_notice_sha256": "4028eef92e7c7c912c90f9fccb3c489f6c962a870a723d0a0e611b4906ac29a1"
+        }
+      ],
+      "selected_licenses": [
+        "MPL-2.0"
+      ]
+    },
+    {
+      "parent": "netbird",
+      "name": "go:gvisor.dev/gvisor",
+      "version": "v0.0.0-20260219192049-0f2374377e89",
+      "source_identity": "h1:mGJaeA61P8dEHTqdvAgc70ZIV3QoUoJcXCRyyjO26OA=",
+      "copyright_sha256": "51e8858f919958b92a19d52c19beb003cf1beeb611da3faa0e57506275c9edf6",
+      "evidence_member": "netbird/linked/notices/36f404acdeb7d018981a25058e7ae32306b8cefa276d586669111af7357fcf70.txt",
+      "matches": [
+        {
+          "member": "gvisor.dev/gvisor@v0.0.0-20260219192049-0f2374377e89/AUTHORS",
+          "previously_read_complete_supporting_notice_sha256": "a0767c11515293c346a6de8fa1053211b22b82dd93d2ef55560c17af3bf0c699"
+        },
+        {
+          "member": "gvisor.dev/gvisor@v0.0.0-20260219192049-0f2374377e89/LICENSE",
+          "license": "Apache-2.0 AND MIT AND BSD-3-Clause",
+          "complete_normalized_original_notice_sha256": "71ae28daeb10f57359de08e036170cc4b1403532602c5b5a2ff9c17694b19a5c"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0 AND MIT AND BSD-3-Clause"
+      ]
+    }
+  ],
+  "supporting_notice_readings": [
+    {
+      "component": "go:google.golang.org/grpc",
+      "member": "AUTHORS",
+      "text_sha256": "a4bb41f046ccf372841b388a09b50bac265128deda0cd4828c03f1fd16f00728"
+    },
+    {
+      "component": "go:github.com/oklog/ulid",
+      "member": "AUTHORS.md",
+      "text_sha256": "f54aa134a709d24c3b88452ff73229d0e5cda5659afc539f0482d13ab6471371"
+    },
+    {
+      "component": "go:github.com/coreos/go-semver",
+      "member": "NOTICE",
+      "text_sha256": "d647d40647c01bec10122e5ee7389d562008b7099566ea7dc0149ff2773807a4"
+    },
+    {
+      "component": "go:github.com/coreos/go-oidc/v3",
+      "member": "NOTICE",
+      "text_sha256": "fff231f3c4c9426a0a2b6912892808d67ebd7a739b1b1333e4f65c2890f1b944"
+    },
+    {
+      "component": "go:github.com/awslabs/kinesis-aggregation/go",
+      "member": "shirube-corresponding-inputs/upstream-notices/a1fc3f41c0a98783d749c6148194bd94969dacbfb1a2625a61ba814c4170dd3c.txt",
+      "text_sha256": "6216c4dff51ca88cd206cf626e49228bbfe92f686dab2831460cc6b26eed3621"
+    },
+    {
+      "component": "go:github.com/prometheus/client_model",
+      "member": "NOTICE",
+      "text_sha256": "1c6ae0107fb9e87ce26f8098d5d173914331217f4d11d7ff3956d37ecb9c49a3"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/internal/third_party/go-json-experiment/json/AUTHORS",
+      "text_sha256": "3e38c088e0966f0a8230c816d2964017d23158fe160114728d961c79d2e85ed8"
+    },
+    {
+      "component": "go:github.com/prometheus/common",
+      "member": "NOTICE",
+      "text_sha256": "a964149ae204f5510720cb1e569beabf22458a8a571d9d4e9773bbe3f895d13e"
+    },
+    {
+      "component": "go:github.com/jaegertracing/jaeger",
+      "member": "NOTICE",
+      "text_sha256": "edd4b08226a08fdc486fc2a696851f928161f8f02152f22605c138a3454f99dc"
+    },
+    {
+      "component": "go:github.com/prometheus/procfs",
+      "member": "NOTICE",
+      "text_sha256": "322c24deae12157c69417716f0237cb08f4f99953d21be813067a62551227edc"
+    },
+    {
+      "component": "go:github.com/opensearch-project/opensearch-go/v2",
+      "member": ".github/license-header.txt",
+      "text_sha256": "e13823156ebacda10d72315bee91fb6dfbe42a72c67938763356b426f213e21b"
+    },
+    {
+      "component": "go:github.com/opencontainers/image-spec",
+      "member": ".tool/check-license",
+      "text_sha256": "a844d1c2ec8001a01be9223aea28e840f7905a89580b811d413ba2047e1fb008"
+    },
+    {
+      "component": "go:github.com/go-stomp/stomp",
+      "member": "AUTHORS.md",
+      "text_sha256": "e42ee65eca7e4180c76d1b1db825e284bf985270a88f565e2092857c172e4bc1"
+    },
+    {
+      "component": "go:gvisor.dev/gvisor",
+      "member": "gvisor.dev/gvisor@v0.0.0-20260219192049-0f2374377e89/AUTHORS",
+      "text_sha256": "a0767c11515293c346a6de8fa1053211b22b82dd93d2ef55560c17af3bf0c699"
+    },
+    {
+      "component": "go:github.com/awnumar/memguard",
+      "member": "AUTHORS",
+      "text_sha256": "b130d5add04a7c73a9e49163f8a701f9114c116467c40f8a7f4dd1402363af7f"
+    },
+    {
+      "component": "go:github.com/digitalocean/go-qemu",
+      "member": "AUTHORS",
+      "text_sha256": "bc9e3899f8e9683fe5485753ed13ed72c039a71ca6f8ea1ae7ceca6ab7384c19"
+    },
+    {
+      "component": "go:github.com/opencontainers/runc",
+      "member": "NOTICE",
+      "text_sha256": "f43dab2fe7478cf2c8ba5249bfb8a735bc0a67b7fff01514f1d9c1405b39178b"
+    },
+    {
+      "component": "go:github.com/boschrexroth/ctrlx-datalayer-golang",
+      "member": "CONTRIBUTORS.md",
+      "text_sha256": "709ee967b175c73cf49e0fd036747e0d6c656b3cc0f0263be714d41cbda14124"
+    },
+    {
+      "component": "go:gopkg.in/yaml.v2",
+      "member": "NOTICE",
+      "text_sha256": "2f98f631d8368007c773bd80bf13f9351669e90146d34a24609920052d2fed5f"
+    },
+    {
+      "component": "go:github.com/sigstore/fulcio",
+      "member": "COPYRIGHT.txt",
+      "text_sha256": "1e60412f66750fd947c5fcc200d8dfd603aa80a155688612d2a72df9bf38d4ab"
+    },
+    {
+      "component": "go:modernc.org/libc",
+      "member": "AUTHORS",
+      "text_sha256": "f660b8660b653ff16e6c4802e9def9caf4ab84e2feec0a85193f9d453389ca3e"
+    },
+    {
+      "component": "go:github.com/aristanetworks/goarista",
+      "member": "AUTHORS",
+      "text_sha256": "cf513167756155475f0c30eb9bbfe6270edc7adee29cb8cd2d0c6ac3f63788b3"
+    },
+    {
+      "component": "go:github.com/prometheus/client_golang",
+      "member": "NOTICE",
+      "text_sha256": "f6c7b09c73554da233e12f776eede9a9a3f1a0f7e00b19178e41473af53853b4"
+    },
+    {
+      "component": "go:github.com/docker/go-plugins-helpers",
+      "member": "NOTICE",
+      "text_sha256": "0bdb7143fde17fd1d5b7be65868d81bec148a416389bd6ed2e2783aa26ef12a3"
+    },
+    {
+      "component": "go:github.com/digitalocean/go-libvirt",
+      "member": "AUTHORS",
+      "text_sha256": "18cd912217008622264c50d72f2d2b8c3d2b15e6bb7fb3cc072145fb3ce73e49"
+    },
+    {
+      "component": "go:github.com/prometheus/client_golang",
+      "member": "NOTICE",
+      "text_sha256": "f6f15882320841c3d29b54e91bccf957cccaceeb1db455324164c651b7136bff"
+    },
+    {
+      "component": "go:code.cloudfoundry.org/clock",
+      "member": "NOTICE",
+      "text_sha256": "c81bd91dcbc5b394efca534c6df97adad22b342479c02fff9833515b7e057b89"
+    },
+    {
+      "component": "go:github.com/Azure/azure-sdk-for-go",
+      "member": "NOTICE.txt",
+      "text_sha256": "78d3d5176a5fecc9ceb4940aa77266dca42ca1359b3018ef6bb260e1c245feb9"
+    },
+    {
+      "component": "go:github.com/pion/transport/v2",
+      "member": "github.com/pion/transport/v2@v2.2.4/AUTHORS.txt",
+      "text_sha256": "d42f8fd649afcb5d63ea6d69faeccced9d2ca23077d53ed1d29ed446b82f487f"
+    },
+    {
+      "component": "go:github.com/linkedin/goavro/v2",
+      "member": "AUTHORS",
+      "text_sha256": "597e94aa133be729a4ee64d5c226745c1bac99aa7d0f3a2bfae51616167bc1c0"
+    },
+    {
+      "component": "go:github.com/pion/stun/v2",
+      "member": "github.com/pion/stun/v2@v2.0.0/AUTHORS.txt",
+      "text_sha256": "d22e3df0b2156f666ae1af0fa1ca0cc564732a97e75cd8c3d84e0fef95c5cbbf"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/internal/third_party/go-json-experiment/json/CONTRIBUTORS",
+      "text_sha256": "70b0585b2c183dff446cfe169006ca5b05cc3beb658378ab3083cbf9cac64f7a"
+    },
+    {
+      "component": "go:github.com/opensearch-project/opensearch-go/v2",
+      "member": ".github/workflows/license.yml",
+      "text_sha256": "8e619dd479c21813e48f9a51d4241fbd6a6b8a600b43b70a4cd2d980a1b4a470"
+    },
+    {
+      "component": "go:google.golang.org/grpc",
+      "member": "NOTICE.txt",
+      "text_sha256": "9adbb7dfa641695a33dffb40cf4c43f84006ed3cd3ae7f1e2c6358f32cbe27e3"
+    },
+    {
+      "component": "go:modernc.org/libc",
+      "member": "CONTRIBUTORS",
+      "text_sha256": "30525cb3a31e45b35071346166c6fa1c2ba44f72cd7ac79470aa8a40a898d06e"
+    },
+    {
+      "component": "go:github.com/go-openapi/spec",
+      "member": "license.go",
+      "text_sha256": "e0844c4d20f8a7fbfa055db9e1dfa0554ac90926c472d99bea69cc5eb815b9aa"
+    },
+    {
+      "component": "go:github.com/pion/turn/v3",
+      "member": "github.com/pion/turn/v3@v3.0.1/AUTHORS.txt",
+      "text_sha256": "2294ebb8cab3ced2e8ab457062a3653d357e3d5e5dc56ac75d69093a109d39e0"
+    },
+    {
+      "component": "go:github.com/aws/aws-sdk-go-v2",
+      "member": ".github/workflows/license-check.yml",
+      "text_sha256": "134ce8f83d7f6b3566481ef22d6bf6d4cfc132b362551ec9eba2ac448974f2c9"
+    },
+    {
+      "component": "go:github.com/moby/buildkit",
+      "member": "AUTHORS",
+      "text_sha256": "d6894c82c70408f5ee91ddb798c4c904b601981e53f3d37d9c5a770f13637594"
+    },
+    {
+      "component": "go:github.com/boschrexroth/ctrlx-datalayer-golang",
+      "member": "pkg/fbs/common/systemcore/licenseproxy/LicenseCapabilities.go",
+      "text_sha256": "3ffe7a6f51c205bd9bfd8fdd18e209ec4f42910d5348b48510e7e62347ea8bc6"
+    },
+    {
+      "component": "go:github.com/gosnmp/gosnmp",
+      "member": "AUTHORS.md",
+      "text_sha256": "2348191f1546cbb82dc6c731941f057ecf38b99a2d8da7c419361e15b2a25ad7"
+    },
+    {
+      "component": "go:github.com/Azure/azure-sdk-for-go",
+      "member": "services/consumption/mgmt/2019-10-01/consumption/credits.go",
+      "text_sha256": "8d4a691607459c81b8f438fd8679abb72edd3e2ab842453489bb98077d3ce63b"
+    },
+    {
+      "component": "go:github.com/sigstore/rekor",
+      "member": "CONTRIBUTORS.md",
+      "text_sha256": "2cbb6f45f91feadc554eaed8edc1227626f9dff339f8080316daf3930d9b3e88"
+    },
+    {
+      "component": "go:github.com/go-sql-driver/mysql",
+      "member": "AUTHORS",
+      "text_sha256": "ab5d1106bd197e94396d3c531202cefc5fa09815668c44979521cbdea7e9f873"
+    },
+    {
+      "component": "go:github.com/aws/aws-sdk-go-v2",
+      "member": "NOTICE.txt",
+      "text_sha256": "84d46d3cdc0297b9ff03819cf523e65eeecec7fdb74ae521e8f44261e8d6a9ad"
+    },
+    {
+      "component": "go:github.com/opensearch-project/opensearch-go/v2",
+      "member": "NOTICE.txt",
+      "text_sha256": "e0198a80f43b1fd34ce2a7d0fbc4fc293eb492538208b9a8c8304ed1ce5c789b"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/validation/spec/license.go",
+      "text_sha256": "181be33a89e97de3ae95724c6ac1fce1a55ddd11198b7c3ced7db6c02e5db261"
+    },
+    {
+      "component": "go:github.com/aws/smithy-go",
+      "member": "NOTICE",
+      "text_sha256": "120d77a203a6708ec9a4c8f19e2167286f35bf05375fc5fb3ff225a6f560e515"
+    },
+    {
+      "component": "go:github.com/compose-spec/compose-go",
+      "member": "NOTICE",
+      "text_sha256": "144f13d35faaa48535267ddc8e36031f631e1828d431332ae370262a80ba00b5"
+    },
+    {
+      "component": "go:github.com/containerd/containerd",
+      "member": "NOTICE",
+      "text_sha256": "f999814733111874764c69c9f31a7a99ab0aad40cb96570d4088e73725d7b1ba"
+    },
+    {
+      "component": "go:github.com/moby/patternmatcher",
+      "member": "NOTICE",
+      "text_sha256": "4df88496cfda89cd3ddf307fefb90d0bc50bbb14f7f9fd20215ec4db63d3f7f9"
+    },
+    {
+      "component": "go:github.com/openshift/imagebuilder",
+      "member": "dockerfile/NOTICE",
+      "text_sha256": "493408dfd5a5beb31fedcfe672c3740ad4f6dff833b32c59f76bd3b0cd557708"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/validation/spec/license_test.go",
+      "text_sha256": "eef85d1e9a20965330df10561a026aa5eabfd2d8a65c51788cfea01dd4d0eda0"
+    },
+    {
+      "component": "go:github.com/digitalocean/go-libvirt",
+      "member": "scripts/licensecheck.sh",
+      "text_sha256": "6558b5da2619cc8c093de0f267bd755624c8d9193bc622d467a7805158ec500f"
+    }
+  ],
+  "scope": "All new complete supporting notices and attribution prefixes read. All operative grants exactly matched to already read original grants. No scope inferred from module names, SPDX labels, templates or contributor lists alone.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "original_grant_comparisons": [
+    {
+      "component": "go:github.com/aerospike/aerospike-client-go/v5",
+      "member": "LICENSE",
+      "text_sha256": "88c9db34a8bb7b07a928c19f38e53988138f4c73be3bcd7569ac8e826f553d90"
+    },
+    {
+      "component": "go:github.com/aliyun/alibaba-cloud-sdk-go",
+      "member": "LICENSE",
+      "text_sha256": "b9b983c7af28d5486d70d9278992c0f68be8a9a97b6d6a7a62c2132d22fdfeae"
+    },
+    {
+      "component": "go:github.com/apache/iotdb-client-go",
+      "member": "LICENSE",
+      "text_sha256": "0dc3c63404e4283a434593c8d600710fc8e3d6b2cc6e87a615e69e68a26b2477"
+    },
+    {
+      "component": "go:github.com/go-stomp/stomp",
+      "member": "LICENSE.txt",
+      "text_sha256": "14dce2ebabe69a916db8d88fa244884e1e8666715811cf65e9b143e45abed156"
+    },
+    {
+      "component": "go:github.com/intel/iaevents",
+      "member": "LICENSE",
+      "text_sha256": "adeeddf6ca71a9f23eb7b2d570a0d04c49dfae01187ca16b102f4a78a423f373"
+    },
+    {
+      "component": "go:gvisor.dev/gvisor",
+      "member": "gvisor.dev/gvisor@v0.0.0-20260219192049-0f2374377e89/LICENSE",
+      "text_sha256": "17ddd266e23d19c75fc1e4c303dd9583f1b42a55a9fd2c864f6a51fe02b39bf5"
+    },
+    {
+      "component": "go:github.com/hashicorp/go-envparse",
+      "member": "LICENSE",
+      "text_sha256": "4b89d4518bd135ab4ee154a7bce722246b57a98c3d7efc1a09409898160c2bd1"
+    },
+    {
+      "component": "go:github.com/go-sql-driver/mysql",
+      "member": "LICENSE",
+      "text_sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+    },
+    {
+      "component": "go:github.com/hashicorp/errwrap",
+      "member": "LICENSE",
+      "text_sha256": "aa5484a7d44ff89928c01318ed3fd633b9fc9c3778d6de2185eabea7bf879b0e"
+    },
+    {
+      "component": "go:github.com/hashicorp/go-cleanhttp",
+      "member": "LICENSE",
+      "text_sha256": "812e9d96e900a093ae4d1d3f22c5f82f568a0a0461c3007a99d00573d41c5461"
+    },
+    {
+      "component": "go:github.com/hashicorp/consul/api",
+      "member": "LICENSE",
+      "text_sha256": "78134e01dfbfe22657a07f461379d2ed342d1ca16c68da812720cc168c2be457"
+    },
+    {
+      "component": "go:github.com/hashicorp/go-uuid",
+      "member": "LICENSE",
+      "text_sha256": "b8c9287ff34857b22c1188fbb1f7505004a14e6a022c70c7e6f5af68a02b568d"
+    },
+    {
+      "component": "go:github.com/hashicorp/golang-lru",
+      "member": "LICENSE",
+      "text_sha256": "ba36895caa0717b51eacc64ad50ef0b399482e1b82b93cfcdd065307409b3d9d"
+    },
+    {
+      "component": "go:github.com/hashicorp/go-retryablehttp",
+      "member": "LICENSE",
+      "text_sha256": "5eade6dc464b68e2e2c5f060f1e23ef07a34f0600460b2f3f69cacdaf433bc0b"
+    },
+    {
+      "component": "go:github.com/letsencrypt/boulder",
+      "member": "LICENSE.txt",
+      "text_sha256": "2d63dd1b15d0d23f4d81181e10d7be77c5904cd8eb39b12e03f00de742ed4f95"
+    },
+    {
+      "component": "go:github.com/hashicorp/go-version",
+      "member": "github.com/hashicorp/go-version@v1.7.0/LICENSE",
+      "text_sha256": "fa10293bdaa01fa14405ab40a96fcd1849cf02b07bb60cfdcbe8a0d3c6c86470"
+    }
+  ],
+  "comparison_method": "Complete original word differences read against canonical previously read full Apache2 or MPL2 grants. Separate MIT/BSD3 additions in gVisor read and retained; source grants are independent rather than relabelled Apache2."
+}
