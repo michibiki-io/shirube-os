@@ -345,7 +345,7 @@ lsb-release-minimal, lsscsi, Lua 5.3, LZO2, mdadm, Minisign and MTR. GPL source
 availability and full notices remain mandatory. Minisign's full original LICENSE,
 including its newer upstream copyright range, is separately retained under
 `LICENSES/Minisign-0.11.txt` and required by its exact-source decision. These
-48 Debian decisions do not clear the remaining source groups or the complete OS.
+68 Debian decisions do not clear the remaining source groups or the complete OS.
 
 Debian分の追加8件も原本と表示へ限定した判断です。Minisignの上流表示は配布用の
 追加表示として保持し、不足・変更時は許諾判断を無効にします。全体の合格とは別です。
@@ -380,3 +380,13 @@ leave 51 SDK components and complete-distribution clearance unresolved.
 
 SDK分の追加5件は、固定した原本から表示を再生成して確認しました。確認済みは93件、
 未確認は51件です。OS全体の配布可否は、残るソース・依存関係の検証で判断します。
+
+Twenty further exact Debian decisions cover python-linux-procfs, python-psutil,
+python-py, python-systemd, python-tabulate, python-tz, pyudev, screen, sgml-base,
+six, squashfs-tools, ssl-cert, tpm-udev, ucf, usrmerge, virt-what, wireless-regdb,
+wslay, xml-core and yajl. Full installed notices and original named legal files
+were inspected, including vendored Python notices and GNU text differences.
+These 68 decisions do not clear the remaining Debian groups or the complete OS.
+
+追加20件も原本・表示・版を固定した判断です。同梱された原文表示とGNU条文の差分まで
+確認し、依存関係やOS全体への合格判定とは分けて記録します。

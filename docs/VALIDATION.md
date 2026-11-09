@@ -151,7 +151,7 @@ The [AMD64 Debian source correspondence receipt](evidence/diagnostic-debian-sour
 checks the diagnostic AMD64 package inventory independently: all 459 required
 source groups occur in the authenticated/restored source set and all 658 installed
 copyright files match the corresponding records. The same 72 custom binary
-packages remain outside this Debian-only result. Forty-eight exact Debian source/notice
+packages remain outside this Debian-only result. Sixty-eight exact Debian source/notice
 decisions are recorded; remaining groups and the complete OS remain uncleared.
 
 AMD64のDebian由来658パッケージも、復元済み原本と表示へ対応することを確認しました。

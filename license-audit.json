@@ -2981,6 +2981,280 @@
         "Retain source and binary notice/disclaimer requirements and do not use upstream author/contributor names for endorsement without permission."
       ],
       "scope": "Exact pinned original Python source and combined legal notice only, independently regenerated from the authenticated hash-pinned source archive. Original named legal files and complete permission terms inspected; Apache license bytes are identical for both Apache components and rpm-vercmp AUTHORS is retained. Dependencies and complete OS remain separately gated."
+    },
+    "python-linux-procfs@0.6.3-1.1": {
+      "source_identity": "ef38076d1d82b6491da642a88598bcc3536f76acc8c96487411a4f6889b34ab9",
+      "copyright_sha256": "b17802d01f2ecd08b99b6304fad8a59c6aea58b9cd118dd7e5d744c8f4918665",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "python-psutil@5.9.4-1": {
+      "source_identity": "e53f57e8e8277798c621f0aa3c432c7b282408d2c27d6fcde4696dc76459713f",
+      "copyright_sha256": "4dcac00171a77778be39f295a97d8471c99e68e77b53eab1445611a9ebb1c6ef",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain source/binary notices and disclaimer; do not use upstream or contributor names for endorsement without permission."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "python-py@1.11.0-1": {
+      "source_identity": "d82161d9446ffb1a26fd0a6d4ed07b041d557b1fc78449f0f20ee5129e691ee4",
+      "copyright_sha256": "6ccbe98ba7d6a31b4f3c12e844efa9a7780b32dd63d95b29159e8747b9136ad2",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the original vendored apipkg/iniconfig license notices and preferred source with their parent package."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "python-systemd@235-1": {
+      "source_identity": "a2f58c6628a3ece4319ea6b836e1a7e0cf2aca789170bab5adff27a2145826cf",
+      "copyright_sha256": "f3af907a549819e7f2206d90aa39de49f637b55f408f2a52188607b8e727f9f1",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU LGPL/GPL text and corresponding source, permit library modification/replacement and relinking, and impose no contrary reverse-engineering restriction."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "python-tabulate@0.8.9-1": {
+      "source_identity": "3d840fb4e9b060b98aac446f99aa27ea8c53fdd208f5fb3b0c1c937b03ede98e",
+      "copyright_sha256": "7ee4fcbd2357ac23ee5cfc5b85a37f89af00e9eb5b9ae3cdfb94a6613d76a14c",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "python-tz@2022.7.1-4": {
+      "source_identity": "79c76f5016f88eca0d47b734956730a613d54ddd838c1bf418b0c2c21047dd8b",
+      "copyright_sha256": "dd0195bda3cda6a9d3f80c9a5a69d8beb70daccc0d7c8c0ced4b4185f742e633",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "The Debian package uses the system tzdata; the separately shipped tzdata component requires its own source/license decision."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "pyudev@0.24.0-1": {
+      "source_identity": "577e54b2a2dad4e74a491d8722d523cfa950fe7b5c60ed9fd43f6fe4e5cd5a26",
+      "copyright_sha256": "5a79dabeed9c8d7d2cc46a606430c0abab237bc076c632363fc7afe6eecc6153",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU LGPL/GPL text and corresponding source, permit library modification/replacement and relinking, and impose no contrary reverse-engineering restriction."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "screen@4.9.0-4": {
+      "source_identity": "3d581715ac91fab34320311184a91f17b2db53190477120ac265a8b8cf4fcf0e",
+      "copyright_sha256": "03592d7569ebb7dd614315f9406d4f0c46741927ce6d23c88f5291b49cf18811",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "sgml-base@1.31": {
+      "source_identity": "5bc1878461ec10333c7a99aeeec997e7263c92afba2c4f6fb518a8f4e5b3d9cc",
+      "copyright_sha256": "dd54c039d628f8397d1ed19f418b35281ff419b88d3822dc23e3dc409e2a7fe3",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "six@1.16.0-4": {
+      "source_identity": "ccb3c763da6b957f9d249454f7e6e40189742d52216d26e3b1580ed435e49ac6",
+      "copyright_sha256": "e702e3573ce9351cb52823fc5e2123830489de8f8b54874851341fe22b4b793e",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "squashfs-tools@1:4.5.1-1": {
+      "source_identity": "b5ec6308d47e52fac7016763fe08b1bb7397e1322685e609b031dbd174c991fd",
+      "copyright_sha256": "4f6c4c3fd4be4ff1ebe25b4f45bf9196be6f1aca2d10880067e04e051bec672e",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "ssl-cert@1.1.2": {
+      "source_identity": "dd7a029a232736ffcc506f85fef510f575583fb3857bdc3b53805226f90ef49f",
+      "copyright_sha256": "b99b8bf533b7f509c0087da904b7c5a35373cf2cf5691c274368520318500a12",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain source/binary notices and disclaimer; do not use upstream or contributor names for endorsement without permission."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "tpm-udev@0.6": {
+      "source_identity": "677b3c7cd6ebdfd6666675953cf7bfc80092c11b89564cb0600f18b6fce788f8",
+      "copyright_sha256": "d387e36306260b6b13ae6cd9db0e75bc2bde085bd08cd3fa534da53016b2aa2f",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "ucf@3.0043+nmu1+deb12u1": {
+      "source_identity": "f098e6f07226ed6dbd4373b55a385c9899432ae6e08c83657eda33ff15a47ec6",
+      "copyright_sha256": "67dd4031ca283ba2f0def195329740f237e7ba30ef26e3dce3afa7f73cb62c8b",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "usrmerge@37~deb12u1": {
+      "source_identity": "3a561ff99013607db5bc61721aae08a236afc4b04b13baab17fb2e8d18fc0b7f",
+      "copyright_sha256": "9836bfe2ef94505bbf29701e8c90799ab1a5fd966d26d60d019a822cdbf3d61a",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "virt-what@1.25-1": {
+      "source_identity": "9681d0edf9abd44459c6fbdd352f55b5806892c3d7e2a030602ec0bc2a1a95be",
+      "copyright_sha256": "b841e8a0b78b3c5a18e43dfdf314188050bb6c8f3b706b7fe4437c439c1cb236",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "wireless-regdb@2026.05.30-1~deb12u1": {
+      "source_identity": "15924dbd166b0b9dcbb231ee2085e90d63e2f58bf2d433bf26cef3790ff36ed1",
+      "copyright_sha256": "6914102d6ae511192793390e09457f79f8634be79c52eb5e40a766b007816195",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "wslay@1.1.1-3": {
+      "source_identity": "14d530fdb6c21050bafce04d49b59e5b8a71311de1586f8f40f2aebf3ac27cab",
+      "copyright_sha256": "b211b5eda9db7a89e53e5738022018c1e8cc0e6773d3e188f401ffaf80516171",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "xml-core@0.18+nmu1": {
+      "source_identity": "3b4bc034193f99750141611ae1c836c6b742c88ed0af1420051f3fcae30bf5ae",
+      "copyright_sha256": "3ade07a2a247fa2855938f2dfe3c17b0aa4b0b894e554a4ec358157dc5ca033b",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory.",
+        "Retain the complete applicable GNU GPL text, provide corresponding source and required installation information, identify modifications and impose no additional restrictions."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
+    },
+    "yajl@2.1.0-3+deb12u2": {
+      "source_identity": "38420d432584960203b37e108bcf39a5b6f0f2c96620af51e358ad2ce2e8746b",
+      "copyright_sha256": "b0a3a849e4055062939df1de9d957c639a6171188b70b511a76b661771c76775",
+      "redistributable": true,
+      "license": "ISC",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve complete original upstream/Debian copyright, attribution, permission conditions and disclaimers, including source-file notices and bundled original legal files.",
+        "Provide the exact authenticated original source archives, Debian patches and build/install scripts with the binary distribution; retain every required original legal file in the source inventory."
+      ],
+      "scope": "Exact unchanged Debian binary/source pair only. Complete installed copyright and every discovered original named legal file inspected. GNU text differences were historical FSF addresses, Library/Lesser terminology, URLs and appendix/example formatting; operative permissions were not broadened. All original notices remain unmodified. Dependencies and the complete distribution remain independently gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
