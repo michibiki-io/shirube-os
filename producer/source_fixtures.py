@@ -81,6 +81,18 @@ KNOWN['stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910']
     "source/vendor/go.mozilla.org/pkcs7/verify_test_dsa.go": "f7bf74cda7cf86c74febd919a6a169fd2062fa17ea0a38f2c303b5491e137872"
 })
 
+# The exact preferred-source ZIP contains two identical, public quic-go TLS
+# test vectors. Every retained byte was compared with the public module ZIP
+# (0890cee71e7bf68691a3cd9072d99f2054419a1b76fa9621eba1626a91339dc1).
+# Both test keys have SHA256
+# 1a0066fcd8be2b1397002fe040bb28c221c539ef44d165556d56eb107f78c4c2.
+# This full-archive exception binds the reviewed deterministic export, not
+# arbitrary ZIP contents or any generated signing/instance credential.
+KNOWN['netbird:3c00a97878e6af537d28c3bdd4f42cb4286aa883'] = {
+    'netbird/linked/inputs/10087b77b6eebf896417f686fe9f7103c345bb45e239c35ce2037e8e4332e515.preferred-source.zip':
+        '629bb00d19fc6041a0d0a26a2606ef67723a2058c8d8163ae26dc25dd29c7b15'
+}
+
 
 def allowed(origin,member,digest):
     return origin in KNOWN and KNOWN[origin].get(member)==digest
@@ -92,6 +104,7 @@ def allowances(inventory):
     def visit(component):
         provenance=component.get('source_origin',{})
         origins=['stream:'+provenance.get('stream_archive_sha256','')]
+        origins.append('netbird:'+provenance.get('netbird_source_commit',''))
         git=provenance.get('external_git',{}).get('vpp',{})
         origins.append('vpp:'+git.get('commit',''))
         for ref in component.get('sources',[]):

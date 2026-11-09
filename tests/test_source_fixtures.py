@@ -11,18 +11,24 @@ from producer.release import scan_secrets,verify_sources
 
 class PublicSourceFixtureTests(unittest.TestCase):
     def test_origin_member_and_whole_file_must_match_in_both_source_checks(self):
+        for kind, field, length in [('stream','stream_archive_sha256',64),
+                                    ('netbird','netbird_source_commit',40)]:
+            with self.subTest(kind=kind):
+                self.check_source_origin(kind,field,length)
+
+    def check_source_origin(self,kind,field,length):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);fixture=root/'vector';fixture.write_bytes(b'-----BEGIN PRIVATE KEY-----\n'+b'A'*64+b'\n')
             notice=root/'notice';notice.write_text('fixture permission notice')
             recipe=root/'recipe';recipe.write_text('fixture build recipe')
-            member='source/test/vector';origin='stream:'+'a'*64
+            member='source/test/vector';origin=kind+':'+'a'*length
             digest=hashlib.sha256(fixture.read_bytes()).hexdigest()
             inputs=[(fixture,member,'sources'),(notice,'copyright','license_files'),(recipe,'recipe','build_inputs')]
             with patch.dict('producer.source_fixtures.KNOWN',{origin:{member:digest}}):
                 archive=root/'source.tar.gz';records=bundle(inputs,archive,0,source_origin=origin)
                 package={'name':'fixture','version':'1','architecture':'amd64'}
                 component={**package,**records,'license':'MIT','redistributable':True,
-                    'source_origin':{'stream_archive_sha256':'a'*64}}
+                    'source_origin':{field:'a'*length}}
                 inventory={'components':[component],'shipped_packages':[package]}
                 assets=[{'name':archive.name,'role':'source'}]
                 verify_sources(root,inventory,assets)

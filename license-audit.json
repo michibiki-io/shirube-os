@@ -2288,7 +2288,7 @@
         },
         {
           "path": "NOTICE",
-          "sha256": "52a6a9b1783764539bc01aea90b63d2345348831165995451878f019fb209072"
+          "sha256": "1528c420f41c799f6ddcae167d660552fc7a0f61e5c09925e034741a4f9034b7"
         }
       ],
       "supplemental_origin": {
@@ -19799,6 +19799,43 @@
         {
           "path": "LICENSES/Apache-2.0.txt",
           "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/quic-go/quic-go@v0.64.0#629bb00d19fc6041a0d0a26a2606ef67723a2058c8d8163ae26dc25dd29c7b15": {
+      "source_identity": "629bb00d19fc6041a0d0a26a2606ef67723a2058c8d8163ae26dc25dd29c7b15",
+      "copyright_sha256": "96ace959610c9f8ec164ea5a315385b0e7c936544a3397e5791f516096b73462",
+      "evidence_member": "netbird/linked/notices/10087b77b6eebf896417f686fe9f7103c345bb45e239c35ce2037e8e4332e515.txt",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "scope": "Only this exact preferred-source export and original aggregate notice, with every other original source byte unchanged. Original raw archive is not cleared. Complete OS and parent binary packages remain independently gated.",
+      "conditions": [
+        "Retain every original copyright, license, attribution and disclaimer. The complete original notice also documents the separately restricted materials that are explicitly excluded; it grants no permission to distribute the original unfiltered archive.",
+        "Distribute only the exact preferred source ZIP and hash-bound omission manifest. Original module archive, every retained code/dependency declaration byte, omissions and origin hashes are independently verified. Runtime implementation and features remain unchanged.",
+        "Provide complete preferred code and build/install scripts; use this tree directly or in vendor mode, not as a module-proxy ZIP with the original h1 sum. Original fixed public compilation inputs remain separately verified.",
+        "Retained quic-go source is MIT with original quic-go authors and Google copyrights. All three separately restricted assets/ entries are omitted; no upstream logo is used as Shirube OS branding."
+      ],
+      "required_notice_files": []
+    },
+    "go:github.com/hashicorp/serf@v0.10.1#5436476de809de43d50b0e89cb7546e5fac063c80e9fe8811a5c802bebb94e9f": {
+      "source_identity": "5436476de809de43d50b0e89cb7546e5fac063c80e9fe8811a5c802bebb94e9f",
+      "copyright_sha256": "dfebcd632ebb22a286121e48ae047fe057e7921fe639b5b3dbe2b321c681b621",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/a79f14a1933304384f312232131d613785022e02256a8c8cd1999161d4015fa1.txt",
+      "redistributable": true,
+      "license": "MPL-2.0",
+      "reviewed_on": "2026-11-10",
+      "scope": "Only this exact preferred-source export and original aggregate notice, with every other original source byte unchanged. Original raw archive is not cleared. Complete OS and parent binary packages remain independently gated.",
+      "conditions": [
+        "Retain every original copyright, license, attribution and disclaimer. The complete original notice also documents the separately restricted materials that are explicitly excluded; it grants no permission to distribute the original unfiltered archive.",
+        "Distribute only the exact preferred source ZIP and hash-bound omission manifest. Original module archive, every retained code/dependency declaration byte, omissions and origin hashes are independently verified. Runtime implementation and features remain unchanged.",
+        "Provide complete preferred code and build/install scripts; use this tree directly or in vendor mode, not as a module-proxy ZIP with the original h1 sum. Original fixed public compilation inputs remain separately verified.",
+        "Retained Serf code is MPL2; provide exact covered source and modifications under MPL2 with its full license, preserving original patent/termination terms. Proprietary website design and the entire separate website delivery are absent. All original notices are retained without relicensing the excluded material."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
         }
       ]
     }

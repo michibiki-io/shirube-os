@@ -534,3 +534,51 @@ configure とインストールのコードは保持します。Makefile 2 件�
 ライセンス一覧と各ソースの許諾ヘッダーも配布します。同一の出力ソースから
 AMD64 と ARM64 の通常ビルド・インストールを確認済みです。上流の試験一式は
 不完全なため未実施であり、SDK バイナリの再現やリリース全体の合格とは区別します。
+
+## Go dependency source delivery
+
+Serf v0.10.1 separately restricts reproduction of its website design. Quic-go
+v0.64.0 separately restricts its branding assets. Delivery therefore uses exact,
+separately hashed preferred-source ZIPs that omit Serf's `website/` and quic-go's
+`assets/`. The original module inputs remain verified during compilation.
+Every other original file, including runtime source, dependency declarations
+and root licenses, retains its original bytes. Original aggregate notices and
+an omission manifest accompany each export. The raw original ZIPs have no
+redistribution approval from these decisions.
+
+The inventory records both the original identity and preferred-source hash.
+Preferred files use the `.preferred-source.zip` suffix; they must not be placed
+in a module proxy under the original h1 checksum. After verifying and restoring
+the release source set, unpack the preferred tree in a fresh reconstruction
+workspace inside the producer container. Preserve the original `go.mod` and
+`go.sum`, and apply an explicit local replacement for the exact exported version
+when running the retained parent build recipe. For example, from that workspace:
+
+```sh
+go mod edit -replace=github.com/hashicorp/serf@v0.10.1=./preferred/github.com/hashicorp/serf@v0.10.1
+go mod edit -replace=github.com/quic-go/quic-go@v0.64.0=./preferred/github.com/quic-go/quic-go@v0.64.0
+```
+
+Use the retained parent-specific Go SDK and only the replacement relevant to
+that parent. Record this reconstruction change alongside the originals; all
+other dependency pins remain applicable. Rebuilt module provenance can differ,
+so this procedure makes no byte-reproducibility claim.
+
+[Actual source-delivery evidence](evidence/diagnostic-go-preferred-source-delivery.json)
+checks all 659 retained original files, including 560 Go/C/assembly source files,
+against the fixed public inputs and verifies a real delivery archive. Parent
+binary recompilation from this delivered variant and final OS acceptance are
+separate checks. Two unchanged public TLS test vectors in the quic-go source
+have exact origin/member/archive-hash recognition; generated build or instance
+keys have no exception.
+
+### Go 依存の配布用ソース
+
+Serf の付属サイトと quic-go の制限付きロゴを配布対象から除き、それ以外の元ファイル、
+依存定義、実装コード、ライセンス本文を保持します。元の入力と配布用ソースには別々の
+ハッシュを付け、省略したファイルの一覧と元のライセンス表示を同梱します。
+配布用 ZIP は元の Go モジュール ZIP と同じ h1 を持たないため、復元後の新しい作業領域で
+展開し、必要な対象版だけをローカルソースへ置換して、保持した SDK とビルド手順を使います。
+元の `go.mod`、`go.sum` と再構築時の変更記録を残します。ソースのバイト一致と配布アーカイブの
+検証は実施済みですが、この配布形態からの親バイナリ再コンパイル、OS 全体の受け入れ、
+OCI 実機検証の成功を意味しません。

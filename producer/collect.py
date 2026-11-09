@@ -611,8 +611,12 @@ def collect(rootfs, package_output, output, arch, version, work):
             if common.is_dir():
                 for legal_file,relative in files(common):
                     inputs.append((legal_file,'common-licenses/'+relative,'license_files'))
+            from .go_source_export import replace_delivery_inputs
+            replace_delivery_inputs(inputs,nested,component/'go-source-exports')
             fixture_origin=('vpp:'+json.loads(Path('/src/source-lock.json').read_text())['external_git']['vpp']['commit']
                 if kind=='vpp' else 'stream:'+source_identity if preferred_root is not None or kind in {'vyos-1x','salt','kea'} or source_name in {'telegraf','ddclient','podman'} else None)
+            if name=='shirube-integration':
+                fixture_origin='netbird:'+json.loads(Path('/src/source-lock.json').read_text())['netbird']['source_commit']
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if kind=='salt':records['build_inputs'].extend(static['salt-sdk'][0]['build_inputs'])
@@ -671,7 +675,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 if len(notice_refs)!=1:raise ValueError('Exact bundled dependency legal notice is missing')
                 retained_inputs=[]
                 for expected_input in dependency.get('build_input_members',[]):
-                    matches=[r for r in records['sources'] if
+                    matches=[r for r in records['sources']+records['build_inputs'] if
                              (r['member'],r['sha256'])==(expected_input['member'],expected_input['sha256'])]
                     if len(matches)!=1:raise ValueError('Exact bundled original build input is missing')
                     retained_inputs.extend(matches)
@@ -681,6 +685,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                     'license_files':legal_records if 'sources' in dependency else notice_refs,
                     'build_inputs':list({(item['asset'],item['member'],item['sha256']):item
                         for item in retained_inputs+dependency.get('build_inputs',[])+records['build_inputs']}.values()),
+                    **({'source_export':dependency['source_export']} if 'source_export' in dependency else {}),
                     **({'binary_input':dependency['binary_input']} if 'binary_input' in dependency else {})})
             children=merge_bundled_components(children)
             approval=approval_for(approvals,source_name,source_version,origin)
