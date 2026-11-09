@@ -1292,6 +1292,18 @@
         {
           "member": "sqlite-autoconf-3510200/tea/license.terms",
           "sha256": "66e056b6e8687f32af30d5187611b98b12a8f46f07aaf62f43585f276e8f0ac9"
+        },
+        {
+          "member": "sqlite-autoconf-3510200/sqlite3.c",
+          "sha256": "f7d8b32e48849494f13851e13e659d70ef372c5d207b84bc71c05d1e62716305",
+          "prefix_bytes": 2027,
+          "notice_sha256": "bf1bc723822ac95a7225e299893231477e25b2accd6323d918723f871b6b9422"
+        },
+        {
+          "member": "sqlite-autoconf-3510200/sqlite3.h",
+          "sha256": "6c8b9f648f36c84b0eeb3239b1e6f32b459d2c859d905ba5d59153c3569e6562",
+          "prefix_bytes": 1484,
+          "notice_sha256": "cc65d76f325d884dd49e319acf3764d5513920f34ad18e34347b8dedc6ddd2ec"
         }
       ]
     },

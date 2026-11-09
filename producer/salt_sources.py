@@ -104,20 +104,28 @@ def notice_members(archive, declarations):
         if path.is_absolute() or '..' in path.parts or str(path) != member or '\\' in member:
             raise ValueError('Unsafe Salt source notice path')
     found = {}
-    def accept(name, size, regular, read):
+    def accept(name, size, regular, open_member):
         if name not in expected:
             return
-        if name in found or not regular or not 0 < size <= 4 * 1024**2:
-            raise ValueError('Invalid or duplicate Salt source legal file')
-        content = read()
         declaration = expected[name]
-        if hashlib.sha256(content).hexdigest() != declaration['sha256']:
+        length = declaration.get('prefix_bytes', size)
+        maximum = 32 * 1024**2 if 'prefix_bytes' in declaration else 4 * 1024**2
+        if (name in found or not regular or not 0 < size <= maximum
+                or type(length) is not int or not 0 < length <= min(size,4 * 1024**2)):
+            raise ValueError('Invalid or duplicate Salt source legal file')
+        # Large amalgamated sources can carry a short legal header. Verify the
+        # entire pinned original member while retaining only its bounded prefix.
+        digest=hashlib.sha256();chunks=[];total=0
+        with open_member() as stream:
+            while chunk:=stream.read(1024**2):
+                digest.update(chunk)
+                if total<length:chunks.append(chunk[:length-total])
+                total+=len(chunk)
+                if total>size:raise ValueError('Salt source legal file size differs')
+        if total!=size or digest.hexdigest() != declaration['sha256']:
             raise ValueError('Salt source legal notice hash differs')
+        content=b''.join(chunks)
         if 'prefix_bytes' in declaration:
-            length = declaration['prefix_bytes']
-            if type(length) is not int or not 0 < length <= len(content):
-                raise ValueError('Invalid embedded SDK notice extent')
-            content = content[:length]
             if hashlib.sha256(content).hexdigest() != declaration['notice_sha256']:
                 raise ValueError('Embedded SDK legal notice hash differs')
         found[name] = content
@@ -126,12 +134,12 @@ def notice_members(archive, declarations):
             for member in source.infolist():
                 mode = member.external_attr >> 16
                 regular = not member.is_dir() and mode & 0o170000 in {0, 0o100000}
-                accept(member.filename, member.file_size, regular, lambda: source.read(member))
+                accept(member.filename, member.file_size, regular, lambda: source.open(member))
     else:
         with tarfile.open(archive, mode='r|*') as source:
             for member in source:
                 accept(member.name, member.size, member.isfile(),
-                       lambda: source.extractfile(member).read())
+                       lambda: source.extractfile(member))
     if found.keys() != expected.keys():
         raise ValueError('Salt source legal notice is incomplete')
     return found

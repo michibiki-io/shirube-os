@@ -15812,6 +15812,33 @@
         "Keep original license alternatives and attribution; no author endorsement or broader relicensing is inferred."
       ],
       "scope": "All original named legal files matched against read complete originals or separately read full word differences. Entire exact Debian copyright file read, including all file/copyright/provenance/comment fields and operative grants; component only, no OS clearance."
+    },
+    "salt-sdk:sqlite@3.51.2.0": {
+      "source_identity": "fbd89f866b1403bb66a143065440089dd76100f2238314d92274a082d4f2b7bb",
+      "copyright_sha256": "eddaab5b460f6a40cbde65c40b51c330d0cfb51f47c9f669467a8f5cc7ffabc2",
+      "redistributable": true,
+      "license": "LicenseRef-SQLite-public-domain AND BSD-2-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/fbd89f866b1403bb66a143065440089dd76100f2238314d92274a082d4f2b7bb.copyright",
+      "conditions": [
+        "Retain complete original authorship, grants, notices and disclaimers in source and binary documentation, with exact preferred sources and full build/install scripts.",
+        "Keep modified source clearly identified, preserve separately scoped obligations, and do not use author names or trademarks for endorsement."
+      ],
+      "scope": "Complete original current-lock notices read or matched to read complete originals. Exact component decision only; parent SDK/OS remain gated. Actual amalgamation internal SQLite and public API copyright disclaimers read and hash-pinned as notices, alongside autosetup BSD2 and the original TEA public-domain dedication. The blessing is retained verbatim and not converted into an additional restriction."
+    },
+    "salt-sdk:openssl@3.6.1": {
+      "source_identity": "b1bfedcd5b289ff22aee87c9d600f515767ebf45f77168cb6d64f231f518a82e",
+      "copyright_sha256": "783dc394afbb3dcc2d4c2f1487c6410c7b4fd124bd8ad4a544000eade081a17a",
+      "redistributable": true,
+      "license": "Apache-2.0 AND Artistic-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/b1bfedcd5b289ff22aee87c9d600f515767ebf45f77168cb6d64f231f518a82e.copyright",
+      "conditions": [
+        "Retain complete original authorship, grants, notices and disclaimers in source and binary documentation, with exact preferred sources and full build/install scripts.",
+        "Keep modified source clearly identified, preserve separately scoped obligations, and do not use author names or trademarks for endorsement.",
+        "Keep Text-Template original notices, make modifications freely available under Artistic1.0 section 3(a), and provide machine-readable source under 4(b); do not rely on Perl-specific aggregation/embedding exceptions absent from the actual grant."
+      ],
+      "scope": "Complete original current-lock notices read or matched to read complete originals. Exact component decision only; parent SDK/OS remain gated. OpenSSL authors and full Apache2 retained. Vendored Text-Template expressly offers GPL1-or-later OR Artistic1.0; select the actual original Artistic1.0 branch, compare/read every difference from Perl Artistic terms, and preserve the unselected full GPL alternative. No extra embedding permission is inferred."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

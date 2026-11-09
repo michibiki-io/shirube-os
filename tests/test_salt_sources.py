@@ -119,7 +119,7 @@ class SaltSourceTests(unittest.TestCase):
             root = Path(temporary)
             archive = root / 'source.tar.gz'
             header = b'/* Copyright upstream. Apache-2.0. */\n'
-            content = header + b'int original_code;\n'
+            content = header + b'int original_code;\n' + b'\n' * (5 * 1024**2)
             with tarfile.open(archive, 'w:gz') as target:
                 member = tarfile.TarInfo('source/header.h')
                 member.size = len(content)
@@ -128,6 +128,8 @@ class SaltSourceTests(unittest.TestCase):
                            'prefix_bytes': len(header),
                            'notice_sha256': hashlib.sha256(header).hexdigest()}
             self.assertEqual(notice_members(archive, [declaration]), {member.name: header})
+            with self.assertRaises(ValueError):
+                notice_members(archive,[{'member':member.name,'sha256':declaration['sha256']}])
             for field, value in [('sha256', '0' * 64), ('notice_sha256', '0' * 64),
                                  ('prefix_bytes', len(content) + 1)]:
                 changed = {**declaration, field: value}
