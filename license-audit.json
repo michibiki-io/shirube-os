@@ -20139,6 +20139,337 @@
           "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
         }
       ]
+    },
+    "bash@5.2.15-2": {
+      "source_identity": "f51753e946af43eb58549c81e03b35a47af9fe6c6364179ccd4ef862b7c3b2d3",
+      "copyright_sha256": "06319d84c3e5ed096036f6a9310a030c7e84e50dff2b8a6792285c83ec0ada73",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND GPL-2.0-or-later AND GFDL-1.3-no-invariants-or-later AND Latex2e AND BSD-3-Clause AND LicenseRef-DEC-permissive AND LicenseRef-Verhoeven-permissive",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Keep transparent documentation source and the full no-invariant GFDL-1.3 terms, title/license notices and attribution; retain Latex2e distribution conditions and the Bison skeleton exception. The original BSD paragraph explicitly marks its advertising clause removed; preserve the DEC and Richard Verhoeven custom notices and documented Bash modifications."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ]
+    },
+    "gpgme1.0@1.18.0-3": {
+      "source_identity": "568e0a8f342ab129c8761bbbd30e54934102914141b8e38c9f504be9d4d1de5a",
+      "copyright_sha256": "51deca7ec94e2ffd48d9e399b4481258f857e451c30a5a9c586bde962794c40c",
+      "redistributable": true,
+      "license": "LGPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "haproxy@2.6.12-1+deb12u4": {
+      "source_identity": "0397de4cd917406bb710246fb0d0416b88f2105eb65454cb273b4ae78977333c",
+      "copyright_sha256": "38abd31c03ab1115b2e5c04cba10faa395ab74c39a493285dffa2f8ed17715b1",
+      "redistributable": true,
+      "license": "LicenseRef-GPL-2.0-only-with-OpenSSL-exception AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND MPL-2.0 AND Apache-2.0 AND MIT AND BSD-2-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Retain the original OpenSSL compile/link/use exemption and separately scoped source/example licenses. Copyright and license template examples remain unchanged and do not change the GPL-2 program grant. Supply complete MPL-covered source files and retain their original notices."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ]
+    },
+    "iperf@2.1.8+dfsg-1": {
+      "source_identity": "d875902714d6b2a80971ff5f4f0adfd4e2f588cad3e4b988787950ecf0363f49",
+      "copyright_sha256": "7f376949e0003cd15cb15838280e9bf82ce10e93753b7019a83abd55193d3242",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND BSD-3-Clause AND MIT AND ISC AND LGPL-2.0-or-later AND GPL-2.0-or-later AND LicenseRef-Autoconf-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "liblognorm@2.0.6-4": {
+      "source_identity": "252a78fc7049a31a6f21a9e057a36171ddceb1d9ec09a58ddb74aedc9a66bc70",
+      "copyright_sha256": "6f25d58e295f549da87ac041f2137b1a209f25b0a4dd5e4117e607451538b52a",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "libmaxminddb@1.7.1-1": {
+      "source_identity": "2b644c068739179907df3be7728d39f823aacc1f3d295788b8439a09fe222556",
+      "copyright_sha256": "33e034d37ba537df4ad70642f6a231436077af15167dcdab63617347d0a9c09b",
+      "redistributable": true,
+      "license": "Apache-2.0 AND GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause AND CC-BY-SA-3.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Retain original dataset/documentation creators, provenance links, license and attribution notices; preserve share-alike terms for adapted covered material and impose no technical restrictions. This entry does not license separately obtained operational GeoIP databases."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory. The Debian combined BSD-2/BSD-3/BSD-4 label is retained verbatim; its three actual grants separately cover memmem, strnlen and strdup/strndup. The printed clauses are source/binary retention and non-endorsement, without an advertising condition.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        }
+      ]
+    },
+    "libpgm@5.3.128~dfsg-2": {
+      "source_identity": "c7e3f34b8d5ae96763b76979c228dacd44c0c77d4239b46160d383481bb50b77",
+      "copyright_sha256": "07836d892d92dcef15583e4e01569805498b95769f1c85d79bc996821dace2cf",
+      "redistributable": true,
+      "license": "LGPL-2.1-only AND LGPL-2.0-or-later AND BSD-3-Clause AND ISC",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Retain the explicit LGPL-2-or-later md5 source grant alongside the LGPL-2.1 library terms; choose at least LGPL-2.1 for redistribution, retaining complete source and relinking rights."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "lvm2@2.03.16-2": {
+      "source_identity": "9f01f4f44d4126ff4e588d46ede1bdefffd255c5441bb105684978b5193d2318",
+      "copyright_sha256": "85275778bfeeb4461375e42feb6a52343e521286ef7ba073e98a37a8c6f5143c",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND BSD-2-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "oath-toolkit@2.6.7-3.1+deb12u1": {
+      "source_identity": "eb7a06a36ba537b83acf7c754d2b6d7789664a9641300bd689a2300855ae581e",
+      "copyright_sha256": "9efe89c90f2ccf8eb136381c8414fc9599c4518e23d840876449dc159ff64241",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory. Explicit library grants say LGPL-2.1-or-later despite a Debian comment saying GNU GPL version 3 before its LGPL-2.1 path. Preserve all originals, full LGPL-2.1 and GPL-3 texts, and separate library/tool scopes."
+    },
+    "ocserv@1.1.6-3": {
+      "source_identity": "621a92ce371b829df8ba1d55d0087815c45b45d9503afb7268ecd15668436b8a",
+      "copyright_sha256": "cd38fc9d8614238fa6db6e3d9ed9371dca31b9f5f876f3b3e6efb2ac13e1751d",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.1-only AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND MIT AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "protobuf-c@1.4.1-1": {
+      "source_identity": "480082f3a320b6d718a8a218191168be9ab19e8115994739ee11e954498848e4",
+      "copyright_sha256": "606bc4c317643d4acd4ea6b8ae35d2bb0a0757a3a2b2556feac98f61851942a3",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND BSD-3-Clause AND FSFAP",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "pyroute2@0.7.2-2": {
+      "source_identity": "2bb558747dacfbe8a65311d2f7a76489943add5d3db8192afe1164ac0c6068a8",
+      "copyright_sha256": "c8ad1821d91ad7b0b80ac814f7525b2246fc7565fef99f3b0f52016ec693af47",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND Apache-2.0 AND BSD-2-Clause AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory. Root COPYING explicitly offers GPL-2 or Apache-2, while the Debian root description and CLI grant say GPL-3. Choose GPL-3-or-later where required, retain the original dual alternatives, and supply full GPL-3 and Apache-2 terms. The Debian GPL-2-labelled paragraph actually says version 3; its erroneous GPL-2 common-file pointer is preserved, not used to reduce the explicit grant.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "python-charset-normalizer@3.0.1-2": {
+      "source_identity": "7689350da792de0de8e1e87e3cb028663d5ec65529839e4fcc357edaae0bac15",
+      "copyright_sha256": "7102677e623efdc70a2e7356029aa0886346dd9232ca9e2c61a8bd1e6014bda3",
+      "redistributable": true,
+      "license": "MIT AND CC-BY-SA-3.0 AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Retain original dataset/documentation creators, provenance links, license and attribution notices; preserve share-alike terms for adapted covered material and impose no technical restrictions. This entry does not license separately obtained operational GeoIP databases."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        }
+      ]
+    },
+    "requests@2.28.1+dfsg-1": {
+      "source_identity": "87a61417f320136f6b2277173762d4cc1a22231f2f1d2866c0ebe28d4f2e9f85",
+      "copyright_sha256": "8b550041e7f71467cf9fc0295b0029232977a3e339c1ae47cc1710fafcc2f606",
+      "redistributable": true,
+      "license": "Apache-2.0 AND LicenseRef-Flask-theme-BSD",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Preserve the original Flask theme notice and its request concerning visual reuse. The source archive retains the original theme and authorship; it is not used as product artwork or branding."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "sshguard@2.4.2-1": {
+      "source_identity": "c1c05b5c02862a335896cf5b08223301719025dd6c72b075a50a08f59090987f",
+      "copyright_sha256": "326c6bc0b629b47f6ce06d2083910d765ca3ceea3693c56d180edc737277734a",
+      "redistributable": true,
+      "license": "ISC AND LicenseRef-Public-Domain AND GPL-3.0-or-later WITH Bison-exception-2.2",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Retain the Bison 2.2 parser-skeleton exception with its exact scope and the original FNV public-domain disclaimer; separately retained third-party notices remain applicable."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "stunnel4@3:5.68-2+deb12u1": {
+      "source_identity": "0dd75f679eaca8b06bb8e813b6299c10c953ab2341a8a80b709a1f7196ac5768",
+      "copyright_sha256": "fd21a09d8e26f8895f3b94024c230fc2e77cd1744a375f19df6062b0189a36df",
+      "redistributable": true,
+      "license": "LicenseRef-GPL-2.0-or-later-with-OpenSSL-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Preserve the original exception for LGPL programs/libraries and standard OpenSSL code with unchanged license, together with full GPL-2-or-later and separately applicable linked-library obligations."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "systemd@252.39-1~deb12u2": {
+      "source_identity": "f2f952ae61fd40f1ef3ee48c8721e23eaaec5396ef5f1b0c2e138d78fade9c6e",
+      "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-2.0-only WITH Linux-syscall-note AND MIT AND MIT-0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND OFL-1.1 AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied.",
+        "Retain the original LICENSES directory and README file scopes, including syscall exception headers, MIT/MIT-0 helpers/examples, CC0/public-domain hashes and OFL Heebo fonts. Retain Reserved Font Names and unmodified font licensing; fonts are not product branding."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ]
+    },
+    "sysvinit@3.06-4": {
+      "source_identity": "f153cd1ef48698089494aac14cebdcb8130ce4d4af5533a41cd3f1950e9e42fa",
+      "copyright_sha256": "ad7cb339e58a88918a883d553ca236795191f027e158788a8b33f747ff502fb2",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory."
+    },
+    "wpa@2:2.10-12+deb12u3": {
+      "source_identity": "1f8c9f13ca9ca75a68860fafe2fa0a6aaf57bb6f573d96d19ea95900c0c22958",
+      "copyright_sha256": "9aebd4fa48a707a069d18fee53b98925956022f9e1da1821bce55288ff1a3246",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND ISC AND LicenseRef-Public-Domain AND GPL-2.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain all original complete copyright, file-scope license grants, exceptions, acknowledgements and disclaimers in source and accompanying binary materials.",
+        "Supply exact preferred sources, Debian modifications and complete build/install scripts with the binaries; retain full applicable copyleft texts, modification notices and library replacement/relinking rights.",
+        "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
+      ],
+      "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory. Upstream COPYING states that the BSD option governs distributions after 2012, retaining old GPL references for attribution. Use the BSD option for the OpenSSL-linked program, preserve independently GPL-scoped packaging/support files and original public-domain/ISC notices."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
