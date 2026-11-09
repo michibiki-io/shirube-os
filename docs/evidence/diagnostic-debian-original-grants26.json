@@ -1,0 +1,821 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 3,
+  "components": [
+    {
+      "source": "freetype",
+      "version": "2.12.1+dfsg-5+deb12u4",
+      "dsc_sha256": "eead829b4bc79107e8e79c4da006110dffe264f9d48b3ba02f76cf7e84b64389",
+      "binaries": [
+        {
+          "name": "libfreetype6",
+          "version": "2.12.1+dfsg-5+deb12u4",
+          "architecture": "arm64",
+          "copyright_sha256": "70a7a0a06e6440777417f6875476cb712b03943010abed1c32297798c8cc8ed8"
+        }
+      ],
+      "copyright_sha256": "70a7a0a06e6440777417f6875476cb712b03943010abed1c32297798c8cc8ed8",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE.TXT",
+          "sha256": "c85e842b7ff04d95dab7d68e812773de0f8b67940e5449d35b42c66eb0f619fe",
+          "read_reference": {
+            "component": "freetype",
+            "member": "LICENSE.TXT",
+            "sha256": "c85e842b7ff04d95dab7d68e812773de0f8b67940e5449d35b42c66eb0f619fe",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Public-Domain",
+          "full_normalized_body_sha256": "662b0c85dff5003b742a52185a489ca2479ddd51e362199abb433b853cff5029",
+          "read_reference": {
+            "component": "freetype",
+            "label": "Public-Domain"
+          }
+        },
+        {
+          "label": "BSD-3-Clause",
+          "full_normalized_body_sha256": "70435d703f5e4bdca9a1fa6b9291501b0dd850d2ad5457b491ce936217b1e063",
+          "read_reference": {
+            "label": "BSD-3-Clause",
+            "component": "jemalloc"
+          }
+        },
+        {
+          "label": "BSL-1.0",
+          "full_normalized_body_sha256": "58e5971e4069699ac9fdc3529d16f46e66e29e04e83d81c558e1d820f757aa6a",
+          "read_reference": {
+            "label": "BSL-1.0",
+            "component": "rust-stdlib"
+          }
+        },
+        {
+          "label": "FSFAP",
+          "full_normalized_body_sha256": "c50be4410087c77f715f5277fe4b6e6751269721094ce6267f93bf96a80cf3d6",
+          "read_reference": {
+            "label": "free-generic",
+            "component": "dnsdist"
+          }
+        },
+        {
+          "label": "FTL",
+          "full_normalized_body_sha256": "b4a83bb36494f63979ca4ce9cc1a1f3862554286399503b1af616392de65b039",
+          "read_reference": {
+            "component": "freetype",
+            "label": "FTL"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "9923fcdc0e516b5184d4ea271a356ccb7b4c37896f316515230040f25ffabecd",
+          "read_reference": {
+            "component": "freetype",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "b12c09d818a39f5f355209835ab4441e886d1282288bacad4ec2a9c91bde83b9",
+          "read_reference": {
+            "component": "freetype",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "OpenGroup-BSD-like",
+          "full_normalized_body_sha256": "b296146d4d044e04d0fe14c5c0e42d527d088d81478bc002378980847aec5a3d",
+          "read_reference": {
+            "component": "freetype",
+            "label": "OpenGroup-BSD-like"
+          }
+        },
+        {
+          "label": "Zlib",
+          "full_normalized_body_sha256": "444399c3da8f18f32878c6f8b7348110f33985558ca7abe98d4c8ed26f013109",
+          "read_reference": {
+            "label": "Zlib",
+            "component": "libsepol"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "FreeType",
+          "Upstream-Contact": "freetype-devel@nongnu.org",
+          "Source": "https://freetype.org/download.html",
+          "Files-Excluded": "docs/reference/assets/javascripts",
+          "Comment": "The files in this path have been removed because they are minified\nJavaScript files and are incompatible with the DFSG."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1996-2022 David Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "vms_make.com",
+          "Copyright": "1996-2022 David Turner, Robert Wilhelm and Werner Lemberg\n2001, 2002 Francesco Zappa Nardelli\n2010-2019 Joel Klinghed"
+        },
+        {
+          "Files": "builds/amiga/*",
+          "Copyright": "2005-2022 Werner Lemberg and Detlef Würkner"
+        },
+        {
+          "Files": "builds/amiga/src/base/*",
+          "Copyright": "1996-2022 David Turner, Robert Wilhelm, Werner Lemberg and Detlef Würkner"
+        },
+        {
+          "Files": "builds/cmake/FindHarfBuzz.cmake",
+          "Copyright": "2012 Intel Corporation\n2019 Sony Interactive Entertainment Inc."
+        },
+        {
+          "Files": "builds/mac/ftmac.c\ninclude/freetype/ftmac.h\nsrc/base/ftmac.c",
+          "Copyright": "1996-2022 Just van Rossum, David Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "builds/unix/ax_compare_version.m4",
+          "Copyright": "2008 Tim Toolan"
+        },
+        {
+          "Files": "builds/unix/ax_prog_python_version.m4",
+          "Copyright": "2009 Francesco Salvestrini"
+        },
+        {
+          "Files": "builds/unix/ax_pthread.m4",
+          "Copyright": "2008 Steven G. Johnson\n2011 Daniel Richard G.\n2019 Marc Stevens"
+        },
+        {
+          "Files": "builds/unix/install-sh",
+          "Copyright": "1994 X Consortium"
+        },
+        {
+          "Files": "builds/unix/pkg.m4",
+          "Copyright": "2004 Scott James Remnant <scott@netsplit.com>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1996-2019 Christoph Lameter, Anthony Fok, Steve Langasek, et al.\n2018-2023 Hugh McMaster"
+        },
+        {
+          "Files": "docs/DOCGUIDE\nsrc/sfnt/sfwoff2.c\nsrc/sfnt/sfwoff2.h\nsrc/sfnt/woff2tags.c\nsrc/sfnt/woff2tags.h",
+          "Copyright": "2018-2022 Nikhil Ramakrishnan, David Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "docs/INSTALL.CROSS\nft2demos/mac/ftoldmac.c",
+          "Copyright": "1996-2022 Suzuki Toshiya, David Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "docs/reference/*",
+          "Copyright": "The FreeType Project"
+        },
+        {
+          "Files": "ft2demos/graph/beos/grbeos.cpp",
+          "Copyright": "2001-2022 Michael Pfeiffer"
+        },
+        {
+          "Files": "ft2demos/graph/graph.h\nft2demos/graph/grdevice.h\nft2demos/graph/grobjs.h\nft2demos/graph/grtypes.h",
+          "Copyright": "1999-2022 The FreeType Development Team"
+        },
+        {
+          "Files": "ft2demos/graph/grswizzle.c",
+          "Copyright": "None"
+        },
+        {
+          "Files": "ft2demos/graph/mac/grmac.c",
+          "Copyright": "1999-2022 Just van Rossum, Antoine Leca,\nDavid Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "ft2demos/graph/win32/grwin32.c\nft2demos/graph/win32/grwin32.h\nft2demos/graph/x11/grx11.c\nft2demos/graph/x11/grx11.h",
+          "Copyright": "1999-2022 Antoine Leca, David Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "ft2demos/mac/getargv.c",
+          "Copyright": "1991-2022 Stichting Mathematisch Centrum"
+        },
+        {
+          "Files": "ft2demos/src/ftinspect/ftinspect.cpp\nft2demos/src/ftinspect/maingui.cpp\nft2demos/src/ftinspect/maingui.hpp\nft2demos/src/ftinspect/engine/*\nft2demos/src/ftinspect/rendering/*\nft2demos/src/ftinspect/widgets/*\nsrc/tools/update-copyright-year",
+          "Copyright": "2015-2022 Werner Lemberg"
+        },
+        {
+          "Files": "ft2demos/src/ftsdf.c",
+          "Copyright": "2021-2022 David Turner, Robert Wilhelm, Werner Lemberg and Anuj Verma"
+        },
+        {
+          "Files": "ft2demos/src/md5.c\nft2demos/src/md5.h",
+          "Copyright": "None"
+        },
+        {
+          "Files": "ft2demos/src/mlgetopt.c\nft2demos/src/mlgetopt.h",
+          "Copyright": "None"
+        },
+        {
+          "Files": "ft2demos/src/rsvg-port.c\nft2demos/src/rsvg-port.h",
+          "Copyright": "2022 David Turner, Robert Wilhelm, Werner Lemberg and Moazin Khatti"
+        },
+        {
+          "Files": "ft2docs/docs/tutorial/example2.cpp\nft2docs/docs/tutorial/example3.cpp\nft2docs/docs/tutorial/example4.cpp",
+          "Copyright": "None"
+        },
+        {
+          "Files": "ft2docs/docs/tutorial/example5.cpp",
+          "Copyright": "2016-2018 Static Jobs LLC"
+        },
+        {
+          "Files": "include/freetype/ftbzip2.h\nsrc/bzip2/*",
+          "Copyright": "2010-2022 Joel Klinghed"
+        },
+        {
+          "Files": "include/freetype/ftcid.h\ninclude/freetype/internal/services/svcid.h\nsrc/base/ftcid.c",
+          "Copyright": "2007-2022 Derek Clegg and Michael Toftdal"
+        },
+        {
+          "Files": "include/freetype/ftgxval.h\ninclude/freetype/internal/services/svgxval.h\ninclude/freetype/internal/services/svttcmap.h\nsrc/base/ftgxval.c",
+          "Copyright": "2003-2022 Masatake Yamato, Red Hat K.K.,\nDavid Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "include/freetype/internal/fthash.h\nsrc/base/fthash.c",
+          "Copyright": "2000 Computing Research Labs, New Mexico State University\n2001-2015 Francesco Zappa Nardelli"
+        },
+        {
+          "Files": "include/freetype/internal/ftrfork.h\nsrc/base/ftrfork.c",
+          "Copyright": "2004-2022 Masatake Yamato, Redhat K.K."
+        },
+        {
+          "Files": "include/freetype/internal/svginterface.h\ninclude/freetype/otsvg.h\nsrc/sfnt/ttsvg.c\nsrc/sfnt/ttsvg.h\nsrc/svg/ftsvg.c\nsrc/svg/ftsvg.h\nsrc/svg/module.mk\nsrc/svg/rules.mk\nsrc/svg/svg.c\nsrc/svg/svgtypes.h",
+          "Copyright": "2022 David Turner, Robert Wilhelm, Werner Lemberg and Moazin Khatti"
+        },
+        {
+          "Files": "src/sfnt/ttcmapc.h",
+          "Copyright": "2009-2022 Oran Agra and Mickey Gabel"
+        },
+        {
+          "Files": "ft2demos/graph/gblender.h\ninclude/freetype/internal/services/svttglyf.h\nsrc/base/ftpatent.c\nsrc/lzw/ftzopen.c\nsrc/lzw/ftzopen.h",
+          "Copyright": "2002-2022 David Turner"
+        },
+        {
+          "Files": "include/dlg/*\nsrc/dlg/dlg.c",
+          "Copyright": "2019 nyorain"
+        },
+        {
+          "Files": "src/autofit/afindic.c\nsrc/autofit/afindic.h",
+          "Copyright": "2007-2022 Rahul Bhalerao"
+        },
+        {
+          "Files": "src/base/ftbase.h",
+          "Copyright": "2008-2022 David Turner, Robert Wilhelm, Werner Lemberg and Suzuki Toshiya"
+        },
+        {
+          "Files": "src/base/fterrors.c",
+          "Copyright": "2018-2022 Armin Hasitzka, David Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "src/base/md5.c\nsrc/base/md5.h",
+          "Copyright": "None"
+        },
+        {
+          "Files": "src/bdf/bdf.c\nsrc/bdf/bdfdrivr.c src/bdf/bdfdrivr.h\nsrc/bdf/bdferror.h\nsrc/bdf/module.mk\nsrc/bdf/README\nsrc/bdf/rules.mk\nsrc/pcf/module.mk\nsrc/pcf/pcf.c src/pcf/pcf.h\nsrc/pcf/pcfdrivr.c src/pcf/pcfdrivr.h\nsrc/pcf/pcfread.c src/pcf/pcfread.h\nsrc/pcf/pcfutil.h\nsrc/pcf/README\nsrc/pcf/rules.mk",
+          "Copyright": "2000-2014 Francesco Zappa Nardelli"
+        },
+        {
+          "Files": "src/bdf/bdf.h\nsrc/bdf/bdflib.c",
+          "Copyright": "2000 Computing Research Labs, New Mexico State University\n2001-2014 Francesco Zappa Nardelli"
+        },
+        {
+          "Files": "src/gxvalid/*",
+          "Copyright": "2004-2022 Suzuki Toshiya, Masatake Yamato, Red Hat K.K.,\nDavid Turner, Robert Wilhelm and Werner Lemberg"
+        },
+        {
+          "Files": "src/gxvalid/gxvfgen.c",
+          "Copyright": "2004-2022 Masatake Yamato, Redhat K.K."
+        },
+        {
+          "Files": "src/gzip/adler32.c\nsrc/gzip/crc32.c\nsrc/gzip/gzguts.h\nsrc/gzip/infback.c\nsrc/gzip/inffast.c\nsrc/gzip/inffast.h\nsrc/gzip/inflate.c\nsrc/gzip/inflate.h\nsrc/gzip/inftrees.c\nsrc/gzip/inftrees.h",
+          "Copyright": "1995-2022 Mark Adler"
+        },
+        {
+          "Files": "src/gzip/ftzconf.h\nsrc/gzip/zlib.h\nsrc/gzip/zutil.h",
+          "Copyright": "1995-2022 Jean-loup Gailly and Mark Adler"
+        },
+        {
+          "Files": "src/gzip/zutil.c",
+          "Copyright": "1995-2017 Jean-loup Gailly"
+        },
+        {
+          "Files": "src/lzw/ftlzw.c\nsrc/lzw/rules.mk",
+          "Copyright": "2004-2022 Albert Chin-A-Young"
+        },
+        {
+          "Files": "src/pcf/pcfutil.c",
+          "Copyright": "1990, 1994, 1998 The Open Group"
+        },
+        {
+          "Files": "src/psaux/psarrst.c\nsrc/psaux/psarrst.h\nsrc/psaux/psblues.c\nsrc/psaux/psblues.h\nsrc/psaux/pserror.c\nsrc/psaux/pserror.h\nsrc/psaux/psfixed.h\nsrc/psaux/psfont.c\nsrc/psaux/psfont.h\nsrc/psaux/psft.c\nsrc/psaux/psft.h\nsrc/psaux/psglue.h\nsrc/psaux/pshints.c\nsrc/psaux/pshints.h\nsrc/psaux/psintrp.c\nsrc/psaux/psintrp.h\nsrc/psaux/psread.c\nsrc/psaux/psread.h\nsrc/psaux/psstack.c\nsrc/psaux/psstack.h\nsrc/psaux/pstypes.h",
+          "Copyright": "2006-2014 Adobe Systems Incorporated"
+        },
+        {
+          "Files": "src/sfnt/pngshim.c\nsrc/sfnt/pngshim.h",
+          "Copyright": "2013-2022 Google, Inc."
+        },
+        {
+          "Files": "src/sfnt/ttcolr.c",
+          "Copyright": "2018-2022 David Turner, Robert Wilhelm, Dominik Röttsches and Werner Lemberg"
+        },
+        {
+          "Files": "src/sfnt/ttsbit.c",
+          "Copyright": "2005-2022 David Turner, Robert Wilhelm and Werner Lemberg\n2013 Google, Inc."
+        },
+        {
+          "Files": "src/tools/apinames.c\nsrc/tools/chktrcmp.py",
+          "Copyright": "None"
+        },
+        {
+          "Files": "src/tools/ftrandom/ftrandom.c",
+          "Copyright": "2005, 2007, 2008, 2013 George Williams"
+        },
+        {
+          "Files": "src/truetype/ttgxvar.c\nsrc/truetype/ttgxvar.h",
+          "Copyright": "2004-2022 David Turner, Robert Wilhelm, Werner Lemberg and George Williams"
+        },
+        {
+          "Files": "src/type42/t42drivr.c\nsrc/type42/t42drivr.h\nsrc/type42/t42objs.c\nsrc/type42/t42objs.h\nsrc/type42/t42parse.c\nsrc/type42/t42parse.h\nsrc/type42/t42types.h",
+          "Copyright": "2002-2022 Roberto Alameda"
+        },
+        {
+          "Files": "src/winfonts/winfnt.c",
+          "Copyright": "1996-2022 David Turner, Robert Wilhelm and Werner Lemberg\n2003 Huw D M Davies for Codeweavers\n2007 Dmitry Timoshkov for Codeweavers"
+        },
+        {
+          "Files": "src/winfonts/winfnt.h",
+          "Copyright": "1996-2022 David Turner, Robert Wilhelm and Werner Lemberg\n2007 Dmitry Timoshkov for Codeweavers"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libuv1",
+      "version": "1.44.2-1+deb12u1",
+      "dsc_sha256": "798be0a2bcbcd40bb85302f6ccbf02b240e1958d4ad9cf153b8101c3a82f21b9",
+      "binaries": [
+        {
+          "name": "libuv1",
+          "version": "1.44.2-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "0272d95e62eb096d3ed3f5b8d8e450b48514e04cccf89ec7cf39e7ba5e86fee6"
+        }
+      ],
+      "copyright_sha256": "0272d95e62eb096d3ed3f5b8d8e450b48514e04cccf89ec7cf39e7ba5e86fee6",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "95b8b163c60d17cfce3cef61a2d8a9cf70137502c8fb5f3d93cd2fc529fa98c8",
+          "read_reference": {
+            "component": "libuv1",
+            "member": "LICENSE",
+            "sha256": "95b8b163c60d17cfce3cef61a2d8a9cf70137502c8fb5f3d93cd2fc529fa98c8"
+          }
+        },
+        {
+          "member": "LICENSE-docs",
+          "sha256": "cce5d01fa4a83b794271bd2c28cffdf99afd43c803e6ddefddae39b591ea7448",
+          "read_reference": {
+            "component": "libuv1",
+            "member": "LICENSE-docs",
+            "sha256": "cce5d01fa4a83b794271bd2c28cffdf99afd43c803e6ddefddae39b591ea7448",
+            "method": "Complete normalized word differences read against previously fully read original, preserving original version-specific scope."
+          }
+        },
+        {
+          "member": "debian/copyright-scan-patterns.yml",
+          "sha256": "632796637c0c2c97572358b514863521d25a0cc903aab45c13749c7bed30f550",
+          "read_reference": {
+            "component": "libuv1",
+            "member": "debian/copyright-scan-patterns.yml",
+            "sha256": "632796637c0c2c97572358b514863521d25a0cc903aab45c13749c7bed30f550",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "b75892b6128c32a1008a7d8be86dbdba0526ae51e79c0ba9f40d42e9e4b82447",
+          "read_reference": {
+            "component": "libuv1",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "444deefa17ff054193c0858fc9db260d377f14153002a428186e92e9b4552fa0",
+          "read_reference": {
+            "label": "BSD-2-Clause",
+            "component": "smartmontools"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "c38fcd5e0a395b7f978f7e774a79f986e22c9a2bcf44fc7243393401b0bab24e",
+          "read_reference": {
+            "component": "libuv1",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "CC-BY-4.0",
+          "full_normalized_body_sha256": "25a40a30d753162c4026b87a389b9534c72436327abcd083f90da00ead6d6869",
+          "read_reference": {
+            "component": "libuv1",
+            "label": "CC-BY-4.0"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "GPL3+ with autoconf exception",
+          "full_normalized_body_sha256": "e4c2bc1428558f0bfd22c3f56b777dbe8c0ef0411748be73e6222608211ba1f4",
+          "read_reference": {
+            "component": "curl",
+            "label": "GPL-3+ with Autoconf-data exception"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "c095605acfaf7e1230d608912688325f647e88066e2cd002664610b0d64694b9",
+          "read_reference": {
+            "label": "ISC",
+            "component": "cron"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libuv",
+          "Upstream-Contact": "https://github.com/libuv/libuv/issues",
+          "Source": "https://github.com/libuv/libuv"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2015-2021, libuv project contributors.\n2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": ".github/*",
+          "Copyright": "2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "AUTHORS\nCONTRIBUTING.md\nChangeLog\nMAINTAINERS.md\nSUPPORTED_PLATFORMS.md\nlibuv.pc.in",
+          "Copyright": "2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "LINKS.md\nlibuv-static.pc.in",
+          "Copyright": "2015-2020, libuv project contributors.\n2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "Makefile.am\nautogen.sh",
+          "Copyright": "2011, 2013-2015, 2018, Ben Noordhuis <info@bnoordhuis.nl>"
+        },
+        {
+          "Files": "README.md",
+          "Copyright": "2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2018-2022, Dominique Dumont <dod@debian.org>\n2013, Luca Bruno <lucab@debian.org>"
+        },
+        {
+          "Files": "docs/*",
+          "Copyright": "2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "docs/src/sphinx-plugins/*",
+          "Copyright": "2013, Dariusz Dwornikowski."
+        },
+        {
+          "Files": "include/*",
+          "Copyright": "Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "include/uv/os390.h\ninclude/uv/posix.h",
+          "Copyright": "libuv project contributors."
+        },
+        {
+          "Files": "include/uv/stdint-msvc2008.h",
+          "Copyright": "2006-2008, Alexander Chemeris"
+        },
+        {
+          "Files": "include/uv/tree.h",
+          "Copyright": "2002, Niels Provos <provos@citi.umich.edu>"
+        },
+        {
+          "Files": "m4/*",
+          "Copyright": "2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "m4/ax_pthread.m4",
+          "Copyright": "2011, Daniel Richard G. <skunk@iSKUNK.ORG>\n2008, Steven G. Johnson <stevenj@alum.mit.edu>"
+        },
+        {
+          "Files": "m4/libuv-check-flags.m4",
+          "Copyright": "2021, libuv project\n2006-2008, xine project\n2006-2008, Diego Pettenò <flameeyes gmail com>"
+        },
+        {
+          "Files": "src/*",
+          "Copyright": "Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "src/heap-inl.h\nsrc/idna.c\nsrc/idna.h\nsrc/queue.h",
+          "Copyright": "2011, 2013-2015, 2018, Ben Noordhuis <info@bnoordhuis.nl>"
+        },
+        {
+          "Files": "src/inet.c",
+          "Copyright": "2004, Internet Systems Consortium, Inc. (\"ISC\")\n1996-1999, Internet Software Consortium."
+        },
+        {
+          "Files": "src/random.c",
+          "Copyright": "libuv contributors."
+        },
+        {
+          "Files": "src/strscpy.c\nsrc/strscpy.h\nsrc/strtok.c\nsrc/strtok.h\nsrc/uv-data-getter-setters.c",
+          "Copyright": "libuv project contributors."
+        },
+        {
+          "Files": "src/unix/aix-common.c\nsrc/unix/bsd-ifaddrs.c\nsrc/unix/bsd-proctitle.c\nsrc/unix/cygwin.c\nsrc/unix/darwin-stub.h\nsrc/unix/haiku.c\nsrc/unix/hurd.c\nsrc/unix/ibmi.c\nsrc/unix/no-fsevents.c\nsrc/unix/no-proctitle.c\nsrc/unix/os390-proctitle.c\nsrc/unix/os390-syscalls.c\nsrc/unix/os390-syscalls.h\nsrc/unix/os390.c\nsrc/unix/posix-hrtime.c\nsrc/unix/posix-poll.c\nsrc/unix/procfs-exepath.c\nsrc/unix/sysinfo-loadavg.c\nsrc/unix/sysinfo-memory.c",
+          "Copyright": "libuv project contributors."
+        },
+        {
+          "Files": "src/unix/atomic-ops.h\nsrc/unix/spinlock.h",
+          "Copyright": "2011, 2013-2015, 2018, Ben Noordhuis <info@bnoordhuis.nl>"
+        },
+        {
+          "Files": "src/unix/epoll.c\nsrc/unix/qnx.c\nsrc/unix/random-devurandom.c\nsrc/unix/random-getentropy.c\nsrc/unix/random-getrandom.c\nsrc/unix/random-sysctl-linux.c",
+          "Copyright": "libuv contributors."
+        },
+        {
+          "Files": "src/unix/pthread-fixes.c",
+          "Copyright": "2013, Sony Mobile Communications AB\n2012, Google Inc."
+        },
+        {
+          "Files": "src/win/detect-wakeup.c\nsrc/win/fs-fd-hash-inl.h",
+          "Copyright": "libuv project contributors."
+        },
+        {
+          "Files": "src/win/snprintf.c",
+          "Copyright": "the libuv project contributors."
+        },
+        {
+          "Files": "test/*",
+          "Copyright": "Joyent, Inc. and other Node contributors."
+        },
+        {
+          "Files": "test/benchmark-ping-udp.c\ntest/test-connect-unspecified.c\ntest/test-eintr-handling.c\ntest/test-embed.c\ntest/test-fork.c\ntest/test-fs-copyfile.c\ntest/test-fs-fd-hash.c\ntest/test-fs-open-flags.c\ntest/test-fs-readdir.c\ntest/test-getters-setters.c\ntest/test-gettimeofday.c\ntest/test-homedir.c\ntest/test-ipc-heavy-traffic-deadlock-bug.c\ntest/test-metrics.c\ntest/test-pipe-set-fchmod.c\ntest/test-poll-multiple-handles.c\ntest/test-poll-oob.c\ntest/test-process-title-threadsafe.c\ntest/test-signal-pending-on-close.c\ntest/test-strscpy.c\ntest/test-strtok.c\ntest/test-tcp-close-reset.c\ntest/test-tcp-read-stop-start.c\ntest/test-tmpdir.c\ntest/test-tty-duplicate-key.c\ntest/test-tty-escape-sequence-processing.c\ntest/test-uname.c",
+          "Copyright": "libuv project contributors."
+        },
+        {
+          "Files": "test/benchmark-queue-work.c\ntest/test-env-vars.c\ntest/test-get-passwd.c\ntest/test-gethostname.c\ntest/test-process-priority.c\ntest/test-random.c\ntest/test-tcp-try-write-error.c\ntest/test-test-macros.c\ntest/test-udp-mmsg.c",
+          "Copyright": "libuv contributors."
+        },
+        {
+          "Files": "test/test-idna.c\ntest/test-ip-name.c\ntest/test-queue-foreach-delete.c\ntest/test-udp-send-hang-loop.c",
+          "Copyright": "The libuv project and contributors."
+        },
+        {
+          "Files": "test/test-loop-configure.c\ntest/test-pipe-set-non-blocking.c",
+          "Copyright": "2011, 2013-2015, 2018, Ben Noordhuis <info@bnoordhuis.nl>"
+        },
+        {
+          "Files": "test/test-not-readable-nor-writable-on-read-error.c\ntest/test-not-writable-after-shutdown.c\ntest/test-readable-on-eof.c",
+          "Copyright": "the libuv project contributors."
+        },
+        {
+          "Files": "test/test-pipe-connect-multiple.c\ntest/test-pipe-connect-prepare.c\ntest/test-pipe-pending-instances.c\ntest/test-tcp-create-socket-early.c\ntest/test-udp-create-socket-early.c",
+          "Copyright": "2015, Saúl Ibarra Corretgé <saghul@gmail.com>."
+        },
+        {
+          "Files": "test/test-poll-close-doesnt-corrupt-stack.c",
+          "Copyright": "Bert Belder, and other libuv contributors."
+        },
+        {
+          "Files": "test/test-shutdown-simultaneous.c\ntest/test-tcp-alloc-cb-fail.c\ntest/test-tcp-close-after-read-timeout.c\ntest/test-tcp-rst.c\ntest/test-udp-connect.c\ntest/test-udp-connect6.c\ntest/test-udp-sendmmsg-error.c",
+          "Copyright": "libuv project and contributors."
+        },
+        {
+          "Files": "test/test-tcp-oob.c",
+          "Copyright": "Fedor Indutny."
+        },
+        {
+          "Files": "test/test-udp-alloc-cb-fail.c",
+          "Copyright": "libuv project and other Node contributors."
+        },
+        {
+          "Files": "tools/*",
+          "Copyright": "2011-2015, Joyent, Inc. and other Node contributors."
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "ncurses",
+      "version": "6.4-4",
+      "dsc_sha256": "a35710b02a3de6ab8f9da7fa2e3726a609cc26c936ad85b2094ef91aa996fc94",
+      "binaries": [
+        {
+          "name": "libncurses6",
+          "version": "6.4-4",
+          "architecture": "arm64",
+          "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e"
+        },
+        {
+          "name": "libncursesw6",
+          "version": "6.4-4",
+          "architecture": "arm64",
+          "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e"
+        },
+        {
+          "name": "libtinfo6",
+          "version": "6.4-4",
+          "architecture": "arm64",
+          "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e"
+        },
+        {
+          "name": "ncurses-base",
+          "version": "6.4-4",
+          "architecture": "all",
+          "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e"
+        },
+        {
+          "name": "ncurses-bin",
+          "version": "6.4-4",
+          "architecture": "arm64",
+          "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e"
+        },
+        {
+          "name": "ncurses-term",
+          "version": "6.4-4",
+          "architecture": "all",
+          "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e"
+        }
+      ],
+      "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e",
+      "original_legal_matches": [
+        {
+          "member": "Ada95/package/debian/copyright",
+          "sha256": "fb87e0f669eda21f2d9a34b94b8343f9dad649865c9d4e64c1eb1646748140d5",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "Ada95/package/debian/copyright",
+            "sha256": "fb87e0f669eda21f2d9a34b94b8343f9dad649865c9d4e64c1eb1646748140d5"
+          }
+        },
+        {
+          "member": "COPYING",
+          "sha256": "63de87399e9fc8860236082b6b0520e068e9eb1fad0ebd30202aa30bb6f690ac",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "COPYING",
+            "sha256": "63de87399e9fc8860236082b6b0520e068e9eb1fad0ebd30202aa30bb6f690ac"
+          }
+        },
+        {
+          "member": "package/debian/copyright",
+          "sha256": "723431688dab8fa693fc3658074f4c3527e3c1e6d6746d490fb2073a98bef2ca",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "package/debian/copyright",
+            "sha256": "723431688dab8fa693fc3658074f4c3527e3c1e6d6746d490fb2073a98bef2ca",
+            "method": "Complete original full normalized-word comparison, every addition/deletion read; original per-file scopes and license alternatives retained."
+          }
+        },
+        {
+          "member": "package/debian-mingw/copyright",
+          "sha256": "723431688dab8fa693fc3658074f4c3527e3c1e6d6746d490fb2073a98bef2ca",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "package/debian/copyright",
+            "sha256": "723431688dab8fa693fc3658074f4c3527e3c1e6d6746d490fb2073a98bef2ca",
+            "method": "Complete original full normalized-word comparison, every addition/deletion read; original per-file scopes and license alternatives retained."
+          }
+        },
+        {
+          "member": "package/debian-mingw64/copyright",
+          "sha256": "723431688dab8fa693fc3658074f4c3527e3c1e6d6746d490fb2073a98bef2ca",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "package/debian/copyright",
+            "sha256": "723431688dab8fa693fc3658074f4c3527e3c1e6d6746d490fb2073a98bef2ca",
+            "method": "Complete original full normalized-word comparison, every addition/deletion read; original per-file scopes and license alternatives retained."
+          }
+        },
+        {
+          "member": "test/package/debian/copyright",
+          "sha256": "7ea85ebef036f32348cd44429fdf66c1a58575834856765b9352a0ff4206bbef",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "test/package/debian/copyright",
+            "sha256": "7ea85ebef036f32348cd44429fdf66c1a58575834856765b9352a0ff4206bbef"
+          }
+        },
+        {
+          "member": "test/package/debian-mingw/copyright",
+          "sha256": "772590274ad55bb5e77cd5c1ee6419d12cd9b8a3cea19f5b15c44b72fcd58411",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "test/package/debian-mingw/copyright",
+            "sha256": "772590274ad55bb5e77cd5c1ee6419d12cd9b8a3cea19f5b15c44b72fcd58411"
+          }
+        },
+        {
+          "member": "test/package/debian-mingw64/copyright",
+          "sha256": "772590274ad55bb5e77cd5c1ee6419d12cd9b8a3cea19f5b15c44b72fcd58411",
+          "read_reference": {
+            "component": "ncurses",
+            "member": "test/package/debian-mingw/copyright",
+            "sha256": "772590274ad55bb5e77cd5c1ee6419d12cd9b8a3cea19f5b15c44b72fcd58411"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "MIT/X11",
+          "full_normalized_body_sha256": "0208f50c023dcbfdbe35e64255767be1d24b8b9f8f9131488f9d94957f0647c4",
+          "read_reference": {
+            "component": "ncurses",
+            "label": "MIT/X11"
+          }
+        },
+        {
+          "label": "X11",
+          "full_normalized_body_sha256": "c8c0049710bc4c09f9dcade779915d46ad5c92f5b0cf33ee32a5e0a12c0b2ca7",
+          "read_reference": {
+            "label": "X11",
+            "component": "diffutils"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "dash"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "ncurses",
+          "Upstream-Contact": "bug-ncurses@gnu.org\nThomas Dickey <dickey@his.com>",
+          "Source": "https://invisible-mirror.net/archives/ncurses/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1998-2017,2018 Free Software Foundation, Inc.\n1996-2020,2021 Thomas E. Dickey\n2001 Pradeep Padala"
+        },
+        {
+          "Files": "install-sh",
+          "Copyright": "1994 X Consortium"
+        },
+        {
+          "Files": "progs/tset.c ncurses/tinfo/read_termcap.c",
+          "Copyright": "1980,1991,1992,1993 The Regents of the University of California"
+        },
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "scope": "Original complete legal/grant comparisons and full remaining scope-field readings; source and copyright digests remain mandatory.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

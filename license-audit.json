@@ -21004,6 +21004,60 @@
         "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
         "Retain the complete original root grant, each additional ISC/MIT/curl/Boost source notice, and generated-script permissions/exceptions. Preserve full source and GPL notices for the separately scoped packaging/build files; no parent component is relicensed."
       ]
+    },
+    "freetype@2.12.1+dfsg-5+deb12u4": {
+      "redistributable": true,
+      "source_identity": "eead829b4bc79107e8e79c4da006110dffe264f9d48b3ba02f76cf7e84b64389",
+      "copyright_sha256": "70a7a0a06e6440777417f6875476cb712b03943010abed1c32297798c8cc8ed8",
+      "license": "(FTL OR GPL-2.0-or-later) AND BSD-3-Clause AND BSL-1.0 AND FSFAP AND GPL-3.0-or-later AND MIT AND LicenseRef-OpenGroup AND Zlib AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Retain the complete original FTL and project acknowledgement, choose its stated FTL/GPL alternatives within each actual source scope, mark modifications and preserve author-name restrictions. Retain all separate zlib, MIT, Boost and build-script grants. The Debian dfsg source exclusions remain in effect; do not restore minified excluded JavaScript."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/FreeType-FTL-notice.txt",
+          "sha256": "1799e9f7b418fdabbabe1fd27af94f3c061de64792ab857bd94f2a160ad7ac46"
+        }
+      ]
+    },
+    "libuv1@1.44.2-1+deb12u1": {
+      "redistributable": true,
+      "source_identity": "798be0a2bcbcd40bb85302f6ccbf02b240e1958d4ad9cf153b8101c3a82f21b9",
+      "copyright_sha256": "0272d95e62eb096d3ed3f5b8d8e450b48514e04cccf89ec7cf39e7ba5e86fee6",
+      "license": "MIT AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC-BY-4.0 AND ISC AND LicenseRef-Autoconf-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Preserve all documentation attribution, creator/source/license links and modification notices under CC-BY-4.0 without additional restrictions or endorsement claims. Retain exact original BSD stdint/tree notices and generated Autoconf exception separately from the root MIT code grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ]
+    },
+    "ncurses@6.4-4": {
+      "redistributable": true,
+      "source_identity": "a35710b02a3de6ab8f9da7fa2e3726a609cc26c936ad85b2094ef91aa996fc94",
+      "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e",
+      "license": "MIT AND LicenseRef-X11-nonendorsement AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source and binary-copyright binding. All standalone legal files matched to previously read complete originals; complete operative grant bodies matched or read in full, and all copyright/path/comment fields read. No parent OS or dependency approval.",
+      "conditions": [
+        "Retain all original copyrights, full license texts, per-file scopes, disclaimers and nonendorsement conditions in both exact source archives and binary documentation.",
+        "Retain exact preferred sources, Debian patches and build/install scripts; preserve modification notices and original alternatives without broad relicensing.",
+        "Retain the original MIT permission including distribution with modifications, the author-name publicity restriction and the separately scoped UC BSD notices. Root permission is not extended to separately scoped components."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
