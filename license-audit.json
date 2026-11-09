@@ -20470,6 +20470,40 @@
         "Preserve distinct runtime, example, documentation and build-tool obligations and original alternative licenses; no upstream endorsement or parent OS approval is implied."
       ],
       "scope": "All original named legal files matched read originals or separately read complete word differences; every operative grant body and all copyright, path and comment fields read. Exact source and copyright hashes only; all final source-restoration, secrets and release gates remain mandatory. Upstream COPYING states that the BSD option governs distributions after 2012, retaining old GPL references for attribution. Use the BSD option for the OpenSSL-linked program, preserve independently GPL-scoped packaging/support files and original public-domain/ISC notices."
+    },
+    "salt-sdk-build:crosstool-ng@1.26.0": {
+      "source_identity": "e1c288d6f7edb479a2077d610ef7f86604c4e25420cfefd6642bef09599900b2",
+      "copyright_sha256": "44b2097399fa29008b35fd65b89ddef039996f760a5386b995b4357dfa0710e5",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-2.5 AND MIT AND FSFULLR AND LicenseRef-Autoconf-exceptions AND GPL-3.0-or-later WITH GCC-exception-3.1",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/e1c288d6f7edb479a2077d610ef7f86604c4e25420cfefd6642bef09599900b2.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/GCC-runtime-exception-3.1.txt",
+          "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+        }
+      ],
+      "scope": "Exact crosstool-ng 1.26.0 source only. All five original declared legal notices read and hash-verified. First-party and imported Kconfig/build-script grants inspected, retaining GPL version and Autoconf exception differences. Added copyright/permission lines in bundled patches inspected after exact-line deduplication; original per-file and upstream-patch scopes remain unchanged. No complete SDK binary reproduction or parent OS clearance is inferred.",
+      "conditions": [
+        "Retain complete original COPYING, GNU GPL/LGPL texts, CC-BY-SA-2.5 legalcode/deed, every source copyright and original per-file license/exception notice. Documentation remains CC-BY-SA-2.5 with author/title/source attribution, share-alike, change notices and no additional restrictions.",
+        "Supply exact complete crosstool-ng source, local patches, configuration and all build/install scripts needed for the accompanying toolchain. Each separately downloaded toolchain source remains independently inventoried and licensed; this decision does not approve a new downloaded input.",
+        "Root code is GPL-2 unless otherwise stated; retain GPL-2-or-later Kconfig/contributed files, GPL-3-or-later git-version-gen/config helpers and macros, original Autoconf exceptions, X Consortium install-sh grant and FSF permissive gettext macro grants.",
+        "Bundled patches inherit the licenses of their respective upstream code; do not relicense them all as root GPL-2. Retain GNU GPL-3/GCC Runtime Library Exception 3.1 scopes, GNU LGPL-2.1 glibc/GMP/uClibc code and linking exceptions, and MIT-style ncurses scopes with original notices and full applicable license texts.",
+        "Preserve all third-party authorship, warranty disclaimers and nonendorsement conditions. The GCC exception applies only to explicitly covered files and eligible compilation processes, without weakening GCC copyleft."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

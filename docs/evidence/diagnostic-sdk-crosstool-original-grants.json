@@ -1,0 +1,537 @@
+{
+  "kind": "exact-crosstool-ng-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "salt-sdk-build:crosstool-ng",
+  "version": "1.26.0",
+  "source_identity": "e1c288d6f7edb479a2077d610ef7f86604c4e25420cfefd6642bef09599900b2",
+  "aggregate_notice_sha256": "44b2097399fa29008b35fd65b89ddef039996f760a5386b995b4357dfa0710e5",
+  "original_notices": [
+    {
+      "member": "crosstool-ng-1.26.0/COPYING",
+      "sha256": "07bc0ccd386469c748c4cf6c8faca5667fbf8c4400386714287fa233acfd68ba"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/licenses.d/by-sa/legalcode",
+      "sha256": "d62d84b64993fac727272f19c2bbf8f55bd31788d04560250364394541784021"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/licenses.d/by-sa/deed.en",
+      "sha256": "0eeca8b6b28b9cce130bde0cff92574d5e74875f9bc98b866a8cca058a217ae4"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/licenses.d/gpl.txt",
+      "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/licenses.d/lgpl.txt",
+      "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a"
+    }
+  ],
+  "inspected_license_bearing_files": [
+    {
+      "member": "crosstool-ng-1.26.0/packages/gdb/9.2/0000-musl_fix.patch",
+      "sha256": "abc37c53459dddf8dbbc46da511aa9c8b82b593b6bbf6587668322dcd6c61579"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gdb/8.3.1/0000-musl_fix.patch",
+      "sha256": "fb418efc1ae8b7408bfb92ff620201bcaf1eec5f2bcb02fe76a17d90495cc58f"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gdb/10.2/0014-arc-Add-set-disassembler-options-support.patch",
+      "sha256": "281c3e2ea653e0663a92e667a23056ec356b460be1ec10fc37efedc4cc9c0e63"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gdb/10.2/0008-gdb-Add-native-support-for-ARC-in-GNU-Linux.patch",
+      "sha256": "01f9bd76d82e27b7d3c4c7642f1f5052c610a6b956bbe2124e8e45ee4d6228d2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/ncurses/6.0/0002-ncurses-6.0-20150822.patch",
+      "sha256": "d3e2797972227a69faabc6e399f918a7499b374c59b36f3cd7407522ecc2ec23"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/ncurses/6.0/0001-ncurses-6.0-20150815.patch",
+      "sha256": "8b979e78f66b34ad68eb914b4cf29345e7a80d340f3b5f5cf10070ac42565758"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/ncurses/6.0/0003-ncurses-6.0-20150905.patch",
+      "sha256": "782bfa7f0ce8f39b02d1887bd14e5645b6bc5cb1691751f596cc0e70be1eddf9"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/ncurses/6.0/0004-ncurses-6.0-20150912.patch",
+      "sha256": "5224cb98d0103141678444b2cfd2aba55370c36c175f74bde608338cd58451ea"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/ncurses/6.0/0007-ncurses-6.0-20151010.patch",
+      "sha256": "3c8f50871890bc3b71d0b159a329b805ef84a4e832f05e19b5b0f9e63c728653"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/ncurses/6.0/0009-ncurses-6.0-20151024.patch",
+      "sha256": "61543449f04d18de882ff7eafd70ed743626f5308ed9f9bdc18f5caefa86ff1b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/ncurses/6.0/0006-ncurses-6.0-20150926.patch",
+      "sha256": "d2611e6a87e37a562500fd9c72a62dc0d1a5f3f163d91c357849442e46933a59"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/glibc-oracle/git-ea029c9b/0000-backport-missing-header-file.patch",
+      "sha256": "56d02637c3be6203caee2d4d1476587728c9db5e2d49e9863a897fef27421c2b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc-linaro/7.4-2019.02/0012-crystax.patch",
+      "sha256": "928d41114728f2b876b8fa52dd95528ef4190785e408c964fde4d2021dfb6d54"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc-linaro/4.9-2017.01/0022-xtensa-add-uclinux-support.patch",
+      "sha256": "bf828aaaf6f180857646bd813099e01ff579297aad7f838a5676ff583ec2729e"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc-linaro/5.5-2017.10/0015-xtensa-add-uclinux-support.patch",
+      "sha256": "22bc54389a4a06089fd39af213aa1e966e860d39d9bf63ae2be00b50e7445a4f"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc-linaro/6.4-2018.05/0020-crystax.patch",
+      "sha256": "ca29121ddaa65fdbce3ca065fedcd17057216889a94887f3f05188c707d6a55d"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/9.5.0/0020-darwin-aarch64-self-host-driver.patch",
+      "sha256": "4594a81a4afd43a3df23444995031d7f136c16cff02dc8fe5dc6ea471218dd53"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/9.5.0/0010-crystax.patch",
+      "sha256": "f2acf2a989bdee007970a22aa0f1c71655f41937a91e2c754486df2f4e5c4a48"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/10.5.0/0011-crystax.patch",
+      "sha256": "51bf40fbfe504aba4b6abb351e8646320ad5855a9a8388e8911f79f868e0f68d"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/10.5.0/0022-Darwin-Arm64-Initial-support-for-the-self-host-drive.patch",
+      "sha256": "4493966a2976bddfb4da276d5a56d39c5e193a29f49628fbfad9357b88f41d06"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/12.3.0/experimental/0001-picolibc-Add-custom-spec-file-fragments-for-using-pi.patch",
+      "sha256": "2a2b3464221e052cd63f040bac52f181d13e7dd80f9917d0db705bcf39ce2370"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/12.3.0/0009-gcc-Allow-g-to-work-differently-from-gcc.patch",
+      "sha256": "b0a3ff2b7fef471aea3a3e7b0585059e843e031eef5d43326aca1129d97234c5"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/8.5.0/0024-darwin-aarch64-self-host-driver.patch",
+      "sha256": "a2a7b1d8dc5d0fc0883e7696831fba9d2a34c296dcc9d6d0b9038d8ddc7152d9"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/8.5.0/0018-ARC-Add-multilib-support-for-linux-targets.patch",
+      "sha256": "0204d7724a164d6226a79c1f09f579e616837578c466a827c671659ad19cd992"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/8.5.0/0010-crystax.patch",
+      "sha256": "76892e621b961af7e816f4e5f405a682519497acf678c8d8fbead4d5014ef75e"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/13.2.0/experimental/0001-picolibc-Add-custom-spec-file-fragments-for-using-pi.patch",
+      "sha256": "dca3f3a0505ac95ad6ba1a1d0efee5d2090978445c118ff652b1b56edb3d2092"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/13.2.0/0009-gcc-Allow-g-to-work-differently-from-gcc.patch",
+      "sha256": "afa2de9ac87265a8e2cf733a75e8d65bb9463765849d1efbb014d07fec4077ae"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/4.9.4/0023-xtensa-add-uclinux-support.patch",
+      "sha256": "2afcc0d8e60d10c402c973b7fa0d78a0847d622d9a75b356470b96787d8c3f9d"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/7.5.0/0012-crystax.patch",
+      "sha256": "fe86d66c146f8adce980bd1071141ce1d37e1f797a87f3cdfb3fbd659465e1f6"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/7.5.0/0022-darwin-aarch64-self-host-driver.patch",
+      "sha256": "27edbd068f2040fc869ce4d7ce1eebf983dea937804596da8276673367226f0b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/6.5.0/0032-darwin-aarch64-self-host-driver.patch",
+      "sha256": "6a4e7fe5c1032bdb003f1f1289ffdb1f3cf68694ff78e95d0c57fcee6ec741d8"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/6.5.0/0021-crystax.patch",
+      "sha256": "17e9b35b1f8217cc80e85f26a8eff98c87b21fc2a520ad11d01f2b50937742d2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/11.4.0/0008-Darwin-aarch64-Initial-support-for-the-self-host-dri.patch",
+      "sha256": "554a8f641650de0349cd1b80db387a0ab4c2af5b7ca5271d6b54f596771bac6e"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc/5.5.0/0016-xtensa-add-uclinux-support.patch",
+      "sha256": "75c326f8feac8f70f907f114be6566fcec60744fe711a4e5925e2f96e0e17780"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/glibc/2.17/0025-glibc-ppc64le-03.patch",
+      "sha256": "64e571629db324860c71074f3440e6ea7d4b389a24a667137f6b228f02108989"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/glibc/2.31/0001-Add-ARC-architecture.patch",
+      "sha256": "b44c30315ca76d5b61407a1bd983f161f8612b33fa44dc4a91d7f276c974a4d5"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/glibc/2.36/0004-Fix_sys_mount.h_usage_with_kernel_headers.patch",
+      "sha256": "9b950f10217ea234e9235fa502352faf8686d5269f49aad329db4a5440cf9e96"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/glibc/2.29/0001-Add-ARC-architecture.patch",
+      "sha256": "69e8f372d9e2da23b4a70f7c45fc86d52b1929241837203917bae340c62d8340"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/glibc/2.30/0001-Add-ARC-architecture.patch",
+      "sha256": "02d081df3c5224caa5ae954a2a7f9086042b79bb9782c1729d2d7b25f2b771fa"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/glibc/2.25/0004-sh4-trap-divdi3.patch",
+      "sha256": "7f1e7ff05d8663fdbac51dae7d00b4bab14b9af35e73b63c68e544c1c7438128"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/gcc-oracle/git-dbf713b5/0001-Fix-compiler-error.patch",
+      "sha256": "5aa672e041c58c9f117fb04a6d454a2eec75b6b3cc55243630f21c73ecba8fd6"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/uClibc-ng/1.0.38/0000-include-sys-personality-h-resync-with-glibc.patch",
+      "sha256": "0ae100180e8fa5ba28a6c0cde691536d5d251fb736c5730e9cc0578fbc07349d"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/uClibc-ng/1.0.27/0003-feraiseexcept.patch",
+      "sha256": "da96a22b22c8ba5a313b51d6dcb849a20c76338c001976940419cc0fa48f01ea"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/binutils-oracle/git-43eccdca/0000-Fix-a-missing-include-of-string.patch",
+      "sha256": "1f0c03f0d9a57a4c512c35ddd31f723d23a112f4c2f08a2fc8b48a4a9f866ada"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/binutils-oracle/git-0b79182e/0001-binutils-gdb-oracle-backport.patch",
+      "sha256": "b56fc784a0bc416cf9b5ed9de7667a4d3656bf0df455a462033968e8574921eb"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/binutils-oracle/git-461776a5/0000-Fix-a-missing-include-of-string.patch",
+      "sha256": "1f0c03f0d9a57a4c512c35ddd31f723d23a112f4c2f08a2fc8b48a4a9f866ada"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/packages/binutils-oracle/git-889339ab/0000-Fix-a-missing-include-of-string.patch",
+      "sha256": "1f0c03f0d9a57a4c512c35ddd31f723d23a112f4c2f08a2fc8b48a4a9f866ada"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/maintainer/git-version-gen",
+      "sha256": "8fc63c964408afb0508d934475554c779ee55a815c8cf690e268be1d331fdd6b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/docs/ct-ng.1.in",
+      "sha256": "c59cadb7b5e46640fefded796d0883d157209ec5f3bc154a31d858d3c77865f8"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lxdialog/menubox.c",
+      "sha256": "f74cf92839ff656ae396be05aeeaa4a69088f2127694e520ad23d61cbf5520f2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lxdialog/checklist.c",
+      "sha256": "986fde26478c42117f9ae1b4d24c146eb050416745eaf9bc8e6ba6bd9b3d89a4"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lxdialog/yesno.c",
+      "sha256": "e12cfa9f2c56a83771b38acd2914094dd62f1453e0362bea80d510abf0619984"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lxdialog/util.c",
+      "sha256": "e3a736573bbec59bb71818d1958a550f8aac83a428f52818f61d61dc96b18fd2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lxdialog/inputbox.c",
+      "sha256": "0a025a35e44e693852e98f1784d62b98b8ab99f9c15fe090e99c624984e40736"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lxdialog/textbox.c",
+      "sha256": "5511d33704a7f9a3b31eb158d7110592cdf9a1f2c26be9f03adc10701e93a638"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lxdialog/dialog.h",
+      "sha256": "886c891adbdcff012a522d3f6cfc322ccb67bc386c62ec0e9c7bc3a601f451a2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/menu.c",
+      "sha256": "b2f695b6546daba8641ec941cef3373d9d829a852aaef772cd4294f5d1798111"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/conf.c",
+      "sha256": "6b056c11015becd6e7bdfa2ba507ed9fdbb8222f6924c8389144fcecbce7bcb2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/nconf.h",
+      "sha256": "db9ba00f830ff6d466104d694134d28c7d737ef5414837c3ce60234228d8f695"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/list.h",
+      "sha256": "fc686618be614e481ef6bfdce9d33f97dde4e94682ec57af1138122c48a2df3b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/mconf.c",
+      "sha256": "b788f23b88cc7e64c88a2451a8a06cd5f6fbc2062b74cf5685addb75233d994b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lkc_proto.h",
+      "sha256": "4dacca90bc95cedc9717c461027c85d85f41a3d26345132ec4eb0d24b903b9a9"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/nconf.gui.c",
+      "sha256": "617fdd95cd5f817c11bd946e0731edeb4cca3a5e7ab93c63d825b99baa85a317"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lexer.l",
+      "sha256": "e7d66611f24df6266beb9d1637abb2341f7c7d37e05a4c294f1123b2828536f5"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/util.c",
+      "sha256": "9b7bd15ea7ca395c4d23595a40b43e4544c7ae4fa5f04d817c9b5c78bb87147b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/symbol.c",
+      "sha256": "3d1c4ca6cd4b9ed6ec2015adbd4ca1d1fab89383494e3eaf1bb8799f288ad01b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/preprocess.c",
+      "sha256": "27ffac30ed07813b01a078c7adda5401f4784c526fd6cf031ea7657d836c43e0"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/lkc.h",
+      "sha256": "01937064b98c3f7527b4b33435d353eeb93fc4eeb82dc94bb94ce5e9304bc830"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/expr.h",
+      "sha256": "c08024c21a18d64638762960d2af34d4e9eb0315a16516c1f9eb06949758b9a6"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/expr.c",
+      "sha256": "250da210808c8bee3698fb77402343e5fde4e35c43f09fe713a15001716555e8"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/nconf.c",
+      "sha256": "31d8fa60e50aaf8d2e1db34fb7df4dedf9b08e922a6ab6ca59f4dc72a74e0242"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/confdata.c",
+      "sha256": "bc141e8ec5b73298fd7bc78fa678703f1fefaeaa146fb6ad479f90c15e8a49b9"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/kconfig/parser.y",
+      "sha256": "1d0dd3b905a05c628e1af09a98e2d7db44d6ff2c067bb1852a40350614ba54d5"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/contrib/gcc-test-suite/Makefile",
+      "sha256": "211962da02e5dccaacb151d879d9c7a351433d05c5ce79baeff22971490cf11b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/licenses.d/gpl.txt",
+      "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/licenses.d/lgpl.txt",
+      "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/COPYING",
+      "sha256": "07bc0ccd386469c748c4cf6c8faca5667fbf8c4400386714287fa233acfd68ba"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/config.sub",
+      "sha256": "0114ee98bffafc27c4d48abea22b6a542fa6fe45c949ca0d2ea1999d395f4197"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/depcomp",
+      "sha256": "786149ab4493e86b837077ebaecab65ef6230ae8a619b17fa5c1695564a427e9"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/functions",
+      "sha256": "70ec121ffd154f5b7ec0f03e5171cd732aaaf74a8f6f74a5d58355cb6dc08dbe"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/compile",
+      "sha256": "41856428226c049fa0ea4ca7a574c28416de2769b55ed7feea4ab5e60283af16"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/crosstool-NG.sh",
+      "sha256": "8df4b16b1d6f57a908ca20db9fdb78badf2d84b5159f9533c9bb0d286749555d"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/install-sh",
+      "sha256": "fb968adf6c7fa83071ad294c8a5a13a63c92a8f109f78bae51a80d6eee59990d"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/config.guess",
+      "sha256": "36b03244d5bc0fee6c3b69013d2d4fe3027ae7e05e1dd566dbbd84a3639c3ca9"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/missing",
+      "sha256": "b1a337b731bbb58846d31ca2f5143c293a455fa41b481e236e89a9016d96b034"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/cc/gcc.sh",
+      "sha256": "61f7d967f99a386502c4dc935be24d00b843ddbdb62151c4ca7fca53c7599ffe"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/test_suite/gcc.sh",
+      "sha256": "80283d743dc87f8f8dd9223a09f480a6376018502b9987eb858bf4db83328f30"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/kernel/linux.sh",
+      "sha256": "b36a7e655cbb337cf43ebcb6f298dd0484534c25d9a1079e0eb44b6d6fc81bf0"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/kernel/windows.sh",
+      "sha256": "d842edd1c6a2b5ccf6c15b4355f5ee6ccbdff330e01be6f2209a02e6c30794a9"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/kernel/bare-metal.sh",
+      "sha256": "b3ad7809dafa219eaa67958922eba644adafe9a0f9dd5165b916b0ab11b34915"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/binutils/binutils.sh",
+      "sha256": "87b9f60b530fe5745f96bcd0914f0191b672c70c2dea7278ce8d23d974c2ef6c"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/debug/duma.in",
+      "sha256": "82cd13e33113a2b5d1b41fb5f4ea697bc5153a9941157f56e60714bc4d7628e4"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/libc/picolibc.sh",
+      "sha256": "1a8baa4163e7be56c4fb58640fa0f5a1e55bf0f389ba72670389f1dca4c7a804"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/libc/mingw-w64.sh",
+      "sha256": "c6687964beb90cadd6bcad6908b234a9687a0576ea45d56ddde711a20f8f33d8"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/libc/none.sh",
+      "sha256": "c21c56c49cc79a1dab5ec410bed69f856557eedf67f2ec20ac9aa93dbfbbfa8b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/libc/musl.sh",
+      "sha256": "da5f14beea38b6ae2e15eff2844f5c5ad400e103f6b131faaf3a8b686b31aad2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/libc/glibc.sh",
+      "sha256": "d9750c85eccf616b2eaea1a0b37aac9eba52a3b792240fdf838bd1a6f659a224"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/libc/uClibc-ng.sh",
+      "sha256": "2e93276b57f599c19a6be2761ccfe2ef0d555ccf24960390a6828f3c78dd6921"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/libc/newlib.sh",
+      "sha256": "115aa95fc2c28a0e0a4baf1b961cbde5808aa417398dec251facbfe2a09f021b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/070-zstd.sh",
+      "sha256": "23b6e5d84319bfd2c47435b1d0ad2f88e5ae82ba72aff6db0231d61d44159948"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/130-cloog.sh",
+      "sha256": "e84ef4b760f7602473869581dc220b474d9b782aaf552acf3b83bee626f229f2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/121-isl.sh",
+      "sha256": "5325d1411d3a6ba3e8ac259a6a2232755eb5562f1f27918449912786b3010ab2"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/140-mpc.sh",
+      "sha256": "25bef37fc5427eacc51c9f7e392a7bbc78afe4fe4faecbfae7382546ff7a0141"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/350-newlib_nano.sh",
+      "sha256": "3f7bbb0cb23f0c863357deebf1424e7542c04a2f5e873d638ca8f54c5a8ad4d7"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/340-picolibc.sh",
+      "sha256": "cab70e186d0486958ea576eb6fc82c625bec9727732f400607a4092c6e8d891c"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/110-mpfr.sh",
+      "sha256": "08a4cbb6b6c58c8313c5383da781384b6246f1ae1fcbc336ba6ef3ff4aae099b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/050-zlib.sh",
+      "sha256": "37615d4be699870b32ff02e83168a23a76a231d45d5ba3cdbe72834ba39f41e6"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/build/companion_libs/100-gmp.sh",
+      "sha256": "2b1996b23a311fb0aa4ff5158516ef79cf15a232b1617893480adffed71b205b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/xldd.in",
+      "sha256": "3a470f1afbbb03ff5bef3f484c7200e31059f56bf1da0b14a33aa49ffd0fa0b0"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/scripts/populate.in",
+      "sha256": "6e29c463ab34b532de9f323bb05d932be46a5d1f293ff1503310dd6321449c21"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/intlmacosx.m4",
+      "sha256": "fa6e64ba32baf3288d18c332fc4cc3746fc52de51a908d6fe8ed65a50445815f"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/ax_build_date_epoch.m4",
+      "sha256": "eb76350e7845beebe86c8fccdbde383099f3c103d5543d2bace0cf2e4135c45f"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/gettext.m4",
+      "sha256": "6b8ca63d019cf362cfeb9d4b52e7d431b4feb14d5f3f03f97bef824319c0375b"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/nls.m4",
+      "sha256": "f20554b3126292f1b1282ad31f219f52abe520e7ac53782944f54cc901e5c7d7"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/ax_prog_bison.m4",
+      "sha256": "509eb60ac76184cf2f14578eff9943b507cb6819c9139521a59128cf0d7cf081"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/pkg.m4",
+      "sha256": "2340c47bd61411faf6c8eed0a05403e5edc646c50408548b69db6360ced77dee"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/ax_with_curses.m4",
+      "sha256": "21c84a94e7ec559db222c59fde4d32f2e60982fdcb620915ba2f6093990cc14e"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/ax_with_curses_extra.m4",
+      "sha256": "ea23c8354c90ddab455157a8a9a9d769297bd96425e6de2fa064f02bf1db940f"
+    },
+    {
+      "member": "crosstool-ng-1.26.0/m4/ctng_python.m4",
+      "sha256": "fef73b6d06f543f4b642f35fb2ea8c466800e296cae6c8a3b42b3f4e3f04ff07"
+    }
+  ],
+  "inspection_method": "Read the five full declared originals and tool/Kconfig grants. Inspect original patch scopes and all unique added rights/copyright lines, preserving original files byte-for-byte; this is license-scope review, not a code review of all patch behavior.",
+  "required_notice_files": [
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "LICENSES/GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "LICENSES/LGPL-2.1.txt",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    },
+    {
+      "path": "LICENSES/GCC-runtime-exception-3.1.txt",
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+    }
+  ],
+  "scope": "Exact crosstool-ng 1.26.0 source only. All five original declared legal notices read and hash-verified. First-party and imported Kconfig/build-script grants inspected, retaining GPL version and Autoconf exception differences. Added copyright/permission lines in bundled patches inspected after exact-line deduplication; original per-file and upstream-patch scopes remain unchanged. No complete SDK binary reproduction or parent OS clearance is inferred.",
+  "conditions": [
+    "Retain complete original COPYING, GNU GPL/LGPL texts, CC-BY-SA-2.5 legalcode/deed, every source copyright and original per-file license/exception notice. Documentation remains CC-BY-SA-2.5 with author/title/source attribution, share-alike, change notices and no additional restrictions.",
+    "Supply exact complete crosstool-ng source, local patches, configuration and all build/install scripts needed for the accompanying toolchain. Each separately downloaded toolchain source remains independently inventoried and licensed; this decision does not approve a new downloaded input.",
+    "Root code is GPL-2 unless otherwise stated; retain GPL-2-or-later Kconfig/contributed files, GPL-3-or-later git-version-gen/config helpers and macros, original Autoconf exceptions, X Consortium install-sh grant and FSF permissive gettext macro grants.",
+    "Bundled patches inherit the licenses of their respective upstream code; do not relicense them all as root GPL-2. Retain GNU GPL-3/GCC Runtime Library Exception 3.1 scopes, GNU LGPL-2.1 glibc/GMP/uClibc code and linking exceptions, and MIT-style ncurses scopes with original notices and full applicable license texts.",
+    "Preserve all third-party authorship, warranty disclaimers and nonendorsement conditions. The GCC exception applies only to explicitly covered files and eligible compilation processes, without weakening GCC copyleft."
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
