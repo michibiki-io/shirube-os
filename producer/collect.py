@@ -327,6 +327,15 @@ def verify_distribution_notices(rootfs, project):
             raise ValueError('Required distributor notice is absent or differs in the image')
 
 
+def salt_version_input(rootfs, expected):
+    """Keep upstream's supported version stamp when Git history is omitted."""
+    stamp=path_in_root(rootfs,'opt/saltstack/salt/lib/python3.11/site-packages/salt/_version.txt')
+    if (not re.fullmatch(r'[0-9]+\.[0-9]+(?:\.[0-9]+)?(?:\+[0-9]+\.g[0-9a-f]+)?',expected)
+            or not stamp.is_file() or stamp.is_symlink() or stamp.read_text().strip()!=expected):
+        raise ValueError('Installed Salt source version stamp is missing or differs')
+    return stamp
+
+
 def collect(rootfs, package_output, output, arch, version, work):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
     verify_distribution_notices(rootfs,Path('/src'))
@@ -440,6 +449,11 @@ def collect(rootfs, package_output, output, arch, version, work):
             else:
                 source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind in {'vyos-1x','salt'} else files(source)
             if kind=='salt':
+                # Salt normally discovers the exact +0.g<revision> from Git.
+                # Its upstream-supported _version.txt preserves that identity
+                # in a reconstruction without distributing repository history.
+                inputs.append((salt_version_input(rootfs,source_version),
+                               'source/salt/_version.txt','sources'))
                 # Build virtualenvs and generated SDK archives are not the
                 # preferred Salt source. Keep the tracked input and the exact
                 # separately pinned packaging-tool source instead.

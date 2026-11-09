@@ -10,6 +10,18 @@ import subprocess
 
 
 class ComponentInventoryTests(unittest.TestCase):
+    def test_salt_version_stamp_must_match_the_shipped_source_version(self):
+        from producer.collect import salt_version_input
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);(root/'etc').mkdir()
+            path=root/'opt/saltstack/salt/lib/python3.11/site-packages/salt/_version.txt'
+            path.parent.mkdir(parents=True);path.write_text('3006.21+0.ge35fd3e')
+            self.assertEqual(salt_version_input(root,'3006.21+0.ge35fd3e').read_text(),'3006.21+0.ge35fd3e')
+            for content in ['3006.21','3006.21+0.ge35fd3e\nextra state']:
+                path.write_text(content)
+                with self.assertRaisesRegex(ValueError,'version stamp'):
+                    salt_version_input(root,'3006.21+0.ge35fd3e')
+
     def test_kea_export_keeps_preferred_code_and_prepared_recipes_without_build_state(self):
         from producer.collect import kea_source_files
         with tempfile.TemporaryDirectory() as temporary:

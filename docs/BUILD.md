@@ -405,3 +405,15 @@ runtime指定は今回のコンテナーだけへ渡し、Docker全体の設定�
 Actionsの設定はアーキテクチャ別に選択し、片方の値をもう片方へ流用しません。
 初期設定値はCPU 4・メモリー8 GiBです。資源不足や選択方式の未対応時は停止し、
 別のrunner・方式へ自動で切り替えません。
+
+## Salt source version reconstruction
+
+Salt's prepared source discovers its exact release revision from Git. Omitting
+repository history without preserving upstream's supported version stamp changes
+this input's reported version to 3007.0. The collector now retains the actual
+installed `salt/_version.txt`, requiring an exact match to the shipped source
+version. Restoring that file alongside the unchanged `salt/version.py` recovers
+3006.21+0.ge35fd3e without Git history. [Actual component evidence](evidence/diagnostic-salt-version-reconstruction.json)
+records both the incorrect unstamped result and the restored result. This closes
+a version reconstruction gap, not the remaining SDK/whole-OS reconstruction or
+license gates.
