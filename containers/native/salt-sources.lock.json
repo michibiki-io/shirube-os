@@ -982,6 +982,28 @@
         {
           "member": "pyzmq-23.2.0/examples/LICENSE",
           "sha256": "5997ba33555177ed11df98ff6ac17ec6b47541e207babf651012e803e4db6433"
+        },
+        {
+          "member": "pyzmq-23.2.0/bundled/zeromq/include/zmq.h",
+          "sha256": "0ed647adecd9675ee571b518f17b0980f2904ad46b6e271c62bdaedcbfed6cd6",
+          "prefix_bytes": 1907,
+          "notice_sha256": "9e6dac93862fd2c33ec13ae7cfe25a0658d6ca9f4372a3602f974586ec98762d"
+        }
+      ],
+      "extra_sources": [
+        {
+          "url": "https://codeload.github.com/zeromq/libzmq/tar.gz/refs/tags/v4.3.4",
+          "sha256": "0ff5a531c9ffaf0dfdc7dc78d13d1383088f454896d252934c429b2554d10559",
+          "notices": [
+            {
+              "member": "libzmq-4.3.4/AUTHORS",
+              "sha256": "98394f054c7dd7437e4e37fc15f1ae0d2fde20ee7e922d203bafc498f3074f9c"
+            },
+            {
+              "member": "libzmq-4.3.4/COPYING.LESSER",
+              "sha256": "83f32abe61ee58ffb1b007412c08415168c052501dbf56d7a47aaaac52b03ef6"
+            }
+          ]
         }
       ]
     },

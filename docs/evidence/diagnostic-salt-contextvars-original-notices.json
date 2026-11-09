@@ -1,0 +1,13 @@
+{
+  "kind": "exact-sdk-current-lock-original-notice-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "name": "pypi:contextvars",
+  "version": "2.4",
+  "source_identity": "f38c908aaa59c14335eeea12abea5f443646216c4e29380d7bf34d2018e2c39e",
+  "copyright_sha256": "30891a8757b30258ca031d47d3befecfb0ea773cb5ea2a6b4c96b6b1d1928b1b",
+  "notice_member": "salt-sdk/notices/f38c908aaa59c14335eeea12abea5f443646216c4e29380d7bf34d2018e2c39e.copyright",
+  "copied_test_header": "Tests copied from cpython/Lib/test/test_context.py, PSFL, Copyright 2018 Python Software Foundation",
+  "cpython_original_license_sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
