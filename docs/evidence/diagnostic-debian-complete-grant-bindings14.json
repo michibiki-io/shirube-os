@@ -1,0 +1,770 @@
+{
+  "kind": "exact-debian-complete-grant-and-path-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 7,
+  "components": [
+    {
+      "source": "dpkg",
+      "version": "1.21.23",
+      "dsc_sha256": "1c126e21ec723002e767d8e7855793d5b26aab024295924db0835b4fd707ed6a",
+      "binaries": [
+        {
+          "name": "dpkg",
+          "version": "1.21.23",
+          "architecture": "arm64",
+          "copyright_sha256": "7442bdadcd44e818fddd786057db07639cc68225c389c7c240d3bb3984b05173"
+        },
+        {
+          "name": "libdpkg-perl",
+          "version": "1.21.23",
+          "architecture": "all",
+          "copyright_sha256": "7442bdadcd44e818fddd786057db07639cc68225c389c7c240d3bb3984b05173"
+        }
+      ],
+      "copyright_sha256": "7442bdadcd44e818fddd786057db07639cc68225c389c7c240d3bb3984b05173",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "tests/t-filtering/pkg-somefiles/test/share/doc/pkg-somefiles/copyright",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "read_reference": {
+            "component": "dpkg",
+            "member": "tests/t-filtering/pkg-somefiles/test/share/doc/pkg-somefiles/copyright",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "public-domain-s-s-d",
+          "full_normalized_body_sha256": "14e9224afb850faf46e5b626423d61e4c691cdbf06ca70e22d3417965e0ec683",
+          "read_reference": {
+            "component": "dpkg",
+            "label": "public-domain-s-s-d"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "2d81c57e6b2fd1a65070151ce76ba6cd656f1c67e072cb55bac5efbc970163ae",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "pci.ids"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "84138cdcc574c7188a70a246a5b0f08480c4fea3f03b05c0737fb150bf55edf4",
+          "read_reference": {
+            "component": "dpkg",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "9bf4fb827d840121d347eae8706683bc7d1972314ca57e024c64f687b76b7433",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "debconf"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "dpkg"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\nCopyright \u00a9 1994 Ian Murdock <imurdock@debian.org>\nCopyright \u00a9 1994 Matt Welsh <mdw@sunsite.unc.edu>\nCopyright \u00a9 1994 Carl Streeter <streeter@cae.wisc.edu>\nCopyright \u00a9 1994-1999, 2007-2008 Ian Jackson <ijackson@chiark.greenend.org.uk>\nCopyright \u00a9 1995 Bruce Perens <bruce@pixar.com>\nCopyright \u00a9 1995-1996 Erick Branderhorst <branderhorst@heel.fgg.eur.nl>\nCopyright \u00a9 1996 Michael Shields <shields@crosslink.net>\nCopyright \u00a9 1996 Klee Dienes <klee@debian.org>\nCopyright \u00a9 1996 Kim-Minh Kaplan <kkaplan@cdfhp3.in2p3.fr>\nCopyright \u00a9 1996-1998 Miquel van Smoorenburg <miquels@cistron.nl>\nCopyright \u00a9 1997-1998 Charles Briscoe-Smith <cpbs@debian.org>\nCopyright \u00a9 1997-1998 Juho Vuori <javuori@cc.helsinki.fi>\nCopyright \u00a9 1998 Koichi Sekido <sekido@mbox.kyoto-inet.or.jp>\nCopyright \u00a9 1998 Jim Van Zandt <jrv@vanzandt.mv.com>\nCopyright \u00a9 1998 Juan Cespedes <cespedes@debian.org>\nCopyright \u00a9 1998 Nils Rennebarth <nils@debian.org>\nCopyright \u00a9 1998 Heiko Schlittermann <hs@schlittermann.de>\nCopyright \u00a9 1998-1999, 2001, 2003, 2006 Martin Schulze <joey@infodrom.org>\nCopyright \u00a9 1999 Roderick Shertler <roderick@argon.org>\nCopyright \u00a9 1999 Ben Collins <bcollins@debian.org>\nCopyright \u00a9 1999 Richard Kettlewell <rjk@sfere.greenend.org.uk>\nCopyright \u00a9 1999-2001 Marcus Brinkmann <brinkmd@debian.org>\nCopyright \u00a9 1999-2002 Wichert Akkerman <wakkerma@debian.org>\nCopyright \u00a9 2001, 2007, 2010 Joey Hess <joeyh@debian.org>\nCopyright \u00a9 2004-2005, 2007-2008, 2010 Canonical Ltd.\nCopyright \u00a9 2004-2005 Scott James Remnant <scott@netsplit.com>\nCopyright \u00a9 2006-2008 Frank Lichtenheld <djpig@debian.org>\nCopyright \u00a9 2006-2023 Guillem Jover <guillem@debian.org>\nCopyright \u00a9 2007-2012, 2014, 2016 Rapha\u00ebl Hertzog <hertzog@debian.org>\nCopyright \u00a9 2007 Nicolas Fran\u00e7ois <nicolas.francois@centraliens.net>\nCopyright \u00a9 2007 Don Armstrong <don@donarmstrong.com>\nCopyright \u00a9 2007 Colin Watson <cjwatson@debian.org>\nCopyright \u00a9 2007, 2008 Tollef Fog Heen <tfheen@err.no>\nCopyright \u00a9 2007-2010 Canonical Ltd.\nCopyright \u00a9 2008 James Westby <jw+debian@jameswestby.net>\nCopyright \u00a9 2008 Zack Weinberg <zackw@panix.com>\nCopyright \u00a9 2008 Pierre Habouzit <madcoder@debian.org>\nCopyright \u00a9 2009 Romain Francoise <rfrancoise@debian.org>\nCopyright \u00a9 2009-2010 Modestas Vainius <modax@debian.org>\nCopyright \u00a9 2009-2011 Kees Cook <kees@debian.org>\nCopyright \u00a9 2010 Charles Plessy <plessy@debian.org>\nCopyright \u00a9 2010 Oxan van Leeuwen <oxan@oxanvanleeuwen.nl>\nCopyright \u00a9 2010 Russ Allbery <rra@debian.org>\nCopyright \u00a9 2011 Linaro Limited\nCopyright \u00a9 2011 Matt Kraai <kraai@ftbfs.org>\nCopyright \u00a9 2014 Bill Allombert <ballombe@debian.org>\nCopyright \u00a9 2014-2015 J\u00e9r\u00e9my Bobbio <lunar@debian.org>\nCopyright \u00a9 2020 Helmut Grohne <helmut@subdivi.de>\nCopyright \u00a9 2021 Sebastian Andrzej Siewior <sebastian@breakpoint.cc>"
+        },
+        {
+          "Files": "\nlib/compat/getopt*\nlib/compat/gettext.h\nlib/compat/obstack.*\nlib/compat/strnlen.c",
+          "Copyright": "\nCopyright \u00a9 1987-2006 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "\ndselect/methods/Dselect/Ftp.pm\ndselect/methods/ftp/*",
+          "Copyright": "\nCopyright \u00a9 1996 Andy Guy <awpguy@acs.ucalgary.ca>\nCopyright \u00a9 1998 Martin Schulze <joey@infodrom.org>\nCopyright \u00a9 1999-2001, 2005-2006, 2009 Rapha\u00ebl Hertzog <hertzog@debian.org>"
+        },
+        {
+          "Files": "\nscripts/Dpkg/Gettext.pm",
+          "Copyright": "\nCopyright \u00a9 2000 Joey Hess <joeyh@debian.org>\nCopyright \u00a9 2007-2022 Guillem Jover <guillem@debian.org>"
+        },
+        {
+          "Files": "\nutils/start-stop-daemon.c",
+          "Copyright": "\nCopyright \u00a9 1999 Marek Michalkiewicz <marekm@i17linuxb.ists.pwr.wroc.pl>\nCopyright \u00a9 1999 Christian Schwarz <schwarz@monet.m.isar.de>\nCopyright \u00a9 1999 Klee Dienes <klee@debian.org>\nCopyright \u00a9 1999 Ben Collins <bcollins@debian.org>\nCopyright \u00a9 1999-2002 Wichert Akkerman <wakkerma@debian.org>\nCopyright \u00a9 2000-2003 Adam Heath <doogie@debian.org>\nCopyright \u00a9 2001 Sontri Tomo Huynh <huynh.29@osu.edu>\nCopyright \u00a9 2001 Andreas Schuldei <andreas@schuldei.org>\nCopyright \u00a9 2001 Ian Jackson <ijackson@chiark.greenend.org.uk>\nCopyright \u00a9 2004-2005 Scott James Remnant <keybuk@debian.org>\nCopyright \u00a9 2006-2021 Guillem Jover <guillem@debian.org>\nCopyright \u00a9 2008 Samuel Thibault <samuel.thibault@ens-lyon.org>\nCopyright \u00a9 2008 Andreas P\u00e5hlsson <andreas.pahlsson@xcerion.com>\nCopyright \u00a9 2009 Chris Coulson <chrisccoulson@googlemail.com>\nCopyright \u00a9 2012 Carsten Hey <carsten@debian.org>\nCopyright \u00a9 2014 Nir Soffer <nirs@hyperms.com>"
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public License\ncan be found in \u2018/usr/share/common-licenses/GPL-2\u2019 or in the dpkg source\nas the file \u2018COPYING\u2019."
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "file",
+      "version": "1:5.44-3",
+      "dsc_sha256": "842e0ef356949218966d1521a95652b00aed18c152174ffc7e000cc3d79501e4",
+      "binaries": [
+        {
+          "name": "file",
+          "version": "1:5.44-3",
+          "architecture": "arm64",
+          "copyright_sha256": "96c8c6ab85931f81120eb40d42f3c40c76ee328d024cfc7ae31acaa99971d54c"
+        },
+        {
+          "name": "libmagic-mgc",
+          "version": "1:5.44-3",
+          "architecture": "arm64",
+          "copyright_sha256": "96c8c6ab85931f81120eb40d42f3c40c76ee328d024cfc7ae31acaa99971d54c"
+        },
+        {
+          "name": "libmagic1",
+          "version": "1:5.44-3",
+          "architecture": "arm64",
+          "copyright_sha256": "96c8c6ab85931f81120eb40d42f3c40c76ee328d024cfc7ae31acaa99971d54c"
+        }
+      ],
+      "copyright_sha256": "96c8c6ab85931f81120eb40d42f3c40c76ee328d024cfc7ae31acaa99971d54c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "0bfa856a9930bddadbef95d1be1cf4e163c0be618e76ea3275caaf255283e274",
+          "read_reference": {
+            "component": "file",
+            "member": "COPYING",
+            "sha256": "0bfa856a9930bddadbef95d1be1cf4e163c0be618e76ea3275caaf255283e274",
+            "method": "Entire copyright/scope prefix read; complete operative body normalized-word-identical to a separately read complete original",
+            "read_reference": {
+              "component": "file",
+              "member": "python/LICENSE",
+              "sha256": "9d402e401ecfd65d9c600cf84ecb317aba1c5c6fcb788dd79af94fd1fdc527a8",
+              "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+            }
+          }
+        },
+        {
+          "member": "python/LICENSE",
+          "sha256": "9d402e401ecfd65d9c600cf84ecb317aba1c5c6fcb788dd79af94fd1fdc527a8",
+          "read_reference": {
+            "component": "file",
+            "member": "python/LICENSE",
+            "sha256": "9d402e401ecfd65d9c600cf84ecb317aba1c5c6fcb788dd79af94fd1fdc527a8",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-2-Clause-alike",
+          "full_normalized_body_sha256": "79bdad12dfce2e7d81a0a3e421acefe03e0ed29aee8ab1a6ec7dbe73a8e5bb00",
+          "read_reference": {
+            "component": "file",
+            "label": "BSD-2-Clause-alike"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "39fd22f57cb23ceb212244417560344cebdc231fcabd4ec7939470a5808955a5",
+          "read_reference": {
+            "component": "file",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "BSD-2-Clause-netbsd",
+          "full_normalized_body_sha256": "74660eacbafe01a8e9b170e4a2553e3209ec3b3f33757d9a6429b3704ecc0aad",
+          "read_reference": {
+            "component": "file",
+            "label": "BSD-2-Clause-netbsd"
+          }
+        },
+        {
+          "label": "BSD-2-Clause-regents",
+          "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "dash"
+          }
+        },
+        {
+          "label": "MIT-Old-Style-with-legal-disclaimer-2",
+          "full_normalized_body_sha256": "15824d08efdd156a65aeb2cce9fd7ee914b2adc5231f5f2a26d998c8ccf05214",
+          "read_reference": {
+            "label": "ISC",
+            "component": "libfido2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "file",
+          "Upstream-Contact": "https://bugs.astron.com/my_view_page.php",
+          "Source": "ftp://ftp.astron.com/pub/file/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1985-1995 Ian F. Darwin\n1994-2016 Christos Zoulas <christos@zoulas.com>"
+        },
+        {
+          "Files": "\nsrc/apprentice.c\nsrc/ascmagic.c\nsrc/asprintf.c\nsrc/compress.c\nsrc/dprintf.c\nsrc/encoding.c\nsrc/file.c\nsrc/fsmagic.c\nsrc/is_tar.c\nsrc/print.c\nsrc/softmagic.c\nsrc/vasprintf.c",
+          "Copyright": "\nIan F. Darwin 1986-1995.\nmaintained 1995-present by Christos Zoulas and others."
+        },
+        {
+          "Files": "\nsrc/funcs.c\nsrc/magic.c\nsrc/readelf.c\ntests/test.c",
+          "Copyright": "2003 Christos Zoulas"
+        },
+        {
+          "Files": "\nsrc/apptype.c",
+          "Copyright": "Eberhard Mattes"
+        },
+        {
+          "Files": "\nsrc/cdf.c\nsrc/cdf_time.c\nsrc/der.c\nsrc/der.h\nsrc/readcdf.c",
+          "Copyright": "2008 Christos Zoulas"
+        },
+        {
+          "Files": "\nsrc/getline.c",
+          "Copyright": "2011 The NetBSD Foundation, Inc."
+        },
+        {
+          "Files": "\nsrc/fmtcheck.c\nsrc/getopt_long.c",
+          "Copyright": "2000 The NetBSD Foundation, Inc."
+        },
+        {
+          "Files": "\nsrc/strcasestr.c",
+          "Copyright": "1990, 1993 The Regents of the University of California"
+        },
+        {
+          "Files": "\nsrc/strlcat.c\nsrc/strlcpy.c",
+          "Copyright": "1998 Todd C. Miller <Todd.Miller@courtesan.com>"
+        },
+        {
+          "Files": "\ndebian/*",
+          "Copyright": "\n2007-2013 Daniel Baumann <mail@daniel-baumann.ch>\n2014-2023 Christoph Biedl <debian.axhn@manchmal.in-ulm.de>"
+        },
+        {
+          "Comment": "Extra clause about copyright placement \"immediately at the\nbeginning of the file, without modification\"."
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "golang-github-containers-common",
+      "version": "0.50.1+ds1-4",
+      "dsc_sha256": "7590d6876d1ac67cea624af1034d430d9cba8ec3519d047461f7631f06039787",
+      "binaries": [
+        {
+          "name": "golang-github-containers-common",
+          "version": "0.50.1+ds1-4",
+          "architecture": "all",
+          "copyright_sha256": "3d0c046cfbe6ed3f07c4cd422e89fb9e7b1b5a57c0974e32e2fbcb3a488d802c"
+        }
+      ],
+      "copyright_sha256": "3d0c046cfbe6ed3f07c4cd422e89fb9e7b1b5a57c0974e32e2fbcb3a488d802c",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+          "read_reference": {
+            "component": "liblist-moreutils-perl",
+            "member": "LICENSE",
+            "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+          }
+        },
+        {
+          "member": "debian/license-reconcile.yml",
+          "sha256": "97c2db2a723de45e5cd1bced622103b89dc81a010cdd7c4b0b0e937504aa36ee",
+          "read_reference": {
+            "component": "golang-github-containers-common",
+            "member": "debian/license-reconcile.yml",
+            "sha256": "97c2db2a723de45e5cd1bced622103b89dc81a010cdd7c4b0b0e937504aa36ee",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        },
+        {
+          "member": "pkg/report/camelcase/LICENSE.md",
+          "sha256": "b2ffbe485b8e503f07853fbdfa79a51b0d2902f9d44e18d913666b6ddde83b57",
+          "read_reference": {
+            "component": "golang-github-containers-common",
+            "member": "pkg/report/camelcase/LICENSE.md",
+            "sha256": "b2ffbe485b8e503f07853fbdfa79a51b0d2902f9d44e18d913666b6ddde83b57",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "4044f2cfe4e8568b3d7d4b11517e4366079cc5002f191aaed1a4df3374189ffc",
+          "read_reference": {
+            "label": "Apache-2.0",
+            "component": "libfastjson"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "742d315558cd991b0fa4fd76758d2a2de85d44a29d8c89eb99d53fb4e8aa5d83",
+          "read_reference": {
+            "component": "golang-github-containers-common",
+            "label": "Expat"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "common",
+          "Source": "https://github.com/containers/common",
+          "Files-Excluded": "\nvendor"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2018, github.com/containers/common authors"
+        },
+        {
+          "Files": "CONTRIBUTING.md",
+          "Copyright": "2004, 2006, The Linux Foundation and its contributors."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2020, Reinhard Tartler <siretart@tauware.de>",
+          "Comment": "Debian packaging is licensed under the same terms as upstream"
+        },
+        {
+          "Files": "libnetwork/cni/cni_exec.go",
+          "Copyright": "2021, Podman authors\n2016, CNI authors"
+        },
+        {
+          "Files": "libnetwork/util/ip_calc.go",
+          "Copyright": "2015, 2018, CNI authors"
+        },
+        {
+          "Files": "pkg/apparmor/apparmor_linux.go\npkg/apparmor/apparmor_linux_test.go",
+          "Copyright": "2009-2012, Canonical Ltd.\n1999-2008, Novell Inc."
+        },
+        {
+          "Files": "pkg/capabilities/capabilities.go",
+          "Copyright": "2013-2021, Docker, Inc."
+        },
+        {
+          "Files": "pkg/cgroups/systemd.go\npkg/cgroups/systemd_linux.go",
+          "Copyright": "The containerd Authors."
+        },
+        {
+          "Files": "pkg/netns/*",
+          "Copyright": "2015, 2018, CNI authors"
+        },
+        {
+          "Files": "pkg/report/camelcase/*",
+          "Copyright": "2018, github.com/containers/common authors\n2015, Fatih Arslan"
+        },
+        {
+          "Files": "pkg/report/camelcase/README.md\npkg/report/camelcase/camelcase.go",
+          "Copyright": "2018, github.com/containers/common authors"
+        },
+        {
+          "Files": "pkg/resize/*",
+          "Copyright": "2015, The Kubernetes Authors."
+        },
+        {
+          "Files": "pkg/seccomp/default_linux.go\npkg/seccomp/seccomp_linux.go\npkg/seccomp/seccomp_test.go\npkg/seccomp/seccomp_unsupported.go\npkg/seccomp/types.go",
+          "Copyright": "2013-2018, Docker, Inc."
+        },
+        {
+          "Files": "pkg/seccomp/generate.go",
+          "Copyright": "2013-2021, Docker, Inc."
+        },
+        {
+          "Files": "pkg/signal/signal_linux.go\npkg/signal/signal_linux_mipsx.go",
+          "Copyright": "2013-2021, Docker, Inc."
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "golang-github-containers-image",
+      "version": "5.23.1-4",
+      "dsc_sha256": "f4216f28d8793e127cea242ef44532375fa1259eb4553205d8ec4e86bff05334",
+      "binaries": [
+        {
+          "name": "golang-github-containers-image",
+          "version": "5.23.1-4",
+          "architecture": "all",
+          "copyright_sha256": "21a8ef43469107506f71f916dab75ee158835d0f37fadfb57bbf265bf64f6f24"
+        }
+      ],
+      "copyright_sha256": "21a8ef43469107506f71f916dab75ee158835d0f37fadfb57bbf265bf64f6f24",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "716a8b80635c394681e652823e1e42e411ad2d254e1f202403422d74f4b0b106",
+          "read_reference": {
+            "component": "golang-github-containers-image",
+            "member": "LICENSE",
+            "sha256": "716a8b80635c394681e652823e1e42e411ad2d254e1f202403422d74f4b0b106",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "debian/license-reconcile.yml",
+          "sha256": "c2d48896c6ab9c776fef2f94e50e628c185c53d8c5976e5bc3b503cbabb5bfbb",
+          "read_reference": {
+            "component": "golang-github-containers-image",
+            "member": "debian/license-reconcile.yml",
+            "sha256": "c2d48896c6ab9c776fef2f94e50e628c185c53d8c5976e5bc3b503cbabb5bfbb",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "4044f2cfe4e8568b3d7d4b11517e4366079cc5002f191aaed1a4df3374189ffc",
+          "read_reference": {
+            "label": "Apache-2.0",
+            "component": "libfastjson"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "image",
+          "Source": "https://github.com/containers/image"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2016-2019\nAntonio Murdaca <runcom@redhat.com>\nBrandon Philips <brandon.philips@coreos.com>\nMiloslav Trmac <mitr@redhat.com>\nDan Walsh <dwalsh@redhat.com>\nNalin Dahyabhai <nalin@redhat.com>"
+        },
+        {
+          "Files": "CONTRIBUTING.md",
+          "Copyright": "2004, 2006, The Linux Foundation and its contributors."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2019, Reinhard Tartler <siretart@tauware.de>",
+          "Comment": "Debian packaging is licensed under the same terms as upstream"
+        },
+        {
+          "Files": "docker/distribution_error.go\ndocker/distribution_error_test.go",
+          "Copyright": "2022, github.com/distribution/distribution authors."
+        },
+        {
+          "Files": "internal/pkg/platform/platform_matcher.go",
+          "Copyright": "The containerd Authors.\n2012-2017, Docker, Inc."
+        },
+        {
+          "Files": "signature/sigstore/copied.go",
+          "Copyright": "2021, The Sigstore Authors."
+        },
+        {}
+      ]
+    },
+    {
+      "source": "igmpproxy",
+      "version": "0.3-1",
+      "dsc_sha256": "2269f3ddec44a390ac720af120565a95acea852a360ca8e3b1faefdb8b11ff70",
+      "binaries": [
+        {
+          "name": "igmpproxy",
+          "version": "0.3-1",
+          "architecture": "arm64",
+          "copyright_sha256": "d7e2787fc372024785dcf42f108b75c26ec98ff4ad35acd9db23a54abfbbea6d"
+        }
+      ],
+      "copyright_sha256": "d7e2787fc372024785dcf42f108b75c26ec98ff4ad35acd9db23a54abfbbea6d",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "be3d05af93dbbc4650f8d641d8e1bec220af4a729e07ba71e949c25b93a1b4f6",
+          "read_reference": {
+            "component": "igmpproxy",
+            "member": "COPYING",
+            "sha256": "be3d05af93dbbc4650f8d641d8e1bec220af4a729e07ba71e949c25b93a1b4f6",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "02041645bcc302c3f9e00ad07aae5c626e6f2c436e16902ea098a7b8dc7a4e56",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "conntrack-tools"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "b8eb5437e44886e3294922e0a00becc75e38b4b8234d70734f0595b1912b720a",
+          "read_reference": {
+            "component": "igmpproxy",
+            "label": "BSD-3-clause"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "igmpproxy",
+          "Upstream-Contact": "Pali Roh\u00e1r <pali.rohar@gmail.com>",
+          "Source": "https://github.com/pali/igmpproxy"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2002 The Board of Trustees of the Leland Stanford Junior University\n2001 Carsten Schill <carsten@cschill.de>\n2005 Johnny Egeland <johnny@rlo.org>\n2009 Alexey Charkov <alchark@gmail.com>\n2009 Christian Ruppert <idl0r@gentoo.org>\n2009 Conrad Kostecki <ConiKost@gmx.de>\n2009 Constantin Baranov <const@mimas.ru>\n2009 Damjan Cvetko <zobo@users.sourceforge.net>\n2009 Johnny Egeland <johnnyege@users.sourceforge.net>\n2009 Martin Djernaes <djernaes@users.sourceforge.net>\n2017 Pali Roh\u00e1r <pali.rohar@gmail.com>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2016-2017 Pali Roh\u00e1r <pali.rohar@gmail.com>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "iputils",
+      "version": "3:20221126-1+deb12u1",
+      "dsc_sha256": "570f4053315d3c5dcaed6d0902dc9302581c29023eea805dc92bc34199192f07",
+      "binaries": [
+        {
+          "name": "iputils-arping",
+          "version": "3:20221126-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "98d9db67583be21fcd3695b30fde55d9334e83ac07921ee0efc47efffa4e49a1"
+        },
+        {
+          "name": "iputils-ping",
+          "version": "3:20221126-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "98d9db67583be21fcd3695b30fde55d9334e83ac07921ee0efc47efffa4e49a1"
+        }
+      ],
+      "copyright_sha256": "98d9db67583be21fcd3695b30fde55d9334e83ac07921ee0efc47efffa4e49a1",
+      "original_legal_matches": [
+        {
+          "member": "Documentation/LICENSE.BSD3",
+          "sha256": "9acc4bc871a4742550158e3696dcb381953172ef808d04ca248184f9f6322712",
+          "read_reference": {
+            "component": "vpp-inputs",
+            "member": "dpdk-25.07/license/bsd-3-clause.txt",
+            "sha256": "9acc4bc871a4742550158e3696dcb381953172ef808d04ca248184f9f6322712"
+          }
+        },
+        {
+          "member": "Documentation/LICENSE.GPL2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "2c9f29d982c48665c30b3adaf400c048988fd256eb91c691e351eb3b6a8b2036",
+          "read_reference": {
+            "component": "iputils",
+            "member": "LICENSE",
+            "sha256": "2c9f29d982c48665c30b3adaf400c048988fd256eb91c691e351eb3b6a8b2036",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "dash"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "22ceeeecb5eef0e5fca772e7f4ea53bd56fda9b2cb0ca93e8c3a6d533ba03af9",
+          "read_reference": {
+            "component": "iputils",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "0c07f18bb8929649c1b9333e0b6506f3f2cb67b2a42981f744fd6934b5c82567",
+          "read_reference": {
+            "label": "public-domain",
+            "component": "pam"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Comment": "\nThis package was debianized by Anthony Towns <ajt@debian.org> on\nSat, 5 Aug 2000 19:51:36 +1000.\nIt has been maintained for Debian by Noah Meyerhans <noahm@debian.org>\nsince 6 Feb 2001.",
+          "Source": "https://github.com/iputils/iputils",
+          "Upstream-Contact": "Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\nCopyright (c) 1989 The Regents of the University of California.\nAll rights reserved.\n\nThis code is derived from software contributed to Berkeley by\nMike Muuss."
+        },
+        {
+          "Files": "*meson.build",
+          "Copyright": "(c) 2021 Petr Vorel <pvorel@suse.cz>"
+        },
+        {},
+        {
+          "Files": "ipv6.h",
+          "Copyright": "(c) 2020 Petr Vorel <petr.vorel@gmail.com>"
+        },
+        {
+          "Files": "arping.c\ntracepath.c",
+          "Copyright": "Alexey Kuznetsov, <kuznet@ms2.inr.ac.ru>"
+        },
+        {},
+        {
+          "Files": "md5.c",
+          "Copyright": "Colin Plumb"
+        }
+      ]
+    },
+    {
+      "source": "libzstd",
+      "version": "1.5.4+dfsg2-5",
+      "dsc_sha256": "8f602f92b575aa8b5e979196fb6ee82d78f233521dc9636526d3ecba1f63c1b1",
+      "binaries": [
+        {
+          "name": "libzstd1",
+          "version": "1.5.4+dfsg2-5",
+          "architecture": "arm64",
+          "copyright_sha256": "35e85e8e9bbb71492c5f5dddf39ed65b68775a02ad8d710c25d097b497f06c49"
+        },
+        {
+          "name": "zstd",
+          "version": "1.5.4+dfsg2-5",
+          "architecture": "arm64",
+          "copyright_sha256": "35e85e8e9bbb71492c5f5dddf39ed65b68775a02ad8d710c25d097b497f06c49"
+        }
+      ],
+      "copyright_sha256": "35e85e8e9bbb71492c5f5dddf39ed65b68775a02ad8d710c25d097b497f06c49",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+          "read_reference": {
+            "component": "libzstd",
+            "member": "LICENSE",
+            "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "build/LICENSE",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "read_reference": {
+            "component": "dpkg",
+            "member": "tests/t-filtering/pkg-somefiles/test/share/doc/pkg-somefiles/copyright",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "zlib",
+          "full_normalized_body_sha256": "9790f4679260fe89a48c696646547e1d8acb6a91a156196a6300d5deeb33ba3d",
+          "read_reference": {
+            "component": "libzstd",
+            "label": "zlib"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "30e6326851fd3865dd863cd2ab4e840746c80899a57698188f87fa4fc2658a3f",
+          "read_reference": {
+            "component": "libtirpc",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "30ca6c8785c13d118cc39d0038922bf6c5c5b3b5f341d5edf16ef811091da5af",
+          "read_reference": {
+            "component": "libzstd",
+            "label": "BSD-3-clause"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Zstd",
+          "Source": "https://github.com/facebook/zstd",
+          "Files-Excluded": "appveyor.yml\nbuild/VS2008\nbuild/VS2010\nbuild/VS_scripts\nprograms/windres/*\n.travis.yml\n.buckversion\n.buckconfig\n.circleci/*\n.cirrus.yml"
+        },
+        {
+          "Files": "*",
+          "Copyright": "Yann Collet\nPrzemyslaw Skibinski\nMartin Liska\nSUSE\nMeta Platforms, Inc. and affiliates",
+          "Comment": "Starting from 1.3.1 zstd's patent claim is removed\nsee: https://github.com/facebook/zstd/pull/801"
+        },
+        {
+          "Files": "zlibWrapper/examples/*.c",
+          "Copyright": "1995-2006, 2011 Jean-loup Gailly"
+        },
+        {
+          "Files": "zlibWrapper/gz*.c",
+          "Copyright": "(C) 2004, 2005, 2010, 2011, 2012, 2013 Mark Adler"
+        },
+        {},
+        {
+          "Files": "lib/dictBuilder/divsufsort.*",
+          "Copyright": "2003-2008, Yuta Mori"
+        },
+        {
+          "Files": "examples/*",
+          "Copyright": "2016-present, Yann Collet, Facebook, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n2015-2016 Kevin Murray <spam@kdmurray.id.au>\n2022-2023 Peter Pentchev <roam@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "scope": "Original scoped grants and full attribution read, including copyright placement and Stanford nonendorsement conditions. Parent OS approval is separate.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

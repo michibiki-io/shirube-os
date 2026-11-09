@@ -16937,6 +16937,111 @@
         "Retain the original Daniel Veillard advertising/publicity name restriction; the actual MIT-1 grant is not replaced with generic Expat text."
       ],
       "scope": "Complete original Debian copyright read and all original named legal files matched to complete read originals. File scopes, author notices, all operative terms and original alternatives preserved. Exact component only; parent OS remains gated."
+    },
+    "dpkg@1.21.23": {
+      "source_identity": "1c126e21ec723002e767d8e7855793d5b26aab024295924db0835b4fd707ed6a",
+      "copyright_sha256": "7442bdadcd44e818fddd786057db07639cc68225c389c7c240d3bb3984b05173",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND BSD-2-Clause AND LicenseRef-Explicit-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, author notices, all separately scoped permission terms, nonendorsement restrictions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives."
+      ],
+      "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated."
+    },
+    "file@1:5.44-3": {
+      "source_identity": "842e0ef356949218966d1521a95652b00aed18c152174ffc7e000cc3d79501e4",
+      "copyright_sha256": "96c8c6ab85931f81120eb40d42f3c40c76ee328d024cfc7ae31acaa99971d54c",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND LicenseRef-File-copyright-placement AND LicenseRef-Explicit-Public-Domain AND LicenseRef-MIT-Old-Style",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, author notices, all separately scoped permission terms, nonendorsement restrictions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives.",
+        "Preserve the original requirement that copyright and permission remain immediately at the start of affected files without alteration; retain all distinct NetBSD/Regents/old-MIT disclaimers."
+      ],
+      "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated."
+    },
+    "golang-github-containers-common@0.50.1+ds1-4": {
+      "source_identity": "7590d6876d1ac67cea624af1034d430d9cba8ec3519d047461f7631f06039787",
+      "copyright_sha256": "3d0c046cfbe6ed3f07c4cd422e89fb9e7b1b5a57c0974e32e2fbcb3a488d802c",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, author notices, all separately scoped permission terms, nonendorsement restrictions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives."
+      ],
+      "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "golang-github-containers-image@5.23.1-4": {
+      "source_identity": "f4216f28d8793e127cea242ef44532375fa1259eb4553205d8ec4e86bff05334",
+      "copyright_sha256": "21a8ef43469107506f71f916dab75ee158835d0f37fadfb57bbf265bf64f6f24",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, author notices, all separately scoped permission terms, nonendorsement restrictions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives."
+      ],
+      "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "igmpproxy@0.3-1": {
+      "source_identity": "2269f3ddec44a390ac720af120565a95acea852a360ca8e3b1faefdb8b11ff70",
+      "copyright_sha256": "d7e2787fc372024785dcf42f108b75c26ec98ff4ad35acd9db23a54abfbbea6d",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LicenseRef-Stanford-MROUTED",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, author notices, all separately scoped permission terms, nonendorsement restrictions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives.",
+        "Preserve the complete actual MROUTED grant, including its limits on promotional Stanford names, personnel, trademarks and symbols. Attribution is factual and implies no endorsement; the original grant is not replaced by generic BSD text."
+      ],
+      "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated."
+    },
+    "iputils@3:20221126-1+deb12u1": {
+      "source_identity": "570f4053315d3c5dcaed6d0902dc9302581c29023eea805dc92bc34199192f07",
+      "copyright_sha256": "98d9db67583be21fcd3695b30fde55d9334e83ac07921ee0efc47efffa4e49a1",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-2.0-or-later AND LicenseRef-Explicit-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, author notices, all separately scoped permission terms, nonendorsement restrictions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives."
+      ],
+      "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated."
+    },
+    "libzstd@1.5.4+dfsg2-5": {
+      "source_identity": "8f602f92b575aa8b5e979196fb6ee82d78f233521dc9636526d3ecba1f63c1b1",
+      "copyright_sha256": "35e85e8e9bbb71492c5f5dddf39ed65b68775a02ad8d710c25d097b497f06c49",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-2.0-only AND MIT AND Zlib",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, author notices, all separately scoped permission terms, nonendorsement restrictions and warranty disclaimers in source and binary documentation.",
+        "Supply exact preferred sources, Debian patches, full applicable licenses and build/install scripts; preserve modification notices, source access and all original license alternatives."
+      ],
+      "scope": "Every original named legal file matched to fully read originals or complete word differences read. All operative bodies and remaining original file/copyright/provenance/comment fields read. Exact component only; parent OS remains gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
