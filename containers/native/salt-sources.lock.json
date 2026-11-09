@@ -373,6 +373,12 @@
         {
           "member": "immutables-0.21/NOTICE",
           "sha256": "62c982da0e3173247ec93f7ce1a4101e9b87e353c55cb0d7cd2e4df91794d2fd"
+        },
+        {
+          "member": "immutables-0.21/immutables/pythoncapi_compat.h",
+          "sha256": "978b522b4e0f430d8f60126af1920d71cba2f32dc2f5cc7f52400105a48773de",
+          "prefix_bytes": 405,
+          "notice_sha256": "51778294660ac43e4df72c4081fb9b2293b8a1c5e28dafebe09851dc4ca32a40"
         }
       ]
     },
@@ -2473,6 +2479,10 @@
         {
           "member": "cffi-2.1.1/LICENSE",
           "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+        },
+        {
+          "member": "cffi-2.1.1/AUTHORS",
+          "sha256": "2a67a60bbfb33759d67d645ff131b8e6d6bc4cafc232d751fcac3eda4d314cc8"
         }
       ]
     },

@@ -3408,6 +3408,19 @@
         "Retain the complete Apache 2.0 license and any NOTICE; identify modifications, preserve patent and trademark limits, and do not imply upstream endorsement."
       ],
       "scope": "Exact fixed Salt SDK source and regenerated complete legal notice only. Original legal files read; complete Apache word differences were formatting, URL scheme or the retained copyright appendix. Source hashes and regenerated notice bytes independently matched. Does not clear the parent package, native dependencies or full OS."
+    },
+    "pypi:immutables@0.21": {
+      "source_identity": "b55ffaf0449790242feb4c56ab799ea7af92801a0a43f9e2f4f8af2ab24dfc4a",
+      "copyright_sha256": "9f92d552f9c2480763fb04fb8a6e89aa36379366507d5ea33163e11e7ece0c4c",
+      "redistributable": true,
+      "license": "Apache-2.0 AND 0BSD",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "salt-sdk/notices/b55ffaf0449790242feb4c56ab799ea7af92801a0a43f9e2f4f8af2ab24dfc4a.copyright",
+      "conditions": [
+        "Retain the complete Apache license, upstream copyright and NOTICE; mark modifications and preserve the separately identified pythoncapi_compat 0BSD header grant.",
+        "Provide exact original preferred source/build inputs; do not infer endorsement or clearance for dependencies or the full OS."
+      ],
+      "scope": "Exact immutable 0.21 source archive, full Apache license and NOTICE read; the separate original pythoncapi_compat header is now retained by full-file and notice-prefix hashes. Apache differences are removal of the heading only. Runtime dependencies and parent environment remain independently gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

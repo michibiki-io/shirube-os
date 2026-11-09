@@ -400,3 +400,8 @@ Cryptography retains both offered license texts; dateutil uses its BSD grant
 that explicitly covers all contributions. Apache NOTICE/copyright conditions
 remain applicable. CFFI's embedded source notices and Immutables' separate header
 license require additional bindings and are not cleared by these decisions.
+
+Immutables 0.21 now additionally retains the exact pythoncapi_compat header
+notice identified by its root license. Its separate decision covers Apache-2.0
+and 0BSD, including the upstream NOTICE. The CFFI build source also retains its
+original AUTHORS file; that addition does not clear its embedded source terms.
