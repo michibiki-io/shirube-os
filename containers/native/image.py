@@ -301,7 +301,8 @@ def assemble(sources, packages, arch, version, output):
         handler=functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(repo))
         server=http.server.ThreadingHTTPServer(('127.0.0.1',18080),handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         try:
-            run('./build-vyos-image','--architecture',arch,'--build-type','release','--version',version[1:],'--build-by','michibiki-io','--vyos-mirror','http://127.0.0.1:18080','--custom-apt-key',str(public),'generic',cwd=source,env=env)
+            from producer.livebuild_transport import build as build_live_image
+            build_live_image(['./build-vyos-image','--architecture',arch,'--build-type','release','--version',version[1:],'--build-by','michibiki-io','--vyos-mirror','http://127.0.0.1:18080','--custom-apt-key',str(public),'generic'],cwd=source,env=env)
         finally:server.shutdown();server.server_close();thread.join()
         candidates=list((source/'build').glob(f'vyos-{version[1:]}-generic-{arch}.iso'))
         if len(candidates)!=1:raise ValueError('Expected exactly one assembled ISO')

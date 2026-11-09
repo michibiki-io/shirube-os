@@ -16,13 +16,17 @@ from .sources import download, sha256
 
 
 def cache_snapshot_package(package, architecture, snapshot,
-                           cache=Path('/var/cache/apt/archives'), expected_filename=None):
+                           cache=Path('/var/cache/apt/archives'), expected_filename=None,
+                           lists=None, force_cache=False, snapshot_failed=False):
     if (not re.fullmatch(r'[a-z0-9][a-z0-9+.-]*', package)
             or architecture not in {'amd64', 'arm64', 'all'}
             or not re.fullmatch(r'https://snapshot\.debian\.org/archive/debian(?:-security)?/\d{8}T\d{6}Z/', snapshot)):
         raise ValueError('Invalid fixed APT archive scope')
+    query = ['apt-cache']
+    if lists is not None:
+        query += ['-o', 'Dir::State::lists=' + str(lists)]
     output = subprocess.check_output(
-        ['apt-cache', 'show', '--no-all-versions',
+        [*query, 'show', '--no-all-versions',
          package if architecture == 'all' else package + ':' + architecture], text=True)
     records = [Parser().parsestr(block) for block in output.strip().split('\n\n')]
     if len(records) != 1:
@@ -61,7 +65,7 @@ def cache_snapshot_package(package, architecture, snapshot,
     installed = subprocess.run(
         ['dpkg-query', '-W', '-f=${Status}\t${Version}\t${Architecture}', package],
         capture_output=True, text=True, check=False)
-    if (installed.returncode == 0 and installed.stdout ==
+    if (not force_cache and installed.returncode == 0 and installed.stdout ==
             'install ok installed\t' + record['Version'] + '\t' + architecture):
         return {**result, 'status': 'ALREADY_INSTALLED'}
     cache = Path(cache)
@@ -82,6 +86,8 @@ def cache_snapshot_package(package, architecture, snapshot,
         staged = Path(work) / filename.name
         url = snapshot + str(filename)
         try:
+            if snapshot_failed:
+                raise urllib.error.HTTPError(url, 503, 'Previously observed transient object failure', {}, None)
             download(url, staged)
         except urllib.error.HTTPError as error:
             if error.code not in {429, 500, 502, 503, 504}:
@@ -105,44 +111,53 @@ def _apt(arguments):
     return process.wait(), tail
 
 
-def main(arguments=None, lock=Path('/src/source-lock.json')):
-    """Retry one failed install only after caching identical authenticated bytes."""
+def recover_install_failure(output, lock=Path('/src/source-lock.json'), chroot=None):
+    """Cache only transient fixed objects; retain the exact authenticated indexes."""
     import json
-    arguments = sys.argv[1:] if arguments is None else arguments
-    status, output = _apt(arguments)
-    if status != 100 or 'install' not in arguments:
-        return status
     denied = ['gpg error', 'no_pubkey', 'is not signed', 'invalid signature',
               'hash sum mismatch', 'unauthenticated packages', 'certificate verification',
               '403 forbidden', '401 unauthorized']
     if any(marker in output.lower() for marker in denied):
-        return status
+        return False
     lines = [line for line in output.splitlines() if line.startswith('E: Failed to fetch ')]
     if not lines:
-        return status
+        return False
     data = json.loads(Path(lock).read_text())
     snapshots = [data['debian_snapshot'], data['debian_security_snapshot']]
     pending = []
     for line in lines:
         match = re.fullmatch(r'E: Failed to fetch (https?://\S+)\s+(429|500|502|503|504)\b.*', line)
         if not match:
-            return status
+            return False
         uri = urlsplit(match[1])
         if (uri.hostname != 'snapshot.debian.org' or uri.username or uri.password
                 or uri.port is not None or uri.query or uri.fragment):
-            return status
+            return False
         path = unquote(uri.path)
         roots = [root for root in snapshots if path.startswith(urlsplit(root).path)]
         if len(roots) != 1:
-            return status
+            return False
         root = roots[0]
         filename = path[len(urlsplit(root).path):]
         name = re.fullmatch(r'([a-z0-9][a-z0-9+.-]*)_[0-9A-Za-z.+:~%-]+_(amd64|arm64|all)\.deb',
                             PurePosixPath(filename).name)
         if not name:
-            return status
+            return False
         pending.append((name[1], name[2], root, filename))
     for package, architecture, root, filename in dict.fromkeys(pending):
-        result = cache_snapshot_package(package, architecture, root, expected_filename=filename)
+        options = {'snapshot_failed': True}
+        if chroot is not None:
+            options.update(cache=Path(chroot)/'var/cache/apt/archives',
+                           lists=Path(chroot)/'var/lib/apt/lists', force_cache=True)
+        result = cache_snapshot_package(package, architecture, root, expected_filename=filename, **options)
         print('APT fixed snapshot archive: ' + json.dumps(result, sort_keys=True), flush=True)
-    return _apt(arguments)[0]
+    return True
+
+
+def main(arguments=None, lock=Path('/src/source-lock.json')):
+    """Retry one failed install only after caching identical authenticated bytes."""
+    arguments = sys.argv[1:] if arguments is None else arguments
+    status, output = _apt(arguments)
+    if status == 100 and 'install' in arguments and recover_install_failure(output, lock):
+        return _apt(arguments)[0]
+    return status

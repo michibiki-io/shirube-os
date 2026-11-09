@@ -104,7 +104,7 @@ class AptRetryTests(unittest.TestCase):
         self.assertEqual(apt.call_count, 2)
         cache.assert_called_once_with('libxpm4', 'arm64',
             'https://snapshot.debian.org/archive/debian-security/20261105T000000Z/',
-            expected_filename='pool/updates/main/libx/libxpm/libxpm4_3.5.12-1.1+deb12u1_arm64.deb')
+            expected_filename='pool/updates/main/libx/libxpm/libxpm4_3.5.12-1.1+deb12u1_arm64.deb', snapshot_failed=True)
 
     def test_only_transient_fixed_snapshot_install_failures_are_retried(self):
         good = ('E: Failed to fetch http://snapshot.debian.org/archive/debian/'
@@ -159,3 +159,17 @@ class AptMergedIndexTests(unittest.TestCase):
                 patch('producer.apt_archive.download', side_effect=lambda url, target: Path(target).write_bytes(self.payload)):
             cache_snapshot_package(self.package, 'amd64', self.snapshot, Path(directory))
             self.assertEqual((Path(directory) / self.filename.replace('_2.28', '_1%3a2.28')).read_bytes(), self.payload)
+
+    def test_chroot_cache_uses_its_indexes_despite_host_installed_package(self):
+        installed = subprocess.CompletedProcess([], 0,
+            stdout='install ok installed\t2.28.3-1\tamd64', stderr='')
+        with tempfile.TemporaryDirectory() as directory, \
+                patch('producer.apt_archive.subprocess.check_output', return_value=self.metadata()) as query, \
+                patch('producer.apt_archive.subprocess.run', return_value=installed), \
+                patch('producer.apt_archive.download', side_effect=lambda url, target: Path(target).write_bytes(self.payload)) as acquire:
+            result = cache_snapshot_package(self.package, 'amd64', self.snapshot, Path(directory),
+                lists=Path('/isolated/chroot/var/lib/apt/lists'), force_cache=True, snapshot_failed=True)
+            self.assertEqual(result['status'], 'VERIFIED_DOWNLOAD')
+            self.assertIn('Dir::State::lists=/isolated/chroot/var/lib/apt/lists', query.call_args.args[0])
+            self.assertEqual(acquire.call_count, 1)
+            self.assertTrue(acquire.call_args.args[0].startswith('https://deb.debian.org/debian/'))
