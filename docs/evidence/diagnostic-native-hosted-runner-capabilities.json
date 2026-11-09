@@ -1,0 +1,55 @@
+{
+  "kind": "actual-native-github-hosted-capability-execution",
+  "status": "PASS_CAPABILITY_PROBE_ONLY",
+  "test_head": "f2e057163149f5d468ac382b08f09a3110ae8ddd",
+  "workflow": "https://github.com/michibiki-io/shirube-os/actions/runs/42656668963",
+  "architectures": [
+    {
+      "kind": "native-github-hosted-runner-capability-probe",
+      "status": "PASS_CAPABILITY_PROBE_ONLY",
+      "test_head": "f2e057163149f5d468ac382b08f09a3110ae8ddd",
+      "checkout_commit": "0fc679700ccb672b54b9b72bd6f09c6b5652a691",
+      "architecture": "amd64",
+      "cpu_count": 4,
+      "memory_available_bytes": 15850430464,
+      "task_storage_total_bytes": 154894188544,
+      "task_storage_free_bytes": 92122849280,
+      "kvm": {
+        "device_present": true,
+        "open_read_write": false
+      },
+      "native_buildkit_cache_mount_and_chroot": "PASS",
+      "privileged_container_mknod_mount_chroot": "PASS",
+      "scope": "Tiny fixed-base fixture only; no compiler, OS image build, disk cleanup or guest boot. KVM openability and available storage do not prove full build/boot feasibility.",
+      "build": "NOT_RUN",
+      "local_boot": "NOT_RUN",
+      "oci": "NOT_RUN",
+      "release_clearance": "NOT_CLEARED"
+    },
+    {
+      "kind": "native-github-hosted-runner-capability-probe",
+      "status": "PASS_CAPABILITY_PROBE_ONLY",
+      "test_head": "f2e057163149f5d468ac382b08f09a3110ae8ddd",
+      "checkout_commit": "0fc679700ccb672b54b9b72bd6f09c6b5652a691",
+      "architecture": "arm64",
+      "cpu_count": 4,
+      "memory_available_bytes": 15556571136,
+      "task_storage_total_bytes": 154894188544,
+      "task_storage_free_bytes": 114517327872,
+      "kvm": {
+        "device_present": false,
+        "open_read_write": false
+      },
+      "native_buildkit_cache_mount_and_chroot": "PASS",
+      "privileged_container_mknod_mount_chroot": "PASS",
+      "scope": "Tiny fixed-base fixture only; no compiler, OS image build, disk cleanup or guest boot. KVM openability and available storage do not prove full build/boot feasibility.",
+      "build": "NOT_RUN",
+      "local_boot": "NOT_RUN",
+      "oci": "NOT_RUN",
+      "release_clearance": "NOT_CLEARED"
+    }
+  ],
+  "scope": "Actual public native hosted runners, tiny fixed-base BuildKit and privileged-container operations only. Observed storage is not a guaranteed provider minimum. KVM values describe host-process access; no QEMU ioctl or guest boot was attempted. Current 160GiB release preflight is not satisfied. Complete build/boot/time feasibility remains separate.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

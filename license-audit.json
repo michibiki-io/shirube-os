@@ -14910,6 +14910,138 @@
         "The library source is BSD2; the utility grant explicitly permits GPL2 or any later version despite the short GPL-2 label. Preserve the actual operative grant and all original wording."
       ],
       "scope": "All original named legal files matched to read originals or complete individually read word comparisons, and all operative grant bodies and remaining copyright/path/provenance/comment fields read. Source-only and build-only file obligations are retained without claiming they are linked into every binary. No whole-OS clearance."
+    },
+    "go:github.com/miekg/dns@v1.1.63#8d0268cc9e6399c264dd4cb632fb76ed4e389330db0c4b311ba6ae1f46923eeb": {
+      "source_identity": "8d0268cc9e6399c264dd4cb632fb76ed4e389330db0c4b311ba6ae1f46923eeb",
+      "copyright_sha256": "57b97015d0bf4169147f0f53794611fa9cb09b5dc16c9c6dc606f1db4fd2e3d6",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/351fc2d9233d5b914d75ad66fb2de7664b53abab5f3f528f7e3388d734dc0107.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
+    },
+    "go:gopkg.in/yaml.v3@v3.0.1#aab8fbc4e6300ea08e6afe1caea18a21c90c79f489f52c53e2f20431f1a9a015": {
+      "source_identity": "aab8fbc4e6300ea08e6afe1caea18a21c90c79f489f52c53e2f20431f1a9a015",
+      "copyright_sha256": "f7b7b326306b08cf3aa6309bd039d91413545a06575ef461732a9f6334715134",
+      "redistributable": true,
+      "license": "MIT AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/491112fe160db255d49baece16433ce52cdebb786b4df71d6e7ad0a093c8f220.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated.",
+        "Preserve Kirill Simonov MIT grants for the specifically listed libyaml-derived Go files and Canonical Apache2 grant/NOTICE for remaining files; retain both complete license texts."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/Azure/go-amqp@v1.0.0#f6e403805419ed3713eb87979ec237d2d01a9e5f3d1ed9fd3ad950dd870b9de0": {
+      "source_identity": "f6e403805419ed3713eb87979ec237d2d01a9e5f3d1ed9fd3ad950dd870b9de0",
+      "copyright_sha256": "64231c04778ed1356fff4bb69948eeae8ff1efc1f2e735fe69bce5acc22400d2",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/8c74a4471031186529517926cd8292c27e93568656e94843c6eb40fed4481104.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated.",
+        "Retain the original English NOTICE without translation/localization, Microsoft source-availability information and reverse-engineering permission for LGPL debugging; complete exact source is supplied independently."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
+    },
+    "go:github.com/miekg/dns@v1.1.56#cf99e395ed590f3668a514646d058e17484d63066bcad4226e4c4ae2b9b65938": {
+      "source_identity": "cf99e395ed590f3668a514646d058e17484d63066bcad4226e4c4ae2b9b65938",
+      "copyright_sha256": "57b97015d0bf4169147f0f53794611fa9cb09b5dc16c9c6dc606f1db4fd2e3d6",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7724da0749e0a1744fbb06c807c308db9b285cc00f5c872a4a1ca4da1e63954c.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
+    },
+    "go:github.com/pion/transport/v2@v2.2.1#8058ecc1704267df30424a47128015d9eaeecd0f30c8a7a5e7606b4932ad1092": {
+      "source_identity": "8058ecc1704267df30424a47128015d9eaeecd0f30c8a7a5e7606b4932ad1092",
+      "copyright_sha256": "b7ee7bcadcfb7c7ceea9079ccab1c13bf9e6749d6e2491fe6c715865a3f87630",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/6e59e661a34997ebf5174fbe03dd003479b3ca2088fe67586a31f8e2b90c97a5.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
+    },
+    "go:github.com/shopspring/decimal@v1.3.1#7986d6c8489c4a55c077e3469a3c9a218f7ce4afbd25d68aa2b26a6ea5015438": {
+      "source_identity": "7986d6c8489c4a55c077e3469a3c9a218f7ce4afbd25d68aa2b26a6ea5015438",
+      "copyright_sha256": "73b793dfa31dc4f8cc3cf4161abd5b0046bb0158043d66c89947f3d574dc8a33",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/4197e71f764eca6e576a74c4b12a59ead442e02905f4d4cbbadd2f04bf50b743.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
+    },
+    "go:sigs.k8s.io/yaml@v1.3.0#aac88da551c2a512b642cb35658bf3dc862595a3566bd840ebf18e4802f1fcc9": {
+      "source_identity": "aac88da551c2a512b642cb35658bf3dc862595a3566bd840ebf18e4802f1fcc9",
+      "copyright_sha256": "fbbb9db09c955140e768fe435aff0ddb667e3e8545719e9efb6dcf867c91e262",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/70ff37ca15f1362eb921e6d490fe22473ca094d1b43b2c88d9fd7c80115ecbc3.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
+    },
+    "go:gopkg.in/yaml.v3@v3.0.1#e5712927650e8dd9807c8621a263d252336a7b65bcda16e56b39644fcd2af0f4": {
+      "source_identity": "e5712927650e8dd9807c8621a263d252336a7b65bcda16e56b39644fcd2af0f4",
+      "copyright_sha256": "f7b7b326306b08cf3aa6309bd039d91413545a06575ef461732a9f6334715134",
+      "redistributable": true,
+      "license": "MIT AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/491112fe160db255d49baece16433ce52cdebb786b4df71d6e7ad0a093c8f220.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated.",
+        "Preserve Kirill Simonov MIT grants for the specifically listed libyaml-derived Go files and Canonical Apache2 grant/NOTICE for remaining files; retain both complete license texts."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/miekg/dns@v1.1.72#h1:vhmr+TF2A3tuoGNkLDFK9zi36F2LS+hKTRW0Uf8kbzI=": {
+      "source_identity": "h1:vhmr+TF2A3tuoGNkLDFK9zi36F2LS+hKTRW0Uf8kbzI=",
+      "copyright_sha256": "f0bef7baddb1279df1eb8e0814bdb29254cff4130140064694ab0f4e2369fe3f",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "netbird/linked/notices/5587c5fb4745786de804e369531f81bb6a50b4e9912588dda375b21c2f38f277.txt",
+      "conditions": [
+        "Retain all original full notices, author/contributor lists, copyright statements, conditions and disclaimers in source and binary documentation.",
+        "Keep the exact preferred source and source/notice bindings; preserve original named non-endorsement restrictions and all separate file-license scopes. Dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Seven complete original aggregate notices read, including every supporting copyright/AUTHORS/CONTRIBUTORS/NOTICE block and all operative grants. Only the exact read source/notice pairs are covered."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
