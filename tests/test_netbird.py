@@ -9,6 +9,15 @@ from producer import netbird
 
 
 class NetbirdTests(unittest.TestCase):
+    def test_controller_waits_for_the_systemd_stop_deadline(self):
+        import configparser
+        unit = configparser.ConfigParser(interpolation=None)
+        unit.read(Path(__file__).resolve().parents[1]/'guest/shirube-netbird.service')
+        with patch.object(netbird.subprocess, 'run') as run:
+            netbird.unit('stop', netbird.UNIT)
+        self.assertGreaterEqual(run.call_args.kwargs['timeout'],
+                                unit.getint('Service', 'TimeoutStopSec')+15)
+
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)

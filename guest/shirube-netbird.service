@@ -11,6 +11,6 @@ Environment=NB_STATE_DIR=/config/netbird
 ExecStart=/usr/libexec/shirube/netbird-control daemon
 Restart=on-failure
 RestartSec=5
-TimeoutStopSec=30
+TimeoutStopSec=120
 StandardOutput=null
 StandardError=null

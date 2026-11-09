@@ -1,0 +1,22 @@
+{
+  "kind": "diagnostic-arm64-tcg-netbird-stop-timeout-probe",
+  "status": "PASS",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "prior_trial": "arm64-disks-notices-tcg2",
+  "prior_trial_status": "FAIL",
+  "scope": "Fresh disposable clone of the prior sanitized TCG-installed QCOW2. Diagnostic-only unit stop deadline extended from30 to120seconds and controller timeout from45 to150seconds, then actual full native NetBird lifecycle and clean shutdown. Frozen earlier image; no repeated installation or zeroing. Static callsite/unit-state classification only; no command/response or credential bytes retained. This does not certify a current-head ISO or full release.",
+  "base_sha256_before": "cfb53ff7a0f902103e143556167c51445950a2ddfe71f5ee6fd54db00b3cb32d",
+  "diagnostic_stop_deadline_seconds": 120,
+  "netbird": {
+    "native_config_commit_save": "PASS",
+    "real_enrollment": "PASS",
+    "real_enrollment_rejection_and_cleanup": "PASS",
+    "management_and_signal": "PASS",
+    "disable_enable_identity": "PASS",
+    "saved_configuration_reboot_identity": "PASS",
+    "removed_configuration_reboot_inactive": "PASS",
+    "setup_key_absence_in_config_state_history_logs": "PASS"
+  },
+  "base_sha256_after": "cfb53ff7a0f902103e143556167c51445950a2ddfe71f5ee6fd54db00b3cb32d"
+}

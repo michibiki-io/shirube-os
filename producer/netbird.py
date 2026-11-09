@@ -55,7 +55,10 @@ def write_json(path, value):
 
 
 def unit(*args):
-    subprocess.run(['systemctl', *args], check=True, timeout=45,
+    # TCG acceptance exposed a real shutdown timeout at the old 30-second
+    # unit deadline. Let systemd finish its bounded 120-second stop before
+    # the controller's own deadline; starting remains independently bounded.
+    subprocess.run(['systemctl', *args], check=True, timeout=150 if args[0]=='stop' else 45,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
