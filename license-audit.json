@@ -11892,6 +11892,220 @@
         "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
       ],
       "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "acl@2.3.1-3": {
+      "source_identity": "7820eee88cce7244e0b8eb25cc4f51bdf10aff7a6c1a497f3d18c36bdce712cc",
+      "copyright_sha256": "9a2dfb4a5abc7e84be2cc41f1089be665519c9409549296f6c19de57ab1d37c2",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "attr@1:2.5.1-4": {
+      "source_identity": "0e1486bff1649602cb5cbb6224dbb641436dc8cd28d5c336ad85d650e07d23dd",
+      "copyright_sha256": "0cbec745d85ea775450b2d54fac55277197f429e52d611f72852ed420450620e",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "dash@0.5.12-2": {
+      "source_identity": "25c0fb805c735fdb7470ce485ce76dae1a7b6c04efdfb0fdac5eab921cbd78a5",
+      "copyright_sha256": "d98c53f281321baad38164aa9ae6e368a9253be6ec51bd26a759b5e72b326f4a",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND GPL-2.0-or-later AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "less@590-2.1~deb12u2": {
+      "source_identity": "1a4219f8ec9342851805089d9ee5ec7c0150287d5722ecc914c50790673ad9a6",
+      "copyright_sha256": "e769e64d04abc3d772e5f397d2848d193c1e2015ff4ca92d7b73dfec8ca791a5",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND X11 AND Spencer-86 AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them.",
+        "Choose GPL-3.0-or-later for the dual-licensed main code; independently preserve X11 restrictions and Spencer-86 origin/modified-version notices."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "libcap2@1:2.66-4+deb12u3": {
+      "source_identity": "56b6fa8db84a0e80b48522cbcafb0353282a7dbb5605c81b021e0862b120d1c9",
+      "copyright_sha256": "e60a5642e12e340060e4e519a65b2eb0330be2917854841c644e36268f607d54",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them.",
+        "Choose the full BSD branch for libcap/cap/psx and pam_cap; preserve all prior and current copyright notices and the entire original permission notice."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "libfastjson@1.2304.0-1": {
+      "source_identity": "ee9fe28502e5def61406b784a43978b516a0094ab5f8e3b51078e56798640a66",
+      "copyright_sha256": "47a23247987e122cf942a91e65259c5a5836e81cf70c311e2f4bcd9ee7695b3a",
+      "redistributable": true,
+      "license": "MIT AND Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "libmnl@1.0.4-3": {
+      "source_identity": "9dc308ffade8cc0cb7a7ee8925e25f338121f642a9a9caef535effd893d4830a",
+      "copyright_sha256": "62d24d881d6d292869b7627fec8e6403bcc83e2268d3e93ee4ad1d26c00cd3f8",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "libnfnetlink@1.0.2-2": {
+      "source_identity": "d48310b5afca02ec9cd674f69d639c8b773ffb7f5e372b5696d43a144aa3cc64",
+      "copyright_sha256": "56cdc145e86ce9faa976a6142f7780f33ddc93cec3602ea8e2f0199375fb471f",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "libpcap@1.10.3-1": {
+      "source_identity": "0cb28414626b59900b2df42ae6e36720fc32f142fd91c4757c77995615d22b28",
+      "copyright_sha256": "6b0e609cf98f7abd39d3b81100fdb2bed24dcaee6656b500fcecb392db70dc60",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "libsigsegv@2.14-1": {
+      "source_identity": "b1a374e54891e47d04c4a6c29784a7dcee632213bb918afad8b1e9ca5cf40a7e",
+      "copyright_sha256": "7b99c9331ab4f430f78516833f9f04ca3408ab0f3d325534c6ee34a5ada0ce24",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND GPL-3.0-or-later WITH Autoconf-exception-3.0 AND MIT AND FSFULL AND LicenseRef-Boehm-Permissive",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them.",
+        "Retain all original Autoconf additional-permission texts and the Boehm/HP/SGI/Xerox permissive notices, including the modified-code notice condition."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "libusb-1.0@2:1.0.26-1": {
+      "source_identity": "3d75673e367fab1d0ca1ef29276ff4ea31dd7678c9573c10975e8d80bdbd0b14",
+      "copyright_sha256": "22184ce520ea729f24fb9ec9ee0849c9c7c6828cb796fe2cd174a480ce806420",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "lz4@1.9.4-1": {
+      "source_identity": "e16302bca544d08d106efc216541f4a0403c8f8a5fad5eaac7588223a55af263",
+      "copyright_sha256": "d3be0f43fe14da244f97c451bbae789c0acf868612598a69f5f22a289abeca40",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them.",
+        "Retain the BSD library versus GPL program/test/build-file distinction; the stale contrib packaging description does not override the original directory grants."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "popt@1.19+dfsg-1": {
+      "source_identity": "80cb513655018b2270cf5315b6370f42bebb23b14abdf9eb33ead6ad5fa5a184",
+      "copyright_sha256": "46bf8fceccc1c186fe9e67b21a8670e2fef58989093ef65c377307c974e3c733",
+      "redistributable": true,
+      "license": "MIT AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
+    },
+    "zlib@1:1.2.13.dfsg-1": {
+      "source_identity": "3fa1e6b2fc525062aa88207dda52fed8e045373c809d362fe8a2bfbf7cf515a8",
+      "copyright_sha256": "9e5b96d63773a5d177ba264254390f792be07e41748ebd94730981c6cac31cc6",
+      "redistributable": true,
+      "license": "Zlib",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Preserve every complete original source/Debian copyright, permission condition and disclaimer, including packaging and named source-file exceptions.",
+        "Distribute exact authenticated original sources, all applied Debian patches and complete build/install recipes with the corresponding binary distribution.",
+        "Preserve complete applicable GPL/LGPL texts and preferred source. Permit replacement/relinking of LGPL libraries as required; no unverified static-link exception is inferred.",
+        "Do not use author names for endorsement. Retain origin/modified-source notices wherever X11, Zlib, Spencer or the original permissive grants require them."
+      ],
+      "scope": "Exact unchanged Debian source/binary notice pair; complete installed notice and all named original legal files read. Full GNU comparisons retain all operative terms; differences are original headers, historical addresses/Library naming and nonoperative appendix URLs. Other packages and full OS remain gated."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
