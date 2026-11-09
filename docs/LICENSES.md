@@ -451,3 +451,19 @@ Stream source, including the vendored DSA verification test. They have exact
 source-only recognition; unknown generated keys and runtime credentials remain
 rejected. [Batch source evidence](evidence/diagnostic-runtime-extra-source-fixtures.json)
 is separate from dependency licensing and completed source reconstruction.
+
+## Actual linked permissive-license comparisons
+
+[The linked-component comparison receipt](evidence/diagnostic-runtime-permissive-license-bindings.json)
+adds 224 exact source/installed-notice decisions for MIT/BSD dependencies of the
+actual runtime binaries. Complete grant bodies were compared against freshly
+read original grants, preserving every word, punctuation mark, condition and
+disclaimer; only whitespace was normalized. Complete copyright/header prefixes
+were separately read and remain in the retained originals. Every decision still
+binds the full original notice hash and actual source identity, including
+source-qualified entries for different module representations.
+
+Mixed grants, license pointers, templates, unknown text and supporting notices
+were deferred. In particular, locating an MIT grant after an Apache license does
+not permit discarding the preceding Apache terms. This is not an SPDX-name
+lookup, a package-repository approval, or clearance for a parent package or OS.
