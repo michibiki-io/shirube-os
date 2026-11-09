@@ -112,7 +112,7 @@ class SourceRestorationTests(unittest.TestCase):
              mock.patch('producer.pipeline.source_set_evidence',side_effect=restored), \
              mock.patch('producer.vm.build_disks',side_effect=guests):
             with self.assertRaisesRegex(RuntimeError,'guest boundary'):
-                release_candidate(self.root,self.root,self.root,'amd64','v2026.03.0',self.commit,None,'tcg',retired)
+                release_candidate(self.root,self.root,self.root,'amd64','v2026.03.0',self.commit,SimpleNamespace(verify=None),'tcg',retired)
         self.assertEqual(order,['source-restoration','compiler-retirement','guest'])
         self.assertFalse((self.root/'compiler-scratch-retirement.json').exists())
 
