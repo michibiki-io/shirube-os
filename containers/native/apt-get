@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+"""Native producer only; retain APT resolution, signatures and archive hashes."""
+import sys
+sys.path.insert(0, '/src')
+from producer.apt_archive import main
+
+raise SystemExit(main())

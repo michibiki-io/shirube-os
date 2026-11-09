@@ -63,6 +63,8 @@ RUN printf '%s\n' \
 COPY producer /src/producer
 COPY guest /src/guest
 COPY containers/native /src/native
+RUN install -m 0644 /src/native/apt-retries.conf /etc/apt/apt.conf.d/80-shirube-retries && \
+    install -m 0755 /src/native/apt-get /usr/local/bin/apt-get
 COPY patches/kernel /kernel-patches
 COPY LICENSE NOTICE source-lock.json license-audit.json shirube-os-logo.svg /src/
 COPY LICENSES /src/LICENSES

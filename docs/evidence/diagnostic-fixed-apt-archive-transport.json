@@ -1,0 +1,19 @@
+{
+  "kind": "exact-fixed-apt-archive-acquisition",
+  "status": "PASS_COMPONENT_ONLY",
+  "architecture": "amd64",
+  "actual_acquisition": {
+    "package": "libmbedcrypto7",
+    "version": "2.28.3-1",
+    "architecture": "amd64",
+    "sha256": "af3295f80abf7e6ba2cba419134e29bde04192bf3614622ee53ce49de8d02abe",
+    "size": 277112,
+    "status": "VERIFIED_DOWNLOAD",
+    "url": "https://deb.debian.org/debian/pool/main/m/mbedtls/libmbedcrypto7_2.28.3-1_amd64.deb",
+    "helper_sha256": "7a1b4587e52651804b4302564d84a95615d3a3e8727e0db6ce454e75d38b6fcd",
+    "scope": "Cache helper actual native AMD64 package acquisition before merged-index-prefix adjustment; current focused tests cover that additional path. Not a full ISO or current-head release build."
+  },
+  "trust": "The authenticated fixed snapshot index remains authoritative for package version, architecture, size and SHA256. An official mirror supplies identical bytes only.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
