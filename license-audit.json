@@ -12201,6 +12201,588 @@
         "Retain the unchanged original CSV as the corresponding database source. Applications displaying the data must include the DB-IP attribution link."
       ],
       "scope": "Official November 2026 Lite data only; full CC-BY-4.0 sections 1-8 read, publisher MD5/SHA1 matched uncompressed CSV; compressed and logical hashes fixed. Other components remain independently gated."
+    },
+    "go:github.com/beevik/ntp@v1.4.3#825c41d73aa363f10d94900c04b73b9ff6e43bfcfefb3666fdaaa8ce89434349": {
+      "source_identity": "825c41d73aa363f10d94900c04b73b9ff6e43bfcfefb3666fdaaa8ce89434349",
+      "copyright_sha256": "b64276e2daa4f00f0ed6ce3dae54485b1c7f0bb78cc3555020ed7ba4518fa46e",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/218e9aaf3fc4edac0f048b624eea535499ef91b2c5c9462dcfe88d3ffc058d6f.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:dario.cat/mergo@v1.0.0#1a7ef396709c5835216bb47ba9218dd440ac5307583c69d1798ce9e457f1311d": {
+      "source_identity": "1a7ef396709c5835216bb47ba9218dd440ac5307583c69d1798ce9e457f1311d",
+      "copyright_sha256": "a22f533a3610fdfd55ddf1f970a7fe5adf5c94d27acf975eed47768c17eef0db",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/26b444dbad183e47f0d7c6636a967d047248d12a7b63c44e85f6f2c2608a7cc4.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/golang/protobuf@v1.5.3#93bda6e88d4a0a493a98b481de67a10000a755d15f16a800b49a6b96d1bd6f81": {
+      "source_identity": "93bda6e88d4a0a493a98b481de67a10000a755d15f16a800b49a6b96d1bd6f81",
+      "copyright_sha256": "09d672ab8bfb9db9770ada5697e5ab28e65610eab8824b854d29035e01dadab2",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/4fa5b55367f909f64ebd1e6f81b258796ac1af86df0eadbead850607a9a780e4.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/google/uuid@v1.3.1#9d9d6cfb28ce6dbe4b518c42c6bccd67bb531a106859808f36e82a5c3fb8c64d": {
+      "source_identity": "9d9d6cfb28ce6dbe4b518c42c6bccd67bb531a106859808f36e82a5c3fb8c64d",
+      "copyright_sha256": "67e7730f139f8272b00b44c6749d391385f617d26cb2b5f5f41eaa3aa7eec48c",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/6f4fe717c3efa466a84db44cd65ba9d74913d2a5ee3232948ae2cc2c880c66d3.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/gorilla/mux@v1.8.0#7641911e00af9c91f089868333067c9cb9a58702d2c9ea821ee374940091c385": {
+      "source_identity": "7641911e00af9c91f089868333067c9cb9a58702d2c9ea821ee374940091c385",
+      "copyright_sha256": "81be6a028d01c486776b728cd4d12274ea91f5d43759a57cbd801286d054f9c7",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/9745de03110954aa7b359d7af5de1c0bca533a39f66e0366ab84660995060521.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/gorilla/websocket@v1.5.0#690ea4d1ffe00ab5fcb6d63e2ec3783fc5a58e9d0f1789ea5dc9b6663deee6d5": {
+      "source_identity": "690ea4d1ffe00ab5fcb6d63e2ec3783fc5a58e9d0f1789ea5dc9b6663deee6d5",
+      "copyright_sha256": "3f9b1761219f85b2e5d44e096ef4208a56a361c2a0854b11c05a71a9565b1f93",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/a3bf8a003f9be413343e189f8425e13cc07efe143f68ea6882c5e69570c915c9.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/grid-x/modbus@v0.0.0-20211113184042-7f2251c342c9#92f92b6c2795108342ba4597f8f09bdba72c432c49547d30a6b8fd6ec65863cb": {
+      "source_identity": "92f92b6c2795108342ba4597f8f09bdba72c432c49547d30a6b8fd6ec65863cb",
+      "copyright_sha256": "e1408f3cef74468f17da2baa7fcfa3c39d5f2bb0bb14c4857af2e5faed0057de",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/8c956cb5587dd9a956abe93f3f685a574926eb46e82d4d7313f7aaa7326427f1.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/imdario/mergo@v0.3.16#536b0b87ec2b9f02d759a3a01604043b538e15e62924a29e34cfc2b16a1cf580": {
+      "source_identity": "536b0b87ec2b9f02d759a3a01604043b538e15e62924a29e34cfc2b16a1cf580",
+      "copyright_sha256": "a22f533a3610fdfd55ddf1f970a7fe5adf5c94d27acf975eed47768c17eef0db",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/ddcd627e2aad51c2b7bc7e18e3ccb5061edb57876be7d89e33bb27f490ff38b4.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/jackc/pgproto3/v2@v2.3.2#e6bafa5c3522534557a818f56939dde7b496c6669a5db9a74a0c91ab5290612c": {
+      "source_identity": "e6bafa5c3522534557a818f56939dde7b496c6669a5db9a74a0c91ab5290612c",
+      "copyright_sha256": "1d05a86b92d3d74896f84cae3be03e848dd3ea9d8f6f97914b93f6a45310ae78",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2897bcabf14e9f0cca9cf6abe978736e510e843a3fc87b832fee9fe10ec8d30d.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/netsampler/goflow2@v1.3.6#db27c7a5639a7653827b7b04e30a4979b5570e364e452afe40180186640a746f": {
+      "source_identity": "db27c7a5639a7653827b7b04e30a4979b5570e364e452afe40180186640a746f",
+      "copyright_sha256": "d70c8a6a4a9ae05d70022a7be9d5149922e3d526fe7e68618c9f5111edba8dc1",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/8f9a66adcd584e8166fe7fcafb86c39a6139891449ad78a053acd854bec442c9.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/nsqio/go-nsq@v1.1.0#0ee73c83fcf6fb9ebb2a7980c490b4ac3fec11463807c418064fc0a89fb5017d": {
+      "source_identity": "0ee73c83fcf6fb9ebb2a7980c490b4ac3fec11463807c418064fc0a89fb5017d",
+      "copyright_sha256": "bc63e1a73aa60ddcc80fe5e1544eb9b574ede7a0b623dce18906abda430803dd",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/321646697401b7f23ae8f1a5b6ead9f2727e818f318b80170485cff50ef2aebe.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/pborman/ansi@v1.0.0#f65212be3c0b68e40a67ba8d7d17f34ddc76d13b283854191ba2aee97dd6a78d": {
+      "source_identity": "f65212be3c0b68e40a67ba8d7d17f34ddc76d13b283854191ba2aee97dd6a78d",
+      "copyright_sha256": "9cef369ffe7b9323e21fcbdd3a32ccfa7f5f17acdcabac5179788a6077a03f2f",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/ecff41da2fc9de03b2efa8f07ee34d363535eebaef6ac996597392cfced3957f.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/pierrec/lz4/v4@v4.1.18#b397db34ff05610125e7c9de6de067a174a70ba3ba7dac81ba8ce4f22b1c0933": {
+      "source_identity": "b397db34ff05610125e7c9de6de067a174a70ba3ba7dac81ba8ce4f22b1c0933",
+      "copyright_sha256": "2d4e343f7e4de4439f0f53cb17ec90a6de17d82fa28ff5878d8fc00a3fef1276",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/70d275f0691415bb9d55ad7c49353787bcae34b762988b51ac73103e9d1bddde.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/pmezard/go-difflib@v1.0.1-0.20181226105442-5d4384ee4fb2#24ff45e356f638a53bd0c89fff961fbeaecfdb0dc5e482ceed0a2230e0e5f3b7": {
+      "source_identity": "24ff45e356f638a53bd0c89fff961fbeaecfdb0dc5e482ceed0a2230e0e5f3b7",
+      "copyright_sha256": "60d1159869ed24649a2109a0fc1449e362355e1f60c540a64b6f800fe01ca11f",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/ff14ee67fd958ec6f65a8bcdcc32d39b4d9a312f8e9105abdd5570a5c615da8e.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/rcrowley/go-metrics@v0.0.0-20201227073835-cf1acfcdf475#e4dbd20c185cb05019fd7d4a361266bd5d182938f49fd9577df4d12c16dc81c3": {
+      "source_identity": "e4dbd20c185cb05019fd7d4a361266bd5d182938f49fd9577df4d12c16dc81c3",
+      "copyright_sha256": "283838810b520daa34a91615b883cb443baaf48c45043b338d826ec4415f8cbe",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/838114337faf672b5ff159ac8a014607c5e00c96355f7804be1a734cb8013f6c.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated.",
+        "Retain the original views/conclusions disclaimer and do not represent author policies."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/robinson/gos7@v0.0.0-20231012111941-bdaa10e92e16#6559e1e4c243270f83537d4a4a8f3fefd456c2779d0b0054c6dbe80880c55138": {
+      "source_identity": "6559e1e4c243270f83537d4a4a8f3fefd456c2779d0b0054c6dbe80880c55138",
+      "copyright_sha256": "d48cb06b41b90c907e5baf5f79a4cf20402329dc6a51eb81cc0afbea6c5b5850",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/f011d8199a85f10ce71432dd14490c0135b2727d01763f36ea3e32199edc9063.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/samuel/go-zookeeper@v0.0.0-20200724154423-2164a8ac840e#13c5ccd4ada8ba049a48ae6fdf5b4de54894e56e8f017187466a8cb95ce1faf3": {
+      "source_identity": "13c5ccd4ada8ba049a48ae6fdf5b4de54894e56e8f017187466a8cb95ce1faf3",
+      "copyright_sha256": "a4931fa38570b2fe7e7e11c6004dbc8181826f287bc6c1b7e084ff7bf5466e5c",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/39d8c9c52712a47af97be7058aae582baf1b9cb24bb862ee5326056d93eb691c.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/tklauser/go-sysconf@v0.3.12#95a4a24b6f5fc5af05d94bbab39ff847a220d30c5adb4fb0a09f9c7926a2ffe8": {
+      "source_identity": "95a4a24b6f5fc5af05d94bbab39ff847a220d30c5adb4fb0a09f9c7926a2ffe8",
+      "copyright_sha256": "32597bb9acbb5f27bbc9f706fdf1ffdc661d7088a88f103ded4b8b088964b775",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/429b4dc6c2a32a376e7d350eb923d545a4b712c1e7e6b3c947a4aa9aea368811.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:gopkg.in/inf.v0@v0.9.1#08abac18c95cc43b725d4925f63309398d618beab68b4669659b61255e5374a0": {
+      "source_identity": "08abac18c95cc43b725d4925f63309398d618beab68b4669659b61255e5374a0",
+      "copyright_sha256": "69db02ed55d62b784dca667c9e9e048a95880d5e63ac1b8cfd60dcd447480bcf",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/1f23527798bb5f3caae1c6977c8663bcabad7d2231ea3c811bce09caffb749cf.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:gopkg.in/tomb.v1@v1.0.0-20141024135613-dd632973f1e7#34898dc0e38ba7a792ab74a3e0fa113116313fd9142ffb444b011fd392762186": {
+      "source_identity": "34898dc0e38ba7a792ab74a3e0fa113116313fd9142ffb444b011fd392762186",
+      "copyright_sha256": "eabc3ebd06893632fa4326ddef47d07ae705f06c8c028d58af4d82a0b1cbc3bb",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/13054968ed060f2faa60b3421e63d028ea69d9eabb4dd82f2d801a747cdeb0dc.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:gopkg.in/tomb.v2@v2.0.0-20161208151619-d5d1b5820637#15d93d96e1e8b2d8daf7b9e57a2a9193c0e676a2c6b63d9325bf34b53e93db00": {
+      "source_identity": "15d93d96e1e8b2d8daf7b9e57a2a9193c0e676a2c6b63d9325bf34b53e93db00",
+      "copyright_sha256": "eabc3ebd06893632fa4326ddef47d07ae705f06c8c028d58af4d82a0b1cbc3bb",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3c2fe962e259885c03fa9897d52f411bb0b89b59380da17b3e18b14f0152d1d4.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/fsouza/go-dockerclient@v1.10.0#85c3b44873a45ec452d929f048dde83ba5c35a12ffc1812dd392006fd317e034": {
+      "source_identity": "85c3b44873a45ec452d929f048dde83ba5c35a12ffc1812dd392006fd317e034",
+      "copyright_sha256": "9cae6d725533e3b3c62ed580fcffe8dd6f0bfc26b596929d82b154364d7c1294",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/f5af540e03d1aa16c58e0b517fc90648aee31ad0e4db19a82ebf8f6168f3e4f4.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated.",
+        "Retain the complete Apache-2.0 text as well as the original Docker license pointer; a floating URL is not used as the distributed license text."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ]
+    },
+    "go:github.com/golang/protobuf@v1.5.3#0bbe3e6c37d5fb5c22290a755a9701811090bbcab74b66244a7c83d39cd9e442": {
+      "source_identity": "0bbe3e6c37d5fb5c22290a755a9701811090bbcab74b66244a7c83d39cd9e442",
+      "copyright_sha256": "09d672ab8bfb9db9770ada5697e5ab28e65610eab8824b854d29035e01dadab2",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/4fa5b55367f909f64ebd1e6f81b258796ac1af86df0eadbead850607a9a780e4.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/google/uuid@v1.4.0#0fe462b6ab023c8a177688dd2db9aa5c224ebc8aacbff57eb8f7097ac22281cb": {
+      "source_identity": "0fe462b6ab023c8a177688dd2db9aa5c224ebc8aacbff57eb8f7097ac22281cb",
+      "copyright_sha256": "67e7730f139f8272b00b44c6749d391385f617d26cb2b5f5f41eaa3aa7eec48c",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3e6f9d0d1da08fa31cb4564e1180b94ca462d6543d06023d4a31ff7b4598c702.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/manifoldco/promptui@v0.9.0#c24821e95fcf2c02cb660c7d9cd6a5aad52d6f8b18fcd681400b2e0451aef943": {
+      "source_identity": "c24821e95fcf2c02cb660c7d9cd6a5aad52d6f8b18fcd681400b2e0451aef943",
+      "copyright_sha256": "3de32d1cc6ebc99f26796e47f00867d01b362466bc8fe13ea7b06f6967567b0c",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b9646f73aad999516f93501c7a08348074cfcd5fedc83d619e06f296f652224f.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/miekg/pkcs11@v1.1.1#844e5fb6d7079cbcee727f0b28cb04bb006e1a9be1816d713342e66f7c7f92aa": {
+      "source_identity": "844e5fb6d7079cbcee727f0b28cb04bb006e1a9be1816d713342e66f7c7f92aa",
+      "copyright_sha256": "311baa78c3d191d53e40a834dbb8490d6f0027afe666a7cf1ff99e77c4c799b8",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/edaa8b14500499247c98f984d13e3cd02f53d8165702381aa01727762ed4a3e1.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/pmezard/go-difflib@v1.0.0#387257caae8686d702f2569b19fb3e22ba6951cf1a0efea567f25b0081b44fe7": {
+      "source_identity": "387257caae8686d702f2569b19fb3e22ba6951cf1a0efea567f25b0081b44fe7",
+      "copyright_sha256": "60d1159869ed24649a2109a0fc1449e362355e1f60c540a64b6f800fe01ca11f",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/0e664ef15b3bc98c2fb101fd3133a0e71fe0d55568eea542ac9e8859671747be.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/tklauser/go-sysconf@v0.3.12#7b8bf79cfa8a858a1a473e03657e6169b80078801271e0357c342c227b4b2ec5": {
+      "source_identity": "7b8bf79cfa8a858a1a473e03657e6169b80078801271e0357c342c227b4b2ec5",
+      "copyright_sha256": "32597bb9acbb5f27bbc9f706fdf1ffdc661d7088a88f103ded4b8b088964b775",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/429b4dc6c2a32a376e7d350eb923d545a4b712c1e7e6b3c947a4aa9aea368811.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/ulikunitz/xz@v0.5.11#f7b6844919c82c258bdb0172a12475fea827df451513c8ff7ad499bc3351bbb4": {
+      "source_identity": "f7b6844919c82c258bdb0172a12475fea827df451513c8ff7ad499bc3351bbb4",
+      "copyright_sha256": "56b6e236aebcadd005753131b3a0e16f48bd6b1086bb6d7a7fe5bef104784b94",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/bf33993f495c8b3801b0ffe5f20591784169284db416c8baa24c5e8e4f14f61c.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:gopkg.in/inf.v0@v0.9.1#c992c62f27776bdfd4e3bcfb1cf10f33f3b36aa33386704bac3ea027b0d4db22": {
+      "source_identity": "c992c62f27776bdfd4e3bcfb1cf10f33f3b36aa33386704bac3ea027b0d4db22",
+      "copyright_sha256": "69db02ed55d62b784dca667c9e9e048a95880d5e63ac1b8cfd60dcd447480bcf",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/1f23527798bb5f3caae1c6977c8663bcabad7d2231ea3c811bce09caffb749cf.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:gopkg.in/tomb.v1@v1.0.0-20141024135613-dd632973f1e7#b5021282f3b93b6d33ce0e407e61f69c2e77b75f6afb5f41467584f63063e768": {
+      "source_identity": "b5021282f3b93b6d33ce0e407e61f69c2e77b75f6afb5f41467584f63063e768",
+      "copyright_sha256": "eabc3ebd06893632fa4326ddef47d07ae705f06c8c028d58af4d82a0b1cbc3bb",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/13054968ed060f2faa60b3421e63d028ea69d9eabb4dd82f2d801a747cdeb0dc.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/golang/protobuf@v1.5.4#h1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=": {
+      "source_identity": "h1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=",
+      "copyright_sha256": "66782e94894756b45cee7ef47eaaf0778d76ef408186e157752422fd8aba8fc8",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/0cbd69f3c735871a2c84ea450e961960bf458d42d3acd92801885714d3f16c65.txt",
+      "conditions": [
+        "Retain every original copyright, full permission conditions and disclaimer in source and binary documentation.",
+        "Retain AUTHORS/CONTRIBUTORS and original non-endorsement restrictions, including named authors and contributors; do not imply endorsement.",
+        "Retain complete corresponding source and exact source/notice digest bindings; dependencies and parent distribution remain independently gated."
+      ],
+      "scope": "Complete original small notices read including all authors, contributor lists, project disclaimers and incidental source/test fixtures. Only the exact source/notice pair is covered."
+    },
+    "go:github.com/ClickHouse/clickhouse-go@v1.5.4#168ff16149cdc5b79698525a6e7b7bc7b7d5791dd0b1dbe043c7a8b1a4562f68": {
+      "source_identity": "168ff16149cdc5b79698525a6e7b7bc7b7d5791dd0b1dbe043c7a8b1a4562f68",
+      "copyright_sha256": "4c4adaed9d540ceb4b1337235c7ce897cc6f3ec2c45622278a8e8e208a1a4b06",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/258c06df430289e977de2761881bfa6bb4cec1ccb1bd2f612716f9f1ffd291ef.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:github.com/JohnCGriffin/overflow@v0.0.0-20211019200055-46fa312c352c#8ad4da840214861386d243127290666cc54eb914d1f4a8856523481876af2a09": {
+      "source_identity": "8ad4da840214861386d243127290666cc54eb914d1f4a8856523481876af2a09",
+      "copyright_sha256": "231098cdc38f3be5b95f48cee425372a2ffbdd6a2016706f0f1d6cce4ebeccd3",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2429b9898c40e0c9729a418cbc8c9eb510daf1d532fc26d2a971c83d607d3931.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:github.com/google/cel-go@v0.18.1#d4bc53aa051084dd3cf257c748ce813dcc7bb101ce19f113465dd4ac7b727ba4": {
+      "source_identity": "d4bc53aa051084dd3cf257c748ce813dcc7bb101ce19f113465dd4ac7b727ba4",
+      "copyright_sha256": "5873996ed452e3115cfc7e5f4086c0571c577c706631e46b42a0cf086c829d91",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cc71a3b7f3f7d46985e72b0eab8c254205e6e69bfe50fb400a094a0ba57cb8de.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:sigs.k8s.io/json@v0.0.0-20221116044647-bc3834ca7abd#ddcc6a7c6c22b9b370c270bfefb4b68f424bf740aa18cb766f104531de6e0e6e": {
+      "source_identity": "ddcc6a7c6c22b9b370c270bfefb4b68f424bf740aa18cb766f104531de6e0e6e",
+      "copyright_sha256": "a7e5d213c3ee5836b6cb7df5c26f79046a20b8b51f750f619e5524c71b1ea53d",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/10c55c2c0350155d11c96f2a356d0c0e1af066bb476b232f6fac73c70082ea4b.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:github.com/cilium/ebpf@v0.19.0#h1:Ro/rE64RmFBeA9FGjcTc+KmCeY6jXmryu6FfnzPRIao=": {
+      "source_identity": "h1:Ro/rE64RmFBeA9FGjcTc+KmCeY6jXmryu6FfnzPRIao=",
+      "copyright_sha256": "003bb0678a18bcb69d1c1c093432b5f6bd504774c84a8b68e7fe35f462e6e490",
+      "redistributable": true,
+      "license": "BSD-2-Clause AND MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/4d0f2c7f67fa489360e3c0ff06b197842f357f8202286150ab78997d323f3f84.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:github.com/netbirdio/ice/v4@v4.0.0-20261021152109-d0e5dfacb548#h1:dMRtLZZm7qpyfuw2uRKmCYySYz51wihEWY3JUYMpuK4=": {
+      "source_identity": "h1:dMRtLZZm7qpyfuw2uRKmCYySYz51wihEWY3JUYMpuK4=",
+      "copyright_sha256": "bacc425bd277fc27acc1904472ef2f9e75e317591a24f78c6da640e8719ac309",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/f14fa8ca6f351f1849cc758b74bcfd82d252fb995e4fef4a590258a578277a18.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:github.com/pion/logging@v0.2.4#h1:tTew+7cmQ+Mc1pTBLKH2puKsOvhm32dROumOZ655zB8=": {
+      "source_identity": "h1:tTew+7cmQ+Mc1pTBLKH2puKsOvhm32dROumOZ655zB8=",
+      "copyright_sha256": "44ee15777e5260183f739abf2398f54f47a56f9d15c52986fb43c7e2d8d4d228",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/09ec936727821e129f88f0a79474d5ea768ef1f2453e1527846723fae4789f8c.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:github.com/pion/mdns/v2@v2.0.7#h1:c9kM8ewCgjslaAmicYMFQIde2H9/lrZpjBkN8VwoVtM=": {
+      "source_identity": "h1:c9kM8ewCgjslaAmicYMFQIde2H9/lrZpjBkN8VwoVtM=",
+      "copyright_sha256": "535ec3ac840f434338773366ff84259c83ef1422d2b5e9fbebc412ea43443532",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/caf8b1aa7814eef1d361faff21647fe99a98277e52300d98b5fa21911fcccfe4.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
+    },
+    "go:github.com/pion/transport/v3@v3.1.1#h1:Tr684+fnnKlhPceU+ICdrw6KKkTms+5qHMgw6bIkYOM=": {
+      "source_identity": "h1:Tr684+fnnKlhPceU+ICdrw6KKkTms+5qHMgw6bIkYOM=",
+      "copyright_sha256": "de5fc43a63f366978df6cd92e063db501909e0e907d12db4962a442c22fbd09e",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "netbird/linked/notices/51c07826464f9a283068d300a23d9fb12d416f3bec83154451bfc1b37c4fcee5.txt",
+      "conditions": [
+        "Retain all original copyright, permission terms, non-endorsement conditions, disclaimers and supporting author lists in source and binary documentation.",
+        "Retain directory/file-specific Apache, BSD and MIT distinctions and complete original legal texts. Do not infer permission from SPDX template names.",
+        "Provide exact complete source, notices and build recipes; dependencies and full distribution remain independently gated."
+      ],
+      "scope": "Every complete operative grant matched an already-read original after whitespace normalization only; all preceding text was separately read. For cel-go and sigs.k8s.io/json, preceding full Apache sections 1-9 were independently matched and entire appendix/directory statements read, preserving the BSD-specific portions."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
