@@ -3947,6 +3947,22 @@
         {
           "member": "rustc-1.63.0-src/LICENSE-MIT",
           "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/NanumBarunGothic-LICENSE.txt",
+          "sha256": "4106bf21c67fb046e909f8b8d2c9c3d5cce41f35ec70306f189ce10f0c30d7f6"
+        },
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/SourceCodePro-LICENSE.txt",
+          "sha256": "1092f40afcc93c66c3abca1bae7bd89caef18fd70f8fea25ac3c5e5258ee5e5b"
+        },
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/FiraSans-LICENSE.txt",
+          "sha256": "67b5b41bbc8e43efc55015d2b1704be4e66ec875c2fdc4809283504fe7c3aa6a"
+        },
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/SourceSerif4-LICENSE.md",
+          "sha256": "acb2b8ba7420e412cd26f7d2b05d1692951ea8c6f4118a3a2c903a0f1fff1feb"
         }
       ],
       "extra_sources": [
