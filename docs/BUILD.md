@@ -115,14 +115,16 @@ KVMを開けるか、BuildKitのcache mountとchroot、特権コンテナーのm
 作成したコンテナーとimage tagだけを削除します。PRのheadとcheckoutしたmerge
 commitは別々に記録します。OSビルド、ゲスト起動、所要時間の実用性、公開可否は
 それぞれ別に検証し、この資源試験では未実施として記録します。
-KVM is a separate boot-stage requirement. Diagnostic AMD64 ISO/install/access/reboot tests passed under explicit TCG, but the complete production TCG disk/lifecycle path and its resource/time budget remain unvalidated; it cannot yet satisfy the release boot gate. The hosted runner defaults are selection defaults, not
-claims that their available resources or nested virtualization meet these needs.
+KVM is required only when explicitly selected. Diagnostic native AMD64 and
+ARM64 TCG exported-image lifecycle checks have passed. Each complete release
+candidate must still independently pass its boot, source, permission and
+resource/time gates; hosted runner selection alone does not establish capacity.
 
 An explicit experimental TCG live-ISO probe is available in
 `scripts/test-iso-console.py`, executed with the native toolchain container.
 It uses two virtual CPUs, 2 GiB guest RAM and a 1200-second boot timeout,
 fresh firmware and a new temporary disk. It checks console enrollment/access
-and a live default route. The underlying VM path passed diagnostic AMD64 ISO/install/access/reboot tests; the standalone probe command is not claimed as separately exercised. These component results do not relax the production KVM requirement or establish complete final-disk acceptance.
+and a live default route. The underlying VM path passed diagnostic AMD64 ISO/install/access/reboot tests; the standalone probe command is not claimed as separately exercised. These component results do not establish complete current-head final-disk acceptance.
 
 The FPM bootstrap installs all ten gems from
 `containers/native/rubygems.lock.json`, verifying their public archive hashes
@@ -398,14 +400,19 @@ OS全体の再構築と配布ゲートへの組み込みは未完了です。
 
 ## Explicit release virtualization and container runtime
 
-Release builds default to `SHIRUBE_QEMU_ACCELERATOR=kvm`. Missing KVM fails
-without selecting another accelerator. Native AMD64 can explicitly select `tcg`;
-diagnostic ISO/install/export/NetBird checks have passed in that mode. Production
-configuration now propagates the choice through installation, exported-image
-clones and the libguestfs appliance (`force_tcg`). The complete clean-head
-release path remains unverified. ARM64 TCG acceptance is still incomplete and
-is rejected by the release entry point; native ARM64 KVM remains the supported
-validated guest-test mode. No QEMU emulation is used to compile either OS.
+The release workflow explicitly selects TCG by default for both native hosted
+runner classes. Local build commands retain their KVM default; set
+`SHIRUBE_QEMU_ACCELERATOR=tcg` to select software virtualization locally. An
+explicit KVM selection fails if KVM is unavailable, without falling back.
+The selected mode propagates through installation, exported-image clones and
+the libguestfs appliance (`force_tcg`). Both native architectures accept explicit
+TCG. ARM64 [QCOW2](evidence/diagnostic-arm64-tcg-qcow-current-controller.json) and
+[VMDK](evidence/diagnostic-arm64-tcg-vmdk-current-controller.json) clones passed
+fresh enrollment, full NetBird lifecycle, secret erasure and clean shutdown using
+the exact current controller/unit bytes. These focused tests reuse an earlier
+sanitized TCG-installed base; installation and full zeroing were not repeated.
+Complete clean-head release candidates and hosted resource/time acceptance remain
+unverified and independently gated. No QEMU emulation compiles either OS.
 
 `SHIRUBE_DOCKER_RUNTIME=runc` selects an already registered runtime for this
 build's containers only. With an empty value the daemon default is preserved.
@@ -418,7 +425,7 @@ The release workflow accepts architecture-specific repository variables
 `SHIRUBE_QEMU_ACCELERATOR_AMD64` / `_ARM64`, `SHIRUBE_DOCKER_RUNTIME_AMD64` /
 `_ARM64`, `SHIRUBE_BUILD_CPUS_AMD64` / `_ARM64` and
 `SHIRUBE_BUILD_MEMORY_GIB_AMD64` / `_ARM64`. Unset virtualization/runtime values
-mean KVM and the daemon default; CPU/memory defaults remain four CPUs and 8 GiB.
+mean TCG and the daemon default in Actions; CPU/memory defaults remain four CPUs and 8 GiB.
 One architecture's values do not supply the other's defaults. Native resource
 preflight uses the configured memory budget. Label selection and queued offline
 runner semantics remain unchanged; a selected runner must meet the actual storage,
@@ -430,9 +437,12 @@ and environment-restoration tests are separate from runtime boot evidence.
 
 ## 仮想化方式とコンテナーruntimeの明示選択
 
-既定はKVMです。AMD64では明示的にTCGを選べますが、最新コミット全体のリリース候補は
-まだ未検証です。ARM64のTCGは未合格のためリリース用コマンドで拒否します。
-コンパイル自体は、両方ともネイティブのCPU上で行います。
+Actions は両アーキテクチャで TCG を明示的な既定値にします。ローカルのビルド
+コマンドは KVM が既定で、TCG を使う場合は明示指定します。ARM64 でも現行の
+NetBird 制御処理を使った QCOW2・VMDK の初回設定、実登録、再起動、秘密情報消去、
+正常終了を確認済みです。この試験では以前の消去済みディスクを利用しており、
+インストールと全領域消去は繰り返していません。最新コミット全体の候補、公開 runner
+での容量・時間の適合性は別途検証が必要です。コンパイルは両方ともネイティブで行います。
 runtime指定は今回のコンテナーだけへ渡し、Docker全体の設定は変更しません。
 Actionsの設定はアーキテクチャ別に選択し、片方の値をもう片方へ流用しません。
 初期設定値はCPU 4・メモリー8 GiBです。資源不足や選択方式の未対応時は停止し、
@@ -455,8 +465,10 @@ TCG guests use two vCPUs, 2 GiB guest RAM and an explicit 128 MiB translation
 block cache. [QEMU's accelerator documentation](https://www.qemu.org/docs/master/system/qemu-manpage.html#standard-options)
 defines `tb-size` independently of guest RAM. An ARM64 diagnostic using the
 host-sized default cache ended during installation with a task-owned container
-OOM event under its 3 GiB limit. The bounded-cache retry must pass actual guest
-and offline cleanup checks before ARM64 TCG can enter production admission.
+OOM event under its 3 GiB limit. The bounded-cache retry completed installation
+and sanitization; subsequent QCOW2/VMDK lifecycle tests with the current controller
+passed as linked above. The complete current-head candidate and resource/time
+checks remain mandatory; historical probe results do not grant publication.
 
 Debian corresponding-source acquisition resolves the complete exact-version set
 from the installed package inventory and uses one authenticated APT source

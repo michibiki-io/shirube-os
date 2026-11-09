@@ -50,7 +50,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     timeout-minutes: ${{ matrix.timeout_minutes }}
     env:
-      SHIRUBE_QEMU_ACCELERATOR: ${{ matrix.architecture == 'amd64' && (vars.SHIRUBE_QEMU_ACCELERATOR_AMD64 || 'kvm') || (vars.SHIRUBE_QEMU_ACCELERATOR_ARM64 || 'kvm') }}
+      SHIRUBE_QEMU_ACCELERATOR: ${{ matrix.architecture == 'amd64' && (vars.SHIRUBE_QEMU_ACCELERATOR_AMD64 || 'tcg') || (vars.SHIRUBE_QEMU_ACCELERATOR_ARM64 || 'tcg') }}
       SHIRUBE_DOCKER_RUNTIME: ${{ (matrix.architecture == 'amd64' && vars.SHIRUBE_DOCKER_RUNTIME_AMD64) || (matrix.architecture == 'arm64' && vars.SHIRUBE_DOCKER_RUNTIME_ARM64) || '' }}
       SHIRUBE_BUILD_CPUS: ${{ matrix.architecture == 'amd64' && (vars.SHIRUBE_BUILD_CPUS_AMD64 || '4') || (vars.SHIRUBE_BUILD_CPUS_ARM64 || '4') }}
       SHIRUBE_BUILD_MEMORY_GIB: ${{ matrix.architecture == 'amd64' && (vars.SHIRUBE_BUILD_MEMORY_GIB_AMD64 || '8') || (vars.SHIRUBE_BUILD_MEMORY_GIB_ARM64 || '8') }}

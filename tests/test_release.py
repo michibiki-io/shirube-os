@@ -78,17 +78,21 @@ class ReleaseTests(unittest.TestCase):
         validate(self.root, self.commit, self.version)
 
     def test_explicit_accelerator_must_match_actual_candidate_evidence(self):
-        self.manifest['architectures']['amd64']['qemu_accelerator']='tcg'
-        evidence=self.root/'amd64-evidence.json'
-        data=json.loads(evidence.read_text());data['qemu_accelerator']='tcg'
-        evidence.write_text(json.dumps(data))
-        asset=next(item for item in self.manifest['assets'] if item['name']==evidence.name)
-        asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
-        validate(self.root,self.commit,self.version)
-        data['qemu_accelerator']='kvm';evidence.write_text(json.dumps(data))
-        asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
-        with self.assertRaisesRegex(ValueError,'accelerator differs'):
-            validate(self.root,self.commit,self.version)
+        for architecture in ['amd64','arm64']:
+            with self.subTest(architecture=architecture):
+                candidate=self.manifest['architectures'][architecture]
+                candidate['qemu_accelerator']='tcg'
+                evidence=self.root/(architecture+'-evidence.json')
+                data=json.loads(evidence.read_text());data['qemu_accelerator']='tcg'
+                evidence.write_text(json.dumps(data))
+                asset=next(item for item in self.manifest['assets'] if item['name']==evidence.name)
+                asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
+                validate(self.root,self.commit,self.version)
+                data['qemu_accelerator']='kvm';evidence.write_text(json.dumps(data))
+                asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
+                with self.assertRaisesRegex(ValueError,'accelerator differs'):
+                    validate(self.root,self.commit,self.version)
+                candidate['qemu_accelerator']='kvm';self.write()
 
     def test_parent_clearance_cannot_hide_unreviewed_bundled_dependency(self):
         path=self.root/'amd64-licenses.json'

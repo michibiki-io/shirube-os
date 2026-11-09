@@ -42,8 +42,6 @@ def runner(architecture, setting=''):
 def release_accelerator(architecture, setting='kvm'):
     if architecture not in ARCHITECTURES or setting not in {'kvm','tcg'}:
         raise ValueError('Explicit supported native architecture/QEMU accelerator required')
-    if setting=='tcg' and architecture!='amd64':
-        raise ValueError('ARM64 TCG release acceptance is incomplete; use a validated KVM runner')
     return setting
 
 

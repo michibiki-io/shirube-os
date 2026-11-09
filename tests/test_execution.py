@@ -15,7 +15,8 @@ class ExecutionTests(unittest.TestCase):
     def test_no_automatic_accelerator_or_runtime_fallback(self):
         self.assertEqual(release_accelerator('amd64','tcg'),'tcg')
         self.assertEqual(release_accelerator('arm64','kvm'),'kvm')
-        for arch,mode in [('arm64','tcg'),('amd64','auto'),('unknown','kvm')]:
+        self.assertEqual(release_accelerator('arm64','tcg'),'tcg')
+        for arch,mode in [('arm64','auto'),('amd64','auto'),('unknown','kvm')]:
             with self.assertRaises(ValueError):release_accelerator(arch,mode)
         with patch('subprocess.check_output',return_value=json.dumps({'runc':{}})) as query:
             self.assertEqual(container_runtime('runc',registered=True),'runc')
