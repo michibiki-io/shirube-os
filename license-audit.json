@@ -15504,6 +15504,26 @@
         "Include exact preferred source archives and hashed build/install recipes; mark any modified source and do not misrepresent origin or imply endorsement."
       ],
       "scope": "Complete current-lock aggregate original notices read, regenerated from checksum-verified pinned original source archives. SDK component only; no parent SDK or OS clearance. The source test fixture LICENSE strings are sample wheel contents, preserved under the root BSD grant; vendored tomli retains its separate MIT grant."
+    },
+    "salt-sdk:uuid@1.0.3": {
+      "source_identity": "46af3275291091009ad7f1b899de3d0cea0252737550e7919d17237997db5644",
+      "copyright_sha256": "f471542b443275a3bfbc187a38f3df0b58019182318ce7810412e4dd43d2b9df",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND LGPL-2.1-only AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/46af3275291091009ad7f1b899de3d0cea0252737550e7919d17237997db5644.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file authorship, full BSD grants and disclaimers and the complete LGPL2.1 text with binary documentation.",
+        "Supply exact preferred sources and complete build/install scripts; preserve modification notices and replacement/relinking rights for the LGPL-covered randutils implementation.",
+        "Unversioned LGPL grant selects published LGPL2.1 under its section 13. Preserve other original alternatives; do not infer endorsement or trademark rights."
+      ],
+      "scope": "Original COPYING refers to a missing BSD text, so the complete actual source headers were inspected and retained as hash-pinned notices. Theodore Ts'o BSD3 clauses, randutils unversioned LGPL and all-io public-domain dedication remain separate per-file obligations. No parent SDK/OS clearance."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
