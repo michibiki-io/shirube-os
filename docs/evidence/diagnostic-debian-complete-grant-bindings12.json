@@ -1,0 +1,482 @@
+{
+  "kind": "exact-debian-complete-grant-and-path-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 6,
+  "components": [
+    {
+      "source": "at",
+      "version": "3.2.5-1",
+      "dsc_sha256": "4160b81c8c75231096ea74b021736df209bce077af989210dd5c163a4e65afdd",
+      "binaries": [
+        {
+          "name": "at",
+          "version": "3.2.5-1+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "d8717d88757af438b8ac94fbc28aac9207b8b2cb82837609471f0d224476e846"
+        }
+      ],
+      "copyright_sha256": "d8717d88757af438b8ac94fbc28aac9207b8b2cb82837609471f0d224476e846",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "c38aee9e3c8c4d5d594ff548a1be05453023016d6286931f6512db215ec1fd42",
+          "read_reference": {
+            "component": "base-passwd",
+            "member": "COPYING",
+            "sha256": "e6d6a009505e345fe949e1310334fcb0747f28dae2856759de102ab66b722cb4"
+          }
+        },
+        {
+          "member": "Copyright",
+          "sha256": "01dccc0975aa9ba1a9f83e7c5e04f16077353d3c72a0a759b8846ee7a5b2b616",
+          "read_reference": {
+            "component": "at",
+            "member": "Copyright",
+            "sha256": "01dccc0975aa9ba1a9f83e7c5e04f16077353d3c72a0a759b8846ee7a5b2b616",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "9e38b95d1b9640894d0740cf2e577ed08ae46fb0ada14ce3d681afc7eca77c2a",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "device-tree-compiler"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "30377e8507642277934ae86d1e35305c5282ee70f82bb84748e68ff22ab71a5c",
+          "read_reference": {
+            "component": "at",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "ISC ",
+          "full_normalized_body_sha256": "4829cc8e654be69dd1edcebedbda21758a239c230e38f532d6bf4b0adc1a0427",
+          "read_reference": {
+            "label": "ISC",
+            "component": "crun"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "at",
+          "Source": "http://blog.calhariz.com",
+          "Comment": "This package was debianized by its author Thomas Koenig\n<ig25@rz.uni-karlsruhe.de>, taken over and re-packaged first by Martin\nSchulze <joey@debian.org> and then by Siggy Brentrup <bsb@winnegan.de>,\nand then taken over by Ryan Murray <rmurray@debian.org>.\n\nIn August 2009 the upstream development and Debian packaging were taken over\nby Ansgar Burchardt <ansgar@debian.org> and Cyril Brulebois <kibi@debian.org>.\n\nIn August 2015 the upstream development and Debian packaging were taken over\nby Jose M Calhariz <jose@calhariz.com>.\n\nThis may be considered the experimental upstream source, and since there\ndoesn't seem to be any other upstream source, the only upstream source."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1993-1997,  Thomas Koenig <ig25@rz.uni-karlsruhe.de>\n1993,       David Parsons\n2002, 2005, Ryan Murray <rmurray@debian.org>\n2009        Cyril Brulebois <kibi@debian.org>\n2009-2014,  Ansgar Burchardt <ansgar@debian.org>\n2013,       Prach Pongpanich <prachpub@gmail.com>\n2015-2016,  Jose M Calhariz <jose@calhariz.com>"
+        },
+        {
+          "Files": "getloadavg.c",
+          "Copyright": "1985-1995, Free Software Foundation Inc"
+        },
+        {
+          "Files": "posixtm.*",
+          "Copyright": "1989-2007, Free Software Foundation Inc"
+        },
+        {
+          "Files": "parsetime.pl",
+          "Copyright": "2009, Ansgar Burchardt <ansgar@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libpackage-stash-perl",
+      "version": "0.40-1",
+      "dsc_sha256": "2f79da360a23a9f54c0db35024871a48c89fe85489502e891d0504840a29c50b",
+      "binaries": [
+        {
+          "name": "libpackage-stash-perl",
+          "version": "0.40-1",
+          "architecture": "all",
+          "copyright_sha256": "5efe7ec7af83a1ce1565e53204c2408ae095e3a704f550e40dcf83205fc7c41e"
+        }
+      ],
+      "copyright_sha256": "5efe7ec7af83a1ce1565e53204c2408ae095e3a704f550e40dcf83205fc7c41e",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "5f82745d355b43f451c557642618cbd903251192b89f31ca53eaab90c35aeb7c",
+          "read_reference": {
+            "component": "libpackage-stash-perl",
+            "member": "LICENSE",
+            "sha256": "5f82745d355b43f451c557642618cbd903251192b89f31ca53eaab90c35aeb7c",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "814d7879deee4e68ccc5de5e00aa2c86a5481884705403de346542e486a80887",
+          "read_reference": {
+            "component": "libpackage-stash-perl",
+            "label": "Artistic"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Package-Stash",
+          "Upstream-Contact": "Karen Etheridge <ether@cpan.org>",
+          "Source": "https://metacpan.org/release/Package-Stash"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2022, Jesse Luehrs <doy@tozt.net>"
+        },
+        {
+          "Files": "inc/ExtUtils/HasCompiler.pm",
+          "Copyright": "2014, Leon Timmermans"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2010, Ansgar Burchardt <ansgar@debian.org>\n2010-2022, gregor herrmann <gregoa@debian.org>\n2011, Jonathan Yu <jawnsy@cpan.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libstring-rewriteprefix-perl",
+      "version": "0.009-1",
+      "dsc_sha256": "7ba006f1dd99ff7abe7c58750a1e1fb3307ba9e4783955c08ab7a31a64977dc7",
+      "binaries": [
+        {
+          "name": "libstring-rewriteprefix-perl",
+          "version": "0.009-1",
+          "architecture": "all",
+          "copyright_sha256": "37f5e826b7c8eaa95d08efbaaa85072bcecf4230094d53c92bc3d178ba6856ad"
+        }
+      ],
+      "copyright_sha256": "37f5e826b7c8eaa95d08efbaaa85072bcecf4230094d53c92bc3d178ba6856ad",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "5a4bfa5ab76dd052c936319f39cb75faa070f9df6dd87b10bb1226dfb6b0afa6",
+          "read_reference": {
+            "component": "libapp-cmd-perl",
+            "member": "LICENSE",
+            "sha256": "5a4bfa5ab76dd052c936319f39cb75faa070f9df6dd87b10bb1226dfb6b0afa6"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "814d7879deee4e68ccc5de5e00aa2c86a5481884705403de346542e486a80887",
+          "read_reference": {
+            "component": "libpackage-stash-perl",
+            "label": "Artistic"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "String-RewritePrefix",
+          "Upstream-Contact": "Ricardo SIGNES <cpan@semiotic.systems>",
+          "Source": "https://metacpan.org/release/String-RewritePrefix"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2022, Ricardo SIGNES <cpan@semiotic.systems>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n2009, Krzysztof Krzy\u017caniak (eloy) <eloy@debian.org>\n2009, Brian Cassidy <brian.cassidy@gmail.com>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "luajit",
+      "version": "2.1.0~beta3+git20220320+dfsg-4.1+deb12u1",
+      "dsc_sha256": "4738332dcafdda10ade1a87fa0e3b51bce733bf715af0b50c8fb8c0ca3b651b6",
+      "binaries": [
+        {
+          "name": "libluajit-5.1-2",
+          "version": "2.1.0~beta3+git20220320+dfsg-4.1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "0dd86af7c0d511d99501b7e30d358ecd832aa518f9fa8d7a90bbba2bf39e5568"
+        },
+        {
+          "name": "libluajit-5.1-common",
+          "version": "2.1.0~beta3+git20220320+dfsg-4.1+deb12u1",
+          "architecture": "all",
+          "copyright_sha256": "0dd86af7c0d511d99501b7e30d358ecd832aa518f9fa8d7a90bbba2bf39e5568"
+        }
+      ],
+      "copyright_sha256": "0dd86af7c0d511d99501b7e30d358ecd832aa518f9fa8d7a90bbba2bf39e5568",
+      "original_legal_matches": [
+        {
+          "member": "COPYRIGHT",
+          "sha256": "52fc5b15ac968ed81aabb4c1e23ab3bce50f57a5764e9cdca86b463a11072921",
+          "read_reference": {
+            "component": "luajit",
+            "member": "COPYRIGHT",
+            "sha256": "52fc5b15ac968ed81aabb4c1e23ab3bce50f57a5764e9cdca86b463a11072921",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "json-c",
+              "member": "COPYING",
+              "sha256": "74c1e6ca5eba76b54d0ad00d4815c8315c1b3bc45ff99de61d103dc92486284c"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "PD",
+          "full_normalized_body_sha256": "63f43d684f8e91d50c31a9ad41e3a6062ea3f44fafb7249b28916e600bcab81c",
+          "read_reference": {
+            "component": "luajit",
+            "label": "PD"
+          }
+        },
+        {
+          "label": "MIT/X",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "http://dep.debian.net/deps/dep5/",
+          "Upstream-Name": "LuaJIT",
+          "Upstream-Contact": "Mike Pall, http://luajit.org/contact.html",
+          "Source": "http://luajit.org/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2005-2011, Mike Pall"
+        },
+        {
+          "Files": "src/lua.h src/lauxlib.h src/lualib.h",
+          "Copyright": "1994-2011, Lua.org, PUC-Rio"
+        },
+        {
+          "Files": "src/lj_alloc.c",
+          "Copyright": "Doug Lea <dl@cs.oswego.edu>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "openssl",
+      "version": "3.0.22-1~deb12u2",
+      "dsc_sha256": "7c45299a4363febec120676393d4314841c7c50da244a6e6a256f072d632d337",
+      "binaries": [
+        {
+          "name": "libssl3",
+          "version": "3.0.22-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35"
+        },
+        {
+          "name": "openssl",
+          "version": "3.0.22-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35"
+        }
+      ],
+      "copyright_sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE.txt",
+          "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+          "read_reference": {
+            "component": "openssl",
+            "member": "LICENSE.txt",
+            "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "external/perl/Text-Template-1.56/LICENSE",
+          "sha256": "9837f05336ef3cbacb6a96e1672a0426d81ad01191f214b8d48e22ca62338181",
+          "read_reference": {
+            "component": "salt-sdk:openssl",
+            "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+            "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "util/perl/OpenSSL/copyright.pm",
+          "sha256": "04213b69dbebc8ba0dd8a6216af1d9422f9b63619c1cf2f1d8aa107b83bbb608",
+          "read_reference": {
+            "component": "salt-sdk:openssl",
+            "member": "openssl-3.6.1/util/perl/OpenSSL/copyright.pm",
+            "sha256": "7ac71a01654420d500abc7d2f68527c0a314be240c6a7a6aa547766720aa3551",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "32eda36256dabaefb52212d90f0aa3f534b6fb6b0c17455a9a76d7aad5664577",
+          "read_reference": {
+            "component": "openssl",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "OpenSSL",
+          "Source": "https://www.openssl.org"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1995-2020, The OpenSSL Project Authors\n1995-1998, Eric A. Young, Tim J. Hudson\n2004-2014 Akamai Technologies.\n2008 Andy Polyakov <appro@openssl.org>\n2017 BaishanCloud.\n2015 CloudFlare Inc.\n2014-2016 Cryptography Research Inc.\n2012-2014 Daniel J. Bernstein\n2004 EdelKey Project.\n2011 Google Inc.\n2018-2019 IBM Corp.\n2012,2014 Intel Corporation.\n2012-2016 Jean-Philippe Aumasson\n2007 KISA(Korea Information Security Agency).\n2004 Kungliga Tekniska H\u00f6gskolan\n2017 National Security Research Institute.\n2006 Network Resonance Inc.\n2005,2007-2020 Nokia\n2006 NTT (Nippon Telegraph and Telephone Corporation)\n2002,2017-2020 Oracle and/or its affiliates.\n1995 Patrick Powell\n2019 Red Hat Inc.\n2017 Ribose Inc.\n2004,2018 Richard Levitte <richard@levitte.org>\n2011 RTFM Inc.\n2012 Samuel Neves <sneves@dei.uc.pt>\n2015-2020 Siemens AG\n2002 The OpenTSA Project.\n2013-2014 Timo Ter\u00e4s <timo.teras@gmail.com>\n2016 Viktor Dukhovni <openssl-users@dukhovni.org>.\n2016 VMS Software Inc."
+        },
+        {},
+        {
+          "Files": "debian/*",
+          "Copyright": "Christoph Martin, Kurt Roeckx, Sebastian Andrzej Siewior"
+        },
+        {
+          "Files": "external/perl/Text-Template-1.56/*",
+          "Copyright": "2013, Mark Jason Dominus <mjd@cpan.org>."
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "tpm2-tools",
+      "version": "5.4-1",
+      "dsc_sha256": "c16b9cfbef3259c24cbda12ef502cc964cc9993b42f0994558ee6f1a60bdee39",
+      "binaries": [
+        {
+          "name": "tpm2-tools",
+          "version": "5.4-1",
+          "architecture": "arm64",
+          "copyright_sha256": "e8a1c6e1398f742e4fcfd32366016376a790cd228d8e423090cacf45c1819101"
+        }
+      ],
+      "copyright_sha256": "e8a1c6e1398f742e4fcfd32366016376a790cd228d8e423090cacf45c1819101",
+      "original_legal_matches": [
+        {
+          "member": "docs/LICENSE",
+          "sha256": "f6995d52c8b8e4d2c3bace7fc9c330a77a90d808166fbad4d7ead7e8ba2fc66c",
+          "read_reference": {
+            "component": "tpm2-tools",
+            "member": "docs/LICENSE",
+            "sha256": "f6995d52c8b8e4d2c3bace7fc9c330a77a90d808166fbad4d7ead7e8ba2fc66c",
+            "method": "Entire copyright/scope prefix read; complete operative body normalized-word-identical to a separately read complete original",
+            "read_reference": {
+              "component": "markupsafe",
+              "member": "LICENSE.rst",
+              "sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3",
+          "full_normalized_body_sha256": "83c7f35bae4137abf366ce0703899b3fea4283cb6f30826a6ffc9f42b41afa9b",
+          "read_reference": {
+            "component": "tpm2-tools",
+            "label": "GPL-3"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "70435d703f5e4bdca9a1fa6b9291501b0dd850d2ad5457b491ce936217b1e063",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "pci.ids"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "tpm2.0-tools",
+          "Source": "https://github.com/tpm2-software/tpm2-tools"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2015 Intel Corporation"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2016 Canonical Ltd.\n2016 Mathieu Trudel-Lapierre <mathieu.trudel-lapierre@canonical.com>\n2017 Ivan Hu <ivan.hu@ubuntu.com>\n2017 Ying-Chun Liu (PaulLiu) <paulliu@debian.org>"
+        },
+        {
+          "Files": "tools/tpm2_nvreadlock.c",
+          "Copyright": "2015 Intel Corporation\n2016 Atom Software Studios"
+        },
+        {
+          "Files": "debian/manpagesxml/*.8",
+          "Copyright": "2016 Intel Corporation"
+        },
+        {},
+        {}
+      ]
+    }
+  ],
+  "scope": "Complete original source notice comparisons and every operative grant and remaining metadata field read. Versions, custom clauses and original Artistic/GPL alternatives preserved.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

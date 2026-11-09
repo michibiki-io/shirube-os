@@ -15853,6 +15853,483 @@
         "Accompany binaries with exact preferred sources, Debian patches and full build/install scripts; do not add restrictions or endorsement claims."
       ],
       "scope": "Complete package copyright read. All common-license originals read or previously full original matched: GPL1 and MPL1.1 read completely in this round; Artistic1.0Perl byte-word-identical to retained full text; GFDL1.3 exact SHA matches the previously fully read original. GPL/LGPL/GFDL versions and each distinct grant preserved. No parent OS clearance."
+    },
+    "libapp-cmd-perl@0.335-1": {
+      "source_identity": "37fb9dfededecfbd878f0183d27c2ac244b5806fc740cd73005bc4081055b586",
+      "copyright_sha256": "f09fc7ddb3ca576ad51cadf089d3c21a9a489a6f0aeb2b175e1d96b1b3db9f64",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libb-hooks-op-check-perl@0.22-2": {
+      "source_identity": "39891237277be4344bc3d7c68c4ff3de86d73e1077268e295fce53015785282d",
+      "copyright_sha256": "027cf55c401c860e9c956dccaf87276d3dc2029e0c30349808165cd05df487ce",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libboolean-perl@0.46-3": {
+      "source_identity": "8bdb9cc710a39de10ec097b9c77ccb476e5b188578325fe4f61dd50b081505c4",
+      "copyright_sha256": "013dc3f253bbf536867be1e5078a9581cf20bf40c23ab8331d434eabe3f492e9",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libclass-load-perl@0.25-2": {
+      "source_identity": "608601125ae05231e7e0bed63c0d75b44c0854b340714d720d6f615c129b4701",
+      "copyright_sha256": "d677e98dcb1bf7f2baa04953fa28b05172584963b67bacc01eb27164c8c3d088",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libdata-optlist-perl@0.113-1": {
+      "source_identity": "72bc5b84b4df2f5fd6d44663a9a8a1429f8a841c62edc6f8f7589e03a671176d",
+      "copyright_sha256": "3bb3b6b0f15f26657aadd1e908013e4b97326e36612b0aa941778de54ae30c24",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libexception-class-perl@1.45-1": {
+      "source_identity": "744feb8bbee2277472c7113fd7e672051ff7635f070fe00ba19a79cd8e3707a9",
+      "copyright_sha256": "5913d33c006322486e7823b54fbe2537a67c3ea57f40257ed9ced9d938d2121a",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libfile-which-perl@1.27-2": {
+      "source_identity": "eeb39065332ec8b25b2273308b031d5ea476243a8401a62ab8eebf8acec9db48",
+      "copyright_sha256": "4115ef1a0cb233f60cf876d714bedaae90f4800f61bf299da6c637740bab17f1",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libgetopt-long-descriptive-perl@0.111-1": {
+      "source_identity": "d41cdafdcbcafea4ec5b8cda8092f68e56d33a24b0a9bf9a741865df7b42fd3f",
+      "copyright_sha256": "0f9730e40072517587e715571c78559d43e1dbf64f9a5b2eeb13d569885fd8b6",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libio-tiecombine-perl@1.005-3": {
+      "source_identity": "2120b6345450e00fb9597a1fcb551e922bb89c60b26d96d8193ed24efc24dcfa",
+      "copyright_sha256": "e1d3f5378f94d37a5b9af0875719e887089905ecb6ae6d83effee69ca4f769cd",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libmouse-perl@2.5.10-1": {
+      "source_identity": "f9e1bfe22bb36b3c765909330e9bd419b4c8897560ff4c2a0deec2569baeafa2",
+      "copyright_sha256": "f773469e56b2982d99e4af367f83364401a85e98c4424c8e3ba69477ca4b56fd",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libpod-pom-perl@2.01-4": {
+      "source_identity": "a99588598d4ea00c70846b13b5cd0aa64a401a08fbc0a73d7a9d8237b831179f",
+      "copyright_sha256": "801233c4924b0c7769d5e37753a1fdf5951dcd7aefc0b98ea6527d8d071951bd",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libsub-exporter-perl@0.989-1": {
+      "source_identity": "b902951ad8e9c27cbe31165c433abb0b720d541a9b89076c55621d1a69a59493",
+      "copyright_sha256": "52bc27b53f77bf288335f6a01905e8ddc672840655972a367e1d41e7ed358f07",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libsub-install-perl@0.929-1": {
+      "source_identity": "8c8a905406bb070550fa21c47bdb25eb988aaecb3f09e057a10c0edbcd57897c",
+      "copyright_sha256": "97347e713f60309f2224a5bc9ecd6b2413e4b99e13ef14146ef64e06f8bea382",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libyaml-pp-perl@0.035-1": {
+      "source_identity": "9581f3333db07cfe498e60f5c0b44eb37e8136994dacd4d51630701bf0d717d9",
+      "copyright_sha256": "22aa3e2bf22a0651c065f907c7517a2cc7a15081eb0550bd1507549c3ae95570",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "libyaml-tiny-perl@1.73-1": {
+      "source_identity": "a3ddcb1ebc8fc3438705f78245089bf946bc60c5629c3080defed645f610be26",
+      "copyright_sha256": "81998f0ab61d040dac8263f03289b8f32476371273c9a098b66f59640cb9d37f",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Retain all original per-file copyrights, exact original license alternatives, complete Artistic/GPL texts, notices and disclaimers with sources and binary documentation.",
+        "Select the original applicable Artistic branch for each portion; preserve differences between plain Artistic1.0 and Perl Artistic1.0, including the narrower original terms without assuming extra embedding/aggregation permissions.",
+        "Make any modifications freely available under section 3(a), accompany binaries with complete machine-readable source under 4(b), and retain exact build/install scripts and original names/attribution without implying endorsement."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All copyright/path/provenance/comment fields and full operative grant bodies read. Root original Artistic1.0 and Debian Perl Artistic notices remain separately preserved with both full texts. Component only; no parent OS clearance."
+    },
+    "at@3.2.5-1": {
+      "source_identity": "4160b81c8c75231096ea74b021736df209bce077af989210dd5c163a4e65afdd",
+      "copyright_sha256": "d8717d88757af438b8ac94fbc28aac9207b8b2cb82837609471f0d224476e846",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND GPL-3.0-or-later AND ISC",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, full per-file license terms, notices, exceptions and disclaimers in sources and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts; preserve modification notices, copyleft source access and separately licensed file scopes.",
+        "Retain all original alternatives and authorship; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All operative bodies and all remaining file/copyright/provenance/comment fields read. Component only; no parent OS clearance."
+    },
+    "libpackage-stash-perl@0.40-1": {
+      "source_identity": "2f79da360a23a9f54c0db35024871a48c89fe85489502e891d0504840a29c50b",
+      "copyright_sha256": "5efe7ec7af83a1ce1565e53204c2408ae095e3a704f550e40dcf83205fc7c41e",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, full per-file license terms, notices, exceptions and disclaimers in sources and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts; preserve modification notices, copyleft source access and separately licensed file scopes.",
+        "Retain all original alternatives and authorship; no endorsement or trademark permission is inferred.",
+        "Select original Artistic branches per file, preserve plain/Perl variant differences and complete original GPL alternatives. Make modifications freely available under 3(a), accompany binaries with complete source under 4(b), and infer no extra embedding/aggregation permission."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All operative bodies and all remaining file/copyright/provenance/comment fields read. Component only; no parent OS clearance.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "libstring-rewriteprefix-perl@0.009-1": {
+      "source_identity": "7ba006f1dd99ff7abe7c58750a1e1fb3307ba9e4783955c08ab7a31a64977dc7",
+      "copyright_sha256": "37f5e826b7c8eaa95d08efbaaa85072bcecf4230094d53c92bc3d178ba6856ad",
+      "redistributable": true,
+      "license": "(Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, full per-file license terms, notices, exceptions and disclaimers in sources and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts; preserve modification notices, copyleft source access and separately licensed file scopes.",
+        "Retain all original alternatives and authorship; no endorsement or trademark permission is inferred.",
+        "Select original Artistic branches per file, preserve plain/Perl variant differences and complete original GPL alternatives. Make modifications freely available under 3(a), accompany binaries with complete source under 4(b), and infer no extra embedding/aggregation permission."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All operative bodies and all remaining file/copyright/provenance/comment fields read. Component only; no parent OS clearance.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "luajit@2.1.0~beta3+git20220320+dfsg-4.1+deb12u1": {
+      "source_identity": "4738332dcafdda10ade1a87fa0e3b51bce733bf715af0b50c8fb8c0ca3b651b6",
+      "copyright_sha256": "0dd86af7c0d511d99501b7e30d358ecd832aa518f9fa8d7a90bbba2bf39e5568",
+      "redistributable": true,
+      "license": "MIT AND LicenseRef-Public-Domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, full per-file license terms, notices, exceptions and disclaimers in sources and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts; preserve modification notices, copyleft source access and separately licensed file scopes.",
+        "Retain all original alternatives and authorship; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All operative bodies and all remaining file/copyright/provenance/comment fields read. Component only; no parent OS clearance."
+    },
+    "openssl@3.0.22-1~deb12u2": {
+      "source_identity": "7c45299a4363febec120676393d4314841c7c50da244a6e6a256f072d632d337",
+      "copyright_sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35",
+      "redistributable": true,
+      "license": "Apache-2.0 AND (Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, full per-file license terms, notices, exceptions and disclaimers in sources and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts; preserve modification notices, copyleft source access and separately licensed file scopes.",
+        "Retain all original alternatives and authorship; no endorsement or trademark permission is inferred.",
+        "Select original Artistic branches per file, preserve plain/Perl variant differences and complete original GPL alternatives. Make modifications freely available under 3(a), accompany binaries with complete source under 4(b), and infer no extra embedding/aggregation permission."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All operative bodies and all remaining file/copyright/provenance/comment fields read. Component only; no parent OS clearance.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ]
+    },
+    "tpm2-tools@5.4-1": {
+      "source_identity": "c16b9cfbef3259c24cbda12ef502cc964cc9993b42f0994558ee6f1a60bdee39",
+      "copyright_sha256": "e8a1c6e1398f742e4fcfd32366016376a790cd228d8e423090cacf45c1819101",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "conditions": [
+        "Retain complete original copyrights, full per-file license terms, notices, exceptions and disclaimers in sources and accompanying binary documentation.",
+        "Supply exact preferred sources, patches and complete build/install scripts; preserve modification notices, copyleft source access and separately licensed file scopes.",
+        "Retain all original alternatives and authorship; no endorsement or trademark permission is inferred."
+      ],
+      "scope": "Every original named legal file matched to read originals or its complete word differences read. All operative bodies and all remaining file/copyright/provenance/comment fields read. Component only; no parent OS clearance. The GPL-3 short label has an explicit version3-or-later operative grant, which governs the recorded scope; original text is unchanged."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."

@@ -1,0 +1,1040 @@
+{
+  "kind": "exact-debian-complete-grant-and-path-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 15,
+  "components": [
+    {
+      "source": "libapp-cmd-perl",
+      "version": "0.335-1",
+      "dsc_sha256": "37fb9dfededecfbd878f0183d27c2ac244b5806fc740cd73005bc4081055b586",
+      "binaries": [
+        {
+          "name": "libapp-cmd-perl",
+          "version": "0.335-1",
+          "architecture": "all",
+          "copyright_sha256": "f09fc7ddb3ca576ad51cadf089d3c21a9a489a6f0aeb2b175e1d96b1b3db9f64"
+        }
+      ],
+      "copyright_sha256": "f09fc7ddb3ca576ad51cadf089d3c21a9a489a6f0aeb2b175e1d96b1b3db9f64",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "5a4bfa5ab76dd052c936319f39cb75faa070f9df6dd87b10bb1226dfb6b0afa6",
+          "read_reference": {
+            "component": "libapp-cmd-perl",
+            "member": "LICENSE",
+            "sha256": "5a4bfa5ab76dd052c936319f39cb75faa070f9df6dd87b10bb1226dfb6b0afa6",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "App-Cmd",
+          "Upstream-Contact": "Ricardo Signes <cpan@semiotic.systems>",
+          "Source": "https://metacpan.org/release/App-Cmd"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2022, Ricardo Signes <cpan@semiotic.systems>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009-2021, Salvatore Bonaccorso <carnil@debian.org>\n2009, Ryan Niebur <ryanryan52@gmail.com>\n2012-2023, gregor herrmann <gregoa@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libb-hooks-op-check-perl",
+      "version": "0.22-2",
+      "dsc_sha256": "39891237277be4344bc3d7c68c4ff3de86d73e1077268e295fce53015785282d",
+      "binaries": [
+        {
+          "name": "libb-hooks-op-check-perl",
+          "version": "0.22-2+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "027cf55c401c860e9c956dccaf87276d3dc2029e0c30349808165cd05df487ce"
+        }
+      ],
+      "copyright_sha256": "027cf55c401c860e9c956dccaf87276d3dc2029e0c30349808165cd05df487ce",
+      "original_legal_matches": [
+        {
+          "member": "LICENCE",
+          "sha256": "37c79ba01b808223b4c49a8eec473a357cf6aae894f26e7b72c1e4b33262210f",
+          "read_reference": {
+            "component": "libb-hooks-op-check-perl",
+            "member": "LICENCE",
+            "sha256": "37c79ba01b808223b4c49a8eec473a357cf6aae894f26e7b72c1e4b33262210f",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "B-Hooks-OP-Check",
+          "Upstream-Contact": "Florian Ragwitz <rafl@debian.org>",
+          "Source": "https://metacpan.org/release/B-Hooks-OP-Check"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2008, Florian Ragwitz <rafl@debian.org>"
+        },
+        {
+          "Files": "ppport.h",
+          "Copyright": "2004-2013, Marcus Holland-Moritz <mhx-cpan@gmx.net>\n2001, Paul Marquess <pmqs@cpan.org> (Version 2.x)\n1999, Kenneth Albanowski <kjahds@kjahds.com> (Version 1.x)"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009, Jonathan Yu <jawnsy@cpan.org>\n2009, Jeremiah C. Foster <jeremiah@jeremiahfoster.com>\n2011, Jotam Jr. Trejo <jotamjr@debian.org.sv>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libboolean-perl",
+      "version": "0.46-3",
+      "dsc_sha256": "8bdb9cc710a39de10ec097b9c77ccb476e5b188578325fe4f61dd50b081505c4",
+      "binaries": [
+        {
+          "name": "libboolean-perl",
+          "version": "0.46-3",
+          "architecture": "all",
+          "copyright_sha256": "013dc3f253bbf536867be1e5078a9581cf20bf40c23ab8331d434eabe3f492e9"
+        }
+      ],
+      "copyright_sha256": "013dc3f253bbf536867be1e5078a9581cf20bf40c23ab8331d434eabe3f492e9",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "92c3e2173c7f20d66b373c6b3d14769d58aded145817f2ca786d60b334be333b",
+          "read_reference": {
+            "component": "libboolean-perl",
+            "member": "LICENSE",
+            "sha256": "92c3e2173c7f20d66b373c6b3d14769d58aded145817f2ca786d60b334be333b",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "boolean",
+          "Upstream-Contact": "Ingy d\u00f6t Net <ingy@cpan.org>",
+          "Source": "https://metacpan.org/release/boolean"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2007-2016, Ingy d\u00f6t Net <ingy@cpan.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n2008-2010, Ansgar Burchardt <ansgar@debian.org>\n2011-2016, Salvatore Bonaccorso <carnil@debian.org>\n2011, Nicholas Bamber <nicholas@periapt.co.uk>\n2011, Fabrizio Regalli <fabreg@fabreg.it>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libclass-load-perl",
+      "version": "0.25-2",
+      "dsc_sha256": "608601125ae05231e7e0bed63c0d75b44c0854b340714d720d6f615c129b4701",
+      "binaries": [
+        {
+          "name": "libclass-load-perl",
+          "version": "0.25-2",
+          "architecture": "all",
+          "copyright_sha256": "d677e98dcb1bf7f2baa04953fa28b05172584963b67bacc01eb27164c8c3d088"
+        }
+      ],
+      "copyright_sha256": "d677e98dcb1bf7f2baa04953fa28b05172584963b67bacc01eb27164c8c3d088",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "dc030e63f20035291b90d09c2c40f296224e85878caf829ea981fc2f10910f9d",
+          "read_reference": {
+            "component": "libclass-load-perl",
+            "member": "LICENSE",
+            "sha256": "dc030e63f20035291b90d09c2c40f296224e85878caf829ea981fc2f10910f9d",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Contact": "Shawn M Moore <sartak@bestpractical.com>",
+          "Upstream-Name": "Class-Load",
+          "Source": "https://metacpan.org/release/Class-Load"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2008-2009, Best Practical Solutions\n2011-2012, Shawn M Moore <sartak@bestpractical.com>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2010-2018, gregor herrmann <gregoa@debian.org>\n2011-2012, Angel Abad <angel@debian.org>\n2011, Damyan Ivanov <dmn@debian.org>\n2011, Ansgar Burchardt <ansgar@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libdata-optlist-perl",
+      "version": "0.113-1",
+      "dsc_sha256": "72bc5b84b4df2f5fd6d44663a9a8a1429f8a841c62edc6f8f7589e03a671176d",
+      "binaries": [
+        {
+          "name": "libdata-optlist-perl",
+          "version": "0.113-1",
+          "architecture": "all",
+          "copyright_sha256": "3bb3b6b0f15f26657aadd1e908013e4b97326e36612b0aa941778de54ae30c24"
+        }
+      ],
+      "copyright_sha256": "3bb3b6b0f15f26657aadd1e908013e4b97326e36612b0aa941778de54ae30c24",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "712f3e40537810ba3046533fd71d877f69ab446d5e8e8a1135771804494b8b42",
+          "read_reference": {
+            "component": "libdata-optlist-perl",
+            "member": "LICENSE",
+            "sha256": "712f3e40537810ba3046533fd71d877f69ab446d5e8e8a1135771804494b8b42",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Data-OptList",
+          "Upstream-Contact": "Ricardo Signes <cpan@semiotic.systems>",
+          "Source": "https://metacpan.org/release/Data-OptList"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2006, Ricardo Signes <cpan@semiotic.systems>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2006-2007, Krzysztof Krzyzaniak (eloy) <eloy@debian.org>\n2007-2023, gregor herrmann <gregoa@debian.org>\n2009, Antonio Radici <antonio@dyne.org>\n2010, Jonathan Yu <jawnsy@cpan.org>\n2011, Jotam Jr. Trejo <jotamjr@debian.org.sv>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libexception-class-perl",
+      "version": "1.45-1",
+      "dsc_sha256": "744feb8bbee2277472c7113fd7e672051ff7635f070fe00ba19a79cd8e3707a9",
+      "binaries": [
+        {
+          "name": "libexception-class-perl",
+          "version": "1.45-1",
+          "architecture": "all",
+          "copyright_sha256": "5913d33c006322486e7823b54fbe2537a67c3ea57f40257ed9ced9d938d2121a"
+        }
+      ],
+      "copyright_sha256": "5913d33c006322486e7823b54fbe2537a67c3ea57f40257ed9ced9d938d2121a",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "a68d6847435af9fcc70948291e23736cf373b6d75736ec1f2aa0c710ec0e172c",
+          "read_reference": {
+            "component": "libexception-class-perl",
+            "member": "LICENSE",
+            "sha256": "a68d6847435af9fcc70948291e23736cf373b6d75736ec1f2aa0c710ec0e172c",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Exception-Class",
+          "Upstream-Contact": "Dave Rolsky <autarch@urth.org>",
+          "Source": "https://metacpan.org/release/Exception-Class"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2014-2021, David Rolsky <autarch@urth.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2002, 2003, 2004, Ivan Kohler <ivan-debian@420.am>\n2005, 2006, Jay Bonci <jaybonci@debian.org>\n2008, Jose Luis Rivas <ghostbar38@gmail.com>\n2008-2021, gregor herrmann <gregoa@debian.org>\n2009, 2010, Ansgar Burchardt <ansgar@debian.org>\n2011, Fabrizio Regalli <fabreg@fabreg.it>\n2016, Lucas Kanashiro <kanashiro.duarte@gmail.com>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libfile-which-perl",
+      "version": "1.27-2",
+      "dsc_sha256": "eeb39065332ec8b25b2273308b031d5ea476243a8401a62ab8eebf8acec9db48",
+      "binaries": [
+        {
+          "name": "libfile-which-perl",
+          "version": "1.27-2",
+          "architecture": "all",
+          "copyright_sha256": "4115ef1a0cb233f60cf876d714bedaae90f4800f61bf299da6c637740bab17f1"
+        }
+      ],
+      "copyright_sha256": "4115ef1a0cb233f60cf876d714bedaae90f4800f61bf299da6c637740bab17f1",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "a8c59266cf9a5393d47dae51ce6fb649d823a7ea9e610afb9bf50823553130bf",
+          "read_reference": {
+            "component": "libfile-which-perl",
+            "member": "LICENSE",
+            "sha256": "a8c59266cf9a5393d47dae51ce6fb649d823a7ea9e610afb9bf50823553130bf",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "File-Which",
+          "Upstream-Contact": "Graham Ollis <plicease@cpan.org>",
+          "Source": "https://metacpan.org/release/File-Which"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2015, Graham Ollis <plicease@cpan.org>\n2009, Adam Kennedy <adamk@cpan.org>\n2002, Per Einar Ellefsen <pereinar@cpan.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2002-2004, Ardo van Rangelrooij <ardo@debian.org>\n2004, Daniel Ruoso <daniel@ruoso.com>\n2006-2021, gregor herrmann <gregoa@debian.org>\n2009, Jonathan Yu <jawnsy@cpan.org>\n2012-2015, Florian Schlichting <fsfs@debian.org>\n2022, Nick Morrott <nickm@debian.org>{"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libgetopt-long-descriptive-perl",
+      "version": "0.111-1",
+      "dsc_sha256": "d41cdafdcbcafea4ec5b8cda8092f68e56d33a24b0a9bf9a741865df7b42fd3f",
+      "binaries": [
+        {
+          "name": "libgetopt-long-descriptive-perl",
+          "version": "0.111-1",
+          "architecture": "all",
+          "copyright_sha256": "0f9730e40072517587e715571c78559d43e1dbf64f9a5b2eeb13d569885fd8b6"
+        }
+      ],
+      "copyright_sha256": "0f9730e40072517587e715571c78559d43e1dbf64f9a5b2eeb13d569885fd8b6",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "380d5759e023742a764be5998c4cd9299545ffeeeaae3bdcc2dbbcd64f1cf97d",
+          "read_reference": {
+            "component": "libgetopt-long-descriptive-perl",
+            "member": "LICENSE",
+            "sha256": "380d5759e023742a764be5998c4cd9299545ffeeeaae3bdcc2dbbcd64f1cf97d",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Getopt-Long-Descriptive",
+          "Upstream-Contact": "Ricardo SIGNES <cpan@semiotic.systems>",
+          "Source": "https://metacpan.org/release/Getopt-Long-Descriptive"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2005, Hans Dieter Pearcey <hdp@cpan.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2008, Krzysztof Krzy\u017caniak (eloy) <eloy@debian.org>\n2009-2023, gregor herrmann <gregoa@debian.org>\n2009-2010, Jonathan Yu <frequency@cpan.org>\n2009-2019, Salvatore Bonaccorso <carnil@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libio-tiecombine-perl",
+      "version": "1.005-3",
+      "dsc_sha256": "2120b6345450e00fb9597a1fcb551e922bb89c60b26d96d8193ed24efc24dcfa",
+      "binaries": [
+        {
+          "name": "libio-tiecombine-perl",
+          "version": "1.005-3",
+          "architecture": "all",
+          "copyright_sha256": "e1d3f5378f94d37a5b9af0875719e887089905ecb6ae6d83effee69ca4f769cd"
+        }
+      ],
+      "copyright_sha256": "e1d3f5378f94d37a5b9af0875719e887089905ecb6ae6d83effee69ca4f769cd",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "2fdd2e27a911b2ef249a58d73ac741e2480039df8dce354ea813c8c638aab4d5",
+          "read_reference": {
+            "component": "libio-tiecombine-perl",
+            "member": "LICENSE",
+            "sha256": "2fdd2e27a911b2ef249a58d73ac741e2480039df8dce354ea813c8c638aab4d5",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Contact": "Ricardo SIGNES <rjbs@cpan.org>",
+          "Source": "https://metacpan.org/release/IO-TieCombine",
+          "Upstream-Name": "IO-TieCombine"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2015, Ricardo SIGNES <rjbs@cpan.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009, Ryan Niebur <ryan@debian.org>\n2011, gregor herrmann <gregoa@debian.org>\n2012, Fabrizio Regalli <fabreg@fabreg.it>\n2012-2015, Florian Schlichting <fsfs@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libmouse-perl",
+      "version": "2.5.10-1",
+      "dsc_sha256": "f9e1bfe22bb36b3c765909330e9bd419b4c8897560ff4c2a0deec2569baeafa2",
+      "binaries": [
+        {
+          "name": "libmouse-perl",
+          "version": "2.5.10-1+b3",
+          "architecture": "arm64",
+          "copyright_sha256": "f773469e56b2982d99e4af367f83364401a85e98c4424c8e3ba69477ca4b56fd"
+        }
+      ],
+      "copyright_sha256": "f773469e56b2982d99e4af367f83364401a85e98c4424c8e3ba69477ca4b56fd",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "e195080eac8cd85ecb9897ca10ead4efe2742c3565d304f15bca10c3f60919d5",
+          "read_reference": {
+            "component": "libmouse-perl",
+            "member": "LICENSE",
+            "sha256": "e195080eac8cd85ecb9897ca10ead4efe2742c3565d304f15bca10c3f60919d5",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Mouse",
+          "Upstream-Contact": "Shawn M Moore <sartak@gmail.com>",
+          "Source": "https://metacpan.org/release/Mouse"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2008-2010, Infinity Interactive, Inc.\n2008-2013, Shawn M Moore <sartak@gmail.com>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2008, Gunnar Wolf <gwolf@debian.org>\n2008-2009, Brian Cassidy <brian.cassidy@gmail.com>\n2008-2009, Jose Luis Rivas <ghostbar@debian.org>\n2008-2020, gregor herrmann <gregoa@debian.org>\n2009, Nathan Handler <nhandler@debian.org>\n2009, Rene Mayorga <rmayorga@debian.org>\n2009, Ryan Niebur <ryan@debian.org>\n2009-2010, Jonathan Yu <jawnsy@cpan.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libpod-pom-perl",
+      "version": "2.01-4",
+      "dsc_sha256": "a99588598d4ea00c70846b13b5cd0aa64a401a08fbc0a73d7a9d8237b831179f",
+      "binaries": [
+        {
+          "name": "libpod-pom-perl",
+          "version": "2.01-4",
+          "architecture": "all",
+          "copyright_sha256": "801233c4924b0c7769d5e37753a1fdf5951dcd7aefc0b98ea6527d8d071951bd"
+        }
+      ],
+      "copyright_sha256": "801233c4924b0c7769d5e37753a1fdf5951dcd7aefc0b98ea6527d8d071951bd",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "13686f670dc3f83375c955119cfe43ac7c1cb48113c8d0db4464d47e6e1d5c17",
+          "read_reference": {
+            "component": "libpod-pom-perl",
+            "member": "LICENSE",
+            "sha256": "13686f670dc3f83375c955119cfe43ac7c1cb48113c8d0db4464d47e6e1d5c17",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Pod-POM",
+          "Upstream-Contact": "Neil Bowers <neil@bowers.com>",
+          "Source": "https://metacpan.org/release/Pod-POM"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2009-2010, Andrew Ford <A.Ford@ford-mason.co.uk>\n2000-2009, Andy Wardley <abw@kfs.org>"
+        },
+        {
+          "Files": "t/YAML/Tiny.pm",
+          "Copyright": "2006-2009, Adam Kennedy"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2001-2006, Taku YASUI <tach@debian.or.jp>\n2007, Gunnar Wolf <gwolf@debian.org>\n2009, Ryan Niebur <ryanryan52@gmail.com>\n2009-2019, gregor herrmann <gregoa@debian.org>\n2010, Jonathan Yu <jawnsy@cpan.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libsub-exporter-perl",
+      "version": "0.989-1",
+      "dsc_sha256": "b902951ad8e9c27cbe31165c433abb0b720d541a9b89076c55621d1a69a59493",
+      "binaries": [
+        {
+          "name": "libsub-exporter-perl",
+          "version": "0.989-1",
+          "architecture": "all",
+          "copyright_sha256": "52bc27b53f77bf288335f6a01905e8ddc672840655972a367e1d41e7ed358f07"
+        }
+      ],
+      "copyright_sha256": "52bc27b53f77bf288335f6a01905e8ddc672840655972a367e1d41e7ed358f07",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "95b045c1abc517fb0db6550e2a3c004019ac8b9c475f31216da828b0afbfa6e1",
+          "read_reference": {
+            "component": "libsub-exporter-perl",
+            "member": "LICENSE",
+            "sha256": "95b045c1abc517fb0db6550e2a3c004019ac8b9c475f31216da828b0afbfa6e1",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Sub-Exporter",
+          "Upstream-Contact": "Ricardo SIGNES, <cpan@semiotic.systems>",
+          "Source": "https://metacpan.org/release/Sub-Exporter"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2007, Ricardo SIGNES, <cpan@semiotic.systems>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2006, 2007, Krzysztof Krzyzaniak (eloy) <eloy@debian.org>\n2007, Damyan Ivanov <dmn@debian.org>\n2007, Gunnar Wolf <gwolf@debian.org>\n2008, 2009, Ansgar Burchardt <ansgar@debian.org>\n2008, Krzysztof Krzy\u017caniak (eloy) <eloy@debian.org>\n2008, Roberto C. Sanchez <roberto@debian.org>\n2010-2023, gregor herrmann <gregoa@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libsub-install-perl",
+      "version": "0.929-1",
+      "dsc_sha256": "8c8a905406bb070550fa21c47bdb25eb988aaecb3f09e057a10c0edbcd57897c",
+      "binaries": [
+        {
+          "name": "libsub-install-perl",
+          "version": "0.929-1",
+          "architecture": "all",
+          "copyright_sha256": "97347e713f60309f2224a5bc9ecd6b2413e4b99e13ef14146ef64e06f8bea382"
+        }
+      ],
+      "copyright_sha256": "97347e713f60309f2224a5bc9ecd6b2413e4b99e13ef14146ef64e06f8bea382",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "0150501749fc390e1c747739a7c1d7661607f8f1d9a9f2ad279664f12e46104e",
+          "read_reference": {
+            "component": "libsub-install-perl",
+            "member": "LICENSE",
+            "sha256": "0150501749fc390e1c747739a7c1d7661607f8f1d9a9f2ad279664f12e46104e",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Contact": "Ricardo Signes <cpan@semiotic.systems>",
+          "Source": "https://metacpan.org/release/Sub-Install",
+          "Upstream-Name": "Sub-Install"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2005, Ricardo Signes <cpan@semiotic.systems>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2006, Krzysztof Krzyzaniak (eloy) <eloy@debian.org>\n2006-2023, gregor herrmann <gregoa@debian.org>\n2008, Rene Mayorga <rmayorga@debian.org>\n2009, Brian Cassidy <brian.cassidy@gmail.com>\n2011-2012, Fabrizio Regalli <fabreg@fabreg.it>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libyaml-pp-perl",
+      "version": "0.035-1",
+      "dsc_sha256": "9581f3333db07cfe498e60f5c0b44eb37e8136994dacd4d51630701bf0d717d9",
+      "binaries": [
+        {
+          "name": "libyaml-pp-perl",
+          "version": "0.035-1",
+          "architecture": "all",
+          "copyright_sha256": "22aa3e2bf22a0651c065f907c7517a2cc7a15081eb0550bd1507549c3ae95570"
+        }
+      ],
+      "copyright_sha256": "22aa3e2bf22a0651c065f907c7517a2cc7a15081eb0550bd1507549c3ae95570",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "ad9cbe7b91c03642f1202f0ef26036cde813d2a24d516a5b95d0963843b2276f",
+          "read_reference": {
+            "component": "libyaml-pp-perl",
+            "member": "LICENSE",
+            "sha256": "ad9cbe7b91c03642f1202f0ef26036cde813d2a24d516a5b95d0963843b2276f",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Source": "https://metacpan.org/release/YAML-PP",
+          "Upstream-Contact": "Tina M\u00fcller <tinita@cpan.org>",
+          "Upstream-Name": "YAML-PP"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2017-2022, Tina M\u00fcller <tinita@cpan.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2020-2022, gregor herrmann <gregoa@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libyaml-tiny-perl",
+      "version": "1.73-1",
+      "dsc_sha256": "a3ddcb1ebc8fc3438705f78245089bf946bc60c5629c3080defed645f610be26",
+      "binaries": [
+        {
+          "name": "libyaml-tiny-perl",
+          "version": "1.73-1",
+          "architecture": "all",
+          "copyright_sha256": "81998f0ab61d040dac8263f03289b8f32476371273c9a098b66f59640cb9d37f"
+        }
+      ],
+      "copyright_sha256": "81998f0ab61d040dac8263f03289b8f32476371273c9a098b66f59640cb9d37f",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "21cda7a55a8d4b32a43c654f0d4d4a1587096b35bf2a93ea12a2e3a8c2c0b88f",
+          "read_reference": {
+            "component": "libyaml-tiny-perl",
+            "member": "LICENSE",
+            "sha256": "21cda7a55a8d4b32a43c654f0d4d4a1587096b35bf2a93ea12a2e3a8c2c0b88f",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Source": "https://metacpan.org/release/YAML-Tiny",
+          "Upstream-Contact": "Karen Etheridge <ether@cpan.org>",
+          "Upstream-Name": "YAML-Tiny"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2006-2013, Adam Kennedy <adamk@cpan.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2007-2012, John Lightsey <lightsey@debian.org>"
+        },
+        {},
+        {}
+      ]
+    }
+  ],
+  "full_original_classic_artistic_sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d",
+  "full_perl_artistic_sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88",
+  "scope": "Complete original legal-file comparisons, all grant bodies and all remaining fields read. Plain and Perl Artistic variants are preserved separately; original GPL alternatives and full source remain available.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
