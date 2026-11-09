@@ -47,7 +47,7 @@ def source_set_evidence(source, output, architecture, version, commit, work,
     manifest_path.write_text(json.dumps(header,sort_keys=True,separators=(',',':'))+'\n')
     restored=False
     try:
-        proof=restore(output,work,architecture,commit);restored=True
+        proof=restore(output,work,architecture,commit,discard_verified=True);restored=True
         if proof['status']!='PASS_SOURCE_SET_ONLY':raise ValueError('Source-set restoration did not pass')
         proof['actual_project_build_input_sha256']=project_digest
         proof['actual_project_build_input_binding']='PASS'

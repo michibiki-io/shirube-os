@@ -55,6 +55,7 @@ class SourceRestorationTests(unittest.TestCase):
         result=source_set_evidence(source,self.root,'amd64','v2026.03.0',self.commit,self.output,project)
         self.assertEqual(result['proof']['actual_project_build_input_sha256'],sha256(project))
         self.assertEqual(result['proof']['actual_project_build_input_binding'],'PASS')
+        self.assertFalse(result['proof']['restored_tree_retained'])
         self.assertFalse(self.output.exists())
         candidate=json.loads((self.root/'manifest.json').read_text())
         self.assertEqual(candidate['manifest_kind'],'candidate-source-set')
@@ -101,9 +102,20 @@ class SourceRestorationTests(unittest.TestCase):
         self.assertEqual((target/'source.c').read_bytes(),(self.root/'source.c').read_bytes())
         self.assertEqual((target/'build.sh').stat().st_mode & 0o777,0o755)
         self.assertEqual(proof['restored_regular_members'],3)
+        self.assertTrue(proof['restored_tree_retained'])
         self.assertEqual(json.loads((self.output/'restoration.json').read_text()),proof)
         with self.assertRaisesRegex(ValueError,'license clearance'):
             verify_sources(self.root,self.inventory,self.manifest['assets'])
+
+    def test_producer_scratch_discards_only_fully_verified_archive_payloads(self):
+        proof = restore(self.root, self.output, 'amd64', self.commit, discard_verified=True)
+        self.assertFalse(proof['restored_tree_retained'])
+        self.assertEqual(proof['restored_regular_members'], 3)
+        self.assertGreater(proof['restored_regular_bytes'], 0)
+        self.assertEqual({p.name for p in self.output.iterdir()}, {'restoration.json'})
+        self.assertTrue(self.archive.is_file())
+        with self.assertRaisesRegex(ValueError, 'license clearance'):
+            verify_sources(self.root, self.inventory, self.manifest['assets'])
 
     def test_wrong_commit_outer_archive_or_member_digest_cannot_restore(self):
         with self.assertRaisesRegex(ValueError,'identity differs'):

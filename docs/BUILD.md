@@ -470,6 +470,17 @@ acceptance, an ARM64 50 GiB result or OCI execution.
 
 ## Restoring the complete source set
 
+The release producer physically restores and hash-checks every source member in
+task-owned scratch, discarding each archive's restored files only after that
+archive is complete. Its proof records total restored bytes and the largest
+archive payload. This bounds temporary payload storage to one archive; the
+public restoration command retains the entire restored tree by default.
+
+リリース用の検証では、すべてのソースmemberを作業専用領域へ実際に書き出し、
+ハッシュを照合します。アーカイブごとの検証を終えてからその復元物を削除し、
+一時領域の増大を抑えます。記録には総復元バイト数と最大アーカイブの内容量を
+残します。利用者向けの復元コマンドは、既定ですべての復元物を保持します。
+
 After verifying the selected release commit and downloading its complete
 manifest, component inventories and source assets, the source consumer restores
 every archive into a separate directory under a new destination:
