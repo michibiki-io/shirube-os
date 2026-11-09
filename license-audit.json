@@ -11690,6 +11690,208 @@
           "sha256": "a1fae99d451f3d6a63d0ee907861352b23c8f73e2ee5214483ccdb70b621a9b3"
         }
       ]
+    },
+    "go:github.com/amir/raidman@v0.0.0-20170415203553-1ccc43bfb9c9#9e36be59edd13e4a4850407e1319c49cc8ff1482f25bc211aa96b21ddec13152": {
+      "source_identity": "9e36be59edd13e4a4850407e1319c49cc8ff1482f25bc211aa96b21ddec13152",
+      "copyright_sha256": "8a2a38c15eea61316d5a92dfcea0db4dd49839696d63af3ff6529712e3b064fe",
+      "redistributable": true,
+      "license": "Unlicense",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cfbfb993a1af8becac953079fd103d0d9dc68227ef6af227f9d2ab0043ff510b.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/go-redis/redis/v7@v7.4.1#15b3ff6bc2454e2dd9c9ce92e1a3c05d7de35e4e6f9c47470357c35b21e5164a": {
+      "source_identity": "15b3ff6bc2454e2dd9c9ce92e1a3c05d7de35e4e6f9c47470357c35b21e5164a",
+      "copyright_sha256": "c44166cce927bd2b65485f572f22bad30f27aa9c8dd7232eddf6791d6e81b1e7",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b26093d19a7032481399d0603901e79e6e13cd83e9b1c78d1047fff9410e1c62.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/go-redis/redis/v8@v8.11.5#7b373b229f2ed912bd2fa3c91787e9280ff0d40a36e9e5c2783e8db24d44e22c": {
+      "source_identity": "7b373b229f2ed912bd2fa3c91787e9280ff0d40a36e9e5c2783e8db24d44e22c",
+      "copyright_sha256": "c44166cce927bd2b65485f572f22bad30f27aa9c8dd7232eddf6791d6e81b1e7",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/22ecbaf38cb23a61bdb0ce57992b75aa6c84f25c93cba469aa9a61abc6790fc9.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/karrick/godirwalk@v1.16.2#4b03e8c1cd90d22a2c273a1efc9a2489ae4cffe91c9f399e60c2e145020b38d6": {
+      "source_identity": "4b03e8c1cd90d22a2c273a1efc9a2489ae4cffe91c9f399e60c2e145020b38d6",
+      "copyright_sha256": "aab3b6cd248fcd8bdb42f7547370b0ae1343a852fbb20e254248c589be1dba3a",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/c68240289ebf8e99d9e8acdeea1763b98a7d9ab17e0c9f45e0a97dbacf43edf6.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/magiconair/properties@v1.8.7#ae77e5969fe064035fb543004478c3a819f95bb7bc1da084435bb2134532aaa7": {
+      "source_identity": "ae77e5969fe064035fb543004478c3a819f95bb7bc1da084435bb2134532aaa7",
+      "copyright_sha256": "58cbda558a8981a75f4ae523c9f00e659dd09991e719ba516f84fe9bc1400d83",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/119ae94dc5323244b1748eba42cb47053e4509040f5298e532e5fdd4cff96f4d.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/multiplay/go-ts3@v1.1.0#c08cbb9d6684130c69255eb637078f529a2b0babeb47b1434a0f8a1c2943a519": {
+      "source_identity": "c08cbb9d6684130c69255eb637078f529a2b0babeb47b1434a0f8a1c2943a519",
+      "copyright_sha256": "2608196672d514338cae334ca6ba9ade974962419d4d563049f80660040ab0a2",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/5b6e99f5b97b5ab8d2539a718ab2ebf076b01b8cbbf3f70b7103f92349036144.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/rabbitmq/amqp091-go@v1.8.1#879641319005323fff656020c3359fbfd2aef4555d7dcb4e16d9af5b6b7395d7": {
+      "source_identity": "879641319005323fff656020c3359fbfd2aef4555d7dcb4e16d9af5b6b7395d7",
+      "copyright_sha256": "bad9377c0155c94c2bade61aa1d50f7670d5ca857e4082a959169d16bbf3c9b1",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/81123c1cc01af27c1a3e953ebfd6f75a6e6b87c94bd49b97892da9c516b3a86e.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/redis/go-redis/v9@v9.2.1#3f48ac2125fd841f3930a9f02803d1a474775f20bc68dcd30455c89a09fabcde": {
+      "source_identity": "3f48ac2125fd841f3930a9f02803d1a474775f20bc68dcd30455c89a09fabcde",
+      "copyright_sha256": "5aa50f2f7b6ccc18b87c8fe260890b46a82a50a1672a8e48b4af3bf486b7fb73",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7a42c26a143f7e63b7e0ab5bd3061677bf8441d02179af367e04a7c239a091e8.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/russross/blackfriday/v2@v2.1.0#7852750d58a053ce38b01f2c203208817564f552ebf371b2b630081d7004c6ae": {
+      "source_identity": "7852750d58a053ce38b01f2c203208817564f552ebf371b2b630081d7004c6ae",
+      "copyright_sha256": "d2d5402bd5b3b27a95d63ce53cc906bd8853b26c9e9f012ae22c7756d6fb4241",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/ebe12162835abb80c7dc0aa49b878937ae5a20661bd332963e31713034f3101d.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/tinylib/msgp@v1.1.8#152b107fb37add5612aae5ff74fe0ffe3445710de5da5767c95a253c7a440e0d": {
+      "source_identity": "152b107fb37add5612aae5ff74fe0ffe3445710de5da5767c95a253c7a440e0d",
+      "copyright_sha256": "f3b66f82061daa19fc4f10fd5ad0087a4bac646fc0169a1ee30b0af5dcc2cf13",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/68a4c8ad54c7a6e365e92c9a2f45d1c6952dfd93a3f40b66296ab8b4d8dc1b6b.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate.",
+        "Retain the full Go BSD-3-Clause text incorporated by the original portions copyright notice, including the non-endorsement condition."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred.",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Go-BSD-3-Clause.txt",
+          "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067"
+        }
+      ]
+    },
+    "go:github.com/pkg/sftp@v1.13.6#d680b48fa943d4790e39c0289825daa4cfd3d5ef5730fff27216528dbd254799": {
+      "source_identity": "d680b48fa943d4790e39c0289825daa4cfd3d5ef5730fff27216528dbd254799",
+      "copyright_sha256": "d369c4343f9630334c77c58df00711a1e6fb0a68512b952e1aa055158fa163a3",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/59632a3e91ca285574289e9815c405f4c28773422d9d9069d7daae9e47981327.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/seccomp/libseccomp-golang@v0.10.0#27438fafba9e6b25e5f17bf3787078f892d46d6fdcde8ee770b416b6effb9656": {
+      "source_identity": "27438fafba9e6b25e5f17bf3787078f892d46d6fdcde8ee770b416b6effb9656",
+      "copyright_sha256": "19522e0015e4c0818b4ef690a5924f3670fe0eb34a85ebdd1b624ee8afcdcbac",
+      "redistributable": true,
+      "license": "BSD-2-Clause",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/508bf4901ddd7fc1681639bb43058e3a969a4205bcbcd1f47e5451e868932b1e.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/tchap/go-patricia/v2@v2.3.1#9cef78415425cbcd2b3dcafe84e2f934636261a5029efbdb4398e9524348aaa0": {
+      "source_identity": "9cef78415425cbcd2b3dcafe84e2f934636261a5029efbdb4398e9524348aaa0",
+      "copyright_sha256": "700ebb38b9c5c15f6d15cf8ef159f44ee7ba647ff1532585374d7187cca52821",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2e221309832b9ac828d257e4de245957cdbd04b5e593a50014ac9dd912ce1db6.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/vbauerster/mpb/v8@v8.6.2#c27092732e8ccbb2e04bb7ebd3bbde952809cd446881c525d47f7d2029a3f6d8": {
+      "source_identity": "c27092732e8ccbb2e04bb7ebd3bbde952809cd446881c525d47f7d2029a3f6d8",
+      "copyright_sha256": "8a2a38c15eea61316d5a92dfcea0db4dd49839696d63af3ff6529712e3b064fe",
+      "redistributable": true,
+      "license": "Unlicense",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/5346f18b69bce3f125beec23ff375242f6857504089a11810f50bd0fd98f64c9.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
+    },
+    "go:github.com/stefanberger/go-pkcs11uri@v0.0.0-20201008174630-78d3cae3a980#b03f5b050ac93772ffd7dc71cd04ab2cdfbb531ce53d66d17bc85258248624b9": {
+      "source_identity": "b03f5b050ac93772ffd7dc71cd04ab2cdfbb531ce53d66d17bc85258248624b9",
+      "copyright_sha256": "0c3b6ef888476105fa1905955df2c279168750fe0ceb0a6086809dfea4c59ee9",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-09",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/346ea30d390169e07e621debe7db8f072407e3c20899fee542e8e4e57c31374c.txt",
+      "conditions": [
+        "Retain all complete original copyrights, author/contributor lists, permission conditions and disclaimers with source and binary distributions.",
+        "Retain exact corresponding-source and notice digest bindings; dependencies and whole-distribution clearance remain separate."
+      ],
+      "scope": "Complete original notices were read or full operative grants compared with read originals and separately read prefixes. Exact old BSD-2-Clause, Unlicense and MIT notices only; no similarly named later license inferred."
     }
   },
   "note": "No complete binary package inventory has yet been built and audited. Every unreviewed component blocks publication. Populate entries only after auditing the exact source identity and all required notices/permissions."
