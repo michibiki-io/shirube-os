@@ -1,9 +1,6 @@
 name: Native hosted ISO source trial
 on:
   workflow_dispatch:
-  push:
-    branches: ['feature/**']
-    paths: ['.github/workflows/native-trial.yml']
 permissions:
   contents: read
 concurrency:
