@@ -23759,6 +23759,52 @@
         "Deliver the complete author permission and canonical https://www.cs.virginia.edu/stream/ref.html reference. Any published numademo STREAM results from the modified implementation must be clearly described as based on a variant, rather than certified standard STREAM results; no such benchmark results are published or claimed by this change. Author result submission is encouraged, not required.",
         "Retain Michael Brundage’s explicit Mersenne Twister public-domain notice and marked AK changes. This component decision does not clear the complete OS, establish binary reproducibility or imply a native compilation/boot/OCI check."
       ]
+    },
+    "haveged@1.9.14-1+deb12u1": {
+      "redistributable": true,
+      "source_identity": "6978f6939adb5766336126b2045a1c5c514d7ad7f63eeff7af9f039316f2b3a5",
+      "copyright_sha256": "f640ffd58ee2aa544f0a43e4e42274be75b80dfd89e7326734a5702d0c696f23",
+      "license": "GPL-3.0-or-later AND BSD-3-Clause AND LicenseRef-NIST-Original-Permission",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Haveged-1.9.14/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "LICENSES/Haveged-1.9.14/nist/mconf.h",
+          "sha256": "2d6cebc91de54b565860df9c074fd4d8f6b0ce93d648fa367998a9b5fe08061d"
+        },
+        {
+          "path": "LICENSES/Haveged-1.9.14/nist/cephes.c",
+          "sha256": "bd7c570798a898a85adb32f506c5481279e6a4a6e4d54b703e94272a6e89494e"
+        },
+        {
+          "path": "LICENSES/Haveged-1.9.14/dfft.c.original-notice.txt",
+          "sha256": "21b36f2234f824c4462d25a2dc0cf5f3d5c010427cdd9c5d684fb4ef5fc5d2eb"
+        },
+        {
+          "path": "LICENSES/Haveged-1.9.14/packtest.c.original-notice.txt",
+          "sha256": "7a1c9d053b22db8644be1c004d439bf634db7b79e5b427202b791fdbfc32fa0f"
+        },
+        {
+          "path": "LICENSES/Haveged-1.9.14/debian-copyright.txt",
+          "sha256": "f640ffd58ee2aa544f0a43e4e42274be75b80dfd89e7326734a5702d0c696f23"
+        },
+        {
+          "path": "LICENSES/Haveged-1.9.14/Cephes-published-BSD-license.txt",
+          "sha256": "d40ab631870d41b48ca3a3852f42b80a7c100dee6fe1a4c45b0d89db4ceb9e79"
+        }
+      ],
+      "scope": "Exact Debian haveged1.9.14 release scope. Entire original Debian copyright and actual NIST permission/public-domain dedication read. Actual Cephes2.0/2.1/2.2/2.3 notices checked in nist/cephes.c and mconf.h; additional author-approved BSD distribution supplies the material-wide redistribution permission rather than an invented public-domain claim. No code changes or native rebuild.",
+      "conditions": [
+        "Retain complete GNU3-or-later root copyright/license and corresponding source/build/install scripts. All original COPYING differences to retained GNU3 are URLs only; original bytes remain in this notice set.",
+        "Retain the original Cephes copyright years1984–1995 and author Stephen L. Moshier in both actual files. Deliver the complete published NearForm/Cephes BSD license, including author2018 copyright, all source/binary retention conditions, nonendorsement and disclaimer. This additional public BSD permission is not a claim that the old source header contained it, nor an assumption that public availability alone implies redistribution rights.",
+        "The author-approved published cephes2.0.0 distribution records author permission to distribute Cephes material posted to the net under BSD. The corresponding mconf.h has the same1995 Cephes origin and all complete word differences have been read: configuration definitions, conditional guards/prototypes and name-prefix adaptation only. The haveged copy and all functions remain unchanged; the BSD notice is supplied alongside the complete original sources.",
+        "Retain the full NIST1999 author, contributor, copyright and use/copy/modify permission in source and supporting documentation, with the Andre Seznec and subsequent modification notices. Retain the explicit dfft C-implementation public-domain dedication by Monty; do not infer that dedication for the rest of haveged or Cephes.",
+        "No independent correspondence was requested or sent, no feature removed, and no compile/boot/OCI result is claimed. Exact source-and-notice analysis only; complete OS source/redistribution/release gates still apply."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
