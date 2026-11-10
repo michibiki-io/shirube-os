@@ -23347,6 +23347,56 @@
         "Preserve all original ISC, BSD2/BSD3, MIT/Joyent, Farsight Apache2, CC0/SipHash and source-build helper notices, copyrights, disclaimers and nonendorsement terms. Retain the complete original aggregate COPYRIGHT in its original encoding and byte identity.",
         "The original aggregate/debian notices mention historical random_test.c, PKCS11 and SPNEGO/RFC4178 source and an OpenSSL-LICENSE file absent from this exact upstream archive. No public-domain or missing-license permission is inferred for nonexistent code, and nothing is removed locally. Current SPNEGO test protocol references do not copy the historical ASN.1 module. Actual OpenSSL and GSS/Kerberos runtime dependencies retain their separately audited source/license scope."
       ]
+    },
+    "krb5@1.20.1-2+deb12u5": {
+      "redistributable": true,
+      "source_identity": "643c1e56f5d2022f7685f5d5490a4fc348adc68a4bb42adbc1780e4a5b1bb05e",
+      "copyright_sha256": "936728f4181718f42951b881c1e8f1386bf6b2723c4fbc533c374d6f42c71816",
+      "license": "MIT AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND RSA-MD AND OLDAP-2.8 AND CC-BY-SA-3.0 AND LicenseRef-Kerberos-Original-Notices",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Kerberos-1.20.1/NOTICE",
+          "sha256": "cfadcf7b2ead2f3af793c25c00638c9908ac0023b101695f40cb9a03b16811dc"
+        },
+        {
+          "path": "LICENSES/Kerberos-1.20.1/doc/copyright.rst",
+          "sha256": "6476cbb1443dd4c8cb5c05c2203cde37b3b1b1450e960e59b3ad74c9e2f5cfd3"
+        },
+        {
+          "path": "LICENSES/Kerberos-1.20.1/doc/html/_sources/copyright.rst.txt",
+          "sha256": "6476cbb1443dd4c8cb5c05c2203cde37b3b1b1450e960e59b3ad74c9e2f5cfd3"
+        },
+        {
+          "path": "LICENSES/Kerberos-1.20.1/doc/html/copyright.html",
+          "sha256": "1e08cc7e6d24865edc771a45548f930dfa2f41282c48e45a060c2d59fdc5b443"
+        },
+        {
+          "path": "LICENSES/Kerberos-1.20.1/doc/notice.rst",
+          "sha256": "e12680adc10efa83bd0ccdfdc55c5e626aabdaf629bb65856cfd313ba9987150"
+        },
+        {
+          "path": "LICENSES/Kerberos-1.20.1/src/lib/gssapi/LICENSE",
+          "sha256": "c4ab82b506f53b97e7bf7ee2b71152da792e0d5578da4089ed17b4dd8798aedf"
+        },
+        {
+          "path": "LICENSES/Kerberos-1.20.1/src/windows/installer/wix/lang/license.rtf",
+          "sha256": "6b4922636669c4f7633ca878ec9a3f48b1294a2f972dbfaf0a9a949cc1ee24e9"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        }
+      ],
+      "scope": "Exact MIT Kerberos1.20.1 Debian source/package permission and notice scope. Complete original Debian copyright read using exact complete previously read grant reuse. NOTICE has no added words relative to that text; all doc/RTF/GSSAPI additional text and actual queue/strptime/MD-test headers read. Other linked components and complete OS clearance remain separate.",
+      "conditions": [
+        "Retain the MIT permissive grant and all OpenVision, FundsXpress, Apple, Brian Gladman, Red Hat, Sun, Berkeley, Novell, Michigan, Oracle, NTT, CMU, NRL, Cygnus, USC, Harvard, NetBSD, RSA, CyberSAFE, PADL, Intel and other original grants, authorship and disclaimers. Preserve the modification-identification requirements, NTT first-lines notice and Sun GSSAPI top-level file/notice listings. Branding must not imply their endorsement.",
+        "Include complete original source, Debian modifications and build/install inputs. Choose the offered BSD option for bundled libev while retaining the original alternative notice. Keep RSA MD4/MD5 algorithm/derived-work identification with all references and the test-driver disclaimer; do not generalize its disclaimer into a new grant for unrelated files.",
+        "Preserve the full BSD advertising acknowledgements and USC software-development credit in distribution materials, together with all NetBSD, Berkeley and other source/binary notices. Actual k5-queue.h carries Berkeley BSD3 rather than the stale aggregate NetBSD4 description. The original NetBSD strptime header remains unchanged; the NetBSD Foundation separately permits its own contributed code under BSD2. That permission does not waive other owners’ conditions.",
+        "Preserve the full OpenLDAP2.8 notice and source-file scope for Unicode support, including verbatim-license and nonendorsement requirements. Documentation retains CC-BY-SA3.0 with attribution, source/history, modification/share-alike duties and complete terms. Historical Windows installer wording is retained as source-only metadata, not a Windows binary delivery.",
+        "Preserve original export, patent and trademark notices. This source-license decision is not a warranty about every jurisdiction or permission to use upstream trademarks as the product brand."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

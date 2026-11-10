@@ -1,0 +1,91 @@
+{
+  "kind": "exact-debian-kerberos-original-license-review",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "krb5",
+  "version": "1.20.1-2+deb12u5",
+  "dsc_sha256": "643c1e56f5d2022f7685f5d5490a4fc348adc68a4bb42adbc1780e4a5b1bb05e",
+  "copyright_sha256": "936728f4181718f42951b881c1e8f1386bf6b2723c4fbc533c374d6f42c71816",
+  "original_legal_files": [
+    {
+      "member": "NOTICE",
+      "sha256": "cfadcf7b2ead2f3af793c25c00638c9908ac0023b101695f40cb9a03b16811dc",
+      "bytes": 62625,
+      "distribution_path": "LICENSES/Kerberos-1.20.1/NOTICE"
+    },
+    {
+      "member": "doc/copyright.rst",
+      "sha256": "6476cbb1443dd4c8cb5c05c2203cde37b3b1b1450e960e59b3ad74c9e2f5cfd3",
+      "bytes": 212,
+      "distribution_path": "LICENSES/Kerberos-1.20.1/doc/copyright.rst"
+    },
+    {
+      "member": "doc/html/_sources/copyright.rst.txt",
+      "sha256": "6476cbb1443dd4c8cb5c05c2203cde37b3b1b1450e960e59b3ad74c9e2f5cfd3",
+      "bytes": 212,
+      "distribution_path": "LICENSES/Kerberos-1.20.1/doc/html/_sources/copyright.rst.txt"
+    },
+    {
+      "member": "doc/html/copyright.html",
+      "sha256": "1e08cc7e6d24865edc771a45548f930dfa2f41282c48e45a060c2d59fdc5b443",
+      "bytes": 5870,
+      "distribution_path": "LICENSES/Kerberos-1.20.1/doc/html/copyright.html"
+    },
+    {
+      "member": "doc/notice.rst",
+      "sha256": "e12680adc10efa83bd0ccdfdc55c5e626aabdaf629bb65856cfd313ba9987150",
+      "bytes": 59628,
+      "distribution_path": "LICENSES/Kerberos-1.20.1/doc/notice.rst"
+    },
+    {
+      "member": "src/lib/gssapi/LICENSE",
+      "sha256": "c4ab82b506f53b97e7bf7ee2b71152da792e0d5578da4089ed17b4dd8798aedf",
+      "bytes": 3403,
+      "distribution_path": "LICENSES/Kerberos-1.20.1/src/lib/gssapi/LICENSE"
+    },
+    {
+      "member": "src/windows/installer/wix/lang/license.rtf",
+      "sha256": "6b4922636669c4f7633ca878ec9a3f48b1294a2f972dbfaf0a9a949cc1ee24e9",
+      "bytes": 9742,
+      "distribution_path": "LICENSES/Kerberos-1.20.1/src/windows/installer/wix/lang/license.rtf"
+    }
+  ],
+  "full_word_comparisons": {
+    "NOTICE": {
+      "difference_groups": 3,
+      "added_or_replaced_words": 0,
+      "method": "All original notice text matches complete read Debian copyright; only Debian wrapper text is absent."
+    },
+    "doc/notice.rst": {
+      "difference_groups": 125,
+      "added_or_replaced_words": 133,
+      "method": "All original additions/replacements read; formatting/macros and source path quoting. Other removed source notices remain in complete NOTICE."
+    },
+    "src/lib/gssapi/LICENSE": {
+      "method": "Complete original source/file-list and Sun grant read."
+    },
+    "src/windows/installer/wix/lang/license.rtf": {
+      "method": "Complete text decoded and read; original RTF including trailing NUL retained without modification."
+    }
+  },
+  "actual_source_headers": [
+    {
+      "member": "src/include/k5-queue.h",
+      "sha256": "6074ee76bdde96dfcf2a57134676baf7ae37fac7644ff349d3996b748a82d0bb",
+      "license_scope": "Actual original Berkeley BSD3 header, not the stale aggregate NetBSD4 scope."
+    },
+    {
+      "member": "src/lib/krb5/krb/strptime.c",
+      "sha256": "caaddd624afc888198bbcd8a8f72c48640567b6abf853779968cb6de36539e35",
+      "license_scope": "Original NetBSD Foundation header retained; official Foundation licensing statement separately permits its contributed code under BSD2."
+    },
+    {
+      "member": "src/lib/crypto/crypto_tests/t_mddriver.c",
+      "sha256": "c4da9b97cf3963d203f58cc0f1edb3ce518cf8571f3a167b63f2733cde83d723",
+      "license_scope": "RSA MD reference-implementation test driver; complete aggregate MD4/MD5 grants, identification and original test-driver disclaimer retained together."
+    }
+  ],
+  "netbsd_primary_permission": "https://www.netbsd.org/about/redistribution.html",
+  "scope": "Component permission and notice retention, not full release clearance, binary reconstruction or OCI acceptance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
