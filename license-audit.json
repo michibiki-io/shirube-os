@@ -21360,6 +21360,177 @@
         "Select GPL2-or-later from GPL2-or-later or AFL2.1 for D-Bus library code; retain original AFL option and full text. Preserve the LGPL2.1 m4 macro, Autoconf exceptions, MIT, Tcl/BSD and unlimited-permission scopes.",
         "Retain all original notices, disclaimers, modification markings and complete preferred source/configuration/build/install material with binaries. This does not approve other dependencies or the OS release."
       ]
+    },
+    "python-passlib@1.7.4-3": {
+      "redistributable": true,
+      "source_identity": "c9e4781e4d4a75c3c62d73115805feafde25ef590b2813e1a2294186a7253c68",
+      "copyright_sha256": "709d365df1258eb5f020e3b28687ab0c7e58820e63f5eef8c6c937b1eb241362",
+      "license": "BSD-3-Clause AND Beerware AND ISC AND LicenseRef-Aki-Yoshida AND CC-BY-4.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Passlib-wordsets-notice.txt",
+          "sha256": "ac65bc93dd38fbc5259cd0832fadf2a784dd8949c687a15b1256cc6386d568d2"
+        },
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ],
+      "scope": "Complete exact original LICENSE and Debian copyright read. Separately scoped hash implementations and wordlists retain their original permissions. All EFF and BIP39 wordset contents and order were compared to original publishers; publisher copyright policy and BIP39 MIT declaration were inspected. Not OS release clearance.",
+      "conditions": [
+        "Keep complete original BSD3, Beerware, Aki Yoshida commercial/noncommercial permission and Damien Miller ISC notices and modification attributions.",
+        "Retain the supplementary EFF attribution, CC-BY4 terms, formatting-change notice and BIP39 MIT attribution with source and binary documentation. Do not claim wordlists are relicensed under the Passlib BSD grant.",
+        "Include exact source and all original build/install configuration and recipes with binaries."
+      ]
+    },
+    "libffi@3.4.4-1": {
+      "redistributable": true,
+      "source_identity": "21c9ef156b6766535cb014e0765142c8104ffbcd73f003ecfa80cfb314baa4f0",
+      "copyright_sha256": "f83d2ecba1ea4d99957e81c50bebbd076a128194288a3ec22cc8ccdb77c43087",
+      "license": "MIT AND GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LicenseRef-libffi-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libffi-make-sunver-origin.txt",
+          "sha256": "c7c9d62ef1add896aae0f54e28dc63c41a07c2cecd0edcd1d1ebeda7eec3a571"
+        }
+      ],
+      "scope": "Exact Debian source/copyright binding. Complete original notices and separately scoped grant definitions read. The otherwise unannotated make_sunver.pl is byte-identical to the original GCC11.2 contrib file, whose complete project README and COPYING3 permissions are retained. Not OS release clearance.",
+      "conditions": [
+        "Preserve the original X11/Expat runtime grant, GPL documentation/tests, public-domain dlmalloc, and all independently scoped test/build-tool notices. Choose LGPL2.1-or-later from the msvcc.sh MPL/GPL/LGPL alternative while retaining every original option.",
+        "Retain the exact GCC project permission context and complete GPL3 text for make_sunver.pl; preserve the original preferred helper source with the distribution. No permission is inferred solely from a third-party ffmpeg classification.",
+        "Provide exact preferred sources, original Debian patches, configuration and complete build/install recipes alongside binaries."
+      ]
+    },
+    "fontconfig@2.14.1-4": {
+      "redistributable": true,
+      "source_identity": "8bb59d9c96ff8ef77df06dc65273fa398bf248f7e2448a8314989ec01ce74a58",
+      "copyright_sha256": "b215a61cdd3e62b5b17cc28b1852c78acb3dd38be0fb30706f7efc050dba91db",
+      "license": "LicenseRef-fontconfig-permissive AND MIT AND Unicode-DFS-2016",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Complete exact original COPYING/LICENSE and Debian copyright read, including independent per-file grants, public-domain statements, attribution and font restrictions. Not blanket component-family or OS approval.",
+      "conditions": [
+        "Keep complete original notices, permissions, disclaimers and all authorship/attribution statements in sources and binary documentation. Provide exact preferred sources and full configuration/patch/build/install inputs.",
+        "Retain original CaseFolding Unicode copyright and the complete Unicode data/software permission; this does not license arbitrary Unicode website documents, code charts, logos or trademarks. Keep Keith Packard and other authors nonendorsement and supporting-documentation notices, the distinct HarfBuzz grant, MIT and public-domain scopes."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Unicode-data-1991-2020.txt",
+          "sha256": "3f0b3ce928ef80dc85fadcacf66bf104a96c27bd0cf926540ab3ab7edea6ffaa"
+        }
+      ]
+    },
+    "fonts-dejavu@2.37-6": {
+      "redistributable": true,
+      "source_identity": "f657fdb103d25b735527b4905af27722281fc5523d33146cdfeadd9201f1cc0c",
+      "copyright_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+      "license": "Bitstream-Vera AND GPL-2.0-or-later AND LicenseRef-Arev-AMS-font-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Complete exact original COPYING/LICENSE and Debian copyright read, including independent per-file grants, public-domain statements, attribution and font restrictions. Not blanket component-family or OS approval.",
+      "conditions": [
+        "Keep complete original notices, permissions, disclaimers and all authorship/attribution statements in sources and binary documentation. Provide exact preferred sources and full configuration/patch/build/install inputs.",
+        "Distribute unmodified DejaVu font faces as part of the OS, with Bitstream/Arev/AMS notices. Respect Bitstream/Vera and Tavmjong Bah/Arev modified-font naming restrictions and package-only sale conditions; retain AMS original-authenticity and derivative notice/naming requirements. Packaging remains GPL2-or-later. These are third-party fonts, not official upstream product artwork or a new branding grant."
+      ]
+    },
+    "git@1:2.39.5-0+deb12u3": {
+      "redistributable": true,
+      "source_identity": "183f02891326496b439a24c87843fb8849178b21517640fc703787754aad6bd1",
+      "copyright_sha256": "8ceacdebe13249ea8aba6e400418e2b503c83a1f19ad92377380fb32ecf48d0c",
+      "license": "GPL-2.0-only AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND Apache-2.0 AND MIT AND ISC AND BSD-3-Clause AND Zlib AND BSL-1.0",
+      "declared_licenses": [
+        "BSD-3-clause",
+        "Zlib",
+        "GPL-1+ or Artistic-1",
+        "GPL-2",
+        "GPL-2+",
+        "LGPL-2+",
+        "LGPL-2.1+",
+        "Apache-2.0",
+        "ISC",
+        "Expat",
+        "EDL-1.0",
+        "mingw-runtime",
+        "Boost",
+        "dlmalloc"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. All complete original named legal files and distinct operative permissions were read or matched to previously read originals; all file/copyright/comment/auxiliary metadata was inspected. No OS release clearance or independent copyright-title verification is claimed.",
+      "conditions": [
+        "Retain complete original copyright, permission, disclaimer, nonendorsement and separately scoped exception notices in sources and binary documentation. Provide exact preferred sources, patches, configuration and build/install recipes.",
+        "Select GPL2 from GPL1-or-later where offered; keep original Artistic option. Preserve reftable BSD, EDL attribution, independent Boost/nedmalloc and dlmalloc MIT/public-domain scopes. Unknown author name in the explicitly public-domain mingw stub is not treated as an invented copyright holder."
+      ]
+    },
+    "libidn2@2.3.3-1": {
+      "redistributable": true,
+      "source_identity": "13865e96a0fed8dcb82767db65c946b56ed44fc1806d80d407c512ded2a83984",
+      "copyright_sha256": "41702469f28e8ff406345e3d1dd0c741f11bdfca319264f67036efd6aaa79e4b",
+      "license": "GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-3.0-or-later AND Unicode-DFS-2015",
+      "declared_licenses": [
+        "GPL-3+",
+        "GPL-2+",
+        "LGPL-3+",
+        "Unicode"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. All complete original named legal files and distinct operative permissions were read or matched to previously read originals; all file/copyright/comment/auxiliary metadata was inspected. No OS release clearance or independent copyright-title verification is claimed.",
+      "conditions": [
+        "Retain complete original copyright, permission, disclaimer, nonendorsement and separately scoped exception notices in sources and binary documentation. Provide exact preferred sources, patches, configuration and build/install recipes.",
+        "Keep Unicode notices with data and documentation and clearly mark any modified data/software. Preserve restrictive Unicode website/document terms separately from Exhibit1 data/software redistribution; do not claim website or trademark rights from a data license. Retain the separately scoped LGPL3 library and GPL2/GPL3 tools/build inputs."
+      ]
+    },
+    "shadow@1:4.13+dfsg1-1+deb12u2": {
+      "redistributable": true,
+      "source_identity": "624b24453887abb8d1e60cb6a159180685682ff149393095ba0a55fb2960e4f0",
+      "copyright_sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5",
+      "license": "BSD-3-Clause AND GPL-1.0-only AND GPL-2.0-or-later AND LicenseRef-shadow-public-domain",
+      "declared_licenses": [
+        "public-domain",
+        "BSD-3-clause",
+        "GPL-1",
+        "GPL-2+"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. All complete original named legal files and distinct operative permissions were read or matched to previously read originals; all file/copyright/comment/auxiliary metadata was inspected. No OS release clearance or independent copyright-title verification is claimed.",
+      "conditions": [
+        "Retain complete original copyright, permission, disclaimer, nonendorsement and separately scoped exception notices in sources and binary documentation. Provide exact preferred sources, patches, configuration and build/install recipes.",
+        "Preserve version1-only manual/document permissions and complete GPL1 text supplied with the corresponding base-files source/common-license material. Do not collapse these notices into GPL2. Keep the dfsg exclusion of contrib/atudel and all public-domain and BSD author notices."
+      ]
+    },
+    "xz-utils@5.4.1-1+deb12u2": {
+      "redistributable": true,
+      "source_identity": "bffc9917562b5787661379621bb1f7510bf7271b03d8ce4181cebc84b90d3c35",
+      "copyright_sha256": "a2dc8fac0f496e1c58aff67018cf0c6b88336316afa5642f9335b71642e28aa8",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later WITH Autoconf-exception-3.0 AND LicenseRef-XZ-original-public-domain-permission",
+      "declared_licenses": [
+        "",
+        "PD",
+        "probably-PD",
+        "none",
+        "config-h",
+        "LGPL-2.1+",
+        "noderivs",
+        "PD-debian",
+        "GPL-2",
+        "GPL-2+",
+        "Autoconf",
+        "permissive-fsf",
+        "permissive-nowarranty"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. All complete original named legal files and distinct operative permissions were read or matched to previously read originals; all file/copyright/comment/auxiliary metadata was inspected. No OS release clearance or independent copyright-title verification is claimed.",
+      "conditions": [
+        "Retain complete original copyright, permission, disclaimer, nonendorsement and separately scoped exception notices in sources and binary documentation. Provide exact preferred sources, patches, configuration and build/install recipes.",
+        "Retain the original public-domain fallback express permission and the author email explaining short original documentation, with independently copyrighted generated groff/Doxygen material remaining under its own original notices. Keep probably-PD as the original declared classification rather than asserting an independently obtained dedication for every generated document. Retain the explicit build-system grants, gettext LGPL scope, and verbatim FSF license documents; no runtime code is relicensed."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

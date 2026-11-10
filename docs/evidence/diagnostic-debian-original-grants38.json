@@ -1,0 +1,954 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 4,
+  "components": [
+    {
+      "source": "git",
+      "version": "1:2.39.5-0+deb12u3",
+      "dsc_sha256": "183f02891326496b439a24c87843fb8849178b21517640fc703787754aad6bd1",
+      "binaries": [
+        {
+          "name": "git",
+          "version": "1:2.39.5-0+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "8ceacdebe13249ea8aba6e400418e2b503c83a1f19ad92377380fb32ecf48d0c"
+        },
+        {
+          "name": "git-man",
+          "version": "1:2.39.5-0+deb12u3",
+          "architecture": "all",
+          "copyright_sha256": "8ceacdebe13249ea8aba6e400418e2b503c83a1f19ad92377380fb32ecf48d0c"
+        }
+      ],
+      "copyright_sha256": "8ceacdebe13249ea8aba6e400418e2b503c83a1f19ad92377380fb32ecf48d0c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
+          "read_reference": {
+            "component": "git",
+            "member": "COPYING",
+            "sha256": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "compat/nedmalloc/License.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "LICENSE_1_0.txt",
+            "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+          }
+        },
+        {
+          "member": "contrib/persistent-https/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "read_reference": {
+            "component": "aardvark-dns",
+            "member": "LICENSE",
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          }
+        },
+        {
+          "member": "contrib/subtree/COPYING",
+          "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "reftable/LICENSE",
+          "sha256": "8aa118e56e554e9086beb82494e8044d0856d5eb0b162a9061f3553a58f04d67",
+          "read_reference": {
+            "component": "git",
+            "member": "reftable/LICENSE",
+            "sha256": "8aa118e56e554e9086beb82494e8044d0856d5eb0b162a9061f3553a58f04d67",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "sha1dc/LICENSE.txt",
+          "sha256": "9daac99c665ddc38fde6d7c91b9173c112d5e6c6e7e5f7d8bb8747c630efc83d",
+          "read_reference": {
+            "component": "git",
+            "member": "sha1dc/LICENSE.txt",
+            "sha256": "9daac99c665ddc38fde6d7c91b9173c112d5e6c6e7e5f7d8bb8747c630efc83d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "70435d703f5e4bdca9a1fa6b9291501b0dd850d2ad5457b491ce936217b1e063",
+          "read_reference": {
+            "label": "BSD-3-Clause",
+            "component": "freetype"
+          }
+        },
+        {
+          "label": "Zlib",
+          "full_normalized_body_sha256": "444399c3da8f18f32878c6f8b7348110f33985558ca7abe98d4c8ed26f013109",
+          "read_reference": {
+            "label": "Zlib",
+            "component": "boost1.74"
+          }
+        },
+        {
+          "label": "GPL-1+ or Artistic-1",
+          "full_normalized_body_sha256": "ee525bbdd8c61dafbc1297240726aeb6a05482b9e83efc5f0357d7114283e618",
+          "read_reference": {
+            "component": "git",
+            "label": "GPL-1+ or Artistic-1"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "780ec45a87394377a1873b05bb4c89163d81bab3fbc31ade23a8c95b4bf7988f",
+          "read_reference": {
+            "component": "git",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "c288a27879fc643031755d8122db5351da809732b04963329c73f0955ed209fc",
+          "read_reference": {
+            "component": "git",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "LGPL-2+",
+          "full_normalized_body_sha256": "58f915c7e98f1b7e09ae3073933bfaa2759f69b044d78102aaee959907299d5f",
+          "read_reference": {
+            "component": "git",
+            "label": "LGPL-2+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "ec38aa9d2e5b9b0ea64a786205e99c2babfc929221d0f552b83e641109582c91",
+          "read_reference": {
+            "component": "git",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "39154d93d3a4f9c8da1312e8fbdfd26213be0aaca886f151c71767a97099272d",
+          "read_reference": {
+            "component": "git",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "80dc34892ec8c8d81b10f6a90635d0866826079a6fdf702a74fd9b1a04131c45",
+          "read_reference": {
+            "label": "ISC",
+            "component": "iperf"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fd1d7ed56f0045f98b45c0b462c5b185b51f7674ec6d604602c3abfa541ac1fb",
+          "read_reference": {
+            "component": "git",
+            "label": "Expat"
+          }
+        },
+        {
+          "label": "EDL-1.0",
+          "full_normalized_body_sha256": "ca943e73c47432106034a04f66d8fc6513183c877dbedc93f0b295ea551e0859",
+          "read_reference": {
+            "component": "git",
+            "label": "EDL-1.0"
+          }
+        },
+        {
+          "label": "mingw-runtime",
+          "full_normalized_body_sha256": "470ce42d2a820ef7acc38fdb4b9aa021b07169559a2b94bfd045c7484fec15ac",
+          "read_reference": {
+            "component": "git",
+            "label": "mingw-runtime"
+          }
+        },
+        {
+          "label": "Boost",
+          "full_normalized_body_sha256": "ff272222b17a18e21b2396322bb5f083f1db01d3d496d14647a64fd69fcf9b83",
+          "read_reference": {
+            "component": "git",
+            "label": "Boost"
+          }
+        },
+        {
+          "label": "dlmalloc",
+          "full_normalized_body_sha256": "8750df097be561d5499c48dd1252d35eb097eac8e856ec93ab9ba84c3be72094",
+          "read_reference": {
+            "component": "git",
+            "label": "dlmalloc"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Contact": "git@vger.kernel.org",
+          "Source": "https://www.kernel.org/pub/software/scm/git/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "© 2005-2022, Linus Torvalds and others."
+        },
+        {
+          "Files": "reftable/* t/t0032-reftable-unittest.sh",
+          "Copyright": "© 2020 Google LLC"
+        },
+        {
+          "Files": "compat/zlib-uncompress2.c",
+          "Copyright": "© 1995-2003, 2010, 2014, 2016 Jean-loup Gailly, Mark Adler"
+        },
+        {
+          "Files": "xdiff/*",
+          "Copyright": "© 2003-2009, Davide Libenzi, Johannes E. Schindelin"
+        },
+        {
+          "Files": "xdiff/xhistogram.c",
+          "Copyright": "© 2010, Google Inc.\nand other copyright owners as documented in JGit's IP log."
+        },
+        {
+          "Files": "ewah/*",
+          "Copyright": "© 2013, GitHub Inc.\n© 2009-2013, Daniel Lemire, Cliff Moon,\nDavid McIntosh, Rober Becho, Google Inc. and Veronika Zenz"
+        },
+        {
+          "Files": "sha1dc/*",
+          "Copyright": "© 2017,\nMarc Stevens\nCryptology Group\nCentrum Wiskunde & Informatica\nP.O. Box 94079, 1090 GB Amsterdam, Netherlands\nmarc@marc-stevens.nl\n\nDan Shumow\nMicrosoft Research\ndanshu@microsoft.com"
+        },
+        {
+          "Files": "gitk-git/*",
+          "Copyright": "© 2005-2016, Paul Mackerras, et al."
+        },
+        {
+          "Files": "gitk-git/po/bg.po",
+          "Copyright": "© 2014, 2015, 2016, 2017, 2018 Alexander Shopov <ash@kambanaria.org>",
+          "Comment": "This file is distributed under the same license as the git package."
+        },
+        {
+          "Files": "git-gui/*",
+          "Copyright": "© 2005-2010, Shawn Pearce, et. al."
+        },
+        {
+          "Files": "git-gui/po/bg.po git-gui/po/de.po git-gui/po/fr.po git-gui/po/glossary/*",
+          "Copyright": "© 2007-2008, Shawn Pearce, et al.\n© 2012-2015, Alexander Shopov <ash@kambanaria.org>",
+          "Comment": "This file is distributed under the same license as the git package."
+        },
+        {
+          "Files": "git-gui/po/glossary/el.po git-gui/po/glossary/pt_br.po",
+          "Copyright": "© 2007, Shawn Pearce, et al.\n© 2009, Jimmy Angelakos",
+          "Comment": "This file is distributed under the same license as the git-gui package."
+        },
+        {
+          "Files": "gitweb/static/js/*",
+          "Copyright": "© 2007, Fredrik Kuivinen <frekui@gmail.com>\n© 2007, Petr Baudis <pasky@suse.cz>\n© 2008-2011, Jakub Narebski <jnareb@gmail.com>\n© 2011, John 'Warthog9' Hawley <warthog9@eaglescrag.net>"
+        },
+        {
+          "Files": "git-p4",
+          "Copyright": "© 2007, Simon Hausmann <simon@lst.de>\n© 2007, Trolltech ASA"
+        },
+        {
+          "Files": "git-svn.perl",
+          "Copyright": "© 2006, Eric Wong <normalperson@yhbt.net>"
+        },
+        {
+          "Files": "imap-send.c",
+          "Copyright": "© 2000-2002, Michael R. Elkins <me@mutt.org>\n© 2002-2004, Oswald Buddenhagen <ossi@users.sf.net>\n© 2004, Theodore Y. Ts'o <tytso@mit.edu>\n© 2006, Mike McCormack",
+          "Name": "git-imap-send - drops patches into an imap Drafts folder\nderived from isync/mbsync - mailbox synchronizer"
+        },
+        {
+          "Files": "perl/Git.pm",
+          "Copyright": "© 2006, by Petr Baudis <pasky@suse.cz>"
+        },
+        {
+          "Files": "perl/private-Error.pm",
+          "Copyright": "© 1997-8, Graham Barr <gbarr@ti.com>"
+        },
+        {
+          "Files": "kwset.c kwset.h",
+          "Copyright": "© 1989, 1998, 2000, 2005, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "khash.h",
+          "Copyright": "© 2008, 2009, 2011 by Attractive Chaos <attractor@live.co.uk>"
+        },
+        {
+          "Files": "trace.c",
+          "Copyright": "© 2000-2002, Michael R. Elkins <me@mutt.org>\n© 2002-2004, Oswald Buddenhagen <ossi@users.sf.net>\n© 2004, Theodore Y. Ts'o <tytso@mit.edu>\n© 2006, Mike McCormack\n© 2006, Christian Couder"
+        },
+        {
+          "Files": "sh-i18n--envsubst.c",
+          "Copyright": "© 2010, Ævar Arnfjörð Bjarmason\n© 1998-2007, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "t/test-lib.sh",
+          "Copyright": "© 2005, Junio C Hamano"
+        },
+        {
+          "Files": "t/test-lib-github-workflow-markup.sh t/test-lib-junit.sh",
+          "Copyright": "© 2022, Johannes Schindelin"
+        },
+        {
+          "Files": "compat/inet_ntop.c compat/inet_pton.c",
+          "Copyright": "© 1996-2001, Internet Software Consortium."
+        },
+        {
+          "Files": "compat/poll/poll.c compat/poll/poll.h",
+          "Copyright": "© 2001-2003, 2006-2011, Free Software Foundation, Inc.",
+          "Name": "Emulation for poll(2) from gnulib."
+        },
+        {
+          "Files": "compat/vcbuild/include/sys/utime.h",
+          "Copyright": "?"
+        },
+        {
+          "Files": "compat/nedmalloc/*",
+          "Copyright": "© 2005-2006 Niall Douglas"
+        },
+        {
+          "Files": "compat/nedmalloc/malloc.c.h",
+          "Copyright": "© 2006, KJK::Hyperion <hackbunny@reactos.com>"
+        },
+        {
+          "Files": "compat/regex/*",
+          "Copyright": "© 1985, 1989-93, 1995-2010, Free Software Foundation, Inc.",
+          "Name": "Extended regular expression matching and search library"
+        },
+        {
+          "Files": "compat/obstack.c compat/obstack.h",
+          "Copyright": "© 1988-1994, 1996-2005, 2009, Free Software Foundation, Inc.",
+          "Name": "Object stack macros."
+        },
+        {
+          "Files": "contrib/persistent-https/*",
+          "Copyright": "© 2012, Google Inc."
+        },
+        {
+          "Files": "contrib/credential/gnome-keyring/git-credential-gnome-keyring.c",
+          "Copyright": "© 2011, John Szakmeister <john@szakmeister.net>\n© 2012, Philipp A. Hartmann <pah@qo.cx>"
+        },
+        {
+          "Files": "contrib/hg-to-git/hg-to-git.py",
+          "Copyright": "© 2007, Stelian Pop <stelian@popies.net>",
+          "Name": "hg-to-git.py - A Mercurial to GIT converter"
+        },
+        {
+          "Files": "contrib/mw-to-git/git-*.perl contrib/mw-to-git/t/t*",
+          "Copyright": "© 2011\nJérémie Nikaes <jeremie.nikaes@ensimag.imag.fr>\nArnaud Lacurie <arnaud.lacurie@ensimag.imag.fr>\nClaire Fousse <claire.fousse@ensimag.imag.fr>\nDavid Amouyal <david.amouyal@ensimag.imag.fr>\nMatthieu Moy <matthieu.moy@grenoble-inp.fr>\n© 2012\nCharles Roussel <charles.roussel@ensimag.imag.fr>\nSimon Cathebras <simon.cathebras@ensimag.imag.fr>\nJulien Khayat <julien.khayat@ensimag.imag.fr>\nGuillaume Sasdy <guillaume.sasdy@ensimag.imag.fr>\nSimon Perrat <simon.perrat@ensimag.imag.fr>\n© 2013\nBenoit Person <benoit.person@ensimag.imag.fr>\nCelestin Matte <celestin.matte@ensimag.imag.fr>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "© 2005, Sebastian Kuzminsky <seb@highlab.com>\n© 2005-2006, Andres Salomon <dilinger@debian.org>\n© 2005-2012, Gerrit Pape <pape@smarden.org>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libidn2",
+      "version": "2.3.3-1",
+      "dsc_sha256": "13865e96a0fed8dcb82767db65c946b56ed44fc1806d80d407c512ded2a83984",
+      "binaries": [
+        {
+          "name": "libidn2-0",
+          "version": "2.3.3-1+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "41702469f28e8ff406345e3d1dd0c741f11bdfca319264f67036efd6aaa79e4b"
+        }
+      ],
+      "copyright_sha256": "41702469f28e8ff406345e3d1dd0c741f11bdfca319264f67036efd6aaa79e4b",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "73483f797a83373fca1b968c11785b98c4fc4803cdc7d3210811ca8b075d6d76",
+          "read_reference": {
+            "component": "libidn2",
+            "member": "COPYING",
+            "sha256": "73483f797a83373fca1b968c11785b98c4fc4803cdc7d3210811ca8b075d6d76",
+            "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+          }
+        },
+        {
+          "member": "COPYING.LESSERv3",
+          "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+          "read_reference": {
+            "component": "gmp",
+            "member": "COPYING.LESSERv3",
+            "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+          }
+        },
+        {
+          "member": "COPYING.unicode",
+          "sha256": "01d621eef165cf4d3d3dbb737aa0699178d94c6f18cf87e9dde6db3ca7790f46",
+          "read_reference": {
+            "component": "libidn2",
+            "member": "COPYING.unicode",
+            "sha256": "01d621eef165cf4d3d3dbb737aa0699178d94c6f18cf87e9dde6db3ca7790f46",
+            "method": "Complete original text read. Preserve Unicode Exhibit1 data/software permission versus restrictive website/document scope, all font naming/nonendorsement and package-only sale conditions, and complete original attributions. No parent clearance inferred."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "9f30af932773c06173d767cacd1e9b17a055c231fbaae79c4b281d05bfc257ba",
+          "read_reference": {
+            "component": "libidn2",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "a012a916f165a803ea47b6bdd50f458877fbe7438210c6b2357d4b7a813b78d1",
+          "read_reference": {
+            "component": "libidn2",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "LGPL-3+",
+          "full_normalized_body_sha256": "ff16baa2b10b5e7731fb8769c0292ec350d62454c3fdb64fc221ba42fe7e9a0c",
+          "read_reference": {
+            "component": "libidn2",
+            "label": "LGPL-3+"
+          }
+        },
+        {
+          "label": "Unicode",
+          "full_normalized_body_sha256": "3e9e2b512989ce48e511520d1cd6e8926606cdc0c96d17524d0e73916ba71538",
+          "read_reference": {
+            "component": "libidn2",
+            "label": "Unicode"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Libidn2",
+          "Upstream-Contact": "Simon Josefsson <simon@josefsson.org>",
+          "Source": "https://www.gnu.org/software/libidn/#libidn2"
+        },
+        {
+          "Files": "*",
+          "Copyright": "Copyright (C) 2011-2014 Simon Josefsson"
+        },
+        {
+          "Files": "*.c *.h",
+          "Copyright": "Copyright (C) 2011-2014 Simon Josefsson"
+        },
+        {
+          "Files": "build-aux/* lib/* GNUmakefile maint.mk",
+          "Copyright": "Copyright (C) 2001-2011 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "doc/gdoc",
+          "Copyright": "Copyright (c) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Simon Josefsson\nCopyright (c) 2001, 2002 Nikos Mavrogiannopoulos\nCopyright (c) 1998 Michael Zucchi"
+        },
+        {
+          "Files": "lib/IdnaMappingTable.txt lib/DerivedNormalizationProps.txt tests/IdnaTest.txt",
+          "Copyright": "Copyright (c) 1991-2010 Unicode, Inc."
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "shadow",
+      "version": "1:4.13+dfsg1-1+deb12u2",
+      "dsc_sha256": "624b24453887abb8d1e60cb6a159180685682ff149393095ba0a55fb2960e4f0",
+      "binaries": [
+        {
+          "name": "libsubid4",
+          "version": "1:4.13+dfsg1-1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5"
+        },
+        {
+          "name": "login",
+          "version": "1:4.13+dfsg1-1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5"
+        },
+        {
+          "name": "passwd",
+          "version": "1:4.13+dfsg1-1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5"
+        },
+        {
+          "name": "uidmap",
+          "version": "1:4.13+dfsg1-1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5"
+        }
+      ],
+      "copyright_sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "3d25ab8f43fdc14624296a56ff8dc3e72e499ad35f32ae0c803f4959cfe17c0a",
+          "read_reference": {
+            "component": "shadow",
+            "member": "COPYING",
+            "sha256": "3d25ab8f43fdc14624296a56ff8dc3e72e499ad35f32ae0c803f4959cfe17c0a"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "112f6ce517f56db19f3b8bbab6909753d815ffd0c20c58849d38cf4cd3063475",
+          "read_reference": {
+            "component": "shadow",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "90b79b78379f777011516a9e82c4fab319a9df03835dc8888875df0abf05a235",
+          "read_reference": {
+            "component": "shadow",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "GPL-1",
+          "full_normalized_body_sha256": "8e9a2d9daf2f4a9d66454f50982ced2f1e251b2014d9949106e74f563d64b5be",
+          "read_reference": {
+            "component": "shadow",
+            "label": "GPL-1"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "2b681e268c49d350ff78cfde2899b80d2567508f3215ab8260f66b11de46729a",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "libsigsegv"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Shadow",
+          "Source": "https://github.com/shadow-maint/shadow",
+          "Note": "atudel is licensed under BSD-4-Clause which is not DFSG compatible",
+          "Files-Excluded": "contrib/atudel"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1989-1994, Julianne Frances Haugh\n2016-2022, Serge Hallyn <serge@hallyn.com>"
+        },
+        {
+          "Files": "man/po/da.po\nman/po/de.po\nman/tr/man1/su.1\npo/da.po\npo/de.po\npo/es.po\npo/eu.po\npo/fi.po\npo/gl.po\npo/it.po\npo/kk.po\npo/nb.po\npo/nl.po\npo/nn.po\npo/pl.po\npo/pt_BR.po\npo/ru.po\npo/sq.po\npo/sv.po\npo/vi.po",
+          "Copyright": "1999-2015, Free Software Foundation, Inc"
+        },
+        {
+          "Files": "man/fi/man1/chfn.1\nman/id/man1/*\nman/ko/man1/chfn.1\nman/ko/man1/chsh.1\nman/tr/man1/chfn.1\nman/zh_TW/man1/chfn.1\nman/zh_TW/man1/chsh.1",
+          "Copyright": "1994, salvatore valente <svalente@athena.mit.edu>"
+        },
+        {
+          "Files": "man/pt_BR/man8/*\nman/zh_TW/man8/usermod.8",
+          "Copyright": "1991-1994, Julianne Frances Haugh"
+        },
+        {
+          "Files": "man/hu/man1/gpasswd.1\nman/ja/man1/gpasswd.1\nman/pt_BR/man1/*",
+          "Copyright": "1996, Rafal Maszkowski <rzm@pdi.net>"
+        },
+        {
+          "Files": "man/id/man1/login.1\nman/ko/man1/login.1\nman/tr/man1/login.1",
+          "Copyright": "1993, Rickard E. Faith <faith@cs.unc.edu>"
+        },
+        {
+          "Files": "man/ja/man1/groups.1\nman/ja/man5/limits.5\nman/ja/man8/vipw.8",
+          "Copyright": "2001, Maki KURODA"
+        },
+        {
+          "Files": "man/pt_BR/man5/passwd.5\nman/tr/man5/passwd.5",
+          "Copyright": "1993, Michael Haardt <michael@moria.de>"
+        },
+        {
+          "Files": "man/ja/man1/chage.1\nman/ja/man5/suauth.5",
+          "Copyright": "1997, Kazuyoshi Furutaka"
+        },
+        {
+          "Files": "man/po/fr.po\npo/fr.po",
+          "Copyright": "2011-2013, Debian French l10n team <debian-l10n-french@lists.debian.org>"
+        },
+        {
+          "Files": "man/zh_TW/man5/*",
+          "Copyright": "1993, Michael Haardt <michael@moria.de>\n1993, Scorpio, www.linuxforum.net"
+        },
+        {
+          "Files": "contrib/udbachk.tgz",
+          "Copyright": "1999, Sami Kerola and Janne Riihijärvi"
+        },
+        {
+          "Files": "man/hu/man5/*",
+          "Copyright": "1993, Michael Haardt <u31b3hs@pool.informatik.rwth-aachen.de>"
+        },
+        {
+          "Files": "contrib/adduser2.sh",
+          "Copyright": "1996, Petri Mattila, Prihateam Networks <petri@prihateam.fi>"
+        },
+        {
+          "Files": "contrib/pwdauth.c",
+          "Copyright": "1996, Marek Michalkiewicz"
+        },
+        {
+          "Files": "lib/subordinateio.h",
+          "Copyright": "2012, Eric W. Biederman"
+        },
+        {
+          "Files": "libmisc/date_to_str.c",
+          "Copyright": "2021, Alejandro Colomar <alx.manpages@gmail.com>"
+        },
+        {
+          "Files": "man/hu/man1/su.1",
+          "Copyright": "1999, Ragnar Hojland Espinosa <ragnar@macula.net>"
+        },
+        {
+          "Files": "man/ja/man1/id.1",
+          "Copyright": "2000, ISHIKAWA Keisuke"
+        },
+        {
+          "Files": "man/ja/man8/pwconv.8",
+          "Copyright": "2001, Yuichi SATO"
+        },
+        {
+          "Files": "src/login_nopam.c",
+          "Copyright": "1995, Wietse Venema"
+        },
+        {
+          "Files": "src/su.c",
+          "Copyright": "1989 - 1994, Julianne Frances Haugh\n1996 - 2000, Marek Michałkiewicz\n2000 - 2006, Tomasz Kłoczko\n2007 - 2013, Nicolas François"
+        },
+        {
+          "Files": "src/vipw.c",
+          "Copyright": "1997, Guy Maor <maor@ece.utexas.edu>\n1999 - 2000, Marek Michałkiewicz\n2002 - 2006, Tomasz Kłoczko\n2007 - 2013, Nicolas François"
+        },
+        {
+          "Files": "libmisc/getdate.y",
+          "Copyright": "Steven M. Bellovin <smb@research.att.com>"
+        },
+        {
+          "Files": "man/ko/man5/*",
+          "Copyright": "2000, ASPLINUX <man@asp-linux.co.kr>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1999-2001, Ben Collins <bcollins@debian.org>\n2001-2004 Karl Ramm <kcr@debian.org>\n2004-2014 Christian Perrier <bubulle@debian.org>\n2006-2012 Nicolas Francois (Nekral) <nicolas.francois@centraliens.net>\n2017-2022 Balint Reczey <balint@balintreczey.hu>"
+        },
+        {
+          "Files": "debian/HOME_MODE.xml",
+          "Copyright": "1991-1993, Chip Rosenthal\n1991-1993, Julianne Frances Haugh\n2007-2009, Nicolas François"
+        },
+        {
+          "Files": "debian/patches/401_cppw_src.dpatch",
+          "Copyright": "1997, Guy Maor <maor@ece.utexas.edu>\n1999, Stephen Frost <sfrost@snowman.net>"
+        },
+        {
+          "Files": "debian/passwd.expire.cron",
+          "Copyright": "1999, Ben Collins <bcollins@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "xz-utils",
+      "version": "5.4.1-1+deb12u2",
+      "dsc_sha256": "bffc9917562b5787661379621bb1f7510bf7271b03d8ce4181cebc84b90d3c35",
+      "binaries": [
+        {
+          "name": "liblzma5",
+          "version": "5.4.1-1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a2dc8fac0f496e1c58aff67018cf0c6b88336316afa5642f9335b71642e28aa8"
+        }
+      ],
+      "copyright_sha256": "a2dc8fac0f496e1c58aff67018cf0c6b88336316afa5642f9335b71642e28aa8",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "bcb02973ef6e87ea73d331b3a80df7748407f17efdb784b61b47e0e610d3bb5c",
+          "read_reference": {
+            "component": "xz-utils",
+            "member": "COPYING",
+            "sha256": "bcb02973ef6e87ea73d331b3a80df7748407f17efdb784b61b47e0e610d3bb5c"
+          }
+        },
+        {
+          "member": "COPYING.GPLv2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "COPYING.GPLv3",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "COPYING.LGPLv2.1",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "",
+          "full_normalized_body_sha256": "9dea7478372fa16641c348b35f221ea61264518d30ebd0fe57a1e6664db6aae3",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": ""
+          }
+        },
+        {
+          "label": "PD",
+          "full_normalized_body_sha256": "d51808e072c69afe52c84347bf6a5388192669c132aecf80f58ac274806e8cd6",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "PD"
+          }
+        },
+        {
+          "label": "probably-PD",
+          "full_normalized_body_sha256": "fd9c1fbb2c9895f5853b12a1ead6f19ad98194992f720aa6f1081292a6e95430",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "probably-PD"
+          }
+        },
+        {
+          "label": "none",
+          "full_normalized_body_sha256": "33ae687721fcf3be932c22041ab1685ae21249195f15d4edc41e24a8808b2508",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "none"
+          }
+        },
+        {
+          "label": "config-h",
+          "full_normalized_body_sha256": "28d3c67016157ffd4605467075dd05b178f1aaa7c20846348349d8dc991a35c6",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "config-h"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "7a45e89e5598297e9d31e87d6068bcee41aaa80c2092ccdf862173845c927c0b",
+          "read_reference": {
+            "label": "LGPL-2.1+",
+            "component": "python-systemd"
+          }
+        },
+        {
+          "label": "noderivs",
+          "full_normalized_body_sha256": "239e611f6eec7402fb475274ea5c0824e0a5281e8a7523bc878b46b26cc14aa6",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "noderivs"
+          }
+        },
+        {
+          "label": "PD-debian",
+          "full_normalized_body_sha256": "79bd53a66cf67aa585f5ea4f60e26c4494ea86347ddf8ad06ad2a51a59115b69",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "PD-debian"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "c8dc1e46782f6bf4c12244fcf25192de183665447b2fc13c685a4a7c2316644e",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "271370c0d1a878d170112eb8ca4ce74a1e5cc2908dddb52d0091a84ed6bb5e51",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "dash"
+          }
+        },
+        {
+          "label": "Autoconf",
+          "full_normalized_body_sha256": "fc6b06c30fec54648e3c03bcc4acdd46a2e8af2e2861bf1a7a20d28b25a74e96",
+          "read_reference": {
+            "component": "xz-utils",
+            "label": "Autoconf"
+          }
+        },
+        {
+          "label": "permissive-fsf",
+          "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "coreutils"
+          }
+        },
+        {
+          "label": "permissive-nowarranty",
+          "full_normalized_body_sha256": "c2e3073868c9deda97904ad5808476fe66957f2de5721ece68bb3a9b597fae3f",
+          "read_reference": {
+            "label": "FSFAP",
+            "component": "diffutils"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "XZ Utils",
+          "Upstream-Contact": "\nLasse Collin <lasse.collin@tukaani.org>\nhttps://tukaani.org/xz/lists.html",
+          "Source": "\nhttps://tukaani.org/xz\nhttps://git.tukaani.org/xz.git",
+          "Comment": "\nXZ Utils is developed and maintained upstream by Lasse Collin.  Major\nportions are based on code by other authors; see AUTHORS for details.\nMost of the source has been put into the public domain, but some files\nhave not (details below).\n\nThis file describes the source package.  The binary packages contain\nsome files derived from other works: for example, images in the API\ndocumentation come from Doxygen."
+        },
+        {
+          "Files": "*",
+          "Copyright": "2006-2018, Lasse Collin\n1999-2008, Igor Pavlov\n2006, Ville Koskinen\n1998, Steve Reid\n2000, Wei Dai\n2003, Kevin Springle\n2009, Jonathan Nieder\n2010, Anders F Björklund",
+          "Comment": "\nFrom: Lasse Collin <lasse.collin@tukaani.org>\nTo: Jonathan Nieder <jrnieder@gmail.com>\nSubject: Re: XZ utils for Debian\nDate: Sun, 19 Jul 2009 13:28:23 +0300\nMessage-Id: <200907191328.23816.lasse.collin@tukaani.org>\n\n[...]\n\n> AUTHORS, ChangeLog, COPYING, README, THANKS, TODO,\n> dos/README, windows/README\n\nCOPYING says that most docs are in the public domain. Maybe that's not\nclear enough, but on the other hand it looks a bit stupid to put\ncopyright information in tiny and relatively small docs like README.\n\nI don't dare to say that _all_ XZ Utils specific docs are in the public\ndomain unless otherwise mentioned in the file. I'm including PDF files\ngenerated by groff + ps2pdf, and some day I might include Doxygen-\ngenerated HTML docs too. Those don't include any copyright notices, but\nit seems likely that groff + ps2pdf or at least Doxygen put some\ncopyrighted content into the generated files."
+        },
+        {
+          "Files": "INSTALL NEWS PACKAGERS\nwindows/README-Windows.txt\nwindows/INSTALL-MinGW.txt",
+          "Copyright": "2009-2010, Lasse Collin"
+        },
+        {
+          "Files": "src/scripts/* lib/* extra/scanlzma/scanlzma.c",
+          "Copyright": "© 1993, Jean-loup Gailly\n© 1989-1994, 1996-1999, 2001-2007, Free Software Foundation, Inc.\n© 2006 Timo Lindfors\n2005, Charles Levert\n2005, 2009, Lasse Collin\n2009, Andrew Dudman",
+          "Other-Authors": "Paul Eggert, Ulrich Drepper"
+        },
+        {
+          "Files": "src/scripts/Makefile.am src/scripts/xzless.1",
+          "Copyright": "2009, Andrew Dudman\n2009, Lasse Collin"
+        },
+        {
+          "Files": "doc/examples/xz_pipe_comp.c doc/examples/xz_pipe_decomp.c",
+          "Copyright": "2010, Daniel Mealha Cabrita"
+        },
+        {
+          "Files": "lib/getopt.c lib/getopt1.c lib/getopt.in.h",
+          "Copyright": "© 1987-2007 Free Software Foundation, Inc.",
+          "Other-Authors": "Ulrich Drepper"
+        },
+        {
+          "Files": "m4/getopt.m4 m4/posix-shell.m4",
+          "Copyright": "© 2002-2006, 2008 Free Software Foundation, Inc.\n© 2007-2008 Free Software Foundation, Inc.",
+          "Other-Authors": "Bruno Haible, Paul Eggert"
+        },
+        {
+          "Files": "m4/acx_pthread.m4",
+          "Copyright": "© 2008, Steven G. Johnson <stevenj@alum.mit.edu>"
+        },
+        {
+          "files": "m4/ax_check_capsicum.m4",
+          "Copyright": "© 2014, Google Inc.\n© 2015, Lasse Collin <lasse.collin@tukaani.org>"
+        },
+        {
+          "Files": "Doxyfile.in",
+          "Copyright": "© 1997-2007 by Dimitri van Heesch",
+          "Origin": "Doxygen 1.4.7"
+        },
+        {
+          "Files": "src/liblzma/check/crc32_table_?e.h\nsrc/liblzma/check/crc64_table_?e.h\nsrc/liblzma/lzma/fastpos_table.c\nsrc/liblzma/rangecoder/price_table.c",
+          "Copyright": "none, automatically generated data",
+          "Generated-With": "\nsrc/liblzma/check/crc32_tablegen.c\nsrc/liblzma/check/crc64_tablegen.c\nsrc/liblzma/lzma/fastpos_tablegen.c\nsrc/liblzma/rangecoder/price_tablegen.c"
+        },
+        {
+          "Files": ".gitignore m4/.gitignore po/.gitignore po/LINGUAS po/POTFILES.in",
+          "Copyright": "none; these are just short lists."
+        },
+        {
+          "Files": "tests/compress_prepared_bcj_*",
+          "Copyright": "2008-2009, Lasse Collin",
+          "Source-Code": "tests/bcj_test.c",
+          "Comment": "\nchangelog.gz (commit 975d8fd) explains:\n\nRecreated the BCJ test files for x86 and SPARC. The old files\nwere linked with crt*.o, which are copyrighted, and thus the\nold test files were not in the public domain as a whole. They\nare freely distributable though, but it is better to be careful\nand avoid including any copyrighted pieces in the test files.\nThe new files are just compiled and assembled object files,\nand thus don't contain any copyrighted code."
+        },
+        {
+          "Files": "po/cs.po po/de.po po/fr.po",
+          "Copyright": "2010, Marek Černocký\n2010, Andre Noll\n2011, Adrien Nader"
+        },
+        {
+          "Files": "po/it.po po/pl.po",
+          "Copyright": "2009, 2010, Gruppo traduzione italiano di Ubuntu-it\n2010, Lorenzo De Liso\n2009, 2010, 2011, Milo Casagrande\n2011, Jakub Bogusz"
+        },
+        {
+          "Files": "INSTALL.generic",
+          "Copyright": "© 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005,\n2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "dos/config.h",
+          "Copyright": "© 1992, 1993, 1994, 1999, 2000, 2001, 2002, 2005\nFree Software Foundation, Inc.\n2007-2010, Lasse Collin",
+          "Other-Authors": "Roland McGrath, Akim Demaille, Paul Eggert,\nDavid Mackenzie, Bruno Haible, and many others.",
+          "Origin": "configure.ac from XZ Utils,\nvisibility.m4 serial 1 (gettext-0.15),\nAutoconf 2.52g"
+        },
+        {
+          "Files": "po/Makevars",
+          "Origin": "gettext-runtime/po/Makevars (gettext-0.12)",
+          "Copyright": "© 2003 Free Software Foundation, Inc.",
+          "Authors": "Bruno Haible"
+        },
+        {
+          "Files": "COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv2.1",
+          "Copyright": "© 1989, 1991, 1999, 2007 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009-2012, Jonathan Nieder"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "scope": "All original permission bodies and related scope metadata inspected; original declared uncertainty/classification notes are retained without fabricating new author grants.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

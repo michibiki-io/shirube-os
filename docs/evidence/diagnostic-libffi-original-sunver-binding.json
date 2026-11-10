@@ -1,0 +1,32 @@
+{
+  "kind": "exact-libffi-build-helper-original-permission-binding",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "source_identity": "21c9ef156b6766535cb014e0765142c8104ffbcd73f003ecfa80cfb314baa4f0",
+  "copyright_sha256": "f83d2ecba1ea4d99957e81c50bebbd076a128194288a3ec22cc8ccdb77c43087",
+  "original_archive_sha256": "d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676",
+  "helper_sha256": "ca40d3458893e03a90807be87d720a59e921ee6bf678c6696779d635004a261f",
+  "gcc_original_member": "gcc-11.2.0/contrib/make_sunver.pl",
+  "original_notice_files": [
+    {
+      "member": "gcc-11.2.0/COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "member": "gcc-11.2.0/README",
+      "sha256": "49306c701a64d02dc25de7c89eac5643a3e73c159b4aa9438b47f6b9d86ba0df"
+    },
+    {
+      "member": "gcc-11.2.0/COPYING",
+      "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/Libffi-make-sunver-origin.txt",
+      "sha256": "c7c9d62ef1add896aae0f54e28dc63c41a07c2cecd0edcd1d1ebeda7eec3a571"
+    }
+  ],
+  "scope": "Exact file-byte comparison plus original project grant context. This is not an independent grant obtained from a different project.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

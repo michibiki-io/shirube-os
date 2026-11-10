@@ -1,0 +1,72 @@
+{
+  "kind": "exact-original-font-and-fontconfig-permissions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "fontconfig",
+      "version": "2.14.1-4",
+      "source_identity": "8bb59d9c96ff8ef77df06dc65273fa398bf248f7e2448a8314989ec01ce74a58",
+      "copyright_sha256": "b215a61cdd3e62b5b17cc28b1852c78acb3dd38be0fb30706f7efc050dba91db",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "51a51aa9823704fd90bccc616cdd17ebabb5b2b3e9cbde886ca02c7002288067"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "b215a61cdd3e62b5b17cc28b1852c78acb3dd38be0fb30706f7efc050dba91db"
+        }
+      ],
+      "decision": {
+        "redistributable": true,
+        "source_identity": "8bb59d9c96ff8ef77df06dc65273fa398bf248f7e2448a8314989ec01ce74a58",
+        "copyright_sha256": "b215a61cdd3e62b5b17cc28b1852c78acb3dd38be0fb30706f7efc050dba91db",
+        "license": "LicenseRef-fontconfig-permissive AND MIT AND Unicode-DFS-2016",
+        "reviewed_on": "2026-11-10",
+        "evidence_member": "copyright",
+        "scope": "Complete exact original COPYING/LICENSE and Debian copyright read, including independent per-file grants, public-domain statements, attribution and font restrictions. Not blanket component-family or OS approval.",
+        "conditions": [
+          "Keep complete original notices, permissions, disclaimers and all authorship/attribution statements in sources and binary documentation. Provide exact preferred sources and full configuration/patch/build/install inputs.",
+          "Retain original CaseFolding Unicode copyright and the complete Unicode data/software permission; this does not license arbitrary Unicode website documents, code charts, logos or trademarks. Keep Keith Packard and other authors nonendorsement and supporting-documentation notices, the distinct HarfBuzz grant, MIT and public-domain scopes."
+        ],
+        "required_notice_files": [
+          {
+            "path": "LICENSES/Unicode-data-1991-2020.txt",
+            "sha256": "3f0b3ce928ef80dc85fadcacf66bf104a96c27bd0cf926540ab3ab7edea6ffaa"
+          }
+        ]
+      }
+    },
+    {
+      "source": "fonts-dejavu",
+      "version": "2.37-6",
+      "source_identity": "f657fdb103d25b735527b4905af27722281fc5523d33146cdfeadd9201f1cc0c",
+      "copyright_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+      "original_legal_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "7a083b136e64d064794c3419751e5c7dd10d2f64c108fe5ba161eae5e5958a93"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+        }
+      ],
+      "decision": {
+        "redistributable": true,
+        "source_identity": "f657fdb103d25b735527b4905af27722281fc5523d33146cdfeadd9201f1cc0c",
+        "copyright_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "license": "Bitstream-Vera AND GPL-2.0-or-later AND LicenseRef-Arev-AMS-font-permissions",
+        "reviewed_on": "2026-11-10",
+        "evidence_member": "copyright",
+        "scope": "Complete exact original COPYING/LICENSE and Debian copyright read, including independent per-file grants, public-domain statements, attribution and font restrictions. Not blanket component-family or OS approval.",
+        "conditions": [
+          "Keep complete original notices, permissions, disclaimers and all authorship/attribution statements in sources and binary documentation. Provide exact preferred sources and full configuration/patch/build/install inputs.",
+          "Distribute unmodified DejaVu font faces as part of the OS, with Bitstream/Arev/AMS notices. Respect Bitstream/Vera and Tavmjong Bah/Arev modified-font naming restrictions and package-only sale conditions; retain AMS original-authenticity and derivative notice/naming requirements. Packaging remains GPL2-or-later. These are third-party fonts, not official upstream product artwork or a new branding grant."
+        ]
+      }
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

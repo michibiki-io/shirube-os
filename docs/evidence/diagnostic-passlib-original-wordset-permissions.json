@@ -1,0 +1,55 @@
+{
+  "kind": "exact-passlib-original-source-and-wordset-permissions",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "source_identity": "c9e4781e4d4a75c3c62d73115805feafde25ef590b2813e1a2294186a7253c68",
+  "original_archive_sha256": "83e253fa2925b4247c92d0c7632a069777d16136c7664d0e022f77ce9bda7ef5",
+  "copyright_sha256": "709d365df1258eb5f020e3b28687ab0c7e58820e63f5eef8c6c937b1eb241362",
+  "eff_publisher_permission": "https://www.eff.org/copyright",
+  "eff_comparisons": [
+    {
+      "source_member": "passlib-1.7.4/passlib/_data/wordsets/eff_long.txt",
+      "source_member_sha256": "6d557f0693958fb5e650b68b5bee585eb82cf4da32965505c789e924743bc522",
+      "original_publisher_url": "https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt",
+      "original_publisher_sha256": "addd35536511597a02fa0a9ff1e5284677b8883b83e986e43f15a3db996b903e",
+      "words": 7776,
+      "comparison": "All words and their order match after removal of publisher dice indices and blank/comment lines only."
+    },
+    {
+      "source_member": "passlib-1.7.4/passlib/_data/wordsets/eff_short.txt",
+      "source_member_sha256": "36ecca49e4fa20ca84b176c32f2e9c82f98f446585190e75f9879a95c08247bf",
+      "original_publisher_url": "https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt",
+      "original_publisher_sha256": "8f5ca830b8bffb6fe39c9736c024a00a6a6411adb3f83a9be8bfeeb6e067ae69",
+      "words": 1296,
+      "comparison": "All words and their order match after removal of publisher dice indices and blank/comment lines only."
+    },
+    {
+      "source_member": "passlib-1.7.4/passlib/_data/wordsets/eff_prefixed.txt",
+      "source_member_sha256": "7aa57a4d3ecf6581729992bad9575bacdebf7c28378af2aec6a50f11aec326f5",
+      "original_publisher_url": "https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt",
+      "original_publisher_sha256": "22b45c52e0bd0bbf03aa522240b111eb4c7c0c1d86c4e518e1be2a7eb2a625e4",
+      "words": 1296,
+      "comparison": "All words and their order match after removal of publisher dice indices and blank/comment lines only."
+    }
+  ],
+  "bip39_comparison": {
+    "member": "passlib-1.7.4/passlib/_data/wordsets/bip39.txt",
+    "member_sha256": "24ce42c2fd4a95c1b86bbee9bce1e1cf255bd0022e19bab6bd591afd68b7efdb",
+    "publisher_url": "https://raw.githubusercontent.com/bitcoin/bips/master/bip-0039/english.txt",
+    "publisher_sha256": "2f5eed53a4727b4bf8880d8f3f199efc90e58503646d9ff8eff3a2ed3b24dbda",
+    "words": 2048,
+    "scope": "All words and ordering match, whitespace normalization only."
+  },
+  "bip39_permission": "https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki",
+  "required_notices": [
+    {
+      "path": "LICENSES/Passlib-wordsets-notice.txt",
+      "sha256": "ac65bc93dd38fbc5259cd0832fadf2a784dd8949c687a15b1256cc6386d568d2"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
