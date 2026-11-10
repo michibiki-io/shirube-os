@@ -1,0 +1,827 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "gnupg2",
+      "version": "2.2.40-1.1+deb12u2",
+      "dsc_sha256": "2424239219b00265dd99c5a2c5f9d50f9cafc15f0945946bb16ac1a50ec38310",
+      "binaries": [
+        {
+          "name": "dirmngr",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gnupg",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "all",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gnupg-l10n",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "all",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gnupg-utils",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gnupg2",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "all",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gpg",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gpg-agent",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gpg-wks-client",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gpg-wks-server",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gpgconf",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gpgsm",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        },
+        {
+          "name": "gpgv",
+          "version": "2.2.40-1.1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54"
+        }
+      ],
+      "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "bc2d6664f6276fa0a72d57633b3ae68dc7dcb677b71018bf08c8e93e509f1357",
+          "read_reference": {
+            "component": "gettext",
+            "member": "COPYING",
+            "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b"
+          }
+        },
+        {
+          "member": "COPYING.CC0",
+          "sha256": "ec4a7d97de212428cd53e09e0524616f0f584528e0698203fb4d71d6c55b48c5",
+          "read_reference": {
+            "component": "gnupg2",
+            "member": "COPYING.CC0",
+            "sha256": "ec4a7d97de212428cd53e09e0524616f0f584528e0698203fb4d71d6c55b48c5",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "COPYING.GPL2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "COPYING.LGPL21",
+          "sha256": "d31a714a7ab67eb95ccae12b701e74fe307d771682f8792af7ed4e1ba33074a6",
+          "read_reference": {
+            "component": "gnupg2",
+            "member": "COPYING.LGPL21",
+            "sha256": "d31a714a7ab67eb95ccae12b701e74fe307d771682f8792af7ed4e1ba33074a6",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "COPYING.LGPL3",
+          "sha256": "b40f7806e14dd7aad5e0254c04c61bf1212de37296f1cd5782ffbc9e98cbee87",
+          "read_reference": {
+            "component": "gnupg2",
+            "member": "COPYING.LGPL3",
+            "sha256": "b40f7806e14dd7aad5e0254c04c61bf1212de37296f1cd5782ffbc9e98cbee87",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "COPYING.other",
+          "sha256": "909878b98dc2eaf3b07bbe1694ecd9f0523b7a621467c508d55daf28e0408be1",
+          "read_reference": {
+            "component": "gnupg2",
+            "member": "COPYING.other",
+            "sha256": "909878b98dc2eaf3b07bbe1694ecd9f0523b7a621467c508d55daf28e0408be1",
+            "method": "Complete original legal text read, preserving separately scoped grants, source obligations, attribution, advertising and nonendorsement conditions. Not parent component clearance."
+          }
+        },
+        {
+          "member": "tests/gpgscm/LICENSE.TinySCHEME",
+          "sha256": "67adb18c0247a227dcf843d2dc18f69b7f8935ead643afbf4dd306834c5f1f8d",
+          "read_reference": {
+            "component": "gnupg2",
+            "member": "tests/gpgscm/LICENSE.TinySCHEME",
+            "sha256": "67adb18c0247a227dcf843d2dc18f69b7f8935ead643afbf4dd306834c5f1f8d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "TinySCHEME",
+          "full_normalized_body_sha256": "02da970092c698fe2571b36cce3c92479e581cb7bec745c162dfe966a4a527c2",
+          "read_reference": {
+            "component": "gnupg2",
+            "label": "TinySCHEME"
+          }
+        },
+        {
+          "label": "permissive",
+          "full_normalized_body_sha256": "db6b1a1b953b2d7ec8f26d1f27a29f88b881705f6cd1872158a227f5db93b59e",
+          "read_reference": {
+            "label": "g10-permissive",
+            "component": "libgpg-error"
+          }
+        },
+        {
+          "label": "RFC-Reference",
+          "full_normalized_body_sha256": "81de7dabf0f9a91176f17186747433f94cbb67722aa37b6dac740e1f90ea2418",
+          "read_reference": {
+            "component": "gnupg2",
+            "label": "RFC-Reference"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "8380f9323d0fedc25e048470ce71ff442f9078efe973ee404e3d7e2ff2a803c0",
+          "read_reference": {
+            "component": "gnupg2",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-3+",
+          "full_normalized_body_sha256": "99a5a07b8f538931cdd4295565f14072ea710013cdb6677b92af819d53c25c10",
+          "read_reference": {
+            "component": "gnupg2",
+            "label": "LGPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "27d7e6a64cbae7b645847d58a8eac1f3e82e6fbd67c02d384c2017cfa2ba00c8",
+          "read_reference": {
+            "component": "gnupg2",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "c62ec78ce60b1baab51edb0f681e489aff650c51b43f4bb22d714fca048a140d",
+          "read_reference": {
+            "component": "gnupg2",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        },
+        {
+          "label": "CC0-1.0",
+          "full_normalized_body_sha256": "78189bddf0b5f15115ce2fb3f1640725d7e76271de2e9a07b9b92311df697b4f",
+          "read_reference": {
+            "component": "gnupg2",
+            "label": "CC0-1.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "GnuPG - The GNU Privacy Guard (modern version)",
+          "Upstream-Contact": "GnuPG development mailing list <gnupg-devel@gnupg.org>",
+          "Source": "https://gnupg.org/download/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1992, 1995-2020, Free Software Foundation, Inc",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "agent/command.c\nagent/command-ssh.c\nagent/gpg-agent.c\ncommon/homedir.c\ncommon/sysutils.c\ng10/mainproc.c",
+          "Copyright": "1998-2007, 2009, 2012, Free Software Foundation, Inc\n2013, Werner Koch",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "autogen.sh",
+          "Copyright": "2003, g10 Code GmbH",
+          "LicenseExpression": "permissive"
+        },
+        {
+          "Files": "common/gc-opt-flags.h\ncommon/i18n.h\ntools/clean-sat.c\ntools/no-libgcrypt.c",
+          "Copyright": "1998-2001, 2003, 2004, 2006, 2007 Free Software Foundation, Inc",
+          "LicenseExpression": "permissive"
+        },
+        {
+          "Files": "common/localename.c",
+          "Copyright": "1985, 1989-1993, 1995-2003, 2007, 2008 Free Software Foundation, Inc.",
+          "LicenseExpression": "LGPL-2.1+"
+        },
+        {
+          "Files": "dirmngr/dns.c\ndirmngr/dns.h",
+          "Copyright": "2008-2010, 2012-2016 William Ahern",
+          "LicenseExpression": "Expat"
+        },
+        {
+          "Files": "doc/yat2m.c\nscd/app-geldkarte.c",
+          "Copyright": "2004, 2005, g10 Code GmbH\n2006, 2008, 2009, 2011, Free Software Foundation, Inc",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "scd/ccid-driver.h\nscd/ccid-driver.c",
+          "Copyright": "2003-2007, Free Software Foundation, Inc",
+          "LicenseExpression": "GPL-3+ or BSD-3-clause"
+        },
+        {
+          "Files": "tools/rfc822parse.c\ntools/rfc822parse.h",
+          "Copyright": "1999-2000, Werner Koch, Duesseldorf\n2003-2004, g10 Code GmbH",
+          "LicenseExpression": "LGPL-3+"
+        },
+        {
+          "Files": "tools/sockprox.c",
+          "Copyright": "2007, g10 Code GmbH",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "doc/OpenPGP",
+          "Copyright": "1998-2013 Free Software Foundation, Inc.\n1997, 1998, 2013 Werner Koch\n1998 The Internet Society",
+          "LicenseExpression": "RFC-Reference"
+        },
+        {
+          "Files": "tests/gpgscm/*",
+          "Copyright": "2000, Dimitrios Souflis\n2016, Justus Winter, Werner Koch",
+          "LicenseExpression": "TinySCHEME"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1998-2022 Debian GnuPG packagers, including\nEric Dorland <eric@debian.org>\nDaniel Kahn Gillmor <dkg@fifthhorseman.net>\nNIIBE Yutaka <gniibe@fsij.org>",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "debian/org.gnupg.scdaemon.metainfo.xml",
+          "Copyright": "2017 Daniel Kahn Gillmor <dkg@fifthhorseman.net>",
+          "Comment": "This file is licensed permissively for the sake of AppStream",
+          "LicenseExpression": "CC0-1.0"
+        },
+        {
+          "LicenseExpression": "TinySCHEME"
+        },
+        {
+          "LicenseExpression": "permissive"
+        },
+        {
+          "LicenseExpression": "RFC-Reference"
+        },
+        {
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "LicenseExpression": "LGPL-3+"
+        },
+        {
+          "LicenseExpression": "LGPL-2.1+"
+        },
+        {
+          "LicenseExpression": "BSD-3-clause"
+        },
+        {
+          "LicenseExpression": "Expat"
+        },
+        {
+          "LicenseExpression": "CC0-1.0"
+        }
+      ]
+    },
+    {
+      "source": "libnsl",
+      "version": "1.3.0-2",
+      "dsc_sha256": "1da570eed6693c774cce51f3c33f989d1aa4bf1dcb8660818d8a834a1a3728ef",
+      "binaries": [
+        {
+          "name": "libnsl2",
+          "version": "1.3.0-2",
+          "architecture": "arm64",
+          "copyright_sha256": "7d9c79b73fd956319a90cd210441498b225e00960352c4c6d447436481bb0eec"
+        }
+      ],
+      "copyright_sha256": "7d9c79b73fd956319a90cd210441498b225e00960352c4c6d447436481bb0eec",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "3d3b553cd6c5645839cd18e84a339ec073c724c15a66727e516823fc58a4341d",
+          "read_reference": {
+            "component": "libnsl",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "GPL-2+-autoconf-exception",
+          "full_normalized_body_sha256": "dcae545c8787a41303177a822aedacdedad4c0cd13d78122ff50a62872c88f45",
+          "read_reference": {
+            "component": "libnsl",
+            "label": "GPL-2+-autoconf-exception"
+          }
+        },
+        {
+          "label": "GPL-2+-libtool-exception",
+          "full_normalized_body_sha256": "d20433842a0e1beee455eced1bbe9b51f50d8887ec0fd58bd149b73d949485ac",
+          "read_reference": {
+            "component": "libnsl",
+            "label": "GPL-2+-libtool-exception"
+          }
+        },
+        {
+          "label": "GPL-3+-autoconf-exception",
+          "full_normalized_body_sha256": "dacae791152f626c8bf4f0360f00f3f479b09743bdeb855def52b66e2df24abb",
+          "read_reference": {
+            "component": "libnsl",
+            "label": "GPL-3+-autoconf-exception"
+          }
+        },
+        {
+          "label": "LGPL-2.1",
+          "full_normalized_body_sha256": "47eb548ca088ba4cdec3bb1aa852152817a9f4e6f80081ca1d01a0665a251482",
+          "read_reference": {
+            "component": "libnsl",
+            "label": "LGPL-2.1"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "51b708ecdb965854e3422ff8392ffc6519c7b690ee19057594e249bd74a35e06",
+          "read_reference": {
+            "component": "libnsl",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "c8c0049710bc4c09f9dcade779915d46ad5c92f5b0cf33ee32a5e0a12c0b2ca7",
+          "read_reference": {
+            "label": "X11",
+            "component": "diffutils"
+          }
+        },
+        {
+          "label": "permissive-autoconf-m4",
+          "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "coreutils"
+          }
+        },
+        {
+          "label": "permissive-autoconf-m4-no-warranty",
+          "full_normalized_body_sha256": "236519e8309d8881985773c6ce2b6063e9aa65fe929e92c8f149c981b77d43ee",
+          "read_reference": {
+            "label": "FSF-something",
+            "component": "iperf"
+          }
+        },
+        {
+          "label": "permissive-configure",
+          "full_normalized_body_sha256": "6b67719d76b493c426bc94fd9e5385217a85a1c1cbfa7829ff2afdc406750f0e",
+          "read_reference": {
+            "label": "FSFUL",
+            "component": "bgpq3"
+          }
+        },
+        {
+          "label": "permissive-fsf",
+          "full_normalized_body_sha256": "c50be4410087c77f715f5277fe4b6e6751269721094ce6267f93bf96a80cf3d6",
+          "read_reference": {
+            "label": "autoconf-archive-permissive",
+            "component": "dbus"
+          }
+        },
+        {
+          "label": "permissive-makefile-in",
+          "full_normalized_body_sha256": "e9c2e5d821ed0c67149a969f0b3a6a253ef4f59250fe66de00da9c33064e5522",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "cyrus-sasl2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libnsl",
+          "Upstream-Contact": "Thorsten Kukuk <kukuk@thkukuk.de>",
+          "Source": "https://github.com/thkukuk/libnsl"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2020, Aurelien Jarno",
+          "LicenseExpression": "LGPL-2.1+"
+        },
+        {
+          "Files": "AUTHORS\nconfigure.ac\nconfig.h.in\nlibnsl.pc.in\nMakefile.am\nNEWS\nREADME\nsrc/Makefile.am\nsrc/do_ypcall.c\nsrc/internal.h\nsrc/libnsl.map\nsrc/nisplus/nis_error.c\nsrc/taddr2host.c\nsrc/taddr2ipstr.c\nsrc/taddr2port.c\nsrc/yp_first.c\nsrc/yp_get_default_domain.c\nsrc/yp_maplist.c\nsrc/yp_master.c\nsrc/yp_match.c\nsrc/yp_next.c\nsrc/yp_order.c\nsrc/ypbinderr_string.c\nsrc/yperr_string.c\nsrc/ypprot_err.c",
+          "Copyright": "2014, 2015, 2017-2018, Thorsten Kukuk",
+          "LicenseExpression": "LGPL-2.1"
+        },
+        {
+          "Files": "src/libc-lock.h\nsrc/nisplus/nis_add.c\nsrc/nisplus/nis_addmember.c\nsrc/nisplus/nis_call.c\nsrc/nisplus/nis_callback.c\nsrc/nisplus/nis_checkpoint.c\nsrc/nisplus/nis_clone_dir.c\nsrc/nisplus/nis_clone_obj.c\nsrc/nisplus/nis_clone_res.c\nsrc/nisplus/nis_creategroup.c\nsrc/nisplus/nis_defaults.c\nsrc/nisplus/nis_destroygroup.c\nsrc/nisplus/nis_domain_of.c\nsrc/nisplus/nis_domain_of_r.c\nsrc/nisplus/nis_file.c\nsrc/nisplus/nis_findserv.c\nsrc/nisplus/nis_free.c\nsrc/nisplus/nis_getservlist.c\nsrc/nisplus/nis_hash.c\nsrc/nisplus/nis_intern.h\nsrc/nisplus/nis_ismember.c\nsrc/nisplus/nis_local_names.c\nsrc/nisplus/nis_lookup.c\nsrc/nisplus/nis_mkdir.c\nsrc/nisplus/nis_modify.c\nsrc/nisplus/nis_ping.c\nsrc/nisplus/nis_print.c\nsrc/nisplus/nis_print_group_entry.c\nsrc/nisplus/nis_remove.c\nsrc/nisplus/nis_removemember.c\nsrc/nisplus/nis_rmdir.c\nsrc/nisplus/nis_server.c\nsrc/nisplus/nis_subr.c\nsrc/nisplus/nis_table.c\nsrc/nisplus/nis_util.c\nsrc/nisplus/nis_verifygroup.c\nsrc/nisplus/nis_xdr.c\nsrc/nisplus/nis_xdr.h\nsrc/rpcsvc/nislib.h\nsrc/rpcsvc/ypclnt.h",
+          "Copyright": "1996-2015, Free Software Foundation, Inc.",
+          "LicenseExpression": "LGPL-2.1+"
+        },
+        {
+          "Files": "src/rpcsvc/nis_callback.h\nsrc/rpcsvc/nis_callback.x\nsrc/rpcsvc/nis_object.x\nsrc/rpcsvc/nis_tags.h\nsrc/rpcsvc/nis.h\nsrc/rpcsvc/nis.x\nsrc/rpcsvc/yp.h\nsrc/rpcsvc/yp.x\nsrc/rpcsvc/yp_prot.h\nsrc/rpcsvc/yppasswd.h\nsrc/rpcsvc/yppasswd.x\nsrc/rpcsvc/ypupd.h\nsrc/yp_xdr.c",
+          "Copyright": "2010, Oracle America, Inc.",
+          "LicenseExpression": "BSD-3-clause"
+        },
+        {
+          "Files": "INSTALL",
+          "Copyright": "1994-1996, 1999-2002, 2004-2016 Free Software Foundation, Inc.",
+          "LicenseExpression": "permissive-fsf"
+        },
+        {
+          "Files": "Makefile.in\nsrc/Makefile.in",
+          "Copyright": "1994-2020 Free Software Foundation, Inc.",
+          "LicenseExpression": "permissive-makefile-in"
+        },
+        {
+          "Files": "aclocal.m4",
+          "Copyright": "1996-2017 Free Software Foundation, Inc.",
+          "LicenseExpression": "permissive-autoconf-m4-no-warranty"
+        },
+        {
+          "Files": "config.sub\nconfig.guess",
+          "Copyright": "1992-2018 Free Software Foundation, Inc.",
+          "LicenseExpression": "GPL-3+-autoconf-exception"
+        },
+        {
+          "Files": "configure",
+          "Copyright": "1992-1996, 1998-2012 Free Software Foundation, Inc.",
+          "LicenseExpression": "permissive-configure"
+        },
+        {
+          "Files": "compile\ndepcomp\nmissing\ntest-driver",
+          "Copyright": "1999-2017 Free Software Foundation, Inc.",
+          "LicenseExpression": "GPL-2+-autoconf-exception"
+        },
+        {
+          "Files": "install-sh",
+          "Copyright": "1994 X Consortium",
+          "LicenseExpression": "MIT"
+        },
+        {
+          "Files": "ltmain.sh",
+          "Copyright": "1996-2015 Free Software Foundation, Inc.",
+          "LicenseExpression": "GPL-2+-libtool-exception"
+        },
+        {
+          "Files": "config.rpath\nm4/gettext.m4\nm4/host-cpu-c-abi.m4\nm4/iconv.m4\nm4/intlmacosx.m4\nm4/lib-ld.m4\nm4/lib-link.m4\nm4/lib-prefix.m4\nm4/libtool.m4\nm4/ltoptions.m4\nm4/ltsugar.m4\nm4/ltversion.m4\nm4/lt~obsolete.m4\nm4/nls.m4\nm4/po.m4\nm4/progtest.m4",
+          "Copyright": "1995-2020 Free Software Foundation, Inc.",
+          "LicenseExpression": "permissive-autoconf-m4"
+        },
+        {
+          "Files": "ABOUT-NLS\npo/Makefile.in.in\npo/Makevars\npo/POTFILES.in\npo/Rules-quot\npo/boldquot.sed\npo/en@boldquot.header\npo/en@quot.header\npo/insert-header.sin\npo/libnsl.pot\npo/quot.sed\npo/remove-potcdate.sin\npo/stamp-po",
+          "Copyright": "1995-1997, 2000-2007, 2009-2010 Ulrich Drepper",
+          "LicenseExpression": "permissive-fsf"
+        },
+        {
+          "LicenseExpression": "BSD-3-clause"
+        },
+        {
+          "LicenseExpression": "GPL-2+-autoconf-exception"
+        },
+        {
+          "LicenseExpression": "GPL-2+-libtool-exception"
+        },
+        {
+          "LicenseExpression": "GPL-3+-autoconf-exception"
+        },
+        {
+          "LicenseExpression": "LGPL-2.1"
+        },
+        {
+          "LicenseExpression": "LGPL-2.1+"
+        },
+        {
+          "LicenseExpression": "MIT"
+        },
+        {
+          "LicenseExpression": "permissive-autoconf-m4"
+        },
+        {
+          "LicenseExpression": "permissive-autoconf-m4-no-warranty"
+        },
+        {
+          "LicenseExpression": "permissive-configure"
+        },
+        {
+          "LicenseExpression": "permissive-fsf"
+        },
+        {
+          "LicenseExpression": "permissive-makefile-in"
+        }
+      ]
+    },
+    {
+      "source": "logrotate",
+      "version": "3.21.0-1",
+      "dsc_sha256": "ffacbf8281bd9bd85be49cda2a6a14c4b094c693819f3ca268e1c9dc908ca824",
+      "binaries": [
+        {
+          "name": "logrotate",
+          "version": "3.21.0-1",
+          "architecture": "arm64",
+          "copyright_sha256": "beb47a9520eb5b1a28579b8d9bf591e3fce40c1bc14954df44f7fdf62dd79c92"
+        }
+      ],
+      "copyright_sha256": "beb47a9520eb5b1a28579b8d9bf591e3fce40c1bc14954df44f7fdf62dd79c92",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "9e38b95d1b9640894d0740cf2e577ed08ae46fb0ada14ce3d681afc7eca77c2a",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "at"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "28a2c17803ded6d9c47bb850c8253d87db715b767ee5c14352e76ec6ea3c7277",
+          "read_reference": {
+            "component": "logrotate",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "BSD-3-Clause",
+          "full_normalized_body_sha256": "70435d703f5e4bdca9a1fa6b9291501b0dd850d2ad5457b491ce936217b1e063",
+          "read_reference": {
+            "label": "BSD-3-Clause",
+            "component": "freetype"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "logrotate",
+          "Upstream-Contact": "https://github.com/logrotate/logrotate/issues",
+          "Source": "https://github.com/logrotate/logrotate"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1999-2022, Erik Troan, Preston Brown, Elliot Lee, Miloslav Trmac,\nDan Walsh, Peter Vrabec, Jesse Keating, Tomas Smetana,\nChristian Göttsche and Kamil Dudka",
+          "LicenseExpression": "GPL-2"
+        },
+        {
+          "Files": "build-aux/git-version-gen",
+          "Copyright": "2007-2017, Free Software Foundation, Inc.",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "queue.h",
+          "Copyright": "1991-1993, The Regents of the University of California",
+          "LicenseExpression": "BSD-3-Clause"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1999, Joseph Carter\n?-2017, Paul Martin <pm@debian.org>\n2018-2022, Christian Göttsche <cgzones@googlemail.com>",
+          "LicenseExpression": "GPL-2"
+        },
+        {
+          "Commentary": "\n## Licenses"
+        },
+        {
+          "LicenseExpression": "GPL-2"
+        },
+        {
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "LicenseExpression": "BSD-3-Clause"
+        }
+      ]
+    },
+    {
+      "source": "nghttp2",
+      "version": "1.52.0-1+deb12u3",
+      "dsc_sha256": "d4fcb364e461616ef63cb0653a71f08a9ae23703d497745e90160ed7d1eda393",
+      "binaries": [
+        {
+          "name": "libnghttp2-14",
+          "version": "1.52.0-1+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "a34ae32a5eba61e535835a8de7c398f47e420247d339bc400a3b9c618ba29a3d"
+        }
+      ],
+      "copyright_sha256": "a34ae32a5eba61e535835a8de7c398f47e420247d339bc400a3b9c618ba29a3d",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "6b94f3abc1aabd0c72a7c7d92a77f79dda7c8a0cb3df839a97890b4116a2de2a",
+          "read_reference": {
+            "component": "nghttp2",
+            "member": "COPYING",
+            "sha256": "6b94f3abc1aabd0c72a7c7d92a77f79dda7c8a0cb3df839a97890b4116a2de2a",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "f0518afc0a555337bac2f0fb37d33cdee6111983da69aaa504a1876beeddfde0",
+          "read_reference": {
+            "component": "nghttp2",
+            "member": "LICENSE",
+            "sha256": "f0518afc0a555337bac2f0fb37d33cdee6111983da69aaa504a1876beeddfde0",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "doc/_exts/rubydomain/LICENSE.rubydomain",
+          "sha256": "2dee6027d254030e382dd8e9f0f1b4ac2c186bd409c85ca2bef80d38b4da283c",
+          "read_reference": {
+            "component": "nghttp2",
+            "member": "doc/_exts/rubydomain/LICENSE.rubydomain",
+            "sha256": "2dee6027d254030e382dd8e9f0f1b4ac2c186bd409c85ca2bef80d38b4da283c",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "third-party/llhttp/LICENSE-MIT",
+          "sha256": "ebca854e0134cd256d673627c20499f42577eb74bacf08b9f25b626a73c91277",
+          "read_reference": {
+            "component": "nghttp2",
+            "member": "third-party/llhttp/LICENSE-MIT",
+            "sha256": "ebca854e0134cd256d673627c20499f42577eb74bacf08b9f25b626a73c91277",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "third-party/url-parser/LICENSE-MIT",
+          "sha256": "79e6ba8b687cb54786207342b9b6fcee0ac10218453ed9009b84d949b2233cc0",
+          "read_reference": {
+            "component": "http-parser",
+            "member": "LICENSE-MIT",
+            "sha256": "79e6ba8b687cb54786207342b9b6fcee0ac10218453ed9009b84d949b2233cc0"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        },
+        {
+          "label": "GPL-3+ with autoconf exception",
+          "full_normalized_body_sha256": "9a9cb58426c75cb180a95f5573c20cd00a038f677cf117b22aa2e2bb91e02d31",
+          "read_reference": {
+            "component": "nghttp2",
+            "label": "GPL-3+ with autoconf exception"
+          }
+        },
+        {
+          "label": "all-permissive",
+          "full_normalized_body_sha256": "c50be4410087c77f715f5277fe4b6e6751269721094ce6267f93bf96a80cf3d6",
+          "read_reference": {
+            "label": "autoconf-archive-permissive",
+            "component": "dbus"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "278abc70ee8c9f9fe19b8ba5648916c99ee1e32643b2f84520f33ccc809502a9",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "haproxy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "nghttp2",
+          "Upstream-Contact": "Tatsuhiro Tsujikawa <t-tujikawa@users.sourceforge.net>",
+          "Source": "https://github.com/tatsuhiro-t/nghttp2"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2012, 2013, 2014 Tatsuhiro Tsujikawa",
+          "LicenseExpression": "Expat"
+        },
+        {
+          "Files": "tests/nghttp2_npn_test.*",
+          "Copyright": "2012, Twist Inc.",
+          "LicenseExpression": "Expat"
+        },
+        {
+          "Files": "m4/ax_cxx_compile_stdcxx.m4",
+          "Copyright": "2008, Benjamin Kosnik <bkoz@redhat.com>,\n2012, Zack Weinberg <zackw@panix.com>,\n2013, Roy Stogner <roystgnr@ices.utexas.edu>",
+          "LicenseExpression": "all-permissive"
+        },
+        {
+          "Files": "m4/ax_python_devel.m4",
+          "Copyright": "2009 Sebastian Huber <sebastian-huber@web.de>,\n2009 Alan W. Irwin,\n2009 Rafael Laboissiere <rafael@laboissiere.net>,\n2009 Andrew Collier,\n2009 Matteo Settenvini <matteo@member.fsf.org>,\n2009 Horst Knorr <hk_classes@knoda.org>,\n2013 Daniel Mullner <muellner@math.stanford.edu>",
+          "LicenseExpression": "GPL-3+ with autoconf exception"
+        },
+        {
+          "Files": "doc/_themes/sphinx_rtd_theme/*",
+          "Copyright": "2013 Dave Snider",
+          "LicenseExpression": "MIT"
+        },
+        {
+          "Files": "doc/_themes/sphinx_rtd_theme/search.html",
+          "Copyright": "2007-2013 by the Sphinx team",
+          "Comment": "License details from https://bitbucket.org/birkenfeld/sphinx/src file LICENSE",
+          "LicenseExpression": "BSD-2-clause"
+        },
+        {
+          "LicenseExpression": "Expat"
+        },
+        {
+          "LicenseExpression": "MIT"
+        },
+        {
+          "LicenseExpression": "GPL-3+ with autoconf exception"
+        },
+        {
+          "LicenseExpression": "all-permissive"
+        },
+        {
+          "LicenseExpression": "BSD-2-clause"
+        }
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
