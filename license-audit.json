@@ -30237,6 +30237,207 @@
       ],
       "reviewed_on": "2026-11-10",
       "scope": "Exact observed original source and original notice only. This does not override per-file restrictions or establish complete source, linkage, release or OCI acceptance."
+    },
+    "blackbox-exporter@0.26.0#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#4e7fd35f7244cecb95a034810ac739388e694f19d3e4cc0fdc7fb898983c5bc6": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "4e7fd35f7244cecb95a034810ac739388e694f19d3e4cc0fdc7fb898983c5bc6",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Go-parent-original-notices/blackbox-exporter/original-LICENSE",
+          "sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b"
+        },
+        {
+          "path": "LICENSES/Go-parent-original-notices/blackbox-exporter/original-NOTICE",
+          "sha256": "b8a2b0e5221d7aae0f79c06f3a9eb538691e7f45a6355f9d8df0be9afc4e3f23"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "conditions": [
+        "The root license covers this upstream application only. It does not relicense Go, vendored modules or their original notices. Every actual linked dependency and standard-library source retains its independent exact source/notice decision and corresponding-source requirements.",
+        "Retain the entire original shipped copyright aggregate bound by copyright_sha256, including all upstream notices, source metadata, author attributions and patent notices. Required root LICENSE/NOTICE copies supplement rather than replace that full aggregate. No source or feature is removed by this decision.",
+        "Preserve original Apache NOTICE/nonendorsement requirements or MIT author credits as applicable, and identify distributor modifications separately. Raw restricted delivery inputs do not become approved through this parent decision; declared preferred-source exports must independently pass."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Root application grant only, bound to the complete observed original copyright aggregate and exact source. Nested grants remain independently gated. No whole-release, binary reproduction or OCI clearance."
+    },
+    "frr-exporter@1.5.0#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#5e97e5ea7a809c1e5f16859889f6995ee6d93931cc3ccdecf6c882abc711e23f": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "5e97e5ea7a809c1e5f16859889f6995ee6d93931cc3ccdecf6c882abc711e23f",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "MIT",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Go-parent-original-notices/frr-exporter/original-LICENSE",
+          "sha256": "aa5adfbda074db3d8257534b0471e8623d9eb8fe9f5c52f26676bda9df24c703"
+        }
+      ],
+      "conditions": [
+        "The root license covers this upstream application only. It does not relicense Go, vendored modules or their original notices. Every actual linked dependency and standard-library source retains its independent exact source/notice decision and corresponding-source requirements.",
+        "Retain the entire original shipped copyright aggregate bound by copyright_sha256, including all upstream notices, source metadata, author attributions and patent notices. Required root LICENSE/NOTICE copies supplement rather than replace that full aggregate. No source or feature is removed by this decision.",
+        "Preserve original Apache NOTICE/nonendorsement requirements or MIT author credits as applicable, and identify distributor modifications separately. Raw restricted delivery inputs do not become approved through this parent decision; declared preferred-source exports must independently pass."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Root application grant only, bound to the complete observed original copyright aggregate and exact source. Nested grants remain independently gated. No whole-release, binary reproduction or OCI clearance."
+    },
+    "node-exporter@1.9.1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#0b314998a73b3c6533af028e99536522b9b1a5428e51317df8469a1d8e6cc9e2": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "0b314998a73b3c6533af028e99536522b9b1a5428e51317df8469a1d8e6cc9e2",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Go-parent-original-notices/node-exporter/original-LICENSE",
+          "sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b"
+        },
+        {
+          "path": "LICENSES/Go-parent-original-notices/node-exporter/original-NOTICE",
+          "sha256": "587e661244ce277fd564f792b9298d19eab554c1eb969829320d64da22fd03ac"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "conditions": [
+        "The root license covers this upstream application only. It does not relicense Go, vendored modules or their original notices. Every actual linked dependency and standard-library source retains its independent exact source/notice decision and corresponding-source requirements.",
+        "Retain the entire original shipped copyright aggregate bound by copyright_sha256, including all upstream notices, source metadata, author attributions and patent notices. Required root LICENSE/NOTICE copies supplement rather than replace that full aggregate. No source or feature is removed by this decision.",
+        "Preserve original Apache NOTICE/nonendorsement requirements or MIT author credits as applicable, and identify distributor modifications separately. Raw restricted delivery inputs do not become approved through this parent decision; declared preferred-source exports must independently pass."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Root application grant only, bound to the complete observed original copyright aggregate and exact source. Nested grants remain independently gated. No whole-release, binary reproduction or OCI clearance."
+    },
+    "podman@4.9.5#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#46dbe07527163732a404c429e43886dab990c08e777b94bb2aeb521b2f40091c": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "46dbe07527163732a404c429e43886dab990c08e777b94bb2aeb521b2f40091c",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Go-parent-original-notices/podman/original-LICENSE",
+          "sha256": "7c6e3dde689855f7f6e35b174c2deb31adfa1af6f3d24d325ae7a17400faa655"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "conditions": [
+        "The root license covers this upstream application only. It does not relicense Go, vendored modules or their original notices. Every actual linked dependency and standard-library source retains its independent exact source/notice decision and corresponding-source requirements.",
+        "Retain the entire original shipped copyright aggregate bound by copyright_sha256, including all upstream notices, source metadata, author attributions and patent notices. Required root LICENSE/NOTICE copies supplement rather than replace that full aggregate. No source or feature is removed by this decision.",
+        "Preserve original Apache NOTICE/nonendorsement requirements or MIT author credits as applicable, and identify distributor modifications separately. Raw restricted delivery inputs do not become approved through this parent decision; declared preferred-source exports must independently pass."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Root application grant only, bound to the complete observed original copyright aggregate and exact source. Nested grants remain independently gated. No whole-release, binary reproduction or OCI clearance."
+    },
+    "telegraf@1.28.3-1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#6cce45e05019e5a950a4ad937833fa0c736988f082c4e3c8a308e3c8bedc1491": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "6cce45e05019e5a950a4ad937833fa0c736988f082c4e3c8a308e3c8bedc1491",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "MIT",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Go-parent-original-notices/telegraf/original-LICENSE",
+          "sha256": "85a3180e8872c0dc9675bdb1c937e777247a5e2c0480cacdb51c9991e864d096"
+        }
+      ],
+      "conditions": [
+        "The root license covers this upstream application only. It does not relicense Go, vendored modules or their original notices. Every actual linked dependency and standard-library source retains its independent exact source/notice decision and corresponding-source requirements.",
+        "Retain the entire original shipped copyright aggregate bound by copyright_sha256, including all upstream notices, source metadata, author attributions and patent notices. Required root LICENSE/NOTICE copies supplement rather than replace that full aggregate. No source or feature is removed by this decision.",
+        "Preserve original Apache NOTICE/nonendorsement requirements or MIT author credits as applicable, and identify distributor modifications separately. Raw restricted delivery inputs do not become approved through this parent decision; declared preferred-source exports must independently pass."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Root application grant only, bound to the complete observed original copyright aggregate and exact source. Nested grants remain independently gated. No whole-release, binary reproduction or OCI clearance."
+    },
+    "go-stdlib@1.23.2#f626cdd92fc21a88b31c1251f419c17782933a42903db87a174ce74eeecc66a9#fc9ce00667cf2c942087846e6df18ab772a028cf6cf6e761a95a360b136ccf70": {
+      "source_identity": "f626cdd92fc21a88b31c1251f419c17782933a42903db87a174ce74eeecc66a9",
+      "copyright_sha256": "fc9ce00667cf2c942087846e6df18ab772a028cf6cf6e761a95a360b136ccf70",
+      "evidence_member": "source/shirube-corresponding-inputs/go-copyright",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND Apache-2.0 AND MIT AND ISC AND OpenSSL AND LicenseRef-Go-Patent-Grant",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Go-stdlib-acknowledgements.txt",
+          "sha256": "8e2e78bb762ed632597ec7e8b8dfd9fc7d9da41b6c042bb1b7d6d0e025057d29"
+        }
+      ],
+      "scope": "Exact ARM64 Go1.23.2 SDK source input and unchanged copyright notice. All 34 original legal/author/patent files inside the actual ARM64 and previously reviewed AMD64 SDK archives are byte-identical. Original grant reading is inherited, not newly claimed. Parent applications and complete release remain independently gated.",
+      "conditions": [
+        "Retain every original copyright, all complete source/binary documentation notices and disclaimers, named nonendorsement restrictions and Go patent grant/termination scope.",
+        "Preserve independent Apache2, MIT, ISC, Intel BSD3 and OpenSSL/SSLeay license scopes; retain both OpenSSL acknowledgements, Eric Young cryptographic credit and Tim Hudson credit with the corresponding source and any covered advertising. Do not rename products OpenSSL or imply endorsement.",
+        "Supply exact source and build/install scripts. Optional BoringSSL source/object licensing does not assert that the distributed client was compiled with GOEXPERIMENT=boringcrypto; actual binary build settings independently establish compilation mode. No GPL relicense of OpenSSL/SSLeay source is asserted."
+      ]
+    },
+    "telegraf@1.28.3-1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#915ff83383cc7beadfbc5803c5533786366a43ec03e75b27538e69b1bfde24cc": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "915ff83383cc7beadfbc5803c5533786366a43ec03e75b27538e69b1bfde24cc",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "MIT",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Go-parent-original-notices/telegraf/original-LICENSE",
+          "sha256": "85a3180e8872c0dc9675bdb1c937e777247a5e2c0480cacdb51c9991e864d096"
+        }
+      ],
+      "conditions": [
+        "The root license covers this upstream application only. It does not relicense Go, vendored modules or their original notices. Every actual linked dependency and standard-library source retains its independent exact source/notice decision and corresponding-source requirements.",
+        "Retain the entire original shipped copyright aggregate bound by copyright_sha256, including all upstream notices, source metadata, author attributions and patent notices. Required root LICENSE/NOTICE copies supplement rather than replace that full aggregate. No source or feature is removed by this decision.",
+        "Preserve original Apache NOTICE/nonendorsement requirements or MIT author credits as applicable, and identify distributor modifications separately. Raw restricted delivery inputs do not become approved through this parent decision; declared preferred-source exports must independently pass."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact ARM64 original notice variant only. Complete architecture-specific aggregate stays bound by its own exact copyright hash. Root MIT permission does not extend to independently gated nested dependencies. Original grant reading is inherited from the exact prior record."
+    },
+    "vyos-1x@1.5dev0#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#c1408cc161884aa22bd85685f484f8ad8362f2470a6f1e041b8eb21b4bb2217b": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "c1408cc161884aa22bd85685f484f8ad8362f2470a6f1e041b8eb21b4bb2217b",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.1-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e.txt",
+          "sha256": "6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.GPL",
+          "sha256": "db296f2f7f35bca3a174efb0eb392b3b17bd94b341851429a3dff411b1c2fc73"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.LGPL",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/ARM64-original-notice-variants/vyos-1x-c1408cc161884aa22bd85685f484f8ad8362f2470a6f1e041b8eb21b4bb2217b.txt",
+          "sha256": "c1408cc161884aa22bd85685f484f8ad8362f2470a6f1e041b8eb21b4bb2217b"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "Keep original GPL2-or-later packaging/component notices and independently scoped LGPL2.1 library source and relinking rights. The published modification notice and dates remain intact.",
+        "The independent Nmap script and all OCaml dependencies retain their separate actual-source and actual-notice permission gates. No GPL relicensing of their differently licensed code is asserted."
+      ],
+      "scope": "Exact ARM64 original notice variant only. Only the explicit distributor-modified file list differs; no new upstream license grant or changed copyright term. Original grant reading is inherited from the exact prior record."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
