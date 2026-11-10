@@ -645,6 +645,8 @@ def collect(rootfs, package_output, output, arch, version, work):
                 if kind=='vpp' else 'stream:'+source_identity if preferred_root is not None or kind in {'vyos-1x','salt','kea'} or source_name in {'telegraf','ddclient','podman'} else None)
             if name=='shirube-integration':
                 fixture_origin='netbird:'+json.loads(Path('/src/source-lock.json').read_text())['netbird']['source_commit']
+            if debian_export is not None:
+                fixture_origin='debian:'+debian_export['original_descriptor_sha256']
             records=bundle(inputs,archive,1773859634,source_origin=fixture_origin)
             records['build_inputs'].extend(shared)
             if kind=='salt':records['build_inputs'].extend(static['salt-sdk'][0]['build_inputs'])

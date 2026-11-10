@@ -6,6 +6,9 @@ file bytes qualify. Telegraf fixtures were compared with both the signed Stream
 input and public v1.28.3 commit a72550a02094baf939b1881a225af9763ff2cc3d.
 Build signing keys and binary payloads have no exceptions.
 """
+from .public_test_keys import OPENVPN_SAMPLE_SOURCE_DSC, OPENVPN_PUBLIC_TEST_FILES
+
+
 KNOWN={
     'vpp:8a3f587695fe6ad4d8297bd4b2f331b7262698d9':{
         'source/src/plugins/ikev2/test/certs/client-key.pem':'88a5250e794f474d3212ae78522cc4a2a31416e85acf9b5b261aff79a105591a',
@@ -94,6 +97,15 @@ KNOWN['netbird:3c00a97878e6af537d28c3bdd4f42cb4286aa883'] = {
 }
 
 
+# The same seven original public OpenVPN examples already verified for package
+# documentation also occur in its preferred source export. Bind source-only
+# recognition to the authenticated Debian descriptor and exact original bytes.
+KNOWN['debian:'+OPENVPN_SAMPLE_SOURCE_DSC] = {
+    'source/sample/'+member.removeprefix('usr/share/doc/openvpn/examples/'): digest
+    for member,digest in OPENVPN_PUBLIC_TEST_FILES.items()
+}
+
+
 def allowed(origin,member,digest):
     return origin in KNOWN and KNOWN[origin].get(member)==digest
 
@@ -105,6 +117,8 @@ def allowances(inventory):
         provenance=component.get('source_origin',{})
         origins=['stream:'+provenance.get('stream_archive_sha256','')]
         origins.append('netbird:'+provenance.get('netbird_source_commit',''))
+        debian=provenance.get('debian_preferred_source_export',{})
+        origins.append('debian:'+debian.get('original_descriptor_sha256',''))
         git=provenance.get('external_git',{}).get('vpp',{})
         origins.append('vpp:'+git.get('commit',''))
         for ref in component.get('sources',[]):
