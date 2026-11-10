@@ -81,8 +81,13 @@ Labels are preserved exactly: an offline selected runner stays queued. There is
 no provider/architecture fallback. Native host and actual package/binary
 architecture checks are separate from label selection.
 
-A conservative complete-build preflight currently requires 160 GiB free storage
-and 8 GiB available memory. This is a planning budget, not an observed minimum.
+Native cold-build admission requires 75 GiB free task storage and, by default,
+8 GiB available memory. Both the export filesystem and the container compiler
+workspace are checked. The earlier 160 GiB planning floor exceeded the default
+hosted runner's entire filesystem and has been replaced with phase admission.
+The cold ISO/source trials measured sampled growth of 54.9 GiB on AMD64 and
+52.8 GiB on ARM64. These are sampled lower bounds, not exact peaks or a complete
+release capacity guarantee. Full release capacity must still pass an actual run.
 
 After complete physical source-set restoration and component license clearance,
 the release producer retires its owned compiler objects, private module-signing
@@ -95,8 +100,19 @@ private Go caches and NetBird source-build trees. All selected workspaces are
 validated before deletion; a mount at or beneath a selected directory rejects
 retirement, including bind mounts on the same filesystem. Mounted public input
 and library caches remain outside the cleanup selection.
-The complete current-head build still needs measured peak storage and elapsed-time
-acceptance before the planning budget can be replaced with a hosted-runner budget.
+After retirement, the actual guest scratch filesystem must have at least 56 GiB
+free before any guest disk work starts: 50 GiB for the fully written sanitization
+disk plus space for appliances and conversions. A shortfall stops the candidate;
+it does not skip erasure or a boot check. Complete release storage/time feasibility
+remains unverified until the full candidate run succeeds on each runner class.
+
+コールドビルド開始時は、出力先とコンテナのコンパイル作業領域にそれぞれ75 GiBの
+空き容量を要求します。hosted runnerの全容量を超える旧160 GiBの計画値を、工程別の
+検査へ変更しました。ISO／対応ソース工程の容量増加はAMD64で54.9 GiB、ARM64で
+52.8 GiBを観測しましたが、サンプリング値であり最大値やリリース全体の保証では
+ありません。中間物の削除後は、ディスク試験の作業領域に56 GiB以上の空き容量が
+なければ起動前に停止します。消去や起動確認は省略しません。各runnerでの全工程の
+実測が成功するまでは、リリース全体の容量・時間要件を検証済みとは扱いません。
 
 全対応ソースの実復元と各コンポーネントのライセンス確認が通った後、ディスク試験の
 前に、このビルド専用のコンパイル中間物、署名用作業領域、一時ソースを削除します。
@@ -152,6 +168,19 @@ creation, package compilation, ISO assembly, installed-disk boot and OCI executi
 are different milestones.
 
 ## ISO-first execution
+
+The manual `Native hosted candidate trial` workflow defaults to `stage: iso`.
+Select `stage: release` to run the complete local candidate gates, including
+license/source clearance, fresh installation, disk erasure, both disk formats and
+real NetBird lifecycle checks, on both hosted architectures. Both choices retain
+only sanitized measurements. They do not publish binaries, establish merged-commit
+eligibility or constitute live OCI validation.
+
+手動の`Native hosted candidate trial` workflowは、既定の`stage: iso`ではISOと
+対応ソースの工程を検証します。`stage: release`を明示すると、両hosted architectureで
+ライセンス・対応ソース、新規インストール、ディスク消去、両形式の起動、実際の
+NetBirdライフサイクルまで検証します。どちらも測定結果だけを保持し、バイナリの
+公開、マージ済みコミットの適格性確認、OCI実機検証は行いません。
 
 `scripts/build-iso.sh` builds an ISO independently of VM validation. It needs
 `SHIRUBE_ARCHITECTURE`, `SHIRUBE_VERSION`, `SHIRUBE_SOURCE_COMMIT` and a new

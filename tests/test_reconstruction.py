@@ -110,10 +110,11 @@ class SourceRestorationTests(unittest.TestCase):
         with mock.patch.dict(sys.modules,{'image':SimpleNamespace(assemble=lambda *args:{'iso':self.root/'os.iso'})}), \
              mock.patch('producer.pipeline.collect_iso_sources',return_value=(self.root,{'cleared':True})), \
              mock.patch('producer.pipeline.source_set_evidence',side_effect=restored), \
+             mock.patch('producer.architecture.require_storage',side_effect=lambda *args,**kwargs:order.append('storage-admission')), \
              mock.patch('producer.vm.build_disks',side_effect=guests):
             with self.assertRaisesRegex(RuntimeError,'guest boundary'):
                 release_candidate(self.root,self.root,self.root,'amd64','v2026.03.0',self.commit,SimpleNamespace(verify=None),'tcg',retired)
-        self.assertEqual(order,['source-restoration','compiler-retirement','guest'])
+        self.assertEqual(order,['source-restoration','compiler-retirement','storage-admission','guest'])
         self.assertFalse((self.root/'compiler-scratch-retirement.json').exists())
 
     def test_complete_restoration_does_not_waive_publication_license_gate(self):

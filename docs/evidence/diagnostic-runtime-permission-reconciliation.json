@@ -1,0 +1,99 @@
+{
+  "kind": "observed-runtime-permission-reconciliation",
+  "status": "PASS_STATIC_DECISIONS_ONLY",
+  "audit_sha256": "9cb711f4682e9514f19f34c4513f2bd6cebce5d1ca894677affe1bed1185f500",
+  "architectures": {
+    "amd64": {
+      "observed_source_commit": "574bd7f3a2c956d77750e86590ea5d02a4a56b1b",
+      "original_inventory_sha256": "d5dcf2e91e19aee3ab9a3c3d9e93a8f839906fe385309c7dc1b2e830d2247260",
+      "matched_original_records": {
+        "parent": 730,
+        "child": 1455
+      },
+      "planned_debian_preferred_exports": [
+        {
+          "name": "kbd",
+          "version": "2.5.1-1",
+          "parent": null
+        },
+        {
+          "name": "libxcrypt",
+          "version": "1:4.4.33-2",
+          "parent": null
+        },
+        {
+          "name": "opentracing-cpp",
+          "version": "1.6.0-4",
+          "parent": null
+        },
+        {
+          "name": "openvpn",
+          "version": "2.6.14-0+deb12u2",
+          "parent": null
+        },
+        {
+          "name": "chardet",
+          "version": "5.1.0+dfsg-2",
+          "parent": null
+        }
+      ],
+      "planned_go_preferred_exports": [
+        {
+          "name": "go:github.com/quic-go/quic-go",
+          "version": "v0.64.0",
+          "historical_raw_identity": "h1:dlUpiyp9+7UrbbuhLvV7CJ9F8uoZxXf/vi2h8tkuuoA=",
+          "approved_preferred_export_identity": "629bb00d19fc6041a0d0a26a2606ef67723a2058c8d8163ae26dc25dd29c7b15",
+          "original_public_archive_sha256": "0890cee71e7bf68691a3cd9072d99f2054419a1b76fa9621eba1626a91339dc1",
+          "status": "MUST_GENERATE_AND_VERIFY_IN_FINAL_CANDIDATE"
+        },
+        {
+          "name": "go:github.com/hashicorp/serf",
+          "version": "v0.10.1",
+          "historical_raw_identity": "661b6ad5df497dcda0f581607b003e40646ef9f3ca09d12bdeec7cb3d16ad370",
+          "approved_preferred_export_identity": "5436476de809de43d50b0e89cb7546e5fac063c80e9fe8811a5c802bebb94e9f",
+          "original_public_archive_sha256": "661b6ad5df497dcda0f581607b003e40646ef9f3ca09d12bdeec7cb3d16ad370",
+          "status": "MUST_GENERATE_AND_VERIFY_IN_FINAL_CANDIDATE"
+        }
+      ]
+    },
+    "arm64": {
+      "observed_source_commit": "682b868e0b11fa752125186c411eb6a846843cdd",
+      "original_inventory_sha256": "86358ca28f10b8e8f9992f495045ebd09070246925e0fd13451963d506992ef4",
+      "matched_original_records": {
+        "parent": 730,
+        "child": 1454
+      },
+      "planned_debian_preferred_exports": [
+        {
+          "name": "kbd",
+          "version": "2.5.1-1",
+          "parent": null
+        },
+        {
+          "name": "libxcrypt",
+          "version": "1:4.4.33-2",
+          "parent": null
+        },
+        {
+          "name": "opentracing-cpp",
+          "version": "1.6.0-4",
+          "parent": null
+        },
+        {
+          "name": "openvpn",
+          "version": "2.6.14-0+deb12u2",
+          "parent": null
+        },
+        {
+          "name": "chardet",
+          "version": "5.1.0+dfsg-2",
+          "parent": null
+        }
+      ],
+      "unmatched_original_records": 0
+    }
+  },
+  "scope": "All observed original parent/source notice decisions are accounted for, with explicit preferred-source export requirements. Original notice reviews and exact comparisons are distinguished in their component records. This is static reconciliation against separate historical cohorts, not a newly built candidate or a waiver of any source/notice/identity/export gate. Every required notice must be embedded in the final ISO and corresponding sources; the actual collector and complete source restoration must pass.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

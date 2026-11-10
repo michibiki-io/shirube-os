@@ -1,4 +1,4 @@
-"""Measure the native ISO/source phase without publishing build artifacts."""
+"""Measure an explicit native ISO/source or complete candidate trial without publication."""
 import argparse
 import json
 import os
@@ -44,6 +44,7 @@ def main():
     parser.add_argument('architecture',choices=['amd64','arm64'])
     parser.add_argument('--storage',type=Path,required=True)
     parser.add_argument('--report',type=Path,required=True)
+    parser.add_argument('--stage',choices=['iso','release'],default='iso')
     args=parser.parse_args();native(args.architecture)
     commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip():
@@ -58,6 +59,7 @@ def main():
     environment={**os.environ,'SHIRUBE_ARCHITECTURE':args.architecture,
         'SHIRUBE_VERSION':version,'SHIRUBE_SOURCE_COMMIT':commit,
         'SHIRUBE_ISO_DIRECTORY':str(output),'SHIRUBE_INCLUDE_SOURCES':'1',
+        'SHIRUBE_CANDIDATE_DIRECTORY':str(output),'SHIRUBE_QEMU_ACCELERATOR':'tcg',
         'SHIRUBE_BUILD_STATE_DIRECTORY':str(work/'state'),
         'SHIRUBE_LIBRARY_CACHE_STORE':str(work/'cold-library-store'),
         'SHIRUBE_PRESERVE_FAILED_BUILD':'0','TMPDIR':str(work)}
@@ -71,31 +73,48 @@ def main():
             stopped.wait(15)
     sampler=threading.Thread(target=sample,daemon=True)
     started=time.monotonic()
-    report={'kind':'native-hosted-iso-source-resource-trial','status':'FAIL',
+    complete=args.stage=='release'
+    report={'kind':'native-hosted-complete-candidate-resource-trial' if complete else 'native-hosted-iso-source-resource-trial','status':'FAIL',
         'source_commit':commit,'architecture':args.architecture,'version':version,
         'library_cache':'COLD_TASK_STORE','release_clearance':'NOT_CLEARED','oci':'NOT_RUN',
-        'scope':'Native library preparation, ISO and complete source-set restoration only; excludes compiler-image preparation and all disk/guest/release acceptance.',
+        'scope':('Complete native candidate, source/notice gates, fresh install, sanitization, both disk formats and real local guest lifecycle; excludes compiler-image preparation, merged-commit eligibility, publication and OCI execution.' if complete else 'Native library preparation, ISO and complete source-set restoration only; excludes compiler-image preparation and all disk/guest/release acceptance.'),
         'storage_sampling':'15-second samples are a lower bound on peak usage, not an exact peak or a complete release capacity guarantee.'}
     process=None
     sampler.start()
     try:
-        process=subprocess.Popen(['bash','scripts/build-iso.sh'],env=environment)
+        process=subprocess.Popen(['bash','scripts/build-release.sh' if complete else 'scripts/build-iso.sh'],env=environment)
         code=process.wait()
         report['producer_exit_code']=code
-        if code:raise ValueError('Native ISO/source producer failed')
-        record=receipt(output,args.architecture,version,commit)
-        project=work/'project-source.tar'
-        with project.open('xb') as stream:
-            subprocess.run(['git','archive','--format=tar',commit],stdout=stream,check=True)
-        from .pipeline import source_set_evidence
-        sources={'inventory':output/record['source_inventory'],
-                 'archives':[output/name for name in record['source_archives']],
-                 'cleared':record.get('license_clearance')=='PASS'}
-        restored=source_set_evidence(sources,output,args.architecture,version,commit,
-                                     work/'restored',project=project)
-        report.update(status='PASS_ISO_SOURCE_PHASE_ONLY',iso_sha256=record['sha256'],
-                      source_restoration=restored['proof'],
-                      component_license_clearance=record.get('license_clearance','NOT_RUN'))
+        if code:raise ValueError('Native trial producer failed')
+        if complete:
+            from .release import validate
+            manifest=validate(output,commit,version,architectures={args.architecture})
+            evidence_asset=next(item for item in manifest['assets'] if item['role']=='evidence')
+            evidence=json.loads((output/evidence_asset['name']).read_text())
+            report.update(status='PASS_COMPLETE_LOCAL_CANDIDATE_ONLY',
+                candidate_validation='PASS',publication='NOT_ATTEMPTED',
+                merged_commit_eligibility='NOT_CHECKED_DIAGNOSTIC',
+                manifest_sha256=sha256(output/'manifest.json'),
+                checks=manifest['architectures'][args.architecture]['checks'],
+                source_restoration=evidence['source_set_reconstruction']['proof'],
+                compiler_scratch_retirement=evidence['compiler_scratch_retirement'],
+                component_license_clearance='PASS',
+                binary_assets=[{key:item[key] for key in ['name','role','sha256','size']}
+                               for item in manifest['assets'] if item['role'] in {'iso','qcow2','vmdk'}])
+        else:
+            record=receipt(output,args.architecture,version,commit)
+            project=work/'project-source.tar'
+            with project.open('xb') as stream:
+                subprocess.run(['git','archive','--format=tar',commit],stdout=stream,check=True)
+            from .pipeline import source_set_evidence
+            sources={'inventory':output/record['source_inventory'],
+                     'archives':[output/name for name in record['source_archives']],
+                     'cleared':record.get('license_clearance')=='PASS'}
+            restored=source_set_evidence(sources,output,args.architecture,version,commit,
+                                         work/'restored',project=project)
+            report.update(status='PASS_ISO_SOURCE_PHASE_ONLY',iso_sha256=record['sha256'],
+                          source_restoration=restored['proof'],
+                          component_license_clearance=record.get('license_clearance','NOT_RUN'))
     except Exception as error:
         report['error_type']=type(error).__name__
     finally:
@@ -113,7 +132,8 @@ def main():
     # Only this sanitized report may be uploaded. ISO, source and library-cache
     # directories stay in the disposable job until their separate release gate.
     print(json.dumps(report,indent=2),flush=True)
-    if report['status']!='PASS_ISO_SOURCE_PHASE_ONLY':raise SystemExit(1)
+    expected='PASS_COMPLETE_LOCAL_CANDIDATE_ONLY' if complete else 'PASS_ISO_SOURCE_PHASE_ONLY'
+    if report['status']!=expected:raise SystemExit(1)
 
 
 if __name__=='__main__':main()

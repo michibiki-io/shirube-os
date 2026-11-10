@@ -85,12 +85,22 @@ def check_kernel(data, architecture):
         raise ValueError('Wrong kernel architecture/header')
 
 
-def preflight(architecture, root=Path('.'), minimum_disk_gib=160, minimum_memory_gib=8, require_kvm=False):
-    import os
+BUILD_STORAGE_GIB = 75
+GUEST_STORAGE_GIB = 56
+
+
+def require_storage(root, minimum_disk_gib, *, phase='Build'):
     import shutil
+    free = shutil.disk_usage(root).free
+    if free < minimum_disk_gib * 1024**3:
+        raise ValueError(f'{phase} needs at least {minimum_disk_gib} GiB free task storage; '
+                         f'available {free / 1024**3:.1f} GiB')
+
+
+def preflight(architecture, root=Path('.'), minimum_disk_gib=BUILD_STORAGE_GIB, minimum_memory_gib=8, require_kvm=False):
+    import os
     native(architecture)
-    if shutil.disk_usage(root).free < minimum_disk_gib * 1024**3:
-        raise ValueError(f'Build needs at least {minimum_disk_gib} GiB free task storage')
+    require_storage(root, minimum_disk_gib)
     available = next(int(x.split()[1])*1024 for x in Path('/proc/meminfo').read_text().splitlines()
                      if x.startswith('MemAvailable:'))
     if available < minimum_memory_gib * 1024**3:

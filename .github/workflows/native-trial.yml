@@ -1,6 +1,13 @@
-name: Native hosted ISO source trial
+name: Native hosted candidate trial
 on:
   workflow_dispatch:
+    inputs:
+      stage:
+        description: Explicit diagnostic scope; neither option publishes a release
+        type: choice
+        required: true
+        default: iso
+        options: [iso, release]
 permissions:
   contents: read
 concurrency:
@@ -43,17 +50,18 @@ jobs:
           push: false
           cache-from: type=gha,scope=shirube-compiler-${{ matrix.architecture }}
           cache-to: type=gha,scope=shirube-compiler-${{ matrix.architecture }},mode=max
-      - name: Measure cold native ISO and source phase
+      - name: Measure the explicitly selected cold native trial
         env:
           BUILDX_BUILDER: ${{ steps.compiler-builder.outputs.name }}
           TRIAL_ARCHITECTURE: ${{ matrix.architecture }}
           TRIAL_STORAGE: ${{ runner.temp }}
-        run: python3 -m producer.native_trial "$TRIAL_ARCHITECTURE" --storage "$TRIAL_STORAGE" --report "$TRIAL_STORAGE/native-trial-$TRIAL_ARCHITECTURE.json"
+          TRIAL_STAGE: ${{ inputs.stage || 'iso' }}
+        run: python3 -m producer.native_trial "$TRIAL_ARCHITECTURE" --stage "$TRIAL_STAGE" --storage "$TRIAL_STORAGE" --report "$TRIAL_STORAGE/native-trial-$TRIAL_ARCHITECTURE.json"
       - name: Retain sanitized measurements only
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: native-trial-${{ matrix.architecture }}-${{ github.sha }}-${{ github.run_attempt }}
+          name: native-trial-${{ matrix.architecture }}-${{ inputs.stage || 'iso' }}-${{ github.sha }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/native-trial-${{ matrix.architecture }}.json
           if-no-files-found: error
           retention-days: 14

@@ -30438,6 +30438,138 @@
         "The independent Nmap script and all OCaml dependencies retain their separate actual-source and actual-notice permission gates. No GPL relicensing of their differently licensed code is asserted."
       ],
       "scope": "Exact ARM64 original notice variant only. Only the explicit distributor-modified file list differs; no new upstream license grant or changed copyright term. Original grant reading is inherited from the exact prior record."
+    },
+    "rust-stdlib@1.82.0#1276a0bb8fa12288ba6fa96597d28b40e74c44257c051d3bc02c2b049bb38210#029c1ecd41dcad5543d9907c8fddda0dbd31531eb3c43992243daaf884f41e6c": {
+      "source_identity": "1276a0bb8fa12288ba6fa96597d28b40e74c44257c051d3bc02c2b049bb38210",
+      "copyright_sha256": "029c1ecd41dcad5543d9907c8fddda0dbd31531eb3c43992243daaf884f41e6c",
+      "evidence_member": "third-party-notices/rust-stdlib/copyright",
+      "redistributable": true,
+      "license": "(MIT OR Apache-2.0) AND (Apache-2.0 WITH LLVM-exception) AND NCSA AND BSD-2-Clause AND BSD-3-Clause AND ISC AND OpenSSL AND CDDL-1.0 AND GPL-3.0-only AND MPL-2.0 AND Unicode-DFS-2016 AND Unicode-3.0 AND CC0-1.0 AND OFL-1.1 AND LicenseRef-Rust-original-auxiliary-grants",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/original-root-LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/original-root-COPYRIGHT",
+          "sha256": "bd0581fef622b3d8b25836cf70feb7e1a7a6171ea9e440b46dfda74c46a0ed0d"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/original-root-LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/ring-LICENSE",
+          "sha256": "76b39f9b371688eac9d8323f96ee80b3aef5ecbc2217f25377bd4e4a615296a9"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/fuchsia-cprng-LICENSE",
+          "sha256": "03b114f53e6587a398931762ee11e2395bfdba252a329940e2c8c9e81813845b"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/owo-colors-LICENSE",
+          "sha256": "267afe8db5697b4b668d36a5a0d481b67d16ae751465e9ddf03d1e77a79c140a"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/inferno-LICENSE",
+          "sha256": "1ffb70c33c4f79f04e947facc5c7851f289609256aacb47fc115f700427d9520"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/encoding_rs-LICENSE-WHATWG",
+          "sha256": "838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/encoding_rs-LICENSE-MIT",
+          "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/encoding_rs-LICENSE-APACHE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/gccjit-LICENSE",
+          "sha256": "fe3eea6c599e23a00c08c5f5cb2320c30adc8f8687db5fcec9b79a662c53ff6b"
+        },
+        {
+          "path": "LICENSES/Rust-1.82-original-notices/encoding_rs-0.8.30-COPYRIGHT",
+          "sha256": "11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "conditions": [
+        "The Rust default MIT/Apache2 alternative applies only where the original root declaration and per-file notices permit it. Preserve root COPYRIGHT and all individually scoped LLVM Apache2/LLVM exception, legacy LLVM NCSA, Tachyon BSD and Unicode grants. No source-wide relicense or exception expansion is asserted.",
+        "Retain the complete original source archive and complete original copyright aggregate bound by this record, including all per-file author attribution, original font/OFL notices and source Cargo declarations. Embedded SPDX license-text catalog entries are reference data, not declarations that Rust is licensed under every example license in that catalog.",
+        "All original vendored package alternatives remain as declared in their own Cargo manifests and files. Root manifests cover 1511 vendor entries. Three entries using only license-file are resolved by the actual ring, encoding_rs and Fuchsia original licenses; no license is inferred from their filenames alone.",
+        "Keep ring ISC/Google and fiat MIT attribution plus original OpenSSL/SSLeay acknowledgements, Eric Young cryptographic credit and Tim Hudson credit. Do not rename covered products OpenSSL or relicense covered OpenSSL/SSLeay code under GPL. These tool-source scopes do not assert their presence in the installed Rust standard library.",
+        "Keep separate GPL3 gccjit and CDDL1 Inferno source-tool terms and corresponding sources. Do not treat those optional source tools as components linked into the installed standard library or combine their licenses into an assertion of GPL/CDDL linkage compatibility. CDDL files remain under CDDL, modifications carry contributor identification, and no extra source restrictions are imposed.",
+        "Keep original encoding_rs Mozilla attribution, MIT/Apache alternative, WHATWG BSD3 data credits/nonendorsement and expressly designated PD/CC0 test scopes. Unmodified original font files retain their original font names, authors and individual licenses. All source/notice collection, reconstruction and actual runtime linkage are independent final release checks."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact Rust1.82 compiler/standard-library preferred-source archive and complete original notice aggregate only. Compound terms describe independent source scopes, not one combined executable. Original root COPYRIGHT reading is inherited; additional original ring/Fuchsia/encoding/Inferno grants and manifest license declarations reviewed in this round. No title warranty, binary reproduction, complete OS or OCI clearance."
+    },
+    "hsflowd@2.1.21-1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#c6d9eb5fdfaa0e9f908cd2a8d9ab938ec051b833e3beab32db50952b1824ec3b": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "c6d9eb5fdfaa0e9f908cd2a8d9ab938ec051b833e3beab32db50952b1824ec3b",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "LicenseRef-InMon-sFlow AND APL-1.0 AND MIT",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/InMon-sFlow-license.txt",
+          "sha256": "c94af9b2d31a08308d226f5dab945afbd71d5df096aeab39149c3f9154d7df8c"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_Windows_installer_license.rtf",
+          "sha256": "95ffb5cc7c81755b20478c058406af27e523cc73d575ebafc772e003bc36c3dd"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_WindowsXP_hsflowd_installer_license.rtf",
+          "sha256": "63bfc1dde8b33354515a42ed241fc3fe2c648446f62a5af64c3c76fc35c7aff5"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_json_LICENSE",
+          "sha256": "b56ff5bcae5b93a530f9fa8894f41f1edf47c0d526835839f0fb76d5ce9dc971"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_json_tests_unity_docs_license.txt",
+          "sha256": "23ddecfb279b454d2e7528b735201839856604fdf9b082a6da32a45ad1d79322"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/Windows/license.txt",
+          "sha256": "30c4ec50e94dd586b3cba71cbd470a8084e45214885b6044a5058a01a0859f36"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/WindowsXP/license.txt",
+          "sha256": "071fecc39bd4f131ef6b1831e8c8fe31055dd328deacd8b831ca7b8d09d882d3"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/NOTICE.txt",
+          "sha256": "288d893d54ce750a4234eacabe11ff7642f2b4b910cdae046bb812313e78ec68"
+        }
+      ],
+      "conditions": [
+        "Retain the entire exact original source and original package copyright aggregate, all InMon and other author notices, and the full publisher license. Section2.1 permits reproduction, modification, installation and distribution in products, subject to its full conditions; no noncommercial-only exception is used.",
+        "Keep the covered capability identified as sFlow(R), its original protocol/specification behavior and upstream marks. Preserve all original acknowledgements and the full section2.3 specification/trademark/documentation conditions; this does not license unrelated InMon artwork or imply endorsement. Distributor product identity remains separate from attribution to the covered sFlow capability.",
+        "The original APL1.0 documents and Exhibit A remain unaltered for their covered source. Keep conspicuous full license.txt and original notices with source, provide complete corresponding source with covered executables, and preserve source availability/modification documentation obligations where applicable. No APL patent license is inferred: Exhibit A selects NO, third-party definition A and its stated California forum. No Supplement File is present in the exact source inventory.",
+        "Keep unmodified optional Windows source and its licenses without representing it as an installed Windows executable. Root grants do not override cJSON/Unity MIT grants or any other original independently scoped notice. No source, telemetry functionality or compiled component is removed or renamed by this decision."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact observed Host sFlow source and original notice only, with complete publisher grant and independently scoped APL/MIT originals retained. This is not an OSI classification of the custom sFlow grant, a patent/title warranty or whole-release/OCI clearance."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

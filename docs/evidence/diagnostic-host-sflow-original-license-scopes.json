@@ -1,0 +1,74 @@
+{
+  "kind": "exact-host-sflow-original-permission-scopes",
+  "status": "PASS_EXACT_ORIGINAL_GRANT_REVIEW_ONLY",
+  "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+  "copyright_sha256": "c6d9eb5fdfaa0e9f908cd2a8d9ab938ec051b833e3beab32db50952b1824ec3b",
+  "license": "LicenseRef-InMon-sFlow AND APL-1.0 AND MIT",
+  "publisher_license_authority": "https://inmon.com/technology/sflowlicense.txt",
+  "original_source_license_reference": "http://sflow.net/license.html",
+  "reference_page_sha256": "c9fc3d9f9b1ad96b6251434b8d2f07d05e6398c8b15cef0376905ab1a3e6d663",
+  "publisher_license_sha256": "c94af9b2d31a08308d226f5dab945afbd71d5df096aeab39149c3f9154d7df8c",
+  "upstream_project_license_metadata": "https://sourceforge.net/projects/host-sflow/",
+  "metadata_scope": "Historical publisher project metadata lists APL and Linux/BSD/Windows; this is supporting context, not a substitute for the actual original grants and conditions.",
+  "original_apl_variants_complete_rendered_word_differences": [
+    {
+      "first": "\"http://sflow.net\"http://sflow.net",
+      "second": "\"http://host-sflow.sourceforge.net\"http://host-sflow.sourceforge.net"
+    },
+    {
+      "first": "\"http://sflow.net\"http://sflow.net",
+      "second": "\"http://host-sflow.sourceforge.net\"http://host-sflow.sourceforge.net"
+    }
+  ],
+  "apl_exhibit_selections": {
+    "initial_contributor": "InMon Corp.",
+    "initial_work": "sFlow Agent",
+    "first_available": "2010-04-02",
+    "third_party_definition": "A",
+    "patent_license": "NO",
+    "supplement_files_in_exact_source": 0
+  },
+  "conditions": [
+    "Retain the entire exact original source and original package copyright aggregate, all InMon and other author notices, and the full publisher license. Section2.1 permits reproduction, modification, installation and distribution in products, subject to its full conditions; no noncommercial-only exception is used.",
+    "Keep the covered capability identified as sFlow(R), its original protocol/specification behavior and upstream marks. Preserve all original acknowledgements and the full section2.3 specification/trademark/documentation conditions; this does not license unrelated InMon artwork or imply endorsement. Distributor product identity remains separate from attribution to the covered sFlow capability.",
+    "The original APL1.0 documents and Exhibit A remain unaltered for their covered source. Keep conspicuous full license.txt and original notices with source, provide complete corresponding source with covered executables, and preserve source availability/modification documentation obligations where applicable. No APL patent license is inferred: Exhibit A selects NO, third-party definition A and its stated California forum. No Supplement File is present in the exact source inventory.",
+    "Keep unmodified optional Windows source and its licenses without representing it as an installed Windows executable. Root grants do not override cJSON/Unity MIT grants or any other original independently scoped notice. No source, telemetry functionality or compiled component is removed or renamed by this decision."
+  ],
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/InMon-sFlow-license.txt",
+      "sha256": "c94af9b2d31a08308d226f5dab945afbd71d5df096aeab39149c3f9154d7df8c"
+    },
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/src_Windows_installer_license.rtf",
+      "sha256": "95ffb5cc7c81755b20478c058406af27e523cc73d575ebafc772e003bc36c3dd"
+    },
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/src_WindowsXP_hsflowd_installer_license.rtf",
+      "sha256": "63bfc1dde8b33354515a42ed241fc3fe2c648446f62a5af64c3c76fc35c7aff5"
+    },
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/src_json_LICENSE",
+      "sha256": "b56ff5bcae5b93a530f9fa8894f41f1edf47c0d526835839f0fb76d5ce9dc971"
+    },
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/src_json_tests_unity_docs_license.txt",
+      "sha256": "23ddecfb279b454d2e7528b735201839856604fdf9b082a6da32a45ad1d79322"
+    },
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/Windows/license.txt",
+      "sha256": "30c4ec50e94dd586b3cba71cbd470a8084e45214885b6044a5058a01a0859f36"
+    },
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/WindowsXP/license.txt",
+      "sha256": "071fecc39bd4f131ef6b1831e8c8fe31055dd328deacd8b831ca7b8d09d882d3"
+    },
+    {
+      "path": "LICENSES/Host-sFlow-original-notices/NOTICE.txt",
+      "sha256": "288d893d54ce750a4234eacabe11ff7642f2b4b910cdae046bb812313e78ec68"
+    }
+  ],
+  "review_method": "Full actual publisher sFlow agreement and original rendered APL1.0 including Exhibit A read, with every Windows/WindowsXP word difference read. cJSON complete MIT grant read; original Unity MIT text matched the retained original standard grant. No compiler rerun is part of this notice decision.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

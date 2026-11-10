@@ -100,6 +100,8 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     # verified. Guest appliances use the retained package-output kernel DEBs;
     # they do not need compiler object files or private module signing keys.
     retired=retire_compiler() if retire_compiler is not None else None
+    from .architecture import require_storage, GUEST_STORAGE_GIB
+    require_storage(Path('/build-private'), GUEST_STORAGE_GIB, phase='Fresh guest disk stage')
     print('STAGE: fresh install, sanitization, conversions and fresh-instance boot/access tests',flush=True)
     disks=build_disks(result['iso'],architecture,version,Path('/build-private/disk'),output,management.verify,accelerator=qemu_accelerator)
     checks={name:'NOT_RUN' for name in CHECKS}

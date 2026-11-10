@@ -72,6 +72,8 @@ def main():
         raise ValueError('A new empty task output directory is required')
     work = Path('/build-private')
     work.mkdir(mode=0o700)
+    from producer.architecture import require_storage, BUILD_STORAGE_GIB
+    require_storage(work, BUILD_STORAGE_GIB, phase='Native compiler workspace')
     public_output = args.output
     if args.target in {'iso','release'}:
         import re

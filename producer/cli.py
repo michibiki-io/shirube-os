@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from .architecture import preflight, runner, release_accelerator, container_runtime
+from .architecture import preflight, runner, release_accelerator, container_runtime, BUILD_STORAGE_GIB
 from .sources import fetch
 
 
@@ -37,7 +37,7 @@ def main():
             mode=release_accelerator(args.architecture,args.qemu_accelerator)
             if args.require_kvm and mode!='kvm':raise ValueError('Conflicting explicit virtualization requirements')
             need_kvm=mode=='kvm'
-        preflight(args.architecture,args.storage,minimum_disk_gib=40 if args.stage=='iso' else 160,
+        preflight(args.architecture,args.storage,minimum_disk_gib=BUILD_STORAGE_GIB,
                   minimum_memory_gib=args.memory_gib,require_kvm=need_kvm)
     elif args.command == 'runner':
         print(json.dumps(runner(args.architecture, args.setting)))
