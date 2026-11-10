@@ -22436,6 +22436,82 @@
         "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
         "Retain MIT program and RTD-theme notices, separate BSD2 Sphinx search template and original FSF permissive/Autoconf macro exceptions. Build-script exception is not extended to unrelated runtime code."
       ]
+    },
+    "glib2.0@2.74.6-2+deb12u9": {
+      "redistributable": true,
+      "source_identity": "bd8e8cd8d251c2365a02258bf4d6c44721289ac44c3a2477c140ce253bdb4b41",
+      "copyright_sha256": "03cbcd6142c92bb14c997af557b8c73b1534710c34fe7f69788f8e8fc5fd941d",
+      "license": "LGPL-2.1-or-later AND LGPL-3.0-or-later AND GPL-2.0-or-later AND MIT AND BSD-3-Clause AND Apache-2.0 WITH LLVM-exception AND CC-BY-SA-3.0 AND CC0-1.0 AND bzip2-1.0.6 AND Unicode-DFS-2016 AND LicenseRef-GLib-original-per-file-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GLib-original-LLVM-exception.txt",
+          "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+        },
+        {
+          "path": "LICENSES/ICU-original-LICENSE.txt",
+          "sha256": "af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "scope": "Every original legal file matched to read originals; every full operative-body difference, separate nonstandard grant and complete copyright/file/license-expression metadata read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original per-file copyright, permissions, disclaimers, attribution and modification notices in sources and binary legal materials. Provide exact corresponding preferred sources, patches, fixed Unicode inputs and configuration/build/install material.",
+        "Use the expressly offered LGPL2.1-or-later alternative for xdgmime instead of treating AFL2 as generally GPL-compatible. Preserve both original alternatives. Keep GNU2-or-later charset, LGPL2.1 library, GNU2 tools and LGPL3 test scopes distinct.",
+        "Retain original LLVM exception together with full Apache2 license; do not extend compiler-output or GPL2 compatibility exceptions beyond their stated conditions. Preserve MIT/BSD, explicit public-domain/permissive source, Valgrind bzip2 and GNU macro scopes.",
+        "Preserve CC-BY-SA3 attribution and share-alike conditions for the separately licensed menu-model documentation image. Keep the original unspecified author designation without inventing a copyright owner. Retain CC0 full text and original source declarations.",
+        "Retain complete Unicode data permissions and 2021-2022 copyright attribution. The retained complete Unicode1991-2022 license notice in ICU-original-LICENSE supplies the full unchanged common Unicode grant; it does not substitute ICU-specific third-party permissions for unrelated GLib code."
+      ]
+    },
+    "jq@1.6-2.1+deb12u3": {
+      "redistributable": true,
+      "source_identity": "28492fec6ddf9e46841e2286674091a1231a248d8893a9c0204591e00e8e725a",
+      "copyright_sha256": "fa95e7bf94b039285c93ad3bdd615736ee833c16fa61e6322f8d95bced49d95c",
+      "license": "MIT AND CC-BY-3.0 AND LicenseRef-Lucent-permission AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/CC-BY-3.0.txt",
+          "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+        }
+      ],
+      "scope": "Complete original legal texts matched against read originals; every complete operative-body difference and every copyright/file/license-expression mapping read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Preserve MIT jq code, Stephen Dolan CC-BY3 documentation attribution and modifications, separate Lucent/David M. Gay dtoa permission and GPL2-or-later packaging. Original Expat label does not replace the actual Lucent operative text."
+      ]
+    },
+    "publicsuffix@20230209.2326-1": {
+      "redistributable": true,
+      "source_identity": "452acfa3adb446a9a801d4807dfd58e3f3a6be32ea277728cdb3fe900c78ca4f",
+      "copyright_sha256": "530b417d4ee40fa0308e42505cec3304999728a925bb8ff8112c1f36bd904979",
+      "license": "MPL-2.0 AND CC0-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "scope": "Complete original legal texts matched against read originals; every complete operative-body difference and every copyright/file/license-expression mapping read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Keep source form and source availability/modification notices for the MPL2 data and packaging, with separate expressly dedicated CC0 test data and original authors; no proprietary or secondary-license reclassification."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
