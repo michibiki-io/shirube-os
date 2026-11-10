@@ -3,10 +3,8 @@ from pathlib import Path
 from .sources import sha256
 
 ORIGINAL = 'a448c840bfd94afab3e4b0609c33e73afd22f2308156e040f284fe87a077d923'
-COMMAND = "\ttar c --exclude='bash-src.tar' --exclude='debian' --exclude='.git' \\\n"
-NOTICE = ('\t# Modified by michibiki-io on 2026-11-10: create the excluded archive\n'
-          '\t# before tar reads this directory, so its own creation cannot change it.\n'
-          '\ttouch bash-src.tar\n')
+ARCHIVE_ORIGINAL = "\ttar c --exclude='bash-src.tar' --exclude='debian' --exclude='.git' \\\n\t      --exclude='stamps' --exclude='bash' --exclude='build-bash' \\\n\t      --exclude='build-min' --exclude='build-static' \\\n\t      -f bash-src.tar .\n\tmkdir -p $(bash_src)\n\ttar x -C $(bash_src) -f bash-src.tar\n\trm -f bash-src.tar\n"
+ARCHIVE = "\t# Modified by michibiki-io on 2026-11-10: stream without creating an archive in the input tree.\n\tmkdir -p $(bash_src)\n\tset -o pipefail; tar c --exclude='bash-src.tar' --exclude='debian' --exclude='.git' \\\n\t      --exclude='stamps' --exclude='bash' --exclude='build-bash' \\\n\t      --exclude='build-min' --exclude='build-static' \\\n\t      -f - . | tar x -C $(bash_src) -f -\n"
 
 
 def prepare(sources):
@@ -19,8 +17,9 @@ def prepare(sources):
     if sha256(path)!=ORIGINAL:
         raise ValueError('Unexpected Bash packaging source')
     text=path.read_text()
-    if text.count(COMMAND)!=1:
+    if text.count(ARCHIVE_ORIGINAL)!=1 or text.count('\nbash-build:\n')!=1:
         raise ValueError('Unexpected Bash archive recipe')
-    path.write_text(text.replace(COMMAND,NOTICE+COMMAND))
+    text=text.replace('\nbash-build:\n',"\nbash-build: before-build\n")
+    path.write_text(text.replace(ARCHIVE_ORIGINAL,ARCHIVE))
     return {'original_rules_sha256':ORIGINAL,'delivered_rules_sha256':sha256(path),
-            'change':'Precreate the excluded tar output; preserve all tar error checks.'}
+            'change':'Order before-build before bash-build; stream tar with pipefail instead of writing an archive inside its input.'}

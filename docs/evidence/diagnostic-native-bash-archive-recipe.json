@@ -1,6 +1,6 @@
 {
   "kind": "diagnostic-native-bash-archive-recipe",
-  "status": "PASS_UNPACK_ONLY",
+  "status": "PASS_NATIVE_PACKAGE_BUILDS",
   "producer": "Shirube OS",
   "input": {
     "stream": "2026.03",
@@ -8,19 +8,30 @@
   },
   "preparation": {
     "original_rules_sha256": "a448c840bfd94afab3e4b0609c33e73afd22f2308156e040f284fe87a077d923",
-    "delivered_rules_sha256": "60c88430cdb6116b043e03d55691ece1afdedd8e2a9ea2201709fdbcec218d81",
-    "change": "Precreate the excluded tar output; preserve all tar error checks."
+    "delivered_rules_sha256": "809048c154e4649bb8496c12e91047329a15557470689dee2870c52fad427e35",
+    "change": "Order before-build before bash-build; stream tar with pipefail instead of writing an archive inside its input."
   },
-  "observed_failure": {
-    "run_url": "https://github.com/michibiki-io/shirube-os/actions/runs/42750618503",
-    "commit": "e01c20d83e53cf9c70a961b34fef2ec1f0682672",
-    "architectures": [
-      "amd64",
-      "arm64"
-    ],
-    "cause": "GNU tar returned exit 1 because creating its excluded output archive changed the directory being read. Both native producers stopped before ISO creation."
-  },
-  "actual_test": {
+  "observed_hosted_failures": [
+    {
+      "run_url": "https://github.com/michibiki-io/shirube-os/actions/runs/42750618503",
+      "commit": "e01c20d83e53cf9c70a961b34fef2ec1f0682672",
+      "architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "cause": "GNU tar returned exit 1 because creating its excluded output archive changed the directory being read. Both native producers stopped before ISO creation."
+    },
+    {
+      "run_url": "https://github.com/michibiki-io/shirube-os/actions/runs/42756121600",
+      "commit": "ee008ec24d0046fedb3166c1361389af8cbe64d1",
+      "architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "cause": "Precreating the excluded archive did not fix the failure in parallel builds. before-build compiles clear_console concurrently with bash-build, mutating the tar input directory. Both producers stopped before ISO creation."
+    }
+  ],
+  "earlier_standalone_unpack_result": {
     "architecture": "amd64",
     "network": "none",
     "cpu_limit": 2,
@@ -31,9 +42,43 @@
       "Original archive recipe and all tar error checks retained",
       "Bash source extracted and shell.c present",
       "Temporary archive removed by the original recipe"
-    ]
+    ],
+    "scope": "Passed only the standalone unpack target with the earlier recipe; did not exercise the full parallel package build and did not resolve the hosted failure."
   },
-  "scope": "Actual unpack target only. Does not establish a complete package build, ISO, source restoration, guest acceptance, hosted capacity or release clearance.",
+  "actual_package_builds": [
+    {
+      "architecture": "amd64",
+      "network": "none",
+      "cpu_limit": 4,
+      "memory_gib": 2,
+      "make_parallel_jobs": 4,
+      "command": "dpkg-buildpackage -b -us -uc",
+      "exit_code": 0,
+      "elapsed_seconds": 35,
+      "package": "vyatta-bash_4.1-3+vyos2+current2_amd64.deb",
+      "package_sha256": "03fb0605708e4db5c297329339f60acf6f4071a3449c446b571f3eeb8cd21344",
+      "native_executable_test": "PASS: packaged vbash executes and reports a 4.1-series BASH_VERSION"
+    },
+    {
+      "architecture": "arm64",
+      "network": "none",
+      "cpu_limit": 2,
+      "memory_gib": 1,
+      "make_parallel_jobs": 4,
+      "command": "dpkg-buildpackage -b -us -uc",
+      "exit_code": 0,
+      "elapsed_seconds": 106,
+      "package": "vyatta-bash_4.1-3+vyos2+current2_arm64.deb",
+      "package_sha256": "22a3f5ac085514a4ebc8b482112319117e673d8bbb751cf4c2e037d3bfa362db",
+      "native_executable_test": "PASS: packaged vbash --version reports 4.1.48(2)-release, aarch64-unknown-linux-gnu"
+    }
+  ],
+  "regression_checks": [
+    "Parallel make waits for before-build before bash-build",
+    "Archive is streamed into the excluded destination instead of written inside the input directory",
+    "A producer returning exit 7 with a valid archive remains a failure even when the extracting consumer succeeds"
+  ],
+  "scope": "Actual complete Bash package builds and packaged native executable checks only. Does not establish a complete ISO, source restoration, guest acceptance, hosted capacity or release clearance.",
   "release_clearance": "NOT_CLEARED",
   "oci": "NOT_RUN"
 }
