@@ -1,0 +1,383 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "gettext",
+      "version": "0.21-12",
+      "source_identity": "1486eb00e01d7b91cef4ca45805c95ee8d8de6016136f231b5f9f5f74225b318",
+      "copyright_sha256": "2af485dd05ff2f402caedc35973eb8bf60a639c4877949d19ad2054c1002984c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b",
+          "read_reference": {
+            "component": "gettext",
+            "member": "COPYING",
+            "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "gettext-runtime/COPYING",
+          "sha256": "7ef2cdfe58e0c0460657b6598b49af29d4e03c1e41cbaf0e1da1eb8ad74b95d0",
+          "read_reference": {
+            "component": "gettext",
+            "member": "gettext-runtime/COPYING",
+            "sha256": "7ef2cdfe58e0c0460657b6598b49af29d4e03c1e41cbaf0e1da1eb8ad74b95d0",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        },
+        {
+          "member": "gettext-runtime/intl/COPYING.LIB",
+          "sha256": "3fe5361f24b7c49ba12911c08f5a33f9cb18871d95d9fb881f5b8a4793e04288",
+          "read_reference": {
+            "component": "gettext",
+            "member": "gettext-runtime/intl/COPYING.LIB",
+            "sha256": "3fe5361f24b7c49ba12911c08f5a33f9cb18871d95d9fb881f5b8a4793e04288",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "gettext-runtime/libasprintf/COPYING",
+          "sha256": "03133addae5b99a6148c538300e6d97074453089be1423b741bd081f18e2b298",
+          "read_reference": {
+            "component": "gettext",
+            "member": "gettext-runtime/libasprintf/COPYING",
+            "sha256": "03133addae5b99a6148c538300e6d97074453089be1423b741bd081f18e2b298",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        },
+        {
+          "member": "gettext-runtime/libasprintf/COPYING.LIB",
+          "sha256": "3fe5361f24b7c49ba12911c08f5a33f9cb18871d95d9fb881f5b8a4793e04288",
+          "read_reference": {
+            "component": "gettext",
+            "member": "gettext-runtime/intl/COPYING.LIB",
+            "sha256": "3fe5361f24b7c49ba12911c08f5a33f9cb18871d95d9fb881f5b8a4793e04288",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "gettext-tools/COPYING",
+          "sha256": "5d4cff30d5038f82a0edc79798456049b61e1752fdb7e9ab1f4bfb9fae3a7303",
+          "read_reference": {
+            "component": "gettext",
+            "member": "gettext-tools/COPYING",
+            "sha256": "5d4cff30d5038f82a0edc79798456049b61e1752fdb7e9ab1f4bfb9fae3a7303",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        },
+        {
+          "member": "gettext-tools/gnulib-lib/libxml/COPYING",
+          "sha256": "c5c63674f8a83c4d2e385d96d1c670a03cb871ba2927755467017317878574bd",
+          "read_reference": {
+            "component": "libxml2",
+            "member": "COPYING",
+            "sha256": "c5c63674f8a83c4d2e385d96d1c670a03cb871ba2927755467017317878574bd"
+          }
+        },
+        {
+          "member": "gnulib-local/lib/libxml/COPYING",
+          "sha256": "c5c63674f8a83c4d2e385d96d1c670a03cb871ba2927755467017317878574bd",
+          "read_reference": {
+            "component": "libxml2",
+            "member": "COPYING",
+            "sha256": "c5c63674f8a83c4d2e385d96d1c670a03cb871ba2927755467017317878574bd"
+          }
+        },
+        {
+          "member": "libtextstyle/COPYING",
+          "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b",
+          "read_reference": {
+            "component": "gettext",
+            "member": "COPYING",
+            "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "libtextstyle/lib/libxml/COPYING",
+          "sha256": "c5c63674f8a83c4d2e385d96d1c670a03cb871ba2927755467017317878574bd",
+          "read_reference": {
+            "component": "libxml2",
+            "member": "COPYING",
+            "sha256": "c5c63674f8a83c4d2e385d96d1c670a03cb871ba2927755467017317878574bd"
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Gettext-libxml-original-COPYING.txt",
+          "sha256": "c5c63674f8a83c4d2e385d96d1c670a03cb871ba2927755467017317878574bd"
+        }
+      ],
+      "conditions": [
+        "Use GPL2-or-later alternative for dual-licensed manuals, keeping the original FDL alternative visible; distinguish GPL3 tools/libgettextpo, LGPL2.1 libintl/libasprintf and copied libxml MIT code."
+      ]
+    },
+    {
+      "source": "libsigc++-2.0",
+      "version": "2.12.0-1",
+      "source_identity": "25a4a2d9048797233633955927fd539dee89d8577528fc20dec340250cb3af1d",
+      "copyright_sha256": "6bbf5da585fc4cc1d4e97d076d17250099375c1b489fb61be778020277adf289",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "5bbcbb737e60fe9deba08ecbd00920cfcc3403ba2e534c64fdeea49d6bb87509",
+          "read_reference": {
+            "component": "libsigc++-2.0",
+            "member": "COPYING",
+            "sha256": "5bbcbb737e60fe9deba08ecbd00920cfcc3403ba2e534c64fdeea49d6bb87509",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "docs/website/license.shtml",
+          "sha256": "e485c9a7a41c9e1a1d5845d700843889c65d90cca9486252f64d0e5dfda2fc57",
+          "read_reference": {
+            "component": "libsigc++-2.0",
+            "member": "docs/website/license.shtml",
+            "sha256": "e485c9a7a41c9e1a1d5845d700843889c65d90cca9486252f64d0e5dfda2fc57",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Retain distinct LGPL3 default, LGPL2.1 source/build files, GPL3 tuple tests, public-domain examples/tests and permissive axboost macro scopes; original LGPL2.1 root and website text remain preserved."
+      ]
+    },
+    {
+      "source": "minicom",
+      "version": "2.8-2",
+      "source_identity": "ae19a5d0d7ac3adb1aff1106965bd7ab8fc2d08447af9c2e2c5136d943057093",
+      "copyright_sha256": "5480beffbd49af5e55bdbc9ff244c0a632a0c168fc7909e5d1c31ae443d32ef3",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "cf80a758014eefbf068afffe3d462fc34ff4f528527524d8e100329c42094e15",
+          "read_reference": {
+            "component": "minicom",
+            "member": "COPYING",
+            "sha256": "cf80a758014eefbf068afffe3d462fc34ff4f528527524d8e100329c42094e15",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "doc/copyright.modemu",
+          "sha256": "a94c3f15d5f98508e7c1a3a93aef5b83b0626c59b8e3b98246b1fa4802130782",
+          "read_reference": {
+            "component": "minicom",
+            "member": "doc/copyright.modemu",
+            "sha256": "a94c3f15d5f98508e7c1a3a93aef5b83b0626c59b8e3b98246b1fa4802130782",
+            "method": "Entire copyright/scope prefix read; complete operative body normalized-word-identical to a separately read complete original",
+            "read_reference": {
+              "component": "ipcalc",
+              "member": "license",
+              "sha256": "a340e781f3217186208cf6f919b6351766c822d0a0e39cf6b58fdaa1c7be7cff"
+            }
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Minicom-modemu-original-notice.txt",
+          "sha256": "a94c3f15d5f98508e7c1a3a93aef5b83b0626c59b8e3b98246b1fa4802130782"
+        }
+      ],
+      "conditions": [
+        "Retain original Minicom GPL2-or-later and independent modemu BSD3 attribution/permissions; the complete modemu notice is additionally required with binary legal materials."
+      ]
+    },
+    {
+      "source": "pcre3",
+      "version": "2:8.39-15",
+      "source_identity": "335f76ecf668b069c9f3a0eb7904df3a271686d769e3e16b5e4f6b52e4254b9d",
+      "copyright_sha256": "ac9276490d2fa167442ae1aae33926514ad10c8886baa40046c5e367fccc5938",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "17abe1dbb92b21ab173cf9757dd57b0b15cd8d863b2ccdef635fdbef03077fb0",
+          "read_reference": {
+            "component": "pcre3",
+            "member": "COPYING",
+            "sha256": "17abe1dbb92b21ab173cf9757dd57b0b15cd8d863b2ccdef635fdbef03077fb0",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "LICENCE",
+          "sha256": "3441595e1a5f7970adb99286b68962cc20252aa0fb8b5d7d775f97760083d563",
+          "read_reference": {
+            "component": "pcre3",
+            "member": "LICENCE",
+            "sha256": "3441595e1a5f7970adb99286b68962cc20252aa0fb8b5d7d775f97760083d563"
+          }
+        },
+        {
+          "member": "cmake/COPYING-CMAKE-SCRIPTS",
+          "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b",
+          "read_reference": {
+            "component": "dbus",
+            "member": "cmake/modules/COPYING-CMAKE-SCRIPTS",
+            "sha256": "c666ec2313dba24523ccad88f4c04ea4b24fad6545263a35b1d4ab2b08efe50a"
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/PCRE-original-LICENCE.txt",
+          "sha256": "3441595e1a5f7970adb99286b68962cc20252aa0fb8b5d7d775f97760083d563"
+        }
+      ],
+      "conditions": [
+        "Retain complete actual PCRE library/JIT/C++ wrapper notices and corresponding original CMake script permissions; older Release7 wording in Debian copyright does not replace actual original release notices."
+      ]
+    },
+    {
+      "source": "rsync",
+      "version": "3.2.7-1+deb12u6",
+      "source_identity": "b58256550349ae62413a5b7138662bdf2364e1a891143a6f81a9c23e2f76900b",
+      "copyright_sha256": "240afc05aff098e53dafe0def34030b2ef7848b78b9ebabf2c157713b9f975c5",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "85c19ea50a224c2d0067a69c083584e5717b40b76610ec1218f91385775067dd",
+          "read_reference": {
+            "component": "rsync",
+            "member": "COPYING",
+            "sha256": "85c19ea50a224c2d0067a69c083584e5717b40b76610ec1218f91385775067dd",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "popt/COPYING",
+          "sha256": "518d4f2a05064cb9a8ec0ea02e86408af4feed6916f78ef42171465db8b383c5",
+          "read_reference": {
+            "component": "rsync",
+            "member": "popt/COPYING",
+            "sha256": "518d4f2a05064cb9a8ec0ea02e86408af4feed6916f78ef42171465db8b383c5",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "popt",
+              "member": "COPYING",
+              "sha256": "2b488b239927935f34769a39309c0680be16e3725a1f55dbb06ed20d53852801"
+            }
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Rsync-popt-original-COPYING.txt",
+          "sha256": "518d4f2a05064cb9a8ec0ea02e86408af4feed6916f78ef42171465db8b383c5"
+        }
+      ],
+      "conditions": [
+        "Retain full original GPL3 with explicit dynamic OpenSSL/xxhash exception and independent popt permission; do not extend the exception to differently licensed libraries."
+      ]
+    },
+    {
+      "source": "setuptools",
+      "version": "66.1.1-1+deb12u2",
+      "source_identity": "68a88656f3486fd4af17d56a48c5bc9251557c8915f7a1fc0ec4bcf8f9642247",
+      "copyright_sha256": "b667d4e1f17b94a30d1398150ee53cfbe65e2c71b9fc12509d641612233abe97",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "db3f0246b1f9278f15845b99fec478b8b506eb76487993722f8c6e254285faf8",
+          "read_reference": {
+            "component": "setuptools",
+            "member": "LICENSE",
+            "sha256": "db3f0246b1f9278f15845b99fec478b8b506eb76487993722f8c6e254285faf8",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Retain actual MIT relicensing statement, independent vendored packaging Apache2 and Debian BSD3 scopes, full notices and any applicable Apache NOTICE. Older PSF/ZPL description is historical, not an invented alternative for current code."
+      ]
+    },
+    {
+      "source": "sharutils",
+      "version": "1:4.15.2-9",
+      "source_identity": "0b7eda649492a8326696509a6dcbb337ea365730b9ff63dc619e841f510d0063",
+      "copyright_sha256": "e5e6a761da719012f4af82a61cf99f437b636d161f37a36765bd2bfb50e19321",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "libopts/COPYING.gplv3",
+          "sha256": "a22b2fc0217dcd6e27e3ebe5a5cc7db5688d4af5c951fe2bfefeaa3fa6df25e3",
+          "read_reference": {
+            "component": "sharutils",
+            "member": "libopts/COPYING.gplv3",
+            "sha256": "a22b2fc0217dcd6e27e3ebe5a5cc7db5688d4af5c951fe2bfefeaa3fa6df25e3",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "libopts/COPYING.lgplv3",
+          "sha256": "bea02abe9d2ea7b1daee63339d8f6a45d9f0fcf09431641529fb7aafce862f3a",
+          "read_reference": {
+            "component": "sharutils",
+            "member": "libopts/COPYING.lgplv3",
+            "sha256": "bea02abe9d2ea7b1daee63339d8f6a45d9f0fcf09431641529fb7aafce862f3a",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "libopts/COPYING.mbsd",
+          "sha256": "f25852c3d4615a1bac10844c4c30a3449137eb1a81098eb159a149522caba430",
+          "read_reference": {
+            "component": "sharutils",
+            "member": "libopts/COPYING.mbsd",
+            "sha256": "f25852c3d4615a1bac10844c4c30a3449137eb1a81098eb159a149522caba430",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "conditions": [
+        "Retain GPL3 utilities and GFDL1.3 manuals with no invariants/cover texts; preserve independent libopts LGPL/GPL/modified BSD alternatives and original Berkeley attribution."
+      ]
+    },
+    {
+      "source": "unionfs-fuse",
+      "version": "1.0-1",
+      "source_identity": "afc2d2a1ec278c51fb3281058150da23108eaf0e1553d6a893347ca19ad859f5",
+      "copyright_sha256": "a57e3cb558c9c8ecee3ad3ca16b307354aff57a80a68ebb9bbb5a5ff9d09ded9",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "f56a5579d670e18e0667700bc599acbc0b8217ca1f76b2adb3dad7d2953c4049",
+          "read_reference": {
+            "component": "unionfs-fuse",
+            "member": "LICENSE",
+            "sha256": "f56a5579d670e18e0667700bc599acbc0b8217ca1f76b2adb3dad7d2953c4049",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Retain original Radek Podgorny/Bernd Schubert and Christopher Clark modified BSD permissions and independent Regents cow_utils BSD3 scope, including original attribution/nonendorsement/disclaimers."
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

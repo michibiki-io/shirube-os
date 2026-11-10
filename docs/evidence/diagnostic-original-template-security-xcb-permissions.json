@@ -1,0 +1,75 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "jinja2",
+      "version": "3.1.2-1+deb12u3",
+      "source_identity": "48e5b0aa6e43fa6738fca9cacf9fedcd553e24c090d52bfe828d8c59b29b0185",
+      "copyright_sha256": "df5feaeac30eaf8b8d92a75799de7853c3f4db9b50ee0b318911f938baaf80df",
+      "original_legal_files": [
+        {
+          "member": "LICENSE.rst",
+          "sha256": "3b49dcee4105eb37bac10faf1be260408fe85d252b8e9df2e0979fc1e094437b"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "df5feaeac30eaf8b8d92a75799de7853c3f4db9b50ee0b318911f938baaf80df"
+        },
+        {
+          "member": "docs/license.rst",
+          "sha256": "c9362a7258a11c84a8f7e825ccbbb5c425c6fc02368d3aee6494533fb99ba1f4"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Jinja2-original-LICENSE.txt",
+          "sha256": "3b49dcee4105eb37bac10faf1be260408fe85d252b8e9df2e0979fc1e094437b"
+        }
+      ],
+      "scope": "Preserve Pallets original 2007 copyright in addition to older Jinja Team Debian notices; keep source-only jQuery MIT and jinja.el GPL2-or-later scopes and AUTHORS."
+    },
+    {
+      "source": "libselinux",
+      "version": "3.4-1",
+      "source_identity": "4035af53388d343f9b5c46ca2867ba32823cf4a2d218ddd590b34ae59c899157",
+      "copyright_sha256": "641806738b0c6a3d03168c2649e6b94205198bb66cd557e6bae3a20b71c9bb0b",
+      "original_legal_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "86657b4c0fe868d7cbd977cb04c63b6c667e08fa51595a7bc846ad4bed8fc364"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "641806738b0c6a3d03168c2649e6b94205198bb66cd557e6bae3a20b71c9bb0b"
+        }
+      ],
+      "required_notices": [],
+      "scope": "Original non-commercially developed statement describes provenance and is not a noncommercial-use restriction. Preserve public-domain library statement and NSA disclaimer, GPL2 avcstat/packaging and LGPL2.1-or-later copied glibc excerpt scopes."
+    },
+    {
+      "source": "libxcb",
+      "version": "1.15-1",
+      "source_identity": "f689569f33e70ca4c95c91b094d0659eb49a958d9ac43186640338f9290e298b",
+      "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "c5ffbfeaa501071ceeb97b7de2c0d703fdaa35de01c0fb6cbac1c28453a3e9fd"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80"
+        },
+        {
+          "member": "debian/copyright.debian",
+          "sha256": "dbfc05a2fe49ba033f003a5e5d332c80c0073b172e4d7d1b120c29d864e5ebce"
+        }
+      ],
+      "required_notices": [],
+      "scope": "Preserve complete original source and installed copyright, including authors/institutions nonendorsement; copyright.debian is attribution metadata preceding generated upstream notice and is not an independent replacement license."
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
