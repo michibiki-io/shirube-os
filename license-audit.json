@@ -23434,6 +23434,76 @@
         "Deliver the complete applied preferred source and exact build/install/test inputs. Keep all original code and test headers, including Two Blue Cubes2017 Catch2.0.1 and its explicit Boost license grant. Only the saved third-party web page is replaced by the full named license; no claim is made to relicense the page or its site assets.",
         "Keep the original Debian descriptor as provenance metadata and mark the preferred export distinctly; it is not a newly signed Debian source set. The raw original source archive is not cleared by this approval. No whole-OS binary reproduction or release acceptance is established by the export."
       ]
+    },
+    "perl@5.36.0-7+deb12u4": {
+      "redistributable": true,
+      "source_identity": "6f71e571ae69894ad2115013bbc3207e77dc796581e30a62be0297e7d90ee7b9",
+      "copyright_sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d",
+      "license": "Artistic-1.0-Perl AND Artistic-2.0 AND LicenseRef-Artistic-dist AND GPL-3.0-or-later WITH Bison-exception-2.2 AND MIT AND BSD-3-Clause AND BSD-4-Clause AND Bzip2-1.0.6 AND Zlib AND CC0-1.0 AND LicenseRef-Perl-Original-Notices",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Perl-5.36.0/Copying",
+          "sha256": "d77d235e41d54594865151f4751e835c5a82322b0e87ace266567c3391a4b912"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/cpan/Compress-Raw-Bzip2/bzip2-src/LICENSE",
+          "sha256": "c6dbbf828498be844a89eaa3b84adbab3199e342eb5cb2ed2f0d4ba7ec0f38a3"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/debian-copyright.txt",
+          "sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/dist/ExtUtils-CBuilder/LICENSE",
+          "sha256": "84f80368c9e0a3b5347e19c977c8597f5588c262695caf815e3c53e740c1b6a1"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Artistic",
+          "sha256": "dd90d4f42e4dcadf5a7c09eea0189d93c7b37ae560c91f0f6d5233ed3b9292a2"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Artistic-dist.txt",
+          "sha256": "0ff1c0b63c1a086878180ff79cf54628430ffc043de03c02b17c646157ac5bde"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Unicode-original.txt",
+          "sha256": "160bccb580a2af0a9e5967943a89f1d9adde4fd8d10057c059478534fd5b1419"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Powerdog-BSD4.txt",
+          "sha256": "495d64886cd2056029e86b9ac7ca7fc219c45e8a501dcec6173f692ed6a03978"
+        },
+        {
+          "path": "LICENSES/Artistic-2.0.txt",
+          "sha256": "9a2c2e9497da62a9a6e735cad9421d479c7657382a54220362253b97842bc43d"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "scope": "Exact Debian Perl5.36 source/package scope. All224 DEP5 paragraphs indexed, all200 scope expressions classified, all35 nondefault scopes, all74 unique default comments and23 complete license definitions read. Uniform default author/file lists are retained and machine-indexed, not claimed individually human-read. Original root README grant and Encode Artistic2 header checked; all operative named legal texts read or completely compared to read grant texts. No independent chain-of-title warranty.",
+      "conditions": [
+        "Choose the offered Artistic1 branch for core/same-as-Perl material, retaining original complete GNU1 alternatives unchanged. Supply full machine-readable source with all Debian modifications under Artistic4(b), make changes freely available under3(a), preserve existing modified-file notices and originals. Do not claim Perl as distributor-owned software, charge a separate license/package fee or use copyright-holder names for endorsement.",
+        "Retain the distinct Artistic-dist terms and source/history/reuse-origin conditions; do not substitute the Perl-specific Artistic variant. Encode encguess explicitly uses Artistic2 despite the abbreviated Debian label; preserve its complete terms and modification/source/patent/trademark conditions.",
+        "Retain Henry Spencer REGCOMP origin and changed-version identification, Bison GPL3 skeleton/output exception scope, original Unicode data copyright/permission/modification notices, BSD3, Powerdog BSD4 advertising acknowledgement, MIT/Expat, BZIP and Zlib origin/alteration notices. Text::Tabs redistribution request follows a broad express grant and is retained without inventing an absolute restriction.",
+        "Retain Ozan Yigit’s explicit SDBM public-domain dedication, CC0 waiver/fallback/disclaimers and all RRA keep-notice permissions. Do not infer public-domain status from unknown copyright metadata or treat every bundled distribution as uniformly licensed.",
+        "Preserve the complete original Debian copyright scope, original root Artistic/Copying and incorporated licenses, plus complete corresponding source/recipes. Copyright-named .t files are tests under the ordinary source grant, not additional license texts. Historical unused Hsieh license definitions are retained without applying an unspecified exposition license to unrelated current code."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

@@ -1,0 +1,58 @@
+{
+  "kind": "exact-debian-perl-license-scopes",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "perl",
+  "version": "5.36.0-7+deb12u4",
+  "dsc_sha256": "6f71e571ae69894ad2115013bbc3207e77dc796581e30a62be0297e7d90ee7b9",
+  "copyright_sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d",
+  "coverage": {
+    "dep5_paragraphs_indexed": 224,
+    "file_scope_groups_classified": 200,
+    "default_scope_groups": 165,
+    "nondefault_scope_groups_read": 35,
+    "unique_default_comments_read": 74,
+    "complete_license_definitions_read": 23,
+    "uniform_author_filename_lists": "Original bytes retained and machine-indexed, not each independently human-read."
+  },
+  "original_legal_files": [
+    {
+      "member": "Copying",
+      "sha256": "d77d235e41d54594865151f4751e835c5a82322b0e87ace266567c3391a4b912",
+      "bytes": 12632,
+      "distribution_path": "LICENSES/Perl-5.36.0/Copying"
+    },
+    {
+      "member": "cpan/Compress-Raw-Bzip2/bzip2-src/LICENSE",
+      "sha256": "c6dbbf828498be844a89eaa3b84adbab3199e342eb5cb2ed2f0d4ba7ec0f38a3",
+      "bytes": 1896,
+      "distribution_path": "LICENSES/Perl-5.36.0/cpan/Compress-Raw-Bzip2/bzip2-src/LICENSE"
+    },
+    {
+      "member": "debian/copyright",
+      "sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d",
+      "bytes": 109772,
+      "distribution_path": "LICENSES/Perl-5.36.0/debian-copyright.txt"
+    },
+    {
+      "member": "dist/ExtUtils-CBuilder/LICENSE",
+      "sha256": "84f80368c9e0a3b5347e19c977c8597f5588c262695caf815e3c53e740c1b6a1",
+      "bytes": 18349,
+      "distribution_path": "LICENSES/Perl-5.36.0/dist/ExtUtils-CBuilder/LICENSE"
+    }
+  ],
+  "source_checks": {
+    "root_readme": "Explicit GNU1-or-later / original Artistic grant and interpretation read.",
+    "Artistic": "Full original compared word-for-word with the read Perl Artistic license; only MERCHANTIBILITY/ MERCHANTABILITY spelling differs.",
+    "ExtUtils_CBuilder": "Complete full-word comparison of original license to root GNU1 plus Artistic; all additional words and clause differences read. Artistic variant retained separately in its original file.",
+    "Encode_encguess": [
+      {
+        "member": "perl-5.36.0/cpan/Encode/bin/encguess",
+        "sha256": "bd087e75e454b911a4bb30f66af563b14b32cca4735eb58d860383ef1310d06c"
+      }
+    ],
+    "historical_hsieh": "No Hsieh-reference matches in original regular text files below1MB; unused copyright definitions preserved, no separate exposition permission inferred."
+  },
+  "scope": "Static license/source analysis and exact notices only; no binary/ISO rebuild is needed for this notice-only change. Not full release/OCI clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
