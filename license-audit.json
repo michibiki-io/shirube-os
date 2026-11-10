@@ -22911,6 +22911,117 @@
         "Retain explicit Fenneberg and Livingston permission credits in supporting documentation, Michigan/Merit complete notices, and RSA MD5/derivative identification. Do not infer public-domain dedication from a historical comment or absent license.",
         "Preserve NetBSD and other author nonendorsement conditions. Original NetBSD BSD2 permission appears in upstream COPYRIGHT; retain the original historical advertising acknowledgement as supporting material without extending a waiver to unrelated authors."
       ]
+    },
+    "python3-defaults@3.11.2-1": {
+      "redistributable": true,
+      "source_identity": "75cac54d11a4f7bc2c88eeeabddd74dc27b072c3bd515e71c8be2641b062e980",
+      "copyright_sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d",
+      "license": "Python-2.0 AND MIT AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Python-defaults-original-copyright.txt",
+          "sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d"
+        }
+      ],
+      "scope": "Complete original copyright read after exact reuse of the previously read full Expat grant. Complete original policy manual grant read. Exact source and notice pair only; not OS release clearance.",
+      "conditions": [
+        "Retain the full original PSF2, BeOpen1, CNRI1.6.1 and CWI permission chain with its exact copyright notices, historical scope, disclaimers, jurisdiction provisions and modification-summary requirements. Do not convert historical release compatibility statements into a claim that all historical Python versions are GNU-compatible.",
+        "Keep py3compile/py3clean/debpython Expat permissions and authors, and GNU2-or-later policy manual scope separate. Provide complete preferred source, patches and configuration/build/install material. Do not use Python or its predecessors’ trademarks for endorsement or substitute distributor branding for upstream copyright."
+      ]
+    },
+    "findutils@4.9.0-4": {
+      "redistributable": true,
+      "source_identity": "3bb39a6a5f96101f9bb28fed234db186fcec198e064478fef3c0fdf2434f0681",
+      "copyright_sha256": "8fbcc77ed31f480a85654e9b6d1d25cbb95b62e9dc5159ae1565bca684c3e1dc",
+      "license": "GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND BSD-3-Clause AND ISC AND X11 AND FSFAP AND FSFULLR AND LicenseRef-public-domain AND LicenseRef-GNU-generator-exceptions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Findutils-original-mkinstalldirs-notice.txt",
+          "sha256": "5372852ef1842cbb61436229bc2c6af6e969688a36bd7e7f3578356f983f5791"
+        },
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "scope": "All file/license-expression mappings, license classes and special exceptions reviewed; complete original standards already read. Uniform per-file attributions remain retained exactly; manual reading of every individual author name is not claimed. Actual original mkinstalldirs grant resolves the packaging placeholder. Not release clearance.",
+      "conditions": [
+        "Keep GNU3-or-later programs, distinct GNU2-or-later packaging/helpers, LGPL2/2.1/3 and LGPL3-only source scopes. Select compatible GNU3 alternatives where offered, without treating LGPL3-only as or-later or changing a GNU2-only component.",
+        "Retain no-invariant/no-cover GFDL1.3-or-later documentation, full original attribution, permissive X11/ISC/BSD/FSF grants, Autoconf/Automake and Bison2.2 output exceptions. Supply exact preferred source including generator inputs, patches and configuration/build/install material.",
+        "Retain the original explicit public-domain Noah Friedman mkinstalldirs notice and independent public-domain alloca grant. The installed copyright placeholder blah is not used as an affirmative permission."
+      ]
+    },
+    "libtirpc@1.3.3+ds-1": {
+      "redistributable": true,
+      "source_identity": "c05c5d76027d4162d5a29d73eef90076559bde0fa5133b2e0045d82155e1b2af",
+      "copyright_sha256": "401dcf98d8ef2b712ec6ab310dbf727fc2cdce290bfde5b6d0b609a927530217",
+      "license": "BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND LGPL-2.1-or-later AND GPL-2.0-only AND LicenseRef-FSF-permissive-and-GNU-build-output-exceptions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libtirpc-original-COPYING.txt",
+          "sha256": "17cf6098f95bdbb269f0bbc68e76c88fe20487ca7ec53f454923ab4256ecd2e7"
+        },
+        {
+          "path": "LICENSES/Libtirpc-original-Bill-Paul-notice.txt",
+          "sha256": "1c2e5f49e879be96cec1cc598560bcee31eab82f85003dd9c7fea5e81650735c"
+        }
+      ],
+      "scope": "Every file/license class and original copyright condition inspected. Actual original license headers for all 18 build-control files in the AUTO_PERMISSIVE placeholder scope were read; both GNU copyleft/output-exception and permissive grants retained explicitly. Not release clearance.",
+      "conditions": [
+        "Retain original BSD2/BSD3 runtime and LGPL2.1-or-later DES source scopes, GNU2-only Debian packaging and source-only Bill Paul BSD4 permissions. Preserve the Bill Paul advertising acknowledgement and nonendorsement restrictions; do not extend a Regents advertising waiver to unrelated authors.",
+        "The AUTO_PERMISSIVE metadata label is not a license. Keep actual FSF unlimited-copy/modify grants, X11 installation script permissions, GNU2/GNU3 Autoconf output exceptions and GNU2 Libtool exception, with their original scope and full texts. They do not relicense the runtime library under unrestricted permissive terms.",
+        "Retain every original attribution, disclaimer, preferred source, patches and complete configuration/build/install inputs. Original upstream Makefile leaves crypt_client.c outside the library source list; source-only BSD4 code is retained as separate corresponding-source material. No feature is deleted or disabled by this decision."
+      ]
+    },
+    "db5.3@5.3.28+dfsg2-1": {
+      "redistributable": true,
+      "source_identity": "fe84d3cd7cde381f1c5a18f223377cf84ea7627ced8063ef33ef8fd93f6e09f4",
+      "copyright_sha256": "8b53da37d73289d9df7317b3a2dbe16491f1fa9fec8b77b86d69704b40ce2c26",
+      "license": "Sleepycat AND BSD-3-Clause AND Ms-PL AND GPL-2.0-only AND GPL-3.0-only AND X11 AND MIT AND TCL AND Zlib",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Berkeley-DB-5.3-original-LICENSE.txt",
+          "sha256": "b78815181a53241f9347c6b47d1031fd669946f863e1edc807a291354cec024b"
+        },
+        {
+          "path": "LICENSES/Berkeley-DB-source-availability.txt",
+          "sha256": "af67dc8d486f7fcd630aa974d16a74cdf5f33884bc0c9c679e13b293028d4592"
+        }
+      ],
+      "scope": "Complete original root LICENSE and every per-file license class, inline operative grant, exception and comment read. Complete standard GNU/Artistic texts previously read and retained. Not release clearance.",
+      "conditions": [
+        "Satisfy the original Sleepycat complete-source condition for DB and every accompanying application that uses it: deliver freely redistributable complete source with information on obtaining it, not only the library source. Preserve full Oracle/Regents/Harvard/ASM original notices and nonendorsement terms.",
+        "Keep source-only C# Ms-PL scope under Ms-PL with its complete original license and notices; do not relabel it GNU-compatible. Select the explicit BSD3 alternative for the Mersenne source and the stated GNU alternative for Perl bindings. Keep separate GNU2-compatible Debian rules and GNU3-only ODBC packaging scopes.",
+        "Retain MIT-old supporting-documentation notice, X11 nonendorsement, TCL-like source permissions, BSD Fjord and Zlib modification/origin requirements. Supply every retained preferred source, Debian modification/patch, configuration/build/install input and standard full license. Original upstream DFSG exclusions are not newly introduced feature deletions."
+      ]
+    },
+    "lcdproc@0.5.9-6": {
+      "redistributable": true,
+      "source_identity": "2e1177d4f2ff2978cbcbc84e4e2947896478f64baec0abb7aec9a3f613af8b9e",
+      "copyright_sha256": "041faf7aa3520a3203eabb18f848ab20fdd702184f5bae2c01959104f724b382",
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause AND Artistic-1.0-Perl",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "scope": "Every license class and condition-bearing comment read, with the complete source/license-expression table machine-indexed and retained exactly. Individual manual reading of every uniform GNU file/author entry is not claimed. Original GNU-only pointers are controlled by the explicit original COPYING GNU2 text and publisher scope declaration. Not release clearance.",
+      "conditions": [
+        "Retain GNU2-only default and explicitly later-version GNU2-or-later exceptions, source-only BSD3 platform modules and the independent Artistic-Perl snprintf source. Do not upgrade GNU2-only source to GNU3 merely because a generic GNU pointer has no version label.",
+        "Keep complete original Artistic terms and fulfill source/modification requirements, including complete machine-readable accompanying sources under 4(b) and freely available modifications under 3(a). Preserve original author/nonendorsement notices; do not claim standard-version status for modified upstream code or advertise a third-party package as the distributor’s own.",
+        "Preserve all preferred sources, patches, documentation, original notice/legal texts and complete configuration/build/install inputs. The original source COPYing/reference controls the GNU2 meaning; the pointer by itself does not grant permission for unrelated files."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

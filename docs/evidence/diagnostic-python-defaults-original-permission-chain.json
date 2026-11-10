@@ -1,0 +1,25 @@
+{
+  "kind": "exact-python-defaults-original-permission-chain",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "3.11.2-1",
+  "source_identity": "75cac54d11a4f7bc2c88eeeabddd74dc27b072c3bd515e71c8be2641b062e980",
+  "copyright_sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d",
+  "original_legal_files": [
+    {
+      "member": "debian/copyright",
+      "sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d"
+    },
+    {
+      "member": "policy/copyright.rst",
+      "sha256": "445c89079c0f1aaba7468a67b3b1dbc9c95f194c67cd168130760613fb046c2a"
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/Python-defaults-original-copyright.txt",
+      "sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

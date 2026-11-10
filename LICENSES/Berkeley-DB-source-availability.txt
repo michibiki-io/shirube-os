@@ -1,0 +1,16 @@
+Berkeley DB and accompanying software source availability
+
+Each published Shirube OS release must include complete machine-readable
+sources for Berkeley DB and the accompanying software that uses it, together
+with original notices, patches, and build/configuration/install inputs.
+Obtain the source assets for the SAME version and architecture as the image
+from the corresponding release at:
+https://github.com/michibiki-io/shirube-os/releases
+
+The architecture-specific licenses.json inventory maps every installed
+package and its bundled components to exact source/archive members and hashes.
+The corresponding project source contains docs/BUILD.md and the restore-sources
+command for integrity-checked restoration. Preserve all these source assets,
+not only the Berkeley DB library tree. No fee or separate request is required
+for source access. A diagnostic image is not cleared for publication merely
+because this notice exists; complete paired source delivery remains gated.
