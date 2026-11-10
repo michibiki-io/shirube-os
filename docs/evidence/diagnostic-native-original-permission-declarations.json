@@ -1,0 +1,1282 @@
+{
+  "kind": "exact-observed-native-original-permission-declarations",
+  "status": "PASS_COMPONENT_DECLARATION_REVIEW_ONLY",
+  "components": [
+    {
+      "name": "ddclient",
+      "version": "3.11.2-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "a702881d91db792c5bc6e695bfb59e13e5b775ba1b4af4193b43be488f911857",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later AND Apache-2.0 AND Artistic-1.0-Perl",
+      "original_root_legal_files": [
+        {
+          "member": "source/COPYING",
+          "sha256": "7c945a7dff0aa150a41593004ce29e7a6c2c79533035a23f8bf4a07cde00ead7"
+        },
+        {
+          "member": "source/COPYRIGHT",
+          "sha256": "765da3bfe5689132a6c96bde25c7702039c76e942e803d0547d67b776d47be20"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/ddclient/debian-copyright.txt",
+          "sha256": "a702881d91db792c5bc6e695bfb59e13e5b775ba1b4af4193b43be488f911857"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/ddclient/original-ddclient-COPYING",
+          "sha256": "7c945a7dff0aa150a41593004ce29e7a6c2c79533035a23f8bf4a07cde00ead7"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/ddclient/original-ddclient-COPYRIGHT",
+          "sha256": "765da3bfe5689132a6c96bde25c7702039c76e942e803d0547d67b776d47be20"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "ddclient",
+          "Upstream-Contact": "https://github.com/ddclient/ddclient",
+          "Source": "https://ddclient.net"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\n2006-2014  wimpunk <wimpunk+github@gmail.com>\n1999-2001  Paul Burry (pburry@canada.com)",
+          "License": "GPL-2.0+"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n2020-2024  Richard Hansen <rhansen@rhansen.org>\n2005-2016  Torsten Landschoff <torsten@debian.org>\n2014  Tong Sun <suntong@cpan.org>\n2013  Teemu Ikonen <tpikonen@gmail.com>\n2013  Antonio Terceiro <terceiro@debian.org>\n2005-2012  Christian Perrier <bubulle@debian.org>\n2012  Stefano Rivera <stefanor@debian.org>\n2008  Tobias Toedter <toddy@debian.org>\n2007  Marco Rodrigues <gothicx@sapo.pt>\n2002  Felix Kröger <felix.kroeger@gmx.de>\n2000  Steve Greenland <stevegr@debian.org>",
+          "License": "GPL-2.0+"
+        },
+        {
+          "Files": "debian/po/*",
+          "Copyright": "\n2021  Américo Monteiro <a_monteiro@gmx.com>\n2020  Ari Ervasti <ari.ervasti87@gmail.com>\n2020  Jean-Pierre Giraud <jean-pierregiraud@neuf.fr>\n2020  Adriano Rafael Gomes <adrianorg@debian.org>\n2020  José Vieira <jvieira33@sapo.pt>\n2020  Sebastian Rasmussen <sebras@gmail.com>\n2020  Rui Branco <ruipb@debianpt.org>\n2020  Takuma Yamada <tyamada@takumayamada.com>\n2020  Richard Hansen <rhansen@rhansen.org>\n2014, 2020  Frans Spiesschaert <Frans.Spiesschaert@yucom.be>\n2014  Miroslav Kure <kurem@debian.cz>\n2014  Kenshi Muto <kmuto@debian.org>\n2014  Olexandr Kravchuk <sashko.debian@gmail.com>\n2014  Asho Yeh <asho@debian.org.tw>\n2014  traducción de Debian al español (<debian-l10n-spanish@lists.debian.org>)\n2012  Michał Kułach <michal.kulach@gmail.com>\n2011  Jeroen Schot <schot@a-eskwadraat.nl>\n2011  Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n2010  Korrekturlæst \"Ask Hjorth Larsen\" <asklarsen@gmail.com>\n2010  Joe Hansen <joedalton2@yahoo.dk>\n2010  Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n2010  Martin Eberhard Schauer <Martin.E.Schauer@gmx.de>\n2010  Bart Cornelis <cobaco@skolelinux.no>\n2010  Martin Bagge <brother@bsnet.se>\n2009  marce villarino <mvillarino@users.sourceforge.net>\n2009  Esko Arajärvi <edu@iki.fi>\n2009  Bjørn Steensrud <bsteensr@skogkatt.homelinux.org>\n2009, 2010, 2020  Yuri Kozlov <yuray@komyakino.ru>\n2009, 2010  Miguel Figueiredo <elmig@debianpt.org>\n2009, 2010  Martin Bagge <brother@bsnet.se>\n2009, 2010  Ivan Masár <helix84@centrum.sk>\n2009, 2010  Flamarion Jorge <jorge.flamarion@gmail.com>\n2008  Yuri Kozlov <kozlov.y@gmail.com>\n2008, 2009  Piarres Beobide <pi@beobide.net>\n2008, 2009, 2010  Vincenzo Campanella <vinz65@gmail.com>\n2007  Jacobo Tarrio <jtarrio@debian.org>\n2006  Ricardo Silva <ardoric@gmail.com>\n2006, 2009  Jordà Polo <jorda@ettin.org>\n2006, 2007, 2009, 2020  Helge Kreutzmann <debian@helgefjell.de>\n2005-2010  Clytie Siddall <clytie@riverland.net.au>\n2005-2009  Debian French l10n team <debian-l10n-french@lists.debian.org>\n2005, 2009, 2010  Christian Perrier <bubulle@debian.org>\n2003  Vicente H. <vherrerv@supercable.es>\n2002  Felix Kröger <felix.kroeger@gmx.de>",
+          "License": "GPL-2.0+"
+        },
+        {
+          "Files": "t/lib/Devel/Autoflush.pm",
+          "Copyright": "2014 David Golden",
+          "License": "Apache-2.0"
+        },
+        {
+          "Files": "\nt/lib/Test/*\nt/lib/Test2.pm\nt/lib/Test2/*\nt/lib/ok.pm",
+          "Copyright": "2019 Chad Granum <exodist@cpan.org>",
+          "License": "Artistic or GPL-1+"
+        },
+        {
+          "Files": "t/lib/ddclient/Test/Fake/HTTPD.pm",
+          "Copyright": "2011-2017 NAKAGAWA Masaki <masaki@cpan.org>",
+          "License": "Artistic or GPL-1+"
+        },
+        {
+          "License": "GPL-2.0+"
+        },
+        {
+          "License": "Apache-2.0"
+        },
+        {
+          "License": "Artistic"
+        },
+        {
+          "License": "GPL-1+"
+        }
+      ]
+    },
+    {
+      "name": "dropbear",
+      "version": "2022.83-1+deb12u1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "82169306ba0cb088758e55ae20be19866c84364076b3275e2213f3bafb193c6d",
+      "evidence_member": "copyright",
+      "license": "MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Tatu-Ylonen-permissive AND LicenseRef-LibTom-public-domain AND GPL-2.0-or-later",
+      "original_root_legal_files": [
+        {
+          "member": "source/LICENSE",
+          "sha256": "a99ce657d790b761c132ee7e0de18edb437ae6361e536d991c6a12f36e770445"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/dropbear/debian-copyright.txt",
+          "sha256": "82169306ba0cb088758e55ae20be19866c84364076b3275e2213f3bafb193c6d"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/dropbear/original-dropbear-LICENSE",
+          "sha256": "a99ce657d790b761c132ee7e0de18edb437ae6361e536d991c6a12f36e770445"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation.",
+        "Keep original Matt Johnston/Mihnea Stoenescu and PuTTY notices. Mark derived SSH code; a protocol-incompatible derivative must not be named ssh or Secure Shell. Public-domain treatment is limited to the expressly identified LibTom/TweetNaCl code."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Contact": "Matt Johnston <matt@ucc.asn.au>",
+          "Source": "https://matt.ucc.asn.au/dropbear/",
+          "Upstream-Name": "dropbear"
+        },
+        {
+          "Files": "*",
+          "Copyright": "© 2002-2022 Matt Johnston <matt@ucc.asn.au>\n© 2004 Mihnea Stoenescu",
+          "License": "MIT"
+        },
+        {
+          "Files": "libtomcrypt/* libtommath/*",
+          "Copyright": "Tom St Denis",
+          "License": "public-domain"
+        },
+        {
+          "Files": "sshpty.c sshpty.h",
+          "Copyright": "© 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland",
+          "License": "OpenSSH"
+        },
+        {
+          "Files": "atomicio.c atomicio.h loginrec.c loginrec.h progressmeter.c progressmeter.h",
+          "Copyright": "© 1995,1999 Theo de Raadt\n© Andre Lucas\n© 2003 Nils Nordman",
+          "License": "BSD-2-clause"
+        },
+        {
+          "Files": "chachapoly.c gcm.c chachapoly.h gcm.h",
+          "Copyright": "© 2002,2003 Matt Johnston <matt@ucc.asn.au>\n© 2020 Vladislav Grishenko",
+          "License": "MIT"
+        },
+        {
+          "Files": "curve25519.c",
+          "Copyright": "Matt Johnston\nDaniel J. Bernstein\nBernard van Gastel\nWesley Janssen\nTanja Lange\nPeter Schwabe\nSjaak Smetsers",
+          "License": "public-domain"
+        },
+        {
+          "Files": "keyimport.c",
+          "Copyright": "© 2003-2022 Matt Johnston <matt@ucc.asn.au>\n© 1997-2003 Simon Tatham",
+          "License": "MIT"
+        },
+        {
+          "Files": "compat.c dbutil.c",
+          "Copyright": "© 2002,2003 Matt Johnston <matt@ucc.asn.au>\n© 1998 Todd C. Miller <Todd.Miller@courtesan.com>\n© 1990, 1993 The Regents of the University of California",
+          "License": "MIT and BSD-3-clause"
+        },
+        {
+          "Files": "scp.c scpmisc.c scpmisc.h",
+          "Copyright": "© 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland\n© 1999 Theo de Raadt\n© Aaron Campbell\n© 1983, 1990, 1992, 1993, 1995 The Regents of the University of California",
+          "License": "OpenSSH and BSD-2-clause and BSD-3-clause"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "© 2003 Grahame Bowland <grahame.angrygoats.net>\n© 2003-2005 Matt Johnston <matt@ucc.asn.au>\n© 2004-2014 Gerrit Pape <pape@smarden.org>\n© 2015-2022 Guilhem Moulin <guilhem@debian.org>",
+          "License": "MIT"
+        },
+        {
+          "Files": "debian/initramfs/*",
+          "Copyright": "© 2009-2010 Chris <debian@x.ray.net>\n© 2015-2022 Guilhem Moulin <guilhem@debian.org>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "debian/tests/remote-unlocking debian/tests/remote-unlocking.d/*",
+          "Copyright": "© 2019 Johannes 'josch' Schauer <josch@debian.org>\n© 2021-2022 Guilhem Moulin <guilhem@debian.org>",
+          "License": "MIT"
+        },
+        {
+          "License": "MIT"
+        },
+        {
+          "License": "BSD-2-clause"
+        },
+        {
+          "License": "BSD-3-clause"
+        },
+        {
+          "License": "OpenSSH"
+        }
+      ]
+    },
+    {
+      "name": "ethtool",
+      "version": "1:6.10-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "64d8f5aef5e6e9bbf1bd5794376c6d7124a5e975cb30f72e46a4205c62edc923",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only AND (GPL-3.0-or-later WITH Autoconf-exception-generic)",
+      "original_root_legal_files": [
+        {
+          "member": "source/AUTHORS",
+          "sha256": "740925de9ebd8237b1d66c1cbf9c56c485aba157220d8fc3c43a66320e1be98e"
+        },
+        {
+          "member": "source/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "member": "source/LICENSE",
+          "sha256": "5d632934396f90c82dfebe3c9512648bbb6333b406113d0cd331b0e0aa2d34a1"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/ethtool/debian-copyright.txt",
+          "sha256": "64d8f5aef5e6e9bbf1bd5794376c6d7124a5e975cb30f72e46a4205c62edc923"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/ethtool/original-ethtool-AUTHORS",
+          "sha256": "740925de9ebd8237b1d66c1cbf9c56c485aba157220d8fc3c43a66320e1be98e"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/ethtool/original-ethtool-COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/ethtool/original-ethtool-LICENSE",
+          "sha256": "5d632934396f90c82dfebe3c9512648bbb6333b406113d0cd331b0e0aa2d34a1"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Source": "https://www.kernel.org/pub/software/network/ethtool/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1998, David S. Miller (davem@dm.cobaltmicro.com)\n2001, Jeff Garzik <jgarzik@mandrakesoft.com>\n2009-2013, Solarflare Communications\n2013-2016, Ben Hutchings <ben@decadent.org.uk>\n2016-2020, John W. Linville <linville@tuxdriver.com>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "amd8111e.c",
+          "Copyright": "2003, Advanced Micro Devices Inc.",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "at76c50x-usb.c",
+          "Copyright": "2009, John W. Linville",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "cpsw.c",
+          "Copyright": "2022, Linutronix GmbH",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "de2104x.c",
+          "Copyright": "2001, Sun Microsystems (thockin@sun.com)",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "dsa.c fec.c",
+          "Copyright": "2018-2019, Vivien Didelot <vivien.didelot@gmail.com>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "e100.c e1000.c igb.c ixgb.c ixgbe.c ixgbevf.c",
+          "Copyright": "2002, 2006, 2007, 2013, Intel Corporation",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "et131x.c",
+          "Copyright": "2012, 2013, Mark Einon",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "fsl_enetc.c",
+          "Copyright": "2022, NXP",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "hns3.c",
+          "Copyright": "2023, Huawei Corporation",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "uapi/linux/*",
+          "Copyright": "1998, David S. Miller (davem@redhat.com)\n2001, Jeff Garzik <jgarzik@pobox.com>\n2001, 2008, Sun Microsystems (thockin@sun.com)\n2002, Intel (eli.kupermann@intel.com, christopher.leech@intel.com, scott.feldman@intel.com)",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "internal.h",
+          "Copyright": "2001, Sun Microsystems (thockin@sun.com)\n2002, Intel (scott.feldman@intel.com)",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "ethtool.8.in",
+          "Copyright": "1999, David S. Miller\n2001, Sun Microsystems\n2007, 2009, Free Software Foundation, Inc.",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "ethtool.c",
+          "Copyright": "1998, David S. Miller (davem@dm.cobaltmicro.com)\n2001, 2008, Sun Microsystems\n2001, Jeff Garzik <jgarzik@mandrakesoft.com>\n2002, 2012, Intel\n2009, 2010, Solarflare Communications\n2013-2016, Ben Hutchings <ben@decadent.org.uk>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "fec_8xx.c",
+          "Copyright": "2004, Intracom S.A.",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "fjes.c",
+          "Copyright": "2016, Fujitsu",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "ibm_emac.c",
+          "Copyright": "2004, 2005 Zultys Technologies\n2015, IBM Corporation",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "lan743x.c",
+          "Copyright": "2022, Microchip Technology Inc. and its subsidiaries",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "lan78xx.c",
+          "Copyright": "2018, Microchip Technology",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "m4/*",
+          "Copyright": "2008, Guido U. Draheim <guidod@gmx.de>\n2011, Maarten Bosmans <mkbosmans@gmail.com>",
+          "License": "GPL-3+ with autoconf exception"
+        },
+        {
+          "Files": "marvell.c",
+          "Copyright": "2004, 2006, Stephen Hemminger <shemminger@osdl.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "natsemi.c",
+          "Copyright": "2001, Sun Microsystems (thockin@sun.com)",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "uapi/linux/net_tstamp.h",
+          "Copyright": "2008, 2009, Intel Corporation",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "pcnet32.c",
+          "Copyright": "2004, IBM Corporation (jklewis@us.ibm.com)",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "qsfp.c qsfp.h sff-common.c sff-common.h",
+          "Copyright": "2010, Solarflare Communications Inc.\n2012, Aurelien Guillaume <aurelien@iwi.me>\n2014, Cumulus networks Inc.",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "realtek.c",
+          "Copyright": "2001, Sun Microsystems (thockin@sun.com)",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "rxclass.c",
+          "Copyright": "2008, Sun Microsystems",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "sfc.c sfpid.c test-cmdline.c test-common.c test-features.c",
+          "Copyright": "2010-2013, Solarflare Communications Inc.",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "sfpdiag.c",
+          "Copyright": "2012, Aurelien Guillaume",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "smsc911x.c",
+          "Copyright": "2007, SMSC",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "stmmac.c",
+          "Copyright": "2007-2009, STMicroelectronics Ltd",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "tg3.c",
+          "Copyright": "2005, Jeff Garzik\n2005, 2011, Broadcom",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "tse.c",
+          "Copyright": "2014, Altera Corporation",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "vioc.c",
+          "Copyright": "2006, Fabric7 Systems, Inc",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "vmxnet3.c",
+          "Copyright": "2015, VMware Inc.",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2001-2005, Eric Delaunay <delaunay@debian.org>\n2006-2010, Anibal Monsalve Salazar <anibal@debian.org>\n2008-2020, Ben Hutchings <ben@decadent.org.uk>\n2022-2024, Salvatore Bonaccorso <carnil@debian.org>",
+          "License": "GPL-2"
+        },
+        {
+          "License": "GPL-2"
+        },
+        {
+          "License": "GPL-3+ with autoconf exception"
+        }
+      ]
+    },
+    {
+      "name": "frr",
+      "version": "10.5.2-0",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "0f1c7b90b75ee94a01c5c95ab6bb46d14380c0f5535d2f021ceffab3dccc6006",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND 0BSD AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT AND LicenseRef-FRR-docs",
+      "original_root_legal_files": [
+        {
+          "member": "source/COPYING",
+          "sha256": "7bf053957d6c38e39a06a112c60ff35b228d3bd03edbe8c9a03508b051128d16"
+        },
+        {
+          "member": "source/doc/licenses/BSD-2-Clause",
+          "sha256": "f9e0c21faf738da586281c0beaad3cd56204c19085a10fe05e4d3d7f8b5863d2"
+        },
+        {
+          "member": "source/doc/licenses/BSD-3-Clause",
+          "sha256": "aca297b8fd3a43e3bb200f1e2e043c0db6c897325f5ff7f23f7530302a6bf713"
+        },
+        {
+          "member": "source/doc/licenses/GPL-2.0",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "member": "source/doc/licenses/GPL-3.0",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "member": "source/doc/licenses/ISC",
+          "sha256": "6d80da3224cbdcf016ea554e00fc9cd933bd1a3417cb5e5b7abf59f6d126761d"
+        },
+        {
+          "member": "source/doc/licenses/LGPL-2.1",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "member": "source/doc/licenses/LicenseRef-Skiplist-BSD-0-Clause",
+          "sha256": "2a1124bf8bc60f1f59b67e15e3d261b5d60fcd9674a3eace0a5502fd4287d528"
+        },
+        {
+          "member": "source/doc/licenses/MIT",
+          "sha256": "074415b57c6ba1780483d89e55f40dec3ded96c28aaf47d63c486683ba553e7c"
+        },
+        {
+          "member": "source/doc/licenses/Unlicense",
+          "sha256": "b5065838cbac452dfc855ba6e6e031481ad2c68406f70d21ead9321374653e6c"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/frr/debian-copyright.txt",
+          "sha256": "0f1c7b90b75ee94a01c5c95ab6bb46d14380c0f5535d2f021ceffab3dccc6006"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-frr-COPYING",
+          "sha256": "7bf053957d6c38e39a06a112c60ff35b228d3bd03edbe8c9a03508b051128d16"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-BSD-2-Clause",
+          "sha256": "f9e0c21faf738da586281c0beaad3cd56204c19085a10fe05e4d3d7f8b5863d2"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-BSD-3-Clause",
+          "sha256": "aca297b8fd3a43e3bb200f1e2e043c0db6c897325f5ff7f23f7530302a6bf713"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-GPL-2.0",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-GPL-3.0",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-ISC",
+          "sha256": "6d80da3224cbdcf016ea554e00fc9cd933bd1a3417cb5e5b7abf59f6d126761d"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-LGPL-2.1",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-LicenseRef-Skiplist-BSD-0-Clause",
+          "sha256": "2a1124bf8bc60f1f59b67e15e3d261b5d60fcd9674a3eace0a5502fd4287d528"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-MIT",
+          "sha256": "074415b57c6ba1780483d89e55f40dec3ded96c28aaf47d63c486683ba553e7c"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/frr/original-Unlicense",
+          "sha256": "b5065838cbac452dfc855ba6e6e031481ad2c68406f70d21ead9321374653e6c"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation.",
+        "Preserve FRR custom manual permissions, including identical derivative-manual terms and approved translations. Preserve the original community best-effort licensing statement without claiming a title warranty.",
+        "Choose GPLv3 for an FRR binary combining Apache-licensed gRPC, as stated by upstream. The GPLv2-or-later FRR grant permits this selection. This does not relicense separately GPLv2-only code or establish compatibility for other combinations. Actual binary linkage and source delivery remain independent release gates."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "FRR",
+          "Upstream-Contact": "maintainers@frrouting.org, security@frrouting.org",
+          "Source": "https://www.frrouting.org/"
+        },
+        {
+          "Files": "*",
+          "Comment": "Note: GPL Versions of FRR binaries\nIf GRPC module is installed then please be aware that the\ncombination of the GRPC (licensed under Apache License) and\nFRR (Licensed under GPLv2+) will force the resulting grpc\nmodules and related binaries to GPLv3\nImpacted binary files: frr/libfrrgrpc_pb.* frr/modules/grpc.so\nFRR built or used without GRPC is not impacted",
+          "Copyright": "1996-2003 by the original Zebra authors:\nKunihiro Ishiguro <kunihiro@zebra.org>\nToshiaki Takada <takada@zebra.org>\nYasuhiro Ohara <yasu@sfc.wide.ad.jp>\n2003-2016 by the Quagga Project\n2016-2018 by the FRRouting Project\nAdam Fitzgerald                2017\nAlex Couloumbis                2017\nAlexandre Cassen               2001-2017\nAlexandre Chappuis             2011\nAlexis Fasquel                 2015\nAli Rezaee                     2018\nAmeya Dharkar                  2018\nAmritha Nambiar                2015\nAndreas Jaggi                  2017\nAndrew Certain                 2012\nAndrew J. Schorr               2004-2011\nAndrew Lunn                    2017\nAndrey Korolyov                2017-2018\nAng Way Chuang                 2012\nAnuradha Karuppiah             2016-2018\nArthur Jones                   2018\nAvneesh Sachdev                2012, 2016\nAyan Banerjee                  2012\nBalaji G.                      2011-2016\nBarry Friedman                 2011\nBartek Kania                   2008\nBaruch Siach                   2016\nBingen Eguzkitza               2016-2017\nBoian Bonev                    2013\nBoris Yakubov                  2013\nBrad Smith                     2012\nBrett Ciphery                  2013\nBrian Bennett                  2015\nBrian Rak                      2017\nChirag Shah                    2017-2018\nChris Caputo                   2009-2010\nChris Hall                     2010\nChris Luke                     2011\nChristian Franke               2012-2018\nChristian Hammers              2011\nChristoffer Hansen             2018\nChristoph Dwertmann            2018\nColin Petrie                   2016\nCumulus Networks               2013-2019\nDaniel Kozlowski               2012\nDaniel Ng                      2008\nDaniel Walton                  2015-2018\nDaniil Baturin                 2018\nDario Wiesner                  2018\nDave Olson                     2016-2017\nDavid BÉRARD                   2010\nDavid Lamparter                2009-2018\nDavid Lebrun                   2016\nDavid Ward                     2009-2012\nDavid Young                    2007\nDenil Vira                     2015\nDenis Ovsienko                 2007-2012\nDinesh Dutt                    2012-2013\nDinesh G. Dutt                 2013-2017\nDmitrij Tejblum                2009-2011\nDmitry Popov                   2011\nDon Slice                      2016-2018\nDonald Sharp                   2015-2018\nDonatas Abraitis               2018\nDongling Duan                  2018\nDonnie Savage                  2017\nDoug VanLeuven                 2012\nDylan Hall                     2011\nEmanuele Di Pascale            2018\nEric Pulvino                   2017\nEverton Marques                2012-2014\nEvgeny Uskov                   2016\nF. Aragon                      2018\nFatih USTA                     2017\nFeng Lu                        2014-2015\nFernando Soto                  2015\nFrancesco Dolcini              2009\nFredi Raspall                  2016-2018\nFritz Reichmann                2011\nG. Paul Ziemba                 2016-2018\nGreg Troxel                    2003-2007, 2010-2015\nHasso Tepper                   2003-2007, 2012-2013\nHiroshi Yokoi                  2015\nHongguang Li                   2016\nHung-Weic Chiu                 2017\nIgor Ryzhov                    2016\nIlya Shipitsin                 2018\nIngo Flaschberger              2011\nIvan Moskalyov                 2010\nJR Rivers                      2012\nJafar Al-Gharaibeh             2009, 2015-2018\nJarad Olson                    2018\nJaroslav Fojtik                2011\nJeremy Jackson                 2008-2009\nJingjing Duan                  2008-2009\nJoachim Nilsson                2012-2013\nJoakim Tjernlund               2008-2014\nJob Snijders                   2016\nJohn Berezovik                 2016\nJohn Glotzer                   2014\nJohn Kemp                      2011\nJon Andersson                  2009-2011\nJorge Boncompte                2012-2013, 2017\nJosh Bailey                    2011-2012\nJuergen Kammer                 2017\nJulien Courtat                 2016\nJuliusz Chroboczek             2012\nKaloyan Kovachev               2015-2017\nKen Williams                   2014\nKhiruthigai Balasubramanian    2016\nKrisztian Kovacs               2009\nKunihiro Ishiguro              2018\nLeonard Tracy                  2012\nLeonid Rosenboim               2012-2013\nLiu Xiaofeng                   2016\nLou Berger                     2013, 2016-2018\nLu Feng                        2014-2015\nLucian Cristian                2017\nMaitane Zotes                  2014\nManuel Schweizer               2017\nMarcel Röthke                  2017-2018\nMark Stapp                     2018\nMartin Buck                    2018\nMartin Winter                  2015-2018\nMartín Beauchamp               2017\nMathias Krause                 2010\nMathieu Goessens               2009\nMatthew Smith                  2017\nMatthias Ferdinand             2011\nMatthieu Boutier               2012, 2016-2017\nMatti-Oskari Leppänen          2013\nMichael Lambert                2008-2010\nMichael Rossberg               2015\nMichael Zingg                  2012\nMichal Sekletar                2014\nMike Tancsa                    2017\nMilan Kocian                   2013-2014\nMitesh Kanjariya               2017-2018\nMladen Sablic                  2017-2018\nMorgan Stewart                 2015\nNathan Van Gheem               2018\nNick Hilliard                  2009-2012\nNico Golde                     2010\nNicolas Dichtel                2015\nNigel Kukard                   2017\nNolan Leake                    2012\nOleg A. Arkhangelsky           2011\nOlivier Cochard-Labbé          2014\nOlivier Dugeon                 2014-2018\nOndrej Zajicek                 2009\nOpen Source Routing / NetDEF   2012-2017\nPascal Mathis                  2018\nPaul Jakma                     2002-2016\nPaul P Komkoff Jr              2008\nPawel Wieczorkiewicz           2016\nPeter Pentchev                 2011\nPeter Szilagyi                 2011\nPhil Huang                     2017\nPhil Laverdiere                2012\nPhilippe Guibert               2016-2018\nPiotr Jurkiewicz               2018\nPradosh Mohapatra              2013-2014\nQuentin Young                  2016-2018\nRadhika Mahankali              2015-2017\nRafael Zalamena                2017-2018\nRakesh Garimella               2013\nRaymond P. Burkholder          2017\nRemi Gacogne                   2013\nRenato Westphal                2012, 2016-2018\nRobert Bays                    2010\nRoderick Schertler             2011\nRodny Molina                   2018\nRoman Hoog Antink              2010-2013\nRuben Kerkhof                  2018\nRuss White                     2017-2018\nRyan Hagelstrom                2017\nSam Tannous                    2016-2017\nSarita Patra                   2018\nSebastian Lohff                2017\nSergey Fionov                  2018\nSergey Y. Afonin               2011\nSerj Kalichev                  2012\nSid Khot                       2016\nSilas McCroskey                2017-2018\nStephane Litkowski             2017\nStephen Hemminger              2008-2014\nStephen Worley                 2018\nSteve Hill                     2009\nStig Thormodsrud               2008\nSubbaiah Venkata               2012\nSvata Dedic                    2011\nSébastien Luttringer           2014\nTakashi Sogabe                 2009\nThijs Kinkhorst                2009\nThomas Gelf                    2018\nThomas Petazzoni               2016\nThomas Ries                    2011\nThorvald Natvig                2017\nTigran Martirosyan             2018\nTimo Teräs                     2008-2009, 2013-2017\nTimothy Redaelli               2017\nTom Goff                       2009-2011\nTom Henderson                  2009\nTomasz Pala                    2009\nUdaya Shankara KS              2016\nUlrich Weber                   2011-2013\nVasilis Tsiligiannis           2009\nVincent Bernat                 2012, 2017-2018\nVincent Jardin                 2003-2007, 2014, 2017-2018\nVipin Kumar                    2014-2015\nVishal Dhingra                 2018\nVishal Kumar                   2012\nVitaliy Senchyshyn             2013\nVivek Venkatraman              2015-2018\nVladimir L Ivanov              2010\nVyacheslav Trushkin            2011-2012\nVystoropskyi, Sergii           2015\nWataru Tanitsu                 2010\nWenjian Ma                     2015\nWill McLendon                  2017\nYAMAMOTO Shigeru               2011\nYasuhiro Ohara                 2009\nZefan Xu                       2018\ndturlupov                      2018\nheasley                        2009-2011\njaydom                         2017\njpmondet                       2018\nkssoman                        2018\nlihongguang                    2018\nlyq140                         2018\npcarana                        2018\npogojotz                       2017\ntigranmartirosyan              2017\ntmartiro                       2017\nvize                           2007\n高鹏                           2012",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "lib/strl*.c",
+          "License": "LGPL-2.1+",
+          "Copyright": "Copyright (C) 2016 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "lib/skiplist.*",
+          "License": "BSD-0-clause",
+          "Copyright": "Copyright 1990 William Pugh"
+        },
+        {
+          "Files": "lib/sha256.*",
+          "License": "BSD-2-clause",
+          "Copyright": "Copyright 2005,2007,2009 Colin Percival"
+        },
+        {
+          "Files": "lib/qobj.h lib/monotime.h lib/memory.* lib/hook.* lib/frratomic.h lib/ferr.* lib/compiler.h lib/module.*",
+          "License": "ISC",
+          "Copyright": "Copyright (c) 2015-18  David Lamparter, for NetDEF, Inc."
+        },
+        {
+          "Files": "nhrpd/nhrp_protocol.h",
+          "License": "MIT",
+          "Copyright": "Copyright (c) 2007-2012 Timo Teräs <timo.teras@iki.fi>"
+        },
+        {
+          "Files": "babeld/*",
+          "License": "MIT",
+          "Copyright": "\nCopyright 2011 by Matthieu Boutier and Juliusz Chroboczek\nCopyright 2007, 2008 by Grégoire Henry, Julien Cristau and Juliusz Chroboczek"
+        },
+        {
+          "Files": "babeld/babel_errors.*",
+          "License": "GPL-2+",
+          "Copyright": "Copyright (C) 2017-2018 Donald Sharp, Cumulus Networks, Inc."
+        },
+        {
+          "Files": "ldpd/*",
+          "License": "ISC",
+          "Copyright": "\nCopyright (c) 2003, 2004 Henning Brauer <henning@openbsd.org>\nCopyright (c) 2003, 2004 Markus Friedl <markus@openbsd.org>\nCopyright (c) 2004, 2005, 2008 Esben Norby <norby@openbsd.org>\nCopyright (c) 2004, 2005, 2012 Claudio Jeker <claudio@openbsd.org>\nCopyright (c) 2009 Michele Marchetto <michele@openbsd.org>\nCopyright (c) 2012 Alexander Bluhm <bluhm@openbsd.org>\nCopyright (c) 2013-2016 Renato Westphal <renato@openbsd.org>\nCopyright (C) 2016 by Open Source Routing."
+        },
+        {
+          "Files": "ldpd/ldp_debug.* ldpd/ldp_vty* ldpd/ldp_zebra.c",
+          "License": "GPL-2+",
+          "Copyright": "\nCopyright (C) 2016 by Open Source Routing."
+        },
+        {
+          "Files": "doc/user/*.rst doc/figures/fig*",
+          "Copyright": "Copyright (c) 1996-2018 Kunihiro Ishiguro, et al.",
+          "License": "FRR-docs"
+        },
+        {
+          "Files": "lib/freebsd-queue.h lib/openbsd-queue.h lib/md5.*",
+          "License": "BSD-3-clause",
+          "Copyright": "\nCopyright (c) 1991, 1993 The Regents of the University of California.\nCopyright (C) 1995, 1996, 1997, and 1998 WIDE Project.\nCopyright (C) 2004 6WIND <Vincent.Jardin@6WIND.com>"
+        },
+        {
+          "Files": "lib/openbsd-tree.*",
+          "License": "BSD-2-clause",
+          "Copyright": "\nCopyright 2002 Niels Provos <provos@citi.umich.edu>\nCopyright (c) 2016 David Gwynne <dlg@openbsd.org>"
+        },
+        {
+          "Files": "lib/imsg*",
+          "License": "ISC",
+          "Copyright": "\nCopyright (c) 2003, 2004 Henning Brauer <henning@openbsd.org>\nCopyright (c) 2006, 2007 Pierre-Yves Ritschard <pyr@openbsd.org>\nCopyright (c) 2006, 2007, 2008 Reyk Floeter <reyk@openbsd.org>"
+        },
+        {
+          "Files": "qpb/qpb.proto fpm/fpm.proto",
+          "License": "ISC",
+          "Copyright": "Copyright (C) 2016 Sproute Networks, Inc."
+        },
+        {
+          "Files": "doc/extra/frrlexer.py",
+          "License": "ISC",
+          "Copyright": "Copyright (c) 2017 Vincent Bernat <bernat@luffy.cx>"
+        },
+        {
+          "Files": "tests/helpers/python/frrsix.py",
+          "License": "MIT",
+          "Copyright": "Copyright (c) 2010-2017 Benjamin Peterson"
+        },
+        {
+          "License": "GPL-2+"
+        },
+        {
+          "License": "LGPL-2.1+"
+        },
+        {
+          "License": "GPL-3"
+        },
+        {
+          "License": "BSD-0-clause"
+        },
+        {
+          "License": "BSD-2-clause"
+        },
+        {
+          "License": "BSD-3-clause"
+        },
+        {
+          "License": "ISC"
+        },
+        {
+          "License": "MIT"
+        }
+      ]
+    },
+    {
+      "name": "isc-kea",
+      "version": "3.0.2-vyos",
+      "source_identity": "74df5a10c6f8531fe0816db30c79884d6cb70d1438b28dc10c6229b4b5fa995f",
+      "copyright_sha256": "2a62e2ede4af11145c1424e12b484bb9de26cfb0fe67df1348c1903877c66710",
+      "evidence_member": "copyright",
+      "license": "MPL-2.0 AND Apache-2.0 AND BSL-1.0 AND (GPL-3.0-or-later WITH Bison-exception-2.2)",
+      "original_root_legal_files": [
+        {
+          "member": "source/AUTHORS",
+          "sha256": "b4145c08c03d8e9c087e7564d2aa19951ec06b4e8c694944ad57529ecdab1e17"
+        },
+        {
+          "member": "source/COPYING",
+          "sha256": "05aced830b7c5ed890ac1393023246adab5c1c9efba5c3065521aa62dc620d55"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/isc-kea/debian-copyright.txt",
+          "sha256": "2a62e2ede4af11145c1424e12b484bb9de26cfb0fe67df1348c1903877c66710"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/isc-kea/original-isc-kea-AUTHORS",
+          "sha256": "b4145c08c03d8e9c087e7564d2aa19951ec06b4e8c694944ad57529ecdab1e17"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/isc-kea/original-isc-kea-COPYING",
+          "sha256": "05aced830b7c5ed890ac1393023246adab5c1c9efba5c3065521aa62dc620d55"
+        },
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/BSL-1.0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation.",
+        "Preserve the exact Bison skeleton exception and its output-only scope. Boost-licensed TLS test clients are not represented as part of the installed runtime. Keep MPL2 source available under MPL2."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2010-2025, Internet Systems Consortium, Inc. (\"ISC\")",
+          "License": "MPL-2.0"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2016-2018, Adam Majer <adamm@zombino.com>\n2017-2018, Jason Guy (jason.e.guy@gmail.com)\n2018-2023, Internet Systems Consortium, Inc.",
+          "License": "MPL-2.0"
+        },
+        {
+          "Files": "src/bin/agent/agent_parser.cc\nsrc/bin/agent/agent_parser.h\nsrc/bin/agent/location.hh\nsrc/bin/agent/position.hh\nsrc/bin/agent/stack.hh\nsrc/bin/d2/d2_parser.cc\nsrc/bin/d2/d2_parser.h\nsrc/bin/d2/location.hh\nsrc/bin/d2/position.hh\nsrc/bin/d2/stack.hh\nsrc/bin/dhcp4/dhcp4_parser.cc\nsrc/bin/dhcp4/dhcp4_parser.h\nsrc/bin/dhcp4/location.hh\nsrc/bin/dhcp4/position.hh\nsrc/bin/dhcp4/stack.hh\nsrc/bin/dhcp6/dhcp6_parser.cc\nsrc/bin/dhcp6/dhcp6_parser.h\nsrc/bin/dhcp6/location.hh\nsrc/bin/dhcp6/position.hh\nsrc/bin/dhcp6/stack.hh\nsrc/lib/eval/location.hh\nsrc/lib/eval/parser.cc\nsrc/lib/eval/parser.h\nsrc/lib/eval/position.hh\nsrc/lib/eval/stack.hh",
+          "Copyright": "2002-2015, Free Software Foundation, Inc.",
+          "License": "GPL-3+-with-bison-exception"
+        },
+        {
+          "Files": "src/lib/util/encode/*",
+          "Copyright": "2002, Robert Ramey - http:www.rrsd.com .",
+          "License": "BSL-1.0"
+        },
+        {
+          "License": "Apache-2.0"
+        },
+        {
+          "License": "GPL-3+-with-bison-exception"
+        },
+        {
+          "License": "MPL-2.0"
+        },
+        {
+          "License": "BSL-1.0"
+        }
+      ]
+    },
+    {
+      "name": "nftables",
+      "version": "1.0.9-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "b5498c0fcbc1365229d6b0be883e2827c3b0444577fb83ff8cae35a7808610a4",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND CC-BY-SA-4.0",
+      "original_root_legal_files": [
+        {
+          "member": "source/COPYING",
+          "sha256": "4ee1e51baf5f3166712fa0c3e01338c7257e50ddef245d28bb14ad68f6070ba5"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/nftables/debian-copyright.txt",
+          "sha256": "b5498c0fcbc1365229d6b0be883e2827c3b0444577fb83ff8cae35a7808610a4"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/nftables/original-nftables-COPYING",
+          "sha256": "4ee1e51baf5f3166712fa0c3e01338c7257e50ddef245d28bb14ad68f6070ba5"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-4.0.txt",
+          "sha256": "a1d1adec3ba691ef6e377a78bbe9e9e2501f2f4a1723d08857da1ac6564e4fed"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation.",
+        "The original COPYING explicitly selects GPLv2-only for original nftables code, with later code permitting later versions. The Debian GPL-2 paragraph says Library General Public License in error; this does not override the actual upstream COPYING. Preserve both original texts.",
+        "Keep Patrick McHardy manual attribution and CC-BY-SA4 source/license link. Any actual adapted manual remains ShareAlike; impose no extra restrictions or DRM."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "nftables",
+          "Source": "http://git.netfilter.org/nftables"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2008 Patrick McHardy <kaber@trash.net>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "tests/py/nft-test.py",
+          "Copyright": "2014 Ana Rey Botello <anarey@gmail.com>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "src/nfnl_osf.c",
+          "Copyright": "2005 Evgeniy Polyakov <johnpol@2ka.mxt.ru>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "py/nftables.py",
+          "Copyright": "2018 Phil Sutter <phil@nwl.cc>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/libnftables.c include/nftables/libnftables.h",
+          "Copyright": "2017 Eric Leblond <eric@regit.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/netlink.c",
+          "Copyright": "2008-2012 Patrick McHardy <kaber@trash.net>\n2013 Pablo Neira Ayuso <pablo@netfilter.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/netlink_delinearize.c src/netlink_linearize.c",
+          "Copyright": "2008 Patrick McHardy <kaber@trash.net>\n2013 Pablo Neira Ayuso <pablo@netfilter.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/mnl.c",
+          "Copyright": "2013 Pablo Neira Ayuso <pablo@netfilter.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/iface.c",
+          "Copyright": "2015 Pablo Neira Ayuso <pablo@netfilter.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/hash.c",
+          "Copyright": "2016 Pablo Neira Ayuso <pablo@netfilter.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/mini-gmp.c include/mini-gmp.h",
+          "Copyright": "1991-1997, 1999-2014, Free Software Foundation, Inc",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "src/xt.c",
+          "Copyright": "2013-2015 Pablo Neira Ayuso <pablo@netfilter.org>\n2015 Arturo Borrero Gonzalez <arturo@debian.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/mergesort.c",
+          "Copyright": "2017 Elise Lennion <elise.lennion@gmail.com>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/rt.c",
+          "Copyright": "2016 Anders K. Pedersen <akp@cohaesio.com>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "src/fib.c",
+          "Copyright": "Red Hat GmbH",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "include/linux/netfilter_arp.h",
+          "Copyright": "2002 Rusty Russell - IBM",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "include/linux/netfilter_decnet.h",
+          "Copyright": "1999 Steve Whitehouse\n1998 Rusty Russell",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "include/linux/netfilter_ipv6.h",
+          "Copyright": "1998 Rusty Russell\n1999 David Jeffery",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "include/linux/netfilter_ipv4.h",
+          "Copyright": "1998 Rusty Russell",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "files/osf/pf.os",
+          "Copyright": "2000-2003 by Michal Zalewski <lcamtuf@coredump.cx>\n2003 by Mike Frantzen <frantzen@w4g.org>",
+          "License": "GPL-2"
+        },
+        {
+          "Files": "doc/nft.txt",
+          "Copyright": "2008-2014 Patrick McHardy <kaber@trash.net>",
+          "License": "CC-BY-SA-4.0"
+        },
+        {
+          "License": "GPL-2"
+        },
+        {
+          "License": "GPL-2+"
+        },
+        {
+          "License": "CC-BY-SA-4.0"
+        }
+      ]
+    },
+    {
+      "name": "libnftnl",
+      "version": "1.2.6-2",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "04504e56793a5499dbb92a072196d2c4f6cc70e8514747543df19774e46bcc6c",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later AND GPL-2.0-only",
+      "original_root_legal_files": [
+        {
+          "member": "source/COPYING",
+          "sha256": "98193898c663001eff2fdcfb676e210c13042bc1a05e8d570c363efa396f8e24"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/libnftnl/debian-copyright.txt",
+          "sha256": "04504e56793a5499dbb92a072196d2c4f6cc70e8514747543df19774e46bcc6c"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/libnftnl/original-libnftnl-COPYING",
+          "sha256": "98193898c663001eff2fdcfb676e210c13042bc1a05e8d570c363efa396f8e24"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libnftnl",
+          "Source": "https://git.netfilter.org/libnftnl"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013 Pablo Neira Ayuso <pablo@netfilter.org>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "tests/nft-chain-test.c tests/nft-expr_*-test.c tests/nft-rule-test.c tests/nft-set-test.c tests/nft-table-test.c",
+          "Copyright": "2012 Ana Rey Botello <anarey@gmail.com>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2021 Arturo Borrero Gonzalez <arturo@debian.org>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "src/ruleset.c",
+          "Copyright": "2012-2013 Pablo Neira Ayuso <pablo@nefilter.org>\n2013 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>\n2013 Alvaro Neira Ayuso <alvaroneay@gmail.com>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "src/utils.c",
+          "Copyright": "2012-2013 Pablo Neira Ayuso <pablo@nefilter.org>\n2013 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "src/expr/masq.c src/expr/redir.c",
+          "Copyright": "2014 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "src/expr/queue.c",
+          "Copyright": "2013 Eric Leblond <eric@regit.org>",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "src/expr/nat.c",
+          "Copyright": "2012-2014 Pablo Neira Ayuso <pablo@netfilter.org>\n2012 Intel Corporation",
+          "License": "GPL-2+"
+        },
+        {
+          "Files": "examples/nft-ruleset-get.c",
+          "Copyright": "2013 Arturo Borrero Gonzalez <arturo.borrero.glez@gmail.com>",
+          "License": "GPL-2"
+        },
+        {
+          "License": "GPL-2+"
+        },
+        {
+          "License": "GPL-2"
+        }
+      ]
+    },
+    {
+      "name": "owamp",
+      "version": "4.4.6-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "41d7152e543c7128a1b46baf9088895c7e943396ec45ef1bdfa0fbf9163e17c5",
+      "evidence_member": "copyright",
+      "license": "Apache-2.0",
+      "original_root_legal_files": [
+        {
+          "member": "source/LICENSE",
+          "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/owamp/debian-copyright.txt",
+          "sha256": "41d7152e543c7128a1b46baf9088895c7e943396ec45ef1bdfa0fbf9163e17c5"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/owamp/original-owamp-LICENSE",
+          "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "owamp",
+          "Source": "http://software.internet2.edu/owamp/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2002 Internet2\n2011-2018 perfSONAR project",
+          "License": "Apache-2.0"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2014-2018 perfSONAR project",
+          "License": "Apache-2.0"
+        },
+        {
+          "License": "Apache-2.0"
+        }
+      ]
+    },
+    {
+      "name": "wide-dhcpv6",
+      "version": "20080615-23",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "efe4a66328c0e6dd6103bd2d3170d2f2639d3d7d0bf12d75ff33775817d67a4b",
+      "evidence_member": "copyright",
+      "license": "BSD-3-Clause AND ISC AND BSD-4-Clause AND (GPL-2.0-or-later WITH Bison-exception-1.24)",
+      "original_root_legal_files": [
+        {
+          "member": "source/COPYRIGHT",
+          "sha256": "de49caaca650d3e2725cfe3043b8122d650c7bc866fe3c629ca6982c07828f71"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/wide-dhcpv6/debian-copyright.txt",
+          "sha256": "efe4a66328c0e6dd6103bd2d3170d2f2639d3d7d0bf12d75ff33775817d67a4b"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/wide-dhcpv6/original-wide-dhcpv6-COPYRIGHT",
+          "sha256": "de49caaca650d3e2725cfe3043b8122d650c7bc866fe3c629ca6982c07828f71"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation.",
+        "Advertising mentioning covered software features/use must retain: This product includes software developed by the University of California, Berkeley and its contributors. The original BSD4 clause remains retained. Bison1.24 exception applies only to its covered generated output."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "wide-dhcpv6",
+          "Upstream-Contact": "SUZUKI Shinsuke <suz@kame.net>",
+          "Source": "http://wide-dhcpv6.sourceforge.net/",
+          "Comment": "This package was debianized by Jeremie Corbier <jeremie.corbier@resel.enst-bretagne.fr> on Sat, 28 Jan 2006 23:30:58 +0100."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1998-2008, WIDE Project",
+          "License": "BSD-3-clause"
+        },
+        {
+          "Files": "auth.c base64.c",
+          "Copyright": "2004, WIDE Project\n2004  Internet Systems Consortium, Inc. (\"ISC\")\n2000, 2001  Internet Software Consortium.",
+          "License": "BSD-3-clause and ISC"
+        },
+        {
+          "Files": "cfparse.c y.tab.h",
+          "Copyright": "1984, 1989, 1990, 2000-2005, Free Software Foundation, Inc\n1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.",
+          "License": "GPL-2+ with Bison-1.24 exception"
+        },
+        {
+          "Files": "missing/strlcat.c missing/strlcpy.c",
+          "Copyright": "1998, Todd C. Miller <Todd.Miller@courtesan.com>",
+          "License": "BSD-3-clause"
+        },
+        {
+          "Files": "missing/sys/queue.h",
+          "Copyright": "1991, 1993, The Regents of the University of California.",
+          "License": "BSD-4-clause-UC"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2006-2015, Jeremie Corbier <jeremie@famille-corbier.net>\n2010, Bjørn Mork <bjorn@mork.no>\n2011, wide-dhcpv6 & nedenstående oversættere.\n2011, Joe Hansen <joedalton2@yahoo.dk>\n2007, 2009, Software in the Public Interest\n2012, Beatrice Torracca <beatricet@libero.it>\n2009, Hideki Yamane <henrich@debian.or.jp>\n2011, Jeroen Schot <schot@a-eskwadraat.nl>\n2012, Michał Kułach <michal.kulach@gmail.com>\n2007, Américo Monteiro <a_monteiro@netcabo.pt>\n2011, Felipe Duarte <mr.fd1979@rocketmail.com>\n2015, Eder L. Marques <eder@edermarques.net>\n2009, Yuri Kozlov <yuray@komyakino.ru>\n2015-2020, Roger Shimizu <rosh@debian.org>",
+          "License": "BSD-3-clause"
+        },
+        {
+          "License": "BSD-3-clause"
+        },
+        {
+          "License": "ISC"
+        },
+        {
+          "License": "BSD-4-clause-UC"
+        },
+        {
+          "License": "GPL-2+ with Bison-1.24 exception"
+        }
+      ]
+    },
+    {
+      "name": "accel-ppp-ng",
+      "version": "1.13.0",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "50ae36e1163a8633fc7168a8bc4facadb2b9f21b4ee64e5d5736b17658378667",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only",
+      "original_root_legal_files": [
+        {
+          "member": "source/COPYING",
+          "sha256": "e6d6a009505e345fe949e1310334fcb0747f28dae2856759de102ab66b722cb4"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/accel-ppp-ng/debian-copyright.txt",
+          "sha256": "50ae36e1163a8633fc7168a8bc4facadb2b9f21b4ee64e5d5736b17658378667"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/accel-ppp-ng/original-accel-ppp-ng-COPYING",
+          "sha256": "e6d6a009505e345fe949e1310334fcb0747f28dae2856759de102ab66b722cb4"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation."
+      ],
+      "original_scope_metadata": null
+    },
+    {
+      "name": "libyang3",
+      "version": "3.13.6-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "ce53479e22d66c94bbfece61350806f9cb71bb7faf1562880a45c709cc8ea171",
+      "evidence_member": "copyright",
+      "license": "BSD-3-Clause AND BSD-2-Clause AND LicenseRef-IETF-TLP-4-Code",
+      "original_root_legal_files": [
+        {
+          "member": "source/LICENSE",
+          "sha256": "9fe5fa94b97504d1bc32b4221cc3d32a2bd10b2086583b980ce36a3207a88eab"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/libyang3/debian-copyright.txt",
+          "sha256": "ce53479e22d66c94bbfece61350806f9cb71bb7faf1562880a45c709cc8ea171"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/libyang3/original-libyang3-LICENSE",
+          "sha256": "9fe5fa94b97504d1bc32b4221cc3d32a2bd10b2086583b980ce36a3207a88eab"
+        },
+        {
+          "path": "LICENSES/IETF-TLP-4-code-components.txt",
+          "sha256": "00f2e0c038d7bec03953953ce08ac4d02b0dac53c87bb167c36760a7f2807222"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation.",
+        "Keep original IETF YANG module RFC attribution, years/authors and full source legends. IETF TLP4 section4.c applies to the identified Code Components, not general RFC prose; no patent right or endorsement is asserted."
+      ],
+      "original_scope_metadata": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libyang",
+          "License": "BSD-3-clause"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2015-2021 by CESNET, z.s.p.o.",
+          "License": "BSD-3-clause"
+        },
+        {
+          "Files": "*/iana-*.yin */iana-*.yang */ietf-*.yin */ietf-*.yang */ietf-*.h",
+          "Copyright": "2011-2018 by the IETF Trust and the persons identified as authors",
+          "License": "IETF-BSD-3-clause"
+        },
+        {
+          "Files": "tools/lint/linenoise/*",
+          "Copyright": "\nCopyright (c) 2010-2014, Salvatore Sanfilippo <antirez at gmail dot com>\nCopyright (c) 2010-2013, Pieter Noordhuis <pcnoordhuis at gmail dot com>",
+          "License": "BSD-2-clause"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2018 by David Lamparter\n2020-2021 Ondřej Surý",
+          "License": "BSD-3-clause"
+        },
+        {
+          "License": "BSD-3-clause"
+        }
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "primary_scope_references": [
+    "https://www.rfc-editor.org/rfc/rfc6536.html",
+    "https://trustee.ietf.org/license-info/IETF-TLP-4.htm"
+  ],
+  "scope": "Original published component declarations and corresponding original legal bytes; this does not warrant title or supersede individual file restrictions. Full OS source, linkage and guest gates remain independent."
+}
