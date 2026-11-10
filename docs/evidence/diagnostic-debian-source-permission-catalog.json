@@ -1,0 +1,3695 @@
+{
+  "kind": "exact-observed-debian-source-permission-catalog",
+  "status": "PASS_STATIC_CATALOG_ONLY",
+  "catalog_groups": 460,
+  "original_source_groups": 455,
+  "preferred_source_groups": 5,
+  "unmatched_groups": 0,
+  "required_notice_hash_bindings_verified": 560,
+  "license_audit_sha256": "a0713ee28d38784bc6a7dfd099793f3a944acb6b8132da4d47180dda88fe6924",
+  "components": [
+    {
+      "source": "aardvark-dns",
+      "version": "1.4.0-3",
+      "original_descriptor_sha256": "5e20f184e1fca20c70d0a4f9f530c3a19addaf01878a49b97a3efb09aac03308",
+      "delivery_source_identity": "5e20f184e1fca20c70d0a4f9f530c3a19addaf01878a49b97a3efb09aac03308",
+      "copyright_sha256": "53ace3d54b8ffefd80631a8de6f830cfc01fc75d154c747f75882f96221c1f67",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "acl",
+      "version": "2.3.1-3",
+      "original_descriptor_sha256": "7820eee88cce7244e0b8eb25cc4f51bdf10aff7a6c1a497f3d18c36bdce712cc",
+      "delivery_source_identity": "7820eee88cce7244e0b8eb25cc4f51bdf10aff7a6c1a497f3d18c36bdce712cc",
+      "copyright_sha256": "9a2dfb4a5abc7e84be2cc41f1089be665519c9409549296f6c19de57ab1d37c2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "acpid",
+      "version": "1:2.0.33-2",
+      "original_descriptor_sha256": "2605fb7fc5253650b46c7afa726654a581d7ae6d512e75b6f550c490b7597a62",
+      "delivery_source_identity": "2605fb7fc5253650b46c7afa726654a581d7ae6d512e75b6f550c490b7597a62",
+      "copyright_sha256": "7a8f0c4796bc4ff2b328586de780427bb6d6126b645f1cd509b33b499033c2a8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "adduser",
+      "version": "3.134",
+      "original_descriptor_sha256": "608ed02073381a8af28f29c3a2e390ddff7caee6b013a533fffc16b660fa80a4",
+      "delivery_source_identity": "608ed02073381a8af28f29c3a2e390ddff7caee6b013a533fffc16b660fa80a4",
+      "copyright_sha256": "b143053a4862ab354831487b5f8bd31dc9ffdc589d15de9d9c764332a0209796",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "apparmor",
+      "version": "3.0.8-3",
+      "original_descriptor_sha256": "f92c7dc0519e89747148af64d6678f526fde3925eb59d58f6414f8c1262f69e4",
+      "delivery_source_identity": "f92c7dc0519e89747148af64d6678f526fde3925eb59d58f6414f8c1262f69e4",
+      "copyright_sha256": "52b7cf37d674ca47296cf6270a95ecda0ecbef976cc090d702acbd741e36b3b4",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "apt",
+      "version": "2.6.2",
+      "original_descriptor_sha256": "63490cc85118a0eb7a3109696311920ffa70f3f9ad718bcaf126445496049c74",
+      "delivery_source_identity": "63490cc85118a0eb7a3109696311920ffa70f3f9ad718bcaf126445496049c74",
+      "copyright_sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "aptitude",
+      "version": "0.8.13-5",
+      "original_descriptor_sha256": "32750ad518b10458242b1b75f9bc1c64204bd82a3e066502d1156f279899019b",
+      "delivery_source_identity": "32750ad518b10458242b1b75f9bc1c64204bd82a3e066502d1156f279899019b",
+      "copyright_sha256": "4d5aec32d25ef7c71e6b287e40510506bf5a4c834a8486f57a54956730279467",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "argon2",
+      "version": "0~20171227-0.3+deb12u1",
+      "original_descriptor_sha256": "64b82cae9e03543f045506391398472f5659a391d626b4ad701c845bd5cfb862",
+      "delivery_source_identity": "64b82cae9e03543f045506391398472f5659a391d626b4ad701c845bd5cfb862",
+      "copyright_sha256": "9482894dde0cdc3eea4abff3a9c54495d2a1ae4c6c87f4f647908ee0078b5b80",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "arpwatch",
+      "version": "2.1a15-8",
+      "original_descriptor_sha256": "0391374c71d5e7a0bd9233fc9271873f45846ffb838f389ca81d896eada0e711",
+      "delivery_source_identity": "0391374c71d5e7a0bd9233fc9271873f45846ffb838f389ca81d896eada0e711",
+      "copyright_sha256": "45274f68f7ec94030e050b80d322cce46124a0b4822250525b23bf886cb4bd6b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "at",
+      "version": "3.2.5-1",
+      "original_descriptor_sha256": "4160b81c8c75231096ea74b021736df209bce077af989210dd5c163a4e65afdd",
+      "delivery_source_identity": "4160b81c8c75231096ea74b021736df209bce077af989210dd5c163a4e65afdd",
+      "copyright_sha256": "d8717d88757af438b8ac94fbc28aac9207b8b2cb82837609471f0d224476e846",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "atop",
+      "version": "2.8.1-1+deb12u1",
+      "original_descriptor_sha256": "3c04fdd4342d2b199d3a8348213e0e839e5eff36ae8b67c4bf5ba57529ccbe50",
+      "delivery_source_identity": "3c04fdd4342d2b199d3a8348213e0e839e5eff36ae8b67c4bf5ba57529ccbe50",
+      "copyright_sha256": "f9ca07bfc21abe71606c324dcaa446d0399065819a00b4f025dcf99ba82e0b1e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "attr",
+      "version": "1:2.5.1-4",
+      "original_descriptor_sha256": "0e1486bff1649602cb5cbb6224dbb641436dc8cd28d5c336ad85d650e07d23dd",
+      "delivery_source_identity": "0e1486bff1649602cb5cbb6224dbb641436dc8cd28d5c336ad85d650e07d23dd",
+      "copyright_sha256": "0cbec745d85ea775450b2d54fac55277197f429e52d611f72852ed420450620e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "audit",
+      "version": "1:3.0.9-1",
+      "original_descriptor_sha256": "39d4efdc4e15420f4a1df2b8d7efd17864f2d7da6d84f3122a7c53b6c66a2a1d",
+      "delivery_source_identity": "39d4efdc4e15420f4a1df2b8d7efd17864f2d7da6d84f3122a7c53b6c66a2a1d",
+      "copyright_sha256": "6c7011e93f643b112c4cc3622131e28a30477afad6c4f5efe466b13aa7f603cc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "avahi",
+      "version": "0.8-10+deb12u1",
+      "original_descriptor_sha256": "807cf0a281a0e90207d05cd74dc2c9b5905458f3fe236fbf1bf6d246987dd874",
+      "delivery_source_identity": "807cf0a281a0e90207d05cd74dc2c9b5905458f3fe236fbf1bf6d246987dd874",
+      "copyright_sha256": "66849d0ab7cbf0d770e40e00276ed8d264ed8974c0e064fb12814c0f80430c5d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "base-files",
+      "version": "12.4+deb12u15",
+      "original_descriptor_sha256": "e531274d0c3916dacfe55bbd27148d775b004e1836bc2fbb01549f142d524e8c",
+      "delivery_source_identity": "e531274d0c3916dacfe55bbd27148d775b004e1836bc2fbb01549f142d524e8c",
+      "copyright_sha256": "fd7e4aae7e7b05f217bcf2d02322825c360e66c52c4c2f1b28d784d6297a1c23",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "base-passwd",
+      "version": "3.6.1",
+      "original_descriptor_sha256": "b4e5fcdba73369657b241743033e8e7a65c26da43285503c652fa1436ce75d1f",
+      "delivery_source_identity": "b4e5fcdba73369657b241743033e8e7a65c26da43285503c652fa1436ce75d1f",
+      "copyright_sha256": "0f1cde79bd80a75f9029ae9a8c252b642223027ef36f6989c63a8230aae576a7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "bash",
+      "version": "5.2.15-2",
+      "original_descriptor_sha256": "f51753e946af43eb58549c81e03b35a47af9fe6c6364179ccd4ef862b7c3b2d3",
+      "delivery_source_identity": "f51753e946af43eb58549c81e03b35a47af9fe6c6364179ccd4ef862b7c3b2d3",
+      "copyright_sha256": "06319d84c3e5ed096036f6a9310a030c7e84e50dff2b8a6792285c83ec0ada73",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "beep",
+      "version": "1.4.9-1",
+      "original_descriptor_sha256": "4d1bb35fcbb69fa2409a3d832e8b99b0cc26d0847da009a059f977b1404318de",
+      "delivery_source_identity": "4d1bb35fcbb69fa2409a3d832e8b99b0cc26d0847da009a059f977b1404318de",
+      "copyright_sha256": "15abb638068fce7fec07c3551bb4418f204deae9b4d5817c75628f5de0cb8194",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "bgpq3",
+      "version": "0.1.36.1-1",
+      "original_descriptor_sha256": "920f545a407a0104bfff1d41011f134b01a8ed3ab68c0003e38fb69514371496",
+      "delivery_source_identity": "920f545a407a0104bfff1d41011f134b01a8ed3ab68c0003e38fb69514371496",
+      "copyright_sha256": "db1de3394ab8b11635f718ea012df42d5a539e27ec48d58978234b2b1374bec1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "bind9",
+      "version": "1:9.18.49-1~deb12u3",
+      "original_descriptor_sha256": "bd6c191cd09fbc46b0283d2e598b539079f402663f22f9c9a7bdc7194734ac44",
+      "delivery_source_identity": "bd6c191cd09fbc46b0283d2e598b539079f402663f22f9c9a7bdc7194734ac44",
+      "copyright_sha256": "fdc344548623105885017a34801922e376d919ae1c13f2ebc31096898a3fd5fa",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "bmon",
+      "version": "1:4.0-10",
+      "original_descriptor_sha256": "248357c10f2212c2d829cb1426fbe5bd05b32523df8665f3ff3a7e4c0040125a",
+      "delivery_source_identity": "248357c10f2212c2d829cb1426fbe5bd05b32523df8665f3ff3a7e4c0040125a",
+      "copyright_sha256": "d9aae5812e5cde235b035cac4786ebb1b23da60a7fe443756d48ff5284158501",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "boost1.74",
+      "version": "1.74.0+ds1-21",
+      "original_descriptor_sha256": "864ad1a08599ac878b277acbd55cd29602ca575951a986f5f3e5a63f423fef04",
+      "delivery_source_identity": "864ad1a08599ac878b277acbd55cd29602ca575951a986f5f3e5a63f423fef04",
+      "copyright_sha256": "a5b14e71f8c30e113a41b09109a08a0c6371f9085aaeeff53c764eb4f6fa19b9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "brotli",
+      "version": "1.0.9-2+deb12u1",
+      "original_descriptor_sha256": "942ab3bccf28fa76d2c98a4e4a3a13390ee4484a2250d95a9ca46e6fbe0d6240",
+      "delivery_source_identity": "942ab3bccf28fa76d2c98a4e4a3a13390ee4484a2250d95a9ca46e6fbe0d6240",
+      "copyright_sha256": "24a64e5bb83d0960d1835696a1e23c0896ad6055b0ca47c66ab0eb9a766324b1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "bsdmainutils",
+      "version": "12.1.8",
+      "original_descriptor_sha256": "514ce88f4fe0393dbd5dbbe546c382b53d1b2b547f07e58a29c9ac3f0c1a2bd2",
+      "delivery_source_identity": "514ce88f4fe0393dbd5dbbe546c382b53d1b2b547f07e58a29c9ac3f0c1a2bd2",
+      "copyright_sha256": "09cda749d84f4edb92f728b3dede077d7c784148d6ea95be42656199e40da0b7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "busybox",
+      "version": "1:1.35.0-4+deb12u1",
+      "original_descriptor_sha256": "9c01fe128b0eeded371c70e37d474fdb5055f71b5d0a778db44c6b0c62d3a7fa",
+      "delivery_source_identity": "9c01fe128b0eeded371c70e37d474fdb5055f71b5d0a778db44c6b0c62d3a7fa",
+      "copyright_sha256": "336d995e819d3a7a3fdbf3f5041c07094f75ee849acb3bb742b7503d45786329",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "bzip2",
+      "version": "1.0.8-5",
+      "original_descriptor_sha256": "ed9c40f4de3f9e064535e15eac1c61a0f606763db98f4579dbc04067b94a8944",
+      "delivery_source_identity": "ed9c40f4de3f9e064535e15eac1c61a0f606763db98f4579dbc04067b94a8944",
+      "copyright_sha256": "832ed535ff3c3d025a8d2348eb1b697b89addcf2eaadbc17650262040b9145e2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "c-ares",
+      "version": "1.18.1-3",
+      "original_descriptor_sha256": "91d95bb080e4cd1d0d507f4693496e323a593f6611161361fd76735292bda6b6",
+      "delivery_source_identity": "91d95bb080e4cd1d0d507f4693496e323a593f6611161361fd76735292bda6b6",
+      "copyright_sha256": "a7bb031e8e32d65f76e35ba7a8801a5eae1369b5fd2eded44abe67ef13359a6d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ca-certificates",
+      "version": "20250419~deb12u2",
+      "original_descriptor_sha256": "a041820e6feb1effe0598f80e02fb62a40ef312678b85cfbb57d2864d0b5c0b7",
+      "delivery_source_identity": "a041820e6feb1effe0598f80e02fb62a40ef312678b85cfbb57d2864d0b5c0b7",
+      "copyright_sha256": "e85e1bcad3a915dc7e6f41412bc5bdeba275cadd817896ea0451f2140a93967c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cairo",
+      "version": "1.16.0-7",
+      "original_descriptor_sha256": "96b21b7b9c9ab4ae689b1191830b53d0b3c38e5664105c36a3c39dee6bcf29a4",
+      "delivery_source_identity": "96b21b7b9c9ab4ae689b1191830b53d0b3c38e5664105c36a3c39dee6bcf29a4",
+      "copyright_sha256": "408fb9e704e875cd42d432e7c9b3b378f568e3c89db2b5c5ef3d11c025319574",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cdebconf",
+      "version": "0.270",
+      "original_descriptor_sha256": "d7f396abbbfb2d38fc15589358d05618c9918f4f10facfe1ac259efef91e8a5f",
+      "delivery_source_identity": "d7f396abbbfb2d38fc15589358d05618c9918f4f10facfe1ac259efef91e8a5f",
+      "copyright_sha256": "cf63099896d1c0f6529c41b8d95738e6fea342ffba609187d339c4f38ce36ecc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "chardet",
+      "version": "5.1.0+dfsg-2",
+      "original_descriptor_sha256": "62f9567ccb161198161fd6421507b17a7d003f9855294b378436b07ae66028ec",
+      "delivery_source_identity": "066956a9effc05954e25ac1db2331d96f1b6a3a075ffec6a7ea50edf6c24558c",
+      "copyright_sha256": "ff5ee0ab90b8e34d7ba50c74d615b7c07b7d9db185f53984134efb7bed5f4f23",
+      "delivery_form": "APPLIED_PREFERRED_SOURCE_EXPORT"
+    },
+    {
+      "source": "chrony",
+      "version": "4.3-2+deb12u3",
+      "original_descriptor_sha256": "cdc58b9fcb11d9799dd7c5936c1a1666ff00d60e6cfd2b80687b49e589d7e2b5",
+      "delivery_source_identity": "cdc58b9fcb11d9799dd7c5936c1a1666ff00d60e6cfd2b80687b49e589d7e2b5",
+      "copyright_sha256": "b0bb794030c0d39ee244e59fe963c960b1ef37255341e034c355dab696644235",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cme",
+      "version": "1.038-1",
+      "original_descriptor_sha256": "344ede16ca063e528b57de81026921b46226cc39bd95ad95a8fc02ea9cbbc3ac",
+      "delivery_source_identity": "344ede16ca063e528b57de81026921b46226cc39bd95ad95a8fc02ea9cbbc3ac",
+      "copyright_sha256": "67afd907bad89844c1881aa5220b359ee11a925b27de3bc0146f053d7f4d79a3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "configobj",
+      "version": "5.0.8-1",
+      "original_descriptor_sha256": "a92e282ddbf3a58c422d570ba81b83a023f9b4d53c5d2d3ef3a60124d86a97fd",
+      "delivery_source_identity": "a92e282ddbf3a58c422d570ba81b83a023f9b4d53c5d2d3ef3a60124d86a97fd",
+      "copyright_sha256": "f08beec002c5415897c678e1727d81bdc8fc3c04761eb356895b8c4ce3c3c2ce",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "conmon",
+      "version": "2.1.6+ds1-1",
+      "original_descriptor_sha256": "7e878f20479b1ef1cbea3a68eb42e3901ceed353dbf99243481f8be5bc245d5f",
+      "delivery_source_identity": "7e878f20479b1ef1cbea3a68eb42e3901ceed353dbf99243481f8be5bc245d5f",
+      "copyright_sha256": "4243bb80ac48349ef4f46fad8d376aabae9f5dcb62d92b850f90e77ede9e6760",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "conntrack-tools",
+      "version": "1:1.4.7-1",
+      "original_descriptor_sha256": "8051b8d30d9cabedb6ffe29a0228c0b866d9f06220ef41f00c4691bda1774f12",
+      "delivery_source_identity": "8051b8d30d9cabedb6ffe29a0228c0b866d9f06220ef41f00c4691bda1774f12",
+      "copyright_sha256": "6cf8fc91006b2049f67c0f19e539954738a2d0654525f4345c4ba730cd711f47",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "conserver",
+      "version": "8.2.7-2",
+      "original_descriptor_sha256": "b02a59d8101320fdd9f62629ddf542f56e4fcd1651c0fd80be6f76e8febba569",
+      "delivery_source_identity": "b02a59d8101320fdd9f62629ddf542f56e4fcd1651c0fd80be6f76e8febba569",
+      "copyright_sha256": "a887aee30637d0fd5c0a41bab3a3e2e9987817f24887b3c1eaba4ee38c989f87",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "console-data",
+      "version": "2:1.12-9",
+      "original_descriptor_sha256": "2c8000950bf3a213f1f24d06658e7572549b7eb8741e11571ec6d93741373747",
+      "delivery_source_identity": "2c8000950bf3a213f1f24d06658e7572549b7eb8741e11571ec6d93741373747",
+      "copyright_sha256": "216d4535a857a309df1075fc7b69ef45b31026ab9ff7503926e3b2b0c3376f2b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "coreutils",
+      "version": "9.1-1",
+      "original_descriptor_sha256": "2f2fca0a07a1a3f38e3ebeb4cbd97e97e675e77bed84f3e9d0b7e5da4cde75fc",
+      "delivery_source_identity": "2f2fca0a07a1a3f38e3ebeb4cbd97e97e675e77bed84f3e9d0b7e5da4cde75fc",
+      "copyright_sha256": "24e86c5ca53d6bfd8e0c47988160daa62d10a74997fe11f651e1d9533c78bff6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cpio",
+      "version": "2.13+dfsg-7.1",
+      "original_descriptor_sha256": "b9be067d59bdc77ae9a382076f85abc6e3cd515720e7fb10055bfa75e6b1a831",
+      "delivery_source_identity": "b9be067d59bdc77ae9a382076f85abc6e3cd515720e7fb10055bfa75e6b1a831",
+      "copyright_sha256": "c6a43a1599ea98a98293f4aead057c5e37cabdb623c8c804902ac7d25e060297",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cracklib2",
+      "version": "2.9.6-5",
+      "original_descriptor_sha256": "77c50d48e4bfaeb6032f510be7613e51bebe95dacc8b5d2bb847ef79ee07983b",
+      "delivery_source_identity": "77c50d48e4bfaeb6032f510be7613e51bebe95dacc8b5d2bb847ef79ee07983b",
+      "copyright_sha256": "c4974987a368aa934184d1f176236df13e3dba9d5a9baf1b1a175c399093a615",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cron",
+      "version": "3.0pl1-162",
+      "original_descriptor_sha256": "5258f1e5e13bc330b66019a631092dc517904214881bbb4a39bef252781a22cd",
+      "delivery_source_identity": "5258f1e5e13bc330b66019a631092dc517904214881bbb4a39bef252781a22cd",
+      "copyright_sha256": "61e03d7ba2c2fa40bb54346c5303f9ddfca122741fb77d8396eec552482dea99",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "crun",
+      "version": "1.8.1-1+deb12u1",
+      "original_descriptor_sha256": "1123b9a36a95fc2d05966972f7198f20497f466459b07df4e336db5ba1dc8a45",
+      "delivery_source_identity": "1123b9a36a95fc2d05966972f7198f20497f466459b07df4e336db5ba1dc8a45",
+      "copyright_sha256": "8e724ad21c317d687a7929d4732740ded06dcc629e076ef366e70991caa8859d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cryptsetup",
+      "version": "2:2.6.1-4~deb12u2",
+      "original_descriptor_sha256": "9f5fb2d485143099f50ec6cbe3bd92585f8f56bf92bb92a6849aa74e7eff208d",
+      "delivery_source_identity": "9f5fb2d485143099f50ec6cbe3bd92585f8f56bf92bb92a6849aa74e7eff208d",
+      "copyright_sha256": "41650d7a87bcbc5ba394f581876ccdcf3f4cbf31f01168f1584db6b3db532691",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "curl",
+      "version": "7.88.1-10+deb12u15",
+      "original_descriptor_sha256": "2744f12e3aef161c0361743fa1b318296b122e566e47f381e4a63320fbcc23f4",
+      "delivery_source_identity": "2744f12e3aef161c0361743fa1b318296b122e566e47f381e4a63320fbcc23f4",
+      "copyright_sha256": "a7c131b21e6e73b3b085a7d9f1637b68f5f92b832cc6f462e0c978fbe7841ccb",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cwidget",
+      "version": "0.5.18-6",
+      "original_descriptor_sha256": "4ed3ad026c380621aff21f64dca5bc49c2fe502610aca8464793a7ba06f9e4b6",
+      "delivery_source_identity": "4ed3ad026c380621aff21f64dca5bc49c2fe502610aca8464793a7ba06f9e4b6",
+      "copyright_sha256": "8d5a2b6015d67cff68fb1a6ffa3f85d14efe62effbe397c300c046b23c8acd1a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "cyrus-sasl2",
+      "version": "2.1.28+dfsg-10+deb12u1",
+      "original_descriptor_sha256": "088990ef19c88abfbf66321eba0d0c3566ee2a5ce135e165eff5b6c2716a2ff0",
+      "delivery_source_identity": "088990ef19c88abfbf66321eba0d0c3566ee2a5ce135e165eff5b6c2716a2ff0",
+      "copyright_sha256": "5e77ddcac7fb682d696bc4b034dc2869e5a9011e8c2ed3c570ab8db0f4506931",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dash",
+      "version": "0.5.12-2",
+      "original_descriptor_sha256": "25c0fb805c735fdb7470ce485ce76dae1a7b6c04efdfb0fdac5eab921cbd78a5",
+      "delivery_source_identity": "25c0fb805c735fdb7470ce485ce76dae1a7b6c04efdfb0fdac5eab921cbd78a5",
+      "copyright_sha256": "d98c53f281321baad38164aa9ae6e368a9253be6ec51bd26a759b5e72b326f4a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "db5.3",
+      "version": "5.3.28+dfsg2-1",
+      "original_descriptor_sha256": "fe84d3cd7cde381f1c5a18f223377cf84ea7627ced8063ef33ef8fd93f6e09f4",
+      "delivery_source_identity": "fe84d3cd7cde381f1c5a18f223377cf84ea7627ced8063ef33ef8fd93f6e09f4",
+      "copyright_sha256": "8b53da37d73289d9df7317b3a2dbe16491f1fa9fec8b77b86d69704b40ce2c26",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dbus",
+      "version": "1.14.10-1~deb12u1",
+      "original_descriptor_sha256": "c759e380dd595a407be70b09e8f0aecb9f86c67bf515cdc0dd629dfcac88b9cf",
+      "delivery_source_identity": "c759e380dd595a407be70b09e8f0aecb9f86c67bf515cdc0dd629dfcac88b9cf",
+      "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dbus-python",
+      "version": "1.3.2-4",
+      "original_descriptor_sha256": "fe52424bf1cfda36f2b64007be90e5e25b0d6f647416148b0eca8841d407ba97",
+      "delivery_source_identity": "fe52424bf1cfda36f2b64007be90e5e25b0d6f647416148b0eca8841d407ba97",
+      "copyright_sha256": "66007423e6a84711ae4653306fe57c11d7b67a5051bd818b83bed6b208e12430",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dctrl-tools",
+      "version": "2.24-3",
+      "original_descriptor_sha256": "ac6f33af468f4c46eb101c7081ff4d5cd8ae9c2f8faf3d294339fa584905e11c",
+      "delivery_source_identity": "ac6f33af468f4c46eb101c7081ff4d5cd8ae9c2f8faf3d294339fa584905e11c",
+      "copyright_sha256": "fb6d6843948444b21a6ddda8400a1b1506075a444f481109886682349c07238b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "debconf",
+      "version": "1.5.82",
+      "original_descriptor_sha256": "ed6e8cc6e073344a25ab932602b3b814f25cfa1a7bfd69e464f9bad65f250dea",
+      "delivery_source_identity": "ed6e8cc6e073344a25ab932602b3b814f25cfa1a7bfd69e464f9bad65f250dea",
+      "copyright_sha256": "57163c71bd8a5289660892827dd0dfaa7fef47f89deedc9dc6711ced7d0a28d7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "debian-archive-keyring",
+      "version": "2023.3+deb12u2",
+      "original_descriptor_sha256": "e0b44b75906f4f448bba242294e9191ee796e2553f49cb906d19fc8f199b6e7d",
+      "delivery_source_identity": "e0b44b75906f4f448bba242294e9191ee796e2553f49cb906d19fc8f199b6e7d",
+      "copyright_sha256": "b32aecaae84643700a33bc9ee83fa9b36938d35aa7b61b5042092eca77ddb732",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "debianutils",
+      "version": "5.7-0.5~deb12u1",
+      "original_descriptor_sha256": "b4340ffd82994d910f625236183d732a7407876cba127d4c824ea82db8ccb400",
+      "delivery_source_identity": "b4340ffd82994d910f625236183d732a7407876cba127d4c824ea82db8ccb400",
+      "copyright_sha256": "fd2d797e208bcfb713510e47a89867191180943e1167d44c2acd8ff1b88e5c10",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "device-tree-compiler",
+      "version": "1.6.1-4",
+      "original_descriptor_sha256": "07ce787cb26d0bce7ec12c745b592bd98c6a5b21cf4fc8a1a657c2d75b14e61d",
+      "delivery_source_identity": "07ce787cb26d0bce7ec12c745b592bd98c6a5b21cf4fc8a1a657c2d75b14e61d",
+      "copyright_sha256": "95953beda954a8ebe99bdc54ac0ea947ec2644a30ba3b3b198646190a8a17c60",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dh-runit",
+      "version": "2.15.2",
+      "original_descriptor_sha256": "ca31fc0bdc83f0bcd865588b7f4e2b56553859fccdd1967105e1f9633495e883",
+      "delivery_source_identity": "ca31fc0bdc83f0bcd865588b7f4e2b56553859fccdd1967105e1f9633495e883",
+      "copyright_sha256": "293074b197315798fed03d3b797fb3be17b7b3c7ce5a3a968da03081030058a0",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dialog",
+      "version": "1.3-20230209-1",
+      "original_descriptor_sha256": "0e4c7ae0be1f9ea6793dfc50fd7db8715b9cdab04c2d8a23705f176bb945a797",
+      "delivery_source_identity": "0e4c7ae0be1f9ea6793dfc50fd7db8715b9cdab04c2d8a23705f176bb945a797",
+      "copyright_sha256": "12ed09df1b7c25ef883755915b88754a072403415a4a6e21d3f5ad631198316b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "diffutils",
+      "version": "1:3.8-4",
+      "original_descriptor_sha256": "783af1a151c2a0f42a8a427693cc4bb16037c0d17282d28672d906f2eab424b8",
+      "delivery_source_identity": "783af1a151c2a0f42a8a427693cc4bb16037c0d17282d28672d906f2eab424b8",
+      "copyright_sha256": "8654d7cc7cdae1f31bb67a3ce5bf35d512c0bdfffd071df757edc54153cc7930",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dmidecode",
+      "version": "3.4-1",
+      "original_descriptor_sha256": "d9fa7dfad6386b050e2c2d09e8fb664e03fe9086697ad8fe68604e812538f11b",
+      "delivery_source_identity": "d9fa7dfad6386b050e2c2d09e8fb664e03fe9086697ad8fe68604e812538f11b",
+      "copyright_sha256": "e06509a1b9271ae405e9cacbdb06e494c65e437591298f5580384fef04564f09",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dns-root-data",
+      "version": "2024071801~deb12u1",
+      "original_descriptor_sha256": "36489ead184379bf7e39d64e3b8f4e3edf1157133f8d768780b5cdb8d1bae58d",
+      "delivery_source_identity": "36489ead184379bf7e39d64e3b8f4e3edf1157133f8d768780b5cdb8d1bae58d",
+      "copyright_sha256": "483eb3153928bb296f20093ab61754eaec77f4f6fc01c39c45b59e402245e771",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dnsdist",
+      "version": "1.7.3-2",
+      "original_descriptor_sha256": "d29996f498dd2c8ea23b05a2becdbaf2de3816cb0eaf8f329404c23fae681ed7",
+      "delivery_source_identity": "d29996f498dd2c8ea23b05a2becdbaf2de3816cb0eaf8f329404c23fae681ed7",
+      "copyright_sha256": "a4ce564ad85ab2f21aa006332f410441079653e6e0c6f136d714fdfc12c03a57",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dosfstools",
+      "version": "4.2-1",
+      "original_descriptor_sha256": "598c495fe393caedbe15c3595e62d66371114f08dd7482c0af5e3f25acd7e5c2",
+      "delivery_source_identity": "598c495fe393caedbe15c3595e62d66371114f08dd7482c0af5e3f25acd7e5c2",
+      "copyright_sha256": "e97b0b837a88c06b64986e8d5856bc5f208cca28ee9a0f8225ed0ffa8a049b1c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "dpkg",
+      "version": "1.21.23",
+      "original_descriptor_sha256": "1c126e21ec723002e767d8e7855793d5b26aab024295924db0835b4fd707ed6a",
+      "delivery_source_identity": "1c126e21ec723002e767d8e7855793d5b26aab024295924db0835b4fd707ed6a",
+      "copyright_sha256": "7442bdadcd44e818fddd786057db07639cc68225c389c7c240d3bb3984b05173",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "duktape",
+      "version": "2.7.0-2",
+      "original_descriptor_sha256": "929e540895cf8711c922fccc9b2e6cb4c6cf07ccff7ceea1fdf673f82002f726",
+      "delivery_source_identity": "929e540895cf8711c922fccc9b2e6cb4c6cf07ccff7ceea1fdf673f82002f726",
+      "copyright_sha256": "ffc72ca2383e76328250b48c18a2c87d551174db0334fee34ca895eae5e1bf6b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "e2fsprogs",
+      "version": "1.47.0-2",
+      "original_descriptor_sha256": "35b4de254e021f721362b767994598e249fea02e38ac446197cd9c22be1130fd",
+      "delivery_source_identity": "35b4de254e021f721362b767994598e249fea02e38ac446197cd9c22be1130fd",
+      "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "easy-rsa",
+      "version": "3.1.0-1",
+      "original_descriptor_sha256": "ecbe7a9d274bb96ad7019f07d95dfc59456cd5017d374f0de628ec505b7d4da7",
+      "delivery_source_identity": "ecbe7a9d274bb96ad7019f07d95dfc59456cd5017d374f0de628ec505b7d4da7",
+      "copyright_sha256": "6bf310cf0820f95fa664eaa0792a8d661e4ce5c930aad0866d1e3997f692f6c2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "efibootmgr",
+      "version": "17-2",
+      "original_descriptor_sha256": "4656de6b7865a86f69ea465dc74634a7578dc1723e5d5f1a382c294ef0db4745",
+      "delivery_source_identity": "4656de6b7865a86f69ea465dc74634a7578dc1723e5d5f1a382c294ef0db4745",
+      "copyright_sha256": "bb4b0640529bb3a7614ef3d8fb6a98960c9cab6c5c786976304bdcaf287ba488",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "efivar",
+      "version": "37-6",
+      "original_descriptor_sha256": "b0009dd484fdd57dac094775e8aad3608c001a755d64273baf3f98de97c639b6",
+      "delivery_source_identity": "b0009dd484fdd57dac094775e8aad3608c001a755d64273baf3f98de97c639b6",
+      "copyright_sha256": "277903008f94df81a185a85f1ac33d73de4e576ba2c54dc7b7fa7fc88c70e60f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "elfutils",
+      "version": "0.188-2.1",
+      "original_descriptor_sha256": "2e73c5bfe9d0ddbf837742d638c43b049590ae1de8f6e3d9c2740c28e2550760",
+      "delivery_source_identity": "2e73c5bfe9d0ddbf837742d638c43b049590ae1de8f6e3d9c2740c28e2550760",
+      "copyright_sha256": "d754a0edec1a510561aa643040456266536e3ec26bdb22e69a11c3f7b5de2339",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "etherwake",
+      "version": "1.09-4",
+      "original_descriptor_sha256": "e7647d57ca1c06c2e2d7976e08d8fb4b98feb9817910c0dcde50edd30f99dcc6",
+      "delivery_source_identity": "e7647d57ca1c06c2e2d7976e08d8fb4b98feb9817910c0dcde50edd30f99dcc6",
+      "copyright_sha256": "d2deefaa74505fa1d5b2ceaecfb7962563b3f4a72e59df4024967e9de7ff7a83",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "exfatprogs",
+      "version": "1.2.0-1+deb12u1",
+      "original_descriptor_sha256": "e707fe4d47aff0e2b43449a8e28ad6f6f541f4017910e88301e72362df0b322f",
+      "delivery_source_identity": "e707fe4d47aff0e2b43449a8e28ad6f6f541f4017910e88301e72362df0b322f",
+      "copyright_sha256": "8f5d4c77fe8d87869912d097aca41cb6ce4dee0cf03d63d8a03aee2b220d5471",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "expat",
+      "version": "2.5.0-1+deb12u5",
+      "original_descriptor_sha256": "ef1c606d8e386052d3aea9b3b5ec43f3902107c007150960521781aa59ab1247",
+      "delivery_source_identity": "ef1c606d8e386052d3aea9b3b5ec43f3902107c007150960521781aa59ab1247",
+      "copyright_sha256": "60919fe1a156395ff14511bb6ff79756c50ade2fff59ac60c9bae1d8a7fe6292",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "file",
+      "version": "1:5.44-3",
+      "original_descriptor_sha256": "842e0ef356949218966d1521a95652b00aed18c152174ffc7e000cc3d79501e4",
+      "delivery_source_identity": "842e0ef356949218966d1521a95652b00aed18c152174ffc7e000cc3d79501e4",
+      "copyright_sha256": "96c8c6ab85931f81120eb40d42f3c40c76ee328d024cfc7ae31acaa99971d54c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "findutils",
+      "version": "4.9.0-4",
+      "original_descriptor_sha256": "3bb39a6a5f96101f9bb28fed234db186fcec198e064478fef3c0fdf2434f0681",
+      "delivery_source_identity": "3bb39a6a5f96101f9bb28fed234db186fcec198e064478fef3c0fdf2434f0681",
+      "copyright_sha256": "8fbcc77ed31f480a85654e9b6d1d25cbb95b62e9dc5159ae1565bca684c3e1dc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "fontconfig",
+      "version": "2.14.1-4",
+      "original_descriptor_sha256": "8bb59d9c96ff8ef77df06dc65273fa398bf248f7e2448a8314989ec01ce74a58",
+      "delivery_source_identity": "8bb59d9c96ff8ef77df06dc65273fa398bf248f7e2448a8314989ec01ce74a58",
+      "copyright_sha256": "b215a61cdd3e62b5b17cc28b1852c78acb3dd38be0fb30706f7efc050dba91db",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "fonts-dejavu",
+      "version": "2.37-6",
+      "original_descriptor_sha256": "f657fdb103d25b735527b4905af27722281fc5523d33146cdfeadd9201f1cc0c",
+      "delivery_source_identity": "f657fdb103d25b735527b4905af27722281fc5523d33146cdfeadd9201f1cc0c",
+      "copyright_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "freeipmi",
+      "version": "1.6.10-1",
+      "original_descriptor_sha256": "ad17f010151af7f07127b20bfbb31a91ced0480ae23552c92d66549f4f1c590c",
+      "delivery_source_identity": "ad17f010151af7f07127b20bfbb31a91ced0480ae23552c92d66549f4f1c590c",
+      "copyright_sha256": "80e19367ced85469d702e01ca551289491b3aa04a926b07ba90faae8579990a4",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "freetype",
+      "version": "2.12.1+dfsg-5+deb12u4",
+      "original_descriptor_sha256": "eead829b4bc79107e8e79c4da006110dffe264f9d48b3ba02f76cf7e84b64389",
+      "delivery_source_identity": "eead829b4bc79107e8e79c4da006110dffe264f9d48b3ba02f76cf7e84b64389",
+      "copyright_sha256": "70a7a0a06e6440777417f6875476cb712b03943010abed1c32297798c8cc8ed8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "fstrm",
+      "version": "0.6.1-1",
+      "original_descriptor_sha256": "f42ca88ddc54acb39fcaa6a2f7cda3d70a9f256b83e6044ea56cd8bb5f90d37d",
+      "delivery_source_identity": "f42ca88ddc54acb39fcaa6a2f7cda3d70a9f256b83e6044ea56cd8bb5f90d37d",
+      "copyright_sha256": "42ff2c150c1459069ef82826bafc980eb6e9b985080ddcd519b76a301ff680d5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "fuse",
+      "version": "2.9.9-6",
+      "original_descriptor_sha256": "be997f4268956ecd79823fd7ccea2fa050a703c9a7dd356430d27604143d6887",
+      "delivery_source_identity": "be997f4268956ecd79823fd7ccea2fa050a703c9a7dd356430d27604143d6887",
+      "copyright_sha256": "44102d61eee9c719d3380188665fcd0bf005437e3191481ec19da347f8e134b3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "fuse-exfat",
+      "version": "1.3.0+git20220115-2",
+      "original_descriptor_sha256": "29774fa39fcdb99473778031701b6efa27274b34284112b928c361f939e4d2a8",
+      "delivery_source_identity": "29774fa39fcdb99473778031701b6efa27274b34284112b928c361f939e4d2a8",
+      "copyright_sha256": "d55a79540cbd5ce3c7fa7f505cca0807fa17e987e60192fd477cae2343ac7999",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "fuse-overlayfs",
+      "version": "1.10-1",
+      "original_descriptor_sha256": "9392690690187b864fe48581debffdf6384bb938d839a4b4276c14f06b64ac14",
+      "delivery_source_identity": "9392690690187b864fe48581debffdf6384bb938d839a4b4276c14f06b64ac14",
+      "copyright_sha256": "2222111df9115831652544a2957d1418033a0169445ac9485b821444221b0340",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "fuse3",
+      "version": "3.14.0-4",
+      "original_descriptor_sha256": "84a6d64bbcd5dda71276393a1cca300543932aa3a822859d0f799c7ee29227cc",
+      "delivery_source_identity": "84a6d64bbcd5dda71276393a1cca300543932aa3a822859d0f799c7ee29227cc",
+      "copyright_sha256": "e3324ad43e309aae4f46501a20580d69fb3c69bf8f2fb0c7ae9e3d2408123a07",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gawk",
+      "version": "1:5.2.1-2",
+      "original_descriptor_sha256": "1f2d11cd9b09419e86cf069571728802a068bb94d1947f3328ed430ab9b7540e",
+      "delivery_source_identity": "1f2d11cd9b09419e86cf069571728802a068bb94d1947f3328ed430ab9b7540e",
+      "copyright_sha256": "4d8bd683c14ce5e3f68094a56892ecd336524e9977b6cfd3eb22ef835d67f367",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gcc-12",
+      "version": "12.2.0-14+deb12u1",
+      "original_descriptor_sha256": "3aed0b189189c744dc9f4b74798a51d3e512ea85e492568db788a927c88e20ba",
+      "delivery_source_identity": "3aed0b189189c744dc9f4b74798a51d3e512ea85e492568db788a927c88e20ba",
+      "copyright_sha256": "da8191658b3452ce9caf31638ba61dab31a38c619fa39df119812e050f592fd3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gdbm",
+      "version": "1.23-3",
+      "original_descriptor_sha256": "3e4a52655a1b65c51d33e032913edda3423dcae8cc282c16a455a0afd2d2738d",
+      "delivery_source_identity": "3e4a52655a1b65c51d33e032913edda3423dcae8cc282c16a455a0afd2d2738d",
+      "copyright_sha256": "8bea8cf2f94cd8b37a0b8b3a2b974122b9194c1165e6ad508e366c74679e8817",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gdisk",
+      "version": "1.0.9-2.1",
+      "original_descriptor_sha256": "9497745371f465e162b7253bdb411fbc7a7e265b18bd76afde468af6ffd1cc2f",
+      "delivery_source_identity": "9497745371f465e162b7253bdb411fbc7a7e265b18bd76afde468af6ffd1cc2f",
+      "copyright_sha256": "04938ebeb7ec9abb637f37f83891a8093be147bf74eb75e500ac8bbcb4fda5b4",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gettext",
+      "version": "0.21-12",
+      "original_descriptor_sha256": "1486eb00e01d7b91cef4ca45805c95ee8d8de6016136f231b5f9f5f74225b318",
+      "delivery_source_identity": "1486eb00e01d7b91cef4ca45805c95ee8d8de6016136f231b5f9f5f74225b318",
+      "copyright_sha256": "2af485dd05ff2f402caedc35973eb8bf60a639c4877949d19ad2054c1002984c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "git",
+      "version": "1:2.39.5-0+deb12u3",
+      "original_descriptor_sha256": "183f02891326496b439a24c87843fb8849178b21517640fc703787754aad6bd1",
+      "delivery_source_identity": "183f02891326496b439a24c87843fb8849178b21517640fc703787754aad6bd1",
+      "copyright_sha256": "8ceacdebe13249ea8aba6e400418e2b503c83a1f19ad92377380fb32ecf48d0c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "glib2.0",
+      "version": "2.74.6-2+deb12u9",
+      "original_descriptor_sha256": "bd8e8cd8d251c2365a02258bf4d6c44721289ac44c3a2477c140ce253bdb4b41",
+      "delivery_source_identity": "bd8e8cd8d251c2365a02258bf4d6c44721289ac44c3a2477c140ce253bdb4b41",
+      "copyright_sha256": "03cbcd6142c92bb14c997af557b8c73b1534710c34fe7f69788f8e8fc5fd941d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "glibc",
+      "version": "2.36-9+deb12u14",
+      "original_descriptor_sha256": "cfe1f0b8dc1fa211ce5a45b3725cc38b29f88667f1140ebdca6de35cf9c6f1fd",
+      "delivery_source_identity": "cfe1f0b8dc1fa211ce5a45b3725cc38b29f88667f1140ebdca6de35cf9c6f1fd",
+      "copyright_sha256": "40c7e1f2118531f038ca22999bd976901254e1bc5cd1b0f0211bdd064c599987",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gmp",
+      "version": "2:6.2.1+dfsg1-1.1",
+      "original_descriptor_sha256": "2831ed4f83bc3304c2403474b335652ab2dc507cd517de44414d9142171748f0",
+      "delivery_source_identity": "2831ed4f83bc3304c2403474b335652ab2dc507cd517de44414d9142171748f0",
+      "copyright_sha256": "7d366aef5ba325150246de1d7820c4c9926cd27ca61a69948492b26cd3b61601",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gnupg2",
+      "version": "2.2.40-1.1+deb12u2",
+      "original_descriptor_sha256": "2424239219b00265dd99c5a2c5f9d50f9cafc15f0945946bb16ac1a50ec38310",
+      "delivery_source_identity": "2424239219b00265dd99c5a2c5f9d50f9cafc15f0945946bb16ac1a50ec38310",
+      "copyright_sha256": "84dab06b5c1baf3a7a45c3cdc5f98fb121234e98fdd6266c3f773d54fcdc4f54",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gnutls28",
+      "version": "3.7.9-2+deb12u7",
+      "original_descriptor_sha256": "027b2f60e38add78ee611d099dbf34e977a6600d446cc39673534b736a182cb6",
+      "delivery_source_identity": "027b2f60e38add78ee611d099dbf34e977a6600d446cc39673534b736a182cb6",
+      "copyright_sha256": "bb7e5c24b3e27bbba5671dd710d159a0066833bda4caa1d55d8027ffed539337",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gobject-introspection",
+      "version": "1.74.0-3",
+      "original_descriptor_sha256": "9ccfe4f005e7668ee58bebb238356535123a6fee29eaf91f85204ba37dd167dc",
+      "delivery_source_identity": "9ccfe4f005e7668ee58bebb238356535123a6fee29eaf91f85204ba37dd167dc",
+      "copyright_sha256": "496f160d56ab69e95bf2908b0cde87cd07904d8b4296214928e9b1e626020e48",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "golang-github-containers-common",
+      "version": "0.50.1+ds1-4",
+      "original_descriptor_sha256": "7590d6876d1ac67cea624af1034d430d9cba8ec3519d047461f7631f06039787",
+      "delivery_source_identity": "7590d6876d1ac67cea624af1034d430d9cba8ec3519d047461f7631f06039787",
+      "copyright_sha256": "3d0c046cfbe6ed3f07c4cd422e89fb9e7b1b5a57c0974e32e2fbcb3a488d802c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "golang-github-containers-image",
+      "version": "5.23.1-4",
+      "original_descriptor_sha256": "f4216f28d8793e127cea242ef44532375fa1259eb4553205d8ec4e86bff05334",
+      "delivery_source_identity": "f4216f28d8793e127cea242ef44532375fa1259eb4553205d8ec4e86bff05334",
+      "copyright_sha256": "21a8ef43469107506f71f916dab75ee158835d0f37fadfb57bbf265bf64f6f24",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "google-authenticator",
+      "version": "20191231-2",
+      "original_descriptor_sha256": "64c6f8c809b99b307f94189dfe4d0ef23eca8d5898dbb693d0776a0745d9f4ad",
+      "delivery_source_identity": "64c6f8c809b99b307f94189dfe4d0ef23eca8d5898dbb693d0776a0745d9f4ad",
+      "copyright_sha256": "b6368dc6d5691c5f7056544c3f07b44228bcc049795b1f04de7f5dfbe5a200e6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gpgme1.0",
+      "version": "1.18.0-3",
+      "original_descriptor_sha256": "568e0a8f342ab129c8761bbbd30e54934102914141b8e38c9f504be9d4d1de5a",
+      "delivery_source_identity": "568e0a8f342ab129c8761bbbd30e54934102914141b8e38c9f504be9d4d1de5a",
+      "copyright_sha256": "51deca7ec94e2ffd48d9e399b4481258f857e451c30a5a9c586bde962794c40c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "grc",
+      "version": "1.13.1-1",
+      "original_descriptor_sha256": "080b42b7665eecf63fa7c35283ca95896eb64d968544aa8d607cb87550766f0a",
+      "delivery_source_identity": "080b42b7665eecf63fa7c35283ca95896eb64d968544aa8d607cb87550766f0a",
+      "copyright_sha256": "b5b987d717a45abf0337aba8e3f29eec65fd4d0a2ec899ac310b621bef57f8d7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "grep",
+      "version": "3.8-5",
+      "original_descriptor_sha256": "12b8d98e0112683e0439e61d5b3b7cdeafdfc579641c35aa25199bc0431061d0",
+      "delivery_source_identity": "12b8d98e0112683e0439e61d5b3b7cdeafdfc579641c35aa25199bc0431061d0",
+      "copyright_sha256": "42d9b4d610396b1e8d1303dcb9487af3f5a2d2709623cf03a04cf76acdf6c5e3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "grepcidr",
+      "version": "2.0-2",
+      "original_descriptor_sha256": "397a0f55937647d7244f1f00049e2499895d026cf625a2dea920a1b88c582823",
+      "delivery_source_identity": "397a0f55937647d7244f1f00049e2499895d026cf625a2dea920a1b88c582823",
+      "copyright_sha256": "7b8961a736e61efd8cbda3876b425cb272a48454cc10fe18fd537e5504e8dc3a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "grub2",
+      "version": "2.06-13+deb12u2",
+      "original_descriptor_sha256": "9c0f89f34907e0e50df46401c811347f9559cd405b8c83659042f2c4687622b7",
+      "delivery_source_identity": "9c0f89f34907e0e50df46401c811347f9559cd405b8c83659042f2c4687622b7",
+      "copyright_sha256": "bd3b5f8b4b6f3592bb1b597c6fb4557516db1a3a51a8c0ade5eb1e0dd09a7e1e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "gzip",
+      "version": "1.12-1",
+      "original_descriptor_sha256": "49a287787a0b4fc816eb576c011c472d1f630ec1778dfa120bd7fce4a844c253",
+      "delivery_source_identity": "49a287787a0b4fc816eb576c011c472d1f630ec1778dfa120bd7fce4a844c253",
+      "copyright_sha256": "1ca5dd5098fe2e1c0f0d05196f5b3da8b414a807702e6ca8b536eb5fd3059130",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "h2o",
+      "version": "2.2.5+dfsg2-7",
+      "original_descriptor_sha256": "5d0acd56b83c9338fbc28e32c4863a19e82f505d86d1807a9f72aa9b961d13d3",
+      "delivery_source_identity": "5d0acd56b83c9338fbc28e32c4863a19e82f505d86d1807a9f72aa9b961d13d3",
+      "copyright_sha256": "249e70ef801e33fc934a870a9e8715077afd96476b34f2b203a38e47d3a2e6f6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "haproxy",
+      "version": "2.6.12-1+deb12u4",
+      "original_descriptor_sha256": "0397de4cd917406bb710246fb0d0416b88f2105eb65454cb273b4ae78977333c",
+      "delivery_source_identity": "0397de4cd917406bb710246fb0d0416b88f2105eb65454cb273b4ae78977333c",
+      "copyright_sha256": "38abd31c03ab1115b2e5c04cba10faa395ab74c39a493285dffa2f8ed17715b1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "haveged",
+      "version": "1.9.14-1+deb12u1",
+      "original_descriptor_sha256": "6978f6939adb5766336126b2045a1c5c514d7ad7f63eeff7af9f039316f2b3a5",
+      "delivery_source_identity": "6978f6939adb5766336126b2045a1c5c514d7ad7f63eeff7af9f039316f2b3a5",
+      "copyright_sha256": "f640ffd58ee2aa544f0a43e4e42274be75b80dfd89e7326734a5702d0c696f23",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "hostname",
+      "version": "3.23+nmu1",
+      "original_descriptor_sha256": "56f2189eaeee638e86d29a05356e7001632e33b2132a41a4634a9ff839264ea6",
+      "delivery_source_identity": "56f2189eaeee638e86d29a05356e7001632e33b2132a41a4634a9ff839264ea6",
+      "copyright_sha256": "94189fc5a9a7b7224d96e1a0cfdfe9be0df2018b04bf21d591627ab96b30cad1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "htop",
+      "version": "3.2.2-2",
+      "original_descriptor_sha256": "f50ca54a135e676567499f46dbd151c9b7dbb2385bee387b31fb1418987e57c4",
+      "delivery_source_identity": "f50ca54a135e676567499f46dbd151c9b7dbb2385bee387b31fb1418987e57c4",
+      "copyright_sha256": "be3951a1a852956f9104c9eb62c86e48fad47288afc46c71a8ffd5067e0b8601",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "http-parser",
+      "version": "2.9.4-5",
+      "original_descriptor_sha256": "3ef34ef3eb1889482a790b5f1db2ed1aa5736da3bd3a04954fe5dfce4c0035f8",
+      "delivery_source_identity": "3ef34ef3eb1889482a790b5f1db2ed1aa5736da3bd3a04954fe5dfce4c0035f8",
+      "copyright_sha256": "a2abeba069594e719158ebc290eb4ada2c06b8999434f71832d007e23a45114c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "hwloc",
+      "version": "2.9.0-1",
+      "original_descriptor_sha256": "680eca8eb1fa245f90089ac11bb22d7ae1d3b3e3b114cca08617ea986678fd69",
+      "delivery_source_identity": "680eca8eb1fa245f90089ac11bb22d7ae1d3b3e3b114cca08617ea986678fd69",
+      "copyright_sha256": "ef9d59c01a1296041369997b7c684867fe58473d02ae575aca6454c9db2297fc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "icu",
+      "version": "72.1-3+deb12u1",
+      "original_descriptor_sha256": "8fd50a21664422b2dd5df4e20175dce3396c89a3a85363db26dd4529bba62a92",
+      "delivery_source_identity": "8fd50a21664422b2dd5df4e20175dce3396c89a3a85363db26dd4529bba62a92",
+      "copyright_sha256": "5bbff5f646ce750ac0a347e7f91793279b7422a1119820b5f75d98879c201c68",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ieee-data",
+      "version": "20220827.1",
+      "original_descriptor_sha256": "09d9e50500e5949a585d82bdd1041bbaaed9a6c823394a8a86d06157553ac045",
+      "delivery_source_identity": "09d9e50500e5949a585d82bdd1041bbaaed9a6c823394a8a86d06157553ac045",
+      "copyright_sha256": "f1a22c2737d856d90a676a553501431b6a77b9e0bb094cf325827ff6a733381c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iftop",
+      "version": "1.0~pre4-9",
+      "original_descriptor_sha256": "9e71dd5cbb75789b8fa567f0a5cd4ea7d6256851b73dac2bd7711608bd5e8745",
+      "delivery_source_identity": "9e71dd5cbb75789b8fa567f0a5cd4ea7d6256851b73dac2bd7711608bd5e8745",
+      "copyright_sha256": "2902a3521c448c06e24b17501bd624dd998c2be69beec217ded520df7eb1d6d7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "igmpproxy",
+      "version": "0.3-1",
+      "original_descriptor_sha256": "2269f3ddec44a390ac720af120565a95acea852a360ca8e3b1faefdb8b11ff70",
+      "delivery_source_identity": "2269f3ddec44a390ac720af120565a95acea852a360ca8e3b1faefdb8b11ff70",
+      "copyright_sha256": "d7e2787fc372024785dcf42f108b75c26ec98ff4ad35acd9db23a54abfbbea6d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "inetutils",
+      "version": "2:2.4-2+deb12u3",
+      "original_descriptor_sha256": "4f6544f84b3fc6940784181d4afedc91304d84bd274f865698953fa44e94d07a",
+      "delivery_source_identity": "4f6544f84b3fc6940784181d4afedc91304d84bd274f865698953fa44e94d07a",
+      "copyright_sha256": "c4eeea6c40c414860072baa11bbe9199b56d77a43e2b8978017ebee806b1d59f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "init-system-helpers",
+      "version": "1.65.2+deb12u1",
+      "original_descriptor_sha256": "d4c6d21578b0cc835b8941f2d0f1fc3de6c75af63c840d59e75a9a01a0fd4a09",
+      "delivery_source_identity": "d4c6d21578b0cc835b8941f2d0f1fc3de6c75af63c840d59e75a9a01a0fd4a09",
+      "copyright_sha256": "7534601cc4fa513804d16490359f5831e7b6a1212da3bbf948bebdd4c8799783",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "initramfs-tools",
+      "version": "0.142+deb12u3",
+      "original_descriptor_sha256": "ebe9f0848e4c220222e00961c9e464a01d81630782675de55acc2aa40e5e4ef1",
+      "delivery_source_identity": "ebe9f0848e4c220222e00961c9e464a01d81630782675de55acc2aa40e5e4ef1",
+      "copyright_sha256": "d8aeb262235288a4d442df0404a8a29acc39375b41d926a04bcca3f34036bff2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "io-stringy",
+      "version": "2.111-3",
+      "original_descriptor_sha256": "b21b87e84a62a9c6fe2b5f421d5937b0af35dca29844c435f8104586c0d0f8c6",
+      "delivery_source_identity": "b21b87e84a62a9c6fe2b5f421d5937b0af35dca29844c435f8104586c0d0f8c6",
+      "copyright_sha256": "95b9d3c54130731a345105127b5cf1e0b389deb2d7b3a1611b0aa965151538aa",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iotop",
+      "version": "0.6-42-ga14256a-0.1",
+      "original_descriptor_sha256": "f0495dfa91fbcf6e99614aec5580a1c2db2d1af59980932f4018117b7c1e7b9e",
+      "delivery_source_identity": "f0495dfa91fbcf6e99614aec5580a1c2db2d1af59980932f4018117b7c1e7b9e",
+      "copyright_sha256": "29bca7434f24f5fa259b2a58ca8d382a1e4003b410f3db4e897dde2834864d2d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ipcalc",
+      "version": "0.42-2",
+      "original_descriptor_sha256": "711ad8f48fd37ddaa12d8bdce900b79e8c50740680de01b01bb6824c7eadfcea",
+      "delivery_source_identity": "711ad8f48fd37ddaa12d8bdce900b79e8c50740680de01b01bb6824c7eadfcea",
+      "copyright_sha256": "f1a81322953294110f3c8c2d736fbf9e051f1e4d1d41ab3f0d6e38d872b874fe",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iperf",
+      "version": "2.1.8+dfsg-1",
+      "original_descriptor_sha256": "d875902714d6b2a80971ff5f4f0adfd4e2f588cad3e4b988787950ecf0363f49",
+      "delivery_source_identity": "d875902714d6b2a80971ff5f4f0adfd4e2f588cad3e4b988787950ecf0363f49",
+      "copyright_sha256": "7f376949e0003cd15cb15838280e9bf82ce10e93753b7019a83abd55193d3242",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iperf3",
+      "version": "3.12-1+deb12u2",
+      "original_descriptor_sha256": "526d16ad4c19f2d3281e079cff73f3dd996f89b7f8b7c90507c351e415409538",
+      "delivery_source_identity": "526d16ad4c19f2d3281e079cff73f3dd996f89b7f8b7c90507c351e415409538",
+      "copyright_sha256": "741a4513e37c4f8f4c22157ac475424b37faa7adf781f58e1da62e57e7abb700",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ipmitool",
+      "version": "1.8.19-4+deb12u2",
+      "original_descriptor_sha256": "e6e1b4ce1d8b603e922637d921c371cbcdaa4d82b648de97d6ff0b0ae024d972",
+      "delivery_source_identity": "e6e1b4ce1d8b603e922637d921c371cbcdaa4d82b648de97d6ff0b0ae024d972",
+      "copyright_sha256": "155faaefe13aa17570b00d402985c80afbe58cb7c33d843e1b1165bbfaebbe24",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iproute2",
+      "version": "6.15.0-1~bpo12+1",
+      "original_descriptor_sha256": "c4c3eba603890ef546c6c1793030ab4df8e70bbceb23414d1ad1cc2a465260be",
+      "delivery_source_identity": "c4c3eba603890ef546c6c1793030ab4df8e70bbceb23414d1ad1cc2a465260be",
+      "copyright_sha256": "344ddcf4dfe65b86416e058309218b4ac1ee7bc1e624cc40ad87222cc979fdac",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iptables",
+      "version": "1.8.9-2",
+      "original_descriptor_sha256": "71825151f8dc92819f2713f17059e987f2f3e7808a1718ac07cf41f4f222e870",
+      "delivery_source_identity": "71825151f8dc92819f2713f17059e987f2f3e7808a1718ac07cf41f4f222e870",
+      "copyright_sha256": "0ee8d65c982acb051d709d3128e8413bf1a15194fddbde3ece711d2f8f295a95",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iputils",
+      "version": "3:20221126-1+deb12u1",
+      "original_descriptor_sha256": "570f4053315d3c5dcaed6d0902dc9302581c29023eea805dc92bc34199192f07",
+      "delivery_source_identity": "570f4053315d3c5dcaed6d0902dc9302581c29023eea805dc92bc34199192f07",
+      "copyright_sha256": "98d9db67583be21fcd3695b30fde55d9334e83ac07921ee0efc47efffa4e49a1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ipvsadm",
+      "version": "1:1.31-1",
+      "original_descriptor_sha256": "de4950dfbb0ae18fbb75a4ee797d7455cd9ada4709a4408b28d02a9894283470",
+      "delivery_source_identity": "de4950dfbb0ae18fbb75a4ee797d7455cd9ada4709a4408b28d02a9894283470",
+      "copyright_sha256": "e9053150bc374b99ac4399963c6ad3c7b1e678ad72eef06cbe1c10f50978a8cd",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "isc-dhcp",
+      "version": "4.4.3-P1-2",
+      "original_descriptor_sha256": "927cfd9006d3b2b40415c4241cca276f4bc8fdeb8f604cc80ada83735a65a498",
+      "delivery_source_identity": "927cfd9006d3b2b40415c4241cca276f4bc8fdeb8f604cc80ada83735a65a498",
+      "copyright_sha256": "1ab68a7715e2e10c9ebe76171e9cad352757a43108a6f1f0fece8eb61451f070",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "iw",
+      "version": "5.19-1",
+      "original_descriptor_sha256": "6254b8b1dfbf0fd217b772a9eb60800b04ac13b5dcd7cc0f0b083661ce621823",
+      "delivery_source_identity": "6254b8b1dfbf0fd217b772a9eb60800b04ac13b5dcd7cc0f0b083661ce621823",
+      "copyright_sha256": "d31289ff09ea1bde93b831ed3639a0165987097eb0b70cd402a774865ffe5c6e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "jansson",
+      "version": "2.14-2",
+      "original_descriptor_sha256": "6296ddd9c0a022bd1b70074aefb171cfcdf5694a04ffd32b35fd66097621af87",
+      "delivery_source_identity": "6296ddd9c0a022bd1b70074aefb171cfcdf5694a04ffd32b35fd66097621af87",
+      "copyright_sha256": "29347e2528ab31d20e8582b09aa89cd878d306c59a273541141c9aede1903cb8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "jemalloc",
+      "version": "5.3.0-1",
+      "original_descriptor_sha256": "439f07beae27fc3643932de2ef6d095c15f852cdf1a39c2949b8f6fbc51d6f0d",
+      "delivery_source_identity": "439f07beae27fc3643932de2ef6d095c15f852cdf1a39c2949b8f6fbc51d6f0d",
+      "copyright_sha256": "89130bbbc7e4e15c8467bedb738a3c98b97a109b116610ea356680f6add9cb2a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "jimtcl",
+      "version": "0.81+dfsg0-2",
+      "original_descriptor_sha256": "36fbb05f392ea08cdf4566ff9956de324f248480b4b4d5125513b8f59c6d2973",
+      "delivery_source_identity": "36fbb05f392ea08cdf4566ff9956de324f248480b4b4d5125513b8f59c6d2973",
+      "copyright_sha256": "074edfab8424e645ef9f125711ce393ecede814b8515f705b9e48f27ab1499d5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "jinja2",
+      "version": "3.1.2-1+deb12u3",
+      "original_descriptor_sha256": "48e5b0aa6e43fa6738fca9cacf9fedcd553e24c090d52bfe828d8c59b29b0185",
+      "delivery_source_identity": "48e5b0aa6e43fa6738fca9cacf9fedcd553e24c090d52bfe828d8c59b29b0185",
+      "copyright_sha256": "df5feaeac30eaf8b8d92a75799de7853c3f4db9b50ee0b318911f938baaf80df",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "jq",
+      "version": "1.6-2.1+deb12u3",
+      "original_descriptor_sha256": "28492fec6ddf9e46841e2286674091a1231a248d8893a9c0204591e00e8e725a",
+      "delivery_source_identity": "28492fec6ddf9e46841e2286674091a1231a248d8893a9c0204591e00e8e725a",
+      "copyright_sha256": "fa95e7bf94b039285c93ad3bdd615736ee833c16fa61e6322f8d95bced49d95c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "json-c",
+      "version": "0.16-2",
+      "original_descriptor_sha256": "e91baf0603ed23df4c54030df4cd5e8371a7436006e2b85efab7ee4f1d9718c1",
+      "delivery_source_identity": "e91baf0603ed23df4c54030df4cd5e8371a7436006e2b85efab7ee4f1d9718c1",
+      "copyright_sha256": "17c4a26a5995911064bdfb8af6a5dacd2c29b2648da47045fe25c746dee23b2d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "kbd",
+      "version": "2.5.1-1",
+      "original_descriptor_sha256": "601a34466f78611c6e0bf0ff10941b2b8e9abf93e4c84a5f90327df2ca809966",
+      "delivery_source_identity": "20d5fb996b7181aa1d8b805a40bdaf1c0adaf797f2b8c3d22c27a84c5e517d54",
+      "copyright_sha256": "893257f3a92bb2448269ae39284abc1f54cbbab4dd5db939c6af0ff8d0d34e44",
+      "delivery_form": "APPLIED_PREFERRED_SOURCE_EXPORT"
+    },
+    {
+      "source": "keepalived",
+      "version": "1:2.2.7-1",
+      "original_descriptor_sha256": "6e0aad92343adfe2d2855365ce036bb638a6789cc5c52062c0c1ad451b32abad",
+      "delivery_source_identity": "6e0aad92343adfe2d2855365ce036bb638a6789cc5c52062c0c1ad451b32abad",
+      "copyright_sha256": "1494cc30b3e9a13d90fa235674b8ae9137353800e87155b051e251f8d1f1f49b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "kexec-tools",
+      "version": "1:2.0.25-3+deb12u3",
+      "original_descriptor_sha256": "1c43e03290f9fff07987a1b3db563b188762ae85110795abecbc319e944c1ff2",
+      "delivery_source_identity": "1c43e03290f9fff07987a1b3db563b188762ae85110795abecbc319e944c1ff2",
+      "copyright_sha256": "6e381a4f5cab93cc4eb24e46dc1c3cdabbace5cb430e1ca8590c8c89de6679da",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "keyutils",
+      "version": "1.6.3-2",
+      "original_descriptor_sha256": "77e6f0e5018f0f6cfb5a3689d7f185a014b2437d0a097609ffda32bfd3a64f28",
+      "delivery_source_identity": "77e6f0e5018f0f6cfb5a3689d7f185a014b2437d0a097609ffda32bfd3a64f28",
+      "copyright_sha256": "c62fe37d22203046611112bc10a9e03a39a7f73bec1b061e7c615326166d9ff5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "kitty",
+      "version": "0.26.5-5",
+      "original_descriptor_sha256": "a86574bc654ac00a7046fe32c52cb3d491ac3066da2ae77ba1d4b5712e7fc4f5",
+      "delivery_source_identity": "a86574bc654ac00a7046fe32c52cb3d491ac3066da2ae77ba1d4b5712e7fc4f5",
+      "copyright_sha256": "19bc64e244f1e883a9c2f72fe2451d7520b40939467ca2eea8f6b655b735a69c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "klibc",
+      "version": "2.0.12-1",
+      "original_descriptor_sha256": "053a39799defc3f42a5415d1b098236feda12830f60877694e43ed60100da86c",
+      "delivery_source_identity": "053a39799defc3f42a5415d1b098236feda12830f60877694e43ed60100da86c",
+      "copyright_sha256": "d0f580bd7629b15b6bb1b36468b51182545a8002612a030fca39fec2e3203707",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "kmod",
+      "version": "30+20221128-1",
+      "original_descriptor_sha256": "82be47e59807b9717641c1a9dd245618a23aa721709bcaf44409579f885f67a3",
+      "delivery_source_identity": "82be47e59807b9717641c1a9dd245618a23aa721709bcaf44409579f885f67a3",
+      "copyright_sha256": "e8b534ea455c397714900d701cbdaf20154f02e970607c5bb4d71c4b3d499055",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "krb5",
+      "version": "1.20.1-2+deb12u5",
+      "original_descriptor_sha256": "643c1e56f5d2022f7685f5d5490a4fc348adc68a4bb42adbc1780e4a5b1bb05e",
+      "delivery_source_identity": "643c1e56f5d2022f7685f5d5490a4fc348adc68a4bb42adbc1780e4a5b1bb05e",
+      "copyright_sha256": "936728f4181718f42951b881c1e8f1386bf6b2723c4fbc533c374d6f42c71816",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lapack",
+      "version": "3.11.0-2",
+      "original_descriptor_sha256": "664d828b9015f9d7db00dd53d42ee7ae0b30e90725fa5300fce35a833ecd5ecf",
+      "delivery_source_identity": "664d828b9015f9d7db00dd53d42ee7ae0b30e90725fa5300fce35a833ecd5ecf",
+      "copyright_sha256": "e7381ebec88ee34b83d4f33e7e32b24a438fef8915489a48c94557a17ac745f3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lcdproc",
+      "version": "0.5.9-6",
+      "original_descriptor_sha256": "2e1177d4f2ff2978cbcbc84e4e2947896478f64baec0abb7aec9a3f613af8b9e",
+      "delivery_source_identity": "2e1177d4f2ff2978cbcbc84e4e2947896478f64baec0abb7aec9a3f613af8b9e",
+      "copyright_sha256": "041faf7aa3520a3203eabb18f848ab20fdd702184f5bae2c01959104f724b382",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "less",
+      "version": "590-2.1~deb12u2",
+      "original_descriptor_sha256": "1a4219f8ec9342851805089d9ee5ec7c0150287d5722ecc914c50790673ad9a6",
+      "delivery_source_identity": "1a4219f8ec9342851805089d9ee5ec7c0150287d5722ecc914c50790673ad9a6",
+      "copyright_sha256": "e769e64d04abc3d772e5f397d2848d193c1e2015ff4ca92d7b73dfec8ca791a5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libapp-cmd-perl",
+      "version": "0.335-1",
+      "original_descriptor_sha256": "37fb9dfededecfbd878f0183d27c2ac244b5806fc740cd73005bc4081055b586",
+      "delivery_source_identity": "37fb9dfededecfbd878f0183d27c2ac244b5806fc740cd73005bc4081055b586",
+      "copyright_sha256": "f09fc7ddb3ca576ad51cadf089d3c21a9a489a6f0aeb2b175e1d96b1b3db9f64",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libassuan",
+      "version": "2.5.5-5",
+      "original_descriptor_sha256": "60be1d43dd5a7c4bce7a97f58513915990c8c615ea02c68b8cd5cf1e33b84a0c",
+      "delivery_source_identity": "60be1d43dd5a7c4bce7a97f58513915990c8c615ea02c68b8cd5cf1e33b84a0c",
+      "copyright_sha256": "4ebaa5bc59e454e68f4acd5af948938b9a0759cef31cc8d6afcec9c9fd1d10eb",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libb-hooks-op-check-perl",
+      "version": "0.22-2",
+      "original_descriptor_sha256": "39891237277be4344bc3d7c68c4ff3de86d73e1077268e295fce53015785282d",
+      "delivery_source_identity": "39891237277be4344bc3d7c68c4ff3de86d73e1077268e295fce53015785282d",
+      "copyright_sha256": "027cf55c401c860e9c956dccaf87276d3dc2029e0c30349808165cd05df487ce",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libboolean-perl",
+      "version": "0.46-3",
+      "original_descriptor_sha256": "8bdb9cc710a39de10ec097b9c77ccb476e5b188578325fe4f61dd50b081505c4",
+      "delivery_source_identity": "8bdb9cc710a39de10ec097b9c77ccb476e5b188578325fe4f61dd50b081505c4",
+      "copyright_sha256": "013dc3f253bbf536867be1e5078a9581cf20bf40c23ab8331d434eabe3f492e9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libbpf",
+      "version": "1.1.2-0+deb12u1",
+      "original_descriptor_sha256": "96f81dad2d5f1505ac8c3630249c77f7fcb9ab2f429c4386b2eee2149b7a8c4b",
+      "delivery_source_identity": "96f81dad2d5f1505ac8c3630249c77f7fcb9ab2f429c4386b2eee2149b7a8c4b",
+      "copyright_sha256": "3ea54ea6d9464e208a8011e5cdebbb2ddcd8cf3f8954606f60ff2b168d9a4c22",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libbsd",
+      "version": "0.11.7-2",
+      "original_descriptor_sha256": "21c62d65fa3b914d765b733fb0e03d331db830df45f1a5225f95902567f05146",
+      "delivery_source_identity": "21c62d65fa3b914d765b733fb0e03d331db830df45f1a5225f95902567f05146",
+      "copyright_sha256": "00fd7be5d907a6bcc409a80f2d565f508673db4761d54623691f89ae3aa20fc7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libcap-ng",
+      "version": "0.8.3-1",
+      "original_descriptor_sha256": "1bf38dbc0c30bcbc776d2d5c25e31d89202de0858f9ca9379c993d55103d7ef0",
+      "delivery_source_identity": "1bf38dbc0c30bcbc776d2d5c25e31d89202de0858f9ca9379c993d55103d7ef0",
+      "copyright_sha256": "49b5db19990a3e3cc1a9ed716aed231f6f3c1c217e58f62ae4dc2818c6d3e9cc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libcap2",
+      "version": "1:2.66-4+deb12u3",
+      "original_descriptor_sha256": "56b6fa8db84a0e80b48522cbcafb0353282a7dbb5605c81b021e0862b120d1c9",
+      "delivery_source_identity": "56b6fa8db84a0e80b48522cbcafb0353282a7dbb5605c81b021e0862b120d1c9",
+      "copyright_sha256": "e60a5642e12e340060e4e519a65b2eb0330be2917854841c644e36268f607d54",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libcapture-tiny-perl",
+      "version": "0.48-2",
+      "original_descriptor_sha256": "c4a264734aaa94cc497013509899853e31fc4211781ceab81f64d2b7d09a36b4",
+      "delivery_source_identity": "c4a264734aaa94cc497013509899853e31fc4211781ceab81f64d2b7d09a36b4",
+      "copyright_sha256": "2e704ea392991334ac522d3b8bf11ec6765d4770e193332712c27677b884494a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libcarp-assert-more-perl",
+      "version": "2.2.0-1",
+      "original_descriptor_sha256": "0ca2ae70f006e05f58617d06ecc608d090ceb4aadcaca14c1409d095065a00e1",
+      "delivery_source_identity": "0ca2ae70f006e05f58617d06ecc608d090ceb4aadcaca14c1409d095065a00e1",
+      "copyright_sha256": "89269a232e2c144b712a67714ae7c237fa1bf41d263b9229617189ee2f0d6eca",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libcbor",
+      "version": "0.8.0-2",
+      "original_descriptor_sha256": "ea9cbadf7d9cd9a3f7dcf7467f3e71dd7aab6d06cad15d01b2f0c19a0ad749a7",
+      "delivery_source_identity": "ea9cbadf7d9cd9a3f7dcf7467f3e71dd7aab6d06cad15d01b2f0c19a0ad749a7",
+      "copyright_sha256": "1745c3131e3594b3dab29db61e65b9efa0d654cbf2e4bad9f6b446caeb454b8f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libcidr",
+      "version": "1.2.3-3",
+      "original_descriptor_sha256": "4713cccdd52df1c9315d6b2eb86383d3015531d0b10dbc35d2cf1d10015054f0",
+      "delivery_source_identity": "4713cccdd52df1c9315d6b2eb86383d3015531d0b10dbc35d2cf1d10015054f0",
+      "copyright_sha256": "beaa099db59946d31f21c3f1ac54e89382033a15a9f030c24e27fb6a1f4cdf55",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libclass-data-inheritable-perl",
+      "version": "0.08-3",
+      "original_descriptor_sha256": "4e7434f3a8a80159d2c1c155030ecd2fe6b749679e8ec0a8389da40f8dea6329",
+      "delivery_source_identity": "4e7434f3a8a80159d2c1c155030ecd2fe6b749679e8ec0a8389da40f8dea6329",
+      "copyright_sha256": "1c78ac8cb376f8b1121298a0bfe6a8deae2d20b40aacbbb00a594e9db4d71985",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libclass-load-perl",
+      "version": "0.25-2",
+      "original_descriptor_sha256": "608601125ae05231e7e0bed63c0d75b44c0854b340714d720d6f615c129b4701",
+      "delivery_source_identity": "608601125ae05231e7e0bed63c0d75b44c0854b340714d720d6f615c129b4701",
+      "copyright_sha256": "d677e98dcb1bf7f2baa04953fa28b05172584963b67bacc01eb27164c8c3d088",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libclone-choose-perl",
+      "version": "0.010-2",
+      "original_descriptor_sha256": "9db79da9958c86fc36b4debaee839fe7863bce08089d0348ba2b78b317a2e190",
+      "delivery_source_identity": "9db79da9958c86fc36b4debaee839fe7863bce08089d0348ba2b78b317a2e190",
+      "copyright_sha256": "3b10df5e78d80a85b4551e7fe78c1c7c8ff6b3253486d45681f9002e89ca4983",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libconfig-model-lcdproc-perl",
+      "version": "2.053-2",
+      "original_descriptor_sha256": "2451b63f3b3c5ba215cd930c1b89369e111e4d1b866dcd14984e536d5917943f",
+      "delivery_source_identity": "2451b63f3b3c5ba215cd930c1b89369e111e4d1b866dcd14984e536d5917943f",
+      "copyright_sha256": "a923bbf48c82ba0d7a0feae02ee8ff12641675d9dd030ce1c02ad2873acc459b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libconfig-model-perl",
+      "version": "2.152-1",
+      "original_descriptor_sha256": "b625d4568f25f6c22ffc7dd9ecff6150892359b5253952cbea23f2ab1f48f0dc",
+      "delivery_source_identity": "b625d4568f25f6c22ffc7dd9ecff6150892359b5253952cbea23f2ab1f48f0dc",
+      "copyright_sha256": "1ee7c858cdd5533e985a3af724771cdcb7e80f47be357f8c91eaca41f5546e27",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libconfuse",
+      "version": "3.3-3",
+      "original_descriptor_sha256": "6b711e4cedfd3f032c921b96ee854fdbbcd7df2160f9d2ffde3a728baee63f7f",
+      "delivery_source_identity": "6b711e4cedfd3f032c921b96ee854fdbbcd7df2160f9d2ffde3a728baee63f7f",
+      "copyright_sha256": "cdf0928a30a2bb5c7c586f6cde6886099a2a173f699627dd1474e08ab32fc923",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libdaemon",
+      "version": "0.14-7.1",
+      "original_descriptor_sha256": "1c50dc83331dc81204e11cfe038c67575ea75dfc9fb2c13cfad2acd39b6f30e9",
+      "delivery_source_identity": "1c50dc83331dc81204e11cfe038c67575ea75dfc9fb2c13cfad2acd39b6f30e9",
+      "copyright_sha256": "f997ae27f25db0ddac1b8c852720175ca6ef6e624de11f02afd46cb3954d66aa",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libdata-optlist-perl",
+      "version": "0.113-1",
+      "original_descriptor_sha256": "72bc5b84b4df2f5fd6d44663a9a8a1429f8a841c62edc6f8f7589e03a671176d",
+      "delivery_source_identity": "72bc5b84b4df2f5fd6d44663a9a8a1429f8a841c62edc6f8f7589e03a671176d",
+      "copyright_sha256": "3bb3b6b0f15f26657aadd1e908013e4b97326e36612b0aa941778de54ae30c24",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libdbi-perl",
+      "version": "1.643-4+deb12u3",
+      "original_descriptor_sha256": "73a9c5c956104cd95e478f2f5e145937fe669f43a5b692f017850d32ffcd5aef",
+      "delivery_source_identity": "73a9c5c956104cd95e478f2f5e145937fe669f43a5b692f017850d32ffcd5aef",
+      "copyright_sha256": "57d2dfda7c353999012ecf14b0a932b734f685df5c684ad04bf86f12f8a954c5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libdevel-callchecker-perl",
+      "version": "0.008-2",
+      "original_descriptor_sha256": "8a49bb96cf7ca3d5387651c611bf71cd3db180fd3ea9b69ba7f84952ad202798",
+      "delivery_source_identity": "8a49bb96cf7ca3d5387651c611bf71cd3db180fd3ea9b69ba7f84952ad202798",
+      "copyright_sha256": "949e7215260acd89d9fa76b027d9e4c34c391118ea158cbce96adc43f0ffc418",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libdevel-stacktrace-perl",
+      "version": "2.0400-2",
+      "original_descriptor_sha256": "7e72efe2571bfc66e83cc104e02982129011c2b42c48c15edea2272fd247664e",
+      "delivery_source_identity": "7e72efe2571bfc66e83cc104e02982129011c2b42c48c15edea2272fd247664e",
+      "copyright_sha256": "501b54daf865cc97debf356cad365efa9efd2eb3a89c4e4b577765cfd864cf2d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libdynaloader-functions-perl",
+      "version": "0.003-3",
+      "original_descriptor_sha256": "2d8cbe058f82bc24908dfba3bc946d587e589b0a0122bd8e3dd1830ea071264a",
+      "delivery_source_identity": "2d8cbe058f82bc24908dfba3bc946d587e589b0a0122bd8e3dd1830ea071264a",
+      "copyright_sha256": "9bc9c91c52854ff06cd7a8da2e0d73a9f18039f7fff3ac21076f1cac97b3b6aa",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libecap",
+      "version": "1.0.1-3.4",
+      "original_descriptor_sha256": "48837111de219b5d7548935412fcc0f9d4ec20dacb7b43ef786dd100d94f090d",
+      "delivery_source_identity": "48837111de219b5d7548935412fcc0f9d4ec20dacb7b43ef786dd100d94f090d",
+      "copyright_sha256": "4f16cebc3e80aeeb6dac6bd890001079d6fb827e27d2aabd35e06815d851260c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libedit",
+      "version": "3.1-20221030-2",
+      "original_descriptor_sha256": "6e701f5e0bcd81f80fe3686d84861e9d9247e247ed08fb96ffc3746102aedd21",
+      "delivery_source_identity": "6e701f5e0bcd81f80fe3686d84861e9d9247e247ed08fb96ffc3746102aedd21",
+      "copyright_sha256": "2b53671050f6319be6fcdcafa434e8ccb8af629359b4afc83185867204f3927d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "liberror-perl",
+      "version": "0.17029-2",
+      "original_descriptor_sha256": "48c6ca66e03144a8bec4f32b2419f34d70e8a00500b01ea3bb6a5cab0c03e164",
+      "delivery_source_identity": "48c6ca66e03144a8bec4f32b2419f34d70e8a00500b01ea3bb6a5cab0c03e164",
+      "copyright_sha256": "5ece6f21cf4f64f798479e81abd3f25a20bd7e8fc13d98c680b25a8af6b954af",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libestr",
+      "version": "0.1.11-1",
+      "original_descriptor_sha256": "972ae4d0e689f3eca05003dfe1f1e3650641f041467e04f0bac966497bf1daf9",
+      "delivery_source_identity": "972ae4d0e689f3eca05003dfe1f1e3650641f041467e04f0bac966497bf1daf9",
+      "copyright_sha256": "0bebe5f6975ff7fea9134580b644b0457fe5165734cef16aa939af6001636820",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libev",
+      "version": "1:4.33-1",
+      "original_descriptor_sha256": "5193ae6b2c2cd925f43ea1b1431f32a17f2fd94509743e0c8c05bb8d4c269521",
+      "delivery_source_identity": "5193ae6b2c2cd925f43ea1b1431f32a17f2fd94509743e0c8c05bb8d4c269521",
+      "copyright_sha256": "7c115507d8870bcbd0f7ccae2155a104568d00492060bb90935bda898cee6c60",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libevent",
+      "version": "2.1.12-stable-8+deb12u1",
+      "original_descriptor_sha256": "acc01f440019a0369c1cf0e6256a22037a65f032b5192ee14bad548889074b55",
+      "delivery_source_identity": "acc01f440019a0369c1cf0e6256a22037a65f032b5192ee14bad548889074b55",
+      "copyright_sha256": "d32d223a2f96bb222faa1f6d2b4573b512465b2b234f56e040a4d7daab060d69",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libexception-class-perl",
+      "version": "1.45-1",
+      "original_descriptor_sha256": "744feb8bbee2277472c7113fd7e672051ff7635f070fe00ba19a79cd8e3707a9",
+      "delivery_source_identity": "744feb8bbee2277472c7113fd7e672051ff7635f070fe00ba19a79cd8e3707a9",
+      "copyright_sha256": "5913d33c006322486e7823b54fbe2537a67c3ea57f40257ed9ced9d938d2121a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libexporter-tiny-perl",
+      "version": "1.006000-1",
+      "original_descriptor_sha256": "00149c109311e13db0d563c55c2be84d248c29613f93b8ec8bed2bbf37bed580",
+      "delivery_source_identity": "00149c109311e13db0d563c55c2be84d248c29613f93b8ec8bed2bbf37bed580",
+      "copyright_sha256": "587fb6c2463e2b5fe7974af715b06a958321672a5209aa0ba445b83752f8a529",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libfastjson",
+      "version": "1.2304.0-1",
+      "original_descriptor_sha256": "ee9fe28502e5def61406b784a43978b516a0094ab5f8e3b51078e56798640a66",
+      "delivery_source_identity": "ee9fe28502e5def61406b784a43978b516a0094ab5f8e3b51078e56798640a66",
+      "copyright_sha256": "47a23247987e122cf942a91e65259c5a5836e81cf70c311e2f4bcd9ee7695b3a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libffi",
+      "version": "3.4.4-1",
+      "original_descriptor_sha256": "21c9ef156b6766535cb014e0765142c8104ffbcd73f003ecfa80cfb314baa4f0",
+      "delivery_source_identity": "21c9ef156b6766535cb014e0765142c8104ffbcd73f003ecfa80cfb314baa4f0",
+      "copyright_sha256": "f83d2ecba1ea4d99957e81c50bebbd076a128194288a3ec22cc8ccdb77c43087",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libfido2",
+      "version": "1.12.0-2",
+      "original_descriptor_sha256": "d961e09e1b9ffc57dd5782739b82b192d8320bcfc0004cf4a7bc1ebfdb685db0",
+      "delivery_source_identity": "d961e09e1b9ffc57dd5782739b82b192d8320bcfc0004cf4a7bc1ebfdb685db0",
+      "copyright_sha256": "c05201a77c4ac0cab4b8abd8daded4dbaeb460b393d44fed45da7fd4e5ad8652",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libfile-homedir-perl",
+      "version": "1.006-2",
+      "original_descriptor_sha256": "24f18bca6c35ba21d6e61d856d15cedf20be0dc7ad5a86f149d40bea87ac1d01",
+      "delivery_source_identity": "24f18bca6c35ba21d6e61d856d15cedf20be0dc7ad5a86f149d40bea87ac1d01",
+      "copyright_sha256": "c2335935fb7a15c4d20f4e04c314c79d92185d10cb0eb8f4545f9a18a70f5904",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libfile-which-perl",
+      "version": "1.27-2",
+      "original_descriptor_sha256": "eeb39065332ec8b25b2273308b031d5ea476243a8401a62ab8eebf8acec9db48",
+      "delivery_source_identity": "eeb39065332ec8b25b2273308b031d5ea476243a8401a62ab8eebf8acec9db48",
+      "copyright_sha256": "4115ef1a0cb233f60cf876d714bedaae90f4800f61bf299da6c637740bab17f1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libgc",
+      "version": "1:8.2.2-3",
+      "original_descriptor_sha256": "99eebbbf9f5a8fe659504f8cf7c26bc3a43fbe766d2c3b5ad3dfe8997a9a62ff",
+      "delivery_source_identity": "99eebbbf9f5a8fe659504f8cf7c26bc3a43fbe766d2c3b5ad3dfe8997a9a62ff",
+      "copyright_sha256": "b076c9d513a8fe345d003464684d1b502c348ff94ee8d109078a23aaaf25374d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libgcrypt20",
+      "version": "1.10.1-3+deb12u1",
+      "original_descriptor_sha256": "1bd12e7e03f5c60177a65ba4b838466033eaeca191111c570d444104d0d6e6d3",
+      "delivery_source_identity": "1bd12e7e03f5c60177a65ba4b838466033eaeca191111c570d444104d0d6e6d3",
+      "copyright_sha256": "95db2f9da663f2bfe2aabe9c72fce9d6c9ae767b912f397d7823f50bd55a1a7d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libgetopt-long-descriptive-perl",
+      "version": "0.111-1",
+      "original_descriptor_sha256": "d41cdafdcbcafea4ec5b8cda8092f68e56d33a24b0a9bf9a741865df7b42fd3f",
+      "delivery_source_identity": "d41cdafdcbcafea4ec5b8cda8092f68e56d33a24b0a9bf9a741865df7b42fd3f",
+      "copyright_sha256": "0f9730e40072517587e715571c78559d43e1dbf64f9a5b2eeb13d569885fd8b6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libgpg-error",
+      "version": "1.46-1",
+      "original_descriptor_sha256": "f1fe4ca2f252f797c2819b0eae1e284e2f0b2c7ac8ec16209054ae45878aaafe",
+      "delivery_source_identity": "f1fe4ca2f252f797c2819b0eae1e284e2f0b2c7ac8ec16209054ae45878aaafe",
+      "copyright_sha256": "8760fd36efa1d7186f8769d4e76a3e678045b94d54465bf6f2db5eb871c7c27f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libgudev",
+      "version": "237-2",
+      "original_descriptor_sha256": "952259cd0bbae391d5f58b823096a0bb5373b463033587329730c75911b9ae12",
+      "delivery_source_identity": "952259cd0bbae391d5f58b823096a0bb5373b463033587329730c75911b9ae12",
+      "copyright_sha256": "e8208610819fd05fca6ea4776156858bb934e29c408ae9bdac4a8266a53178e3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libhash-merge-perl",
+      "version": "0.302-1",
+      "original_descriptor_sha256": "595e409a08548925df83ae8fee86474f81e88372b80bed905ecae0585587ccf5",
+      "delivery_source_identity": "595e409a08548925df83ae8fee86474f81e88372b80bed905ecae0585587ccf5",
+      "copyright_sha256": "075176f63ddfc999c1a776c3d981e8e8248d649ed1ae4b1a81ee72a357a82775",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libidn2",
+      "version": "2.3.3-1",
+      "original_descriptor_sha256": "13865e96a0fed8dcb82767db65c946b56ed44fc1806d80d407c512ded2a83984",
+      "delivery_source_identity": "13865e96a0fed8dcb82767db65c946b56ed44fc1806d80d407c512ded2a83984",
+      "copyright_sha256": "41702469f28e8ff406345e3d1dd0c741f11bdfca319264f67036efd6aaa79e4b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libio-tiecombine-perl",
+      "version": "1.005-3",
+      "original_descriptor_sha256": "2120b6345450e00fb9597a1fcb551e922bb89c60b26d96d8193ed24efc24dcfa",
+      "delivery_source_identity": "2120b6345450e00fb9597a1fcb551e922bb89c60b26d96d8193ed24efc24dcfa",
+      "copyright_sha256": "e1d3f5378f94d37a5b9af0875719e887089905ecb6ae6d83effee69ca4f769cd",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libjson-perl",
+      "version": "4.10000-1",
+      "original_descriptor_sha256": "7759c7cc963ae03bd6042dff53fc246843c68097be5a1e264bd810adf9f65b3e",
+      "delivery_source_identity": "7759c7cc963ae03bd6042dff53fc246843c68097be5a1e264bd810adf9f65b3e",
+      "copyright_sha256": "a386cd51aa512e321a9e132b0db989d19c43b090029f33f554f1c98785992584",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libksba",
+      "version": "1.6.3-2",
+      "original_descriptor_sha256": "cc3b1c34eafe187a16f6150607b9729beba2934192fff0b800ac1554746f6faf",
+      "delivery_source_identity": "cc3b1c34eafe187a16f6150607b9729beba2934192fff0b800ac1554746f6faf",
+      "copyright_sha256": "b84c864ba35df1f3160ad00a4e4ee32e8a95783c3d3604301b2909163ff198cf",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "liblinear",
+      "version": "2.3.0+dfsg-5",
+      "original_descriptor_sha256": "b02eb25bef3a89e98136bfa11e4cd5882023af6b445dae104992cfed1ca661ab",
+      "delivery_source_identity": "b02eb25bef3a89e98136bfa11e4cd5882023af6b445dae104992cfed1ca661ab",
+      "copyright_sha256": "19c7c6660a0e78bee6df868429b2679d1c5c82b7a0e103ca33313b7b3afaa67b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "liblist-moreutils-perl",
+      "version": "0.430-2",
+      "original_descriptor_sha256": "3d843801b6f322343178bdb0f87a4139a8308c3501fc51f5295378bfb63a3eec",
+      "delivery_source_identity": "3d843801b6f322343178bdb0f87a4139a8308c3501fc51f5295378bfb63a3eec",
+      "copyright_sha256": "ec07d8cc25825e5f40a22f75be3b26282c951d0d9f31244ece3842cc50b63e71",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "liblist-moreutils-xs-perl",
+      "version": "0.430-3",
+      "original_descriptor_sha256": "df5cd14456020380f204723ff8a8853543be88cf0ea84e6491f2a2577a7192e9",
+      "delivery_source_identity": "df5cd14456020380f204723ff8a8853543be88cf0ea84e6491f2a2577a7192e9",
+      "copyright_sha256": "701442cf3769c37d49c6e531c5c80c69e98fd02e13293ed3c29f3ddaf3f9583a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "liblog-log4perl-perl",
+      "version": "1.57-1",
+      "original_descriptor_sha256": "397517c8ac15a41bce7ccbd09a5d20c719684379496f50e73222357881cd8404",
+      "delivery_source_identity": "397517c8ac15a41bce7ccbd09a5d20c719684379496f50e73222357881cd8404",
+      "copyright_sha256": "6d813efc65e7cc64ecdd02f1b49ea1939d68f1285c1edaba0cdcee29b2cb667a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "liblognorm",
+      "version": "2.0.6-4",
+      "original_descriptor_sha256": "252a78fc7049a31a6f21a9e057a36171ddceb1d9ec09a58ddb74aedc9a66bc70",
+      "delivery_source_identity": "252a78fc7049a31a6f21a9e057a36171ddceb1d9ec09a58ddb74aedc9a66bc70",
+      "copyright_sha256": "6f25d58e295f549da87ac041f2137b1a209f25b0a4dd5e4117e607451538b52a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmaxminddb",
+      "version": "1.7.1-1",
+      "original_descriptor_sha256": "2b644c068739179907df3be7728d39f823aacc1f3d295788b8439a09fe222556",
+      "delivery_source_identity": "2b644c068739179907df3be7728d39f823aacc1f3d295788b8439a09fe222556",
+      "copyright_sha256": "33e034d37ba537df4ad70642f6a231436077af15167dcdab63617347d0a9c09b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmbim",
+      "version": "1.28.2-1",
+      "original_descriptor_sha256": "096c4de512c684b4933719a545783847971e1d9ab142b02796670885179721a3",
+      "delivery_source_identity": "096c4de512c684b4933719a545783847971e1d9ab142b02796670885179721a3",
+      "copyright_sha256": "320349ab35c7742eb203fab3f518184d6685c3487a6b12d7956ebc2982958264",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmd",
+      "version": "1.0.4-2",
+      "original_descriptor_sha256": "5e060cb277f31e67b91033e05ece00832ca8056decba873b1698a5680414a177",
+      "delivery_source_identity": "5e060cb277f31e67b91033e05ece00832ca8056decba873b1698a5680414a177",
+      "copyright_sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmnl",
+      "version": "1.0.4-3",
+      "original_descriptor_sha256": "9dc308ffade8cc0cb7a7ee8925e25f338121f642a9a9caef535effd893d4830a",
+      "delivery_source_identity": "9dc308ffade8cc0cb7a7ee8925e25f338121f642a9a9caef535effd893d4830a",
+      "copyright_sha256": "62d24d881d6d292869b7627fec8e6403bcc83e2268d3e93ee4ad1d26c00cd3f8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmodule-implementation-perl",
+      "version": "0.09-2",
+      "original_descriptor_sha256": "e01374ee19c8977ca2542822f9cdaa4a632cbcccbf9cf255895910e15ff46789",
+      "delivery_source_identity": "e01374ee19c8977ca2542822f9cdaa4a632cbcccbf9cf255895910e15ff46789",
+      "copyright_sha256": "6487cd1dc32114d793dd2c87c60a31ee96b4f2764dec8b42b2761c2209265a77",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmodule-pluggable-perl",
+      "version": "5.2-4",
+      "original_descriptor_sha256": "b1ad543093de12f39f22bf9134850f52a84bd56c7237225bb58d76f890a6ff47",
+      "delivery_source_identity": "b1ad543093de12f39f22bf9134850f52a84bd56c7237225bb58d76f890a6ff47",
+      "copyright_sha256": "ed5b2e7622b758f6d5eabbd6fdec905a19a48ecf1e3318cceb3a71a9104acb3c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmodule-runtime-perl",
+      "version": "0.016-2",
+      "original_descriptor_sha256": "d438075879c1ff3bf527c6e20fb5868b9fa4e14486506f4539b4a759d361a9de",
+      "delivery_source_identity": "d438075879c1ff3bf527c6e20fb5868b9fa4e14486506f4539b4a759d361a9de",
+      "copyright_sha256": "cb85b813403f82d3ac4b3c7b956c645e83f8b50e5f10b32346f67582b7bb2b02",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmouse-perl",
+      "version": "2.5.10-1",
+      "original_descriptor_sha256": "f9e1bfe22bb36b3c765909330e9bd419b4c8897560ff4c2a0deec2569baeafa2",
+      "delivery_source_identity": "f9e1bfe22bb36b3c765909330e9bd419b4c8897560ff4c2a0deec2569baeafa2",
+      "copyright_sha256": "f773469e56b2982d99e4af367f83364401a85e98c4424c8e3ba69477ca4b56fd",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmousex-nativetraits-perl",
+      "version": "1.09-3",
+      "original_descriptor_sha256": "810fd1848cd909c3307a4f04b71ead5732653cbdc0bdef138e2bcc9938eae714",
+      "delivery_source_identity": "810fd1848cd909c3307a4f04b71ead5732653cbdc0bdef138e2bcc9938eae714",
+      "copyright_sha256": "18cd455486aa91bb96d5a0a3e3edcc44a7e06dc2b433754bc6d47d709590a8a7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libmousex-strictconstructor-perl",
+      "version": "0.02-3",
+      "original_descriptor_sha256": "67633be58c968fc150ad4997e9f2a9ca65465f3ec1cb41144b548428921b3bd9",
+      "delivery_source_identity": "67633be58c968fc150ad4997e9f2a9ca65465f3ec1cb41144b548428921b3bd9",
+      "copyright_sha256": "864606701853fd1495af7ed79bea0f090c90017029a411812738dd11860a1add",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libndp",
+      "version": "1.8-1+deb12u1",
+      "original_descriptor_sha256": "f1d8c3e91963b63f22aec4371f5e676b8e090f2121fec6b76b3b303cb11d0d3b",
+      "delivery_source_identity": "f1d8c3e91963b63f22aec4371f5e676b8e090f2121fec6b76b3b303cb11d0d3b",
+      "copyright_sha256": "317a97140da428e1d2e2f17ea74c02523f61163e2c1668f2f05ee9a59545884e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnet",
+      "version": "1.1.6+dfsg-3.2",
+      "original_descriptor_sha256": "ad3fe1b0abbdf4c402c9b730361b3307f6ecd3a4562632fac124b8c74621ea75",
+      "delivery_source_identity": "ad3fe1b0abbdf4c402c9b730361b3307f6ecd3a4562632fac124b8c74621ea75",
+      "copyright_sha256": "767dcb8cf9128f8a10631b527de9c69563352d1423bec9224a8cd98f94041ee6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnetfilter-conntrack",
+      "version": "1.0.9-3",
+      "original_descriptor_sha256": "e150e8b701bffe515d140627d46d12c51aac8b36ae063028368fdc843cebcd26",
+      "delivery_source_identity": "e150e8b701bffe515d140627d46d12c51aac8b36ae063028368fdc843cebcd26",
+      "copyright_sha256": "f066f9856df12a15d2e6eb10fd9e95a4a4af794ff6709d41a92ba767f18071d7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnetfilter-cthelper",
+      "version": "1.0.1-1",
+      "original_descriptor_sha256": "f23b13b11389ed5135a74cf3e13be67e8ed4dda0bb93f215db6988af46430e9e",
+      "delivery_source_identity": "f23b13b11389ed5135a74cf3e13be67e8ed4dda0bb93f215db6988af46430e9e",
+      "copyright_sha256": "b3f2af6e5877b76e10f1a8c22548fd58c898971c5656e7467f7444792149854f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnetfilter-cttimeout",
+      "version": "1.0.1-1",
+      "original_descriptor_sha256": "4e5e2597712cb77a54f3b34ee15a081b97aa8f676faeb56b0b435567eb5972ea",
+      "delivery_source_identity": "4e5e2597712cb77a54f3b34ee15a081b97aa8f676faeb56b0b435567eb5972ea",
+      "copyright_sha256": "0b5e2b32baac7d1a24e44bab798d8ea0d6416b5d02b21545e17fff3a16aeabef",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnetfilter-queue",
+      "version": "1.0.5-3",
+      "original_descriptor_sha256": "f008d160a22c61f6eeb65372c32333c99091c7ebded328c76428819b299e7578",
+      "delivery_source_identity": "f008d160a22c61f6eeb65372c32333c99091c7ebded328c76428819b299e7578",
+      "copyright_sha256": "a71abf97305cece28094f362c018ec38c3a45326c1ba19641cd453b39802a556",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnfnetlink",
+      "version": "1.0.2-2",
+      "original_descriptor_sha256": "d48310b5afca02ec9cd674f69d639c8b773ffb7f5e372b5696d43a144aa3cc64",
+      "delivery_source_identity": "d48310b5afca02ec9cd674f69d639c8b773ffb7f5e372b5696d43a144aa3cc64",
+      "copyright_sha256": "56cdc145e86ce9faa976a6142f7780f33ddc93cec3602ea8e2f0199375fb471f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnginx-mod-http-echo",
+      "version": "1:0.63-4",
+      "original_descriptor_sha256": "413d7bad9979618971d8d8bcc143011ce924614755ecbe2eb99ecec9813d0a7d",
+      "delivery_source_identity": "413d7bad9979618971d8d8bcc143011ce924614755ecbe2eb99ecec9813d0a7d",
+      "copyright_sha256": "f96d2061a6d2af947f13b663743f6d2c443501022787215fefba8ae332eab459",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnl3",
+      "version": "3.7.0-0.2",
+      "original_descriptor_sha256": "dd41ed81344119f158f3ed194dad966247f21a1d1ee078295d347b4ec7c2adef",
+      "delivery_source_identity": "dd41ed81344119f158f3ed194dad966247f21a1d1ee078295d347b4ec7c2adef",
+      "copyright_sha256": "9a3730df4bb18c8be5fdce05b9223f9b152b6bf40f7e45319529830ecd413eb2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnsl",
+      "version": "1.3.0-2",
+      "original_descriptor_sha256": "1da570eed6693c774cce51f3c33f989d1aa4bf1dcb8660818d8a834a1a3728ef",
+      "delivery_source_identity": "1da570eed6693c774cce51f3c33f989d1aa4bf1dcb8660818d8a834a1a3728ef",
+      "copyright_sha256": "7d9c79b73fd956319a90cd210441498b225e00960352c4c6d447436481bb0eec",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libnvme",
+      "version": "1.3-1+deb12u1",
+      "original_descriptor_sha256": "c8d65529c5ee8f61f84766661257c6f05525d0ed0b9684517b639b1e99522b9c",
+      "delivery_source_identity": "c8d65529c5ee8f61f84766661257c6f05525d0ed0b9684517b639b1e99522b9c",
+      "copyright_sha256": "9fa4b177c0d9df274aadce8df761188b44379bb87f92a18a855f71711483273f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libonig",
+      "version": "6.9.8-1",
+      "original_descriptor_sha256": "5f834eab1fb4cce8ba8869c64b52358615daa726235eb106e1cd0c4051fafe4c",
+      "delivery_source_identity": "5f834eab1fb4cce8ba8869c64b52358615daa726235eb106e1cd0c4051fafe4c",
+      "copyright_sha256": "77dc6885b3057e16c7341ccc256bfbbc2047adb140b704278a2f36ede4c8a6a3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libpackage-stash-perl",
+      "version": "0.40-1",
+      "original_descriptor_sha256": "2f79da360a23a9f54c0db35024871a48c89fe85489502e891d0504840a29c50b",
+      "delivery_source_identity": "2f79da360a23a9f54c0db35024871a48c89fe85489502e891d0504840a29c50b",
+      "copyright_sha256": "5efe7ec7af83a1ce1565e53204c2408ae095e3a704f550e40dcf83205fc7c41e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libparams-classify-perl",
+      "version": "0.015-2",
+      "original_descriptor_sha256": "80555246d0bcfa5bed06bd85192bb15f08c13ffbd94fbb2ee8520226e4a42449",
+      "delivery_source_identity": "80555246d0bcfa5bed06bd85192bb15f08c13ffbd94fbb2ee8520226e4a42449",
+      "copyright_sha256": "46a4604df2be2f0cd45c34cdc208bc351bd9e8178fb76ba9b988df3cbf811068",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libparams-util-perl",
+      "version": "1.102-2",
+      "original_descriptor_sha256": "5899fbe56ecec4042ae80b0f2579723e9fe6858c28aac6f3470c2fe4ff960efb",
+      "delivery_source_identity": "5899fbe56ecec4042ae80b0f2579723e9fe6858c28aac6f3470c2fe4ff960efb",
+      "copyright_sha256": "e0c53f7b70b5d8fca3f083e97ea510eefde70198084fd72213e0f83603ef2bc0",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libparams-validate-perl",
+      "version": "1.31-1",
+      "original_descriptor_sha256": "c45af7166fe00072fabc772bc3a138f4c9ea7272ba8e638c45b12b327fbcbbcc",
+      "delivery_source_identity": "c45af7166fe00072fabc772bc3a138f4c9ea7272ba8e638c45b12b327fbcbbcc",
+      "copyright_sha256": "9284661422945b01833fb3ed6620858f6f907fbcd4d9d779cdef6d6085a44c13",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libparse-recdescent-perl",
+      "version": "1.967015+dfsg-4",
+      "original_descriptor_sha256": "a6766a212cbebbf937d74eb451f00af94b84d953c1aa7b6d79fc151001f80acf",
+      "delivery_source_identity": "a6766a212cbebbf937d74eb451f00af94b84d953c1aa7b6d79fc151001f80acf",
+      "copyright_sha256": "fc6d70f27fc20cb54079a60ff4371b34141af868e61ef4f27997b9d76968a7d2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libpath-tiny-perl",
+      "version": "0.144-1",
+      "original_descriptor_sha256": "d26f7342cc1a7a5dc466aa02d670cd91d38ca1ee1027a4efac929fe71fe633f5",
+      "delivery_source_identity": "d26f7342cc1a7a5dc466aa02d670cd91d38ca1ee1027a4efac929fe71fe633f5",
+      "copyright_sha256": "936c792bf17e2db9b42fdbb1311b3119f6ce83ce81a9f0db55d9552145967431",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libpcap",
+      "version": "1.10.3-1",
+      "original_descriptor_sha256": "0cb28414626b59900b2df42ae6e36720fc32f142fd91c4757c77995615d22b28",
+      "delivery_source_identity": "0cb28414626b59900b2df42ae6e36720fc32f142fd91c4757c77995615d22b28",
+      "copyright_sha256": "6b0e609cf98f7abd39d3b81100fdb2bed24dcaee6656b500fcecb392db70dc60",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libpgm",
+      "version": "5.3.128~dfsg-2",
+      "original_descriptor_sha256": "c7e3f34b8d5ae96763b76979c228dacd44c0c77d4239b46160d383481bb50b77",
+      "delivery_source_identity": "c7e3f34b8d5ae96763b76979c228dacd44c0c77d4239b46160d383481bb50b77",
+      "copyright_sha256": "07836d892d92dcef15583e4e01569805498b95769f1c85d79bc996821dace2cf",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libpng1.6",
+      "version": "1.6.39-2+deb12u6",
+      "original_descriptor_sha256": "efd9099f7f74c7bcd4f1540a97be3ce1cb9bc4ff97dfc2062ea66117b17ce686",
+      "delivery_source_identity": "efd9099f7f74c7bcd4f1540a97be3ce1cb9bc4ff97dfc2062ea66117b17ce686",
+      "copyright_sha256": "68bd3997355bc44ccb97ff5e2bb146360e762c7d9c721945a4fabf77d1349e4a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libpod-pom-perl",
+      "version": "2.01-4",
+      "original_descriptor_sha256": "a99588598d4ea00c70846b13b5cd0aa64a401a08fbc0a73d7a9d8237b831179f",
+      "delivery_source_identity": "a99588598d4ea00c70846b13b5cd0aa64a401a08fbc0a73d7a9d8237b831179f",
+      "copyright_sha256": "801233c4924b0c7769d5e37753a1fdf5951dcd7aefc0b98ea6527d8d071951bd",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libpsl",
+      "version": "0.21.2-1",
+      "original_descriptor_sha256": "1ddb578f5865a447b11078993cef2138107c82f8590ec2516af6f9970a2d4e0f",
+      "delivery_source_identity": "1ddb578f5865a447b11078993cef2138107c82f8590ec2516af6f9970a2d4e0f",
+      "copyright_sha256": "bbafb0cf52d34465fc69f5ffd22d724224f6a2f28402c88b045c69d88af06aaf",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libqmi",
+      "version": "1.32.2-1",
+      "original_descriptor_sha256": "c1a4a1b9c8f60a5dbb0eb92764b8c1d783e300ee22f48db9fdeb86c9a82075cd",
+      "delivery_source_identity": "c1a4a1b9c8f60a5dbb0eb92764b8c1d783e300ee22f48db9fdeb86c9a82075cd",
+      "copyright_sha256": "708ec462a9ab3afe59674a6e508ae5a3667440fb92e17e26a7c590352a75739d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libqrtr-glib",
+      "version": "1.2.2-1",
+      "original_descriptor_sha256": "4ef2af0a803ad6455bc7fe4b643493a7fca3a8fbc90cbfb22e7a8470b6e0d305",
+      "delivery_source_identity": "4ef2af0a803ad6455bc7fe4b643493a7fca3a8fbc90cbfb22e7a8470b6e0d305",
+      "copyright_sha256": "4cb1b07f5ee6e65ecabc4289c432853d242d56f118a300f6c69a9aee2b52dff0",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libregexp-common-perl",
+      "version": "2017060201-3",
+      "original_descriptor_sha256": "32afa5b4376cea62397f14e647c1385570c9c4fff198c2ec412d5a88d54f0876",
+      "delivery_source_identity": "32afa5b4376cea62397f14e647c1385570c9c4fff198c2ec412d5a88d54f0876",
+      "copyright_sha256": "b7112956cfce06b4f926ed20ef23948742e18b431533f33a69f084069b50fead",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "librtr",
+      "version": "0.8.0-1",
+      "original_descriptor_sha256": "ab473a7556cd57ec093116c66196635e4a40b9c423f63aac2c63503ccdd51ecf",
+      "delivery_source_identity": "ab473a7556cd57ec093116c66196635e4a40b9c423f63aac2c63503ccdd51ecf",
+      "copyright_sha256": "6cc3cdf3b7a157e4253b64d2115773dd64bad52f13609072b3352ffa06e754b3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libseccomp",
+      "version": "2.5.4-1+deb12u1",
+      "original_descriptor_sha256": "0ab1448c7206ee928f97a24d04300cfd3bb26babb4238c82fb71f507b5148595",
+      "delivery_source_identity": "0ab1448c7206ee928f97a24d04300cfd3bb26babb4238c82fb71f507b5148595",
+      "copyright_sha256": "6da0653a365b80ab31478dbfe9e7c358e80d58b6d2b52b4e16b4dbb42d7d9f5c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libselinux",
+      "version": "3.4-1",
+      "original_descriptor_sha256": "4035af53388d343f9b5c46ca2867ba32823cf4a2d218ddd590b34ae59c899157",
+      "delivery_source_identity": "4035af53388d343f9b5c46ca2867ba32823cf4a2d218ddd590b34ae59c899157",
+      "copyright_sha256": "641806738b0c6a3d03168c2649e6b94205198bb66cd557e6bae3a20b71c9bb0b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsemanage",
+      "version": "3.4-1",
+      "original_descriptor_sha256": "be300e01bbd08706fb6f0ecd349b3585a535d9ff0957265a7c634545ac3515c8",
+      "delivery_source_identity": "be300e01bbd08706fb6f0ecd349b3585a535d9ff0957265a7c634545ac3515c8",
+      "copyright_sha256": "e00e6a86c598f9e24ced0180a70a5f2f2e45e133d93adf2b17ce8a06ce4b1b51",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsepol",
+      "version": "3.4-2.1",
+      "original_descriptor_sha256": "465877b26b9f0a3d71999691686a08bdd656ce354889e2cde9eba463306ce4ed",
+      "delivery_source_identity": "465877b26b9f0a3d71999691686a08bdd656ce354889e2cde9eba463306ce4ed",
+      "copyright_sha256": "78d2a34606a0302057ec499a3b3c07bcbc43ca334064ce4c80891a0f69c8f6c6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsigc++-2.0",
+      "version": "2.12.0-1",
+      "original_descriptor_sha256": "25a4a2d9048797233633955927fd539dee89d8577528fc20dec340250cb3af1d",
+      "delivery_source_identity": "25a4a2d9048797233633955927fd539dee89d8577528fc20dec340250cb3af1d",
+      "copyright_sha256": "6bbf5da585fc4cc1d4e97d076d17250099375c1b489fb61be778020277adf289",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsigsegv",
+      "version": "2.14-1",
+      "original_descriptor_sha256": "b1a374e54891e47d04c4a6c29784a7dcee632213bb918afad8b1e9ca5cf40a7e",
+      "delivery_source_identity": "b1a374e54891e47d04c4a6c29784a7dcee632213bb918afad8b1e9ca5cf40a7e",
+      "copyright_sha256": "7b99c9331ab4f430f78516833f9f04ca3408ab0f3d325534c6ee34a5ada0ce24",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsodium",
+      "version": "1.0.18-1+deb12u1",
+      "original_descriptor_sha256": "2c23c57b5a9385dab5a1916014c9b5f2cdd7dadeb8a35b28c1bfb603ce7095c4",
+      "delivery_source_identity": "2c23c57b5a9385dab5a1916014c9b5f2cdd7dadeb8a35b28c1bfb603ce7095c4",
+      "copyright_sha256": "10d3576a7a0af8afb5601f358c06eb8c24b02192bb71ed4fb9a328a0979ec74b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libssh",
+      "version": "0.10.6-0+deb12u3",
+      "original_descriptor_sha256": "28fd7712a35660d49afd960107ebec8c24d9fbf0a97ca3d5b063b86a444fc339",
+      "delivery_source_identity": "28fd7712a35660d49afd960107ebec8c24d9fbf0a97ca3d5b063b86a444fc339",
+      "copyright_sha256": "1b33ec0b1d0d521afb21d8e6b98fa4abf52b1ffb69a8461a045db9d586ce141f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libssh2",
+      "version": "1.10.0-3+deb12u1",
+      "original_descriptor_sha256": "c83e73990cdc7f315c57cc558fcc677fbc6e9a102edde97b3ddb4ba9c9fc189a",
+      "delivery_source_identity": "c83e73990cdc7f315c57cc558fcc677fbc6e9a102edde97b3ddb4ba9c9fc189a",
+      "copyright_sha256": "98978241c573785aa7c8504e399bb66cfb3c40c1f20507a0d3c7580bfbf9d8d4",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libstring-rewriteprefix-perl",
+      "version": "0.009-1",
+      "original_descriptor_sha256": "7ba006f1dd99ff7abe7c58750a1e1fb3307ba9e4783955c08ab7a31a64977dc7",
+      "delivery_source_identity": "7ba006f1dd99ff7abe7c58750a1e1fb3307ba9e4783955c08ab7a31a64977dc7",
+      "copyright_sha256": "37f5e826b7c8eaa95d08efbaaa85072bcecf4230094d53c92bc3d178ba6856ad",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsub-exporter-perl",
+      "version": "0.989-1",
+      "original_descriptor_sha256": "b902951ad8e9c27cbe31165c433abb0b720d541a9b89076c55621d1a69a59493",
+      "delivery_source_identity": "b902951ad8e9c27cbe31165c433abb0b720d541a9b89076c55621d1a69a59493",
+      "copyright_sha256": "52bc27b53f77bf288335f6a01905e8ddc672840655972a367e1d41e7ed358f07",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsub-install-perl",
+      "version": "0.929-1",
+      "original_descriptor_sha256": "8c8a905406bb070550fa21c47bdb25eb988aaecb3f09e057a10c0edbcd57897c",
+      "delivery_source_identity": "8c8a905406bb070550fa21c47bdb25eb988aaecb3f09e057a10c0edbcd57897c",
+      "copyright_sha256": "97347e713f60309f2224a5bc9ecd6b2413e4b99e13ef14146ef64e06f8bea382",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libsub-uplevel-perl",
+      "version": "0.2800-3",
+      "original_descriptor_sha256": "fecaf387e239c4a332bcca323a18efd5388a9579d78834ce15fb6b3569eb8e87",
+      "delivery_source_identity": "fecaf387e239c4a332bcca323a18efd5388a9579d78834ce15fb6b3569eb8e87",
+      "copyright_sha256": "fb30ec4fb2d35d3e374c1af766538cef01e3619745b776410e60e615584777ab",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libtasn1-6",
+      "version": "4.19.0-2+deb12u1",
+      "original_descriptor_sha256": "54eabe8526f590a52771d99ce8c592d3edd549e98d84ea6649db473d528cc6ec",
+      "delivery_source_identity": "54eabe8526f590a52771d99ce8c592d3edd549e98d84ea6649db473d528cc6ec",
+      "copyright_sha256": "572ad60ad184d8f52c6dc66d83a61a68f137db560b3452ce00588c9ecf128a65",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libtest-exception-perl",
+      "version": "0.43-3",
+      "original_descriptor_sha256": "20de4286a4d221dfc33cb9100f020f067b47f993d2c1b33b35424c5d0af55609",
+      "delivery_source_identity": "20de4286a4d221dfc33cb9100f020f067b47f993d2c1b33b35424c5d0af55609",
+      "copyright_sha256": "45a4d6839315a56708c567017c72388d525c3660b99cbf0f4e0a3dc3318ad075",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libtirpc",
+      "version": "1.3.3+ds-1",
+      "original_descriptor_sha256": "c05c5d76027d4162d5a29d73eef90076559bde0fa5133b2e0045d82155e1b2af",
+      "delivery_source_identity": "c05c5d76027d4162d5a29d73eef90076559bde0fa5133b2e0045d82155e1b2af",
+      "copyright_sha256": "401dcf98d8ef2b712ec6ab310dbf727fc2cdce290bfde5b6d0b609a927530217",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libtomcrypt",
+      "version": "1.18.2-6",
+      "original_descriptor_sha256": "2b8771d043da8926d5c67b88c86122c64e8dbb5871a737f616b5c89f0b6c9b1a",
+      "delivery_source_identity": "2b8771d043da8926d5c67b88c86122c64e8dbb5871a737f616b5c89f0b6c9b1a",
+      "copyright_sha256": "98d622490555402065ef97b6d5160d7e0233d1b783978b8ca7cad768f56e36fa",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libtommath",
+      "version": "1.2.0-6+deb12u1",
+      "original_descriptor_sha256": "d2220e395dc98c08f1413e71a90cc7f40f3094d3a796c8f84477bb21dc7ee261",
+      "delivery_source_identity": "d2220e395dc98c08f1413e71a90cc7f40f3094d3a796c8f84477bb21dc7ee261",
+      "copyright_sha256": "afbb659d7f3af8236ad4bf6f42b6d7152f41fabd7bb516e31f079a420663f593",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libtool",
+      "version": "2.4.7-7~deb12u1",
+      "original_descriptor_sha256": "4285486d14795acbc423442e183c976625f7d481ac0ec3a0ec1ff800046310c4",
+      "delivery_source_identity": "4285486d14795acbc423442e183c976625f7d481ac0ec3a0ec1ff800046310c4",
+      "copyright_sha256": "89186d1b870fc70e23f3cac2ccfa657c1697a53c1386e85dbaaa2042d4b76048",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libtry-tiny-perl",
+      "version": "0.31-2",
+      "original_descriptor_sha256": "ddd8cdec9da098cdeed1d90a59c376c829f4504f794903521c5b6ce1114bfe17",
+      "delivery_source_identity": "ddd8cdec9da098cdeed1d90a59c376c829f4504f794903521c5b6ce1114bfe17",
+      "copyright_sha256": "36b59e1396cfabed18908a5a58f52e71e115bb4937ca9a65ee8ea5dfc5a77da6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libunistring",
+      "version": "1.0-2",
+      "original_descriptor_sha256": "9b9a9d9d4cd1c2118df8cf5ca0dfb787d89afcd99400d7cd01b4c4e9b0bc1ae5",
+      "delivery_source_identity": "9b9a9d9d4cd1c2118df8cf5ca0dfb787d89afcd99400d7cd01b4c4e9b0bc1ae5",
+      "copyright_sha256": "0035f89e5317f3cec389383e8727788521b0fde3e75cea881fa0e92e1d48cb57",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libunwind",
+      "version": "1.6.2-3",
+      "original_descriptor_sha256": "f91558f4ff8c887f22a4ebe0562735b7b2ceb24df87658fca81ce5df0f245f76",
+      "delivery_source_identity": "f91558f4ff8c887f22a4ebe0562735b7b2ceb24df87658fca81ce5df0f245f76",
+      "copyright_sha256": "977d981f5677652884b09cccef6b62f992aa9c74b7a748bfe9863a703f5aed58",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libusb-1.0",
+      "version": "2:1.0.26-1",
+      "original_descriptor_sha256": "3d75673e367fab1d0ca1ef29276ff4ea31dd7678c9573c10975e8d80bdbd0b14",
+      "delivery_source_identity": "3d75673e367fab1d0ca1ef29276ff4ea31dd7678c9573c10975e8d80bdbd0b14",
+      "copyright_sha256": "22184ce520ea729f24fb9ec9ee0849c9c7c6828cb796fe2cd174a480ce806420",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libutempter",
+      "version": "1.2.1-3",
+      "original_descriptor_sha256": "fb49f27a4c635c9d4e3e97d207263777debb6725dea5fdce72e0d5aec1a13f5e",
+      "delivery_source_identity": "fb49f27a4c635c9d4e3e97d207263777debb6725dea5fdce72e0d5aec1a13f5e",
+      "copyright_sha256": "8d0ad082a8402aa9b432a33ce630f33bc7d076997ace50f3162eece84f896015",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libuv1",
+      "version": "1.44.2-1+deb12u1",
+      "original_descriptor_sha256": "798be0a2bcbcd40bb85302f6ccbf02b240e1958d4ad9cf153b8101c3a82f21b9",
+      "delivery_source_identity": "798be0a2bcbcd40bb85302f6ccbf02b240e1958d4ad9cf153b8101c3a82f21b9",
+      "copyright_sha256": "0272d95e62eb096d3ed3f5b8d8e450b48514e04cccf89ec7cf39e7ba5e86fee6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libx11",
+      "version": "2:1.8.4-2+deb12u2",
+      "original_descriptor_sha256": "d7374ec568d895f9e5919ebdbd94301e2acb9e8b307a39ac8708082aa1757fa3",
+      "delivery_source_identity": "d7374ec568d895f9e5919ebdbd94301e2acb9e8b307a39ac8708082aa1757fa3",
+      "copyright_sha256": "0b380a7fd5b2228f26e9585e56f14812efd3350f3df307507d2bc055dfd8de3e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libxau",
+      "version": "1:1.0.9-1",
+      "original_descriptor_sha256": "e6e059652cda7e5a49b6c9a70667639f32d629c20320487d16c642a06c1ebf85",
+      "delivery_source_identity": "e6e059652cda7e5a49b6c9a70667639f32d629c20320487d16c642a06c1ebf85",
+      "copyright_sha256": "118dd263a7b91c8f21c489f949bf13281dff9e766deea92b829dac4dce66601a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libxcb",
+      "version": "1.15-1",
+      "original_descriptor_sha256": "f689569f33e70ca4c95c91b094d0659eb49a958d9ac43186640338f9290e298b",
+      "delivery_source_identity": "f689569f33e70ca4c95c91b094d0659eb49a958d9ac43186640338f9290e298b",
+      "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libxcrypt",
+      "version": "1:4.4.33-2",
+      "original_descriptor_sha256": "910ae411c9462f07667e46540af3dbb30f46413ddd90f1f176781666042dbb38",
+      "delivery_source_identity": "ee5eda707069be601bf8eb8e61342e9519d9187c2974bae3808071e80a1a4754",
+      "copyright_sha256": "5a5e7ca0e9f3f9679977e3a3e9ede45ad92885a3297ea78e766979f9866c5a16",
+      "delivery_form": "APPLIED_PREFERRED_SOURCE_EXPORT"
+    },
+    {
+      "source": "libxdmcp",
+      "version": "1:1.1.2-3",
+      "original_descriptor_sha256": "f9697dca6a275aeee9a3eee9fb2d55e0f77485481e8b84efc6950fc9b1988460",
+      "delivery_source_identity": "f9697dca6a275aeee9a3eee9fb2d55e0f77485481e8b84efc6950fc9b1988460",
+      "copyright_sha256": "1bcbb50f8603fe8b86d330bfa460b772ea04fbd3c70e4499f0768b5340b9fd6e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libxext",
+      "version": "2:1.3.4-1",
+      "original_descriptor_sha256": "25024f57d955739c6b858822bf93ec3c71400b56fc0d666826f440e3661fd7c0",
+      "delivery_source_identity": "25024f57d955739c6b858822bf93ec3c71400b56fc0d666826f440e3661fd7c0",
+      "copyright_sha256": "bc57e445ca1d9fe082c8d54189dd411ff26caa8552c9c63d44ea06a982f32124",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libxinerama",
+      "version": "2:1.1.4-3",
+      "original_descriptor_sha256": "5fe68b94d4cbc4be1ba37bbf676fbece3920b2c59a33cc94c4e4c7a140958edd",
+      "delivery_source_identity": "5fe68b94d4cbc4be1ba37bbf676fbece3920b2c59a33cc94c4e4c7a140958edd",
+      "copyright_sha256": "e49d9732f261b3ffcb50c40914bd9d144de5557dad9b2ae20dbe8e3c5b3d17fb",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libxml2",
+      "version": "2.9.14+dfsg-1.3~deb12u6",
+      "original_descriptor_sha256": "d86ce3efb1b75d2781f72f5cdd187474c148a915d610295c85162681bb070a65",
+      "delivery_source_identity": "d86ce3efb1b75d2781f72f5cdd187474c148a915d610295c85162681bb070a65",
+      "copyright_sha256": "ee746b96cfa5be73c3ea3e4cfb1285e9b315d4c9267f99b2ee9c5d911d9fe3f4",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libxrender",
+      "version": "1:0.9.10-1.1",
+      "original_descriptor_sha256": "348ab15d05f1d802da485e4c6abdb9d5419691fb7c8ce44ca5b17b2b7f889ce8",
+      "delivery_source_identity": "348ab15d05f1d802da485e4c6abdb9d5419691fb7c8ce44ca5b17b2b7f889ce8",
+      "copyright_sha256": "ed2a78123a5076b4f11da38cb1ffb85b5cb9fdc26b5746c517b1d7e7a9029704",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libyaml-pp-perl",
+      "version": "0.035-1",
+      "original_descriptor_sha256": "9581f3333db07cfe498e60f5c0b44eb37e8136994dacd4d51630701bf0d717d9",
+      "delivery_source_identity": "9581f3333db07cfe498e60f5c0b44eb37e8136994dacd4d51630701bf0d717d9",
+      "copyright_sha256": "22aa3e2bf22a0651c065f907c7517a2cc7a15081eb0550bd1507549c3ae95570",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libyaml-tiny-perl",
+      "version": "1.73-1",
+      "original_descriptor_sha256": "a3ddcb1ebc8fc3438705f78245089bf946bc60c5629c3080defed645f610be26",
+      "delivery_source_identity": "a3ddcb1ebc8fc3438705f78245089bf946bc60c5629c3080defed645f610be26",
+      "copyright_sha256": "81998f0ab61d040dac8263f03289b8f32476371273c9a098b66f59640cb9d37f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "libzstd",
+      "version": "1.5.4+dfsg2-5",
+      "original_descriptor_sha256": "8f602f92b575aa8b5e979196fb6ee82d78f233521dc9636526d3ecba1f63c1b1",
+      "delivery_source_identity": "8f602f92b575aa8b5e979196fb6ee82d78f233521dc9636526d3ecba1f63c1b1",
+      "copyright_sha256": "35e85e8e9bbb71492c5f5dddf39ed65b68775a02ad8d710c25d097b497f06c49",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "linux",
+      "version": "6.1.190-1",
+      "original_descriptor_sha256": "30c921025c1c3f26a102e1d52c9ef23516a8362803d0bdfe738c7a841081ca82",
+      "delivery_source_identity": "30c921025c1c3f26a102e1d52c9ef23516a8362803d0bdfe738c7a841081ca82",
+      "copyright_sha256": "b747c37629e008bbb10bf2d44c5bb6e014ce2dde36b9ef1dc81e1425417c24bf",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "linux-base",
+      "version": "4.12.1~deb12u1",
+      "original_descriptor_sha256": "98713b6e33ff6f3ead1ca9cb4a49d6f153745874a7db2e7696ea3e0cb108713b",
+      "delivery_source_identity": "98713b6e33ff6f3ead1ca9cb4a49d6f153745874a7db2e7696ea3e0cb108713b",
+      "copyright_sha256": "1f2e4a8e9b20deda1a26a81b84421837b05d6fa056f6ee9017ab5e6bdadecf9b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lirc",
+      "version": "0.10.1-7.2",
+      "original_descriptor_sha256": "7a0d1303d94be4d6d934a7e7a75da9d52ccd0be0516a1924bcf1b429bb69a638",
+      "delivery_source_identity": "7a0d1303d94be4d6d934a7e7a75da9d52ccd0be0516a1924bcf1b429bb69a638",
+      "copyright_sha256": "82cbafef448f54c88ae169147d73258e93bc71dd95cdda536c4417c9bfbcf3d8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "live-config",
+      "version": "11.0.3+nmu1",
+      "original_descriptor_sha256": "dae66af660590192f69c52c239ba373119509d57ca95180a94f40e787d0a365b",
+      "delivery_source_identity": "dae66af660590192f69c52c239ba373119509d57ca95180a94f40e787d0a365b",
+      "copyright_sha256": "0a7e866ec08d2bfb7f0a48bc905259db1b82d0a9e2c9aaed6bcad02168a230ee",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lksctp-tools",
+      "version": "1.0.19+dfsg-2",
+      "original_descriptor_sha256": "58ebdbd4f47967075b00c938260fd9d2fb79dd5e83896ff89ea09c691861cdba",
+      "delivery_source_identity": "58ebdbd4f47967075b00c938260fd9d2fb79dd5e83896ff89ea09c691861cdba",
+      "copyright_sha256": "56602fb202cdb4591763363d17a41014a282f9911a15cd656105ef3919ec0cd9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lldpd",
+      "version": "1.0.16-1+deb12u1",
+      "original_descriptor_sha256": "1fd430c69c5fe708d0e31e1c2dd0dca880f84bdd5aa319e71402d2dd15983e4a",
+      "delivery_source_identity": "1fd430c69c5fe708d0e31e1c2dd0dca880f84bdd5aa319e71402d2dd15983e4a",
+      "copyright_sha256": "872c080b8a80d4975a0f4b26a6e2b8ecd4b590b87b66ce80a712dd7e9422d0fc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lm-sensors",
+      "version": "1:3.6.0-7.1",
+      "original_descriptor_sha256": "da1208dc61081db520cb140be4e2127504cf101db9342c3297206fbfe95b52d5",
+      "delivery_source_identity": "da1208dc61081db520cb140be4e2127504cf101db9342c3297206fbfe95b52d5",
+      "copyright_sha256": "36df1f6d732ef306eba85489352b2afe329f7b54c6850c3e2094f7c5df1bc46b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lmdb",
+      "version": "0.9.24-1",
+      "original_descriptor_sha256": "f90d1cc2b69cae56f1b465636c810f4e3667d43a2567cf3bfb48b62cb710da6e",
+      "delivery_source_identity": "f90d1cc2b69cae56f1b465636c810f4e3667d43a2567cf3bfb48b62cb710da6e",
+      "copyright_sha256": "5b8381b0015534dfcccf4dc4410d0a4b5daec71177d8fd48b7f028e34fa3eb65",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "localepurge",
+      "version": "0.7.3.10",
+      "original_descriptor_sha256": "db02ac8af611dd71eecc78b2337553ee62fb45c72bf3e3c56b6f36e3dfc89859",
+      "delivery_source_identity": "db02ac8af611dd71eecc78b2337553ee62fb45c72bf3e3c56b6f36e3dfc89859",
+      "copyright_sha256": "d13bc73e0e535ef08e4016ca10fa7da516a4c143b4e59126d0652a5ee54b5c89",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "log4cplus",
+      "version": "2.0.8-1",
+      "original_descriptor_sha256": "aebf3b4df05025322522aef2603bca72493b6270cfdcaf59587887b7ef555856",
+      "delivery_source_identity": "aebf3b4df05025322522aef2603bca72493b6270cfdcaf59587887b7ef555856",
+      "copyright_sha256": "542bb066a5418f857c794dcf2079b044df717a0b37763bae0510f245b5fffd0c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "logrotate",
+      "version": "3.21.0-1",
+      "original_descriptor_sha256": "ffacbf8281bd9bd85be49cda2a6a14c4b094c693819f3ca268e1c9dc908ca824",
+      "delivery_source_identity": "ffacbf8281bd9bd85be49cda2a6a14c4b094c693819f3ca268e1c9dc908ca824",
+      "copyright_sha256": "beb47a9520eb5b1a28579b8d9bf591e3fce40c1bc14954df44f7fdf62dd79c92",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lsb",
+      "version": "11.6",
+      "original_descriptor_sha256": "f8458b93872593fea88a6d7838ffe3b90764012492f6e2566c959549c5528180",
+      "delivery_source_identity": "f8458b93872593fea88a6d7838ffe3b90764012492f6e2566c959549c5528180",
+      "copyright_sha256": "5838867827e001081f2a1884f55614df9fbb303bb03de6087220ac0b6f8ea44b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lsb-release-minimal",
+      "version": "12.0-1",
+      "original_descriptor_sha256": "3efb81797061d3c089bad306f04c37b353edfaa64f595473ed2b093258e3306d",
+      "delivery_source_identity": "3efb81797061d3c089bad306f04c37b353edfaa64f595473ed2b093258e3306d",
+      "copyright_sha256": "ddac6703da50dd2819e7769e5cdcc2db0a3dadd7be1155dcf03e7c0b5d63b61b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lsof",
+      "version": "4.95.0-1",
+      "original_descriptor_sha256": "875e3f9c52870c8f04f8fa8ce526822cc8a6c279a28a216184f9b1496b92abf7",
+      "delivery_source_identity": "875e3f9c52870c8f04f8fa8ce526822cc8a6c279a28a216184f9b1496b92abf7",
+      "copyright_sha256": "71c6c819e0430119c9f52c400a54c05f3da17ece1268503744dd003b32866cbb",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lsscsi",
+      "version": "0.31-1",
+      "original_descriptor_sha256": "652c0732c9976984e1b07f42b329b56ef87705f211d8014afde7e27e0e50d2eb",
+      "delivery_source_identity": "652c0732c9976984e1b07f42b329b56ef87705f211d8014afde7e27e0e50d2eb",
+      "copyright_sha256": "97ae051787c934f2cd819536ce6147a540ad9d9814c91b8935bebfb42edb976b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lua-lpeg",
+      "version": "1.0.2-2",
+      "original_descriptor_sha256": "a189b279af23d30b8018c0315cc0628cfc9485c00e25d12b315b99337981e870",
+      "delivery_source_identity": "a189b279af23d30b8018c0315cc0628cfc9485c00e25d12b315b99337981e870",
+      "copyright_sha256": "f5dcdc928d283ac58a9ec187f3063441e38f10ba95c2447cc270f1b79759b284",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lua5.3",
+      "version": "5.3.6-2",
+      "original_descriptor_sha256": "2241dc732aa15a4d09c3c87aaf154eb14d873b8f6eb824faf8313a492a4e14b6",
+      "delivery_source_identity": "2241dc732aa15a4d09c3c87aaf154eb14d873b8f6eb824faf8313a492a4e14b6",
+      "copyright_sha256": "f4a404a022b1158e458b64d8ccd91749fb5262558043039def89eeaa40c2c1b2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "luajit",
+      "version": "2.1.0~beta3+git20220320+dfsg-4.1+deb12u1",
+      "original_descriptor_sha256": "4738332dcafdda10ade1a87fa0e3b51bce733bf715af0b50c8fb8c0ca3b651b6",
+      "delivery_source_identity": "4738332dcafdda10ade1a87fa0e3b51bce733bf715af0b50c8fb8c0ca3b651b6",
+      "copyright_sha256": "0dd86af7c0d511d99501b7e30d358ecd832aa518f9fa8d7a90bbba2bf39e5568",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lvm2",
+      "version": "2.03.16-2",
+      "original_descriptor_sha256": "9f01f4f44d4126ff4e588d46ede1bdefffd255c5441bb105684978b5193d2318",
+      "delivery_source_identity": "9f01f4f44d4126ff4e588d46ede1bdefffd255c5441bb105684978b5193d2318",
+      "copyright_sha256": "85275778bfeeb4461375e42feb6a52343e521286ef7ba073e98a37a8c6f5143c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lz4",
+      "version": "1.9.4-1",
+      "original_descriptor_sha256": "e16302bca544d08d106efc216541f4a0403c8f8a5fad5eaac7588223a55af263",
+      "delivery_source_identity": "e16302bca544d08d106efc216541f4a0403c8f8a5fad5eaac7588223a55af263",
+      "copyright_sha256": "d3be0f43fe14da244f97c451bbae789c0acf868612598a69f5f22a289abeca40",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "lzo2",
+      "version": "2.10-2",
+      "original_descriptor_sha256": "65a35d9d2511a88f30d4b10313f807c184d1906062e2421833797dafc2682166",
+      "delivery_source_identity": "65a35d9d2511a88f30d4b10313f807c184d1906062e2421833797dafc2682166",
+      "copyright_sha256": "3c412f0f1b0e1aa51d1f7efed5c02f30811bd5d26ddccfcc6760669cd4bc8c93",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "markupsafe",
+      "version": "2.1.2-1",
+      "original_descriptor_sha256": "0becdd87cc1e344b09daaa5cf94267ac467fe75ea831fc28af8cd518af291c42",
+      "delivery_source_identity": "0becdd87cc1e344b09daaa5cf94267ac467fe75ea831fc28af8cd518af291c42",
+      "copyright_sha256": "a3cd08b17ec1a9b100b2122d9b37537744b38233c733873f42b3b040838500d8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "mawk",
+      "version": "1.3.4.20200120-3.1",
+      "original_descriptor_sha256": "ed0543e3111f718e918a73033292fe2616760c8791c13efa0da3818ca835cdc1",
+      "delivery_source_identity": "ed0543e3111f718e918a73033292fe2616760c8791c13efa0da3818ca835cdc1",
+      "copyright_sha256": "167d04422f2fdf76ab565878c23be8ba0c2ebb2c57a5dac0a5a59ccd27e747a5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "mdadm",
+      "version": "4.2-5",
+      "original_descriptor_sha256": "188e0c6519fa57c26d045f1d503f9087b5e5363137d778a263353221cd7ed72f",
+      "delivery_source_identity": "188e0c6519fa57c26d045f1d503f9087b5e5363137d778a263353221cd7ed72f",
+      "copyright_sha256": "4a27c9f791acaaf5fc01563d0c24174ebface163b753231a185e98a521a5797a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "media-types",
+      "version": "10.0.0",
+      "original_descriptor_sha256": "d2e34e90508ac2c21c3cc6c01e2cf186093a8d2edcdc279e7d280a0a4ffe132d",
+      "delivery_source_identity": "d2e34e90508ac2c21c3cc6c01e2cf186093a8d2edcdc279e7d280a0a4ffe132d",
+      "copyright_sha256": "5ded7c53199b6a1d089b0b7e231d77e5c84081c7156b372b3f11ad9c1c2c5cc7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "minicom",
+      "version": "2.8-2",
+      "original_descriptor_sha256": "ae19a5d0d7ac3adb1aff1106965bd7ab8fc2d08447af9c2e2c5136d943057093",
+      "delivery_source_identity": "ae19a5d0d7ac3adb1aff1106965bd7ab8fc2d08447af9c2e2c5136d943057093",
+      "copyright_sha256": "5480beffbd49af5e55bdbc9ff244c0a632a0c168fc7909e5d1c31ae443d32ef3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "minisign",
+      "version": "0.11-1",
+      "original_descriptor_sha256": "bad4bf60ff1be0c75a817ef08f01e0c1bc80b23ce912b53aaf467941e228e684",
+      "delivery_source_identity": "bad4bf60ff1be0c75a817ef08f01e0c1bc80b23ce912b53aaf467941e228e684",
+      "copyright_sha256": "7cde88164abb76f82dcc098749819ee23d36dcc89cf43205dc65910bb37cb2f3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "modemmanager",
+      "version": "1.20.4-1",
+      "original_descriptor_sha256": "90786d046eeb181fa92d362160efc6eee94cd6f6f14c7233b4b932e3fac3e066",
+      "delivery_source_identity": "90786d046eeb181fa92d362160efc6eee94cd6f6f14c7233b4b932e3fac3e066",
+      "copyright_sha256": "c7919f5c2989fff218ceee25fd526ee7e6a7b96f6570b5de88ad721d49831b21",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "mpfr4",
+      "version": "4.2.0-1",
+      "original_descriptor_sha256": "bfd38815d4d79f9ea3f14d94f61a075a0914ecbe4ef9666b7f6597340a60c250",
+      "delivery_source_identity": "bfd38815d4d79f9ea3f14d94f61a075a0914ecbe4ef9666b7f6597340a60c250",
+      "copyright_sha256": "c434a44e656a89e72b5cee13bba6719011e0899bfc626ab9c08205010ab2dbbe",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "mtr",
+      "version": "0.95-1",
+      "original_descriptor_sha256": "e8197d82ac9870b56c1f5afcf382a964f7040fecf691415718acdfc6249de518",
+      "delivery_source_identity": "e8197d82ac9870b56c1f5afcf382a964f7040fecf691415718acdfc6249de518",
+      "copyright_sha256": "c59d7d95c211c38d7f5a796d3630cb6f1ba82538c36989952cae35fded164f41",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "nano",
+      "version": "7.2-1+deb12u1",
+      "original_descriptor_sha256": "e7ec15144ec5b984681d079ea4e3a0f6f17eb92895376511df6822bd770e7281",
+      "delivery_source_identity": "e7ec15144ec5b984681d079ea4e3a0f6f17eb92895376511df6822bd770e7281",
+      "copyright_sha256": "b7d0fd5f3f8805f62b2e67fc8d9f97699ab921b03b3d0d79f402548ad2f5e80e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ncurses",
+      "version": "6.4-4",
+      "original_descriptor_sha256": "a35710b02a3de6ab8f9da7fa2e3726a609cc26c936ad85b2094ef91aa996fc94",
+      "delivery_source_identity": "a35710b02a3de6ab8f9da7fa2e3726a609cc26c936ad85b2094ef91aa996fc94",
+      "copyright_sha256": "f0974fb41778e23c94111ff90da0546de8971f8270c58877283d372e6bd7f17e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ndisc6",
+      "version": "1.0.5-1",
+      "original_descriptor_sha256": "cbbb57686d9c2aeda2d41b0f7719e9a22865e3a7acfa119c9c35db1455518f6c",
+      "delivery_source_identity": "cbbb57686d9c2aeda2d41b0f7719e9a22865e3a7acfa119c9c35db1455518f6c",
+      "copyright_sha256": "ddafad3e8df4c8ad43a3dd383d8258021854adb67642621a007199f1d98e1ec4",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "net-snmp",
+      "version": "5.9.3+dfsg-2+deb12u1",
+      "original_descriptor_sha256": "b5760c25db1133c08d634f23881f0d8039f66ecabbd6dca16ca92b7e1eab9f67",
+      "delivery_source_identity": "b5760c25db1133c08d634f23881f0d8039f66ecabbd6dca16ca92b7e1eab9f67",
+      "copyright_sha256": "930d64b24c4f185ccbf1a13ff1531315cb3a9b3bdcb1b271b5a838e0f3154985",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "net-tools",
+      "version": "2.10-0.1+deb12u2",
+      "original_descriptor_sha256": "53306a7debbeaa6ac73371de5b3170559d3c90bf345b35883b0668380fb95074",
+      "delivery_source_identity": "53306a7debbeaa6ac73371de5b3170559d3c90bf345b35883b0668380fb95074",
+      "copyright_sha256": "54168b9264cc2cf7d74352939256a54aa04eb2fac61fb58df6e06562bbf98348",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "netavark",
+      "version": "1.4.0-3",
+      "original_descriptor_sha256": "53253e2414637a4924ada0528faea64ced5440c6d7948442222be047dcdd8cd0",
+      "delivery_source_identity": "53253e2414637a4924ada0528faea64ced5440c6d7948442222be047dcdd8cd0",
+      "copyright_sha256": "c28c9cf2885d101b0b63036a4373a399da81a1fb82829e4f7a37a586746632a8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "netbase",
+      "version": "6.4",
+      "original_descriptor_sha256": "dc26cfcaa49fd874cc27c65216b2f8b6d3ad62845b78da4bdf0aea55592af756",
+      "delivery_source_identity": "dc26cfcaa49fd874cc27c65216b2f8b6d3ad62845b78da4bdf0aea55592af756",
+      "copyright_sha256": "795b66147ea5ad692991caa7008ece551fb0fa88b9c53656223bd1518dc58ab2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "netcat-openbsd",
+      "version": "1.219-1",
+      "original_descriptor_sha256": "74ee25c8116822153105ba7c14f8dafcd3599b4426bc5860e5abc452957c88bf",
+      "delivery_source_identity": "74ee25c8116822153105ba7c14f8dafcd3599b4426bc5860e5abc452957c88bf",
+      "copyright_sha256": "1ac997b4b7b8a8268e6b4e2e510de6c047efcb473971677ee6cfc1815aadb25e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "netifaces",
+      "version": "0.11.0-2",
+      "original_descriptor_sha256": "33f31025a90f1c048d21d1cd7587b1d76d3e7e413c88769cfb5d608f416f2971",
+      "delivery_source_identity": "33f31025a90f1c048d21d1cd7587b1d76d3e7e413c88769cfb5d608f416f2971",
+      "copyright_sha256": "4f011c5a0f09e5fb9b74c7d33cbe44b3aaa86eba614dc8fe5ccb2059323b0d7b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "netplug",
+      "version": "1.2.9.2-3.1",
+      "original_descriptor_sha256": "d789773a1a062eaf807f4f6836ff32aa009801551bc050d55b6dae6a2d4db6c5",
+      "delivery_source_identity": "d789773a1a062eaf807f4f6836ff32aa009801551bc050d55b6dae6a2d4db6c5",
+      "copyright_sha256": "ecc0c8432193922dc555b733c69f00cc1a00d5a782adb818ded916e281e84842",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "nettle",
+      "version": "3.8.1-2",
+      "original_descriptor_sha256": "a437e204da67612efb656cab354835f358b44c077c5c0a46d6e8c30b5c0bddff",
+      "delivery_source_identity": "a437e204da67612efb656cab354835f358b44c077c5c0a46d6e8c30b5c0bddff",
+      "copyright_sha256": "ca2ca597320220c00ef6dc0fe5d0d82025548d6d4ba80e85615eb691f9021f93",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "nghttp2",
+      "version": "1.52.0-1+deb12u3",
+      "original_descriptor_sha256": "d4fcb364e461616ef63cb0653a71f08a9ae23703d497745e90160ed7d1eda393",
+      "delivery_source_identity": "d4fcb364e461616ef63cb0653a71f08a9ae23703d497745e90160ed7d1eda393",
+      "copyright_sha256": "a34ae32a5eba61e535835a8de7c398f47e420247d339bc400a3b9c618ba29a3d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "nginx",
+      "version": "1.22.1-9+deb12u10",
+      "original_descriptor_sha256": "cd1966d8ac12a78feb009b0add66dec191c8c561de1cbd3a123594d2e54936ad",
+      "delivery_source_identity": "cd1966d8ac12a78feb009b0add66dec191c8c561de1cbd3a123594d2e54936ad",
+      "copyright_sha256": "d5458f44f9e2ace963f1d51ab9ecc0d11acdb49b715b73b4d48f11d5f906e052",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "nmap",
+      "version": "7.93+dfsg1-1",
+      "original_descriptor_sha256": "5589c0daab89d31750c2993cb0cf57c864c8f1b052abe58ce4d0e43ca556575b",
+      "delivery_source_identity": "5589c0daab89d31750c2993cb0cf57c864c8f1b052abe58ce4d0e43ca556575b",
+      "copyright_sha256": "6a868bcdcb3a479257964bf66f85e35e3376c147939e8868036c9b3dd9b6cb50",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "norm",
+      "version": "1.5.9+dfsg-2",
+      "original_descriptor_sha256": "50e0856dc5322e67981dacb94822c04b60812c379d6464a0b04e345b0b4ff1ea",
+      "delivery_source_identity": "50e0856dc5322e67981dacb94822c04b60812c379d6464a0b04e345b0b4ff1ea",
+      "copyright_sha256": "6b1c22ab8566721e02c8fb00f508a182ac1898d452473ceb20140e9b38358255",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "npth",
+      "version": "1.6-3",
+      "original_descriptor_sha256": "002c2a7936d1499ebb5d72dbb9c7ca3e00ed5fe3b0aa48f20b7279fc90aa9e90",
+      "delivery_source_identity": "002c2a7936d1499ebb5d72dbb9c7ca3e00ed5fe3b0aa48f20b7279fc90aa9e90",
+      "copyright_sha256": "df6909abb38f4e84d237d8617e948bdbb391b2004ecf573863011d54a88ccf22",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "numactl",
+      "version": "2.0.16-1",
+      "original_descriptor_sha256": "d77b5d389ac5cf5098752fd27c382fce13e0340cf15c84a52ba38b167999fb95",
+      "delivery_source_identity": "d77b5d389ac5cf5098752fd27c382fce13e0340cf15c84a52ba38b167999fb95",
+      "copyright_sha256": "179c34f5e56cd0b6b73dd7970a97357ee784e2236e8293826656c7ebb3bface7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "nvme-cli",
+      "version": "2.4+really2.3-3",
+      "original_descriptor_sha256": "0b7de08b6d7e9f015735ca71b05d4443a2105bffd3ec7293ce0b4d70a6bcdc2f",
+      "delivery_source_identity": "0b7de08b6d7e9f015735ca71b05d4443a2105bffd3ec7293ce0b4d70a6bcdc2f",
+      "copyright_sha256": "738accfa075a67ff038bf32294ee27b2050874a527d91c70245981cb49bdd8a3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "oath-toolkit",
+      "version": "2.6.7-3.1+deb12u1",
+      "original_descriptor_sha256": "eb7a06a36ba537b83acf7c754d2b6d7789664a9641300bd689a2300855ae581e",
+      "delivery_source_identity": "eb7a06a36ba537b83acf7c754d2b6d7789664a9641300bd689a2300855ae581e",
+      "copyright_sha256": "9efe89c90f2ccf8eb136381c8414fc9599c4518e23d840876449dc159ff64241",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ocserv",
+      "version": "1.1.6-3",
+      "original_descriptor_sha256": "621a92ce371b829df8ba1d55d0087815c45b45d9503afb7268ecd15668436b8a",
+      "delivery_source_identity": "621a92ce371b829df8ba1d55d0087815c45b45d9503afb7268ecd15668436b8a",
+      "copyright_sha256": "cd38fc9d8614238fa6db6e3d9ed9371dca31b9f5f876f3b3e6efb2ac13e1751d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "openldap",
+      "version": "2.5.13+dfsg-5",
+      "original_descriptor_sha256": "3192f78a46825039c6c9de6808ae98ab3d1c8846f43d2109ed654fd9c33fe472",
+      "delivery_source_identity": "3192f78a46825039c6c9de6808ae98ab3d1c8846f43d2109ed654fd9c33fe472",
+      "copyright_sha256": "b4081907f0d9a4110736fa6540dc8ca9d7d60a20878b5d78f84916cc04907bdc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "openssh",
+      "version": "1:9.2p1-2+deb12u10",
+      "original_descriptor_sha256": "af8cfb3ce783604abd28183a52aa0bde8c6bc603cc35758035db48d1dac5f2e2",
+      "delivery_source_identity": "af8cfb3ce783604abd28183a52aa0bde8c6bc603cc35758035db48d1dac5f2e2",
+      "copyright_sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "openssl",
+      "version": "3.0.22-1~deb12u2",
+      "original_descriptor_sha256": "7c45299a4363febec120676393d4314841c7c50da244a6e6a256f072d632d337",
+      "delivery_source_identity": "7c45299a4363febec120676393d4314841c7c50da244a6e6a256f072d632d337",
+      "copyright_sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "opentracing-c-wrapper",
+      "version": "1.1.3-3",
+      "original_descriptor_sha256": "d92ebe53f1accd73768691e321de0fe2e87a75d5fb861b5cf6968fbf47f58215",
+      "delivery_source_identity": "d92ebe53f1accd73768691e321de0fe2e87a75d5fb861b5cf6968fbf47f58215",
+      "copyright_sha256": "c64546d943bfb304d9410af27f0b2930e1c8b7f99f34725723083bdce8524bd8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "opentracing-cpp",
+      "version": "1.6.0-4",
+      "original_descriptor_sha256": "09ae6b43e38df9a6798d721bd76e5c610e20865415e4f6e2efedb7a218f6e9e0",
+      "delivery_source_identity": "0dfb801608cba50bdba4f284084b5a980d3eceb2b9066477f190bf76a3e38df5",
+      "copyright_sha256": "5ba889ebdbeb1a8808be058b9f302cf75272e23e2b92eba3f615559b49bdc748",
+      "delivery_form": "APPLIED_PREFERRED_SOURCE_EXPORT"
+    },
+    {
+      "source": "openvpn",
+      "version": "2.6.14-0+deb12u2",
+      "original_descriptor_sha256": "040bba014900f3ff5417c9e049a57b5d36a7e969d2f47933a9b1728e804c76a0",
+      "delivery_source_identity": "94dfb86345b0a06f84ad6ea4a2d1de3d98048d5ed581a56ceae69761c556f619",
+      "copyright_sha256": "e6a454b9d9efba2ae48ba97bbe31a0dd1211e25e6ef94ae70f490a9ed5a3584c",
+      "delivery_form": "APPLIED_PREFERRED_SOURCE_EXPORT"
+    },
+    {
+      "source": "openvpn-auth-ldap",
+      "version": "2.0.4-3",
+      "original_descriptor_sha256": "df2d2fe4c174010bf90956f880fe67bcc5f0e501c8ee30c0d986a1cda4160e5c",
+      "delivery_source_identity": "df2d2fe4c174010bf90956f880fe67bcc5f0e501c8ee30c0d986a1cda4160e5c",
+      "copyright_sha256": "802e9d02f933018f2e1c31a90bd48f07b0a8a0c0e6cc6344684b22046559d5f5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "openvpn-auth-radius",
+      "version": "2.1-8",
+      "original_descriptor_sha256": "88e8a02e1bed86cfa31c8bdfda36b29face8aed847f9c37f7c717a4337141a06",
+      "delivery_source_identity": "88e8a02e1bed86cfa31c8bdfda36b29face8aed847f9c37f7c717a4337141a06",
+      "copyright_sha256": "eb4960a48d0fca5495db7f2e98c7e16fad7dbe8743f5616e18fb4596560e2606",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "p11-kit",
+      "version": "0.24.1-2",
+      "original_descriptor_sha256": "b88a483cb9afd5556ea4ac64d5df4543123a53bf0e50d1c01454887220259a89",
+      "delivery_source_identity": "b88a483cb9afd5556ea4ac64d5df4543123a53bf0e50d1c01454887220259a89",
+      "copyright_sha256": "ed139379f7c874f0ee75f3ddcc2e01091dd828d84ee1a0bdff6a1c5673ee6e58",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pam",
+      "version": "1.5.2-6+deb12u2",
+      "original_descriptor_sha256": "049316ffb7c8be35b14e6815351397b52d65f283041f90fecf884db2c0bec7b1",
+      "delivery_source_identity": "049316ffb7c8be35b14e6815351397b52d65f283041f90fecf884db2c0bec7b1",
+      "copyright_sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "paramiko",
+      "version": "2.12.0-2",
+      "original_descriptor_sha256": "cc64e7e66e42b63588bbf851ea79a6801922286ad535bde675388ff71dc164d0",
+      "delivery_source_identity": "cc64e7e66e42b63588bbf851ea79a6801922286ad535bde675388ff71dc164d0",
+      "copyright_sha256": "4f1975008cb3f60898ec926d2b37f3dcfa4e4dcbfdf76cd1a01d54003cb6cf0c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "parsedatetime",
+      "version": "2.6-3",
+      "original_descriptor_sha256": "cad64402747684229f168b877f5cebc14221f3dc432ce6d7195ec47e3c21b337",
+      "delivery_source_identity": "cad64402747684229f168b877f5cebc14221f3dc432ce6d7195ec47e3c21b337",
+      "copyright_sha256": "c482c6a3ac511ff10ddd796ccdac83d24fe289b3d147cbaf9ffce136b78a38bc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "parted",
+      "version": "3.5-3",
+      "original_descriptor_sha256": "2a181ce170282ae8b3380b75fd3eb0ff031ebdff95ebbb79538bc6d6e7fa4482",
+      "delivery_source_identity": "2a181ce170282ae8b3380b75fd3eb0ff031ebdff95ebbb79538bc6d6e7fa4482",
+      "copyright_sha256": "0fb2e32455d5c2812c0b08535b695d2905648b9e82837040c0d1095da7934a47",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pci.ids",
+      "version": "0.0~2023.04.11-1",
+      "original_descriptor_sha256": "18c23efcbcd6643adcdb7be7ef31719f0f8071619e821e9af4366f65aaaa72c4",
+      "delivery_source_identity": "18c23efcbcd6643adcdb7be7ef31719f0f8071619e821e9af4366f65aaaa72c4",
+      "copyright_sha256": "1ab84371aae54065c087b6d684cb3f221b4829a0269771e156428c5db13d24c9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pciutils",
+      "version": "1:3.9.0-4",
+      "original_descriptor_sha256": "b605cd0cfb3e56ebfbc60af4a72aec3d6d60ce514ae2ebd9a8e2e84e61c2aeda",
+      "delivery_source_identity": "b605cd0cfb3e56ebfbc60af4a72aec3d6d60ce514ae2ebd9a8e2e84e61c2aeda",
+      "copyright_sha256": "4da6bc6430fc6604ebe37acd50a7b73fcd92e03d61a29d4326348aac211668c6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pcre2",
+      "version": "10.42-1+deb12u2",
+      "original_descriptor_sha256": "63be58a94a6d2c7f03324cc0fe1ffb32d1f366d82d0fabef581ba3cc8a8ba5a6",
+      "delivery_source_identity": "63be58a94a6d2c7f03324cc0fe1ffb32d1f366d82d0fabef581ba3cc8a8ba5a6",
+      "copyright_sha256": "030511beb4d9d620ad09914c369c36ec0528dcf301d1923cc643c948ee7c6a38",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pcre3",
+      "version": "2:8.39-15",
+      "original_descriptor_sha256": "335f76ecf668b069c9f3a0eb7904df3a271686d769e3e16b5e4f6b52e4254b9d",
+      "delivery_source_identity": "335f76ecf668b069c9f3a0eb7904df3a271686d769e3e16b5e4f6b52e4254b9d",
+      "copyright_sha256": "ac9276490d2fa167442ae1aae33926514ad10c8886baa40046c5e367fccc5938",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pcsc-lite",
+      "version": "1.9.9-2",
+      "original_descriptor_sha256": "7f41763f994336ce4371b5a67fefda900c7f3e61b52e3acb77b3a70632869cba",
+      "delivery_source_identity": "7f41763f994336ce4371b5a67fefda900c7f3e61b52e3acb77b3a70632869cba",
+      "copyright_sha256": "458ddd6711f0527ee4c3c2880e2653d053a8b6c6f323964b4897a425ad309a5f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pdns-recursor",
+      "version": "4.8.8-1+deb12u1",
+      "original_descriptor_sha256": "a096a3458d5863ef088f110c44a5381ce41e545cef13c7e5b50a5536a089f045",
+      "delivery_source_identity": "a096a3458d5863ef088f110c44a5381ce41e545cef13c7e5b50a5536a089f045",
+      "copyright_sha256": "726270b1645098a59aca22379f6ed5cb31892754a52d99903477b66541fe4402",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "perl",
+      "version": "5.36.0-7+deb12u4",
+      "original_descriptor_sha256": "6f71e571ae69894ad2115013bbc3207e77dc796581e30a62be0297e7d90ee7b9",
+      "delivery_source_identity": "6f71e571ae69894ad2115013bbc3207e77dc796581e30a62be0297e7d90ee7b9",
+      "copyright_sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pinentry",
+      "version": "1.2.1-1",
+      "original_descriptor_sha256": "cb45060817fa5563d76591d99f0a7596aa069101710545852ec34a70a387597e",
+      "delivery_source_identity": "cb45060817fa5563d76591d99f0a7596aa069101710545852ec34a70a387597e",
+      "copyright_sha256": "77de76c8641705a00dd174939155bc26b6cfa03e3d6a2d8d41990940a59fad82",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pixman",
+      "version": "0.42.2-1",
+      "original_descriptor_sha256": "393302f5ba22d1206c456902baa02cdd577cb74fe35ec6659f587cce67b91b3d",
+      "delivery_source_identity": "393302f5ba22d1206c456902baa02cdd577cb74fe35ec6659f587cce67b91b3d",
+      "copyright_sha256": "1b3fb5690861e15ca4fd6640fd4def4b2576617942eec04b6fcb7d8bc6c4c9da",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pkcs11-helper",
+      "version": "1.29.0-1",
+      "original_descriptor_sha256": "f781d99c32065564f07b096eb99209406c91ba59f4a22218591a3bd9d4dc4940",
+      "delivery_source_identity": "f781d99c32065564f07b096eb99209406c91ba59f4a22218591a3bd9d4dc4940",
+      "copyright_sha256": "0bfa41a8b75c5de717d0bba708efcdfbb9ca53eaef07808a6a54bb592457289c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "policykit-1",
+      "version": "122-3",
+      "original_descriptor_sha256": "287affb3d5b4f80c6ef18bbab505e10b111577960228008124e3f54ca3ca7216",
+      "delivery_source_identity": "287affb3d5b4f80c6ef18bbab505e10b111577960228008124e3f54ca3ca7216",
+      "copyright_sha256": "afca11148892a6d573ca5eb998a9e729e1252b9b41d3c59be4514accd213cde8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "popt",
+      "version": "1.19+dfsg-1",
+      "original_descriptor_sha256": "80cb513655018b2270cf5315b6370f42bebb23b14abdf9eb33ead6ad5fa5a184",
+      "delivery_source_identity": "80cb513655018b2270cf5315b6370f42bebb23b14abdf9eb33ead6ad5fa5a184",
+      "copyright_sha256": "46bf8fceccc1c186fe9e67b21a8670e2fef58989093ef65c377307c974e3c733",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ppp",
+      "version": "2.4.9-1+1.1",
+      "original_descriptor_sha256": "2e77d2986272acc05e9a20d8eb48ca14c0fba8d60975007a601e6b618fad05a0",
+      "delivery_source_identity": "2e77d2986272acc05e9a20d8eb48ca14c0fba8d60975007a601e6b618fad05a0",
+      "copyright_sha256": "a3f8763208a1813bffe80d219500d092cfec182d2e8baa088eba4de55198d4f1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "procps",
+      "version": "2:4.0.2-3",
+      "original_descriptor_sha256": "927de59c0fb3b3f1ccfd685ebd578fdd9ca524135f15810f766be2f6be5a7e83",
+      "delivery_source_identity": "927de59c0fb3b3f1ccfd685ebd578fdd9ca524135f15810f766be2f6be5a7e83",
+      "copyright_sha256": "90a66617c36d83068b52bbb77cbfef1234f526bfa287156d9d05f7df4d339539",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "protobuf-c",
+      "version": "1.4.1-1",
+      "original_descriptor_sha256": "480082f3a320b6d718a8a218191168be9ab19e8115994739ee11e954498848e4",
+      "delivery_source_identity": "480082f3a320b6d718a8a218191168be9ab19e8115994739ee11e954498848e4",
+      "copyright_sha256": "606bc4c317643d4acd4ea6b8ae35d2bb0a0757a3a2b2556feac98f61851942a3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "publicsuffix",
+      "version": "20230209.2326-1",
+      "original_descriptor_sha256": "452acfa3adb446a9a801d4807dfd58e3f3a6be32ea277728cdb3fe900c78ca4f",
+      "delivery_source_identity": "452acfa3adb446a9a801d4807dfd58e3f3a6be32ea277728cdb3fe900c78ca4f",
+      "copyright_sha256": "530b417d4ee40fa0308e42505cec3304999728a925bb8ff8112c1f36bd904979",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pygobject",
+      "version": "3.42.2-3",
+      "original_descriptor_sha256": "dc14144e90c32a5e56687cb5bf5dfa00efb420f6972cc657b633dda2210169cb",
+      "delivery_source_identity": "dc14144e90c32a5e56687cb5bf5dfa00efb420f6972cc657b633dda2210169cb",
+      "copyright_sha256": "f5cf070adb1ca18c62dc95d75137556a8c1787c3f49540e26e27196fd1aed922",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pyopenssl",
+      "version": "23.0.0-1",
+      "original_descriptor_sha256": "78e2952a516a09fa6b90b7b471036d4315148bfe94b98f3ed5c3dc8f673bb039",
+      "delivery_source_identity": "78e2952a516a09fa6b90b7b471036d4315148bfe94b98f3ed5c3dc8f673bb039",
+      "copyright_sha256": "6704db0c0ed0ff86787de7ef4e1af6d1e5dc6dbb1ae560eff8519e6c0ddcd616",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pyrfc3339",
+      "version": "1.1-4",
+      "original_descriptor_sha256": "ecebdbf81ff7ecd79cb9a8f5577c3381ba005fdc4ca69e93dda58b910e762746",
+      "delivery_source_identity": "ecebdbf81ff7ecd79cb9a8f5577c3381ba005fdc4ca69e93dda58b910e762746",
+      "copyright_sha256": "819e80b3e1b4cb876525a093def520adc21313cbf857c512d75c1a4e8603b1e3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pyroute2",
+      "version": "0.7.2-2",
+      "original_descriptor_sha256": "2bb558747dacfbe8a65311d2f7a76489943add5d3db8192afe1164ac0c6068a8",
+      "delivery_source_identity": "2bb558747dacfbe8a65311d2f7a76489943add5d3db8192afe1164ac0c6068a8",
+      "copyright_sha256": "c8ad1821d91ad7b0b80ac814f7525b2246fc7565fef99f3b0f52016ec693af47",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pystache",
+      "version": "0.6.0-1",
+      "original_descriptor_sha256": "57f02effcc4e530d24b1c445fdf1ae39fd41ca6971960bed517761667a1a6c32",
+      "delivery_source_identity": "57f02effcc4e530d24b1c445fdf1ae39fd41ca6971960bed517761667a1a6c32",
+      "copyright_sha256": "8f8f37c2f8b016bc8739b1940a05d297f486401c4188cb5735dff5b76e08ef65",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-acme",
+      "version": "2.1.0-1",
+      "original_descriptor_sha256": "d0abc346de067228fc333f8a9b76b13f1b15ea8c23cd8983c86285d9f74c4d61",
+      "delivery_source_identity": "d0abc346de067228fc333f8a9b76b13f1b15ea8c23cd8983c86285d9f74c4d61",
+      "copyright_sha256": "57f961c3184202a9ec3f4941e98a4902cb0bc901008fbc93506e6f07e5b19bef",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-bcrypt",
+      "version": "3.2.2-1",
+      "original_descriptor_sha256": "0c8f22793c3996fea34913f338d4e8913ac58f74645428f8251123b3200cbb27",
+      "delivery_source_identity": "0c8f22793c3996fea34913f338d4e8913ac58f74645428f8251123b3200cbb27",
+      "copyright_sha256": "19e2e709e3e79427a2a5ceab6d705ab60ddb463afe57771d8aca3d3bd64bb88f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-certbot",
+      "version": "2.1.0-4",
+      "original_descriptor_sha256": "5a3f4f6580a1ee7dc3fc071f634dc543063f9593c81b053137f67ac90a8f4d18",
+      "delivery_source_identity": "5a3f4f6580a1ee7dc3fc071f634dc543063f9593c81b053137f67ac90a8f4d18",
+      "copyright_sha256": "1d97874b5a69dc74b7e0f2b54ca449f5da1f6b460013b9e89c547043b3178416",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-certifi",
+      "version": "2022.9.24-1",
+      "original_descriptor_sha256": "2de507bd751fe82b6c6e89abd6633b075b2d3a7e5359ee8771640b12f520f989",
+      "delivery_source_identity": "2de507bd751fe82b6c6e89abd6633b075b2d3a7e5359ee8771640b12f520f989",
+      "copyright_sha256": "fa3247700cef784280f30dd5820308fba096cab4a08abd3c9517ec71e2401f9b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-cffi",
+      "version": "1.15.1-5",
+      "original_descriptor_sha256": "d97407ade523f88b64905b5fa90e535dd5c6929feaaf5694d9f49b84a4d54c67",
+      "delivery_source_identity": "d97407ade523f88b64905b5fa90e535dd5c6929feaaf5694d9f49b84a4d54c67",
+      "copyright_sha256": "ce38a181b50546a354940a53ef8798c15eb28b8eb03fd6bf72af102ba855caee",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-charset-normalizer",
+      "version": "3.0.1-2",
+      "original_descriptor_sha256": "7689350da792de0de8e1e87e3cb028663d5ec65529839e4fcc357edaae0bac15",
+      "delivery_source_identity": "7689350da792de0de8e1e87e3cb028663d5ec65529839e4fcc357edaae0bac15",
+      "copyright_sha256": "7102677e623efdc70a2e7356029aa0886346dd9232ca9e2c61a8bd1e6014bda3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-configargparse",
+      "version": "1.5.3-1",
+      "original_descriptor_sha256": "8f740bd4ad48a296405c35b672a32f4cd4fffcc8a123160a8ca3a08221ffa478",
+      "delivery_source_identity": "8f740bd4ad48a296405c35b672a32f4cd4fffcc8a123160a8ca3a08221ffa478",
+      "copyright_sha256": "6c978a108ae9107bda1b24785190a7a533366467e3ea8ca525b18a61509bceb1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-cryptography",
+      "version": "38.0.4-3+deb12u1",
+      "original_descriptor_sha256": "08127808ed330565eb3f1ab696fbd6e89f408161d9745d2bad365f78acd7dd16",
+      "delivery_source_identity": "08127808ed330565eb3f1ab696fbd6e89f408161d9745d2bad365f78acd7dd16",
+      "copyright_sha256": "4d626020b3dc28951a334fd722bcd0162c9807f0d69ca91112d0068fde0de432",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-distro",
+      "version": "1.8.0-1",
+      "original_descriptor_sha256": "9cabfb7688680ff6fbe1feb7730b4d264c4904aba8afb0e30b6c0e98090e33aa",
+      "delivery_source_identity": "9cabfb7688680ff6fbe1feb7730b4d264c4904aba8afb0e30b6c0e98090e33aa",
+      "copyright_sha256": "2014c650a6e029cd96920228ec49b79b02a8b19aef148a097680a6ece710016f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-hurry.filesize",
+      "version": "0.9-3",
+      "original_descriptor_sha256": "36ffb67ea802ee34624890a518dc68ea719331e57a59379ead17062ddcc75ebb",
+      "delivery_source_identity": "36ffb67ea802ee34624890a518dc68ea719331e57a59379ead17062ddcc75ebb",
+      "copyright_sha256": "98e533e582d4d265723971c6be8083361372c547b46c251ac9b8c5a692780495",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-idna",
+      "version": "3.3-1+deb12u1",
+      "original_descriptor_sha256": "7e6deaf1f55c3ff16dde1d0bf26a6eb050535be4abe3b15363655ed4ec93b66a",
+      "delivery_source_identity": "7e6deaf1f55c3ff16dde1d0bf26a6eb050535be4abe3b15363655ed4ec93b66a",
+      "copyright_sha256": "e2b7d15d793374b6ab415b00d5ad6d4673e115572db3c8ce3adecff87638b0b8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-inotify",
+      "version": "0.2.10-4",
+      "original_descriptor_sha256": "2ca7c682766226bc149ee543b74d3fbb2974ad18cb42f7b1482c418cc58f16d1",
+      "delivery_source_identity": "2ca7c682766226bc149ee543b74d3fbb2974ad18cb42f7b1482c418cc58f16d1",
+      "copyright_sha256": "ef79c483fe315aaf41d6159c1e6211a3841837eb73c30cdeaa726e83c3c8032b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-jmespath",
+      "version": "1.0.1-1",
+      "original_descriptor_sha256": "8f053b557f7d2cd5d60a2e3ff618e7ef097c32cb0803a5ed454de8dffcb3ea00",
+      "delivery_source_identity": "8f053b557f7d2cd5d60a2e3ff618e7ef097c32cb0803a5ed454de8dffcb3ea00",
+      "copyright_sha256": "b6e5af6e2b62e1073a24c3ebd77961d10c7b057bfd8fc2c12d4ee9697a99bd95",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-josepy",
+      "version": "1.13.0-1",
+      "original_descriptor_sha256": "e4df19bf7afac4431d929fecfc83da01b2768883c1b0c7e2e056a54dfa38e6f6",
+      "delivery_source_identity": "e4df19bf7afac4431d929fecfc83da01b2768883c1b0c7e2e056a54dfa38e6f6",
+      "copyright_sha256": "0c19c40f16cbc7faf1f1d68e5de404d2af71bd11fce5fac2394768f38e6e834a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-linux-procfs",
+      "version": "0.6.3-1.1",
+      "original_descriptor_sha256": "ef38076d1d82b6491da642a88598bcc3536f76acc8c96487411a4f6889b34ab9",
+      "delivery_source_identity": "ef38076d1d82b6491da642a88598bcc3536f76acc8c96487411a4f6889b34ab9",
+      "copyright_sha256": "b17802d01f2ecd08b99b6304fad8a59c6aea58b9cd118dd7e5d744c8f4918665",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-nacl",
+      "version": "1.5.0-2",
+      "original_descriptor_sha256": "d9f53d7a783c5a33a1478d063c22de6cd73e0449f2d806c4cd8fd61b0e4df9df",
+      "delivery_source_identity": "d9f53d7a783c5a33a1478d063c22de6cd73e0449f2d806c4cd8fd61b0e4df9df",
+      "copyright_sha256": "f38b814ff8f328e80735826b99775e921e4bd05cf8a7aeb51460152976667849",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-netaddr",
+      "version": "0.8.0-2",
+      "original_descriptor_sha256": "ea1bf4343dd0e86c7ed1d4d10d6b1c64e3ca710a26e3263f074bba7b86fc9a37",
+      "delivery_source_identity": "ea1bf4343dd0e86c7ed1d4d10d6b1c64e3ca710a26e3263f074bba7b86fc9a37",
+      "copyright_sha256": "d3dd8c3c24a8407c78e88f6f9be04ff5e3e32a5eafebda5a3be2ccff48a704d2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-passlib",
+      "version": "1.7.4-3",
+      "original_descriptor_sha256": "c9e4781e4d4a75c3c62d73115805feafde25ef590b2813e1a2294186a7253c68",
+      "delivery_source_identity": "c9e4781e4d4a75c3c62d73115805feafde25ef590b2813e1a2294186a7253c68",
+      "copyright_sha256": "709d365df1258eb5f020e3b28687ab0c7e58820e63f5eef8c6c937b1eb241362",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-psutil",
+      "version": "5.9.4-1",
+      "original_descriptor_sha256": "e53f57e8e8277798c621f0aa3c432c7b282408d2c27d6fcde4696dc76459713f",
+      "delivery_source_identity": "e53f57e8e8277798c621f0aa3c432c7b282408d2c27d6fcde4696dc76459713f",
+      "copyright_sha256": "4dcac00171a77778be39f295a97d8471c99e68e77b53eab1445611a9ebb1c6ef",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-py",
+      "version": "1.11.0-1",
+      "original_descriptor_sha256": "d82161d9446ffb1a26fd0a6d4ed07b041d557b1fc78449f0f20ee5129e691ee4",
+      "delivery_source_identity": "d82161d9446ffb1a26fd0a6d4ed07b041d557b1fc78449f0f20ee5129e691ee4",
+      "copyright_sha256": "6ccbe98ba7d6a31b4f3c12e844efa9a7780b32dd63d95b29159e8747b9136ad2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-systemd",
+      "version": "235-1",
+      "original_descriptor_sha256": "a2f58c6628a3ece4319ea6b836e1a7e0cf2aca789170bab5adff27a2145826cf",
+      "delivery_source_identity": "a2f58c6628a3ece4319ea6b836e1a7e0cf2aca789170bab5adff27a2145826cf",
+      "copyright_sha256": "f3af907a549819e7f2206d90aa39de49f637b55f408f2a52188607b8e727f9f1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-tabulate",
+      "version": "0.8.9-1",
+      "original_descriptor_sha256": "3d840fb4e9b060b98aac446f99aa27ea8c53fdd208f5fb3b0c1c937b03ede98e",
+      "delivery_source_identity": "3d840fb4e9b060b98aac446f99aa27ea8c53fdd208f5fb3b0c1c937b03ede98e",
+      "copyright_sha256": "7ee4fcbd2357ac23ee5cfc5b85a37f89af00e9eb5b9ae3cdfb94a6613d76a14c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-tz",
+      "version": "2022.7.1-4",
+      "original_descriptor_sha256": "79c76f5016f88eca0d47b734956730a613d54ddd838c1bf418b0c2c21047dd8b",
+      "delivery_source_identity": "79c76f5016f88eca0d47b734956730a613d54ddd838c1bf418b0c2c21047dd8b",
+      "copyright_sha256": "dd0195bda3cda6a9d3f80c9a5a69d8beb70daccc0d7c8c0ced4b4185f742e633",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-urllib3",
+      "version": "1.26.12-1+deb12u4",
+      "original_descriptor_sha256": "a5d6af5b8142af435741492f2d559d78c9f5f2949a71876609ae5d506a34b69b",
+      "delivery_source_identity": "a5d6af5b8142af435741492f2d559d78c9f5f2949a71876609ae5d506a34b69b",
+      "copyright_sha256": "ba1078616e83d4c3e532935757924a3643f3a122584b0835856a75a89ff9fc42",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python-xmltodict",
+      "version": "0.13.0-1.1~deb12u1",
+      "original_descriptor_sha256": "ffac82c35328c4ad0bc524ec4af488b34c7b01f195e3b1e4a416fd302349e971",
+      "delivery_source_identity": "ffac82c35328c4ad0bc524ec4af488b34c7b01f195e3b1e4a416fd302349e971",
+      "copyright_sha256": "be042997595f5f3a4fe2ce611209b461b2d76bbc2a5330b94dfbf2a7fea51656",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python3-defaults",
+      "version": "3.11.2-1",
+      "original_descriptor_sha256": "75cac54d11a4f7bc2c88eeeabddd74dc27b072c3bd515e71c8be2641b062e980",
+      "delivery_source_identity": "75cac54d11a4f7bc2c88eeeabddd74dc27b072c3bd515e71c8be2641b062e980",
+      "copyright_sha256": "5b274dbb44b28a54b795b9471c07ab045054d6b8a86273cb9feb632b6fd2760d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "python3.11",
+      "version": "3.11.2-6+deb12u9",
+      "original_descriptor_sha256": "49c0d6e1f0d3aeef542de2e908da11bcbcb9343654fb70b51fe4f80865c9dc92",
+      "delivery_source_identity": "49c0d6e1f0d3aeef542de2e908da11bcbcb9343654fb70b51fe4f80865c9dc92",
+      "copyright_sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pyudev",
+      "version": "0.24.0-1",
+      "original_descriptor_sha256": "577e54b2a2dad4e74a491d8722d523cfa950fe7b5c60ed9fd43f6fe4e5cd5a26",
+      "delivery_source_identity": "577e54b2a2dad4e74a491d8722d523cfa950fe7b5c60ed9fd43f6fe4e5cd5a26",
+      "copyright_sha256": "5a79dabeed9c8d7d2cc46a606430c0abab237bc076c632363fc7afe6eecc6153",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "pyzmq",
+      "version": "24.0.1-4",
+      "original_descriptor_sha256": "9c8adda0f679f027242a9ecdfd8a7df8c8e7000774bba0e062b6473602c1c79b",
+      "delivery_source_identity": "9c8adda0f679f027242a9ecdfd8a7df8c8e7000774bba0e062b6473602c1c79b",
+      "copyright_sha256": "5e589f6edc37f5e041d017cee53f83026c13f45c6ddff7d0917bb5ac5c86b3a3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "qrencode",
+      "version": "4.1.1-1",
+      "original_descriptor_sha256": "97439930171a11d0dbbdc18ba3c2cbea9bb974a08638e01a7c8fd6f09962dfc2",
+      "delivery_source_identity": "97439930171a11d0dbbdc18ba3c2cbea9bb974a08638e01a7c8fd6f09962dfc2",
+      "copyright_sha256": "d175200636cb7269c53c3c590d6d8dc2fe42bcb54087d8e969bd0e57c75fbd3b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "radcli",
+      "version": "1.2.11-1",
+      "original_descriptor_sha256": "486af0f64d541d97bcb663bfd128de651dfaaeaa16d2b3392ddbf5a2466623c0",
+      "delivery_source_identity": "486af0f64d541d97bcb663bfd128de651dfaaeaa16d2b3392ddbf5a2466623c0",
+      "copyright_sha256": "72c2ac568f30d43359ba49b7b3fcca3e9da807b77c9c6b83cd7107ea63413fc9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "re2",
+      "version": "20220601+dfsg-1",
+      "original_descriptor_sha256": "e0d2eab89a0312e9a0ba4e9a6fb18b081764d6776a28496d389aa3831d970940",
+      "delivery_source_identity": "e0d2eab89a0312e9a0ba4e9a6fb18b081764d6776a28496d389aa3831d970940",
+      "copyright_sha256": "c30c491d4d042543ab134338b83d6d514bff554876b9042b347a2b58dc9f202d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "readline",
+      "version": "8.2-1.3",
+      "original_descriptor_sha256": "05497ea99bef3f14b8d502cbe3f84fe7bbc0bce1c4f139ca32f0fd60dcac977e",
+      "delivery_source_identity": "05497ea99bef3f14b8d502cbe3f84fe7bbc0bce1c4f139ca32f0fd60dcac977e",
+      "copyright_sha256": "3591a8e4de849d910c5ee9045388344ef151c23b10cf8c6b1950f89f1ba1569c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "requests",
+      "version": "2.28.1+dfsg-1",
+      "original_descriptor_sha256": "87a61417f320136f6b2277173762d4cc1a22231f2f1d2866c0ebe28d4f2e9f85",
+      "delivery_source_identity": "87a61417f320136f6b2277173762d4cc1a22231f2f1d2866c0ebe28d4f2e9f85",
+      "copyright_sha256": "8b550041e7f71467cf9fc0295b0029232977a3e339c1ae47cc1710fafcc2f606",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "rp-pppoe",
+      "version": "3.15-2",
+      "original_descriptor_sha256": "24ba5efb72a9809b4ff722313e934cb19f40f1c4d72edca16de8e48a7f004d68",
+      "delivery_source_identity": "24ba5efb72a9809b4ff722313e934cb19f40f1c4d72edca16de8e48a7f004d68",
+      "copyright_sha256": "490a6e404a87cf6303700f632c1bde3633aa8b6373a9ab1d64eb2f5f1ccf9b30",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "rsync",
+      "version": "3.2.7-1+deb12u6",
+      "original_descriptor_sha256": "b58256550349ae62413a5b7138662bdf2364e1a891143a6f81a9c23e2f76900b",
+      "delivery_source_identity": "b58256550349ae62413a5b7138662bdf2364e1a891143a6f81a9c23e2f76900b",
+      "copyright_sha256": "240afc05aff098e53dafe0def34030b2ef7848b78b9ebabf2c157713b9f975c5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "rsyslog",
+      "version": "8.2302.0-1+deb12u1",
+      "original_descriptor_sha256": "ff4787f987ef79570284c679c7c7fe7d7e70ea9df440ff7bad0a5ee889442b92",
+      "delivery_source_identity": "ff4787f987ef79570284c679c7c7fe7d7e70ea9df440ff7bad0a5ee889442b92",
+      "copyright_sha256": "73eea0d41d1b20a0a9428bbc0a3127c65abdd46db4b700fb8e8b0e884f6cffdd",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "rtmpdump",
+      "version": "2.4+20151223.gitfa8646d.1-2",
+      "original_descriptor_sha256": "a296819cd2ab5880b67ad963ef0867cb10e462f4403e52565aa863eb05bb1370",
+      "delivery_source_identity": "a296819cd2ab5880b67ad963ef0867cb10e462f4403e52565aa863eb05bb1370",
+      "copyright_sha256": "4302abcc1ea1b6cbe8d19c79b892acf78878030220210707c19006828866207c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "screen",
+      "version": "4.9.0-4",
+      "original_descriptor_sha256": "3d581715ac91fab34320311184a91f17b2db53190477120ac265a8b8cf4fcf0e",
+      "delivery_source_identity": "3d581715ac91fab34320311184a91f17b2db53190477120ac265a8b8cf4fcf0e",
+      "copyright_sha256": "03592d7569ebb7dd614315f9406d4f0c46741927ce6d23c88f5291b49cf18811",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sed",
+      "version": "4.9-1+deb12u1",
+      "original_descriptor_sha256": "6bf366b84fd2025e355689e524132b3c38a2b4ef136de2e6129595be1e3bdd4f",
+      "delivery_source_identity": "6bf366b84fd2025e355689e524132b3c38a2b4ef136de2e6129595be1e3bdd4f",
+      "copyright_sha256": "719320e425e8e6da53a55e0fcfa2f2ed9b1332cea16abd65321bd651b2a88568",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sensible-utils",
+      "version": "0.0.17+nmu1",
+      "original_descriptor_sha256": "764436dac8b6796ba49e9dd96e3c9ef8612cacad1953e6cd7525a17b99a9e4a1",
+      "delivery_source_identity": "764436dac8b6796ba49e9dd96e3c9ef8612cacad1953e6cd7525a17b99a9e4a1",
+      "copyright_sha256": "a3f046d279b767f56f9bfbd7bdc66561be99da2c52a4d78cda108c58f975f1b5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "setuptools",
+      "version": "66.1.1-1+deb12u2",
+      "original_descriptor_sha256": "68a88656f3486fd4af17d56a48c5bc9251557c8915f7a1fc0ec4bcf8f9642247",
+      "delivery_source_identity": "68a88656f3486fd4af17d56a48c5bc9251557c8915f7a1fc0ec4bcf8f9642247",
+      "copyright_sha256": "b667d4e1f17b94a30d1398150ee53cfbe65e2c71b9fc12509d641612233abe97",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sgml-base",
+      "version": "1.31",
+      "original_descriptor_sha256": "5bc1878461ec10333c7a99aeeec997e7263c92afba2c4f6fb518a8f4e5b3d9cc",
+      "delivery_source_identity": "5bc1878461ec10333c7a99aeeec997e7263c92afba2c4f6fb518a8f4e5b3d9cc",
+      "copyright_sha256": "dd54c039d628f8397d1ed19f418b35281ff419b88d3822dc23e3dc409e2a7fe3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "shadow",
+      "version": "1:4.13+dfsg1-1+deb12u2",
+      "original_descriptor_sha256": "624b24453887abb8d1e60cb6a159180685682ff149393095ba0a55fb2960e4f0",
+      "delivery_source_identity": "624b24453887abb8d1e60cb6a159180685682ff149393095ba0a55fb2960e4f0",
+      "copyright_sha256": "a4c3e5b19700dd3cc5961663d204bd7150f65f913314682aede5931548c436d5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sharutils",
+      "version": "1:4.15.2-9",
+      "original_descriptor_sha256": "0b7eda649492a8326696509a6dcbb337ea365730b9ff63dc619e841f510d0063",
+      "delivery_source_identity": "0b7eda649492a8326696509a6dcbb337ea365730b9ff63dc619e841f510d0063",
+      "copyright_sha256": "e5e6a761da719012f4af82a61cf99f437b636d161f37a36765bd2bfb50e19321",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sipcalc",
+      "version": "1.1.6-3",
+      "original_descriptor_sha256": "f2e72f26ea4ee5bc5dc771abf3590b896cfa2eb77d018c5701e95af1bc0051ba",
+      "delivery_source_identity": "f2e72f26ea4ee5bc5dc771abf3590b896cfa2eb77d018c5701e95af1bc0051ba",
+      "copyright_sha256": "d11122f3e3e2b45a747b19fb59ac1ccb0afd2ef6a371748e5c154588a27709a8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "six",
+      "version": "1.16.0-4",
+      "original_descriptor_sha256": "ccb3c763da6b957f9d249454f7e6e40189742d52216d26e3b1580ed435e49ac6",
+      "delivery_source_identity": "ccb3c763da6b957f9d249454f7e6e40189742d52216d26e3b1580ed435e49ac6",
+      "copyright_sha256": "e702e3573ce9351cb52823fc5e2123830489de8f8b54874851341fe22b4b793e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "smartmontools",
+      "version": "7.3-1",
+      "original_descriptor_sha256": "05408b39b18aecf7f4f54e268c64c05209ba9a67b0982853eac2e8cfda8865fe",
+      "delivery_source_identity": "05408b39b18aecf7f4f54e268c64c05209ba9a67b0982853eac2e8cfda8865fe",
+      "copyright_sha256": "0721c2aa8dba086f73ea02a2b337309463cdf3aab5b0e993816a60e6c8dfbd64",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "socat",
+      "version": "1.7.4.4-2",
+      "original_descriptor_sha256": "d69a6c1c1f3e36959b3f43b0383c537a924e5f0dcae6f803621aef9491a71e5a",
+      "delivery_source_identity": "d69a6c1c1f3e36959b3f43b0383c537a924e5f0dcae6f803621aef9491a71e5a",
+      "copyright_sha256": "6b60279553fd318b8bbe4ed92517e1826e335f76026e3825c09da321b828f6d9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sqlite3",
+      "version": "3.40.1-2+deb12u2",
+      "original_descriptor_sha256": "ee3459ae9d00939741c7708fc1b8ce1bde12d8c3fb1dfa005bbbc8651d884e23",
+      "delivery_source_identity": "ee3459ae9d00939741c7708fc1b8ce1bde12d8c3fb1dfa005bbbc8651d884e23",
+      "copyright_sha256": "78e9df8f8153c91c762ec970b82d224ac4d30f05aa7773e7e17e268141e53873",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "squashfs-tools",
+      "version": "1:4.5.1-1",
+      "original_descriptor_sha256": "b5ec6308d47e52fac7016763fe08b1bb7397e1322685e609b031dbd174c991fd",
+      "delivery_source_identity": "b5ec6308d47e52fac7016763fe08b1bb7397e1322685e609b031dbd174c991fd",
+      "copyright_sha256": "4f6c4c3fd4be4ff1ebe25b4f45bf9196be6f1aca2d10880067e04e051bec672e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "squid",
+      "version": "5.7-2+deb12u6",
+      "original_descriptor_sha256": "d93788b1dd7ba2cd4ba26f6994ad6b0d2cbdd19be41f718cd1690ee5ba5ef49c",
+      "delivery_source_identity": "d93788b1dd7ba2cd4ba26f6994ad6b0d2cbdd19be41f718cd1690ee5ba5ef49c",
+      "copyright_sha256": "8b96280f4bd6f9bc0eed1462c8d2389a177c36d619cd83031195cb56d1f0f34d",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "squid-langpack",
+      "version": "20220130-1",
+      "original_descriptor_sha256": "d7b6dbb91aa326fed61750724ee34c14a3e8bf18bb3c20203c00090141124c97",
+      "delivery_source_identity": "d7b6dbb91aa326fed61750724ee34c14a3e8bf18bb3c20203c00090141124c97",
+      "copyright_sha256": "a85ea6cb52961c061242daad16808d937c08270af877d7857a12ff25320e1c57",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "squidguard",
+      "version": "1.6.0-4",
+      "original_descriptor_sha256": "a60a210a4cb0e73a6c94bb23b7a52db9c7be7b27d54be95d00f1013ba183d7b9",
+      "delivery_source_identity": "a60a210a4cb0e73a6c94bb23b7a52db9c7be7b27d54be95d00f1013ba183d7b9",
+      "copyright_sha256": "f6ea72178e965c343a581c53ba6a6b0223cf29c5de204eca31556db0483b90e7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sshguard",
+      "version": "2.4.2-1",
+      "original_descriptor_sha256": "c1c05b5c02862a335896cf5b08223301719025dd6c72b075a50a08f59090987f",
+      "delivery_source_identity": "c1c05b5c02862a335896cf5b08223301719025dd6c72b075a50a08f59090987f",
+      "copyright_sha256": "326c6bc0b629b47f6ce06d2083910d765ca3ceea3693c56d180edc737277734a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ssl-cert",
+      "version": "1.1.2",
+      "original_descriptor_sha256": "dd7a029a232736ffcc506f85fef510f575583fb3857bdc3b53805226f90ef49f",
+      "delivery_source_identity": "dd7a029a232736ffcc506f85fef510f575583fb3857bdc3b53805226f90ef49f",
+      "copyright_sha256": "b99b8bf533b7f509c0087da904b7c5a35373cf2cf5691c274368520318500a12",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sstp-client",
+      "version": "1.0.18-1",
+      "original_descriptor_sha256": "27ef3471f67cbbd2082cffc6be6ec50c3564df71909df16bbe962f4cc7ae616b",
+      "delivery_source_identity": "27ef3471f67cbbd2082cffc6be6ec50c3564df71909df16bbe962f4cc7ae616b",
+      "copyright_sha256": "b492fa43c92c1612535ec8e87ea4eb4708e8a2fbf6bf437f9b688eff9f212fd8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "strongswan",
+      "version": "5.9.8-5+deb12u6",
+      "original_descriptor_sha256": "c2207824084c35eb01f58dd2bfe414c6eedb5962b2d9d5df59986137eeaa295e",
+      "delivery_source_identity": "c2207824084c35eb01f58dd2bfe414c6eedb5962b2d9d5df59986137eeaa295e",
+      "copyright_sha256": "246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "stunnel4",
+      "version": "3:5.68-2+deb12u1",
+      "original_descriptor_sha256": "0dd75f679eaca8b06bb8e813b6299c10c953ab2341a8a80b709a1f7196ac5768",
+      "delivery_source_identity": "0dd75f679eaca8b06bb8e813b6299c10c953ab2341a8a80b709a1f7196ac5768",
+      "copyright_sha256": "fd21a09d8e26f8895f3b94024c230fc2e77cd1744a375f19df6062b0189a36df",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sudo",
+      "version": "1.9.13p3-1+deb12u4",
+      "original_descriptor_sha256": "48308278bfbef2070b1f47492e39f9e7ac8ff9705aa6c390cd174b5e214c1089",
+      "delivery_source_identity": "48308278bfbef2070b1f47492e39f9e7ac8ff9705aa6c390cd174b5e214c1089",
+      "copyright_sha256": "90b6ed2fe614d3b2162441f7931f570f34627d6cb7d261a8c1da442f51d5c7da",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "systemd",
+      "version": "252.39-1~deb12u2",
+      "original_descriptor_sha256": "f2f952ae61fd40f1ef3ee48c8721e23eaaec5396ef5f1b0c2e138d78fade9c6e",
+      "delivery_source_identity": "f2f952ae61fd40f1ef3ee48c8721e23eaaec5396ef5f1b0c2e138d78fade9c6e",
+      "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "systemd-bootchart",
+      "version": "234-2",
+      "original_descriptor_sha256": "d39e85a17cb72465282c52cecb9d6c5ba9d3029c8ce14e293a017ff91c48a2da",
+      "delivery_source_identity": "d39e85a17cb72465282c52cecb9d6c5ba9d3029c8ce14e293a017ff91c48a2da",
+      "copyright_sha256": "db90ce489c011fbb0b7d064c4a6506ef2ead3246e9cbf5981ca510b98174f3ed",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "sysvinit",
+      "version": "3.06-4",
+      "original_descriptor_sha256": "f153cd1ef48698089494aac14cebdcb8130ce4d4af5533a41cd3f1950e9e42fa",
+      "delivery_source_identity": "f153cd1ef48698089494aac14cebdcb8130ce4d4af5533a41cd3f1950e9e42fa",
+      "copyright_sha256": "ad7cb339e58a88918a883d553ca236795191f027e158788a8b33f747ff502fb2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "talloc",
+      "version": "2.4.0-f2",
+      "original_descriptor_sha256": "fa98ff12c9ad3ac9b9395a8c83d70319ae6775532d37305014a1fea731f6f396",
+      "delivery_source_identity": "fa98ff12c9ad3ac9b9395a8c83d70319ae6775532d37305014a1fea731f6f396",
+      "copyright_sha256": "74278a94ee0b90f2098c57b25f09652554ab9a47ca9c3cec3f56dff2adad3d2a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tar",
+      "version": "1.34+dfsg-1.2+deb12u1",
+      "original_descriptor_sha256": "c092b25be17ab3b138aabb756497b038516a3f7d23604ccd4bf76ebbabff7a27",
+      "delivery_source_identity": "c092b25be17ab3b138aabb756497b038516a3f7d23604ccd4bf76ebbabff7a27",
+      "copyright_sha256": "bea61e0c172868e07845cf50423f97f093a9a46de167dbbe333a38be610c8e00",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tcp-wrappers",
+      "version": "7.6.q-32",
+      "original_descriptor_sha256": "c9620a45e897c786b99890b54c6ea916df2380b6f3260e1e6442a1f8b5066997",
+      "delivery_source_identity": "c9620a45e897c786b99890b54c6ea916df2380b6f3260e1e6442a1f8b5066997",
+      "copyright_sha256": "3433ea51eb4b9272c97d159c5ae5e0d3f592bbf9fc946dac813e1594aa6fa16f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tcpdump",
+      "version": "4.99.3-1",
+      "original_descriptor_sha256": "e5a75fad08aacff81a58799bedaacc61fa281839d8f68cdf1c9df45deb66afd1",
+      "delivery_source_identity": "e5a75fad08aacff81a58799bedaacc61fa281839d8f68cdf1c9df45deb66afd1",
+      "copyright_sha256": "3e640f444358d031690de4c8fb040fb866386460dd9c51f3ffb875bbfb2342e2",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tcptraceroute",
+      "version": "1.5beta7+debian-4.1",
+      "original_descriptor_sha256": "8a9e64a3abedac8338282f975924dc2b2acf5834704628e097aa166631e28f4a",
+      "delivery_source_identity": "8a9e64a3abedac8338282f975924dc2b2acf5834704628e097aa166631e28f4a",
+      "copyright_sha256": "11c9eb5d528d7160d8a2f15f72112e9742bf641c1f70a9b13bd7ae2e50d22e6e",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tdb",
+      "version": "1.4.8-2",
+      "original_descriptor_sha256": "b94e45b68fc7945567535c0d7ded8b6e5a4dfb0148ee87c513552dbe018c210b",
+      "delivery_source_identity": "b94e45b68fc7945567535c0d7ded8b6e5a4dfb0148ee87c513552dbe018c210b",
+      "copyright_sha256": "aecc9fe75f27bf6eb2f9075df5e7b83cfe3b4e722bbbb7da82ec484a48a76921",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tftp-hpa",
+      "version": "5.2+20150808-1.4",
+      "original_descriptor_sha256": "ef4773c465199cfbc3ccd455a2674b86411da3a45ceef9594ce20d2497dc253d",
+      "delivery_source_identity": "ef4773c465199cfbc3ccd455a2674b86411da3a45ceef9594ce20d2497dc253d",
+      "copyright_sha256": "11d031ee0f2845da8df08144a235c6606dd0b4dd1f05a0deb64bedb819ebe601",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tinycdb",
+      "version": "0.78",
+      "original_descriptor_sha256": "a81960f9d8a2c9de37ef4acdee9fda39f20167381f0757e54b7dfd701ad64bc9",
+      "delivery_source_identity": "a81960f9d8a2c9de37ef4acdee9fda39f20167381f0757e54b7dfd701ad64bc9",
+      "copyright_sha256": "d5c530e15516f81f98161eea26047ffa5d2e0c640079da6f45135c77beb1f7cd",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tpm-udev",
+      "version": "0.6",
+      "original_descriptor_sha256": "677b3c7cd6ebdfd6666675953cf7bfc80092c11b89564cb0600f18b6fce788f8",
+      "delivery_source_identity": "677b3c7cd6ebdfd6666675953cf7bfc80092c11b89564cb0600f18b6fce788f8",
+      "copyright_sha256": "d387e36306260b6b13ae6cd9db0e75bc2bde085bd08cd3fa534da53016b2aa2f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tpm2-tools",
+      "version": "5.4-1",
+      "original_descriptor_sha256": "c16b9cfbef3259c24cbda12ef502cc964cc9993b42f0994558ee6f1a60bdee39",
+      "delivery_source_identity": "c16b9cfbef3259c24cbda12ef502cc964cc9993b42f0994558ee6f1a60bdee39",
+      "copyright_sha256": "e8a1c6e1398f742e4fcfd32366016376a790cd228d8e423090cacf45c1819101",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tpm2-tss",
+      "version": "3.2.1-3",
+      "original_descriptor_sha256": "878d496e96fb79c19f950649e9a15552dc4fdab8f4ffb64140c2f7209be577e2",
+      "delivery_source_identity": "878d496e96fb79c19f950649e9a15552dc4fdab8f4ffb64140c2f7209be577e2",
+      "copyright_sha256": "e105f042ff4d09ec368fb0bc9b12c080bdf7188a52b2eca5d3f36886ce229b0a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "traceroute",
+      "version": "1:2.1.2-1",
+      "original_descriptor_sha256": "2b0c7e6141710bd694a5430c66d80475f194fb5b631a3b19b810a737112706c1",
+      "delivery_source_identity": "2b0c7e6141710bd694a5430c66d80475f194fb5b631a3b19b810a737112706c1",
+      "copyright_sha256": "ed62b8662d68d192410f988e16c437f4cf2134c09f9d78d0beb61d398bb587df",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tuned",
+      "version": "2.20.0-1",
+      "original_descriptor_sha256": "8240f9c3281983fffac802a86ad216a95a967abd2c02683bb2d6098db460c81d",
+      "delivery_source_identity": "8240f9c3281983fffac802a86ad216a95a967abd2c02683bb2d6098db460c81d",
+      "copyright_sha256": "f8127134c322efbb250906faf8522fe500f99963771164a7abb56d2f5f0d2328",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "tzdata",
+      "version": "2026f-0+deb12u1",
+      "original_descriptor_sha256": "e9047474a52c30cf914c8b11bbc0f9ceb289c0711c81b5fff277e1f8a4b9ce2e",
+      "delivery_source_identity": "e9047474a52c30cf914c8b11bbc0f9ceb289c0711c81b5fff277e1f8a4b9ce2e",
+      "copyright_sha256": "cb61132bc0fc7b26ef5a82ee18b2fb644a1362f4f286ed980ff22e408471f59a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "ucf",
+      "version": "3.0043+nmu1+deb12u1",
+      "original_descriptor_sha256": "f098e6f07226ed6dbd4373b55a385c9899432ae6e08c83657eda33ff15a47ec6",
+      "delivery_source_identity": "f098e6f07226ed6dbd4373b55a385c9899432ae6e08c83657eda33ff15a47ec6",
+      "copyright_sha256": "67dd4031ca283ba2f0def195329740f237e7ba30ef26e3dce3afa7f73cb62c8b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "unionfs-fuse",
+      "version": "1.0-1",
+      "original_descriptor_sha256": "afc2d2a1ec278c51fb3281058150da23108eaf0e1553d6a893347ca19ad859f5",
+      "delivery_source_identity": "afc2d2a1ec278c51fb3281058150da23108eaf0e1553d6a893347ca19ad859f5",
+      "copyright_sha256": "a57e3cb558c9c8ecee3ad3ca16b307354aff57a80a68ebb9bbb5a5ff9d09ded9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "usb-modeswitch",
+      "version": "2.6.1-3",
+      "original_descriptor_sha256": "32805ec1d4db134ec2cc526018ef558ef232e014c52bedf759c60bc64cc0577a",
+      "delivery_source_identity": "32805ec1d4db134ec2cc526018ef558ef232e014c52bedf759c60bc64cc0577a",
+      "copyright_sha256": "81db49c2f20269602749bde349ceb291115737896862ed8425bf745ab7f441d8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "usb-modeswitch-data",
+      "version": "20191128-5",
+      "original_descriptor_sha256": "5b8809e1406c0aa401fe531f9d3a2e28aba7bcba1486d52852c66fd3dac7a17d",
+      "delivery_source_identity": "5b8809e1406c0aa401fe531f9d3a2e28aba7bcba1486d52852c66fd3dac7a17d",
+      "copyright_sha256": "f83511c0a26bca057b7381dadfaa94cc6c635d360add92fa7964455ebe6aad46",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "usbutils",
+      "version": "1:014-1+deb12u1",
+      "original_descriptor_sha256": "41a55f20c11a68776a7741760ba1b9682f9d1629c65fcd706beabe12e0323f90",
+      "delivery_source_identity": "41a55f20c11a68776a7741760ba1b9682f9d1629c65fcd706beabe12e0323f90",
+      "copyright_sha256": "e4f5ee783ab8e48ae80c256be70e73e60614ee2fadb424b5b60de8b3316bea60",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "usrmerge",
+      "version": "37~deb12u1",
+      "original_descriptor_sha256": "3a561ff99013607db5bc61721aae08a236afc4b04b13baab17fb2e8d18fc0b7f",
+      "delivery_source_identity": "3a561ff99013607db5bc61721aae08a236afc4b04b13baab17fb2e8d18fc0b7f",
+      "copyright_sha256": "9836bfe2ef94505bbf29701e8c90799ab1a5fd966d26d60d019a822cdbf3d61a",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "util-linux",
+      "version": "2.38.1-5+deb12u3",
+      "original_descriptor_sha256": "0fe5fcd2b83d0465e32ca5cb9d8319e9b6fbf14c9a69abfd7ea905e45fa90b67",
+      "delivery_source_identity": "0fe5fcd2b83d0465e32ca5cb9d8319e9b6fbf14c9a69abfd7ea905e45fa90b67",
+      "copyright_sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "virt-what",
+      "version": "1.25-1",
+      "original_descriptor_sha256": "9681d0edf9abd44459c6fbdd352f55b5806892c3d7e2a030602ec0bc2a1a95be",
+      "delivery_source_identity": "9681d0edf9abd44459c6fbdd352f55b5806892c3d7e2a030602ec0bc2a1a95be",
+      "copyright_sha256": "b841e8a0b78b3c5a18e43dfdf314188050bb6c8f3b706b7fe4437c439c1cb236",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "voluptuous",
+      "version": "0.12.2-1",
+      "original_descriptor_sha256": "b12b20cea07d566dc0d5114e8bd9cf150c13f93b99b2a2d493219d8241c871cd",
+      "delivery_source_identity": "b12b20cea07d566dc0d5114e8bd9cf150c13f93b99b2a2d493219d8241c871cd",
+      "copyright_sha256": "5f1c10647cd6c7fd46ac3988ac34189ee6ccede357ad8c4bf2e7f0f6f0dfd745",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "wget",
+      "version": "1.21.3-1+deb12u1",
+      "original_descriptor_sha256": "4c538fae048ee60a4eeac03a520e12698ef39a88767cbebc0b7b62a472f52bb6",
+      "delivery_source_identity": "4c538fae048ee60a4eeac03a520e12698ef39a88767cbebc0b7b62a472f52bb6",
+      "copyright_sha256": "c58cb5a2d94f35f0e9b0f1a038d48b73477aa12782ff17328c21d8a86f5f99d5",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "whois",
+      "version": "5.5.17",
+      "original_descriptor_sha256": "503a3f60e937a0158b77772f0cfc6670011409645cd5069d95d422d86e1c7093",
+      "delivery_source_identity": "503a3f60e937a0158b77772f0cfc6670011409645cd5069d95d422d86e1c7093",
+      "copyright_sha256": "8de310a28eb62420fddf909fa0c80f05ec94001442724522309a2729699719fc",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "wireguard",
+      "version": "1.0.20210914-1",
+      "original_descriptor_sha256": "cf28d805d3ad834d713e43eb5c354c0cb762504c5c739eb17725c16ccb00da43",
+      "delivery_source_identity": "cf28d805d3ad834d713e43eb5c354c0cb762504c5c739eb17725c16ccb00da43",
+      "copyright_sha256": "bcaabc2642bfec84965bacb15ad66d5dd2d7214362c1b0a70063fd4b60f4fbd7",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "wireless-regdb",
+      "version": "2026.05.30-1~deb12u1",
+      "original_descriptor_sha256": "15924dbd166b0b9dcbb231ee2085e90d63e2f58bf2d433bf26cef3790ff36ed1",
+      "delivery_source_identity": "15924dbd166b0b9dcbb231ee2085e90d63e2f58bf2d433bf26cef3790ff36ed1",
+      "copyright_sha256": "6914102d6ae511192793390e09457f79f8634be79c52eb5e40a766b007816195",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "wpa",
+      "version": "2:2.10-12+deb12u3",
+      "original_descriptor_sha256": "1f8c9f13ca9ca75a68860fafe2fa0a6aaf57bb6f573d96d19ea95900c0c22958",
+      "delivery_source_identity": "1f8c9f13ca9ca75a68860fafe2fa0a6aaf57bb6f573d96d19ea95900c0c22958",
+      "copyright_sha256": "9aebd4fa48a707a069d18fee53b98925956022f9e1da1821bce55288ff1a3246",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "wslay",
+      "version": "1.1.1-3",
+      "original_descriptor_sha256": "14d530fdb6c21050bafce04d49b59e5b8a71311de1586f8f40f2aebf3ac27cab",
+      "delivery_source_identity": "14d530fdb6c21050bafce04d49b59e5b8a71311de1586f8f40f2aebf3ac27cab",
+      "copyright_sha256": "b211b5eda9db7a89e53e5738022018c1e8cc0e6773d3e188f401ffaf80516171",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "xapian-core",
+      "version": "1.4.22-1",
+      "original_descriptor_sha256": "8d03655fc0d669d7681dfaeb8c766f8c8b0d1cbe642d1786156a846d8d3eb71b",
+      "delivery_source_identity": "8d03655fc0d669d7681dfaeb8c766f8c8b0d1cbe642d1786156a846d8d3eb71b",
+      "copyright_sha256": "d530c1aa427b7e55f170f48b43f3657f847255438496847796eb8a0496bdd5d6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "xen",
+      "version": "4.17.7+13-g2445b30a44-0+deb12u1",
+      "original_descriptor_sha256": "8bf01bcad94067022f27c38529e10593cbd2f145bc0d305a72f7634f2865ffba",
+      "delivery_source_identity": "8bf01bcad94067022f27c38529e10593cbd2f145bc0d305a72f7634f2865ffba",
+      "copyright_sha256": "fb89466b3283e3f49ebb1d862a3c1213cc45555c386189175197567c5ae00d0f",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "xml-core",
+      "version": "0.18+nmu1",
+      "original_descriptor_sha256": "3b4bc034193f99750141611ae1c836c6b742c88ed0af1420051f3fcae30bf5ae",
+      "delivery_source_identity": "3b4bc034193f99750141611ae1c836c6b742c88ed0af1420051f3fcae30bf5ae",
+      "copyright_sha256": "3ade07a2a247fa2855938f2dfe3c17b0aa4b0b894e554a4ec358157dc5ca033b",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "xosd",
+      "version": "2.2.14-2.1",
+      "original_descriptor_sha256": "3de1c19aac4a91635053a0064e2a15feaf58910732d83950cd78b15e607781b8",
+      "delivery_source_identity": "3de1c19aac4a91635053a0064e2a15feaf58910732d83950cd78b15e607781b8",
+      "copyright_sha256": "b6f2219cf251c03f2f6f659cf303cecffb903cc1a89bc28e2719d746b79c3cc1",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "xxhash",
+      "version": "0.8.1-1",
+      "original_descriptor_sha256": "4a961627c06efc8fa3bc4b06ee9dba6cfaf092f2550b88d63e9218a2728721b4",
+      "delivery_source_identity": "4a961627c06efc8fa3bc4b06ee9dba6cfaf092f2550b88d63e9218a2728721b4",
+      "copyright_sha256": "a123c93b07e781919ae996276ac02bb1c8b19dfde88176cd1240ab277c14a4ce",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "xz-utils",
+      "version": "5.4.1-1+deb12u2",
+      "original_descriptor_sha256": "bffc9917562b5787661379621bb1f7510bf7271b03d8ce4181cebc84b90d3c35",
+      "delivery_source_identity": "bffc9917562b5787661379621bb1f7510bf7271b03d8ce4181cebc84b90d3c35",
+      "copyright_sha256": "a2dc8fac0f496e1c58aff67018cf0c6b88336316afa5642f9335b71642e28aa8",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "yajl",
+      "version": "2.1.0-3+deb12u2",
+      "original_descriptor_sha256": "38420d432584960203b37e108bcf39a5b6f0f2c96620af51e358ad2ce2e8746b",
+      "delivery_source_identity": "38420d432584960203b37e108bcf39a5b6f0f2c96620af51e358ad2ce2e8746b",
+      "copyright_sha256": "b0a3a849e4055062939df1de9d957c639a6171188b70b511a76b661771c76775",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "zabbix",
+      "version": "1:7.0.9+dfsg-1~bpo12+1",
+      "original_descriptor_sha256": "8ca7493db7ad0de663150f74812291ab09bd862367b3c083fb0240b15c83a3dd",
+      "delivery_source_identity": "8ca7493db7ad0de663150f74812291ab09bd862367b3c083fb0240b15c83a3dd",
+      "copyright_sha256": "c35642e08254ec781851191e2123df8e9f63bb7473b3a9749eff4dd39f66f9d9",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "zeromq3",
+      "version": "4.3.4-6",
+      "original_descriptor_sha256": "dfc0e1a03950bff1891b60de3eb41605e9d1d804af063e4b565602165be8c3fe",
+      "delivery_source_identity": "dfc0e1a03950bff1891b60de3eb41605e9d1d804af063e4b565602165be8c3fe",
+      "copyright_sha256": "5b9bfc402d67b0803d9174f7a1a77132dfcf0646662811fa5fccc392fc0a31fe",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    },
+    {
+      "source": "zlib",
+      "version": "1:1.2.13.dfsg-1",
+      "original_descriptor_sha256": "3fa1e6b2fc525062aa88207dda52fed8e045373c809d362fe8a2bfbf7cf515a8",
+      "delivery_source_identity": "3fa1e6b2fc525062aa88207dda52fed8e045373c809d362fe8a2bfbf7cf515a8",
+      "copyright_sha256": "9e5b96d63773a5d177ba264254390f792be07e41748ebd94730981c6cac31cc6",
+      "delivery_form": "ORIGINAL_DEBIAN_SOURCE"
+    }
+  ],
+  "scope": "Exact declarations and source/notice identity pairs for the observed460 Debian source groups. Does not replace generated candidate inventory, actual source restoration, SDK/linked dependency approvals, binary reconstruction or guest/release acceptance. No license-only library/ISO rebuild is claimed or required.",
+  "complete_release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

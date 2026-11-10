@@ -1,0 +1,97 @@
+{
+  "kind": "exact-debian-netaddr-registry-permissions",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "python-netaddr",
+  "version": "0.8.0-2",
+  "dsc_sha256": "ea1bf4343dd0e86c7ed1d4d10d6b1c64e3ca710a26e3263f074bba7b86fc9a37",
+  "copyright_sha256": "d3dd8c3c24a8407c78e88f6f9be04ff5e3e32a5eafebda5a3be2ccff48a704d2",
+  "original_registry_files": [
+    {
+      "member": "netaddr-0.8.0/netaddr/eui/iab.idx",
+      "sha256": "b10f9f0598de08655b613e236303cccccb24b49ef46fc910261af9f0d5692b58",
+      "permission": "IEEE public-listing nonassertion/nonrestriction declaration; index is derived factual offsets"
+    },
+    {
+      "member": "netaddr-0.8.0/netaddr/eui/iab.txt",
+      "sha256": "8175fde9ccfccf1942bd677b48dc118b099fe8e2ec6e7bce55c0e834635430b4",
+      "permission": "IEEE public-listing nonassertion/nonrestriction declaration; index is derived factual offsets"
+    },
+    {
+      "member": "netaddr-0.8.0/netaddr/eui/oui.idx",
+      "sha256": "844d1d670b7e1bbd962b9ebd9fb029853a70c94365b0f76c449f74afc4943cd2",
+      "permission": "IEEE public-listing nonassertion/nonrestriction declaration; index is derived factual offsets"
+    },
+    {
+      "member": "netaddr-0.8.0/netaddr/eui/oui.txt",
+      "sha256": "c3aa87b9f252527d59404c764dca96d7580fdfd31c2b973a353ba68852182b41",
+      "permission": "IEEE public-listing nonassertion/nonrestriction declaration; index is derived factual offsets"
+    },
+    {
+      "member": "netaddr-0.8.0/netaddr/ip/ipv4-address-space.xml",
+      "sha256": "4243ae4b54f9fd4633cc27a157e73bd79ba46648a9c527abb052670195f07741",
+      "permission": "IANA/IETF CC0 protocol-registry statement",
+      "direct_protocol_index_link": "https://www.iana.org/assignments/ipv4-address-space"
+    },
+    {
+      "member": "netaddr-0.8.0/netaddr/ip/ipv6-address-space.xml",
+      "sha256": "535e1ba719027c47392423a881bc37dee2c255bcd9778f569a05f10fcf40b719",
+      "permission": "IANA/IETF CC0 protocol-registry statement",
+      "direct_protocol_index_link": "https://www.iana.org/assignments/ipv6-address-space"
+    },
+    {
+      "member": "netaddr-0.8.0/netaddr/ip/ipv6-unicast-address-assignments.xml",
+      "sha256": "35373d7745c3752231ce67a8077ee67cd638eabd8c8a0e9a382261d24f18762c",
+      "permission": "IANA/IETF CC0 protocol-registry statement",
+      "direct_protocol_index_link": "https://www.iana.org/assignments/ipv6-unicast-address-assignments"
+    },
+    {
+      "member": "netaddr-0.8.0/netaddr/ip/multicast-addresses.xml",
+      "sha256": "b95d89f3d5d3dab7ef6fd5a8a4d524113639325b01e5af02b7d99938a098d6a2",
+      "permission": "IANA/IETF CC0 protocol-registry statement",
+      "direct_protocol_index_link": "https://www.iana.org/assignments/multicast-addresses#multicast-addresses-3"
+    }
+  ],
+  "iana_statement": "https://www.iana.org/help/licensing-terms",
+  "iana_statement_date": "2021-11-10",
+  "protocol_index": "https://www.iana.org/protocols",
+  "protocol_index_observed_sha256": "c0d290a914a22cd71a58c6ac46fd6d1c6468581aa61bab805b0fb761a425e680",
+  "ieee_declaration_source": "https://sources.debian.org/src/ieee-data/20240722/debian/copyright",
+  "ieee_declaration_scope": "Exact already-retained ieee-data source copyright explicitly classifies iab.*,mam.*,oui36.*,oui.* and records IEEE nonassertion and no distribution restriction. No new author correspondence or blanket license for all IEEE publications is claimed.",
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Netaddr-0.8.0/COPYRIGHT",
+      "sha256": "1e71b72e6fb8485668baca3e47181aa042dfed41efdb42d09a6a8a30d6ec4af8"
+    },
+    {
+      "path": "LICENSES/Netaddr-0.8.0/LICENSE",
+      "sha256": "0e53de62547787462f41eefb5cee31a14f7ea767ba0362c6f9304f1742486d47"
+    },
+    {
+      "path": "LICENSES/Netaddr-0.8.0/debian/copyright",
+      "sha256": "d3dd8c3c24a8407c78e88f6f9be04ff5e3e32a5eafebda5a3be2ccff48a704d2"
+    },
+    {
+      "path": "LICENSES/Netaddr-0.8.0/docs/source/copyright.rst",
+      "sha256": "028cd817b742204bb785edc4053fa001f522e021e63d3dd79fab6a79277feb5e"
+    },
+    {
+      "path": "LICENSES/Netaddr-0.8.0/docs/source/license.rst",
+      "sha256": "cb212e5384dd4ba9553b53f6e56267ea3a36d75e2f1d40284d4d24a76350e1e6"
+    },
+    {
+      "path": "LICENSES/Netaddr-0.8.0/IEEE-published-declaration.txt",
+      "sha256": "f1a22c2737d856d90a676a553501431b6a77b9e0bb094cf325827ff6a733381c"
+    },
+    {
+      "path": "LICENSES/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    }
+  ],
+  "scope": "Whole original Netaddr notices read, exact IANA dataset registry names matched to direct protocol-index links, IEEE listing declaration retained. No dataset, parser, library or build changes; no rebuild/boot/OCI result claimed.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
