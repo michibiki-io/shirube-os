@@ -23504,6 +23504,88 @@
         "Retain Ozan Yigit’s explicit SDBM public-domain dedication, CC0 waiver/fallback/disclaimers and all RRA keep-notice permissions. Do not infer public-domain status from unknown copyright metadata or treat every bundled distribution as uniformly licensed.",
         "Preserve the complete original Debian copyright scope, original root Artistic/Copying and incorporated licenses, plus complete corresponding source/recipes. Copyright-named .t files are tests under the ordinary source grant, not additional license texts. Historical unused Hsieh license definitions are retained without applying an unspecified exposition license to unrelated current code."
       ]
+    },
+    "openldap@2.5.13+dfsg-5": {
+      "redistributable": true,
+      "source_identity": "3192f78a46825039c6c9de6808ae98ab3d1c8846f43d2109ed654fd9c33fe472",
+      "copyright_sha256": "b4081907f0d9a4110736fa6540dc8ca9d7d60a20878b5d78f84916cc04907bdc",
+      "license": "OLDAP-2.8 AND LicenseRef-OpenLDAP-Original-Notices AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT AND BSD-3-Clause AND BSD-4-Clause AND Beerware",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/COPYRIGHT",
+          "sha256": "9a28e758024988539d5d21420bdc19086c86cd2b0e3bb609e954a9e364b7c11f"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/LICENSE",
+          "sha256": "310fe25c858a9515fc8c8d7d1f24a67c9496f84a91e0a0e41ea9975b1371e569"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/build/LICENSE-2.0.1",
+          "sha256": "735325c476792b6092b662c9adcedbf54571a6f39a48e75eb91e5ed147212292"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/contrib/ldapc++/COPYRIGHT",
+          "sha256": "931e594be95be67078260655e0f5be65e06eaf3736190621de305882257f1927"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/contrib/ldaptcl/COPYRIGHT",
+          "sha256": "b96ce25337ea0615d253f4fc439b64b6e6c187882130862e553c15c5fb097ebf"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/contrib/slapd-modules/ppm/LICENSE",
+          "sha256": "c9ffd34605a66ce03841cefa99b1b106dc299a9a940926dae288bb7a2a1e5d1a"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/debian-copyright.txt",
+          "sha256": "b4081907f0d9a4110736fa6540dc8ca9d7d60a20878b5d78f84916cc04907bdc"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/copyright-plain.sdf",
+          "sha256": "ba7e4b8cf8218120e6c8c6963fc4e9bc81453b7dbe1d52687ee62938880292c7"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/copyright.sdf",
+          "sha256": "4a81709698f1c57b3add4b2386647e8a898fb02266e50f658c124eccd51e481c"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/license-plain.sdf",
+          "sha256": "4ee03a53da51a54128f88d2291513f165a9bdf222af28ff48e4b087515f03cf8"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/license.sdf",
+          "sha256": "aab76e4bee8cb2048d178c779aec297fc1f33e715660ceae0e22a6af0968a219"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/libraries/liblmdb/COPYRIGHT",
+          "sha256": "3c87f63656b6a12fda225b6f798c547fe89e3404f499e890b445761eb310fd4f"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/libraries/liblmdb/LICENSE",
+          "sha256": "310fe25c858a9515fc8c8d7d1f24a67c9496f84a91e0a0e41ea9975b1371e569"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/libraries/librewrite/Copyright",
+          "sha256": "aa44e094663d4662fe7eb78e6345e5d78952ab6cb720b6239481a6a3a573b1a8"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ],
+      "scope": "Exact Debian OpenLDAP2.5.13+dfsg source and package scope. All157 DEP5 paragraphs indexed, all file-scope expressions classified, every nondefault scope and every operative grant/comment read. Uniform OpenLDAP-only author/file lists retained and machine-indexed, not each independently human-read. All13 original named legal documents read and retained; Debian copyright retained unchanged. No code or build changes.",
+      "conditions": [
+        "Retain full OpenLDAP2.8 source/binary notices and verbatim license. Preserve the distinct historical2.0.1 and ppm2.8.1 original texts rather than silently replacing their versions. Keep original copyrights and trademark/nonendorsement conditions; give due credit to the OpenLDAP Project and the University of Michigan at Ann Arbor.",
+        "Retain the incorporated UMich permission and original published clarification, F5 same-as-OpenLDAP grant, JCG original unrestricted redistribution notice and explicit modification clarification, NeoSoft grant/credit, Berkeley advertising and documentation acknowledgements, BSD disclaimers, MIT-XC name restriction, ISC/UNM permissions and Beerware notice. Do not use author names for endorsement.",
+        "Source-only APR1 converter headers explicitly allow free use with a request for credit; preserve those original notices and credit Devin J. Pohly. Do not relabel the copyright-bearing scripts as an express public-domain dedication solely from the Debian shorthand. They remain in the original OpenLDAP source distribution and root redistribution grant.",
+        "Keep libtool/autoconf exceptions scoped to their build scripts; do not apply them to all library code. Deliver complete corresponding source and original build/install scripts with GNU-licensed tools, with all original notices and modification marking. No uniform GNU licensing is imposed on the independent OpenLDAP library.",
+        "Retain the full librewrite origin, alteration-identification and documentation-credit requirements, all original documentation legal files and historical component terms. This decision does not clear any separately supplied dependency or the complete OS release."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

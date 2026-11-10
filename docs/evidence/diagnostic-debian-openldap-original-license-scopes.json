@@ -1,0 +1,89 @@
+{
+  "kind": "exact-debian-openldap-original-license-scopes",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "openldap",
+  "version": "2.5.13+dfsg-5",
+  "dsc_sha256": "3192f78a46825039c6c9de6808ae98ab3d1c8846f43d2109ed654fd9c33fe472",
+  "copyright_sha256": "b4081907f0d9a4110736fa6540dc8ca9d7d60a20878b5d78f84916cc04907bdc",
+  "coverage": {
+    "dep5_paragraphs_indexed": 157,
+    "file_scope_groups_classified": 133,
+    "nondefault_scope_groups_read": 41,
+    "all_operating_grants_and_comments": "READ",
+    "uniform_author_filename_lists": "Original bytes retained and machine-indexed, not every name independently human-read."
+  },
+  "required_original_notices": [
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/COPYRIGHT",
+      "sha256": "9a28e758024988539d5d21420bdc19086c86cd2b0e3bb609e954a9e364b7c11f"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/LICENSE",
+      "sha256": "310fe25c858a9515fc8c8d7d1f24a67c9496f84a91e0a0e41ea9975b1371e569"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/build/LICENSE-2.0.1",
+      "sha256": "735325c476792b6092b662c9adcedbf54571a6f39a48e75eb91e5ed147212292"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/contrib/ldapc++/COPYRIGHT",
+      "sha256": "931e594be95be67078260655e0f5be65e06eaf3736190621de305882257f1927"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/contrib/ldaptcl/COPYRIGHT",
+      "sha256": "b96ce25337ea0615d253f4fc439b64b6e6c187882130862e553c15c5fb097ebf"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/contrib/slapd-modules/ppm/LICENSE",
+      "sha256": "c9ffd34605a66ce03841cefa99b1b106dc299a9a940926dae288bb7a2a1e5d1a"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/debian-copyright.txt",
+      "sha256": "b4081907f0d9a4110736fa6540dc8ca9d7d60a20878b5d78f84916cc04907bdc"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/copyright-plain.sdf",
+      "sha256": "ba7e4b8cf8218120e6c8c6963fc4e9bc81453b7dbe1d52687ee62938880292c7"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/copyright.sdf",
+      "sha256": "4a81709698f1c57b3add4b2386647e8a898fb02266e50f658c124eccd51e481c"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/license-plain.sdf",
+      "sha256": "4ee03a53da51a54128f88d2291513f165a9bdf222af28ff48e4b087515f03cf8"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/doc/guide/release/license.sdf",
+      "sha256": "aab76e4bee8cb2048d178c779aec297fc1f33e715660ceae0e22a6af0968a219"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/libraries/liblmdb/COPYRIGHT",
+      "sha256": "3c87f63656b6a12fda225b6f798c547fe89e3404f499e890b445761eb310fd4f"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/libraries/liblmdb/LICENSE",
+      "sha256": "310fe25c858a9515fc8c8d7d1f24a67c9496f84a91e0a0e41ea9975b1371e569"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/libraries/librewrite/Copyright",
+      "sha256": "aa44e094663d4662fe7eb78e6345e5d78952ab6cb720b6239481a6a3a573b1a8"
+    },
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "LICENSES/GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    }
+  ],
+  "source_header_checks": {
+    "apr1-ltoa.pl": "8f9b2706fba965984e53d1da9f53dc2f08e31b840cb1d75fba2a8551ff8297b5",
+    "apr1-atol.pl": "6465e1f7e6c557ef84f2f4db3323f937df53acf89d75a5c9d70366301943b3bc",
+    "interpretation": "Actual free-use notice retained with author credit, not an invented express public-domain dedication."
+  },
+  "scope": "Static original license/scope review and exact SHA256 bindings. No code changes and no library/ISO rebuild. Not full release or OCI clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
