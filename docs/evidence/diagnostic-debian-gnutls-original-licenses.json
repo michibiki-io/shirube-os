@@ -1,0 +1,72 @@
+{
+  "kind": "exact-debian-gnutls-source-license-review",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "gnutls28",
+  "version": "3.7.9-2+deb12u7",
+  "dsc_sha256": "027b2f60e38add78ee611d099dbf34e977a6600d446cc39673534b736a182cb6",
+  "copyright_sha256": "bb7e5c24b3e27bbba5671dd710d159a0066833bda4caa1d55d8027ffed539337",
+  "original_legal_files": [
+    {
+      "member": "LICENSE",
+      "sha256": "3e043d77917e48e262301b8f880812fcd82236482630a421d555a38804eee643",
+      "bytes": 936,
+      "distribution_path": "LICENSES/GnuTLS-3.7.9/LICENSE"
+    },
+    {
+      "member": "doc/COPYING",
+      "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b",
+      "bytes": 35151,
+      "distribution_path": "LICENSES/GnuTLS-3.7.9/doc/COPYING"
+    },
+    {
+      "member": "doc/COPYING.LESSER",
+      "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3",
+      "bytes": 26432,
+      "distribution_path": "LICENSES/GnuTLS-3.7.9/doc/COPYING.LESSER"
+    },
+    {
+      "member": "doc/examples/tlsproxy/LICENSE",
+      "sha256": "b42dbe48110754b99f026ad30e69b1069f826fb07e7c616b526bd1090952fb1b",
+      "bytes": 1090,
+      "distribution_path": "LICENSES/GnuTLS-3.7.9/doc/examples/tlsproxy/LICENSE"
+    },
+    {
+      "member": "lib/accelerated/x86/license.txt",
+      "sha256": "0c35a52bcfa4da2f0df4a1282a6034e211c976b8b6d43691a639eef9c8aebf7e",
+      "bytes": 2463,
+      "distribution_path": "LICENSES/GnuTLS-3.7.9/lib/accelerated/x86/license.txt"
+    },
+    {
+      "member": "lib/extras/licenses/CC0",
+      "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+      "bytes": 6383,
+      "distribution_path": "LICENSES/GnuTLS-3.7.9/lib/extras/licenses/CC0"
+    },
+    {
+      "member": "lib/inih/LICENSE.txt",
+      "sha256": "9ae3b39e83e9158e44b67733baa3bb2d84e80efdcfb14a5820210a42c7abdf7f",
+      "bytes": 1510,
+      "distribution_path": "LICENSES/GnuTLS-3.7.9/lib/inih/LICENSE.txt"
+    }
+  ],
+  "full_text_comparisons": [
+    {
+      "member": "doc/COPYING",
+      "reference": "LICENSES/GPL-3.0.txt",
+      "differences": "One final reference URL changes from licenses/why-not-lgpl.html to philosophy/why-not-lgpl.html."
+    },
+    {
+      "member": "doc/COPYING.LESSER",
+      "reference": "LICENSES/LGPL-2.1.txt",
+      "differences": "Two occurrences abbreviate the FSF address Street as St."
+    },
+    {
+      "member": "lib/extras/licenses/CC0",
+      "reference": "LICENSES/CC0-1.0.txt",
+      "differences": "Original omits the Creative Commons document preface and item labels; all statement-of-purpose, rights, waiver, fallback license, limitations and disclaimer text retained. Both complete texts accompany delivery."
+    }
+  ],
+  "scope": "Exact original license conditions and source identities; all sources/dependencies and final production evidence remain separately gated.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

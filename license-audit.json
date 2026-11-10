@@ -23091,6 +23091,79 @@
         "Retain the Nmap Security Scanner name and https://nmap.org/ prominently in the system output and documentation for external deployments. Preserve the Berkeley acknowledgement and Cisco permission credit and all BSD/ISC/Expat/support-file conditions; no trademark endorsement rights are granted.",
         "NPSL0.94 expressly permits linking any OpenSSL.Org version. Windows/Npcap binaries have no approval here; removed Debian DFSG files are not restored. NPSL0.95 terms, OEM contracts or unrecorded waivers are not relied upon."
       ]
+    },
+    "gnutls28@3.7.9-2+deb12u7": {
+      "redistributable": true,
+      "source_identity": "027b2f60e38add78ee611d099dbf34e977a6600d446cc39673534b736a182cb6",
+      "copyright_sha256": "bb7e5c24b3e27bbba5671dd710d159a0066833bda4caa1d55d8027ffed539337",
+      "license": "LGPL-2.1-or-later AND GPL-3.0-or-later AND (LGPL-3.0-or-later OR GPL-2.0-or-later) AND GFDL-1.3-no-invariants-or-later AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT AND Apache-2.0 AND CC0-1.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GnuTLS-3.7.9/LICENSE",
+          "sha256": "3e043d77917e48e262301b8f880812fcd82236482630a421d555a38804eee643"
+        },
+        {
+          "path": "LICENSES/GnuTLS-3.7.9/doc/COPYING",
+          "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b"
+        },
+        {
+          "path": "LICENSES/GnuTLS-3.7.9/doc/COPYING.LESSER",
+          "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3"
+        },
+        {
+          "path": "LICENSES/GnuTLS-3.7.9/doc/examples/tlsproxy/LICENSE",
+          "sha256": "b42dbe48110754b99f026ad30e69b1069f826fb07e7c616b526bd1090952fb1b"
+        },
+        {
+          "path": "LICENSES/GnuTLS-3.7.9/lib/accelerated/x86/license.txt",
+          "sha256": "0c35a52bcfa4da2f0df4a1282a6034e211c976b8b6d43691a639eef9c8aebf7e"
+        },
+        {
+          "path": "LICENSES/GnuTLS-3.7.9/lib/extras/licenses/CC0",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+        },
+        {
+          "path": "LICENSES/GnuTLS-3.7.9/lib/inih/LICENSE.txt",
+          "sha256": "9ae3b39e83e9158e44b67733baa3bb2d84e80efdcfb14a5820210a42c7abdf7f"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        },
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "scope": "Complete original Debian copyright scope/terms read with exact complete previously read legal-body reuse. All seven named upstream legal files fully read or compared word-for-word to complete read originals. No full OS or dependent library clearance.",
+      "conditions": [
+        "Keep main lib/libdane and Guile main-library bindings under LGPL2.1-or-later; GPL3-or-later applies separately to applications, extra/OpenSSL wrapper, build system and identified tests. Do not describe the complete source as uniformly LGPL.",
+        "Preserve complete preferred source, all Debian patches, compiler/configuration/install inputs, modification marks and original notices; permit library modification/relinking and reverse engineering for debugging those modifications. Apply the separately audited Nettle/GMP/libunistring LGPL3-or-GPL2 choices consistently with each linked consumer; do not make GPL2-only consumers depend on a GPL3-only choice.",
+        "Preserve documentation under GFDL1.3-or-later with no invariant sections or cover texts, transparent sources/history/credits and complete license. Keep original Cryptogams three-clause alternative and Andy Polyakov credit; OpenSSL-project origin is not an OpenSSL license substitution. Retain the original Mike Hamburg public-domain declaration without generalizing it to other code.",
+        "Retain ISC, randomart BSD2, inih BSD3, MIT examples/GOST/fuzzer notices, Apache2 test/fuzzer patent and notice terms and CC0 fallback/disclaimer. All original scopes, copyrights and disclaimers accompany binary/source delivery. No endorsement implied."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
