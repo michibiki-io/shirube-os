@@ -1,0 +1,560 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 5,
+  "components": [
+    {
+      "source": "apt",
+      "version": "2.6.2",
+      "dsc_sha256": "63490cc85118a0eb7a3109696311920ffa70f3f9ad718bcaf126445496049c74",
+      "binaries": [
+        {
+          "name": "apt",
+          "version": "2.6.2",
+          "architecture": "arm64",
+          "copyright_sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12"
+        },
+        {
+          "name": "apt-utils",
+          "version": "2.6.2",
+          "architecture": "arm64",
+          "copyright_sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12"
+        },
+        {
+          "name": "libapt-pkg6.0",
+          "version": "2.6.2",
+          "architecture": "arm64",
+          "copyright_sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12"
+        }
+      ],
+      "copyright_sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING",
+            "sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+            "method": "Complete original legal text read, preserving separately scoped grants, source obligations, attribution, advertising and nonendorsement conditions. Not parent component clearance."
+          }
+        },
+        {
+          "member": "COPYING.GPL",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "bf1ee1c0710fc83937e92e1f557efcdbf066a31ea5d190119f53a125bfdc3954",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "pcre2"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "5df7300961f865fefaec540b387b4f75cd832de84ad40df127bfcb9e1bf116fb",
+          "read_reference": {
+            "component": "apt",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "1e68fe629398157dac4c347302ccbd79c2150da7db12a7f256e5d18aee209793",
+          "read_reference": {
+            "component": "apt",
+            "label": "GPL-2+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "apt",
+          "Upstream-Contact": "APT Development Team <deity@lists.debian.org>",
+          "Source": "https://salsa.debian.org/apt-team/apt",
+          "Comment": "\nAPT is an old software with lots of contributors over its lifetime. This\nfile is a best effort to document the statements of copyright and licenses\nas stated in the file, but is not a complete representation of all copyright\nholders - those have been lost to times.\n\nSeveral bits of apt-pkg/contrib have had public domain dedications but\ncontributions from authors in countries not recognizing a public domain\nconcept. We believe that these contributions have been done in good faith,\nand we treat them as if they had been made under the GPL-2+ as we believe\nsome contributors may have missed these facts and the overall license statement\nfor the project has always been GPL-2+, so we cannot be sure that contributors\nmeant to grant additional permissions.\n\nTranslation files are considered to generally be GPL-2+,\nbut they also include strings used by methods/rsh.cc which appears to be GPL-2.\nAs the translations are split into separate domains later on,\nthese strings are not loaded by library users outside of apt\n(they are in the 'apt' translation domain).\n\nThe apt-pkg/contrib/fileutl.cc file states \"RunScripts()\" is \"GPLv2\".\nWe believe that this was not meant to exclude later versions of the GPL,\nas that would have changed the overall project license."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1997-1999 Jason Gunthorpe and others\n2018, 2019 Canonical Ltd\n2009, 2010, 2015, 2016 Julian Andres Klode <jak@debian.org>\n1998, Ben Gertzfield <che@debian.org>\n2002-2019 Free Software Foundation, Inc.\n2003, 2004, 2005, 2009, 2010, 2012 Software in the Public Interest\n2002-2003 Lars Bahner <bahner@debian.org>\n2003-2004 Axel Bojer <axelb@skolelinux.no>\n2004 Klaus Ade Johnstad <klaus@skolelinux.no>\n2004 Bjorn Steensrud <bjornst@powertech.no>\n2003, 2005-2010 Hans Fredrik Nordhaug <hans@nordhaug.priv.no>\n2016, 2018 Petter Reinholdtsen <pere@hungry.com>\n2009 Rosetta Contributors and Canonical Ltd 2009\n2013 Debian L10n Turkish 2013\n2013-2018 Mert Dirik <mertdirik@gmail.com>\n2004 Krzysztof Fiertek <akfedux@megapolis.pl>\n2000-2004, 2010, 2012  Robert Luberda <robert@debian.org>\n2000-2017 Debian Italian l10n team <debian-l10n-italian@lists.debian.org>\n2003-2017 Debian Japanese List <debian-japanese@lists.debian.org>\n2000-2018 Debian French l10n team <debian-l10n-french@lists.debian.org>\n1997 Manoj Srivastava\n1997 Tom Lees\n2014 Anthony Towns"
+        },
+        {
+          "Files": "methods/rsh.cc",
+          "Copyright": "2000 Ben Collins <bcollins@debian.org>",
+          "Comment": "\nThis file stated:\nLicensed under the GNU General Public License v2 [no exception clauses]\n\nWe believe that this was intended to be not a statement against future\nversions of the GPL, but meant to exclude the Qt license exception in\nplace in APT until that time.\n\nWe received permission from Ben in 2021 to relicense under GPL-2+,\ncontributions from Adam Heath and Daniel Hartwig may still have to\nbe considered GPL-2 for the time being.\n\nOther contributions are GPL-2+"
+        },
+        {
+          "Files": "CMake/FindBerkeley.cmake",
+          "Copyright": "2006, Alexander Dymo, <adymo@kdevelop.org>\n2016, Julian Andres Klode <jak@debian.org>"
+        },
+        {
+          "Files": "CMake/Documentation.cmake\nCMake/FindLFS.cmake",
+          "Copyright": "2016 Julian Andres Klode <jak@debian.org>"
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General\nPublic License version 2 can be found in \"/usr/share/common-licenses/GPL-2\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General\nPublic License version 2 can be found in \"/usr/share/common-licenses/GPL-2\"."
+        }
+      ]
+    },
+    {
+      "source": "pkcs11-helper",
+      "version": "1.29.0-1",
+      "dsc_sha256": "f781d99c32065564f07b096eb99209406c91ba59f4a22218591a3bd9d4dc4940",
+      "binaries": [
+        {
+          "name": "libpkcs11-helper1",
+          "version": "1.29.0-1",
+          "architecture": "arm64",
+          "copyright_sha256": "0bfa41a8b75c5de717d0bba708efcdfbb9ca53eaef07808a6a54bb592457289c"
+        }
+      ],
+      "copyright_sha256": "0bfa41a8b75c5de717d0bba708efcdfbb9ca53eaef07808a6a54bb592457289c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "808705ac1daafe07a76431929575c5712a8693977a39ec9102aed25f030754d9",
+          "read_reference": {
+            "component": "pkcs11-helper",
+            "member": "COPYING",
+            "sha256": "808705ac1daafe07a76431929575c5712a8693977a39ec9102aed25f030754d9",
+            "method": "Complete original text read, per-file license alternatives and attribution/advertising/nonendorsement conditions retained; no parent component approval inferred."
+          }
+        },
+        {
+          "member": "COPYING.BSD",
+          "sha256": "865496cf23a6c792739ff2f9ea11e95ac99db89cfe3780a295b4e1495a9c19fe",
+          "read_reference": {
+            "component": "pkcs11-helper",
+            "member": "COPYING.BSD",
+            "sha256": "865496cf23a6c792739ff2f9ea11e95ac99db89cfe3780a295b4e1495a9c19fe",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "COPYING.GPL",
+          "sha256": "cd2e7d63a11058f19c58b06fb8c759140ce70788369dce6e6e9db40d3475021e",
+          "read_reference": {
+            "component": "at",
+            "member": "COPYING",
+            "sha256": "c38aee9e3c8c4d5d594ff548a1be05453023016d6286931f6512db215ec1fd42"
+          }
+        },
+        {
+          "member": "distro/debian/copyright",
+          "sha256": "9a2e70f826d902abbaf3714f82730576fddf0c00cf5c67fd210d999511601d05",
+          "read_reference": {
+            "component": "pkcs11-helper",
+            "member": "distro/debian/copyright",
+            "sha256": "9a2e70f826d902abbaf3714f82730576fddf0c00cf5c67fd210d999511601d05",
+            "method": "Complete original legal text read, preserving separately scoped grants, source obligations, attribution, advertising and nonendorsement conditions. Not parent component clearance."
+          }
+        },
+        {
+          "member": "distro/debian/copyright.m4",
+          "sha256": "93f4c33f002ba1a09439e9ce702547d13ffeaa72635056edb08b8c4d1f964a6b",
+          "read_reference": {
+            "component": "pkcs11-helper",
+            "member": "distro/debian/copyright.m4",
+            "sha256": "93f4c33f002ba1a09439e9ce702547d13ffeaa72635056edb08b8c4d1f964a6b",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "permissive",
+          "full_normalized_body_sha256": "db6b1a1b953b2d7ec8f26d1f27a29f88b881705f6cd1872158a227f5db93b59e",
+          "read_reference": {
+            "label": "g10-permissive",
+            "component": "libgpg-error"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "81aee5ea82b092a824a1e8c6012f3e271f72764669114e4c6b602384cfa00125",
+          "read_reference": {
+            "component": "pkcs11-helper",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "18577e3b886ab0e42818832fdfa0d6f510c1a33802142c85587f8aca83802bca",
+          "read_reference": {
+            "component": "pkcs11-helper",
+            "label": "GPL-2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "pkcs11-helper",
+          "Upstream-Contact": "Alon Bar-Lev <alon.barlev@gmail.com>",
+          "Source": "http://www.opensc-project.org/files/pkcs11-helper/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2005-2011, Alon Bar-Lev <alon.barlev@gmail.com>"
+        },
+        {
+          "Files": "include/pkcs11-helper-1.0/pkcs11.h",
+          "Copyright": "2006, Andreas Jellinghaus\n2006-2007, g10 Code GmbH"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "pyzmq",
+      "version": "24.0.1-4",
+      "dsc_sha256": "9c8adda0f679f027242a9ecdfd8a7df8c8e7000774bba0e062b6473602c1c79b",
+      "binaries": [
+        {
+          "name": "python3-zmq",
+          "version": "24.0.1-4+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "5e589f6edc37f5e041d017cee53f83026c13f45c6ddff7d0917bb5ac5c86b3a3"
+        }
+      ],
+      "copyright_sha256": "5e589f6edc37f5e041d017cee53f83026c13f45c6ddff7d0917bb5ac5c86b3a3",
+      "original_legal_matches": [
+        {
+          "member": "COPYING.BSD",
+          "sha256": "aef3b80570351d44e29c22d080d4e9e106b34f3fdbc5cdf9636994474c72b1a2",
+          "read_reference": {
+            "component": "pyzmq",
+            "member": "COPYING.BSD",
+            "sha256": "aef3b80570351d44e29c22d080d4e9e106b34f3fdbc5cdf9636994474c72b1a2",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "COPYING.LESSER",
+          "sha256": "44b23767df3c0fe27f88981f09bc7f50a1695cec4b24252fa5f55f03e76bcd6d",
+          "read_reference": {
+            "component": "pyzmq",
+            "member": "COPYING.LESSER",
+            "sha256": "44b23767df3c0fe27f88981f09bc7f50a1695cec4b24252fa5f55f03e76bcd6d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "examples/LICENSE",
+          "sha256": "5997ba33555177ed11df98ff6ac17ec6b47541e207babf651012e803e4db6433",
+          "read_reference": {
+            "component": "pypi:pyzmq",
+            "member": "pyzmq-23.2.0/examples/LICENSE",
+            "sha256": "6955443403bcb234867b83a11d8fd21c4e5cd40f2c7c3b54d52808d69b1f6b3a",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "packaging/debian/copyright",
+          "sha256": "95dc2e4e134e7ad974df4aa831c59755471e3a80a9e18aa67bc6ee4df9375875",
+          "read_reference": {
+            "component": "pyzmq",
+            "member": "packaging/debian/copyright",
+            "sha256": "95dc2e4e134e7ad974df4aa831c59755471e3a80a9e18aa67bc6ee4df9375875",
+            "method": "Complete original legal text read, preserving separately scoped grants, source obligations, attribution, advertising and nonendorsement conditions. Not parent component clearance."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "69ef9b288a92564d14521983793d0fe5989eb2efd83efe0c0e87c4c05d35dfdc",
+          "read_reference": {
+            "component": "pyzmq",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "LGPL-3+link",
+          "full_normalized_body_sha256": "7225f2f723eb48fe1863fd3a8d875f356816a99bc55acb17ee6b2d41c30d87da",
+          "read_reference": {
+            "component": "pyzmq",
+            "label": "LGPL-3+link"
+          }
+        },
+        {
+          "label": "LGPL-2.1",
+          "full_normalized_body_sha256": "33546e192688fb5265e418b1e3abed6d882276c25bc6ff32aae8efd84676deeb",
+          "read_reference": {
+            "component": "pyzmq",
+            "label": "LGPL-2.1"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "8cf0d801fdcb05a836432c5bf011cc0be9967e3302571349849431e3b16c3d80",
+          "read_reference": {
+            "component": "pyzmq",
+            "label": "Apache-2.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "pyzmq",
+          "Upstream-Contact": "Min Ragan-Kelley <benjaminrk@gmail.com>",
+          "Source": "https://github.com/zeromq/pyzmq/downloads"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2010-2012, Brian Granger\n2010-2013, Min Ragan-Kelley\n2013 Felipe Cruz\n2014 PyZMQ Developers"
+        },
+        {
+          "Files": "examples/mongodb/*",
+          "Copyright": "2010, Justin Riley"
+        },
+        {
+          "Files": "examples/chat/*",
+          "Copyright": "2010, Andrew Gwozdziewycz"
+        },
+        {
+          "Files": "zmq/backend/cython/*",
+          "Copyright": "2010-2011, Brian E. Granger\n2010, Andrew Gwozdziewycz\n2010, Fernando Perez\n2011, 2013, Min Ragan-Kelley"
+        },
+        {
+          "Files": "zmq/devices/monitoredqueue.pxd",
+          "Copyright": "2010, Brian E. Granger\n2010, Min Ragan-Kelley"
+        },
+        {
+          "Files": "perf/*",
+          "Copyright": "2007-2010, iMatix Corporation\n2013 Brian Granger, Min Ragan-Kelley"
+        },
+        {
+          "Files": "zmq/ssh/forward.py",
+          "Copyright": "2003-2007, Robey Pointer <robeypointer@gmail.com>,\n2010-2011, IPython Development Team"
+        },
+        {
+          "Files": "zmq/eventloop/zmqstream.py zmq/eventloop/minitornado/*",
+          "Copyright": "2009, Facebook."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2010-2011, Miguel Landaeta <miguel@miguel.cc>\n2011-2014, Julian Taylor,\n2019 Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "zeromq3",
+      "version": "4.3.4-6",
+      "dsc_sha256": "dfc0e1a03950bff1891b60de3eb41605e9d1d804af063e4b565602165be8c3fe",
+      "binaries": [
+        {
+          "name": "libzmq5",
+          "version": "4.3.4-6",
+          "architecture": "arm64",
+          "copyright_sha256": "5b9bfc402d67b0803d9174f7a1a77132dfcf0646662811fa5fccc392fc0a31fe"
+        }
+      ],
+      "copyright_sha256": "5b9bfc402d67b0803d9174f7a1a77132dfcf0646662811fa5fccc392fc0a31fe",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "4fd86507c9b486764343065a9e035222869a27b5789efeb4fd93edc85412d7a3",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "COPYING.LESSER",
+          "sha256": "83f32abe61ee58ffb1b007412c08415168c052501dbf56d7a47aaaac52b03ef6",
+          "read_reference": {
+            "component": "pyzmq",
+            "member": "COPYING.LESSER",
+            "sha256": "44b23767df3c0fe27f88981f09bc7f50a1695cec4b24252fa5f55f03e76bcd6d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "external/sha1/license.txt",
+          "sha256": "cb1a4e594fc67ecde3e6d704b94d6ac4385a6027d0605702c675d182f186eeb6",
+          "read_reference": {
+            "component": "zeromq3",
+            "member": "external/sha1/license.txt",
+            "sha256": "cb1a4e594fc67ecde3e6d704b94d6ac4385a6027d0605702c675d182f186eeb6",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "external/unity/license.txt",
+          "sha256": "3ed9b51da86f52c729c96cc99fdde6444b2297c788a9cf4ad1d3649dc34c4985",
+          "read_reference": {
+            "component": "zeromq3",
+            "member": "external/unity/license.txt",
+            "sha256": "3ed9b51da86f52c729c96cc99fdde6444b2297c788a9cf4ad1d3649dc34c4985",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "external/wepoll/license.txt",
+          "sha256": "3c385cc8b036be73b77982e2b2e49f44b2fb5b23f8b94d060f8b9ddf383c80ad",
+          "read_reference": {
+            "component": "zeromq3",
+            "member": "external/wepoll/license.txt",
+            "sha256": "3c385cc8b036be73b77982e2b2e49f44b2fb5b23f8b94d060f8b9ddf383c80ad",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "packaging/debian/copyright",
+          "sha256": "cf4645539f5deff1fdc59c3ef0db9acc058c072660169fd534392078d8be06bc",
+          "read_reference": {
+            "component": "zeromq3",
+            "member": "packaging/debian/copyright",
+            "sha256": "cf4645539f5deff1fdc59c3ef0db9acc058c072660169fd534392078d8be06bc",
+            "method": "Complete original text read, per-file license alternatives and attribution/advertising/nonendorsement conditions retained; no parent component approval inferred."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "LGPL-2.0+",
+          "full_normalized_body_sha256": "d712db09d7a4f949adb73bfba8cfbfdabbd826cc4e67cb4ba0ef55311e350372",
+          "read_reference": {
+            "label": "LGPL-2.0+",
+            "component": "procps"
+          }
+        },
+        {
+          "label": "LGPL-3.0+ with special exception granted by copyright holders",
+          "full_normalized_body_sha256": "7164768ae2705286752b4c797533e3b30ce80b324b8a065e4bacebe59a4875e9",
+          "read_reference": {
+            "component": "zeromq3",
+            "label": "LGPL-3.0+ with special exception granted by copyright holders"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "ZeroMQ",
+          "Source": "https://github.com/zeromq/libzmq",
+          "Comment": "The upstream tarball has been repacked in order to remove the bundled\ntarball of OpenPGM."
+        },
+        {
+          "Files": "*",
+          "Copyright": "2009-2011, 250bpm s.r.o\n2007-2013, iMatix Corporation\n2007-2011, Other contributors as noted in the AUTHORS file"
+        },
+        {
+          "Files": "src/xpub.cpp\nsrc/xsub.cpp\ntests/test_reqrep_device.cpp\ntests/test_invalid_rep.cpp",
+          "Copyright": "2010-2011, 250bpm s.r.o\n2011, VMware, Inc\n2010-2011, Other contributors as noted in the AUTHORS file"
+        },
+        {
+          "Files": "src/msg.hpp\nsrc/options.*\nsrc/req.*\nsrc/socket_base.*\nsrc/pipe.*\nsrc/lb.cpp\nsrc/session_base.*\nsrc/fq.cpp\ninclude/zmq.h",
+          "Copyright": "2009-2011, 250bpm s.r.o\n2007-2013, iMatix Corporation\n2011, VMware, Inc\n2007-2011, Other contributors as noted in the AUTHORS file"
+        },
+        {
+          "Files": "src/pgm_receiver.*\nsrc/pgm_sender.*\nsrc/pgm_socket.*",
+          "Copyright": "2009-2011, 250bpm s.r.o\n2007-2013, iMatix Corporation\n2010-2011, Miru Limited\n2007-2011, Other contributors as noted in the AUTHORS file"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2014-    , Laszlo Boszormenyi (GCS) <gcs@debian.org>\n2012-2014, Alessandro Ghedini <ghedo@debian.org>\n2010-2012, Martin Lucina <martin@lucina.net>\n2009-2010, Adrian von Bidder <cmot@debian.org>\n2009-2010, Peter Busser <peter@mirabilix.nl>\n2012, Alessandro Ghedini <ghedo@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "dbus",
+      "version": "1.14.10-1~deb12u1",
+      "dsc_sha256": "c759e380dd595a407be70b09e8f0aecb9f86c67bf515cdc0dd629dfcac88b9cf",
+      "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900",
+      "binaries": [
+        {
+          "name": "dbus",
+          "version": "1.14.10-1~deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900"
+        },
+        {
+          "name": "dbus-bin",
+          "version": "1.14.10-1~deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900"
+        },
+        {
+          "name": "dbus-daemon",
+          "version": "1.14.10-1~deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900"
+        },
+        {
+          "name": "dbus-session-bus-common",
+          "version": "1.14.10-1~deb12u1",
+          "architecture": "all",
+          "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900"
+        },
+        {
+          "name": "dbus-system-bus-common",
+          "version": "1.14.10-1~deb12u1",
+          "architecture": "all",
+          "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900"
+        },
+        {
+          "name": "libdbus-1-3",
+          "version": "1.14.10-1~deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900"
+        }
+      ],
+      "legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "e61807cd1c32ff4e7bd5b4b61dd21997c6dc5642cf19316124fe38d50e1f9fa3"
+        },
+        {
+          "member": "cmake/modules/COPYING-CMAKE-SCRIPTS",
+          "sha256": "c666ec2313dba24523ccad88f4c04ea4b24fad6545263a35b1d4ab2b08efe50a"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900"
+        }
+      ],
+      "review_method": "Complete original copyright, grant definitions and independently scoped original notices read; manual GPL alternative selected."
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

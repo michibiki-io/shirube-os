@@ -21171,6 +21171,195 @@
         "Accompany binaries with exact preferred sources, applied Debian patches, configuration and complete build/install scripts. Preserve all original license alternatives and modification notices.",
         "Preserve the exact original BSD3 clause reserving license-text changes to the author; do not replace it with a generic BSD template. Keep simclist ISC and GPL3-or-later spy/example/test scopes separate. The short Debian GPL common-file pointer is supported by the explicit full GPL3-or-later grant in the original root COPYING; it is not treated as a standalone permission grant."
       ]
+    },
+    "cyrus-sasl2@2.1.28+dfsg-10+deb12u1": {
+      "redistributable": true,
+      "source_identity": "088990ef19c88abfbf66321eba0d0c3566ee2a5ce135e165eff5b6c2716a2ff0",
+      "copyright_sha256": "5e77ddcac7fb682d696bc4b034dc2869e5a9011e8c2ed3c570ab8db0f4506931",
+      "license": "LicenseRef-Cyrus-SASL-original-grants",
+      "declared_licenses": [
+        "BSD-2.2-clause",
+        "FSFULLR",
+        "GPL-3+",
+        "GPL-3",
+        "MIT-Export",
+        "MIT-CMU",
+        "MIT-OpenVision",
+        "BSD-4-clause",
+        "BSD-4-clause-KTH",
+        "BSD-4-clause-UC",
+        "BSD-3-clause",
+        "BSD-3-clause-JANET",
+        "BSD-3-clause-PADL",
+        "BSD-2-clause",
+        "RSA-MD",
+        "IBM-as-is",
+        "OpenSSL",
+        "SSLeay",
+        "OpenLDAP"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact Debian source and binary copyright binding. Complete named original legal files matched to previously read original grants; all distinct permission texts and complete file/copyright/comment scopes were read. This is a component decision, not OS release clearance.",
+      "conditions": [
+        "Retain complete original licenses, copyrights, disclaimers, per-file exceptions and modification notices in source and binary documentation.",
+        "Provide the exact preferred sources, applied patches and complete configuration/build/install inputs alongside binaries. Do not relicense separately scoped components under the repository root license.",
+        "Keep upstream MIT-CMU notice and its required acknowledgement, all BSD advertising/nonendorsement clauses, RSA MD5 identification, IBM no-implied-patent notice, OpenLDAP notices and original OpenSSL/SSLeay attribution. Do not claim proprietary relicensing rights. Preserve the upstream dfsg exclusions.",
+        "Advertising mentioning applicable software features must include the original required acknowledgements. The product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/), cryptographic software written by Eric Young (eay@cryptsoft.com), and software written by Tim Hudson (tjh@cryptsoft.com)."
+      ]
+    },
+    "e2fsprogs@1.47.0-2": {
+      "redistributable": true,
+      "source_identity": "35b4de254e021f721362b767994598e249fea02e38ac446197cd9c22be1130fd",
+      "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+      "license": "GPL-2.0-only AND LGPL-2.0-only AND LicenseRef-e2fsprogs-separate-grants",
+      "declared_licenses": [
+        "ISC",
+        "GPL or MIT-US-export",
+        "Kazlib",
+        "Latex2e",
+        "GPL-2+ with Texinfo exception",
+        "Apache-2",
+        "BSD-3-Clause",
+        "GPL-2",
+        "LGPL-2"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact Debian source and binary copyright binding. Complete named original legal files matched to previously read original grants; all distinct permission texts and complete file/copyright/comment scopes were read. This is a component decision, not OS release clearance.",
+      "conditions": [
+        "Retain complete original licenses, copyrights, disclaimers, per-file exceptions and modification notices in source and binary documentation.",
+        "Provide the exact preferred sources, applied patches and complete configuration/build/install inputs alongside binaries. Do not relicense separately scoped components under the repository root license.",
+        "Preserve NOTICE clarification of lib/ext2fs as LGPL2 and all independent Apache2, BSD3, ISC, Kazlib and LaTeX scopes; GPL2 is selected where the original profile code offers GPL or MIT-US-export. No restriction is inferred from a common-license file pointer."
+      ]
+    },
+    "liberror-perl@0.17029-2": {
+      "redistributable": true,
+      "source_identity": "48c6ca66e03144a8bec4f32b2419f34d70e8a00500b01ea3bb6a5cab0c03e164",
+      "copyright_sha256": "5ece6f21cf4f64f798479e81abd3f25a20bd7e8fc13d98c680b25a8af6b954af",
+      "license": "GPL-2.0-or-later AND MIT",
+      "declared_licenses": [
+        "Artistic",
+        "GPL-1+",
+        "MIT/X11"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact Debian source and binary copyright binding. Complete named original legal files matched to previously read original grants; all distinct permission texts and complete file/copyright/comment scopes were read. This is a component decision, not OS release clearance.",
+      "conditions": [
+        "Retain complete original licenses, copyrights, disclaimers, per-file exceptions and modification notices in source and binary documentation.",
+        "Provide the exact preferred sources, applied patches and complete configuration/build/install inputs alongside binaries. Do not relicense separately scoped components under the repository root license.",
+        "Select GPL version 2 or later from the original GPL version 1-or-later alternative, while retaining the original Artistic option and complete original LICENSE. Preserve separately scoped MIT/X11 permission in Error::Simple."
+      ]
+    },
+    "libfile-homedir-perl@1.006-2": {
+      "redistributable": true,
+      "source_identity": "24f18bca6c35ba21d6e61d856d15cedf20be0dc7ad5a86f149d40bea87ac1d01",
+      "copyright_sha256": "c2335935fb7a15c4d20f4e04c314c79d92185d10cb0eb8f4545f9a18a70f5904",
+      "license": "GPL-2.0-or-later",
+      "declared_licenses": [
+        "Artistic",
+        "GPL-1+"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact Debian source and binary copyright binding. Complete named original legal files matched to previously read original grants; all distinct permission texts and complete file/copyright/comment scopes were read. This is a component decision, not OS release clearance.",
+      "conditions": [
+        "Retain complete original licenses, copyrights, disclaimers, per-file exceptions and modification notices in source and binary documentation.",
+        "Provide the exact preferred sources, applied patches and complete configuration/build/install inputs alongside binaries. Do not relicense separately scoped components under the repository root license.",
+        "Select GPL version 2 or later from the original GPL version 1-or-later alternative, while retaining the original Artistic option and complete original LICENSE. Preserve separately scoped MIT/X11 permission in Error::Simple."
+      ]
+    },
+    "apt@2.6.2": {
+      "redistributable": true,
+      "source_identity": "63490cc85118a0eb7a3109696311920ffa70f3f9ad718bcaf126445496049c74",
+      "copyright_sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+      "license": "GPL-2.0-only AND BSD-3-Clause AND MIT",
+      "declared_licenses": [
+        "BSD-3-clause",
+        "Expat",
+        "GPL-2",
+        "GPL-2+"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal texts, their separately scoped conditions and all copyright/file/comment metadata read. Not OS release clearance.",
+      "conditions": [
+        "Keep all original copyright notices, complete licenses, disclaimers and separately scoped exceptions in source and binary documentation.",
+        "Distribute exact preferred sources, patches, configuration and build/install inputs with binaries. Do not replace original license alternatives or exceptions with a generic template.",
+        "Use GPL version2 for the aggregate including rsh and translation scopes; retain the explicit version2-only contributions and upstream commentary without claiming independently obtained additional author permissions."
+      ]
+    },
+    "pkcs11-helper@1.29.0-1": {
+      "redistributable": true,
+      "source_identity": "f781d99c32065564f07b096eb99209406c91ba59f4a22218591a3bd9d4dc4940",
+      "copyright_sha256": "0bfa41a8b75c5de717d0bba708efcdfbb9ca53eaef07808a6a54bb592457289c",
+      "license": "BSD-3-Clause AND LicenseRef-pkcs11-permissive",
+      "declared_licenses": [
+        "permissive",
+        "BSD-3-clause",
+        "GPL-2"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal texts, their separately scoped conditions and all copyright/file/comment metadata read. Not OS release clearance.",
+      "conditions": [
+        "Keep all original copyright notices, complete licenses, disclaimers and separately scoped exceptions in source and binary documentation.",
+        "Distribute exact preferred sources, patches, configuration and build/install inputs with binaries. Do not replace original license alternatives or exceptions with a generic template.",
+        "Select the explicitly offered BSD3 option; preserve pkcs11.h permissive terms and upstream optional-provider notices. Selecting BSD does not relicense OpenSSL, NSS or GnuTLS code."
+      ]
+    },
+    "pyzmq@24.0.1-4": {
+      "redistributable": true,
+      "source_identity": "9c8adda0f679f027242a9ecdfd8a7df8c8e7000774bba0e062b6473602c1c79b",
+      "copyright_sha256": "5e589f6edc37f5e041d017cee53f83026c13f45c6ddff7d0917bb5ac5c86b3a3",
+      "license": "BSD-3-Clause AND LGPL-3.0-or-later WITH LicenseRef-ZeroMQ-linking-exception AND LGPL-2.1-or-later AND Apache-2.0",
+      "declared_licenses": [
+        "BSD-3-clause",
+        "LGPL-3+link",
+        "LGPL-2.1",
+        "Apache-2.0"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal texts, their separately scoped conditions and all copyright/file/comment metadata read. Not OS release clearance.",
+      "conditions": [
+        "Keep all original copyright notices, complete licenses, disclaimers and separately scoped exceptions in source and binary documentation.",
+        "Distribute exact preferred sources, patches, configuration and build/install inputs with binaries. Do not replace original license alternatives or exceptions with a generic template.",
+        "Retain the complete independent-module linking exception including its mandatory extension to modified library versions. The exception does not waive preferred-source obligations for the library or independent modules. Preserve the packaging LGPL2-or-later and separately scoped BSD/Apache permissions."
+      ]
+    },
+    "zeromq3@4.3.4-6": {
+      "redistributable": true,
+      "source_identity": "dfc0e1a03950bff1891b60de3eb41605e9d1d804af063e4b565602165be8c3fe",
+      "copyright_sha256": "5b9bfc402d67b0803d9174f7a1a77132dfcf0646662811fa5fccc392fc0a31fe",
+      "license": "LGPL-3.0-or-later WITH LicenseRef-ZeroMQ-linking-exception AND LGPL-2.0-or-later AND MIT",
+      "declared_licenses": [
+        "LGPL-2.0+",
+        "LGPL-3.0+ with special exception granted by copyright holders",
+        "MIT"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original named legal texts, their separately scoped conditions and all copyright/file/comment metadata read. Not OS release clearance.",
+      "conditions": [
+        "Keep all original copyright notices, complete licenses, disclaimers and separately scoped exceptions in source and binary documentation.",
+        "Distribute exact preferred sources, patches, configuration and build/install inputs with binaries. Do not replace original license alternatives or exceptions with a generic template.",
+        "Retain the complete independent-module linking exception including its mandatory extension to modified library versions. The exception does not waive preferred-source obligations for the library or independent modules. Preserve the packaging LGPL2-or-later and separately scoped BSD/Apache permissions."
+      ]
+    },
+    "dbus@1.14.10-1~deb12u1": {
+      "redistributable": true,
+      "source_identity": "c759e380dd595a407be70b09e8f0aecb9f86c67bf515cdc0dd629dfcac88b9cf",
+      "copyright_sha256": "4cfc9f33368f3b95429992704c96fa598818ec796046426a9979ce4d9b8b1900",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND TCL AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Complete original Debian copyright, all distinct terms and root COPYING/CMake notices read or matched to read originals. The comma-containing compound expression is manually assessed rather than automatically parsed.",
+      "conditions": [
+        "Select GPL2-or-later from GPL2-or-later or AFL2.1 for D-Bus library code; retain original AFL option and full text. Preserve the LGPL2.1 m4 macro, Autoconf exceptions, MIT, Tcl/BSD and unlimited-permission scopes.",
+        "Retain all original notices, disclaimers, modification markings and complete preferred source/configuration/build/install material with binaries. This does not approve other dependencies or the OS release."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

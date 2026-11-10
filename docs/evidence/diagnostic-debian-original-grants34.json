@@ -1,0 +1,826 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 4,
+  "components": [
+    {
+      "source": "cyrus-sasl2",
+      "version": "2.1.28+dfsg-10+deb12u1",
+      "dsc_sha256": "088990ef19c88abfbf66321eba0d0c3566ee2a5ce135e165eff5b6c2716a2ff0",
+      "binaries": [
+        {
+          "name": "libsasl2-2",
+          "version": "2.1.28+dfsg-10+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "5e77ddcac7fb682d696bc4b034dc2869e5a9011e8c2ed3c570ab8db0f4506931"
+        },
+        {
+          "name": "libsasl2-modules-db",
+          "version": "2.1.28+dfsg-10+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "5e77ddcac7fb682d696bc4b034dc2869e5a9011e8c2ed3c570ab8db0f4506931"
+        }
+      ],
+      "copyright_sha256": "5e77ddcac7fb682d696bc4b034dc2869e5a9011e8c2ed3c570ab8db0f4506931",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "9d6e5d1632140a6c135b251260953650d17d87cd1124f87aaf72192aa4580d4b",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "member": "COPYING",
+            "sha256": "9d6e5d1632140a6c135b251260953650d17d87cd1124f87aaf72192aa4580d4b",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        },
+        {
+          "member": "saslauthd/COPYING",
+          "sha256": "331d1ea802ff1643aa00ff1304844f52b1696ca9c90d1e89610654acadee875b",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "member": "saslauthd/COPYING",
+            "sha256": "331d1ea802ff1643aa00ff1304844f52b1696ca9c90d1e89610654acadee875b",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-2.2-clause",
+          "full_normalized_body_sha256": "1430480220c70ce9d5a8156b187041070bd4bca5538513fe971af2d76d896e10",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "BSD-2.2-clause"
+          }
+        },
+        {
+          "label": "FSFULLR",
+          "full_normalized_body_sha256": "e9c2e5d821ed0c67149a969f0b3a6a253ef4f59250fe66de00da9c33064e5522",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "FSFULLR"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "631f60bcde2b72c62aa614336f891939287ec8178749378d843f63c33a2384fc",
+          "read_reference": {
+            "label": "GPL-3+",
+            "component": "gawk"
+          }
+        },
+        {
+          "label": "GPL-3",
+          "full_normalized_body_sha256": "41746d00179c988e187716ce8bdb7117a91d1f2a2c4eb06c0e94f333c3f7ab7d",
+          "read_reference": {
+            "label": "GPL-3+",
+            "component": "libassuan"
+          }
+        },
+        {
+          "label": "MIT-Export",
+          "full_normalized_body_sha256": "ba5b6eb11ed17c7a461045f3bcc221e41e877fe976ee02f2b5fdf7b3293253d1",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "MIT-Export"
+          }
+        },
+        {
+          "label": "MIT-CMU",
+          "full_normalized_body_sha256": "e88da0c530066da801b1f0745f5e80e9ae799572d946ed62534b312e7e90117d",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "MIT-CMU"
+          }
+        },
+        {
+          "label": "MIT-OpenVision",
+          "full_normalized_body_sha256": "bc356a17dc95b554eda80981cef4371bdf0b3efde6bb70d7ea7b53a71636a8ea",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "MIT-OpenVision"
+          }
+        },
+        {
+          "label": "BSD-4-clause",
+          "full_normalized_body_sha256": "86117f34169bfff232b1815ed6051aa2b5cc6b64f97d213664fd696426e383e8",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "BSD-4-clause"
+          }
+        },
+        {
+          "label": "BSD-4-clause-KTH",
+          "full_normalized_body_sha256": "62f09b976621246475d9581f7fdcdd54833d5f10c583f7fa931669fb731d7986",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "BSD-4-clause-KTH"
+          }
+        },
+        {
+          "label": "BSD-4-clause-UC",
+          "full_normalized_body_sha256": "61f8649e7c9bc09fc55514286a430d38c00abe8c4bd1ea794d9aff11f6ad42da",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "BSD-4-clause-UC"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "dash"
+          }
+        },
+        {
+          "label": "BSD-3-clause-JANET",
+          "full_normalized_body_sha256": "bdde55f7c8313c49c31233ba117f641f478b3c945305f62803edc4cb99ee32a4",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "BSD-3-clause-JANET"
+          }
+        },
+        {
+          "label": "BSD-3-clause-PADL",
+          "full_normalized_body_sha256": "2ab501912b3d6ba1fa6fefd732cb11c818e1df4bcc51fc6de87f6115de388672",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "BSD-3-clause-PADL"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "4da97c5af0e7fcffde9f06d97bdec564ffacf0405eb3ad8adf78626839f66b3b",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "BSD-2-clause"
+          }
+        },
+        {
+          "label": "RSA-MD",
+          "full_normalized_body_sha256": "3deaeac82401a718fd896564c7005890bad99d30454412795e9ec50be5f45b3a",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "RSA-MD"
+          }
+        },
+        {
+          "label": "IBM-as-is",
+          "full_normalized_body_sha256": "d03e92383591c3e6be53e22e69a52b4491a4f672898f6b2c2f2a3ba1eb14173e",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "IBM-as-is"
+          }
+        },
+        {
+          "label": "OpenSSL",
+          "full_normalized_body_sha256": "44bc3e943a22110bc545b610999c03a5f5ae783223f7a05554c064885bc60116",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "OpenSSL"
+          }
+        },
+        {
+          "label": "SSLeay",
+          "full_normalized_body_sha256": "681a35e7538400d883bc4dc16dba11d242c3680c34c4f6fd9d31f2d77612ffb9",
+          "read_reference": {
+            "component": "cyrus-sasl2",
+            "label": "SSLeay"
+          }
+        },
+        {
+          "label": "OpenLDAP",
+          "full_normalized_body_sha256": "88f0a896bbbd5e5fef432d8d7605ab8de76b783919216b5a495af0ffa07e6b61",
+          "read_reference": {
+            "component": "openldap",
+            "label": "OpenLDAP-2.8"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Cyrus SASL",
+          "Source": "ftp://ftp.cyrusimap.org/cyrus-sasl/",
+          "Files-Excluded": "dlcompat-20010505\ndoc/html\ndocsrc/exts/themes\nmac\nman\n*.pyc",
+          "Comment": "doc/html, man and *.pyc contain generated files.\ndlcompat and mac are not needed and contain many licenses more.\ndocsrc/exts/themes contains generated files and has a Debian package replacement."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1998-2003, Carnegie Mellon University"
+        },
+        {
+          "Files": "common/crypto-compat.c",
+          "Copyright": "2016 The OpenSSL Project Authors. All Rights Reserved."
+        },
+        {
+          "Files": "docsrc/exts/sphinxlocal/*",
+          "Copyright": "2007-2016 by the Sphinx team\n2015 by Nic Bernstein <nic@onlight.com>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2002-2004, Dima Barsky <dima@debian.org>\n2006-2009, Fabian Fagerholm <fabbe@debian.org>\n2006-2011, 2014, Roberto C. Sanchez <roberto@connexer.com>\n2015-2016, Ondřej Surý <ondrej@debian.org>\n2021-2022, Bastian Germann",
+          "Comment": "For upstream patches, the licenses of the changed files apply."
+        },
+        {
+          "Files": "debian/po/*.po\ndebian/po/*.pot",
+          "Copyright": "Debian Cyrus SASL Team"
+        },
+        {
+          "Files": "debian/po/ca.po\ndebian/po/sv.po\ndebian/po/fr.po\ndebian/po/it.po\ndebian/po/ta.po\ndebian/po/vi.po",
+          "Copyright": "2007, 2008 Fabian Fagerholm\n2007 Odile Bénassy\n2007 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "debian/po/de.po\ndebian/po/es.po\ndebian/po/pt.po\ndebian/po/pt_BR.po",
+          "Copyright": "2007 Fabian Fagerholm\n2007 Américo Monteiro"
+        },
+        {
+          "Files": "debian/rules",
+          "Copyright": "2002-2004, Dima Barsky <dima@debian.org>\n2006-2009, Fabian Fagerholm <fabbe@debian.org>\n2006-2011, 2014, Roberto C. Sanchez <roberto@connexer.com>\n2015-2019, Ondřej Surý <ondrej@debian.org>\nBased on cyrus-imapd-2.2 packages by Henrique de Moraes Holshuch."
+        },
+        {
+          "Files": "debian/saslfinger/*",
+          "Copyright": "2004, Patrick Koetter <p@state-of-mind.de>",
+          "Comment": "The saslfinger utility was downloaded from\nhttp://postfix.state-of-mind.de/patrick.koetter/saslfinger/"
+        },
+        {
+          "Files": "debian/gen-auth/*",
+          "Copyright": "2002-2006, John Jetmore <jj33@pobox.com>",
+          "Comment": "The gen-auth utility was downloaded from\nhttp://jetmore.org/john/code/gen-auth"
+        },
+        {
+          "Files": "debian/tests/*",
+          "Copyright": "2022, Canonical Ltd."
+        },
+        {
+          "Files": "include/exits.h\nlib/getsubopt.c",
+          "Copyright": "1987-1993 The Regents of the University of California.  All rights reserved."
+        },
+        {
+          "Files": "include/md5*.h\nlib/md5.c\nsaslauthd/md5.c\nsaslauthd/saslauthd_md5.h",
+          "Copyright": "1991-2, RSA Data Security, Inc. Created 1991. All rights reserved."
+        },
+        {
+          "Files": "include/makemd5.c",
+          "Copyright": "(c) 1997, 1998 Kungliga Tekniska Högskolan\n(Royal Institute of Technology, Stockholm, Sweden).\nAll rights reserved."
+        },
+        {
+          "Files": "lib/saslutil.c",
+          "Copyright": "1998-2016 Carnegie Mellon University.  All rights reserved."
+        },
+        {
+          "Files": "plugins/gs2.c",
+          "Copyright": "2010, JANET(UK)\n1998-2016 Carnegie Mellon University."
+        },
+        {
+          "Files": "plugins/gs2_token.c",
+          "Copyright": "2011, PADL Software Pty Ltd.\n1993 by OpenVision Technologies, Inc."
+        },
+        {
+          "Files": "plugins/gs2_token.h",
+          "Copyright": "1993 by OpenVision Technologies, Inc."
+        },
+        {
+          "Files": "plugins/ldapdb.c",
+          "Copyright": "2002-2007 Howard Chu, All rights reserved. <hyc@symas.com>"
+        },
+        {
+          "Files": "pwcheck/Makefile.in",
+          "Copyright": "1994-2018 Free Software Foundation, Inc.\n1999 by Carnegie Mellon University"
+        },
+        {
+          "Files": "sample/server.c",
+          "Copyright": "1998-2016 Carnegie Mellon University.  All rights reserved.\n2009  by the Massachusetts Institute of Technology."
+        },
+        {
+          "Files": "saslauthd/auth_httpform.c",
+          "Copyright": "2005 Pyx Engineering AG\n1998 Messaging Direct Ltd.\n1998, 1999 Carnegie Mellon University"
+        },
+        {
+          "Files": "saslauthd/auth_httpform.h",
+          "Copyright": "2005 Pyx Engineering AG"
+        },
+        {
+          "Files": "saslauthd/auth_ldap.*",
+          "Copyright": "2002-2002 Igor Brezac"
+        },
+        {
+          "Files": "saslauthd/auth_pam.*",
+          "Copyright": "2000 Fabian Knittel.  All rights reserved."
+        },
+        {
+          "Files": "saslauthd/auth_rimap.c",
+          "Copyright": "1998 Messaging Direct Ltd.\n2013 Sebastian Pipping <sebastian@pipping.org>\n1998, 1999 Carnegie Mellon University"
+        },
+        {
+          "Files": "saslauthd/lak.*",
+          "Copyright": "2002-2003 Igor Brezac"
+        },
+        {
+          "Files": "saslauthd/auth_dce.*",
+          "Copyright": "1997-2000 Messaging Direct Ltd."
+        },
+        {
+          "Files": "saslauthd/auth_getpwent.*\nsaslauthd/auth_krb*\nsaslauthd/auth_rimap.h\nsaslauthd/auth_sasldb.*\nsaslauthd/auth_shadow.*\nsaslauthd/auth_sia.*\nsaslauthd/globals.h\nsaslauthd/mechanisms.*",
+          "Copyright": "1997-2000 Messaging Direct Ltd."
+        },
+        {
+          "Files": "saslauthd/cache.*\nsaslauthd/saslcache.c",
+          "Copyright": "2003 Jeremy Rumpf"
+        },
+        {
+          "Files": "saslauthd/ipc_doors.c\nsaslauthd/ipc_unix.c\nsaslauthd/saslauthd-main.*\nsaslauthd/utils.*",
+          "Copyright": "1997-2000 Messaging Direct Ltd.\n2003 Jeremy Rumpf"
+        },
+        {
+          "Files": "sasldb/db_lmdb.c",
+          "Copyright": "2011-2012 Howard Chu, All rights reserved. <hyc@symas.com>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "e2fsprogs",
+      "version": "1.47.0-2",
+      "dsc_sha256": "35b4de254e021f721362b767994598e249fea02e38ac446197cd9c22be1130fd",
+      "binaries": [
+        {
+          "name": "e2fsprogs",
+          "version": "1.47.0-2+b2",
+          "architecture": "arm64",
+          "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+        },
+        {
+          "name": "libcom-err2",
+          "version": "1.47.0-2+b2",
+          "architecture": "arm64",
+          "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+        },
+        {
+          "name": "libext2fs2",
+          "version": "1.47.0-2+b2",
+          "architecture": "arm64",
+          "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+        },
+        {
+          "name": "libss2",
+          "version": "1.47.0-2+b2",
+          "architecture": "arm64",
+          "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+        },
+        {
+          "name": "logsave",
+          "version": "1.47.0-2+b2",
+          "architecture": "arm64",
+          "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db"
+        }
+      ],
+      "copyright_sha256": "1ca415a294c0e56958c4f795b3f1f69ea3479bca53d7811f5cdd020a258949db",
+      "original_legal_matches": [
+        {
+          "member": "NOTICE",
+          "sha256": "5da5ef153e559c1d990d4c3eedbedd4442db892d37eae1f35fff069de8ec9020",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "member": "NOTICE",
+            "sha256": "5da5ef153e559c1d990d4c3eedbedd4442db892d37eae1f35fff069de8ec9020",
+            "method": "Every unmatched segment read; all other whole operative grants exactly matched to previously fully read originals."
+          }
+        },
+        {
+          "member": "ext2ed/COPYRIGHT",
+          "sha256": "3ec9de08738ada1aedf700ce32612a020ea5b402b7d0b92ae54c542780c9b6dc",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "member": "ext2ed/COPYRIGHT",
+            "sha256": "3ec9de08738ada1aedf700ce32612a020ea5b402b7d0b92ae54c542780c9b6dc",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "lib/ext2fs/tdb/patches/copyright",
+          "sha256": "a86f7fb0aee4945307d0989ddc5254191daa8632ea90aebf27ad68fe85bd7dfa",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "member": "lib/ext2fs/tdb/patches/copyright",
+            "sha256": "a86f7fb0aee4945307d0989ddc5254191daa8632ea90aebf27ad68fe85bd7dfa",
+            "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+          }
+        },
+        {
+          "member": "lib/uuid/COPYING",
+          "sha256": "9b718a9460fed5952466421235bc79eb49d4e9eacc920d7a9dd6285ab8fd6c6d",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "member": "lib/uuid/COPYING",
+            "sha256": "9b718a9460fed5952466421235bc79eb49d4e9eacc920d7a9dd6285ab8fd6c6d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "99f3a13b1a99dacb191c1277ff43795eb80abd545ed8e0ce3e83bf0579bd341e",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "ISC"
+          }
+        },
+        {
+          "label": "GPL or MIT-US-export",
+          "full_normalized_body_sha256": "83f5be4e091722d75cb41d8fa0a685af991f07d8e0e8f7931c697048d1019feb",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "GPL or MIT-US-export"
+          }
+        },
+        {
+          "label": "Kazlib",
+          "full_normalized_body_sha256": "f0920a6d05706e895fcb122036e6e87dff318c82a29c80f82a50be1cf9fa9f7a",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "Kazlib"
+          }
+        },
+        {
+          "label": "Latex2e",
+          "full_normalized_body_sha256": "71dfb9c033477878aa9e37a3501fa9b6a4ee2fb49c320b4b30237938388964b9",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "Latex2e"
+          }
+        },
+        {
+          "label": "GPL-2+ with Texinfo exception",
+          "full_normalized_body_sha256": "47655bc622594d35d51cb56e3550b76800c57e6220a16085e4388d8f1b4cc444",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "GPL-2+ with Texinfo exception"
+          }
+        },
+        {
+          "label": "Apache-2",
+          "full_normalized_body_sha256": "a47b528194eb56fad3a7051c8a25e977005944be3d26741bde6f76a998681965",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "Apache-2"
+          }
+        },
+        {
+          "label": "BSD-3-Clause",
+          "full_normalized_body_sha256": "0a6249520e48a59d94625cc2151aa03236b8efeb8d87a40302f67317db1c10a1",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "BSD-3-Clause"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "7b0a85afa325eb811b187bfb5182c0970afe8e6de4182ee89921afae3c5c3e4b",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "LGPL-2",
+          "full_normalized_body_sha256": "c94e71c8169c7f75ff6c5593ff871f33df679eb37284a9e2063b33a61a52dbd8",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "label": "LGPL-2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "e2fsprogs",
+          "Upstream-Contact": "Theodore Ts'o <tytso@mit.edu>",
+          "Source": "http://sourceforge.net/projects/e2fsprogs",
+          "Comment": "\nThis is the Debian GNU/Linux prepackaged version of the EXT2 file\nsystem utilities (e2fsck, mke2fs, etc.).  The EXT2 utilities were\nwritten by Theodore Ts'o <tytso@mit.edu> and Remy Card <card@masi.ibp.fr>."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1993-2018 Theodore Ts'o <tytso@mit.edu>",
+          "Comment": "Some files are GPL-2+ licensed or do not carry any license version.\nThey are distributable as GPL-2 and listed as such for simplification."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2003-2007 Theodore Ts'o <tytso@mit.edu>\n1997-2003 Yann Dirson <dirson@debian.org>\n2001 Alcove <http://www.alcove.com/>\n1997 Klee Dienes\n1995-1996 Michael Nonweiler <mrn20@cam.ac.uk>"
+        },
+        {
+          "Files": "lib/ext2fs/*\nlib/e2p/*\nlib/support/print_fs_flags.c\nmisc/e2fuzz.c",
+          "Copyright": "1995-1999, 2002, 2004-2006 Theodore Ts'o <tytso@mit.edu>\n1992-1994  Remy Card <card@masi.ibp.fr>\nLaboratoire MASI, Institut Blaise Pascal\nUniversite Pierre et Marie Curie (Paris VI)\n2001 Andreas Gruenbacher, <a.gruenbacher@computer.org>\n2007 IBM Corporation\n2010 Red Hat, Inc., Lukas Czerner <lczerner@redhat.com>\n2014 Oracle\n2012 Zheng Liu <wenqing.lz@taobao.com>\n2012 Intel Corporation\n2001  Daniel Phillips\n2002 Theodore Ts'o.\n2002 Andreas Dilger\n2006 Cluster File Systems, Inc.\n2006, 2007 by Andreas Dilger <adilger@clusterfs.com>\n2003,2004 Cluster File Systems, Inc <info@clusterfs.com>\n1995 Theodore Ts'o.\n2003 VMware, Inc.\n2015 Jan Kara\n2018  Collabora Ltd.\n1997 Theodore Ts'o\n1997 Mark Habersack\n2011 Whamcloud, Inc.\n2004 Sam Hocevar <sam@hocevar.net>\n2014 Google Inc.\n1993, 1994, 1995 Theodore Ts'o.\n1998 Andrey Shedel <andreys@ns.cr.cyco.com>",
+          "Comment": "Some files in lib/ext2fs claim\n\"This file may be redistributed under the terms of the GNU Public License.\"\nand NOTICE clarifies them to be licensed under LGPL-2."
+        },
+        {
+          "Files": "lib/ext2fs/tdb*",
+          "Copyright": "1999-2005 Andrew Tridgell\n2000-2006 Jeremy Allison\n2000 Paul `Rusty' Russell"
+        },
+        {
+          "Files": "lib/ext2fs/tdbtool.c",
+          "Copyright": "1999-2000 Andrew Tridgell\n2000 Paul `Rusty' Russell\n2000 Jeremy Allison\n2001 Andrew Esh"
+        },
+        {
+          "Files": "lib/ext2fs/kernel-jbd.h",
+          "Copyright": "1998-2000 Red Hat, Inc"
+        },
+        {
+          "Files": "lib/ext2fs/nls_utf8.c\nlib/ext2fs/utf8n.h\nutil/mkutf8data.c",
+          "Copyright": "2014 SGI\n2018 Collabora Ltd."
+        },
+        {
+          "Files": "lib/ext2fs/crc16.*",
+          "Copyright": "2005 Ben Gardner <bgardner@wabtec.com>"
+        },
+        {
+          "Files": "lib/ext2fs/crc32c*",
+          "Copyright": "\nAugust 26, 2011 Darrick J. Wong <djwong at us.ibm.com>\nReuse Bob Pearson's slice-by-8 implementation for e2fsprogs.\n\nJuly 20, 2011 Bob Pearson <rpearson at systemfabricworks.com>\n...\nOct 15, 2000 Matt Domsch <Matt_Domsch@dell.com>\n...\nOct 12, 2000 Matt Domsch <Matt_Domsch@dell.com>"
+        },
+        {
+          "Files": "lib/uuid/*",
+          "Copyright": "1996-1999, 2007 Theodore Ts'o."
+        },
+        {
+          "Files": "lib/uuid/*.3.in",
+          "Copyright": "1999 Andreas Dilger <adilger@enel.ucalgary.ca>"
+        },
+        {
+          "Files": "contrib/fallocate.c",
+          "Copyright": "2008 Red Hat, Inc. All rights reserved.\n2003-2005 Silicon Graphics, Inc."
+        },
+        {
+          "Files": "contrib/dconf",
+          "Copyright": "1994 Ulrich Windl <Ulrich.Windl@rz.uni-regensburg.de>"
+        },
+        {
+          "Files": "CleanSpec.mk\ncontrib/android/ext2simg.c",
+          "Copyright": "2007, 2016 The Android Open Source Project"
+        },
+        {
+          "Files": "e2fsck/*\ndebugfs/do_journal.c\ndebugfs/journal.*\ndebugfs/logdump.c\ndebugfs/xattrs.c\nlib/support/plausible.c\nmisc/fuse2fs.c\nmisc/fsmap.h",
+          "Copyright": "1993-2011 Theodore Ts'o\n1999-2000 Red Hat Software\n2000 Red Hat corp\n2001 Red Hat, Inc.\n2000 Stephen C. Tweedie\n2000 Andreas Dilger\n2014 Oracle\n2019 Google LLC"
+        },
+        {
+          "Files": "e2fsck/mtrace.*\ninclude/nonunix/getopt.h",
+          "Copyright": "1985-2015 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "ext2ed/*",
+          "Copyright": "1995 Gadi Oxman"
+        },
+        {
+          "Files": "include/mingw/unistd.h",
+          "Copyright": "2004-2006 Kern Sibbald\n2014 Adam Kropelin"
+        },
+        {
+          "Files": "lib/support/devname.*",
+          "Copyright": "2010 Red Hat, Inc., Lukas Czerner <lczerner@redhat.com>"
+        },
+        {
+          "Files": "lib/blkid/*\nmisc/blkid.c",
+          "Copyright": "1999, 2001 by Andries Brouwer\n1994-1997, 1999-2004 Theodore Ts'o <tytso@mit.edu>\n2001 Andreas Dilger"
+        },
+        {
+          "Files": "misc/blkid.8.in\nmisc/uuidgen.1.in",
+          "Copyright": "1999, 2000 Andreas Dilger <adilger@turbolinux.com>"
+        },
+        {
+          "Files": "misc/create_inode.c",
+          "Copyright": "2014 Robert Yang <liezhi.yang@windriver.com>"
+        },
+        {
+          "Files": "misc/e2freefrag.c",
+          "Copyright": "2009 Sun Microsystems, Inc."
+        },
+        {
+          "Files": "misc/e2undo.c",
+          "Copyright": "2007 IBM Corporation"
+        },
+        {
+          "Files": "misc/e4defrag.c",
+          "Copyright": "Akira Fujita <a-fujita@rs.jp.nec.com>\nTakashi Sato <t-sato@yk.jp.nec.com>"
+        },
+        {
+          "Files": "misc/uuidgen.c",
+          "Copyright": "1999 Andreas Dilger and Theodore Ts'o"
+        },
+        {
+          "Files": "misc/e2fuzz.sh",
+          "Copyright": "2014 Oracle"
+        },
+        {
+          "Files": "misc/e4crypt.c",
+          "Copyright": "2014 Google, Inc."
+        },
+        {
+          "Files": "ext2ed/ext2.descriptors\nmisc/badblocks.c\nmisc/chattr.c\nmisc/dumpe2fs.c\nmisc/lsattr.c\nmisc/mklost+found.c\nmisc/tune2fs.c",
+          "Copyright": "1995-1999 by Theodore Ts'o\n1992-1994  Remy Card <card@masi.ibp.fr>\nLaboratoire MASI, Institut Blaise Pascal\nUniversite Pierre et Marie Curie (Paris VI)\n1999 by David Beattie\nLinus Torvalds <Linus.Torvalds@cs.helsinki.fi>"
+        },
+        {
+          "Files": "resize/*",
+          "Copyright": "1997-2000 by Theodore Ts'o and PowerQuest, Inc."
+        },
+        {
+          "Files": "scrub/*",
+          "Copyright": "2018 Oracle"
+        },
+        {
+          "Files": "tests/fuzz/*.cc",
+          "Copyright": "2020 Google LLC"
+        },
+        {
+          "Files": "lib/support/argv_parse.*",
+          "Copyright": "1999  Theodore Ts'o."
+        },
+        {
+          "Files": "lib/support/profile.*",
+          "Copyright": "2005, 2006 by Theodore Ts'o.\n1985-2005 by the Massachusetts Institute of Technology.\nAll rights reserved.",
+          "Comment": "\nOn Debian systems, the complete text of the GNU General\nPublic License can be found in \"/usr/share/common-licenses/GPL\"."
+        },
+        {
+          "Files": "lib/support/dict.*",
+          "Copyright": "1997 Kaz Kylheku <kaz@ashi.footprints.net>",
+          "Comment": "The work has been modified."
+        },
+        {
+          "Files": "doc/libext2fs.texinfo",
+          "Copyright": "1997-2014 Theodore Ts'o"
+        },
+        {
+          "Files": "doc/texinfo.tex\nlib/et/texinfo.tex",
+          "Copyright": "1985-2006 Free Software Foundation, Inc."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the Apache License, Version 2.0\ncan be found in \"/usr/share/common-licenses/Apache-2.0\"."
+        },
+        {},
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General\nPublic License version 2 can be found in \"/usr/share/common-licenses/GPL-2\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU Library General\nPublic License version 2 can be found in \"/usr/share/common-licenses/LGPL-2\"."
+        }
+      ]
+    },
+    {
+      "source": "liberror-perl",
+      "version": "0.17029-2",
+      "dsc_sha256": "48c6ca66e03144a8bec4f32b2419f34d70e8a00500b01ea3bb6a5cab0c03e164",
+      "binaries": [
+        {
+          "name": "liberror-perl",
+          "version": "0.17029-2",
+          "architecture": "all",
+          "copyright_sha256": "5ece6f21cf4f64f798479e81abd3f25a20bd7e8fc13d98c680b25a8af6b954af"
+        }
+      ],
+      "copyright_sha256": "5ece6f21cf4f64f798479e81abd3f25a20bd7e8fc13d98c680b25a8af6b954af",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "cbfeb2e3998b95512198f7d61d51cd0a451454a599ed84baaa9bfab646dfa158",
+          "read_reference": {
+            "component": "liberror-perl",
+            "member": "LICENSE",
+            "sha256": "cbfeb2e3998b95512198f7d61d51cd0a451454a599ed84baaa9bfab646dfa158",
+            "method": "Complete original full normalized-word comparison, every difference read, original license alternatives and exact documentation scope retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "MIT/X11",
+          "full_normalized_body_sha256": "282a61a266b5553775aea52c8c9b2ab5d766d553c1a06c0ef42c27618a70c369",
+          "read_reference": {
+            "component": "liberror-perl",
+            "label": "MIT/X11"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Source": "https://metacpan.org/release/Error",
+          "Upstream-Contact": "Shlomi Fish <shlomif@iglu.org.il>",
+          "Upstream-Name": "Error"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1997-1998, Graham Barr <gbarr@pobox.com>\n2020, Shlomi Fish https://www.shlomifish.org/",
+          "Comment": "\n# Based on my original Error.pm, and Exceptions.pm by Peter Seibel\n# <peter@weblogic.com> and adapted by Jesse Glick <jglick@sig.bsh.com>.\n#\n# but modified ***significantly***"
+        },
+        {
+          "Files": "lib/Error/Simple.pm",
+          "Copyright": "2006, Shlomi Fish <shlomif@iglu.org.il>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1999, 2000, 2001, 2002, 2003, Paolo Molaro <lupus@debian.org>\n2003, 2004, 2005, Luk Claes <luk@debian.org>\n2003, Ardo van Rangelrooij <ardo@debian.org>\n2005, 2007, Clint Burfoot <clint@burfoot.info>\n2013, CSILLAG Tamas <cstamas@cstamas.hu>\n2015-2020, gregor herrmann <gregoa@debian.org>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libfile-homedir-perl",
+      "version": "1.006-2",
+      "dsc_sha256": "24f18bca6c35ba21d6e61d856d15cedf20be0dc7ad5a86f149d40bea87ac1d01",
+      "binaries": [
+        {
+          "name": "libfile-homedir-perl",
+          "version": "1.006-2",
+          "architecture": "all",
+          "copyright_sha256": "c2335935fb7a15c4d20f4e04c314c79d92185d10cb0eb8f4545f9a18a70f5904"
+        }
+      ],
+      "copyright_sha256": "c2335935fb7a15c4d20f4e04c314c79d92185d10cb0eb8f4545f9a18a70f5904",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "71b5fb95de1ba013a517c926feaa2a7d0fb0e8f132818e8529e0da5ec01187cd",
+          "read_reference": {
+            "component": "liberror-perl",
+            "member": "LICENSE",
+            "sha256": "cbfeb2e3998b95512198f7d61d51cd0a451454a599ed84baaa9bfab646dfa158",
+            "method": "Complete original full normalized-word comparison, every difference read, original license alternatives and exact documentation scope retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "File-HomeDir",
+          "Upstream-Contact": "Jens Rehsack <rehsack@cpan.org>",
+          "Source": "https://metacpan.org/release/File-HomeDir"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2005-2012, Adam Kennedy <adamk@cpan.org>\n2000, Sean M. Burke.\n2006, Chris Nandor.\n2006, Stephen Steneker.\n2009-2011, Jérôme Quelin.\n2017-2020, Jens Rehsack."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2006-2009, Jonas Genannt <jonas.genannt@capi2name.de>\n2006, Steve McIntyre <93sam@debian.org>\n2008, Mark Hymers <mhy@debian.org>\n2010, Damyan Ivanov <dmn@debian.org>\n2011, Angel Abad <angelabad@gmail.com>\n2011-2020, gregor herrmann <gregoa@debian.org>"
+        },
+        {},
+        {}
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
