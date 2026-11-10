@@ -22720,6 +22720,38 @@
         "Preserve LGPL2.1-only curve25519 and knownhosts scopes, including original source year spelling; an upstream notification about intended license consistency is not treated as a retroactive extension or or-later grant.",
         "Retain exact external crypto public-domain author declarations and original source origins. The examples explicit public-domain permission is separate from the library; no blanket dedication of unrelated files is inferred."
       ]
+    },
+    "cairo@1.16.0-7": {
+      "redistributable": true,
+      "source_identity": "96b21b7b9c9ab4ae689b1191830b53d0b3c38e5664105c36a3c39dee6bcf29a4",
+      "copyright_sha256": "408fb9e704e875cd42d432e7c9b3b378f568e3c89db2b5c5ef3d11c025319574",
+      "license": "LGPL-2.1-only AND LicenseRef-Cairo-permissive-source-scopes",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Original root source/legal declarations and full copyright retained; complete MPL license reproduced in copyright is normalized-word-identical to a previously fully read original. All remaining copyright/permission/scope text read in full. Not OS release clearance.",
+      "conditions": [
+        "Select original LGPL2.1 alternative for implementation code, preserving MPL1.1 and all more-permissive original source alternatives. Do not claim MPL1.1 is GNU GPL compatible or infer an or-later program upgrade from the license name.",
+        "Retain original complete author credits, supporting-documentation permission, David Reveman nonendorsement and warranty disclaimer, GNU LGPL text, exact preferred source, patches and complete configuration/build/install inputs."
+      ]
+    },
+    "xapian-core@1.4.22-1": {
+      "redistributable": true,
+      "source_identity": "8d03655fc0d669d7681dfaeb8c766f8c8b0d1cbe642d1786156a846d8d3eb71b",
+      "copyright_sha256": "d530c1aa427b7e55f170f48b43f3657f847255438496847796eb8a0496bdd5d6",
+      "license": "GPL-2.0-or-later AND BSD-3-Clause AND MIT AND LicenseRef-FSF-permissive AND LicenseRef-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Xapian-original-Snowball-notice.txt",
+          "sha256": "998a44f9f5f2ff0c831fb61b3c84963216fc3d851ea8da0c5ee6ecffc8e6932f"
+        }
+      ],
+      "scope": "Entire copyright/scope text read, with two complete MIT bodies matched to a read original. Actual Snowball runtime source header separately read and retained in full to preserve its nonendorsement condition and current original attribution. Other original legal text matched to read originals. Not OS release clearance.",
+      "conditions": [
+        "Retain GNU2-or-later library and independent Snowball BSD3, MIT serialization/packaging, explicit public-domain Lemon generator/template and FSF macro permissions. Provide exact preferred sources including original generator inputs, patches and complete configuration/build/install material.",
+        "Retain complete original Snowball source header and authors. The installed copyright sentence omitting not from the nonendorsement clause is not interpreted as permission to claim author endorsement. Preserve original source notice separately without changing code or claiming new attribution rights."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
