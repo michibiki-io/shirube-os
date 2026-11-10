@@ -602,3 +602,29 @@ Serf の付属サイトと quic-go の制限付きロゴを配布対象から除
 元の `go.mod`、`go.sum` と再構築時の変更記録を残します。ソースのバイト一致と配布アーカイブの
 検証は実施済みですが、この配布形態からの親バイナリ再コンパイル、OS 全体の受け入れ、
 OCI 実機検証の成功を意味しません。
+
+## OpenTracing preferred source
+
+Debian OpenTracing 1.6.0-4 contains a saved GitHub HTML page where Catch2's
+license text belongs. The export replaces that one page with the full Boost1.0
+license explicitly named by the unchanged Catch2.0.1 header. All 117 other
+original files, including every code, test, build and packaging file, retain
+their exact bytes. The source export records both hashes, the original Debian
+descriptor and its own distinct identity; the raw archive is not approved.
+Inside the native producer container, configure the applied preferred tree
+with CMake, build, run CTest and install normally. No features are disabled.
+[Existing component evidence](evidence/diagnostic-debian-opentracing-preferred-source-export.json)
+records normal build/install and all 11 tests passing on each architecture.
+License-text-only changes use byte comparisons and notice hashes; they do not
+require another library or ISO build. Final coherent OS acceptance is separate.
+
+### OpenTracing の配布用ソース
+
+ライセンス本文の位置に保存されていた GitHub の HTML を、元の Catch2 ヘッダーが
+指定する Boost1.0 全文へ置き換えます。他の元ファイル 117 件はバイト単位で保持し、
+コード、テスト、ビルド定義、パッケージ設定は変更しません。変更前後のハッシュ、
+元の Debian 記述子、配布用ソース固有の識別子を記録します。コンテナ内で適用済みの
+ソースを CMake で構成し、通常のビルド、CTest、インストールを行えます。
+既に両アーキテクチャで 11 件ずつのテストとインストールを確認済みです。
+許諾文書だけの変更では差分とハッシュを照合し、ライブラリや ISO を再ビルドしません。
+最終的な OS の受け入れとは区別します。

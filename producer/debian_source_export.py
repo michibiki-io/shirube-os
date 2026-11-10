@@ -21,6 +21,9 @@ def prepare(source, version, originals, tree, declarations):
     if len(selected) != 1 or selected[0]['version'] != version:
         raise ValueError('Unreviewed Debian preferred-source export version')
     rule = selected[0]
+    if source == 'opentracing-cpp':
+        from .opentracing_source_export import prepare as prepare_opentracing
+        return prepare_opentracing(version, originals, tree, rule)
     if source != 'libxcrypt' or version != '1:4.4.33-2':
         raise ValueError('Unsupported Debian preferred-source export')
     tree = Path(tree).resolve()

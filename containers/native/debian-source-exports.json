@@ -48,6 +48,21 @@
         "path": "Makefile.am",
         "sha256": "ab8c03d9321acdd36bf292b2342f6364972ca2c7c9eb687297dd85b05d8d8e3d"
       }
+    },
+    {
+      "source": "opentracing-cpp",
+      "version": "1.6.0-4",
+      "descriptor_sha256": "09ae6b43e38df9a6798d721bd76e5c610e20865415e4f6e2efedb7a218f6e9e0",
+      "replacement": {
+        "member": "3rd_party/include/opentracing/catch2/LICENSE.txt",
+        "original_sha256": "b7d05132c435c3d69f9dead9b5f3f4a9d70b6f8b45dfa887f533b33e54dd128d",
+        "notice": "LICENSES/BSL-1.0.txt",
+        "replacement_sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+      },
+      "header": {
+        "member": "3rd_party/include/opentracing/catch2/catch.hpp",
+        "sha256": "7c6ac88b2d592d11e889396d9bc5f825e6759e38b6200f339e4b6100fa320205"
+      }
     }
   ]
 }

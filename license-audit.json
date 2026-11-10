@@ -23397,6 +23397,43 @@
         "Preserve the full OpenLDAP2.8 notice and source-file scope for Unicode support, including verbatim-license and nonendorsement requirements. Documentation retains CC-BY-SA3.0 with attribution, source/history, modification/share-alike duties and complete terms. Historical Windows installer wording is retained as source-only metadata, not a Windows binary delivery.",
         "Preserve original export, patent and trademark notices. This source-license decision is not a warranty about every jurisdiction or permission to use upstream trademarks as the product brand."
       ]
+    },
+    "opentracing-cpp@1.6.0-4#0dfb801608cba50bdba4f284084b5a980d3eceb2b9066477f190bf76a3e38df5": {
+      "redistributable": true,
+      "source_identity": "0dfb801608cba50bdba4f284084b5a980d3eceb2b9066477f190bf76a3e38df5",
+      "original_source_identity": "09ae6b43e38df9a6798d721bd76e5c610e20865415e4f6e2efedb7a218f6e9e0",
+      "copyright_sha256": "5ba889ebdbeb1a8808be058b9f302cf75272e23e2b92eba3f615559b49bdc748",
+      "license": "Apache-2.0 AND BSL-1.0 AND MIT AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/OpenTracing-1.6.0/3rd_party/include/opentracing/expected/LICENSE",
+          "sha256": "775d121dccad9612c0eff17543ccb091ffb4695f58dd8191de7607130977b2f8"
+        },
+        {
+          "path": "LICENSES/OpenTracing-1.6.0/3rd_party/include/opentracing/variant/LICENSE",
+          "sha256": "7686f81e580cd6774f609a2d8a41b2cebdf79bc30e6b46c3efff5a656158981c"
+        },
+        {
+          "path": "LICENSES/OpenTracing-1.6.0/LICENSE",
+          "sha256": "076d03156735d5ff2df2ea0f8b12351ef65e5e9222b5c8c6a35101dadb41e717"
+        },
+        {
+          "path": "LICENSES/OpenTracing-1.6.0/mocktracer/LICENSE.apache",
+          "sha256": "58a365fe99e6a28ca903dad980080f109a18ccad888db1a010ce0ada20f90042"
+        },
+        {
+          "path": "LICENSES/BSL-1.0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+        }
+      ],
+      "scope": "Exact applied preferred export only, not the original archive with a saved GitHub HTML page. Complete Debian scopes/grants and actual Catch2.0.1 header read. All named non-HTML original notices read or full-word compared to complete Apache2. Every original source file checked; one license-page replacement only, no code/build/test/header/packaging changes.",
+      "conditions": [
+        "Retain OpenTracing/Lyft Apache2 source, patents, disclaimers, modification marks and any original NOTICE obligations, Debian/expected MIT notices including Microsoft/Martin Moene, MapBox BSD3 and recursive-wrapper/Catch Boost1.0 copyright and license text. Do not imply endorsement.",
+        "Deliver the complete applied preferred source and exact build/install/test inputs. Keep all original code and test headers, including Two Blue Cubes2017 Catch2.0.1 and its explicit Boost license grant. Only the saved third-party web page is replaced by the full named license; no claim is made to relicense the page or its site assets.",
+        "Keep the original Debian descriptor as provenance metadata and mark the preferred export distinctly; it is not a newly signed Debian source set. The raw original source archive is not cleared by this approval. No whole-OS binary reproduction or release acceptance is established by the export."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
