@@ -1,0 +1,198 @@
+{
+  "kind": "exact-debian-linux-original-license-scope-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "6.1.190-1",
+  "source_identity": "30c921025c1c3f26a102e1d52c9ef23516a8362803d0bdfe738c7a841081ca82",
+  "copyright_sha256": "b747c37629e008bbb10bf2d44c5bb6e014ce2dde36b9ef1dc81e1425417c24bf",
+  "original_legal_files": [
+    {
+      "member": "COPYING",
+      "sha256": "fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0"
+    },
+    {
+      "member": "Documentation/images/COPYING-logo",
+      "sha256": "351e2234f52ffdbdab095dbeb26ddabee5d6196043e3c848b441e6d8481c8474"
+    },
+    {
+      "member": "Documentation/process/license-rules.rst",
+      "sha256": "eabaa82f704625a0be40f248f0888b236d320121a951ce6880099d5491b5e0ec"
+    },
+    {
+      "member": "Documentation/scsi/LICENSE.FlashPoint",
+      "sha256": "effc722d2f0ee223eaa9e1e352fb4ac421119dd9b5328f9e566489c17c6384c3"
+    },
+    {
+      "member": "Documentation/translations/it_IT/process/license-rules.rst",
+      "sha256": "bf90d52465d79494f004acde2cf3abd51e32669b870ca6bf3fa69d49fb9a6e36"
+    },
+    {
+      "member": "Documentation/translations/zh_CN/process/license-rules.rst",
+      "sha256": "ccbf1dfdd8682497720c61c663bd6288dd870d036004d5a5f22642c07abf5e07"
+    },
+    {
+      "member": "Documentation/translations/zh_TW/process/license-rules.rst",
+      "sha256": "351189cfffe3d978b1333cb9ead0967107dfa23a326a639c590c9b0da4287f1c"
+    },
+    {
+      "member": "LICENSES/deprecated/GFDL-1.1",
+      "sha256": "d803c235315b9f8bc0df530f5fc89d8d9680bf82975c5c9cc971668cd722370a"
+    },
+    {
+      "member": "LICENSES/deprecated/GFDL-1.2",
+      "sha256": "8924806fea842f1166f891a2f07cdaac771cd3a99e6c5d4b9ac76b0dfcd0b28b"
+    },
+    {
+      "member": "LICENSES/deprecated/GPL-1.0",
+      "sha256": "79270bf7a89e1c6bee5d578f920f330b61db2ff3b800cf095a1cc5cb34367ccd"
+    },
+    {
+      "member": "LICENSES/deprecated/ISC",
+      "sha256": "cbdf535b99a9f4cb208c5495c6dd9a1f84104d83c03f8f0d98ee7a0c43805388"
+    },
+    {
+      "member": "LICENSES/deprecated/Linux-OpenIB",
+      "sha256": "8ae20d34c2a74c85ae2760dd0034baf18e44bee3289b9b3a4fe46768b4ea2cd6"
+    },
+    {
+      "member": "LICENSES/deprecated/X11",
+      "sha256": "21115f2385035c1ceeda8820b7f050c89a30418457a5e2a5c6091f2545d40e44"
+    },
+    {
+      "member": "LICENSES/deprecated/Zlib",
+      "sha256": "3b42160485d3d596ff8a4956958c4360dc55f1e2414c964aef0ad2d3c2a92abb"
+    },
+    {
+      "member": "LICENSES/dual/Apache-2.0",
+      "sha256": "7e4d3fba250d15e9e0afa380d4b611828fa2560cc8fdebe95bcf2f01a487de12"
+    },
+    {
+      "member": "LICENSES/dual/CC-BY-4.0",
+      "sha256": "84d5ad08940d29065d8a6f062effa4204c2235c9f2487aa53748ed0a0a6cce86"
+    },
+    {
+      "member": "LICENSES/dual/CDDL-1.0",
+      "sha256": "490abf7869e4638fbb43df99a20e5683224617a6bf9ffd06971cb02b153e53c1"
+    },
+    {
+      "member": "LICENSES/dual/MPL-1.1",
+      "sha256": "ccbda1d2f0cfef821f39e1880aae9213c7933e07713ee638ad1fb02547c0b97b"
+    },
+    {
+      "member": "LICENSES/exceptions/GCC-exception-2.0",
+      "sha256": "0dca50b78073055447d02e8f6ae4fa94c1d0e6d7fbb4c874c9db5eb960c8b3d4"
+    },
+    {
+      "member": "LICENSES/exceptions/Linux-syscall-note",
+      "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+    },
+    {
+      "member": "LICENSES/preferred/BSD-2-Clause",
+      "sha256": "6313108c23efffa36948f8b2cff1560a5935373b527b0e1a837cc77e6ed1bacd"
+    },
+    {
+      "member": "LICENSES/preferred/BSD-3-Clause",
+      "sha256": "7a83b1aeb460458db9a4bd521d7f237c45b1650f6e60ea5ffc71e49472454de3"
+    },
+    {
+      "member": "LICENSES/preferred/BSD-3-Clause-Clear",
+      "sha256": "3f8a01d020e77c045e364c4681ee78c591041b7a38aa61972f689f4bc4cb5088"
+    },
+    {
+      "member": "LICENSES/preferred/GPL-2.0",
+      "sha256": "f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79"
+    },
+    {
+      "member": "LICENSES/preferred/LGPL-2.0",
+      "sha256": "b62fa9feac8de9899cd1738f5845cedbad9ca2acd8056513b77666c9ba1ef600"
+    },
+    {
+      "member": "LICENSES/preferred/LGPL-2.1",
+      "sha256": "efbaee946ac92a48b89eae36f655844042370d2f0e04eadea1e2998efae24ebd"
+    },
+    {
+      "member": "LICENSES/preferred/MIT",
+      "sha256": "323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f"
+    },
+    {
+      "member": "debian/copyright",
+      "sha256": "b747c37629e008bbb10bf2d44c5bb6e014ce2dde36b9ef1dc81e1425417c24bf"
+    },
+    {
+      "member": "drivers/net/LICENSE.SRC",
+      "sha256": "926bbcf0ff4b061b3ee987a486877fc09fb1ecb506e3375652bd97d925c9cd12"
+    },
+    {
+      "member": "drivers/net/wireless/marvell/libertas/LICENSE",
+      "sha256": "d252a214b30d9a81ad9eb2e3b6b7e1c8ed75f40a43db173903f1d38559234a99"
+    },
+    {
+      "member": "fs/jffs2/LICENCE",
+      "sha256": "bf3c94946e93bf3def3106f0f5ef7e6ed86f82406edacaca1a20d445c6b00ffb"
+    },
+    {
+      "member": "tools/usb/usbip/COPYING",
+      "sha256": "cd5c66af63b509ccd75ec85fee41b6e5cbb77cd6bf9392a54900acc0f02be4a6"
+    }
+  ],
+  "cddl_header_census": {
+    "kind": "exact-linux-original-cddl-source-expression-census",
+    "source": {
+      "name": "linux_6.1.190.orig.tar.xz",
+      "sha256": "710755123060832bb0b58d64d49c2c54e370ec671ec5b0cd0586780a5dee53e7",
+      "size": 138088908
+    },
+    "files_seen": 78614,
+    "matches": [
+      {
+        "member": "linux-6.1.190/drivers/virt/vboxguest/vboxguest_core.c",
+        "sha256": "dc17eaad36eee0e83812c6caa375301bc33fbcee7267fa440a546da961d54461",
+        "spdx": "/* SPDX-License-Identifier: (GPL-2.0 OR CDDL-1.0) */"
+      },
+      {
+        "member": "linux-6.1.190/drivers/virt/vboxguest/vboxguest_core.h",
+        "sha256": "e88ae72bf1a51159569777199d70016cd6967313d2bc0d085fec344f815e4c4f",
+        "spdx": "/* SPDX-License-Identifier: (GPL-2.0 OR CDDL-1.0) */"
+      },
+      {
+        "member": "linux-6.1.190/drivers/virt/vboxguest/vboxguest_utils.c",
+        "sha256": "f4d9d0771e701a4b12167972156bdb191b18499c974cb255b380c461c232d612",
+        "spdx": "/* SPDX-License-Identifier: (GPL-2.0 OR CDDL-1.0) */"
+      },
+      {
+        "member": "linux-6.1.190/drivers/virt/vboxguest/vboxguest_version.h",
+        "sha256": "003f34d923ef4be0ba344b98105ca128ef4476fe902fdbec55ad347a52470036",
+        "spdx": "/* SPDX-License-Identifier: (GPL-2.0 OR CDDL-1.0) */"
+      },
+      {
+        "member": "linux-6.1.190/drivers/virt/vboxguest/vmmdev.h",
+        "sha256": "632cec6e278ca36be50dc701f78d2249ea89917fb56469f685126c60ba67fbf1",
+        "spdx": "/* SPDX-License-Identifier: (GPL-2.0 OR CDDL-1.0) */"
+      },
+      {
+        "member": "linux-6.1.190/include/linux/vbox_utils.h",
+        "sha256": "076ad718964dbd2013b7101226e424922e174c5374d3c9a47f2e0ce333aa385a",
+        "spdx": "/* SPDX-License-Identifier: (GPL-2.0 OR CDDL-1.0) */"
+      },
+      {
+        "member": "linux-6.1.190/include/uapi/linux/vbox_vmmdev_types.h",
+        "sha256": "007bcc0d64798991e8b5b814c4b8f94d01ae47e0968a2fb0eb7f10b3ec7044f2",
+        "spdx": "/* SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR CDDL-1.0) */"
+      },
+      {
+        "member": "linux-6.1.190/include/uapi/linux/vboxguest.h",
+        "sha256": "39e1a9e0a2d9d811eacbc5cfc905e0f2982c29635b865dfd0d43c9ae0c191ef9",
+        "spdx": "/* SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR CDDL-1.0) */"
+      }
+    ]
+  },
+  "census_scope": "First4096 bytes of all original regular files ending .c .h .S .rs .dts .dtsi; complete bytes hashed for matching files. Eight explicit GNU2 alternatives, not an exhaustive whole-kernel legal certification.",
+  "translated_document_scope": "GPL2 header and canonical reference checked; originals preserved. Full translation reading NOT_RUN, canonical English guidance read in full. These narrative documents do not replace kernel licensing.",
+  "required_notices": [
+    {
+      "path": "LICENSES/Linux-original-syscall-note.txt",
+      "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

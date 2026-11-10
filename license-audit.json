@@ -22596,6 +22596,40 @@
         "For bundled GLib retain original GPL/LGPL, LLVM, Unicode, BSD/Expat, public-domain/permissive and separate documentation CC-BY-SA3 scopes and required original notices. Select LGPL2.1-or-later xdgmime alternative while preserving AFL2 original text.",
         "Preserve original packaging declaration under Expat and GPL2-or-later, including its disclosed pre-2022 licensing assumption; do not assert independent retrospective consent or apply Simon McVittie specific permissive relicensing permission to other contributors work. No warranty of individual chain of title is made."
       ]
+    },
+    "linux@6.1.190-1": {
+      "redistributable": true,
+      "source_identity": "30c921025c1c3f26a102e1d52c9ef23516a8362803d0bdfe738c7a841081ca82",
+      "copyright_sha256": "b747c37629e008bbb10bf2d44c5bb6e014ce2dde36b9ef1dc81e1425417c24bf",
+      "license": "GPL-2.0-only WITH Linux-syscall-note AND LGPL-2.1-or-later AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Unicode-data AND LicenseRef-Linux-original-source-scopes",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Linux-original-syscall-note.txt",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ],
+      "scope": "Exact Debian Linux6.1.190 group only, not a claim about the separately built native kernel. Complete original copyright and canonical licensing documentation read; full operative CDDL and other exact original legal texts reviewed. Translated license-rules documentation is classified by its explicit GPL2 header and canonical reference; complete translation reading is not claimed. Not OS release clearance.",
+      "conditions": [
+        "Retain exact complete source, Debian patches, build/install inputs, original copyright and per-file permissions. Keep kernel GNU2-only, explicit UAPI syscall exception, GNU/LGPL tools, BSD/MIT, CRYPTOGAMS and Unicode attribution/modification conditions distinct. Preserve all original LICENSES text and translation documents unchanged.",
+        "Select the expressly offered GNU2 alternative for CDDL-dual-licensed source; do not claim CDDL is GNU2-compatible or choose it for linked kernel code. The exact original source census found eight CDDL references in selected source headers, each explicitly offers a GNU2 alternative; the two UAPI headers retain the syscall exception. This is a bounded header census, not complete independent legal analysis of every source byte.",
+        "Retain actual per-file SPDX expressions and compatible alternatives, GCC and module-specific exceptions and original NOTICE attribution. MODULE_LICENSE is not treated as a substitute for source licensing. Original kernel licensing guidance is documentation, not a replacement grant."
+      ]
+    },
+    "p11-kit@0.24.1-2": {
+      "redistributable": true,
+      "source_identity": "b88a483cb9afd5556ea4ac64d5df4543123a53bf0e50d1c01454887220259a89",
+      "copyright_sha256": "ed139379f7c874f0ee75f3ddcc2e01091dd828d84ee1a0bdff6a1c5673ee6e58",
+      "license": "BSD-3-Clause AND MIT AND ISC AND Apache-2.0 AND LGPL-2.1-or-later AND LicenseRef-ISC-IBM-permission AND LicenseRef-FSF-permissive",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Every original named legal file matched to a read complete original; complete nonstandard grant and every copyright/file/license-expression scope read. Standard identified full LGPL/Apache texts are retained, not inferred permissive exceptions. Not OS release clearance.",
+      "conditions": [
+        "Retain original BSD3, PuTTY MIT, ISC/IBM and FSF all-permissive notices and authors, full LGPL2.1/Apache2 text and any applicable NOTICE for separately scoped fuzz sources. Provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Preserve IBM copyright/marketing nonendorsement and all paragraphs of its grant; its limited patent immunity concerns DNS dynamic updates and is not generalized to a whole product or unrelated functionality.",
+        "Retain original same-as-package Finnish translation declaration under the package BSD3 terms and original PKCS11 header copy/distribution notice. Build-script-style permissive wording for that header is explicit and is not an inferred blanket exception for unrelated files."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
