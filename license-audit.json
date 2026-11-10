@@ -21531,6 +21531,90 @@
         "Retain complete original copyright, permission, disclaimer, nonendorsement and separately scoped exception notices in sources and binary documentation. Provide exact preferred sources, patches, configuration and build/install recipes.",
         "Retain the original public-domain fallback express permission and the author email explaining short original documentation, with independently copyrighted generated groff/Doxygen material remaining under its own original notices. Keep probably-PD as the original declared classification rather than asserting an independently obtained dedication for every generated document. Retain the explicit build-system grants, gettext LGPL scope, and verbatim FSF license documents; no runtime code is relicensed."
       ]
+    },
+    "dbus-python@1.3.2-4": {
+      "redistributable": true,
+      "source_identity": "fe52424bf1cfda36f2b64007be90e5e25b0d6f647416148b0eca8841d407ba97",
+      "copyright_sha256": "66007423e6a84711ae4653306fe57c11d7b67a5051bd818b83bed6b208e12430",
+      "license": "MIT AND GPL-2.0-or-later AND GPL-3.0-or-later WITH Autoconf-exception-3.0",
+      "declared_licenses": [
+        "AFL-2.1",
+        "Expat",
+        "GPL-2+"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source/copyright binding; complete legal files, all distinct permission definitions and all file/copyright/comment metadata read or matched to read originals. Not a blanket OS clearance.",
+      "conditions": [
+        "Keep complete original copyright, attribution, permission, modification and disclaimer notices in source and binary documentation. Supply exact preferred source, all applied patches, configuration and build/install scripts alongside binaries.",
+        "Select GPL2-or-later from dbus-gmain GPL/AFL alternatives and retain AFL2.1 complete text and MIT scopes. Keep the separate GPL3-or-later Autoconf macro permission and exception without applying it to runtime code."
+      ]
+    },
+    "iperf3@3.12-1+deb12u2": {
+      "redistributable": true,
+      "source_identity": "526d16ad4c19f2d3281e079cff73f3dd996f89b7f8b7c90507c351e415409538",
+      "copyright_sha256": "741a4513e37c4f8f4c22157ac475424b37faa7adf781f58e1da62e57e7abb700",
+      "license": "BSD-3-Clause AND NCSA AND MIT AND LicenseRef-iperf3-original-grants",
+      "declared_licenses": [
+        "BSD-3-clause-iperf",
+        "MIT/X11",
+        "BSD-3-clause-iperf+MIT/X11+BSD-3-clause",
+        "FSF-permissive1",
+        "FSF-permissive2",
+        "GPL-2+",
+        "permissive",
+        "MIT",
+        "public-domain-1",
+        "GPL-3+",
+        "public-domain-2",
+        "GPL-2",
+        "NCSA",
+        "BSD-2-clause",
+        "BSD-3-clause"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source/copyright binding; complete legal files, all distinct permission definitions and all file/copyright/comment metadata read or matched to read originals. Not a blanket OS clearance.",
+      "conditions": [
+        "Keep complete original copyright, attribution, permission, modification and disclaimer notices in source and binary documentation. Supply exact preferred source, all applied patches, configuration and build/install scripts alongside binaries.",
+        "Retain the original UC/LBNL/DOE nonendorsement and enhancement-contribution clause, NCSA, Lucent, MIT and BSD grants, plus independent generated-build-script permissions. Rely on the original published source grant; no independent DOE approval or additional author release is claimed."
+      ]
+    },
+    "openvpn-auth-ldap@2.0.4-3": {
+      "redistributable": true,
+      "source_identity": "df2d2fe4c174010bf90956f880fe67bcc5f0e501c8ee30c0d986a1cda4160e5c",
+      "copyright_sha256": "802e9d02f933018f2e1c31a90bd48f07b0a8a0c0e6cc6344684b22046559d5f5",
+      "license": "BSD-3-Clause AND BSD-2-Clause AND MIT AND Apache-2.0 AND GPL-3.0-or-later AND LicenseRef-Kazlib",
+      "declared_licenses": [
+        "BSD-3-clause",
+        "BSD-3-clause-Miller",
+        "Custom",
+        "BSD-2-clause",
+        "Expat",
+        "Apache-2.0",
+        "GPL-3+"
+      ],
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source/copyright binding; complete legal files, all distinct permission definitions and all file/copyright/comment metadata read or matched to read originals. Not a blanket OS clearance.",
+      "conditions": [
+        "Keep complete original copyright, attribution, permission, modification and disclaimer notices in source and binary documentation. Supply exact preferred source, all applied patches, configuration and build/install scripts alongside binaries.",
+        "Preserve Kazlib modification marking, strlcpy BSD notices, test-only BSD/MIT/Apache scopes and SENTE_BEGIN/SENTE_END distinctions. Separate build-tool GPL and GPL3 packaging scopes from the permissively licensed linked runtime; include their preferred sources and original notices."
+      ]
+    },
+    "sqlite3@3.40.1-2+deb12u2": {
+      "redistributable": true,
+      "source_identity": "ee3459ae9d00939741c7708fc1b8ce1bde12d8c3fb1dfa005bbbc8651d884e23",
+      "copyright_sha256": "78e9df8f8153c91c762ec970b82d224ac4d30f05aa7773e7e17e268141e53873",
+      "license": "LicenseRef-SQLite-public-domain AND GPL-2.0-only AND LicenseRef-SQLite-build-script-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact original source/copyright binding. Original SQLite public-domain declaration, complete legal text notices and Debian copyright inspected; upstream explicitly covers deliverable code and documentation and separately identifies build-system licensing. No independent chain-of-title warranty or author affidavits obtained.",
+      "conditions": [
+        "Retain the complete original SQLite public-domain declaration and source documentation, including original copyright-release documentation; do not imply a purchased warranty of title. Binary PDF documentation is retained under that explicit documentation scope; independent manual reading of every PDF byte is not claimed.",
+        "Keep the explicit public-domain blessing in autoconf/tea/license.terms and all original per-file generated-build-script permissions, with complete preferred source/build/install material. Use GPL version2 for Debian packaging as explicitly stated by its operative grant, while preserving the original GPL-2+ label.",
+        "Retain the original per-file public-domain patch and manual classifications; no code is relicensed under the repository root license."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

@@ -1,0 +1,525 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 3,
+  "components": [
+    {
+      "source": "dbus-python",
+      "version": "1.3.2-4",
+      "dsc_sha256": "fe52424bf1cfda36f2b64007be90e5e25b0d6f647416148b0eca8841d407ba97",
+      "binaries": [
+        {
+          "name": "python3-dbus",
+          "version": "1.3.2-4+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "66007423e6a84711ae4653306fe57c11d7b67a5051bd818b83bed6b208e12430"
+        }
+      ],
+      "copyright_sha256": "66007423e6a84711ae4653306fe57c11d7b67a5051bd818b83bed6b208e12430",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "c5324f0629698cbe01dde8e3b802c3331601ebf98c3c65918520ba5eca66c930",
+          "read_reference": {
+            "component": "dbus-python",
+            "member": "COPYING",
+            "sha256": "c5324f0629698cbe01dde8e3b802c3331601ebf98c3c65918520ba5eca66c930",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        },
+        {
+          "member": "LICENSES/GPL-3.0-or-later.txt",
+          "sha256": "b6a8bf63ae2c95b0aa256ee774680d7bd18f21f457da75466f7610b3b16acc4e",
+          "read_reference": {
+            "component": "dbus-python",
+            "member": "LICENSES/GPL-3.0-or-later.txt",
+            "sha256": "b6a8bf63ae2c95b0aa256ee774680d7bd18f21f457da75466f7610b3b16acc4e",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "LICENSES/LicenseRef-AutoconfArchiveException.txt",
+          "sha256": "f4d2da1bbeb699a80a1f6d06161ba6625aa766c538dddeaa5a6bb9087462841c",
+          "read_reference": {
+            "component": "dbus-python",
+            "member": "LICENSES/LicenseRef-AutoconfArchiveException.txt",
+            "sha256": "f4d2da1bbeb699a80a1f6d06161ba6625aa766c538dddeaa5a6bb9087462841c",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        },
+        {
+          "member": "LICENSES/MIT.txt",
+          "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/MIT.txt",
+            "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+          }
+        },
+        {
+          "member": "subprojects/dbus-gmain/COPYING",
+          "sha256": "118fdd408a78866c5b776864650f4a6006616b5bd0793a63924c91febba0b2b8",
+          "read_reference": {
+            "component": "dbus-python",
+            "member": "subprojects/dbus-gmain/COPYING",
+            "sha256": "118fdd408a78866c5b776864650f4a6006616b5bd0793a63924c91febba0b2b8",
+            "review_method": "Complete original text read; referenced license/attribution files remain independent prerequisites."
+          }
+        },
+        {
+          "member": "subprojects/dbus-gmain/LICENSES/AFL-2.1.txt",
+          "sha256": "93bb4f7417aa775bab9026cc3d0af28aeb64451fc5a8ec651876785edd8eaf9b",
+          "read_reference": {
+            "component": "dbus-python",
+            "member": "subprojects/dbus-gmain/LICENSES/AFL-2.1.txt",
+            "sha256": "93bb4f7417aa775bab9026cc3d0af28aeb64451fc5a8ec651876785edd8eaf9b",
+            "method": "Complete original text read, preserving separately scoped licenses, sources/notice obligations and distinction between build/test code and linked runtime. Parent approval still requires complete source/copyright scope assessment."
+          }
+        },
+        {
+          "member": "subprojects/dbus-gmain/LICENSES/GPL-2.0-or-later.txt",
+          "sha256": "aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3",
+          "read_reference": {
+            "component": "dbus-python",
+            "member": "subprojects/dbus-gmain/LICENSES/GPL-2.0-or-later.txt",
+            "sha256": "aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "subprojects/dbus-gmain/LICENSES/MIT.txt",
+          "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/MIT.txt",
+            "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "AFL-2.1",
+          "full_normalized_body_sha256": "8688b402b1bca0967b35b212fffd1f9224b6ce57c44d6eafefcd4d63d750753e",
+          "read_reference": {
+            "label": "AFL-2.1",
+            "component": "dbus"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "bf9e0cc5bdaf2500d697e6822b5b6c5d8c4c1dc6d2200eee930cd9091977767e",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "dbus"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "dbus-python",
+          "Source": "https://dbus.freedesktop.org/releases/dbus-python/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "© 2003-2006 Red Hat Inc. <http://www.redhat.com/>\n© 2003 David Zeuthen\n© 2004 Rob Taylor\n© 2004 Anders Carlsson\n© 2005 Colin Walters\n© 2005-2022 Collabora Ltd.\n© 2011 Barry Warsaw\n© 2016 Simon McVittie"
+        },
+        {
+          "Files": "subprojects/dbus-gmain/*",
+          "Copyright": "\n© 2002-2010 Red Hat, Inc\n© 2002-2003 CodeFactory AB\n© 2003 James Willcox\n© 2009-2011 Nokia Corporation\n© 2006 Marc-Andre Lureau\n© 2006 Steve Frécinaux\n© 2009-2019 Collabora Ltd\n© 2010-2012 Mike Gorse"
+        },
+        {},
+        {},
+        {
+          "Comment": "\nOn Debian systems, see /usr/share/common-licenses/GPL-2 for the full\ntext of the GPL version 2."
+        }
+      ]
+    },
+    {
+      "source": "iperf3",
+      "version": "3.12-1+deb12u2",
+      "dsc_sha256": "526d16ad4c19f2d3281e079cff73f3dd996f89b7f8b7c90507c351e415409538",
+      "binaries": [
+        {
+          "name": "iperf3",
+          "version": "3.12-1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "741a4513e37c4f8f4c22157ac475424b37faa7adf781f58e1da62e57e7abb700"
+        },
+        {
+          "name": "libiperf0",
+          "version": "3.12-1+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "741a4513e37c4f8f4c22157ac475424b37faa7adf781f58e1da62e57e7abb700"
+        }
+      ],
+      "copyright_sha256": "741a4513e37c4f8f4c22157ac475424b37faa7adf781f58e1da62e57e7abb700",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "a5c2e3d799f2835156e565a3de4fad33d32ed289cdc9e414dfaf75719fd12ef9",
+          "read_reference": {
+            "component": "iperf3",
+            "member": "LICENSE",
+            "sha256": "a5c2e3d799f2835156e565a3de4fad33d32ed289cdc9e414dfaf75719fd12ef9",
+            "method": "Complete original notice read. Preserve all component-specific grants, linking exceptions, attribution and sources. Referenced external Windows DDK distributions are not newly licensed by this read; parent decision must verify shipped scope."
+          }
+        },
+        {
+          "member": "debian/license-reconcile.yml",
+          "sha256": "f8034fb1f74feae41bccc2dccac85cd76d21e0a5d6c8eb2b24e49e9b7e594657",
+          "read_reference": {
+            "component": "iperf3",
+            "member": "debian/license-reconcile.yml",
+            "sha256": "f8034fb1f74feae41bccc2dccac85cd76d21e0a5d6c8eb2b24e49e9b7e594657",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        },
+        {
+          "member": "docs/_esnet/LICENSE",
+          "sha256": "537bd023331c2666799474415509b4dd33b9abeb8d37a543d9efce1e843f2f10",
+          "read_reference": {
+            "component": "iperf3",
+            "member": "docs/_esnet/LICENSE",
+            "sha256": "537bd023331c2666799474415509b4dd33b9abeb8d37a543d9efce1e843f2f10",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause-iperf",
+          "full_normalized_body_sha256": "bacbbb2c4b90e53e65b86e68da72c44fce451753d74549dfb23c47138cdc1a7a",
+          "read_reference": {
+            "component": "iperf3",
+            "label": "BSD-3-clause-iperf"
+          }
+        },
+        {
+          "label": "MIT/X11",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        },
+        {
+          "label": "BSD-3-clause-iperf+MIT/X11+BSD-3-clause",
+          "full_normalized_body_sha256": "01c45e83af6b8414016db2f16b727a390a96536ccddf19e9aecd2b0799ee2da2",
+          "read_reference": {
+            "component": "iperf3",
+            "label": "BSD-3-clause-iperf+MIT/X11+BSD-3-clause"
+          }
+        },
+        {
+          "label": "FSF-permissive1",
+          "full_normalized_body_sha256": "236519e8309d8881985773c6ce2b6063e9aa65fe929e92c8f149c981b77d43ee",
+          "read_reference": {
+            "label": "FSF-something",
+            "component": "iperf"
+          }
+        },
+        {
+          "label": "FSF-permissive2",
+          "full_normalized_body_sha256": "6b67719d76b493c426bc94fd9e5385217a85a1c1cbfa7829ff2afdc406750f0e",
+          "read_reference": {
+            "label": "FSFUL",
+            "component": "bgpq3"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f7ad4cb0f6ab6deb618dc45a5ccc7d71a32e7ea996e64989541ff3208c5d7183",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "libparse-recdescent-perl"
+          }
+        },
+        {
+          "label": "permissive",
+          "full_normalized_body_sha256": "c50be4410087c77f715f5277fe4b6e6751269721094ce6267f93bf96a80cf3d6",
+          "read_reference": {
+            "label": "autoconf-archive-permissive",
+            "component": "dbus"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "a4ae2100acaa9ea730ada4a3b2d8460114707b012c30f82b5e72b07171bf7cc8",
+          "read_reference": {
+            "label": "MIT",
+            "component": "iperf"
+          }
+        },
+        {
+          "label": "public-domain-1",
+          "full_normalized_body_sha256": "9b283823f72378ccb21d50de7c927dad5ed1eeed027a94e928b3786d6c5dd721",
+          "read_reference": {
+            "component": "iperf3",
+            "label": "public-domain-1"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "31cd0dde6580068c8d950e2bead9dd36db4b9ec28f574bcfe2f4adde78dd0a3a",
+          "read_reference": {
+            "component": "iperf3",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "public-domain-2",
+          "full_normalized_body_sha256": "485c342669ba729e1bbf647f9970e78c9f1a2e1575ca90d7252588f9ebb54918",
+          "read_reference": {
+            "component": "iperf3",
+            "label": "public-domain-2"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "5731a34f4c6fcb463481e8f7a17345c8a716151f0383c82ac7bac3c9903d0696",
+          "read_reference": {
+            "component": "iperf3",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "NCSA",
+          "full_normalized_body_sha256": "de07448330d6538866ec1351945f32e7f019d837af56f4b63fafa8d02078e39e",
+          "read_reference": {
+            "component": "iperf3",
+            "label": "NCSA"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "e6452f8bb9f61807201120c7056c952b2714090f2d9d5040516b764b86995476",
+          "read_reference": {
+            "label": "BSD2",
+            "component": "boost1.74"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "cyrus-sasl2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "iperf3",
+          "Source": "http://software.es.net/iperf/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2014-2022, The Regents of the University of California,\nthrough Lawrence Berkeley National Laboratory (subject to receipt of any\nrequired approvals from the U.S. Dept. of Energy).  All rights reserved."
+        },
+        {
+          "Files": "src/dscp.c",
+          "Copyright": "2000 Markus Friedl, 2005,2006 Damien Miller"
+        },
+        {
+          "Files": "src/cjson.*",
+          "Copyright": "2009-2017 Dave Gamble and cJSON contributors"
+        },
+        {
+          "Files": "src/net.*",
+          "Copyright": "2014-2019 The Regents of the University of California,\nthrough Lawrence Berkeley National Laboratory (subject to receipt of any\nrequired approvals from the U.S. Dept. of Energy).  All rights reserved.;\n2005-2007 Russ Cox, Massachusetts Institute of Technology;\n2003 Lucent Technologies"
+        },
+        {
+          "Files": "src/queue.h",
+          "Copyright": "1991, 1993 The Regents of the University of California"
+        },
+        {
+          "Files": "src/units.c",
+          "Copyright": "1999-2003, The Board of Trustees of the University of Illinois"
+        },
+        {
+          "Files": "aclocal.m4 *Makefile.in",
+          "Copyright": "1992-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "configure",
+          "Copyright": "1992-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "config/compile config/depcomp config/ltmain.sh config/missing config/test-driver",
+          "Copyright": "1999-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "config/ax_check_openssl.m4",
+          "Copyright": "2009,2010 Zmanda Inc. <http://www.zmanda.com/>, 2009,2010 Dustin J. Mitchell <dustin@zmanda.com>"
+        },
+        {
+          "Files": "config/install-sh",
+          "Copyright": "1994, X Consortium"
+        },
+        {
+          "Files": "config/mkinstalldirs",
+          "Copyright": "None"
+        },
+        {
+          "Files": "config/config.*",
+          "Copyright": "1992-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "docs/*",
+          "Copyright": "2014-2019, ESnet"
+        },
+        {
+          "Files": "src/portable_endian.h",
+          "Copyright": "None"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2014-2016 Raoul Gunnar Borenius <borenius@dfn.de>, 2018-2022 Roberto Lumbreras <rover@debian.org>"
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "openvpn-auth-ldap",
+      "version": "2.0.4-3",
+      "dsc_sha256": "df2d2fe4c174010bf90956f880fe67bcc5f0e501c8ee30c0d986a1cda4160e5c",
+      "binaries": [
+        {
+          "name": "openvpn-auth-ldap",
+          "version": "2.0.4-3",
+          "architecture": "arm64",
+          "copyright_sha256": "802e9d02f933018f2e1c31a90bd48f07b0a8a0c0e6cc6344684b22046559d5f5"
+        }
+      ],
+      "copyright_sha256": "802e9d02f933018f2e1c31a90bd48f07b0a8a0c0e6cc6344684b22046559d5f5",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "94f209af9b0f22181cab7ff102737350e492c849035cde20dc55ceddb867e607",
+          "read_reference": {
+            "component": "openvpn-auth-ldap",
+            "member": "LICENSE",
+            "sha256": "94f209af9b0f22181cab7ff102737350e492c849035cde20dc55ceddb867e607",
+            "method": "Complete original text read, preserving separately scoped licenses, sources/notice obligations and distinction between build/test code and linked runtime. Parent approval still requires complete source/copyright scope assessment."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "23e4f954cf19ca1a8658b392c138ba84c17f69e61cf606481a2425ec25eb7755",
+          "read_reference": {
+            "component": "openvpn-auth-ldap",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "BSD-3-clause-Miller",
+          "full_normalized_body_sha256": "9579693de6a98881a9783401799c415023fb5f5e862d6fca4d689f02e1bec7a0",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "bgpq3"
+          }
+        },
+        {
+          "label": "Custom",
+          "full_normalized_body_sha256": "48f4d9cfd386fa8899906e921a79ad867a459960e698ae9d09a494709423d21a",
+          "read_reference": {
+            "component": "openvpn-auth-ldap",
+            "label": "Custom"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "444deefa17ff054193c0858fc9db260d377f14153002a428186e92e9b4552fa0",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "libuv1"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "2fa5d95acbc2d83af294de72ee1ada9ef2f3aa0b03e39b5907a2d1a3c2182aeb",
+          "read_reference": {
+            "component": "openvpn-auth-ldap",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "665bfb375f31c0d8d723725d0a71121419bea990050a27abf2d01a04ec19d68b",
+          "read_reference": {
+            "label": "GPL-3.0+",
+            "component": "modemmanager"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "openvpn-auth-ldap",
+          "Source": "https://github.com/threerings/openvpn-auth-ldap"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2006 Three Rings Design, Inc.\n2005-2006 Landon Fuller <landonf@threerings.net>"
+        },
+        {
+          "Files": "src/strlcpy.c src/strlcpy.h",
+          "Copyright": "1998 Todd C. Miller <Todd.Miller@courtesan.com>"
+        },
+        {
+          "Files": "src/hash.c src/hash.h",
+          "Copyright": "1997 Kaz Kylheku <kaz@ashi.footprints.net>"
+        },
+        {
+          "Files": "tests/mockpf.c tests/mockpf.h",
+          "Copyright": "2002 Cedric Berger\n2006 Three Rings Design, Inc."
+        },
+        {
+          "Files": "tests/PXTest*",
+          "Copyright": "2012 Landon Fuller <landonf@bikemonkey.org>\n2008-2012 Plausible Labs Cooperative, Inc."
+        },
+        {
+          "Files": "tests/PXTestAssert.h tests/PXTestAssert.m tests/PXTestException.h tests/PXTestException.m",
+          "Copyright": "2007-2008 Google Inc.\n2012 Landon Fuller <landonf@bikemonkey.org>\n1997-2005 Sen:te (Sente SA)",
+          "Comment": "The file portions that fall under the BSD-2-clause are marked with \"SENTE_BEGIN - SENTE_END\"."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009-2014 Alberto Gonzalez Iniesta <agi@inittab.org>\n2019-2022 Aniol Martí <amarti@caliu.cat>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
