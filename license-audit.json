@@ -23311,6 +23311,42 @@
         "Retain actual sources, Debian modifications and complete build/install inputs. GNU-linked extensions retain the actual selected Readline/GPL and other linked-library conditions, not the obsolete library-version summaries in Debian/Doc text. OpenSSL3 and other system dependencies require separate exact-source license decisions.",
         "Preserve the original documentation for provenance and accompany it with the exact original Sun audioop permission and immutable upstream clarification: the restrictive Sound Blaster document notice was unrelated to incorporated SoX g711.c code. Do not invoke a noncommercial exception or extend that correction to unrelated source."
       ]
+    },
+    "bind9@1:9.18.49-1~deb12u3": {
+      "redistributable": true,
+      "source_identity": "bd6c191cd09fbc46b0283d2e598b539079f402663f22f9c9a7bdc7194734ac44",
+      "copyright_sha256": "fdc344548623105885017a34801922e376d919ae1c13f2ebc31096898a3fd5fa",
+      "license": "MPL-2.0 AND ISC AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Apache-2.0 AND CC0-1.0 AND LicenseRef-BIND-Original-Notices",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/BIND-9.18.49/COPYING",
+          "sha256": "d3d6ed2a709a8b82c04a556fc93654a7d4f40d53724d8fdac0ea69aff7087c1e"
+        },
+        {
+          "path": "LICENSES/BIND-9.18.49/COPYRIGHT",
+          "sha256": "9734825d67a3ac967b2c2f7c9a83c9e5db1c2474dbe9599157c3a4188749ebd4"
+        },
+        {
+          "path": "LICENSES/BIND-9.18.49/LICENSE",
+          "sha256": "d3d6ed2a709a8b82c04a556fc93654a7d4f40d53724d8fdac0ea69aff7087c1e"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "scope": "Exact BIND9.18.49 Debian source/package scope. Full original copyright and original Latin1 COPYRIGHT read; root MPL2 texts fully word-compared to complete read original. Actual archive file/content census resolves stale metadata references without deleting any file or feature. Not full OS or dependency clearance.",
+      "conditions": [
+        "Retain MPL2 source-file scope, original notices and exact complete preferred source with all Debian modifications, patches and build/install inputs. Provide source availability alongside executable distribution and preserve recipient source rights; do not impose incompatible source restrictions or infer secondary-license permissions for files marked incompatible.",
+        "Preserve all original ISC, BSD2/BSD3, MIT/Joyent, Farsight Apache2, CC0/SipHash and source-build helper notices, copyrights, disclaimers and nonendorsement terms. Retain the complete original aggregate COPYRIGHT in its original encoding and byte identity.",
+        "The original aggregate/debian notices mention historical random_test.c, PKCS11 and SPNEGO/RFC4178 source and an OpenSSL-LICENSE file absent from this exact upstream archive. No public-domain or missing-license permission is inferred for nonexistent code, and nothing is removed locally. Current SPNEGO test protocol references do not copy the historical ASN.1 module. Actual OpenSSL and GSS/Kerberos runtime dependencies retain their separately audited source/license scope."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
