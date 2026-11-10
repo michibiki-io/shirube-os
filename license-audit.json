@@ -30570,6 +30570,151 @@
       ],
       "reviewed_on": "2026-11-10",
       "scope": "Exact observed Host sFlow source and original notice only, with complete publisher grant and independently scoped APL/MIT originals retained. This is not an OSI classification of the custom sFlow grant, a patent/title warranty or whole-release/OCI clearance."
+    },
+    "accel-ppp-ng@1.13.0#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#3a24c706e21bed94fb364f3dfee45611144d83ea3405bec5af802f4325a960fd": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "3a24c706e21bed94fb364f3dfee45611144d83ea3405bec5af802f4325a960fd",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/accel-ppp-ng/debian-copyright.txt",
+          "sha256": "50ae36e1163a8633fc7168a8bc4facadb2b9f21b4ee64e5d5736b17658378667"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/accel-ppp-ng/original-accel-ppp-ng-COPYING",
+          "sha256": "e6d6a009505e345fe949e1310334fcb0747f28dae2856759de102ab66b722cb4"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Keep every original source/component copyright, full permission, attribution, nonendorsement, patent and disclaimer notice. Root licenses do not override individually licensed files.",
+        "Provide complete corresponding source, original build/install configuration and modifications, preserving GPL/LGPL/MPL source and relinking obligations only for their covered components. No new distribution-wide license conversion is asserted.",
+        "Original BSD, ISC and permissive author conditions remain scoped to their files; do not imply upstream endorsement. Preserve the full notices in source and binary documentation."
+      ],
+      "scope": "Exact observed original source and original package copyright pair. Original component declarations, source root legal files, all new operative bodies and complete standard-license word differences reviewed. Ancillary and linked dependencies remain independently gated; no complete OS or OCI clearance.",
+      "copyright_notice_variant": {
+        "kind": "exact-repetition-of-reviewed-complete-upstream-notice",
+        "reviewed_original_sha256": "50ae36e1163a8633fc7168a8bc4facadb2b9f21b4ee64e5d5736b17658378667",
+        "repetitions": 2,
+        "comparison": "Complete actual notice equals two byte-identical copies of the complete previously reviewed notice. No grant, attribution or condition is added, removed or changed.",
+        "permission_scope": "Identical to the original reviewed component decision; duplicate metadata does not expand redistribution permission."
+      }
+    },
+    "hsflowd@2.1.21-1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#0047d0150faf5c5df59ac318393b7a13b8d9a98517f5456a08acfa0481d416a0": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "0047d0150faf5c5df59ac318393b7a13b8d9a98517f5456a08acfa0481d416a0",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "LicenseRef-InMon-sFlow AND APL-1.0 AND MIT",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/InMon-sFlow-license.txt",
+          "sha256": "c94af9b2d31a08308d226f5dab945afbd71d5df096aeab39149c3f9154d7df8c"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_Windows_installer_license.rtf",
+          "sha256": "95ffb5cc7c81755b20478c058406af27e523cc73d575ebafc772e003bc36c3dd"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_WindowsXP_hsflowd_installer_license.rtf",
+          "sha256": "63bfc1dde8b33354515a42ed241fc3fe2c648446f62a5af64c3c76fc35c7aff5"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_json_LICENSE",
+          "sha256": "b56ff5bcae5b93a530f9fa8894f41f1edf47c0d526835839f0fb76d5ce9dc971"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/src_json_tests_unity_docs_license.txt",
+          "sha256": "23ddecfb279b454d2e7528b735201839856604fdf9b082a6da32a45ad1d79322"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/Windows/license.txt",
+          "sha256": "30c4ec50e94dd586b3cba71cbd470a8084e45214885b6044a5058a01a0859f36"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/WindowsXP/license.txt",
+          "sha256": "071fecc39bd4f131ef6b1831e8c8fe31055dd328deacd8b831ca7b8d09d882d3"
+        },
+        {
+          "path": "LICENSES/Host-sFlow-original-notices/NOTICE.txt",
+          "sha256": "288d893d54ce750a4234eacabe11ff7642f2b4b910cdae046bb812313e78ec68"
+        }
+      ],
+      "conditions": [
+        "Retain the entire exact original source and original package copyright aggregate, all InMon and other author notices, and the full publisher license. Section2.1 permits reproduction, modification, installation and distribution in products, subject to its full conditions; no noncommercial-only exception is used.",
+        "Keep the covered capability identified as sFlow(R), its original protocol/specification behavior and upstream marks. Preserve all original acknowledgements and the full section2.3 specification/trademark/documentation conditions; this does not license unrelated InMon artwork or imply endorsement. Distributor product identity remains separate from attribution to the covered sFlow capability.",
+        "The original APL1.0 documents and Exhibit A remain unaltered for their covered source. Keep conspicuous full license.txt and original notices with source, provide complete corresponding source with covered executables, and preserve source availability/modification documentation obligations where applicable. No APL patent license is inferred: Exhibit A selects NO, third-party definition A and its stated California forum. No Supplement File is present in the exact source inventory.",
+        "Keep unmodified optional Windows source and its licenses without representing it as an installed Windows executable. Root grants do not override cJSON/Unity MIT grants or any other original independently scoped notice. No source, telemetry functionality or compiled component is removed or renamed by this decision."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact observed Host sFlow source and original notice only, with complete publisher grant and independently scoped APL/MIT originals retained. This is not an OSI classification of the custom sFlow grant, a patent/title warranty or whole-release/OCI clearance.",
+      "copyright_notice_variant": {
+        "kind": "exact-repetition-of-reviewed-complete-upstream-notice",
+        "reviewed_original_sha256": "c6d9eb5fdfaa0e9f908cd2a8d9ab938ec051b833e3beab32db50952b1824ec3b",
+        "repetitions": 2,
+        "comparison": "Complete actual notice equals two byte-identical copies of the complete previously reviewed notice. No grant, attribution or condition is added, removed or changed.",
+        "permission_scope": "Identical to the original reviewed component decision; duplicate metadata does not expand redistribution permission."
+      }
+    },
+    "pyhumps@3.8.0-1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#20a88984c3a8fa6dfc73b2817f698f8cb09f17c93ff6750ae80367ff45844ab0": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "20a88984c3a8fa6dfc73b2817f698f8cb09f17c93ff6750ae80367ff45844ab0",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "Unlicense",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ce680e8c039864788c7fea58df40f500ad9b69bf5eef9fdde1a1371638ae5fc3.txt",
+          "sha256": "ce680e8c039864788c7fea58df40f500ad9b69bf5eef9fdde1a1371638ae5fc3"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ],
+      "copyright_notice_variant": {
+        "kind": "exact-repetition-of-reviewed-complete-upstream-notice",
+        "reviewed_original_sha256": "ce680e8c039864788c7fea58df40f500ad9b69bf5eef9fdde1a1371638ae5fc3",
+        "repetitions": 2,
+        "comparison": "Complete actual notice equals two byte-identical copies of the complete previously reviewed notice. No grant, attribution or condition is added, removed or changed.",
+        "permission_scope": "Identical to the original reviewed component decision; duplicate metadata does not expand redistribution permission."
+      }
+    },
+    "udp-broadcast-relay@0.3+vyos#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#7fd913a2cc354de2dffac994bf53ff4cc4ece292f53612c0dfd3371f574a6502": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "7fd913a2cc354de2dffac994bf53ff4cc4ece292f53612c0dfd3371f574a6502",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0274727330a722bb04018f639731ea1452ce23ed1dd443644d2a0642ace57768.txt",
+          "sha256": "0274727330a722bb04018f639731ea1452ce23ed1dd443644d2a0642ace57768"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ],
+      "copyright_notice_variant": {
+        "kind": "exact-repetition-of-reviewed-complete-upstream-notice",
+        "reviewed_original_sha256": "0274727330a722bb04018f639731ea1452ce23ed1dd443644d2a0642ace57768",
+        "repetitions": 2,
+        "comparison": "Complete actual notice equals two byte-identical copies of the complete previously reviewed notice. No grant, attribution or condition is added, removed or changed.",
+        "permission_scope": "Identical to the original reviewed component decision; duplicate metadata does not expand redistribution permission."
+      }
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
