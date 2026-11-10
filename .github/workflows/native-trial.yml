@@ -27,6 +27,7 @@ jobs:
     env:
       SHIRUBE_BUILD_CPUS: '4'
       SHIRUBE_BUILD_MEMORY_GIB: '8'
+      DOCKER_BUILD_RECORD_UPLOAD: 'false'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
