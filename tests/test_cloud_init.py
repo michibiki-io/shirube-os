@@ -17,6 +17,26 @@ from producer.installer_admin import AUTHENTICATION
 
 
 class CloudInitTests(unittest.TestCase):
+    def test_factory_install_retains_key_only_administrator_and_key_options_with_ssh(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);target=root/'factory.boot'
+            target.write_text('factory configuration')
+            saved=MagicMock();saved.exists.return_value=True;saved.list_nodes.return_value=['instance']
+            values={'key':'public fixture','type':'ssh-ed25519','options':'no-agent-forwarding'}
+            saved.return_value.side_effect=lambda path:values[path[-1]]
+            config=MagicMock();config.to_string.return_value='retained configuration'
+            namespace={'Path':Path,'DIR_CONFIG':str(root),'ConfigTree':MagicMock(side_effect=[config,saved]),
+                       'read_file':lambda path:Path(path).read_text()}
+            (root/'config.boot').write_text('saved configuration')
+            exec(AUTHENTICATION,namespace)
+            namespace['configure_authentication'](str(target),'','cloud-admin')
+            prefix=['system','login','user','cloud-admin','authentication','public-keys']
+            for field,value in values.items():
+                config.set.assert_any_call(prefix+['instance',field],value=value,replace=True)
+            config.set_tag.assert_any_call(prefix)
+            config.set.assert_any_call(['service','ssh'])
+            self.assertEqual(target.read_text(),'retained configuration')
+
     def test_reboot_requires_new_boot_id_and_retries_a_timed_out_ssh_probe(self):
         from producer.cloud_init_guest import verify
         with tempfile.TemporaryDirectory() as temporary:

@@ -33,8 +33,22 @@ def configure_authentication(config_file: str, password_hash: str, administrator
                        value=password_hash, replace=True)
         else:
             keys = ['system', 'login', 'user', administrator, 'authentication', 'public-keys']
-            if not config.exists(keys) or not config.list_nodes(keys):
+            saved = ConfigTree(read_file(f'{DIR_CONFIG}/config.boot'))
+            if not saved.exists(keys) or not saved.list_nodes(keys):
                 raise ValueError()
+            for name in saved.list_nodes(keys):
+                for field in ['key', 'type']:
+                    value = saved.return_value(keys+[name, field])
+                    if not value:
+                        raise ValueError()
+                    config.set(keys+[name, field], value=value, replace=True)
+                if saved.exists(keys+[name, 'options']):
+                    config.set(keys+[name, 'options'],
+                               value=saved.return_value(keys+[name, 'options']), replace=True)
+            config.set_tag(keys)
+            # A factory configuration has no SSH service or console password.
+            # Its retained key-only administrator still needs an access path.
+            config.set(['service', 'ssh'])
         config.set_tag(['system', 'login', 'user'])
         with open(config_file, 'w') as target:
             target.write(config.to_string())
