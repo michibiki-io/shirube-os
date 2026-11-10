@@ -1,0 +1,538 @@
+{
+  "kind": "observed-runtime-debian-full-original-legal-reconciliation",
+  "status": "PASS_EXACT_COMPONENT_BINDINGS_ONLY",
+  "components": [
+    {
+      "name": "apt",
+      "version": "2.6.1",
+      "source_identity": "e258c1b9c24e1747100271db9d6e5af7127bd3ef812a69bdf63de263abfdc6fd",
+      "copyright_sha256": "b4701305243d8d746f4acaafe15d94f946251b05691bd6917fef41dd15e9ee12",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0004/copyright",
+      "reviewed_reference": "apt@2.6.2",
+      "exact_known_original_legal_files": 3,
+      "required_notice_files": [],
+      "license": "GPL-2.0-only AND BSD-3-Clause AND MIT"
+    },
+    {
+      "name": "bind9",
+      "version": "1:9.18.49-1~deb12u1",
+      "source_identity": "c59dc8fc73c0d2146ed0135ba56d87840d067a474d4dd5e1b85b1be2e4ad926f",
+      "copyright_sha256": "fdc344548623105885017a34801922e376d919ae1c13f2ebc31096898a3fd5fa",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0017/copyright",
+      "reviewed_reference": "bind9@1:9.18.49-1~deb12u3",
+      "exact_known_original_legal_files": 4,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/BIND-9.18.49/COPYING",
+          "sha256": "d3d6ed2a709a8b82c04a556fc93654a7d4f40d53724d8fdac0ea69aff7087c1e"
+        },
+        {
+          "path": "LICENSES/BIND-9.18.49/COPYRIGHT",
+          "sha256": "9734825d67a3ac967b2c2f7c9a83c9e5db1c2474dbe9599157c3a4188749ebd4"
+        },
+        {
+          "path": "LICENSES/BIND-9.18.49/LICENSE",
+          "sha256": "d3d6ed2a709a8b82c04a556fc93654a7d4f40d53724d8fdac0ea69aff7087c1e"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "license": "MPL-2.0 AND ISC AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Apache-2.0 AND CC0-1.0 AND LicenseRef-BIND-Original-Notices"
+    },
+    {
+      "name": "ca-certificates",
+      "version": "20230311+deb12u1",
+      "source_identity": "d4d57c9b56db87c8ebe7a0c27d55023e3369d183d4b774bdf455f775a80f00eb",
+      "copyright_sha256": "e85e1bcad3a915dc7e6f41412bc5bdeba275cadd817896ea0451f2140a93967c",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0023/copyright",
+      "reviewed_reference": "ca-certificates@20250419~deb12u2",
+      "exact_known_original_legal_files": 2,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ],
+      "license": "GPL-2.0-or-later AND MPL-2.0"
+    },
+    {
+      "name": "strongswan",
+      "version": "5.9.8-5+deb12u5",
+      "source_identity": "356650b14e8743966303d2c07b25596461f7f46cbd0eb530fa029d821640c8b4",
+      "copyright_sha256": "246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0025/copyright",
+      "reviewed_reference": "strongswan@5.9.8-5+deb12u6",
+      "exact_known_original_legal_files": 4,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/StrongSwan-original-LICENSE.txt",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
+        }
+      ],
+      "license": "GPL-3.0-or-later WITH LicenseRef-StrongSwan-OpenSSL-LGPL-exception AND MIT AND BSD-3-Clause AND LicenseRef-SSLeay-original-source-permission"
+    },
+    {
+      "name": "haproxy",
+      "version": "2.6.12-1+deb12u3",
+      "source_identity": "b16dfb35c35aa064cce5e3b7cea1e2f7acf5902bc6c714d9fbbf7b98840e7a15",
+      "copyright_sha256": "38abd31c03ab1115b2e5c04cba10faa395ab74c39a493285dffa2f8ed17715b1",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0086/copyright",
+      "reviewed_reference": "haproxy@2.6.12-1+deb12u4",
+      "exact_known_original_legal_files": 4,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        }
+      ],
+      "license": "LicenseRef-GPL-2.0-only-with-OpenSSL-exception AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND MPL-2.0 AND Apache-2.0 AND MIT AND BSD-2-Clause"
+    },
+    {
+      "name": "jq",
+      "version": "1.6-2.1+deb12u2",
+      "source_identity": "ac53e4e0af865fd228e47c26a6d9a34da459fd4fbc2ab90815147dfeedf6ded0",
+      "copyright_sha256": "fa95e7bf94b039285c93ad3bdd615736ee833c16fa61e6322f8d95bced49d95c",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0114/copyright",
+      "reviewed_reference": "jq@1.6-2.1+deb12u3",
+      "exact_known_original_legal_files": 2,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/CC-BY-3.0.txt",
+          "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+        }
+      ],
+      "license": "MIT AND CC-BY-3.0 AND LicenseRef-Lucent-permission AND GPL-2.0-or-later"
+    },
+    {
+      "name": "brotli",
+      "version": "1.0.9-2",
+      "source_identity": "8c4c86748ec9770e08b60233d658593650444b04a452dc5b607ed5b5537b683e",
+      "copyright_sha256": "24a64e5bb83d0960d1835696a1e23c0896ad6055b0ca47c66ab0eb9a766324b1",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0134/copyright",
+      "reviewed_reference": "brotli@1.0.9-2+deb12u1",
+      "exact_known_original_legal_files": 2,
+      "required_notice_files": [],
+      "license": "MIT"
+    },
+    {
+      "name": "linux",
+      "version": "6.1.176-1",
+      "source_identity": "640124b35c5d7e32af9a9d536c47cfebf723fbb86bfbb25d0f2729b798bca35e",
+      "copyright_sha256": "b747c37629e008bbb10bf2d44c5bb6e014ce2dde36b9ef1dc81e1425417c24bf",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0153/copyright",
+      "reviewed_reference": "linux@6.1.190-1",
+      "exact_known_original_legal_files": 32,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Linux-original-syscall-note.txt",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ],
+      "license": "GPL-2.0-only WITH Linux-syscall-note AND LGPL-2.1-or-later AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Unicode-data AND LicenseRef-Linux-original-source-scopes"
+    },
+    {
+      "name": "libdbi-perl",
+      "version": "1.643-4+deb12u1",
+      "source_identity": "3733dc8c6e52a69e0737fb34e5d407feb2e2b0c5da66de6e3b7a7adc73f0df01",
+      "copyright_sha256": "57d2dfda7c353999012ecf14b0a932b734f685df5c684ad04bf86f12f8a954c5",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0159/copyright",
+      "reviewed_reference": "libdbi-perl@1.643-4+deb12u3",
+      "exact_known_original_legal_files": 2,
+      "required_notice_files": [],
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "libevent",
+      "version": "2.1.12-stable-8",
+      "source_identity": "a2821f5bf8adacd775317ae6a85d19097a2043ba5206fcf840387f4a2da5a2c5",
+      "copyright_sha256": "d32d223a2f96bb222faa1f6d2b4573b512465b2b234f56e040a4d7daab060d69",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0172/copyright",
+      "reviewed_reference": "libevent@2.1.12-stable-8+deb12u1",
+      "exact_known_original_legal_files": 4,
+      "required_notice_files": [],
+      "license": "BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND curl AND MIT AND FSFUL AND FSFULLR AND FSFULLRWD AND GPL-2.0-or-later AND GPL-3.0-or-later AND ISC"
+    },
+    {
+      "name": "expat",
+      "version": "2.5.0-1+deb12u2",
+      "source_identity": "6fc87dbd01f49999ed368cfb37c08d35e41348dda2281d60642f3aa14cb77e32",
+      "copyright_sha256": "60919fe1a156395ff14511bb6ff79756c50ade2fff59ac60c9bae1d8a7fe6292",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0174/copyright",
+      "reviewed_reference": "expat@2.5.0-1+deb12u5",
+      "exact_known_original_legal_files": 3,
+      "required_notice_files": [],
+      "license": "MIT"
+    },
+    {
+      "name": "xz-utils",
+      "version": "5.4.1-1+deb12u1",
+      "source_identity": "38f98e356f7e7e89b0920d39c55dd5f3d1a9f2684bff83c8b4890561e1832e94",
+      "copyright_sha256": "a2dc8fac0f496e1c58aff67018cf0c6b88336316afa5642f9335b71642e28aa8",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0223/copyright",
+      "reviewed_reference": "xz-utils@5.4.1-1+deb12u2",
+      "exact_known_original_legal_files": 5,
+      "required_notice_files": [],
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later WITH Autoconf-exception-3.0 AND LicenseRef-XZ-original-public-domain-permission"
+    },
+    {
+      "name": "pcre2",
+      "version": "10.42-1",
+      "source_identity": "726dafe7a8d07332d4df61edf23f384ddb158b2b263846273d1103b6b9a7c176",
+      "copyright_sha256": "030511beb4d9d620ad09914c369c36ec0528dcf301d1923cc643c948ee7c6a38",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0274/copyright",
+      "reviewed_reference": "pcre2@10.42-1+deb12u2",
+      "exact_known_original_legal_files": 4,
+      "required_notice_files": [],
+      "license": "BSD-3-Clause AND BSD-2-Clause AND X11 AND LicenseRef-Public-Domain"
+    },
+    {
+      "name": "perl",
+      "version": "5.36.0-7+deb12u3",
+      "source_identity": "ac13a1eb3d4bb63ca8c91a3695ad563b10792a3e0f2f8b74d9600625a98a68fb",
+      "copyright_sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0277/copyright",
+      "reviewed_reference": "perl@5.36.0-7+deb12u4",
+      "exact_known_original_legal_files": 6,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Perl-5.36.0/Copying",
+          "sha256": "d77d235e41d54594865151f4751e835c5a82322b0e87ace266567c3391a4b912"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/cpan/Compress-Raw-Bzip2/bzip2-src/LICENSE",
+          "sha256": "c6dbbf828498be844a89eaa3b84adbab3199e342eb5cb2ed2f0d4ba7ec0f38a3"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/debian-copyright.txt",
+          "sha256": "b52f3ca17b45473cb0da6ec46748949101fcf0dda1fd5d8b306e6c97fd41af4d"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/dist/ExtUtils-CBuilder/LICENSE",
+          "sha256": "84f80368c9e0a3b5347e19c977c8597f5588c262695caf815e3c53e740c1b6a1"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Artistic",
+          "sha256": "dd90d4f42e4dcadf5a7c09eea0189d93c7b37ae560c91f0f6d5233ed3b9292a2"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Artistic-dist.txt",
+          "sha256": "0ff1c0b63c1a086878180ff79cf54628430ffc043de03c02b17c646157ac5bde"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Unicode-original.txt",
+          "sha256": "160bccb580a2af0a9e5967943a89f1d9adde4fd8d10057c059478534fd5b1419"
+        },
+        {
+          "path": "LICENSES/Perl-5.36.0/Powerdog-BSD4.txt",
+          "sha256": "495d64886cd2056029e86b9ac7ca7fc219c45e8a501dcec6173f692ed6a03978"
+        },
+        {
+          "path": "LICENSES/Artistic-2.0.txt",
+          "sha256": "9a2c2e9497da62a9a6e735cad9421d479c7657382a54220362253b97842bc43d"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "license": "Artistic-1.0-Perl AND Artistic-2.0 AND LicenseRef-Artistic-dist AND GPL-3.0-or-later WITH Bison-exception-2.2 AND MIT AND BSD-3-Clause AND BSD-4-Clause AND Bzip2-1.0.6 AND Zlib AND CC0-1.0 AND LicenseRef-Perl-Original-Notices"
+    },
+    {
+      "name": "libpng1.6",
+      "version": "1.6.39-2+deb12u5",
+      "source_identity": "7b86211030a34deb6b0a2cd7e1d9db0fe92443fd30cab537fb89b1e7f7c9f188",
+      "copyright_sha256": "68bd3997355bc44ccb97ff5e2bb146360e762c7d9c721945a4fabf77d1349e4a",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0281/copyright",
+      "reviewed_reference": "libpng1.6@1.6.39-2+deb12u6",
+      "exact_known_original_legal_files": 5,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libpng-original-LICENSE.txt",
+          "sha256": "dfe5a536b0e5a531f844fb9c101a3089aca60772a503893b8e15f9457e369960"
+        }
+      ],
+      "license": "Libpng AND MIT AND GPL-2.0-or-later AND Apache-2.0"
+    },
+    {
+      "name": "python3.11",
+      "version": "3.11.2-6+deb12u8",
+      "source_identity": "197fa19ab45f41c820f40f6d9ead671c2ea29ddc53ba9424b36f1bf58458a10e",
+      "copyright_sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0289/copyright",
+      "reviewed_reference": "python3.11@3.11.2-6+deb12u9",
+      "exact_known_original_legal_files": 10,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Python-3.11.2/Doc/copyright.rst",
+          "sha256": "9e5e6634a7f5444dd83da55ccb265bac825abf72ecddccf7e394f284636bd9df"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Doc/license.rst",
+          "sha256": "4d6119c3d88da68c95cf4d61683e327758074d32ff205651254369481fd76bd7"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Mac/BuildScript/resources/License.rtf",
+          "sha256": "ab6df6040a4e24babad38f98454eb3263722fa6a1c441bfaa271798efbe55f27"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/_ctypes/darwin/LICENSE",
+          "sha256": "8088ec43d0290e44628a5c2c84c1ca37983080d47e0bb6e0c89aa695b12630ec"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/_ctypes/libffi_osx/LICENSE",
+          "sha256": "40a537c7d74baeed3831304e92d1664ababd7ad8a3cf29f11a257c9e47145248"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/_sha3/LICENSE",
+          "sha256": "4633fc5859344c6f244939c27700fb941d12c4636215a8eccde17d9a6d1dcb0d"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/expat/COPYING",
+          "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Tools/msi/bundle/bootstrap/LICENSE.txt",
+          "sha256": "cb95daf98edda8e08a242e1060691b6941f0911692bf468a3f9c5e4b58c09b8f"
+        },
+        {
+          "path": "LICENSES/Python-audioop-Sun-notice.txt",
+          "sha256": "7427062e399d000b705990ccd39f433486b6abd685241b7d43937f44b7d62d2f"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ],
+      "license": "Python-2.0 AND 0BSD AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND MS-RL AND GPL-2.0-or-later AND LicenseRef-Python-Original-Notices"
+    },
+    {
+      "name": "cyrus-sasl2",
+      "version": "2.1.28+dfsg-10",
+      "source_identity": "cb9c913a6f4716456c93ed205dfef84915a37cf2c994160564e8336e86831d7a",
+      "copyright_sha256": "5e77ddcac7fb682d696bc4b034dc2869e5a9011e8c2ed3c570ab8db0f4506931",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0299/copyright",
+      "reviewed_reference": "cyrus-sasl2@2.1.28+dfsg-10+deb12u1",
+      "exact_known_original_legal_files": 3,
+      "required_notice_files": [],
+      "license": "LicenseRef-Cyrus-SASL-original-grants"
+    },
+    {
+      "name": "libssh",
+      "version": "0.10.6-0+deb12u2",
+      "source_identity": "4e798a40fd3a97317683b818f28a41a6e9658a66da7375c40fe0d45f0168c755",
+      "copyright_sha256": "1b33ec0b1d0d521afb21d8e6b98fa4abf52b1ffb69a8461a045db9d586ce141f",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0310/copyright",
+      "reviewed_reference": "libssh@0.10.6-0+deb12u3",
+      "exact_known_original_legal_files": 4,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libssh-original-public-domain-notices.txt",
+          "sha256": "c1e2fe33c3fb90a08f0083d0767a04324563c4e6f1a9c9f7d72dc4727a38d24a"
+        }
+      ],
+      "license": "LGPL-2.1-only AND LGPL-2.1-or-later WITH LicenseRef-Libssh-OpenSSL-exception AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Libssh-public-domain"
+    },
+    {
+      "name": "libssh2",
+      "version": "1.10.0-3",
+      "source_identity": "a0fe68f402a2f44dd6bd2219457fb8677b2149a83e7b009e93ff0635de940766",
+      "copyright_sha256": "98978241c573785aa7c8504e399bb66cfb3c40c1f20507a0d3c7580bfbf9d8d4",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0311/copyright",
+      "reviewed_reference": "libssh2@1.10.0-3+deb12u1",
+      "exact_known_original_legal_files": 2,
+      "required_notice_files": [],
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "openssl",
+      "version": "3.0.20-1~deb12u2",
+      "source_identity": "a614474a2773c23b10c0d65f4eccbcf93fdac4749afb7c26d76e1b0340154d3d",
+      "copyright_sha256": "6a7da622fe0637a334d2a8fc470852d2ffb77d9a2b2f930f854e32a41ad6ef35",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0312/copyright",
+      "reviewed_reference": "openssl@3.0.22-1~deb12u2",
+      "exact_known_original_legal_files": 4,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Artistic-1.0.txt",
+          "sha256": "9ea88fc1a944206374bb68b947a5b57642fc87dfaec7cbcb61a9b48566cbb91d"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "license": "Apache-2.0 AND (Artistic-1.0 OR GPL-1.0-or-later) AND (Artistic-1.0-Perl OR GPL-1.0-or-later)"
+    },
+    {
+      "name": "xen",
+      "version": "4.17.5+72-g01140da4e8-1",
+      "source_identity": "f13956b67fb7a65707c2b0620d89b41ee5d203434dd7bb913017356791ee66c1",
+      "copyright_sha256": "fb89466b3283e3f49ebb1d862a3c1213cc45555c386189175197567c5ae00d0f",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0344/copyright",
+      "reviewed_reference": "xen@4.17.7+13-g2445b30a44-0+deb12u1",
+      "exact_known_original_legal_files": 25,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Xen-original-project-COPYING.txt",
+          "sha256": "9eeacf4e4f91bdbcd16b3282bb86779e3122da032953ebccad4fccdfcf4cb3ac"
+        },
+        {
+          "path": "LICENSES/Xen-original-hypervisor-COPYING.txt",
+          "sha256": "ef3ef58353d65cdc29184d6f94ed8e97f880c5d9ec5363db211698ccc9e42637"
+        },
+        {
+          "path": "LICENSES/Xen-original-public-header-COPYING.txt",
+          "sha256": "ed0cccc11399100736bd880047786131cbf2bf36e4cdfe82b9288d33911ba6ac"
+        },
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ],
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND MIT AND BSD-2-Clause AND BSD-3-Clause AND CC-BY-4.0 AND LicenseRef-Xen-permissive-source-scopes"
+    },
+    {
+      "name": "nginx",
+      "version": "1.22.1-9+deb12u9",
+      "source_identity": "28baa4abda06503ae8ecde6e9f049905de7c172d6ec767636628bfcd87499cf4",
+      "copyright_sha256": "d5458f44f9e2ace963f1d51ab9ecc0d11acdb49b715b73b4d48f11d5f906e052",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0384/copyright",
+      "reviewed_reference": "nginx@1.22.1-9+deb12u10",
+      "exact_known_original_legal_files": 2,
+      "required_notice_files": [],
+      "license": "BSD-2-Clause AND MIT AND GPL-2.0-or-later AND LicenseRef-Public-Domain"
+    },
+    {
+      "name": "squid",
+      "version": "5.7-2+deb12u5",
+      "source_identity": "fc563e7f835ebf511a32a0408a16d25e5259edde92d11985819aa9456f7ca0e4",
+      "copyright_sha256": "8b96280f4bd6f9bc0eed1462c8d2389a177c36d619cd83031195cb56d1f0f34d",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0464/copyright",
+      "reviewed_reference": "squid@5.7-2+deb12u6",
+      "exact_known_original_legal_files": 5,
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Squid-5.7/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/CREDITS",
+          "sha256": "7e5926ddd168a018e2566c40618a4f7cdf6b9ed1920319b9270b34d94b4a58d7"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/CONTRIBUTORS",
+          "sha256": "a9d0b3584f9e4358e3a7c57deb98288e07414668c05d16e1805016c334bcba2b"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/errors/TRANSLATORS",
+          "sha256": "f96b71a7822e69143e92f45ef82e4e7cda5b11397ae520e6d8a2da35c923137c"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/README",
+          "sha256": "aa8f9063f5a7dbf1963a0a5c9e569b57f474c9abf92b3600c9b91dec630c3d25"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/errors/COPYRIGHT",
+          "sha256": "da960bf469fd60c85820d066fd52c3ddaec3a401e4890292d6121c037d7b3eba"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/libltdl/COPYING.LIB",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/debian/copyright",
+          "sha256": "8b96280f4bd6f9bc0eed1462c8d2389a177c36d619cd83031195cb56d1f0f34d"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/debian/copyright.Debian",
+          "sha256": "dcafcf3f5ccb9b8b4f38514c2283e88dbcfa50590e86c30b6e829cea8a302d12"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/RFC2617-copyright.txt",
+          "sha256": "24f88d15616b245b2c2de628d55dd92912b41ce30e55624b264dcd13f4cca4b0"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        },
+        {
+          "path": "LICENSES/CC-BY-3.0.txt",
+          "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        },
+        {
+          "path": "LICENSES/BSL-1.0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/LICENSE",
+          "sha256": "310fe25c858a9515fc8c8d7d1f24a67c9496f84a91e0a0e41ea9975b1371e569"
+        }
+      ],
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND ISC AND Beerware AND CC-BY-2.5 AND CC-BY-3.0 AND CC-BY-SA-3.0 AND Artistic-1.0-Perl AND BSL-1.0 AND OLDAP-2.8 AND LicenseRef-Squid-Original-Notices"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026b-0+deb12u1",
+      "source_identity": "1a6e7b80823607130b79a12e5dff0d03ed81feb14faf5fffad94841e54cfe988",
+      "copyright_sha256": "cb61132bc0fc7b26ef5a82ee18b2fb644a1362f4f286ed980ff22e408471f59a",
+      "evidence_member": "components/shirube-os-v2026.03.0-amd64-source-0482/copyright",
+      "reviewed_reference": "tzdata@2026f-0+deb12u1",
+      "exact_known_original_legal_files": 2,
+      "required_notice_files": [],
+      "license": "LicenseRef-Public-Domain"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "scope": "Actual archived copyright and all retained upstream legal files match the reviewed original catalog byte-for-byte. Original source identities remain distinct. Runtime implementation is not changed or recompiled by this reconciliation."
+}
