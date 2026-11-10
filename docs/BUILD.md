@@ -598,3 +598,43 @@ configure、build、install を実行します。Debian バイナリの梱包で
 `DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -b` を使います。元の試験一式は不完全なため
 合格とは扱いません。通常のライブラリ build/install と、OS 全体の再構築・バイナリの
 完全一致確認は別の検証です。
+
+## Hosted ISO/source resource trial
+
+`Native hosted ISO source trial` runs on native `ubuntu-24.04` and
+`ubuntu-24.04-arm` runners. It starts manually on a feature branch, or when that
+workflow file changes on a feature branch. Ordinary implementation pushes do
+not repeatedly start this expensive trial. Compiler tool layers use the existing
+BuildKit cache; each native-library artifact store starts empty. The existing
+ISO producer builds from the exact clean commit with four CPUs and 8 GiB memory,
+then all corresponding sources are restored against the actual project input.
+Only sanitized JSON measurements are uploaded. ISO, sources and native-library
+cache contents remain in the disposable job. This does not publish a release.
+
+The report records the exact commit, ISO hash, source-restoration result, elapsed
+time and 15-second filesystem free-space samples. The sampled growth is a lower
+bound on storage use, not an exact peak. Timing excludes compiler-image
+preparation and all disk/guest tests. A passing ISO/source phase does not establish
+complete release capacity or time feasibility, clear a license failure, or change
+the release preflight and publication gates. ARM64 is included because this
+repository requires native OS builds on both architectures; this trial does not
+implement the separately proposed package-build parallelization.
+
+## 公開 runner での ISO・ソース作成の実測
+
+`Native hosted ISO source trial` は、ネイティブの `ubuntu-24.04` と
+`ubuntu-24.04-arm` で動作します。feature branch での手動実行、またはその workflow
+ファイルの変更時に開始し、通常の実装修正の push ごとには繰り返し実行しません。
+toolchain の Docker layer は既存の BuildKit cache を使い、ネイティブライブラリの
+キャッシュは空から開始します。既存の ISO 作成処理を、変更のない正確な commit、
+CPU 4・メモリ 8 GiB で実行し、実際のプロジェクト入力と対応する全ソースを復元します。
+アップロードするのは環境固有情報を含まない JSON の測定記録だけです。ISO・ソース・
+ライブラリキャッシュは一時的な job 内に保持し、リリースを公開しません。
+
+記録には commit、ISO のハッシュ、ソース復元結果、所要時間、15秒ごとの空き容量を
+残します。サンプル間の最大使用量は捕捉できないため、容量の増加量は実ピークの
+下限です。所要時間には toolchain image の準備とディスク・ゲスト試験を含みません。
+この工程の合格だけで、リリース全体の容量・時間の成立やライセンス不合格の解消とは
+扱わず、公開前の preflight と検証ゲートも維持します。両アーキテクチャのネイティブ
+OS 作成を確認するための試験であり、別途提案しているパッケージビルドの並列化は
+実装しません。

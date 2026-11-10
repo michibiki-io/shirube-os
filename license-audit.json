@@ -23022,6 +23022,25 @@
         "Keep complete original Artistic terms and fulfill source/modification requirements, including complete machine-readable accompanying sources under 4(b) and freely available modifications under 3(a). Preserve original author/nonendorsement notices; do not claim standard-version status for modified upstream code or advertise a third-party package as the distributor’s own.",
         "Preserve all preferred sources, patches, documentation, original notice/legal texts and complete configuration/build/install inputs. The original source COPYing/reference controls the GNU2 meaning; the pointer by itself does not grant permission for unrelated files."
       ]
+    },
+    "parted@3.5-3": {
+      "redistributable": true,
+      "source_identity": "2a181ce170282ae8b3380b75fd3eb0ff031ebdff95ebbb79538bc6d6e7fa4482",
+      "copyright_sha256": "0fb2e32455d5c2812c0b08535b695d2905648b9e82837040c0d1095da7934a47",
+      "license": "GPL-3.0-or-later AND GFDL-1.1-no-invariants-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "scope": "Complete original copyright and embedded full GFDL1.1 text read. Complete original COPYING compared word-for-word to the previously read full GNU3 text; all four differences are original HTTP/reference URLs. Not release clearance.",
+      "conditions": [
+        "Keep original GNU3-or-later program scope and separate GFDL1.1-or-later documentation grant with no invariant sections or cover texts. GFDL1.3 is an explicitly permitted later option, and its complete text must accompany delivery. Preserve the original embedded GFDL1.1 text unchanged.",
+        "Provide complete preferred source, patches, configuration/build/install material and transparent documentation sources; preserve every original author/copyright notice, permission, disclaimer, modification mark, history/acknowledgement and source-availability obligation. Repository branding does not replace upstream authorship."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
