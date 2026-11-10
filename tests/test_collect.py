@@ -209,6 +209,15 @@ class DistributorNoticeTests(unittest.TestCase):
             approvals={'example@1#source':generic,'example@1#source#'+'a'*64:exact}
             self.assertEqual(approval_for(approvals,'example','1','source',root,copyright_sha256='a'*64),{})
 
+    def test_explicit_original_notice_remains_selectable_alongside_another_packaging_variant(self):
+        original={'source_identity':'source','copyright_sha256':'a'*64,'license':'original'}
+        other={'source_identity':'source','copyright_sha256':'b'*64,'license':'other packaging'}
+        approvals={'example@1':original,'example@1#source':other}
+        self.assertEqual(approval_for(approvals,'example','1','source',copyright_sha256='a'*64),{})
+        approvals['example@1#source#'+'a'*64]=original
+        self.assertEqual(approval_for(approvals,'example','1','source',copyright_sha256='a'*64),original)
+        self.assertEqual(approval_for(approvals,'example','1','source',copyright_sha256='b'*64),other)
+
     def test_required_notice_hash_and_retained_members_gate_clearance(self):
         from producer.collect import distribution_notices
         with tempfile.TemporaryDirectory() as temporary:

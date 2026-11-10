@@ -1,0 +1,279 @@
+{
+  "kind": "exact-shared-source-original-copyright-variants",
+  "status": "PASS_EXACT_COMPONENT_BINDINGS_ONLY",
+  "components": [
+    {
+      "name": "vyos-1x",
+      "version": "1.5dev0",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-only",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c.txt",
+          "sha256": "de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.GPL",
+          "sha256": "db296f2f7f35bca3a174efb0eb392b3b17bd94b341851429a3dff411b1c2fc73"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.LGPL",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "Keep original GPL2-or-later packaging/component notices and independently scoped LGPL2.1 library source and relinking rights. The published modification notice and dates remain intact.",
+        "The independent Nmap script and all OCaml dependencies retain their separate actual-source and actual-notice permission gates. No GPL relicensing of their differently licensed code is asserted."
+      ]
+    },
+    {
+      "name": "linux-upstream",
+      "version": "6.6.128-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only WITH Linux-syscall-note",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/linux-upstream/b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112.txt",
+          "sha256": "b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/linux-upstream/original-COPYING",
+          "sha256": "fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0"
+        },
+        {
+          "path": "LICENSES/Linux-original-syscall-note.txt",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "The kernel binary remains GPLv2-only. The syscall note applies to the described user-space interface use; it is not a general exemption for kernel modules or a grant to relicense the kernel. Preserve all individual source file SPDX terms and complete original LICENSES tree."
+      ]
+    },
+    {
+      "name": "i2util",
+      "version": "4.4.6-2",
+      "source_identity": "0d6eb92e50f03f44e1a45421966b858a8c2eb8707fbc90710e705029716a013e",
+      "copyright_sha256": "b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a",
+      "evidence_member": "copyright",
+      "license": "Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Peslyak-PD-permissive-fallback",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/i2util/b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a.txt",
+          "sha256": "b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "Alexander Peslyak public-domain dedication and explicit permissive fallback apply only to the identified MD5 files. Keep separate University Corporation/Internet2, Todd Miller and perfSONAR BSD/Apache scopes."
+      ]
+    },
+    {
+      "name": "vyos-1x",
+      "version": "1.5dev0",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-only",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e.txt",
+          "sha256": "6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.GPL",
+          "sha256": "db296f2f7f35bca3a174efb0eb392b3b17bd94b341851429a3dff411b1c2fc73"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.LGPL",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "Keep original GPL2-or-later packaging/component notices and independently scoped LGPL2.1 library source and relinking rights. The published modification notice and dates remain intact.",
+        "The independent Nmap script and all OCaml dependencies retain their separate actual-source and actual-notice permission gates. No GPL relicensing of their differently licensed code is asserted."
+      ]
+    },
+    {
+      "name": "vyos-libnss-mapuser",
+      "version": "1.1.0-cl3u3.1+local1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-libnss-mapuser/22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d.txt",
+          "sha256": "22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission."
+      ]
+    },
+    {
+      "name": "vyos-libpam-radius-auth",
+      "version": "1.5.0-cl3u7",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-libpam-radius-auth/1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df.txt",
+          "sha256": "1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission."
+      ]
+    },
+    {
+      "name": "vyos-utils",
+      "version": "0.0.3",
+      "source_identity": "4b25ca040daf840a2097c1f2b7e7f0b157d1b06170b7e5a35786e0d502796e10",
+      "copyright_sha256": "139c2695cc2135cf3052a23ee26d8a75154f8f35fb24c9d956680fffc74e91f9",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-utils/139c2695cc2135cf3052a23ee26d8a75154f8f35fb24c9d956680fffc74e91f9.txt",
+          "sha256": "139c2695cc2135cf3052a23ee26d8a75154f8f35fb24c9d956680fffc74e91f9"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission."
+      ]
+    },
+    {
+      "name": "rust-stdlib",
+      "version": "1.63.0+dfsg1-2",
+      "source_identity": "186126527c236e0e3619995101199e1393df913f13fc6b22e6dabd785e307ba9",
+      "copyright_sha256": "f54c894fde099c29820e3be770a9a3975ae8539594b8fa41410b1e584ec45b60",
+      "evidence_member": "salt-sdk/notices/ad79e62b57ab06516595da2513369b0285b6e2bde1331c00a4197f492f7fad3d.copyright",
+      "license": "MIT AND Apache-2.0 AND NCSA AND BSD-2-Clause AND BSD-3-Clause AND ISC AND Zlib AND MPL-2.0 AND OFL-1.1 AND CC-BY-4.0 AND CC0-1.0 AND GPL-2.0-or-later AND Apache-2.0 WITH LLVM-exception",
+      "inherited_source_permission": "rust-stdlib@1.63.0+dfsg1-2",
+      "all_original_parts_match": [
+        {
+          "member": "rustc-1.63.0-src/COPYRIGHT",
+          "sha256": "401266ab45019fe25d501eb10f11b85140ecf54a739fc1e3d26800ed276f899a"
+        },
+        {
+          "member": "rustc-1.63.0-src/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "member": "rustc-1.63.0-src/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "adc1fc569f91e8c20ab9a753b515154f69c1769ea8c500b10ef1ae4b5fa88c34"
+        }
+      ],
+      "mandatory_original_font_notices": [
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/NanumBarunGothic-LICENSE.txt",
+          "sha256": "4106bf21c67fb046e909f8b8d2c9c3d5cce41f35ec70306f189ce10f0c30d7f6"
+        },
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/SourceCodePro-LICENSE.txt",
+          "sha256": "1092f40afcc93c66c3abca1bae7bd89caef18fd70f8fea25ac3c5e5258ee5e5b"
+        },
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/FiraSans-LICENSE.txt",
+          "sha256": "67b5b41bbc8e43efc55015d2b1704be4e66ec875c2fdc4809283504fe7c3aa6a"
+        },
+        {
+          "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/SourceSerif4-LICENSE.md",
+          "sha256": "acb2b8ba7420e412cd26f7d2b05d1692951ea8c6f4118a3a2c903a0f1fff1feb"
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/NanumBarunGothic-LICENSE.txt",
+          "sha256": "4106bf21c67fb046e909f8b8d2c9c3d5cce41f35ec70306f189ce10f0c30d7f6"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/SourceCodePro-LICENSE.txt",
+          "sha256": "1092f40afcc93c66c3abca1bae7bd89caef18fd70f8fea25ac3c5e5258ee5e5b"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/FiraSans-LICENSE.txt",
+          "sha256": "67b5b41bbc8e43efc55015d2b1704be4e66ec875c2fdc4809283504fe7c3aa6a"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/SourceSerif4-LICENSE.md",
+          "sha256": "acb2b8ba7420e412cd26f7d2b05d1692951ea8c6f4118a3a2c903a0f1fff1feb"
+        }
+      ],
+      "conditions": [
+        "Keep full original Rust and every vendored component copyright, license, disclaimer, modification and nonendorsement notice, choosing MIT where expressly offered while preserving all alternatives and independently licensed files.",
+        "Provide exact preferred code, Debian patches and full build/install configuration. Keep GPL2-or-later build scripts and MPL2-covered files under their own licenses with complete corresponding sources available to binary recipients.",
+        "Retain original NCSA/MIT/Clay/libbacktrace attribution, LLVM exceptions and full Apache license without extending exception scopes. The removed LLVM submodule is not represented as supplied by this Debian DFSG archive.",
+        "Bundle unmodified fonts with their four complete original OFL1.1 notices and all reserved font names; do not sell fonts alone, relicense them, use reserved names for modified fonts or imply endorsement. Debian copyright OFL transcription truncates its disclaimer; original complete font notices are retained alongside it.",
+        "Keep Rust-logo CC-BY4 original credit, source reference and license unchanged as upstream source attribution; it is not Shirube OS product branding. No extra restrictions or DRM apply to covered CC-BY4 material. Preserve CC0 waiver/fallback only for its stated work, with no implied patent/trademark rights."
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "scope": "Actual source and copyright digests select distinct decisions. Complete original notices are retained. The Rust source permission and font-body readings are inherited from the earlier exact source review; the historical member/notice equality and mandatory retention are checked here."
+}

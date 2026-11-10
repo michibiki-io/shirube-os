@@ -29115,6 +29115,444 @@
         "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
         "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
       ]
+    },
+    "vyos-1x@1.5dev0#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.1-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c.txt",
+          "sha256": "de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.GPL",
+          "sha256": "db296f2f7f35bca3a174efb0eb392b3b17bd94b341851429a3dff411b1c2fc73"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.LGPL",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "Keep original GPL2-or-later packaging/component notices and independently scoped LGPL2.1 library source and relinking rights. The published modification notice and dates remain intact.",
+        "The independent Nmap script and all OCaml dependencies retain their separate actual-source and actual-notice permission gates. No GPL relicensing of their differently licensed code is asserted."
+      ],
+      "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
+    },
+    "linux-upstream@6.6.128-1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only WITH Linux-syscall-note",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/linux-upstream/b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112.txt",
+          "sha256": "b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/linux-upstream/original-COPYING",
+          "sha256": "fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0"
+        },
+        {
+          "path": "LICENSES/Linux-original-syscall-note.txt",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "The kernel binary remains GPLv2-only. The syscall note applies to the described user-space interface use; it is not a general exemption for kernel modules or a grant to relicense the kernel. Preserve all individual source file SPDX terms and complete original LICENSES tree."
+      ],
+      "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
+    },
+    "i2util@4.4.6-2#0d6eb92e50f03f44e1a45421966b858a8c2eb8707fbc90710e705029716a013e#b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a": {
+      "source_identity": "0d6eb92e50f03f44e1a45421966b858a8c2eb8707fbc90710e705029716a013e",
+      "copyright_sha256": "b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Peslyak-PD-permissive-fallback",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/i2util/b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a.txt",
+          "sha256": "b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "Alexander Peslyak public-domain dedication and explicit permissive fallback apply only to the identified MD5 files. Keep separate University Corporation/Internet2, Todd Miller and perfSONAR BSD/Apache scopes."
+      ],
+      "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
+    },
+    "vyos-1x@1.5dev0#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later AND LGPL-2.1-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e.txt",
+          "sha256": "6d5ea4af02afcda71508560c0cb8d1188f09847efbe3977b79584c096509645e"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.GPL",
+          "sha256": "db296f2f7f35bca3a174efb0eb392b3b17bd94b341851429a3dff411b1c2fc73"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/vyos-1x/original-LICENSE.LGPL",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "Keep original GPL2-or-later packaging/component notices and independently scoped LGPL2.1 library source and relinking rights. The published modification notice and dates remain intact.",
+        "The independent Nmap script and all OCaml dependencies retain their separate actual-source and actual-notice permission gates. No GPL relicensing of their differently licensed code is asserted."
+      ],
+      "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
+    },
+    "vyos-libnss-mapuser@1.1.0-cl3u3.1+local1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-libnss-mapuser/22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d.txt",
+          "sha256": "22eabec378b79f31e0d9a747a799c57cd97eabf103748b6ffdaf7dca90ef0b3d"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission."
+      ],
+      "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
+    },
+    "vyos-libpam-radius-auth@1.5.0-cl3u7#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-libpam-radius-auth/1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df.txt",
+          "sha256": "1dee74adb9eaf25987534cbbb37fe851bb8198d20051deb10bd613061db134df"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission."
+      ],
+      "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
+    },
+    "vyos-utils@0.0.3#4b25ca040daf840a2097c1f2b7e7f0b157d1b06170b7e5a35786e0d502796e10#139c2695cc2135cf3052a23ee26d8a75154f8f35fb24c9d956680fffc74e91f9": {
+      "source_identity": "4b25ca040daf840a2097c1f2b7e7f0b157d1b06170b7e5a35786e0d502796e10",
+      "copyright_sha256": "139c2695cc2135cf3052a23ee26d8a75154f8f35fb24c9d956680fffc74e91f9",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/vyos-utils/139c2695cc2135cf3052a23ee26d8a75154f8f35fb24c9d956680fffc74e91f9.txt",
+          "sha256": "139c2695cc2135cf3052a23ee26d8a75154f8f35fb24c9d956680fffc74e91f9"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission."
+      ],
+      "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
+    },
+    "rust-stdlib@1.63.0+dfsg1-2#186126527c236e0e3619995101199e1393df913f13fc6b22e6dabd785e307ba9#f54c894fde099c29820e3be770a9a3975ae8539594b8fa41410b1e584ec45b60": {
+      "source_identity": "186126527c236e0e3619995101199e1393df913f13fc6b22e6dabd785e307ba9",
+      "copyright_sha256": "f54c894fde099c29820e3be770a9a3975ae8539594b8fa41410b1e584ec45b60",
+      "redistributable": true,
+      "license": "MIT AND Apache-2.0 AND NCSA AND BSD-2-Clause AND BSD-3-Clause AND ISC AND Zlib AND MPL-2.0 AND OFL-1.1 AND CC-BY-4.0 AND CC0-1.0 AND GPL-2.0-or-later AND Apache-2.0 WITH LLVM-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "salt-sdk/notices/ad79e62b57ab06516595da2513369b0285b6e2bde1331c00a4197f492f7fad3d.copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/MPL-2.0.txt",
+          "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/NanumBarunGothic-LICENSE.txt",
+          "sha256": "4106bf21c67fb046e909f8b8d2c9c3d5cce41f35ec70306f189ce10f0c30d7f6"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/SourceCodePro-LICENSE.txt",
+          "sha256": "1092f40afcc93c66c3abca1bae7bd89caef18fd70f8fea25ac3c5e5258ee5e5b"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/FiraSans-LICENSE.txt",
+          "sha256": "67b5b41bbc8e43efc55015d2b1704be4e66ec875c2fdc4809283504fe7c3aa6a"
+        },
+        {
+          "path": "LICENSES/Rust-1.63-original-font-notices/SourceSerif4-LICENSE.md",
+          "sha256": "acb2b8ba7420e412cd26f7d2b05d1692951ea8c6f4118a3a2c903a0f1fff1feb"
+        }
+      ],
+      "scope": "Same exact previously reviewed Debian Rust source/packaging/DSC identity, paired with a historical aggregate notice whose four original member hashes all match the declared originals. All four previously reviewed full original OFL font notices are separately mandatory distribution notices. No new code or source removal, compilation or title warranty is asserted. Parent OS and remaining SDK dependencies remain gated.",
+      "conditions": [
+        "Keep full original Rust and every vendored component copyright, license, disclaimer, modification and nonendorsement notice, choosing MIT where expressly offered while preserving all alternatives and independently licensed files.",
+        "Provide exact preferred code, Debian patches and full build/install configuration. Keep GPL2-or-later build scripts and MPL2-covered files under their own licenses with complete corresponding sources available to binary recipients.",
+        "Retain original NCSA/MIT/Clay/libbacktrace attribution, LLVM exceptions and full Apache license without extending exception scopes. The removed LLVM submodule is not represented as supplied by this Debian DFSG archive.",
+        "Bundle unmodified fonts with their four complete original OFL1.1 notices and all reserved font names; do not sell fonts alone, relicense them, use reserved names for modified fonts or imply endorsement. Debian copyright OFL transcription truncates its disclaimer; original complete font notices are retained alongside it.",
+        "Keep Rust-logo CC-BY4 original credit, source reference and license unchanged as upstream source attribution; it is not Shirube OS product branding. No extra restrictions or DRM apply to covered CC-BY4 material. Preserve CC0 waiver/fallback only for its stated work, with no implied patent/trademark rights."
+      ]
+    },
+    "cargo:bitflags@1.3.2#bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a#ccc1c41c64944d2e0723ffe084500bc60ce3425706a3ee74f265375fc1157de4": {
+      "source_identity": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a",
+      "copyright_sha256": "ccc1c41c64944d2e0723ffe084500bc60ce3425706a3ee74f265375fc1157de4",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:cfg-if@1.0.0#baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd#df4243c60b360a19ae8415213cdc36f5b53f326e92a7d415fee03dd0d5dde9b3": {
+      "source_identity": "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd",
+      "copyright_sha256": "df4243c60b360a19ae8415213cdc36f5b53f326e92a7d415fee03dd0d5dde9b3",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:once_cell@1.19.0#3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92#bd3bdd831b19745a5ae86e3c56a3022b8b1eabffdfe673cad8a6a24b33cacffe": {
+      "source_identity": "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92",
+      "copyright_sha256": "bd3bdd831b19745a5ae86e3c56a3022b8b1eabffdfe673cad8a6a24b33cacffe",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:portable-atomic@1.6.0#7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0#af77dc8f9af5d615bc5956c409c42958cff305928478de956d832b27e19167ed": {
+      "source_identity": "7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0",
+      "copyright_sha256": "af77dc8f9af5d615bc5956c409c42958cff305928478de956d832b27e19167ed",
+      "redistributable": true,
+      "license": "Apache-2.0 OR MIT",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:unicode-ident@1.0.12#3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b#2acb64e1857489b99b3af72f3d5a7f2c81534d86ff7de821a40353cdcd4a3b0d": {
+      "source_identity": "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b",
+      "copyright_sha256": "2acb64e1857489b99b3af72f3d5a7f2c81534d86ff7de821a40353cdcd4a3b0d",
+      "redistributable": true,
+      "license": "(MIT OR Apache-2.0) AND Unicode-DFS-2016",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations.",
+        "Retain the complete Unicode copyright/permission notice and disclaimer; do not use copyright-holder names for promotion without authorization."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:unindent@0.2.3#c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce#a4595d0a97b843b40e01bb293c8be39df458ee305725908de5d661cda38d5b91": {
+      "source_identity": "c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce",
+      "copyright_sha256": "a4595d0a97b843b40e01bb293c8be39df458ee305725908de5d661cda38d5b91",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows-targets@0.48.5#9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c#d86e7e912e7a98133996f3c09135eccde3abd91c5dac384b53e592b39b945756": {
+      "source_identity": "9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c",
+      "copyright_sha256": "d86e7e912e7a98133996f3c09135eccde3abd91c5dac384b53e592b39b945756",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows_aarch64_gnullvm@0.48.5#2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8#d7cd063c73fbddc7f520f1dd6073a1eb24dbb8ef41f40557e09c9990e48aafa1": {
+      "source_identity": "2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8",
+      "copyright_sha256": "d7cd063c73fbddc7f520f1dd6073a1eb24dbb8ef41f40557e09c9990e48aafa1",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows_aarch64_msvc@0.48.5#dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc#8c46a0252d5b8938a8585dce4817d08543aca11c7d8880d0ad899ff645aecd0d": {
+      "source_identity": "dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc",
+      "copyright_sha256": "8c46a0252d5b8938a8585dce4817d08543aca11c7d8880d0ad899ff645aecd0d",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows_i686_gnu@0.48.5#a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e#d267c4b8e0971ace1af0a311f08ad5c2402592ba218cbe16dd34b9ef2b555d36": {
+      "source_identity": "a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e",
+      "copyright_sha256": "d267c4b8e0971ace1af0a311f08ad5c2402592ba218cbe16dd34b9ef2b555d36",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows_i686_msvc@0.48.5#8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406#ec0cf4e9d6c645fc1bd6f99303f4d99a29bc4abd7b2c601f7532339ab13d03dd": {
+      "source_identity": "8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406",
+      "copyright_sha256": "ec0cf4e9d6c645fc1bd6f99303f4d99a29bc4abd7b2c601f7532339ab13d03dd",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows_x86_64_gnu@0.48.5#53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e#336cf9c0f6f734471ccaef3df46b011a7518b1efa90a2b5bc91bfa3d28f977bd": {
+      "source_identity": "53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e",
+      "copyright_sha256": "336cf9c0f6f734471ccaef3df46b011a7518b1efa90a2b5bc91bfa3d28f977bd",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows_x86_64_gnullvm@0.48.5#0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc#95282df174d48ab0e7ea8743cdfdb1eba12fff6cb9ea328107566c8bd6a9a403": {
+      "source_identity": "0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc",
+      "copyright_sha256": "95282df174d48ab0e7ea8743cdfdb1eba12fff6cb9ea328107566c8bd6a9a403",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "cargo:windows_x86_64_msvc@0.48.5#ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538#d3650b53d2799ea74d7df024c398a575e73da0ad25245ab4cdb6b1767847ba04": {
+      "source_identity": "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538",
+      "copyright_sha256": "d3650b53d2799ea74d7df024c398a575e73da0ad25245ab4cdb6b1767847ba04",
+      "redistributable": true,
+      "license": "MIT OR Apache-2.0",
+      "reviewed_on": "2026-11-08",
+      "evidence_member": "salt-sdk/notices/ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538.copyright",
+      "conditions": [
+        "Retain complete upstream copyright, license text, permission/conditions, disclaimers and all source attribution notices in source and binary release materials.",
+        "Preserve the original source archive and exact hash-bound legal members in the component inventory; dependencies and compiler/runtime libraries require separate audit.",
+        "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
+      ],
+      "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
