@@ -23245,6 +23245,72 @@
         "Retain original authorship, copyright/permission/disclaimer and dated modification notices in source and binary materials, including Berkeley and Utah acknowledgement requirements, Henry Spencer documentation credit, Intel modified-version marking, and all target-specific nonendorsement conditions. No additional trademark or artwork permission is inferred.",
         "Use the offered Artistic option for the historical DMD dual-licensed portion; complete original terms/source remain available. Preserve actual GNU FDL1.2 text and documentation license notices, transparent sources and any applicable invariant/cover/history terms; the Modula-2 manual grant explicitly permits later FDL versions with no invariant sections or cover texts. No Cygwin binary or proprietary target runtime is shipped."
       ]
+    },
+    "python3.11@3.11.2-6+deb12u9": {
+      "redistributable": true,
+      "source_identity": "49c0d6e1f0d3aeef542de2e908da11bcbcb9343654fb70b51fe4f80865c9dc92",
+      "copyright_sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382",
+      "license": "Python-2.0 AND 0BSD AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND MS-RL AND GPL-2.0-or-later AND LicenseRef-Python-Original-Notices",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Python-3.11.2/Doc/copyright.rst",
+          "sha256": "9e5e6634a7f5444dd83da55ccb265bac825abf72ecddccf7e394f284636bd9df"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Doc/license.rst",
+          "sha256": "4d6119c3d88da68c95cf4d61683e327758074d32ff205651254369481fd76bd7"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Mac/BuildScript/resources/License.rtf",
+          "sha256": "ab6df6040a4e24babad38f98454eb3263722fa6a1c441bfaa271798efbe55f27"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/_ctypes/darwin/LICENSE",
+          "sha256": "8088ec43d0290e44628a5c2c84c1ca37983080d47e0bb6e0c89aa695b12630ec"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/_ctypes/libffi_osx/LICENSE",
+          "sha256": "40a537c7d74baeed3831304e92d1664ababd7ad8a3cf29f11a257c9e47145248"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/_sha3/LICENSE",
+          "sha256": "4633fc5859344c6f244939c27700fb941d12c4636215a8eccde17d9a6d1dcb0d"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Modules/expat/COPYING",
+          "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534"
+        },
+        {
+          "path": "LICENSES/Python-3.11.2/Tools/msi/bundle/bootstrap/LICENSE.txt",
+          "sha256": "cb95daf98edda8e08a242e1060691b6941f0911692bf468a3f9c5e4b58c09b8f"
+        },
+        {
+          "path": "LICENSES/Python-audioop-Sun-notice.txt",
+          "sha256": "7427062e399d000b705990ccd39f433486b6abd685241b7d43937f44b7d62d2f"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ],
+      "scope": "Exact Debian CPython3.11 source/package scope. Complete original copyright and all named original legal files read or full-word compared to read originals; every added or replaced word reviewed, including documentation/MS-RL bootstrapper and source-only platform terms. Existing exact upstream/SoX audioop correction evidence applies to this original archive. Dependency grants and final OS acceptance remain separate.",
+      "conditions": [
+        "Preserve the complete PSF2, BeOpen, CNRI1.6.1 and CWI license/history chain with original copyright dates, disclaimers and nonendorsement terms. Include a brief summary of all Python modifications including Debian patches; documentation code may use the explicitly offered 0BSD option, not all CPython source.",
+        "Keep all original per-file Mersenne-Twister/WIDE/multiprocessing/kqueue/cfuhash/libmpdec BSD, Expat/SipHash/ctypes/SHA3 MIT, Zlib, LLNL and other original permission and documentation-credit clauses. Retain source and binary copyright, permission and warranty notices without substituting distributor branding for authorship.",
+        "MS-RL applies only to Windows bootstrapper source files; provide those complete files and full license, patent/trademark notices and reciprocal-file rights. No Windows/macOS installer binary or proprietary platform dependency is distributed by this Linux approval.",
+        "Retain actual sources, Debian modifications and complete build/install inputs. GNU-linked extensions retain the actual selected Readline/GPL and other linked-library conditions, not the obsolete library-version summaries in Debian/Doc text. OpenSSL3 and other system dependencies require separate exact-source license decisions.",
+        "Preserve the original documentation for provenance and accompany it with the exact original Sun audioop permission and immutable upstream clarification: the restrictive Sound Blaster document notice was unrelated to incorporated SoX g711.c code. Do not invoke a noncommercial exception or extend that correction to unrelated source."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

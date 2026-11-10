@@ -1,0 +1,84 @@
+{
+  "kind": "exact-debian-python311-original-license-review",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "python3.11",
+  "version": "3.11.2-6+deb12u9",
+  "dsc_sha256": "49c0d6e1f0d3aeef542de2e908da11bcbcb9343654fb70b51fe4f80865c9dc92",
+  "copyright_sha256": "f1cbf908e1daa8789b389fdcf17811ed36b675d736b39a103591399861350382",
+  "original_legal_files": [
+    {
+      "member": "Doc/copyright.rst",
+      "sha256": "9e5e6634a7f5444dd83da55ccb265bac825abf72ecddccf7e394f284636bd9df",
+      "bytes": 451,
+      "distribution_path": "LICENSES/Python-3.11.2/Doc/copyright.rst"
+    },
+    {
+      "member": "Doc/license.rst",
+      "sha256": "4d6119c3d88da68c95cf4d61683e327758074d32ff205651254369481fd76bd7",
+      "bytes": 48910,
+      "distribution_path": "LICENSES/Python-3.11.2/Doc/license.rst"
+    },
+    {
+      "member": "LICENSE",
+      "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+      "bytes": 13936,
+      "distribution_path": "LICENSES/Python-3.11.2/LICENSE"
+    },
+    {
+      "member": "Mac/BuildScript/resources/License.rtf",
+      "sha256": "ab6df6040a4e24babad38f98454eb3263722fa6a1c441bfaa271798efbe55f27",
+      "bytes": 15068,
+      "distribution_path": "LICENSES/Python-3.11.2/Mac/BuildScript/resources/License.rtf"
+    },
+    {
+      "member": "Modules/_ctypes/darwin/LICENSE",
+      "sha256": "8088ec43d0290e44628a5c2c84c1ca37983080d47e0bb6e0c89aa695b12630ec",
+      "bytes": 1408,
+      "distribution_path": "LICENSES/Python-3.11.2/Modules/_ctypes/darwin/LICENSE"
+    },
+    {
+      "member": "Modules/_ctypes/libffi_osx/LICENSE",
+      "sha256": "40a537c7d74baeed3831304e92d1664ababd7ad8a3cf29f11a257c9e47145248",
+      "bytes": 1060,
+      "distribution_path": "LICENSES/Python-3.11.2/Modules/_ctypes/libffi_osx/LICENSE"
+    },
+    {
+      "member": "Modules/_sha3/LICENSE",
+      "sha256": "4633fc5859344c6f244939c27700fb941d12c4636215a8eccde17d9a6d1dcb0d",
+      "bytes": 1093,
+      "distribution_path": "LICENSES/Python-3.11.2/Modules/_sha3/LICENSE"
+    },
+    {
+      "member": "Modules/expat/COPYING",
+      "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534",
+      "bytes": 1144,
+      "distribution_path": "LICENSES/Python-3.11.2/Modules/expat/COPYING"
+    },
+    {
+      "member": "Tools/msi/bundle/bootstrap/LICENSE.txt",
+      "sha256": "cb95daf98edda8e08a242e1060691b6941f0911692bf468a3f9c5e4b58c09b8f",
+      "bytes": 3273,
+      "distribution_path": "LICENSES/Python-3.11.2/Tools/msi/bundle/bootstrap/LICENSE.txt"
+    }
+  ],
+  "comparisons": {
+    "LICENSE": {
+      "full_word_difference_groups": 24,
+      "added_or_replaced_words": 108,
+      "scope": "Updated dates/history/URLs and explicit 0BSD documentation-code grant; full license chain retained."
+    },
+    "Doc/license.rst": {
+      "full_word_difference_groups": 192,
+      "added_or_replaced_words": 2937,
+      "scope": "All added and replaced text read, including third-party grants and historical OpenSSL/SSLeay notice; rest matches the complete read original Debian copyright."
+    },
+    "Mac/BuildScript/resources/License.rtf": {
+      "full_word_difference_groups": 19,
+      "scope": "Formatting controls/metadata decoded for full-word comparison; original RTF retained. History, dates, compatibility table and installer-placeholder/link differences read; same operative license chain and 0BSD grant."
+    }
+  },
+  "audioop_clarification": "diagnostic-python-audioop-original-notice.json",
+  "scope": "Component permissions and exact notice retention only. Does not establish a current complete source set, binary reconstruction, hosted release capacity or OCI acceptance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
