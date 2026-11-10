@@ -166,9 +166,18 @@ def netbird_dependencies(rootfs,correspondence,arch):
     return children
 
 
-def approval_for(approvals,name,version,identity,notice_root=Path('/src')):
+def approval_for(approvals,name,version,identity,notice_root=Path('/src'),*,copyright_sha256=None):
     key=name+'@'+version
-    approval=approvals.get(key+'#'+identity,approvals.get(key,{}))
+    source_key=key+'#'+identity
+    if copyright_sha256 is not None:
+        if not re.fullmatch('[0-9a-f]{64}',copyright_sha256):
+            raise ValueError('Invalid copyright notice digest')
+        approval=approvals.get(source_key+'#'+copyright_sha256,
+                               approvals.get(source_key,approvals.get(key,{})))
+        if approval.get('copyright_sha256')!=copyright_sha256:
+            return {}
+    else:
+        approval=approvals.get(source_key,approvals.get(key,{}))
     for notice in approval.get('required_notice_files',[]):
         relative=Path(notice['path'])
         if (not relative.parts or relative.is_absolute() or '..' in relative.parts or
@@ -675,7 +684,8 @@ def collect(rootfs, package_output, output, arch, version, work):
                 origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             children=[]
             for dependency in nested:
-                reviewed=approval_for(approvals,dependency['name'],dependency['version'],dependency['source_identity'])
+                reviewed=approval_for(approvals,dependency['name'],dependency['version'],dependency['source_identity'],
+                                      copyright_sha256=sha256(dependency['notice']))
                 child_clear=(reviewed.get('source_identity')==dependency['source_identity']
                     and reviewed.get('copyright_sha256')==sha256(dependency['notice'])
                     and reviewed.get('redistributable') is True
@@ -709,7 +719,8 @@ def collect(rootfs, package_output, output, arch, version, work):
                     **({'source_export':dependency['source_export']} if 'source_export' in dependency else {}),
                     **({'binary_input':dependency['binary_input']} if 'binary_input' in dependency else {})})
             children=merge_bundled_components(children)
-            approval=approval_for(approvals,source_name,source_version,origin)
+            approval=approval_for(approvals,source_name,source_version,origin,
+                                  copyright_sha256=sha256(copyright_file))
             cleared=(approval.get('source_identity')==origin and approval.get('redistributable') is True
                      and approval.get('copyright_sha256')==sha256(copyright_file)
                      and isinstance(approval.get('license'),str) and bool(approval.get('license')))

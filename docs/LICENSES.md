@@ -142,6 +142,16 @@ entry may use `name@version#source_identity`. Its declared source identity and
 actual notice hash must still match exactly; a different architecture/source
 variant cannot inherit that decision.
 
+Binary packages sharing that source identity can retain different original
+copyright documents. Such decisions use
+`name@version#source_identity#copyright_sha256`; the collector selects them using
+the actual document digest. An unknown document or a missing required notice
+cannot inherit another variant's clearance.
+
+同じソースから作られたパッケージでも、元の著作権本文が異なる場合があります。
+その判断は `name@version#source_identity#copyright_sha256` で記録し、実際の本文の
+ハッシュで選択します。未知の本文や必要な通知の欠落を、別の記録で合格にはしません。
+
 Eleven additional exact source-package notices have been reviewed: vyos-user-utils,
 vyatta-biosdevname, vyatta-cfg, libtacplus-map, libpam-tacplus, libnss-tacplus,
 vyos-libnss-mapuser, libpam-radius-auth, ndppd, live-boot and bash-completion.

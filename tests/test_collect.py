@@ -189,6 +189,26 @@ class ComponentInventoryTests(unittest.TestCase):
         self.assertNotEqual(approval_for(entries,'component','1','c')['source_identity'],'c')
 
 class DistributorNoticeTests(unittest.TestCase):
+    def test_same_source_can_bind_distinct_binary_package_notices(self):
+        first={'source_identity':'source','copyright_sha256':'a'*64,'license':'first'}
+        second={'source_identity':'source','copyright_sha256':'b'*64,'license':'second'}
+        approvals={'example@1#source':first,'example@1#source#'+'b'*64:second}
+        self.assertEqual(approval_for(approvals,'example','1','source',copyright_sha256='a'*64),first)
+        self.assertEqual(approval_for(approvals,'example','1','source',copyright_sha256='b'*64),second)
+        self.assertEqual(approval_for(approvals,'example','1','source',copyright_sha256='c'*64),{})
+        approvals['example@1#source#'+'b'*64]={**second,'copyright_sha256':'c'*64}
+        self.assertEqual(approval_for(approvals,'example','1','source',copyright_sha256='b'*64),{})
+        with self.assertRaisesRegex(ValueError,'Invalid copyright'):
+            approval_for(approvals,'example','1','source',copyright_sha256='../notice')
+
+    def test_notice_specific_decision_does_not_fall_back_when_required_notice_is_missing(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary)
+            generic={'source_identity':'source','copyright_sha256':'a'*64}
+            exact={**generic,'required_notice_files':[{'path':'LICENSES/missing.txt','sha256':'b'*64}]}
+            approvals={'example@1#source':generic,'example@1#source#'+'a'*64:exact}
+            self.assertEqual(approval_for(approvals,'example','1','source',root,copyright_sha256='a'*64),{})
+
     def test_required_notice_hash_and_retained_members_gate_clearance(self):
         from producer.collect import distribution_notices
         with tempfile.TemporaryDirectory() as temporary:
