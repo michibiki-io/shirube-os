@@ -1,0 +1,190 @@
+{
+  "kind": "exact-uvloop-salt-original-permissions",
+  "status": "PASS_EXACT_COMPONENT_NOTICE_REVIEW_ONLY",
+  "components": [
+    {
+      "name": "pypi:uvloop",
+      "version": "0.21.0",
+      "source_identity": "3bf12b0fda68447806a7ad847bfa591613177275d35b6724b1ee573faa3704e3",
+      "copyright_sha256": "bf4809e1204503bd57d09f5685b68f5274ab37fffb694230b7f372e4694b8e59",
+      "evidence_member": "third-party-notices/uvloop/copyright",
+      "license": "(MIT OR Apache-2.0) AND MIT AND BSD-2-Clause AND ISC AND CC-BY-4.0",
+      "conditions": [
+        "uvloop retains its MIT/Apache alternative; bundled libuv retains its MIT grant, BSD2 tree.h and ISC inet implementations, and separately scoped CC-BY4 documentation. Preserve the complete original authors list and all binary/source notices, with attribution/license links and adaptation indication where applicable. The authors list is supporting attribution, not an additional permission grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-compound-originals/pypi-uvloop/bf4809e1204503bd57d09f5685b68f5274ab37fffb694230b7f372e4694b8e59.txt",
+          "sha256": "bf4809e1204503bd57d09f5685b68f5274ab37fffb694230b7f372e4694b8e59"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ]
+    },
+    {
+      "name": "salt",
+      "version": "3006.21",
+      "source_identity": "e1d4f50cfaa4a0e9a54cdfdc03171e0ff1a0aed50ccfa701c067c95b667528da",
+      "copyright_sha256": "2f277d848df0bdd839e900b85d81080085fb8a95199acba8b399f5131d308acf",
+      "evidence_member": "copyright",
+      "license": "Apache-2.0 AND MIT AND BSD-2-Clause AND CC-BY-3.0 AND GPL-2.0-or-later AND WTFPL",
+      "conditions": [
+        "The complete original file-scope declaration, attribution and permission texts remain intact. Salt root Apache2 does not relicense bundled JavaScript, icons, documentation or packaging. Keep original Mark James/Jan Kovarik attribution and CC-BY3 terms for their artwork, and preserve original alternative licenses for Modernizr/yepnope. The Gentoo ebuild GPL grant permits GPL2 or later, and is independently scoped. Provide complete corresponding source and original preferred inputs; do not treat the historical Debian repack comment as a fresh reconstruction success."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-compound-originals/salt/2f277d848df0bdd839e900b85d81080085fb8a95199acba8b399f5131d308acf.txt",
+          "sha256": "2f277d848df0bdd839e900b85d81080085fb8a95199acba8b399f5131d308acf"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC-BY-3.0.txt",
+          "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    }
+  ],
+  "salt_ccby3_complete_word_differences": [
+    {
+      "label": "License: CC-BY-3.0",
+      "word_differences": [
+        {
+          "actual": "",
+          "canonical": "Creative Commons Legal Code Attribution 3.0 Unported CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE LEGAL SERVICES. DISTRIBUTION OF THIS LICENSE DOES NOT CREATE AN ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS INFORMATION ON AN \"AS-IS\" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES REGARDING THE INFORMATION PROVIDED, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM ITS USE. License"
+        },
+        {
+          "actual": "1.",
+          "canonical": "a."
+        },
+        {
+          "actual": "2.",
+          "canonical": "b."
+        },
+        {
+          "actual": "3.",
+          "canonical": "c."
+        },
+        {
+          "actual": "4.",
+          "canonical": "d."
+        },
+        {
+          "actual": "5.",
+          "canonical": "e."
+        },
+        {
+          "actual": "6.",
+          "canonical": "f."
+        },
+        {
+          "actual": "7.",
+          "canonical": "g."
+        },
+        {
+          "actual": "8.",
+          "canonical": "h."
+        },
+        {
+          "actual": "9.",
+          "canonical": "i."
+        },
+        {
+          "actual": "1.",
+          "canonical": "a."
+        },
+        {
+          "actual": "2.",
+          "canonical": "b."
+        },
+        {
+          "actual": "3.",
+          "canonical": "c."
+        },
+        {
+          "actual": "4.",
+          "canonical": "d."
+        },
+        {
+          "actual": "5.",
+          "canonical": "e."
+        },
+        {
+          "actual": "1.",
+          "canonical": "i."
+        },
+        {
+          "actual": "2.",
+          "canonical": "ii."
+        },
+        {
+          "actual": "3.",
+          "canonical": "iii."
+        },
+        {
+          "actual": "1.",
+          "canonical": "a."
+        },
+        {
+          "actual": "2.",
+          "canonical": "b."
+        },
+        {
+          "actual": "3.",
+          "canonical": "c."
+        },
+        {
+          "actual": "1.",
+          "canonical": "a."
+        },
+        {
+          "actual": "2.",
+          "canonical": "b."
+        },
+        {
+          "actual": "1.",
+          "canonical": "a."
+        },
+        {
+          "actual": "2.",
+          "canonical": "b."
+        },
+        {
+          "actual": "3.",
+          "canonical": "c."
+        },
+        {
+          "actual": "4.",
+          "canonical": "d."
+        },
+        {
+          "actual": "5.",
+          "canonical": "e."
+        },
+        {
+          "actual": "6.",
+          "canonical": "f."
+        },
+        {
+          "actual": "",
+          "canonical": "Creative Commons Notice Creative Commons is not a party to this License, and makes no warranty whatsoever in connection with the Work. Creative Commons will not be liable to You or any party on any legal theory for any damages whatsoever, including without limitation any general, special, incidental or consequential damages arising in connection to this license. Notwithstanding the foregoing two (2) sentences, if Creative Commons has expressly identified itself as the Licensor hereunder, it shall have all rights and obligations of Licensor. Except for the limited purpose of indicating to the public that the Work is licensed under the CCPL, Creative Commons does not authorize the use by either party of the trademark \"Creative Commons\" or any related trademark or logo of Creative Commons without the prior written consent of Creative Commons. Any permitted use will be in compliance with Creative Commons' then-current trademark usage guidelines, as may be published on its website or otherwise made available upon request from time to time. For the avoidance of doubt, this trademark restriction does not form part of this License. Creative Commons may be contacted at https://creativecommons.org/."
+        }
+      ]
+    }
+  ],
+  "scope": "uvloop complete operative texts matched previously read original grants; libuv AUTHORS is retained supporting metadata. Salt complete file-scope metadata and short grant bodies read, complete CC-BY3 word differences checked against retained legal code.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

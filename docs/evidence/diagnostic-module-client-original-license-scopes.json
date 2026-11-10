@@ -1,0 +1,262 @@
+{
+  "kind": "exact-module-client-original-permissions",
+  "status": "PASS_EXACT_COMPONENT_NOTICE_REVIEW_ONLY",
+  "components": [
+    {
+      "name": "nat-rtsp",
+      "version": "5.3-2-g475af0a",
+      "source_identity": "27fdea8e1bd709386972645edb6e6734fa6e07c9f0c905cf51394d6d53fd5a9f",
+      "copyright_sha256": "e64cab87ac34029f82ca18b0766e1e38c99b03148fb473ee30dffa077c496de2",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-or-later",
+      "conditions": [
+        "Original RTSP source headers explicitly permit GPL version 2 or later. Keep full source, modifications, reconstruction scripts and author credits with binaries."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/nat-rtsp/e64cab87ac34029f82ca18b0766e1e38c99b03148fb473ee30dffa077c496de2.txt",
+          "sha256": "e64cab87ac34029f82ca18b0766e1e38c99b03148fb473ee30dffa077c496de2"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    },
+    {
+      "name": "openvpn-dco",
+      "version": "0.2.20231117",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "afb028c6142d484224c8cf5b77979df07e16210a0a82770ac0f64015ebce19be",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only AND ((GPL-2.0-only WITH Linux-syscall-note) OR MIT)",
+      "conditions": [
+        "The module remains GPL2-only. The expressly dual-licensed UAPI header and Linux syscall note apply only to their declared scope, not to the complete module. Preserve all original SPDX identifiers and source attribution."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/openvpn-dco/afb028c6142d484224c8cf5b77979df07e16210a0a82770ac0f64015ebce19be.txt",
+          "sha256": "afb028c6142d484224c8cf5b77979df07e16210a0a82770ac0f64015ebce19be"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Linux-original-syscall-note.txt",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ]
+    },
+    {
+      "name": "openvpn-otp",
+      "version": "9781ff1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "8a9f33bf618f876aef2eddc714ec4db47861362450d0e2b6bc074e016f21e7fd",
+      "evidence_member": "copyright",
+      "license": "GPL-3.0-only",
+      "conditions": [
+        "Retain the complete original GPL3 license and corresponding source. This component decision does not assign GPL2 to the plugin or relicense its host. Full original license word differences against GPL3 were checked; only URL and example-placeholder formatting differs."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/openvpn-otp/8a9f33bf618f876aef2eddc714ec4db47861362450d0e2b6bc074e016f21e7fd.txt",
+          "sha256": "8a9f33bf618f876aef2eddc714ec4db47861362450d0e2b6bc074e016f21e7fd"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ]
+    },
+    {
+      "name": "vyos-ipt-netflow",
+      "version": "2.6-67-g6135551",
+      "source_identity": "8403aaaab270a3056265fa2644b6a3deb96be5b42ec93228ec0e7eacc0304190",
+      "copyright_sha256": "f0ced2f5ce648761893ecc56a8580fce8c3f3dcda84ffd1ff67da590babb4c38",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only",
+      "conditions": [
+        "Honor the explicit GPL-2.0-only SPDX identifiers, project declaration and version-2-only SNMP header. Preserve the original boilerplate offering later versions without interpreting it as an override of those narrower declarations. Retain full CREDITS and kernel/MurmurHash attribution."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/vyos-ipt-netflow/f0ced2f5ce648761893ecc56a8580fce8c3f3dcda84ffd1ff67da590babb4c38.txt",
+          "sha256": "f0ced2f5ce648761893ecc56a8580fce8c3f3dcda84ffd1ff67da590babb4c38"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    },
+    {
+      "name": "radvd",
+      "version": "2.20",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "40a6db00cf0b97f031eaa6c6e87157788f40ced1b88e3ea6d78779bd2a39dc80",
+      "evidence_member": "copyright",
+      "license": "LicenseRef-radvd-redistribution",
+      "conditions": [
+        "Retain the complete original five-condition redistribution notice and per-file author copyrights. Include the required authors acknowledgement in advertising materials mentioning this component. README for the actual public 2.20 source contains no not-for-redistribution label. This decision does not extend to a version specifically marked nonredistributable."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/radvd/40a6db00cf0b97f031eaa6c6e87157788f40ced1b88e3ea6d78779bd2a39dc80.txt",
+          "sha256": "40a6db00cf0b97f031eaa6c6e87157788f40ced1b88e3ea6d78779bd2a39dc80"
+        },
+        {
+          "path": "LICENSES/Module-client-original-notices/radvd/advertising-acknowledgement.txt",
+          "sha256": "7dd097746d33e535dd82c304af8c012d534f679042c8bb899dfffe16e45c58a8"
+        }
+      ],
+      "reviewed_readme_sha256": "53838c875b9cbad632b8ebc25a222d29f620f33c38498d4bb866f173ce40e814"
+    },
+    {
+      "name": "vpp",
+      "version": "25.10.0-38~vyos20260205160746.96f7871",
+      "source_identity": "485c76597d968e4716039b3b573df4f7d666a9e5b064856ddef9b05865881bf0",
+      "copyright_sha256": "c073213009740d4af201b1a4cd0d0aae9f479217b6e8f93d9a95022e829e6bf9",
+      "evidence_member": "copyright",
+      "license": "Apache-2.0",
+      "conditions": [
+        "Actual preferred-source root LICENSE is the complete Apache2 license, normalized-word-equal to the retained canonical text. Preserve original per-file copyrights, notices and all separately scoped retained external-input source/notice decisions. This root declaration does not relicense the external components or remove any plugin or CPU variant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/vpp/c073213009740d4af201b1a4cd0d0aae9f479217b6e8f93d9a95022e829e6bf9.txt",
+          "sha256": "c073213009740d4af201b1a4cd0d0aae9f479217b6e8f93d9a95022e829e6bf9"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Module-client-original-notices/vpp/original-root-LICENSE",
+          "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+        }
+      ],
+      "root_license_sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "root_license_member": "source/LICENSE"
+    },
+    {
+      "name": "shirube-integration",
+      "version": "2026.03.0",
+      "source_identity": "f65e1e073d6690d57a23833806bba9a069c9b0931feb0aac1a25ef0013c6ffe4",
+      "copyright_sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357",
+      "evidence_member": "copyright",
+      "architecture": "amd64",
+      "license": "MIT AND BSD-3-Clause AND AGPL-3.0-only",
+      "conditions": [
+        "MIT applies to michibiki-io integration only. NetBird headless client uses the original BSD3 grant; management/, signal/, relay/ and combined/ retain their own AGPL3 terms in the complete upstream source, and are not part of the verified client build closure. No server is installed. Preserve all original upstream source and separate dependency/GeoIP notices; this does not establish whole-release or linkage clearance."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/shirube-integration/7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357.txt",
+          "sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357"
+        },
+        {
+          "path": "LICENSES/Zabbix-original-AGPL-3.0.txt",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+        }
+      ]
+    },
+    {
+      "name": "shirube-integration",
+      "version": "2026.03.0",
+      "source_identity": "c9023518a77883781e78e42e8633035268e2140e359ef5931f49db102b5ab509",
+      "copyright_sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357",
+      "evidence_member": "copyright",
+      "architecture": "arm64",
+      "license": "MIT AND BSD-3-Clause AND AGPL-3.0-only",
+      "conditions": [
+        "MIT applies to michibiki-io integration only. NetBird headless client uses the original BSD3 grant; management/, signal/, relay/ and combined/ retain their own AGPL3 terms in the complete upstream source, and are not part of the verified client build closure. No server is installed. Preserve all original upstream source and separate dependency/GeoIP notices; this does not establish whole-release or linkage clearance."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/shirube-integration/7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357.txt",
+          "sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357"
+        },
+        {
+          "path": "LICENSES/Zabbix-original-AGPL-3.0.txt",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+        }
+      ]
+    }
+  ],
+  "complete_module_license_word_differences": [
+    {
+      "component": "nat-rtsp",
+      "member": "NOTICE.shirube-upstream",
+      "word_differences": []
+    },
+    {
+      "component": "openvpn-dco",
+      "member": "NOTICE.shirube-upstream",
+      "word_differences": []
+    },
+    {
+      "component": "openvpn-otp",
+      "member": "LICENSE",
+      "word_differences": [
+        {
+          "op": "replace",
+          "actual": "<http://fsf.org/>",
+          "reference": "<https://fsf.org/>"
+        },
+        {
+          "op": "replace",
+          "actual": "{one",
+          "reference": "<one"
+        },
+        {
+          "op": "replace",
+          "actual": "does.}",
+          "reference": "does.>"
+        },
+        {
+          "op": "replace",
+          "actual": "{year} {name",
+          "reference": "<year> <name"
+        },
+        {
+          "op": "replace",
+          "actual": "author}",
+          "reference": "author>"
+        },
+        {
+          "op": "replace",
+          "actual": "<http://www.gnu.org/licenses/>.",
+          "reference": "<https://www.gnu.org/licenses/>."
+        },
+        {
+          "op": "replace",
+          "actual": "{project}",
+          "reference": "<program>"
+        },
+        {
+          "op": "replace",
+          "actual": "{year} {fullname}",
+          "reference": "<year> <name of author>"
+        },
+        {
+          "op": "replace",
+          "actual": "<http://www.gnu.org/licenses/>.",
+          "reference": "<https://www.gnu.org/licenses/>."
+        },
+        {
+          "op": "replace",
+          "actual": "<http://www.gnu.org/philosophy/why-not-lgpl.html>.",
+          "reference": "<https://www.gnu.org/licenses/why-not-lgpl.html>."
+        }
+      ]
+    },
+    {
+      "component": "vyos-ipt-netflow",
+      "member": "NOTICE.shirube-upstream",
+      "word_differences": []
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

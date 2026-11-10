@@ -29888,6 +29888,363 @@
         "Preserve the original matching.go CC-BY3 license reference, Go authors/BSD3 attribution and Rust MIT/Apache source references. Keep CC-BY3 attribution and any actual adaptation indication without extra restrictions; no source edit is performed here."
       ],
       "scope": "Exact observed source and original aggregate notice only. All original independently scoped notices retained without modification; no parent package, complete OS or OCI clearance."
+    },
+    "nat-rtsp@5.3-2-g475af0a#27fdea8e1bd709386972645edb6e6734fa6e07c9f0c905cf51394d6d53fd5a9f#e64cab87ac34029f82ca18b0766e1e38c99b03148fb473ee30dffa077c496de2": {
+      "source_identity": "27fdea8e1bd709386972645edb6e6734fa6e07c9f0c905cf51394d6d53fd5a9f",
+      "copyright_sha256": "e64cab87ac34029f82ca18b0766e1e38c99b03148fb473ee30dffa077c496de2",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/nat-rtsp/e64cab87ac34029f82ca18b0766e1e38c99b03148fb473ee30dffa077c496de2.txt",
+          "sha256": "e64cab87ac34029f82ca18b0766e1e38c99b03148fb473ee30dffa077c496de2"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Original RTSP source headers explicitly permit GPL version 2 or later. Keep full source, modifications, reconstruction scripts and author credits with binaries."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "openvpn-dco@0.2.20231117#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#afb028c6142d484224c8cf5b77979df07e16210a0a82770ac0f64015ebce19be": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "afb028c6142d484224c8cf5b77979df07e16210a0a82770ac0f64015ebce19be",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND ((GPL-2.0-only WITH Linux-syscall-note) OR MIT)",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/openvpn-dco/afb028c6142d484224c8cf5b77979df07e16210a0a82770ac0f64015ebce19be.txt",
+          "sha256": "afb028c6142d484224c8cf5b77979df07e16210a0a82770ac0f64015ebce19be"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Linux-original-syscall-note.txt",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ],
+      "conditions": [
+        "The module remains GPL2-only. The expressly dual-licensed UAPI header and Linux syscall note apply only to their declared scope, not to the complete module. Preserve all original SPDX identifiers and source attribution."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "openvpn-otp@9781ff1#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#8a9f33bf618f876aef2eddc714ec4db47861362450d0e2b6bc074e016f21e7fd": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "8a9f33bf618f876aef2eddc714ec4db47861362450d0e2b6bc074e016f21e7fd",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-3.0-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/openvpn-otp/8a9f33bf618f876aef2eddc714ec4db47861362450d0e2b6bc074e016f21e7fd.txt",
+          "sha256": "8a9f33bf618f876aef2eddc714ec4db47861362450d0e2b6bc074e016f21e7fd"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        }
+      ],
+      "conditions": [
+        "Retain the complete original GPL3 license and corresponding source. This component decision does not assign GPL2 to the plugin or relicense its host. Full original license word differences against GPL3 were checked; only URL and example-placeholder formatting differs."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "vyos-ipt-netflow@2.6-67-g6135551#8403aaaab270a3056265fa2644b6a3deb96be5b42ec93228ec0e7eacc0304190#f0ced2f5ce648761893ecc56a8580fce8c3f3dcda84ffd1ff67da590babb4c38": {
+      "source_identity": "8403aaaab270a3056265fa2644b6a3deb96be5b42ec93228ec0e7eacc0304190",
+      "copyright_sha256": "f0ced2f5ce648761893ecc56a8580fce8c3f3dcda84ffd1ff67da590babb4c38",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/vyos-ipt-netflow/f0ced2f5ce648761893ecc56a8580fce8c3f3dcda84ffd1ff67da590babb4c38.txt",
+          "sha256": "f0ced2f5ce648761893ecc56a8580fce8c3f3dcda84ffd1ff67da590babb4c38"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "conditions": [
+        "Honor the explicit GPL-2.0-only SPDX identifiers, project declaration and version-2-only SNMP header. Preserve the original boilerplate offering later versions without interpreting it as an override of those narrower declarations. Retain full CREDITS and kernel/MurmurHash attribution."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "radvd@2.20#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#40a6db00cf0b97f031eaa6c6e87157788f40ced1b88e3ea6d78779bd2a39dc80": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "40a6db00cf0b97f031eaa6c6e87157788f40ced1b88e3ea6d78779bd2a39dc80",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "LicenseRef-radvd-redistribution",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/radvd/40a6db00cf0b97f031eaa6c6e87157788f40ced1b88e3ea6d78779bd2a39dc80.txt",
+          "sha256": "40a6db00cf0b97f031eaa6c6e87157788f40ced1b88e3ea6d78779bd2a39dc80"
+        },
+        {
+          "path": "LICENSES/Module-client-original-notices/radvd/advertising-acknowledgement.txt",
+          "sha256": "7dd097746d33e535dd82c304af8c012d534f679042c8bb899dfffe16e45c58a8"
+        }
+      ],
+      "conditions": [
+        "Retain the complete original five-condition redistribution notice and per-file author copyrights. Include the required authors acknowledgement in advertising materials mentioning this component. README for the actual public 2.20 source contains no not-for-redistribution label. This decision does not extend to a version specifically marked nonredistributable."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "vpp@25.10.0-38~vyos20260205160746.96f7871#485c76597d968e4716039b3b573df4f7d666a9e5b064856ddef9b05865881bf0#c073213009740d4af201b1a4cd0d0aae9f479217b6e8f93d9a95022e829e6bf9": {
+      "source_identity": "485c76597d968e4716039b3b573df4f7d666a9e5b064856ddef9b05865881bf0",
+      "copyright_sha256": "c073213009740d4af201b1a4cd0d0aae9f479217b6e8f93d9a95022e829e6bf9",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/vpp/c073213009740d4af201b1a4cd0d0aae9f479217b6e8f93d9a95022e829e6bf9.txt",
+          "sha256": "c073213009740d4af201b1a4cd0d0aae9f479217b6e8f93d9a95022e829e6bf9"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/Module-client-original-notices/vpp/original-root-LICENSE",
+          "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+        }
+      ],
+      "conditions": [
+        "Actual preferred-source root LICENSE is the complete Apache2 license, normalized-word-equal to the retained canonical text. Preserve original per-file copyrights, notices and all separately scoped retained external-input source/notice decisions. This root declaration does not relicense the external components or remove any plugin or CPU variant."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "shirube-integration@2026.03.0#f65e1e073d6690d57a23833806bba9a069c9b0931feb0aac1a25ef0013c6ffe4#7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357": {
+      "source_identity": "f65e1e073d6690d57a23833806bba9a069c9b0931feb0aac1a25ef0013c6ffe4",
+      "copyright_sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause AND AGPL-3.0-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/shirube-integration/7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357.txt",
+          "sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357"
+        },
+        {
+          "path": "LICENSES/Zabbix-original-AGPL-3.0.txt",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+        }
+      ],
+      "conditions": [
+        "MIT applies to michibiki-io integration only. NetBird headless client uses the original BSD3 grant; management/, signal/, relay/ and combined/ retain their own AGPL3 terms in the complete upstream source, and are not part of the verified client build closure. No server is installed. Preserve all original upstream source and separate dependency/GeoIP notices; this does not establish whole-release or linkage clearance."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "shirube-integration@2026.03.0#c9023518a77883781e78e42e8633035268e2140e359ef5931f49db102b5ab509#7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357": {
+      "source_identity": "c9023518a77883781e78e42e8633035268e2140e359ef5931f49db102b5ab509",
+      "copyright_sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause AND AGPL-3.0-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Module-client-original-notices/shirube-integration/7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357.txt",
+          "sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357"
+        },
+        {
+          "path": "LICENSES/Zabbix-original-AGPL-3.0.txt",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+        }
+      ],
+      "conditions": [
+        "MIT applies to michibiki-io integration only. NetBird headless client uses the original BSD3 grant; management/, signal/, relay/ and combined/ retain their own AGPL3 terms in the complete upstream source, and are not part of the verified client build closure. No server is installed. Preserve all original upstream source and separate dependency/GeoIP notices; this does not establish whole-release or linkage clearance."
+      ],
+      "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
+    },
+    "pypi:uvloop@0.21.0#3bf12b0fda68447806a7ad847bfa591613177275d35b6724b1ee573faa3704e3#bf4809e1204503bd57d09f5685b68f5274ab37fffb694230b7f372e4694b8e59": {
+      "source_identity": "3bf12b0fda68447806a7ad847bfa591613177275d35b6724b1ee573faa3704e3",
+      "copyright_sha256": "bf4809e1204503bd57d09f5685b68f5274ab37fffb694230b7f372e4694b8e59",
+      "evidence_member": "third-party-notices/uvloop/copyright",
+      "redistributable": true,
+      "license": "(MIT OR Apache-2.0) AND MIT AND BSD-2-Clause AND ISC AND CC-BY-4.0",
+      "conditions": [
+        "uvloop retains its MIT/Apache alternative; bundled libuv retains its MIT grant, BSD2 tree.h and ISC inet implementations, and separately scoped CC-BY4 documentation. Preserve the complete original authors list and all binary/source notices, with attribution/license links and adaptation indication where applicable. The authors list is supporting attribution, not an additional permission grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-compound-originals/pypi-uvloop/bf4809e1204503bd57d09f5685b68f5274ab37fffb694230b7f372e4694b8e59.txt",
+          "sha256": "bf4809e1204503bd57d09f5685b68f5274ab37fffb694230b7f372e4694b8e59"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact observed source and complete original notice only. Ancillary and linked dependencies are independently gated; no whole-release or OCI clearance."
+    },
+    "salt@3006.21#e1d4f50cfaa4a0e9a54cdfdc03171e0ff1a0aed50ccfa701c067c95b667528da#2f277d848df0bdd839e900b85d81080085fb8a95199acba8b399f5131d308acf": {
+      "source_identity": "e1d4f50cfaa4a0e9a54cdfdc03171e0ff1a0aed50ccfa701c067c95b667528da",
+      "copyright_sha256": "2f277d848df0bdd839e900b85d81080085fb8a95199acba8b399f5131d308acf",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT AND BSD-2-Clause AND CC-BY-3.0 AND GPL-2.0-or-later AND WTFPL",
+      "conditions": [
+        "The complete original file-scope declaration, attribution and permission texts remain intact. Salt root Apache2 does not relicense bundled JavaScript, icons, documentation or packaging. Keep original Mark James/Jan Kovarik attribution and CC-BY3 terms for their artwork, and preserve original alternative licenses for Modernizr/yepnope. The Gentoo ebuild GPL grant permits GPL2 or later, and is independently scoped. Provide complete corresponding source and original preferred inputs; do not treat the historical Debian repack comment as a fresh reconstruction success."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-compound-originals/salt/2f277d848df0bdd839e900b85d81080085fb8a95199acba8b399f5131d308acf.txt",
+          "sha256": "2f277d848df0bdd839e900b85d81080085fb8a95199acba8b399f5131d308acf"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        },
+        {
+          "path": "LICENSES/CC-BY-3.0.txt",
+          "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact observed source and complete original notice only. Ancillary and linked dependencies are independently gated; no whole-release or OCI clearance."
+    },
+    "shirube-http-api-tools@2.3+shirube1#5b9d01846f253cbab734b0162b0305ffe962816e3ef757abed942d830ba7aae2#ad5e9b9f395c14d5a6cdf6e4b2ff0421a2c22116b03a4450fa3e608219131724": {
+      "source_identity": "5b9d01846f253cbab734b0162b0305ffe962816e3ef757abed942d830ba7aae2",
+      "copyright_sha256": "ad5e9b9f395c14d5a6cdf6e4b2ff0421a2c22116b03a4450fa3e608219131724",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "MIT",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-parent-originals/shirube-http-api-tools/original-package-copyright.txt",
+          "sha256": "ad5e9b9f395c14d5a6cdf6e4b2ff0421a2c22116b03a4450fa3e608219131724"
+        }
+      ],
+      "conditions": [
+        "The complete parent notice licenses only michibiki-io dependency-environment packaging under MIT. Its 184 dependency entries and Rust-source pointer are notice-index metadata, not license grants. Every actual bundled dependency, standard library and complete corresponding source retains its independent permissions gate."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact observed original source and original notice only. This does not override per-file restrictions or establish complete source, linkage, release or OCI acceptance."
+    },
+    "vyatta-bash@4.1-3+vyos2+current2#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#79d9851bb7b5248c56db7d29d50916b8e228f17fc99dc202f103fff5310cef38": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "79d9851bb7b5248c56db7d29d50916b8e228f17fc99dc202f103fff5310cef38",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later AND GPL-2.0-or-later AND BSD-4-Clause AND GFDL-1.3-or-later AND LicenseRef-Bash-original-ancillary-permissions",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-parent-originals/vyatta-bash/original-package-copyright.txt",
+          "sha256": "79d9851bb7b5248c56db7d29d50916b8e228f17fc99dc202f103fff5310cef38"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/vyatta-bash/original-root-COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/vyatta-bash/original-root-README",
+          "sha256": "aaa161165c070b1b028ab564ab3dc64ec85215e733d466a4e81df494d41c0e60"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/vyatta-bash/vyatta-bash-source_shell.c-permission-header.txt",
+          "sha256": "50fc2ff0f3a457e1b961003db5d16f36367daa6a8de7db8f43234aa6d9bbea05"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/vyatta-bash/vyatta-bash-source_lib_readline_doc_rluserman.texi-permission-header.txt",
+          "sha256": "04deae51827b492cccd628ddf432d9885d675c3e7dad061b1bcfc1976f317079"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/vyatta-bash/vyatta-bash-source_lib_readline_doc_history.texi-permission-header.txt",
+          "sha256": "b33cfb18638154988b0624eaa6249fd9f7a1ff027d94fd476019880e83763094"
+        }
+      ],
+      "conditions": [
+        "Actual Bash4.1 README and shell.c explicitly use GPL3 or later; the stale Debian Bash3.2/GPL2 notice is retained as historical packaging attribution, not used to downgrade Bash4.1. Original ancillary scripts and examples retain their separately stated licenses.",
+        "Preserve original FAQ verbatim-copy-only permissions, custom manual copy/translation conditions, and all BSD advertising/nonendorsement notices. Do not apply these documentation restrictions to the shell executable. Manuals with GFDL cover texts retain their actual front/back cover texts and no-invariant-sections declaration. No manual is altered by this decision.",
+        "Advertising mentioning covered example components must retain Winning Strategies, Inc. and University of California, Berkeley acknowledgements. Source and binary documentation retain all original author credits, source notices and original scoped permissions."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact observed original source and original notice only. This does not override per-file restrictions or establish complete source, linkage, release or OCI acceptance."
+    },
+    "strongswan@5.9.11-2#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd": {
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-3.0-or-later WITH LicenseRef-StrongSwan-OpenSSL-LGPL-exception AND MIT AND BSD-3-Clause AND LicenseRef-SSLeay-original-source-permission",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-parent-originals/strongswan/original-package-copyright.txt",
+          "sha256": "246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/strongswan/original-root-COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/strongswan/original-root-README",
+          "sha256": "aaa161165c070b1b028ab564ab3dc64ec85215e733d466a4e81df494d41c0e60"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_shell.c-permission-header.txt",
+          "sha256": "50fc2ff0f3a457e1b961003db5d16f36367daa6a8de7db8f43234aa6d9bbea05"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_lib_readline_doc_rluserman.texi-permission-header.txt",
+          "sha256": "04deae51827b492cccd628ddf432d9885d675c3e7dad061b1bcfc1976f317079"
+        },
+        {
+          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_lib_readline_doc_history.texi-permission-header.txt",
+          "sha256": "b33cfb18638154988b0624eaa6249fd9f7a1ff027d94fd476019880e83763094"
+        }
+      ],
+      "conditions": [
+        "The observed native python3-vici source is the authenticated Stream StrongSwan5.9.11 tree, distinct from separately shipped Debian5.9.8 packages. Its original package copyright is byte-identical to the previously reviewed StrongSwan notice; that original notice review is inherited, not claimed as new.",
+        "Original source LICENSE selects GPL2 or later and explicitly permits its stated LGPL/OpenSSL/SSLeay combination, requiring the other corresponding sources. Choosing GPL3 does not grant additional permissions for unrelated libraries. Preserve BSD advertising clauses and the original RSA MD5 derived-from phrase. Keep actual per-file terms and OpenSSL exception unchanged."
+      ],
+      "reviewed_on": "2026-11-10",
+      "scope": "Exact observed original source and original notice only. This does not override per-file restrictions or establish complete source, linkage, release or OCI acceptance."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
