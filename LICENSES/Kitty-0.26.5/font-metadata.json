@@ -1,0 +1,96 @@
+[
+  {
+    "member": "kitty-0.26.5/kitty_tests/CascadiaCode-Regular.otf",
+    "sha256": "dc76f084f91b7eaab0a0f2b43eeb7b2f759085bfae7ee58037a014089692f4d2",
+    "names": {
+      "0": [
+        "\u00a9 2020 Microsoft Corporation. All Rights Reserved."
+      ],
+      "1": [
+        "Cascadia Code"
+      ],
+      "3": [
+        "2102.003;SAJA;CascadiaCode-Regular"
+      ],
+      "5": [
+        "Version 2102.003"
+      ],
+      "13": [
+        "Microsoft supplied font. You may use this font to create, display, and print content as permitted by the license terms or terms of use, of the Microsoft product, service, or content in which this font was included. You may only (i) embed this font in content as permitted by the embedding restrictions included in this font; and (ii) temporarily download this font to a printer or other output device to help print content. Any other use is prohibited.\n \nThe following license, based on the SIL Open Font license (https://scripts.sil.org/OFL), applies to this font. Additional license terms may be found on the GitHub repository for this font (https://github.com/microsoft/cascadia-code/blob/main/LICENSE).\n \nPermission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:\n \n1) Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.\n \n2) Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.\n \n3) No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.\n \n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.\n \n5) The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.\n \nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE."
+      ],
+      "14": [
+        "https://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "member": "kitty-0.26.5/kitty_tests/FiraCode-Medium.otf",
+    "sha256": "f94d9fa1ffb46463e6d8fda12041088397adea1c47de7c50a8f9f57ce9a6d788",
+    "names": {
+      "0": [
+        "Copyright 2014-2020 The Fira Code Project Authors (https://github.com/tonsky/FiraCode)"
+      ],
+      "1": [
+        "Fira Code",
+        "Fira Code Medium"
+      ],
+      "3": [
+        "5.002;CTDB;FiraCode-Medium"
+      ],
+      "5": [
+        "Version 5.002"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "member": "kitty-0.26.5/kitty_tests/LiberationMono-Regular.ttf",
+    "sha256": "a9b21391536aec1c8fad37f2d5f24750e7f2d63cd86bccbb2463b6e17005f52e",
+    "names": {
+      "0": [
+        "Digitized data copyright (c) 2010 Google Corporation.\nCopyright (c) 2012 Red Hat, Inc."
+      ],
+      "1": [
+        "Liberation Mono"
+      ],
+      "3": [
+        "Ascender - Liberation Mono"
+      ],
+      "5": [
+        "Version 2.00.1"
+      ],
+      "13": [
+        "Licensed under the SIL Open Font License, Version 1.1"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "member": "kitty-0.26.5/kitty_tests/iosevka-regular.ttf",
+    "sha256": "b2b9380c706d8cc85ebcdb60963abe6191a62ea657ab7d7f45f808a9a641e97e",
+    "names": {
+      "0": [
+        "Copyright 2015-2021, Renzhi Li (aka. Belleve Invis, belleve@typeof.net)."
+      ],
+      "1": [
+        "Iosevka"
+      ],
+      "3": [
+        "Iosevka Regular Version 7.0.3"
+      ],
+      "5": [
+        "Version 7.0.3; ttfautohint (v1.8.3)"
+      ],
+      "13": [
+        "This font software is licenced under the SIL Open Font Licence, Version 1.1. This licence is available with a FAQ at: http://scripts.sil.org/OFL. This font software is distributed on an 'AS IS' basis, without warranties or conditions of any kind, either express or implied. See the SIL Open Font licence for the specific language, permissions and limitations governing your use of this font software."
+      ]
+    }
+  }
+]

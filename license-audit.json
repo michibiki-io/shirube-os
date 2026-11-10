@@ -23967,6 +23967,65 @@
         "Retain RFC2617 Internet Society1999 implementation-derivative permission and original copyright; Squid modifications remain under the explicit GNU grant. Preserve OpenLDAP2.8 permission for copied LDAP helper material, fullBoost1.0 terms, BSD/DEC source-only Solaris header notices and every original copyright. No CDDL or public-domain grant is invented from a source URL.",
         "Author requests for email about icon use remain requests; no message is sent or claimed. Exact component declarations, source and notice retention only. No code/build changes, library/ISO rebuild or boot/OCI result are claimed; complete OS release gates remain mandatory."
       ]
+    },
+    "kitty@0.26.5-5": {
+      "redistributable": true,
+      "source_identity": "a86574bc654ac00a7046fe32c52cb3d491ac3066da2ae77ba1d4b5712e7fc4f5",
+      "copyright_sha256": "19bc64e244f1e883a9c2f72fe2451d7520b40939467ca2eea8f6b655b735a69c",
+      "license": "GPL-3.0-or-later AND LGPL-2.1-or-later AND Zlib AND MIT AND BSD-1-Clause AND CC0-1.0 AND OFL-1.1 AND CC-BY-4.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Kitty-0.26.5/LICENSE",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/Kitty-0.26.5/debian-copyright.txt",
+          "sha256": "19bc64e244f1e883a9c2f72fe2451d7520b40939467ca2eea8f6b655b735a69c"
+        },
+        {
+          "path": "LICENSES/Kitty-0.26.5/font-metadata.json",
+          "sha256": "d9b6460ef702a67d624d193328bdabe3cc261ad5449e9c3d72aa6f8271dadd5c"
+        },
+        {
+          "path": "LICENSES/Kitty-0.26.5/fonts/Cascadia-Code-OFL.txt",
+          "sha256": "51882cd3cdba4e16f220f44ddb08a635c38c44ea6e0975db2574f4be6f958238"
+        },
+        {
+          "path": "LICENSES/Kitty-0.26.5/fonts/Fira-Code-OFL.txt",
+          "sha256": "1d41e10031ab125302780a05ec4c91d218e47db0c7e37cf315cce5e608cdc25c"
+        },
+        {
+          "path": "LICENSES/Kitty-0.26.5/fonts/Iosevka-OFL.md",
+          "sha256": "72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80"
+        },
+        {
+          "path": "LICENSES/Kitty-0.26.5/fonts/Liberation-2-OFL.txt",
+          "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        },
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ],
+      "scope": "Exact Debian Kitty0.26.5 source/package. All21 DEP5 paragraphs and every file/license scope reviewed; original full GNU3 license is word-identical to retained canonical text. Actual four binary font name tables and complete primary publisher licenses read. Liberation Mono is actual2.00.1/OFL1.1, not the older font version assumed by Debian metadata. No font/code/build/runtime modification or removal.",
+      "conditions": [
+        "Retain GNU3-or-later core source/notices and complete reconstruction/build/install inputs. Keep GLFW Zlib origin, changed-version and no-removed-notice conditions; retain MIT packaging/CSS grants, BSD1 uthash source notice, LGPL2.1-or-later iqsort source/relinking rights and full CC0 ring-buffer waiver/fallback/disclaimer.",
+        "Deliver all four primary font copyright/OFL texts with unmodified fonts. Preserve Cascadia Code reserved name and Microsoft copyright, Fira Code Project authors, Renzhi Li/Iosevka, Google2010/Red Hat2012 Liberation copyrights and original reserved names. Do not sell the fonts by themselves, relicense them under GNU or use author names to endorse modified fonts.",
+        "The actual Liberation font name table explicitly gives2.00.1 and OFL1.1; the original publisher license has applied since2012 and agrees with this file. Preserve the original Debian copyright including historical older Liberation EULA, while clearly recording why it is not the controlling grant for this actual2.x font. No missing-GNU-font-source issue is invented for an explicitly OFL-licensed font.",
+        "Cascadia Code2102.003 is covered by the primary Microsoft version-tagged full OFL license as well as the explicit following-OFL permission in its font metadata. Retain its metadata including preceding generic Microsoft boilerplate; do not substitute a proprietary-font-only interpretation for the independent complete publisher OFL grant. Fira5.002 and Iosevka7.0.3 primary licenses are pinned to matching public version commits.",
+        "Retain Václav Vančura2020 copyright, CC-BY4.0 license/author attribution and source URI for Kitty SVG artwork inside the upstream source set. Do not present upstream component artwork as Shirube OS branding or imply endorsement. Complete CC-BY4.0 canonical terms are supplied in addition to original converted text; original scope/terms remain unchanged.",
+        "All font and program bytes remain unchanged. Static original-grant/source/metadata checks only, no library/ISO rebuild, benchmark, boot or OCI success is implied. Exact complete-OS license/source/release checks remain mandatory."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
