@@ -23164,6 +23164,87 @@
         "Preserve documentation under GFDL1.3-or-later with no invariant sections or cover texts, transparent sources/history/credits and complete license. Keep original Cryptogams three-clause alternative and Andy Polyakov credit; OpenSSL-project origin is not an OpenSSL license substitution. Retain the original Mike Hamburg public-domain declaration without generalizing it to other code.",
         "Retain ISC, randomart BSD2, inih BSD3, MIT examples/GOST/fuzzer notices, Apache2 test/fuzzer patent and notice terms and CC0 fallback/disclaimer. All original scopes, copyrights and disclaimers accompany binary/source delivery. No endorsement implied."
       ]
+    },
+    "gcc-12@12.2.0-14+deb12u1": {
+      "redistributable": true,
+      "source_identity": "3aed0b189189c744dc9f4b74798a51d3e512ea85e492568db788a927c88e20ba",
+      "copyright_sha256": "da8191658b3452ce9caf31638ba61dab31a38c619fa39df119812e050f592fd3",
+      "license": "GPL-3.0-or-later WITH GCC-exception-3.1 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND MIT AND ISC AND Artistic-1.0 AND GFDL-1.2-or-later AND LicenseRef-GCC-Unicode-Original",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING",
+          "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING.LIB",
+          "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING.RUNTIME",
+          "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING3",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING3.LIB",
+          "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING",
+          "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING.LIB",
+          "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING.LIBGLOSS",
+          "sha256": "39859c73b5694929982241326d0508f8687708e4f3c15b733a9859ab62f94bb6"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING.NEWLIB",
+          "sha256": "bc1fbe427c6165ae8d06203f65af8c9f5fd5463788f2e8f56bceb50eeda19449"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING3",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING3.LIB",
+          "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING.RUNTIME",
+          "sha256": "0e1355c3acaa921b2f3bccad89a1bf1f1edb2cec437827ededaabd52adf85008"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING.FDL",
+          "sha256": "3a30b682339e57bea48a0f8e2eda4db987467f8de31d9dd602f5bc56975cae73"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING3.LIB",
+          "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/images/LICENSE.IMG",
+          "sha256": "a09161b2b8936bcdd8222842c60b885d22c4c323e42be443d9055324484aa783"
+        },
+        {
+          "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING3",
+          "sha256": "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"
+        }
+      ],
+      "scope": "Exact Debian GCC12 source/package scope. Complete original copyright text read with exact complete previously read legal-body reuse; copyright.in differs only by generated package/branch substitutions. Actual GCC, newlib and Modula-2 nested-archive root notices extracted from the exact original source; standard terms compared word-for-word and every additional newlib/libgloss term read. No independent chain-of-title or complete-release warranty.",
+      "conditions": [
+        "Keep GPL3-or-later compiler and runtime scopes distinct. The GCC Runtime Library Exception3.1 applies only to files bearing it and eligible compilation processes; preserve its definitions and no-weakening clause. Do not assume it waives source obligations for the runtime libraries themselves.",
+        "Deliver complete corresponding source, Debian patches and exact configuration/build/install inputs. Retain LGPL2/2.1/3 distinctions and permit replacement/relinking/debugging of modified libraries. Preserve separate BSD/MIT/ISC/Unicode/LLVM and target-specific newlib/libgloss grants; do not relabel all source under one license.",
+        "Retain original authorship, copyright/permission/disclaimer and dated modification notices in source and binary materials, including Berkeley and Utah acknowledgement requirements, Henry Spencer documentation credit, Intel modified-version marking, and all target-specific nonendorsement conditions. No additional trademark or artwork permission is inferred.",
+        "Use the offered Artistic option for the historical DMD dual-licensed portion; complete original terms/source remain available. Preserve actual GNU FDL1.2 text and documentation license notices, transparent sources and any applicable invariant/cover/history terms; the Modula-2 manual grant explicitly permits later FDL versions with no invariant sections or cover texts. No Cygwin binary or proprietary target runtime is shipped."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
