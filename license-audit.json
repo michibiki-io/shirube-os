@@ -30219,24 +30219,16 @@
           "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
         },
         {
+          "path": "LICENSES/StrongSwan-original-LICENSE.txt",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
+        },
+        {
           "path": "LICENSES/Native-parent-originals/strongswan/original-root-COPYING",
-          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
         },
         {
-          "path": "LICENSES/Native-parent-originals/strongswan/original-root-README",
-          "sha256": "aaa161165c070b1b028ab564ab3dc64ec85215e733d466a4e81df494d41c0e60"
-        },
-        {
-          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_shell.c-permission-header.txt",
-          "sha256": "50fc2ff0f3a457e1b961003db5d16f36367daa6a8de7db8f43234aa6d9bbea05"
-        },
-        {
-          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_lib_readline_doc_rluserman.texi-permission-header.txt",
-          "sha256": "04deae51827b492cccd628ddf432d9885d675c3e7dad061b1bcfc1976f317079"
-        },
-        {
-          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_lib_readline_doc_history.texi-permission-header.txt",
-          "sha256": "b33cfb18638154988b0624eaa6249fd9f7a1ff027d94fd476019880e83763094"
+          "path": "LICENSES/Native-parent-originals/strongswan/original-root-LICENSE",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
         }
       ],
       "conditions": [

@@ -119,24 +119,16 @@
           "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
         },
         {
+          "path": "LICENSES/StrongSwan-original-LICENSE.txt",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
+        },
+        {
           "path": "LICENSES/Native-parent-originals/strongswan/original-root-COPYING",
-          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
         },
         {
-          "path": "LICENSES/Native-parent-originals/strongswan/original-root-README",
-          "sha256": "aaa161165c070b1b028ab564ab3dc64ec85215e733d466a4e81df494d41c0e60"
-        },
-        {
-          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_shell.c-permission-header.txt",
-          "sha256": "50fc2ff0f3a457e1b961003db5d16f36367daa6a8de7db8f43234aa6d9bbea05"
-        },
-        {
-          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_lib_readline_doc_rluserman.texi-permission-header.txt",
-          "sha256": "04deae51827b492cccd628ddf432d9885d675c3e7dad061b1bcfc1976f317079"
-        },
-        {
-          "path": "LICENSES/Native-parent-originals/strongswan/vyatta-bash-source_lib_readline_doc_history.texi-permission-header.txt",
-          "sha256": "b33cfb18638154988b0624eaa6249fd9f7a1ff027d94fd476019880e83763094"
+          "path": "LICENSES/Native-parent-originals/strongswan/original-root-LICENSE",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
         }
       ],
       "conditions": [
@@ -146,29 +138,17 @@
       "actual_original_source_notices": [
         {
           "member": "source/COPYING",
-          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
         },
         {
-          "member": "source/README",
-          "sha256": "aaa161165c070b1b028ab564ab3dc64ec85215e733d466a4e81df494d41c0e60"
-        },
-        {
-          "member": "source/shell.c",
-          "complete_source_sha256": "78fbe9141e90b547528e752e8fc79dac0b8f359d2f7dbe0f99dd3001a90a7924",
-          "retained_permission_header_sha256": "50fc2ff0f3a457e1b961003db5d16f36367daa6a8de7db8f43234aa6d9bbea05"
-        },
-        {
-          "member": "source/lib/readline/doc/rluserman.texi",
-          "complete_source_sha256": "4cf256a8652dfb07e6041248fba960abee8dc04a5b60ea4e837becd647399f67",
-          "retained_permission_header_sha256": "04deae51827b492cccd628ddf432d9885d675c3e7dad061b1bcfc1976f317079"
-        },
-        {
-          "member": "source/lib/readline/doc/history.texi",
-          "complete_source_sha256": "abd4696a5e40a42071e6f26d21ac6be39d728c1fb68d0ef1911dc4e48983e39c",
-          "retained_permission_header_sha256": "b33cfb18638154988b0624eaa6249fd9f7a1ff027d94fd476019880e83763094"
+          "member": "source/LICENSE",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
         }
       ],
-      "inherited_exact_notice_review": null
+      "inherited_exact_notice_review": {
+        "approved_component": "strongswan@5.9.8-5+deb12u6",
+        "copyright_sha256": "246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd"
+      }
     }
   ],
   "original_gnu_license_word_differences": [
