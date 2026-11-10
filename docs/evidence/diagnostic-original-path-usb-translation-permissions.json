@@ -1,0 +1,93 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "libpath-tiny-perl",
+      "version": "0.144-1",
+      "source_identity": "d26f7342cc1a7a5dc466aa02d670cd91d38ca1ee1027a4efac929fe71fe633f5",
+      "copyright_sha256": "936c792bf17e2db9b42fdbb1311b3119f6ce83ce81a9f0db55d9552145967431",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "c1a19c0d83f668a784640c0b41e024f37b182ad38011b170f9200123e57f6070",
+          "read_reference": {
+            "component": "libpath-tiny-perl",
+            "member": "LICENSE",
+            "sha256": "c1a19c0d83f668a784640c0b41e024f37b182ad38011b170f9200123e57f6070",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "debian/copyright-check",
+          "sha256": "5bc316692f23101480ef89b794bba38688188955f47a810ee4b2a079e8079250",
+          "read_reference": {
+            "component": "libpath-tiny-perl",
+            "member": "debian/copyright-check",
+            "sha256": "5bc316692f23101480ef89b794bba38688188955f47a810ee4b2a079e8079250",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "debian/copyright_hints",
+          "sha256": "0783ce6604cdc797c74b1f54f5184470ce605d6d684bc0db337f7c56e54cefed",
+          "read_reference": {
+            "component": "libpath-tiny-perl",
+            "member": "debian/copyright_hints",
+            "sha256": "0783ce6604cdc797c74b1f54f5184470ce605d6d684bc0db337f7c56e54cefed"
+          }
+        }
+      ],
+      "scope": "Retain explicit Apache2 module grant, original complete Apache license and any applicable NOTICE, with distinct GPL3-or-later packaging License-Grant. Reference-only definitions are backed by those explicit operative grant paragraphs and retained full texts."
+    },
+    {
+      "source": "squid-langpack",
+      "version": "20220130-1",
+      "source_identity": "d7b6dbb91aa326fed61750724ee34c14a3e8bf18bb3c20203c00090141124c97",
+      "copyright_sha256": "a85ea6cb52961c061242daad16808d937c08270af877d7857a12ff25320e1c57",
+      "original_legal_matches": [
+        {
+          "member": "COPYRIGHT",
+          "sha256": "878457997c5e09c49adb7132c59fe65c776fa34aec1f5d9463d10a38f3d1231d",
+          "read_reference": {
+            "component": "squid-langpack",
+            "member": "COPYRIGHT",
+            "sha256": "878457997c5e09c49adb7132c59fe65c776fa34aec1f5d9463d10a38f3d1231d"
+          }
+        }
+      ],
+      "scope": "Preserve complete original translators notices, original TRANSLATORS attribution and independent BSD3 translation snippets, GPL2-or-later Squid scope and GPL3 packaging; no blanket source relicensing."
+    },
+    {
+      "source": "usbutils",
+      "version": "1:014-1+deb12u1",
+      "source_identity": "41a55f20c11a68776a7741760ba1b9682f9d1629c65fcd706beabe12e0323f90",
+      "copyright_sha256": "e4f5ee783ab8e48ae80c256be70e73e60614ee2fadb424b5b60de8b3316bea60",
+      "original_legal_matches": [
+        {
+          "member": "LICENSES/GPL-2.0-only.txt",
+          "sha256": "91412672119c72352b76c1d48fa1a8b7cdc7f70be7929e468c8805db468e23e4",
+          "read_reference": {
+            "component": "usbutils",
+            "member": "LICENSES/GPL-2.0-only.txt",
+            "sha256": "91412672119c72352b76c1d48fa1a8b7cdc7f70be7929e468c8805db468e23e4",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "LICENSES/GPL-3.0-only.txt",
+          "sha256": "4631da83311d27f99078d0d102e31bd34a4fcbcc2dae2aa40f1454a5b48125dc",
+          "read_reference": {
+            "component": "usbutils",
+            "member": "LICENSES/GPL-3.0-only.txt",
+            "sha256": "4631da83311d27f99078d0d102e31bd34a4fcbcc2dae2aa40f1454a5b48125dc",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        }
+      ],
+      "scope": "Preserve original GNU2-or-later program grant, all source-specific SPDX/license scopes and complete original GNU2/GNU3 license files. Separate build/tooling permissions do not upgrade GNU2-only files or replace per-file terms."
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
