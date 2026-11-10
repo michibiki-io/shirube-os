@@ -7,9 +7,45 @@ import unittest
 from unittest.mock import patch
 from producer.bundles import bundle
 from producer.release import scan_secrets,verify_sources
+from producer.source_batches import batch
 
 
 class PublicSourceFixtureTests(unittest.TestCase):
+    def test_batched_debian_source_keeps_exact_fixture_binding(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);vector=root/'vector';vector.write_bytes(b'-----BEGIN PRIVATE KEY-----\n'+b'A'*64+b'\n')
+            plain=root/'plain';plain.write_text('ordinary source')
+            notice=root/'notice';notice.write_text('permission notice')
+            recipe=root/'recipe';recipe.write_text('build recipe')
+            origin='debian:'+'a'*64;member='source/test/vector';digest=hashlib.sha256(vector.read_bytes()).hexdigest()
+            with patch.dict('producer.source_fixtures.KNOWN',{origin:{member:digest}}):
+                components=[];archives=[]
+                for number,data in enumerate([vector,plain,plain]):
+                    archive=root/f'shirube-os-v2026.03.0-amd64-source-{number:04d}.tar.gz'
+                    refs=bundle([(data,member,'sources'),(notice,'copyright','license_files'),(recipe,'recipe','build_inputs')],archive,0,source_origin=origin)
+                    components.append({'name':'fixture'+str(number),'version':'1','architecture':'amd64','license':'MIT','redistributable':True,
+                        'source_origin':{'debian_preferred_source_export':{'original_descriptor_sha256':'a'*64}},**refs})
+                    archives.append(archive)
+                parts,replaced=batch(archives,components,root,'amd64','v2026.03.0')
+                self.assertEqual(len(parts),1)
+                self.assertNotIn(archives[0].name,replaced)
+                self.assertTrue(archives[0].is_file())
+                self.assertEqual(components[0]['sources'][0]['member'],member)
+                assets=[{'name':p.name,'role':'source'}for p in [archives[0],*parts]]
+                inventory={'components':components,'shipped_packages':[{k:c[k]for k in ['name','version','architecture']}for c in components]}
+                verify_sources(root,inventory,assets)
+                for asset in assets:scan_secrets(root/asset['name'])
+                for mutation in ['architecture','version','directory','digest','origin','category']:
+                    changed=copy.deepcopy(inventory);component=changed['components'][0];ref=component['sources'][0]
+                    if mutation=='architecture':ref['asset']=ref['asset'].replace('-amd64-source-','-arm64-source-')
+                    elif mutation=='version':ref['asset']=ref['asset'].replace('v2026.03.0','v2026.04.0')
+                    elif mutation=='directory':ref['member']=ref['member'].replace('source/','elsewhere/',1)
+                    elif mutation=='digest':ref['sha256']='b'*64
+                    elif mutation=='origin':component['source_origin']['debian_preferred_source_export']['original_descriptor_sha256']='b'*64
+                    else:component['build_inputs'].append(component['sources'].pop())
+                    with self.subTest(mutation=mutation),self.assertRaisesRegex(ValueError,'Private signing key'):
+                        verify_sources(root,changed,assets)
+
     def test_origin_member_and_whole_file_must_match_in_both_source_checks(self):
         for kind, field, length in [('stream','stream_archive_sha256',64),
                                     ('netbird','netbird_source_commit',40),

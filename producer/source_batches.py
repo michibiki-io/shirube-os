@@ -21,6 +21,12 @@ def batch(archives, components, output, architecture, version, *, max_components
     originals = {filename(Path(p).name): Path(p) for p in archives}
     if len(originals) != len(archives):
         raise ValueError('Duplicate Debian source archive')
+    # Exact public source fixtures must keep their reviewed member namespace
+    # and compressed archive. Plain batch parts would expose their PEM text to
+    # the outer credential scan and rename the independently verified members.
+    from .source_fixtures import allowances
+    protected={asset for asset,member,digest in allowances({'components':components})}
+    originals={name:path for name,path in originals.items() if name not in protected}
     expected = {name: {} for name in originals}
     references = []
 
