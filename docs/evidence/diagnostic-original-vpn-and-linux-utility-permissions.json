@@ -1,0 +1,221 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "strongswan",
+      "version": "5.9.8-5+deb12u6",
+      "source_identity": "c2207824084c35eb01f58dd2bfe414c6eedb5962b2d9d5df59986137eeaa295e",
+      "copyright_sha256": "246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0",
+          "read_reference": {
+            "component": "strongswan",
+            "member": "LICENSE",
+            "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
+          }
+        },
+        {
+          "member": "src/libcharon/plugins/vici/python/LICENSE",
+          "sha256": "7cf763909a5be21bcc7dabb9dc92dbf60bd8afff850a1a01c7621174ce72ce7d",
+          "read_reference": {
+            "component": "strongswan",
+            "member": "src/libcharon/plugins/vici/python/LICENSE",
+            "sha256": "7cf763909a5be21bcc7dabb9dc92dbf60bd8afff850a1a01c7621174ce72ce7d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "scope_group_counts": {
+        "GPL-2+": 409,
+        "Expat": 7,
+        "Expat and GPL-2+": 13,
+        "BSD-3": 1,
+        "BSD-Young": 2,
+        "MIT": 1,
+        "GPL": 5,
+        "GPL-3+": 2,
+        "BSD-3-clause": 1
+      },
+      "retained_scope_metadata_sha256": "78165a4d3e89e2a4bae8299626c138306886f90b371eedac7e92fe157b3d3822",
+      "scope_review": "Every operative license class reviewed in full or by complete word differences; every nondefault scope and condition-bearing metadata field read. Uniform GNU2-or-later file groups and complete attribution are machine-indexed and retained byte-exactly; manual reading of every individual author name is not claimed. All named original legal files matched to read full originals. Not OS release clearance.",
+      "required_notices": [
+        {
+          "path": "LICENSES/StrongSwan-original-LICENSE.txt",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
+        }
+      ],
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions, disclaimers, advertising acknowledgements and modifications in source and binary materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Select the permitted GNU3 option for GNU2-or-later code combined with GNU3 generated parser sources. Preserve the original strongSwan LGPL/OpenSSL/SSLeay combination exception and its complete source obligation; do not relicense Eric Young code under the GNU GPL. Original Debian notes about uncompiled BSD-Young files remain preserved and are not a claim of a fresh ELF audit."
+      ]
+    },
+    {
+      "source": "util-linux",
+      "version": "2.38.1-5+deb12u3",
+      "source_identity": "0fe5fcd2b83d0465e32ca5cb9d8319e9b6fbf14c9a69abfd7ea905e45fa90b67",
+      "copyright_sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "Documentation/licenses/COPYING.BSD-3-Clause",
+          "sha256": "9b718a9460fed5952466421235bc79eb49d4e9eacc920d7a9dd6285ab8fd6c6d",
+          "read_reference": {
+            "component": "e2fsprogs",
+            "member": "lib/uuid/COPYING",
+            "sha256": "9b718a9460fed5952466421235bc79eb49d4e9eacc920d7a9dd6285ab8fd6c6d"
+          }
+        },
+        {
+          "member": "Documentation/licenses/COPYING.BSD-4-Clause-UC",
+          "sha256": "ba7640f00d93e72e92b94b9d71f25ec53bac2f1682f5c4adcccb0018359f60f8",
+          "read_reference": {
+            "component": "util-linux",
+            "member": "Documentation/licenses/COPYING.BSD-4-Clause-UC",
+            "sha256": "ba7640f00d93e72e92b94b9d71f25ec53bac2f1682f5c4adcccb0018359f60f8",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "base-files",
+              "member": "licenses/BSD",
+              "sha256": "5d588eb3b157d52112afea935c88a7ff9efddc1e2d95a42c25d3b96ad9055008"
+            }
+          }
+        },
+        {
+          "member": "Documentation/licenses/COPYING.GPL-2.0-or-later",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "Documentation/licenses/COPYING.GPL-3.0-or-later",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/GPL-3",
+            "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+          }
+        },
+        {
+          "member": "Documentation/licenses/COPYING.ISC",
+          "sha256": "e53348ce276358e9997014071c5294b36a18c4b34f32f00ee57b9acce0aafd63",
+          "read_reference": {
+            "component": "util-linux",
+            "member": "Documentation/licenses/COPYING.ISC",
+            "sha256": "e53348ce276358e9997014071c5294b36a18c4b34f32f00ee57b9acce0aafd63",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "Documentation/licenses/COPYING.LGPL-2.1-or-later",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "libblkid/COPYING",
+          "sha256": "f03b01c1251bc3bfee959aea99ed7906a0b08a2ff132d55a1ece18ee573a52a1",
+          "read_reference": {
+            "component": "util-linux",
+            "member": "libblkid/COPYING",
+            "sha256": "f03b01c1251bc3bfee959aea99ed7906a0b08a2ff132d55a1ece18ee573a52a1",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "libfdisk/COPYING",
+          "sha256": "f03b01c1251bc3bfee959aea99ed7906a0b08a2ff132d55a1ece18ee573a52a1",
+          "read_reference": {
+            "component": "util-linux",
+            "member": "libblkid/COPYING",
+            "sha256": "f03b01c1251bc3bfee959aea99ed7906a0b08a2ff132d55a1ece18ee573a52a1",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "libmount/COPYING",
+          "sha256": "5f12c2408a84be40fbff8ad7e281aa4e884fb92ee3f9a61aedf886a9503d3500",
+          "read_reference": {
+            "component": "util-linux",
+            "member": "libmount/COPYING",
+            "sha256": "5f12c2408a84be40fbff8ad7e281aa4e884fb92ee3f9a61aedf886a9503d3500",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "libsmartcols/COPYING",
+          "sha256": "f03b01c1251bc3bfee959aea99ed7906a0b08a2ff132d55a1ece18ee573a52a1",
+          "read_reference": {
+            "component": "util-linux",
+            "member": "libblkid/COPYING",
+            "sha256": "f03b01c1251bc3bfee959aea99ed7906a0b08a2ff132d55a1ece18ee573a52a1",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "libuuid/COPYING",
+          "sha256": "5068749ee9c2f2c545af4a4de9fde3c39dc8d90af47cc0b3a42700116f9b7e71",
+          "read_reference": {
+            "component": "util-linux",
+            "member": "libuuid/COPYING",
+            "sha256": "5068749ee9c2f2c545af4a4de9fde3c39dc8d90af47cc0b3a42700116f9b7e71",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "scope_group_counts": {
+        "GPL-2+": 3,
+        "GPL-2": 5,
+        "GPL-3+": 1,
+        "public-domain": 1,
+        "BSD-4-clause": 1,
+        "MIT": 1,
+        "BSD-3-clause": 3,
+        "BSLA": 1,
+        "LGPL-2+": 3,
+        "LGPL-2.1+": 7,
+        "LGPL": 3,
+        "LGPL-3+": 1
+      },
+      "retained_scope_metadata_sha256": "67916e2115ef0b2a3039667e651fe16e19acdf66d95ebf48ac079d7c77e9da7a",
+      "scope_review": "Every operative license class reviewed in full or by complete word differences; every nondefault scope and condition-bearing metadata field read. Uniform GNU2-or-later file groups and complete attribution are machine-indexed and retained byte-exactly; manual reading of every individual author name is not claimed. All named original legal files matched to read full originals. Not OS release clearance.",
+      "required_notices": [
+        {
+          "path": "LICENSES/Additional-third-party-acknowledgements.txt",
+          "sha256": "6ac4a4126f89e1c7ac3362d9cfa84dc576a9423fc14c6f66a6c4fa8168869dc6"
+        }
+      ],
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions, disclaimers, advertising acknowledgements and modifications in source and binary materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Keep GNU2-only utilities distinct from GNU2-or-later/GNU3 programs; retain LGPL2.1 library and LGPL3 Python binding scopes. Use LGPL2.1 for version-unspecified LGPL scopes rather than imposing an incompatible library upgrade on GNU2-only programs. Preserve explicit public-domain and separate MIT/BSD/BSLA notices and original advertising acknowledgements."
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

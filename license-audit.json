@@ -22630,6 +22630,96 @@
         "Preserve IBM copyright/marketing nonendorsement and all paragraphs of its grant; its limited patent immunity concerns DNS dynamic updates and is not generalized to a whole product or unrelated functionality.",
         "Retain original same-as-package Finnish translation declaration under the package BSD3 terms and original PKCS11 header copy/distribution notice. Build-script-style permissive wording for that header is explicit and is not an inferred blanket exception for unrelated files."
       ]
+    },
+    "strongswan@5.9.8-5+deb12u6": {
+      "redistributable": true,
+      "source_identity": "c2207824084c35eb01f58dd2bfe414c6eedb5962b2d9d5df59986137eeaa295e",
+      "copyright_sha256": "246fe376bfbfd9c223fd0573341d24ebe044b4c6a2610cb30989b1db197dcafd",
+      "license": "GPL-3.0-or-later WITH LicenseRef-StrongSwan-OpenSSL-LGPL-exception AND MIT AND BSD-3-Clause AND LicenseRef-SSLeay-original-source-permission",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Every operative license class reviewed in full or by complete word differences; every nondefault scope and condition-bearing metadata field read. Uniform GNU2-or-later file groups and complete attribution are machine-indexed and retained byte-exactly; manual reading of every individual author name is not claimed. All named original legal files matched to read full originals. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions, disclaimers, advertising acknowledgements and modifications in source and binary materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Select the permitted GNU3 option for GNU2-or-later code combined with GNU3 generated parser sources. Preserve the original strongSwan LGPL/OpenSSL/SSLeay combination exception and its complete source obligation; do not relicense Eric Young code under the GNU GPL. Original Debian notes about uncompiled BSD-Young files remain preserved and are not a claim of a fresh ELF audit."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/StrongSwan-original-LICENSE.txt",
+          "sha256": "2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0"
+        }
+      ]
+    },
+    "util-linux@2.38.1-5+deb12u3": {
+      "redistributable": true,
+      "source_identity": "0fe5fcd2b83d0465e32ca5cb9d8319e9b6fbf14c9a69abfd7ea905e45fa90b67",
+      "copyright_sha256": "30539a2df6a89d844f43c727505a3193a60515f8ec6cdede8cc515ed22941d1c",
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND BSD-3-Clause AND BSD-4-Clause AND MIT AND LicenseRef-BSLA AND LicenseRef-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Every operative license class reviewed in full or by complete word differences; every nondefault scope and condition-bearing metadata field read. Uniform GNU2-or-later file groups and complete attribution are machine-indexed and retained byte-exactly; manual reading of every individual author name is not claimed. All named original legal files matched to read full originals. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions, disclaimers, advertising acknowledgements and modifications in source and binary materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Keep GNU2-only utilities distinct from GNU2-or-later/GNU3 programs; retain LGPL2.1 library and LGPL3 Python binding scopes. Use LGPL2.1 for version-unspecified LGPL scopes rather than imposing an incompatible library upgrade on GNU2-only programs. Preserve explicit public-domain and separate MIT/BSD/BSLA notices and original advertising acknowledgements."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Additional-third-party-acknowledgements.txt",
+          "sha256": "6ac4a4126f89e1c7ac3362d9cfa84dc576a9423fc14c6f66a6c4fa8168869dc6"
+        }
+      ]
+    },
+    "libexporter-tiny-perl@1.006000-1": {
+      "redistributable": true,
+      "source_identity": "00149c109311e13db0d563c55c2be84d248c29613f93b8ec8bed2bbf37bed580",
+      "copyright_sha256": "587fb6c2463e2b5fe7974af715b06a958321672a5209aa0ba445b83752f8a529",
+      "license": "GPL-2.0-or-later AND GPL-3.0-or-later AND MIT",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Complete original copyright, explicit license grants and every file/license-expression scope read. Every named original legal file matched to a previously read complete original; full identified standard license texts retained. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Select GNU2-or-later option permitted by explicit same-as-Perl5 GNU1-or-later grant; preserve original Artistic alternative, separate Try::Tiny MIT and GNU3-or-later packaging declarations and full original licenses."
+      ]
+    },
+    "libpng1.6@1.6.39-2+deb12u6": {
+      "redistributable": true,
+      "source_identity": "efd9099f7f74c7bcd4f1540a97be3ce1cb9bc4ff97dfc2062ea66117b17ce686",
+      "copyright_sha256": "68bd3997355bc44ccb97ff5e2bb146360e762c7d9c721945a4fabf77d1349e4a",
+      "license": "Libpng AND MIT AND GPL-2.0-or-later AND Apache-2.0",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Complete original copyright, explicit license grants and every file/license-expression scope read. Every named original legal file matched to a previously read complete original; full identified standard license texts retained. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Retain original PNG library permission, attribution and modification/origin conditions. Select GNU2-or-later alternative for Gregbook examples rather than imposing the advertising alternative on GNU code. Preserve all original alternatives, separate pngminus MIT and source-only OSS-fuzz alternatives/Apache Dockerfile scopes; uppercase OR spelling is not treated as a different grant."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libpng-original-LICENSE.txt",
+          "sha256": "dfe5a536b0e5a531f844fb9c101a3089aca60772a503893b8e15f9457e369960"
+        }
+      ]
+    },
+    "libssh@0.10.6-0+deb12u3": {
+      "redistributable": true,
+      "source_identity": "28fd7712a35660d49afd960107ebec8c24d9fbf0a97ca3d5b063b86a444fc339",
+      "copyright_sha256": "1b33ec0b1d0d521afb21d8e6b98fa4abf52b1ffb69a8461a045db9d586ce141f",
+      "license": "LGPL-2.1-only AND LGPL-2.1-or-later WITH LicenseRef-Libssh-OpenSSL-exception AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Libssh-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libssh-original-public-domain-notices.txt",
+          "sha256": "c1e2fe33c3fb90a08f0083d0767a04324563c4e6f1a9c9f7d72dc4727a38d24a"
+        }
+      ],
+      "scope": "All named original legal texts matched/read, operative grant differences and complete source/license mapping inspected. Actual six original external crypto declarations explicitly identify public-domain status and authors, rather than relying on the incomplete copied-from-SUPERCOP metadata pointer. Not OS release clearance.",
+      "conditions": [
+        "Retain full original library/cmake/BSD and example permissions, all authors, complete GNU LGPL text, original OpenSSL exception, exact preferred source, applied patches and complete configuration/build/install material.",
+        "Preserve LGPL2.1-only curve25519 and knownhosts scopes, including original source year spelling; an upstream notification about intended license consistency is not treated as a retroactive extension or or-later grant.",
+        "Retain exact external crypto public-domain author declarations and original source origins. The examples explicit public-domain permission is separate from the library; no blanket dedication of unrelated files is inferred."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
