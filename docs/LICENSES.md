@@ -661,3 +661,48 @@ Debian の kbd パッケージは、コンソール・キーボード用コマ�
 この確認はファイル差分と元のパッケージ範囲の静的検証であり、コンパイルや起動試験の
 成功を意味しません。実行パッケージに含まれない素材の配布用ソースからの除外のために、
 バイナリを再ビルドする必要はありません。
+
+## Chardet and OpenVPN delivery sources
+
+Chardet's export omits 424 optional third-party corpus text files whose
+permissions are not established by the library license. All other 98 original
+regular files, including every runtime module, language model, CLI, test runner
+and build/install script, are byte-identical. Reconstruct the Python library
+normally; use `DEB_BUILD_OPTIONS=nocheck` for Debian packaging and do not report
+the incomplete original corpus suite as passing.
+
+OpenVPN's Linux export replaces one unused Windows service sample, whose
+notice supplies no redistribution grant, with an independently authored GPL2
+diagnostic stub. The stub preserves Automake's declared source-file presence;
+the original `WIN32` condition excludes it from both Linux builds. All 619 other
+original regular files remain byte-identical, including every Linux source and
+the complete Debian build/install recipe. This export does not support the
+Windows service build. All original GNU/OpenSSL/Apache2 exceptions and other
+legal notices remain.
+
+Both exports carry exact original-member hashes, distinct export identities
+and original descriptors as provenance. Raw original archives are not cleared.
+The [Chardet](evidence/diagnostic-debian-chardet-preferred-source-export.json) and
+[OpenVPN](evidence/diagnostic-debian-openvpn-preferred-source-export.json)
+records are static delivery-source checks, not native compile or boot evidence.
+They do not require recompiling unchanged Linux runtime implementations.
+
+### Chardet と OpenVPN の配布用ソース
+
+Chardet は、ライブラリの許諾では権利を確認できない第三者テスト文面 424 件を除外します。
+他の元ファイル 98 件、実行モジュール、言語モデル、CLI、テスト用コード、ビルド・
+インストール手順をバイト単位で保持します。Python ライブラリは通常の手順で再構築でき、
+Debian パッケージでは `DEB_BUILD_OPTIONS=nocheck` を指定します。
+文面を除いた元のコーパステスト全体を、成功扱いにはしません。
+
+OpenVPN は、再配布の許諾が示されていない未使用の Windows サービス用サンプル 1 件を、
+独立して作成した GPL2 の診断用ソースへ置き換えます。Automake が要求するファイルは残し、
+元の `WIN32` 条件に従って Linux ビルドから除外します。他の元ファイル 619 件、
+すべての Linux 実装と Debian のビルド・インストール手順はバイト単位で保持します。
+この配布形態では Windows サービスのビルドを扱いません。
+元の GNU・OpenSSL・Apache2 の例外と個別の許諾文書も保持します。
+
+両方に変更対象のハッシュ、配布用ソース固有の識別子、由来を示す元の記述子を同梱し、
+元の未加工アーカイブは許諾対象にしません。確認記録は配布用ソースの静的検証であり、
+コンパイルや起動試験の結果ではありません。変更していない Linux 実装を再コンパイルする
+必要はありません。

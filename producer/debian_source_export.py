@@ -27,6 +27,9 @@ def prepare(source, version, originals, tree, declarations):
     if source == 'kbd':
         from .kbd_source_export import prepare as prepare_kbd
         return prepare_kbd(version, originals, tree, rule)
+    if source in {'chardet', 'openvpn'}:
+        from .debian_optional_source_export import prepare as prepare_optional
+        return prepare_optional(source, version, originals, tree, rule)
     if source != 'libxcrypt' or version != '1:4.4.33-2':
         raise ValueError('Unsupported Debian preferred-source export')
     tree = Path(tree).resolve()

@@ -84,6 +84,1760 @@
           "sha256": "3fe8e9e226fcb873da12de285ef5e352b4c7183bd0dc4e0bb1a22072a849f8f5"
         }
       ]
+    },
+    {
+      "source": "chardet",
+      "version": "5.1.0+dfsg-2",
+      "descriptor_sha256": "62f9567ccb161198161fd6421507b17a7d003f9855294b378436b07ae66028ec",
+      "kind": "debian-chardet-preferred-source-without-unused-uncleared-inputs",
+      "excluded": [
+        {
+          "member": "tests/Big5/0804.blogspot.com.xml",
+          "sha256": "699b18d871867d6aee7ef4064723dcb525b62d1e04affcadb7012af6f7923b67"
+        },
+        {
+          "member": "tests/Big5/_chromium_Big5_with_no_encoding_specified.html",
+          "sha256": "0ec62e4a06f2ed4c2a2f4f16be7066769f16b005b6c218e4a18695280d0f7bc6"
+        },
+        {
+          "member": "tests/Big5/_ude_1.txt",
+          "sha256": "5f4aa09479ff9366936b242697680f4f0a50dcb3829fb10d855644bc035a7b7a"
+        },
+        {
+          "member": "tests/Big5/blog.worren.net.xml",
+          "sha256": "99c068299ad8a6ad33873a532efe479550b36710bcbcff141b6ba9aa76070dff"
+        },
+        {
+          "member": "tests/Big5/carbonxiv.blogspot.com.xml",
+          "sha256": "4205817a360d108e67faf909e48e4ee601d8c59861986efb3c44aeabb92b9ce3"
+        },
+        {
+          "member": "tests/Big5/catshadow.blogspot.com.xml",
+          "sha256": "bb4ba88253ab13e539d695007e58bbb8825a1369733a1db62378e856d1e5978d"
+        },
+        {
+          "member": "tests/Big5/coolloud.org.tw.xml",
+          "sha256": "add6cdba4d0bbd331034e2f620fce00dd4cac51f7b5276a1adb97e7e292f0f01"
+        },
+        {
+          "member": "tests/Big5/digitalwall.com.xml",
+          "sha256": "f953c37c603792f1cf19343b15d5bafc8fdaef5ee826565f6d116d0d9d942d48"
+        },
+        {
+          "member": "tests/Big5/ebao.us.xml",
+          "sha256": "a5282f43b0ebd74671d2eec2d9a9cfe7aaaaa30642c1d481f802c842bdf87159"
+        },
+        {
+          "member": "tests/Big5/fudesign.blogspot.com.xml",
+          "sha256": "cc5bcaae95b0feebe31cf13387430c76f144de986b4d0471c001a3cee8e9a762"
+        },
+        {
+          "member": "tests/Big5/kafkatseng.blogspot.com.xml",
+          "sha256": "ef4ba9c05193866d4bc4aa4f58b8b1ff6a2b9305a86cb6c9cebcc41b1c33ee34"
+        },
+        {
+          "member": "tests/Big5/ke207.blogspot.com.xml",
+          "sha256": "5937951b3df5f6b8949de952081fd95fa0bd3cd7c007ec38a5af741a7c8aac19"
+        },
+        {
+          "member": "tests/Big5/leavesth.blogspot.com.xml",
+          "sha256": "559a0e6eef7421d772a0ec8c7682fd7822f5e1e055d951b1a135b2742b4d8158"
+        },
+        {
+          "member": "tests/Big5/letterlego.blogspot.com.xml",
+          "sha256": "623f617c8f91ed933deff2d0bf8e49dcde2f958e6a3c3bebadebb8f73a6ad10f"
+        },
+        {
+          "member": "tests/Big5/linyijen.blogspot.com.xml",
+          "sha256": "2c2786e2aa86dde77a84932113e25cddf3851d3de25edde1e2b9e2810839d1ee"
+        },
+        {
+          "member": "tests/Big5/marilynwu.blogspot.com.xml",
+          "sha256": "a0c9f89545c35869165b91505d9bcf24667d0895663298e40fdbaaa67b060bc3"
+        },
+        {
+          "member": "tests/Big5/myblog.pchome.com.tw.xml",
+          "sha256": "9632b53a99b6e265dd2f33c90d5949f1ed633b1bb7a4ff05de088c924b5159af"
+        },
+        {
+          "member": "tests/Big5/oui-design.com.xml",
+          "sha256": "b979caf2ce1bd821f40c3fb68303c2f0166b5062efbd8c23f7877f6b9442fa2c"
+        },
+        {
+          "member": "tests/Big5/sanwenji.blogspot.com.xml",
+          "sha256": "fba3dc10ab8c37fcd03f1f38ed1da0f2cc883a5477aff0cf81970387fa4800c9"
+        },
+        {
+          "member": "tests/Big5/sinica.edu.tw.xml",
+          "sha256": "52b3774a712556a7314d18634615ce5497c219195bc021d45b2d206880cb6424"
+        },
+        {
+          "member": "tests/Big5/sylvia1976.blogspot.com.xml",
+          "sha256": "4253315914bf21fed702fa5cd5184e7ac95e04ebc24f5c5b541e61d5ebde23ab"
+        },
+        {
+          "member": "tests/Big5/tlkkuo.blogspot.com.xml",
+          "sha256": "5360d1b9bc147788882114feb77ffa7deb04235c2a3593799b214737cffffbc6"
+        },
+        {
+          "member": "tests/Big5/unoriginalblog.com.xml",
+          "sha256": "9bceb9d6c604f6d844eeec46a0d38fca29fc4d13a20bc52aae9f64e30dca0ace"
+        },
+        {
+          "member": "tests/Big5/upsaid.com.xml",
+          "sha256": "003bcd5bcf5c22a353d9ccdc2e99b176795632dad93bda0a15a8a37c779e07ff"
+        },
+        {
+          "member": "tests/Big5/willythecop.blogspot.com.xml",
+          "sha256": "b9533a3b5f96b5c93817359efbd3dd2c46b132c48172596d366023e9a1dbbc12"
+        },
+        {
+          "member": "tests/Big5/ytc.blogspot.com.xml",
+          "sha256": "cced286e1517dc29b5d25f01efd6e10a8d0914ba2170c087ddc05d520b041c35"
+        },
+        {
+          "member": "tests/CP932/hardsoft.at.webry.info.xml",
+          "sha256": "c9f305479dee0a00c560d54ce4ca71fc23373932157330efc7ca286839695d99"
+        },
+        {
+          "member": "tests/CP932/www2.chuo-u.ac.jp-suishin.xml",
+          "sha256": "2010f76ea595f1845fd700b883cd4143a2e40de282af50670ea4c10899e49afd"
+        },
+        {
+          "member": "tests/CP932/y-moto.com.xml",
+          "sha256": "fd38f8efe5e72b1c0e7d56b96ae728a06400f18a58a3e5293e42315b70df0305"
+        },
+        {
+          "member": "tests/CP949/ricanet.com.xml",
+          "sha256": "efd3c7d766a26579abbc4100be89959edc29c15bd85d8710d75e1e679d8f2e28"
+        },
+        {
+          "member": "tests/EUC-JP/_mozilla_bug426271_text-euc-jp.html",
+          "sha256": "e55a291dffac38f7cc87e7292637e7a6ca4d22312db803013ffe8be983c45380"
+        },
+        {
+          "member": "tests/EUC-JP/_mozilla_bug431054_text.html",
+          "sha256": "b0e809a031e811173587278ee549949dbd749be922260fa0dd7e81bfbcd7a460"
+        },
+        {
+          "member": "tests/EUC-JP/_mozilla_bug620106_text.html",
+          "sha256": "e46e0741cd477c2032c75e1607e1237eccc4c788041e66372aa452176215a9c0"
+        },
+        {
+          "member": "tests/EUC-JP/_ude_1.txt",
+          "sha256": "5512d79b07053e8c2cc2f138b084e79037af46fc494e717de707efee2f7d3fc3"
+        },
+        {
+          "member": "tests/EUC-JP/aivy.co.jp.xml",
+          "sha256": "f17eb29cad0b88c2e5bf25d469f11bbb6e9401a9040b6794ce17d6f6442c27a2"
+        },
+        {
+          "member": "tests/EUC-JP/akaname.main.jp.xml",
+          "sha256": "8e7119769a77b6b59f7c8bdaf8d183adbde7d21764e33d8ba133dd2bd1985c64"
+        },
+        {
+          "member": "tests/EUC-JP/arclamp.jp.xml",
+          "sha256": "28f456f074bc0ce01b60ae9edcafc5210b14a4c63fcbc8c6377c1b4e3c652ce8"
+        },
+        {
+          "member": "tests/EUC-JP/aristrist.s57.xrea.com.xml",
+          "sha256": "dda5819e0db37ca4061fdcbdb0ea8211975a954bdda2d15ee5009cfe3e3021b1"
+        },
+        {
+          "member": "tests/EUC-JP/artifact-jp.com.xml",
+          "sha256": "86eee8b4352ee95b666f7b0e65eb020e44732ad54903d74fde72e15d3b448b4d"
+        },
+        {
+          "member": "tests/EUC-JP/atom.ycf.nanet.co.jp.xml",
+          "sha256": "ec400b4c2cfde46e8f98e93223fe3fa57a1ae1ebba1e4bc5b3c40caa2766623c"
+        },
+        {
+          "member": "tests/EUC-JP/azito.under.jp.xml",
+          "sha256": "a976790d92d5ed03dd15931dbc978d4590b35b140878c1378527f1580fded415"
+        },
+        {
+          "member": "tests/EUC-JP/azoz.org.xml",
+          "sha256": "3c13499d5dbb985a2a2a1a60c3627415ca8bb8f65d4e21829ab10706eea1bde0"
+        },
+        {
+          "member": "tests/EUC-JP/blog.kabu-navi.com.atom.xml",
+          "sha256": "c19666278478f68bc0d6f175591e04c0424eca31f14e4741e52bd717d4f6c967"
+        },
+        {
+          "member": "tests/EUC-JP/blog.kabu-navi.com.xml",
+          "sha256": "a50f673742078f9f92e97f71ec4b8ef35a7312a150a657d6635d6a7a31b76838"
+        },
+        {
+          "member": "tests/EUC-JP/bphrs.net.xml",
+          "sha256": "823afdbc057c723c7e9b835c7c8b8f82b3481044fa3188f412905a90643ada69"
+        },
+        {
+          "member": "tests/EUC-JP/ch.kitaguni.tv.xml",
+          "sha256": "3961c586355a21400363d6afe0ad5249a272f48806b57bf5379a27f74b62b92e"
+        },
+        {
+          "member": "tests/EUC-JP/club.h14m.org.xml",
+          "sha256": "03fc1616189da2c06c02d2bbeef8eb267c4a0f56140f63992dc18c56c8f863f0"
+        },
+        {
+          "member": "tests/EUC-JP/contents-factory.com.xml",
+          "sha256": "fbedbd461647107d235178262c87f8ddeb247f884d0335d335ec07a02568c3ff"
+        },
+        {
+          "member": "tests/EUC-JP/furusatonoeki.cutegirl.jp.xml",
+          "sha256": "d35e6da7cfd6c9a030ef396e388da386bc3c4000d89d5f36b496bb184a97b6b4"
+        },
+        {
+          "member": "tests/EUC-JP/manana.moo.jp.xml",
+          "sha256": "a62336ab9a844f38064c36dce494f3aab24ff7c6b99cd273fd93b2f5a9f28217"
+        },
+        {
+          "member": "tests/EUC-JP/mimizun.com.xml",
+          "sha256": "887ab6130bdbaace34a3e70ebc7fcfbf20ec0bf1c782cab35bbbafdd6810aebe"
+        },
+        {
+          "member": "tests/EUC-JP/misuzilla.org.xml",
+          "sha256": "6fa8beab55ad81e09762a53b0fe8a932f14c98c7ae25c5037915b106e383f58a"
+        },
+        {
+          "member": "tests/EUC-JP/overcube.com.atom.xml",
+          "sha256": "0102b60fcd9585e094a9f630ab6548620ca1ed09d775c429e25e972e248c6996"
+        },
+        {
+          "member": "tests/EUC-JP/overcube.com.xml",
+          "sha256": "47d3405c6d65e75bb380db0ba218febe1fa90411b37a8283fc7f48b8b58ee267"
+        },
+        {
+          "member": "tests/EUC-JP/pinkupa.com.xml",
+          "sha256": "f3e10439785d1e055cf4045cb8bb6542a1932c76141bba34ec7e45ee2ecf1090"
+        },
+        {
+          "member": "tests/EUC-JP/rdf.ycf.nanet.co.jp.xml",
+          "sha256": "a69eb57fb24297145be810be9ae2f5dfae15287b69f0c80a2806c0b651b50e9d"
+        },
+        {
+          "member": "tests/EUC-JP/siesta.co.jp.aozora.xml",
+          "sha256": "653f97d4cd84f9d34a93796ae8c610f80b0bce80fae340c9fb432338397d2332"
+        },
+        {
+          "member": "tests/EUC-JP/tls.org.xml",
+          "sha256": "26810b8df54d30fae30410403b242799a50249142a74ac19d76b6c25239d0b19"
+        },
+        {
+          "member": "tests/EUC-JP/yukiboh.moo.jp.xml",
+          "sha256": "a565cec8021808f309094127ea8d04998ad875bb3eccf1504315f59de7ac59dc"
+        },
+        {
+          "member": "tests/EUC-KR/_chromium_windows-949_with_no_encoding_specified.html",
+          "sha256": "eea4f041d26221e8881b6de6216c643652083ce91689ba362b6fdacd2374d9ec"
+        },
+        {
+          "member": "tests/EUC-KR/_mozilla_bug9357_text.html",
+          "sha256": "4cc48742cad240956fc198fe9e105414f24d28e14e94db522cd6b1d74e3041ab"
+        },
+        {
+          "member": "tests/EUC-KR/_ude_euc1.txt",
+          "sha256": "281246aaaefceb47f6bc0120b2646ebe1832d57101cc0d7bfaeedfbfed979329"
+        },
+        {
+          "member": "tests/EUC-KR/_ude_euc2.txt",
+          "sha256": "76d9b6cf0496759e74e959de73f7d2abb47669050e9d0893376dc2c99d55726b"
+        },
+        {
+          "member": "tests/EUC-KR/acnnewswire.net.xml",
+          "sha256": "f76d5d594532c1ce2556961ce5639e46040ad64b3f01a3757cdbcc780333f852"
+        },
+        {
+          "member": "tests/EUC-KR/alogblog.com.xml",
+          "sha256": "f849b8da63111dd82b78d7109d2dc4fb0e75567e799803562190681d6e88a6ec"
+        },
+        {
+          "member": "tests/EUC-KR/arts.egloos.com.xml",
+          "sha256": "16d6b0e59d1bc04ff6f2b79cdb1e96d779c2b536c49be435861419900d782036"
+        },
+        {
+          "member": "tests/EUC-KR/birder.egloos.com.xml",
+          "sha256": "bb3694a2c8f8221b35756bcd68dabf608e29c91b224c9566a2145a14aa292f17"
+        },
+        {
+          "member": "tests/EUC-KR/blog.bd-lab.com.xml",
+          "sha256": "d7f70c71844f52d52fe18becadb05cc4a24309671b8cda84a7e8b1f657cf8e43"
+        },
+        {
+          "member": "tests/EUC-KR/blog.empas.com.xml",
+          "sha256": "521e2ff132a48acb05fec3e99460c8ecf11e0b29588589f0391f6ab6c3e6cb4e"
+        },
+        {
+          "member": "tests/EUC-KR/blog.rss.naver.com.xml",
+          "sha256": "d6e92cac44078f8797de7c95c71215b9ea44cdae6b70e011899b9a22ffdab132"
+        },
+        {
+          "member": "tests/EUC-KR/calmguy.egloos.com.xml",
+          "sha256": "c097ffbc32de269ed7dedf91b4826fa253d0e798f13bd5a87148f4052c1b5026"
+        },
+        {
+          "member": "tests/EUC-KR/chisato.info.xml",
+          "sha256": "899567cb770fe727a39190230b439866c2b1b8abfd9bc1dab8e27d453ce2f346"
+        },
+        {
+          "member": "tests/EUC-KR/console.linuxstudy.pe.kr.xml",
+          "sha256": "b7d7a16e132faebc8859689b46ac934c2cc551ff511fb0bd67ab14375e8a71eb"
+        },
+        {
+          "member": "tests/EUC-KR/critique.or.kr.xml",
+          "sha256": "ccd84a622d986142c64cd73613acb340423a4573d5c24d3f35ddc250fc4a77cf"
+        },
+        {
+          "member": "tests/EUC-KR/epitaph.egloos.com.xml",
+          "sha256": "083680e95e2e14dea67794c34c72fcab4edd22e2396ce5c4ab8a8e212df07b3f"
+        },
+        {
+          "member": "tests/EUC-KR/ittrend.egloos.com.xml",
+          "sha256": "81847f3ec54660b4072510d84222685527285a485fbdbaa362adf4afa1a04319"
+        },
+        {
+          "member": "tests/EUC-KR/jely.egloos.com.xml",
+          "sha256": "29d6665705b67bc4e7c1423bb4271e7e57417c0436fa03501593a289767e5670"
+        },
+        {
+          "member": "tests/EUC-KR/jely.pe.kr.xml",
+          "sha256": "3a5b3931c5180836313928b07d4e48975f8dcb32de2d6f3ebf4d442684115d08"
+        },
+        {
+          "member": "tests/EUC-KR/jowchung.oolim.net.xml",
+          "sha256": "e9a00e53e182e8cdfcb1bd38f1d7f1a07443c73e44203ffcc3cf1e1fa705495e"
+        },
+        {
+          "member": "tests/EUC-KR/kina.egloos.com.xml",
+          "sha256": "7cba10360c5b4e4824de85fffec84b1a9b29e6414ef6c1d52644bc560b5eada3"
+        },
+        {
+          "member": "tests/EUC-KR/lennon81.egloos.com.xml",
+          "sha256": "ff2afa944617c8ff6c7ce2bee8f9ba2769c5fff320addeb7104a996d06b87ff8"
+        },
+        {
+          "member": "tests/EUC-KR/oroll.egloos.com.xml",
+          "sha256": "10a7fde87330b4408385bfe82e241c92b5d580789fedd80eb4c99a07eb71cf00"
+        },
+        {
+          "member": "tests/EUC-KR/poliplus.egloos.com.xml",
+          "sha256": "f47c6e8d64c32f398651c4c69049dab5a640b950248d4ad664d403d7fb69ceac"
+        },
+        {
+          "member": "tests/EUC-KR/scarletkh2.egloos.com.xml",
+          "sha256": "1017b308b86e0faf5f59c53bf6b4a63bc0b00ff67a1344c0c197cf8fd55c5cec"
+        },
+        {
+          "member": "tests/EUC-KR/siwoo.org.xml",
+          "sha256": "97ab80536f0256f845fadeb1b60618a2aa0da0536c09c738bbef0b5483802b26"
+        },
+        {
+          "member": "tests/EUC-KR/sparcs.kaist.ac.kr.xml",
+          "sha256": "d094eb0cd28707c4a4e711732a523599e6819a3aeb9ab5c26ab0a123c07332f4"
+        },
+        {
+          "member": "tests/EUC-KR/tori02.egloos.com.xml",
+          "sha256": "8d9289c5faa1d5f33021e143d0806b3f7c4701677ef69e391862f6def6e89f47"
+        },
+        {
+          "member": "tests/EUC-KR/willis.egloos.com.xml",
+          "sha256": "8483253545f7878b3f3f66b6ced371b443e9d29e857857fadd57ff4c3142881f"
+        },
+        {
+          "member": "tests/EUC-KR/xenix.egloos.com.xml",
+          "sha256": "8c56660dbc0531818aff77cbfc4613ff8c9ca00af1cc6d2f60d5bcfbbf6e993c"
+        },
+        {
+          "member": "tests/EUC-KR/yunho.egloos.com.xml",
+          "sha256": "a9299e9d0da2ca89edab917f55c8704463f8d76af8a9a373560ffefbf3213c04"
+        },
+        {
+          "member": "tests/EUC-KR/zangsalang.egloos.com.xml",
+          "sha256": "23c1e779a1a29f98f5aa6bf05b6abc83c316d8351e6984564b923f1dd4c56cc9"
+        },
+        {
+          "member": "tests/EUC-TW/_ude_euc-tw1.txt",
+          "sha256": "2687f397bcbf333407eef49d05a568bbeece2fd837a891dbb6575e70c9df6732"
+        },
+        {
+          "member": "tests/GB2312/14.blog.westca.com.xml",
+          "sha256": "2c9f77644b1e652d274024adec04e39dd5e4cc6a3578c75d375d98133ca3fd46"
+        },
+        {
+          "member": "tests/GB2312/2.blog.westca.com.xml",
+          "sha256": "e5c012d5218bb52a14015c5192ec515d73927d7b46d358665b2238302a9fe9c7"
+        },
+        {
+          "member": "tests/GB2312/_chromium_gb18030_with_no_encoding_specified.html.xml",
+          "sha256": "c780517ff53c4eea6d1a7d81ab8e7ee11c8a501b20ec1c2e3b401f2f2e97f587"
+        },
+        {
+          "member": "tests/GB2312/_mozilla_bug171813_text.html",
+          "sha256": "85d7330c673deb741a79a80f27668fb1d1866c47b062d4d110c8e34ba5ff1bd5"
+        },
+        {
+          "member": "tests/GB2312/acnnewswire.net.xml",
+          "sha256": "e6edcbd7d9bccd5e84b7ddbfdd4510f7ddc329555ba5722db4ca6523d07543e1"
+        },
+        {
+          "member": "tests/GB2312/bbs.blogsome.com.xml",
+          "sha256": "f006c0d45e8646a6f580c55a5821bc83abc893867eb6b6eb7ae1a4d0d77c7331"
+        },
+        {
+          "member": "tests/GB2312/cappuccinos.3322.org.xml",
+          "sha256": "286bbc649ef01cca134ce03a42314993393924d1e1f581442c8a94cc1810cd82"
+        },
+        {
+          "member": "tests/GB2312/chen56.blogcn.com.xml",
+          "sha256": "0e4f7c1cfb58c5e807a43ff49fe099d2ed649afd58bad69e4d34fd2b9389e7cf"
+        },
+        {
+          "member": "tests/GB2312/cindychen.com.xml",
+          "sha256": "7a56284b022250b7c6a7b4f8a3f549b52c5380ecbc16d6a8448535c3ca055c71"
+        },
+        {
+          "member": "tests/GB2312/cnblog.org.xml",
+          "sha256": "71241595f4f019ed842d5ed434fbbcd0157108b8080772a2dabae2561a0635d2"
+        },
+        {
+          "member": "tests/GB2312/coverer.com.xml",
+          "sha256": "a0f1de04673357a1fad0b0508a807c3451d3476d0f32d0041708ab0549440779"
+        },
+        {
+          "member": "tests/GB2312/eighthday.blogspot.com.xml",
+          "sha256": "8dde54a9e954b6e4f45f0230f98ce1b4dc9ab691bd1202e7e2938a7cc1983cc3"
+        },
+        {
+          "member": "tests/GB2312/godthink.blogsome.com.xml",
+          "sha256": "b3f7eca0cb2e1f9d7acc889293754da073a65fe8e9c356a25191d863cf635076"
+        },
+        {
+          "member": "tests/GB2312/jjgod.3322.org.xml",
+          "sha256": "016c1505bda060b9120cc27d53a3c57fd6f8257dbfe285bae4deac0c3e6bba0c"
+        },
+        {
+          "member": "tests/GB2312/lily.blogsome.com.xml",
+          "sha256": "152151f27c4f6dd95c28cedfc01276d15778f62b972e4f501c84ebeae3ebd0ee"
+        },
+        {
+          "member": "tests/GB2312/luciferwang.blogcn.com.xml",
+          "sha256": "3645f9dc905b42842b939aa24972c45dc6f311ce38cd63741a923821d65e0f4b"
+        },
+        {
+          "member": "tests/GB2312/pda.blogsome.com.xml",
+          "sha256": "f3fcf2d42ee998c25b3258fc701b434dba46209eae2f0a741b389f7d3b70bb90"
+        },
+        {
+          "member": "tests/GB2312/softsea.net.xml",
+          "sha256": "8a35033cef000536799b0125398496d5f566072f2febdc4b5311ec924da4063b"
+        },
+        {
+          "member": "tests/GB2312/w3cn.org.xml",
+          "sha256": "ad2e14617c75df4fd620ff1e64335b49b4883e1c4855bdbc7f6bdc5d43657d90"
+        },
+        {
+          "member": "tests/GB2312/xy15400.blogcn.com.xml",
+          "sha256": "51247181faab1841beacbc15a551e53c1d469056121fea5910d62a2eaa1f5144"
+        },
+        {
+          "member": "tests/IBM855/_ude_1.txt",
+          "sha256": "d32091be91c3d4df62c333fc7c5f66cd937e9ad1bf1786c5fdabab0edf4abd3a"
+        },
+        {
+          "member": "tests/IBM855/aif.ru.health.xml",
+          "sha256": "f81de5fe9c04c921da4f28f6260c0fea0892a4284e653d16d12d8da244a5d7b7"
+        },
+        {
+          "member": "tests/IBM855/aug32.hole.ru.xml",
+          "sha256": "bbcef5343f50d00acb8226fa498ea8b47c80e11ce90756debc2b97949d3a361d"
+        },
+        {
+          "member": "tests/IBM855/aviaport.ru.xml",
+          "sha256": "1f31ce388c3596920ff157e1dbaafc11ab7bb009b4e13c3d649d5074da4f9c64"
+        },
+        {
+          "member": "tests/IBM855/blog.mlmaster.com.xml",
+          "sha256": "714dd4da718aa8a191bf7d2cd2b0ff46e81351ca2a776b459135b0437dab7b52"
+        },
+        {
+          "member": "tests/IBM855/forum.template-toolkit.ru.1.xml",
+          "sha256": "9807b2eb3a4a2a85cd596ee6a1000fcaa97f06d7a9be6f25147b34c207873654"
+        },
+        {
+          "member": "tests/IBM855/forum.template-toolkit.ru.4.xml",
+          "sha256": "b385fd3c767b7465712fd4a0955244c83cd13ec4107c0a22d9eb0c4bfd5ca93a"
+        },
+        {
+          "member": "tests/IBM855/forum.template-toolkit.ru.6.xml",
+          "sha256": "bf82bd633da8a2eb529346ee4df74086fc441b7916ab365137d404e5b96f84ca"
+        },
+        {
+          "member": "tests/IBM855/forum.template-toolkit.ru.8.xml",
+          "sha256": "beb9b5e11f66a636a1fe6b7578b1311902bf5dc208e0d7eb205c2cde61084130"
+        },
+        {
+          "member": "tests/IBM855/forum.template-toolkit.ru.9.xml",
+          "sha256": "3766e94021d8dec368492b77a37b540928620bf7e373d8712dad57b63afff3cf"
+        },
+        {
+          "member": "tests/IBM855/greek.ru.xml",
+          "sha256": "8111a20c6781664cb14fa8cce18b7d8fa5d16823e2ea3773525d6a7c20ebf140"
+        },
+        {
+          "member": "tests/IBM855/intertat.ru.xml",
+          "sha256": "f769876249e098dab8e37e1eed776424d70f4c2dc18af4d52846813cf04c7afd"
+        },
+        {
+          "member": "tests/IBM855/janulalife.blogspot.com.xml",
+          "sha256": "9eb8782817bd341950fc6bb3d3ec7a4dfff31e92c8be9706ba4a31138f3eb6ea"
+        },
+        {
+          "member": "tests/IBM855/kapranoff.ru.xml",
+          "sha256": "04405bab22d4574ffb8b9011c499d79b1f7a6fce70d0e6cc47853fa1ebc6557d"
+        },
+        {
+          "member": "tests/IBM855/money.rin.ru.xml",
+          "sha256": "63bb5d86009bb53133c9656ea4626f02509aec035fe57b14db75d15a889d452d"
+        },
+        {
+          "member": "tests/IBM855/music.peeps.ru.xml",
+          "sha256": "c44afd66624b32e20f81e3f0fbcf6779b0c089238edae481d9993eb838638a14"
+        },
+        {
+          "member": "tests/IBM855/newsru.com.xml",
+          "sha256": "efc9aae4d246e407bfb15c77346ac1fe9c485a0f370a9059021de53596c4ec6e"
+        },
+        {
+          "member": "tests/IBM855/susu.ac.ru.xml",
+          "sha256": "94c7fca4b129db04f1c27ae87e3d393c8188529198c1878410cc6ba1f37709a8"
+        },
+        {
+          "member": "tests/IBM866/_ude_1.txt",
+          "sha256": "945097964f49f1a908da07973870509ebb5069496f31c7d86b7f829f159ea866"
+        },
+        {
+          "member": "tests/IBM866/aif.ru.health.xml",
+          "sha256": "e890c19ba5dbc911e96810204c4b20dffd8f7d5509af67c4bcd1180b9ca6304c"
+        },
+        {
+          "member": "tests/IBM866/aug32.hole.ru.xml",
+          "sha256": "db1a196647362919531df5d9f86c58b7edd9f43240b5159d5b746bff776b1b31"
+        },
+        {
+          "member": "tests/IBM866/aviaport.ru.xml",
+          "sha256": "d61fe4c28989fc848071d4360da7d32f2c6febbc475e0b7afa95f1c5cfc0d411"
+        },
+        {
+          "member": "tests/IBM866/blog.mlmaster.com.xml",
+          "sha256": "98000e9fb43ee8deed60bd227f3d0dd83ffbdac246f17bed66791e76730857fe"
+        },
+        {
+          "member": "tests/IBM866/forum.template-toolkit.ru.1.xml",
+          "sha256": "11ef3c021f96b225176201f2f098568542853a6fbf3cdbc6b7adc16aa35d9df0"
+        },
+        {
+          "member": "tests/IBM866/forum.template-toolkit.ru.4.xml",
+          "sha256": "34c136932efc4ebe5ab16e976756b44161a6e8b28169f22af62ba4545047b99e"
+        },
+        {
+          "member": "tests/IBM866/forum.template-toolkit.ru.6.xml",
+          "sha256": "1dde07a8703429356bfaeb7a72eb57de20fdf4f92d4f7ad3cc5446dabc9650e7"
+        },
+        {
+          "member": "tests/IBM866/forum.template-toolkit.ru.8.xml",
+          "sha256": "cebffc01a2f8a544fa287f1104286478cab4c00d7674daf82dae59826210d38b"
+        },
+        {
+          "member": "tests/IBM866/forum.template-toolkit.ru.9.xml",
+          "sha256": "32cd4efcb5adfb456432006b5a05cb6dabef3fc6146530e8d27201771fbf2ed2"
+        },
+        {
+          "member": "tests/IBM866/greek.ru.xml",
+          "sha256": "61f5ee7ff4b5cabca44ed97c0703f37533af9b1e6f099f6a3c7a26dbad7448bd"
+        },
+        {
+          "member": "tests/IBM866/intertat.ru.xml",
+          "sha256": "e55834e6b1b8cd69a581f1e391294c7643d7b5f0a69b35b77aac81170ac8e71a"
+        },
+        {
+          "member": "tests/IBM866/janulalife.blogspot.com.xml",
+          "sha256": "199e141425f7f08d5cf42ccea27299bd345e277f475046a6eef5a2fae00d80b7"
+        },
+        {
+          "member": "tests/IBM866/kapranoff.ru.xml",
+          "sha256": "e12d6254efbd40ea31949771c2b961cbbafb6a55f6bfdebe89e918ee95f17283"
+        },
+        {
+          "member": "tests/IBM866/money.rin.ru.xml",
+          "sha256": "01757c0751d4f4a53632f8fdf628ac78bc690e0db36d89f374ce8109e417dd2a"
+        },
+        {
+          "member": "tests/IBM866/music.peeps.ru.xml",
+          "sha256": "1b60da5dcfb29490ad6b818b00c8df2746f9436dbd5f73992e3036542730247d"
+        },
+        {
+          "member": "tests/IBM866/newsru.com.xml",
+          "sha256": "eda6435a18ed9a2f95e7fa2a272326df3df19977979d34b8b4f48f2c6583a8ad"
+        },
+        {
+          "member": "tests/IBM866/susu.ac.ru.xml",
+          "sha256": "faa6ff7c140aaa20953643eab707d4e1aac15b61c364b84bd193ed173ea2f72e"
+        },
+        {
+          "member": "tests/Johab/hlpro-readme.txt",
+          "sha256": "e707aefcc53d506d89e93833a3a8ac72667dc981a0b6b867f9d3e464a0537d71"
+        },
+        {
+          "member": "tests/Johab/iyagi-readme.txt",
+          "sha256": "fdfd5bbc2e76d4c10a9d4e9fa3b51a6fdd3d41113693fffd1bf9218efd931dc4"
+        },
+        {
+          "member": "tests/Johab/mdir-doc.txt",
+          "sha256": "334fa7c1bdf0d00c32ea10e33286e9c985df45c742681ed7ce1360cb0e0a4948"
+        },
+        {
+          "member": "tests/KOI8-R/_chromium_KOI8-R_with_no_encoding_specified.html",
+          "sha256": "b20fcc8a42b82342dccd746726ce3fbfb83e503079bbc31442c148b070b6d7fc"
+        },
+        {
+          "member": "tests/KOI8-R/_ude_1.txt",
+          "sha256": "78c7feb8e452521616386a85e62d263748e57d17ef062f7445460976dcb97935"
+        },
+        {
+          "member": "tests/KOI8-R/aif.ru.health.xml",
+          "sha256": "b0f1280605fad0c498ab83acaebea7c2479aef73a8c7cbc8028c7727c0b44c24"
+        },
+        {
+          "member": "tests/KOI8-R/aug32.hole.ru.xml",
+          "sha256": "18774b49a8151468478790e33f94033a8600b64ed34b7360a94c7d9a06797c6e"
+        },
+        {
+          "member": "tests/KOI8-R/aviaport.ru.xml",
+          "sha256": "c63f2635e349918f12ab6e886933c9c4a66007cffb12d30c55bd6af4de6991ee"
+        },
+        {
+          "member": "tests/KOI8-R/blog.mlmaster.com.xml",
+          "sha256": "735e03cd4e14f29911d46da5e83bb33db313611d7045c17a887d0b9f49e7bb82"
+        },
+        {
+          "member": "tests/KOI8-R/forum.template-toolkit.ru.1.xml",
+          "sha256": "6fe7ac8c7460dfb8a77177d1d38b3307254bea730351ef67d389340333a0a50f"
+        },
+        {
+          "member": "tests/KOI8-R/forum.template-toolkit.ru.4.xml",
+          "sha256": "782939222fdcbab3c6f6825019e2bea21589f9c7602a6700d1de14e0373b06d4"
+        },
+        {
+          "member": "tests/KOI8-R/forum.template-toolkit.ru.6.xml",
+          "sha256": "258493824f203c57638d4a3878165a2bfedd49fe08856b84f61043b91bb6017e"
+        },
+        {
+          "member": "tests/KOI8-R/forum.template-toolkit.ru.8.xml",
+          "sha256": "8f456e68f2e8cfced855a7be7cd41ffa929c027be6a0ed15c4d9aaeea6a23d88"
+        },
+        {
+          "member": "tests/KOI8-R/forum.template-toolkit.ru.9.xml",
+          "sha256": "c7603657b4601688b11cbc9077a940873274fa5104cfd8ce08a9afc5b57a1379"
+        },
+        {
+          "member": "tests/KOI8-R/greek.ru.xml",
+          "sha256": "ed31729a014da8d448deb0f8bbc98ff645fa984e2f5df02a78ef27c4810984bd"
+        },
+        {
+          "member": "tests/KOI8-R/intertat.ru.xml",
+          "sha256": "f170cc14401219df226070623866ccd38eaabb192b39470e94bb21f927a1a458"
+        },
+        {
+          "member": "tests/KOI8-R/janulalife.blogspot.com.xml",
+          "sha256": "f9c73bfb86440040473f624c7d5d15930231bfbfca2187930514104fb1ebd79b"
+        },
+        {
+          "member": "tests/KOI8-R/kapranoff.ru.xml",
+          "sha256": "fd8e28c1f5e7a25d929268fcdf89e6c6a00d0aa60b5753e4ac32beee8442b201"
+        },
+        {
+          "member": "tests/KOI8-R/koi.kinder.ru.xml",
+          "sha256": "fd3502f3884993ecf89942ae95893fff01c4f2b17352c5878c0a3f316fec087d"
+        },
+        {
+          "member": "tests/KOI8-R/money.rin.ru.xml",
+          "sha256": "e68a70a42e5814963f5212e6e6ed5e9896eb0a9bb6dba4836bd2f8abe3a43d9c"
+        },
+        {
+          "member": "tests/KOI8-R/music.peeps.ru.xml",
+          "sha256": "4f7789803872bd07308ff0cc49e174c63ea7317cde8f5f3f7c3cd5d6d700c20f"
+        },
+        {
+          "member": "tests/KOI8-R/newsru.com.xml",
+          "sha256": "b14e76967af35a3d5f6abb46b2286c0a622a4bcf1f0855183c52fd39740b89c2"
+        },
+        {
+          "member": "tests/KOI8-R/susu.ac.ru.xml",
+          "sha256": "7529e74a9df56ca7918e7346dc5024cab18f07aa78a04b56684a4c2ddc08f0bb"
+        },
+        {
+          "member": "tests/MacCyrillic/_ude_1.txt",
+          "sha256": "becee0937e700266497ef4cbe84352be0449476a9299a7fc7c18647344e3ff8c"
+        },
+        {
+          "member": "tests/MacCyrillic/aif.ru.health.xml",
+          "sha256": "159cd7b8fcf8727aa242a84a196db710904e68a652f48fb640964a2ea7f4d292"
+        },
+        {
+          "member": "tests/MacCyrillic/aug32.hole.ru.xml",
+          "sha256": "be57a831c7d042dfd892c36f8527a9fb691e0a94d3909b390dd950eccb7dc421"
+        },
+        {
+          "member": "tests/MacCyrillic/aviaport.ru.xml",
+          "sha256": "8780ebdc0f9bf3d5dd3c727b56355e91ce29301c697ff20e02ee7842ec5fa4c6"
+        },
+        {
+          "member": "tests/MacCyrillic/blog.mlmaster.com.xml",
+          "sha256": "4fed5a51a49e0cfc17057f9e27921a993dddb0e9e793819062fc422951d45370"
+        },
+        {
+          "member": "tests/MacCyrillic/forum.template-toolkit.ru.4.xml",
+          "sha256": "7b8e20c5ff74585252398eb06cc88a495d5330f041542fdd8dc58365f86589e3"
+        },
+        {
+          "member": "tests/MacCyrillic/forum.template-toolkit.ru.6.xml",
+          "sha256": "92e9f58ed962375ec1d29a8057545c24f5abe86de4927fc4f65fe558349c6095"
+        },
+        {
+          "member": "tests/MacCyrillic/forum.template-toolkit.ru.8.xml",
+          "sha256": "19f35ff660dd5663078cce3a01b61ba403378e1dffc8a29ddf2ed37f58475599"
+        },
+        {
+          "member": "tests/MacCyrillic/forum.template-toolkit.ru.9.xml",
+          "sha256": "e0a2a9a18c8191ab74c7833f0dcab44b5744a5ec2f5f01f4bfde9ad09d46fe46"
+        },
+        {
+          "member": "tests/MacCyrillic/greek.ru.xml",
+          "sha256": "4c0bdb46113c4e75775091ea4bbb8a6abbf13d71353ae4d9d0989635c7d483f7"
+        },
+        {
+          "member": "tests/MacCyrillic/intertat.ru.xml",
+          "sha256": "1076aa8ef14ea451c42a13594c8a4091ed7abade21a07c49a8ae1ffac03fc51f"
+        },
+        {
+          "member": "tests/MacCyrillic/kapranoff.ru.xml",
+          "sha256": "79f835a27f5636132e24ec3c5378cc8cc0b0c5ca9f6d5deb690b290c5f3c286f"
+        },
+        {
+          "member": "tests/MacCyrillic/koi.kinder.ru.xml",
+          "sha256": "c831a9b1998e96e88d2cf154701c2d3088c6986b50b5cda6d9483fadc016000d"
+        },
+        {
+          "member": "tests/MacCyrillic/money.rin.ru.xml",
+          "sha256": "cd8dfe68a8c70dcabdabc267d49c08ffc953a6deeef260818606de6db1cc5ff9"
+        },
+        {
+          "member": "tests/MacCyrillic/music.peeps.ru.xml",
+          "sha256": "66b26cd417ee8064aaf66559b4d507a68f49ff5e4012d1b7baf57c4ae8b9f4ae"
+        },
+        {
+          "member": "tests/MacCyrillic/newsru.com.xml",
+          "sha256": "13c865521e14ad54e5295dc3eef594fcfbadf7bea7ac2200ed7b6be0d7500b69"
+        },
+        {
+          "member": "tests/MacCyrillic/susu.ac.ru.xml",
+          "sha256": "c230b073746ba58dde2cf2eca775f5d8d0be22381616ba7945d45e41405bf70f"
+        },
+        {
+          "member": "tests/MacRoman/ioreg_output.txt",
+          "sha256": "8328c01500074712543b0e7886947b6f630b1a3e4588d22e72f51affe51729a8"
+        },
+        {
+          "member": "tests/README.txt",
+          "sha256": "b25d47acb0b282f3b73c2b7abf1e12d7c3c4ddcbd6bd6cc58bd590cfcad4c35e"
+        },
+        {
+          "member": "tests/SHIFT_JIS/10e.org.xml",
+          "sha256": "d662f244feba332b6ba34959118fddba5a41f1da4f2bd0102306ecfa1511a740"
+        },
+        {
+          "member": "tests/SHIFT_JIS/1affliate.com.xml",
+          "sha256": "ef1d8834489952075ea2c5fba7c2ebe030601a417424fb375909d6dfad627ccd"
+        },
+        {
+          "member": "tests/SHIFT_JIS/_chromium_Shift-JIS_with_no_encoding_specified.html",
+          "sha256": "55159edcc7cecebbcef9830f7c31558ca5414e10c4bf20dce1edccf5aa4b7dc5"
+        },
+        {
+          "member": "tests/SHIFT_JIS/_ude_1.txt",
+          "sha256": "a92b92fd8f269581a11e20235a242e82e895d5c70f51896cfddfd9e6e0893caa"
+        },
+        {
+          "member": "tests/SHIFT_JIS/_ude_2.txt",
+          "sha256": "120de281feba07d02270b78b3cc03702adf5eefe112a84e4bd135108538aa36c"
+        },
+        {
+          "member": "tests/SHIFT_JIS/_ude_3.txt",
+          "sha256": "120de281feba07d02270b78b3cc03702adf5eefe112a84e4bd135108538aa36c"
+        },
+        {
+          "member": "tests/SHIFT_JIS/_ude_4.txt",
+          "sha256": "2cd209bd1ae1d35a2afefba09f718ebd5e260df6c42ab534cd89ccaf06d0742e"
+        },
+        {
+          "member": "tests/SHIFT_JIS/accessories-brand.com.xml",
+          "sha256": "b4f0a4f000a46131f5a2b6c6886313c0416d6502190bf496cbf028cef452ffdf"
+        },
+        {
+          "member": "tests/SHIFT_JIS/amefoot.net.xml",
+          "sha256": "240c4892297da48ca8fce3fca86e4cdb02aafe4251bc575b7bdad547bf133abc"
+        },
+        {
+          "member": "tests/SHIFT_JIS/andore.com.inami.xml",
+          "sha256": "401931d322b6ec71d6db306cbcd04457a2ceb052b309b60667531ae3592b475d"
+        },
+        {
+          "member": "tests/SHIFT_JIS/andore.com.money.xml",
+          "sha256": "285251d926c66d5df6d974c5067c68dfa096db9ada6964aa7b460082e0f730c6"
+        },
+        {
+          "member": "tests/SHIFT_JIS/andore.com.xml",
+          "sha256": "d72be2aa60f84d3f6e29465200c0b57dd10e6e0b1a227bf2f50ec842875482a9"
+        },
+        {
+          "member": "tests/SHIFT_JIS/blog.inkase.net.xml",
+          "sha256": "e116387bbc1f670027c5a42a42794c3fdb1f4b544befa1886623992fd6a9afca"
+        },
+        {
+          "member": "tests/SHIFT_JIS/blog.paseri.ne.jp.xml",
+          "sha256": "4f29cda346eb92ca758ae8d533574bf68fe83c09adc536d732482cdb7810ef6a"
+        },
+        {
+          "member": "tests/SHIFT_JIS/bloglelife.com.xml",
+          "sha256": "27aa42ec8ea9a3f450b52ad8e9c033b3a39033b0336897e21dac33c485896f25"
+        },
+        {
+          "member": "tests/SHIFT_JIS/brag.zaka.to.xml",
+          "sha256": "4ebdd883f5905a38f4b498e6ee786daee14e717a5b9c8c700b0fda285cc0ff0b"
+        },
+        {
+          "member": "tests/SHIFT_JIS/celeb.lalalu.com.xml",
+          "sha256": "ce213d83cb99970fb9d9d04a1eb1bea97adf5d91b5a949d4dfb514f27f88eff0"
+        },
+        {
+          "member": "tests/SHIFT_JIS/clickablewords.com.xml",
+          "sha256": "62f79b5872068c59122e531e28ac6cad595f50058a79e56ca1716bb56183d296"
+        },
+        {
+          "member": "tests/SHIFT_JIS/do.beginnersrack.com.xml",
+          "sha256": "ac6ebae312cfbb52bfc60f37c2aa182ed22f91ef84c02c242103794b36e1a636"
+        },
+        {
+          "member": "tests/SHIFT_JIS/dogsinn.jp.xml",
+          "sha256": "8bb452e7493c24748530f987167115b25713a5c86a07255b9f4f67ae8b960980"
+        },
+        {
+          "member": "tests/SHIFT_JIS/grebeweb.net.xml",
+          "sha256": "865d8ad7f3e3663a145f1dbebdc51abedf9e1fd3fc1598e9bf4d02237b37c09e"
+        },
+        {
+          "member": "tests/SHIFT_JIS/milliontimes.jp.xml",
+          "sha256": "7b59e5da673bbed741a767e002cbb4f5a8941584172c0245ecb757cc6cd95ff0"
+        },
+        {
+          "member": "tests/SHIFT_JIS/moon-light.ne.jp.xml",
+          "sha256": "93e679367402f06d62ff524547aa26bbaa938d84ff0d3d34ee9e3ccf139daa5f"
+        },
+        {
+          "member": "tests/SHIFT_JIS/nextbeaut.com.xml",
+          "sha256": "58138cd8cd6cfaf0a0e23b4e5cc84efb49224e6bf4a746fe033beea0540a0241"
+        },
+        {
+          "member": "tests/SHIFT_JIS/ooganemochi.com.xml",
+          "sha256": "624f59e158dd4606256962f836a5f90a152d384d134750059c8ed17bb618bba9"
+        },
+        {
+          "member": "tests/SHIFT_JIS/perth-on.net.xml",
+          "sha256": "a9463d700e60e83dd53e1f646740dba4801caf66f61d52b864c8371d4e11dd7a"
+        },
+        {
+          "member": "tests/SHIFT_JIS/sakusaka-silk.net.xml",
+          "sha256": "5b391485f5dce77ff278d677493a74564ae284b5bea44bb7e83e0af9cc0d076c"
+        },
+        {
+          "member": "tests/SHIFT_JIS/setsuzei119.jp.xml",
+          "sha256": "05ccf2a381b6a07918b1910cc050a1a4244747027392081df049d8478e632606"
+        },
+        {
+          "member": "tests/SHIFT_JIS/tamuyou.haun.org.xml",
+          "sha256": "b5d58130c22118e4de6c1dabcf507467acdf9330ff2f8be40b5d4ef7bdcb9022"
+        },
+        {
+          "member": "tests/SHIFT_JIS/yasuhisa.com.xml",
+          "sha256": "cb5e08da278e9d6fbd4e4c9acc3e0cd352dd2074d94a36b9c90f8f09e0e1373c"
+        },
+        {
+          "member": "tests/TIS-620/_mozilla_bug488426_text.html",
+          "sha256": "c7a69ee2d0d2a3d33070f200a4bd83676689c2fefe4fb1bce88eaedaac60aa52"
+        },
+        {
+          "member": "tests/TIS-620/opentle.org.xml",
+          "sha256": "1820a1e66d686a56cf6b568f6bba8be2b25549d45c0c198e7d361140e390e28b"
+        },
+        {
+          "member": "tests/TIS-620/pharmacy.kku.ac.th.analyse1.xml",
+          "sha256": "5be2e7e94ca24ca86687317d9621cfb03403beb6d7c5b3dba4ccb01bc934e2e2"
+        },
+        {
+          "member": "tests/TIS-620/pharmacy.kku.ac.th.centerlab.xml",
+          "sha256": "d1a59bdf6ddb2f3e4b71fbd322125c0af672a1a05bc9e365775c9982809b1f23"
+        },
+        {
+          "member": "tests/TIS-620/pharmacy.kku.ac.th.healthinfo-ne.xml",
+          "sha256": "63c4b38f483bcf2790c3411c76f9f4e4050c14ac1ec3fb832d370d53aa9cceb6"
+        },
+        {
+          "member": "tests/TIS-620/trickspot.boxchart.com.xml",
+          "sha256": "095d19ad3b090473d8bfa5559021275d4a9a3db82e918406cad9288fd8616f50"
+        },
+        {
+          "member": "tests/UTF-16/bom-utf-16-be.srt",
+          "sha256": "eb0b76b661de51e3c8f387f67b9829b7c4642467dcbaabc56443ba93d300a181"
+        },
+        {
+          "member": "tests/UTF-16/bom-utf-16-le.srt",
+          "sha256": "b2b06ff95e9ceaca9ed099b3cf63785c0750235d5de58f64c7d1ef105750977e"
+        },
+        {
+          "member": "tests/UTF-16BE/nobom-utf16be.txt",
+          "sha256": "67b224b18b2440b7d983f2c1aa6910eb9744b57048b431fddcf900b7fd919e10"
+        },
+        {
+          "member": "tests/UTF-16BE/plane1-utf-16be.html",
+          "sha256": "cec389c5bea7b91f03d4c05a8ed78161b01a9a80181dda43ac19a3357b61a0c6"
+        },
+        {
+          "member": "tests/UTF-16LE/nobom-utf16le.txt",
+          "sha256": "dca0aadb3b481b2f71ad99c2da4666890dc334fc7d1f114cb68ec52419ad92f7"
+        },
+        {
+          "member": "tests/UTF-16LE/plane1-utf-16le.html",
+          "sha256": "c2c84a4ee9fbf14c19b2af7e0e3443d7e77c2b613aeb2d15e478b372afb5d618"
+        },
+        {
+          "member": "tests/UTF-32/bom-utf-32-be.srt",
+          "sha256": "ee23d4cd850068ccfd96274882f5634061794cf2d2419b45f0240a843b030bce"
+        },
+        {
+          "member": "tests/UTF-32/bom-utf-32-le.srt",
+          "sha256": "83c27db381b6a4d7556f772f8d888ee97aa8207ca086914db6c01f4c452feb37"
+        },
+        {
+          "member": "tests/UTF-32BE/nobom-utf32be.txt",
+          "sha256": "884cef4ec3bc786fee5cf1033f915e696714d07be2a61e84a51c0dc52793ce62"
+        },
+        {
+          "member": "tests/UTF-32BE/plane1-utf-32be.html",
+          "sha256": "225a2b1eaed24e0cb5c080a814ca675d85ee191744809484f2695db3f70224b0"
+        },
+        {
+          "member": "tests/UTF-32LE/nobom-utf32le.txt",
+          "sha256": "f107012d150abf62ee94e11c196ef2cf35dd992c9eb1b43214fe4805a4c574b0"
+        },
+        {
+          "member": "tests/UTF-32LE/plane1-utf-32le.html",
+          "sha256": "5e712c97655b94ba1c8c128ed2f5ccbe9346499f68501efb1e972964dbe363c5"
+        },
+        {
+          "member": "tests/ascii/_chromium_iso-8859-1_with_no_encoding_specified.html",
+          "sha256": "ed2d3dc3637c6fcd27c85398f327a81b301ab3d779a591fd3a93143cc4759fb6"
+        },
+        {
+          "member": "tests/ascii/_mozilla_bug638318_text.html",
+          "sha256": "c5c54359631a1928a769afdc376ee649110181ba41f24f5a77d7d709a5637a57"
+        },
+        {
+          "member": "tests/iso-2022-jp/_ude_1.txt",
+          "sha256": "e11792188dbf2670a22421a87b8f5e50221fd99dbc25951109087a7335a27d24"
+        },
+        {
+          "member": "tests/iso-2022-kr/_ude_iso1.txt",
+          "sha256": "ecbc833aaa3e1524442f00a27278ee96e57d12521d13b3baab846f66b07ae43e"
+        },
+        {
+          "member": "tests/iso-2022-kr/_ude_iso2.txt",
+          "sha256": "d5502a704533e6ecb400b889173a3d4f5eea16054818c9391da06b19fc543f28"
+        },
+        {
+          "member": "tests/iso-8859-1/_ude_1.txt",
+          "sha256": "96510eba7a56b6f2a4749b08111f3c856c7b679dcafad6dc40f84fb21c53e3d5"
+        },
+        {
+          "member": "tests/iso-8859-1/_ude_2.txt",
+          "sha256": "a31e31e1fb70e45d5ae816ab2db600046f3205479f9938ad1dd01d59bf1b6539"
+        },
+        {
+          "member": "tests/iso-8859-1/_ude_3.txt",
+          "sha256": "06ed96abb6e1d59f81c92f78f43f3705294e8e8cf76ff9b148b925b71d692f60"
+        },
+        {
+          "member": "tests/iso-8859-1/_ude_4.txt",
+          "sha256": "db925c7950e0c28318089501a360f711971d16003953a9795ad7f5010241d8ca"
+        },
+        {
+          "member": "tests/iso-8859-1/_ude_5.txt",
+          "sha256": "a2df3354bfd80ea40c08b11a6331284e15c55a487a6a59741c441bd9e93608ff"
+        },
+        {
+          "member": "tests/iso-8859-1/_ude_6.txt",
+          "sha256": "6448f9665b50678ac4b408d1e7825dbb5e98d91aa3f7e37a798e041aec53c4ae"
+        },
+        {
+          "member": "tests/iso-8859-2-croatian/_ude_1.txt",
+          "sha256": "7d5beb6fd21393c2324b6f19dc38ffd4dbce367bf57a0a853cb822d1a23cfe35"
+        },
+        {
+          "member": "tests/iso-8859-2-czech/_ude_1.txt",
+          "sha256": "d6442383e124dbff3130077e443fff6323017d1b8dbbf6d27654f2c9000e836b"
+        },
+        {
+          "member": "tests/iso-8859-2-czech/_ude_2.txt",
+          "sha256": "afd0b951ca08dd02e52c40985f1a2f7b529868431b3cd5139e48c504d1e0ae80"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/_ude_1.txt",
+          "sha256": "020a48f6bcf15cdd065d14f69b206a40ef029bcfbda4cbd038e23089af6e6813"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/_ude_2.txt",
+          "sha256": "1904fb98b755629c0853afe06aa5f2175009017a701c5ba8b267f5f6d97ed5f6"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/_ude_3.txt",
+          "sha256": "1904fb98b755629c0853afe06aa5f2175009017a701c5ba8b267f5f6d97ed5f6"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/auto-apro.hu.xml",
+          "sha256": "baaea7030ee3245de24a99f8e93825c1097d21aebdc4e35b70c5276925703495"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/cigartower.hu.xml",
+          "sha256": "5649e685e117b94b9257e45c67e9d8e8b8322ba54aa2e38aa3f58db80df2c573"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/escience.hu.xml",
+          "sha256": "5fbad9012479460932abb749ebb131292be1dd67ab55d264dcc4d958b18a1ec2"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/hirtv.hu.xml",
+          "sha256": "52bad51014759adb26b87d9c01cfea79fe90f4ab27745414102eb25348785fd5"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/honositomuhely.hu.xml",
+          "sha256": "47aa8f54f102c539dc7a023d3cdb483e72d79902869c88c2981682119538f6a6"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/saraspatak.hu.xml",
+          "sha256": "bdf289600f7d3147bc931e342f0cb66e050f64f3d54afc1dedc601abc6829c53"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/shamalt.uw.hu.mk.xml",
+          "sha256": "0e261e3547045a710ee50b8e81e1862e4445c584897384a81d3af9a8ba150357"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/shamalt.uw.hu.mr.xml",
+          "sha256": "364cb157c889198dff92fdc690d732683397ca0362d7a3fc0768f9dbcfb71bcf"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/shamalt.uw.hu.mv.xml",
+          "sha256": "3f0b4c252d56a5df8f8fce0cd54b977559b552d8c75ad9727cc71e35e1a32d36"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/shamalt.uw.hu.xml",
+          "sha256": "3128c2a290ec165fc0432ee9b47e9c00dd65d172aa2e08ecdde98da58a649787"
+        },
+        {
+          "member": "tests/iso-8859-2-hungarian/ugyanmar.blogspot.com.xml",
+          "sha256": "08eb34a36d84fa235d835b5ed53531bd8ce1156a62c4adca1d6a7b566f3a0994"
+        },
+        {
+          "member": "tests/iso-8859-2-polish/_ude_1.txt",
+          "sha256": "b9a411737e62dd2077da967e95bc3472e0ac795d325b872db1906b4c987dc34b"
+        },
+        {
+          "member": "tests/iso-8859-2-slovak/_ude_1.txt",
+          "sha256": "341309cb03b4512cb0fe9f5f3876a351cba2755f08c5af084a4a81e53db6d48a"
+        },
+        {
+          "member": "tests/iso-8859-2-slovak/_ude_2.txt",
+          "sha256": "db6c17f0d0e155aa6e5d3dea18bf1df2a1e613a874b216bd07b69732cbe421ac"
+        },
+        {
+          "member": "tests/iso-8859-2-slovene/_ude_1.txt",
+          "sha256": "cea2ffc867deb4ba6e11ba6366102bf0e878dae61b1143a2adf3c9fb3b788882"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/aero-bg.com.xml",
+          "sha256": "8d023c9bdfaeab3478d46fa5032624bc02114b825ad55b039a7fa0d71474ad49"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/bbc.co.uk.popshow.xml",
+          "sha256": "166c941320885d16a77cb68a83aaadeefc3bbbb1d7abe771963130905aba82b2"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/bpm.cult.bg.2.xml",
+          "sha256": "e2512773100eba03397590557d77524323047aa515bf533001787d83fd21670a"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/bpm.cult.bg.4.xml",
+          "sha256": "1f06cc4360dfe8c75ae0e40f58381506b596e0fcc5c92ed193b751c03a33882e"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/bpm.cult.bg.9.xml",
+          "sha256": "8b710a0f74a0fa89b2d9bffafb6ab238d108ed287e0319e2566b917e851ba6e6"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/bpm.cult.bg.medusa.4.xml",
+          "sha256": "d1377e9e85203c55d7c52d8f16cf82e828d740799597099eeaba8d01659339cc"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/bpm.cult.bg.xml",
+          "sha256": "558576121a38c992ff757f0feba7a59c4d6f2338dd25c1683757c4582ae4a88c"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/debian.gabrovo.com.news.xml",
+          "sha256": "710d46e3e052ab2643fd43ee4e2dfcfc0812d5cfb915032d4d1a7cbcb351cf9c"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/debian.gabrovo.com.xml",
+          "sha256": "90f315ead98afce8bea800d961655db9bef3de239553af7cfe0f334e97fd8443"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/doncho.net.comments.xml",
+          "sha256": "f5ed573363f5231e4ce1c923d58d6f185babeff081332f9452f45b031689df83"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/ecloga.cult.bg.xml",
+          "sha256": "e52c2903fc5128f439cf9f3a3a7b50908c994028fdc3867d7e311a203c108ea1"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/ide.li.xml",
+          "sha256": "9b48dc41a6a202d7e64c66f32217841c4de6472a349861b9eac69fad182295eb"
+        },
+        {
+          "member": "tests/iso-8859-5-bulgarian/linux-bg.org.xml",
+          "sha256": "e83e8b81f57794593fa95af93ed7cf295af2a9c560f4525f590a924b1df0b6ea"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/_chromium_ISO-8859-5_with_no_encoding_specified.html",
+          "sha256": "d0f1638e6fa823d362db44ff00b801e8d673b08cb6bcf7dae4e9dda6c6a40628"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/aif.ru.health.xml",
+          "sha256": "352c3e2a27a8eb90a1e926b286da8bfdfb2ca867fc7a02924c78f03f6bd85372"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/aug32.hole.ru.xml",
+          "sha256": "ba09d88da9d63a3a8655237bc2c60718e865ee30127f92691c73a80a3f5854ca"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/aviaport.ru.xml",
+          "sha256": "af5f219bff68bbd93ce9e5798333ede42c249de56d9613ec6457478d8fafbf9b"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/blog.mlmaster.com.xml",
+          "sha256": "e5ead9ace110c58c88d30f10659f7cdb475bec181c12481c66a8ff7c1afe37e9"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/forum.template-toolkit.ru.1.xml",
+          "sha256": "7d03a333be57b70349d86d09c3188240abf1246cad3c5a82c4da31564ee92d37"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/forum.template-toolkit.ru.4.xml",
+          "sha256": "51ce89d669acac056febe0a970629a376d173b1ba3ecdcdb63e9e67a2cf4b9fd"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/forum.template-toolkit.ru.6.xml",
+          "sha256": "c719e449b64c10ba27813c2c71812e23677234ed5070049700fd32c46dda88dc"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/forum.template-toolkit.ru.8.xml",
+          "sha256": "7f273c5da29c4ee468bd9d7e16aec2bf72444e761302889239a2071e727ca4d3"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/forum.template-toolkit.ru.9.xml",
+          "sha256": "083a1756d0eaa82db458468a104c26e6971fbd7791730d1ff0ff80a4255f2175"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/greek.ru.xml",
+          "sha256": "db9dbbd587d86a5e41be0e40f7111e2be8b3565eeae701a19756160b604013e8"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/intertat.ru.xml",
+          "sha256": "fc89071ce479fa3ec97f8fb527819c93c042fc91ba643d8028a7ff7826dd2890"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/janulalife.blogspot.com.xml",
+          "sha256": "5f9d3dfbeb5dff2845231523a50f4083c0f67eb2c280f6fb5dcaf3233d6dc8ab"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/kapranoff.ru.xml",
+          "sha256": "6adf3c268b85d59b57364c3a438513691d2820ce4176d11e5bc6dc4eec8befd1"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/money.rin.ru.xml",
+          "sha256": "801048f535f2c1f03443d4e2a1ca0ff6a0dd077cb669938f15781ae18762796a"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/music.peeps.ru.xml",
+          "sha256": "d13f3497168430f8fb926806a9400a76891df910fffdf4fad19c8c52205abf4b"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/newsru.com.xml",
+          "sha256": "ac1faa9c2a0fdc218c4239637b249a6d17ac0472fc810b1558d1384f95ad5348"
+        },
+        {
+          "member": "tests/iso-8859-5-russian/susu.ac.ru.xml",
+          "sha256": "6f04f4749dd3c312a9b22315f24854d7aa74306dfd120a56ea6be29993f88927"
+        },
+        {
+          "member": "tests/iso-8859-6-arabic/_chromium_ISO-8859-6_with_no_encoding_specified.html",
+          "sha256": "270e7f1ace8f71ca39a114ca6e9b57c61586cd0515bf102d8e6a9cb6fe4b158f"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/_chromium_ISO-8859-7_with_no_encoding_specified.html",
+          "sha256": "a1395445b1b8f4ee6742d07baddbb06a85fff2a0410c01b42e26c3d6552f20e6"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/_ude_1.txt",
+          "sha256": "2f209e7dc00a8f6c3ab7151db525cefb04ca91d22488369b7b786f03e640a1fc"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/_ude_2.txt",
+          "sha256": "72f969e362289d18ce10182283fb01d1ac052a634c1fb3fdbc690616a8357048"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/_ude_3.txt",
+          "sha256": "cf9afae3a58f28a422fa8edecf255744a8cffb559262d3b3f7dfa3e1d6f59cb4"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/_ude_greek.txt",
+          "sha256": "cf9afae3a58f28a422fa8edecf255744a8cffb559262d3b3f7dfa3e1d6f59cb4"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/disabled.gr.xml",
+          "sha256": "d314f20044e99128c23d6f8be8453685039117351dd58317bd4d6f169c574f71"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/hotstation.gr.xml",
+          "sha256": "5c6a55ecf7f29de2135326914ddb8655ad428a2e79fc2f34857e15e71dbb4c7d"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/naftemporiki.gr.bus.xml",
+          "sha256": "e85b63df282398250a8347a95a12aaa6b5c800fff1f20dd91d7c3f32cd881cbf"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/naftemporiki.gr.cmm.xml",
+          "sha256": "68f03d141d6ed3029b0e6d52426435edcf18077a9d216fb853ec5b00962ee536"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/naftemporiki.gr.fin.xml",
+          "sha256": "1c69be5fb9ffd7f07693d36574d4ead39fbbaea12fe0f8cef26366716cd24bd5"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/naftemporiki.gr.mrk.xml",
+          "sha256": "7eed081151c2f9c18a7a2c782d619a208b523919d7239e8942ba014a2307509b"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/naftemporiki.gr.mrt.xml",
+          "sha256": "ebaa7ef2441fec3b5dbfd44f4e1416abeac1be9a59c62743f1c9c7213f32827f"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/naftemporiki.gr.spo.xml",
+          "sha256": "5624ec40f32553be6d451ca816791c49a8e0f25eeb7f832baf602ff4c820f9fb"
+        },
+        {
+          "member": "tests/iso-8859-7-greek/naftemporiki.gr.wld.xml",
+          "sha256": "4d8990e9cc1de780f7fe8b49b6be17e9f5b23e42eddf286d5ba202d08d2a651f"
+        },
+        {
+          "member": "tests/iso-8859-9-turkish/_ude_1.txt",
+          "sha256": "ea7f7bf7bd9de6e85be8b83ffb281d70cd1fb140f278db13c26d94d69dbe6d37"
+        },
+        {
+          "member": "tests/iso-8859-9-turkish/_ude_2.txt",
+          "sha256": "f2f31c6128520d2cb7ed2e3d6539aa10a34d73d33f7d4e0dcb6f8eaded04a016"
+        },
+        {
+          "member": "tests/iso-8859-9-turkish/divxplanet.com.xml",
+          "sha256": "7258f5b793c22f1a02d561f2e562704f1998aae5059761f93501e631f6dcfc75"
+        },
+        {
+          "member": "tests/iso-8859-9-turkish/subtitle.srt",
+          "sha256": "bd0a735e3d9d765aacaeff71a87811d1e17d44c22ade28ed0aeafe1179d8c63b"
+        },
+        {
+          "member": "tests/iso-8859-9-turkish/wikitop_tr_ISO-8859-9.txt",
+          "sha256": "df265e595aac51e92faafd41afefadbd21b820d1be3eec2e35dab4213fb16fba"
+        },
+        {
+          "member": "tests/utf-8/_chromium_UTF-8_with_no_encoding_specified.html",
+          "sha256": "c6832ac398f1d5036828f52b81af26459a7b04bb06a41b6d3a892559ca8d67c2"
+        },
+        {
+          "member": "tests/utf-8/_mozilla_bug306272_text.html",
+          "sha256": "d09887f05d9dab95a8462c617946a4c0a3d5d9410832fd67782041273f3a24a1"
+        },
+        {
+          "member": "tests/utf-8/_mozilla_bug426271_text-utf-8.html",
+          "sha256": "c977cbd5ab766a9380085a7cf0ed278166240d90befb218a919f7ca42a41ddf9"
+        },
+        {
+          "member": "tests/utf-8/_ude_1.txt",
+          "sha256": "27fd4f530bfb4d83ab0451d316bcbb05204d7d8100b3594e7f216b9690f62e9e"
+        },
+        {
+          "member": "tests/utf-8/_ude_2.txt",
+          "sha256": "2a8b21164771eb03c2b9ff1af221dbf2b91d6a9a12197055646da11149252ba3"
+        },
+        {
+          "member": "tests/utf-8/_ude_3.txt",
+          "sha256": "fd5f6ac10276dfd327d4c9cbfb8c91fda1d619258ffad0fadcc26fa1cda96257"
+        },
+        {
+          "member": "tests/utf-8/_ude_5.txt",
+          "sha256": "081cdf3b9cc676306b91a76dc83ed2a5996ae03050c67576018d92f8c6349577"
+        },
+        {
+          "member": "tests/utf-8/_ude_greek.txt",
+          "sha256": "e758b6982c3bdb5b52f23a3529f220e8c8adee820b262b0b997b80cd77eddc6b"
+        },
+        {
+          "member": "tests/utf-8/_ude_he1.txt",
+          "sha256": "4eb98e435e981374f1a46011ff0b49c1898f1245ad141b7edaf592f75b7cd91f"
+        },
+        {
+          "member": "tests/utf-8/_ude_he2.txt",
+          "sha256": "65b7f31961afff2957466add804a7548db20deb5cf1ba04b3880f233a6ac1c7f"
+        },
+        {
+          "member": "tests/utf-8/_ude_he3.txt",
+          "sha256": "175b7f350a1f56419fd0999c63bb083756e35eef1aa7c288455c7d702ea9a488"
+        },
+        {
+          "member": "tests/utf-8/_ude_russian.txt",
+          "sha256": "2492ff4b9b15c174a998457ff02233cd1367bdfa5d7c066145f15616aaaa941a"
+        },
+        {
+          "member": "tests/utf-8/anitabee.blogspot.com.xml",
+          "sha256": "a2794436a1c7c198e5a37ad5352941dae0a012c9b8340241df77cc22dba67fa9"
+        },
+        {
+          "member": "tests/utf-8/balatonblog.typepad.com.xml",
+          "sha256": "8f1978127a306baf0206acdb5045a5c986c21384cde8c83c7514d597fc6c83dc"
+        },
+        {
+          "member": "tests/utf-8/boobooo.blogspot.com.xml",
+          "sha256": "0e4bfa4503b778d9b74033bf9d5c723e8907dae30f9c7651b618f77706da6ee0"
+        },
+        {
+          "member": "tests/utf-8/linuxbox.hu.xml",
+          "sha256": "74ec929a26c7d77fc40ba78f2edefa9bc6b18dec34e8cc30279ec997066a65d5"
+        },
+        {
+          "member": "tests/utf-8/pihgy.hu.xml",
+          "sha256": "d9eb9d2f57e148069d9535807d5d6bd3c029edfe6ffc4669c1b408a9d54ed412"
+        },
+        {
+          "member": "tests/utf-8/weblabor.hu.2.xml",
+          "sha256": "b5ef993f8253bf9cb1ce82fd786582a779fa84916a32b14e0ab88a11a88e87ba"
+        },
+        {
+          "member": "tests/utf-8/weblabor.hu.xml",
+          "sha256": "0321f0577bb2a6b8fe5820df135df1e668e061ac2f239e7197630446374c7d6a"
+        },
+        {
+          "member": "tests/utf-8-sig/_ude_4.txt",
+          "sha256": "7be065ea1f282b859e2f5fd23c03cdf459b29d1cef2c44019ed3f67c1658b0e0"
+        },
+        {
+          "member": "tests/utf-8-sig/bom-utf-8.srt",
+          "sha256": "4a5850a424c075e25e86fbee489561d5869efdb42297ed08ae074238f312e818"
+        },
+        {
+          "member": "tests/windows-1250-croatian/_ude_1.txt",
+          "sha256": "e8cbcd438ebad3f373419e6667b5d69969b2815a9eec61eceebde85e4048b2d6"
+        },
+        {
+          "member": "tests/windows-1250-czech/_ude_1.txt",
+          "sha256": "5c601412574dd3a123a84047d6d1b84f43d3e6768e7df7da39b243165901c12d"
+        },
+        {
+          "member": "tests/windows-1250-czech/_ude_2.txt",
+          "sha256": "adcc37638e6fc96924abbf5c32b8d9166de67488967f7ba5471d278a096d6cf1"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/_ude_1.txt",
+          "sha256": "59663d2c6b3884e64282e312df1b854583490e691f8fac09c38ec09844d5e289"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/_ude_2.txt",
+          "sha256": "c04166b529eb04929a23ef8289d3bbc558cecc580533012a88bc4564c56a580b"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/_ude_3.txt",
+          "sha256": "e90349f65e85d37fa4d9b075401ff1a864532760d48f9d86790bf4db0462ecf5"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/bbc.co.uk.hu.forum.xml",
+          "sha256": "f716e9d2f63263687cbeae51b5d238eae27b30d1225c068ae81e125dcca821d9"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/bbc.co.uk.hu.learningenglish.xml",
+          "sha256": "20088418de06fc0706d4a9a0348709f4c8a8d3f0ffe4acff5eb5553f17f60673"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/bbc.co.uk.hu.pressreview.xml",
+          "sha256": "6f665c8da0aed2b89f6d3261a5d5820ae9a19916a23bb5fd0c5efd6cea8af91b"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/bbc.co.uk.hu.xml",
+          "sha256": "a4220953e3d27fbfd11a81f83d49b3d7e95ed08c4457c4552b86a0587739c44e"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/objektivhir.hu.xml",
+          "sha256": "bc3c64aa01fd5fdd93447b91289ca3885cfb4a72f01d84c3822c92072d20442f"
+        },
+        {
+          "member": "tests/windows-1250-hungarian/torokorszag.blogspot.com.xml",
+          "sha256": "8711ee1238978522a389c99ebb108d00be17e2879f4c03409f6c89394de6c075"
+        },
+        {
+          "member": "tests/windows-1250-polish/_ude_1.txt",
+          "sha256": "3f1bfdde92b83996ea22e7f89518128661638e586c513b35566a2c34572b2de7"
+        },
+        {
+          "member": "tests/windows-1250-romanian/_ude_1.txt",
+          "sha256": "c081a88f636a295c88e380d00fbae12eb1af881613014e5ab2b8347b28043766"
+        },
+        {
+          "member": "tests/windows-1250-slovak/_ude_1.txt",
+          "sha256": "a51d1598a5d61baf33ee9c0823142878d3fcf43340a511123edeb595a23873a2"
+        },
+        {
+          "member": "tests/windows-1250-slovak/_ude_2.txt",
+          "sha256": "a4c673ebb54cc63f3860786f4a876dd2907a4350d7a14355a634ff8939259bbe"
+        },
+        {
+          "member": "tests/windows-1250-slovak/_ude_3.txt",
+          "sha256": "b893578bc268dc21bb82fe36d4c43a97d8c27f44f0ed94b6f4280ce48c835870"
+        },
+        {
+          "member": "tests/windows-1250-slovene/_ude_1.txt",
+          "sha256": "0bc1458b16fd0deea62263fb22fcb94665a8cfde4cc0e702ce23057dbffda4ee"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/bbc.co.uk.popshow.xml",
+          "sha256": "72185168546ff85bb6a14b93ec0c0031f9ce43d49c604f88bc59c91cb6268595"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/bpm.cult.bg.2.xml",
+          "sha256": "4823606ccc23fa1a407494a3f69f77aabba1849614ebe781cab9a3637d53f664"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/bpm.cult.bg.3.xml",
+          "sha256": "afa7e81acb35334cb3bf11eb5ad217f44aa89fdd4fd2bfc59ee5fecdecdd7309"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/bpm.cult.bg.4.xml",
+          "sha256": "70c4fced008a2c79ea7f41e317aaf6f90fa230a2afdacc6358c5225e0786d75d"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/bpm.cult.bg.9.xml",
+          "sha256": "6edce97ee26487f06f56fb507fe100979c117aa26f964b0e18482bc224ef99be"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/bpm.cult.bg.medusa.4.xml",
+          "sha256": "d87c78853a9e012d9eb88755458feedb026166199ba4fb9847e3603e9a8e1d2d"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/bpm.cult.bg.xml",
+          "sha256": "e63bd385ac90fd6810cbe5c732926e9e74f94f9255c0534aed76a9656ab2abaf"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/debian.gabrovo.com.news.xml",
+          "sha256": "948bfc652884f8d342788daf5e90d82ef7eab4457f6600d171c9bf2f18b72ba2"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/debian.gabrovo.com.xml",
+          "sha256": "c47b9a6c2c29c4d6dbfd3f7faecc3dc72e53f50923c0e43f438629c3ae84ecfe"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/doncho.net.comments.xml",
+          "sha256": "79943147374a59ce51a00bb307a4a54456aac7195982ac840e15c76cf692a05c"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/doncho.net.xml",
+          "sha256": "93c5f8f9b534ac507d29bd7d6edca9dbe765da1d4704754d1acf1dc0191128e0"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/ecloga.cult.bg.xml",
+          "sha256": "2046593579329bbd8a0036ba6ad731b7662c511d663c395aa2f520eb6aa4cb18"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/ide.li.xml",
+          "sha256": "26a61e4823319e176af4299a73cc4e4851b776b92310ef8494dc4647b6b2b544"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/informator.org.xml",
+          "sha256": "0d4be3602d7f5d66d286da4ea8dfa2ddc837171958301e87ab025aca183ab345"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/linux-bg.org.xml",
+          "sha256": "69889782bae245d95ca0285f8d6869569592e4839ef786ca99c4997647a1b5c0"
+        },
+        {
+          "member": "tests/windows-1251-bulgarian/rinennor.org.xml",
+          "sha256": "32c3d622c24fed17f4f9a7908d8a46f300961c3133fd88fc0e5b180fcd1cfddb"
+        },
+        {
+          "member": "tests/windows-1251-russian/_chromium_windows-1251_with_no_encoding_specified.html",
+          "sha256": "c095fcd829ca7a03894952aa916a0b5b8b71630d0c84adcf432fb72084273e34"
+        },
+        {
+          "member": "tests/windows-1251-russian/_ude_1.txt",
+          "sha256": "3c9d7bcbad61cb6a551b6dcc375f6f8246026e80d19fc2c6ef4564c9f78989c4"
+        },
+        {
+          "member": "tests/windows-1251-russian/aif.ru.health.xml",
+          "sha256": "d160d9dd0efa34b2c8315f0bf3727c7a914a56fa3118245cd60292e659b7ba7f"
+        },
+        {
+          "member": "tests/windows-1251-russian/anthropology.ru.xml",
+          "sha256": "922fca7eeac04e440dec76fd4f7df06fc6fa319dffd1d3d051bf9091a9cd611b"
+        },
+        {
+          "member": "tests/windows-1251-russian/aug32.hole.ru.xml",
+          "sha256": "9f57a6f6862f21de1cb97e3326a583dbed9ea297974c60dbb0a332331180d80c"
+        },
+        {
+          "member": "tests/windows-1251-russian/aviaport.ru.xml",
+          "sha256": "4e4d7e77b1e7f00f344c74c207b32302580f02337db4286e881a501fbe799bd4"
+        },
+        {
+          "member": "tests/windows-1251-russian/blog.mlmaster.com.xml",
+          "sha256": "3f212518051ea7c64ff6c76131df32ca1bd2a95f33f23dfdf61e36ea7c223bd9"
+        },
+        {
+          "member": "tests/windows-1251-russian/forum.template-toolkit.ru.1.xml",
+          "sha256": "f8b59b92f02427ca7f1217c733bf61d317d1e1e059bed96d05ffdd5e120e34fc"
+        },
+        {
+          "member": "tests/windows-1251-russian/forum.template-toolkit.ru.4.xml",
+          "sha256": "2431158c1a1efa52fd6c6a7c21cd8f0a075d963eeac242ec7c4cd73e4ec06507"
+        },
+        {
+          "member": "tests/windows-1251-russian/forum.template-toolkit.ru.6.xml",
+          "sha256": "af38344947a12e846bfe81c8b643ebfde98a3026a1376d1a4e018cc560f8a7c0"
+        },
+        {
+          "member": "tests/windows-1251-russian/forum.template-toolkit.ru.8.xml",
+          "sha256": "7ffce3d412e1e9a469e0e6f3c62506f6a3d57c9dd76268b80ba0a724b1ca55cc"
+        },
+        {
+          "member": "tests/windows-1251-russian/forum.template-toolkit.ru.9.xml",
+          "sha256": "689bc4056a2515eb62e9ac090668f7236fb0a75a3341f373a3a4792bf1e05a1a"
+        },
+        {
+          "member": "tests/windows-1251-russian/greek.ru.xml",
+          "sha256": "015ef1d2d5174eff6a9dab865bf726e01f5447cc9fb087a461fc7d7e5997d5c4"
+        },
+        {
+          "member": "tests/windows-1251-russian/intertat.ru.xml",
+          "sha256": "2a501fad69d5e1548123c21654e87ab76095fb1baf82dde172700a685ed13f18"
+        },
+        {
+          "member": "tests/windows-1251-russian/janulalife.blogspot.com.xml",
+          "sha256": "41938d36611df5b4eb4239422bb439b9f2724c745b6782440ae0c85731a9bc64"
+        },
+        {
+          "member": "tests/windows-1251-russian/kapranoff.ru.xml",
+          "sha256": "2d4ebf741b1d8a12e83abc132593d663264574a6078a6f429b7593947486b83a"
+        },
+        {
+          "member": "tests/windows-1251-russian/money.rin.ru.xml",
+          "sha256": "54795f3d62225569dff21de52a33efa85f4dc6a6057671370ed9a032aa23fea2"
+        },
+        {
+          "member": "tests/windows-1251-russian/music.peeps.ru.xml",
+          "sha256": "f97742117ea14dd86c7a09e8e462f4aa6edf7e1d1f10fa441bb94986283ddbb3"
+        },
+        {
+          "member": "tests/windows-1251-russian/newsru.com.xml",
+          "sha256": "28f658189edbbeb0f55ceade9b68eb71cf1c7d1a2731c952073f7d2d739ee891"
+        },
+        {
+          "member": "tests/windows-1252/_mozilla_bug421271_text.html",
+          "sha256": "0d9db8d8446e1009c314a4693f7c375eb18ba57c97db216692422dd0693a2906"
+        },
+        {
+          "member": "tests/windows-1252/_ude_1.txt",
+          "sha256": "3e1b7a0e767ac2cad366f983d7fa825265efc54a98edb41dd436cba955e83fbd"
+        },
+        {
+          "member": "tests/windows-1252/_ude_2.txt",
+          "sha256": "ad4fcdf76d1e73e2a27b7ab884a4048cd07b8dcf6dcf8b7e2df9d730032f5e72"
+        },
+        {
+          "member": "tests/windows-1252/github_bug_9.txt",
+          "sha256": "6fb25d7e2daf0d5be4da18a4cd467b3a5809c7b76864fd8c1bd92bc07b53ac86"
+        },
+        {
+          "member": "tests/windows-1254-turkish/_chromium_windows-1254_with_no_encoding_specified.html",
+          "sha256": "ac882dd4bd73effd666f010b0dcf0d6d552933e059f2219ad8193871a043541e"
+        },
+        {
+          "member": "tests/windows-1254-turkish/_ude_1.txt",
+          "sha256": "070e95e4810706a071a67160d5081bf5fe95da49efd951d51f34ac39e23879c7"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/_chromium_ISO-8859-8_with_no_encoding_specified.html",
+          "sha256": "7c570fab54e58efa1b5c4e515a1d65fae6def5f79205f51c8b2ba7069824c9fd"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/_chromium_windows-1255_with_no_encoding_specified.html",
+          "sha256": "725b86cd4b951019308bb97d99577b61d0c4391f8de2267e9c9b39eedc53cea6"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/_ude_he1.txt",
+          "sha256": "e931b86c0392524726fddc129ac802cf38149bbcf9c38480b670900330743a40"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/_ude_he2.txt",
+          "sha256": "42a8eb1e0a58a090343b04fcfa7a86de0631b016ef3fcd6b5689bec704f2bcc8"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/_ude_he3.txt",
+          "sha256": "eb3a0aa5646487ee6b06c7ef8a9223a89cc2c7b920c787f982ba712d8fedf5f4"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/carshops.co.il.xml",
+          "sha256": "fbb0f70fe04dc1510d0512aa1a27e3de0702e20b6ce296e0849c7d19130af8d1"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/exego.net.2.xml",
+          "sha256": "18d71b2c8ed9e6d63d830a9bf4d0f5d1092d4d1896cc3fa152e5919b84275965"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/hagada.org.il.xml",
+          "sha256": "995552aacccab7729055f726f9c6b11f1f60f34bf44559cdc2f00994582ed57f"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/halemo.net.edoar.xml",
+          "sha256": "da721f6f2fbac17da03d16520a80857e43b3cd76ee2e28235cc47bf13370ecdd"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/hevra.org.il.xml",
+          "sha256": "58328f7ac7b6940ac6421662b7f952814769c1b74fa4fedcee4f1eb1d75bf1de"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/info.org.il.xml",
+          "sha256": "0c1c8154471df99a6488f1da7be778780f6c0ce83dbcc9a1dcf68336a62612db"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/infomed.co.il.xml",
+          "sha256": "41cd0455b01c02383d772f417dd0217ed0cb83cf82b192748e7035b39ada87e7"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/law.co.il.xml",
+          "sha256": "8d02d3043875a98e79aa7292afcc92895f4bcda1dac06232a83dda3070214bf1"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/maakav.org.xml",
+          "sha256": "c19b099298fbc3f1e852017c9584c8322d1361632fd22a92fc221c609d0ef2fd"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/neviim.net.xml",
+          "sha256": "cf3b034c716bf63e28e4a90e41658301c6f6920ce3249cb2ea5c45444e193b4a"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/notes.co.il.50.xml",
+          "sha256": "3f5b8cce4cc077a710ce321ca3e2052d5b6c3a456be9bac489514cf4053cbb48"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/notes.co.il.6.xml",
+          "sha256": "35e19b52ae76476602fb850486c25db05b425d0253209f66dd90cf2776b6ca53"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/notes.co.il.7.xml",
+          "sha256": "f9efe44cb926887187e0276aa59af43b370ef821e06e833d9d575892cccd4f89"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/notes.co.il.8.xml",
+          "sha256": "cdeead05cbe18a9ee7206344a8be1a71edc588cc2e6603c9b5fb5e274be2d426"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/pcplus.co.il.xml",
+          "sha256": "18155e7d47f4c75b2618d9762048a7887f4ccae0aae0d4632161aa13913bd832"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/sharks.co.il.xml",
+          "sha256": "1533f653fb6dab09f8178a794cf889ab7e929af3cb89bbd498c6bb852f6a0b5c"
+        },
+        {
+          "member": "tests/windows-1255-hebrew/whatsup.org.il.xml",
+          "sha256": "a53d20576fde624d545b855153166d86e0481579b6dd8a71b464854b9f6d5715"
+        },
+        {
+          "member": "tests/windows-1256-arabic/_chromium_windows-1256_with_no_encoding_specified.html",
+          "sha256": "fbcd54533dba53c3482e2b9e5a00b867fc4199856ac0cf3030b89f07f60f4e3c"
+        }
+      ],
+      "replacements": [],
+      "unchanged_controls": [
+        {
+          "member": "debian/rules",
+          "sha256": "dee71176943a49a33881581265915f670d6359f52e9dd97699291b119f2cc245"
+        },
+        {
+          "member": "setup.cfg",
+          "sha256": "d5dece07b9fd20da0af3002e3a10f5bdbab668f3b4081b4413ed347b14da3a0d"
+        },
+        {
+          "member": "MANIFEST.in",
+          "sha256": "360d7bddbd91a76333cacdbc3e0ac132c6ab56838122fdfe9e28bb488ab71e77"
+        },
+        {
+          "member": "chardet/__init__.py",
+          "sha256": "e7b47e1d2c63d0f5a620b30dd0616650da8431fac45526a65f28c3f96ebf7dbb"
+        }
+      ],
+      "reconstruction": "Applied Debian preferred source, not a new signed source set. Only424 source-only third-party text fixtures under tests/ are omitted; every library, CLI, language model, test runner and packaging/build script is byte-identical. Raw original archives are not delivered. Build with the retained Python/setuptools or Debian pybuild recipe. Set DEB_BUILD_OPTIONS=nocheck for Debian packaging because the omitted optional corpus makes the original corpus test suite incomplete; no original full-suite success is claimed."
+    },
+    {
+      "source": "openvpn",
+      "version": "2.6.14-0+deb12u2",
+      "descriptor_sha256": "040bba014900f3ff5417c9e049a57b5d36a7e969d2f47933a9b1728e804c76a0",
+      "kind": "debian-openvpn-preferred-source-without-unused-uncleared-inputs",
+      "excluded": [],
+      "replacements": [
+        {
+          "member": "src/openvpnserv/service.c",
+          "original_sha256": "56c68bad44e572eac20cd7a3fdc3602e175660bb3826895600b723616fdb7d45",
+          "content": "/* Copyright (C) 2026 michibiki-io.\n * This independent replacement is licensed under GNU GPL version 2;\n * see COPYRIGHT.GPL. Provided WITHOUT ANY WARRANTY.\n * Linux corresponding-source export: the unused Microsoft Windows\n * service sample is omitted. No original implementation is included.\n */\n#error \"Windows service is outside the Shirube OS Linux source export\"\n",
+          "replacement_sha256": "5c8d40974f9f45ea0d8099d8708d0ae425a141a92798a3cc9dd695ef62851d51"
+        }
+      ],
+      "unchanged_controls": [
+        {
+          "member": "debian/rules",
+          "sha256": "f5eb532c7316c11fb8787901519bfe3ccc6fc26b2157de66eb54a9d83abe26a1"
+        },
+        {
+          "member": "configure.ac",
+          "sha256": "97e158b9be907b1184dba983678bf7f8420e5a26aced31d479fa6a6ea825c442"
+        },
+        {
+          "member": "src/openvpnserv/Makefile.am",
+          "sha256": "98141761077757729a1382cdb08a777ae0b51fb51e80ce2c9d1f77847fd76119"
+        }
+      ],
+      "reconstruction": "Applied Debian preferred source, not a new signed source set. The sole unused Windows service sample is replaced by an independently authored GPL2 diagnostic stub, so normal Automake source-file checks still find the declared member. Original Windows implementation and raw archives are not delivered. The unchanged WIN32 conditional excludes this source on both supported Linux architectures; every Linux implementation, header, test and build/install script is byte-identical. Build normally with the retained Linux Debian dpkg-buildpackage recipe. Windows service builds are explicitly unsupported by this Linux-only source export."
     }
   ]
 }

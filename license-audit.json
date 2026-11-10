@@ -24026,6 +24026,79 @@
         "Retain Václav Vančura2020 copyright, CC-BY4.0 license/author attribution and source URI for Kitty SVG artwork inside the upstream source set. Do not present upstream component artwork as Shirube OS branding or imply endorsement. Complete CC-BY4.0 canonical terms are supplied in addition to original converted text; original scope/terms remain unchanged.",
         "All font and program bytes remain unchanged. Static original-grant/source/metadata checks only, no library/ISO rebuild, benchmark, boot or OCI success is implied. Exact complete-OS license/source/release checks remain mandatory."
       ]
+    },
+    "chardet@5.1.0+dfsg-2#066956a9effc05954e25ac1db2331d96f1b6a3a075ffec6a7ea50edf6c24558c": {
+      "redistributable": true,
+      "source_identity": "066956a9effc05954e25ac1db2331d96f1b6a3a075ffec6a7ea50edf6c24558c",
+      "original_source_identity": "62f9567ccb161198161fd6421507b17a7d003f9855294b378436b07ae66028ec",
+      "copyright_sha256": "ff5ee0ab90b8e34d7ba50c74d615b7c07b7d9db185f53984134efb7bed5f4f23",
+      "license": "LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Chardet-5.1.0/LICENSE",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/Chardet-5.1.0/debian/copyright",
+          "sha256": "ff5ee0ab90b8e34d7ba50c74d615b7c07b7d9db185f53984134efb7bed5f4f23"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Only exact applied preferred-source export without424 optional third-party test text fixtures. All98 other original regular files are byte-identical, including library/CLI/language-model code, test runner and Debian/build/install scripts. Entire original Debian copyright and explicit corpus caveats read; raw original source archives are not approved.",
+      "conditions": [
+        "Retain original Netscape/Mozilla/Pilgrim/Cordasco/Blanchard/Rose and Debian-author copyrights and full LGPL2.1-or-later permission, source/relinking rights and complete corresponding source/build/install inputs.",
+        "Only third-party XML/TXT/HTML/SRT corpus files beneath tests/ are omitted. No library, language model, CLI, test runner or packaging code is changed. The full original corpus test suite is incomplete and must not be claimed as passing. Use DEB_BUILD_OPTIONS=nocheck for Debian package reconstruction; the normal retained Python/setuptools runtime-library build remains available.",
+        "Deliver the exact omission manifest and original descriptor as provenance, not a new signed Debian source set. Keep the original copyright caveats and corpus provenance metadata; no permission is invented from non-English text or missing copyright. The raw original archives containing omitted fixtures are not approved for delivery.",
+        "Source-only export review uses full all-member SHA256 comparison and focused drift/alias/policy tests. No native library/ISO rebuild or boot/OCI success is claimed; complete OS release gates remain separate."
+      ]
+    },
+    "openvpn@2.6.14-0+deb12u2#94dfb86345b0a06f84ad6ea4a2d1de3d98048d5ed581a56ceae69761c556f619": {
+      "redistributable": true,
+      "source_identity": "94dfb86345b0a06f84ad6ea4a2d1de3d98048d5ed581a56ceae69761c556f619",
+      "original_source_identity": "040bba014900f3ff5417c9e049a57b5d36a7e969d2f47933a9b1728e804c76a0",
+      "copyright_sha256": "e6a454b9d9efba2ae48ba97bbe31a0dd1211e25e6ef94ae70f490a9ed5a3584c",
+      "license": "GPL-2.0-only WITH openvpn-openssl-exception AND GPL-3.0-or-later AND BSD-3-Clause AND MIT AND LicenseRef-OpenVPN-Apache2-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/OpenVPN-2.6.14/COPYING",
+          "sha256": "89ead6308d142175025e06a8bd1621d406b26e2a72cc4106c10a74102eeb3560"
+        },
+        {
+          "path": "LICENSES/OpenVPN-2.6.14/COPYRIGHT.GPL",
+          "sha256": "1fcb78d7e478bb8a9408010bdc91b36e213b1facfad093df3f7ce7e28af19043"
+        },
+        {
+          "path": "LICENSES/OpenVPN-2.6.14/debian/copyright",
+          "sha256": "e6a454b9d9efba2ae48ba97bbe31a0dd1211e25e6ef94ae70f490a9ed5a3584c"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Only exact Linux corresponding-source export with one unused Windows Microsoft sample replaced by an independent GPL2 diagnostic stub. All619 other original regular files, including every Linux implementation/header/test/build/install file, remain byte-identical. Entire original COPYING and Debian scope/terms read; COPYRIGHT.GPL complete word differences read (GPL2-only example notice). Raw originals are not approved.",
+      "conditions": [
+        "Retain full original GPL2/OpenSSL and Apache2 linking exceptions, COPYRIGHT.GPL, Debian copyright and all component grants. Supply complete corresponding Linux sources and every dependency/build/install input, including OpenSSL3 Apache2 sources. Apache2 exception does not relicense OpenVPN and does not remove source obligations.",
+        "The exact original configure WIN32 condition and openvpnserv Makefile.am restrict service.c compilation to Windows. The independently authored GPL2 stub preserves the source-file presence required by Automake while explicitly rejecting unsupported Windows service builds. No original Microsoft implementation is delivered and no original-author license grant is invented. All Linux runtime code and original packaging/build/install scripts remain unchanged.",
+        "Retain BSD3 nonendorsement/retention/disclaimer conditions for base64 and cryptoapi, original MIT/X-Consortium build-script permission, GNU2/GNU3 script/packaging scopes and complete old OpenSSL/SSLeay attribution statements. The actual OpenSSL3 library follows its separate Apache2 grant, not an assumed old bundled-library license.",
+        "Preserve old Windows DDK/NSIS/TAP license references as original legal metadata without claiming that a DDK EULA permits Linux redistribution or that any Windows binary is shipped. This export supports both Shirube OS Linux architectures; it is not a complete Windows service source distribution.",
+        "Deliver the exact replacement manifest, original descriptor as provenance, full replacement source and unchanged Linux reconstruction recipe. Raw original archives are not approved. Static all-member source checks and focused mutation guards only; no native recompile/boot/OCI result is implied."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

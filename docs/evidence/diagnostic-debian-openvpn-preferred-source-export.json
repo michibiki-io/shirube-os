@@ -1,0 +1,68 @@
+{
+  "kind": "debian-openvpn-preferred-source-without-unused-uncleared-inputs",
+  "status": "PASS_STATIC_EXPORT_ONLY",
+  "source": "openvpn",
+  "version": "2.6.14-0+deb12u2",
+  "original_descriptor_sha256": "040bba014900f3ff5417c9e049a57b5d36a7e969d2f47933a9b1728e804c76a0",
+  "preferred_source_identity": "94dfb86345b0a06f84ad6ea4a2d1de3d98048d5ed581a56ceae69761c556f619",
+  "original_regular_files": 620,
+  "unchanged_original_regular_files": 619,
+  "omitted": [],
+  "replacements": [
+    {
+      "member": "src/openvpnserv/service.c",
+      "original_sha256": "56c68bad44e572eac20cd7a3fdc3602e175660bb3826895600b723616fdb7d45",
+      "replacement_sha256": "5c8d40974f9f45ea0d8099d8708d0ae425a141a92798a3cc9dd695ef62851d51"
+    }
+  ],
+  "unchanged_build_controls": [
+    {
+      "member": "debian/rules",
+      "sha256": "f5eb532c7316c11fb8787901519bfe3ccc6fc26b2157de66eb54a9d83abe26a1"
+    },
+    {
+      "member": "configure.ac",
+      "sha256": "97e158b9be907b1184dba983678bf7f8420e5a26aced31d479fa6a6ea825c442"
+    },
+    {
+      "member": "src/openvpnserv/Makefile.am",
+      "sha256": "98141761077757729a1382cdb08a777ae0b51fb51e80ce2c9d1f77847fd76119"
+    }
+  ],
+  "added": [
+    "SHIRUBE-SOURCE-EXPORT.json",
+    "SHIRUBE-ORIGINAL-SOURCE.dsc"
+  ],
+  "required_notice_files": [
+    {
+      "path": "LICENSES/OpenVPN-2.6.14/COPYING",
+      "sha256": "89ead6308d142175025e06a8bd1621d406b26e2a72cc4106c10a74102eeb3560"
+    },
+    {
+      "path": "LICENSES/OpenVPN-2.6.14/COPYRIGHT.GPL",
+      "sha256": "1fcb78d7e478bb8a9408010bdc91b36e213b1facfad093df3f7ce7e28af19043"
+    },
+    {
+      "path": "LICENSES/OpenVPN-2.6.14/debian/copyright",
+      "sha256": "e6a454b9d9efba2ae48ba97bbe31a0dd1211e25e6ef94ae70f490a9ed5a3584c"
+    },
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "LICENSES/GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "LICENSES/Apache-2.0.txt",
+      "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+    }
+  ],
+  "scope": "Only exact Linux corresponding-source export with one unused Windows Microsoft sample replaced by an independent GPL2 diagnostic stub. All619 other original regular files, including every Linux implementation/header/test/build/install file, remain byte-identical. Entire original COPYING and Debian scope/terms read; COPYRIGHT.GPL complete word differences read (GPL2-only example notice). Raw originals are not approved.",
+  "reconstruction": "Applied Debian preferred source, not a new signed source set. The sole unused Windows service sample is replaced by an independently authored GPL2 diagnostic stub, so normal Automake source-file checks still find the declared member. Original Windows implementation and raw archives are not delivered. The unchanged WIN32 conditional excludes this source on both supported Linux architectures; every Linux implementation, header, test and build/install script is byte-identical. Build normally with the retained Linux Debian dpkg-buildpackage recipe. Windows service builds are explicitly unsupported by this Linux-only source export.",
+  "native_compile": "NOT_RUN_NO_COMPILED_RUNTIME_SOURCE_CHANGES",
+  "original_full_test_suite": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
