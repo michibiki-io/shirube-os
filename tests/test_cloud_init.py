@@ -17,6 +17,40 @@ from producer.installer_admin import AUTHENTICATION
 
 
 class CloudInitTests(unittest.TestCase):
+    def test_reboot_requires_new_boot_id_and_retries_a_timed_out_ssh_probe(self):
+        from producer.cloud_init_guest import verify
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);state={'reboot':False,'probes':0}
+            vm=MagicMock();vm.ssh_port=12345;vm.process.poll.return_value=None
+            monitor=(MagicMock(),MagicMock(),{'enrollment_prompt':False})
+            def run(command,**kwargs):
+                if command[0]=='ssh-keygen':
+                    key=Path(command[command.index('-f')+1]);key.write_text('private fixture')
+                    key.with_suffix('.pub').write_text('ssh-ed25519 public fixture')
+                elif command[0]=='xorriso':
+                    Path(command[command.index('-o')+1]).write_bytes(b'seed fixture')
+                elif command[0]=='qemu-img':
+                    Path(command[-1]).write_bytes(b'overlay fixture')
+                elif command[0]=='ssh':
+                    self.assertIn('ServerAliveInterval=5',command)
+                    if 'systemctl reboot' in command[-1]:state['reboot']=True
+                    elif command[-1].startswith('sudo -n python3'):
+                        if state['reboot']:
+                            state['probes']+=1
+                            if state['probes']==1:
+                                raise subprocess.TimeoutExpired(command,180)
+                        boot='new-boot' if state['probes']>=3 else 'original-boot'
+                        return subprocess.CompletedProcess(command,0,'machine-id\nhost-key\n'+boot+'\n','')
+                return subprocess.CompletedProcess(command,0,'','')
+            with patch('producer.vm.VM',return_value=vm), \
+                 patch('producer.cloud_init_guest.monitor_console',return_value=monitor), \
+                 patch('producer.cloud_init_guest.subprocess.run',side_effect=run), \
+                 patch('producer.cloud_init_guest.time.sleep'):
+                self.assertEqual(verify(root/'factory.qcow2','amd64',root/'test','tcg'),'PASS')
+            self.assertEqual(state['probes'],3)
+            vm.eject_cloud_seed.assert_called_once()
+            vm.close.assert_called_once()
+
     def test_live_install_preserves_persistent_files_only_for_selected_active_config(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);source=root/'config';source.mkdir()

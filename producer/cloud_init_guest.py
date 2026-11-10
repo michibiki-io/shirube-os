@@ -53,6 +53,7 @@ def verify(image, arch, work, accelerator):
         monitor=monitor_console(vm)
         ssh=['ssh','-i',str(key),'-p',str(vm.ssh_port),'-o','BatchMode=yes',
              '-o','ConnectTimeout=5','-o','StrictHostKeyChecking=accept-new',
+             '-o','ServerAliveInterval=5','-o','ServerAliveCountMax=2',
              '-o','UserKnownHostsFile='+str(work/'known-hosts')]
         def command(user, text):
             return subprocess.run(ssh+[user+'@127.0.0.1',text],text=True,capture_output=True,
@@ -70,10 +71,11 @@ for user in ['cloud-admin','shirube']:
     assert c.exists(p) and c.list_nodes(p)
 print(Path('/etc/machine-id').read_text().strip())
 print(Path('/etc/ssh/ssh_host_ed25519_key.pub').read_text().strip())
+print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
 """
         encoded=base64.b64encode(check.encode()).decode()
         probe='sudo -n python3 -c '+"\"import base64; exec(base64.b64decode('"+encoded+"'))\""
-        def wait_access():
+        def wait_access(previous_boot_id=None):
             deadline=time.monotonic()+(1200 if accelerator=='tcg' else 300)
             while time.monotonic()<deadline:
                 if monitor[2]['enrollment_prompt']:
@@ -84,7 +86,10 @@ print(Path('/etc/ssh/ssh_host_ed25519_key.pub').read_text().strip())
                     continue
                 if result.returncode==0:
                     identity=result.stdout.strip().splitlines()
-                    if len(identity)!=2 or not all(identity):raise ValueError('Cloud identity proof missing')
+                    if len(identity)!=3 or not all(identity):raise ValueError('Cloud identity proof missing')
+                    if identity[2]==previous_boot_id:
+                        time.sleep(3)
+                        continue
                     try:
                         metadata=command('shirube','true')
                     except subprocess.TimeoutExpired:
@@ -100,10 +105,8 @@ print(Path('/etc/ssh/ssh_host_ed25519_key.pub').read_text().strip())
         # SSH was accepted without touching the console or providing a password.
         vm.eject_cloud_seed()
         command('cloud-admin','sudo -n systemctl reboot --no-block')
-        deadline=time.monotonic()+120
-        while time.monotonic()<deadline and command('cloud-admin','true').returncode==0:time.sleep(1)
-        if time.monotonic()>=deadline:raise RuntimeError('Cloud-init guest did not reboot')
-        if wait_access()!=original:raise ValueError('Cloud administrator identity changed on reboot')
+        if wait_access(previous_boot_id=original[2])[:2]!=original[:2]:
+            raise ValueError('Cloud administrator identity changed on reboot')
         command('cloud-admin','sudo -n systemctl poweroff --no-block')
         return 'PASS'
     finally:
