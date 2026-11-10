@@ -22752,6 +22752,96 @@
         "Retain GNU2-or-later library and independent Snowball BSD3, MIT serialization/packaging, explicit public-domain Lemon generator/template and FSF macro permissions. Provide exact preferred sources including original generator inputs, patches and complete configuration/build/install material.",
         "Retain complete original Snowball source header and authors. The installed copyright sentence omitting not from the nonendorsement clause is not interpreted as permission to claim author endorsement. Preserve original source notice separately without changing code or claiming new attribution rights."
       ]
+    },
+    "ppp@2.4.9-1+1.1": {
+      "redistributable": true,
+      "source_identity": "2e77d2986272acc05e9a20d8eb48ca14c0fba8d60975007a601e6b618fad05a0",
+      "copyright_sha256": "a3f8763208a1813bffe80d219500d092cfec182d2e8baa088eba4de55198d4f1",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND LicenseRef-PPP-original-attribution-permissions AND LicenseRef-RSA-MD AND LicenseRef-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/PPP-required-acknowledgements.txt",
+          "sha256": "c8bd28ed2fae8c13580eca8d658e0bf5b70cda5e8799e28a253b84f8e4dd9d96"
+        }
+      ],
+      "scope": "Complete original copyright and every nonstandard grant/acknowledgement read, with four complete repeated Livingston/Fenneberg/Michigan/RSA bodies exactly matched to read originals. Distinct per-file/source scopes retained. Not OS release clearance.",
+      "conditions": [
+        "Retain all complete original notices, per-file permissions, exact preferred sources, patches and complete configuration/build/install material. Preserve mandatory all-form acknowledgements, Roaring Penguin/Fenneberg supporting-documentation permission credits and all nonendorsement/disclaimer conditions.",
+        "Keep published GNU2-or-later PPPoE/Winbind/PPPoATM/RADIUS plugin and LGPL2-or-later tdb/spinlock scopes distinct from BSD-style pppd and expressly public-domain chat. GNU3 option remains available for GNU2-or-later code where necessary for compatible combinations; no GNU3 conversion of GNU2-only files is inferred.",
+        "Retain the published original OpenSSL exception statement without claiming access to any independent original correspondence. Preserve RSA MD5 identification/derivative-identification conditions and all other original algorithm attributions."
+      ]
+    },
+    "curl@7.88.1-10+deb12u15": {
+      "redistributable": true,
+      "source_identity": "2744f12e3aef161c0361743fa1b318296b122e566e47f381e4a63320fbcc23f4",
+      "copyright_sha256": "a7c131b21e6e73b3b085a7d9f1637b68f5f92b832cc6f462e0c978fbe7841ccb",
+      "license": "curl AND ISC AND BSD-3-Clause AND X11 AND OLDAP-2.8 AND LicenseRef-GNU-build-script-exceptions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "All operative license bodies and original named legal files matched to read complete originals; every file/license-expression mapping, comment and condition-bearing attribution inspected. Full original attribution is retained byte-exactly; individual manual reading of every author name is not claimed. Case-only label differences do not change operative terms. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers, modification markings and corresponding preferred sources, patches and complete configuration/build/install inputs; no source license is replaced by repository-wide branding.",
+        "Preserve original curl permissions, separate ISC/VMS, X11, OpenLDAP test and GNU/Libtool/Autoconf output exceptions. BSD3 label capitalization differs in the copyright mapping and definition but the original complete operative grant is retained unchanged. Preserve the original documented Regents advertising waiver only for its own covered copyright; do not extend it to unrelated authors."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Curl-original-COPYING.txt",
+          "sha256": "b1d7feb949ea5023552029fbe0bf5db4f23c2f85e9b8e51e18536f0ecbf9c524"
+        }
+      ]
+    },
+    "xen@4.17.7+13-g2445b30a44-0+deb12u1": {
+      "redistributable": true,
+      "source_identity": "8bf01bcad94067022f27c38529e10593cbd2f145bc0d305a72f7634f2865ffba",
+      "copyright_sha256": "fb89466b3283e3f49ebb1d862a3c1213cc45555c386189175197567c5ae00d0f",
+      "license": "GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND MIT AND BSD-2-Clause AND BSD-3-Clause AND CC-BY-4.0 AND LicenseRef-Xen-permissive-source-scopes",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "All operative license bodies and original named legal files matched to read complete originals; every file/license-expression mapping, comment and condition-bearing attribution inspected. Full original attribution is retained byte-exactly; individual manual reading of every author name is not claimed. Case-only label differences do not change operative terms. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers, modification markings and corresponding preferred sources, patches and complete configuration/build/install inputs; no source license is replaced by repository-wide branding.",
+        "Retain GNU2-only Xen scope, its normal-hypercall boundary and separate Expat public-header permissions. Select GNU2-compatible alternatives for libfdt and xmalloc; preserve LGPL2.1-only libelf and its explicit GNU2-only conversion limitation. Keep original source exceptions, public-domain/AES/XZ/macro declarations and BSD scopes. CC-BY4 applies to Sphinx source and specifically identified documentation, while other unlabelled documentation retains the GNU2 default."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Xen-original-project-COPYING.txt",
+          "sha256": "9eeacf4e4f91bdbcd16b3282bb86779e3122da032953ebccad4fccdfcf4cb3ac"
+        },
+        {
+          "path": "LICENSES/Xen-original-hypervisor-COPYING.txt",
+          "sha256": "ef3ef58353d65cdc29184d6f94ed8e97f880c5d9ec5363db211698ccc9e42637"
+        },
+        {
+          "path": "LICENSES/Xen-original-public-header-COPYING.txt",
+          "sha256": "ed0cccc11399100736bd880047786131cbf2bf36e4cdfe82b9288d33911ba6ac"
+        },
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ]
+    },
+    "elfutils@0.188-2.1": {
+      "redistributable": true,
+      "source_identity": "2e73c5bfe9d0ddbf837742d638c43b049590ae1de8f6e3d9c2740c28e2550760",
+      "copyright_sha256": "d754a0edec1a510561aa643040456266536e3ec26bdb22e69a11c3f7b5de2339",
+      "license": "GPL-3.0-or-later AND (LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.1-or-later AND BSD-2-Clause AND GFDL-1.3-no-invariants-or-later AND LicenseRef-Bison-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "scope": "Complete copyright and every operative grant/file scope read in full, including library alternatives and exact Bison exception. Original named complete GNU/GFDL texts matched to previously read originals. Not OS release clearance.",
+      "conditions": [
+        "Retain GNU3-or-later tool scope, dual LGPL3/GNU2-or-later libraries, independent glibc LGPL2.1 headers and FreeBSD BSD2 atomics. Preserve both original library alternatives so GNU2-only consumers are not forced to accept an incompatible LGPL3 combination.",
+        "Retain original Bison2.2 skeleton exception with its stated generator/output scope; preserve GNU3 license for any source where the exception is removed or inapplicable. Keep original GFDL1.3-or-later manual grant with no invariant sections or cover texts.",
+        "Provide exact preferred sources, patches, complete configuration/build/install inputs, original author credits, notices, permissions, disclaimers and modification markings in sources and binary legal materials."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
