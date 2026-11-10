@@ -1,0 +1,54 @@
+{
+  "kind": "exact-glibc-original-release-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "2.36-9+deb12u14",
+  "source_identity": "cfe1f0b8dc1fa211ce5a45b3725cc38b29f88667f1140ebdca6de35cf9c6f1fd",
+  "copyright_sha256": "40c7e1f2118531f038ca22999bd976901254e1bc5cd1b0f0211bdd064c599987",
+  "original_legal_files": [
+    {
+      "member": "COPYING",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "member": "COPYING.LIB",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    },
+    {
+      "member": "LICENSES",
+      "sha256": "b33d0bd9f685b46853548814893a6135e74430d12f6d94ab3eba42fc591f83bc"
+    },
+    {
+      "member": "debian/copyright",
+      "sha256": "40c7e1f2118531f038ca22999bd976901254e1bc5cd1b0f0211bdd064c599987"
+    },
+    {
+      "member": "posix/rxspencer/COPYRIGHT",
+      "sha256": "66994e75c03e014b084b4f4fdca49f37882bb3da8b0736b237c074c33d4b212a"
+    }
+  ],
+  "original_release_files": [
+    {
+      "member": "glibc-2.36/README",
+      "sha256": "65dca0e50d2416b6a791985d7aa7ac7f2464a7865b81df34204647679ea8802e"
+    },
+    {
+      "member": "glibc-2.36/sysdeps/posix/getaddrinfo.c",
+      "sha256": "562202ab5dfbd84b1aea5b6a4dfefddf37c42c5748996ef697e7a943d6f42da0"
+    },
+    {
+      "member": "glibc-2.36/version.h",
+      "sha256": "f5535b16635bca211d1a3966808b642d130aea06ed1fa779cd7291b889d195c4"
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/Glibc-original-LICENSES.txt",
+      "sha256": "b33d0bd9f685b46853548814893a6135e74430d12f6d94ab3eba42fc591f83bc"
+    }
+  ],
+  "release_label": "stable",
+  "original_version": "2.36",
+  "scope": "Original stable release identifiers, complete retained contribution licenses and exact DSC/copyright binding. No generic license-name approval or independent warranty of title.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

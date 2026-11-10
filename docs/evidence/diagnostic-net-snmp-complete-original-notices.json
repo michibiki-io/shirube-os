@@ -1,0 +1,140 @@
+{
+  "kind": "exact-net-snmp-complete-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": {
+    "source": "net-snmp",
+    "version": "5.9.3+dfsg-2+deb12u1",
+    "dsc_sha256": "b5760c25db1133c08d634f23881f0d8039f66ecabbd6dca16ca92b7e1eab9f67",
+    "binaries": [
+      {
+        "name": "libsnmp-base",
+        "version": "5.9.3+dfsg-2+deb12u1",
+        "architecture": "all",
+        "copyright_sha256": "930d64b24c4f185ccbf1a13ff1531315cb3a9b3bdcb1b271b5a838e0f3154985"
+      },
+      {
+        "name": "libsnmp40",
+        "version": "5.9.3+dfsg-2+deb12u1",
+        "architecture": "arm64",
+        "copyright_sha256": "930d64b24c4f185ccbf1a13ff1531315cb3a9b3bdcb1b271b5a838e0f3154985"
+      },
+      {
+        "name": "snmp",
+        "version": "5.9.3+dfsg-2+deb12u1",
+        "architecture": "arm64",
+        "copyright_sha256": "930d64b24c4f185ccbf1a13ff1531315cb3a9b3bdcb1b271b5a838e0f3154985"
+      },
+      {
+        "name": "snmpd",
+        "version": "5.9.3+dfsg-2+deb12u1",
+        "architecture": "arm64",
+        "copyright_sha256": "930d64b24c4f185ccbf1a13ff1531315cb3a9b3bdcb1b271b5a838e0f3154985"
+      }
+    ],
+    "copyright_sha256": "930d64b24c4f185ccbf1a13ff1531315cb3a9b3bdcb1b271b5a838e0f3154985",
+    "original_legal_matches": [
+      {
+        "member": "COPYING",
+        "sha256": "ed869ea395a1f125819a56676385ab0557a21507764bf56f2943302011381e59",
+        "read_reference": {
+          "component": "net-snmp",
+          "member": "COPYING",
+          "sha256": "ed869ea395a1f125819a56676385ab0557a21507764bf56f2943302011381e59",
+          "method": "Complete original legal text read; net-snmp parts1-2 separately reread after outer output truncation, completing all14 parts. Preserve all attribution/nonendorsement and independently scoped notices; parent decision remains separate."
+        }
+      },
+      {
+        "member": "python/LICENSE",
+        "sha256": "7cb6c26f7ca78f7e03ba760a127e05976c694afa963cb51e6690fa5193f43207",
+        "read_reference": {
+          "component": "net-snmp",
+          "member": "python/LICENSE",
+          "sha256": "7cb6c26f7ca78f7e03ba760a127e05976c694afa963cb51e6690fa5193f43207"
+        }
+      }
+    ],
+    "license_definitions": [
+      {
+        "label": "BSD-LIKE",
+        "full_normalized_body_sha256": "9645608267c9a35c9d12c9176dfc77a7cccac3379192ac2369f587dc682e0e49",
+        "read_reference": {
+          "component": "net-snmp",
+          "label": "BSD-LIKE"
+        }
+      },
+      {
+        "label": "BSD-3-clause",
+        "full_normalized_body_sha256": "f08e736474380d6662335bdfe42574eefde741bbd783933d2872877bb18791db",
+        "read_reference": {
+          "label": "BSD-3-clause",
+          "component": "lksctp-tools"
+        }
+      },
+      {
+        "label": "Artistic-1.0",
+        "full_normalized_body_sha256": "a1da76e5c767be8b49b2537e397504606e1f8591656e65b8d4eb4dbd1ed93a39",
+        "read_reference": {
+          "label": "Artistic",
+          "component": "cron"
+        }
+      },
+      {
+        "label": "GPL-2.0+",
+        "full_normalized_body_sha256": "f667f6731b078d75be1065e3bd7db460f3dfa8624da1ce941bf5462733c8bb39",
+        "read_reference": {
+          "label": "GPL-2+",
+          "component": "atop"
+        }
+      }
+    ],
+    "fields_for_reading": [
+      {
+        "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+        "Upstream-Name": "net-snmp",
+        "Source": "http://www.net-snmp.org/",
+        "Files-Excluded": "doc\nmibs/AGENTX-MIB.txt\nmibs/BRIDGE-MIB.txt\nmibs/DISMAN-*.txt\nmibs/EtherLike-MIB.txt\nmibs/H*.txt\nmibs/I*.txt\nmibs/MTA-MIB.txt\nmibs/NETWORK-SERVICES-MIB.txt\nmibs/NOTIFICATION-LOG-MIB.txt\nmibs/RFC*.txt\nmibs/RMON-MIB.txt\nmibs/S*.txt\nmibs/T*.txt\nmibs/UDP-MIB.txt"
+      },
+      {
+        "Files": "*",
+        "Copyright": "\n1989, 1991, 1992 Carnegie Mellon University\n1996, 1998-2000 The Regents of the University of California\n2001-2003 Cambridge Broadband Ltd.\n2003 Sun Microsystems, Inc., 4150 Network Circle, Santa Clara, California 95054, U.S.A. All rights reserved.\n2004 Cisco, Inc and Information Network Center of Beijing University of Posts and Telecommunications.\n2007 Apple Inc.\n2013 IETF Trust\n2016 VMware, Inc.\n2017-2018 Information Sciences Institute",
+        "Comment": "\nVarious copyrights apply to this package, listed in various separate parts\nbelow.  Please make sure that you read all the parts.  Up until 2001,\nthe project was based at UC Davis, and the first part covers all code\nwritten during this time.  From 2001 onwards, the project has been\nbased at SourceForge, and Networks Associates Technology, Inc hold the\ncopyright on behalf of the wider Net-SNMP community, covering all\nderivative work done since then.  An additional copyright section has\nbeen added as Part 3 below also under a BSD license for the work\ncontributed by Cambridge Broadband Ltd. to the project since 2001.\nAn additional copyright section has been added as Part 4 below also\nunder a BSD license for the work contributed by Sun Microsystems, Inc.\nto the project since 2003.\n\nCode has been contributed to this project by many people over\nthe years it has been in development, and a full list of contributors\ncan be found in the README file under the THANKS section.\n\nSun, Sun Microsystems, the Sun logo and Solaris are trademarks or registered\ntrademarks of Sun Microsystems, Inc. in the U.S. and other countries."
+      },
+      {
+        "Files": "debian/*",
+        "Copyright": "1997-2003 David Engel <david@debian.org>\n2004-2018 Jochen Friedrich <jochen@scram.de>.\n2013-2018 Hideki Yamane <henrich@debian.org>\n2018 Craig Small <csmall@debian.org>"
+      },
+      {
+        "Files": "perl/*",
+        "Copyright": "2001-2003 Networks Associates Technology, Inc\n1995-2000 G. S. Marzot.\n2003-2006 SPARTA, Inc\n2004 W. Hardaker"
+      },
+      {
+        "Files": "python/*",
+        "Copyright": "2003-2010 Sparta Inc\n2006 ScienceLogic, LLC"
+      },
+      {
+        "Files": "snmplib/winpipe.c\ninclude/net-snmp/library/winpipe.h",
+        "Copyright": "\n2003 Fabasoft R&D Software GmbH & Co KG <oss@fabasoft.com> Bernhard Penz <bernhard.penz@fabasoft.com>"
+      },
+      {
+        "Files": "snmplib/sd-daemon.c\ninclude/net-snmp/library/sd-daemon.h",
+        "Copyright": "2010 Lennart Poettering"
+      },
+      {
+        "Files": "apps/snmppcap.c\napps/snmpping.c",
+        "Copyright": "2013 Arista Networks, Inc."
+      },
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "retained_original_notice": [
+    {
+      "path": "LICENSES/Net-SNMP-original-COPYING.txt",
+      "sha256": "ed869ea395a1f125819a56676385ab0557a21507764bf56f2943302011381e59"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

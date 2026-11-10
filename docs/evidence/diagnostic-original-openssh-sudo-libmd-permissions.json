@@ -1,0 +1,145 @@
+{
+  "kind": "exact-original-openssh-sudo-libmd-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "libmd",
+      "version": "1.0.4-2",
+      "source_identity": "5e060cb277f31e67b91033e05ece00832ca8056decba873b1698a5680414a177",
+      "copyright_sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6",
+      "binaries": [
+        {
+          "name": "libmd0",
+          "version": "1.0.4-2",
+          "architecture": "arm64",
+          "copyright_sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6"
+        }
+      ],
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6"
+        }
+      ],
+      "decision": {
+        "redistributable": true,
+        "source_identity": "5e060cb277f31e67b91033e05ece00832ca8056decba873b1698a5680414a177",
+        "copyright_sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6",
+        "license": "BSD-3-Clause AND BSD-2-Clause AND ISC AND Beerware AND LicenseRef-libmd-public-domain",
+        "reviewed_on": "2026-11-10",
+        "evidence_member": "copyright",
+        "scope": "Exact source and binary copyright binding. Complete original root license and complete Debian copyright, including each separate file scope, permission, attribution and disclaimer, were read. Not OS release clearance.",
+        "conditions": [
+          "Retain all complete original copyright, permission, disclaimer and nonendorsement notices in source and binary documentation; provide exact source, applied patches and build/install configuration and scripts.",
+          "Original COPYING and installed Debian copyright are byte-identical. Preserve the distinct BSD3/BSD2/NetBSD, ISC, Beerware and algorithm-specific explicit public-domain scopes instead of assigning a generic grant to the whole source tree."
+        ]
+      }
+    },
+    {
+      "source": "openssh",
+      "version": "1:9.2p1-2+deb12u10",
+      "source_identity": "af8cfb3ce783604abd28183a52aa0bde8c6bc603cc35758035db48d1dac5f2e2",
+      "copyright_sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860",
+      "binaries": [
+        {
+          "name": "openssh-client",
+          "version": "1:9.2p1-2+deb12u10",
+          "architecture": "arm64",
+          "copyright_sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860"
+        },
+        {
+          "name": "openssh-server",
+          "version": "1:9.2p1-2+deb12u10",
+          "architecture": "arm64",
+          "copyright_sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860"
+        },
+        {
+          "name": "openssh-sftp-server",
+          "version": "1:9.2p1-2+deb12u10",
+          "architecture": "arm64",
+          "copyright_sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860"
+        }
+      ],
+      "original_legal_files": [
+        {
+          "member": "LICENCE",
+          "sha256": "05c30446ba738934b3f1efa965b454c122ca26cc4b268e5ae6843f58ccd1b16d"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860"
+        }
+      ],
+      "decision": {
+        "redistributable": true,
+        "source_identity": "af8cfb3ce783604abd28183a52aa0bde8c6bc603cc35758035db48d1dac5f2e2",
+        "copyright_sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860",
+        "license": "SSH-OpenSSH AND BSD-3-Clause AND BSD-2-Clause AND ISC AND LicenseRef-OpenSSH-original-grants",
+        "reviewed_on": "2026-11-10",
+        "evidence_member": "copyright",
+        "scope": "Exact source and binary copyright binding. Complete original root license and complete Debian copyright, including each separate file scope, permission, attribution and disclaimer, were read. Not OS release clearance.",
+        "conditions": [
+          "Retain all complete original copyright, permission, disclaimer and nonendorsement notices in source and binary documentation; provide exact source, applied patches and build/install configuration and scripts.",
+          "Preserve Tatu Ylonen modification marking and RFC-incompatible derived-name condition, Mazieres/OpenBSD credit, Powell notice, MIT nonendorsement and all separately named BSD/ISC/public-domain scopes. No new SSH protocol change or incompatible renaming is introduced.",
+          "Retain the byte-exact complete original upstream LICENCE alongside the installed binary documentation, including original attribution omitted or condensed in a package copyright summary."
+        ],
+        "required_notice_files": [
+          {
+            "path": "LICENSES/OpenSSH-original-LICENCE.txt",
+            "sha256": "05c30446ba738934b3f1efa965b454c122ca26cc4b268e5ae6843f58ccd1b16d"
+          }
+        ]
+      }
+    },
+    {
+      "source": "sudo",
+      "version": "1.9.13p3-1+deb12u4",
+      "source_identity": "48308278bfbef2070b1f47492e39f9e7ac8ff9705aa6c390cd174b5e214c1089",
+      "copyright_sha256": "90b6ed2fe614d3b2162441f7931f570f34627d6cb7d261a8c1da442f51d5c7da",
+      "binaries": [
+        {
+          "name": "sudo",
+          "version": "1.9.13p3-1+deb12u4",
+          "architecture": "arm64",
+          "copyright_sha256": "90b6ed2fe614d3b2162441f7931f570f34627d6cb7d261a8c1da442f51d5c7da"
+        }
+      ],
+      "original_legal_files": [
+        {
+          "member": "LICENSE.md",
+          "sha256": "ea33b3971e8e4d9657cd6794a952aaa71b22bd16745f1645455b6ead010e0a28"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "90b6ed2fe614d3b2162441f7931f570f34627d6cb7d261a8c1da442f51d5c7da"
+        }
+      ],
+      "decision": {
+        "redistributable": true,
+        "source_identity": "48308278bfbef2070b1f47492e39f9e7ac8ff9705aa6c390cd174b5e214c1089",
+        "copyright_sha256": "90b6ed2fe614d3b2162441f7931f570f34627d6cb7d261a8c1da442f51d5c7da",
+        "license": "ISC AND BSD-3-Clause AND BSD-2-Clause AND Zlib AND LicenseRef-sudo-redblack-nonendorsement",
+        "reviewed_on": "2026-11-10",
+        "evidence_member": "copyright",
+        "scope": "Exact source and binary copyright binding. Complete original root license and complete Debian copyright, including each separate file scope, permission, attribution and disclaimer, were read. Not OS release clearance.",
+        "conditions": [
+          "Retain all complete original copyright, permission, disclaimer and nonendorsement notices in source and binary documentation; provide exact source, applied patches and build/install configuration and scripts.",
+          "Retain the redblack nonendorsement-only redistribution grant, all independent ISC and BSD clauses, explicit translation public-domain statements and embedded zlib/protobuf notices. Preserve sponsorship attribution without implying endorsement.",
+          "Retain the byte-exact complete original upstream LICENSE.md alongside the installed binary documentation, including original attribution omitted or condensed in a package copyright summary."
+        ],
+        "required_notice_files": [
+          {
+            "path": "LICENSES/Sudo-original-LICENSE.txt",
+            "sha256": "ea33b3971e8e4d9657cd6794a952aaa71b22bd16745f1645455b6ead010e0a28"
+          }
+        ]
+      }
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

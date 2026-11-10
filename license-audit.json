@@ -21615,6 +21615,139 @@
         "Keep the explicit public-domain blessing in autoconf/tea/license.terms and all original per-file generated-build-script permissions, with complete preferred source/build/install material. Use GPL version2 for Debian packaging as explicitly stated by its operative grant, while preserving the original GPL-2+ label.",
         "Retain the original per-file public-domain patch and manual classifications; no code is relicensed under the repository root license."
       ]
+    },
+    "libmd@1.0.4-2": {
+      "redistributable": true,
+      "source_identity": "5e060cb277f31e67b91033e05ece00832ca8056decba873b1698a5680414a177",
+      "copyright_sha256": "4365ef6255ad553fce69dd4bc0e093472c5d0e41b8ea493a545cc926ce171aa6",
+      "license": "BSD-3-Clause AND BSD-2-Clause AND ISC AND Beerware AND LicenseRef-libmd-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and binary copyright binding. Complete original root license and complete Debian copyright, including each separate file scope, permission, attribution and disclaimer, were read. Not OS release clearance.",
+      "conditions": [
+        "Retain all complete original copyright, permission, disclaimer and nonendorsement notices in source and binary documentation; provide exact source, applied patches and build/install configuration and scripts.",
+        "Original COPYING and installed Debian copyright are byte-identical. Preserve the distinct BSD3/BSD2/NetBSD, ISC, Beerware and algorithm-specific explicit public-domain scopes instead of assigning a generic grant to the whole source tree."
+      ]
+    },
+    "openssh@1:9.2p1-2+deb12u10": {
+      "redistributable": true,
+      "source_identity": "af8cfb3ce783604abd28183a52aa0bde8c6bc603cc35758035db48d1dac5f2e2",
+      "copyright_sha256": "b6be93136b065505bf4fa315914a8c31c2a07865e7b5152dc1cbca324d86c860",
+      "license": "SSH-OpenSSH AND BSD-3-Clause AND BSD-2-Clause AND ISC AND LicenseRef-OpenSSH-original-grants",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and binary copyright binding. Complete original root license and complete Debian copyright, including each separate file scope, permission, attribution and disclaimer, were read. Not OS release clearance.",
+      "conditions": [
+        "Retain all complete original copyright, permission, disclaimer and nonendorsement notices in source and binary documentation; provide exact source, applied patches and build/install configuration and scripts.",
+        "Preserve Tatu Ylonen modification marking and RFC-incompatible derived-name condition, Mazieres/OpenBSD credit, Powell notice, MIT nonendorsement and all separately named BSD/ISC/public-domain scopes. No new SSH protocol change or incompatible renaming is introduced.",
+        "Retain the byte-exact complete original upstream LICENCE alongside the installed binary documentation, including original attribution omitted or condensed in a package copyright summary."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/OpenSSH-original-LICENCE.txt",
+          "sha256": "05c30446ba738934b3f1efa965b454c122ca26cc4b268e5ae6843f58ccd1b16d"
+        }
+      ]
+    },
+    "sudo@1.9.13p3-1+deb12u4": {
+      "redistributable": true,
+      "source_identity": "48308278bfbef2070b1f47492e39f9e7ac8ff9705aa6c390cd174b5e214c1089",
+      "copyright_sha256": "90b6ed2fe614d3b2162441f7931f570f34627d6cb7d261a8c1da442f51d5c7da",
+      "license": "ISC AND BSD-3-Clause AND BSD-2-Clause AND Zlib AND LicenseRef-sudo-redblack-nonendorsement",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and binary copyright binding. Complete original root license and complete Debian copyright, including each separate file scope, permission, attribution and disclaimer, were read. Not OS release clearance.",
+      "conditions": [
+        "Retain all complete original copyright, permission, disclaimer and nonendorsement notices in source and binary documentation; provide exact source, applied patches and build/install configuration and scripts.",
+        "Retain the redblack nonendorsement-only redistribution grant, all independent ISC and BSD clauses, explicit translation public-domain statements and embedded zlib/protobuf notices. Preserve sponsorship attribution without implying endorsement.",
+        "Retain the byte-exact complete original upstream LICENSE.md alongside the installed binary documentation, including original attribution omitted or condensed in a package copyright summary."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Sudo-original-LICENSE.txt",
+          "sha256": "ea33b3971e8e4d9657cd6794a952aaa71b22bd16745f1645455b6ead010e0a28"
+        }
+      ]
+    },
+    "libgcrypt20@1.10.1-3+deb12u1": {
+      "redistributable": true,
+      "source_identity": "1bd12e7e03f5c60177a65ba4b838466033eaeca191111c570d444104d0d6e6d3",
+      "copyright_sha256": "95db2f9da663f2bfe2aabe9c72fce9d6c9ae767b912f397d7823f50bd55a1a7d",
+      "license": "LGPL-2.1-or-later AND GPL-2.0-or-later AND BSD-3-Clause AND X11 AND LicenseRef-Libgcrypt-original-notices",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libgcrypt-OCB-status.txt",
+          "sha256": "953dd9c85140276ae6cb4d9b0f989bd5cb8d409b34c4684646f3f4edfbcde474"
+        }
+      ],
+      "scope": "Complete original LICENSES and Debian copyright, including full per-file notices and historical OCB license1, read; standard COPYING and COPYING.LIB retained. The original OCB holder current unrestricted/public-domain declaration was independently read. This is a component decision, not a patent-title warranty or OS release clearance.",
+      "conditions": [
+        "Preserve the LGPL2.1-or-later library scope, separate GPL2-or-later manuals/helper programs and all named Intel, jitterentropy, CRYPTOGAMS, X Consortium and explicit public-domain notices. Keep the full original LICENSES with binary documentation.",
+        "Preserve original GNU alternatives to BSD scopes and all original disclaimers and nonendorsement clauses. Retain historical OCB notices together with the named holder current public-domain declaration; no noncommercial or nonmilitary exception is used.",
+        "Provide exact preferred sources, patches and complete build/install configuration and scripts with binaries."
+      ]
+    },
+    "net-snmp@5.9.3+dfsg-2+deb12u1": {
+      "redistributable": true,
+      "source_identity": "b5760c25db1133c08d634f23881f0d8039f66ecabbd6dca16ca92b7e1eab9f67",
+      "copyright_sha256": "930d64b24c4f185ccbf1a13ff1531315cb3a9b3bdcb1b271b5a838e0f3154985",
+      "license": "BSD-3-Clause AND MIT AND Artistic-1.0 AND GPL-2.0-or-later AND LicenseRef-Net-SNMP-CMU-UCD",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Complete original COPYING all14 parts, all exact Debian file/copyright/comment scopes and operative grants read. Full original upstream notices are additionally retained in distributor documentation. Not OS release clearance.",
+      "conditions": [
+        "Retain the full upstream COPYING with every named-holder notice, permission, disclaimer and nonendorsement clause in binary documentation as well as source. Do not substitute the shorter Debian summary for original notices.",
+        "Keep the dfsg exclusions of separately restricted documentation/MIB inputs. Preserve Perl original Artistic/GPL alternatives, independent Python/BSD, MIT sd-daemon and all source/build/install inputs.",
+        "Retain the byte-exact complete original upstream COPYING alongside the installed binary documentation, including original attribution omitted or condensed in a package copyright summary."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Net-SNMP-original-COPYING.txt",
+          "sha256": "ed869ea395a1f125819a56676385ab0557a21507764bf56f2943302011381e59"
+        }
+      ]
+    },
+    "log4cplus@2.0.8-1": {
+      "redistributable": true,
+      "source_identity": "aebf3b4df05025322522aef2603bca72493b6270cfdcaf59587887b7ef555856",
+      "copyright_sha256": "542bb066a5418f857c794dcf2079b044df717a0b37763bae0510f245b5fffd0c",
+      "license": "BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT AND Zlib AND BSL-1.0 AND GPL-3.0-or-later AND LicenseRef-log4cplus-build-script-exceptions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Log4cplus-original-LICENSE.txt",
+          "sha256": "91d7e42ff80e74c4c94e5ad353375fa0358cd0abbf43f5fe957097cdbd4e2c4d"
+        }
+      ],
+      "scope": "Complete original LICENSE and complete Debian copyright read; other exact original COPYING/Catch/threadpool notices matched to previously read originals. Per-file Apache/BSD scopes remain distinct; no blanket BSD alternative is assumed. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original Apache2, BSD2/BSD3, threadpool Zlib and Catch Boost notices and modification markings. Preserve any applicable NOTICE attribution and full license text with binaries and sources.",
+        "Retain the independent GNU2/GNU3 Autoconf/Libtool macro/output exceptions, FSF permissive build scripts and GPL3-or-later Debian packaging. Generated build-script exceptions are not applied to runtime code.",
+        "Provide exact preferred sources, original Debian patches and complete configuration/build/install inputs. Preserve the original Debian removal of bundled Catch during clean/build without claiming its source notice has disappeared."
+      ]
+    },
+    "glibc@2.36-9+deb12u14": {
+      "redistributable": true,
+      "source_identity": "cfe1f0b8dc1fa211ce5a45b3725cc38b29f88667f1140ebdca6de35cf9c6f1fd",
+      "copyright_sha256": "40c7e1f2118531f038ca22999bd976901254e1bc5cd1b0f0211bdd064c599987",
+      "license": "LGPL-2.1-or-later AND GPL-2.0-or-later AND LicenseRef-Glibc-original-contribution-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Glibc-original-LICENSES.txt",
+          "sha256": "b33d0bd9f685b46853548814893a6135e74430d12f6d94ab3eba42fc591f83bc"
+        }
+      ],
+      "scope": "Exact original glibc source and installed copyright binding; complete LICENSES and Debian copyright read, standard GNU and Spencer notices compared to previously read originals. Stable original release scope independently checked; not OS release clearance.",
+      "conditions": [
+        "Retain complete original LICENSES, GNU licenses and every per-file contribution notice, attribution, permission and disclaimer in sources and binary legal materials. Keep LGPL library and GPL utility scopes distinct; provide exact corresponding source, patches and complete configuration/build/install inputs.",
+        "The Inner Net License version2 conditional restriction concerns specifically nonredistributable releases. This exact original release identifies RELEASE stable and VERSION 2.36; its root README expressly identifies free software and directs to COPYING.LIB and LICENSES. No prohibition label was found in those release identifiers. Preserve its full original conditions and do not infer removal of other contribution conditions.",
+        "Retain the source-specific BSD, ISC, CMU Mach, Intel, Sun fdlibm, Spencer and PCRE notices and acknowledgement requirements. Preserve original Debian introductory version wording without using it as the actual source version; the exact DSC and original tarball control that identity."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

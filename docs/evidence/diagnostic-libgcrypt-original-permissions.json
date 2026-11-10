@@ -1,0 +1,36 @@
+{
+  "kind": "exact-libgcrypt-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "1.10.1-3+deb12u1",
+  "source_identity": "1bd12e7e03f5c60177a65ba4b838466033eaeca191111c570d444104d0d6e6d3",
+  "copyright_sha256": "95db2f9da663f2bfe2aabe9c72fce9d6c9ae767b912f397d7823f50bd55a1a7d",
+  "original_legal_files": [
+    {
+      "member": "COPYING",
+      "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670"
+    },
+    {
+      "member": "COPYING.LIB",
+      "sha256": "ca0061fc1381a3ab242310e4b3f56389f28e3d460eb2fd822ed7a21c6f030532"
+    },
+    {
+      "member": "LICENSES",
+      "sha256": "819030c60337759c3411dc480a303a4275657a5734e6ae65b24bfb68a7ecc4ef"
+    },
+    {
+      "member": "debian/copyright",
+      "sha256": "95db2f9da663f2bfe2aabe9c72fce9d6c9ae767b912f397d7823f50bd55a1a7d"
+    }
+  ],
+  "ocb_holder_current_declaration": "https://www.cs.ucdavis.edu/~rogaway/ocb/license.htm",
+  "reviewed_on": "2026-11-10",
+  "ocb_scope": "Named holder states his OCB-related IP is public domain/unrestricted; historical original notices retained; no third-party title warranty inferred.",
+  "required_notices": [
+    {
+      "path": "LICENSES/Libgcrypt-OCB-status.txt",
+      "sha256": "953dd9c85140276ae6cb4d9b0f989bd5cb8d409b34c4684646f3f4edfbcde474"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
