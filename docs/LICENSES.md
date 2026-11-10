@@ -21,6 +21,26 @@ https://github.com/netbirdio/netbird/blob/v0.82.0/LICENSE. Do not describe its e
 repository as uniformly BSD-licensed. These references are audit inputs, not a
 completed redistribution clearance or a noncommercial exception.
 
+Shirube OS uses the [Nmap Security Scanner](https://nmap.org/) for port scanning
+and IPv4 path-MTU discovery. Nmap 7.93's original NPSL 0.94, including its GPL2
+exhibit, is retained in `LICENSES/Nmap-NPSL-0.94.txt` and installed under
+`/usr/share/doc/nmap/NPSL-0.94.txt`. The complete original Debian copyright is
+retained too; its older Nmap license summary does not replace the actual root
+license. Nmap and the derived `shirube-path-mtu.nse` script keep their separate
+NPSL terms. The GNU2 launcher constructs arguments and passes scanner output
+directly to the console. The original Nmap probe, port selection and packet
+handling remain unchanged; the NSE script displays the verified MTU lower bound
+and computes conservative MSS suggestions. The IPv6-header calculation is not
+an IPv6 path measurement. Sources, modification notices, license text and
+acknowledgements accompany the same release. No Windows/Npcap binary is included.
+
+Nmap のポートスキャンと IPv4 経路 MTU 検査を使用します。実際の 7.93 に同梱された
+NPSL 0.94 全文と元の Debian 著作権表示を保持し、独自 NSE スクリプトにも同じ NPSL を
+適用します。GNU2 の起動ヘルパーは結果を解析せず、そのままコンソールへ渡します。
+元のパケット処理と測定方式を保ち、NSE 側で確認済み MTU 下限と保守的な MSS 候補を
+表示します。IPv6 ヘッダーでの計算値は、IPv6 経路を測定した結果ではありません。
+ソース、変更記録、許諾全文、必要な謝辞を同じリリースに含めます。
+
 A component inventory must enumerate every shipped package by name, exact version
 and architecture and map it to source, license and build-input archive members
 with SHA256 hashes. This includes unmodified GPL/LGPL Debian packages and the

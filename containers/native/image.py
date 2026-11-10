@@ -151,6 +151,9 @@ def guest_package(arch, version):
     runtime_displays(core)
     from producer.installer_admin import patch_installer
     patch_installer(core)
+    from producer.network_diagnostics import install_script
+    install_script(core,Path('/src/nmap-patches/shirube-path-mtu.nse'),
+                   Path('/src/LICENSES/Nmap-NPSL-0.94.txt'))
     # Change display strings only in UI/installer files. Keep copyright/license
     # headers and compatibility module/CLI/filesystem names intact.
     for base in ['usr/share/vyos/templates/grub','usr/libexec/vyos/op_mode','usr/lib/python3/dist-packages/vyos/system']:

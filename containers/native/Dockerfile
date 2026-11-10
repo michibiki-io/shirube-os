@@ -66,6 +66,8 @@ COPY containers/native /src/native
 RUN install -m 0644 /src/native/apt-retries.conf /etc/apt/apt.conf.d/80-shirube-retries && \
     install -m 0755 /src/native/apt-get /usr/local/bin/apt-get
 COPY patches/kernel /kernel-patches
+COPY patches/vyos /src/vyos-patches
+COPY patches/nmap /src/nmap-patches
 COPY LICENSE NOTICE source-lock.json license-audit.json shirube-os-logo.svg /src/
 COPY LICENSES /src/LICENSES
 COPY third_party/geoip /src/third_party/geoip

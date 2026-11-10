@@ -443,6 +443,9 @@ def collect(rootfs, package_output, output, arch, version, work):
         print('SOURCE: '+name+' '+binary_version+' '+architecture,flush=True)
         package={'name':name,'version':binary_version,'architecture':architecture};shipped.append(package)
         source_name=source_name or name;source_version=source_version or binary_version
+        if source_name=='nmap':
+            from .network_diagnostics import verify as verify_network_diagnostics
+            verify_network_diagnostics(rootfs)
         copyright_file=path_in_root(rootfs,'usr/share/doc/'+name+'/copyright')
         if not copyright_file.is_file() or not copyright_file.read_bytes().strip():raise ValueError('Exact shipped copyright/license notice missing or empty')
         key=(source_name,source_version,sha256(copyright_file))
@@ -456,7 +459,15 @@ def collect(rootfs, package_output, output, arch, version, work):
                     if name.startswith(prefix) or source_name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
             inputs=[];nested=[];debian_tree=None;debian_export=None
-            if source_name=='vyos-1x':nested.extend(ocaml_dependencies)
+            if source_name=='vyos-1x':
+                nested.extend(ocaml_dependencies)
+                from .network_diagnostics import retained_script, SCRIPT
+                nmap_script,nmap_notice=retained_script(rootfs)
+                inputs.extend([(nmap_script,'nmap-script/shirube-path-mtu.nse','sources'),
+                               (nmap_notice,'nmap-script/NPSL-0.94.txt','license_files')])
+                nested.append({'name':'nmap-script:shirube-path-mtu','version':'7.93+shirube1',
+                    'source_identity':SCRIPT,'source_member':'nmap-script/shirube-path-mtu.nse',
+                    'source_sha256':SCRIPT,'notice':nmap_notice,'notice_member':'nmap-script/NPSL-0.94.txt'})
             if source_name=='owamp':
                 if 'i2util' not in static:
                     archive,dependency=static_i2util(output,arch,version,project,shared)

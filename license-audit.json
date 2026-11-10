@@ -2288,7 +2288,7 @@
         },
         {
           "path": "NOTICE",
-          "sha256": "1528c420f41c799f6ddcae167d660552fc7a0f61e5c09925e034741a4f9034b7"
+          "sha256": "19fed00ca43621e18ec794be78b18f58d586701ce86547e35a9ee8c416e90e9f"
         }
       ],
       "supplemental_origin": {
@@ -23040,6 +23040,56 @@
       "conditions": [
         "Keep original GNU3-or-later program scope and separate GFDL1.1-or-later documentation grant with no invariant sections or cover texts. GFDL1.3 is an explicitly permitted later option, and its complete text must accompany delivery. Preserve the original embedded GFDL1.1 text unchanged.",
         "Provide complete preferred source, patches, configuration/build/install material and transparent documentation sources; preserve every original author/copyright notice, permission, disclaimer, modification mark, history/acknowledgement and source-availability obligation. Repository branding does not replace upstream authorship."
+      ]
+    },
+    "nmap@7.93+dfsg1-1": {
+      "redistributable": true,
+      "source_identity": "5589c0daab89d31750c2993cb0cf57c864c8f1b052abe58ce4d0e43ca556575b",
+      "copyright_sha256": "6a868bcdcb3a479257964bf66f85e35e3376c147939e8868036c9b3dd9b6cb50",
+      "license": "LicenseRef-Nmap-NPSL-0.94 AND BSD-3-Clause AND BSD-4-Clause AND ISC AND MIT AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Nmap-NPSL-0.94.txt",
+          "sha256": "4e28b9b2630e119657f0deb0eee8bb7d33d3edb9e2a59c24e238e739565f1bef"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "19fed00ca43621e18ec794be78b18f58d586701ce86547e35a9ee8c416e90e9f"
+        }
+      ],
+      "scope": "Exact Linux Debian source/package scope. Complete actual root NPSL0.94 and original Debian copyright scopes/terms read, including the obsolete Debian Nmap-GPL summary and actual root precedence. Collection separately rejects missing or changed approved GNU launchers, NPSL NSE and installed full license. Not complete-release clearance.",
+      "conditions": [
+        "Retain the full actual NPSL0.94 root license including its GNU2 exhibit; do not substitute the older Debian summary or treat Nmap as plain GPL2. Preserve all original copyright, permission, disclaimer, modified-file/date and nonendorsement notices.",
+        "Supply complete corresponding preferred source, scripts, build/install inputs and the separately licensed NSE source with the same release. Keep GNU launchers limited to argument construction and direct console output; no Nmap result/data parsing, linking or code incorporation into plain GPL code is approved.",
+        "Retain the Nmap Security Scanner name and https://nmap.org/ prominently in the system output and documentation for external deployments. Preserve the Berkeley acknowledgement and Cisco permission credit and all BSD/ISC/Expat/support-file conditions; no trademark endorsement rights are granted.",
+        "NPSL0.94 expressly permits linking any OpenSSL.Org version. Windows/Npcap binaries have no approval here; removed Debian DFSG files are not restored. NPSL0.95 terms, OEM contracts or unrecorded waivers are not relied upon."
+      ]
+    },
+    "nmap-script:shirube-path-mtu@7.93+shirube1": {
+      "redistributable": true,
+      "source_identity": "36a4c9b068ae74b44cecb47f3d5328c3e4491d2f860dd4d2954be6d4ed401c23",
+      "copyright_sha256": "4e28b9b2630e119657f0deb0eee8bb7d33d3edb9e2a59c24e238e739565f1bef",
+      "license": "LicenseRef-Nmap-NPSL-0.94",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "nmap-script/NPSL-0.94.txt",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Nmap-NPSL-0.94.txt",
+          "sha256": "4e28b9b2630e119657f0deb0eee8bb7d33d3edb9e2a59c24e238e739565f1bef"
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "19fed00ca43621e18ec794be78b18f58d586701ce86547e35a9ee8c416e90e9f"
+        }
+      ],
+      "scope": "Exact independently licensed NSE derived from Nmap7.93 path-mtu.nse by Kris Katterjohn; original probe prefix byte comparison and actual MTU1400 tests pass. Original author/license notices and dated modification marks retained. Not a grant to relicense GNU launchers or the OS under NPSL.",
+      "conditions": [
+        "Retain the full actual NPSL0.94 root license including its GNU2 exhibit; do not substitute the older Debian summary or treat Nmap as plain GPL2. Preserve all original copyright, permission, disclaimer, modified-file/date and nonendorsement notices.",
+        "Supply complete corresponding preferred source, scripts, build/install inputs and the separately licensed NSE source with the same release. Keep GNU launchers limited to argument construction and direct console output; no Nmap result/data parsing, linking or code incorporation into plain GPL code is approved.",
+        "Retain the Nmap Security Scanner name and https://nmap.org/ prominently in the system output and documentation for external deployments. Preserve the Berkeley acknowledgement and Cisco permission credit and all BSD/ISC/Expat/support-file conditions; no trademark endorsement rights are granted.",
+        "NPSL0.94 expressly permits linking any OpenSSL.Org version. Windows/Npcap binaries have no approval here; removed Debian DFSG files are not restored. NPSL0.95 terms, OEM contracts or unrecorded waivers are not relied upon."
       ]
     }
   },

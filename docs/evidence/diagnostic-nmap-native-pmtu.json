@@ -1,0 +1,48 @@
+{
+  "kind": "diagnostic-nmap-native-pmtu",
+  "status": "PASS_FOCUSED_NATIVE_TEST",
+  "nmap_version": "7.93+dfsg1-1",
+  "architecture": "amd64",
+  "network": "Isolated container network namespaces; no external network",
+  "cpu_limit": 1,
+  "memory_mib": 512,
+  "original_nse_sha256": "ccee060d4ca79b2a1a96b83a034de4fad9759b863da3a515fc8f1e7ae0c1d645",
+  "delivered_nse_sha256": "36a4c9b068ae74b44cecb47f3d5328c3e4491d2f860dd4d2954be6d4ed401c23",
+  "delivered_launcher_sha256": "dfaceade48570e622b44b0ec5017156ff0df7041c84f8c705d40d0042c17cdd5",
+  "full_npsl_094_sha256": "4e28b9b2630e119657f0deb0eee8bb7d33d3edb9e2a59c24e238e739565f1bef",
+  "probe_source_comparison": {
+    "status": "PASS",
+    "method": "All original bytes before the final successful result-formatting block match; only a modification header and result presentation differ.",
+    "unchanged_prefix_sha256": "e2fcac24c1f11cc2bf9dce61ca0aec352a5388830366d41381655b75c353ef1f",
+    "unchanged_prefix_bytes": 9968
+  },
+  "actual_results": [
+    {
+      "command": "nmap -T4 --script path-mtu -F TARGET",
+      "configured_path_mtu": 1400,
+      "reported_pmtu": 1400,
+      "exit_code": 0
+    },
+    {
+      "command": "force_mtu_host.sh TARGET",
+      "configured_path_mtu": 1400,
+      "reported_pmtu": 1400,
+      "verified_ipv4_lower_bound": 1400,
+      "ipv4_mss": 1360,
+      "ipv6_header_mss": 1340,
+      "exit_code": 0
+    },
+    {
+      "command": "force_mtu_host.sh TARGET INTERFACE",
+      "configured_path_mtu": 1400,
+      "reported_pmtu": 1400,
+      "verified_ipv4_lower_bound": 1400,
+      "ipv4_mss": 1360,
+      "ipv6_header_mss": 1340,
+      "exit_code": 0
+    }
+  ],
+  "scope": "Actual Debian Nmap executable and original packet discovery in a routed MTU-constrained namespace topology. Does not establish a rebuilt current ISO, ARM64 runtime, final source inventory, full release clearance or OCI acceptance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
