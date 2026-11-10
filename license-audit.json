@@ -21885,6 +21885,173 @@
         "Use LGPL3-or-later library/header alternative, retain LGPL2.1-or-later der-builder and FSFUL generated constants scopes. Keep manuals, build and tests GPL3-or-later, distinct from the library.",
         "Retain Internet Society specification copyright and no-warranty notice. Preserve the original specification text and references; derived implementation commentary is permitted by its explicit implementation-assistance grant. No general permission to modify the specification document is inferred."
       ]
+    },
+    "dialog@1.3-20230209-1": {
+      "redistributable": true,
+      "source_identity": "0e4c7ae0be1f9ea6793dfc50fd7db8715b9cdab04c2d8a23705f176bb945a797",
+      "copyright_sha256": "12ed09df1b7c25ef883755915b88754a072403415a4a6e21d3f5ad631198316b",
+      "license": "LGPL-2.1-only AND MIT AND GPL-3.0-or-later AND LicenseRef-dialog-build-script-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete installed copyright binding. Entire nonstandard original notices and complete word differences from read standards inspected. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Keep the LGPL2.1-only program grant distinct from the MIT-style aclocal/install-sh and generated configuration permissions. Preserve the complete upstream package/debian/copyright in addition to the shorter installed copyright, with attribution and nonendorsement. The original full LGPL2.1 differs from the previously read original only by two Street/St address spellings, both read."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Dialog-original-build-script-notices.txt",
+          "sha256": "d9e70057ddae5a1e57f71ceb6c4e437da8979749226ebbd663ea232983fa8ff6"
+        }
+      ]
+    },
+    "libxinerama@2:1.1.4-3": {
+      "redistributable": true,
+      "source_identity": "5fe68b94d4cbc4be1ba37bbf676fbece3920b2c59a33cc94c4e4c7a140958edd",
+      "copyright_sha256": "e49d9732f261b3ffcb50c40914bd9d144de5557dad9b2ae20dbe8e3c5b3d17fb",
+      "license": "MIT AND LicenseRef-X11-nonendorsement",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete installed copyright binding. Entire nonstandard original notices and complete word differences from read standards inspected. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain complete Oracle, Open Group and Digital notices and supporting-documentation attribution and nonendorsement requirements. Original COPYING matches the complete installed copyright except its download-origin prefix."
+      ]
+    },
+    "libxext@2:1.3.4-1": {
+      "redistributable": true,
+      "source_identity": "25024f57d955739c6b858822bf93ec3c71400b56fc0d666826f440e3661fd7c0",
+      "copyright_sha256": "bc57e445ca1d9fe082c8d54189dd411ff26caa8552c9c63d44ea06a982f32124",
+      "license": "MIT AND LicenseRef-X11-nonendorsement",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete installed copyright binding. Entire nonstandard original notices and complete word differences from read standards inspected. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Preserve every complete original legacy software/documentation permission, supporting-documentation attribution and nonendorsement scope. Retain original Oracle 2013 year omitted from the installed copyright by requiring the complete original COPYING alongside it."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/LibXext-original-COPYING.txt",
+          "sha256": "80767ac915f2f0f94de9efb15f0197a59b6f1e609cae85059f8703272dc3e146"
+        }
+      ]
+    },
+    "avahi@0.8-10+deb12u1": {
+      "redistributable": true,
+      "source_identity": "807cf0a281a0e90207d05cd74dc2c9b5905458f3fe236fbf1bf6d246987dd874",
+      "copyright_sha256": "66849d0ab7cbf0d770e40e00276ed8d264ed8974c0e064fb12814c0f80430c5d",
+      "license": "LGPL-2.1-or-later AND GPL-2.0-only AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Autoconf-exceptions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete copyright binding. Entire installed copyright including all per-file scopes read; original complete standard GNU texts matched with previously read original texts. Nonstandard documentation permission also read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Keep library LGPL, XML/manual conversion GPL2, SimpleGladeApp LGPL2.1, Autoconf macro exceptions and Porchdog/Apple BSD header/sample permissions distinct. Preserve Porchdog policy disclaimer and Apple nonendorsement."
+      ]
+    },
+    "keepalived@1:2.2.7-1": {
+      "redistributable": true,
+      "source_identity": "6e0aad92343adfe2d2855365ce036bb638a6789cc5c52062c0c1ad451b32abad",
+      "copyright_sha256": "1494cc30b3e9a13d90fa235674b8ae9137353800e87155b051e251f8d1f1f49b",
+      "license": "GPL-2.0-or-later WITH LicenseRef-Keepalived-OpenSSL-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete copyright binding. Entire installed copyright including all per-file scopes read; original complete standard GNU texts matched with previously read original texts. Nonstandard documentation permission also read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Preserve Alexandre Cassen original explicit OpenSSL compilation/distribution exception; retain GPL2-or-later documentation and program terms, full attribution and corresponding source."
+      ]
+    },
+    "libnl3@3.7.0-0.2": {
+      "redistributable": true,
+      "source_identity": "dd41ed81344119f158f3ed194dad966247f21a1d1ee078295d347b4ec7c2adef",
+      "copyright_sha256": "9a3730df4bb18c8be5fdce05b9223f9b152b6bf40f7e45319529830ecd413eb2",
+      "license": "LGPL-2.1-only AND GPL-2.0-only AND BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete copyright binding. Entire installed copyright including all per-file scopes read; original complete standard GNU texts matched with previously read original texts. Nonstandard documentation permission also read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain separate LGPL2.1 library, explicitly GPL2 command-source list and Texas Instruments XFRM BSD3 permissions and nonendorsement. Do not infer an or-later upgrade absent from the operative library grant."
+      ]
+    },
+    "lm-sensors@1:3.6.0-7.1": {
+      "redistributable": true,
+      "source_identity": "da1208dc61081db520cb140be4e2127504cf101db9342c3297206fbfe95b52d5",
+      "copyright_sha256": "36df1f6d732ef306eba85489352b2afe329f7b54c6850c3e2094f7c5df1bc46b",
+      "license": "LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete copyright binding. Entire installed copyright including all per-file scopes read; original complete standard GNU texts matched with previously read original texts. Nonstandard documentation permission also read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain separate LGPL2.1-or-later library/configuration and GPL2-or-later tools scopes and complete attribution."
+      ]
+    },
+    "mpfr4@4.2.0-1": {
+      "redistributable": true,
+      "source_identity": "bfd38815d4d79f9ea3f14d94f61a075a0914ecbe4ef9666b7f6597340a60c250",
+      "copyright_sha256": "c434a44e656a89e72b5cee13bba6719011e0899bfc626ab9c08205010ab2dbbe",
+      "license": "LGPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete copyright binding. Entire installed copyright including all per-file scopes read; original complete standard GNU texts matched with previously read original texts. Nonstandard documentation permission also read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain LGPL3-or-later library and separately GFDL1.2-or-later documentation grant with no invariants or cover texts. Exercise permitted GFDL1.3 documentation option and preserve the original version wording and complete licenses."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ]
+    },
+    "rtmpdump@2.4+20151223.gitfa8646d.1-2": {
+      "redistributable": true,
+      "source_identity": "a296819cd2ab5880b67ad963ef0867cb10e462f4403e52565aa863eb05bb1370",
+      "copyright_sha256": "4302abcc1ea1b6cbe8d19c79b892acf78878030220210707c19006828866207c",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete copyright binding. Entire installed copyright including all per-file scopes read; original complete standard GNU texts matched with previously read original texts. Nonstandard documentation permission also read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain GPL2-or-later utility and independent LGPL2.1-or-later librtmp scopes and LGPL packaging grant; retain all original copyright and preferred source/build/install inputs."
+      ]
+    },
+    "tcptraceroute@1.5beta7+debian-4.1": {
+      "redistributable": true,
+      "source_identity": "8a9e64a3abedac8338282f975924dc2b2acf5834704628e097aa166631e28f4a",
+      "copyright_sha256": "11c9eb5d528d7160d8a2f15f72112e9742bf641c1f70a9b13bd7ae2e50d22e6e",
+      "license": "GPL-2.0-only AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source and complete copyright binding. Entire installed copyright including all per-file scopes read; original complete standard GNU texts matched with previously read original texts. Nonstandard documentation permission also read. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions, exceptions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain GPL2-only program scope and distinct GPL2-or-later Debian packaging scope, without extending packaging permission to the program."
+      ]
+    },
+    "tcpdump@4.99.3-1": {
+      "redistributable": true,
+      "source_identity": "e5a75fad08aacff81a58799bedaacc61fa281839d8f68cdf1c9df45deb66afd1",
+      "copyright_sha256": "3e640f444358d031690de4c8fb040fb866386460dd9c51f3ffb875bbfb2342e2",
+      "license": "BSD-3-Clause AND BSD-4-Clause AND LicenseRef-tcpdump-specific-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Tcpdump-original-component-notices.txt",
+          "sha256": "ff01b34edde65e476371967d29af58bec8a6a1cb3e056e09a23fbeb05505e051"
+        }
+      ],
+      "scope": "Entire installed copyright read, original root LICENSE matched to previously read libpcap notice, actual nine remaining source-file notice blocks read and retained. Historical removed files are not asserted present. Independent BSD executable; no OS-wide relicensing. Not OS release clearance.",
+      "conditions": [
+        "Retain original source and binary notice requirements and all attribution, advertising acknowledgements and nonendorsement clauses. Preserve separately granted Simon J. Gerraty and Jason L. Wright permissions; do not automatically remove non-Regents advertising clauses based on Berkeley waiver.",
+        "Display applicable original acknowledgements in advertising materials mentioning the relevant software features or use. Provide complete exact preferred source, original patches and build/install inputs."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
