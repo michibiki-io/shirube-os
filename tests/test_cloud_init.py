@@ -2,22 +2,60 @@
 import ast
 import contextlib
 import io
+import re
+import shutil
 from pathlib import Path
 import subprocess
+import tempfile
 import unittest
 from types import SimpleNamespace, ModuleType
 from unittest.mock import MagicMock, patch
 
 from guest import first_boot
 from producer.cloud_init import redact_diagnostics
+from producer.installer_admin import AUTHENTICATION
 
 
 class CloudInitTests(unittest.TestCase):
+    def test_live_install_preserves_persistent_files_only_for_selected_active_config(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);source=root/'config';source.mkdir()
+            (source/'config.boot').write_text('native configuration fixture')
+            (source/'cloud-file').write_text('persistent userdata fixture')
+            (source/'auth').mkdir();(source/'auth/instance.pub').write_text('public fixture')
+            (source/'linked-file').symlink_to('cloud-file')
+            target=root/'installed';target.mkdir()
+            namespace={'Path':Path,'DIR_CONFIG':str(source),'copytree':shutil.copytree,
+                       'copy_preserve_owner':shutil.copy2}
+            exec(AUTHENTICATION,namespace)
+            preserve=namespace['preserve_live_configuration']
+            preserve(str(root/'factory-default'),str(target))
+            self.assertEqual(list(target.iterdir()),[])
+            preserve(str(source/'config.boot'),str(target))
+            self.assertEqual((target/'cloud-file').read_text(),'persistent userdata fixture')
+            self.assertEqual((target/'auth/instance.pub').read_text(),'public fixture')
+            self.assertTrue((target/'linked-file').is_symlink())
+
+    def test_another_saved_cloud_administrator_can_install_with_its_own_key(self):
+        marker=MagicMock();marker.read_text.return_value='cloud-admin\n'
+        config=MagicMock()
+        config.exists.side_effect=lambda path:path[-1]=='public-keys'
+        config.list_nodes.return_value=['metadata-key']
+        config.return_value.side_effect=lambda path:'ssh-ed25519' if path[-1]=='type' else 'public-test-value'
+        namespace={'environ':{'SUDO_USER':'shirube'},'Path':lambda path:marker,
+                   'DIR_CONFIG':'/config','ConfigTree':lambda text:config,
+                   'read_file':lambda path:'native-config-fixture','re':re}
+        exec(AUTHENTICATION,namespace)
+        self.assertEqual(namespace['enrolled_administrator'](),('shirube',''))
+        namespace['environ']['SUDO_USER']='root'
+        with self.assertRaisesRegex(RuntimeError,'administrator session'):
+            namespace['enrolled_administrator']()
+
     def test_only_installed_admin_with_complete_native_ssh_authentication_is_accepted(self):
-        users=['root','vyos','cloudadmin','incomplete','systemaccount','locked']
+        users=['root','vyos','cloud-admin','incomplete','systemaccount','locked']
         prefix=('system','login','user')
-        values={prefix+('cloudadmin','authentication','public-keys','instance','key'):'public-key-test-value',
-                prefix+('cloudadmin','authentication','public-keys','instance','type'):'ssh-ed25519',
+        values={prefix+('cloud-admin','authentication','public-keys','instance','key'):'public-key-test-value',
+                prefix+('cloud-admin','authentication','public-keys','instance','type'):'ssh-ed25519',
                 prefix+('incomplete','authentication','public-keys','instance','key'):'missing-type',
                 prefix+('systemaccount','authentication','encrypted-password'):'$6$test$hash',
                 prefix+('locked','authentication','encrypted-password'):'!'}
@@ -31,7 +69,7 @@ class CloudInitTests(unittest.TestCase):
         with patch.dict('sys.modules',{'vyos':ModuleType('vyos'),'vyos.configtree':module}), \
              patch.object(first_boot,'Path',return_value=MagicMock()), \
              patch.object(first_boot.pwd,'getpwnam',side_effect=account):
-            self.assertEqual(first_boot.configured_administrators(),['cloudadmin'])
+            self.assertEqual(first_boot.configured_administrators(),['cloud-admin'])
 
     def test_multiline_native_diagnostics_redact_all_interpolated_values(self):
         text = '''logger.debug("User-Data: {}".format(secret))

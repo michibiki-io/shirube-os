@@ -48,7 +48,7 @@ def prepare_firmware(arch, mode, work):
 
 class VM:
     def __init__(self, arch, disk, work, iso=None, accelerator='kvm', boot_console='serial',
-                 firmware_mode='uefi', cloud_seed=None, ssh_forward=False):
+                 firmware_mode='uefi', cloud_seed=None, ssh_forward=False, mac=None):
         native(arch);self.work=Path(work);self.work.mkdir()
         if accelerator not in {'kvm','tcg'}:raise ValueError('Unsupported QEMU accelerator')
         if boot_console not in {'serial','local'}:raise ValueError('Unsupported boot console')
@@ -60,7 +60,10 @@ class VM:
         executable='qemu-system-aarch64' if arch=='arm64' else 'qemu-system-x86_64'
         machine='virt' if arch=='arm64' else 'q35'
         serial=self.work/'serial.sock'
-        mac='52:54:'+':'.join(f'{byte:02x}' for byte in secrets.token_bytes(4))
+        if mac is None:mac='52:54:'+':'.join(f'{byte:02x}' for byte in secrets.token_bytes(4))
+        if not isinstance(mac,str) or not re.fullmatch(r'(?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}',mac):
+            raise ValueError('Invalid test VM MAC address')
+        self.mac=mac
         cpu='host' if accelerator=='kvm' else ('cortex-a72' if arch=='arm64' else 'max')
         # Bound translated-code memory as well as guest RAM. QEMU's host-sized
         # default cache can exhaust a 3 GiB container during a live install.
@@ -255,9 +258,9 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kv
         bios_live=None;bios_installed=None
         try:
             bios_live=VM(arch,bios_disk,work/'bios-live',iso,accelerator=accelerator,firmware_mode='bios')
-            bios_live.enroll();bios_user=bios_live.username;bios_password=bios_live.password
+            bios_live.enroll();bios_user=bios_live.username;bios_password=bios_live.password;bios_mac=bios_live.mac
             bios_live.install();bios_live.poweroff();bios_live.close();bios_live=None
-            bios_installed=VM(arch,bios_disk,work/'bios-installed',accelerator=accelerator,firmware_mode='bios')
+            bios_installed=VM(arch,bios_disk,work/'bios-installed',accelerator=accelerator,firmware_mode='bios',mac=bios_mac)
             bios_installed.username=bios_user;bios_installed.password=bios_password;bios_installed.login()
             if bios_installed.command('test ! -d /sys/firmware/efi && echo BIOS_PASS')!='BIOS_PASS':
                 raise ValueError('BIOS installation unexpectedly used EFI')
@@ -273,7 +276,7 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kv
         live.enroll();live_user=live.username;live_password=live.password
         live.install();live.poweroff()
     finally:live.close()
-    installed=VM(arch,disk,work/'installed',accelerator=accelerator)
+    installed=VM(arch,disk,work/'installed',accelerator=accelerator,mac=live.mac)
     try:
         installed.username=live_user;installed.password=live_password;installed.login()
         installed.command('test -d /sys/firmware/efi')

@@ -21,7 +21,7 @@ def configured_administrators():
     if not config.exists(users):
         return result
     for username in config.list_nodes(users):
-        if not re.fullmatch(r'[a-z][a-z0-9_]{0,30}', username) or username in {'root', 'vyos'}:
+        if not re.fullmatch(r'[-_a-zA-Z0-9.]{1,100}', username) or username == 'root':
             continue
         auth = users+[username, 'authentication']
         hashed = config.return_value(auth+['encrypted-password']) if config.exists(auth+['encrypted-password']) else ''
@@ -105,7 +105,7 @@ def main():
     wait_for_router()
     if ENROLLED.is_file():
         username=ENROLLED.read_text().strip()
-        if not re.fullmatch(r'[a-z][a-z0-9_]{0,30}',username) or username in {'root','vyos'}:
+        if not re.fullmatch(r'[-_a-zA-Z0-9.]{1,100}',username) or username == 'root':
             raise RuntimeError('Invalid saved enrollment state')
         if username not in configured_administrators():
             raise RuntimeError('Saved administrator authentication is unavailable')

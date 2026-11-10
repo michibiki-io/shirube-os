@@ -16,6 +16,10 @@ usable administrator enables normal login without asking for another account.
 Saved enrollment is checked again after installation; SSH-only administrators
 retain their configured keys. Instance state remains persistent at runtime and
 is erased when producing a new distribution image.
+Any saved administrator with valid authentication may run `install image`;
+the installer does not require the account that completed the initial enrollment.
+When installing the active configuration, it also retains the persistent
+configuration directory, including files created by `write_files`.
 After provisioning, booting without a metadata source preserves the saved native
 configuration. The cloud-init handler must not replace a saved hostname or
 network configuration with factory defaults merely because metadata is absent.
@@ -44,6 +48,8 @@ cloud-initとコンソール初期化の両方に対応します。cloud-initで
 既定のクラウド用ユーザー名は`shirube`で、配布用の共通パスワードはありません。
 設定済みの管理者を確認できた場合は追加のコンソール登録を要求せず、
 初期化データがない場合はコンソールで管理者を作成します。
+保存済みの認証情報を持つ管理者は、最初に登録した管理者以外でも`install image`を実行できます。
+実行中の設定を選んだ場合は、`write_files`で作成したファイルを含む永続設定ディレクトリも引き継ぎます。
 両アーキテクチャ・両ディスク形式で鍵によるアクセスと再起動後の保持を検証します。
 AMD64の同じISOでBIOSとUEFIを検証し、ARM64と配布用ディスクの基本構成はUEFIとします。
 ローカル試験の成功をOCI実機試験の成功とは扱いません。

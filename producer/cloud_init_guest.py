@@ -36,7 +36,7 @@ def verify(image, arch, work, accelerator):
     seed=work/'seed';seed.mkdir()
     (seed/'meta-data').write_text('instance-id: shirube-test-'+secrets.token_hex(16)+
         '\nlocal-hostname: shirube-cloud-test\npublic-keys:\n  - '+json.dumps(public)+'\n')
-    (seed/'user-data').write_text('#cloud-config\nusers:\n  - default\n  - name: cloudadmin\n'
+    (seed/'user-data').write_text('#cloud-config\nusers:\n  - default\n  - name: cloud-admin\n'
         '    ssh_authorized_keys:\n      - '+json.dumps(public)+'\n'
         'vyos_config_commands:\n  - "set system host-name \'shirube-native-command-test\'"\n'
         'write_files:\n  - path: /opt/vyatta/etc/config/shirube-cloud-init-test\n'
@@ -59,13 +59,13 @@ def verify(image, arch, work, accelerator):
                                   timeout=180 if accelerator=='tcg' else 30)
         check="""from pathlib import Path
 from vyos.configtree import ConfigTree
-assert Path('/config/shirube-enrolled').read_text().strip() == 'cloudadmin'
+assert Path('/config/shirube-enrolled').read_text().strip() == 'cloud-admin'
 assert not Path('/config/shirube-first-boot').exists()
 assert not Path('/usr/share/shirube/needs-enrollment').exists()
 assert Path('/config/shirube-cloud-init-test').read_text().strip() == 'native-cloud-config-pass'
 c=ConfigTree(Path('/config/config.boot').read_text())
 assert c.return_value(['system','host-name']) == 'shirube-native-command-test'
-for user in ['cloudadmin','shirube']:
+for user in ['cloud-admin','shirube']:
     p=['system','login','user',user,'authentication','public-keys']
     assert c.exists(p) and c.list_nodes(p)
 print(Path('/etc/machine-id').read_text().strip())
@@ -79,13 +79,19 @@ print(Path('/etc/ssh/ssh_host_ed25519_key.pub').read_text().strip())
                 if monitor[2]['enrollment_prompt']:
                     raise ValueError('Cloud-init unexpectedly requested console enrollment')
                 try:
-                    result=command('cloudadmin',probe)
+                    result=command('cloud-admin',probe)
                 except subprocess.TimeoutExpired:
                     continue
                 if result.returncode==0:
                     identity=result.stdout.strip().splitlines()
                     if len(identity)!=2 or not all(identity):raise ValueError('Cloud identity proof missing')
-                    if command('shirube','true').returncode:raise ValueError('Metadata SSH key access failed')
+                    try:
+                        metadata=command('shirube','true')
+                    except subprocess.TimeoutExpired:
+                        continue
+                    if metadata.returncode:
+                        time.sleep(3)
+                        continue
                     return identity
                 if vm.process.poll() is not None:raise RuntimeError('Cloud-init guest exited before access')
                 time.sleep(3)
@@ -93,12 +99,12 @@ print(Path('/etc/ssh/ssh_host_ed25519_key.pub').read_text().strip())
         original=wait_access()
         # SSH was accepted without touching the console or providing a password.
         vm.eject_cloud_seed()
-        command('cloudadmin','sudo -n systemctl reboot --no-block')
+        command('cloud-admin','sudo -n systemctl reboot --no-block')
         deadline=time.monotonic()+120
-        while time.monotonic()<deadline and command('cloudadmin','true').returncode==0:time.sleep(1)
+        while time.monotonic()<deadline and command('cloud-admin','true').returncode==0:time.sleep(1)
         if time.monotonic()>=deadline:raise RuntimeError('Cloud-init guest did not reboot')
         if wait_access()!=original:raise ValueError('Cloud administrator identity changed on reboot')
-        command('cloudadmin','sudo -n systemctl poweroff --no-block')
+        command('cloud-admin','sudo -n systemctl poweroff --no-block')
         return 'PASS'
     finally:
         if monitor is not None:

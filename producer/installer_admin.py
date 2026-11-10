@@ -7,7 +7,8 @@ AUTHENTICATION = '''def enrolled_administrator():
     try:
         administrator = environ.get('SUDO_USER', '')
         enrolled = Path(f'{DIR_CONFIG}/shirube-enrolled').read_text().strip()
-        if not re.fullmatch(r'[a-z][a-z0-9_]{0,30}', administrator) or administrator in {'root', 'vyos'} or enrolled != administrator:
+        if (not re.fullmatch(r'[-_a-zA-Z0-9.]{1,100}', administrator) or administrator == 'root'
+                or not re.fullmatch(r'[-_a-zA-Z0-9.]{1,100}', enrolled) or enrolled == 'root'):
             raise ValueError()
         config = ConfigTree(read_file(f'{DIR_CONFIG}/config.boot'))
         auth = ['system', 'login', 'user', administrator, 'authentication']
@@ -40,6 +41,13 @@ def configure_authentication(config_file: str, password_hash: str, administrator
     except Exception:
         raise RuntimeError('Unable to retain saved administrator authentication.') from None
 
+
+def preserve_live_configuration(selected_config: str, target_config_dir: str) -> None:
+    """Keep persistent files when installing the active live configuration."""
+    if Path(selected_config).resolve() == Path(f'{DIR_CONFIG}/config.boot').resolve():
+        copytree(f'{DIR_CONFIG}/', target_config_dir, symlinks=True,
+                 copy_function=copy_preserve_owner, dirs_exist_ok=True)
+
 '''
 
 
@@ -65,6 +73,9 @@ def patch_installer(root):
 
 '''+text[end:]
     replace("                                 user_password)", "                                 administrator_hash, administrator)")
+    replace("        copy(default_config, f'{target_config_dir}/config.boot')",
+            "        preserve_live_configuration(default_config, target_config_dir)\n"
+            "        copy(default_config, f'{target_config_dir}/config.boot')")
     replace("        setup_grub(DIR_DST_ROOT)", """        enrollment = Path(target_config_dir)/'shirube-enrolled'
         enrollment.write_text(administrator+'\\n')
         enrollment.chmod(0o600)
