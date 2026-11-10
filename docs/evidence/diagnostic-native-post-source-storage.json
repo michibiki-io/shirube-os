@@ -1,0 +1,28 @@
+{
+  "kind": "native-producer-post-source-storage-measurement",
+  "status": "PASS_POINT_IN_TIME_ONLY",
+  "architecture": "amd64",
+  "source_cohort_commit": "574bd7f3a2c956d77750e86590ea5d02a4a56b1b",
+  "native_cpu_limit": 4,
+  "native_memory_limit_bytes": 8589934592,
+  "phase": "After actual ISO/source production, before compiler retirement",
+  "producer_writable_allocated_bytes": 48076300288,
+  "producer_image_uncompressed_bytes": 3061222962,
+  "source_and_iso_output_allocated_bytes": 4775108608,
+  "selected_owned_workspace_allocated_bytes": {
+    "extra-components": 11509104640,
+    "assembly": 5985746944,
+    "go-build-cache": 3978330112,
+    "go-module-cache": 3561250816,
+    "netbird-build": 3784830976,
+    "netbird-correspondence": 216317952
+  },
+  "limitations": [
+    "This is a completed-phase allocation census, not a cold-build peak or a complete hosted-job measurement.",
+    "Shared caches, BuildKit intermediate storage and the disk-test peak are not inferred from this census.",
+    "The 160 GiB planning preflight is unchanged pending complete-path validation."
+  ],
+  "complete_release_peak_storage": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

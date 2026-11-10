@@ -90,6 +90,11 @@ workspace and temporary downloaded/extracted sources before creating guest disks
 Exported source archives, kernel DEBs and the inspected factory root remain.
 This prevents compiler scratch and disk-test growth from overlapping. The final
 evidence records free space before/after retirement; no host Docker cache is pruned.
+Retirement also covers the completed extra-component trees, ISO assembly trees,
+private Go caches and NetBird source-build trees. All selected workspaces are
+validated before deletion; a mount at or beneath a selected directory rejects
+retirement, including bind mounts on the same filesystem. Mounted public input
+and library caches remain outside the cleanup selection.
 The complete current-head build still needs measured peak storage and elapsed-time
 acceptance before the planning budget can be replaced with a hosted-runner budget.
 
@@ -98,6 +103,9 @@ acceptance before the planning budget can be replaced with a hosted-runner budge
 配布用ソース、カーネルDEB、検査済みfactory rootは保持し、削除前後の空き容量を
 証拠に記録します。ホストのDocker cacheは削除しません。現行headの全工程で容量と
 時間を実測してから、hosted runner向けの容量条件を確定します。
+追加コンポーネントとISO組み立ての作業領域、専用Goキャッシュ、NetBirdのソースビルド
+領域も対象です。削除前に全対象を検査し、内部にbind mountを含むマウントがあれば
+削除を拒否します。共有する公開入力・ライブラリキャッシュは対象に含めません。
 
 The `Test` workflow measures both native GitHub-hosted runner classes with a
 small fixed-base fixture. Its `runner-capability-*` artifacts record CPU, available
