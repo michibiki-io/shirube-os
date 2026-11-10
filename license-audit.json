@@ -28115,6 +28115,1006 @@
         "Keep original IETF YANG module RFC attribution, years/authors and full source legends. IETF TLP4 section4.c applies to the identified Code Components, not general RFC prose; no patent right or endorsement is asserted."
       ],
       "scope": "Exact observed original source and original package copyright pair. Original component declarations, source root legal files, all new operative bodies and complete standard-license word differences reviewed. Ancillary and linked dependencies remain independently gated; no complete OS or OCI clearance."
+    },
+    "opam:dune@3.24.2#9ae38b390363bfa3a13a07cd028bd9bfae19470ff348bb88516196d4a8140d08": {
+      "source_identity": "9ae38b390363bfa3a13a07cd028bd9bfae19470ff348bb88516196d4a8140d08",
+      "copyright_sha256": "f00322b969318e53c5476aa956056bd3ee5c158794fd55cc3a1a6cdb546cc988",
+      "evidence_member": "opam/notices/dune.3.24.2.copyright",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND ISC AND LGPL-2.1-only AND LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception AND LGPL-2.1-or-later AND LicenseRef-Original-OCaml-Linking-Exception AND MIT AND OLDAP-2.8 AND LicenseRef-OpenLDAP-Original-Notices AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT AND BSD-3-Clause AND BSD-4-Clause AND Beerware AND OpenLDAP",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/f00322b969318e53c5476aa956056bd3ee5c158794fd55cc3a1a6cdb546cc988.txt",
+          "sha256": "f00322b969318e53c5476aa956056bd3ee5c158794fd55cc3a1a6cdb546cc988"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:dune-compiledb@0.6.0#5874cf231dca7872979114beb09dc7522021633db0bb9fe346dea7bd8586c084": {
+      "source_identity": "5874cf231dca7872979114beb09dc7522021633db0bb9fe346dea7bd8586c084",
+      "copyright_sha256": "49cbe0798d3d173422c651ddf231ed193bdb8697de574d562704e88d49381112",
+      "evidence_member": "opam/notices/dune-compiledb.0.6.0.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/49cbe0798d3d173422c651ddf231ed193bdb8697de574d562704e88d49381112.txt",
+          "sha256": "49cbe0798d3d173422c651ddf231ed193bdb8697de574d562704e88d49381112"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:dune-configurator@3.24.2#9ae38b390363bfa3a13a07cd028bd9bfae19470ff348bb88516196d4a8140d08": {
+      "source_identity": "9ae38b390363bfa3a13a07cd028bd9bfae19470ff348bb88516196d4a8140d08",
+      "copyright_sha256": "f8b1fbdcf11965c9205dfe2491348c56e547b529cb234ec825748851139b60b1",
+      "evidence_member": "opam/notices/dune-configurator.3.24.2.copyright",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND ISC AND LGPL-2.1-only AND LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception AND LGPL-2.1-or-later AND LicenseRef-Original-OCaml-Linking-Exception AND MIT AND OLDAP-2.8 AND LicenseRef-OpenLDAP-Original-Notices AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT AND BSD-3-Clause AND BSD-4-Clause AND Beerware AND OpenLDAP",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/f8b1fbdcf11965c9205dfe2491348c56e547b529cb234ec825748851139b60b1.txt",
+          "sha256": "f8b1fbdcf11965c9205dfe2491348c56e547b529cb234ec825748851139b60b1"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:fileutils@0.6.6#04220a9bbfc20cade29bc8682f65e9ae7dca40e6418979958a4da489bd0847f9": {
+      "source_identity": "04220a9bbfc20cade29bc8682f65e9ae7dca40e6418979958a4da489bd0847f9",
+      "copyright_sha256": "66d0c4b7c6c6a210faf678f23131b0804f9bcb30f76b85eaad4d19f33776a4f6",
+      "evidence_member": "opam/notices/fileutils.0.6.6.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/66d0c4b7c6c6a210faf678f23131b0804f9bcb30f76b85eaad4d19f33776a4f6.txt",
+          "sha256": "66d0c4b7c6c6a210faf678f23131b0804f9bcb30f76b85eaad4d19f33776a4f6"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:num@1.6#dbcad64077404a0de8ad4270881816347cb32d918ae93f9567476a48fcbf3351": {
+      "source_identity": "dbcad64077404a0de8ad4270881816347cb32d918ae93f9567476a48fcbf3351",
+      "copyright_sha256": "d60c4596983f65b0695358e6cdef37918f9dd4f057d1254ad6f14a2cef45ea82",
+      "evidence_member": "opam/notices/num.1.6.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d60c4596983f65b0695358e6cdef37918f9dd4f057d1254ad6f14a2cef45ea82.txt",
+          "sha256": "d60c4596983f65b0695358e6cdef37918f9dd4f057d1254ad6f14a2cef45ea82"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:ocaml-base-compiler@4.14.2#5512c7604f0d53c346594a58fe97b58a888a3ab743ce0e03faba3a7e0726a2ca": {
+      "source_identity": "5512c7604f0d53c346594a58fe97b58a888a3ab743ce0e03faba3a7e0726a2ca",
+      "copyright_sha256": "7e79febb579792a841f2f18c28f8063651bc471a6f6959c018952b21beaa5d34",
+      "evidence_member": "opam/notices/ocaml-base-compiler.4.14.2.copyright",
+      "redistributable": true,
+      "license": "CC-BY-SA-4.0 AND LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/7e79febb579792a841f2f18c28f8063651bc471a6f6959c018952b21beaa5d34.txt",
+          "sha256": "7e79febb579792a841f2f18c28f8063651bc471a6f6959c018952b21beaa5d34"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-4.0.txt",
+          "sha256": "a1d1adec3ba691ef6e377a78bbe9e9e2501f2f4a1723d08857da1ac6564e4fed"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:pcre2@8.0.4#67ad105760a180f98a6bd9c7d89574dcc982cd33a23ae24c9866628f1405de6d": {
+      "source_identity": "67ad105760a180f98a6bd9c7d89574dcc982cd33a23ae24c9866628f1405de6d",
+      "copyright_sha256": "5e47d20db2b81366b3dbda5c2b895fb5674ea1120d16e0109c5df01764d5c57c",
+      "evidence_member": "opam/notices/pcre2.8.0.4.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5e47d20db2b81366b3dbda5c2b895fb5674ea1120d16e0109c5df01764d5c57c.txt",
+          "sha256": "5e47d20db2b81366b3dbda5c2b895fb5674ea1120d16e0109c5df01764d5c57c"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:ppx_derivers@1.2.1#7c42a7c773a1556d0f015d55d56ac86e83db06d178be1e6b692691cc996ec067": {
+      "source_identity": "7c42a7c773a1556d0f015d55d56ac86e83db06d178be1e6b692691cc996ec067",
+      "copyright_sha256": "848348d2d88f6493de72e164b4c41e6b449f0c3efeba7117ecc59c60f85610ae",
+      "evidence_member": "opam/notices/ppx_derivers.1.2.1.copyright",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/848348d2d88f6493de72e164b4c41e6b449f0c3efeba7117ecc59c60f85610ae.txt",
+          "sha256": "848348d2d88f6493de72e164b4c41e6b449f0c3efeba7117ecc59c60f85610ae"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:re@1.14.0#d263d0abe4e5446fbdf1ed35e9daae709808664e1b94a1ed8c0015683547d003": {
+      "source_identity": "d263d0abe4e5446fbdf1ed35e9daae709808664e1b94a1ed8c0015683547d003",
+      "copyright_sha256": "61b57675e324b1d31608dcf5b0d8c4afd2cbc0473d424b056be473cc379071c0",
+      "evidence_member": "opam/notices/re.1.14.0.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/61b57675e324b1d31608dcf5b0d8c4afd2cbc0473d424b056be473cc379071c0.txt",
+          "sha256": "61b57675e324b1d31608dcf5b0d8c4afd2cbc0473d424b056be473cc379071c0"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:sexplib@v0.16.0#8e4422df276041b66c7dc1b8f1a7fe811f81365a1ae0e7eeb1d6980682923a9d": {
+      "source_identity": "8e4422df276041b66c7dc1b8f1a7fe811f81365a1ae0e7eeb1d6980682923a9d",
+      "copyright_sha256": "abb032495281c6a174863ecb9834b4c234c26d3dfbfda6121273515fb7d2586c",
+      "evidence_member": "opam/notices/sexplib.v0.16.0.copyright",
+      "redistributable": true,
+      "license": "BSD-3-Clause AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/abb032495281c6a174863ecb9834b4c234c26d3dfbfda6121273515fb7d2586c.txt",
+          "sha256": "abb032495281c6a174863ecb9834b4c234c26d3dfbfda6121273515fb7d2586c"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:stdlib-shims@0.3.0#70e4089a92d8f5952005c0440424fe29b6bd8fb6e7bcdd12263097dc39d08380": {
+      "source_identity": "70e4089a92d8f5952005c0440424fe29b6bd8fb6e7bcdd12263097dc39d08380",
+      "copyright_sha256": "b2b5cfd9ca584127b65761931958ba01838316b0d043acf0680d30eb6ba78589",
+      "evidence_member": "opam/notices/stdlib-shims.0.3.0.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-only AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/b2b5cfd9ca584127b65761931958ba01838316b0d043acf0680d30eb6ba78589.txt",
+          "sha256": "b2b5cfd9ca584127b65761931958ba01838316b0d043acf0680d30eb6ba78589"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:vyos1x-config@0.3#59cbf5c726191da2df512af9d46939d88a77df67ccc4470c1885ff10b9fe192b": {
+      "source_identity": "59cbf5c726191da2df512af9d46939d88a77df67ccc4470c1885ff10b9fe192b",
+      "copyright_sha256": "5f1904c16818b9322bbde0dd20119d1b6ab5b7654889ec7f9b470a733500f611",
+      "evidence_member": "opam/notices/vyos1x-config.0.3.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-only",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5f1904c16818b9322bbde0dd20119d1b6ab5b7654889ec7f9b470a733500f611.txt",
+          "sha256": "5f1904c16818b9322bbde0dd20119d1b6ab5b7654889ec7f9b470a733500f611"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "opam:yojson@3.0.0#b476aa13800be5161fbc068f8ddfc25d3b90f9033f1e24a4db5741ab38ddc31e": {
+      "source_identity": "b476aa13800be5161fbc068f8ddfc25d3b90f9033f1e24a4db5741ab38ddc31e",
+      "copyright_sha256": "4c5fa2446f5bb9024c41144f0daf4de43b5b4d87c737fb9d2d86609b8263b262",
+      "evidence_member": "opam/notices/yojson.3.0.0.copyright",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/4c5fa2446f5bb9024c41144f0daf4de43b5b4d87c737fb9d2d86609b8263b262.txt",
+          "sha256": "4c5fa2446f5bb9024c41144f0daf4de43b5b4d87c737fb9d2d86609b8263b262"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_collections@1.5.0#db2fa452206ebee18c4b5c2274dbf1de17008e874b4dc4f0aea9d01ca79e4526": {
+      "source_identity": "db2fa452206ebee18c4b5c2274dbf1de17008e874b4dc4f0aea9d01ca79e4526",
+      "copyright_sha256": "252117cb3c19900db66f7572ee332944521d2ffd22e8cfbffd95af4ea2b72cb9",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_collections-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/252117cb3c19900db66f7572ee332944521d2ffd22e8cfbffd95af4ea2b72cb9.txt",
+          "sha256": "252117cb3c19900db66f7572ee332944521d2ffd22e8cfbffd95af4ea2b72cb9"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_locid@1.5.0#13acbb8371917fc971be86fc8057c41a64b521c184808a698c02acc242dbf637": {
+      "source_identity": "13acbb8371917fc971be86fc8057c41a64b521c184808a698c02acc242dbf637",
+      "copyright_sha256": "a587b1be70f4159b73c0ed70a6d1ae175df47d6112edb8abdb7a0c6e43e1d715",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_locid-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a587b1be70f4159b73c0ed70a6d1ae175df47d6112edb8abdb7a0c6e43e1d715.txt",
+          "sha256": "a587b1be70f4159b73c0ed70a6d1ae175df47d6112edb8abdb7a0c6e43e1d715"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_locid_transform@1.5.0#01d11ac35de8e40fdeda00d9e1e9d92525f3f9d887cdd7aa81d727596788b54e": {
+      "source_identity": "01d11ac35de8e40fdeda00d9e1e9d92525f3f9d887cdd7aa81d727596788b54e",
+      "copyright_sha256": "2beff3a87e92c67422798c6c3da8004d74086f2a51a742a51ce6ddde1900cc60",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_locid_transform-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/2beff3a87e92c67422798c6c3da8004d74086f2a51a742a51ce6ddde1900cc60.txt",
+          "sha256": "2beff3a87e92c67422798c6c3da8004d74086f2a51a742a51ce6ddde1900cc60"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_locid_transform_data@1.5.0#fdc8ff3388f852bede6b579ad4e978ab004f139284d7b28715f773507b946f6e": {
+      "source_identity": "fdc8ff3388f852bede6b579ad4e978ab004f139284d7b28715f773507b946f6e",
+      "copyright_sha256": "6b9a2ddd08d24846ba7d011352d400ae339eedfc33fb75c14004944e83e7fc92",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_locid_transform_data-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/6b9a2ddd08d24846ba7d011352d400ae339eedfc33fb75c14004944e83e7fc92.txt",
+          "sha256": "6b9a2ddd08d24846ba7d011352d400ae339eedfc33fb75c14004944e83e7fc92"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_normalizer@1.5.0#19ce3e0da2ec68599d193c93d088142efd7f9c5d6fc9b803774855747dc6a84f": {
+      "source_identity": "19ce3e0da2ec68599d193c93d088142efd7f9c5d6fc9b803774855747dc6a84f",
+      "copyright_sha256": "4f8e58f161d941c8c70334ed9cc3056d8685b8bccce84b7c799b8907b15c0d35",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_normalizer-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/4f8e58f161d941c8c70334ed9cc3056d8685b8bccce84b7c799b8907b15c0d35.txt",
+          "sha256": "4f8e58f161d941c8c70334ed9cc3056d8685b8bccce84b7c799b8907b15c0d35"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_normalizer_data@1.5.0#f8cafbf7aa791e9b22bec55a167906f9e1215fd475cd22adfcf660e03e989516": {
+      "source_identity": "f8cafbf7aa791e9b22bec55a167906f9e1215fd475cd22adfcf660e03e989516",
+      "copyright_sha256": "0df142d96e69cfb2770d8169a3899b3736319516b61f82665c84a7510bd55199",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_normalizer_data-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0df142d96e69cfb2770d8169a3899b3736319516b61f82665c84a7510bd55199.txt",
+          "sha256": "0df142d96e69cfb2770d8169a3899b3736319516b61f82665c84a7510bd55199"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_properties@1.5.1#93d6020766cfc6302c15dbbc9c8778c37e62c14427cb7f6e601d849e092aeef5": {
+      "source_identity": "93d6020766cfc6302c15dbbc9c8778c37e62c14427cb7f6e601d849e092aeef5",
+      "copyright_sha256": "41a9329285bc360bb9e2502a1d2326a1e211cd6f9c1db324df6e3a58f2198f25",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_properties-1.5.1/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/41a9329285bc360bb9e2502a1d2326a1e211cd6f9c1db324df6e3a58f2198f25.txt",
+          "sha256": "41a9329285bc360bb9e2502a1d2326a1e211cd6f9c1db324df6e3a58f2198f25"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_properties_data@1.5.0#67a8effbc3dd3e4ba1afa8ad918d5684b8868b3b26500753effea8d2eed19569": {
+      "source_identity": "67a8effbc3dd3e4ba1afa8ad918d5684b8868b3b26500753effea8d2eed19569",
+      "copyright_sha256": "203bfaf274d5c4fdc2b5902b633c95accbbef62d74fec5df1158384d9050ebcb",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_properties_data-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/203bfaf274d5c4fdc2b5902b633c95accbbef62d74fec5df1158384d9050ebcb.txt",
+          "sha256": "203bfaf274d5c4fdc2b5902b633c95accbbef62d74fec5df1158384d9050ebcb"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_provider@1.5.0#6ed421c8a8ef78d3e2dbc98a973be2f3770cb42b606e3ab18d6237c4dfde68d9": {
+      "source_identity": "6ed421c8a8ef78d3e2dbc98a973be2f3770cb42b606e3ab18d6237c4dfde68d9",
+      "copyright_sha256": "a32ef2400cc07b35b62d92c098f04c687ce6c016b41306f05efcb5c157fa08fc",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_provider-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a32ef2400cc07b35b62d92c098f04c687ce6c016b41306f05efcb5c157fa08fc.txt",
+          "sha256": "a32ef2400cc07b35b62d92c098f04c687ce6c016b41306f05efcb5c157fa08fc"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:icu_provider_macros@1.5.0#1ec89e9337638ecdc08744df490b221a7399bf8d164eb52a665454e60e075ad6": {
+      "source_identity": "1ec89e9337638ecdc08744df490b221a7399bf8d164eb52a665454e60e075ad6",
+      "copyright_sha256": "cb4c13d915b68418c7fd287581f358602d912b011614d711ee81cd0d22fa9e63",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/icu_provider_macros-1.5.0/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/cb4c13d915b68418c7fd287581f358602d912b011614d711ee81cd0d22fa9e63.txt",
+          "sha256": "cb4c13d915b68418c7fd287581f358602d912b011614d711ee81cd0d22fa9e63"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:litemap@0.7.3#643cb0b8d4fcc284004d5fd0d67ccf61dfffadb7f75e1e71bc420f4688a3a704": {
+      "source_identity": "643cb0b8d4fcc284004d5fd0d67ccf61dfffadb7f75e1e71bc420f4688a3a704",
+      "copyright_sha256": "7ea1c20268cdee95f9ed5d1145a68ee75360a2d961696ab5a0fe347af4a5df45",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/litemap-0.7.3/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/7ea1c20268cdee95f9ed5d1145a68ee75360a2d961696ab5a0fe347af4a5df45.txt",
+          "sha256": "7ea1c20268cdee95f9ed5d1145a68ee75360a2d961696ab5a0fe347af4a5df45"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:tinystr@0.7.6#9117f5d4db391c1cf6927e7bea3db74b9a1c1add8f7eda9ffd5364f40f57b82f": {
+      "source_identity": "9117f5d4db391c1cf6927e7bea3db74b9a1c1add8f7eda9ffd5364f40f57b82f",
+      "copyright_sha256": "1cce2c91624d25ea67078a3c73e7523450bef84a83307e63ec9f61189f7c88b7",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/tinystr-0.7.6/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/1cce2c91624d25ea67078a3c73e7523450bef84a83307e63ec9f61189f7c88b7.txt",
+          "sha256": "1cce2c91624d25ea67078a3c73e7523450bef84a83307e63ec9f61189f7c88b7"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:tinyvec_macros@0.1.1#1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20": {
+      "source_identity": "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20",
+      "copyright_sha256": "2c818e77c2435d332fba84d81ac56e8eb1f9a1f54b0c4de644e08a99b21fffe4",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/tinyvec_macros-0.1.1/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT AND Zlib",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/2c818e77c2435d332fba84d81ac56e8eb1f9a1f54b0c4de644e08a99b21fffe4.txt",
+          "sha256": "2c818e77c2435d332fba84d81ac56e8eb1f9a1f54b0c4de644e08a99b21fffe4"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:utf16_iter@1.0.5#c8232dd3cdaed5356e0f716d285e4b40b932ac434100fe9b7e0e8e935b9e6246": {
+      "source_identity": "c8232dd3cdaed5356e0f716d285e4b40b932ac434100fe9b7e0e8e935b9e6246",
+      "copyright_sha256": "367855b80ced0c8bedca0348460f663e635c7eedd9005109e9ef1ea848610d4f",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/utf16_iter-1.0.5/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT AND (MIT OR Apache-2.0)",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/367855b80ced0c8bedca0348460f663e635c7eedd9005109e9ef1ea848610d4f.txt",
+          "sha256": "367855b80ced0c8bedca0348460f663e635c7eedd9005109e9ef1ea848610d4f"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:utf8_iter@1.0.4#b6c140620e7ffbb22c2dee59cafe6084a59b5ffc27a8859a5f0d494b5d52b6be": {
+      "source_identity": "b6c140620e7ffbb22c2dee59cafe6084a59b5ffc27a8859a5f0d494b5d52b6be",
+      "copyright_sha256": "1a22da97574ec1c215fc9c11c371dc6d6c8be09f1d8a95b2565c10b9f116c003",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/utf8_iter-1.0.4/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT AND (MIT OR Apache-2.0)",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/1a22da97574ec1c215fc9c11c371dc6d6c8be09f1d8a95b2565c10b9f116c003.txt",
+          "sha256": "1a22da97574ec1c215fc9c11c371dc6d6c8be09f1d8a95b2565c10b9f116c003"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:writeable@0.5.5#1e9df38ee2d2c3c5948ea468a8406ff0db0b29ae1ffde1bcf20ef305bcc95c51": {
+      "source_identity": "1e9df38ee2d2c3c5948ea468a8406ff0db0b29ae1ffde1bcf20ef305bcc95c51",
+      "copyright_sha256": "449ceb8a1aa9780f1d6059f2bf90160370807e04b94026990455943cabdd52e4",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/writeable-0.5.5/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/449ceb8a1aa9780f1d6059f2bf90160370807e04b94026990455943cabdd52e4.txt",
+          "sha256": "449ceb8a1aa9780f1d6059f2bf90160370807e04b94026990455943cabdd52e4"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:yoke@0.7.4#6c5b1314b079b0930c31e3af543d8ee1757b1951ae1e1565ec704403a7240ca5": {
+      "source_identity": "6c5b1314b079b0930c31e3af543d8ee1757b1951ae1e1565ec704403a7240ca5",
+      "copyright_sha256": "5fefd82446727b266991790b196796e2c8ffe09b9983123ac3c0fde4f5a56efb",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/yoke-0.7.4/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5fefd82446727b266991790b196796e2c8ffe09b9983123ac3c0fde4f5a56efb.txt",
+          "sha256": "5fefd82446727b266991790b196796e2c8ffe09b9983123ac3c0fde4f5a56efb"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:yoke-derive@0.7.4#28cc31741b18cb6f1d5ff12f5b7523e3d6eb0852bbbad19d73905511d9849b95": {
+      "source_identity": "28cc31741b18cb6f1d5ff12f5b7523e3d6eb0852bbbad19d73905511d9849b95",
+      "copyright_sha256": "a26667fa1113c57066ba032355e6a2bdb34c97979a51808896286a1f11397a42",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/yoke-derive-0.7.4/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a26667fa1113c57066ba032355e6a2bdb34c97979a51808896286a1f11397a42.txt",
+          "sha256": "a26667fa1113c57066ba032355e6a2bdb34c97979a51808896286a1f11397a42"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:zerocopy@0.7.34#ae87e3fcd617500e5d106f0380cf7b77f3c6092aae37191433159dda23cfb087": {
+      "source_identity": "ae87e3fcd617500e5d106f0380cf7b77f3c6092aae37191433159dda23cfb087",
+      "copyright_sha256": "4469df294fee5291f465ac4fc7247cc660cc35934199e604bf2c088a1c902a67",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/zerocopy-0.7.34/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-2-Clause AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/4469df294fee5291f465ac4fc7247cc660cc35934199e604bf2c088a1c902a67.txt",
+          "sha256": "4469df294fee5291f465ac4fc7247cc660cc35934199e604bf2c088a1c902a67"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:zerocopy-derive@0.7.34#15e934569e47891f7d9411f1a451d947a60e000ab3bd24fbb970f000387d1b3b": {
+      "source_identity": "15e934569e47891f7d9411f1a451d947a60e000ab3bd24fbb970f000387d1b3b",
+      "copyright_sha256": "42f00695339bcd901430279561893849a3b7a7b3020416cfd3e0b83fcbd52160",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/zerocopy-derive-0.7.34/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND BSD-2-Clause AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/42f00695339bcd901430279561893849a3b7a7b3020416cfd3e0b83fcbd52160.txt",
+          "sha256": "42f00695339bcd901430279561893849a3b7a7b3020416cfd3e0b83fcbd52160"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:zerofrom@0.1.4#91ec111ce797d0e0784a1116d0ddcdbea84322cd79e5d5ad173daeba4f93ab55": {
+      "source_identity": "91ec111ce797d0e0784a1116d0ddcdbea84322cd79e5d5ad173daeba4f93ab55",
+      "copyright_sha256": "1825b596a7cffd65f5061cbe435942a6bd7faa2ae9702274dde6d4c1b6b27c78",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/zerofrom-0.1.4/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/1825b596a7cffd65f5061cbe435942a6bd7faa2ae9702274dde6d4c1b6b27c78.txt",
+          "sha256": "1825b596a7cffd65f5061cbe435942a6bd7faa2ae9702274dde6d4c1b6b27c78"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:zerofrom-derive@0.1.4#0ea7b4a3637ea8669cedf0f1fd5c286a17f3de97b8dd5a70a6c167a1730e63a5": {
+      "source_identity": "0ea7b4a3637ea8669cedf0f1fd5c286a17f3de97b8dd5a70a6c167a1730e63a5",
+      "copyright_sha256": "8acb4524ba9b7e09f38de1f31a6f3441055bb6e682844f89f68e5a7e6fcf3569",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/zerofrom-derive-0.1.4/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8acb4524ba9b7e09f38de1f31a6f3441055bb6e682844f89f68e5a7e6fcf3569.txt",
+          "sha256": "8acb4524ba9b7e09f38de1f31a6f3441055bb6e682844f89f68e5a7e6fcf3569"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:zerovec@0.10.4#aa2b893d79df23bfb12d5461018d408ea19dfafe76c2c7ef6d4eba614f8ff079": {
+      "source_identity": "aa2b893d79df23bfb12d5461018d408ea19dfafe76c2c7ef6d4eba614f8ff079",
+      "copyright_sha256": "3fc721d08abad88290026e960770256c62036eeed46a2bb6fae958bf556156b8",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/zerovec-0.10.4/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/3fc721d08abad88290026e960770256c62036eeed46a2bb6fae958bf556156b8.txt",
+          "sha256": "3fc721d08abad88290026e960770256c62036eeed46a2bb6fae958bf556156b8"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:zerovec-derive@0.10.3#6eafa6dfb17584ea3e2bd6e76e0cc15ad7af12b09abdd1ca55961bed9b1063c6": {
+      "source_identity": "6eafa6dfb17584ea3e2bd6e76e0cc15ad7af12b09abdd1ca55961bed9b1063c6",
+      "copyright_sha256": "f2b5fc8e9f66bf7304818a397ecb92d94a407a105fd9d5748a96fee154b06c2e",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/zerovec-derive-0.10.3/copyright",
+      "redistributable": true,
+      "license": "Unicode-3.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/f2b5fc8e9f66bf7304818a397ecb92d94a407a105fd9d5748a96fee154b06c2e.txt",
+          "sha256": "f2b5fc8e9f66bf7304818a397ecb92d94a407a105fd9d5748a96fee154b06c2e"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:instant@0.1.13#e0242819d153cba4b4b05a5a8f2a7e9bbf97b6055b2a002b395c96b5ff3c0222": {
+      "source_identity": "e0242819d153cba4b4b05a5a8f2a7e9bbf97b6055b2a002b395c96b5ff3c0222",
+      "copyright_sha256": "8cb3a1df79d463f852c35f46a3afcddd30794d37952290b52360f4267a453141",
+      "evidence_member": "third-party-notices/watchfiles/cargo/instant-0.1.13/copyright",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8cb3a1df79d463f852c35f46a3afcddd30794d37952290b52360f4267a453141.txt",
+          "sha256": "8cb3a1df79d463f852c35f46a3afcddd30794d37952290b52360f4267a453141"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:notify@6.1.1#02e2a902f328cffcf7cfcee56e70720f8c80d4b50877183a332cac725c35dc95": {
+      "source_identity": "02e2a902f328cffcf7cfcee56e70720f8c80d4b50877183a332cac725c35dc95",
+      "copyright_sha256": "f762095db7a1d90ac6fd2d5332bcf723ae22d0b9ae5efd8b828ba1c9a8c850b4",
+      "evidence_member": "third-party-notices/watchfiles/cargo/notify-6.1.1/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND CC0-1.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/f762095db7a1d90ac6fd2d5332bcf723ae22d0b9ae5efd8b828ba1c9a8c850b4.txt",
+          "sha256": "f762095db7a1d90ac6fd2d5332bcf723ae22d0b9ae5efd8b828ba1c9a8c850b4"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:notify-types@1.0.0#02e2a902f328cffcf7cfcee56e70720f8c80d4b50877183a332cac725c35dc95": {
+      "source_identity": "02e2a902f328cffcf7cfcee56e70720f8c80d4b50877183a332cac725c35dc95",
+      "copyright_sha256": "5f4ddba51010a0187115de20f0afd83ce38877a7a321da7b071cc01ce9d6b5e7",
+      "evidence_member": "third-party-notices/watchfiles/cargo/notify-types-1.0.0/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND CC0-1.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5f4ddba51010a0187115de20f0afd83ce38877a7a321da7b071cc01ce9d6b5e7.txt",
+          "sha256": "5f4ddba51010a0187115de20f0afd83ce38877a7a321da7b071cc01ce9d6b5e7"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:pyo3@0.23.1#7ebb0c0cc0de9678e53be9ccf8a2ab53045e6e3a8be03393ceccc5e7396ccb40": {
+      "source_identity": "7ebb0c0cc0de9678e53be9ccf8a2ab53045e6e3a8be03393ceccc5e7396ccb40",
+      "copyright_sha256": "e7bfc7a3af1bc59d29324674beee33a792d296854893a3ecf1ed4e0dd8d71ed5",
+      "evidence_member": "third-party-notices/watchfiles/cargo/pyo3-0.23.1/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e7bfc7a3af1bc59d29324674beee33a792d296854893a3ecf1ed4e0dd8d71ed5.txt",
+          "sha256": "e7bfc7a3af1bc59d29324674beee33a792d296854893a3ecf1ed4e0dd8d71ed5"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:pyo3-build-config@0.23.1#80e3ce69c4ec34476534b490e412b871ba03a82e35604c3dfb95fcb6bfb60c09": {
+      "source_identity": "80e3ce69c4ec34476534b490e412b871ba03a82e35604c3dfb95fcb6bfb60c09",
+      "copyright_sha256": "811eda3393a702cb13296685894371c7b413f4dc01e1a5b43864d7cb29c545a3",
+      "evidence_member": "third-party-notices/watchfiles/cargo/pyo3-build-config-0.23.1/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/811eda3393a702cb13296685894371c7b413f4dc01e1a5b43864d7cb29c545a3.txt",
+          "sha256": "811eda3393a702cb13296685894371c7b413f4dc01e1a5b43864d7cb29c545a3"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:pyo3-ffi@0.23.1#3b09f311c76b36dfd6dd6f7fa6f9f18e7e46a1c937110d283e80b12ba2468a75": {
+      "source_identity": "3b09f311c76b36dfd6dd6f7fa6f9f18e7e46a1c937110d283e80b12ba2468a75",
+      "copyright_sha256": "e1af276617991f54f75b1b5fb2d37f2bac231febed02f74f73333724809ff215",
+      "evidence_member": "third-party-notices/watchfiles/cargo/pyo3-ffi-0.23.1/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e1af276617991f54f75b1b5fb2d37f2bac231febed02f74f73333724809ff215.txt",
+          "sha256": "e1af276617991f54f75b1b5fb2d37f2bac231febed02f74f73333724809ff215"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:pyo3-macros@0.23.1#fd4f74086536d1e1deaff99ec0387481fb3325c82e4e48be0e75ab3d3fcb487a": {
+      "source_identity": "fd4f74086536d1e1deaff99ec0387481fb3325c82e4e48be0e75ab3d3fcb487a",
+      "copyright_sha256": "80e28099dacf23eef018cb99def6da3dcd013dfff0e3293862b3c50485c60239",
+      "evidence_member": "third-party-notices/watchfiles/cargo/pyo3-macros-0.23.1/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/80e28099dacf23eef018cb99def6da3dcd013dfff0e3293862b3c50485c60239.txt",
+          "sha256": "80e28099dacf23eef018cb99def6da3dcd013dfff0e3293862b3c50485c60239"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
+    },
+    "cargo:pyo3-macros-backend@0.23.1#9e77dfeb76b32bbf069144a5ea0a36176ab59c8db9ce28732d0f06f096bbfbc8": {
+      "source_identity": "9e77dfeb76b32bbf069144a5ea0a36176ab59c8db9ce28732d0f06f096bbfbc8",
+      "copyright_sha256": "e384eb491d005075c8e5651f114d2d8ab00d17c48bde2bfec1cf6bad336ba375",
+      "evidence_member": "third-party-notices/watchfiles/cargo/pyo3-macros-backend-0.23.1/copyright",
+      "redistributable": true,
+      "license": "Apache-2.0 AND MIT",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e384eb491d005075c8e5651f114d2d8ab00d17c48bde2bfec1cf6bad336ba375.txt",
+          "sha256": "e384eb491d005075c8e5651f114d2d8ab00d17c48bde2bfec1cf6bad336ba375"
+        },
+        {
+          "path": "LICENSES/Apache-2.0.txt",
+          "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+        }
+      ],
+      "scope": "Exact retained source input and aggregate original notices only. Every complete original block matches previously read grants; all newly encountered copyright prefixes read. Full original aggregate retained byte-for-byte. No parent package, complete OS or OCI clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, attribution, patent, disclaimer and nonendorsement notices, including all alternatives and component-specific scopes.",
+        "Supply exact corresponding preferred source and original build/install inputs. Mark actual modifications; no new upstream modifications or license conversion is asserted.",
+        "Compound expression lists retained license scopes. It does not relicense the whole component, extend compiler exceptions or remove explicitly granted alternatives."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
