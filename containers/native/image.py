@@ -202,7 +202,7 @@ def guest_package(arch, version):
     control=core/'DEBIAN/control';control.write_text(control.read_text().replace('Version: '+old_version+'\n','Version: '+new_version+'\n'))
     (core/'DEBIAN/md5sums').unlink(missing_ok=True)
     repaired=debs/f'vyos-1x_{new_version}_{arch}.deb';run('dpkg-deb','--root-owner-group','-b',str(core),str(repaired));original.unlink()
-    (package/'DEBIAN/control').write_text(f'Package: shirube-integration\nVersion: {version[1:]}\nArchitecture: {arch}\nMaintainer: michibiki-io <maintainers@michibiki.io>\nDepends: vyos-1x (= {new_version}), python3, systemd, ca-certificates\nDescription: Shirube OS identity, first boot and NetBird integration\n')
+    (package/'DEBIAN/control').write_text(f'Package: shirube-integration\nVersion: {version[1:]}\nArchitecture: {arch}\nMaintainer: michibiki-io <maintainers@michibiki.io>\nDepends: vyos-1x (= {new_version}), cloud-init (= 22.1+shirube1), python3, systemd, ca-certificates\nDescription: Shirube OS identity, first boot and NetBird integration\n')
     run('dpkg-deb','--root-owner-group','-b',str(package),str(debs/f'shirube-integration_{version[1:]}_{arch}.deb'))
 
 
@@ -222,6 +222,8 @@ def assemble(sources, packages, arch, version, output):
         run('python3',str(root/'extras.py'),job)
     from producer.package_notices import retain_all
     retain_all(debs,Path('/build-private/runtime-package-notices'))
+    from producer.cloud_init import build as build_cloud_init
+    build_cloud_init(Path('/src'), Path('/guest-cloud-init'), debs)
     guest_package(arch,version)
     audited=list(debs.glob('*.deb'))
     signed_modules=sum(audit(package,arch,signing/'cert.der')['signed_modules_verified'] for package in audited)
@@ -281,7 +283,7 @@ def assemble(sources, packages, arch, version, output):
             elif image.is_file() and image.suffix in {'.cfg','.txt'}:
                 image.write_text(image.read_text().replace('VyOS','Shirube OS'))
         if arch=='amd64':
-            (source/'data/architectures/amd64.toml').write_text('packages = ["grub-efi-amd64", "grub-pc-bin", "openvpn-dco", "telegraf", "vyos-ipt-netflow"]\nbootloaders = "grub-efi"\nsquashfs_compression_type = "xz -processors 2 -mem 1G -b 256k -always-use-fragments -no-recovery"\n')
+            (source/'data/architectures/amd64.toml').write_text('packages = ["grub-efi-amd64", "grub-pc-bin", "openvpn-dco", "telegraf", "vyos-ipt-netflow"]\nbootloaders = "grub-pc,grub-efi"\nsquashfs_compression_type = "xz -processors 2 -mem 1G -b 256k -always-use-fragments -no-recovery"\n')
         if arch=='arm64':
             (source/'data/live-build-config/bootloaders/grub-pc/grub.cfg').write_text('set default=0\nset timeout=5\nterminal_input console\nterminal_output console\nLINUX_LIVE\nLINUX_INSTALL\n')
         config=source/f'data/architectures/{arch}.toml';config.write_text(config.read_text().replace('xz -b 256k','xz -processors 2 -mem 1G -b 256k').replace('xz -Xbcj x86','xz -processors 2 -mem 1G -Xbcj x86'))
@@ -309,6 +311,8 @@ def assemble(sources, packages, arch, version, output):
         candidates=list((source/'build').glob(f'vyos-{version[1:]}-generic-{arch}.iso'))
         if len(candidates)!=1:raise ValueError('Expected exactly one assembled ISO')
         image=output/f'shirube-os-{version}-{arch}.iso';shutil.copy2(candidates[0],image)
+        from producer.boot_media import inspect as inspect_boot_media
+        inspect_boot_media(image,arch)
         verify=work/'verify';verify.mkdir()
         for item,name in [('/boot/grub/efi.img','efi.img'),('/live/vmlinuz-6.6.128-vyos','vmlinuz'),('/live/filesystem.packages','filesystem.packages')]:
             run('xorriso','-osirrox','on','-indev',str(image),'-extract',item,str(verify/name))

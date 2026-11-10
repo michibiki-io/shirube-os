@@ -18,19 +18,45 @@ from .sanitize import audit, sanitize
 from .guest_diagnostics import GuestCommandError
 
 
+FIRMWARE = {
+    'arm64': [('/usr/share/AAVMF/AAVMF_CODE.fd', '/usr/share/AAVMF/AAVMF_VARS.fd')],
+    'amd64': [('/usr/share/OVMF/OVMF_CODE_4M.fd', '/usr/share/OVMF/OVMF_VARS_4M.fd'),
+              ('/usr/share/OVMF/OVMF_CODE.fd', '/usr/share/OVMF/OVMF_VARS.fd')],
+}
+
+
+def prepare_firmware(arch, mode, work):
+    """Select explicit firmware; AMD64 BIOS never attaches EFI flash/state."""
+    if arch not in FIRMWARE or mode not in {'uefi', 'bios'}:
+        raise ValueError('Explicit supported architecture/firmware required')
+    if mode == 'bios':
+        if arch != 'amd64':
+            raise ValueError('Legacy BIOS is supported only on AMD64')
+        return []
+    firmware = next(((Path(c), Path(v)) for c, v in FIRMWARE[arch]
+                     if Path(c).is_file() and Path(v).is_file()), None)
+    if not firmware:
+        raise ValueError('Architecture-specific UEFI firmware missing')
+    code, variables = firmware
+    nvram = Path(work)/'nvram.fd'
+    shutil.copy2(variables, nvram)
+    if sha256(nvram) != sha256(variables):
+        raise ValueError('NVRAM is not fresh')
+    return ['-drive', f'if=pflash,format=raw,unit=0,readonly=on,file={code}',
+            '-drive', f'if=pflash,format=raw,unit=1,file={nvram}']
+
+
 class VM:
-    def __init__(self, arch, disk, work, iso=None, accelerator='kvm', boot_console='serial'):
+    def __init__(self, arch, disk, work, iso=None, accelerator='kvm', boot_console='serial',
+                 firmware_mode='uefi', cloud_seed=None, ssh_forward=False):
         native(arch);self.work=Path(work);self.work.mkdir()
         if accelerator not in {'kvm','tcg'}:raise ValueError('Unsupported QEMU accelerator')
         if boot_console not in {'serial','local'}:raise ValueError('Unsupported boot console')
         self.accelerator=accelerator
         self.disk=Path(disk);self.iso=iso;self.arch=arch
-        options=([('/usr/share/AAVMF/AAVMF_CODE.fd','/usr/share/AAVMF/AAVMF_VARS.fd')] if arch=='arm64' else
-                 [('/usr/share/OVMF/OVMF_CODE_4M.fd','/usr/share/OVMF/OVMF_VARS_4M.fd'),('/usr/share/OVMF/OVMF_CODE.fd','/usr/share/OVMF/OVMF_VARS.fd')])
-        firmware=next(((Path(c),Path(v)) for c,v in options if Path(c).is_file() and Path(v).is_file()),None)
-        if not firmware:raise ValueError('Architecture-specific UEFI firmware missing')
-        code,variables=firmware;nvram=self.work/'nvram.fd';shutil.copy2(variables,nvram)
-        if sha256(nvram)!=sha256(variables):raise ValueError('NVRAM is not fresh')
+        self.cloud_seed=cloud_seed
+        firmware_args=prepare_firmware(arch,firmware_mode,self.work)
+        self.firmware_mode=firmware_mode
         executable='qemu-system-aarch64' if arch=='arm64' else 'qemu-system-x86_64'
         machine='virt' if arch=='arm64' else 'q35'
         serial=self.work/'serial.sock'
@@ -39,13 +65,21 @@ class VM:
         # Bound translated-code memory as well as guest RAM. QEMU's host-sized
         # default cache can exhaust a 3 GiB container during a live install.
         accel='kvm' if accelerator=='kvm' else 'tcg,thread=multi,tb-size=128'
+        network='user,id=net0'
+        self.ssh_port=None
+        if cloud_seed is not None or ssh_forward:
+            with socket.socket() as reservation:
+                reservation.bind(('127.0.0.1',0));self.ssh_port=reservation.getsockname()[1]
+            network+=f',hostfwd=tcp:127.0.0.1:{self.ssh_port}-:22'
         args=[executable,'-machine',machine,'-accel',accel,'-cpu',cpu,'-smp','2','-m','2048','-display','none',
               '-serial',f'unix:{serial},server=on,wait=on','-qmp',f'unix:{self.work}/qmp.sock,server=on,wait=off',
-              '-drive',f'if=pflash,format=raw,unit=0,readonly=on,file={code}',
-              '-drive',f'if=pflash,format=raw,unit=1,file={nvram}',
+              *firmware_args,
               '-drive',f'if=none,id=osdisk,format=qcow2,file={disk}',
               '-device','virtio-blk-pci,drive=osdisk,bootindex=1',
-              '-netdev','user,id=net0','-device',f'virtio-net-pci,netdev=net0,mac={mac},romfile=']
+              '-netdev',network,'-device',f'virtio-net-pci,netdev=net0,mac={mac},romfile=']
+        if cloud_seed is not None:
+            args+=['-drive',f'if=none,id=seed,format=raw,media=cdrom,readonly=on,file={cloud_seed}',
+                   '-device','virtio-scsi-pci,id=seedscsi', '-device','scsi-cd,drive=seed,bus=seedscsi.0']
         if iso:
             args+=['-device','virtio-scsi-pci,id=scsi0','-drive',f'if=none,id=cd0,format=raw,media=cdrom,readonly=on,file={iso}',
                    '-device','scsi-cd,drive=cd0,bus=scsi0.0,bootindex=0']
@@ -110,6 +144,23 @@ class VM:
     def reboot(self):
         self.child.sendline('sudo -n systemctl reboot --no-block')
         self.login()
+
+    def eject_cloud_seed(self):
+        """Remove only this test VM's metadata CD before persistence checks."""
+        if self.cloud_seed is None:raise ValueError('No metadata seed is attached')
+        with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as peer:
+            peer.settimeout(10);peer.connect(str(self.work/'qmp.sock'))
+            with peer.makefile('rwb',buffering=0) as channel:
+                if 'QMP' not in json.loads(channel.readline()):raise RuntimeError('Missing QMP greeting')
+                for identifier,command in enumerate([
+                    {'execute':'qmp_capabilities'},
+                    {'execute':'eject','arguments':{'device':'seed','force':True}}]):
+                    channel.write((json.dumps({**command,'id':identifier})+'\n').encode())
+                    while True:
+                        response=json.loads(channel.readline())
+                        if response.get('id')==identifier:break
+                    if 'return' not in response:raise RuntimeError('Could not eject metadata seed')
+        self.cloud_seed=None
 
     def install(self):
         self.child.sendline('install image')
@@ -197,6 +248,25 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kv
     from .architecture import release_accelerator
     accelerator=release_accelerator(arch,accelerator)
     work=Path(work);work.mkdir();disk=work/'fresh.qcow2'
+    firmware_observations=[]
+    if arch=='amd64':
+        bios_disk=work/'bios-install.qcow2'
+        subprocess.run(['qemu-img','create','-f','qcow2',str(bios_disk),'50G'],check=True,stdout=subprocess.DEVNULL)
+        bios_live=None;bios_installed=None
+        try:
+            bios_live=VM(arch,bios_disk,work/'bios-live',iso,accelerator=accelerator,firmware_mode='bios')
+            bios_live.enroll();bios_user=bios_live.username;bios_password=bios_live.password
+            bios_live.install();bios_live.poweroff();bios_live.close();bios_live=None
+            bios_installed=VM(arch,bios_disk,work/'bios-installed',accelerator=accelerator,firmware_mode='bios')
+            bios_installed.username=bios_user;bios_installed.password=bios_password;bios_installed.login()
+            if bios_installed.command('test ! -d /sys/firmware/efi && echo BIOS_PASS')!='BIOS_PASS':
+                raise ValueError('BIOS installation unexpectedly used EFI')
+            bios_installed.poweroff()
+            firmware_observations.append('Same AMD64 ISO: actual BIOS install and installed-disk console login without EFI firmware passed')
+        finally:
+            if bios_live is not None:bios_live.close()
+            if bios_installed is not None:bios_installed.close()
+            bios_disk.unlink(missing_ok=True)
     subprocess.run(['qemu-img','create','-f','qcow2',str(disk),'50G'],check=True,stdout=subprocess.DEVNULL)
     live=VM(arch,disk,work/'live',iso,accelerator=accelerator)
     try:
@@ -206,6 +276,7 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kv
     installed=VM(arch,disk,work/'installed',accelerator=accelerator)
     try:
         installed.username=live_user;installed.password=live_password;installed.login()
+        installed.command('test -d /sys/firmware/efi')
         installed.poweroff()
         live_password=None
     finally:installed.close()
@@ -215,7 +286,8 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kv
                    stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     offline_cleanup(disk,work,arch,sha256(factory),accelerator=accelerator)
     converted=convert(disk,work/'converted')
-    images={};identities=[];observations=[];netbird_results=[]
+    images={};identities=[];observations=firmware_observations;netbird_results=[]
+    observations.append('Actual UEFI ISO install and installed-disk console login with fresh firmware passed')
     for image in converted:
         target=Path(output)/f'shirube-os-{version}-{arch}{image.suffix}';shutil.copy2(image,target)
         images[image.suffix.removeprefix('.')]=target
@@ -253,7 +325,12 @@ def build_disks(iso,arch,version,work,output,netbird_verify=None,accelerator='kv
                         netbird_results.append(proof)
                     vm.poweroff()
             finally:vm.close()
+        from .cloud_init_guest import verify as verify_cloud_init
+        if verify_cloud_init(target,arch,work/(image.suffix.removeprefix('.')+'-cloud-init'),accelerator)!='PASS':
+            raise ValueError('Cloud-init actual access proof missing')
+        observations.append(image.suffix.removeprefix('.')+': NoCloud metadata and user-data SSH-key-only access, native commands, write_files and reboot persistence passed without console enrollment')
         if sha256(target)!=before:raise ValueError('Boot tests modified an immutable export')
     if identities[0][0]==identities[1][0] or identities[0][1]==identities[1][1]:raise ValueError('Per-instance identities were reused')
     return {'images':images,'observations':observations,'identity_regeneration':'PASS','qemu_accelerator':accelerator,
+            'cloud_init':'PASS','iso_boot_modes':'PASS',
             'netbird':'PASS' if len(netbird_results)==2 else 'NOT_RUN'}

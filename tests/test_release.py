@@ -44,8 +44,9 @@ class ReleaseTests(unittest.TestCase):
                 'checks':{x:'PASS' for x in CHECKS}, 'oci':'NOT_RUN', 'virtual_size':50*1024**3,'qemu_accelerator':'kvm',
                 'standalone':True, 'vmdk_subformat':'streamOptimized', 'signing_certificate_sha256':'d'*64,
                 'repository_fingerprint':'TEST-FIXTURE', 'generation':generation, 'firmware':'UEFI',
+                'iso_boot_modes':['BIOS','UEFI'] if architecture=='amd64' else ['UEFI'],
                 'console':{'device':'ttyAMA0' if architecture=='arm64' else 'ttyS0','baud':115200},
-                'provisioning':{'method':'console-enrollment-v1','default_credentials':False}}
+                'provisioning':{'method':'cloud-init-or-console-v1','default_credentials':False}}
             for role in ['iso', 'qcow2', 'vmdk']:
                 file = self.root/f'shirube-os-{self.version}-{architecture}.{role}'; file.write_bytes(b'synthetic fixture, never a real image')
                 self.add(file, role, architecture, generation)

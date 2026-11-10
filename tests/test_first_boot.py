@@ -25,7 +25,9 @@ class FirstBootTests(unittest.TestCase):
         output = io.StringIO()
         with patch.object(first_boot, 'Path', return_value=factory), \
              patch.object(first_boot, 'MARKER', marker), \
+             patch.object(first_boot, 'ENROLLED', MagicMock(is_file=lambda:False)), \
              patch.object(first_boot, 'wait_for_router'), \
+             patch.object(first_boot, 'cloud_administrator', return_value=None), \
              patch('builtins.input', side_effect=['', 'root', 'instanceadmin']) as name_input, \
              patch.object(first_boot.pwd, 'getpwnam', side_effect=KeyError), \
              patch.object(first_boot.getpass, 'getpass', side_effect=['short', 'different', password, password]), \
@@ -50,7 +52,7 @@ class FirstBootTests(unittest.TestCase):
              patch.object(first_boot,'MARKER',marker), \
              patch.object(first_boot,'ENROLLED',enrolled), \
              patch.object(first_boot,'wait_for_router'), \
-             patch.object(first_boot,'saved_password',return_value='$6$test$already-configured'), \
+             patch.object(first_boot,'configured_administrators',return_value=['instanceadmin']), \
              patch.object(first_boot.pwd,'getpwnam'), \
              patch.object(first_boot,'enable_logins') as logins, \
              patch('builtins.input',side_effect=AssertionError('Enrollment must not repeat')):

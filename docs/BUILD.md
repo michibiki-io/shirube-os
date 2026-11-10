@@ -6,6 +6,28 @@ https://vyos.net/get/stream/. A checksum mismatch fails before signature validat
 a signature failure produces no successful verification receipt. No replacement
 baseline or private package repository fallback is allowed.
 
+The cloud-init package uses the public VyOS fork and exact archive digest in
+`source-lock.json`. Its complete original archive is retained as `upstream.tar.gz`
+in that component's corresponding-source archive. Inside the producer container,
+the same recipe supports rebuilding from that verified restored file without
+network access:
+
+```python
+from pathlib import Path
+from producer.cloud_init import build
+build(Path('/src'), Path('/work/cloud-init'), Path('/work/debs'),
+      source_archive=Path('/restored/cloud-init/upstream.tar.gz'))
+```
+
+The paths in this example are container mounts chosen by the rebuilder. Select
+the exact component archive from the published inventory and verify its hashes
+before restoring it. The complete OS additionally requires the other declared
+source, toolchain and runtime dependency inputs.
+
+cloud-initの元アーカイブは固定ハッシュで検証し、対応ソースに同梱します。
+上記の処理は復元済みファイルからネットワークなしで同じパッケージを構築できます。
+OS全体の再構築には、別途宣言されたツールチェーンと依存ソースも必要です。
+
 Source verification is an independent container stage:
 
 ```sh

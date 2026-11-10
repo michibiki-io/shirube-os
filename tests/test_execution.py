@@ -5,13 +5,51 @@ import subprocess
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 
 from producer.architecture import release_accelerator,container_runtime
 from producer.guestfs_kernel import appliance_kernel
 
 
 class ExecutionTests(unittest.TestCase):
+    def test_seed_ejection_ignores_qmp_events_and_targets_only_metadata_drive(self):
+        from producer.vm import VM
+        vm=object.__new__(VM);vm.work=Path('/test-only');vm.cloud_seed=Path('/seed.iso')
+        channel=MagicMock()
+        channel.readline.side_effect=[b'{"QMP":{}}\n',b'{"return":{},"id":0}\n',
+            b'{"event":"DEVICE_TRAY_MOVED","data":{"device":"seed"}}\n',
+            b'{"return":{},"id":1}\n']
+        peer=MagicMock();peer.makefile.return_value.__enter__.return_value=channel
+        with patch('producer.vm.socket.socket') as socket_type:
+            socket_type.return_value.__enter__.return_value=peer
+            vm.eject_cloud_seed()
+        calls=[json.loads(call.args[0]) for call in channel.write.call_args_list]
+        self.assertEqual(calls,[{'execute':'qmp_capabilities','id':0},
+            {'execute':'eject','arguments':{'device':'seed','force':True},'id':1}])
+        self.assertIsNone(vm.cloud_seed)
+
+    def test_bios_has_no_efi_state_and_cannot_be_selected_for_arm64(self):
+        from producer.vm import prepare_firmware
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary)
+            self.assertEqual(prepare_firmware('amd64','bios',root),[])
+            self.assertFalse((root/'nvram.fd').exists())
+            for arch,mode in [('arm64','bios'),('amd64','auto'),('unknown','uefi')]:
+                with self.assertRaises(ValueError):prepare_firmware(arch,mode,root)
+
+    def test_uefi_keeps_a_fresh_separate_variable_store(self):
+        from producer.vm import prepare_firmware
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);code=root/'code';variables=root/'vars'
+            code.write_bytes(b'firmware fixture');variables.write_bytes(b'pristine variables')
+            work=root/'guest';work.mkdir()
+            with patch('producer.vm.FIRMWARE',{'amd64':[(str(code),str(variables))]}):
+                args=prepare_firmware('amd64','uefi',work)
+            self.assertIn('if=pflash,format=raw,unit=0,readonly=on,file='+str(code),args)
+            self.assertIn('if=pflash,format=raw,unit=1,file='+str(work/'nvram.fd'),args)
+            (work/'nvram.fd').write_bytes(b'instance changed variables')
+            self.assertEqual(variables.read_bytes(),b'pristine variables')
+
     def test_no_automatic_accelerator_or_runtime_fallback(self):
         self.assertEqual(release_accelerator('amd64','tcg'),'tcg')
         self.assertEqual(release_accelerator('arm64','kvm'),'kvm')

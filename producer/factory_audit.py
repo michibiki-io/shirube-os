@@ -35,6 +35,9 @@ def inspect_filesystems(root, initramfs, architecture):
         raise ValueError('Factory has a reusable password credential')
     if not path_in_root(root, 'usr/share/shirube/needs-enrollment').is_file():
         raise ValueError('Factory enrollment marker is missing')
+    enrollment=path_in_root(root,'usr/libexec/shirube/first-boot')
+    if not enrollment.is_file() or not enrollment.stat().st_mode & 0o100:
+        raise ValueError('Factory enrollment executable is missing or not executable')
     if list(host_key_paths(root)):
         raise ValueError('Factory contains a host key file')
     for member in ['config/shirube-enrolled','opt/vyatta/etc/config/shirube-enrolled']:

@@ -140,6 +140,11 @@ def sanitize(root, architecture):
     path_in_root(root,'etc/hosts').write_text(HOSTS)
     for relative in ('var/log', 'home', 'config'):
         path_in_root(root, relative).mkdir(parents=True, exist_ok=True)
+    # auditd requires this package-owned directory at startup. Recreate an
+    # empty skeleton rather than retaining any logs or machine-named paths.
+    if path_in_root(root,'etc/audit/auditd.conf').is_file():
+        directory=path_in_root(root,'var/log/audit')
+        directory.mkdir(mode=0o700)
     for relative in ('tmp','var/tmp'):
         path_in_root(root,relative).mkdir(parents=True,exist_ok=True)
         path_in_root(root,relative).chmod(0o1777)
@@ -156,6 +161,14 @@ def audit(root):
     root = Path(root).resolve()
     for relative in REMOVE:
         if relative == 'config/config.boot':
+            continue
+        if relative=='var/log':
+            directory=path_in_root(root,relative)
+            if path_in_root(root,'etc/audit/auditd.conf').is_file() and not (directory/'audit').is_dir():
+                raise ValueError('Required empty audit log directory missing')
+            for entry in directory.iterdir():
+                if entry.name!='audit' or entry.is_symlink() or not entry.is_dir() or any(entry.iterdir()):
+                    raise ValueError('Instance log content remains in export')
             continue
         if relative in ('home', 'var/log', 'tmp', 'var/tmp') and not any(path_in_root(root, relative).iterdir()):
             continue

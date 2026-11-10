@@ -507,5 +507,11 @@
     "upstream_hook_sha256": "a9639022d9019c2b3bd3cf6af185bd7e3f3e97a9fce41cac6412eeb6f4b9b6a4",
     "notice_sha256": "e4189eb50081aec67f721bdf97e48fd723c55ffb783c5212c0f215b59cf38462",
     "license_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+  },
+  "cloud_init": {
+    "version": "22.1",
+    "commit": "95d1283f58175eefd04ca6daa8c1a892c76420e0",
+    "url": "https://codeload.github.com/vyos/vyos-cloud-init/tar.gz/95d1283f58175eefd04ca6daa8c1a892c76420e0",
+    "sha256": "4012eb426c0a6a7dc5c0994637bc2e19dfc4e2d69cb57f90327239cf32fceb8c"
   }
 }

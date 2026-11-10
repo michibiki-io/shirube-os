@@ -30717,6 +30717,314 @@
         "comparison": "Complete actual notice equals two byte-identical copies of the complete previously reviewed notice. No grant, attribution or condition is added, removed or changed.",
         "permission_scope": "Identical to the original reviewed component decision; duplicate metadata does not expand redistribution permission."
       }
+    },
+    "cloud-init@22.1+shirube1": {
+      "source_identity": "4012eb426c0a6a7dc5c0994637bc2e19dfc4e2d69cb57f90327239cf32fceb8c",
+      "copyright_sha256": "d401cad27308c7dcc832de22431b3743ddb56faf066e866711c3e716df34855b",
+      "redistributable": true,
+      "license": "GPL-3.0-only",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "original-notices/LICENSE",
+      "conditions": [
+        "Distribute the combined public fork under the GPLv3 option; GPL-3.0-only and GPL-2.0-or-later VyOS modules retain their individual original notices and headers.",
+        "Retain original dual-license notice, full GPLv3/Apache-2.0 texts and all per-file notices.",
+        "Include the exact pinned original archive, distributor patch/build scripts and installed dependency source/license closure with binaries."
+      ],
+      "scope": "Exact public VyOS cloud-init commit 95d1283f58175eefd04ca6daa8c1a892c76420e0 and distributor recipe only; separate dependencies and the complete release remain independently gated."
+    },
+    "libyaml@0.2.5-1": {
+      "source_identity": "1edbf86e5cd76937ff62892ba6c2537456d645d834d4cd4a82430b8be7051bf4",
+      "copyright_sha256": "64609fa7e24f1daa7c78a84e571d5c385350534ead8830158e0744c64f0497b6",
+      "redistributable": true,
+      "license": "MIT AND LicenseRef-Debian-permissive",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "License",
+          "sha256": "c40112449f254b9753045925248313e9270efa36d226b22d82d4cc6c43c57f29"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "64609fa7e24f1daa7c78a84e571d5c385350534ead8830158e0744c64f0497b6"
+        }
+      ]
+    },
+    "python-attrs@22.2.0-1": {
+      "source_identity": "3faa1718a0e880e58d294f7f91c4c94ce67eede51728208c4c8a091d0140dabc",
+      "copyright_sha256": "e1f2c4df71c4deedd7c3ea2ab8a56db5113b2265ea5ae34e4ae7b0c92d70ce29",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "882115c95dfc2af1eeb6714f8ec6d5cbcabf667caff8729f42420da63f714e9f"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "e1f2c4df71c4deedd7c3ea2ab8a56db5113b2265ea5ae34e4ae7b0c92d70ce29"
+        },
+        {
+          "member": "docs/license.md",
+          "sha256": "0eaf4b4ffe76f2873a044bcd32848319830259699b09ccf77b197b8d8a7b0cf7"
+        }
+      ]
+    },
+    "blinker@1.5-1": {
+      "source_identity": "f75be1bce97602b699f829d5a7400a819523fb61d6fc9f37b400184160176143",
+      "copyright_sha256": "bf51b116fcf43d727c29d8669d28ee4483c765a06cc909931bbefc533d1f2afd",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "LICENSE.rst",
+          "sha256": "9eb73a1f38597a4aa17025d2ae1be3839624c795e985d4f0e9769ce29faca467"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "bf51b116fcf43d727c29d8669d28ee4483c765a06cc909931bbefc533d1f2afd"
+        }
+      ]
+    },
+    "python-json-pointer@2.3-2": {
+      "source_identity": "e1ca17ecf8edec91829e62469f13a465039d9ded3691aecec7a31079dce391f7",
+      "copyright_sha256": "8b608d47b34cc8b97db40226959c92aebbf4f5a44968ed80ea6996c678fd09e8",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "LICENSE.txt",
+          "sha256": "d8b24f15d472885f788a2d6e985850f264627b86012a17bb242c83f310d907e5"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "8b608d47b34cc8b97db40226959c92aebbf4f5a44968ed80ea6996c678fd09e8"
+        }
+      ]
+    },
+    "python-json-patch@1.32-2": {
+      "source_identity": "271ba9c7b2899515cc38c65b0ed8528954c6a3feacc38736b44a8d675e0eedae",
+      "copyright_sha256": "ac69bbfa099df72bb5fbb3bde547e8ffd762b176aa2ff5f06e7320eb2470f9a5",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "COPYING",
+          "sha256": "d8b24f15d472885f788a2d6e985850f264627b86012a17bb242c83f310d907e5"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "ac69bbfa099df72bb5fbb3bde547e8ffd762b176aa2ff5f06e7320eb2470f9a5"
+        }
+      ]
+    },
+    "python-jsonschema@4.10.3-1": {
+      "source_identity": "b84fcdd1a3aaa1ccd2799ac9934a36cbbf8d801094012a94d18ca8d0b08879b1",
+      "copyright_sha256": "ed96ded1a8606482cc4e2d64c03dd68f11ff264bcec84c0f71a912a4c46ec5ec",
+      "redistributable": true,
+      "license": "MIT AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "COPYING",
+          "sha256": "4f92a015a13c4d1a040bef018aa13430b4f1bc73b41b16bb846c346766de7439"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "ed96ded1a8606482cc4e2d64c03dd68f11ff264bcec84c0f71a912a4c46ec5ec"
+        },
+        {
+          "member": "json/LICENSE",
+          "sha256": "837402bd25fad9b704265801ca3f92566a98157c1f9a7acd6f446299ba1c305a"
+        }
+      ]
+    },
+    "pyjwt@2.6.0-1+deb12u1": {
+      "source_identity": "d8b1ce01c1a767b4fdb9d57fe52475d28c7b5f3ca1f6f2e44ab87a2c9b84d4a5",
+      "copyright_sha256": "9721fae5029faaeb7d4445fd5881c5654b59c21029cc7108fa69cedde133808a",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "797a7a20231d4c433e9f1911db1731d06b5828b98f499819a034f7c0f56f5ce5"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "9721fae5029faaeb7d4445fd5881c5654b59c21029cc7108fa69cedde133808a"
+        }
+      ]
+    },
+    "python-oauthlib@3.2.2-1": {
+      "source_identity": "66550591b0eda5efc6f0e6a4925613713f2032fb1e61c1b96b613cdfcc80c873",
+      "copyright_sha256": "8d6ff4f5aa8a8e6d1ae5dc974dfc827d83254f572f275d60186e49e45c9bcc4d",
+      "redistributable": true,
+      "license": "BSD-3-Clause",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "3d1e12d8ac52c0b6c148af6d291f72400b8720ed16c0ac4a89868b6d14b1c939"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "8d6ff4f5aa8a8e6d1ae5dc974dfc827d83254f572f275d60186e49e45c9bcc4d"
+        }
+      ]
+    },
+    "pyrsistent@0.18.1-1": {
+      "source_identity": "84813cc533dcee4b60568f8851e0eef69b6b56bbf4d812808daf3bc4d853d913",
+      "copyright_sha256": "ff94f4e517b2a1ff2fac445f441a978b7b79faf91b057825f2f84a6120514eb1",
+      "redistributable": true,
+      "license": "MIT AND BSD-3-Clause",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "LICENSE.mit",
+          "sha256": "3ea56753cbd0cc897d3f4414a902f5694991db7c1b3abb8230216381185f9112"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "ff94f4e517b2a1ff2fac445f441a978b7b79faf91b057825f2f84a6120514eb1"
+        }
+      ]
+    },
+    "pyyaml@6.0-3": {
+      "source_identity": "0dfe6bb274f4377d5a5f6a0119e84793d847680d78cad033ff6d6ff4590668e6",
+      "copyright_sha256": "26fdc211f61903eb5d63aef0be53269c9362fb7c0a944eb87001a935ac6e8e51",
+      "redistributable": true,
+      "license": "MIT",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Preserve the complete installed Debian copyright notice, original per-file/source notices and original upstream license texts.",
+        "Retain exact authenticated Debian source sets, patches and build/install inputs with binary releases.",
+        "Do not use upstream author or contributor names for endorsement."
+      ],
+      "scope": "Exact unmodified Debian source/version and shipped notice only; independently reviewed source and Debian packaging scopes retain their own license terms. Complete source and runtime release gates remain mandatory.",
+      "original_notice_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "26fdc211f61903eb5d63aef0be53269c9362fb7c0a944eb87001a935ac6e8e51"
+        }
+      ]
+    },
+    "cloud-utils@0.33-1": {
+      "source_identity": "534be5bd3701f98283d5f741d339197eb31fb4dfc1e756073166135ad9e3713a",
+      "copyright_sha256": "911816f8bde4e0cc57bcb7977b9e2c4c28e7d4b56027b5e5c4c1bbd41d7ee7a0",
+      "original_notice_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "911816f8bde4e0cc57bcb7977b9e2c4c28e7d4b56027b5e5c4c1bbd41d7ee7a0"
+        }
+      ],
+      "redistributable": true,
+      "license": "GPL-3.0-only",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Retain upstream and Debian copyright notices and full GPLv3 text.",
+        "Include exact authenticated Debian source archives, packaging patches and build/install inputs alongside binary releases."
+      ],
+      "scope": "Exact cloud-utils 0.33-1 source and cloud-guest-utils shipped notice only; complete OS and runtime gates remain independently required."
+    },
+    "ifupdown@0.8.41": {
+      "source_identity": "e521f66a66667e65f505b81c6a0378684a622591239e18b78247210481427518",
+      "copyright_sha256": "2fcbc0249f21b55a7876f99a421c222f6d76830521062287e382112975efcdb3",
+      "original_notice_files": [
+        {
+          "member": "COPYING",
+          "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "2fcbc0249f21b55a7876f99a421c222f6d76830521062287e382112975efcdb3"
+        }
+      ],
+      "redistributable": true,
+      "license": "GPL-2.0-or-later",
+      "reviewed_on": "2026-11-11",
+      "evidence_member": "upstream-notices/debian/copyright",
+      "conditions": [
+        "Retain original upstream/Debian notices and full GPL terms.",
+        "Supply the exact authenticated native Debian source and all build/install inputs with binaries."
+      ],
+      "scope": "Exact unmodified ifupdown 0.8.41 source and shipped Debian copyright only; combined OS and cloud-init execution remain independently gated."
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

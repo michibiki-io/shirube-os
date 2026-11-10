@@ -250,6 +250,22 @@
                 "NOT_RUN",
                 "SKIP"
               ]
+            },
+            "cloud_init": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
+            },
+            "iso_boot_modes": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_RUN",
+                "SKIP"
+              ]
             }
           },
           "required": [
@@ -265,7 +281,9 @@
             "netbird",
             "provisioned_access",
             "sanitization",
-            "unprovisioned_boot"
+            "unprovisioned_boot",
+            "cloud_init",
+            "iso_boot_modes"
           ],
           "additionalProperties": false
         },
@@ -319,7 +337,7 @@
           "type": "object",
           "properties": {
             "method": {
-              "const": "console-enrollment-v1"
+              "const": "cloud-init-or-console-v1"
             },
             "default_credentials": {
               "const": false
@@ -336,6 +354,17 @@
             "kvm",
             "tcg"
           ]
+        },
+        "iso_boot_modes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "BIOS",
+              "UEFI"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": [
@@ -350,7 +379,8 @@
         "firmware",
         "console",
         "provisioning",
-        "qemu_accelerator"
+        "qemu_accelerator",
+        "iso_boot_modes"
       ],
       "additionalProperties": false
     },

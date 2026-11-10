@@ -457,7 +457,7 @@ def debian_requirements(listing, produced, custom, extras):
         matching=(version,architecture) in produced.get(name,set())
         if name in produced and not matching:raise ValueError('Installed custom package differs from produced binary version')
         source=source or name;source_version=source_version or version
-        if name=='shirube-integration' or matching and name in custom:continue
+        if name=='shirube-integration' or matching and (name in custom or name=='cloud-init'):continue
         if matching and any(name.startswith(prefix) or source.startswith(prefix) for prefix in extras):continue
         result.add((source,source_version))
     return result
@@ -529,6 +529,15 @@ def collect(rootfs, package_output, output, arch, version, work):
                     if name.startswith(prefix) or source_name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
             inputs=[];nested=[];debian_tree=None;debian_export=None
+            if name=='cloud-init' and matching:
+                cloud_lock=json.loads(Path('/src/source-lock.json').read_text())['cloud_init']
+                original=Path('/guest-cloud-init/upstream.tar.gz')
+                if sha256(original)!=cloud_lock['sha256']:
+                    raise ValueError('Cloud-init corresponding source mismatch')
+                # Keep the exact original archive, including upstream fixture
+                # data, rather than exporting generated install/test trees.
+                source=Path('/guest-cloud-init/original')/('vyos-cloud-init-'+cloud_lock['commit'])
+                inputs.append((original,'upstream.tar.gz','sources'))
             if source_name=='vyos-1x':
                 nested.extend(ocaml_dependencies)
                 from .network_diagnostics import retained_script, SCRIPT
@@ -572,7 +581,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                     'source_sha256':geoip['sha256'],'notice':legal/'copyright',
                     'notice_member':'geoip/copyright'})
             elif source is not None:
-                origin=source_identity
+                origin=cloud_lock['sha256'] if name=='cloud-init' else source_identity
             else:
                 for original in debian_inputs[(source_name,source_version)].iterdir():
                     os.link(original,component/original.name)
@@ -614,6 +623,12 @@ def collect(rootfs, package_output, output, arch, version, work):
                 tool=json.loads(Path('/src/source-lock.json').read_text())['kea_build_tool']
                 source_files=kea_source_files(source,Path('/sources/isc-kea_Kea-3.0.2/isc-kea'),
                                              Path('/extra/kea/packaging'),tool)
+            elif name=='cloud-init':
+                source_files=[]
+                for member in ['LICENSE','LICENSE-GPLv3','LICENSE-Apache2.0',
+                               'packages/debian/copyright', 'cloudinit/config/cc_vyos.py',
+                               'cloudinit/config/cc_vyos_userdata.py']:
+                    inputs.append((source/member,'original-notices/'+member,'license_files'))
             else:
                 source_files=vpp_source_files(source) if kind=='vpp' else tracked_source_files(source) if kind in {'vyos-1x','salt'} else files(source)
             if kind=='salt':
@@ -718,6 +733,9 @@ def collect(rootfs, package_output, output, arch, version, work):
             for prefix, names in [('/extra/vpp/',['vpp','vpp-patches']),('/extra/modules/rtsp',['nat-rtsp']),('/extra/modules/netflow',['ipt-netflow']),('/extra/base/utils',['vyos-utils']),('/extra/base/i2util',['i2util']),('/extra/kea/',['kea-packaging']),('/extra/salt/',['salt-tools'])]:
                 if location.startswith(prefix):keys.extend(names)
             provenance={'stream_archive_sha256':source_identity,'external_git':{key:external[key] for key in keys}}
+            if name=='cloud-init':
+                provenance={'cloud_init':cloud_lock,
+                            'packaging_recipe_sha256':sha256(Path('/src/producer/cloud_init.py'))}
             if debian_export is not None:
                 provenance['debian_preferred_source_export']=debian_export
             if kind=='vpp':

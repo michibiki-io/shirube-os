@@ -2,10 +2,25 @@
 from pathlib import Path
 import tempfile
 import unittest
+import subprocess
+from unittest.mock import patch
 from producer.branding import boot_menus
 
 
 class BootMenuTests(unittest.TestCase):
+    def test_catalog_rejects_efi_only_amd64_and_disabled_bios_entries(self):
+        from producer.boot_media import inspect
+        efi='El Torito boot img : 2 UEFI y none 0x0000 0x00 10368 95\n'
+        bios='El Torito boot img : 1 BIOS y none 0x0000 0x00 4 2687\n'
+        with patch('producer.boot_media.subprocess.run',return_value=subprocess.CompletedProcess([],0,efi,'')):
+            self.assertEqual(inspect('fixture.iso','arm64'),['UEFI'])
+            with self.assertRaises(ValueError):inspect('fixture.iso','amd64')
+        for catalog,passes in [(bios+efi,True),(bios.replace('BIOS y','BIOS n')+efi,False)]:
+            with patch('producer.boot_media.subprocess.run',return_value=subprocess.CompletedProcess([],0,'',catalog)):
+                if passes:self.assertEqual(inspect('fixture.iso','amd64'),['BIOS','UEFI'])
+                else:
+                    with self.assertRaises(ValueError):inspect('fixture.iso','amd64')
+
     def test_generated_titles_and_hostname_keep_kernel_paths_and_console_order(self):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);path=root/'boot/grub/grub.cfg';path.parent.mkdir(parents=True)

@@ -113,6 +113,8 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     checks['licenses']='PASS' if source['cleared'] else 'FAIL'
     checks['corresponding_source']='PASS'
     checks['netbird']=disks['netbird']
+    checks['cloud_init']=disks['cloud_init']
+    checks['iso_boot_modes']=disks['iso_boot_modes']
     generation=secrets.token_hex(32)
     observations={name:list(disks['observations']) for name in checks}
     observations['build']=['Source-built ISO SHA256: '+sha256(result['iso'])]
@@ -148,7 +150,8 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
                   'standalone':True,'vmdk_subformat':'streamOptimized','signing_certificate_sha256':result['kernel_certificate_sha256'],
                   'repository_fingerprint':result['repository_fingerprint'],'generation':generation,'firmware':'UEFI',
                   'console':{'device':'ttyAMA0' if architecture=='arm64' else 'ttyS0','baud':115200},
-                  'provisioning':{'method':'console-enrollment-v1','default_credentials':False}}},
+                  'iso_boot_modes':['BIOS','UEFI'] if architecture=='amd64' else ['UEFI'],
+                  'provisioning':{'method':'cloud-init-or-console-v1','default_credentials':False}}},
               'assets':[{'name':path.name,'role':role,'architecture':architecture,'generation':generation,
                          'size':path.stat().st_size,'sha256':sha256(path)} for path,role in files]}
     (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

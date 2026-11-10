@@ -9,7 +9,8 @@ from .policy import version_parts,require_stream_version
 ARCHES = {'amd64', 'arm64'}
 CHECKS = {'build', 'architecture', 'module_signatures', 'branding', 'licenses',
           'corresponding_source', 'sanitization', 'disk_equivalence', 'local_boot',
-          'unprovisioned_boot', 'provisioned_access', 'identity_regeneration', 'netbird'}
+          'unprovisioned_boot', 'provisioned_access', 'identity_regeneration', 'netbird',
+          'cloud_init', 'iso_boot_modes'}
 ROLES = {'iso', 'qcow2', 'vmdk', 'source', 'licenses', 'evidence'}
 LIMIT = 2 * 1024**3
 RELEASE_ASSET_LIMIT = 1000
@@ -215,8 +216,10 @@ def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
         console = 'ttyAMA0' if architecture == 'arm64' else 'ttyS0'
         if candidate.get('firmware') != 'UEFI' or candidate.get('console') != {'device':console, 'baud':115200}:
             raise ValueError('Architecture-specific firmware/console requirements missing')
-        if candidate.get('provisioning') != {'method':'console-enrollment-v1', 'default_credentials':False}:
+        if candidate.get('provisioning') != {'method':'cloud-init-or-console-v1', 'default_credentials':False}:
             raise ValueError('Per-instance provisioning contract missing')
+        if candidate.get('iso_boot_modes') != (['BIOS','UEFI'] if architecture=='amd64' else ['UEFI']):
+            raise ValueError('Architecture-specific ISO boot mode proof missing')
         generation = candidate.get('generation')
         if not re.fullmatch('[0-9a-f]{64}', generation or '') or any(
                 x.get('generation') != generation for x in owned):

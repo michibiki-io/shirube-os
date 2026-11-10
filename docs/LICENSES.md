@@ -48,6 +48,21 @@ external dependencies/build/install scripts/generated-source inputs required for
 reconstruction. A URL/hash list or automatic GitHub source archive is insufficient.
 Missing source or uncertain licensing blocks publication.
 
+The public VyOS cloud-init fork is pinned by commit and archive SHA256 in
+`source-lock.json`. Its base offers GPLv3 or Apache-2.0; the VyOS-specific
+modules include GPL-3.0-only and GPL-2.0-or-later notices. The combined component is
+distributed under the GPLv3 option. The image retains the original dual-license
+notice, full license texts and module copyright headers. Corresponding sources
+include the complete original archive and the exact distributor build/patch
+recipe. The new Debian runtime dependencies retain their own independent source
+and permission checks; this component approval does not clear the complete OS.
+
+cloud-initは公開VyOS forkのコミットとアーカイブのハッシュを固定します。
+本体の選択式ライセンスとVyOS固有モジュールのGPL-3.0-only表示を保持し、
+組み合わせたコンポーネントはGPLv3の選択肢で配布します。
+元のアーカイブ、変更処理、ビルド手順、許諾全文、著作権表示を同梱し、
+追加のDebian依存パッケージは個別に対応ソースと許諾を確認します。
+
 The factory GeoIP database uses the unchanged DB-IP Country Lite November 2026
 CSV in `third_party/geoip/`, under CC-BY-4.0. The source lock binds its compressed,
 uncompressed and logical-row hashes, publisher checksums and full attribution.

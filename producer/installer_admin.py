@@ -10,9 +10,13 @@ AUTHENTICATION = '''def enrolled_administrator():
         if not re.fullmatch(r'[a-z][a-z0-9_]{0,30}', administrator) or administrator in {'root', 'vyos'} or enrolled != administrator:
             raise ValueError()
         config = ConfigTree(read_file(f'{DIR_CONFIG}/config.boot'))
-        path = ['system', 'login', 'user', administrator, 'authentication', 'encrypted-password']
-        password_hash = config.return_value(path)
-        if not password_hash or password_hash.startswith(('!', '*')):
+        auth = ['system', 'login', 'user', administrator, 'authentication']
+        path = auth+['encrypted-password']
+        password_hash = config.return_value(path) if config.exists(path) else ''
+        keys = auth+['public-keys']
+        has_key = config.exists(keys) and any(config.return_value(keys+[key, 'key'])
+            and config.return_value(keys+[key, 'type']) for key in config.list_nodes(keys))
+        if (not password_hash or password_hash.startswith(('!', '*'))) and not has_key:
             raise ValueError()
         return administrator, password_hash
     except Exception:
@@ -23,8 +27,13 @@ def configure_authentication(config_file: str, password_hash: str, administrator
     """Retain the saved administrator; never introduce a separate fixed user."""
     try:
         config = ConfigTree(read_file(config_file))
-        config.set(['system', 'login', 'user', administrator, 'authentication', 'encrypted-password'],
-                   value=password_hash, replace=True)
+        if password_hash and not password_hash.startswith(('!', '*')):
+            config.set(['system', 'login', 'user', administrator, 'authentication', 'encrypted-password'],
+                       value=password_hash, replace=True)
+        else:
+            keys = ['system', 'login', 'user', administrator, 'authentication', 'public-keys']
+            if not config.exists(keys) or not config.list_nodes(keys):
+                raise ValueError()
         config.set_tag(['system', 'login', 'user'])
         with open(config_file, 'w') as target:
             target.write(config.to_string())
@@ -65,6 +74,6 @@ def patch_installer(root):
         if line.startswith(('MSG_INPUT_PASSWORD:', 'MSG_INPUT_PASSWORD_CONFIRM:')):
             text = text.replace(line, '')
     first, rest = text.split('\n', 1)
-    text = first+'\n# Modified by michibiki-io for Shirube OS on 2026-11-09.\n'+rest
+    text = first+'\n# Modified by michibiki-io for Shirube OS on 2026-11-11.\n'+rest
     ast.parse(text)
     path.write_text(text)

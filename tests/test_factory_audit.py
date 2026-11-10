@@ -8,7 +8,7 @@ from producer.sanitize import HOSTS
 
 class FactoryAuditTests(unittest.TestCase):
     def test_reusable_identity_password_and_initramfs_keys_are_rejected(self):
-        for mutation in ['none', 'machine-id', 'password', 'initramfs-key', 'missing-init', 'completed-enrollment', 'initramfs-dropbear-key', 'build-hostname', 'build-hosts']:
+        for mutation in ['none', 'machine-id', 'password', 'initramfs-key', 'missing-init', 'completed-enrollment', 'initramfs-dropbear-key', 'build-hostname', 'build-hosts','enrollment-not-executable']:
             with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as temporary:
                 root = Path(temporary)/'root'
                 initrd = Path(temporary)/'initramfs'
@@ -21,6 +21,10 @@ class FactoryAuditTests(unittest.TestCase):
                 (root/'etc/hosts').write_text(HOSTS)
                 (root/'etc/shadow').write_text('root:!:20000:0:99999:7:::\n')
                 (root/'usr/share/shirube/needs-enrollment').write_text('pending\n')
+                enrollment=root/'usr/libexec/shirube/first-boot'
+                enrollment.parent.mkdir(parents=True)
+                enrollment.write_text('#!/usr/bin/python3\n')
+                enrollment.chmod(0o644 if mutation=='enrollment-not-executable' else 0o755)
                 if mutation == 'build-hostname':
                     (root/'etc/hostname').write_text('build-host-fixture\n')
                 elif mutation == 'build-hosts':

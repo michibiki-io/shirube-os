@@ -12,6 +12,61 @@ MARKER = Path('/config/shirube-first-boot')
 ENROLLED = Path('/config/shirube-enrolled')
 
 
+def configured_administrators():
+    """Inspect native persisted authentication after the router has applied it."""
+    from vyos.configtree import ConfigTree
+    config = ConfigTree(Path('/config/config.boot').read_text())
+    users = ['system', 'login', 'user']
+    result = []
+    if not config.exists(users):
+        return result
+    for username in config.list_nodes(users):
+        if not re.fullmatch(r'[a-z][a-z0-9_]{0,30}', username) or username in {'root', 'vyos'}:
+            continue
+        auth = users+[username, 'authentication']
+        hashed = config.return_value(auth+['encrypted-password']) if config.exists(auth+['encrypted-password']) else ''
+        keys = auth+['public-keys']
+        has_key = config.exists(keys) and any(
+            config.exists(keys+[key, 'key']) and config.return_value(keys+[key, 'key'])
+            and config.exists(keys+[key, 'type']) and config.return_value(keys+[key, 'type'])
+            for key in config.list_nodes(keys))
+        if (hashed and not hashed.startswith(('!', '*'))) or has_key:
+            try:
+                account = pwd.getpwnam(username)
+            except KeyError:
+                continue
+            if account.pw_uid >= 1000 and account.pw_shell not in {'/bin/false', '/usr/sbin/nologin'}:
+                result.append(username)
+    return sorted(result)
+
+
+def cloud_administrator():
+    # The native router is ordered after cloud-config.service, so it has
+    # already applied configuration before this check. Never wait on
+    # cloud-init.target: that target is ordered after multi-user.target.
+    state = subprocess.run(['systemctl', 'show', 'cloud-config.service',
+        '--property=Result', '--property=ExecMainStatus', '--property=SubState'],
+        text=True, capture_output=True, check=True)
+    properties = dict(line.split('=', 1) for line in state.stdout.splitlines() if '=' in line)
+    if (properties.get('SubState') != 'exited' or properties.get('Result') != 'success'
+            or properties.get('ExecMainStatus') != '0'):
+        return None
+    users = configured_administrators()
+    return users[0] if users else None
+
+
+def finish_enrollment(factory, username):
+    subprocess.run(['systemd-machine-id-setup'], check=True,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(['ssh-keygen', '-A'], check=True,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ENROLLED.write_text(username+'\n')
+    ENROLLED.chmod(0o600)
+    MARKER.unlink(missing_ok=True)
+    factory.unlink(missing_ok=True)
+    enable_logins()
+
+
 def wait_for_router(timeout=300):
     """The upstream Type=simple service starts before configuration is loaded."""
     print('Waiting for router configuration...', flush=True)
@@ -52,14 +107,18 @@ def main():
         username=ENROLLED.read_text().strip()
         if not re.fullmatch(r'[a-z][a-z0-9_]{0,30}',username) or username in {'root','vyos'}:
             raise RuntimeError('Invalid saved enrollment state')
-        hashed=saved_password(username)
-        if not hashed or hashed.startswith(('!','*')):
+        if username not in configured_administrators():
             raise RuntimeError('Saved administrator authentication is unavailable')
         pwd.getpwnam(username)
         MARKER.unlink(missing_ok=True)
         factory.unlink(missing_ok=True)
         enable_logins()
         print('Saved administrator verified. Continue with the normal login prompt.',flush=True)
+        return
+    username = cloud_administrator()
+    if username:
+        finish_enrollment(factory, username)
+        print('Cloud administrator verified. Continue with the configured authentication.', flush=True)
         return
     print('Shirube OS — built by michibiki-io\nCreate this instance administrator at the local console.')
     while True:

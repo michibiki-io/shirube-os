@@ -5,12 +5,34 @@ from producer.sanitize import sanitize, audit, path_in_root
 
 
 class SanitizeTests(unittest.TestCase):
+    def test_recreates_only_empty_audit_log_directory_and_rejects_any_log_data(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary)
+            (root/'etc/audit').mkdir(parents=True)
+            (root/'etc/audit/auditd.conf').write_text('log_file = /var/log/audit/audit.log\n')
+            (root/'etc/shadow').write_text('root:!:1:0:99999:7:::\n')
+            (root/'var/log/audit').mkdir(parents=True)
+            (root/'var/log/audit/audit.log').write_text('old-instance-data')
+            sanitize(root,'amd64')
+            directory=root/'var/log/audit'
+            self.assertTrue(directory.is_dir())
+            self.assertEqual(directory.stat().st_mode & 0o777,0o700)
+            self.assertEqual(list(directory.iterdir()),[])
+            audit(root)
+            (directory/'audit.log').write_text('new-instance-data')
+            with self.assertRaisesRegex(ValueError,'log content'):audit(root)
+
     def test_erases_credentials_identity_and_history(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             for relative in ['etc/ssh', 'config/netbird', 'config/archive', 'home/test', 'var/log', 'root/.ssh', 'opt/vyatta/etc/config/netbird', 'opt/vyatta/etc/config/auth', 'tmp/shirube-export', 'var/tmp/config-cache', 'etc/dropbear/initramfs']:
                 (root/relative).mkdir(parents=True)
                 (root/relative/'state').write_text('private-instance-data')
+            cloud_paths=['var/lib/cloud/instances/test','config/cloud/instances/test',
+                         'opt/vyatta/etc/config/cloud/instances/test']
+            for relative in cloud_paths:
+                (root/relative).mkdir(parents=True)
+                (root/relative/'user-data.txt').write_text('instance-specific-initialization-data')
             (root/'etc/shadow').write_text('root:$6$reusable:1:0:99999:7:::\nvyos:$6$test:1:0:99999:7:::\n')
             (root/'etc/machine-id').write_text('fixed-machine-id')
             (root/'etc/hostname').write_text('build-host-fixture\n')
@@ -27,6 +49,7 @@ class SanitizeTests(unittest.TestCase):
             self.assertEqual(result['boot_validation'], 'NOT_RUN')
             self.assertIn('ttyAMA0', (root/'config/config.boot').read_text())
             self.assertFalse((root/'config/netbird').exists())
+            self.assertTrue(all(not (root/relative).exists() for relative in cloud_paths))
             self.assertFalse(dropbear.exists())
             self.assertFalse((root/'home/test').exists())
             self.assertEqual((native/'config.boot').read_text(),(root/'config/config.boot').read_text())
