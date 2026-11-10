@@ -103,6 +103,22 @@ also lists changed paths with its copyright notice. The pinned libvyosconfig
 source includes LGPL-2.1 terms and must be audited separately from the core's
 GPL terms. The per-component audit must retain such distinctions.
 
+The core's generated distributor file list is not an upstream license change.
+When that dated, path-only suffix differs by architecture or enumeration order,
+the collector verifies the entire unchanged upstream notice against its reviewed
+source/version/hash decision and checks the required retained notices. It records
+both notice hashes and the changed paths as `notice_derivation`; it does not need
+a new permission decision for every ordering of our own file list. Changed or
+missing upstream terms, arbitrary suffix text, unknown sources and unreviewed
+dependencies still fail. Unresolved decisions log component/version and source
+and notice fingerprints, without raw notice contents or host paths.
+
+コアに自動追記する自社の変更ファイル一覧は、上流の許諾変更として扱いません。
+アーキテクチャや列挙順が違っても、元の著作権・許諾全文と固定ソースの承認が一致し、
+必要な表示が保持されていれば、同じ許諾を適用します。元の表示と実際の表示のハッシュ、
+変更一覧は記録します。上流条項の改変・欠落、任意の追記、未承認ソース・依存関係は
+引き続き拒否し、不一致の対象と指紋をログに残します。
+
 The HTTP API dependency environment is independently packaged under MIT;
 the empty-notice upstream wrapper/setup/maintainer code is not copied into it.
 Its compatible package name/path and the exact 26 Stream dependency versions

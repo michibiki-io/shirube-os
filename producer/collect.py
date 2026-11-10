@@ -191,6 +191,67 @@ def approval_for(approvals,name,version,identity,notice_root=Path('/src'),*,copy
     return approval
 
 
+def approval_for_notice(approvals, name, version, identity, notice,
+                        notice_root=Path('/src')):
+    """Keep the reviewed upstream notice exact; recognize our path-only suffix.
+
+    Core branding appends a dated list of modified files. Its order and ARM64
+    entries are packaging metadata, not a change to the upstream grant. No
+    other component, suffix text, or change to the original notice inherits it.
+    """
+    notice = Path(notice)
+    actual = sha256(notice)
+    reviewed = approval_for(approvals, name, version, identity, notice_root,
+                            copyright_sha256=actual)
+    if reviewed or name != 'vyos-1x' or notice.stat().st_size > 4 * 1024**2:
+        return reviewed
+    from .notices import PACKAGE_MODIFICATIONS
+    marker = PACKAGE_MODIFICATIONS.encode()
+    data = notice.read_bytes()
+    if data.count(marker) != 1:
+        return {}
+    original, suffix = data.split(marker)
+    lines = suffix.splitlines(keepends=True)
+    if not lines:
+        return {}
+    modified = []
+    for line in lines:
+        if not re.fullmatch(rb'Modified: [A-Za-z0-9_./+-]+\n', line):
+            return {}
+        member = line[len(b'Modified: '):-1].decode('ascii')
+        path = Path(member)
+        if not path.parts or path.is_absolute() or '..' in path.parts or str(path) != member:
+            return {}
+        modified.append(member)
+    if len(modified) != len(set(modified)):
+        return {}
+    original_digest = hashlib.sha256(original).hexdigest()
+    reviewed = approval_for(approvals, name, version, identity, notice_root,
+                            copyright_sha256=original_digest)
+    if (reviewed.get('source_identity') != identity
+            or reviewed.get('copyright_sha256') != original_digest
+            or reviewed.get('distributor_metadata_policy') != 'shirube-core-modifications-v1'):
+        return {}
+    return {**reviewed, 'copyright_sha256': actual,
+            'notice_derivation': {
+                'kind': 'unchanged-reviewed-upstream-notice-with-distributor-file-list',
+                'policy': reviewed['distributor_metadata_policy'],
+                'upstream_notice_sha256': original_digest,
+                'installed_notice_sha256': actual,
+                'modified_files': sorted(modified)}}
+
+
+def report_uncleared(name, version, identity, notice_digest, reviewed, parent=None):
+    """Log public decision fingerprints, never raw notices or filesystem roots."""
+    print('SOURCE PERMISSION: '+json.dumps({
+        'name': name, 'version': version, 'parent': parent,
+        'source_identity': identity, 'copyright_sha256': notice_digest,
+        'decision': 'UNRESOLVED',
+        'reason': ('source/notice decision or required retained notice did not match'
+                   if not reviewed else 'record did not grant redistribution'),
+    }, sort_keys=True, ensure_ascii=True), flush=True)
+
+
 def merge_bundled_components(children):
     """Coalesce the same source leaf used by several bundled build closures.
 
@@ -686,12 +747,16 @@ def collect(rootfs, package_output, output, arch, version, work):
                 origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             children=[]
             for dependency in nested:
-                reviewed=approval_for(approvals,dependency['name'],dependency['version'],dependency['source_identity'],
-                                      copyright_sha256=sha256(dependency['notice']))
+                reviewed=approval_for_notice(approvals,dependency['name'],dependency['version'],
+                                             dependency['source_identity'],dependency['notice'])
                 child_clear=(reviewed.get('source_identity')==dependency['source_identity']
                     and reviewed.get('copyright_sha256')==sha256(dependency['notice'])
                     and reviewed.get('redistributable') is True
                     and isinstance(reviewed.get('license'),str) and bool(reviewed.get('license')))
+                if not child_clear:
+                    report_uncleared(dependency['name'],dependency['version'],
+                                     dependency['source_identity'],sha256(dependency['notice']),
+                                     reviewed,parent=name)
                 if 'sources' in dependency:
                     source_refs=dependency['sources'];legal_records=dependency['license_files']
                     if not source_refs:raise ValueError('Exact bundled dependency sources are missing')
@@ -721,13 +786,15 @@ def collect(rootfs, package_output, output, arch, version, work):
                     **({'source_export':dependency['source_export']} if 'source_export' in dependency else {}),
                     **({'binary_input':dependency['binary_input']} if 'binary_input' in dependency else {})})
             children=merge_bundled_components(children)
-            approval=approval_for(approvals,source_name,source_version,origin,
-                                  copyright_sha256=sha256(copyright_file))
+            approval=approval_for_notice(approvals,source_name,source_version,origin,copyright_file)
             cleared=(approval.get('source_identity')==origin and approval.get('redistributable') is True
                      and approval.get('copyright_sha256')==sha256(copyright_file)
                      and isinstance(approval.get('license'),str) and bool(approval.get('license')))
+            if not cleared:
+                report_uncleared(source_name,source_version,origin,sha256(copyright_file),approval)
             cleared=cleared and all(child['redistributable'] for child in children)
-            cached[key]=(records,approval.get('license','UNREVIEWED'),cleared,origin,provenance,children)
+            cached[key]=(records,approval.get('license','UNREVIEWED'),cleared,origin,provenance,children,
+                         approval.get('notice_derivation'))
             assets.append(archive)
             # bundle() has independently re-read every archived member. Future
             # package aliases use only immutable archive references, so retain
@@ -736,10 +803,11 @@ def collect(rootfs, package_output, output, arch, version, work):
                 debian_archives.append(archive)
                 shutil.rmtree(debian_tree)
             shutil.rmtree(component)
-        records,license_name,cleared,origin,provenance,children=cached[key]
+        records,license_name,cleared,origin,provenance,children,derivation=cached[key]
         components.append({**package,'source_package':source_name,'source_version':source_version,
                            'source_identity':origin,'source_origin':provenance,'license':license_name,'redistributable':cleared,
-                           'bundled_components':children,**records})
+                           'bundled_components':children,**records,
+                           **({'notice_derivation':derivation} if derivation else {})})
     from .source_batches import batch
     parts,replaced=batch(debian_archives,components,output,arch,version)
     assets=[path for path in assets if path.name not in replaced]+parts

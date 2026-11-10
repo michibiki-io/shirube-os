@@ -18,7 +18,7 @@ from producer.architecture import check_elf, check_kernel, check_pe
 from producer.branding import install as install_brand
 from producer.sources import download, sha256
 from producer.packages import audit
-from producer.notices import snapshot, mark_changed
+from producer.notices import snapshot, mark_changed, PACKAGE_MODIFICATIONS
 from producer.sanitize import HOSTS
 
 
@@ -196,8 +196,7 @@ def guest_package(arch, version):
     if copyright_file.is_symlink():
         original_notice=copyright_file.read_bytes();copyright_file.unlink();copyright_file.write_bytes(original_notice)
     with copyright_file.open('a') as notice:
-        notice.write('\nShirube OS modifications by michibiki-io, 2026-11-08.\n'
-                     'Upstream copyright and license terms remain applicable.\n')
+        notice.write(PACKAGE_MODIFICATIONS)
         for path in changed:notice.write('Modified: '+str(path.relative_to(core))+'\n')
     new_version=old_version+'+shirube3'
     control=core/'DEBIAN/control';control.write_text(control.read_text().replace('Version: '+old_version+'\n','Version: '+new_version+'\n'))

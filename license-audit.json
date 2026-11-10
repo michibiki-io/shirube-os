@@ -29119,6 +29119,8 @@
     "vyos-1x@1.5dev0#e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910#de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c": {
       "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
       "copyright_sha256": "de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c",
+      "distributor_metadata_policy": "shirube-core-modifications-v1",
+      "distributor_metadata_scope": "The entire original notice must remain byte-identical. Only the producer's exact dated Shirube modification marker followed by relative Modified: file paths may be appended; architecture and path ordering do not alter the upstream grant. Record both notice hashes. This does not approve changed upstream terms or any dependency.",
       "evidence_member": "copyright",
       "redistributable": true,
       "license": "GPL-2.0-or-later AND LGPL-2.1-only",
@@ -29143,7 +29145,7 @@
       ],
       "conditions": [
         "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
-        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "This record binds the actual original upstream copyright document. Different sources or upstream notice variants do not inherit this permission. The explicitly declared distributor file-list policy does not change or replace upstream terms.",
         "Keep original GPL2-or-later packaging/component notices and independently scoped LGPL2.1 library source and relinking rights. The published modification notice and dates remain intact.",
         "The independent Nmap script and all OCaml dependencies retain their separate actual-source and actual-notice permission gates. No GPL relicensing of their differently licensed code is asserted."
       ],

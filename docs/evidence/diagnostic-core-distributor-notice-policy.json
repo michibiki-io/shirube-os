@@ -1,0 +1,39 @@
+{
+  "kind": "distributor-file-list-notice-decision-regression",
+  "status": "PASS_RULE_ONLY",
+  "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+  "component": "vyos-1x",
+  "source_version": "1.5dev0",
+  "original_observed_notice_sha256": "c1408cc161884aa22bd85685f484f8ad8362f2470a6f1e041b8eb21b4bb2217b",
+  "unchanged_upstream_notice_sha256": "de741b290b87d874dd7a93cc71db45732762bd460ca6ff320c39037ef658445c",
+  "policy": "shirube-core-modifications-v1",
+  "controlled_variants": [
+    {
+      "old_whole_notice_lookup": "UNMATCHED",
+      "unchanged_upstream_notice_decision": "PASS",
+      "modified_file_count": 8,
+      "installed_notice_sha256": "77166dfc1e7320c908e483f604fa2cb821114ad2b5f6910308994932b84653a2"
+    },
+    {
+      "old_whole_notice_lookup": "UNMATCHED",
+      "unchanged_upstream_notice_decision": "PASS",
+      "modified_file_count": 9,
+      "installed_notice_sha256": "01938764ec691baac03249fda0637e499dae5d967e1ba640470d90b66ff339ed"
+    }
+  ],
+  "renderer_literal_byte_equivalence": "PASS",
+  "focused_tests": {
+    "result": "PASS",
+    "count": 19,
+    "modules": [
+      "test_collect",
+      "test_notices",
+      "test_notice_approval"
+    ]
+  },
+  "native_compilation": "NOT_RUN_FOR_THIS_RULE_TEST",
+  "iso_reassembly": "NOT_RUN_FOR_THIS_RULE_TEST",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "scope": "Actual previously retained ARM64 notice with controlled path-list order/architecture variations. This proves the producer-policy false-negative and unchanged upstream terms, not the exact missing notice bytes or sole failure cause of the newer hosted candidate. Complete hosted acceptance and PR reviews remain pending."
+}

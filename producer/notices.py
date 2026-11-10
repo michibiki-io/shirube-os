@@ -2,6 +2,8 @@
 from pathlib import Path
 
 NOTICE = 'Modified by michibiki-io for Shirube OS on 2026-11-08.'
+PACKAGE_MODIFICATIONS = ('\nShirube OS modifications by michibiki-io, 2026-11-08.\n'
+                         'Upstream copyright and license terms remain applicable.\n')
 
 
 def snapshot(root):
