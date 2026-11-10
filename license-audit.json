@@ -23805,6 +23805,168 @@
         "Retain the full NIST1999 author, contributor, copyright and use/copy/modify permission in source and supporting documentation, with the Andre Seznec and subsequent modification notices. Retain the explicit dfft C-implementation public-domain dedication by Monty; do not infer that dedication for the rest of haveged or Cephes.",
         "No independent correspondence was requested or sent, no feature removed, and no compile/boot/OCI result is claimed. Exact source-and-notice analysis only; complete OS source/redistribution/release gates still apply."
       ]
+    },
+    "nettle@3.8.1-2": {
+      "redistributable": true,
+      "source_identity": "a437e204da67612efb656cab354835f358b44c077c5c0a46d6e8c30b5c0bddff",
+      "copyright_sha256": "ca2ca597320220c00ef6dc0fe5d0d82025548d6d4ba80e85615eb691f9021f93",
+      "license": "LGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later AND MIT AND LicenseRef-Nettle-Debian-Original-Declarations",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Nettle-3.8.1/COPYINGv2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/COPYINGv3",
+          "sha256": "e6037104443f9a7829b2aa7c5370d0789a7bda3ca65a0b904cdc0c2e285d9195"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/COPYING.LESSERv3",
+          "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/README",
+          "sha256": "02cb98d7b68bd895fe26752c5f10d7eb23623dff90238998e019c26994c6739b"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/manual-original-public-domain-notice.texinfo",
+          "sha256": "2ef100c5eec22a57a4110499ac562ded15d208132643e4248f48f9577fc93193"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/debian/copyright",
+          "sha256": "ca2ca597320220c00ef6dc0fe5d0d82025548d6d4ba80e85615eb691f9021f93"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/debian/nettle-hash.1",
+          "sha256": "fed4b0c3a60e59a7ca0b04f923049897e7b8bb850bd8bd3e6d990bdb67a1b51d"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/debian/nettle-pbkdf2.1",
+          "sha256": "77327e5f1e1de85194392bc65b66cafae24f0661c49a4c03dc0ca90e3e1216d5"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/debian/sexp-conv.1",
+          "sha256": "433da0a85fd52e5e8e19aa6682a6a093846c3a13450c5cc41a644985c9262d3e"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/debian/pkcs1-conv.1",
+          "sha256": "b062dcf414c04ebb048670ab9a3d01ac3410bb1fc97c0b1db2dcb2e82b3491c5"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/debian/nettle-lfib-stream.1",
+          "sha256": "463d0977f66917877389f616a6002a3df1c17784f328c1812d58ecd181221cf6"
+        },
+        {
+          "path": "LICENSES/Nettle-3.8.1/debian-packaging-declaration.txt",
+          "sha256": "2b61e742a88397e9020feb5210f4ef0d423906b08fee4797e9157603ba659a7f"
+        }
+      ],
+      "scope": "Exact Debian Nettle3.8.1 source/package. Complete original Debian scopes and operative texts read, original README/manual grant checked, all original GNU license word differences read. Debian packaging public-domain classification is accepted as the published package declaration with its exact rationale and exceptions; no separate chain-of-title or universal-waiver claim. No source/runtime/build changes.",
+      "conditions": [
+        "Choose the LGPL3-or-later branch for the dual-licensed library used with GnuTLS; retain the complete GNU2-or-later alternative and all original source copyrights. LGPL2-or-later DES material may use its permitted later-LGPL branch. Preserve relinking/source rights and deliver complete corresponding sources and exact Debian patches/build/install scripts.",
+        "Retain full original COPYINGv2, COPYINGv3, COPYING.LESSERv3, README, Debian copyright and original manual public-domain dedication. The manual explicitly permits copying/modification; its status is distinct from the library and does not follow from public availability.",
+        "Preserve MIT GOST grants, GNU2-or-later getopt scope, GNU3 texinfo output exception and Autoconf build-script exception. The exceptions do not change the whole library license. Keep all underlying dependency approvals and source-delivery obligations.",
+        "Retain the exact Debian public-domain packaging classification together with the author’s stated noncreative-expression rationale. This is the published component declaration, not an assertion that all packaging is independently proven uncopyrightable or that every author signed an express waiver. The three other manual license scopes remain distinct: sexp-conv GNU2-only, pkcs1-conv/nettle-lfib-stream GAP, and the two manuals with original author/use-by-others notice.",
+        "Retain the full sexp-conv GNU2 declaration and the maintainer’s explicit LSH-provenance interpretation/comment, original Timshel Knoll/Magnus Holmgren author notices and all original manual source text. The current public LSH package retains the GNU2-or-later program declaration and Timshel authorship; no new original-author correspondence or independent relicensing confirmation is claimed.",
+        "Exact notices and source-scope analysis only: no library/ISO rebuild or boot/OCI result is claimed. Complete-OS license inventory, source restoration and release gates remain separate."
+      ]
+    },
+    "squid@5.7-2+deb12u6": {
+      "redistributable": true,
+      "source_identity": "d93788b1dd7ba2cd4ba26f6994ad6b0d2cbdd19be41f718cd1690ee5ba5ef49c",
+      "copyright_sha256": "8b96280f4bd6f9bc0eed1462c8d2389a177c36d619cd83031195cb56d1f0f34d",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND ISC AND Beerware AND CC-BY-2.5 AND CC-BY-3.0 AND CC-BY-SA-3.0 AND Artistic-1.0-Perl AND BSL-1.0 AND OLDAP-2.8 AND LicenseRef-Squid-Original-Notices",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Squid-5.7/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/CREDITS",
+          "sha256": "7e5926ddd168a018e2566c40618a4f7cdf6b9ed1920319b9270b34d94b4a58d7"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/CONTRIBUTORS",
+          "sha256": "a9d0b3584f9e4358e3a7c57deb98288e07414668c05d16e1805016c334bcba2b"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/errors/TRANSLATORS",
+          "sha256": "f96b71a7822e69143e92f45ef82e4e7cda5b11397ae520e6d8a2da35c923137c"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/README",
+          "sha256": "aa8f9063f5a7dbf1963a0a5c9e569b57f474c9abf92b3600c9b91dec630c3d25"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/errors/COPYRIGHT",
+          "sha256": "da960bf469fd60c85820d066fd52c3ddaec3a401e4890292d6121c037d7b3eba"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/libltdl/COPYING.LIB",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/debian/copyright",
+          "sha256": "8b96280f4bd6f9bc0eed1462c8d2389a177c36d619cd83031195cb56d1f0f34d"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/debian/copyright.Debian",
+          "sha256": "dcafcf3f5ccb9b8b4f38514c2283e88dbcfa50590e86c30b6e829cea8a302d12"
+        },
+        {
+          "path": "LICENSES/Squid-5.7/RFC2617-copyright.txt",
+          "sha256": "24f88d15616b245b2c2de628d55dd92912b41ce30e55624b264dcd13f4cca4b0"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        },
+        {
+          "path": "LICENSES/CC-BY-3.0.txt",
+          "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        },
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        },
+        {
+          "path": "LICENSES/BSL-1.0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+        },
+        {
+          "path": "LICENSES/OpenLDAP-2.5.13/LICENSE",
+          "sha256": "310fe25c858a9515fc8c8d7d1f24a67c9496f84a91e0a0e41ea9975b1371e569"
+        }
+      ],
+      "scope": "Exact existing upstream/Debian Squid5.7 redistribution with the original explicit GNU2-or-later program grant and incorporated component scopes. Complete original88693-character copyright and full original CREDITS word differences read. Contributor/translator names retained, not individually human-read. No Squid/Harvest code modifications; OS aggregation and notice additions do not author a new Squid derivative. Published component declarations are accepted without an independent chain-of-title warranty.",
+      "conditions": [
+        "Retain the original explicit GNU2-or-later README/program grant, complete corresponding sources and unchanged Debian security patches/build/install scripts. Keep every scoped GNU/Autoconf/Libtool/GSS exception, LGPL source/relinking condition and author notice; choose the GNU2 branch for Nettle-derived base64 and the Artistic branch for the independent Perl helper.",
+        "Retain complete original CREDITS, CONTRIBUTORS, errors/TRANSLATORS, root GPL2/README, libltdl LGPL2.1 and Debian notices. Credit all original Harvest contributors/institutions and identify Squid as the existing derivative, not original Harvest. Preserve the historical Harvest derivative-work notification conditions verbatim. This decision relies on the existing publisher’s explicit GNU redistribution grant for the existing Squid/Debian work; it does not authorize a newly authored Harvest derivative under an invented exception or claim a notification was sent.",
+        "Reproduce Berkeley and Bill Paul advertising acknowledgements, CMU documentation/nonendorsement conditions, Livingston/Cistron redistribution-by-permission acknowledgements and RSA MD5 identification in relevant materials. Preserve HP, WIDE, Aerospace, ISC/DEC, Hannover and Beerware original notices. Only actual express dedications support public-domain classifications.",
+        "Keep Free CSS Templates stylesheet under CC-BY2.5 with original author URI and exact https://creativecommons.org/licenses/by/2.5/ license URI, without inventing a version upgrade. Credit Mark James/Silk1.3 and https://www.famfamfam.com/lab/icons/silk/ under its offered CC-BY3.0 option, keeping the original2.5 alternative. Squid NOW remains CC-BY-SA3.0 with original copyright, title and license link. No artwork is removed or relabeled; no additional access restrictions or sublicense terms are imposed.",
+        "Retain RFC2617 Internet Society1999 implementation-derivative permission and original copyright; Squid modifications remain under the explicit GNU grant. Preserve OpenLDAP2.8 permission for copied LDAP helper material, fullBoost1.0 terms, BSD/DEC source-only Solaris header notices and every original copyright. No CDDL or public-domain grant is invented from a source URL.",
+        "Author requests for email about icon use remain requests; no message is sent or claimed. Exact component declarations, source and notice retention only. No code/build changes, library/ISO rebuild or boot/OCI result are claimed; complete OS release gates remain mandatory."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

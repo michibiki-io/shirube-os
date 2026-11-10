@@ -1,0 +1,12 @@
+@copying
+This manual is for the Nettle library (version @value{UPDATED-FOR}), a
+low-level cryptographic library.
+
+Originally written 2001 by @value{AUTHOR}, updated 2017.
+
+@quotation
+This manual is placed in the public domain. You may freely copy it, in
+whole or in part, with or without modification. Attribution is
+appreciated, but not required.
+@end quotation
+@end copying

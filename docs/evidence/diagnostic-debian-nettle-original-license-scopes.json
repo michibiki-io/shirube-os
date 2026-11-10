@@ -1,0 +1,64 @@
+{
+  "kind": "exact-debian-nettle-original-license-scopes",
+  "status": "PASS_COMPONENT_DECLARATION_REVIEW_ONLY",
+  "source": "nettle",
+  "version": "3.8.1-2",
+  "dsc_sha256": "a437e204da67612efb656cab354835f358b44c077c5c0a46d6e8c30b5c0bddff",
+  "copyright_sha256": "ca2ca597320220c00ef6dc0fe5d0d82025548d6d4ba80e85615eb691f9021f93",
+  "original_notices": [
+    {
+      "path": "LICENSES/Nettle-3.8.1/COPYINGv2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/COPYINGv3",
+      "sha256": "e6037104443f9a7829b2aa7c5370d0789a7bda3ca65a0b904cdc0c2e285d9195"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/COPYING.LESSERv3",
+      "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/README",
+      "sha256": "02cb98d7b68bd895fe26752c5f10d7eb23623dff90238998e019c26994c6739b"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/manual-original-public-domain-notice.texinfo",
+      "sha256": "2ef100c5eec22a57a4110499ac562ded15d208132643e4248f48f9577fc93193"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/debian/copyright",
+      "sha256": "ca2ca597320220c00ef6dc0fe5d0d82025548d6d4ba80e85615eb691f9021f93"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/debian/nettle-hash.1",
+      "sha256": "fed4b0c3a60e59a7ca0b04f923049897e7b8bb850bd8bd3e6d990bdb67a1b51d"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/debian/nettle-pbkdf2.1",
+      "sha256": "77327e5f1e1de85194392bc65b66cafae24f0661c49a4c03dc0ca90e3e1216d5"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/debian/sexp-conv.1",
+      "sha256": "433da0a85fd52e5e8e19aa6682a6a093846c3a13450c5cc41a644985c9262d3e"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/debian/pkcs1-conv.1",
+      "sha256": "b062dcf414c04ebb048670ab9a3d01ac3410bb1fc97c0b1db2dcb2e82b3491c5"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/debian/nettle-lfib-stream.1",
+      "sha256": "463d0977f66917877389f616a6002a3df1c17784f328c1812d58ecd181221cf6"
+    },
+    {
+      "path": "LICENSES/Nettle-3.8.1/debian-packaging-declaration.txt",
+      "sha256": "2b61e742a88397e9020feb5210f4ef0d423906b08fee4797e9157603ba659a7f"
+    }
+  ],
+  "decision_basis": "Published exact component license declarations and original scoped grants, not an independent chain-of-title audit. Debian packaging classification and the sexp-conv provenance interpretation are retained with their actual caveats; no universal waiver or new author confirmation is claimed.",
+  "supporting_lsh_source": "https://deb.debian.org/debian/pool/main/l/lsh-utils/lsh-utils_2.1-13.debian.tar.xz",
+  "supporting_lsh_archive_sha256": "e561e91976e559c13868d3868edebb52f30d1d4e4da7d52fa26c9a739489bf07",
+  "scope": "Static original legal scopes and complete GNU word-difference review. No code changes or native rebuild. Full OS and OCI acceptance not established.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

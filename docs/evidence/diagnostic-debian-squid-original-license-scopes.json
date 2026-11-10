@@ -1,0 +1,100 @@
+{
+  "kind": "exact-debian-squid-original-notice-retention",
+  "status": "PASS_COMPONENT_DECLARATION_REVIEW_ONLY",
+  "source": "squid",
+  "version": "5.7-2+deb12u6",
+  "dsc_sha256": "d93788b1dd7ba2cd4ba26f6994ad6b0d2cbdd19be41f718cd1690ee5ba5ef49c",
+  "copyright_sha256": "8b96280f4bd6f9bc0eed1462c8d2389a177c36d619cd83031195cb56d1f0f34d",
+  "review_coverage": {
+    "complete_debian_copyright_read": true,
+    "characters": 88693,
+    "full_original_credits_word_differences_read": "GNU postal address substitutions only",
+    "contributor_translator_names": "Retained and machine-indexed, not each independently human-read."
+  },
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Squid-5.7/COPYING",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/CREDITS",
+      "sha256": "7e5926ddd168a018e2566c40618a4f7cdf6b9ed1920319b9270b34d94b4a58d7"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/CONTRIBUTORS",
+      "sha256": "a9d0b3584f9e4358e3a7c57deb98288e07414668c05d16e1805016c334bcba2b"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/errors/TRANSLATORS",
+      "sha256": "f96b71a7822e69143e92f45ef82e4e7cda5b11397ae520e6d8a2da35c923137c"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/README",
+      "sha256": "aa8f9063f5a7dbf1963a0a5c9e569b57f474c9abf92b3600c9b91dec630c3d25"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/errors/COPYRIGHT",
+      "sha256": "da960bf469fd60c85820d066fd52c3ddaec3a401e4890292d6121c037d7b3eba"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/libltdl/COPYING.LIB",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/debian/copyright",
+      "sha256": "8b96280f4bd6f9bc0eed1462c8d2389a177c36d619cd83031195cb56d1f0f34d"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/debian/copyright.Debian",
+      "sha256": "dcafcf3f5ccb9b8b4f38514c2283e88dbcfa50590e86c30b6e829cea8a302d12"
+    },
+    {
+      "path": "LICENSES/Squid-5.7/RFC2617-copyright.txt",
+      "sha256": "24f88d15616b245b2c2de628d55dd92912b41ce30e55624b264dcd13f4cca4b0"
+    },
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "LICENSES/GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "LICENSES/LGPL-2.1.txt",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    },
+    {
+      "path": "LICENSES/LGPL-3.0.txt",
+      "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+    },
+    {
+      "path": "LICENSES/CC-BY-3.0.txt",
+      "sha256": "d57bc0b92ef3a23218ec57a6a424c76ba055d48a0d82ec9699448a179b15b6b8"
+    },
+    {
+      "path": "LICENSES/CC-BY-SA-3.0.txt",
+      "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+    },
+    {
+      "path": "LICENSES/Artistic-1.0-Perl.txt",
+      "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+    },
+    {
+      "path": "LICENSES/BSL-1.0.txt",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    {
+      "path": "LICENSES/OpenLDAP-2.5.13/LICENSE",
+      "sha256": "310fe25c858a9515fc8c8d7d1f24a67c9496f84a91e0a0e41ea9975b1371e569"
+    }
+  ],
+  "primary_permission_references": [
+    "https://wiki.squid-cache.org/SquidFaq/AboutSquid",
+    "https://creativecommons.org/licenses/by/2.5/legalcode.en",
+    "https://www.rfc-editor.org/rfc/rfc2617.txt"
+  ],
+  "scope": "Static exact original scopes and notices for existing unchanged Squid/Debian work, relying on the publisher’s explicit GNU redistribution grant. All historical notices and derivative-work conditions retained; this notice change authors no new Squid/Harvest derivative. No independent chain-of-title warranty, notification, code modification, native rebuild, or OCI result is claimed.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

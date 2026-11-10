@@ -1,0 +1,1 @@
+The exact Debian copyright file declares debian/* as public-domain with its stated noncreative-expression rationale. Specific manual exceptions remain under their separately recorded GNU2 or GAP permissions. This records the published package declaration; it does not independently establish a universal waiver or the copyrightability of every file.
