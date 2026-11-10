@@ -628,3 +628,36 @@ require another library or ISO build. Final coherent OS acceptance is separate.
 既に両アーキテクチャで 11 件ずつのテストとインストールを確認済みです。
 許諾文書だけの変更では差分とハッシュを照合し、ライブラリや ISO を再ビルドしません。
 最終的な OS の受け入れとは区別します。
+
+## Kbd preferred source
+
+The Debian kbd 2.5.1-1 package installs console and keyboard utilities,
+translations and manuals. Its original install recipe does not install the
+optional upstream font collection. The source export omits only three Agafari
+font assets whose original notice restricts redistribution to non-commercial
+Unix use. All 1,146 other original regular files remain byte-identical,
+including executable sources, build/install scripts and keymaps. Other fonts
+and all original notices remain. The original descriptor is retained as
+provenance, and only the distinct preferred export is approved for delivery.
+
+Reconstruct the executable package with the unchanged Debian
+`dpkg-buildpackage` recipe. This does not assert that the optional upstream
+font `install-data` target is complete. [Static export evidence](evidence/diagnostic-debian-kbd-preferred-source-export.json)
+records exact member hashes and the unchanged packaging scope; it makes no
+native compilation or boot claim. No binary rebuild is required for this
+source-delivery-only omission of assets absent from the executable package.
+
+### Kbd の配布用ソース
+
+Debian の kbd パッケージは、コンソール・キーボード用コマンド、翻訳、マニュアルを
+インストールし、上流の任意フォント集はインストールしません。配布用ソースからは、
+元の許諾が商用利用を認めていない Agafari フォント 3 件だけを除外します。
+他の元ファイル 1,146 件、実行コード、ビルド・インストール手順、キーマップ、
+他のフォントとすべての著作権表示をバイト単位で保持します。
+元の記述子は由来の記録として残し、固有の識別子を持つ配布用ソースだけを許諾対象とします。
+
+実行パッケージは元の Debian `dpkg-buildpackage` 手順で再構築します。
+上流の任意フォント用 `install-data` 全体が揃っているという意味ではありません。
+この確認はファイル差分と元のパッケージ範囲の静的検証であり、コンパイルや起動試験の
+成功を意味しません。実行パッケージに含まれない素材の配布用ソースからの除外のために、
+バイナリを再ビルドする必要はありません。

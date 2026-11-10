@@ -23586,6 +23586,109 @@
         "Keep libtool/autoconf exceptions scoped to their build scripts; do not apply them to all library code. Deliver complete corresponding source and original build/install scripts with GNU-licensed tools, with all original notices and modification marking. No uniform GNU licensing is imposed on the independent OpenLDAP library.",
         "Retain the full librewrite origin, alteration-identification and documentation-credit requirements, all original documentation legal files and historical component terms. This decision does not clear any separately supplied dependency or the complete OS release."
       ]
+    },
+    "kbd@2.5.1-1#20d5fb996b7181aa1d8b805a40bdaf1c0adaf797f2b8c3d22c27a84c5e517d54": {
+      "redistributable": true,
+      "source_identity": "20d5fb996b7181aa1d8b805a40bdaf1c0adaf797f2b8c3d22c27a84c5e517d54",
+      "original_source_identity": "601a34466f78611c6e0bf0ff10941b2b8e9abf93e4c84a5f90327df2ca809966",
+      "copyright_sha256": "893257f3a92bb2448269ae39284abc1f54cbbab4dd5db939c6af0ff8d0d34e44",
+      "license": "GPL-2.0-or-later AND LicenseRef-Kbd-Original-Font-Notices",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Kbd-2.5.1/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/README.md",
+          "sha256": "214563d63beeb496c68228eee195872874f53e45f34046ffb062a8cd9bb412f9"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.12x22",
+          "sha256": "35f5dfcbf47891efbe1043ad553ba23787d70dafdea09cb67db0e27af7e880d8"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.Arabic",
+          "sha256": "53685ec6bd24e1b077519fcfbff2b321bb4d537422f5606492ed3cc69a80ee1c"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.Cyrillic",
+          "sha256": "a765e7501059b555e8cc8b8fc421ad5cc21d63bb9267d7545eb839f911af58e3"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.Ethiopic",
+          "sha256": "4a8bf215898889ce1f3220174ec99b55ea2e36a847203c9cdeca21cafe066016"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.Greek",
+          "sha256": "b7a2d5f6a2c9280de9f10b0097f81067b0b261acec6a16ecea334aa8948f427e"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.Hebrew",
+          "sha256": "4139025377076ea1cbda4d010f464ccdfdf86a6b8526db88ac18b91c8035a903"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.Lat2-Terminus16",
+          "sha256": "dc7e3f2ab318f69c5f5d3d900028a3f5231cc2f5c03903bc24eca820b60bbbab"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.LatGrkCyr",
+          "sha256": "8865c7894f32d5a2eeb9974f1365e91ad331d21555a6df92df06033a3dfcdfbc"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.Sun",
+          "sha256": "e0b4cb59af11690c9e2f2d58b07c0da88e9086c9bc2db7e130f5d8f2f976e640"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.cp1250",
+          "sha256": "c080f19fc5c037a57b8140f966aeb012dc748fe357c72aa2b3e16bbcb6d210b7"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.cybercafe",
+          "sha256": "ee2cb83eee223fb7fe626127373c2e4f0694cb7744e9333660387e076cbf4e53"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.drdos",
+          "sha256": "5154c4f190cca4a393efa16781df1598cd739f09541dbf09f2b1873a2ba3915a"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.eurlatgr",
+          "sha256": "854116f0a3ccad34008b6c5ad961059ad9bcad37c8e21ee294bd747a13cb580c"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.eurlatgr.mappings",
+          "sha256": "aca86ab28c38a71782a75614931ba50db4eda265f2bec654cfa214ca2fa6d47f"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.lat0",
+          "sha256": "c42d48d355a0de380c4c436f024bb36ddf5719904c4580ded43622bf00943a51"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.lat7",
+          "sha256": "0e087a4582b0ac7a97d4e638fa4c8acd8b0d8c7e313b8f7d0f308a36d33d3d54"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.lat9",
+          "sha256": "63c3c55da3d88e43e1ef0d8085cd53296586ced716c7c43aeef0093700055d15"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/data/consolefonts/README.psfu",
+          "sha256": "09122f59e141d12b43166b7f34f979a5d0870187de60fae6a9eab36583074e8c"
+        },
+        {
+          "path": "LICENSES/Kbd-2.5.1/debian-copyright.txt",
+          "sha256": "893257f3a92bb2448269ae39284abc1f54cbbab4dd5db939c6af0ff8d0d34e44"
+        }
+      ],
+      "scope": "Only the exact applied preferred source export omitting three non-installed, explicitly non-commercial Agafari assets. Raw Debian source archives are not approved. Every code/header/build/test/packaging/keymap and remaining font is byte-identical. Original font grants/restrictions and author notices retained; glyph/character mapping lists machine-indexed, not individually human-read.",
+      "conditions": [
+        "Deliver the complete preferred source export and unchanged Debian build/install recipe with binary packages. Retain the GPL2-or-later root grant and original GPL2 text; GNU version-unspecified tool scopes may use GPL2. Preserve copyright and modification/origin notices. Raw original source archives containing Agafari must not be delivered.",
+        "The exact Debian install rule installs executables, translations and manuals, not optional upstream consolefont data. All font-loading/keymap utilities and every installed source remain unchanged. This export is complete for the Debian kbd executable package, not an assertion that the optional upstream font install-data target remains complete.",
+        "Retain README.Ethiopic and its precise scopes: Goha/GohaClassic GPL2 redistribution permitted, Agafari non-commercial Unix-only assets omitted. Do not relicense restricted assets or claim public-domain status from lack of a notice.",
+        "Preserve cybercafe author/distribution policy with every copy, Terminus original GPL2-or-later grant, LatGrkCyr explicit public-domain8x16 and GNU2-derived12x22 scope, Sun/kernel font attribution, Guylhem AZNAR GPL grant and all remaining original font notices. Do not infer another grant for unrelated sources or apply the Agafari restriction to Goha.",
+        "License/source-only export validation uses exact all-member differences and SHA256 bindings; it does not require or claim a native compilation, boot or OCI test. Full OS release/source gates remain mandatory."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

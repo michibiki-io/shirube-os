@@ -63,6 +63,27 @@
         "member": "3rd_party/include/opentracing/catch2/catch.hpp",
         "sha256": "7c6ac88b2d592d11e889396d9bc5f825e6759e38b6200f339e4b6100fa320205"
       }
+    },
+    {
+      "source": "kbd",
+      "version": "2.5.1-1",
+      "descriptor_sha256": "601a34466f78611c6e0bf0ff10941b2b8e9abf93e4c84a5f90327df2ca809966",
+      "licensing_sha256": "4a8bf215898889ce1f3220174ec99b55ea2e36a847203c9cdeca21cafe066016",
+      "debian_rules_sha256": "96fa1f582c1996248c731599f23213ad4d2b3b0965a411da094d48fcfd166426",
+      "excluded": [
+        {
+          "member": "data/consolefonts/Agafari-12.psfu",
+          "sha256": "3691e6993f62fb014a9cd88ba3155b6b03972cce71cc937e0673dbb0f2512436"
+        },
+        {
+          "member": "data/consolefonts/Agafari-14.psfu",
+          "sha256": "2c23ee35fb35ac8e0366421d01374428e482ada559572cc2dca14cd72f45cf1c"
+        },
+        {
+          "member": "data/consolefonts/Agafari-16.psfu",
+          "sha256": "3fe8e9e226fcb873da12de285ef5e352b4c7183bd0dc4e0bb1a22072a849f8f5"
+        }
+      ]
     }
   ]
 }
