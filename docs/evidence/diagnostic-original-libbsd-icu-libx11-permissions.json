@@ -1,0 +1,85 @@
+{
+  "kind": "exact-original-library-and-dictionary-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "libbsd",
+      "version": "0.11.7-2",
+      "source_identity": "21c62d65fa3b914d765b733fb0e03d331db830df45f1a5225f95902567f05146",
+      "copyright_sha256": "00fd7be5d907a6bcc409a80f2d565f508673db4761d54623691f89ae3aa20fc7",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "7aab3a07716d31ca72e66c1073ef8a0fa0be0daa5df7c3b2cc0c668589142336"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "00fd7be5d907a6bcc409a80f2d565f508673db4761d54623691f89ae3aa20fc7"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Libbsd-original-COPYING.txt",
+          "sha256": "7aab3a07716d31ca72e66c1073ef8a0fa0be0daa5df7c3b2cc0c668589142336"
+        }
+      ],
+      "scope": "Complete original COPYING and complete installed Debian copyright read, including each code and manual scope. No GPL-incompatible advertising term is assigned to unrelated library code. Not OS release clearance."
+    },
+    {
+      "source": "icu",
+      "version": "72.1-3+deb12u1",
+      "source_identity": "8fd50a21664422b2dd5df4e20175dce3396c89a3a85363db26dd4529bba62a92",
+      "copyright_sha256": "5bbff5f646ce750ac0a347e7f91793279b7422a1119820b5f75d98879c201c68",
+      "original_legal_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "5bbff5f646ce750ac0a347e7f91793279b7422a1119820b5f75d98879c201c68"
+        },
+        {
+          "member": "license.html",
+          "sha256": "c62d7697c03979f5056d28b338fafc7a1152820f7b379adf4a9d88cd37160f96"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/ICU-original-LICENSE.txt",
+          "sha256": "af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2"
+        }
+      ],
+      "scope": "All original LICENSE sections, moved-license HTML and complete Debian copyright read. Original Unicode, IBM, dictionaries, third-party code and packaging scopes preserved; condensed Debian MIT classification does not replace the complete original terms. Not OS release clearance."
+    },
+    {
+      "source": "libx11",
+      "version": "2:1.8.4-2+deb12u2",
+      "source_identity": "d7374ec568d895f9e5919ebdbd94301e2acb9e8b307a39ac8708082aa1757fa3",
+      "copyright_sha256": "0b380a7fd5b2228f26e9585e56f14812efd3350f3df307507d2bc055dfd8de3e",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "2e7012a140f000735a7172674a2d314398d79622444fba65d108b029b29ab283"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "0b380a7fd5b2228f26e9585e56f14812efd3350f3df307507d2bc055dfd8de3e"
+        },
+        {
+          "member": "src/xlibi18n/lcUniConv/COPYRIGHT",
+          "sha256": "b7492b0e0cb9117d13dc928130ca8303185008f7231bc91a9a2071b381f5f490"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/LibX11-original-COPYING.txt",
+          "sha256": "2e7012a140f000735a7172674a2d314398d79622444fba65d108b029b29ab283"
+        }
+      ],
+      "scope": "Entire original COPYING and lcUniConv COPYRIGHT read; complete original-to-Debian copyright word differences read, preserving both versions. Per-file legacy permissions remain distinct; not OS release clearance."
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

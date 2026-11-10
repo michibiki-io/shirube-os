@@ -21748,6 +21748,143 @@
         "The Inner Net License version2 conditional restriction concerns specifically nonredistributable releases. This exact original release identifies RELEASE stable and VERSION 2.36; its root README expressly identifies free software and directs to COPYING.LIB and LICENSES. No prohibition label was found in those release identifiers. Preserve its full original conditions and do not infer removal of other contribution conditions.",
         "Retain the source-specific BSD, ISC, CMU Mach, Intel, Sun fdlibm, Spencer and PCRE notices and acknowledgement requirements. Preserve original Debian introductory version wording without using it as the actual source version; the exact DSC and original tarball control that identity."
       ]
+    },
+    "libbsd@0.11.7-2": {
+      "redistributable": true,
+      "source_identity": "21c62d65fa3b914d765b733fb0e03d331db830df45f1a5225f95902567f05146",
+      "copyright_sha256": "00fd7be5d907a6bcc409a80f2d565f508673db4761d54623691f89ae3aa20fc7",
+      "license": "BSD-3-Clause AND BSD-2-Clause AND ISC AND MIT AND Beerware AND LicenseRef-Libbsd-original-manual-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libbsd-original-COPYING.txt",
+          "sha256": "7aab3a07716d31ca72e66c1073ef8a0fa0be0daa5df7c3b2cc0c668589142336"
+        }
+      ],
+      "scope": "Complete original COPYING and complete installed Debian copyright read, including each code and manual scope. No GPL-incompatible advertising term is assigned to unrelated library code. Not OS release clearance.",
+      "conditions": [
+        "Retain original per-file copyright, permissions, nonendorsement and disclaimers in source and binary legal materials. Provide exact corresponding source, packaging, patches and build/install inputs.",
+        "Preserve the Niels Provos manual-page acknowledgement verbatim. All advertising materials mentioning features or use of that separately licensed software must display: This product includes software developed by Niels Provos.",
+        "Keep Peter Wemm FreeBSD inclusion notation and beginning-of-file retention, and the flopen notice in its original position unchanged. Retain the original separate BSD2/BSD3/ISC/MIT/Beerware and explicit public-domain scopes."
+      ]
+    },
+    "icu@72.1-3+deb12u1": {
+      "redistributable": true,
+      "source_identity": "8fd50a21664422b2dd5df4e20175dce3396c89a3a85363db26dd4529bba62a92",
+      "copyright_sha256": "5bbff5f646ce750ac0a347e7f91793279b7422a1119820b5f75d98879c201c68",
+      "license": "Unicode-DFS-2016 AND ICU AND BSD-3-Clause AND BSD-2-Clause AND LicenseRef-IPADIC AND GPL-3.0-only AND LicenseRef-ICU-build-script-exceptions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/ICU-original-LICENSE.txt",
+          "sha256": "af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2"
+        }
+      ],
+      "scope": "All original LICENSE sections, moved-license HTML and complete Debian copyright read. Original Unicode, IBM, dictionaries, third-party code and packaging scopes preserved; condensed Debian MIT classification does not replace the complete original terms. Not OS release clearance.",
+      "conditions": [
+        "Preserve complete Unicode/IBM copyright and permission in copies and supporting documentation, BSD attributions, IPADIC/ICOT no-warranty terms and dictionary source notices. Do not use holders names for endorsement. Provide exact preferred source, patches and complete build/install inputs.",
+        "Retain original timezone public-domain explanation, Google double-conversion BSD notice and the separately scoped Autoconf-generated configuration exceptions and MIT install-sh notice. Apply packaging GPL3 only to its own files. No exception is extended to unrelated runtime code."
+      ]
+    },
+    "libx11@2:1.8.4-2+deb12u2": {
+      "redistributable": true,
+      "source_identity": "d7374ec568d895f9e5919ebdbd94301e2acb9e8b307a39ac8708082aa1757fa3",
+      "copyright_sha256": "0b380a7fd5b2228f26e9585e56f14812efd3350f3df307507d2bc055dfd8de3e",
+      "license": "MIT AND ISC AND LicenseRef-LibX11-original-per-file-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/LibX11-original-COPYING.txt",
+          "sha256": "2e7012a140f000735a7172674a2d314398d79622444fba65d108b029b29ab283"
+        }
+      ],
+      "scope": "Entire original COPYING and lcUniConv COPYRIGHT read; complete original-to-Debian copyright word differences read, preserving both versions. Per-file legacy permissions remain distinct; not OS release clearance.",
+      "conditions": [
+        "Retain all original copyright, permission, nonendorsement and disclaimer notices in sources and supporting binary documentation. Provide exact preferred sources, packaging patches and complete build/install inputs. Do not imply X.Org or other holders endorsement.",
+        "Preserve Tektronix TekHVC naming/coordinate-display conditions and the separate documentation permissions. Preserve original FUJITSU attribution and source-specific grants rather than treating a standalone modification attribution as a replacement license. No trademark or patent assurance is implied.",
+        "Retain the original lcUniConv explicitly scoped FSF permission, which states the conversion files have been placed under that grant with FSF permission; it does not license unrelated libiconv files. Retain original and Debian-specific additional David E. Wexelblat notice."
+      ]
+    },
+    "c-ares@1.18.1-3": {
+      "redistributable": true,
+      "source_identity": "91d95bb080e4cd1d0d507f4693496e323a593f6611161361fd76735292bda6b6",
+      "copyright_sha256": "a7bb031e8e32d65f76e35ba7a8801a5eae1369b5fd2eded44abe67ef13359a6d",
+      "license": "MIT AND ISC AND GPL-2.0-or-later AND LicenseRef-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original Debian copyright and nonstandard root legal text read; complete standard GNU/Apache originals matched against previously read originals, with source-specific scopes retained. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain original MIT acknowledgement and nonendorsement wording in source and supporting binary documentation; condensed Debian MIT grant does not replace that original. Preserve distinct ISC code and public-domain mkinstalldirs scopes, original AUTHORS and packaging GPL permissions."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/C-ares-original-LICENSE.md.txt",
+          "sha256": "db4eb63fe09daebdf57d3f79b091bb5ee5070c0d761040e83264e648d307af4c"
+        }
+      ]
+    },
+    "dosfstools@4.2-1": {
+      "redistributable": true,
+      "source_identity": "598c495fe393caedbe15c3595e62d66371114f08dd7482c0af5e3f25acd7e5c2",
+      "copyright_sha256": "e97b0b837a88c06b64986e8d5856bc5f208cca28ee9a0f8225ed0ffa8a049b1c",
+      "license": "GPL-3.0-or-later AND LicenseRef-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original Debian copyright and nonstandard root legal text read; complete standard GNU/Apache originals matched against previously read originals, with source-specific scopes retained. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Preserve GNU3-or-later program conditions and explicit public-domain src/blkdev scope; provide complete source, modifications and build/install material."
+      ]
+    },
+    "google-authenticator@20191231-2": {
+      "redistributable": true,
+      "source_identity": "64c6f8c809b99b307f94189dfe4d0ef23eca8d5898dbb693d0776a0745d9f4ad",
+      "copyright_sha256": "b6368dc6d5691c5f7056544c3f07b44228bcc049795b1f04de7f5dfbe5a200e6",
+      "license": "Apache-2.0 AND MIT AND LicenseRef-public-domain",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original Debian copyright and nonstandard root legal text read; complete standard GNU/Apache originals matched against previously read originals, with source-specific scopes retained. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Preserve complete Apache2 license and any applicable NOTICE and modification markings; retain separate Bouncy Castle MIT and public-domain Debian packaging scopes. Exact original Apache2 text matched to a previously read original."
+      ]
+    },
+    "libonig@6.9.8-1": {
+      "redistributable": true,
+      "source_identity": "5f834eab1fb4cce8ba8869c64b52358615daa726235eb106e1cd0c4051fafe4c",
+      "copyright_sha256": "77dc6885b3057e16c7341ccc256bfbbc2047adb140b704278a2f36ede4c8a6a3",
+      "license": "BSD-2-Clause AND GPL-2.0-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original Debian copyright and nonstandard root legal text read; complete standard GNU/Apache originals matched against previously read originals, with source-specific scopes retained. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Retain complete original BSD2 library notice including original 2021 copyright year; retain independent packaging GPL2-or-later terms and corresponding source/build/install material."
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Oniguruma-original-COPYING.txt",
+          "sha256": "70ba5469ea0bab6e18a32d7009068f996503168d27be57747e08da34337ff26f"
+        }
+      ]
+    },
+    "libksba@1.6.3-2": {
+      "redistributable": true,
+      "source_identity": "cc3b1c34eafe187a16f6150607b9729beba2934192fff0b800ac1554746f6faf",
+      "copyright_sha256": "b84c864ba35df1f3160ad00a4e4ee32e8a95783c3d3604301b2909163ff198cf",
+      "license": "LGPL-3.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND FSFUL AND LicenseRef-Internet-Society-document-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "scope": "Exact source/copyright binding. Complete original Debian copyright and nonstandard root legal text read; complete standard GNU/Apache originals matched against previously read originals, with source-specific scopes retained. Not OS release clearance.",
+      "conditions": [
+        "Retain complete original attribution, permissions and disclaimers in sources and binary legal materials; provide exact preferred source, applied patches and complete configuration/build/install inputs.",
+        "Use LGPL3-or-later library/header alternative, retain LGPL2.1-or-later der-builder and FSFUL generated constants scopes. Keep manuals, build and tests GPL3-or-later, distinct from the library.",
+        "Retain Internet Society specification copyright and no-warranty notice. Preserve the original specification text and references; derived implementation commentary is permitted by its explicit implementation-assistance grant. No general permission to modify the specification document is inferred."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
