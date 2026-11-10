@@ -7,6 +7,7 @@ permissions:
   contents: read
 concurrency:
   group: shirube-os-release
+  queue: max
   cancel-in-progress: false
 jobs:
   resolve:

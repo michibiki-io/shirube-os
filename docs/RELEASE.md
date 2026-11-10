@@ -7,6 +7,17 @@ Checkout v7's explicit opt-in applies only inside these merged-only jobs; ordina
 PR `Test` uses read-only permissions and no publishing secrets. Action SHAs are
 pinned. Self-hosted runners must support their Node 24 runtime.
 
+Release runs are serialized with `queue: max`, retaining up to 100 pending runs
+instead of replacing a previous pending merge. GitHub's queue limit still applies;
+cancelled runs can be retried for the same eligible merge. The pinned actionlint
+does not yet understand `queue`; the workflow checker validates its values,
+cancellation policy and duplicate keys separately, suppressing only that known
+unsupported-key diagnostic. All other actionlint checks remain enabled.
+
+リリースは`queue: max`で直列実行し、GitHubの上限である100件まで待機できます。
+待機中のマージを次のマージで置き換えません。取り消された実行は同じ適格マージで再実行します。
+固定版actionlintが未対応の`queue`は別途検証し、他のlint検証は維持します。
+
 The workflow resolves the commit/version and both runners once, reserves an
 unpublished draft, builds native ISO/QCOW2/VMDK/source candidates, stages complete
 per-architecture sets, validates the aggregate, uploads its Actions artifact, and
