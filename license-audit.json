@@ -29553,6 +29553,216 @@
         "For Apache-2.0 use, supply the complete license, preserve applicable NOTICE attribution and mark modified files; preserve patent termination and trademark limitations."
       ],
       "scope": "Exact unmodified crate source and its retained full legal notices only; cryptography, OpenSSL native libraries, Rust standard library, build tools, SDK reconstruction and the complete OS remain subject to separate source and license gates."
+    },
+    "opam:menhir@20260209#888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0#c6ab15acdbdcc69b63725c2cd244cf8b2a5afbb6e926e397d4e4736c970302c7": {
+      "source_identity": "888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0",
+      "copyright_sha256": "c6ab15acdbdcc69b63725c2cd244cf8b2a5afbb6e926e397d4e4736c970302c7",
+      "evidence_member": "opam/notices/menhir.20260209.copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.0-only AND LGPL-3.0-or-later AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Ocaml-original-notices/c6ab15acdbdcc69b63725c2cd244cf8b2a5afbb6e926e397d4e4736c970302c7.txt",
+          "sha256": "c6ab15acdbdcc69b63725c2cd244cf8b2a5afbb6e926e397d4e4736c970302c7"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        }
+      ],
+      "scope": "Generator is GPL2-only; runtime library/SDK and Fix/PPrint are GNU Library GPL2 with their original linking exceptions; Coq library is LGPL3-or-later. No conversion of LGPL2 to LGPL2.1 is asserted. Exact component only; no parent OS or complete release clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, nonendorsement, disclaimer and explicitly scoped linking-exception notices without extending their scope.",
+        "Provide exact preferred sources and build/install configuration, preserving covered-library source and modification terms. The original exception applies only to its specified publicly distributed library and executable-linking conditions; it does not generally exempt the rest of the OS.",
+        "The original root license excludes test/. The exact public release source tree contains zero files under that subtree. All 832 actual source members are retained unchanged; this work removes no test or runtime feature."
+      ]
+    },
+    "opam:menhirCST@20260209#888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0#1befb52f63c7823689f4036c24295429907c6bbd8654a42d8540371a1c768d1f": {
+      "source_identity": "888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0",
+      "copyright_sha256": "1befb52f63c7823689f4036c24295429907c6bbd8654a42d8540371a1c768d1f",
+      "evidence_member": "opam/notices/menhirCST.20260209.copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.0-only AND LGPL-3.0-or-later AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Ocaml-original-notices/1befb52f63c7823689f4036c24295429907c6bbd8654a42d8540371a1c768d1f.txt",
+          "sha256": "1befb52f63c7823689f4036c24295429907c6bbd8654a42d8540371a1c768d1f"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        }
+      ],
+      "scope": "Generator is GPL2-only; runtime library/SDK and Fix/PPrint are GNU Library GPL2 with their original linking exceptions; Coq library is LGPL3-or-later. No conversion of LGPL2 to LGPL2.1 is asserted. Exact component only; no parent OS or complete release clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, nonendorsement, disclaimer and explicitly scoped linking-exception notices without extending their scope.",
+        "Provide exact preferred sources and build/install configuration, preserving covered-library source and modification terms. The original exception applies only to its specified publicly distributed library and executable-linking conditions; it does not generally exempt the rest of the OS.",
+        "The original root license excludes test/. The exact public release source tree contains zero files under that subtree. All 832 actual source members are retained unchanged; this work removes no test or runtime feature."
+      ]
+    },
+    "opam:menhirGLR@20260209#888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0#9bc11521c677eaf41d2234b5d4f5e287dff2b9e7f26ba3baedb7230a8716d57d": {
+      "source_identity": "888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0",
+      "copyright_sha256": "9bc11521c677eaf41d2234b5d4f5e287dff2b9e7f26ba3baedb7230a8716d57d",
+      "evidence_member": "opam/notices/menhirGLR.20260209.copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.0-only AND LGPL-3.0-or-later AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Ocaml-original-notices/9bc11521c677eaf41d2234b5d4f5e287dff2b9e7f26ba3baedb7230a8716d57d.txt",
+          "sha256": "9bc11521c677eaf41d2234b5d4f5e287dff2b9e7f26ba3baedb7230a8716d57d"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        }
+      ],
+      "scope": "Generator is GPL2-only; runtime library/SDK and Fix/PPrint are GNU Library GPL2 with their original linking exceptions; Coq library is LGPL3-or-later. No conversion of LGPL2 to LGPL2.1 is asserted. Exact component only; no parent OS or complete release clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, nonendorsement, disclaimer and explicitly scoped linking-exception notices without extending their scope.",
+        "Provide exact preferred sources and build/install configuration, preserving covered-library source and modification terms. The original exception applies only to its specified publicly distributed library and executable-linking conditions; it does not generally exempt the rest of the OS.",
+        "The original root license excludes test/. The exact public release source tree contains zero files under that subtree. All 832 actual source members are retained unchanged; this work removes no test or runtime feature."
+      ]
+    },
+    "opam:menhirLib@20260209#888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0#c9ee37d224d0f2a84ebb6eccdd955a1aa54ea1ab18e5b488c4b286ca91142239": {
+      "source_identity": "888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0",
+      "copyright_sha256": "c9ee37d224d0f2a84ebb6eccdd955a1aa54ea1ab18e5b488c4b286ca91142239",
+      "evidence_member": "opam/notices/menhirLib.20260209.copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.0-only AND LGPL-3.0-or-later AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Ocaml-original-notices/c9ee37d224d0f2a84ebb6eccdd955a1aa54ea1ab18e5b488c4b286ca91142239.txt",
+          "sha256": "c9ee37d224d0f2a84ebb6eccdd955a1aa54ea1ab18e5b488c4b286ca91142239"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        }
+      ],
+      "scope": "Generator is GPL2-only; runtime library/SDK and Fix/PPrint are GNU Library GPL2 with their original linking exceptions; Coq library is LGPL3-or-later. No conversion of LGPL2 to LGPL2.1 is asserted. Exact component only; no parent OS or complete release clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, nonendorsement, disclaimer and explicitly scoped linking-exception notices without extending their scope.",
+        "Provide exact preferred sources and build/install configuration, preserving covered-library source and modification terms. The original exception applies only to its specified publicly distributed library and executable-linking conditions; it does not generally exempt the rest of the OS.",
+        "The original root license excludes test/. The exact public release source tree contains zero files under that subtree. All 832 actual source members are retained unchanged; this work removes no test or runtime feature."
+      ]
+    },
+    "opam:menhirSdk@20260209#888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0#c3b2e6738d4ae3be962ad1236ce09dd0779b8b0a87758b82a150871712afb3c1": {
+      "source_identity": "888f6b34c4524cfa1f21d5f45669d70081033a050de96ffb44fa0acd13b104e0",
+      "copyright_sha256": "c3b2e6738d4ae3be962ad1236ce09dd0779b8b0a87758b82a150871712afb3c1",
+      "evidence_member": "opam/notices/menhirSdk.20260209.copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only AND LGPL-2.0-only AND LGPL-3.0-or-later AND LicenseRef-Original-OCaml-Linking-Exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Ocaml-original-notices/c3b2e6738d4ae3be962ad1236ce09dd0779b8b0a87758b82a150871712afb3c1.txt",
+          "sha256": "c3b2e6738d4ae3be962ad1236ce09dd0779b8b0a87758b82a150871712afb3c1"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/GPL-3.0.txt",
+          "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+        },
+        {
+          "path": "LICENSES/LGPL-3.0.txt",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118"
+        }
+      ],
+      "scope": "Generator is GPL2-only; runtime library/SDK and Fix/PPrint are GNU Library GPL2 with their original linking exceptions; Coq library is LGPL3-or-later. No conversion of LGPL2 to LGPL2.1 is asserted. Exact component only; no parent OS or complete release clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, nonendorsement, disclaimer and explicitly scoped linking-exception notices without extending their scope.",
+        "Provide exact preferred sources and build/install configuration, preserving covered-library source and modification terms. The original exception applies only to its specified publicly distributed library and executable-linking conditions; it does not generally exempt the rest of the OS.",
+        "The original root license excludes test/. The exact public release source tree contains zero files under that subtree. All 832 actual source members are retained unchanged; this work removes no test or runtime feature."
+      ]
+    },
+    "opam:ocamlbuild@0.16.1#d8704175836f1169a9745747485284d09039d76775a9db898784a0b5e8b72e8a#a73544d213478c2ada72482637c810315532fbec4a9e83b5e5b8b133a9788a2b": {
+      "source_identity": "d8704175836f1169a9745747485284d09039d76775a9db898784a0b5e8b72e8a",
+      "copyright_sha256": "a73544d213478c2ada72482637c810315532fbec4a9e83b5e5b8b133a9788a2b",
+      "evidence_member": "opam/notices/ocamlbuild.0.16.1.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.0-only AND LicenseRef-Original-OCaml-Linking-Exception AND CC0-1.0",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Ocaml-original-notices/a73544d213478c2ada72482637c810315532fbec4a9e83b5e5b8b133a9788a2b.txt",
+          "sha256": "a73544d213478c2ada72482637c810315532fbec4a9e83b5e5b8b133a9788a2b"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "scope": "OCamlbuild is GNU Library GPL2 with its original linking exception. The separate manual uses CC0. The full original standard-license word differences and complete exception were read; no LGPL2.1 replacement is asserted. Exact component only; no parent OS or complete release clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, nonendorsement, disclaimer and explicitly scoped linking-exception notices without extending their scope.",
+        "Provide exact preferred sources and build/install configuration, preserving covered-library source and modification terms. The original exception applies only to its specified publicly distributed library and executable-linking conditions; it does not generally exempt the rest of the OS."
+      ]
+    },
+    "opam:xml-light@2.5#c551bfa023b74a788c7e690356d8589fbc87bf12674d822d305c5ded321936db#978f729d0735ca0a9cde367d94624985c1bb3b062baf4b2bbe39458afae9f121": {
+      "source_identity": "c551bfa023b74a788c7e690356d8589fbc87bf12674d822d305c5ded321936db",
+      "copyright_sha256": "978f729d0735ca0a9cde367d94624985c1bb3b062baf4b2bbe39458afae9f121",
+      "evidence_member": "opam/notices/xml-light.2.5.copyright",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception",
+      "reviewed_on": "2026-11-10",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Ocaml-original-notices/978f729d0735ca0a9cde367d94624985c1bb3b062baf4b2bbe39458afae9f121.txt",
+          "sha256": "978f729d0735ca0a9cde367d94624985c1bb3b062baf4b2bbe39458afae9f121"
+        },
+        {
+          "path": "LICENSES/Ocaml-original-notices/xml-light-2.5-original.opam",
+          "sha256": "6c1b39dc56baec962a612d03b3206e729f9e970ae967f178ee66425ee6ab0366"
+        },
+        {
+          "path": "LICENSES/LGPL-2.1.txt",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        }
+      ],
+      "scope": "Original source carries the complete original linking-exception notice; the exact retained opam manifest declares LGPL2.1-or-later with the OCaml exception. Supply the full LGPL2.1 text alongside those originals. Exact component only; no parent OS or complete release clearance.",
+      "conditions": [
+        "Retain all original copyright, complete license, nonendorsement, disclaimer and explicitly scoped linking-exception notices without extending their scope.",
+        "Provide exact preferred sources and build/install configuration, preserving covered-library source and modification terms. The original exception applies only to its specified publicly distributed library and executable-linking conditions; it does not generally exempt the rest of the OS."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
