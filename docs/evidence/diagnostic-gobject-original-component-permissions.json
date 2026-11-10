@@ -1,0 +1,492 @@
+{
+  "kind": "exact-gobject-original-per-file-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": {
+    "source": "gobject-introspection",
+    "version": "1.74.0-3",
+    "dsc_sha256": "9ccfe4f005e7668ee58bebb238356535123a6fee29eaf91f85204ba37dd167dc",
+    "binaries": [
+      {
+        "name": "gir1.2-glib-2.0",
+        "version": "1.74.0-3",
+        "architecture": "arm64",
+        "copyright_sha256": "496f160d56ab69e95bf2908b0cde87cd07904d8b4296214928e9b1e626020e48"
+      },
+      {
+        "name": "libgirepository-1.0-1",
+        "version": "1.74.0-3",
+        "architecture": "arm64",
+        "copyright_sha256": "496f160d56ab69e95bf2908b0cde87cd07904d8b4296214928e9b1e626020e48"
+      }
+    ],
+    "copyright_sha256": "496f160d56ab69e95bf2908b0cde87cd07904d8b4296214928e9b1e626020e48",
+    "original_legal_matches": [
+      {
+        "member": "COPYING",
+        "sha256": "1b3275b028bcaa77e4580a302ae80473abb97139b84a0e48618be34cd65f8aaa",
+        "read_reference": {
+          "component": "gobject-introspection",
+          "member": "COPYING",
+          "sha256": "1b3275b028bcaa77e4580a302ae80473abb97139b84a0e48618be34cd65f8aaa",
+          "review_method": "Complete original text read; original notices, mandatory credits, modified documentation sources and separately referenced full licenses remain prerequisites."
+        }
+      },
+      {
+        "member": "COPYING.GPL",
+        "sha256": "4c1cedcbb4a12ea964f1160dbbf36099e5a59b96129a99a1a1a61f2cb09271fb",
+        "read_reference": {
+          "component": "gobject-introspection",
+          "member": "COPYING.GPL",
+          "sha256": "4c1cedcbb4a12ea964f1160dbbf36099e5a59b96129a99a1a1a61f2cb09271fb",
+          "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+        }
+      },
+      {
+        "member": "COPYING.LGPL",
+        "sha256": "faa2e414bd5f91d2d2c39e85c7cc3f2ccde05c3306f96b404f8ed8cf0266c279",
+        "read_reference": {
+          "component": "base-files",
+          "member": "licenses/LGPL-2",
+          "sha256": "681e386e44a19d7d0674b4320272c90e66b6610b741e7e6305f8219c42e85366"
+        }
+      },
+      {
+        "member": "glib/COPYING",
+        "sha256": "fa6f36630bb1e0c571d34b2bbdf188d08495c9dbf58f28cac112f303fc1f58fb",
+        "read_reference": {
+          "component": "glib2.0",
+          "member": "COPYING",
+          "sha256": "fa6f36630bb1e0c571d34b2bbdf188d08495c9dbf58f28cac112f303fc1f58fb"
+        }
+      },
+      {
+        "member": "glib/LICENSES/Apache-2.0.txt",
+        "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+        "read_reference": {
+          "component": "aardvark-dns",
+          "member": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      },
+      {
+        "member": "glib/LICENSES/CC0-1.0.txt",
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+        "read_reference": {
+          "component": "base-files",
+          "member": "licenses/CC0-1.0",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      },
+      {
+        "member": "glib/LICENSES/GPL-2.0-or-later.txt",
+        "sha256": "aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3",
+        "read_reference": {
+          "component": "dbus-python",
+          "member": "subprojects/dbus-gmain/LICENSES/GPL-2.0-or-later.txt",
+          "sha256": "aaf135472f81c5b4a0dca9367e5bb5e9750032b5bebe5442b36e4c0a47430df3"
+        }
+      },
+      {
+        "member": "glib/LICENSES/LGPL-2.1-or-later.txt",
+        "sha256": "fa6f36630bb1e0c571d34b2bbdf188d08495c9dbf58f28cac112f303fc1f58fb",
+        "read_reference": {
+          "component": "glib2.0",
+          "member": "COPYING",
+          "sha256": "fa6f36630bb1e0c571d34b2bbdf188d08495c9dbf58f28cac112f303fc1f58fb"
+        }
+      },
+      {
+        "member": "glib/LICENSES/LLVM-exception.txt",
+        "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e",
+        "read_reference": {
+          "component": "glib2.0",
+          "member": "LICENSES/LLVM-exception.txt",
+          "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+        }
+      },
+      {
+        "member": "glib/LICENSES/MIT.txt",
+        "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0",
+        "read_reference": {
+          "component": "dbus-python",
+          "member": "LICENSES/MIT.txt",
+          "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+        }
+      },
+      {
+        "member": "glib/docs/reference/COPYING",
+        "sha256": "b1ec1d0e5947f81e815d8771f7d4d90671a94bb10a42dc687fb566de461a57aa",
+        "read_reference": {
+          "component": "glib2.0",
+          "member": "docs/reference/COPYING",
+          "sha256": "b1ec1d0e5947f81e815d8771f7d4d90671a94bb10a42dc687fb566de461a57aa"
+        }
+      },
+      {
+        "member": "glib/subprojects/gvdb/COPYING",
+        "sha256": "bdbcdaa7858872393e9d6b216bbdc8a23e99d98dd6cdb7cda19458025b9e19fc",
+        "read_reference": {
+          "component": "glib2.0",
+          "member": "subprojects/gvdb/COPYING",
+          "sha256": "bdbcdaa7858872393e9d6b216bbdc8a23e99d98dd6cdb7cda19458025b9e19fc"
+        }
+      }
+    ],
+    "license_definitions": [
+      {
+        "label": "AFL-2.0",
+        "full_normalized_body_sha256": "0269e0ef5c32400e86e9f0c5f09fda1f643f08fd4a9218889f7c500f622f3cde",
+        "read_reference": {
+          "label": "AFL-2.0",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "Apache-2.0 with LLVM exception",
+        "full_normalized_body_sha256": "7ee424fcb3394cbf3fb10150afef800641701c3ee4eac8800a8981b8782621f5",
+        "read_reference": {
+          "label": "Apache-2.0 with LLVM exception",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "BSD-2-clause",
+        "full_normalized_body_sha256": "e6452f8bb9f61807201120c7056c952b2714090f2d9d5040516b764b86995476",
+        "read_reference": {
+          "label": "BSD2",
+          "component": "boost1.74"
+        }
+      },
+      {
+        "label": "BSD-3-clause-pcre",
+        "full_normalized_body_sha256": "3a6e57e8871c4f3fbea5d34ab5fbd89b3a36288e0508b44e5e471c89297a1446",
+        "read_reference": {
+          "label": "BSD-3-clause-pcre",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "bzip2-1.0.6",
+        "full_normalized_body_sha256": "5e68b10a23d4f3b3b8ec7a6ae0067bd82ba89a69063684f25d54627ba059cc38",
+        "read_reference": {
+          "label": "BSD-variant",
+          "component": "bzip2"
+        }
+      },
+      {
+        "label": "CC-BY-SA-3.0",
+        "full_normalized_body_sha256": "29aded881fa7b9818b3f81f5deb09f7d6a9fbd4fc84de92d6e549111eb9d1df3",
+        "read_reference": {
+          "label": "CC-BY-SA-3.0",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "CC0-1.0",
+        "full_normalized_body_sha256": "4185de44d9fe0d4432af860b641564371c073f46c815c7ad0cd0cca5e0a7ad43",
+        "read_reference": {
+          "label": "CC0-1.0",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "Expat",
+        "full_normalized_body_sha256": "2250a4db262e52a21c64c9e373e71f627b63df6cba61132a9d8d873a532f558c",
+        "read_reference": {
+          "label": "Expat",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "FSFAP",
+        "full_normalized_body_sha256": "fcfbfed8a6b05e20940d8b126920e0f6624c9092a53d98139571d0693215533d",
+        "read_reference": {
+          "component": "gobject-introspection",
+          "label": "FSFAP"
+        }
+      },
+      {
+        "label": "FSFULLR",
+        "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+        "read_reference": {
+          "label": "FSFULLR",
+          "component": "coreutils"
+        }
+      },
+      {
+        "label": "GPL-2+",
+        "full_normalized_body_sha256": "f5580b7b4e920aef38f8c7b4b2d662d8e400f7b3379d0c1205c7a599aac6bc72",
+        "read_reference": {
+          "label": "GPL-2+",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "GPL-2+ with Autoconf exception",
+        "full_normalized_body_sha256": "03e519eeb9dfed08951f4107c98913c6efe04cd5bf0ccf4cea058dfbfa8b908c",
+        "read_reference": {
+          "label": "GPL-2+ with Autoconf exception",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "Kuchling-PD",
+        "full_normalized_body_sha256": "20aa0aa406d39ca1bc3d90d922e90cda3d3f412769fa963b1e4a08821cdb77ed",
+        "read_reference": {
+          "label": "Kuchling-PD",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "LGPL-2",
+        "full_normalized_body_sha256": "4bb593b2c61ec2e2f311cf87e31f0af590afe6f2f3dd094544092c349f1bfd33",
+        "read_reference": {
+          "component": "gobject-introspection",
+          "label": "LGPL-2",
+          "review_method": "Original GObject COPYING explicitly licenses typelib library under LGPL2+; original COPYING.LGPL retained, actual bundled cmph and author project LGPL/MPL declaration inspected. Selected LGPL alternative, not a claim of MPL/GPL compatibility."
+        }
+      },
+      {
+        "label": "LGPL-2+",
+        "full_normalized_body_sha256": "4ffe57cb0b3f82eae211800eca7c44f32439d9b5afc613834c6a41fa07e2873f",
+        "read_reference": {
+          "label": "LGPL-2+",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "LGPL-2.1+",
+        "full_normalized_body_sha256": "38fca9ba9d41bfffba258c9fde099631fcff521f3a20e202533d5925e2a99ffe",
+        "read_reference": {
+          "label": "LGPL-2.1+",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "LGPL-3+",
+        "full_normalized_body_sha256": "e76c2dd8494eabcc530e8fed8cd835daed5bc52675b6ce6d1e410b84dbeaac2c",
+        "read_reference": {
+          "label": "LGPL-3+",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "MPL-1.1",
+        "full_normalized_body_sha256": "a92458f1c4fbf96cdcc5af1b6ff704f21b0873fabd1e0bedca0418e9438098c2",
+        "read_reference": {
+          "component": "gobject-introspection",
+          "label": "MPL-1.1",
+          "review_method": "Original GObject COPYING explicitly licenses typelib library under LGPL2+; original COPYING.LGPL retained, actual bundled cmph and author project LGPL/MPL declaration inspected. Selected LGPL alternative, not a claim of MPL/GPL compatibility."
+        }
+      },
+      {
+        "label": "Plumb-PD",
+        "full_normalized_body_sha256": "2ea2098edc1ff4ba2c9c18955ec1922f297cec3c3859c07816a985011834fa60",
+        "read_reference": {
+          "label": "Plumb-PD",
+          "component": "glib2.0"
+        }
+      },
+      {
+        "label": "Unicode-DFS-2016",
+        "full_normalized_body_sha256": "a650dbfb6fd9cde9d9ae282466c6db1bc0ad16b8ff87968fa7c3704ef9398e70",
+        "read_reference": {
+          "label": "Unicode-DFS-2016",
+          "component": "glib2.0"
+        }
+      }
+    ],
+    "fields_for_reading": [
+      {
+        "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+        "Source": "https://download.gnome.org/sources/gobject-introspection/",
+        "Upstream-Name": "GObject Introspection"
+      },
+      {
+        "Files": "*",
+        "Copyright": "\n2012 Canonical Ltd\n2012-2015 Dieter Verfaillie\n2005-2008 Divmod, Inc.\n2008-2011 Johan Dahlin\n2006 Johann C. Rocholl\n2007-2008 Jürg Billeter\n2005 Matthias Clasen\n2008 Philip Van Hoof\n2008-2010 Red Hat, Inc.\n1997 Sandro Sigala\n2011 Shaun McCance\n2018 Tomasz Miąsko\n2010 Zach Goldberg",
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "Files": "\ngirepository/*.c\ngirepository/*.h\ngiscanner/giscannermodule.c\ngiscanner/sourcescanner.c\ngiscanner/sourcescanner.h\ntools/compiler.c\ntools/generate.c",
+        "Copyright": "\n2018 Christoph Reiter\n2014 Chun-wei Fan\n2008 Colin Walters\n2013 Dieter Verfaillie\n2011-2016 Dominique Leuenberger\n2016 Igor Gnatenko\n2007-2010 Johan Dahlin\n2008 Philip Van Hoof\n2008-2013 Red Hat, Inc.",
+        "LicenseExpression": "LGPL-2+"
+      },
+      {
+        "Files": "\ngirepository/cmph/*",
+        "Copyright": "\nDavi de Castro Reis\nFabiano Cupertino Botelho",
+        "LicenseExpression": "LGPL-2 or MPL-1.1"
+      },
+      {
+        "Files": "\ntests/scanner/identfilter.py\ntests/scanner/symbolfilter.py",
+        "Copyright": "\n2014 Simon Feltman <sfeltman@gnome.org>\n2015 Garrett Regier <garrett.regier@riftio.com>",
+        "LicenseExpression": "LGPL-2.1+"
+      },
+      {
+        "Files": "giscanner/scannerlexer.l giscanner/scannerparser.y",
+        "Copyright": "\n1997 Sandro Sigala\n2007-2008 Jürg Billeter\n2010 Andreas Rottmann",
+        "LicenseExpression": "BSD-2-clause"
+      },
+      {
+        "Files": "\nm4/introspection.m4",
+        "Copyright": "\n2003-2005 Thomas Vander Stichele\n2009 Johan Dahlin",
+        "LicenseExpression": "FSFAP and FSFULLR"
+      },
+      {
+        "Files": "debian/*",
+        "Copyright": "\n2008-2022 Debian contributors as listed in debian/changelog\n2021-2022 Simon McVittie",
+        "Comment": "\nNo license was specified for the contents of debian/ prior to 2022. It\nis assumed to have been intended to be under the most restrictive of\nthe upstream licenses, namely GPL-2+.\nThe following contributors give permission to relicense their contributions\nto this package under either Expat, GPL-2+ or LGPL-2.1+ if desired:\n- Simon McVittie\n(Please add your name to this list if you wish to give this permission.)",
+        "LicenseExpression": "Expat and GPL-2+"
+      },
+      {
+        "Files": "glib/*",
+        "Copyright": "\n2004-2005 Adam Weinberger\n2005-2006 Alexander Larsson\n2022 Alexander Shopov\n2021 Alexandros Theodotou\n2004 Anders Carlsson\n2001-2003 Andrew Lanoix\n2018 Arthur Demchenkov\n2001-2004 Behdad Esfahbod\n2006 Behdad Esfahbod\n2009 Benjamin Otte\n2015 Canonical Limited\n2005-2022 Canonical Ltd\n2009-2022 Christian Hergert\n2010 Christian Kellner\n2010 Christian Persch\n2014-2015 Chun-wei Fan\n2008 Claus Tondering\n2008 Clemens N. Buss\n2008-2014 Codethink Ltd\n2012-2013 Colin Walters\n2017-2018 Collabora Inc\n2008-2022 Collabora Ltd\n1999-2000 Craig Setera\n2000 Eazel, Inc\n2005-2022 Emmanuele Bassi\n2022 Emmanuel Fleury\n2016-2020 Endless Mobile, Inc\n2017-2022 Endless OS Foundation, LLC\n2007 Francois Gouget\n2020-2021 Frederic Martinsons\n1991-2022 Free Software Foundation, Inc\n2015 Garrett Regier\n2001-2022 GLib contributors\n2016 GNOME i18n Project for Vietnamese\n2019 GNOME\n2011 Google, Inc\n2001-2008 Hans Breuer\n2001 Hidetoshi Tajima\n2021 Iain Lane\n2018-2021 Igalia S.L\n2005-2008 Imendio AB\n2018 Iñigo Martínez\n2010 Intel Corp\n2001 James Henstridge\n2018-2019 James Westman\n2014-2018 Jan-Michael Brummer\n2005-2007 John McCutchan\n1995-1998 Josh MacDonald\n2007 Jürg Billeter\n2010 Karo Mkrtchyan\n2013-2015 Lars Uebernickel\n2006 Lukas Novotny\n2002 Manish Singh\n2005-2007 Marco Barisione\n2022 Marco Trevisan\n2001-2013 Matthias Clasen\n2010 Mikhail Zabaluev\n2004-2005 Miloslav Trmac\n2014 NICE s.r.l\n2003 Noah Levitt\n2008-2011 Nokia Corporation\n2008-2010 Novell, Inc\n2021 Ole André Vadla Ravnås\n2007 Openismus GmbH\n1998-2001 Owen Taylor\n2014-2019 Patrick Griffis\n2007 Patrick Hulin\n2012 Pavel Vasin\n2018 pdknsk\n1995-2011 Peter Mattis\n1995-2011 Peter Mattis, Spencer Kimball, Josh MacDonald, Sebastian Wilhelmi and others\n2000-2022 Red Hat, Inc\n1999-2003 Red Hat Software\n2001 Ron Steinke\n2020 Ruslan N. Marchenko\n2022 Ryan Hope\n2007-2015 Ryan Lortie\n2009-2010 Sam Thursfield\n2008 Samuel Cormier-Iijima\n1999-2000 Scott Wimer\n2007-2020 Sebastian Dröge\n2001-2003 Sebastian Wilhelmi\n1998-2001 Sebastian Wilhelmi; University of Karlsruhe\n2002-2006 Sharif FarsiWeb, Inc\n2012 Simon McVittie\n2011 Sjoerd Simons\n2002-2007 Soeren Sandmann\n1995-1998 Spencer Kimball\n2006 Stefan Westerfeld\n2011-2013 Stef Walter\n2007-2010 Sven Herzberg\n2012 Swecha telugu localisation Team\n2011-2022 systemd contributors\n2002-2022 the author(s) of GLib\n2006 The GNOME Foundation\n2007-2011 The GNOME Project\n2010 Thiago Santos\n1997-2007 Tim Janik\n2018 Tomasz Miąsko\n1999-2000 Tom Tromey\n1998-2004 Tor Lillqvist\n1995-1997 Ulrich Drepper\n2021 Unicode®, Inc\n2011 William Hua\n2018 Will Thompson\n2020 Xavier Claessens\n2021 Xavier Claessens\n2000-2004 Ximian Inc\n2014-2020 Руслан Ижбулатов\nCroatiann team\nMatthew Waters",
+        "LicenseExpression": "LGPL-2+ and LGPL-2.1+ and FSFULLR and CC0-1.0"
+      },
+      {
+        "Files": "\nglib/gio/xdgmime/xdgmime*",
+        "Copyright": "\n2003-2004 Jonathan Blandford\n2004-2005 Matthias Clasen\n2003-2008 Red Hat, Inc",
+        "LicenseExpression": "AFL-2.0 or LGPL-2.1+"
+      },
+      {
+        "Files": "\nglib/glib/tests/NormalizationTest.txt",
+        "Copyright": "\n2021 Unicode®, Inc.",
+        "LicenseExpression": "Unicode-DFS-2016"
+      },
+      {
+        "Files": "\nglib/gio/kqueue/*.?\n*/tests/taptestrunner.py",
+        "Copyright": "\n2011-2012 Dmitry Matveev\n2015 Remko Tronçon",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nglib/glib/gen-unicode-tables.pl\nglib/glib/tests/gen-casefold-txt.py\nglib/glib/tests/gen-casemap-txt.py\nglib/po/po2tbl.sed.in\nglib/tools/glib-gettextize.in",
+        "Copyright": "\n1989-2001 Free Software Foundation, Inc\n2001 Red Hat Software\n1998-1999 Tom Tromey",
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "Files": "\nglib/m4macros/attributes.m4",
+        "Copyright": "\n2006-2008 Diego Pettenò\n2006-2008 xine project\n2012 Lucas De Marchi",
+        "LicenseExpression": "GPL-2+ with Autoconf exception"
+      },
+      {
+        "Files": "\nglib/gio/tests/memory-monitor-dbus.py.in\nglib/gio/tests/memory-monitor-portal.py.in\nglib/gio/tests/power-profile-monitor-dbus.py.in\nglib/gio/tests/power-profile-monitor-portal.py.in",
+        "Copyright": "2019-2021 Red Hat, Inc",
+        "LicenseExpression": "LGPL-3+"
+      },
+      {
+        "Files": "\nglib/.gitlab-ci/clang-format-diff.py\nglib/fuzzing/driver.c",
+        "Copyright": "2018, LLVM contributors",
+        "LicenseExpression": "Apache-2.0 with LLVM exception"
+      },
+      {
+        "Files": "\nglib/glib/gchecksum.c",
+        "Copyright": "\n1995 A.M. Kuchling\n2006 Dave Benson\n2007 Emmanuele Bassi",
+        "LicenseExpression": "LGPL-2.1+ and Kuchling-PD and Plumb-PD"
+      },
+      {
+        "Files": "\nglib/docs/reference/glib/regex-syntax.xml",
+        "Copyright": "\n1997-2006 University of Cambridge\n2012-2022 unspecified GLib contributors",
+        "LicenseExpression": "LGPL-2.1+ and BSD-3-clause-pcre"
+      },
+      {
+        "Files": "\nglib/glib/valgrind.h",
+        "Copyright": "\n2000-2017, Julian Seward",
+        "LicenseExpression": "bzip2-1.0.6"
+      },
+      {
+        "Files": "\nglib/docs/reference/gio/menu-model.png",
+        "Copyright": "unspecified",
+        "LicenseExpression": "CC-BY-SA-3.0"
+      },
+      {
+        "Commentary": "\n# ----------------------------------------------------------------------"
+      },
+      {
+        "LicenseExpression": "AFL-2.0"
+      },
+      {
+        "LicenseExpression": "Apache-2.0 with LLVM exception"
+      },
+      {
+        "LicenseExpression": "BSD-2-clause"
+      },
+      {
+        "LicenseExpression": "BSD-3-clause-pcre"
+      },
+      {
+        "LicenseExpression": "bzip2-1.0.6"
+      },
+      {
+        "LicenseExpression": "CC-BY-SA-3.0"
+      },
+      {
+        "LicenseExpression": "CC0-1.0"
+      },
+      {
+        "LicenseExpression": "Expat"
+      },
+      {
+        "LicenseExpression": "FSFAP"
+      },
+      {
+        "LicenseExpression": "FSFULLR"
+      },
+      {
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "LicenseExpression": "GPL-2+ with Autoconf exception"
+      },
+      {
+        "LicenseExpression": "Kuchling-PD"
+      },
+      {
+        "LicenseExpression": "LGPL-2"
+      },
+      {
+        "LicenseExpression": "LGPL-2+"
+      },
+      {
+        "LicenseExpression": "LGPL-2.1+"
+      },
+      {
+        "LicenseExpression": "LGPL-3+"
+      },
+      {
+        "LicenseExpression": "MPL-1.1"
+      },
+      {
+        "LicenseExpression": "Plumb-PD"
+      },
+      {
+        "LicenseExpression": "Unicode-DFS-2016"
+      }
+    ]
+  },
+  "required_notices": [
+    {
+      "path": "LICENSES/GObject-original-LGPL-2.0.txt",
+      "sha256": "faa2e414bd5f91d2d2c39e85c7cc3f2ccde05c3306f96b404f8ed8cf0266c279"
+    },
+    {
+      "path": "LICENSES/GLib-original-LLVM-exception.txt",
+      "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+    },
+    {
+      "path": "LICENSES/ICU-original-LICENSE.txt",
+      "sha256": "af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2"
+    },
+    {
+      "path": "LICENSES/CC-BY-SA-3.0.txt",
+      "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+    },
+    {
+      "path": "LICENSES/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    }
+  ],
+  "cmpH_primary_project_declaration": "https://cmph.sourceforge.net/",
+  "cmpH_primary_scope": "Original authors identify LGPL and MPL1.1 licensing; exact package explicitly offers LGPL2 or MPL1.1, LGPL alternative selected.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -22512,6 +22512,90 @@
         "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
         "Keep source form and source availability/modification notices for the MPL2 data and packaging, with separate expressly dedicated CC0 test data and original authors; no proprietary or secondary-license reclassification."
       ]
+    },
+    "wget@1.21.3-1+deb12u1": {
+      "redistributable": true,
+      "source_identity": "4c538fae048ee60a4eeac03a520e12698ef39a88767cbebc0b7b62a472f52bb6",
+      "copyright_sha256": "c58cb5a2d94f35f0e9b0f1a038d48b73477aa12782ff17328c21d8a86f5f99d5",
+      "license": "GPL-3.0-or-later WITH LicenseRef-Wget-OpenSSL-exception AND GFDL-1.3-no-invariants-or-later",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Wget-original-program-and-manual-notices.txt",
+          "sha256": "0c41dd7f91fbd1e9b68ff885f356ba9686000c1e706be1580c793bd65ac97c97"
+        },
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "scope": "Complete original installed copyright read and original GNU license matched to a read full original. Actual original program header and complete manual copying declaration separately read; original manual grant, not older packaging version pointer, controls. Not OS release clearance.",
+      "conditions": [
+        "Retain original program GNU3-or-later and exact OpenSSL additional permission, copyright and corresponding-source obligations including relevant OpenSSL parts. Preserve all source modification notices and exact preferred source/build/install inputs.",
+        "Retain original actual manual GNU FDL1.3-or-later grant with no invariant sections or cover texts and its original 1996-2022 attribution. Preserve original Debian FDL1.2 pointer without treating it as a later source-license declaration."
+      ]
+    },
+    "zabbix@1:7.0.9+dfsg-1~bpo12+1": {
+      "redistributable": true,
+      "source_identity": "8ca7493db7ad0de663150f74812291ab09bd862367b3c083fb0240b15c83a3dd",
+      "copyright_sha256": "c35642e08254ec781851191e2123df8e9f63bb7473b3a9749eff4dd39f66f9d9",
+      "license": "AGPL-3.0-only AND GPL-3.0-only AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND ISC AND LicenseRef-Bitstream-font-permissions AND LicenseRef-Zabbix-original-per-file-permissions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Zabbix-original-AGPL-3.0.txt",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+        },
+        {
+          "path": "LICENSES/Zabbix-license-scope.txt",
+          "sha256": "4004b471419010f62a6faf12b9219f448628f05c6f6ce5a76ab8d78fe8fac7bb"
+        }
+      ],
+      "scope": "Every named original legal file matched to read original grants; complete original operative differences and every copyright/file/license-expression scope read. Controlling upstream AGPL3 retained verbatim; packaging transcription is not treated as a replacement license. Not OS release clearance.",
+      "conditions": [
+        "Retain full original AGPL3, corresponding preferred source, patches, complete configuration/build/install inputs, original copyright and modifications, and applicable network-source-offer obligations. Original root COPYING and src/go/LICENSE have the same verified hash.",
+        "Exercise GNU3 option for GNU2-or-later components combined with AGPL3; preserve separate packaging and source-only scopes. Select expressly offered Apache2 alternatives for Mattermost/Godror; preserve all original alternatives and independent Apache NOTICE obligations. No UPL/GPL grant is extended to proprietary Oracle client software.",
+        "Keep Bitstream font redistribution/renaming/package-sale restrictions and all original authors, BSD/ISC/Expat and custom Aladdin permissions; original font data and source remain preserved.",
+        "Original Debian copyright rendering has known transcription differences from the original AGPL3. Preserve both the original packaging notice and the separately required complete unmodified upstream license and scope clarification, without changing runtime license terms."
+      ]
+    },
+    "gobject-introspection@1.74.0-3": {
+      "redistributable": true,
+      "source_identity": "9ccfe4f005e7668ee58bebb238356535123a6fee29eaf91f85204ba37dd167dc",
+      "copyright_sha256": "496f160d56ab69e95bf2908b0cde87cd07904d8b4296214928e9b1e626020e48",
+      "license": "LGPL-2.0-only AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND GPL-2.0-or-later AND MIT AND BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 WITH LLVM-exception AND CC-BY-SA-3.0 AND CC0-1.0 AND Unicode-DFS-2016 AND bzip2-1.0.6 AND LicenseRef-FSF-permissive",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/GObject-original-LGPL-2.0.txt",
+          "sha256": "faa2e414bd5f91d2d2c39e85c7cc3f2ccde05c3306f96b404f8ed8cf0266c279"
+        },
+        {
+          "path": "LICENSES/GLib-original-LLVM-exception.txt",
+          "sha256": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e"
+        },
+        {
+          "path": "LICENSES/ICU-original-LICENSE.txt",
+          "sha256": "af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2"
+        },
+        {
+          "path": "LICENSES/CC-BY-SA-3.0.txt",
+          "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+        },
+        {
+          "path": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+        }
+      ],
+      "scope": "Original GObject COPYING, complete library licenses and named original source notices matched/read; every grant and complete copyright/file/license-expression scope read, including bundled GLib. Actual bundled CMPH source context and original author project LGPL/MPL statement inspected. Not OS release clearance.",
+      "conditions": [
+        "Retain LGPL typelib versus GPL2-or-later tool scopes, BSD2 scanner and FSF macro permissions, original copyright and modifications, complete preferred source, packaging and configuration/build/install inputs. Select explicitly offered LGPL2 alternative for CMPH, preserving original MPL1.1 alternative rather than claiming MPL1.1/GPL compatibility.",
+        "For bundled GLib retain original GPL/LGPL, LLVM, Unicode, BSD/Expat, public-domain/permissive and separate documentation CC-BY-SA3 scopes and required original notices. Select LGPL2.1-or-later xdgmime alternative while preserving AFL2 original text.",
+        "Preserve original packaging declaration under Expat and GPL2-or-later, including its disclosed pre-2022 licensing assumption; do not assert independent retrospective consent or apply Simon McVittie specific permissive relicensing permission to other contributors work. No warranty of individual chain of title is made."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

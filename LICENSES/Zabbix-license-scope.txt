@@ -1,0 +1,18 @@
+Zabbix original license scope
+
+The exact original Zabbix root COPYING and src/go/LICENSE are retained
+verbatim as Zabbix-original-AGPL-3.0.txt. They contain the controlling
+GNU Affero General Public License version 3 text.
+
+The original Debian copyright is also retained unchanged. Its rendering
+of the AGPL text has transcription differences, including Unicode dot
+characters and added Affero words in references to the GNU GPL. Those
+differences do not replace or amend the original upstream license.
+
+Preserve the independent per-file GNU GPL, Apache, MIT, BSD, ISC,
+Bitstream font and public-domain permissions and original authors.
+The Apache alternative is selected for the separately dual-licensed
+Mattermost and Godror code; the original alternatives remain preserved.
+All original attribution, corresponding-source, network-source-offer,
+modification-marking and other applicable conditions remain mandatory.
+No proprietary Oracle client software is licensed by these notices.
