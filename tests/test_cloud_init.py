@@ -37,10 +37,10 @@ class CloudInitTests(unittest.TestCase):
             config.set.assert_any_call(['service','ssh'])
             self.assertEqual(target.read_text(),'retained configuration')
 
-    def test_reboot_requires_new_boot_id_and_retries_a_timed_out_ssh_probe(self):
+    def test_reboot_requires_new_boot_id_and_retries_admin_and_metadata_timeouts(self):
         from producer.cloud_init_guest import verify
         with tempfile.TemporaryDirectory() as temporary:
-            root=Path(temporary);state={'reboot':False,'probes':0}
+            root=Path(temporary);state={'reboot':False,'probes':0,'metadata_attempts':0}
             vm=MagicMock();vm.ssh_port=12345;vm.process.poll.return_value=None
             monitor=(MagicMock(),MagicMock(),{'enrollment_prompt':False})
             def run(command,**kwargs):
@@ -54,6 +54,11 @@ class CloudInitTests(unittest.TestCase):
                 elif command[0]=='ssh':
                     self.assertIn('ServerAliveInterval=5',command)
                     if 'systemctl reboot' in command[-1]:state['reboot']=True
+                    elif command[-1]=='true':
+                        state['metadata_attempts']+=1
+                        if state['metadata_attempts']==1:
+                            raise subprocess.TimeoutExpired(['ssh','PRIVATE_TRANSPORT_ARGUMENT'],180,
+                                                            stderr='PRIVATE_TRANSPORT_STDERR')
                     elif command[-1].startswith('sudo -n python3'):
                         if state['reboot']:
                             state['probes']+=1
@@ -62,12 +67,20 @@ class CloudInitTests(unittest.TestCase):
                         boot='new-boot' if state['probes']>=3 else 'original-boot'
                         return subprocess.CompletedProcess(command,0,'machine-id\nhost-key\n'+boot+'\n','')
                 return subprocess.CompletedProcess(command,0,'','')
-            with patch('producer.vm.VM',return_value=vm), \
+            output=io.StringIO()
+            with contextlib.redirect_stdout(output), \
+                 patch('producer.vm.VM',return_value=vm), \
                  patch('producer.cloud_init_guest.monitor_console',return_value=monitor), \
                  patch('producer.cloud_init_guest.subprocess.run',side_effect=run), \
                  patch('producer.cloud_init_guest.time.sleep'):
                 self.assertEqual(verify(root/'factory.qcow2','amd64',root/'test','tcg'),'PASS')
             self.assertEqual(state['probes'],3)
+            self.assertEqual(state['metadata_attempts'],3)
+            self.assertIn('CLOUD_INIT_SSH_TIMEOUT: initial_metadata_access',output.getvalue())
+            self.assertIn('CLOUD_INIT_SSH_TIMEOUT: post_reboot_admin_access',output.getvalue())
+            self.assertIn('CLOUD_INIT_SSH_PHASE: shutdown_request',output.getvalue())
+            self.assertNotIn('PRIVATE_TRANSPORT_ARGUMENT',output.getvalue())
+            self.assertNotIn('PRIVATE_TRANSPORT_STDERR',output.getvalue())
             vm.eject_cloud_seed.assert_called_once()
             vm.close.assert_called_once()
 

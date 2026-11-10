@@ -55,9 +55,20 @@ def verify(image, arch, work, accelerator):
              '-o','ConnectTimeout=5','-o','StrictHostKeyChecking=accept-new',
              '-o','ServerAliveInterval=5','-o','ServerAliveCountMax=2',
              '-o','UserKnownHostsFile='+str(work/'known-hosts')]
-        def command(user, text):
-            return subprocess.run(ssh+[user+'@127.0.0.1',text],text=True,capture_output=True,
-                                  timeout=180 if accelerator=='tcg' else 30)
+        last_phase=None
+        def command(user, text, phase):
+            nonlocal last_phase
+            if phase!=last_phase:
+                print('CLOUD_INIT_SSH_PHASE: '+phase,flush=True)
+                last_phase=phase
+            try:
+                return subprocess.run(ssh+[user+'@127.0.0.1',text],text=True,capture_output=True,
+                                      timeout=180 if accelerator=='tcg' else 30)
+            except subprocess.TimeoutExpired:
+                # Exception strings can contain full argv and captured input.
+                # Fixed operation names identify the failure without that data.
+                print('CLOUD_INIT_SSH_TIMEOUT: '+phase,flush=True)
+                raise
         check="""from pathlib import Path
 from vyos.configtree import ConfigTree
 assert Path('/config/shirube-enrolled').read_text().strip() == 'cloud-admin'
@@ -77,11 +88,12 @@ print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
         probe='sudo -n python3 -c '+"\"import base64; exec(base64.b64decode('"+encoded+"'))\""
         def wait_access(previous_boot_id=None):
             deadline=time.monotonic()+(1200 if accelerator=='tcg' else 300)
+            phase='post_reboot' if previous_boot_id is not None else 'initial'
             while time.monotonic()<deadline:
                 if monitor[2]['enrollment_prompt']:
                     raise ValueError('Cloud-init unexpectedly requested console enrollment')
                 try:
-                    result=command('cloud-admin',probe)
+                    result=command('cloud-admin',probe,phase+'_admin_access')
                 except subprocess.TimeoutExpired:
                     continue
                 if result.returncode==0:
@@ -91,7 +103,7 @@ print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
                         time.sleep(3)
                         continue
                     try:
-                        metadata=command('shirube','true')
+                        metadata=command('shirube','true',phase+'_metadata_access')
                     except subprocess.TimeoutExpired:
                         continue
                     if metadata.returncode:
@@ -104,10 +116,10 @@ print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
         original=wait_access()
         # SSH was accepted without touching the console or providing a password.
         vm.eject_cloud_seed()
-        command('cloud-admin','sudo -n systemctl reboot --no-block')
+        command('cloud-admin','sudo -n systemctl reboot --no-block','reboot_request')
         if wait_access(previous_boot_id=original[2])[:2]!=original[:2]:
             raise ValueError('Cloud administrator identity changed on reboot')
-        command('cloud-admin','sudo -n systemctl poweroff --no-block')
+        command('cloud-admin','sudo -n systemctl poweroff --no-block','shutdown_request')
         return 'PASS'
     finally:
         if monitor is not None:
