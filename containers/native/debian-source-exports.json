@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "components": [
+    {
+      "source": "libxcrypt",
+      "version": "1:4.4.33-2",
+      "descriptor_sha256": "910ae411c9462f07667e46540af3dbb30f46413ddd90f1f176781666042dbb38",
+      "licensing_sha256": "f9b48b0bc67a92b752780710aa774cf08b62ec2ebaa3f4aebd00069fba6effd2",
+      "excluded": [
+        {
+          "member": "test/alg-des.c",
+          "sha256": "9fea30478d98555dd63e728337d3ee92b39a30a72ae397c3dd2135d315f1b28f"
+        },
+        {
+          "member": "test/alg-md4.c",
+          "sha256": "89ed45e58a97b7ff77b14bc84ef2af9ab8f4c2a1c9d6869d2bf9e1926dc40ef3"
+        },
+        {
+          "member": "test/alg-md5.c",
+          "sha256": "b170a320fb0a25f2b73f663e0665301c44f5a0042f3e6c1fea8dca71cea70c43"
+        },
+        {
+          "member": "test/alg-sha256.c",
+          "sha256": "cdc994d99bc2eaf431f93f9176f7929c907d1f5b3e8c5f028c5feab83ab0b963"
+        },
+        {
+          "member": "test/alg-sha512.c",
+          "sha256": "db248ba87ad2c9b58c56b3b4fe4cbf51db65586356a4302982eb85a182f413ea"
+        },
+        {
+          "member": "test/des-cases.h",
+          "sha256": "981f38df966ac20f7654958d50cafdcc042037ad2760e1461ed24f89108886c9"
+        },
+        {
+          "member": "test/des-obsolete.c",
+          "sha256": "6905966af0e8ccc4ed6a51c2ce59583409560be2c413b94b4363acec7f148b4f"
+        },
+        {
+          "member": "test/des-obsolete_r.c",
+          "sha256": "a52e5c51f63abb8996d23db6bf5a8e48f91f90ca501b205f9939c99a42b04495"
+        },
+        {
+          "member": "test/gensalt.c",
+          "sha256": "03092022b36d5b4108c474c099e1d300fdb2dadb50c3f1359245fe8099db2132"
+        }
+      ],
+      "build_control": {
+        "path": "Makefile.am",
+        "sha256": "ab8c03d9321acdd36bf292b2342f6364972ca2c7c9eb687297dd85b05d8d8e3d"
+      }
+    }
+  ]
+}

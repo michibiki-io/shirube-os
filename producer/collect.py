@@ -455,7 +455,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 match=next((path for prefix,path in extras.items()
                     if name.startswith(prefix) or source_name.startswith(prefix)),None)
                 if match:source=Path('/extra')/match
-            inputs=[];nested=[];debian_tree=None
+            inputs=[];nested=[];debian_tree=None;debian_export=None
             if source_name=='vyos-1x':nested.extend(ocaml_dependencies)
             if source_name=='owamp':
                 if 'i2util' not in static:
@@ -500,6 +500,14 @@ def collect(rootfs, package_output, output, arch, version, work):
                 dsc=unpack(component,source_name,source_version,preferred)
                 debian_tree=preferred
                 origin=sha256(dsc);source=component
+                from .debian_source_export import prepare as prepare_debian_export
+                debian_export=prepare_debian_export(source_name,source_version,component,preferred,
+                    json.loads(Path('/src/native/debian-source-exports.json').read_text()))
+                if debian_export is not None:
+                    source=preferred
+                    # Permission applies to this exact preferred export, never
+                    # to the original tarball containing unlicensed test files.
+                    origin=debian_export['sha256']
                 for legal_file,member in legal_files(preferred):
                     inputs.append((legal_file,'upstream-notices/'+member,'license_files'))
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
@@ -627,6 +635,8 @@ def collect(rootfs, package_output, output, arch, version, work):
             for prefix, names in [('/extra/vpp/',['vpp','vpp-patches']),('/extra/modules/rtsp',['nat-rtsp']),('/extra/modules/netflow',['ipt-netflow']),('/extra/base/utils',['vyos-utils']),('/extra/base/i2util',['i2util']),('/extra/kea/',['kea-packaging']),('/extra/salt/',['salt-tools'])]:
                 if location.startswith(prefix):keys.extend(names)
             provenance={'stream_archive_sha256':source_identity,'external_git':{key:external[key] for key in keys}}
+            if debian_export is not None:
+                provenance['debian_preferred_source_export']=debian_export
             if kind=='vpp':
                 provenance['vpp_retained_inputs']={r['name']:{'version':r['version'],
                     'source_identity':r['source_identity'],'notice_sha256':r['notice']['sha256'],

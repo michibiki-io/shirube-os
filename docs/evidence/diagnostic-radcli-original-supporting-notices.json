@@ -1,0 +1,29 @@
+{
+  "kind": "exact-radcli-original-source-scope-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "1.2.11-1",
+  "source_identity": "486af0f64d541d97bcb663bfd128de651dfaaeaa16d2b3392ddbf5a2466623c0",
+  "copyright_sha256": "72c2ac568f30d43359ba49b7b3fcca3e9da807b77c9c6b83cd7107ea63413fc9",
+  "original_legal_files": [
+    {
+      "member": "COPYRIGHT",
+      "sha256": "d4aa5ddbb9fcfaf3c085e5c756967d85fe07e7fc044da84c9608d546a74a13a7"
+    },
+    {
+      "member": "debian/copyright",
+      "sha256": "72c2ac568f30d43359ba49b7b3fcca3e9da807b77c9c6b83cd7107ea63413fc9"
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/Radcli-original-COPYRIGHT.txt",
+      "sha256": "d4aa5ddbb9fcfaf3c085e5c756967d85fe07e7fc044da84c9608d546a74a13a7"
+    },
+    {
+      "path": "LICENSES/Radcli-required-acknowledgements.txt",
+      "sha256": "75e075956b93abb2a478a37f1db5d7c5f36ec5130e78a9ac270142c1079b4ef1"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

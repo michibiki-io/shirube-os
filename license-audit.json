@@ -22842,6 +22842,75 @@
         "Retain original Bison2.2 skeleton exception with its stated generator/output scope; preserve GNU3 license for any source where the exception is removed or inapplicable. Keep original GFDL1.3-or-later manual grant with no invariant sections or cover texts.",
         "Provide exact preferred sources, patches, complete configuration/build/install inputs, original author credits, notices, permissions, disclaimers and modification markings in sources and binary legal materials."
       ]
+    },
+    "lldpd@1.0.16-1+deb12u1": {
+      "source_identity": "1fd430c69c5fe708d0e31e1c2dd0dca880f84bdd5aa319e71402d2dd15983e4a",
+      "copyright_sha256": "872c080b8a80d4975a0f4b26a6e2b8ecd4b590b87b66ce80a712dd7e9422d0fc",
+      "redistributable": true,
+      "license": "ISC AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND MIT AND GPL-2.0-or-later AND APSL-2.0 AND LicenseRef-Autoconf-exception",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Apple-APSL-2.0.txt",
+          "sha256": "02253dbba68de7b9599c6a91f6855aa1015ccce20b48b3ba9d2236e66db4df4b"
+        },
+        {
+          "path": "LICENSES/Lldpd-original-OSX-header-notices.txt",
+          "sha256": "49a7ded337f501f14f8f46e3d92df836c98a615dc4e4d8a6667b621463abff22"
+        }
+      ],
+      "scope": "Complete original copyright, original named legal-file permissions and exact OS X source-header notices reviewed. APSL2 is source-only in the Linux distribution, not a GNU license compatibility claim. Not release clearance.",
+      "conditions": [
+        "Retain every original notice, per-file permission, disclaimer and preferred source including patches and configuration/build/install material. Do not infer public-domain status from the packaging comment about interface headers; retain the original GNU2-or-later scope for Linux headers and original Autoconf exceptions.",
+        "Retain Apple APSL2, all original Apple source-file notices including the unlawful-Apple-OS-copy limitation, and independent Wasabi/Jason Wright BSD4 advertising and nonendorsement notices. Keep the OS X headers and their upstream modifications in the complete corresponding source and make any externally deployed covered modifications available under APSL2 for its required term; no new local modification or Apple OS executable is introduced.",
+        "Keep OS X-only APSL/BSD4 code separate from Linux runtime code; do not claim APSL2 compatibility with GNU2. Do not extend upstream patent rights or trademarks. Full source delivery and availability remain publication requirements."
+      ]
+    },
+    "libxcrypt@1:4.4.33-2#ee5eda707069be601bf8eb8e61342e9519d9187c2974bae3808071e80a1a4754": {
+      "source_identity": "ee5eda707069be601bf8eb8e61342e9519d9187c2974bae3808071e80a1a4754",
+      "original_source_identity": "910ae411c9462f07667e46540af3dbb30f46413ddd90f1f176781666042dbb38",
+      "copyright_sha256": "5a5e7ca0e9f3f9679977e3a3e9ede45ad92885a3297ea78e766979f9866c5a16",
+      "redistributable": true,
+      "license": "LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND 0BSD AND FSFAP AND LicenseRef-public-domain AND LicenseRef-GNU-Autoconf-exceptions",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Libxcrypt-Debian-preferred-source-export.txt",
+          "sha256": "dfdd1d75709e86e5db603839c2ce91dba33837d9e4728d79b6a72e8bfd35c4dc"
+        }
+      ],
+      "scope": "Exact applied preferred-source export only. Complete original LICENSING and installed copyright wrapper read, with complete standard license texts retained. Nine present explicitly unlicensed source-only tests omitted; seven historical names already absent upstream. Normal library build/install passed on both native architectures. Raw original source set is not approved.",
+      "conditions": [
+        "Retain complete original LGPL2.1-or-later library scope, independent BSD0/BSD2/BSD3 algorithms, explicit public-domain grants, FSF permissive macros and GNU2/GNU3 Autoconf exceptions. Original author credit, full permissions, disclaimers, sources, patches and configuration/build/install material remain mandatory.",
+        "Deliver the exact preferred source and its source-export declaration, retaining all installed library code and headers. Do not distribute the original tarballs containing unlicensed tests under this approval. Keep original descriptor as provenance only; source identity is the exact preferred export declaration hash, not the original descriptor identity.",
+        "Retain modification marks and the original detailed licensing inventory. Do not claim the incomplete original check suite, Debian binary package rebuild, bit-identical reproduction or whole-OS reconstruction passed from the normal library build/install trials."
+      ]
+    },
+    "radcli@1.2.11-1": {
+      "redistributable": true,
+      "source_identity": "486af0f64d541d97bcb663bfd128de651dfaaeaa16d2b3392ddbf5a2466623c0",
+      "copyright_sha256": "72c2ac568f30d43359ba49b7b3fcca3e9da807b77c9c6b83cd7107ea63413fc9",
+      "license": "BSD-2-Clause AND LicenseRef-Fenneberg-Livingston-Michigan-permissions AND LicenseRef-RSA-MD AND GPL-3.0-only",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Radcli-original-COPYRIGHT.txt",
+          "sha256": "d4aa5ddbb9fcfaf3c085e5c756967d85fe07e7fc044da84c9608d546a74a13a7"
+        },
+        {
+          "path": "LICENSES/Radcli-required-acknowledgements.txt",
+          "sha256": "75e075956b93abb2a478a37f1db5d7c5f36ec5130e78a9ac270142c1079b4ef1"
+        }
+      ],
+      "scope": "Complete original copyright and upstream COPYRIGHT read; distinct library, source helper and Debian packaging scopes retained. Explicit per-file GNU3 declarations select the retained complete standard license, rather than treating a license-name reference as permission for unrelated code. Not release clearance.",
+      "conditions": [
+        "Retain all original library/source notices, complete original COPYRIGHT and exact preferred source, patches and configuration/build/install material. Keep separate GNU3-only doc helper scripts and Debian packaging permissions.",
+        "Retain explicit Fenneberg and Livingston permission credits in supporting documentation, Michigan/Merit complete notices, and RSA MD5/derivative identification. Do not infer public-domain dedication from a historical comment or absent license.",
+        "Preserve NetBSD and other author nonendorsement conditions. Original NetBSD BSD2 permission appears in upstream COPYRIGHT; retain the original historical advertising acknowledgement as supporting material without extending a waiver to unrelated authors."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."

@@ -568,3 +568,33 @@ Restore package originals and apply their retained Debian patches with
 does not replace the preceding exact descriptor/archive hash checks. Native
 component trees, captured configurations, the shared Stream builder/VPP patches
 and the history-free project archive remain separately bound in the inventory.
+
+An explicitly scoped exception is Debian libxcrypt `1:4.4.33-2`: the delivered
+`source/` is its applied preferred source tree, with nine present source-only
+tests identified as unlicensed by upstream omitted. Seven other historical names
+in `LICENSING` are already absent upstream. The installed library, algorithms,
+headers, Debian patches and packaging remain unchanged; only `Makefile.am` removes
+the omitted test header from the noninstalled `all-am` prerequisites. The original
+descriptor remains as provenance in `SHIRUBE-ORIGINAL-SOURCE.dsc`, alongside the
+exact omission/build-control hashes and reconstruction instructions in
+`SHIRUBE-SOURCE-EXPORT.json`. Its raw original archives are not delivered with
+this export, and the modified tree is not represented as a signed Debian source
+set. Run `autoreconf -fi`, configure with the retained Debian options, then build
+and install in the native toolchain; Debian binary packaging uses
+`DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -b`. The original check suite is
+incomplete and is not claimed to pass. Normal library build/install verification
+is separate from whole-OS reconstruction and bit-identical binary reproduction.
+
+Debian libxcrypt `1:4.4.33-2` は例外として、展開・パッチ適用済みの優先ソースを
+`source/` に収録します。上流が許諾未記載と明示した試験専用ファイルのうち、
+実際に含まれる9件を除外します。`LICENSING` に残る過去の7件は上流ですでに
+削除されています。ライブラリ本体・アルゴリズム・公開ヘッダー・Debian の
+パッチと梱包処理は維持し、`Makefile.am` の非インストール対象ヘッダーの前提条件
+だけを修正します。元の descriptor は署名済みの新ソースとして扱わず、来歴確認用に
+`SHIRUBE-ORIGINAL-SOURCE.dsc` として保持します。除外・修正のハッシュと再構築手順は
+`SHIRUBE-SOURCE-EXPORT.json` に記録し、許諾未記載の試験ファイルを含む元アーカイブは
+配布しません。ネイティブ toolchain で `autoreconf -fi`、保持した Debian オプションでの
+configure、build、install を実行します。Debian バイナリの梱包では
+`DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -b` を使います。元の試験一式は不完全なため
+合格とは扱いません。通常のライブラリ build/install と、OS 全体の再構築・バイナリの
+完全一致確認は別の検証です。
