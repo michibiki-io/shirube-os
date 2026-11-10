@@ -23689,6 +23689,76 @@
         "Preserve cybercafe author/distribution policy with every copy, Terminus original GPL2-or-later grant, LatGrkCyr explicit public-domain8x16 and GNU2-derived12x22 scope, Sun/kernel font attribution, Guylhem AZNAR GPL grant and all remaining original font notices. Do not infer another grant for unrelated sources or apply the Agafari restriction to Goha.",
         "License/source-only export validation uses exact all-member differences and SHA256 bindings; it does not require or claim a native compilation, boot or OCI test. Full OS release/source gates remain mandatory."
       ]
+    },
+    "numactl@2.0.16-1": {
+      "redistributable": true,
+      "source_identity": "d77b5d389ac5cf5098752fd27c382fce13e0340cf15c84a52ba38b167999fb95",
+      "copyright_sha256": "179c34f5e56cd0b6b73dd7970a97357ee784e2236e8293826656c7ebb3bface7",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-only AND LicenseRef-Linux-Man-Pages-Original AND LicenseRef-STREAM-Author-License",
+      "reviewed_on": "2026-11-10",
+      "evidence_member": "copyright",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Numactl-2.0.16/LICENSE.GPL2",
+          "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/LICENSE.LGPL2.1",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/README.md",
+          "sha256": "0507f8a310b7a6e825b9f77ace0a88a31d0bc5aa4be20dcb5e031f0d669dfbc8"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/numa.3",
+          "sha256": "b7577c1487869919bcfebd170a103b587eb00d24b8565a099d629f1c52fe230e"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/numactl.8",
+          "sha256": "d71464cb0473b9ce3da26e89ccb357226684428b5cbbb1af2049dc573c99450e"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/numastat.8",
+          "sha256": "747b32d9ed727bac9c0c9fdad3334ea6ed7f92a16d0fd28736664fd5d5ed39c3"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/memhog.8",
+          "sha256": "0cd76b7f700ed040db479dec729d0ec003a3ccc260999503c78d2d9f753321bd"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/migratepages.8",
+          "sha256": "b1fb3b3637b343c99d2ed24bd3a5241b5dd9fbd5151e0e0a67860d0cf2a7bba3"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/migspeed.8",
+          "sha256": "5af75b2bc435ae28b175d36fd80d8ec4851cf5260bbda7bea678519e6c102814"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/stream_lib.c",
+          "sha256": "111b84ccc0076c493335628b709a21774025fa9e3162d6b88401e38a6be1f145"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/mt.c",
+          "sha256": "f75835ddcd95c5e1361a97c86793a7b95fbffc40498ed35748183456dbaec0eb"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/debian-copyright.txt",
+          "sha256": "179c34f5e56cd0b6b73dd7970a97357ee784e2236e8293826656c7ebb3bface7"
+        },
+        {
+          "path": "LICENSES/Numactl-2.0.16/STREAM-author-license.txt",
+          "sha256": "86335bc00c91e5acb13a7e7ebfd7e0e566d47c589b8d02bb6e774f12a9e6f9f5"
+        }
+      ],
+      "scope": "Exact Debian numactl2.0.16 package/source. Whole Debian copyright and actual root README licensing read. Both original complete GNU license texts are word-identical to retained GPL2/LGPL2.1. Actual manpage grants, STREAM4.0-BETA attribution and explicit Mersenne Twister public-domain notice checked. No code/build changes or benchmark execution.",
+      "conditions": [
+        "Retain GPL2-or-later program/demo and LGPL2.1 library licenses, original copyrights and all corresponding source/build/install inputs. Preserve library relinking/source rights; do not apply LGPL-only restrictions to the separate GNU2 programs or relabel all manuals uniformly.",
+        "Retain original numa.3/numactl.8 copy/modify/distribute permission and identical-notice share-alike condition, disclaimer and processed-version author acknowledgement. Retain GNU2 declarations for the other manuals and all named authors. Full original manpage sources accompany formatted copies.",
+        "Retain STREAM attribution to John D. McCalpin and Joe R. Zagar and original Andi Kleen library-adaptation notice. The primary author reference page explicitly allows use/redistribution and commercial modification, with separately stated result-publication rules across STREAM program versions. This is not a claim that missing1995 file-local text is an explicit public-domain grant or that a modern header was present in the old source.",
+        "Deliver the complete author permission and canonical https://www.cs.virginia.edu/stream/ref.html reference. Any published numademo STREAM results from the modified implementation must be clearly described as based on a variant, rather than certified standard STREAM results; no such benchmark results are published or claimed by this change. Author result submission is encouraged, not required.",
+        "Retain Michael Brundage’s explicit Mersenne Twister public-domain notice and marked AK changes. This component decision does not clear the complete OS, establish binary reproducibility or imply a native compilation/boot/OCI check."
+      ]
     }
   },
   "note": "Exact source/notice decisions are checked against each generated candidate inventory. Every missing, stale, unreviewed or non-redistributable component blocks publication. Prototype build or boot evidence does not clear a release."
