@@ -1,0 +1,828 @@
+name: Staged native candidate
+on:
+  workflow_call:
+    inputs:
+      commit:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
+      cache-mode:
+        type: string
+        default: warm
+permissions:
+  contents: read
+jobs:
+  compiler:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - name: Validate intentional cache mode and exact source
+        env:
+          CACHE_MODE: ${{ inputs.cache-mode }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          BUILD_ARCHITECTURE: ${{ matrix.architecture }}
+          TASK_STORAGE: ${{ runner.temp }}
+        run: |
+          case "$CACHE_MODE" in cold|warm) ;; *) exit 2 ;; esac
+          test "$(git rev-parse HEAD)" = "$SOURCE_COMMIT"
+          python3 -c 'import os; from pathlib import Path; from producer.architecture import preflight; preflight(os.environ["BUILD_ARCHITECTURE"],Path(os.environ["TASK_STORAGE"]))'
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+        with:
+          cache-binary: false
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
+        id: image
+        with:
+          context: .
+          file: containers/native/Dockerfile
+          platforms: linux/${{ matrix.architecture }}
+          load: true
+          push: false
+          build-args: |
+            BASE=${{ matrix.architecture == 'amd64' && 'debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018' || 'debian@sha256:ec8534cda2cb30f29f44f23e135297af7a1496f2990fd8e4e84aa36b081a757a' }}
+          cache-from: ${{ inputs.cache-mode == 'warm' && format('type=gha,scope=shirube-staged-compiler-{0}-{1}', matrix.architecture, hashFiles('.dockerignore', 'containers/native/**', 'producer/**', 'guest/**', 'patches/kernel/**', 'patches/vyos/**', 'patches/nmap/**', 'LICENSE', 'NOTICE', 'source-lock.json', 'license-audit.json', 'shirube-os-logo.svg', 'LICENSES/**', 'third_party/geoip/**')) || '' }}
+          no-cache: ${{ inputs.cache-mode == 'cold' }}
+          cache-to: type=gha,mode=max,ignore-error=true,scope=shirube-staged-compiler-${{ matrix.architecture }}-${{ hashFiles('.dockerignore', 'containers/native/**', 'producer/**', 'guest/**', 'patches/kernel/**', 'patches/vyos/**', 'patches/nmap/**', 'LICENSE', 'NOTICE', 'source-lock.json', 'license-audit.json', 'shirube-os-logo.svg', 'LICENSES/**', 'third_party/geoip/**') }}
+      - name: Export exact native compiler
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact export --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" --image "$COMPILER_IMAGE"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+  native:
+    needs: [compiler]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: inputs.cache-mode == 'warm'
+        id: cache
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-native-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - name: Execute native with verified predecessors
+        env:
+          STAGE: native
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
+      - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: success() && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-native-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-native
+          path: |
+            ${{ runner.temp }}/stage-output/native.tar
+            ${{ runner.temp }}/stage-output/native.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-native-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  vpp:
+    needs: [compiler]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: inputs.cache-mode == 'warm'
+        id: cache
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-vpp-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - name: Execute vpp with verified predecessors
+        env:
+          STAGE: vpp
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
+      - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: success() && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-vpp-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-vpp
+          path: |
+            ${{ runner.temp }}/stage-output/vpp.tar
+            ${{ runner.temp }}/stage-output/vpp.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-vpp-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  kea:
+    needs: [compiler]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: inputs.cache-mode == 'warm'
+        id: cache
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-kea-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - name: Execute kea with verified predecessors
+        env:
+          STAGE: kea
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
+      - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: success() && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-kea-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-kea
+          path: |
+            ${{ runner.temp }}/stage-output/kea.tar
+            ${{ runner.temp }}/stage-output/kea.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-kea-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  salt:
+    needs: [compiler]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: inputs.cache-mode == 'warm'
+        id: cache
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-salt-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - name: Execute salt with verified predecessors
+        env:
+          STAGE: salt
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
+      - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: success() && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-salt-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-salt
+          path: |
+            ${{ runner.temp }}/stage-output/salt.tar
+            ${{ runner.temp }}/stage-output/salt.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-salt-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  runtime:
+    needs: [compiler]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: inputs.cache-mode == 'warm'
+        id: cache
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-runtime-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - name: Execute runtime with verified predecessors
+        env:
+          STAGE: runtime
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
+      - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        if: success() && steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ runner.temp }}/stage-cache
+          key: shirube-stage-v1-runtime-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-runtime
+          path: |
+            ${{ runner.temp }}/stage-output/runtime.tar
+            ${{ runner.temp }}/stage-output/runtime.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-runtime-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  kernel:
+    needs: [compiler, vpp]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-vpp
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Execute kernel with verified predecessors
+        env:
+          STAGE: kernel
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-kernel
+          path: |
+            ${{ runner.temp }}/stage-output/kernel.tar
+            ${{ runner.temp }}/stage-output/kernel.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-kernel-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  integration:
+    needs: [compiler, native, vpp]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-native
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-vpp
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Execute integration with verified predecessors
+        env:
+          STAGE: integration
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-integration
+          path: |
+            ${{ runner.temp }}/stage-output/integration.tar
+            ${{ runner.temp }}/stage-output/integration.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-integration-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  iso:
+    needs: [compiler, native, vpp, kea, salt, runtime, kernel, integration]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-native
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-vpp
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-kea
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-salt
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-runtime
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-kernel
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-integration
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Execute iso with verified predecessors
+        env:
+          STAGE: iso
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-iso
+          path: |
+            ${{ runner.temp }}/stage-output/iso.tar
+            ${{ runner.temp }}/stage-output/iso.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-iso-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  clearance:
+    needs: [compiler, iso]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-iso
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Execute clearance with verified predecessors
+        env:
+          STAGE: clearance
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-clearance
+          path: |
+            ${{ runner.temp }}/stage-output/clearance.tar
+            ${{ runner.temp }}/stage-output/clearance.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-clearance-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
+  guests:
+    needs: [compiler, clearance]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.commit }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-stage-${{ matrix.architecture }}-clearance
+          path: ${{ runner.temp }}/stage-inputs
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: shirube-compiler-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/compiler-artifact
+      - name: Verify and load exact same-run compiler
+        id: image
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          RUN_ID: ${{ github.run_id }}
+          COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
+        run: |
+          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+            --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Execute guests with verified predecessors
+        env:
+          STAGE: guests
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          VERSION: ${{ inputs.version }}
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
+          STAGE_OUTPUT: ${{ runner.temp }}/stage-output
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: shirube-candidate-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/stage-output/candidate/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+          overwrite: true
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: shirube-stage-metrics-${{ matrix.architecture }}-guests-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/stage-output/*resources.json
+            ${{ runner.temp }}/stage-output/*diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14

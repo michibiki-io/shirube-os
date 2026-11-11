@@ -1,0 +1,48 @@
+name: Validate staged candidate without publishing
+on:
+  workflow_dispatch:
+    inputs:
+      source-ref:
+        description: Exact public commit or ref to validate (empty uses workflow commit)
+        type: string
+        default: ''
+      version:
+        description: Stream-compatible candidate version (no reservation or release)
+        type: string
+        default: v2026.03.0
+      cache-mode:
+        description: Intentional prior-cache use
+        type: choice
+        options: [cold, warm]
+        default: cold
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: shirube-staged-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  resolve:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && (github.event.label.name == 'validate-staged' || github.event.label.name == 'validate-staged-warm'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      commit: ${{ steps.source.outputs.commit }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ inputs.source-ref || github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - id: source
+        name: Resolve one exact commit without reserving a release
+        run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+  validate:
+    needs: resolve
+    permissions:
+      contents: read
+    uses: ./.github/workflows/staged-candidate.yml
+    with:
+      commit: ${{ needs.resolve.outputs.commit }}
+      version: ${{ inputs.version || 'v2026.03.0' }}
+      cache-mode: ${{ inputs.cache-mode || (github.event_name == 'pull_request' && github.event.label.name == 'validate-staged-warm' && 'warm') || 'cold' }}

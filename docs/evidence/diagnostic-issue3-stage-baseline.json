@@ -1,0 +1,56 @@
+{
+  "kind": "existing-public-log-stage-baseline",
+  "run_id": 42994713826,
+  "source_commit": "a207309b6181609ec5ccb76b2527db6a4dafad34",
+  "method": "Timestamp-to-next-STAGE wall interval, including interstitial packaging/audit work; not isolated compiler CPU time.",
+  "amd64": {
+    "job_url": "https://github.com/michibiki-io/shirube-os/actions/runs/42994713826/job/130436002866",
+    "outcome": "cancelled",
+    "seconds": {
+      "kernel": 2156.993,
+      "vpp": 2655.991,
+      "kea": 1525.537,
+      "go": 405.734,
+      "base": 143.085,
+      "vyos-1x": 215.649,
+      "vyos-http-api-tools": 71.772
+    },
+    "salt": "incomplete: 496.735s before cancellation; not a successful duration",
+    "not_reached": [
+      "podman",
+      "modules",
+      "accel",
+      "fresh-disks/guest"
+    ]
+  },
+  "arm64": {
+    "job_url": "https://github.com/michibiki-io/shirube-os/actions/runs/42994713826/job/130436002673",
+    "outcome": "failure",
+    "seconds": {
+      "kernel": 1358.325,
+      "vpp": 1205.148,
+      "kea": 955.872,
+      "salt": 778.603,
+      "go": 266.462,
+      "podman": 121.973,
+      "base": 77.288,
+      "modules": 48.665,
+      "accel": 22.888,
+      "vyos-1x": 169.912,
+      "vyos-http-api-tools": 61.434,
+      "netbird_to_source_collection_including_iso_assembly": 755.598,
+      "source_collection_to_restoration": 1147.814,
+      "restoration_marker_to_failure_message_including_failure_handling": 218.76
+    },
+    "not_reached": [
+      "fresh-disks/guest"
+    ]
+  },
+  "cache_observations": "Both producer logs report nine library restore HITs: libtacplus-map, libpam-tacplus, libnss-tacplus, libnss-mapuser, libpam-radius-auth, libnftnl, nftables, libyang, frr. This does not prove outer library preparation/full run was warm.",
+  "missing": [
+    "observed peak memory",
+    "per-stage disk peaks",
+    "full cold/warm candidate acceptance"
+  ],
+  "new_builds_started": false
+}

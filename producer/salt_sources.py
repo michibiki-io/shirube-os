@@ -208,7 +208,7 @@ def validate_cargo_sources(lock,work):
         raise ValueError('SDK Rust source coverage differs from actual Cargo lock')
 
 
-def retain(rootfs, destination, work, lock_path):
+def retain(rootfs, destination, work, lock_path, *, compiler_identity=None):
     """Bind the installed SDK inventory to fixed sources and full notices.
 
     The upstream Salt tree and packaging scripts are collected separately.
@@ -224,9 +224,12 @@ def retain(rootfs, destination, work, lock_path):
         raise ValueError('Salt SDK distributions differ from pinned source inventory')
     compiler=lock.get('rust_compiler')
     if compiler is not None:
-        version=subprocess.check_output(['rustc','--version'],text=True).strip()
-        package=subprocess.check_output(['dpkg-query','-W','-f=${source:Package}\t${source:Version}',
-                                         'libstd-rust-dev'],text=True).strip()
+        if compiler_identity is None:
+            version=subprocess.check_output(['rustc','--version'],text=True).strip()
+            package=subprocess.check_output(['dpkg-query','-W','-f=${source:Package}\t${source:Version}',
+                                             'libstd-rust-dev'],text=True).strip()
+        else:
+            version=compiler_identity['version'];package=compiler_identity['source']
         if version!=compiler['version_output'] or package!=compiler['source_package']+'\t'+compiler['source_version']:
             raise ValueError('Actual Rust standard-library compiler/source differs from SDK lock')
     work = Path(work)

@@ -10,7 +10,7 @@ from .bundles import bundle
 from .sources import sha256
 from .sanitize import path_in_root
 
-GENERATED={'.git','__pycache__','.pytest_cache','.debhelper'}
+GENERATED={'.git','__pycache__','.pytest_cache','.debhelper','shirube-stage-source.json'}
 SUFFIXES={'.o','.ko','.a','.so','.cmi','.cmo','.cmx','.pyc','.deb'}
 
 
@@ -344,6 +344,16 @@ def project_recipe(project, shared, destination):
 def tracked_source_files(root):
     """Export patched tracked source, materializing confined directory aliases."""
     root=Path(root).resolve()
+    if (root/'shirube-stage-source.json').is_file():
+        from .stage_artifacts import member_name
+        members=json.loads((root/'shirube-stage-source.json').read_text())['members']
+        if not members or len(members)!=len(set(members)):raise ValueError('Incomplete staged source member set')
+        for name in members:
+            path=root/member_name(name)
+            if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(root):
+                raise ValueError('Staged preferred source member missing/unsafe')
+            yield path,name
+        return
     names=subprocess.check_output(['git','-C',str(root),'ls-files','-z']).decode().split('\0')
     for name in sorted(filter(None,names)):
         path=Path(name)
@@ -371,6 +381,9 @@ def tracked_source_files(root):
 def vpp_source_files(root):
     """Export patched tracked source and original external inputs, not build trees."""
     root=Path(root).resolve()
+    if (root/'shirube-stage-source.json').is_file():
+        yield from tracked_source_files(root)
+        return
     yield from tracked_source_files(root)
     cache=root/'build/external/downloads'
     if not cache.is_dir():raise ValueError('Original VPP external source inputs missing')
@@ -383,6 +396,9 @@ def vpp_source_files(root):
 def kea_source_files(root, preferred, packaging, tool):
     """Retain original Kea plus actual prepared recipes, excluding build trees."""
     root,preferred,packaging=map(Path,[root,preferred,packaging])
+    if (root/'shirube-stage-source.json').is_file():
+        yield from tracked_source_files(root)
+        return
     yield from files(preferred,exclude=('debian','build'))
     names=subprocess.check_output(['git','-C',str(packaging),'ls-files','-z','--','debian'],text=True).split('\0')
     recipes=set(filter(None,names))|{'debian/not-installed'}
@@ -405,15 +421,55 @@ def kea_source_files(root, preferred, packaging, tool):
 
 
 
-def static_i2util(output,arch,version,project,shared):
-    """OWAMP links I2util statically even when no I2util package is installed."""
-    source=Path('/extra/base/i2util')
-    lock=json.loads(Path('/src/native/external-sources.lock.json').read_text())['i2util']
+def i2util_revision_evidence(source, lock):
+    """Observe the locked Git revision before exporting a key-free source tree."""
+    source=Path(source)
+    if (source/'shirube-stage-source.json').exists():
+        raise ValueError('Static I2util export requires original Git source')
     actual=subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],text=True).strip()
     if actual!=lock['commit']:raise ValueError('Static I2util source revision differs')
+    return {'schema_version':1,'commit':actual,
+            'lock_sha256':hashlib.sha256(json.dumps(lock,sort_keys=True).encode()).hexdigest(),
+            'files':[{'name':name,'sha256':sha256(path)} for path,name in tracked_source_files(source)]}
+
+
+def staged_i2util_files(source, lock):
+    """Revalidate compiler-observed revision evidence and every retained byte.
+
+    The enclosing stage transfer authenticates this evidence; metadata alone
+    never substitutes for checking the current lock and source inventory.
+    """
+    marker=source/'shirube-stage-source.json'
+    if marker.is_symlink() or not marker.is_file():
+        raise ValueError('Static I2util staged revision evidence missing/unsafe')
+    data=json.loads(marker.read_text())
+    if not isinstance(data,dict) or not isinstance(data.get('revision_evidence'),dict):
+        raise ValueError('Static I2util staged revision evidence missing/invalid')
+    selected=list(tracked_source_files(source))
+    expected={'schema_version':1,'commit':lock['commit'],
+              'lock_sha256':hashlib.sha256(json.dumps(lock,sort_keys=True).encode()).hexdigest(),
+              'files':[{'name':name,'sha256':sha256(path)} for path,name in selected]}
+    if (data.get('kind')!='tracked' or not selected
+            or data.get('revision_evidence')!=expected
+            or not {'LICENSE','debian/copyright'}.issubset({name for _,name in selected})
+            or any('.git' in Path(name).parts or name=='shirube-stage-source.json' for _,name in selected)):
+        raise ValueError('Static I2util staged revision evidence differs')
+    return selected
+
+
+def static_i2util(output,arch,version,project,shared,material=None):
+    """OWAMP links I2util statically even when no I2util package is installed."""
+    source=(Path(material)/'extra/base/i2util') if material else Path('/extra/base/i2util')
+    lock=json.loads(Path('/src/native/external-sources.lock.json').read_text())['i2util']
+    if material:
+        selected=staged_i2util_files(source,lock)
+    else:
+        actual=subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],text=True).strip()
+        if actual!=lock['commit']:raise ValueError('Static I2util source revision differs')
+        selected=list(tracked_source_files(source))
     notice=source/'debian/copyright'
     if not notice.is_file():raise ValueError('Static I2util notice missing')
-    inputs=[(path,'source/'+relative,'sources') for path,relative in tracked_source_files(source)]
+    inputs=[(path,'source/'+relative,'sources') for path,relative in selected]
     inputs.extend([(notice,'copyright','license_files'),(source/'LICENSE','upstream-LICENSE','license_files'),
                    (project,'project-source.tar','build_inputs')])
     archive=Path(output)/f'shirube-os-{version}-{arch}-static-i2util-source.tar.gz'
@@ -471,8 +527,13 @@ def debian_requirements(listing, produced, custom, extras):
     return result
 
 
-def collect(rootfs, package_output, output, arch, version, work):
+def collect(rootfs, package_output, output, arch, version, work, *, material=None):
     rootfs,package_output,output,work=map(Path,[rootfs,package_output,output,work]);work.mkdir()
+    def P(value):
+        path=Path(value)
+        if material and str(path).startswith(('/sources','/extra','/guest-package','/guest-cloud-init')):
+            return Path(material)/str(path).lstrip('/')
+        return path
     project=Path('/project-source.tar')
     if not project.is_file():raise ValueError('Exact project reconstruction source archive missing')
     verify_distribution_notices(rootfs,Path('/src'))
@@ -484,8 +545,9 @@ def collect(rootfs, package_output, output, arch, version, work):
     for job in catalog['jobs']:
         for deb in (package_output/job['name']).glob('*.deb'):
             name=subprocess.check_output(['dpkg-deb','-f',str(deb),'Package'],text=True).strip()
-            custom[name]=Path('/build-private')/job['name']/'source'
-            native_preferred[name]=Path('/sources')/job['source']
+            custom[name]=(Path(material)/'native'/job['name'] if material and job['name']=='vyos-http-api-tools'
+                          else P('/sources')/job['source'] if material else Path('/build-private')/job['name']/'source')
+            native_preferred[name]=P('/sources')/job['source']
             native_jobs[name]=job['name']
     extras={
       'vpp':'vpp/vpp','libvpp':'vpp/vpp','nat-rtsp':'modules/rtsp','vyos-ipt-netflow':'modules/netflow',
@@ -508,12 +570,16 @@ def collect(rootfs, package_output, output, arch, version, work):
     approvals=json.loads(audit_path.read_text())['components'] if audit_path.is_file() else {}
     shipped=[];components=[];assets=[];cached={};static={};debian_archives=[]
     shared_archive=output/f'shirube-os-{version}-{arch}-shared-build-inputs.tar.gz'
-    shared=shared_build_inputs(project,Path('/sources/vyos-build/vyos-build'),
-        Path('/extra/vpp/patches'),shared_archive)
+    shared=shared_build_inputs(project,P('/sources/vyos-build/vyos-build'),
+        P('/extra/vpp/patches'),shared_archive)
     assets.append(shared_archive)
     from .ocaml_sources import retain as retain_ocaml
     ocaml_archive=output/f'shirube-os-{version}-{arch}-ocaml-source.tar.gz'
-    ocaml_records,ocaml_dependencies=retain_ocaml(Path('/opt/opam'),ocaml_archive,work/'ocaml',files)
+    if material:
+        from .native_stages import restore_ocaml_evidence
+        ocaml_records,ocaml_dependencies=restore_ocaml_evidence(Path(material)/'ocaml',ocaml_archive,work/'ocaml')
+    else:
+        ocaml_records,ocaml_dependencies=retain_ocaml(Path('/opt/opam'),ocaml_archive,work/'ocaml',files)
     assets.append(ocaml_archive)
     source_identity=json.loads(Path('/src/source-lock.json').read_text())['stream']['sha256']
     for line in listing.splitlines():
@@ -535,16 +601,16 @@ def collect(rootfs, package_output, output, arch, version, work):
             if source is None and matching:
                 match=next((path for prefix,path in extras.items()
                     if name.startswith(prefix) or source_name.startswith(prefix)),None)
-                if match:source=Path('/extra')/match
+                if match:source=P('/extra')/match
             inputs=[];nested=[];debian_tree=None;debian_export=None
             if name=='cloud-init' and matching:
                 cloud_lock=json.loads(Path('/src/source-lock.json').read_text())['cloud_init']
-                original=Path('/guest-cloud-init/upstream.tar.gz')
+                original=P('/guest-cloud-init/upstream.tar.gz')
                 if sha256(original)!=cloud_lock['sha256']:
                     raise ValueError('Cloud-init corresponding source mismatch')
                 # Keep the exact original archive, including upstream fixture
                 # data, rather than exporting generated install/test trees.
-                source=Path('/guest-cloud-init/original')/('vyos-cloud-init-'+cloud_lock['commit'])
+                source=P('/guest-cloud-init/original')/('vyos-cloud-init-'+cloud_lock['commit'])
                 inputs.append((original,'upstream.tar.gz','sources'))
             if source_name=='vyos-1x':
                 nested.extend(ocaml_dependencies)
@@ -557,13 +623,13 @@ def collect(rootfs, package_output, output, arch, version, work):
                     'source_sha256':SCRIPT,'notice':nmap_notice,'notice_member':'nmap-script/NPSL-0.94.txt'})
             if source_name=='owamp':
                 if 'i2util' not in static:
-                    archive,dependency=static_i2util(output,arch,version,project,shared)
+                    archive,dependency=static_i2util(output,arch,version,project,shared,material)
                     assets.append(archive);static['i2util']=dependency
                 nested.append(static['i2util'])
             if name=='shirube-integration':
                 source=Path('/src/guest');origin=source_identity
                 lock=json.loads(Path('/src/source-lock.json').read_text())['netbird']
-                correspondence=Path('/guest-package/netbird-correspondence')
+                correspondence=P('/guest-package/netbird-correspondence')
                 nested=netbird_dependencies(rootfs,correspondence,arch)
                 for path,relative in files(correspondence):
                     category=('license_files' if relative.startswith('linked/notices/') or relative=='go-copyright'
@@ -609,7 +675,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                 for legal_file,member in legal_files(preferred):
                     inputs.append((legal_file,'upstream-notices/'+member,'license_files'))
             if not source.is_dir():raise ValueError('Corresponding custom source directory missing')
-            kind=('vpp' if str(source)=='/extra/vpp/vpp' else 'kea' if str(source)=='/extra/kea/isc-kea'
+            kind=('vpp' if source==P('/extra/vpp/vpp') else 'kea' if source==P('/extra/kea/isc-kea')
                   else 'vyos-1x' if source_name=='vyos-1x' else 'salt' if source_name=='salt' else None)
             # Compilation/test trees contain generated keys, binaries and
             # toolchain links. Native packages retain the authenticated original
@@ -629,8 +695,8 @@ def collect(rootfs, package_output, output, arch, version, work):
                     if build_input.is_file():inputs.append((build_input,'native-build/'+member,'build_inputs'))
             elif kind=='kea':
                 tool=json.loads(Path('/src/source-lock.json').read_text())['kea_build_tool']
-                source_files=kea_source_files(source,Path('/sources/isc-kea_Kea-3.0.2/isc-kea'),
-                                             Path('/extra/kea/packaging'),tool)
+                source_files=kea_source_files(source,P('/sources/isc-kea_Kea-3.0.2/isc-kea'),
+                                             P('/extra/kea/packaging'),tool)
             elif name=='cloud-init':
                 source_files=[]
                 for member in ['LICENSE','LICENSE-GPLv3','LICENSE-Apache2.0',
@@ -657,7 +723,8 @@ def collect(rootfs, package_output, output, arch, version, work):
                     from .salt_sources import retain as retain_salt
                     sdk_archive=output/f'shirube-os-{version}-{arch}-salt-sdk-source.tar.gz'
                     static['salt-sdk']=retain_salt(rootfs,sdk_archive,work/'salt-sdk',
-                                                   Path('/src/native/salt-sources.lock.json'))
+                                                   Path('/src/native/salt-sources.lock.json'),
+                                                   compiler_identity=json.loads((Path(material)/'salt-compiler.json').read_text()) if material else None)
                     assets.append(sdk_archive)
                 nested.extend(static['salt-sdk'][1])
             binary_map=source/'shirube-corresponding-inputs/binary-info.json'
@@ -674,7 +741,7 @@ def collect(rootfs, package_output, output, arch, version, work):
             if kind=='vpp':
                 from .vpp_legal import verify as verify_vpp_notices
                 legal=rootfs/'usr/share/doc/shirube-integration/vpp-inputs'
-                preferred=Path('/guest-package/vpp-input-sources')
+                preferred=P('/guest-package/vpp-input-sources')
                 vpp_inputs=verify_vpp_notices(source/'build/external/downloads',Path('/src/native'),legal,preferred)
                 inputs.append((legal/'components.json','vpp-input-components.json','build_inputs'))
                 retained=set()
@@ -737,7 +804,7 @@ def collect(rootfs, package_output, output, arch, version, work):
             if source_name=='vyos-1x':records['build_inputs'].extend(ocaml_records['build_inputs'])
             external=json.loads(Path('/src/native/external-sources.lock.json').read_text())
             keys=[]
-            location=str(source)
+            location=('/'+str(source.relative_to(material))) if material and source.is_relative_to(material) else str(source)
             for prefix, names in [('/extra/vpp/',['vpp','vpp-patches']),('/extra/modules/rtsp',['nat-rtsp']),('/extra/modules/netflow',['ipt-netflow']),('/extra/base/utils',['vyos-utils']),('/extra/base/i2util',['i2util']),('/extra/kea/',['kea-packaging']),('/extra/salt/',['salt-tools'])]:
                 if location.startswith(prefix):keys.extend(names)
             provenance={'stream_archive_sha256':source_identity,'external_git':{key:external[key] for key in keys}}
@@ -757,7 +824,7 @@ def collect(rootfs, package_output, output, arch, version, work):
                                 'sha256':r['source']['sha256']}]}
                     for r in vpp_inputs['components']}
             if preferred_root is not None:
-                provenance.update(preferred_stream_member=str(preferred_root.relative_to('/sources')),
+                provenance.update(preferred_stream_member=str(preferred_root.relative_to(P('/sources'))),
                                   native_job=native_jobs[name])
             if name=='shirube-integration':
                 from .integration import provenance as integration_provenance, source_identity as integration_identity

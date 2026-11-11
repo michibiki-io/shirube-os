@@ -6,7 +6,6 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
-from .architecture import runner
 from .integration import preflight as integration_preflight
 from .policy import eligible, next_version, release_notes, VERSION_PATTERN, version_parts, require_stream_version
 from .release import validate, RELEASE_ASSET_LIMIT
@@ -186,13 +185,7 @@ def resolve():
             # finds this draft and cannot allocate a different version.
             gh('release','create',version,'--repo',REPO,'--draft','--target',commit,
                '--title','Shirube OS '+version,'--notes-file',notes.name)
-    matrix={'include':[]}
-    for architecture in ['amd64','arm64']:
-        labels=runner(architecture,os.getenv('ACTIONS_RUNNER_'+architecture.upper(),''))
-        explicit_self_hosted='self-hosted' in (labels if isinstance(labels,list) else [labels])
-        matrix['include'].append({'architecture':architecture,'runner':labels,
-                                  'timeout_minutes':720 if explicit_self_hosted else 360})
-    emit({'eligible':'true','noop':'false','commit':commit,'version':version,'matrix':matrix})
+    emit({'eligible':'true','noop':'false','commit':commit,'version':version})
 
 
 def stage():

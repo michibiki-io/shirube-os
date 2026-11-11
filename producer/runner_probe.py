@@ -1,14 +1,20 @@
 """Small native hosted-runner capability probe, independent of OS acceptance."""
 import argparse
+from collections import Counter
+import hashlib
 import json
 import os
 from pathlib import Path
 import re
 import shutil
 import subprocess
+import tarfile
+import tempfile
 import uuid
 
 from .architecture import native
+from .compiler_artifact import archive_identity
+from .sources import sha256
 
 
 BASES = {
@@ -50,6 +56,7 @@ def probe(architecture, storage):
     tag = 'shirube-runner-probe:'+nonce
     container = None
     built = False
+    privileged_container = None
     try:
         # stdin-only context: no repository, credentials or host files enter it.
         recipe = ('FROM '+BASES[architecture]+'\n'
@@ -78,10 +85,70 @@ def probe(architecture, storage):
             '{{.State.Status}} {{.State.ExitCode}}', container], text=True, timeout=30).strip()
         if state != 'exited 0':
             raise ValueError('The native privileged runtime probe did not complete successfully')
+        # Reuse the successful fixture by immutable ID; never build a compiler.
+        records = json.loads(subprocess.check_output(['docker', 'image', 'inspect', tag],
+                                                     text=True, timeout=30))
+        if (len(records) != 1 or records[0].get('Architecture') != architecture
+                or records[0].get('Os') != 'linux'
+                or not re.fullmatch('sha256:[0-9a-f]{64}', records[0].get('Id', ''))):
+            raise ValueError('Invalid native fixture image identity/platform')
+        image = records[0]['Id']
+        server = subprocess.check_output(['docker', 'version', '--format', '{{.Server.Version}}'],
+                                         text=True, timeout=30).strip()
+        with tempfile.TemporaryDirectory(prefix='shirube-runner-probe-') as temporary:
+            archive = Path(temporary) / 'fixture.tar'
+            subprocess.run(['docker', 'image', 'save', '--output', str(archive), image],
+                           check=True, timeout=120, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            config_identity = {}
+            with tarfile.open(archive, 'r:') as source:
+                counts = Counter(member.type.decode('ascii', errors='backslashreplace')
+                                 for member in source.getmembers())
+                try:
+                    manifest_member = source.getmember('manifest.json')
+                    if not manifest_member.isfile() or manifest_member.size > 1024 * 1024:
+                        raise ValueError('Invalid fixture manifest')
+                    manifest = json.load(source.extractfile(manifest_member))
+                    config_name = manifest[0]['Config']
+                    config_member = source.getmember(config_name)
+                    if not config_member.isfile() or config_member.size > 1024 * 1024:
+                        raise ValueError('Invalid fixture config')
+                    config = source.extractfile(config_member).read()
+                    config_identity = {'config_member': config_name,
+                                       'config_sha256': hashlib.sha256(config).hexdigest()}
+                except (KeyError, IndexError, TypeError, ValueError) as error:
+                    config_identity = {'config_diagnostic_error': str(error)}
+            saved = {'docker_server_version': server, 'image_id': image,
+                     'architecture': architecture, 'os': 'linux',
+                     'archive_bytes': archive.stat().st_size, 'archive_sha256': sha256(archive),
+                     'member_type_counts': dict(sorted(counts.items())), **config_identity}
+            # Emit raw-format evidence before the strict production validator:
+            # a rejected archive must still leave diagnostics in the CI log.
+            print(json.dumps({'fixture_docker_save': saved}, sort_keys=True), flush=True)
+            archive_identity(archive, image, architecture)
+            saved['status'] = 'PASS_CAPABILITY_ONLY'
+        # Keep ownership of both containers until finally, including failed starts.
+        privileged_container = container
+        container = None
+        namespace_script = ('set -eu; before=$(readlink /proc/self/ns/net); '
+                            'after=$(unshare --net readlink /proc/self/ns/net); '
+                            'test "$before" != "$after"')
+        container = subprocess.check_output(['docker', 'create', '--network=none', '--log-driver=none',
+            '--cap-add=SYS_ADMIN', '--cpus=1', '--memory=256m', '--memory-swap=256m', '--pids-limit=256',
+            '--label', 'io.michibiki.shirube.task=runner-probe-'+nonce,
+            '--entrypoint', 'sh', image, '-ec', namespace_script], text=True, timeout=30).strip()
+        if not re.fullmatch('[0-9a-f]{64}', container):
+            raise ValueError('Invalid task-owned namespace probe container identity')
+        subprocess.run(['docker', 'start', '-a', container], check=True, timeout=60,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        state = subprocess.check_output(['docker', 'inspect', '--format',
+            '{{.State.Status}} {{.State.ExitCode}}', container], text=True, timeout=30).strip()
+        if state != 'exited 0':
+            raise ValueError('The SYS_ADMIN network namespace probe did not complete successfully')
     finally:
-        if container and re.fullmatch('[0-9a-f]{64}', container):
-            subprocess.run(['docker', 'rm', '-f', container], check=True, timeout=30,
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        for owned in (container, privileged_container):
+            if owned and re.fullmatch('[0-9a-f]{64}', owned):
+                subprocess.run(['docker', 'rm', '-f', owned], check=True, timeout=30,
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if built:
             subprocess.run(['docker', 'image', 'rm', tag], check=True, timeout=30,
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -92,7 +159,11 @@ def probe(architecture, storage):
             'task_storage_total_bytes': usage.total, 'task_storage_free_bytes': usage.free,
             'kvm': kvm, 'native_buildkit_cache_mount_and_chroot': 'PASS',
             'privileged_container_mknod_mount_chroot': 'PASS',
+            'fixture_docker_save': saved,
+            'sys_admin_network_namespace': 'PASS_CAPABILITY_ONLY',
             'scope': 'Tiny fixed-base fixture only; no compiler, OS image build, disk cleanup or guest boot. '
+                     'SYS_ADMIN namespace creation is not NetBird reconstruction evidence. '
+                     'Fixture save validation is not compiler export/load evidence. '
                      'KVM openability and available storage do not prove full build/boot feasibility.',
             'build': 'NOT_RUN', 'local_boot': 'NOT_RUN', 'oci': 'NOT_RUN',
             'release_clearance': 'NOT_CLEARED'}

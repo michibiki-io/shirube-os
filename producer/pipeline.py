@@ -64,7 +64,7 @@ def source_set_evidence(source, output, architecture, version, commit, work,
         if restored:shutil.rmtree(work)
 
 
-def collect_iso_sources(iso,packages,output,architecture,version):
+def collect_iso_sources(iso,packages,output,architecture,version, *, material=None):
     """Audit source/license inputs independently of virtualization availability."""
     from .collect import collect
     rootfs=Path('/build-private/release-rootfs')
@@ -74,7 +74,7 @@ def collect_iso_sources(iso,packages,output,architecture,version):
         check=True,stdout=subprocess.DEVNULL)
     from .factory_audit import audit_iso
     factory=audit_iso(iso,rootfs,architecture,Path('/build-private/factory-content-audit'))
-    source=collect(rootfs,packages,output,architecture,version,Path('/build-private/corresponding-source'))
+    source=collect(rootfs,packages,output,architecture,version,Path('/build-private/corresponding-source'),material=material)
     source['factory_content_audit']=factory
     return rootfs,source
 
@@ -85,7 +85,6 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     qemu_accelerator=release_accelerator(architecture,qemu_accelerator)
     sys.path.insert(0,'/src/native')
     from image import assemble
-    from .vm import build_disks
     print('STAGE: native ISO assembly and architecture/signature inspection',flush=True)
     result=assemble(sources,packages,architecture,version,output)
     print('STAGE: exact corresponding source collection and component/license clearance',flush=True)
@@ -96,6 +95,30 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     if source['cleared'] is not True:
         print('SOURCE LICENSE CLEARANCE: FAIL; guest tests and publication are not attempted',flush=True)
         raise ValueError('Unresolved component redistribution permission')
+    branding_verified=verify_branding(rootfs)
+    return complete_candidate(result,source,reconstruction,output,architecture,version,commit,management,
+                              qemu_accelerator=qemu_accelerator,retire_compiler=retire_compiler,
+                              branding_verified=branding_verified)
+
+
+def verify_branding(rootfs):
+    os_release=(rootfs/'etc/os-release').read_text()
+    return ('NAME="Shirube OS"' in os_release and
+            (rootfs/'usr/share/shirube/logo.svg').read_bytes()==Path('/src/shirube-os-logo.svg').read_bytes())
+
+
+def complete_candidate(result,source,reconstruction,output,architecture,version,commit,management,*,
+                       qemu_accelerator='kvm',retire_compiler=None,branding_verified=False):
+    from .vm import build_disks
+    from .architecture import release_accelerator
+    release_accelerator(architecture,qemu_accelerator)
+    if source.get('cleared') is not True or reconstruction['proof']['status']!='PASS_SOURCE_SET_ONLY':
+        raise ValueError('Complete source/license clearance is required before fresh disks')
+    if branding_verified is not True:raise ValueError('Actual ISO branding failed')
+    generation=result['generation'] if 'generation' in result else secrets.token_hex(32)
+    import re
+    if not isinstance(generation,str) or not re.fullmatch('[0-9a-f]{64}',generation):
+        raise ValueError('Invalid candidate generation')
     # The exact source archives and recipes have been physically restored and
     # verified. Guest appliances use the retained package-output kernel DEBs;
     # they do not need compiler object files or private module signing keys.
@@ -108,14 +131,12 @@ def release_candidate(sources, packages, output, architecture, version, commit, 
     for name in ['build','architecture','module_signatures','sanitization','disk_equivalence','local_boot',
                  'unprovisioned_boot','provisioned_access','identity_regeneration']:
         checks[name]='PASS'
-    os_release=(rootfs/'etc/os-release').read_text()
-    checks['branding']='PASS' if 'NAME="Shirube OS"' in os_release and (rootfs/'usr/share/shirube/logo.svg').read_bytes()==Path('/src/shirube-os-logo.svg').read_bytes() else 'FAIL'
+    checks['branding']='PASS' if branding_verified else 'FAIL'
     checks['licenses']='PASS' if source['cleared'] else 'FAIL'
     checks['corresponding_source']='PASS'
     checks['netbird']=disks['netbird']
     checks['cloud_init']=disks['cloud_init']
     checks['iso_boot_modes']=disks['iso_boot_modes']
-    generation=secrets.token_hex(32)
     observations={name:list(disks['observations']) for name in checks}
     observations['build']=['Source-built ISO SHA256: '+sha256(result['iso'])]
     observations['local_boot'].append('Explicit QEMU accelerator: '+qemu_accelerator)

@@ -23,7 +23,8 @@ class StorageAdmissionTests(unittest.TestCase):
         retire = Mock()
         with patch.dict(sys.modules, {'image': SimpleNamespace(assemble=lambda *args: {'iso': Path('/owned/os.iso')})}), \
              patch('producer.pipeline.collect_iso_sources', return_value=(Path('/owned'), {'cleared': True})), \
-             patch('producer.pipeline.source_set_evidence', return_value={}), \
+             patch('producer.pipeline.source_set_evidence', return_value={'proof':{'status':'PASS_SOURCE_SET_ONLY'}}), \
+             patch('producer.pipeline.verify_branding', return_value=True), \
              patch('producer.architecture.require_storage', side_effect=ValueError('Fresh guest disk stage has insufficient storage')) as admission, \
              patch('producer.vm.build_disks') as guests:
             with self.assertRaisesRegex(ValueError, 'insufficient storage'):

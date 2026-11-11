@@ -30,11 +30,17 @@ def jool_version():
 
 
 
+def shell_environment():
+    from producer.resources import environment
+    env=environment();env.update(DEBIAN_FRONTEND='noninteractive',PATH='/opt/go/bin:'+os.environ['PATH'])
+    return env
+
+
 def shell(script, cwd=None):
-    from producer.resources import environment,profile
+    from producer.resources import profile
     budget=profile();jobs=str(budget['compile_jobs'])
     script=script.replace('make -j2','make -j'+jobs)
-    env=environment();env.update(DEBIAN_FRONTEND='noninteractive',PATH='/opt/go/bin:'+os.environ['PATH'])
+    env=shell_environment()
     subprocess.run(['bash','-euo','pipefail','-c',script],cwd=cwd,check=True,env=env)
 
 
@@ -148,6 +154,7 @@ def base(work):
 
 
 def go_packages(work):
+    from producer.go_modules import prepare_dependencies
     jobs=[('node_exporter_v1.9.1/node_exporter','node_exporter','node-exporter','1.9.1'),
           ('frr_exporter_v1.5.0/frr_exporter','frr_exporter','frr-exporter','1.5.0'),
           ('blackbox_exporter_v0.26.0/blackbox_exporter','blackbox_exporter','blackbox-exporter','0.26.0')]
@@ -157,6 +164,8 @@ def go_packages(work):
         # ZIP has no permission notice. Use upstream's supported exclusion on
         # both architectures; do not waive the unresolved dependency license.
         tags='-tags nobtrfs' if name=='node-exporter' else ''
+        prepare_dependencies(['/opt/go/bin/go','list','-deps',*shlex.split(tags),'.'],
+                             cwd=source,env=shell_environment())
         shell(f'go build {tags} -ldflags "-X github.com/prometheus/common/version.Version={version}" -o {binary}',source)
         actual=subprocess.check_output([str(source/binary),'--version'],stderr=subprocess.STDOUT,text=True)
         if not re.search(r'(?<![0-9])'+re.escape(version)+r'(?![0-9])',actual):
@@ -175,10 +184,12 @@ def go_packages(work):
     for module,record in lock['go_dependency_overrides']['telegraf'].items():
         version=record['version']
         subprocess.run(['/opt/go/bin/go','mod','edit','-require='+module+'@'+version],cwd=source,check=True)
-        result=json.loads(subprocess.check_output(['/opt/go/bin/go','mod','download','-json',module+'@'+version],cwd=source,text=True))
+        result=json.loads(prepare_dependencies(['/opt/go/bin/go','mod','download','-json',module+'@'+version],cwd=source))
         archive=Path(result['Zip'])
         if sha256(archive)!=record['sha256'] or module_hash(archive,module,version)!=record['h1']:
             raise ValueError('Fixed licensed Go dependency source differs')
+    prepare_dependencies(['/opt/go/bin/go','list','-deps','./cmd/telegraf'],
+                         cwd=source,env=shell_environment())
     shell('go build -ldflags "-X github.com/influxdata/telegraf/internal.Version=1.28.3" -o telegraf ./cmd/telegraf',source)
     actual=subprocess.check_output([str(source/'telegraf'),'--version'],stderr=subprocess.STDOUT,text=True)
     if not re.search(r'(?<![0-9])1\.28\.3(?![0-9])',actual):raise ValueError('Source-built Telegraf version mismatch')
@@ -329,6 +340,9 @@ python3 /src/native/fpm_package.py -s dir -t deb -n jool -v {jool_version()} --a
 
 def accel(work):
     kernel=headers()
+    if not Path('/vpp-sdk').exists():
+        from producer.native_stages import export_vpp_sdk
+        export_vpp_sdk(Path('/extra/vpp/vpp'),Path('/vpp-sdk'),'@MULTIARCH@','@ARCH@')
     # VPP's runtime postinst changes sysctls. Compilation needs only its SDK
     # and libraries, so never execute that runtime setup in a build sandbox.
     sdk=work/'vpp-sdk'
@@ -346,12 +360,12 @@ def accel(work):
         shell('patch --fuzz=0 -p1 < '+str(patch),source)
     if (source/'build').exists(): shutil.rmtree(source/'build')
     (source/'build').mkdir()
-    shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR=6.6.128-vyos -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/extra/vpp/vpp/src/vpp-api:/extra/vpp/vpp/src:/extra/vpp/vpp/build-root/build-vpp-native/vpp/CMakeFiles/vpp-api LIBRARY_PATH=/extra/vpp/vpp/build-root/install-vpp-native/vpp/lib/@MULTIARCH@ make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')
+    shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR=6.6.128-vyos -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/vpp-sdk/source/vpp-api:/vpp-sdk/source:/vpp-sdk/generated LIBRARY_PATH=/vpp-sdk/lib make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')
     copy_debs(work)
     sflow=snapshot('host-sflow_v2.1.21-1/host-sflow',work/'sflow')
     from producer.sflow import prepare as prepare_sflow
     prepare_sflow(sflow)
-    shell('apt-get install -y --no-install-recommends libpcap0.8-dev clang; make clean; make -j2 deb FEATURES="PCAP DROPMON DBUS PSAMPLE VPP"',sflow)
+    shell('apt-get install -y --no-install-recommends libpcap0.8-dev libdbus-1-dev clang; make clean; make -j2 deb FEATURES="PCAP DROPMON DBUS PSAMPLE VPP"',sflow)
     copy_debs(sflow,'hsflowd_*_@ARCH@.deb')
 
 

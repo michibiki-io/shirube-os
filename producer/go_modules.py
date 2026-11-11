@@ -7,6 +7,55 @@ import re
 import json
 from pathlib import Path
 import shutil
+import subprocess
+import sys
+import time
+
+
+def prepare_dependencies(command, *, cwd, env=None):
+    """Retry only module HTTP/2 INTERNAL_ERROR transport failures, at most 3 times.
+
+    The same command, environment and cache are reused after 1s and 2s waits.
+    This entry point deliberately excludes compilation and other network work.
+    """
+    command=list(command)
+    if not (command[1:3]==['list','-deps'] or command[1:4]==['mod','download','-json']):
+        raise ValueError('Only Go dependency preparation may be retried')
+    env=None if env is None else dict(env)
+    for attempt in range(3):
+        result=subprocess.run(command,cwd=cwd,env=env,text=True,
+                              stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        if result.returncode==0:
+            return result.stdout
+        diagnostics=result.stderr.splitlines()
+        download_error=''
+        if command[1]=='mod':
+            try:
+                record=json.loads(result.stdout)
+            except (ValueError,TypeError):
+                record={}
+            if record.get('Error'):
+                download_error=record['Error']
+                diagnostics.extend(record['Error'].splitlines())
+        errors=[line.strip() for line in diagnostics if line.strip()
+                and not re.fullmatch(r'go: downloading \S+ v\S+',line.strip())]
+        # Require every diagnostic to be the specific module transport failure.
+        # Unknown, mixed, authentication and integrity failures fail closed.
+        transient=bool(errors) and all(re.fullmatch(
+            r'[^\r\n]*Get "https://[^"\s]+/@v/[^"\s]+\.(?:zip|mod|info)": '
+            r'stream error: stream ID \d+; INTERNAL_ERROR; received from peer',line)
+            and not re.search(r'checksum|SECURITY ERROR|mismatch|unauthorized|forbidden|integrity',line,re.I)
+            for line in errors)
+        if not transient or attempt==2:
+            if result.stderr:
+                print(result.stderr,file=sys.stderr,end='' if result.stderr.endswith('\n') else '\n')
+            if download_error and download_error not in result.stderr:
+                print(download_error,file=sys.stderr)
+            raise subprocess.CalledProcessError(result.returncode,command,
+                                                output=result.stdout,stderr=result.stderr)
+        print(f'Go dependency preparation attempt {attempt+1}/3 failed; '
+              f'retrying attempt {attempt+2}/3 in {attempt+1}s',file=sys.stderr)
+        time.sleep(attempt+1)
 
 
 def build_info(text,require_sums=True):

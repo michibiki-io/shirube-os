@@ -14,6 +14,7 @@ passed/failed checks and current reviews are recorded in
 Static validation alone does not establish OS acceptance. See
 [validation status](docs/VALIDATION.md) for evidence scope and historical results.
 
+- [Staged hosted build and acceptance gaps](docs/STAGED-BUILD.md)
 - [Build inputs and native runners](docs/BUILD.md)
 - [Release contract and recovery](docs/RELEASE.md)
 - [First boot and sanitization](docs/FIRST_BOOT.md)
