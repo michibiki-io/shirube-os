@@ -187,6 +187,9 @@ def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
         if name in names:
             raise ValueError('Duplicate asset')
         names.add(name)
+        if (item.get('role') == 'source' and
+                item.get('architecture') not in set(manifest['architectures']) | {'all'}):
+            raise ValueError('Source asset architecture must be a declared candidate or all')
         path = root / name
         if (path.is_symlink() or not path.is_file() or item.get('role') not in ROLES
                 or not 0 < path.stat().st_size < LIMIT or path.stat().st_size != item.get('size')
@@ -244,7 +247,9 @@ def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
         inventory_asset = next((x for x in owned if x['role'] == 'licenses'), None)
         if inventory_asset is None:
             raise ValueError('Per-architecture shipped-package inventory required')
-        verify_sources(root, json.loads((root / inventory_asset['name']).read_text()), assets)
+        # Public fixture exceptions bind to this inventory's exact source assets.
+        scoped_assets = owned + [x for x in assets if x.get('architecture') == 'all']
+        verify_sources(root, json.loads((root / inventory_asset['name']).read_text()), scoped_assets)
     actual = {p.name for p in root.iterdir()}
     if actual != names | {'manifest.json', 'SHA256SUMS'}:
         raise ValueError('Unlisted files or missing release metadata')

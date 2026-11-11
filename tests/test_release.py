@@ -1,11 +1,13 @@
 """Synthetic metadata fixtures test rejection; they are never boot evidence."""
 import copy
+import hashlib
 import io
 import json
 from pathlib import Path
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 from producer.release import CHECKS, validate, reconcile_published
 from producer.sources import sha256
 
@@ -77,6 +79,74 @@ class ReleaseTests(unittest.TestCase):
 
     def test_complete_metadata_contract(self):
         validate(self.root, self.commit, self.version)
+
+    def add_source_archive(self, architecture, data):
+        path = self.root/f'{architecture}-extra-source.tar.gz'
+        with tarfile.open(path, 'w:gz') as archive:
+            member = tarfile.TarInfo('source/test/vector'); member.size = len(data)
+            archive.addfile(member, io.BytesIO(data))
+        generation = self.manifest['architectures'].get(architecture, {}).get('generation')
+        self.add(path, 'source', architecture, generation)
+        return {'asset':path.name, 'member':'source/test/vector',
+                'sha256':hashlib.sha256(data).hexdigest()}
+
+    def test_public_source_fixtures_are_scoped_to_each_architecture(self):
+        vector = b'-----BEGIN PRIVATE KEY-----\n'+b'A'*64+b'\n'
+        origin = 'stream:'+'a'*64
+        for architecture in ['amd64', 'arm64']:
+            reference = self.add_source_archive(architecture, vector)
+            path = self.root/f'{architecture}-licenses.json'
+            inventory = json.loads(path.read_text())
+            inventory['components'][0]['sources'].append(reference)
+            inventory['components'][0]['source_origin'] = {'stream_archive_sha256':'a'*64}
+            path.write_text(json.dumps(inventory))
+            asset = next(item for item in self.manifest['assets'] if item['name'] == path.name)
+            asset.update(size=path.stat().st_size, sha256=sha256(path))
+        self.write()
+        with patch.dict('producer.source_fixtures.KNOWN',
+                        {origin:{'source/test/vector':hashlib.sha256(vector).hexdigest()}}):
+            validate(self.root, self.commit, self.version)
+
+    def test_unknown_keys_in_owned_and_shared_source_assets_block(self):
+        vector = b'-----BEGIN PRIVATE KEY-----\n'+b'B'*64+b'\n'
+        for architecture in ['amd64', 'arm64', 'all']:
+            with self.subTest(architecture=architecture):
+                reference = self.add_source_archive(architecture, vector)
+                self.write()
+                with self.assertRaisesRegex(ValueError, 'Private signing key'):
+                    validate(self.root, self.commit, self.version)
+                self.manifest['assets'].pop()
+                (self.root/reference['asset']).unlink()
+
+    def test_source_assets_require_known_architecture(self):
+        for architecture in ['unknown', None]:
+            with self.subTest(architecture=architecture):
+                reference = self.add_source_archive(architecture, b'synthetic source')
+                if architecture is None:
+                    self.manifest['assets'][-1].pop('architecture')
+                self.write()
+                with self.assertRaisesRegex(ValueError, 'Source asset architecture'):
+                    validate(self.root, self.commit, self.version)
+                self.manifest['assets'].pop()
+                (self.root/reference['asset']).unlink()
+
+    def test_source_asset_architecture_requires_declared_candidate(self):
+        self.manifest['architectures'].pop('arm64')
+        removed = [item for item in self.manifest['assets'] if item['architecture'] == 'arm64']
+        for item in removed:
+            self.manifest['assets'].remove(item)
+            (self.root/item['name']).unlink()
+        self.write()
+        validate(self.root, self.commit, self.version, architectures={'amd64'})
+        self.add_source_archive('arm64', b'synthetic source')
+        self.write()
+        with self.assertRaisesRegex(ValueError, 'Source asset architecture'):
+            validate(self.root, self.commit, self.version, architectures={'amd64'})
+
+    def test_unlisted_source_archive_blocks(self):
+        (self.root/'unlisted-source.tar.gz').write_bytes((self.root/'source.tar.gz').read_bytes())
+        with self.assertRaisesRegex(ValueError, 'Unlisted files'):
+            validate(self.root, self.commit, self.version)
 
     def test_explicit_accelerator_must_match_actual_candidate_evidence(self):
         for architecture in ['amd64','arm64']:
