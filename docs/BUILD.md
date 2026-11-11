@@ -173,7 +173,7 @@ visible in the CI log. A second container uses only `--cap-add=SYS_ADMIN` with
 `--network=none` and the existing 1 CPU / 256 MiB / 256 PID limits to check that
 `unshare --net` creates a distinct network namespace. Its
 `PASS_CAPABILITY_ONLY` result does not prove NetBird reconstruction or compiler
-export/load. These additions have not yet been exercised on hosted runners.
+export/load. Each run records these results in its `runner-capability-*` artifact.
 The probe is restricted to ephemeral GitHub-hosted Linux runners and removes
 only its own containers, temporary archive and image tag.
 It records the PR head separately from the checked-out merge commit. Complete OS
@@ -189,7 +189,7 @@ compiler archiveの厳格な検証を適用します。検証前に診断をロ�
 別のコンテナーでは`--cap-add=SYS_ADMIN`だけを追加し、`--network=none`と
 既存の1 CPU、256 MiB、256 PIDの上限で`unshare --net`が別のnetwork namespaceを
 作るか確認します。`PASS_CAPABILITY_ONLY`はNetBirdの再構築やcompilerの
-export/loadの成功を示しません。追加した検査はhosted runnerで未実施です。
+export/loadの成功を示しません。結果は各runの`runner-capability-*` artifactに記録します。
 実行対象を一時的なGitHub-hosted Linux runnerに限定し、
 作成したコンテナー、一時archive、image tagだけを削除します。PRのheadとcheckoutしたmerge
 commitは別々に記録します。OSビルド、ゲスト起動、所要時間の実用性、公開可否は
