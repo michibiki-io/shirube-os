@@ -30032,6 +30032,7 @@
       "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
     },
     "shirube-integration@2026.03.0#f65e1e073d6690d57a23833806bba9a069c9b0931feb0aac1a25ef0013c6ffe4#7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357": {
+      "product_version_policy": "shirube-integration-stream-revisions-v1",
       "source_identity": "f65e1e073d6690d57a23833806bba9a069c9b0931feb0aac1a25ef0013c6ffe4",
       "copyright_sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357",
       "evidence_member": "copyright",
@@ -30054,6 +30055,7 @@
       "scope": "Exact source and original notice only; independently scoped child components require their own decisions. No whole-release or OCI clearance."
     },
     "shirube-integration@2026.03.0#c9023518a77883781e78e42e8633035268e2140e359ef5931f49db102b5ab509#7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357": {
+      "product_version_policy": "shirube-integration-stream-revisions-v1",
       "source_identity": "c9023518a77883781e78e42e8633035268e2140e359ef5931f49db102b5ab509",
       "copyright_sha256": "7638692ac8052c3b725ba53625d754da176323afae1382fd38c94dee3367e357",
       "evidence_member": "copyright",

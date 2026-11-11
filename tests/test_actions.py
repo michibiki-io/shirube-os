@@ -630,3 +630,47 @@ class ReleaseReservationTests(unittest.TestCase):
         self.assertEqual(self.verified, [('v2026.03.0', 'a'*40)])
         self.assertEqual(self.records, original)
         self.assertFalse(self.created)
+
+    def test_selected_revision_is_preflighted_before_new_draft_or_retry_matrix(self):
+        from producer.integration import preflight
+        for retry in [False, True]:
+            with self.subTest(retry=retry):
+                self.records = [{'draft': True, 'prerelease': False,
+                                 'tag_name': 'v2026.03.2',
+                                 'target_commitish': 'a'*40 if retry else 'b'*40}]
+                self.created.clear()
+                def check(version):
+                    self.assertFalse(self.created)
+                    preflight(version)
+                with patch.object(actions, 'integration_preflight', side_effect=check) as check:
+                    result = self.resolve('a'*40)
+                selected = 'v2026.03.2' if retry else 'v2026.03.3'
+                check.assert_called_once_with(selected)
+                self.assertEqual(result['version'], selected)
+                self.assertEqual([item['architecture'] for item in result['matrix']['include']],
+                                 ['amd64', 'arm64'])
+
+    def test_local_preflight_failure_blocks_draft_creation_and_build_matrix(self):
+        for retry in [False, True]:
+            with self.subTest(retry=retry):
+                self.records = ([{'draft': True, 'prerelease': False, 'tag_name': 'v2026.03.2',
+                                  'target_commitish': 'a'*40}] if retry else [])
+                original = copy.deepcopy(self.records)
+                with patch.object(actions, 'integration_preflight',
+                                  side_effect=ValueError('integration rejected')) as check, \
+                        patch.object(actions, 'runner') as runner:
+                    with self.assertRaisesRegex(ValueError, 'integration rejected'):
+                        self.resolve('a'*40)
+                check.assert_called_once_with('v2026.03.2' if retry else 'v2026.03.0')
+                runner.assert_not_called()
+                self.assertEqual(self.records, original)
+                self.assertFalse(self.created)
+
+    def test_published_noop_does_not_require_preflight_or_build_matrix(self):
+        self.records = [{'draft': False, 'prerelease': False, 'tag_name': 'v2026.03.0',
+                         'target_commitish': 'a'*40}]
+        with patch.object(actions, 'integration_preflight') as check, \
+                patch.object(actions, 'runner') as runner:
+            self.assertEqual(self.resolve('a'*40)['noop'], 'true')
+        check.assert_not_called()
+        runner.assert_not_called()

@@ -41,6 +41,49 @@ NPSL 0.94 全文と元の Debian 著作権表示を保持し、独自 NSE スク
 表示します。IPv6 ヘッダーでの計算値は、IPv6 経路を測定した結果ではありません。
 ソース、変更記録、許諾全文、必要な謝辞を同じリリースに含めます。
 
+`shirube-integration` alone opts into `shirube-integration-stream-revisions-v1`
+through its exact records in `license-audit.json`. Approval and actual package
+versions must be canonical `YYYY.MM.REVISION` values within the pinned Stream
+`YYYY.MM`. Only the product revision may differ. Lookup requires one explicitly
+marked record with the exact source identity and actual copyright digest;
+ambiguous records fail, and an explicit record for the actual version takes
+precedence, including denial. Other packages and bundled children retain their
+independent, version-specific approvals. Required retained notices and the
+redistribution decision remain mandatory. Package, OS, inventory and asset
+versions retain the actual resolved release version.
+
+The integration identity binds the pinned NetBird source/architecture asset,
+GeoIP source/notice and repository `LICENSE`; it does not fingerprint every
+repository-owned integration source file. Repository-owned code remains subject
+to the existing MIT conditions and distribution-notice checks. Packaging and
+collection share integration provenance and complete notice generation with the
+release preflight. Offline preflight generates the notice from repository
+`LICENSE` and the NetBird portion of the hash-validated retained integration
+notice, including the linked-notice suffix. This checks local approval inputs,
+not freshly downloaded NetBird LICENSE bytes, archive/binary correspondence,
+child dependencies or whole-release clearance. Actual downloads, notices,
+independent dependencies and final collection/publication checks remain required.
+
+`shirube-integration` の完全一致承認レコードだけに
+`shirube-integration-stream-revisions-v1` を明示します。
+承認版と実パッケージ版は正規の `YYYY.MM.REVISION` 形式とし、両方の `YYYY.MM` が
+固定 Stream と一致する場合に限り製品修正番号の差を許します。
+ソース識別情報と実通知文のハッシュが一致する明示済みレコードが一意に定まる必要があり、
+実版に対するレコードがあれば拒否判断も含めて優先します。
+他のパッケージと同梱する子依存は、それぞれの版に対する個別承認を維持します。
+保持必須通知と再配布許可の確認も維持し、パッケージ、OS、inventory、成果物には実版を残します。
+
+integration の識別情報は NetBird の固定ソースとアーキテクチャ別アセット、GeoIP の
+ソースと通知、リポジトリの `LICENSE` に結び付きます。
+リポジトリ所有の integration ソース全体の指紋ではありません。
+独自コードには既存の MIT 条件と配布通知の確認を適用します。
+パッケージ生成、収集、事前確認で由来と完全な通知文の生成処理を共用します。
+オフライン事前確認は、リポジトリの `LICENSE` と、ハッシュ検証済み保持通知から取り出した
+NetBird 部分を入力とし、依存通知への案内を含む全文を再生成します。
+この確認はローカルの承認入力を対象とし、新たにダウンロードした LICENSE の内容、
+アーカイブとバイナリの対応、子依存、配布物全体の許諾を保証しません。
+実際の取得物と通知文、依存の個別承認、最終収集と公開時の検証は引き続き必要です。
+
 A component inventory must enumerate every shipped package by name, exact version
 and architecture and map it to source, license and build-input archive members
 with SHA256 hashes. This includes unmodified GPL/LGPL Debian packages and the

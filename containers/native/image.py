@@ -20,6 +20,7 @@ from producer.sources import download, sha256
 from producer.packages import audit
 from producer.notices import snapshot, mark_changed, PACKAGE_MODIFICATIONS
 from producer.sanitize import HOSTS
+from producer.integration import notice_bytes
 
 
 def run(*args, **kwargs):
@@ -60,7 +61,7 @@ def guest_package(arch, version):
         license_data=upstream.extractfile('netbird-'+lock['source_commit']+'/LICENSE').read()
     copyright_path=package/'usr/share/doc/shirube-integration/copyright'
     copyright_path.parent.mkdir(parents=True,exist_ok=True)
-    copyright_path.write_bytes(b'Shirube OS integration: Copyright (c) 2026 michibiki-io. MIT License.\n\n'+Path('/src/LICENSE').read_bytes()+b'\n\nNetBird headless client upstream notice (directory exceptions retained):\n'+license_data)
+    copyright_path.write_bytes(notice_bytes(Path('/src/LICENSE').read_bytes(),license_data))
     shutil.copy2('/src/LICENSE',copyright_path.parent/'distributor-LICENSE')
     shutil.copy2('/src/NOTICE',copyright_path.parent/'NOTICE')
     shutil.copytree('/src/LICENSES',copyright_path.parent/'distribution-licenses')
@@ -79,8 +80,6 @@ def guest_package(arch, version):
     shutil.copytree(correspondence/'linked/notices',notices/'notices')
     shutil.copy2(correspondence/'go-copyright',notices/'go-copyright')
     shutil.copy2(correspondence/'components.json',copyright_path.parent/'netbird-components.json')
-    with copyright_path.open('a') as target:
-        target.write('\nExact linked Go dependency and standard-library notices are retained under netbird-licenses/.\n')
     for source_file,target in [('/src/producer/netbird.py','netbird_control.py'),('/src/producer/netbird.py','netbird-control'),('/src/guest/first_boot.py','first-boot')]:
         shutil.copy2(source_file,lib/target);(lib/target).chmod(0o755)
     conf=package/'usr/libexec/vyos/conf_mode/service_netbird.py';conf.parent.mkdir(parents=True)
