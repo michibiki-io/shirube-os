@@ -86,7 +86,7 @@ print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
 """
         encoded=base64.b64encode(check.encode()).decode()
         probe='sudo -n python3 -c '+"\"import base64; exec(base64.b64decode('"+encoded+"'))\""
-        def wait_access(previous_boot_id=None):
+        def wait_access(previous_boot_id=None, on_same_boot=None):
             deadline=time.monotonic()+(1200 if accelerator=='tcg' else 300)
             phase='post_reboot' if previous_boot_id is not None else 'initial'
             while time.monotonic()<deadline:
@@ -100,6 +100,7 @@ print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
                     identity=result.stdout.strip().splitlines()
                     if len(identity)!=3 or not all(identity):raise ValueError('Cloud identity proof missing')
                     if identity[2]==previous_boot_id:
+                        if on_same_boot is not None:on_same_boot(deadline)
                         time.sleep(3)
                         continue
                     try:
@@ -113,13 +114,68 @@ print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
                 if vm.process.poll() is not None:raise RuntimeError('Cloud-init guest exited before access')
                 time.sleep(3)
             raise RuntimeError('Cloud-init SSH access/native configuration did not pass before deadline')
+        def request_transition(text, phase):
+            try:
+                result=command('cloud-admin',text,phase)
+            except subprocess.TimeoutExpired:
+                # Shutdown can interrupt SSH before it acknowledges the request.
+                # Never expose the exception's argv or captured guest output.
+                print('CLOUD_INIT_TRANSITION_UNCERTAIN: '+phase,flush=True)
+                return False
+            if result.returncode:
+                # Fixed categories aid diagnosis without retaining guest text.
+                stderr=(result.stderr or '').lower()
+                categories=[name for name,needle in [
+                    ('broken_pipe','broken pipe'),
+                    ('connection_closed_by_remote','closed by remote host'),
+                    ('kex','kex_exchange_identification'),
+                    ('command_not_found','command not found'),
+                ] if needle in stderr]
+                print('CLOUD_INIT_SSH_RESULT: '+phase+' exit='+str(result.returncode)+
+                      ' category='+(','.join(categories) or 'other'),flush=True)
+                if result.returncode==255:
+                    print('CLOUD_INIT_TRANSITION_UNCERTAIN: '+phase,flush=True)
+                    return False
+                raise RuntimeError('Cloud-init '+phase+' failed (exit '+str(result.returncode)+')')
+            return True
         original=wait_access()
         # SSH was accepted without touching the console or providing a password.
         vm.eject_cloud_seed()
-        command('cloud-admin','sudo -n systemctl reboot --no-block','reboot_request')
-        if wait_access(previous_boot_id=original[2])[:2]!=original[:2]:
+        reboot_command='sudo -n systemctl reboot --no-block'
+        acknowledged=request_transition(reboot_command,'reboot_request')
+        retries=0
+        def retry_unaccepted_reboot(deadline):
+            nonlocal acknowledged,retries
+            if acknowledged or retries>=2:return
+            # The access probe has just proved that the original boot is still
+            # serving SSH. Retry only if systemd also proves no reboot is pending.
+            try:
+                state=command('cloud-admin',
+                    'sudo -n systemctl show reboot.target --property=ActiveState --property=Job',
+                    'reboot_pending_check')
+            except subprocess.TimeoutExpired:
+                return
+            if state.returncode:return
+            lines=state.stdout.strip().splitlines()
+            if len(lines)!=2:return
+            properties=dict(line.split('=',1) for line in lines if '=' in line)
+            if (properties.get('ActiveState')!='inactive'
+                    or properties.get('Job') not in {'','0'}):return
+            if time.monotonic()>=deadline:return
+            retries+=1
+            acknowledged=request_transition(reboot_command,'reboot_retry')
+        if wait_access(previous_boot_id=original[2],on_same_boot=retry_unaccepted_reboot)[:2]!=original[:2]:
             raise ValueError('Cloud administrator identity changed on reboot')
-        command('cloud-admin','sudo -n systemctl poweroff --no-block','shutdown_request')
+        request_transition('sudo -n systemctl poweroff --no-block',
+                        'shutdown_request')
+        # Do not terminate a guest that is still performing graceful shutdown.
+        # The request's acknowledgement (or lost transport) is not exit proof.
+        try:
+            shutdown_status=vm.process.wait(timeout=180 if accelerator=='tcg' else 30)
+        except subprocess.TimeoutExpired:
+            raise RuntimeError('Cloud-init shutdown did not finish before deadline') from None
+        if shutdown_status!=0:
+            raise RuntimeError('Cloud-init guest failed during shutdown')
         return 'PASS'
     finally:
         if monitor is not None:

@@ -41,7 +41,7 @@ class CloudInitTests(unittest.TestCase):
         from producer.cloud_init_guest import verify
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);state={'reboot':False,'probes':0,'metadata_attempts':0}
-            vm=MagicMock();vm.ssh_port=12345;vm.process.poll.return_value=None
+            vm=MagicMock();vm.ssh_port=12345;vm.process.poll.return_value=None;vm.process.wait.return_value=0
             monitor=(MagicMock(),MagicMock(),{'enrollment_prompt':False})
             def run(command,**kwargs):
                 if command[0]=='ssh-keygen':
@@ -83,6 +83,152 @@ class CloudInitTests(unittest.TestCase):
             self.assertNotIn('PRIVATE_TRANSPORT_STDERR',output.getvalue())
             vm.eject_cloud_seed.assert_called_once()
             vm.close.assert_called_once()
+
+    def _verify_transition(self, overrides=None, same_boot=False, shutdown_status=0,
+                           transport_stderr='PRIVATE_GUEST_STDERR', transition_after_requests=1):
+        """Exercise the real verifier with a disposable, fully mocked guest."""
+        from producer.cloud_init_guest import verify
+        overrides=overrides or {}
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);reboot_requests=0;operations=[]
+            vm=MagicMock();vm.ssh_port=12345;vm.process.poll.return_value=None;vm.process.wait.return_value=0
+            if isinstance(shutdown_status,Exception):vm.process.wait.side_effect=shutdown_status
+            else:vm.process.wait.return_value=shutdown_status
+            monitor=(MagicMock(),MagicMock(),{'enrollment_prompt':False})
+            def run(command,**kwargs):
+                nonlocal reboot_requests
+                if command[0]=='ssh-keygen':
+                    key=Path(command[command.index('-f')+1]);key.write_text('private fixture')
+                    key.with_suffix('.pub').write_text('ssh-ed25519 public fixture')
+                if command[0]=='ssh':
+                    text=command[-1];operations.append(text)
+                    if 'systemctl reboot' in text:reboot_requests+=1
+                    for match,outcome in overrides.items():
+                        if match in text:
+                            if isinstance(outcome,list):outcome=outcome.pop(0)
+                            if isinstance(outcome,Exception):raise outcome
+                            if isinstance(outcome,str):
+                                return subprocess.CompletedProcess(command,0,outcome,'')
+                            return subprocess.CompletedProcess(command,outcome,
+                                'PRIVATE_GUEST_STDOUT',transport_stderr)
+                    if 'systemctl show reboot.target' in text:
+                        return subprocess.CompletedProcess(command,0,'ActiveState=inactive\nJob=\n','')
+                    if text.startswith('sudo -n python3'):
+                        boot='new' if reboot_requests>=transition_after_requests and not same_boot else 'original'
+                        return subprocess.CompletedProcess(command,0,'machine\nhost\n'+boot+'\n','')
+                return subprocess.CompletedProcess(command,0,'','')
+            output=io.StringIO()
+            # A deterministic deadline bounds the same-boot negative case.
+            ticks=iter(range(0,10000,100))
+            with contextlib.redirect_stdout(output), \
+                 patch('producer.vm.VM',return_value=vm), \
+                 patch('producer.cloud_init_guest.monitor_console',return_value=monitor), \
+                 patch('producer.cloud_init_guest.subprocess.run',side_effect=run), \
+                 patch('producer.cloud_init_guest.time.monotonic',side_effect=lambda:next(ticks)), \
+                 patch('producer.cloud_init_guest.time.sleep'):
+                try:
+                    result=verify(root/'factory.qcow2','amd64',root/'test','tcg')
+                except RuntimeError as error:
+                    result=error
+            vm.close.assert_called_once()
+            self.assertFalse((root/'test/instance-key').exists())
+            return result,output.getvalue(),operations,vm
+
+    def test_rejected_power_requests_fail_immediately_without_leaking_diagnostics(self):
+        for action,phase in [('reboot','reboot_request'),('poweroff','shutdown_request')]:
+            result,output,operations,vm=self._verify_transition({'systemctl '+action:1})
+            self.assertIsInstance(result,RuntimeError)
+            self.assertIn(phase,str(result))
+            self.assertNotIn('PRIVATE_',output+str(result))
+            self.assertEqual(sum('systemctl '+action in text for text in operations),1)
+            self.assertIn('systemctl '+action,operations[-1])
+            vm.process.wait.assert_not_called()
+
+    def test_uncertain_power_requests_require_observed_transition(self):
+        for action in ['reboot','poweroff']:
+            for outcome in [255,subprocess.TimeoutExpired(
+                    ['ssh','PRIVATE_TRANSPORT_ARGUMENT'],180,
+                    output='PRIVATE_GUEST_STDOUT',stderr='PRIVATE_GUEST_STDERR')]:
+                with self.subTest(action=action,outcome=type(outcome).__name__):
+                    result,output,operations,vm=self._verify_transition(
+                        {'systemctl '+action:outcome})
+                    self.assertEqual(result,'PASS')
+                    self.assertIn('CLOUD_INIT_TRANSITION_UNCERTAIN:',output)
+                    self.assertNotIn('PRIVATE_',output)
+                    vm.process.wait.assert_called_once_with(timeout=180)
+                    if action=='reboot':
+                        result,output,operations,vm=self._verify_transition(
+                            {'systemctl reboot':outcome},same_boot=True)
+                        self.assertIsInstance(result,RuntimeError)
+                        self.assertNotIn('PRIVATE_',output+str(result))
+                        self.assertFalse(any('poweroff' in text for text in operations))
+                    else:
+                        result,output,operations,vm=self._verify_transition(
+                            {'systemctl poweroff':outcome},shutdown_status=
+                            subprocess.TimeoutExpired(['PRIVATE_VM_ARGUMENT'],180))
+                        self.assertIsInstance(result,RuntimeError)
+                        self.assertNotIn('PRIVATE_',output+str(result))
+                        self.assertTrue(result.__suppress_context__)
+
+    def test_unaccepted_uncertain_reboot_retries_after_idle_target_proof(self):
+        for initial in [255,subprocess.TimeoutExpired(['PRIVATE_ARG'],180)]:
+            result,output,operations,vm=self._verify_transition(
+                {'systemctl reboot':[initial,0]},transition_after_requests=2)
+            self.assertEqual(result,'PASS')
+            self.assertEqual(sum('systemctl reboot' in text for text in operations),2)
+            self.assertEqual(sum('systemctl show reboot.target' in text for text in operations),1)
+            self.assertNotIn('PRIVATE_',output)
+
+    def test_unaccepted_reboot_is_retried_at_most_twice(self):
+        result,output,operations,vm=self._verify_transition({'systemctl reboot':255},same_boot=True)
+        self.assertIsInstance(result,RuntimeError)
+        self.assertEqual(sum('systemctl reboot' in text for text in operations),3)
+        self.assertEqual(sum('systemctl show reboot.target' in text for text in operations),2)
+
+    def test_acknowledged_reboot_is_never_retried(self):
+        for responses,count in [(0,1),([255,0],2)]:
+            result,output,operations,vm=self._verify_transition(
+                {'systemctl reboot':responses},same_boot=True)
+            self.assertIsInstance(result,RuntimeError)
+            self.assertEqual(sum('systemctl reboot' in text for text in operations),count)
+            self.assertEqual(sum('systemctl show reboot.target' in text for text in operations),count-1)
+
+    def test_pending_or_unknown_reboot_state_never_retries(self):
+        for state in ['ActiveState=active\nJob=\n','ActiveState=deactivating\nJob=\n',
+                'ActiveState=inactive\nJob=123\n','ActiveState=inactive\n',
+                'PRIVATE_UNKNOWN_STATE',1,255,subprocess.TimeoutExpired(['PRIVATE_ARG'],180)]:
+            result,output,operations,vm=self._verify_transition(
+                {'systemctl reboot':255,'systemctl show reboot.target':state},same_boot=True)
+            self.assertIsInstance(result,RuntimeError)
+            self.assertEqual(sum('systemctl reboot' in text for text in operations),1)
+            self.assertNotIn('PRIVATE_',output+str(result))
+
+    def test_transport_diagnostics_log_only_fixed_categories(self):
+        for category,diagnostic in [('broken_pipe','Broken pipe'),
+                ('connection_closed_by_remote','Connection closed by remote host'),
+                ('kex','kex_exchange_identification: PRIVATE_GUEST_STDERR'),
+                ('command_not_found','systemctl: command not found')]:
+            result,output,operations,vm=self._verify_transition(
+                {'systemctl reboot':255},transport_stderr=diagnostic+' PRIVATE_GUEST_STDERR')
+            self.assertEqual(result,'PASS')
+            self.assertIn('category='+category,output)
+            self.assertNotIn('PRIVATE_',output)
+            calls=[call[0] for call in vm.mock_calls]
+            self.assertLess(calls.index('process.wait'),calls.index('close'))
+
+    def test_acknowledged_shutdown_requires_successful_guest_exit(self):
+        for status in [1,subprocess.TimeoutExpired(['PRIVATE_VM_ARGUMENT'],180)]:
+            result,output,operations,vm=self._verify_transition(shutdown_status=status)
+            self.assertIsInstance(result,RuntimeError)
+            self.assertIn('shutdown',str(result))
+            self.assertNotIn('PRIVATE_',output+str(result))
+            vm.process.wait.assert_called_once_with(timeout=180)
+
+    def test_acknowledged_reboot_with_unchanged_boot_id_never_passes(self):
+        result,output,operations,vm=self._verify_transition(same_boot=True)
+        self.assertIsInstance(result,RuntimeError)
+        self.assertIn('before deadline',str(result))
+        self.assertFalse(any('poweroff' in text for text in operations))
 
     def test_live_install_preserves_persistent_files_only_for_selected_active_config(self):
         with tempfile.TemporaryDirectory() as temporary:
