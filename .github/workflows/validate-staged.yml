@@ -24,7 +24,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   resolve:
-    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'validate-staged'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && (github.event.label.name == 'validate-staged' || github.event.label.name == 'validate-staged-warm'))
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     outputs:
@@ -45,4 +45,4 @@ jobs:
     with:
       commit: ${{ needs.resolve.outputs.commit }}
       version: ${{ inputs.version || 'v2026.03.0' }}
-      cache-mode: ${{ inputs.cache-mode || 'cold' }}
+      cache-mode: ${{ inputs.cache-mode || (github.event_name == 'pull_request' && github.event.label.name == 'validate-staged-warm' && 'warm') || 'cold' }}

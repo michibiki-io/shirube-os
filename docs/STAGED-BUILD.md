@@ -8,7 +8,8 @@ Implementation starts from `d49274d8ea672b0a4770e9ccac179f48bc42a8ad`.
 
 **Candidate implementation; full hosted acceptance is NOT_RUN.** No new image,
 package or disk build was executed to implement this change. There is no measured speedup claim.
-Current-head CI, external review and staged cold/warm hosted validation remain
+Historical Test checks passed at `14aedee` as recorded below. CI for the subsequent
+readiness edits, external review and staged cold/warm hosted validation remain
 pending. OCI real-machine acceptance remains **NOT_RUN**.
 
 ## Evidence used to choose boundaries
@@ -213,12 +214,17 @@ version/reservation/supersession decisions remain in `producer.actions/policy`.
 
 ## Intentional validation and failure recovery
 
-[validate-staged.yml](../.github/workflows/validate-staged.yml) can be dispatched
-with a public `source-ref`, fixed Stream-compatible `version`, and `cold` or `warm`.
-It resolves the ref once to a full commit and does not reserve a version/draft.
-A PR label event named `validate-staged` also intentionally runs this path with
-read-only contents permissions, the exact PR head and no inherited secrets.
-Ordinary push/synchronize events do not trigger a full build. Ordinary PR unit
+[validate-staged.yml](../.github/workflows/validate-staged.yml) supports explicit
+pre-merge validation through PR label events: adding `validate-staged` selects
+`cold`; adding `validate-staged-warm` selects `warm`. Each runs the exact PR head
+with read-only contents permissions, no inherited secrets and no publication.
+The label being added selects the mode even if both labels are already present.
+Before this workflow exists on the default branch, use these labels for cold/warm
+validation. Once it exists on the default branch, `workflow_dispatch` also accepts
+a public `source-ref`, fixed Stream-compatible `version`, and `cold` or `warm`
+(default `cold`). It resolves the ref once to a full commit and does not reserve
+a version/draft. Ordinary push/synchronize events and unrelated label events do
+not trigger a full build. Ordinary PR unit
 and capability checks remain separate. No test path calls release staging,
 promotion or OCI deployment.
 
@@ -243,16 +249,34 @@ acceptance. Do not dispatch new full builds just to repeat these tests.
 The initial implementation passed 132 synthetic unit/failure-path tests with zero failures.
 Changed Python syntax, both native template variants, relevant shell syntax,
 workflow YAML/security/dependency contracts, concurrency/queue validation and
-`git diff --check` passed. `actionlint` itself is NOT_RUN because the executable
-is unavailable.
+`git diff --check` passed.
 The subsequent compiler-handoff/cache refinement passed 34 focused synthetic
 tests (zero failures), including both architectures, missing/extra/corrupt
 artifacts, manifest/config/platform mismatches, producer-only image builds,
 cold restore suppression and cold-to-warm cache seeding. Its exact command and
 code hashes are recorded in the same receipt. Python and workflow shell syntax
 and diff checks also passed. No image/package build, full test discovery,
-installation or additional license scan was run. These are local worktree
-checks; current-head CI, external review and hosted acceptance remain pending.
+installation or additional license scan was run.
+
+The receipt's `final_verification` records **36 final synthetic tests PASS**
+(zero failures), **actionlint 1.7.12 PASS** on all workflows with only the
+unsupported `concurrency.queue` diagnostic excluded, separate concurrency/queue
+validation PASS, and `git diff --check` PASS. The binary was verified against
+the repository-pinned official release archive. This supersedes the earlier
+actionlint-unavailable status; these remain local synthetic checks.
+
+The subsequent restoration-fixture correction passed **13 focused tests**.
+Historical exact-head [Test run 43036745203](https://github.com/michibiki-io/shirube-os/actions/runs/43036745203)
+tested revision `14aedee`: `test`, `Native hosted capability (amd64)`, and
+`Native hosted capability (arm64)` all concluded **SUCCESS**. That tested revision
+predates the readiness edits to the validation triggers and this document;
+it does not establish CI success for those edits or any later head. The hosted
+[Codex review of `14aedee`](https://github.com/michibiki-io/shirube-os/pull/10#pullrequestreview-5860176259)
+completed with one accepted P1 concerning I2util revision evidence across the
+Git-free source handoff. Review completion of a later head is not implied.
+None of these results establish real hosted staged cold/warm acceptance,
+speedup, or source/license clearance. CI for the readiness edits, external
+review completion and staged hosted acceptance remain pending.
 
 ## All nine acceptance criteria and remaining gaps
 

@@ -1,5 +1,6 @@
 """Offline contracts for release cache restores and PR-only CI events."""
 from pathlib import Path
+import ast
 import unittest
 
 import yaml
@@ -26,6 +27,29 @@ def mappings(value):
             yield from mappings(child)
 
 
+def expression_value(expression, context):
+    """Evaluate the string/boolean expression subset used by the entry point."""
+    expression = expression.removeprefix('${{').removesuffix('}}').strip()
+    for name, value in context.items():
+        expression = expression.replace(name, repr(value))
+    tree = ast.parse(expression.replace('&&', ' and ').replace('||', ' or '), mode='eval')
+
+    def value(node):
+        if isinstance(node, ast.Constant):
+            return node.value
+        if isinstance(node, ast.Compare) and len(node.ops) == 1 and isinstance(node.ops[0], ast.Eq):
+            return value(node.left) == value(node.comparators[0])
+        if isinstance(node, ast.BoolOp):
+            result = value(node.values[0])
+            for child in node.values[1:]:
+                if (isinstance(node.op, ast.And) and result) or (isinstance(node.op, ast.Or) and not result):
+                    result = value(child)
+            return result
+        raise AssertionError(f'Unsupported workflow expression: {ast.dump(node)}')
+
+    return value(tree.body)
+
+
 class WorkflowCacheCITests(unittest.TestCase):
     def setUp(self):
         self.release=workflow('release.yml')
@@ -40,7 +64,7 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual(validation['permissions'],{'contents':'read'})
         self.assertEqual(set(self.validation['on']),{'workflow_dispatch','pull_request'})
         self.assertEqual(self.validation['on']['pull_request']['types'],['labeled'])
-        self.assertIn("github.event.label.name == 'validate-staged'",self.validation['jobs']['resolve']['if'])
+        self.assertEqual(self.validation['permissions'],{'contents':'read'})
         for node in mappings(self.validation):
             self.assertNotIn('GH_TOKEN',node)
             self.assertNotIn('secrets',node)
@@ -48,6 +72,38 @@ class WorkflowCacheCITests(unittest.TestCase):
             self.assertNotIn('GH_TOKEN',node)
             self.assertNotIn('secrets',node)
             self.assertNotEqual(node.get('contents'),'write')
+
+    def test_validation_event_admission_and_selected_cache_mode(self):
+        dispatch = self.validation['on']['workflow_dispatch']['inputs']['cache-mode']
+        self.assertEqual(dispatch, {'description': 'Intentional prior-cache use',
+                                   'type': 'choice', 'options': ['cold', 'warm'], 'default': 'cold'})
+        jobs = self.validation['jobs']
+        self.assertEqual(set(jobs), {'resolve', 'validate'})
+        self.assertEqual(jobs['validate']['needs'], 'resolve')
+        cases = [
+            ('pull_request', 'labeled', 'validate-staged', '', True, 'cold'),
+            ('pull_request', 'labeled', 'validate-staged-warm', '', True, 'warm'),
+            ('pull_request', 'labeled', 'unrelated', '', False, None),
+            ('pull_request', 'synchronize', 'validate-staged', '', False, None),
+            ('pull_request', 'synchronize', 'validate-staged-warm', '', False, None),
+            ('push', '', 'validate-staged', '', False, None),
+            ('push', '', 'validate-staged-warm', '', False, None),
+            ('workflow_dispatch', '', '', '', True, 'cold'),
+            ('workflow_dispatch', '', '', 'cold', True, 'cold'),
+            ('workflow_dispatch', '', '', 'warm', True, 'warm'),
+        ]
+        for event, action, label, cache, expected_run, expected_cache in cases:
+            with self.subTest(event=event, action=action, label=label, cache=cache):
+                context = {'github.event_name': event, 'github.event.label.name': label,
+                           'inputs.cache-mode': cache}
+                trigger = self.validation['on'].get(event)
+                subscribed = event in self.validation['on'] and (
+                    event != 'pull_request' or action in trigger['types'])
+                admitted = expression_value(jobs['resolve']['if'], context)
+                self.assertEqual(subscribed and admitted, expected_run)
+                if expected_run:
+                    self.assertEqual(expression_value(jobs['validate']['with']['cache-mode'], context),
+                                     expected_cache)
 
     def test_heavy_stages_and_real_dependencies_have_separate_jobs(self):
         from producer.staged import DEPENDENCIES

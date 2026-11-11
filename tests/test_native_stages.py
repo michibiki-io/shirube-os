@@ -1,6 +1,9 @@
 """Bounded source/SDK and dependency contracts with synthetic files."""
 import json
+import copy
 from pathlib import Path
+import subprocess
+import tarfile
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -72,6 +75,137 @@ class NativeStagesTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     complete_candidate({},source,reconstruction,Path('/unused'),'amd64','v2026.03.0','a'*40,None)
             disks.assert_not_called()
+
+
+class StagedI2utilTests(unittest.TestCase):
+    """Synthetic Git observations and real source exports/bundles; no compilation."""
+
+    def setUp(self):
+        temporary=tempfile.TemporaryDirectory();self.addCleanup(temporary.cleanup)
+        self.root=Path(temporary.name)
+        self.lock={'url':'https://example.invalid/i2util','commit':'a'*40}
+        self.source=self.root/'extra/base/i2util';self.source.mkdir(parents=True)
+        for name,text in [('main.c','original source'),('LICENSE','synthetic upstream notice'),
+                          ('debian/copyright','synthetic package notice')]:
+            path=self.source/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(text)
+        subprocess.run(['git','init','-q',str(self.source)],check=True)
+        subprocess.run(['git','-C',str(self.source),'add','.'],check=True)
+        # Retain actual patched bytes, rather than the index's original bytes.
+        (self.source/'main.c').write_text('patched source')
+        (self.source/'generated.o').write_bytes(b'untracked compiler output')
+        native=self.root/'src/native';native.mkdir(parents=True)
+        (native/'packages.json').write_text(json.dumps({'jobs':[]}))
+        self.lockfile=native/'external-sources.lock.json'
+        self.lockfile.write_text(json.dumps({'i2util':self.lock}))
+        self.sources=self.root/'sources'
+        builder=self.sources/'vyos-build/vyos-build';builder.mkdir(parents=True)
+        (builder/'LICENSE').write_text('synthetic builder notice')
+        self.material=self.root/'export/material'
+        self.staged=self.material/'extra/base/i2util'
+        self.project=self.root/'project.tar';self.project.write_bytes(b'synthetic project input')
+        self.output=self.root/'output';self.output.mkdir()
+
+    def mapped_path(self,value='.',*parts):
+        value=str(value)
+        for prefix in ['/src','/extra','/debs']:
+            if value==prefix or value.startswith(prefix+'/'):
+                return self.root/value.lstrip('/')/Path(*parts)
+        return Path(value,*parts)
+
+    def export(self,revision=None):
+        from producer import native_stages
+        original=subprocess.check_output
+        def observe(args,**kwargs):
+            if args[-2:]==['rev-parse','HEAD']:
+                self.assertEqual(args,['git','-C',str(self.source),'rev-parse','HEAD'])
+                return revision if revision is not None else self.lock['commit']+'\n'
+            return original(args,**kwargs)
+        with patch.object(native_stages,'Path',side_effect=self.mapped_path), \
+             patch.object(native_stages,'SNAPSHOTS',{}), \
+             patch.object(native_stages,'GIT_SOURCES',{'runtime':('base/i2util',)}), \
+             patch.object(subprocess,'check_output',side_effect=observe) as git:
+            native_stages.export_compile('runtime',self.sources,self.root/'packages',
+                                         self.root/'export','amd64')
+            self.assertTrue(any(call.args[0][-2:]==['rev-parse','HEAD'] for call in git.call_args_list))
+
+    def collect(self,material=True):
+        from producer import collect
+        with patch.object(collect,'Path',side_effect=self.mapped_path):
+            return collect.static_i2util(self.output,'amd64','v2026.03.0',self.project,[],
+                                        self.material if material else None)
+
+    def test_export_and_static_collection_without_git(self):
+        self.export()
+        metadata=json.loads((self.staged/'shirube-stage-source.json').read_text())
+        self.assertEqual(metadata['revision_evidence']['commit'],self.lock['commit'])
+        self.assertEqual({r['name'] for r in metadata['revision_evidence']['files']},
+                         {'main.c','LICENSE','debian/copyright'})
+        self.assertFalse((self.staged/'.git').exists())
+        self.assertFalse((self.staged/'generated.o').exists())
+        with patch.object(subprocess,'check_output',side_effect=AssertionError('No Git in clearance')):
+            archive,record=self.collect()
+        self.assertEqual(record['name'],'i2util')
+        self.assertEqual(len(record['license_files']),2)
+        with tarfile.open(archive) as bundle:
+            self.assertEqual(bundle.extractfile('source/main.c').read(),b'patched source')
+            self.assertEqual(bundle.extractfile('copyright').read(),b'synthetic package notice')
+
+    def test_export_rejects_wrong_git_revision(self):
+        with self.assertRaisesRegex(ValueError,'source revision differs'):
+            self.export('b'*40+'\n')
+        self.assertFalse(self.staged.exists())
+
+    def test_staged_evidence_fails_closed_without_git_fallback(self):
+        self.export()
+        marker=self.staged/'shirube-stage-source.json'
+        original=json.loads(marker.read_text())
+        variants=[]
+        for field,value in [('commit','b'*40),('lock_sha256','0'*64),('schema_version',2),
+                            ('files',[])]:
+            changed=copy.deepcopy(original);changed['revision_evidence'][field]=value
+            variants.append((field,changed))
+        missing=copy.deepcopy(original);del missing['revision_evidence']
+        variants.extend([('missing evidence',missing),('missing marker',None)])
+        changed=copy.deepcopy(original);changed['revision_evidence']['files'][0]['sha256']='0'*64
+        variants.append(('tampered source hash',changed))
+        changed=copy.deepcopy(original);changed['kind']='unverified'
+        variants.append(('wrong source kind',changed))
+        changed=copy.deepcopy(original);changed['members'].remove('main.c')
+        variants.append(('changed member inventory',changed))
+        with patch.object(subprocess,'check_output',side_effect=AssertionError('No Git fallback')):
+            for name,data in variants:
+                with self.subTest(name=name):
+                    if data is None:marker.unlink()
+                    else:marker.write_text(json.dumps(data))
+                    with self.assertRaises(ValueError):self.collect()
+                    self.assertEqual(list(self.output.iterdir()),[])
+            marker.write_text(json.dumps(original))
+            for name in ['main.c','LICENSE','debian/copyright']:
+                path=self.staged/name;content=path.read_bytes()
+                for altered in [b'tampered bytes',None]:
+                    with self.subTest(member=name,altered=altered):
+                        if altered is None:path.unlink()
+                        else:path.write_bytes(altered)
+                        with self.assertRaises(ValueError):self.collect()
+                        path.write_bytes(content)
+            marker.unlink();marker.symlink_to(self.source/'main.c')
+            with self.assertRaisesRegex(ValueError,'missing/unsafe'):self.collect()
+            marker.unlink();marker.write_text(json.dumps(original))
+            for field,value in [('commit','b'*40),('url','https://example.invalid/other')]:
+                self.lockfile.write_text(json.dumps({'i2util':{**self.lock,field:value}}))
+                with self.subTest(lock=field),self.assertRaises(ValueError):self.collect()
+
+    def test_legacy_source_still_requires_git_revision(self):
+        original=subprocess.check_output
+        def observe(args,**kwargs):
+            return self.lock['commit']+'\n' if args[-2:]==['rev-parse','HEAD'] else original(args,**kwargs)
+        with patch.object(subprocess,'check_output',side_effect=observe):
+            archive,_=self.collect(material=False)
+        self.assertTrue(archive.is_file())
+        with patch.object(subprocess,'check_output',return_value='b'*40+'\n'):
+            with self.assertRaisesRegex(ValueError,'source revision differs'):self.collect(material=False)
+
+
 
 
 class StageEntryPointTests(unittest.TestCase):

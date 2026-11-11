@@ -8,7 +8,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from .collect import files, tracked_source_files, vpp_source_files, kea_source_files
+from .collect import (files, tracked_source_files, vpp_source_files, kea_source_files,
+                      i2util_revision_evidence, staged_i2util_files)
 from .sources import sha256
 
 COMPILE_STAGES = ('native', 'vpp', 'kea', 'salt', 'runtime', 'kernel')
@@ -151,8 +152,15 @@ def export_compile(stage, sources, packages, destination, architecture):
         if location.split('/')[0] in EXTRAS[stage]:
             copy_selected(snapshot_files(Path('/extra') / location, sources / original,rename_pam=location=='base/pam'), material / 'extra' / location)
     for location in GIT_SOURCES.get(stage, ()):
-        members=copy_selected(tracked_source_files(Path('/extra') / location), material / 'extra' / location)
-        (material / 'extra' / location / 'shirube-stage-source.json').write_text(json.dumps({'kind':'tracked','members':members})+'\n')
+        root=Path('/extra') / location
+        metadata={'kind':'tracked'}
+        if location=='base/i2util':
+            lock=json.loads(Path('/src/native/external-sources.lock.json').read_text())['i2util']
+            metadata['revision_evidence']=i2util_revision_evidence(root,lock)
+        target=material / 'extra' / location
+        metadata['members']=copy_selected(tracked_source_files(root),target)
+        (target/'shirube-stage-source.json').write_text(json.dumps(metadata)+'\n')
+        if location=='base/i2util':staged_i2util_files(target,lock)
     if stage == 'vpp':
         members=copy_selected(vpp_source_files(Path('/extra/vpp/vpp')), material / 'extra/vpp/vpp')
         (material / 'extra/vpp/vpp/shirube-stage-source.json').write_text(json.dumps({'kind':'tracked','members':members})+'\n')
