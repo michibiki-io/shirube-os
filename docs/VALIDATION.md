@@ -130,7 +130,11 @@ ARM64の診断用記録はISO・配布形式・試験コードのハッシュを
 初回アクセス、DHCP・経路、個別identity、NetBirdの実動作・キー消去と正常停止を確認しました。
 最新コミットからの完全な候補、対応ソース再構築、全体の許諾とOCI実機確認は別の未達事項です。
 
-## Acceptance criteria mapping
+## Historical acceptance criteria mapping (before retained candidates)
+
+This mapping records the earlier diagnostic-cohort assessment, before the
+retained candidate evidence above. Its remaining-work column is historical,
+not a current checklist requiring completed builds or audits to be repeated.
 
 | AC | Implemented primitives | Remaining acceptance work |
 | --- | --- | --- |
@@ -147,11 +151,16 @@ ARM64の診断用記録はISO・配布形式・試験コードのハッシュを
 | 11 | Task-only mounts/work, runtime-only private signing keys, enrollment erasure and payload key checks | End-to-end source/binary/log/cache/whole-disk audits |
 | 12 | Build/release/first-boot/NetBird/license docs and explicit limits | Update runnable reconstruction/recovery instructions after complete integration/validation |
 
-Every AC remains open. The PR must remain a draft while these gaps exist. Green
-static CI does not make it merge-ready. Merge and cloud deployment are not part
-of this implementation run.
+At that checkpoint, every AC remained open and the PR had to remain a draft
+while those gaps existed. Green static CI alone does not make it merge-ready.
+Merge and cloud deployment are not part of this implementation run.
 
-## Release workflow state
+## Historical release workflow state (before retained candidates)
+
+The assessment below, including its permission and integration blockers,
+describes that earlier diagnostic cohort. Consult the retained candidate section
+and PR #2 for later evidence and remaining limitations; this historical account
+neither revokes completed checks nor grants publication approval.
 
 The release workflow is implemented and statically validated: merged-only base
 commit selection, both native runner variables/defaults, Stream-aligned version selection and individual-commit

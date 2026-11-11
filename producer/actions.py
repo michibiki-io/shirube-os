@@ -35,12 +35,20 @@ def releases():
     return [item for page in pages for item in page]
 
 
-def get_release(version):
+def get_release(version, include_drafts=False):
+    if include_drafts:
+        # GitHub's get-by-tag endpoint returns published releases only. Drafts
+        # are visible in the paginated releases list to users with push access.
+        matching = [record for record in releases() if record['tag_name'] == version]
+        if len(matching) > 1:
+            raise ValueError('Ambiguous releases for the candidate version')
+        if matching and matching[0]['draft']:
+            return matching[0]
     return gh('api', f'repos/{REPO}/releases/tags/{version}', json_result=True)
 
 
 def require_draft(version, commit):
-    live = get_release(version)
+    live = get_release(version, include_drafts=True)
     if not live['draft'] or live['target_commitish'] != commit:
         raise ValueError('Refusing to mutate a published release or another source candidate')
     return live
@@ -175,7 +183,7 @@ def stage():
 def publish():
     version,commit = (os.environ[x] for x in ['SHIRUBE_VERSION','SHIRUBE_SOURCE_COMMIT'])
     identity(commit)
-    live = get_release(version)
+    live = get_release(version, include_drafts=True)
     if not live['draft']:
         verify_published(version,commit); return
     require_draft(version,commit)
@@ -215,7 +223,7 @@ def publish():
 def promote():
     version,commit=(os.environ[x] for x in ['SHIRUBE_VERSION','SHIRUBE_SOURCE_COMMIT'])
     identity(commit)
-    live=get_release(version)
+    live=get_release(version, include_drafts=True)
     if not live['draft']:
         verify_published(version,commit);return
     require_draft(version,commit)
