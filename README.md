@@ -7,10 +7,12 @@ An open-source router OS based on VyOS Stream, built and maintained by michibiki
 Shirube OS is an independent, unaffiliated distribution. VyOS and other upstream
 projects retain their copyrights, licenses and compatibility interfaces.
 
-**Implementation in progress. There is no validated Shirube OS ISO or public disk
-release yet.** The merged-PR release workflow and producer are implemented but still require
-full acceptance evidence. Input verification, package-stage results and static validation do
-not establish a successful OS build or boot. See [validation status](docs/VALIDATION.md).
+**Pre-release: no public binary release has been published.** Native images and
+corresponding-source sets have been produced and tested. Exact artifact hashes,
+passed/failed checks and current reviews are recorded in
+[PR #2](https://github.com/michibiki-io/shirube-os/pull/2).
+Static validation alone does not establish OS acceptance. See
+[validation status](docs/VALIDATION.md) for evidence scope and historical results.
 
 - [Build inputs and native runners](docs/BUILD.md)
 - [Release contract and recovery](docs/RELEASE.md)

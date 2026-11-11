@@ -25,10 +25,19 @@ only then promotes the draft. A missing/failed/skipped required stage blocks the
 publication transition. `producer.actions.promote` requires the uploaded
 artifact ID/digest and checks its exact workflow source commit.
 
-The pipeline is not yet accepted: complete source reconstruction evidence,
-component license clearance and actual NetBird enrollment/save/reboot evidence
-remain blocking work. These are explicitly FAIL/NOT_RUN, not automatic waivers.
-`license-audit.json` records individually audited components; its partial coverage cannot clear the complete distribution.
+No public binary release has been published. The latest retained native cohorts
+have corresponding-source restoration, component clearance and guest-lifecycle
+receipts; exact candidate results and remaining failures are recorded in
+[PR #2](https://github.com/michibiki-io/shirube-os/pull/2). Historical component
+reports are scoped to their recorded inputs, not a reason to repeat completed
+checks. Neither those receipts nor `license-audit.json` alone replace the final
+aggregate validator. Failed or missing required evidence still blocks publication.
+
+For unpublished validation, retained binaries and sources keep their original
+source commit and signing cohort. A later verifier-only change is recorded as a
+separate runtime-verifier/review head; it never relabels the retained source set
+as a new build. Production publication still requires the exact eligible merged
+commit and the complete coherent candidate contract below.
 
 `Test` is static validation. Its success does not establish image acceptance.
 

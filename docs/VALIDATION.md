@@ -1,8 +1,38 @@
 # Implementation and validation status
 
-This is an incomplete implementation of issue #1, not a release acceptance report.
-No Shirube OS binary is cleared for distribution. Static fixtures never substitute
-for a source build, disk boot or actual access test.
+This document preserves revision-scoped component and diagnostic observations,
+not a rolling release-approval ledger. [PR #2](https://github.com/michibiki-io/shirube-os/pull/2)
+records current artifact hashes, exact-head CI, focused runtime results and formal
+reviews. No public binary release has been published. Static fixtures never
+substitute for a source build, disk boot or actual access test.
+
+## Retained candidate evidence (2026-11-11)
+
+- Both architectures have actual retained native ISO, QCOW2 and streamOptimized
+  VMDK artifacts. Unchanged compiled components are reused; verifier-only changes
+  do not require kernel or VPP compilation.
+- Source commit `0e91603ada262743aa2eb414fc822684cc7634fe` has complete physical
+  source restoration and exact input binding for 743 shipped packages per
+  architecture: AMD64 98 archives / 487,079 regular members; ARM64 541 archives /
+  213,244 regular members. Existing component permission clearance is separate
+  from the restoration check. Binary-identical reconstruction is not claimed.
+- ARM64's current retained ISO passed fresh UEFI installation, sanitization,
+  both conversions and both console/NetBird/NoCloud lifecycles using native KVM,
+  including metadata-seed ejection, changed boot IDs and persistent identities.
+- AMD64's retained ISO passed BIOS and UEFI installation, sanitization, format
+  equivalence and QCOW2 lifecycle checks. VMDK console and NetBird checks passed;
+  the original cloud reboot gate failure remains recorded in PR #2. The verifier
+  now distinguishes rejected requests from an uncertain SSH acknowledgement,
+  checks whether systemd has accepted a reboot before a bounded retry, and still
+  requires an actual changed boot ID. Consult the hash-bound runtime result in
+  PR #2 for the final outcome, rather than treating this code change as a pass.
+- Candidate aggregation preserves original source and signing-cohort identities.
+  Later verifier/review commits are recorded separately. No OCI upload, import,
+  deployment or live validation is performed; OCI remains `NOT_RUN`.
+
+The historical observations below retain their original PASS/PARTIAL/FAIL/NOT_RUN
+scope. They do not override later exact-input evidence, and a past incomplete
+component report is not by itself a requirement to rerun its build or audit.
 
 The original issue body was fetched with all ten comments on 2026-11-08. Its SHA256
 was `50285b1247cfd070536260408efc0f6765de0b1afde00604d7db7b4da27d7546`, matching
@@ -19,7 +49,7 @@ The earlier plan approval does not apply to this changed body. The change record
 https://github.com/michibiki-io/shirube-os/issues/1#issuecomment-6715232251;
 the changed criteria belong in the latest PR review after release readiness.
 
-## Actual observations
+## Historical component observations
 
 | Stage | Result | Scope |
 | --- | --- | --- |
