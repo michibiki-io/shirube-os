@@ -167,6 +167,10 @@ def netbird_dependencies(rootfs,correspondence,arch):
 
 
 def approval_for(approvals,name,version,identity,notice_root=Path('/src'),*,copyright_sha256=None):
+    if name=='shirube-integration':
+        from .policy import require_stream_version
+        stream=json.loads((Path(notice_root)/'source-lock.json').read_text())['stream']['version']
+        require_stream_version('v'+version,stream)
     key=name+'@'+version
     source_key=key+'#'+identity
     if copyright_sha256 is not None:
@@ -174,6 +178,10 @@ def approval_for(approvals,name,version,identity,notice_root=Path('/src'),*,copy
             raise ValueError('Invalid copyright notice digest')
         approval=approvals.get(source_key+'#'+copyright_sha256,
                                approvals.get(source_key,approvals.get(key,{})))
+        exact_keys=[source_key+'#'+copyright_sha256,source_key,key]
+        if name=='shirube-integration' and not any(item in approvals for item in exact_keys):
+            from .integration import revision_approval
+            approval=revision_approval(approvals,stream,identity,copyright_sha256)
         if approval.get('copyright_sha256')!=copyright_sha256:
             return {}
     else:
@@ -752,10 +760,10 @@ def collect(rootfs, package_output, output, arch, version, work):
                 provenance.update(preferred_stream_member=str(preferred_root.relative_to('/sources')),
                                   native_job=native_jobs[name])
             if name=='shirube-integration':
-                provenance={'netbird_source_commit':lock['source_commit'],'netbird_source_sha256':lock['source_sha256'],'headless_asset_sha256':lock['assets'][arch]['sha256'],'integration_license_sha256':sha256(Path('/src/LICENSE'))}
-                provenance['geoip_source_sha256']=geoip['sha256']
-                provenance['geoip_notice_sha256']=geoip['notice_sha256']
-                origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
+                from .integration import provenance as integration_provenance, source_identity as integration_identity
+                provenance=integration_provenance(json.loads(Path('/src/source-lock.json').read_text()),
+                                                  arch,Path('/src/LICENSE').read_bytes())
+                origin=integration_identity(provenance)
             if keys:origin=hashlib.sha256(json.dumps(provenance,sort_keys=True).encode()).hexdigest()
             if name=='vyos-http-api-tools':
                 provenance={'packaging_recipe_sha256':sha256(Path('/src/native/http_api.py')),

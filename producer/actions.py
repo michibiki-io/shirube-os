@@ -7,6 +7,7 @@ import re
 import subprocess
 import tempfile
 from .architecture import runner
+from .integration import preflight as integration_preflight
 from .policy import eligible, next_version, release_notes, VERSION_PATTERN, version_parts, require_stream_version
 from .release import validate, RELEASE_ASSET_LIMIT
 from .sources import sha256
@@ -156,6 +157,7 @@ def resolve():
             emit({'eligible':'true','noop':'true','commit':commit,'version':version})
             return
         require_not_superseded(version, existing)
+        integration_preflight(version)
     else:
         published = [r for r in existing if not r['draft'] and not r['prerelease'] and
                      re.fullmatch(VERSION_PATTERN,r['tag_name'])]
@@ -177,6 +179,7 @@ def resolve():
         tag_exists=subprocess.run(['git','show-ref','--verify','--quiet','refs/tags/'+version]).returncode==0
         if tag_exists and git('rev-parse',version+'^{commit}')!=commit:
             raise ValueError('Computed version already points to a different source commit')
+        integration_preflight(version)
         with tempfile.NamedTemporaryFile(mode='w',suffix='.md') as notes:
             notes.write('Shirube OS '+version+'\n\nUpstream Stream: `'+stream_version+'`\n\nSource commit: `'+commit+'`\n\n'+release_notes(commits)); notes.flush()
             # Reserve this version/commit durably before compilation. A rerun

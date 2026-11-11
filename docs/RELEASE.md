@@ -103,6 +103,27 @@ scheme, not strict SemVer. Tags, release titles, ISO/disk/source names, Shirube 
 versions, manifests and OS version output use the same resolved value. Third-party
 component versions remain at their exact pinned upstream values.
 
+After selecting the actual release version, `resolve` runs a local, network-free
+integration approval preflight for both amd64 and arm64 before emitting the build
+matrix. Fresh releases run it before creating their draft; unfinished-draft
+retries check their reserved version again. Failure stops resolution without
+starting builds or creating a new draft. Published releases keep their existing
+complete-asset verification and no-op path. Eligibility, reservation ownership,
+supersession and publication gates remain in force. The preflight uses shared
+integration identity/notice inputs and the bounded same-Stream revision policy
+in [LICENSES.md](LICENSES.md); its retained-notice input does not verify freshly
+downloaded bytes or replace final source, dependency, guest or publication checks.
+
+`resolve` は実際のリリース版を決定後、ビルド行列を出力する前に amd64 と arm64 の
+integration 承認をローカルで確認します。ネットワークは使用しません。
+新規版は draft 作成前、未完了 draft の再試行は予約済みの実版で確認し、
+失敗時はビルド開始と新規 draft 作成を防ぎます。
+公開済みリリースでは従来どおり全成果物を検証し、再ビルドせず終了します。
+適格性、予約の所有権、後続版による失効、公開の条件は維持します。
+識別情報と通知文の入力を共用し、[LICENSES.md](LICENSES.md) の同一 Stream 内に限る
+方針を適用します。保持通知を使う事前確認は、新たな取得物の内容や最終ソース検証、
+依存の確認、guest 試験、公開時の検証を代替しません。
+
 Unpublished drafts reserve their version even if their build or validation fails.
 A later eligible commit skips versions reserved by other commits and receives the
 next revision. Rerunning the same commit keeps its own reserved version unless
