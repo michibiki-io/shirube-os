@@ -147,6 +147,7 @@ print(Path('/proc/sys/kernel/random/boot_id').read_text().strip())
         def retry_unaccepted_reboot(deadline):
             nonlocal acknowledged,retries
             if acknowledged or retries>=2:return
+            if time.monotonic()>=deadline:return
             # The access probe has just proved that the original boot is still
             # serving SSH. Retry only if systemd also proves no reboot is pending.
             try:

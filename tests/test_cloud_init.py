@@ -85,7 +85,8 @@ class CloudInitTests(unittest.TestCase):
             vm.close.assert_called_once()
 
     def _verify_transition(self, overrides=None, same_boot=False, shutdown_status=0,
-                           transport_stderr='PRIVATE_GUEST_STDERR', transition_after_requests=1):
+                           transport_stderr='PRIVATE_GUEST_STDERR', transition_after_requests=1,
+                           clock_ticks=None):
         """Exercise the real verifier with a disposable, fully mocked guest."""
         from producer.cloud_init_guest import verify
         overrides=overrides or {}
@@ -119,7 +120,7 @@ class CloudInitTests(unittest.TestCase):
                 return subprocess.CompletedProcess(command,0,'','')
             output=io.StringIO()
             # A deterministic deadline bounds the same-boot negative case.
-            ticks=iter(range(0,10000,100))
+            ticks=iter(range(0,10000,100) if clock_ticks is None else clock_ticks)
             with contextlib.redirect_stdout(output), \
                  patch('producer.vm.VM',return_value=vm), \
                  patch('producer.cloud_init_guest.monitor_console',return_value=monitor), \
@@ -178,6 +179,17 @@ class CloudInitTests(unittest.TestCase):
             self.assertEqual(sum('systemctl reboot' in text for text in operations),2)
             self.assertEqual(sum('systemctl show reboot.target' in text for text in operations),1)
             self.assertNotIn('PRIVATE_',output)
+
+    def test_expired_reboot_deadline_does_not_start_state_query(self):
+        # Initial access finishes at t=1. Post-reboot's deadline is t=1202;
+        # its probe starts at t=3 but returns the original boot after expiry.
+        result,output,operations,vm=self._verify_transition(
+            {'systemctl reboot':255},same_boot=True,clock_ticks=[0,1,2,3,1203,1204])
+        self.assertIsInstance(result,RuntimeError)
+        self.assertIn('before deadline',str(result))
+        self.assertEqual(sum('systemctl reboot' in text for text in operations),1)
+        self.assertFalse(any('systemctl show reboot.target' in text for text in operations))
+        self.assertFalse(any('poweroff' in text for text in operations))
 
     def test_unaccepted_reboot_is_retried_at_most_twice(self):
         result,output,operations,vm=self._verify_transition({'systemctl reboot':255},same_boot=True)
