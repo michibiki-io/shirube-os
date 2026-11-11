@@ -713,3 +713,32 @@ ISO工程の記録には commit、ISO のハッシュ、ソース復元結果、
 扱わず、公開前の preflight と検証ゲートも維持します。両アーキテクチャのネイティブ
 OS 作成を確認するための試験であり、別途提案しているパッケージビルドの並列化は
 実装しません。
+
+## Go module transport recovery
+
+In [run 43024436656, AMD64 job 130535658014](https://github.com/michibiki-io/shirube-os/actions/runs/43024436656/job/130535658014),
+source revision `d49274d8ea672b0a4770e9ccac179f48bc42a8ad` failed while
+building Telegraf 1.28.3: a dependency ZIP request to `proxy.golang.org` returned
+HTTP/2 `INTERNAL_ERROR`, and the single `go build` raised `CalledProcessError`.
+
+The native Go recipe now prepares dependencies with `go list -deps` for the
+actual build target (`.` for exporters, `./cmd/telegraf` for Telegraf), including
+node_exporter's existing `nobtrfs` tag, before compiling once. Preparation and
+compilation use the existing shell resource environment. The fixed Telegraf
+override's `go mod download -json module@version` retains its inherited environment
+and still requires both the explicit SHA256 and h1 checks.
+
+Only module acquisition diagnostics matching `Get "https://…/@v/….zip"` (or
+`.mod` / `.info`) followed by `stream error: stream ID …; INTERNAL_ERROR;
+received from peer` are retried. Every error diagnostic must match; unknown or
+mixed failures stop immediately. There are at most three attempts, waiting one
+then two seconds, with the same command, version, directory, environment and cache.
+Failed preparation prevents compilation. Compilation is never retried. HTTP
+404/authentication, checksum/integrity, TLS and compiler failures stop immediately.
+Versions, tags, ldflags, proxies, checksum verification, source retention and
+license checks are unchanged; caches are retained.
+
+Synthetic regression tests exercise recovery, exhaustion and fail-fast behavior,
+including both architecture renderings without network or compilation. Real
+dependency downloads, native compilation, hosted CI/review of this change, full
+builds and license scans remain `NOT_RUN` for this fix.
