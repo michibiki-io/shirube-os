@@ -60,16 +60,28 @@ component versions remain at their exact pinned upstream values.
 
 Unpublished drafts reserve their version even if their build or validation fails.
 A later eligible commit skips versions reserved by other commits and receives the
-next revision; rerunning the same commit keeps its own reserved version. Only
-published releases establish the release ancestry check. Draft reservations
-affect version allocation, not ancestry or permission to publish.
+next revision. Rerunning the same commit keeps its own reserved version unless
+a higher version has already been published: `resolve` rejects that superseded
+unpublished draft rather than publishing an older version after its successor.
+This does not change verification-only reruns of an already published release.
+Only published releases establish the release ancestry check. Draft reservations
+affect version allocation and baseline-downgrade checks; they do not establish
+ancestry or waive any publication gate.
+
+A draft reserved on a newer Stream baseline also blocks allocation after a
+return to an older baseline, even while that draft remains unpublished. This is
+intentional fail-closed behavior. Recovery requires a person to verify that the
+reservation is still unpublished and not in use by another run before deciding
+whether to discard it. Published releases and their assets remain immutable;
+this recovery does not permit deleting or changing a published release.
 
 Conventional Commit subjects/bodies and SHAs form release notes, including
 breaking-change notices. Their type does not change Stream's year/month. PR
 titles do not determine versions or substitute for individual commits. GitHub
 commit metadata is checked for complete coverage. The exact eligible merged
-commit/version is resolved once and shared by both architectures; reruns keep
-the reserved version and follow the immutable asset checks above.
+commit/version is resolved once and shared by both architectures; permitted
+reruns keep the reserved version, subject to the superseded-draft rejection above
+and the published-asset verification rules below.
 
 `producer.release.validate` validates the metadata contract against actual files:
 identity, complete architecture/role sets, physical sizes, hashes, checksum

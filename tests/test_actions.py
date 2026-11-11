@@ -351,6 +351,56 @@ class ReleaseReservationTests(unittest.TestCase):
         self.assertEqual(self.resolve('d'*40)['version'], 'v2026.03.11')
         self.assertEqual(self.ancestry_checks, [('a'*40, 'd'*40)])
 
+    def test_newer_publication_blocks_retry_of_failed_older_candidate(self):
+        self.assertEqual(self.resolve('a'*40)['version'], 'v2026.03.0')
+        self.assertEqual(self.resolve('b'*40)['version'], 'v2026.03.1')
+        self.records[1]['draft'] = False  # B publishes while A remains a failed draft.
+        original = [dict(record) for record in self.records]
+        created = list(self.created)
+        with self.assertRaisesRegex(ValueError, 'superseded by a newer published version'):
+            self.resolve('a'*40)
+        self.assertEqual(self.records, original)
+        self.assertEqual(self.created, created)
+        self.assertFalse(self.verified)
+
+    def test_numeric_revision_and_newer_stream_publications_supersede_draft(self):
+        for published in ['v2026.03.10', 'v2026.04.0']:
+            with self.subTest(published=published):
+                self.records = [
+                    {'draft': True, 'prerelease': False, 'tag_name': 'v2026.03.9', 'target_commitish': 'a'*40},
+                    {'draft': False, 'prerelease': False, 'tag_name': published, 'target_commitish': 'b'*40}]
+                original = [dict(record) for record in self.records]
+                with self.assertRaisesRegex(ValueError, 'superseded by a newer published version'):
+                    self.resolve('a'*40)
+                self.assertEqual(self.records, original)
+                self.assertFalse(self.created)
+
+    def test_lower_publication_or_newer_prerelease_does_not_supersede_draft(self):
+        for version, prerelease in [('v2026.03.0', False), ('v2026.03.2', True)]:
+            with self.subTest(version=version, prerelease=prerelease):
+                self.records = [
+                    {'draft': True, 'prerelease': False, 'tag_name': 'v2026.03.1', 'target_commitish': 'a'*40},
+                    {'draft': False, 'prerelease': prerelease, 'tag_name': version, 'target_commitish': 'b'*40}]
+                original = [dict(record) for record in self.records]
+                result = self.resolve('a'*40)
+                self.assertEqual((result['version'], result['noop']), ('v2026.03.1', 'false'))
+                self.assertEqual(self.records, original)
+                self.assertFalse(self.created)
+
+    def test_older_published_release_remains_verified_noop_after_newer_publication(self):
+        for version in ['v2026.03.1', 'v2026.04.0']:
+            with self.subTest(version=version):
+                self.records = [
+                    {'draft': False, 'prerelease': False, 'tag_name': 'v2026.03.0', 'target_commitish': 'a'*40},
+                    {'draft': False, 'prerelease': False, 'tag_name': version, 'target_commitish': 'b'*40}]
+                original = [dict(record) for record in self.records]
+                self.verified.clear()
+                result = self.resolve('a'*40)
+                self.assertEqual((result['version'], result['noop']), ('v2026.03.0', 'true'))
+                self.assertEqual(self.verified, [('v2026.03.0', 'a'*40)])
+                self.assertEqual(self.records, original)
+                self.assertFalse(self.created)
+
     def test_older_baseline_reservations_allow_new_stream_revision_zero(self):
         self.records = [
             {'draft': False, 'prerelease': False, 'tag_name': 'v2026.02.3', 'target_commitish': 'a'*40},

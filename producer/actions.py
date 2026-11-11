@@ -117,6 +117,10 @@ def resolve():
             verify_published(version, commit)
             emit({'eligible':'true','noop':'true','commit':commit,'version':version})
             return
+        if any(not r['draft'] and not r['prerelease'] and
+               re.fullmatch(VERSION_PATTERN,r['tag_name']) and
+               version_parts(r['tag_name']) > version_parts(version) for r in existing):
+            raise ValueError('Draft release has been superseded by a newer published version')
     else:
         published = [r for r in existing if not r['draft'] and not r['prerelease'] and
                      re.fullmatch(VERSION_PATTERN,r['tag_name'])]
