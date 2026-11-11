@@ -13,6 +13,21 @@ from unittest.mock import patch
 
 
 class ComposeSourceTests(unittest.TestCase):
+    def test_retained_kernel_configuration_uses_actual_target_architecture(self):
+        api=runpy.run_path(str(Path(__file__).resolve().parents[1]/'scripts/compose-initialization-sources.py'))
+        with tempfile.TemporaryDirectory() as temporary:
+            config=Path(temporary)/'kernel.config';config.write_text('CONFIG_ARM64=y\nCONFIG_MODULE_SIG=y\n')
+            records=api['kernel_inputs'](config,None,'arm64')
+            self.assertEqual(records[0][1:],('native-build/kernel.config','build_inputs'))
+            with self.assertRaisesRegex(ValueError,'wrong architecture'):api['kernel_inputs'](config,None,'amd64')
+
+    def test_arbitrary_der_cannot_be_published_as_a_public_kernel_certificate(self):
+        api=runpy.run_path(str(Path(__file__).resolve().parents[1]/'scripts/compose-initialization-sources.py'))
+        with tempfile.TemporaryDirectory() as temporary:
+            certificate=Path(temporary)/'untrusted.der';certificate.write_bytes(b'not a public certificate')
+            with self.assertRaisesRegex(ValueError,'public X.509 DER'):
+                api['kernel_inputs'](None,certificate,'arm64')
+
     def prepare(self,root,batched=False):
         repo=Path(__file__).resolve().parents[1];lock=json.loads((repo/'source-lock.json').read_text())
         for name in ['base','additions','notices/alpha','overlays','output']:(root/name).mkdir(parents=True)

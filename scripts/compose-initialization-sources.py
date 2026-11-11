@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import subprocess
 import sys
 import tarfile
 
@@ -30,6 +31,32 @@ def cleared(component):
     for child in component.get('bundled_components',[]):cleared(child)
 
 
+def kernel_inputs(configuration,certificate,architecture):
+    inputs=[]
+    for path in [configuration,certificate]:
+        if path is not None and (path.is_symlink() or not path.is_file()):
+            raise ValueError('Regular retained kernel build input required')
+    if configuration is not None:
+        if configuration.stat().st_size>4*1024**2:raise ValueError('Unexpected kernel configuration size')
+        text=configuration.read_text()
+        expected='ARM64' if architecture=='arm64' else 'X86_64'
+        other='X86_64' if architecture=='arm64' else 'ARM64'
+        if not re.search('^CONFIG_'+expected+'=y$',text,re.M) or re.search('^CONFIG_'+other+'=y$',text,re.M):
+            raise ValueError('Retained kernel configuration has the wrong architecture')
+        inputs.append((configuration,'native-build/kernel.config','build_inputs'))
+    if certificate is not None:
+        # Parse a public X.509 certificate rather than accepting arbitrary DER
+        # bytes, including a private key encoded without a PEM delimiter.
+        try:
+            encoded=subprocess.check_output(['openssl','x509','-inform','DER','-in',str(certificate),'-outform','DER'],
+                                            stderr=subprocess.DEVNULL)
+        except subprocess.CalledProcessError:
+            raise ValueError('Retained kernel certificate is not public X.509 DER') from None
+        if encoded!=certificate.read_bytes():raise ValueError('Retained kernel certificate contains extra non-certificate bytes')
+        inputs.append((certificate,'native-build/kernel-public-cert.der','build_inputs'))
+    return inputs
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ['base','additions','packages','notices','overlays','project-source','output','work']:
@@ -37,6 +64,8 @@ def main():
     parser.add_argument('--commit',required=True)
     parser.add_argument('--architecture',choices=['amd64','arm64'],required=True)
     parser.add_argument('--version',required=True)
+    parser.add_argument('--kernel-config',type=Path)
+    parser.add_argument('--kernel-public-certificate',type=Path)
     args=parser.parse_args();repo=Path(__file__).resolve().parents[1]
     lock=json.loads((repo/'source-lock.json').read_text())
     require_stream_version(args.version,lock['stream']['version'])
@@ -97,6 +126,13 @@ def main():
             (repo/'LICENSE','LICENSE','license_files')]
     inputs.extend((path,'distribution-notices/'+member,'license_files')
                   for path,member in distribution_notices(repo))
+    retained_kernel=kernel_inputs(args.kernel_config,args.kernel_public_certificate,args.architecture)
+    kernel_identity=None
+    if retained_kernel:
+        kernels=[c for c in components.values() if c['name'].startswith('linux-image-')]
+        if len(kernels)!=1:raise ValueError('One target kernel source component required')
+        kernel_identity=(kernels[0]['source_package'],kernels[0]['source_version'])
+        inputs.extend(retained_kernel)
     changed_notices={}
     for name,component in components.items():
         notice=args.notices/name/'copyright'
@@ -146,6 +182,10 @@ def main():
         for child in component.get('bundled_components',[]):bind(child)
     for name,component in components.items():
         bind(component)
+        if (component['source_package'],component['source_version'])==kernel_identity:
+            native=[r for r in extra['build_inputs'] if r['member'].startswith('native-build/')]
+            component['build_inputs'].extend(native)
+            component['retained_native_build_inputs']=native
         def original_member(member):
             parts=Path(member).parts
             return '/'.join(parts[2:]) if len(parts)>2 and parts[0]=='components' else member
