@@ -195,6 +195,8 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual(self.release['on'],{'pull_request_target':{'types':['closed'],'branches':['main']}})
         jobs=self.release['jobs']
         self.assertEqual(jobs['resolve']['if'],'github.event.pull_request.merged == true')
+        self.assertEqual(set(jobs['resolve']['outputs']), {'eligible','noop','commit','version'})
+        self.assertNotIn('timeout_minutes', Path('producer/actions.py').read_text())
         self.assertEqual(jobs['stage']['strategy']['matrix']['architecture'],['amd64','arm64'])
         self.assertEqual(jobs['stage']['needs'],['resolve','build'])
         self.assertEqual(jobs['stage']['steps'][-1]['run'],'python3 -m producer.actions stage')

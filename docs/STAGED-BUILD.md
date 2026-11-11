@@ -103,6 +103,14 @@ These specifications were checked on 2026-11-11. Prior
 [capability measurements](evidence/diagnostic-native-hosted-runner-capabilities.json)
 observed substantially larger filesystems, not a provider capacity guarantee.
 Compiler/runtime containers enforce 4 CPUs / 8 GiB RAM / no swap / 4096 PIDs.
+Integration alone adds `--cap-add=SYS_ADMIN` for NetBird offline `unshare --net`;
+ISO alone uses `--privileged` for assembly mounts. Other directly launched stages
+add no capabilities; the guests stage retains the existing release-container
+helper. No Docker socket, host identity, host PID/network namespace or publication
+token is mounted. The tiny hosted capability fixture now checks distinct network
+namespaces under SYS_ADMIN alone and validates its saved image archive with the
+unchanged strict compiler validator. Both new checks await hosted execution;
+fixture success cannot establish NetBird reconstruction or compiler handoff.
 Compiler-image BuildKit uses the hosted runner; its peak is not established.
 The existing 75 GiB compiler/source/ISO and 56 GiB fresh-disk free-space gates
 remain. An insufficient runner fails admission; thresholds are not lowered to

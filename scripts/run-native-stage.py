@@ -49,9 +49,11 @@ def main():
                 args.cache.mkdir(parents=True,exist_ok=True)
                 cache_mount=['-v',str(args.cache.resolve())+':/stage-cache']
                 cache_args=['--cache','/stage-cache']
-            # ISO assembly alone requires mount privileges. No Docker socket,
+            # ISO assembly requires mount privileges; integration needs SYS_ADMIN
+            # for NetBird offline network namespaces. No Docker socket,
             # host identities, host PID/network or publication token is shared.
-            privileged=['--privileged'] if args.stage=='iso' else []
+            privileged=({'iso':['--privileged'], 'integration':['--cap-add=SYS_ADMIN']}
+                        .get(args.stage, []))
             run('docker','run','--rm',*privileged,'--cpus=4','--memory=8g','--memory-swap=8g','--pids-limit=4096',
                 '-v',str(args.output.resolve())+':/output', '-v',str(args.inputs.resolve())+':/inputs:ro',
                 '-v',str(project)+':/project-source.tar:ro',*cache_mount,

@@ -22,7 +22,6 @@ jobs:
       noop: ${{ steps.plan.outputs.noop }}
       commit: ${{ steps.plan.outputs.commit }}
       version: ${{ steps.plan.outputs.version }}
-      matrix: ${{ steps.plan.outputs.matrix }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -37,7 +36,7 @@ jobs:
           python3 -m unittest discover -s tests -v
           bash -n scripts/build-packages.sh scripts/build-release.sh containers/native/package.sh
       - id: plan
-        name: Resolve merged commit, version and native runners once
+        name: Resolve merged commit and version once
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 -m producer.actions resolve

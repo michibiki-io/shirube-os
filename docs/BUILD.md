@@ -165,8 +165,17 @@ remains unverified until the full candidate run succeeds on each runner class.
 The `Test` workflow measures both native GitHub-hosted runner classes with a
 small fixed-base fixture. Its `runner-capability-*` artifacts record CPU, available
 memory/storage, KVM openability, a real BuildKit cache mount/chroot, and privileged
-container mknod/mount/chroot execution. The probe is restricted to ephemeral
-GitHub-hosted Linux runners and removes only the container and image tag it creates.
+container mknod/mount/chroot execution. It also saves that same tiny fixture by
+immutable image ID, records the Docker server version, archive member types,
+size/hash and image/config identity, then applies the strict compiler archive
+validator. Diagnostics are printed before validation so a rejected format remains
+visible in the CI log. A second container uses only `--cap-add=SYS_ADMIN` with
+`--network=none` and the existing 1 CPU / 256 MiB / 256 PID limits to check that
+`unshare --net` creates a distinct network namespace. Its
+`PASS_CAPABILITY_ONLY` result does not prove NetBird reconstruction or compiler
+export/load. These additions have not yet been exercised on hosted runners.
+The probe is restricted to ephemeral GitHub-hosted Linux runners and removes
+only its own containers, temporary archive and image tag.
 It records the PR head separately from the checked-out merge commit. Complete OS
 build, guest boot, elapsed-time feasibility and release clearance remain separate
 gates; the capability receipt explicitly records those as unrun.
@@ -174,8 +183,15 @@ gates; the capability receipt explicitly records those as unrun.
 `Test` workflowでは、両アーキテクチャのGitHub-hosted runnerで小さな固定入力の
 試験を実行します。`runner-capability-*` artifactにCPU、空きメモリと容量、
 KVMを開けるか、BuildKitのcache mountとchroot、特権コンテナーのmknodとmountの
-結果を記録します。実行対象を一時的なGitHub-hosted Linux runnerに限定し、
-作成したコンテナーとimage tagだけを削除します。PRのheadとcheckoutしたmerge
+結果を記録します。同じ小さな試験用イメージを不変のIDで保存し、Docker serverの版、
+archiveのメンバー種別、サイズとhash、imageとconfigの識別情報を記録してから、
+compiler archiveの厳格な検証を適用します。検証前に診断をログへ出力します。
+別のコンテナーでは`--cap-add=SYS_ADMIN`だけを追加し、`--network=none`と
+既存の1 CPU、256 MiB、256 PIDの上限で`unshare --net`が別のnetwork namespaceを
+作るか確認します。`PASS_CAPABILITY_ONLY`はNetBirdの再構築やcompilerの
+export/loadの成功を示しません。追加した検査はhosted runnerで未実施です。
+実行対象を一時的なGitHub-hosted Linux runnerに限定し、
+作成したコンテナー、一時archive、image tagだけを削除します。PRのheadとcheckoutしたmerge
 commitは別々に記録します。OSビルド、ゲスト起動、所要時間の実用性、公開可否は
 それぞれ別に検証し、この資源試験では未実施として記録します。
 KVM is required only when explicitly selected. Diagnostic native AMD64 and

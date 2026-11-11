@@ -106,9 +106,10 @@ versions, manifests and OS version output use the same resolved value. Third-par
 component versions remain at their exact pinned upstream values.
 
 After selecting the actual release version, `resolve` runs a local, network-free
-integration approval preflight for both amd64 and arm64 before emitting the build
-matrix. Fresh releases run it before creating their draft; unfinished-draft
-retries check their reserved version again. Failure stops resolution without
+integration approval preflight for both amd64 and arm64 before emitting the
+resolved commit/version. Runner matrices and stage deadlines are defined in the
+workflows; resolve emits no runner matrix. Fresh releases run it before creating
+their draft; unfinished-draft retries check their reserved version again. Failure stops resolution without
 starting builds or creating a new draft. Published releases keep their existing
 complete-asset verification and no-op path. Eligibility, reservation ownership,
 supersession and publication gates remain in force. The preflight uses shared
@@ -116,8 +117,9 @@ integration identity/notice inputs and the bounded same-Stream revision policy
 in [LICENSES.md](LICENSES.md); its retained-notice input does not verify freshly
 downloaded bytes or replace final source, dependency, guest or publication checks.
 
-`resolve` は実際のリリース版を決定後、ビルド行列を出力する前に amd64 と arm64 の
+`resolve` は実際のリリース版を決定後、commitとversionを出力する前に amd64 と arm64 の
 integration 承認をローカルで確認します。ネットワークは使用しません。
+runnerの行列と各ステージの制限時間はworkflowで定義し、resolveは行列を出力しません。
 新規版は draft 作成前、未完了 draft の再試行は予約済みの実版で確認し、
 失敗時はビルド開始と新規 draft 作成を防ぎます。
 公開済みリリースでは従来どおり全成果物を検証し、再ビルドせず終了します。

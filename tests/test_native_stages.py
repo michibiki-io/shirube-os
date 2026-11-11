@@ -403,3 +403,56 @@ class ContentIdentityTests(unittest.TestCase):
             self.assertNotEqual(downstream,build_scope(root,'clearance','amd64',compiler,{'iso':'c'*64}))
             (root/'native/extras.py.in').write_text('changed compiler recipe')
             self.assertNotEqual(before,build_scope(root,'vpp','amd64',compiler,{}))
+
+
+class StageLauncherTests(unittest.TestCase):
+    def test_exact_stage_capabilities_mounts_and_credential_boundary(self):
+        import importlib.util
+        import sys
+        spec = importlib.util.spec_from_file_location('stage_launcher', 'scripts/run-native-stage.py')
+        launcher = importlib.util.module_from_spec(spec);spec.loader.exec_module(launcher)
+        for stage in launcher.STAGES:
+            with self.subTest(stage=stage), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary); output = root/'output'; inputs = root/'inputs'; cache = root/'cache'
+                image = 'sha256:'+'b'*64; commit = 'a'*40
+                def read(command, **kwargs):
+                    if command == ['git','rev-parse','HEAD']: return commit+'\n'
+                    if command == ['git','status','--porcelain']: return ''
+                    if command == ['docker','image','inspect',image,'--format','{{.Architecture}}']: return 'amd64\n'
+                    self.fail(str(command))
+                def run(*command, **kwargs):
+                    if command[:2] == ('git','archive'): return
+                    (output/'resources.json').write_text('{}')
+                    if stage != 'guests':
+                        for suffix in ('tar','json'): (output/('transfer.'+suffix)).write_text('fixture')
+                argv = ['launcher','--stage',stage,'--architecture','amd64','--image',image,
+                        '--commit',commit,'--version','v2026.03.0','--output',str(output),
+                        '--inputs',str(inputs),'--cache',str(cache)]
+                with patch.object(sys,'argv',argv), patch.object(launcher,'native'), \
+                     patch.object(launcher.subprocess,'check_output',side_effect=read), \
+                     patch.object(launcher,'run',side_effect=run) as execute, \
+                     patch.dict('os.environ', {'GH_TOKEN':'never-forward','GITHUB_TOKEN':'never-forward'}):
+                    launcher.main()
+                command = execute.call_args.args
+                if stage == 'guests':
+                    project = command[command.index('--project-source')+1]
+                    self.assertTrue(project.endswith('/project-source.tar'))
+                    self.assertEqual(command, (sys.executable,'scripts/run-release-container.py',
+                        '--architecture','amd64','--image',image,'--output',str(output.resolve()),
+                        '--project-source',project,'--private',str(Path(project).parent/'fixture'),
+                        '--version','v2026.03.0','--commit',commit,'--qemu-accelerator','tcg',
+                        '--staged-inputs',str(inputs.resolve())))
+                    continue
+                privileges = {'iso':['--privileged'], 'integration':['--cap-add=SYS_ADMIN']}.get(stage, [])
+                prefix = ('docker','run','--rm',*privileges,'--cpus=4','--memory=8g',
+                          '--memory-swap=8g','--pids-limit=4096')
+                self.assertEqual(command[:len(prefix)], prefix)
+                tail = command[len(prefix):]
+                project_mount = tail[5]
+                self.assertTrue(project_mount.endswith('/project-source.tar:/project-source.tar:ro'))
+                self.assertEqual(tail, ('-v',str(output.resolve())+':/output',
+                    '-v',str(inputs.resolve())+':/inputs:ro','-v',project_mount,
+                    '-v',str(cache.resolve())+':/stage-cache','--entrypoint','python3',image,
+                    '-m','producer.staged',stage,'amd64','--commit',commit,'--version','v2026.03.0',
+                    '--cache','/stage-cache'))
+                self.assertNotIn('never-forward', str(command))
