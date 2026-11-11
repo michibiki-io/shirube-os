@@ -39,7 +39,52 @@ separate runtime-verifier/review head; it never relabels the retained source set
 as a new build. Production publication still requires the exact eligible merged
 commit and the complete coherent candidate contract below.
 
-`Test` is static validation. Its success does not establish image acceptance.
+`Test` runs only on pull-request `opened`, `synchronize`, `reopened` and
+`ready_for_review` events; new PR commits use `synchronize`. Direct main/other
+branch pushes, tags, closed PRs, manual dispatch and `merge_group` do not start
+Test. Job/check names and runners are unchanged. Release `resolve` still validates
+the exact merged source before expensive builds. Test success does not establish
+image acceptance. The native trial remains explicitly dispatched on feature
+branches with its existing cache behavior.
+
+Release caches are restore-only: compiler `cache-from` and library
+`actions/cache/restore` keep their keys, scopes and paths. There is no GHA export,
+cache save (including post/failure paths), or cache-write privilege override.
+Buildx setup uses `cache-binary: false` to prevent its implicit remote binary
+cache post-save, including on runners without preinstalled Buildx.
+Local reuse and package/source checks remain in place. Absent or evicted caches
+may require a cold build when a release is later run; feature-branch native-trial
+caches cannot be assumed to populate default-branch release caches.
+
+The 2026-11-11 rule-inspection snapshot records
+[main ruleset 26762240](https://github.com/michibiki-io/shirube-os/rules/26762240):
+PR approval (including Code Owner review and resolved review threads), deletion
+protection and non-fast-forward protection. No required-status-check or merge-queue
+rule was returned; classic branch protection reported `Branch not protected`.
+This snapshot is not a guarantee of future rules, and no repository settings
+were changed. If status-check or merge-queue requirements change,
+reassess the PR-only event mapping; Test currently has no `merge_group` coverage.
+
+`Test`はPRの`opened`、`synchronize`、`reopened`、`ready_for_review`だけで起動します。
+PRへの追加commitは`synchronize`で検証します。mainや他ブランチへの直接push、タグ、
+PRのclose、手動実行、`merge_group`では起動しません。ジョブ名とrunnerは維持します。
+リリースの`resolve`は、ビルド前に正確なマージ済みソースを引き続き検証します。
+Testの成功だけではイメージの合格を意味しません。native trialはfeature branchでの
+明示的な手動実行と既存のキャッシュ動作を維持します。
+
+リリースではコンパイラーとライブラリーのキャッシュを復元するだけで、キー、スコープ、
+パスを維持します。post処理や失敗時を含め、GHAへのexportや保存、書き込み権限の拡張は
+行いません。Buildx未導入のrunnerでも暗黙のpost保存が起きないよう、setupには
+`cache-binary: false`を指定します。ローカル再利用とパッケージ、ソースの検証は維持します。
+キャッシュの欠落や削除により、後日のリリース実行でコールドビルドが必要になる場合が
+あります。feature branchのnative trialによる既定ブランチのキャッシュ補充は保証しません。
+
+2026-11-11の確認記録では、[mainのruleset 26762240](https://github.com/michibiki-io/shirube-os/rules/26762240)に
+PR承認、Code Ownerレビュー、レビュースレッドの解決、削除禁止、non-fast-forward禁止が
+あります。required status checkとmerge queueのルールは返されず、従来のbranch protectionは
+`Branch not protected`でした。この記録は将来のルールを保証せず、設定も変更していません。
+status checkやmerge queueの要件が変わる場合は、PR専用の起動条件を再確認します。
+現状のTestは`merge_group`を検証しません。
 
 `producer.policy.eligible` accepts relevant PRs merged into main and their exact
 40-character merge commit. Unmerged PRs, docs-only changes and direct pushes are

@@ -74,6 +74,9 @@ jobs:
       - name: Create temporary compiler cache builder
         id: compiler-builder
         uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+        with:
+          # Setup can otherwise save a downloaded Buildx binary in its post hook.
+          cache-binary: false
       - name: Restore public compiler layers
         uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
         with:
@@ -85,7 +88,6 @@ jobs:
           build-args: |
             BASE=${{ matrix.architecture == 'amd64' && 'debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018' || 'debian@sha256:ec8534cda2cb30f29f44f23e135297af7a1496f2990fd8e4e84aa36b081a757a' }}
           cache-from: type=gha,scope=shirube-compiler-${{ matrix.architecture }}
-          cache-to: type=gha,scope=shirube-compiler-${{ matrix.architecture }},mode=max
       - name: Restore unsigned library artifact archives
         id: library-cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
@@ -98,32 +100,11 @@ jobs:
         env:
           BUILDX_BUILDER: ${{ steps.compiler-builder.outputs.name }}
           SHIRUBE_LIBRARY_CACHE_STORE: ${{ runner.temp }}/shirube-library-store
-          SHIRUBE_LIBRARY_CACHE_SHARED_OUTPUT: ${{ runner.temp }}/shirube-library-verified-${{ github.run_id }}-${{ github.run_attempt }}
           SHIRUBE_CANDIDATE_DIRECTORY: ${{ runner.temp }}/shirube-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.architecture }}
           SHIRUBE_ARCHITECTURE: ${{ matrix.architecture }}
           SHIRUBE_VERSION: ${{ needs.resolve.outputs.version }}
           SHIRUBE_SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
         run: bash scripts/build-release.sh
-      - name: Check curated library cache availability
-        id: cache-ready
-        if: always()
-        env:
-          VERIFIED_CACHE: ${{ runner.temp }}/shirube-library-verified-${{ github.run_id }}-${{ github.run_attempt }}
-          CACHE_STORE: ${{ runner.temp }}/shirube-library-store
-          RESTORED_BACKUP: ${{ runner.temp }}/shirube-library-restored-${{ github.run_id }}-${{ github.run_attempt }}
-        run: |
-          if [[ -d "$VERIFIED_CACHE" ]]; then
-            test ! -e "$RESTORED_BACKUP"
-            if [[ -e "$CACHE_STORE" ]]; then mv "$CACHE_STORE" "$RESTORED_BACKUP"; fi
-            mv "$VERIFIED_CACHE" "$CACHE_STORE"
-            echo 'ready=true' >> "$GITHUB_OUTPUT"
-          fi
-      - name: Save only verified unsigned library artifact archives
-        if: always() && steps.cache-ready.outputs.ready == 'true' && steps.library-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        with:
-          path: ${{ runner.temp }}/shirube-library-store
-          key: ${{ steps.library-cache.outputs.cache-primary-key }}
       - name: Validate and stage complete architecture candidate in unpublished draft
         env:
           GH_TOKEN: ${{ github.token }}
