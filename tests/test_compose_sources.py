@@ -56,6 +56,9 @@ class ComposeSourceTests(unittest.TestCase):
             self.assertEqual(receipt['source_license_clearance'],'PASS')
             self.assertEqual(receipt['release_clearance'],'NOT_CLEARED')
             self.assertEqual(receipt['binary_compilation'],'NOT_PERFORMED')
+            inventory=json.loads((root/'output/shirube-os-v2026.03.0-amd64-licenses.json').read_text())
+            refs=inventory['components'][0]['license_files']
+            self.assertTrue(any(r['member']=='distribution-notices/NOTICE' for r in refs))
             command.assert_not_called()
 
     def test_changed_package_version_cannot_inherit_cached_sources(self):

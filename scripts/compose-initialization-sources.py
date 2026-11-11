@@ -17,7 +17,7 @@ import tarfile
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from producer.bundles import bundle
-from producer.collect import approval_for_notice
+from producer.collect import approval_for_notice,distribution_notices
 from producer.policy import require_stream_version
 from producer.release import filename,verify_sources
 from producer.sources import sha256
@@ -95,6 +95,8 @@ def main():
     inputs=[(args.project_source,'project-source.tar','build_inputs'),
             (Path(__file__).resolve(),'compose-initialization-sources.py','sources'),
             (repo/'LICENSE','LICENSE','license_files')]
+    inputs.extend((path,'distribution-notices/'+member,'license_files')
+                  for path,member in distribution_notices(repo))
     changed_notices={}
     for name,component in components.items():
         notice=args.notices/name/'copyright'
@@ -144,6 +146,12 @@ def main():
         for child in component.get('bundled_components',[]):bind(child)
     for name,component in components.items():
         bind(component)
+        def original_member(member):
+            parts=Path(member).parts
+            return '/'.join(parts[2:]) if len(parts)>2 and parts[0]=='components' else member
+        retained={(original_member(r['member']),r['sha256']) for r in component['license_files']}
+        component['license_files'].extend(r for r in extra['license_files']
+            if r['member'].startswith('distribution-notices/') and (r['member'],r['sha256']) not in retained)
         component['sources'].extend(r for r in extra['sources'] if r['member'] in members.get(name,[]))
         component['license_files'].extend(r for r in extra['license_files'] if r['member'] in {
             'overlay-notices/'+name+'/copyright',changed_notices.get(name)})
