@@ -69,10 +69,14 @@ prunes shared Docker state or stops unrelated workloads.
 ## Reusing compiler and library builds
 
 The native Dockerfile separates the `toolchain` stage from the final producer
-code, guest integration and logo copies. The merged-release workflow exports
-public compiler layers to the architecture-specific GitHub Actions BuildKit cache.
+code, guest integration and logo copies. The merged-release workflow restores
+public compiler layers from the architecture-specific GitHub Actions BuildKit cache
+without exporting new layers. Buildx setup also disables its remote binary cache
+to prevent the action's implicit post-save; local tool-cache reuse is unchanged.
 Runtime containers, signing keys and guest enrollment state never enter those
-layers. Cache eviction can still cause a cold compiler build.
+layers. Absent or evicted caches can cause a cold build when a release is later run.
+Feature-branch native-trial caches cannot be assumed to populate default-branch
+release caches.
 
 Unsigned library jobs have independent minimal Docker contexts. Their cache keys
 bind the authenticated preferred-source tree, patches, compiler-stage inputs,
@@ -83,11 +87,21 @@ The artifact image contains only library DEBs, preferred sources, notices,
 recipes and hash receipts; compiler workspaces are not exported.
 
 Set `SHIRUBE_LIBRARY_CACHE_STORE` to opt into this path for a local ISO build.
-The release workflow configures it automatically and restores/saves only curated
-artifact image archives. Before import, image configuration and archive members
+The release workflow configures it automatically and restores curated artifact
+image archives without saving to GitHub Actions caches. Local compiler/artifact
+reuse remains available. Before import, image configuration and archive members
 are checked. Before consumption, the producer recomputes its current source and
 dependency identities and audits the actual packages. Changed inputs cause a
 fresh build; corrupt matching entries fail rather than weakening validation.
+
+マージ後のリリースは、アーキテクチャ別のコンパイラーレイヤーとライブラリーの
+アーカイブを復元します。GitHub Actionsキャッシュへのexportや保存は行いません。
+Buildx setupの暗黙のpost保存を防ぐため、そのリモートバイナリーキャッシュも無効にします。
+ローカルのtool-cache再利用は維持します。
+`SHIRUBE_LIBRARY_CACHE_STORE`によるローカル再利用と、入力やパッケージの検証は維持します。
+キャッシュが存在しない場合や削除された場合、後日のリリース実行でコールドビルドが
+必要になることがあります。feature branchのnative trialが既定ブランチのリリース用
+キャッシュを補充するとは限りません。
 
 Native AMD64 probes built two libraries, saved their artifact images, removed
 their local tags, and restored them with version/artwork/guest-code changes.
