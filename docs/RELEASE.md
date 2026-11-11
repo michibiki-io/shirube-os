@@ -61,8 +61,12 @@ component versions remain at their exact pinned upstream values.
 Unpublished drafts reserve their version even if their build or validation fails.
 A later eligible commit skips versions reserved by other commits and receives the
 next revision. Rerunning the same commit keeps its own reserved version unless
-a higher version has already been published: `resolve` rejects that superseded
-unpublished draft rather than publishing an older version after its successor.
+a higher normal (non-prerelease) version has already been published: `resolve`
+rejects that superseded unpublished draft rather than publishing an older version
+after its successor. `publish` checks again before changing aggregate assets, and
+`promote` checks both before validation and immediately before publication. These
+checks also cover **Re-run failed jobs**, which can reuse a successful `resolve`
+job's old outputs without running that job again.
 This does not change verification-only reruns of an already published release.
 Only published releases establish the release ancestry check. Draft reservations
 affect version allocation and baseline-downgrade checks; they do not establish

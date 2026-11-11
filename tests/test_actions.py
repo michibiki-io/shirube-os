@@ -150,7 +150,9 @@ class ActionsTests(unittest.TestCase):
                              [('release', 'upload')])
 
     def test_published_publish_and_promote_reruns_only_verify(self):
-        self.records = [dict(self.draft, draft=False)]
+        self.records = [dict(self.draft, draft=False),
+                        dict(self.draft, tag_name='v2026.03.1', draft=False,
+                             prerelease=False, target_commitish='c'*40)]
         for command in [actions.publish, actions.promote]:
             with self.subTest(command=command.__name__), patch.dict(os.environ, self.environment), \
                     patch.object(actions, 'identity'), patch.object(actions, 'verify_published') as verify, \
@@ -168,18 +170,56 @@ class ActionsTests(unittest.TestCase):
             actions.promote()
         validate.assert_called_once()
         calls = [call.args for call in gh.call_args_list]
-        self.assertEqual(calls[-2], ('api', f'repos/{actions.REPO}/actions/artifacts/123'))
+        self.assertEqual(calls[-3], ('api', f'repos/{actions.REPO}/actions/artifacts/123'))
+        self.assertEqual(calls[-2], ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases'))
         self.assertEqual(calls[-1][:5], ('release', 'edit', self.version, '--repo', actions.REPO))
         self.assertEqual(calls[-1][-1], '--draft=false')
-        self.assertEqual(len(calls), 4)
+        self.assertEqual(len(calls), 6)
+
+    def test_failed_job_publish_and_promote_retries_reject_superseded_draft_without_mutation(self):
+        for version in ['v2026.03.1', 'v2026.03.10', 'v2026.04.0']:
+            self.records = [self.draft, dict(self.draft, tag_name=version, draft=False,
+                                            prerelease=False, target_commitish='c'*40)]
+            for command in [actions.publish, actions.promote]:
+                with self.subTest(version=version, command=command.__name__), \
+                        patch.dict(os.environ, self.environment), patch.object(actions, 'identity'), \
+                        patch.object(actions, 'download') as download, \
+                        patch.object(actions, 'validate') as validate, \
+                        patch.object(actions, 'verify_published') as verify, \
+                        patch.object(actions, 'gh', side_effect=self.release_api) as gh:
+                    with self.assertRaisesRegex(ValueError, 'superseded by a newer published version'):
+                        command()
+                    download.assert_not_called()
+                    validate.assert_not_called()
+                    verify.assert_not_called()
+                    self.assertEqual([call.args for call in gh.call_args_list],
+                                     [('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases')]*3)
+
+    def test_promote_rechecks_supersession_at_the_publication_boundary(self):
+        def validate(*args):
+            self.records.append(dict(self.draft, tag_name='v2026.03.1', draft=False,
+                                     prerelease=False, target_commitish='c'*40))
+        with patch.dict(os.environ, self.environment), patch.object(actions, 'identity'), \
+                patch.object(actions, 'download'), patch.object(actions, 'validate', side_effect=validate), \
+                patch.object(actions, 'gh', side_effect=self.release_api) as gh:
+            with self.assertRaisesRegex(ValueError, 'superseded by a newer published version'):
+                actions.promote()
+        self.assertTrue(all(call.args[0] == 'api' and '--method' not in call.args
+                            for call in gh.call_args_list))
+        self.assertEqual(gh.call_args.args,
+                         ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases'))
 
     def test_uncertain_promote_reconciles_published_release_without_retry(self):
         for published in [True, False]:
             with self.subTest(published=published):
                 self.draft['draft'] = True
+                self.records = [self.draft]
                 def gh(*args, **kwargs):
                     if args[:2] == ('release', 'edit'):
                         self.draft['draft'] = not published
+                        if published:
+                            self.records.append(dict(self.draft, tag_name='v2026.03.1',
+                                                     prerelease=False, target_commitish='c'*40))
                         raise subprocess.CalledProcessError(1, ['gh', *args])
                     return self.release_api(*args, **kwargs)
                 with patch.dict(os.environ, self.environment), patch.object(actions, 'identity'), \
@@ -267,7 +307,7 @@ class ActionsTests(unittest.TestCase):
         with patch.dict(os.environ,{'SHIRUBE_VERSION':'v2026.03.0','SHIRUBE_SOURCE_COMMIT':'a'*40},clear=True),patch.object(actions,'identity'),patch.object(actions,'gh',side_effect=self.release_api) as gh:
             with self.assertRaises(ValueError):actions.promote()
             self.assertEqual([call.args for call in gh.call_args_list],
-                             [('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases')]*2)
+                             [('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases')]*3)
 
 
 class ReleaseReservationTests(unittest.TestCase):
@@ -276,6 +316,7 @@ class ReleaseReservationTests(unittest.TestCase):
         self.created = []
         self.ancestry_checks = []
         self.verified = []
+        self.release_queries = 0
 
     def resolve(self, commit):
         def gh(*args, **kwargs):
@@ -285,6 +326,7 @@ class ReleaseReservationTests(unittest.TestCase):
                 return [[{'sha': commit, 'commit': {'message': 'fix: recover candidate'}}]]
             if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases'):
                 # One release per page ensures allocation and retries use every page.
+                self.release_queries += 1
                 return [[dict(record)] for record in self.records]
             self.assertEqual(args[:2], ('release', 'create'))
             self.assertIn('--draft', args)
@@ -342,6 +384,7 @@ class ReleaseReservationTests(unittest.TestCase):
         self.assertEqual(self.created, [('v2026.03.0', 'a'*40), ('v2026.03.1', 'b'*40),
                                         ('v2026.03.2', 'c'*40)])
         self.assertFalse(self.ancestry_checks)
+        self.assertEqual(self.release_queries, 5)
 
     def test_highest_draft_revision_is_reserved_but_ancestry_uses_published_release(self):
         self.records = [

@@ -54,6 +54,15 @@ def require_draft(version, commit):
     return live
 
 
+def require_not_superseded(version, existing=None):
+    if existing is None:
+        existing = releases()
+    if any(not r['draft'] and not r['prerelease'] and
+           re.fullmatch(VERSION_PATTERN,r['tag_name']) and
+           version_parts(r['tag_name']) > version_parts(version) for r in existing):
+        raise ValueError('Draft release has been superseded by a newer published version')
+
+
 def download(version, destination):
     destination.mkdir(parents=True, exist_ok=False)
     gh('release', 'download', version, '--repo', REPO, '--dir', str(destination))
@@ -117,10 +126,7 @@ def resolve():
             verify_published(version, commit)
             emit({'eligible':'true','noop':'true','commit':commit,'version':version})
             return
-        if any(not r['draft'] and not r['prerelease'] and
-               re.fullmatch(VERSION_PATTERN,r['tag_name']) and
-               version_parts(r['tag_name']) > version_parts(version) for r in existing):
-            raise ValueError('Draft release has been superseded by a newer published version')
+        require_not_superseded(version, existing)
     else:
         published = [r for r in existing if not r['draft'] and not r['prerelease'] and
                      re.fullmatch(VERSION_PATTERN,r['tag_name'])]
@@ -196,6 +202,7 @@ def publish():
     if not live['draft']:
         verify_published(version,commit); return
     require_draft(version,commit)
+    require_not_superseded(version)
     with tempfile.TemporaryDirectory() as temporary:
         root=Path(temporary)/'candidates'; download(version,root)
         candidates=[json.loads((root/f'candidate-{a}.json').read_text()) for a in ['amd64','arm64']]
@@ -236,6 +243,7 @@ def promote():
     if not live['draft']:
         verify_published(version,commit);return
     require_draft(version,commit)
+    require_not_superseded(version)
     artifact_id=os.environ.get('SHIRUBE_ACTIONS_ARTIFACT_ID','')
     digest=os.environ.get('SHIRUBE_ACTIONS_ARTIFACT_DIGEST','')
     if not artifact_id.isdigit() or not re.fullmatch('[0-9a-f]{64}',digest):
@@ -251,6 +259,7 @@ def promote():
         notes.write_text((live.get('body') or '')+'\n\nVerified Actions artifact: '+
                          f'https://github.com/{REPO}/actions/runs/{artifact["workflow_run"]["id"]}/artifacts/{artifact_id}'+
                          '\nArtifact SHA256: `'+digest+'`\n')
+        require_not_superseded(version)
         try:
             gh('release','edit',version,'--repo',REPO,'--notes-file',str(notes),'--draft=false')
         except subprocess.CalledProcessError:
