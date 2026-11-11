@@ -13,13 +13,14 @@ from unittest.mock import patch
 
 
 class ComposeSourceTests(unittest.TestCase):
-    def prepare(self,root):
+    def prepare(self,root,batched=False):
         repo=Path(__file__).resolve().parents[1];lock=json.loads((repo/'source-lock.json').read_text())
         for name in ['base','additions','notices/alpha','overlays','output']:(root/name).mkdir(parents=True)
         notice=b'Copyright fixture; MIT permission fixture\n';(root/'notices/alpha/copyright').write_bytes(notice)
         records={key:[] for key in ['sources','license_files','build_inputs']}
         with tarfile.open(root/'base/source.tar.gz','w:gz') as archive:
             for member,data,category in [('source.c',b'fixture source\n','sources'),('copyright',notice,'license_files'),('recipe',b'fixture recipe\n','build_inputs')]:
+                if batched:member='components/original-source/'+member
                 header=tarfile.TarInfo(member);header.size=len(data);archive.addfile(header,io.BytesIO(data))
                 records[category].append({'asset':'source.tar.gz','member':member,'sha256':hashlib.sha256(data).hexdigest()})
         component={'name':'alpha','version':'1','architecture':'amd64','source_package':'alpha','source_version':'1',
@@ -61,6 +62,14 @@ class ComposeSourceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);script=self.prepare(root);(root/'packages').write_text('alpha\t2\tamd64\talpha\t2\n')
             with self.assertRaisesRegex(ValueError,'differ from installed packages'):self.invoke(root,script)
+
+    def test_batched_installed_notice_keeps_exact_original_binding(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);script=self.prepare(root,batched=True)
+            self.invoke(root,script)
+            inventory=json.loads((root/'output/shirube-os-v2026.03.0-amd64-licenses.json').read_text())
+            self.assertEqual(inventory['components'][0]['license_files'][0]['member'],
+                             'components/original-source/copyright')
 
     def test_changed_notice_cannot_inherit_cached_permission(self):
         with tempfile.TemporaryDirectory() as temporary:

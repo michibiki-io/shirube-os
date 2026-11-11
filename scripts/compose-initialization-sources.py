@@ -101,7 +101,13 @@ def main():
         if (notice.is_symlink() or not notice.is_file()
                 or not notice.resolve().is_relative_to(args.notices.resolve())):
             raise ValueError('Exact current installed notice required')
-        primary=[r for r in component['license_files'] if r['member']=='copyright']
+        # source_batches preserves each original namespace below
+        # components/<original-archive-stem>/. Nested upstream/distribution
+        # notices are separate grants, never the installed package notice.
+        def installed_notice(reference):
+            parts=Path(reference['member']).parts
+            return parts==('copyright',) or (len(parts)==3 and parts[0]=='components' and parts[2]=='copyright')
+        primary=[r for r in component['license_files'] if installed_notice(r)]
         if len(primary)!=1:raise ValueError('One cached installed notice binding required')
         current_notice=component.get('installed_notice',primary[0])
         if current_notice not in component['license_files']:raise ValueError('Cached installed notice binding differs')
