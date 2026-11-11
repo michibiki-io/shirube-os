@@ -10,7 +10,14 @@ controller is `producer/netbird.py`; intended installation names are
 `/usr/libexec/shirube/netbird_control.py` for the imported module and
 `/usr/libexec/shirube/netbird-control` for its executable entry point. The pinned
 client belongs at `/usr/libexec/shirube/netbird`. The integration package generates templates/cache with the pinned Stream
-compiler and registers its configuration handler. Native ARM64 diagnostic QCOW2 guest checks have passed the lifecycle below; AMD64 and both-format acceptance remain incomplete.
+compiler and registers its configuration handler. Historically, the initial
+native ARM64 diagnostic QCOW2 guest checks passed the lifecycle below while AMD64
+and both-format acceptance were incomplete. The retained candidates subsequently
+passed console and NetBird lifecycles on both architectures and both disk formats;
+see [retained candidate evidence](VALIDATION.md#retained-candidate-evidence-2026-11-11)
+and the exact-input runtime records in [PR #2](https://github.com/michibiki-io/shirube-os/pull/2).
+These results belong to the recorded candidate and verifier commits, not a fresh
+build at the later review head, and do not establish live OCI acceptance.
 
 Use the OS configuration CLI for persistent service settings:
 

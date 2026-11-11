@@ -652,17 +652,19 @@ configure、build、install を実行します。Debian バイナリの梱包で
 
 ## Hosted ISO/source resource trial
 
-`Native hosted ISO source trial` runs on native `ubuntu-24.04` and
-`ubuntu-24.04-arm` runners. It starts manually on a feature branch, or when that
-workflow file changes on a feature branch. Ordinary implementation pushes do
-not repeatedly start this expensive trial. Compiler tool layers use the existing
+The `stage: iso` mode of the manual `Native hosted candidate trial` described in
+[ISO-first execution](#iso-first-execution) runs on native `ubuntu-24.04` and
+`ubuntu-24.04-arm` runners. It starts only through `workflow_dispatch` on a feature
+branch; neither workflow changes nor ordinary pushes trigger it automatically.
+Select `stage: release` explicitly for the complete local candidate gates.
+Compiler tool layers use the existing
 BuildKit cache; each native-library artifact store starts empty. The existing
 ISO producer builds from the exact clean commit with four CPUs and 8 GiB memory,
 then all corresponding sources are restored against the actual project input.
 Only sanitized JSON measurements are uploaded. ISO, sources and native-library
 cache contents remain in the disposable job. This does not publish a release.
 
-The report records the exact commit, ISO hash, source-restoration result, elapsed
+The ISO-stage report records the exact commit, ISO hash, source-restoration result, elapsed
 time and 15-second filesystem free-space samples. The sampled growth is a lower
 bound on storage use, not an exact peak. Timing excludes compiler-image
 preparation and all disk/guest tests. A passing ISO/source phase does not establish
@@ -673,16 +675,18 @@ implement the separately proposed package-build parallelization.
 
 ## 公開 runner での ISO・ソース作成の実測
 
-`Native hosted ISO source trial` は、ネイティブの `ubuntu-24.04` と
-`ubuntu-24.04-arm` で動作します。feature branch での手動実行、またはその workflow
-ファイルの変更時に開始し、通常の実装修正の push ごとには繰り返し実行しません。
+[ISO-first execution](#iso-first-execution)で説明した手動の
+`Native hosted candidate trial`の`stage: iso`は、ネイティブの`ubuntu-24.04`と
+`ubuntu-24.04-arm`で動作します。feature branchでの`workflow_dispatch`だけで開始し、
+workflowの変更や通常のpushでは自動実行しません。候補全体のローカル検証を行う場合は
+`stage: release`を明示的に選択します。
 toolchain の Docker layer は既存の BuildKit cache を使い、ネイティブライブラリの
 キャッシュは空から開始します。既存の ISO 作成処理を、変更のない正確な commit、
 CPU 4・メモリ 8 GiB で実行し、実際のプロジェクト入力と対応する全ソースを復元します。
 アップロードするのは環境固有情報を含まない JSON の測定記録だけです。ISO・ソース・
 ライブラリキャッシュは一時的な job 内に保持し、リリースを公開しません。
 
-記録には commit、ISO のハッシュ、ソース復元結果、所要時間、15秒ごとの空き容量を
+ISO工程の記録には commit、ISO のハッシュ、ソース復元結果、所要時間、15秒ごとの空き容量を
 残します。サンプル間の最大使用量は捕捉できないため、容量の増加量は実ピークの
 下限です。所要時間には toolchain image の準備とディスク・ゲスト試験を含みません。
 この工程の合格だけで、リリース全体の容量・時間の成立やライセンス不合格の解消とは

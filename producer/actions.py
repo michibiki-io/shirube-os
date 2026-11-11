@@ -134,7 +134,12 @@ def resolve():
             raise ValueError('Incomplete individual PR commit metadata; refusing PR-title classification')
         commits=[{'sha':item['sha'],'subject':item['commit']['message'].splitlines()[0],
                   'message':item['commit']['message']} for item in raw_commits]
-        version = next_version(previous['tag_name'] if previous else None,stream_version)
+        # Failed candidates keep their reserved versions. A later merged commit
+        # must advance past those drafts without changing their ownership.
+        reserved = [r['tag_name'] for r in existing if r['draft'] and
+                    re.fullmatch(VERSION_PATTERN,r['tag_name'])]
+        latest = max([r['tag_name'] for r in published]+reserved,key=version_parts,default=None)
+        version = next_version(latest,stream_version)
         tag_exists=subprocess.run(['git','show-ref','--verify','--quiet','refs/tags/'+version]).returncode==0
         if tag_exists and git('rev-parse',version+'^{commit}')!=commit:
             raise ValueError('Computed version already points to a different source commit')

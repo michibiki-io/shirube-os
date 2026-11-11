@@ -58,6 +58,12 @@ scheme, not strict SemVer. Tags, release titles, ISO/disk/source names, Shirube 
 versions, manifests and OS version output use the same resolved value. Third-party
 component versions remain at their exact pinned upstream values.
 
+Unpublished drafts reserve their version even if their build or validation fails.
+A later eligible commit skips versions reserved by other commits and receives the
+next revision; rerunning the same commit keeps its own reserved version. Only
+published releases establish the release ancestry check. Draft reservations
+affect version allocation, not ancestry or permission to publish.
+
 Conventional Commit subjects/bodies and SHAs form release notes, including
 breaking-change notices. Their type does not change Stream's year/month. PR
 titles do not determine versions or substitute for individual commits. GitHub
@@ -129,7 +135,16 @@ Release manifests and per-architecture evidence bind the explicitly selected
 `qemu_accelerator` (`kvm` or validated `tcg`). A missing or differing value fails
 validation. Architecture-specific virtualization/runtime/resource variables are
 documented in [BUILD.md](BUILD.md); resource or virtualization failure does not
-choose another runner or publish a partial result. ARM64 TCG is not yet accepted.
+choose another runner or publish a partial result. Policy accepts explicit TCG
+for both architectures, and the release workflow defaults to TCG for both hosted
+runner classes. This is not runtime acceptance: historical ARM64 TCG component
+passes and the retained ARM64 native-KVM candidate are distinct evidence.
+Complete hosted-candidate resource/time and runtime acceptance remain separately
+gated; see [BUILD.md](BUILD.md#explicit-release-virtualization-and-container-runtime)
+and [retained candidate evidence](VALIDATION.md#retained-candidate-evidence-2026-11-11).
 
 manifestと検証記録の仮想化方式も照合します。不足・不一致は公開を拒否し、資源や
-仮想化の不足を別runnerへの自動切替で隠しません。ARM64のTCGは未合格です。
+仮想化の不足を別runnerへの自動切替で隠しません。policyは両アーキテクチャの明示的な
+TCGを受け付け、hosted runnerの既定値もTCGです。ただし設定の受入れは実行試験の
+合格ではありません。過去のARM64 TCGコンポーネント試験と、保持候補のnative KVM
+試験は区別し、hosted候補全体の容量・時間・ランタイムの合格は別途必要です。

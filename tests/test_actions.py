@@ -268,3 +268,112 @@ class ActionsTests(unittest.TestCase):
             with self.assertRaises(ValueError):actions.promote()
             self.assertEqual([call.args for call in gh.call_args_list],
                              [('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases')]*2)
+
+
+class ReleaseReservationTests(unittest.TestCase):
+    def setUp(self):
+        self.records = []
+        self.created = []
+        self.ancestry_checks = []
+        self.verified = []
+
+    def resolve(self, commit):
+        def gh(*args, **kwargs):
+            if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/pulls/1/files'):
+                return [[{'filename': 'producer/pipeline.py'}]]
+            if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/pulls/1/commits'):
+                return [[{'sha': commit, 'commit': {'message': 'fix: recover candidate'}}]]
+            if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases'):
+                # One release per page ensures allocation and retries use every page.
+                return [[dict(record)] for record in self.records]
+            self.assertEqual(args[:2], ('release', 'create'))
+            self.assertIn('--draft', args)
+            self.assertEqual(args[args.index('--target')+1], commit)
+            version = args[2]
+            self.assertNotIn(version, [record['tag_name'] for record in self.records])
+            self.created.append((version, commit))
+            self.records.append({'draft': True, 'prerelease': False,
+                                 'tag_name': version, 'target_commitish': commit})
+
+        def git(*args):
+            self.assertEqual(args[0], 'rev-parse')
+            for record in self.records:
+                if args[1] == record['tag_name']+'^{commit}' and not record['draft']:
+                    return record['target_commitish']
+            self.fail(f'Unexpected tag lookup (drafts have no tag): {args}')
+
+        def run(args, **kwargs):
+            if args[:3] == ['git', 'show-ref', '--verify']:
+                return subprocess.CompletedProcess(args, 1)
+            self.assertEqual(args[:3], ['git', 'merge-base', '--is-ancestor'])
+            self.assertTrue(kwargs['check'])
+            self.ancestry_checks.append(tuple(args[3:]))
+            return subprocess.CompletedProcess(args, 0)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            event = Path(temporary)/'event.json'
+            event.write_text(json.dumps({'action': 'closed', 'number': 1, 'pull_request': {
+                'merged': True, 'changed_files': 1, 'commits': 1,
+                'base': {'ref': 'main'}, 'merge_commit_sha': commit}}))
+            with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(event),
+                                        'GITHUB_EVENT_NAME': 'pull_request'}), \
+                    patch.object(actions, 'identity'), patch.object(actions, 'emit') as emit, \
+                    patch.object(actions, 'gh', side_effect=gh), \
+                    patch.object(actions, 'git', side_effect=git), \
+                    patch.object(actions.subprocess, 'run', side_effect=run), \
+                    patch.object(actions, 'verify_published',
+                                 side_effect=lambda version, target: self.verified.append((version, target))):
+                actions.resolve()
+                return emit.call_args.args[0]
+
+    def test_failed_draft_reservation_advances_next_merge_and_preserves_retries(self):
+        # A fails after reservation, before a tag or any published release exists.
+        self.assertEqual(self.resolve('a'*40)['version'], 'v2026.03.0')
+        reserved_a = dict(self.records[0])
+        self.assertEqual(self.resolve('b'*40)['version'], 'v2026.03.1')
+        reserved_b = dict(self.records[1])
+        # A third commit sees both paginated reservations, not just the first.
+        self.assertEqual(self.resolve('c'*40)['version'], 'v2026.03.2')
+        for commit, version in [('a'*40, 'v2026.03.0'), ('b'*40, 'v2026.03.1')]:
+            retry = self.resolve(commit)
+            self.assertEqual(retry['version'], version)
+            self.assertEqual(retry['noop'], 'false')
+        self.assertEqual(self.records[:2], [reserved_a, reserved_b])
+        self.assertEqual(self.created, [('v2026.03.0', 'a'*40), ('v2026.03.1', 'b'*40),
+                                        ('v2026.03.2', 'c'*40)])
+        self.assertFalse(self.ancestry_checks)
+
+    def test_highest_draft_revision_is_reserved_but_ancestry_uses_published_release(self):
+        self.records = [
+            {'draft': False, 'prerelease': False, 'tag_name': 'v2026.03.3', 'target_commitish': 'a'*40},
+            {'draft': True, 'prerelease': False, 'tag_name': 'v2026.03.9', 'target_commitish': 'b'*40},
+            {'draft': True, 'prerelease': True, 'tag_name': 'v2026.03.10', 'target_commitish': 'c'*40}]
+        self.assertEqual(self.resolve('d'*40)['version'], 'v2026.03.11')
+        self.assertEqual(self.ancestry_checks, [('a'*40, 'd'*40)])
+
+    def test_older_baseline_reservations_allow_new_stream_revision_zero(self):
+        self.records = [
+            {'draft': False, 'prerelease': False, 'tag_name': 'v2026.02.3', 'target_commitish': 'a'*40},
+            {'draft': True, 'prerelease': False, 'tag_name': 'v2026.02.4', 'target_commitish': 'b'*40}]
+        self.assertEqual(self.resolve('c'*40)['version'], 'v2026.03.0')
+        self.assertEqual(self.ancestry_checks, [('a'*40, 'c'*40)])
+
+    def test_newer_published_or_reserved_baseline_rejects_downgrade(self):
+        for draft in [False, True]:
+            with self.subTest(draft=draft):
+                self.records = [{'draft': draft, 'prerelease': False,
+                                 'tag_name': 'v2026.04.0', 'target_commitish': 'a'*40}]
+                with self.assertRaisesRegex(ValueError, 'baseline downgrade'):
+                    self.resolve('b'*40)
+                self.assertFalse(self.created)
+
+    def test_published_rerun_remains_noop_with_other_commit_draft_reservations(self):
+        self.records = [
+            {'draft': False, 'prerelease': False, 'tag_name': 'v2026.03.0', 'target_commitish': 'a'*40},
+            {'draft': True, 'prerelease': False, 'tag_name': 'v2026.03.1', 'target_commitish': 'b'*40}]
+        original = [dict(record) for record in self.records]
+        result = self.resolve('a'*40)
+        self.assertEqual((result['version'], result['noop']), ('v2026.03.0', 'true'))
+        self.assertEqual(self.verified, [('v2026.03.0', 'a'*40)])
+        self.assertEqual(self.records, original)
+        self.assertFalse(self.created)

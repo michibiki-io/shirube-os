@@ -94,9 +94,14 @@ then verifies the actual member bytes. Oversized components fail before upload;
 partition components into multiple independently verified archives below 2 GiB.
 `producer.release.verify_sources` checks inventory member hashes and exact shipped
 package coverage. The collector resolves the exact shipped Debian source versions and custom
-component sources. Final per-component license audit, complete dependency
-closure and reconstruction demonstration remain outstanding. Unknown entries
-in `license-audit.json` remain denied.
+component sources. Historically, before the retained candidates, final
+per-component license audit, complete dependency closure and reconstruction
+demonstration were outstanding. The retained source snapshot `0e91603` now has
+component permission clearance and complete source-set restoration PASS; see
+[retained candidate evidence](VALIDATION.md#retained-candidate-evidence-2026-11-11)
+and the exact-input records in [PR #2](https://github.com/michibiki-io/shirube-os/pull/2).
+Source restoration does not claim binary-identical OS reconstruction or a fresh
+build at the later review head. Unknown entries in `license-audit.json` remain denied.
 
 The first exact-source audit records cover ipaddrcheck 1.4 and hvinfo 1.2.0,
 under GPL-2.0-or-later. Each record binds the authenticated Stream archive and
