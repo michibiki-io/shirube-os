@@ -93,6 +93,35 @@ def emit(values):
             output.write(f'{key}={encoded}\n')
 
 
+def individual_commits(pr):
+    """Collect complete PR messages using the event's immutable comparison."""
+    base = (pr.get('base') or {}).get('sha')
+    head = (pr.get('head') or {}).get('sha')
+    expected = pr.get('commits')
+    if any(not isinstance(sha, str) or not re.fullmatch('[0-9a-f]{40}', sha)
+           for sha in (base, head)):
+        raise ValueError('Individual PR commit metadata requires full base/head SHAs')
+    if type(expected) is not int or expected <= 0:
+        raise ValueError('Individual PR commit metadata requires a positive commit count')
+    # PR commit listing is capped at 250; comparison pagination retains all
+    # commits, including original messages after squash or rebase merges.
+    pages = gh('api', '--paginate', '--slurp',
+               f'repos/{REPO}/compare/{base}...{head}?per_page=100', json_result=True)
+    raw_commits = []
+    for page in pages:
+        if page.get('base_commit', {}).get('sha') != base:
+            raise ValueError('PR comparison base does not match the event')
+        total = page.get('total_commits')
+        if type(total) is not int or total != expected:
+            raise ValueError('PR comparison total does not match the event commit count')
+        raw_commits.extend(page['commits'])
+    shas = [item['sha'] for item in raw_commits]
+    if len(shas) != expected or len(set(shas)) != expected or head not in shas:
+        raise ValueError('Incomplete or duplicate individual PR commit metadata')
+    return [{'sha': item['sha'], 'subject': item['commit']['message'].splitlines()[0],
+             'message': item['commit']['message']} for item in raw_commits]
+
+
 def resolve():
     event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
     pr = event.get('pull_request', {})
@@ -138,12 +167,7 @@ def resolve():
             revision = previous_commit+'..'+commit
         else:
             revision = commit
-        pages=gh('api','--paginate','--slurp',f'repos/{REPO}/pulls/{number}/commits',json_result=True)
-        raw_commits=[item for page in pages for item in page]
-        if not raw_commits or (isinstance(pr.get('commits'),int) and len(raw_commits)!=pr['commits']):
-            raise ValueError('Incomplete individual PR commit metadata; refusing PR-title classification')
-        commits=[{'sha':item['sha'],'subject':item['commit']['message'].splitlines()[0],
-                  'message':item['commit']['message']} for item in raw_commits]
+        commits = individual_commits(pr)
         # Failed candidates keep their reserved versions. A later merged commit
         # must advance past those drafts without changing their ownership.
         reserved = [r['tag_name'] for r in existing if r['draft'] and
