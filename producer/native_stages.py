@@ -205,6 +205,8 @@ def finish_compile(stage, sources, packages, public_output, architecture):
         certs = Path('/build-private/kernel/source/certs')
         shutil.copy2(certs / 'signing_key.pem', signing / 'key.pem'); (signing / 'key.pem').chmod(0o600)
         shutil.copy2(certs / 'signing_key.x509', signing / 'cert.der')
+    if EXTRAS[stage]:
+        run('apt-get', '-o', 'APT::Update::Error-Mode=any', 'update')
     for job in EXTRAS[stage]:
         print('STAGE: native runtime ' + job, flush=True)
         run('python3', str(root / 'extras.py'), job)

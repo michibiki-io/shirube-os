@@ -121,6 +121,26 @@ feasibility. Every deadline above is a provisional bound below 360 minutes;
 
 ## Transfer, sources and cache contracts
 
+Issue [#13](https://github.com/michibiki-io/shirube-os/issues/13) adds one
+`apt-get -o APT::Update::Error-Mode=any update` at the `finish_compile()`
+extras boundary for each of `vpp`, `kea`, `salt`, `runtime` and `kernel`, before
+the first extra recipe. The producer image removes APT lists, so isolated
+extras must refresh the configured authenticated fixed-snapshot indexes before
+installing dependencies. Kernel reaches this boundary after its catalog job;
+the existing `package.sh` updates remain unchanged and are outside this count.
+Any refresh failure, including a partial index failure, stops all extra recipes
+and successful export. Catalog-only `native` and verified stage-cache hits gain
+no refresh; cache hits continue to bypass compilation. Pinned inputs, compiler
+and artifact identities, source/license gates and release cache-write restrictions
+remain unchanged.
+
+`python3 -m unittest tests.test_extra_stage_apt -v` passes four synthetic tests
+(42 stage/architecture/failure subcases), exercising the real `finish_compile()`
+and real stage-cache dispatch with mocked compilation/external effects. No real
+APT or package build runs. These regressions do not establish hosted acceptance:
+current-code compilation and required release gates on both architectures remain
+**NOT_RUN** for this correction; the earlier failed Release run cannot validate it.
+
 `producer.stage_artifacts` binds a reusable content scope (architecture, locked
 inputs, recipes/patches, compiler fingerprint and predecessor content hashes) to
 current resolved commit/version in a separate transfer receipt. Cached content
