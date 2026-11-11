@@ -3,9 +3,11 @@
 `.github/workflows/release.yml` runs on `pull_request_target` **closed/merged**
 events for main. The merged-only guard and exact base-repository merge SHA are
 mandatory: an unmerged fork head is never checked out with publishing permissions.
-Checkout v7's explicit opt-in applies only inside these merged-only jobs; ordinary
-PR `Test` uses read-only permissions and no publishing secrets. Action SHAs are
-pinned. Self-hosted runners must support their Node 24 runtime.
+Checkout's explicit opt-in is used with frozen input commits. Compiler and
+nonpublishing validation jobs have read-only contents permissions and no publishing
+secrets. Action SHAs are pinned; the supported release path fixes native hosted
+labels. Both release and intentional validation use the [same staged candidate
+workflow](STAGED-BUILD.md), whose hosted acceptance remains NOT_RUN.
 
 Release runs are serialized with `queue: max`, retaining up to 100 pending runs
 instead of replacing a previous pending merge. GitHub's queue limit still applies;

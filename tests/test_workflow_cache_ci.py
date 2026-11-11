@@ -28,58 +28,133 @@ def mappings(value):
 
 class WorkflowCacheCITests(unittest.TestCase):
     def setUp(self):
-        self.release = workflow('release.yml')
-        self.build_steps = self.release['jobs']['build']['steps']
+        self.release=workflow('release.yml')
+        self.staged=workflow('staged-candidate.yml')
+        self.validation=workflow('validate-staged.yml')
 
-    def test_release_retains_compiler_and_library_restores(self):
-        compiler, = [s for s in self.build_steps
-                     if s.get('uses', '').startswith('docker/build-push-action@')]
-        self.assertEqual(compiler['with']['cache-from'], COMPILER_SCOPE)
-        self.assertEqual(compiler['with']['load'], 'true')
-        self.assertEqual(compiler['with']['push'], 'false')
-        library, = [s for s in self.build_steps if s.get('id') == 'library-cache']
-        self.assertEqual(library['uses'], CACHE_ACTION)
-        self.assertEqual(library['with'], {
-            'path': '${{ runner.temp }}/shirube-library-store',
-            'key': "shirube-libraries-v1-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/library_cache.py', 'producer/resources.py') }}",
-            'restore-keys': 'shirube-libraries-v1-${{ matrix.architecture }}-\n',
-        })
-        build, = [s for s in self.build_steps
-                  if s.get('run') == 'bash scripts/build-release.sh']
-        self.assertEqual(build['env']['SHIRUBE_LIBRARY_CACHE_STORE'], library['with']['path'])
-        self.assertEqual(build['env']['BUILDX_BUILDER'], '${{ steps.compiler-builder.outputs.name }}')
+    def test_release_and_nonpublishing_validation_share_the_same_path(self):
+        release=self.release['jobs']['build'];validation=self.validation['jobs']['validate']
+        self.assertEqual(release['uses'],'./.github/workflows/staged-candidate.yml')
+        self.assertEqual(release['uses'],validation['uses'])
+        self.assertEqual(release['permissions'],{'contents':'read'})
+        self.assertEqual(validation['permissions'],{'contents':'read'})
+        self.assertEqual(set(self.validation['on']),{'workflow_dispatch','pull_request'})
+        self.assertEqual(self.validation['on']['pull_request']['types'],['labeled'])
+        self.assertIn("github.event.label.name == 'validate-staged'",self.validation['jobs']['resolve']['if'])
+        for node in mappings(self.validation):
+            self.assertNotIn('GH_TOKEN',node)
+            self.assertNotIn('secrets',node)
+        for node in mappings(self.staged):
+            self.assertNotIn('GH_TOKEN',node)
+            self.assertNotIn('secrets',node)
+            self.assertNotEqual(node.get('contents'),'write')
 
-    def test_release_has_no_cache_export_save_or_write_override(self):
-        for node in mappings(self.release):
-            with self.subTest(node=node.get('name', node.get('id', 'mapping'))):
-                self.assertNotIn('cache-to', node)
-                self.assertNotIn('cache-mode', node)
-                # Combined actions/cache has a post-save hook; allow restore only.
-                action = node.get('uses', '').split('@')[0].lower()
-                if action == 'actions/cache' or action.startswith('actions/cache/'):
-                    self.assertEqual(action, 'actions/cache/restore')
-        self.assertEqual(self.release['permissions'], {'contents': 'read'})
-        self.assertEqual({k: v['permissions'] for k, v in self.release['jobs'].items()}, {
-            'resolve': {'contents': 'write', 'pull-requests': 'read'},
-            'build': {'contents': 'write', 'actions': 'read'},
-            'publish': {'contents': 'write', 'actions': 'read'},
-        })
+    def test_heavy_stages_and_real_dependencies_have_separate_jobs(self):
+        from producer.staged import DEPENDENCIES
+        jobs=self.staged['jobs']
+        self.assertEqual(set(jobs),{'compiler',*DEPENDENCIES})
+        for stage,dependencies in DEPENDENCIES.items():
+            job=jobs[stage]
+            self.assertEqual(set(job['needs']),{'compiler',*dependencies})
+            self.assertLess(int(job['timeout-minutes']),360)
+            self.assertEqual(job['strategy']['matrix']['include'],[
+                {'architecture':'amd64','runner':'ubuntu-24.04'},
+                {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
+            commands=[step['run'] for step in job['steps'] if 'run' in step]
+            self.assertEqual(len(commands),2)
+            self.assertIn('producer.compiler_artifact load',commands[0])
+            self.assertIn('scripts/run-native-stage.py',commands[1])
+            self.assertNotIn('scripts/build-release.sh',commands[1])
+            downloads=[step['with']['name'] for step in job['steps']
+                       if step.get('uses','').startswith('actions/download-artifact@')]
+            self.assertEqual(set(downloads),{'shirube-compiler-${{ matrix.architecture }}', *{'shirube-stage-${{ matrix.architecture }}-'+d for d in dependencies}})
 
-    def test_release_disables_implicit_buildx_binary_cache_saves(self):
-        # setup-buildx's toolkit can save downloaded binaries in its post hook,
-        # including on custom runners where Buildx was not preinstalled.
-        setups = [node for node in mappings(self.release)
-                  if node.get('uses', '').startswith('docker/setup-buildx-action@')]
-        self.assertTrue(setups)
-        for setup in setups:
-            self.assertEqual(setup.get('with', {}).get('cache-binary'), 'false')
+    def test_only_unsigned_key_free_compilation_payloads_are_cached(self):
+        jobs=self.staged['jobs']
+        for stage,job in jobs.items():
+            nodes=list(mappings(job))
+            restores=[n for n in nodes if n.get('uses','').startswith('actions/cache/restore@')]
+            self.assertEqual(bool(restores),stage in {'native','vpp','kea','salt','runtime'})
+            for restore in restores:
+                self.assertEqual(restore['if'],"inputs.cache-mode == 'warm'")
+                self.assertNotIn('restore-keys',restore['with'])
+                key=restore['with']['key']
+                self.assertIn('hashFiles',key)
+                self.assertNotIn('inputs.commit',key)
+                self.assertNotIn('github.sha',key)
+            for step in job['steps']:
+                if step.get('uses','').startswith('docker/setup-buildx-action@'):
+                    self.assertEqual(step['with']['cache-binary'],'false')
+                if step.get('uses','').startswith('docker/build-push-action@'):
+                    self.assertEqual(step['with']['push'],'false')
+                    self.assertEqual(stage,'compiler')
+        compiler=[s for s in jobs['compiler']['steps'] if s.get('id')=='image'][0]['with']
+        self.assertEqual(compiler['no-cache'],"${{ inputs.cache-mode == 'cold' }}")
+        self.assertNotIn('github.run_id',compiler['cache-to'])
+        self.assertIn('hashFiles',compiler['cache-to'])
+        self.assertTrue(compiler['cache-from'].startswith("${{ inputs.cache-mode == 'warm' &&"))
+        self.assertTrue(compiler['cache-from'].endswith("|| '' }}"))
 
-    def test_release_has_no_unused_shared_save_setup(self):
-        text = (WORKFLOWS / 'release.yml').read_text()
-        for token in ('SHIRUBE_LIBRARY_CACHE_SHARED_OUTPUT', 'cache-ready',
-                      'VERIFIED_CACHE', 'RESTORED_BACKUP', 'shirube-library-verified-',
-                      'shirube-library-restored-', 'cache-primary-key'):
-            self.assertNotIn(token, text)
+    def test_cold_seeds_warm_without_prior_cache_or_consumer_builds(self):
+        jobs=self.staged['jobs']
+        producer=jobs['compiler']['steps']
+        builds=[s for s in producer if s.get('uses','').startswith('docker/build-push-action@')]
+        self.assertEqual(len(builds),1)
+        from producer.compiler_artifact import BASES
+        self.assertTrue(all(base in builds[0]['with']['build-args'] for base in BASES.values()))
+        settings=builds[0]['with']
+        self.assertNotIn('cache-mode',settings['cache-to'])
+        # The same input patterns feed restore/save; neither run ID nor commit
+        # attribution changes the content key for a subsequent warm run.
+        self.assertEqual(settings['cache-from'].split('hashFiles(',1)[1].split('))',1)[0],
+                         settings['cache-to'].split('hashFiles(',1)[1].split(')',1)[0])
+        self.assertTrue(any('producer.compiler_artifact export' in s.get('run','') for s in producer))
+        for name,job in jobs.items():
+            if name=='compiler':continue
+            steps=job['steps']
+            self.assertFalse(any(s.get('uses','').startswith(('docker/build-push-action@',
+                                                                          'docker/setup-buildx-action@')) for s in steps))
+            download=next(s for s in steps if s.get('with',{}).get('name')=='shirube-compiler-${{ matrix.architecture }}')
+            self.assertEqual(download['uses'],'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093')
+            self.assertNotIn('run-id',download['with'])  # download is scoped to this run
+            loader=next(s for s in steps if s.get('id')=='image')
+            execute=next(s for s in steps if 'scripts/run-native-stage.py' in s.get('run',''))
+            self.assertLess(steps.index(download),steps.index(loader))
+            self.assertLess(steps.index(loader),steps.index(execute))
+            self.assertEqual(loader['env']['RUN_ID'],'${{ github.run_id }}')
+            self.assertNotIn('continue-on-error',loader)
+            saves=[s for s in steps if s.get('uses','').startswith('actions/cache/save@')]
+            restores=[s for s in steps if s.get('uses','').startswith('actions/cache/restore@')]
+            self.assertEqual(len(saves),len(restores))
+            for save,restore in zip(saves,restores):
+                self.assertEqual(restore['if'],"inputs.cache-mode == 'warm'")
+                self.assertEqual(save['if'],"success() && steps.cache.outputs.cache-hit != 'true'")
+                self.assertEqual(save['with'],restore['with'])
+                self.assertIn('--cache',execute['run'])
+            if name=='kernel':
+                self.assertFalse(saves)
+                self.assertNotIn('--cache',execute['run'])
+
+    def test_publication_keeps_two_architecture_and_uploaded_artifact_gates(self):
+        self.assertEqual(self.release['on'],{'pull_request_target':{'types':['closed'],'branches':['main']}})
+        jobs=self.release['jobs']
+        self.assertEqual(jobs['resolve']['if'],'github.event.pull_request.merged == true')
+        self.assertEqual(jobs['stage']['strategy']['matrix']['architecture'],['amd64','arm64'])
+        self.assertEqual(jobs['stage']['needs'],['resolve','build'])
+        self.assertEqual(jobs['stage']['steps'][-1]['run'],'python3 -m producer.actions stage')
+        publish=jobs['publish']
+        self.assertEqual(publish['needs'],['resolve','build','stage'])
+        self.assertIn("needs.build.result == 'success'",publish['if'])
+        self.assertIn("needs.stage.result == 'success'",publish['if'])
+        verify,upload,promote=publish['steps'][1:]
+        self.assertEqual(verify['run'],'python3 -m producer.actions publish')
+        self.assertEqual(upload['id'],'assets')
+        self.assertEqual(upload['with']['if-no-files-found'],'error')
+        self.assertEqual(promote['run'],'python3 -m producer.actions promote')
+        self.assertEqual(self.release['concurrency'],{'group':'shirube-os-release','queue':'max','cancel-in-progress':'false'})
+        for job in jobs.values():
+            if 'runs-on' in job:self.assertEqual(job['runs-on'],'ubuntu-24.04')
+            if 'timeout-minutes' in job:self.assertLess(int(job['timeout-minutes']),360)
 
     def test_test_events_names_permissions_and_runners(self):
         test = workflow('test.yml')
@@ -103,46 +178,6 @@ class WorkflowCacheCITests(unittest.TestCase):
             {'architecture': 'arm64', 'runner': 'ubuntu-24.04-arm'}]}})
         for job in test['jobs'].values():
             self.assertNotIn('permissions', job)
-
-    def test_release_preserves_merged_source_and_publication_gates(self):
-        self.assertEqual(self.release['on'], {
-            'pull_request_target': {'types': ['closed'], 'branches': ['main']}})
-        self.assertEqual(self.release['concurrency'], {
-            'group': 'shirube-os-release', 'queue': 'max', 'cancel-in-progress': 'false'})
-        jobs = self.release['jobs']
-        self.assertEqual(set(jobs), {'resolve', 'build', 'publish'})
-        self.assertEqual(jobs['resolve']['if'], 'github.event.pull_request.merged == true')
-        for name, job in jobs.items():
-            checkout = job['steps'][0]
-            self.assertTrue(checkout['uses'].startswith('actions/checkout@'))
-            self.assertEqual(checkout['with']['ref'],
-                             '${{ github.event.pull_request.merge_commit_sha }}' if name == 'resolve'
-                             else '${{ needs.resolve.outputs.commit }}')
-            self.assertEqual(checkout['with']['allow-unsafe-pr-checkout'], 'true')
-            self.assertEqual(checkout['with']['persist-credentials'], 'false')
-            self.assertEqual(checkout['with']['clean'], 'false')
-        resolve = jobs['resolve']['steps']
-        self.assertEqual(resolve[0]['with']['fetch-depth'], '0')
-        self.assertEqual(resolve[1]['run'],
-                         'python3 -m unittest discover -s tests -v\n'
-                         'bash -n scripts/build-packages.sh scripts/build-release.sh containers/native/package.sh\n')
-        self.assertEqual(resolve[2]['run'], 'python3 -m producer.actions resolve')
-        self.assertEqual(jobs['build']['needs'], 'resolve')
-        self.assertEqual(jobs['build']['if'],
-                         "needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'")
-        self.assertEqual(self.build_steps[-1]['run'], 'python3 -m producer.actions stage')
-        publish = jobs['publish']
-        self.assertEqual(publish['needs'], ['resolve', 'build'])
-        self.assertEqual(publish['if'], "always() && needs.resolve.result == 'success' && needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true' && needs.build.result == 'success'")
-        verify, upload, promote = publish['steps'][1:]
-        self.assertEqual(verify['run'], 'python3 -m producer.actions publish')
-        self.assertTrue(upload['uses'].startswith('actions/upload-artifact@'))
-        self.assertEqual(upload['id'], 'assets')
-        self.assertEqual(upload['with']['if-no-files-found'], 'error')
-        self.assertEqual(promote['run'], 'python3 -m producer.actions promote')
-        for key, output in [('SHIRUBE_ACTIONS_ARTIFACT_ID', 'artifact-id'),
-                            ('SHIRUBE_ACTIONS_ARTIFACT_DIGEST', 'artifact-digest')]:
-            self.assertEqual(promote['env'][key], '${{ steps.assets.outputs.' + output + ' }}')
 
     def test_native_trial_remains_manual_feature_branch_diagnostic(self):
         trial = workflow('native-trial.yml')

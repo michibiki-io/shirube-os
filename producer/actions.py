@@ -188,10 +188,9 @@ def resolve():
                '--title','Shirube OS '+version,'--notes-file',notes.name)
     matrix={'include':[]}
     for architecture in ['amd64','arm64']:
-        labels=runner(architecture,os.getenv('ACTIONS_RUNNER_'+architecture.upper(),''))
-        explicit_self_hosted='self-hosted' in (labels if isinstance(labels,list) else [labels])
-        matrix['include'].append({'architecture':architecture,'runner':labels,
-                                  'timeout_minutes':720 if explicit_self_hosted else 360})
+        # Supported release execution is fixed to native GitHub-hosted labels.
+        matrix['include'].append({'architecture':architecture,'runner':runner(architecture),
+                                  'timeout_minutes':330})
     emit({'eligible':'true','noop':'false','commit':commit,'version':version,'matrix':matrix})
 
 

@@ -329,6 +329,9 @@ python3 /src/native/fpm_package.py -s dir -t deb -n jool -v {jool_version()} --a
 
 def accel(work):
     kernel=headers()
+    if not Path('/vpp-sdk').exists():
+        from producer.native_stages import export_vpp_sdk
+        export_vpp_sdk(Path('/extra/vpp/vpp'),Path('/vpp-sdk'),'@MULTIARCH@','@ARCH@')
     # VPP's runtime postinst changes sysctls. Compilation needs only its SDK
     # and libraries, so never execute that runtime setup in a build sandbox.
     sdk=work/'vpp-sdk'
@@ -346,12 +349,12 @@ def accel(work):
         shell('patch --fuzz=0 -p1 < '+str(patch),source)
     if (source/'build').exists(): shutil.rmtree(source/'build')
     (source/'build').mkdir()
-    shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR=6.6.128-vyos -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/extra/vpp/vpp/src/vpp-api:/extra/vpp/vpp/src:/extra/vpp/vpp/build-root/build-vpp-native/vpp/CMakeFiles/vpp-api LIBRARY_PATH=/extra/vpp/vpp/build-root/install-vpp-native/vpp/lib/@MULTIARCH@ make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')
+    shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR=6.6.128-vyos -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/vpp-sdk/source/vpp-api:/vpp-sdk/source:/vpp-sdk/generated LIBRARY_PATH=/vpp-sdk/lib make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')
     copy_debs(work)
     sflow=snapshot('host-sflow_v2.1.21-1/host-sflow',work/'sflow')
     from producer.sflow import prepare as prepare_sflow
     prepare_sflow(sflow)
-    shell('apt-get install -y --no-install-recommends libpcap0.8-dev clang; make clean; make -j2 deb FEATURES="PCAP DROPMON DBUS PSAMPLE VPP"',sflow)
+    shell('apt-get install -y --no-install-recommends libpcap0.8-dev libdbus-1-dev clang; make clean; make -j2 deb FEATURES="PCAP DROPMON DBUS PSAMPLE VPP"',sflow)
     copy_debs(sflow,'hsflowd_*_@ARCH@.deb')
 
 

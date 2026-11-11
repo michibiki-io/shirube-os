@@ -42,6 +42,7 @@ def main():
     parser.add_argument('--output', type=Path, default=Path('/output'))
     parser.add_argument('--verified-input', type=Path)
     parser.add_argument('--job', action='append')
+    parser.add_argument('--stage', choices=['native','vpp','kea','salt','runtime','kernel'])
     parser.add_argument('--target', choices=['packages','iso','release'], default='packages')
     parser.add_argument('--version')
     parser.add_argument('--commit')
@@ -51,6 +52,8 @@ def main():
     parser.add_argument('--qemu-accelerator',choices=['kvm','tcg'],default='kvm')
     args = parser.parse_args()
     native(args.architecture)
+    if args.stage and (args.target != 'packages' or args.job):
+        raise ValueError('Compile stages cannot also select a target or individual jobs')
     lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
     if args.include_sources and args.target!='iso':
         raise ValueError('Separate source audit is only valid for a complete ISO target')
@@ -71,7 +74,9 @@ def main():
     if any(args.output.iterdir()):
         raise ValueError('A new empty task output directory is required')
     work = Path('/build-private')
-    work.mkdir(mode=0o700)
+    if args.stage and work.exists() and any(work.iterdir()):
+        raise ValueError('Fresh private stage compiler workspace required')
+    work.mkdir(mode=0o700,exist_ok=bool(args.stage))
     from producer.architecture import require_storage, BUILD_STORAGE_GIB
     require_storage(work, BUILD_STORAGE_GIB, phase='Native compiler workspace')
     public_output = args.output
@@ -119,7 +124,11 @@ def main():
         for name in args.job:
             select(name)
         jobs = [job for job in jobs if job['name'] in selected]
+    if args.stage:
+        from producer.native_stages import select_jobs, ROOTS
+        jobs = select_jobs(jobs, args.stage)
     roots = {job['source'].split('/')[0] for job in jobs} | {'vyos-build'}
+    if args.stage: roots.update(ROOTS[args.stage])
     if args.target in {'iso','release'}:
         roots |= {'jool-4.1.9+bf4c7e3669','libpam-radius-auth_1.5.0-cl3u7','humps_v3.8.0','ddclient_debian_3.11.2-1','owamp_v4.4.6','openvpn-otp_9781ff1','udp-broadcast-relay_9a0f13b4b5938bfe0af0d0d4e99dfc127c068e28','node_exporter_v1.9.1','frr_exporter_v1.5.0','blackbox_exporter_v0.26.0','telegraf_v1.28.3','isc-kea_Kea-3.0.2','salt_v3006.21','podman_v4.9.5','ovpn-dco-v0.2.20231117','accel-ppp-ng-3e30d9b','host-sflow_v2.1.21-1'}
     # These signed-archive directories contain previous compiler output, including
@@ -201,13 +210,20 @@ def main():
             artifacts.append({'name': deb.name, 'sha256': sha256(deb), 'architecture': actual})
         if not artifacts:
             raise ValueError('No package outputs')
+        if args.stage:
+            for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256']:
+                if (output/member).is_file():shutil.copy2(output/member,exported/member)
         (exported/'manifest.json').write_text(json.dumps({'status':'PASS', 'stage':'package-tranche',
             'resources':resources,'elapsed_seconds':round(time.monotonic()-started,3),
             'library_cache':cached or {'status':'MISS'},
             'source_sha256':lock['sha256'], 'artifacts':artifacts, 'iso':'NOT_BUILT',
             'local_boot':'NOT_RUN', 'oci':'NOT_RUN'}, indent=2)+'\n')
         completed[job['name']] = output
-    if args.target == 'iso':
+    if args.stage:
+        from producer.native_stages import finish_compile
+        # Separate internal package receipts from the exported transfer payload.
+        finish_compile(args.stage,sources,args.output,public_output/'stage',args.architecture)
+    elif args.target == 'iso':
         sys.path.insert(0,'/src/native')
         from image import assemble
         result=assemble(sources,args.output,args.architecture,args.version,public_output)

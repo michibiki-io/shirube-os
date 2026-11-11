@@ -1,5 +1,9 @@
 # Build inputs and native runners
 
+The supported release/pre-merge orchestration now uses the [staged hosted path](STAGED-BUILD.md).
+Its empirical acceptance remains NOT_RUN; historical single-container trials below
+are diagnostics, not the staged release entry point.
+
 The initial OS baseline is official VyOS Stream 2026.03. `source-lock.json` records
 the exact archive, SHA256, minisign key and its official public authority:
 https://vyos.net/get/stream/. A checksum mismatch fails before signature validation;
@@ -110,12 +114,11 @@ native package producer consumed both validated entries successfully. Full ISO
 use and cross-run Actions persistence still require execution; these component
 checks do not establish complete image or release readiness.
 
-Runner policy accepts `ACTIONS_RUNNER_AMD64` and `ACTIONS_RUNNER_ARM64`, individually
-set or unset. Defaults are `ubuntu-24.04` and `ubuntu-24.04-arm`. A value may be a
-single label or JSON label array, for example `["self-hosted","linux","ARM64"]`.
-Labels are preserved exactly: an offline selected runner stays queued. There is
-no provider/architecture fallback. Native host and actual package/binary
-architecture checks are separate from label selection.
+The supported staged path fixes native labels to `ubuntu-24.04` and
+`ubuntu-24.04-arm`. It does not accept runner-variable overrides or self-hosted
+labels. Legacy diagnostic utilities retain their explicit runner parameters;
+they do not define supported release execution. Native host and actual binary
+architecture checks remain separate from label selection.
 
 Native cold-build admission requires 75 GiB free task storage and, by default,
 8 GiB available memory. Both the export filesystem and the container compiler
@@ -191,10 +194,13 @@ The FPM bootstrap installs all ten gems from
 before installing locally with dependency resolution disabled. The native
 toolchain containing that locked bootstrap has been built on AMD64.
 
-The full workflow calls `scripts/build-release.sh` for each selected native runner.
-It requires the exact clean merged source commit and runs the ISO, fresh-install,
-sanitization, conversion, source and publication gates in containers. Outputs use
-fresh run/attempt-specific task directories; incomplete candidates are not staged.
+The release workflow calls `staged-candidate.yml`, also used by intentional
+nonpublishing validation. Separate private native containers build packages,
+integration inputs, ISO, complete source/license clearance, and fresh disks/guests.
+See [stage contracts and acceptance gaps](STAGED-BUILD.md). The older
+`scripts/build-release.sh` remains a single-container diagnostic/reconstruction
+entry point; it is not the supported release workflow. Incomplete candidates
+cannot reach the credentialed draft staging job.
 The AMD64 virtual profile omits vendor-only physical NIC/QAT packages; this
 difference is explicit in the source lock. Physical hardware parity is not claimed.
 
@@ -342,12 +348,12 @@ AMD64 and ARM64 candidates run in parallel; publication waits for both complete
 candidates and their source, disk and runtime gates. Individual package results
 and diagnostic retries do not establish a production release duration.
 
-The job deadline is 360 minutes for default or other labels, and 720 minutes
-when the selected label array explicitly includes `self-hosted`. GitHub-hosted
-runners have a six-hour job execution limit ([GitHub Actions limits](https://docs.github.com/en/actions/reference/limits)).
-These deadlines are bounds, not measured build-time estimates. Explicit labels
-and preflight checks must still establish sufficient native resources and usable
-virtualization; default runner selection does not establish release support.
+The staged jobs use explicit deadlines below 360 minutes; compiler, package,
+ISO/source and guest stages have separate budgets. See [the graph and remaining
+measurement gaps](STAGED-BUILD.md#job-graph-and-resource-admission). GitHub-hosted
+runners have a six-hour job execution limit. These bounds do not establish
+measured headroom or resource feasibility. Self-hosted labels are excluded from
+the supported staged release path.
 
 ## VPP component forwarding probe
 

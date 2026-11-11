@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--cpus',type=int,default=4)
     parser.add_argument('--memory-gib',type=int,default=8)
     parser.add_argument('--cached-libraries',type=Path)
+    parser.add_argument('--staged-inputs',type=Path)
     parser.add_argument('--qemu-accelerator',choices=['kvm','tcg'],default='kvm')
     parser.add_argument('--docker-runtime',default='')
     args=parser.parse_args()
@@ -50,6 +51,13 @@ def main():
             '{{(index .NetworkSettings.Networks "'+fixture.network+'").IPAddress}}',fixture.container).decode().strip()
         # The candidate retains public-input network access. Only its
         # isolated guest-test connection joins the local fixture network.
+        producer_command=[args.image,args.architecture,'--target','release','--version',args.version,
+                          '--commit',args.commit,'--netbird-fixture-stdin','--qemu-accelerator',args.qemu_accelerator,*library_args]
+        if args.staged_inputs:
+            library_mounts += ['-v',str(args.staged_inputs.resolve())+':/inputs:ro']
+            producer_command=['--entrypoint','python3',args.image,'-m','producer.staged','guests',args.architecture,
+                              '--commit',args.commit,'--version',args.version,'--netbird-fixture-stdin',
+                              '--qemu-accelerator',args.qemu_accelerator]
         build=fixture.docker('create','-i','--network','bridge',
             '--label','io.michibiki.shirube.fixture='+fixture.nonce,
             '--add-host',fixture.hostname+':'+address,
@@ -57,9 +65,7 @@ def main():
             '--memory-swap='+str(args.memory_gib)+'g','--pids-limit=4096',
             '-v',str(output)+':/output','-v',str(project)+':/project-source.tar:ro',
             '-v',str(fixture.work/'cert.pem')+':/fixture/cert.pem:ro',
-            *library_mounts,args.image,args.architecture,'--target','release','--version',args.version,
-            '--commit',args.commit,'--netbird-fixture-stdin','--qemu-accelerator',args.qemu_accelerator,
-            *library_args).decode().strip()
+            *library_mounts,*producer_command).decode().strip()
         fixture.docker('network','connect',fixture.network,build)
         # The producer consumes this before spawning any build subprocess.
         # No token or setup key appears in argv, environment or build logs.

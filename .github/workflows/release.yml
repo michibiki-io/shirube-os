@@ -12,7 +12,8 @@ concurrency:
 jobs:
   resolve:
     if: github.event.pull_request.merged == true
-    runs-on: ${{ fromJSON(startsWith(vars.ACTIONS_RUNNER_AMD64, '[') && vars.ACTIONS_RUNNER_AMD64 || toJSON(vars.ACTIONS_RUNNER_AMD64 || 'ubuntu-24.04')) }}
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       pull-requests: read
@@ -39,22 +40,25 @@ jobs:
         name: Resolve merged commit, version and native runners once
         env:
           GH_TOKEN: ${{ github.token }}
-          ACTIONS_RUNNER_AMD64: ${{ vars.ACTIONS_RUNNER_AMD64 }}
-          ACTIONS_RUNNER_ARM64: ${{ vars.ACTIONS_RUNNER_ARM64 }}
         run: python3 -m producer.actions resolve
   build:
     needs: resolve
     if: needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'
+    permissions:
+      contents: read
+    uses: ./.github/workflows/staged-candidate.yml
+    with:
+      commit: ${{ needs.resolve.outputs.commit }}
+      version: ${{ needs.resolve.outputs.version }}
+      cache-mode: warm
+  stage:
+    needs: [resolve, build]
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.resolve.outputs.matrix) }}
-    runs-on: ${{ matrix.runner }}
-    timeout-minutes: ${{ matrix.timeout_minutes }}
-    env:
-      SHIRUBE_QEMU_ACCELERATOR: ${{ matrix.architecture == 'amd64' && (vars.SHIRUBE_QEMU_ACCELERATOR_AMD64 || 'tcg') || (vars.SHIRUBE_QEMU_ACCELERATOR_ARM64 || 'tcg') }}
-      SHIRUBE_DOCKER_RUNTIME: ${{ (matrix.architecture == 'amd64' && vars.SHIRUBE_DOCKER_RUNTIME_AMD64) || (matrix.architecture == 'arm64' && vars.SHIRUBE_DOCKER_RUNTIME_ARM64) || '' }}
-      SHIRUBE_BUILD_CPUS: ${{ matrix.architecture == 'amd64' && (vars.SHIRUBE_BUILD_CPUS_AMD64 || '4') || (vars.SHIRUBE_BUILD_CPUS_ARM64 || '4') }}
-      SHIRUBE_BUILD_MEMORY_GIB: ${{ matrix.architecture == 'amd64' && (vars.SHIRUBE_BUILD_MEMORY_GIB_AMD64 || '8') || (vars.SHIRUBE_BUILD_MEMORY_GIB_ARM64 || '8') }}
+      matrix:
+        architecture: [amd64, arm64]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: write
       actions: read
@@ -62,61 +66,25 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ needs.resolve.outputs.commit }}
-          # Closed + merged guard; this is the base-repository merge SHA, never the fork head.
           allow-unsafe-pr-checkout: true
           persist-credentials: false
-          clean: false
-      - name: Check native runner capacity before compiler work
-        env:
-          BUILD_ARCHITECTURE: ${{ matrix.architecture }}
-          TASK_STORAGE: ${{ runner.temp }}
-        run: python3 -m producer.cli preflight "$BUILD_ARCHITECTURE" --storage "$TASK_STORAGE" --qemu-accelerator "$SHIRUBE_QEMU_ACCELERATOR" --docker-runtime "$SHIRUBE_DOCKER_RUNTIME" --memory-gib "$SHIRUBE_BUILD_MEMORY_GIB"
-      - name: Create temporary compiler cache builder
-        id: compiler-builder
-        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          # Setup can otherwise save a downloaded Buildx binary in its post hook.
-          cache-binary: false
-      - name: Restore public compiler layers
-        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
-        with:
-          context: .
-          file: containers/native/Dockerfile
-          platforms: linux/${{ matrix.architecture }}
-          load: true
-          push: false
-          build-args: |
-            BASE=${{ matrix.architecture == 'amd64' && 'debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018' || 'debian@sha256:ec8534cda2cb30f29f44f23e135297af7a1496f2990fd8e4e84aa36b081a757a' }}
-          cache-from: type=gha,scope=shirube-compiler-${{ matrix.architecture }}
-      - name: Restore unsigned library artifact archives
-        id: library-cache
-        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
-        with:
-          path: ${{ runner.temp }}/shirube-library-store
-          key: shirube-libraries-v1-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/library_cache.py', 'producer/resources.py') }}
-          restore-keys: |
-            shirube-libraries-v1-${{ matrix.architecture }}-
-      - name: Build ISO, fresh installed QCOW2 and OCI-importable VMDK
-        env:
-          BUILDX_BUILDER: ${{ steps.compiler-builder.outputs.name }}
-          SHIRUBE_LIBRARY_CACHE_STORE: ${{ runner.temp }}/shirube-library-store
-          SHIRUBE_CANDIDATE_DIRECTORY: ${{ runner.temp }}/shirube-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.architecture }}
-          SHIRUBE_ARCHITECTURE: ${{ matrix.architecture }}
-          SHIRUBE_VERSION: ${{ needs.resolve.outputs.version }}
-          SHIRUBE_SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
-        run: bash scripts/build-release.sh
-      - name: Validate and stage complete architecture candidate in unpublished draft
+          name: shirube-candidate-${{ matrix.architecture }}
+          path: ${{ runner.temp }}/candidate
+      - name: Validate exact candidate before staging in its reserved draft
         env:
           GH_TOKEN: ${{ github.token }}
-          SHIRUBE_CANDIDATE_DIRECTORY: ${{ runner.temp }}/shirube-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.architecture }}
+          SHIRUBE_CANDIDATE_DIRECTORY: ${{ runner.temp }}/candidate
           SHIRUBE_ARCHITECTURE: ${{ matrix.architecture }}
           SHIRUBE_VERSION: ${{ needs.resolve.outputs.version }}
           SHIRUBE_SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
         run: python3 -m producer.actions stage
   publish:
-    needs: [resolve, build]
-    if: always() && needs.resolve.result == 'success' && needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true' && needs.build.result == 'success'
-    runs-on: ${{ fromJSON(startsWith(vars.ACTIONS_RUNNER_AMD64, '[') && vars.ACTIONS_RUNNER_AMD64 || toJSON(vars.ACTIONS_RUNNER_AMD64 || 'ubuntu-24.04')) }}
+    timeout-minutes: 30
+    needs: [resolve, build, stage]
+    if: always() && needs.resolve.result == 'success' && needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true' && needs.build.result == 'success' && needs.stage.result == 'success'
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       actions: read

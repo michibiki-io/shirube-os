@@ -205,25 +205,32 @@ def guest_package(arch, version):
     run('dpkg-deb','--root-owner-group','-b',str(package),str(debs/f'shirube-integration_{version[1:]}_{arch}.deb'))
 
 
-def assemble(sources, packages, arch, version, output):
+def assemble(sources, packages, arch, version, output, *, prepared=None):
     from producer.debootstrap import configure_retry
     configure_retry()
     root=generate(arch)
-    Path('/sources').symlink_to(sources)
+    source_link=Path('/sources')
+    if not source_link.exists() and not source_link.is_symlink():source_link.symlink_to(sources)
+    elif prepared is None or source_link.resolve()!=Path(sources).resolve():
+        raise ValueError('Source input root differs from prepared material')
     debs=Path('/debs');debs.mkdir()
     for package in packages.rglob('*.deb'):shutil.copy2(package,debs/package.name)
     signing=Path('/kernel-signing');signing.mkdir(mode=0o700)
-    kernel=Path('/build-private/kernel/source/certs')
-    shutil.copy2(kernel/'signing_key.pem',signing/'key.pem');(signing/'key.pem').chmod(0o600)
-    shutil.copy2(kernel/'signing_key.x509',signing/'cert.der')
-    for job in ['vpp','base','go','kea','salt','podman','modules','accel']:
-        print('STAGE: native runtime '+job,flush=True)
-        run('python3',str(root/'extras.py'),job)
-    from producer.package_notices import retain_all
-    retain_all(debs,Path('/build-private/runtime-package-notices'))
-    from producer.cloud_init import build as build_cloud_init
-    build_cloud_init(Path('/src'), Path('/guest-cloud-init'), debs)
-    guest_package(arch,version)
+    if prepared is None:
+        kernel=Path('/build-private/kernel/source/certs')
+        shutil.copy2(kernel/'signing_key.pem',signing/'key.pem');(signing/'key.pem').chmod(0o600)
+        shutil.copy2(kernel/'signing_key.x509',signing/'cert.der')
+        for job in ['vpp','base','go','kea','salt','podman','modules','accel']:
+            print('STAGE: native runtime '+job,flush=True)
+            run('python3',str(root/'extras.py'),job)
+        from producer.package_notices import retain_all
+        retain_all(debs,Path('/build-private/runtime-package-notices'))
+        from producer.cloud_init import build as build_cloud_init
+        build_cloud_init(Path('/src'), Path('/guest-cloud-init'), debs)
+        guest_package(arch,version)
+    else:
+        # Only the public certificate crosses the private signing boundary.
+        shutil.copy2(Path(prepared)/'signing/cert.der',signing/'cert.der')
     audited=list(debs.glob('*.deb'))
     signed_modules=sum(audit(package,arch,signing/'cert.der')['signed_modules_verified'] for package in audited)
     if not signed_modules:raise ValueError('No signed kernel/module payload was verified')
@@ -274,9 +281,16 @@ def assemble(sources, packages, arch, version, output):
         if arch=='arm64':text=text.replace('console=ttyS0,115200','console=ttyAMA0,115200')
         build.write_text(text)
         flavor=source/'data/build-flavors/generic.toml';flavor.write_text(flavor.read_text().replace('packages = []','packages = ["shirube-integration"]'))
+        artwork=Path('/guest-package/core/usr/share/shirube/boot-background.png')
+        if prepared is not None:
+            core=work/'core-artwork'
+            cores=list(debs.glob(f'vyos-1x_*_{arch}.deb'))
+            if len(cores)!=1:raise ValueError('One prepared branded core required')
+            run('dpkg-deb','-x',str(cores[0]),str(core))
+            artwork=core/'usr/share/shirube/boot-background.png'
         for image in (source/'data/live-build-config/bootloaders').rglob('*'):
             if image.is_file() and image.suffix.lower() in {'.png','.svg','.jpg','.jpeg'}:
-                if image.suffix=='.png':shutil.copy2('/guest-package/core/usr/share/shirube/boot-background.png',image)
+                if image.suffix=='.png':shutil.copy2(artwork,image)
                 elif image.suffix=='.svg':shutil.copy2('/src/shirube-os-logo.svg',image)
                 else:image.unlink()
             elif image.is_file() and image.suffix in {'.cfg','.txt'}:
