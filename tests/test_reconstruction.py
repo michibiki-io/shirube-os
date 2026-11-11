@@ -102,7 +102,7 @@ class SourceRestorationTests(unittest.TestCase):
         from producer.pipeline import release_candidate
         order=[]
         def restored(*args):
-            order.append('source-restoration');return {}
+            order.append('source-restoration');return {'proof':{'status':'PASS_SOURCE_SET_ONLY'}}
         def retired():
             order.append('compiler-retirement');return {}
         def guests(*args,**kwargs):
@@ -110,6 +110,7 @@ class SourceRestorationTests(unittest.TestCase):
         with mock.patch.dict(sys.modules,{'image':SimpleNamespace(assemble=lambda *args:{'iso':self.root/'os.iso'})}), \
              mock.patch('producer.pipeline.collect_iso_sources',return_value=(self.root,{'cleared':True})), \
              mock.patch('producer.pipeline.source_set_evidence',side_effect=restored), \
+             mock.patch('producer.pipeline.verify_branding',return_value=True), \
              mock.patch('producer.architecture.require_storage',side_effect=lambda *args,**kwargs:order.append('storage-admission')), \
              mock.patch('producer.vm.build_disks',side_effect=guests):
             with self.assertRaisesRegex(RuntimeError,'guest boundary'):
