@@ -1,10 +1,13 @@
-"""No Docker invocation: synthetic docker-save files and mocked load/inspect."""
+"""Synthetic docker-save files with unit guards and real CLI/subprocess checks."""
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
 import tarfile
 import tempfile
+import subprocess
+import sys
 import unittest
 from unittest.mock import patch
 
@@ -66,7 +69,7 @@ class CompilerArtifactTests(unittest.TestCase):
                 self.refreshed_archive()
                 with patch.object(ca.subprocess,'run') as run, patch.object(ca,'inspect') as inspect:
                     self.assertEqual(ca.load(self.directory,self.expected),self.image)
-                    run.assert_called_once_with(['docker','image','load','--input',str(self.archive)],check=True)
+                    run.assert_called_once_with(['docker','image','load','--input',str(self.archive)],check=True,stdout=sys.stderr)
                     inspect.assert_called_once_with(self.image,arch)
 
     def test_manifest_mismatches_fail_before_docker(self):
@@ -134,3 +137,110 @@ class CompilerArtifactTests(unittest.TestCase):
             self.assertNotEqual(second['inputs_id'],arm['inputs_id'])
         with patch.object(ca.subprocess,'check_output',return_value='wrong'):
             with self.assertRaises(ValueError):ca.identity('a'*40,'amd64','123')
+
+
+class CompilerArtifactCLITests(unittest.TestCase):
+    """Run the module with real git identity and inherited child descriptors."""
+
+    setUp = CompilerArtifactTests.setUp
+    archive = CompilerArtifactTests.archive
+    write_archive = CompilerArtifactTests.write_archive
+    write_manifest = CompilerArtifactTests.write_manifest
+    refreshed_archive = CompilerArtifactTests.refreshed_archive
+
+    def test_cli_output_file_boundary(self):
+        checkout = Path(self.temp.name) / 'checkout'
+        checkout.mkdir()
+        (checkout / 'NOTICE').write_text('synthetic public compiler input\n')
+        git_env = {**os.environ, 'GIT_CONFIG_NOSYSTEM': '1',
+                   'GIT_CONFIG_GLOBAL': os.devnull}
+        for args in (['init', '-q'], ['add', 'NOTICE'],
+                     ['-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                      '-c', 'commit.gpgsign=false', 'commit', '-qm', 'fixture']):
+            subprocess.run(['git', *args], cwd=checkout, env=git_env, check=True,
+                           stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=checkout,
+                                         env=git_env, text=True).strip()
+        bin_dir = Path(self.temp.name) / 'bin'
+        bin_dir.mkdir()
+        docker = bin_dir / 'docker'
+        docker.write_text(f"""#!{sys.executable}
+import json
+import os
+from pathlib import Path
+import sys
+with Path(os.environ['DOCKER_CALLS']).open('a') as log:
+    log.write(' '.join(sys.argv[1:]) + '\\n')
+if sys.argv[1:3] == ['image', 'load']:
+    print('Loading layer [========>] 1.024kB/1.024kB')
+    print('Loaded image ID: ' + os.environ['IMAGE_ID'])
+    print('Loaded image: synthetic:latest')
+    print('docker diagnostic on stderr', file=sys.stderr)
+    sys.exit(7 if os.environ['SCENARIO'] == 'load-failure' else 0)
+if sys.argv[1:3] == ['image', 'inspect']:
+    if os.environ['SCENARIO'] == 'inspect-failure':
+        print('inspect failed', file=sys.stderr)
+        sys.exit(8)
+    print(json.dumps([dict(Id=os.environ['IMAGE_ID'],
+                          Architecture=os.environ['ARCH'], Os='linux')]))
+else:
+    sys.exit(9)
+""")
+        docker.chmod(0o755)
+        module_root = str(Path(ca.__file__).resolve().parents[1])
+        output = Path(self.temp.name) / 'github-output'
+        calls = Path(self.temp.name) / 'docker-calls'
+        for arch in ('amd64', 'arm64'):
+            for scenario in ('success', 'load-failure', 'invalid-archive',
+                             'invalid-provenance', 'inspect-failure'):
+                with self.subTest(architecture=arch, scenario=scenario):
+                    config = json.dumps({'architecture': arch, 'os': 'linux'}).encode()
+                    image = 'sha256:' + hashlib.sha256(config).hexdigest()
+                    self.write_archive(config=config)
+                    expected = dict(schema_version=1, source_commit=commit, architecture=arch,
+                                    os='linux', run_id='123',
+                                    inputs_id=ca.digest({'base': ca.BASES[arch],
+                                                        'files': {'NOTICE': sha256(checkout / 'NOTICE')}}))
+                    self.manifest = {**expected, 'image_id': image}
+                    if scenario == 'invalid-archive':
+                        # A hash-valid archive with the wrong platform must fail before Docker.
+                        self.write_archive(config=json.dumps(
+                            {'architecture': arch, 'os': 'windows'}).encode())
+                    if scenario == 'invalid-provenance':
+                        self.manifest['run_id'] = '124'
+                    self.refreshed_archive()
+                    calls.unlink(missing_ok=True)
+                    env = {**git_env, 'PYTHONPATH': module_root,
+                           'PYTHONDONTWRITEBYTECODE': '1',
+                           'PATH': str(bin_dir) + os.pathsep + os.environ['PATH'],
+                           'SCENARIO': scenario, 'IMAGE_ID': image, 'ARCH': arch,
+                           'DOCKER_CALLS': str(calls)}
+                    with output.open('ab') as stream:
+                        # The CLI and its Docker child inherit a real redirected fd.
+                        result = subprocess.run(
+                            [sys.executable, '-m', 'producer.compiler_artifact', 'load',
+                             '--directory', str(self.directory), '--commit', commit,
+                             '--architecture', arch, '--run-id', '123'],
+                            cwd=checkout, env=env, stdout=stream, stderr=subprocess.PIPE)
+                    actual = output.read_text()
+                    output.unlink()
+                    if scenario == 'success':
+                        self.assertEqual(result.returncode, 0, result.stderr.decode())
+                        self.assertEqual(actual, 'imageid=' + image + '\n')
+                    else:
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertEqual(actual, '')
+                    if scenario.startswith('invalid-'):
+                        self.assertFalse(calls.exists(), result.stderr.decode())
+                    else:
+                        self.assertIn(b'Loading layer', result.stderr)
+                        self.assertIn(b'Loaded image ID: ' + image.encode(), result.stderr)
+                        self.assertIn(b'Loaded image: synthetic:latest', result.stderr)
+                        self.assertIn(b'docker diagnostic on stderr', result.stderr)
+                        commands = calls.read_text().splitlines()
+                        self.assertEqual(len(commands), 1 if scenario == 'load-failure' else 2)
+                        self.assertTrue(commands[0].startswith('image load --input '))
+                        if scenario != 'load-failure':
+                            self.assertEqual(commands[1], 'image inspect ' + image)
+        self.assertEqual(subprocess.check_output(
+            ['git', 'status', '--porcelain'], cwd=checkout, env=git_env), b'')

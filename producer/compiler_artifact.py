@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tarfile
 
 from .sources import sha256
@@ -98,7 +99,7 @@ def load(directory, expected):
             or manifest['archive_sha256'] != sha256(archive)):
         raise ValueError('Compiler archive hash/size differs')
     archive_identity(archive, manifest['image_id'], expected['architecture'])
-    subprocess.run(['docker', 'image', 'load', '--input', str(archive)], check=True)
+    subprocess.run(['docker', 'image', 'load', '--input', str(archive)], check=True, stdout=sys.stderr)
     inspect(manifest['image_id'], expected['architecture'])
     return manifest['image_id']
 

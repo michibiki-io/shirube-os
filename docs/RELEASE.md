@@ -57,6 +57,18 @@ cache post-save, including on runners without preinstalled Buildx.
 Local reuse and package/source checks remain in place. Absent or evicted caches
 may require a cold build when a release is later run; feature-branch native-trial
 caches cannot be assumed to populate default-branch release caches.
+The staged workflow permits compiler export and unsigned-stage saves only for
+intentional `workflow_dispatch` or `pull_request` validation, with event/ref-scoped
+cache visibility. PR merge-ref caches are not generally visible to a later main
+release. The dispatch ref determines cache scope; `source-ref` only selects source.
+Restores are attempts, and optional compiler exports with `ignore-error=true`
+are not evidence of verified hits or successful warming. Hosted warm acceptance
+and capacity remain NOT_RUN.
+
+Existing compiler artifacts remain bound to the original source commit and run.
+Same-run recovery revalidates those bindings; it cannot establish acceptance of
+a new commit. Rerunning an old run uses its old workflow/code and does not apply
+this fix. Do not relabel or substitute artifacts across runs.
 
 The 2026-11-11 rule-inspection snapshot records
 [main ruleset 26762240](https://github.com/michibiki-io/shirube-os/rules/26762240):
@@ -80,6 +92,18 @@ Testの成功だけではイメージの合格を意味しません。native tri
 `cache-binary: false`を指定します。ローカル再利用とパッケージ、ソースの検証は維持します。
 キャッシュの欠落や削除により、後日のリリース実行でコールドビルドが必要になる場合が
 あります。feature branchのnative trialによる既定ブランチのキャッシュ補充は保証しません。
+ステージ分割workflowでコンパイラーのexportと署名前ステージの保存を許可するのは、
+明示的な検証イベントの`workflow_dispatch`と`pull_request`だけです。
+キャッシュの可視範囲はイベントとrefに依存し、PRのmerge refのキャッシュを
+後日のmainリリースで利用できるとは限りません。
+手動実行ではdispatch refがキャッシュのスコープを決め、`source-ref`はソースだけを選びます。
+復元の試行や`ignore-error=true`による任意のexportは、検証済みのヒットや保存成功の証拠にはなりません。
+ホスト上のwarm合格判定と容量の検証はNOT_RUNです。
+
+既存のコンパイラー成果物は元のソースcommitとrunに結び付いたままです。
+同じrunの復旧でもこの対応を再検証し、新しいcommitの合格根拠にはできません。
+古いrunの再実行は古いworkflowとコードを使うため、この修正は適用されません。
+別runの成果物への付け替えや、ラベルを変更した流用はしません。
 
 2026-11-11の確認記録では、[mainのruleset 26762240](https://github.com/michibiki-io/shirube-os/rules/26762240)に
 PR承認、Code Ownerレビュー、レビュースレッドの解決、削除禁止、non-fast-forward禁止が
