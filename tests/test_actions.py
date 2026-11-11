@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 from pathlib import Path
@@ -254,12 +255,15 @@ class ActionsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             event=Path(temporary)/'event.json';out=Path(temporary)/'output'
             event.write_text(json.dumps({'action':'closed','number':1,'pull_request':{'merged':True,
-                'changed_files':1,'commits':1,'base':{'ref':'main'},'merge_commit_sha':'a'*40}}))
+                'changed_files':1,'commits':1,'base':{'ref':'main','sha':'b'*40},
+                'head':{'sha':'c'*40},'merge_commit_sha':'a'*40}}))
             created=[]
             def gh(*args,**kwargs):
                 if args[0]=='api' and args[-1].endswith('/files'):return [[{'filename':'producer/pipeline.py'}]]
-                if args[0]=='api' and args[-1].endswith('/commits'):
-                    return [[{'sha':'c'*40,'commit':{'message':'feat!: change\n\nBREAKING CHANGE: configuration'}}]]
+                if args[0]=='api' and '/compare/' in args[-1]:
+                    self.assertEqual(args[-1], f'repos/{actions.REPO}/compare/{"b"*40}...{"c"*40}?per_page=100')
+                    return [{'base_commit':{'sha':'b'*40},'total_commits':1,
+                             'commits':[{'sha':'c'*40,'commit':{'message':'feat!: change\n\nBREAKING CHANGE: configuration'}}]}]
                 self.assertEqual(args[:3],('release','create','v2026.03.4'))
                 self.assertIn('--draft',args);self.assertEqual(args[args.index('--target')+1],'a'*40)
                 notes=Path(args[args.index('--notes-file')+1]).read_text()
@@ -310,6 +314,159 @@ class ActionsTests(unittest.TestCase):
                              [('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases')]*3)
 
 
+class IndividualCommitTests(unittest.TestCase):
+    def setUp(self):
+        self.base = 'b'*40
+        self.head = 'c'*40
+        self.pr = {'merged': True, 'changed_files': 1, 'commits': 1,
+                   'base': {'ref': 'main', 'sha': self.base},
+                   'head': {'ref': 'deleted-feature', 'sha': self.head, 'repo': None},
+                   'merge_commit_sha': 'a'*40, 'title': 'Ignored PR title'}
+        self.pages = self.comparison(1)
+
+    def comparison(self, count):
+        commits = [{'sha': f'{i:040x}', 'commit': {'message': f'fix: change {i}\n\nBody {i}'}}
+                   for i in range(1, count+1)]
+        commits[-1] = {'sha': self.head, 'commit': {
+            'message': 'feat!: final change\n\nFull final body\n\nBREAKING CHANGE: retained footer'}}
+        return [{'base_commit': {'sha': self.base}, 'total_commits': count,
+                 'merge_base_commit': {'sha': self.base}, 'commits': commits[i:i+100]}
+                for i in range(0, count, 100)]
+
+    def resolve(self, error=None):
+        created = []
+        def gh(*args, **kwargs):
+            if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/pulls/1/files'):
+                return [[{'filename': 'producer/pipeline.py'}]]
+            if args == ('api', '--paginate', '--slurp',
+                        f'repos/{actions.REPO}/compare/{self.base}...{self.head}?per_page=100'):
+                if isinstance(self.pages, Exception):
+                    raise self.pages
+                return self.pages
+            self.assertEqual(args[:3], ('release', 'create', 'v2026.03.0'))
+            self.assertIn('--draft', args)
+            self.assertEqual(args[args.index('--target')+1], self.pr['merge_commit_sha'])
+            created.append(Path(args[args.index('--notes-file')+1]).read_text())
+
+        with tempfile.TemporaryDirectory() as temporary:
+            event = Path(temporary)/'event.json'
+            event.write_text(json.dumps({'action': 'closed', 'number': 1, 'pull_request': self.pr}))
+            with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(event),
+                                        'GITHUB_EVENT_NAME': 'pull_request'}), \
+                    patch.object(actions, 'identity') as identity, \
+                    patch.object(actions, 'emit') as emit, \
+                    patch.object(actions, 'releases', return_value=[]), \
+                    patch.object(actions.subprocess, 'run',
+                                 return_value=subprocess.CompletedProcess([], 1)), \
+                    patch.object(actions, 'gh', side_effect=gh) as api:
+                if error:
+                    with self.assertRaises(error):
+                        actions.resolve()
+                    emit.assert_not_called()
+                    self.assertFalse(created)
+                    self.assertTrue(all(call.args[0] == 'api' for call in api.call_args_list))
+                else:
+                    actions.resolve()
+                    self.assertEqual(len(created), 1)
+                    self.assertEqual(emit.call_args.args[0]['eligible'], 'true')
+                    self.assertEqual(emit.call_args.args[0]['commit'], self.pr['merge_commit_sha'])
+                identity.assert_called_once_with(self.pr['merge_commit_sha'])
+        return created
+
+    def test_small_multipage_and_258_commits_preserve_all_messages_and_notes(self):
+        for count in [1, 101, 258]:
+            with self.subTest(count=count):
+                self.pr['commits'] = count
+                self.pages = self.comparison(count)
+                with patch.object(actions, 'gh', return_value=self.pages) as api:
+                    commits = actions.individual_commits(self.pr)
+                api.assert_called_once_with('api', '--paginate', '--slurp',
+                    f'repos/{actions.REPO}/compare/{self.base}...{self.head}?per_page=100',
+                    json_result=True)
+                expected = [item for page in self.pages for item in page['commits']]
+                self.assertEqual([c['sha'] for c in commits], [c['sha'] for c in expected])
+                self.assertEqual([c['message'] for c in commits],
+                                 [c['commit']['message'] for c in expected])
+                self.assertEqual(len({c['sha'] for c in commits}), count)
+                notes, = self.resolve()
+                for commit in commits:
+                    self.assertIn(f'- {commit["subject"]} ({commit["sha"]})', notes)
+                    for line in commit['message'].splitlines()[1:]:
+                        if line:
+                            self.assertIn('  '+line, notes)
+                self.assertNotIn(self.pr['title'], notes)
+
+    def test_merge_squash_and_rebase_use_original_pr_metadata_with_divergence(self):
+        # A merge/squash result and a rebased tip differ from the original PR head.
+        for method, merged in [('merge', 'd'*40), ('squash', 'e'*40), ('rebase', 'f'*40)]:
+            for divergent in [False, True]:
+                with self.subTest(method=method, divergent=divergent):
+                    self.pr['merge_commit_sha'] = merged
+                    self.pr['commits'] = 101
+                    self.pages = self.comparison(101)
+                    if divergent:
+                        for page in self.pages:
+                            page['merge_base_commit']['sha'] = '9'*40
+                    self.resolve()
+
+    def test_missing_or_invalid_event_identity_and_count_fail_before_reservation(self):
+        original = copy.deepcopy(self.pr)
+        for field in ['base', 'head']:
+            for value in [None, '', 'a'*39, 'a'*41, 'g'*40, 123, True]:
+                with self.subTest(field=field, value=value):
+                    self.pr = copy.deepcopy(original)
+                    self.pr[field]['sha'] = value
+                    self.resolve(ValueError)
+            with self.subTest(field=field, missing_sha=True):
+                self.pr = copy.deepcopy(original)
+                del self.pr[field]['sha']
+                self.resolve(ValueError)
+        for value in [None, 0, -1, True, False, '1', 1.0]:
+            with self.subTest(count=value):
+                self.pr = copy.deepcopy(original)
+                self.pr['commits'] = value
+                self.resolve(ValueError)
+        self.pr = copy.deepcopy(original)
+        del self.pr['commits']
+        self.resolve(ValueError)
+        self.pr = copy.deepcopy(original)
+        del self.pr['head']
+        self.resolve(ValueError)
+
+    def test_incomplete_or_inconsistent_comparison_fails_before_reservation(self):
+        self.pr['commits'] = 258
+        original = self.comparison(258)
+        cases = {'no pages': [], 'missing final page': original[:2]}
+        for name in ['truncated', 'duplicate', 'missing head', 'wrong base', 'missing base',
+                     'wrong total', 'missing total', 'bool total']:
+            pages = copy.deepcopy(original)
+            if name == 'truncated':
+                pages[-1]['commits'].pop(0)
+            elif name == 'duplicate':
+                pages[-1]['commits'][0] = copy.deepcopy(pages[0]['commits'][0])
+            elif name == 'missing head':
+                pages[-1]['commits'][-1]['sha'] = '8'*40
+            elif name == 'wrong base':
+                pages[-1]['base_commit']['sha'] = '8'*40
+            elif name == 'missing base':
+                del pages[-1]['base_commit']
+            elif name == 'wrong total':
+                pages[-1]['total_commits'] = 257
+            elif name == 'missing total':
+                del pages[-1]['total_commits']
+            else:
+                pages[-1]['total_commits'] = True
+            cases[name] = pages
+        for name, pages in cases.items():
+            with self.subTest(case=name):
+                self.pages = pages
+                self.resolve(ValueError)
+
+    def test_api_error_fails_before_reservation(self):
+        self.pages = subprocess.CalledProcessError(1, ['gh', 'api'])
+        self.resolve(subprocess.CalledProcessError)
+
+
 class ReleaseReservationTests(unittest.TestCase):
     def setUp(self):
         self.records = []
@@ -322,8 +479,10 @@ class ReleaseReservationTests(unittest.TestCase):
         def gh(*args, **kwargs):
             if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/pulls/1/files'):
                 return [[{'filename': 'producer/pipeline.py'}]]
-            if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/pulls/1/commits'):
-                return [[{'sha': commit, 'commit': {'message': 'fix: recover candidate'}}]]
+            if args == ('api', '--paginate', '--slurp',
+                        f'repos/{actions.REPO}/compare/{"e"*40}...{commit}?per_page=100'):
+                return [{'base_commit': {'sha': 'e'*40}, 'total_commits': 1,
+                         'commits': [{'sha': commit, 'commit': {'message': 'fix: recover candidate'}}]}]
             if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases'):
                 # One release per page ensures allocation and retries use every page.
                 self.release_queries += 1
@@ -356,7 +515,8 @@ class ReleaseReservationTests(unittest.TestCase):
             event = Path(temporary)/'event.json'
             event.write_text(json.dumps({'action': 'closed', 'number': 1, 'pull_request': {
                 'merged': True, 'changed_files': 1, 'commits': 1,
-                'base': {'ref': 'main'}, 'merge_commit_sha': commit}}))
+                'base': {'ref': 'main', 'sha': 'e'*40}, 'head': {'sha': commit},
+                'merge_commit_sha': commit}}))
             with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(event),
                                         'GITHUB_EVENT_NAME': 'pull_request'}), \
                     patch.object(actions, 'identity'), patch.object(actions, 'emit') as emit, \
