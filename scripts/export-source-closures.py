@@ -18,6 +18,15 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from producer.bundles import bundle
 from producer.release import filename
 from producer.sources import sha256
+from producer.source_fixtures import KNOWN,allowances
+
+
+def fixture_origin(asset,wanted,canonical_vectors):
+    origins={origin for member,record in wanted.items()
+             if (asset,member,record['sha256']) in canonical_vectors
+             for origin,known in KNOWN.items() if known.get(member)==record['sha256']}
+    if len(origins)>1:raise ValueError('Public test vectors require separate source origins')
+    return next(iter(origins),None)
 
 
 def select(inventory, rows, parent_names, child_gaps):
@@ -100,7 +109,9 @@ def main():
         if len(row)!=4 or row[1] not in {args.architecture,'all'} or name in rows:
             raise ValueError('Exact target package identities required')
         rows[name]=row
-    fragment=select(json.loads((args.canonical/inv[0]['name']).read_text()),rows,args.parent,
+    inventory=json.loads((args.canonical/inv[0]['name']).read_text())
+    canonical_vectors=allowances(inventory)
+    fragment=select(inventory,rows,args.parent,
                     json.loads(args.child_gaps.read_text()))
     groups=reference_groups(fragment);remap={};outputs=[]
     with tempfile.TemporaryDirectory() as temporary:
@@ -131,11 +142,10 @@ def main():
                            (repo/'LICENSE','source-closure-export-LICENSE','license_files'),
                            (receipt,'source-closure-export.json','build_inputs')])
             output=args.output/f"shirube-os-{manifest['version']}-{args.architecture}-source-supplement-{index:04d}.tar.gz"
-            origin=None
-            if any(m.startswith('netbird/') for m in wanted):
-                origin='netbird:'+json.loads((repo/'source-lock.json').read_text())['netbird']['source_commit']
-            elif any(m.startswith('vpp-preferred-inputs/') for m in wanted):
-                origin='vpp:'+json.loads((repo/'source-lock.json').read_text())['external_git']['vpp']['commit']
+            # Preserve only a canonical component's already verified public
+            # fixture binding. A filename, prefix or project name is never
+            # enough to admit a generated or changed key.
+            origin=fixture_origin(name,wanted,canonical_vectors)
             bundle(inputs,output,1773859634,source_origin=origin)
             for member in wanted:remap[(name,member)]={'asset':output.name,'member':member,'sha256':wanted[member]['sha256']}
             outputs.append({'name':output.name,'role':'source','architecture':args.architecture,

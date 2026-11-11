@@ -3,6 +3,7 @@ import copy
 from pathlib import Path
 import runpy
 import unittest
+from unittest.mock import patch
 
 api=runpy.run_path(str(Path(__file__).resolve().parents[1]/'scripts/export-source-closures.py'))
 
@@ -19,6 +20,24 @@ def component(name,version='1'):
 
 
 class SourceClosureTests(unittest.TestCase):
+    def test_public_fixture_needs_exact_canonical_asset_member_and_hash(self):
+        known=api['fixture_origin'].__globals__['KNOWN']
+        with patch.dict(known,{'public:fixed':{'fixture':'a'*64}},clear=True):
+            wanted={'fixture':{'sha256':'a'*64}}
+            self.assertIsNone(api['fixture_origin']('source.tar.gz',wanted,set()))
+            vectors={('source.tar.gz','fixture','a'*64)}
+            self.assertEqual(api['fixture_origin']('source.tar.gz',wanted,vectors),'public:fixed')
+            wanted['fixture']['sha256']='b'*64
+            self.assertIsNone(api['fixture_origin']('source.tar.gz',wanted,vectors))
+
+    def test_mixed_fixture_origins_are_not_combined_into_a_blanket_exception(self):
+        known=api['fixture_origin'].__globals__['KNOWN']
+        with patch.dict(known,{'one':{'first':'a'*64},'two':{'second':'b'*64}},clear=True):
+            wanted={'first':{'sha256':'a'*64},'second':{'sha256':'b'*64}}
+            with self.assertRaisesRegex(ValueError,'separate source origins'):
+                api['fixture_origin']('source.tar.gz',wanted,
+                    {('source.tar.gz',m,r['sha256']) for m,r in wanted.items()})
+
     def fixture(self):
         alpha=component('alpha');vpp=component('vpp');integration=component('shirube-integration')
         integration['source_origin']={'geoip_source_sha256':'a'*64,'headless_asset_sha256':'b'*64}
