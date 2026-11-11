@@ -168,19 +168,29 @@ archive size/SHA256. Consumers download only their architecture's named artifact
 from the current run. Before Docker load they reject missing/extra/nonregular
 files and verify provenance, archive hash/size, the single saved image's config
 hash and platform. After load, Docker inspect must confirm the exact image ID,
-OS and architecture before any stage executes. There is no registry push or
-fallback reconstruction. The image contains no runtime signing keys, mounted
+OS and architecture before any stage executes. Docker load progress goes to stderr;
+the CLI writes only one validated `imageid=sha256:...` assignment to stdout after
+all checks succeed, so it can be redirected into `GITHUB_OUTPUT`. There is no
+registry push or fallback reconstruction. The image contains no runtime signing keys, mounted
 host state or publication credentials.
 
 Cold compiler production omits cache-from and sets no-cache; cold stage jobs
-skip Actions cache restore and start with empty cache directories. Successful
-compiler production exports optional BuildKit cache under the same architecture
-and input-content scope used by warm restores. Successful eligible unsigned
-stage jobs save verified payloads under identical cold/warm content keys whenever
-there was no exact cache hit. A successful cold run therefore seeds the next warm
-run. Original content-commit attribution and all cache validation remain required;
-kernel signing and kernel state are never cached. Warm performance and actual
-cross-run reuse remain NOT_RUN.
+skip Actions cache restore and start with empty cache directories.
+Release-origin `pull_request_target` executions are restore-only, including
+post/failure paths; Buildx uses `cache-binary: false`.
+Only intentional validation events `workflow_dispatch` and `pull_request` permit
+writes: compiler production attempts optional BuildKit export with
+`ignore-error=true` under the same architecture/input-content scope as restores.
+Successful unsigned stage jobs save verified payloads under identical cold/warm
+content keys when there was no exact cache hit. A cold validation run can seed
+later warm runs only if saving succeeds and their refs can access that cache.
+PR merge-ref caches are not generally visible to later main releases.
+The dispatch ref determines cache scope; selecting `source-ref` changes the
+source checkout, not that scope. Restore attempts and optional compiler exports
+do not establish verified cache hits or successful warming. Original
+content-commit attribution and all cache validation remain required; kernel
+signing and kernel state are never cached. Hosted warm acceptance, capacity,
+warm performance and actual cross-run reuse remain NOT_RUN.
 Actions caches are acceleration, while Actions artifacts are required handoffs.
 Cache eviction cannot replace an artifact or a failed prerequisite.
 
@@ -243,7 +253,10 @@ names; every consumption revalidates the exact resolved commit/version and scope
 Successful reruns overwrite only that stage's same-run artifact. Expired/missing
 required artifacts fail; rerun the owning prerequisite rather than silently using
 an older release. A fresh dispatch resolves its own commit/version; cross-run
-candidate substitution is not a recovery mechanism.
+candidate substitution is not a recovery mechanism. Existing compiler artifacts
+remain bound to their original source commit/run and cannot establish acceptance
+of this fix. Rerunning an old run uses its old workflow/code and does not apply
+this fix. Do not relabel or substitute compiler artifacts across runs.
 
 The implementation tests use synthetic archives/files and a mocked compiler.
 They exercise cache miss/hit/current-attribution reuse/corrupt-cache rebuild,

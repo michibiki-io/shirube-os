@@ -37,8 +37,15 @@ def expression_value(expression, context):
     def value(node):
         if isinstance(node, ast.Constant):
             return node.value
-        if isinstance(node, ast.Compare) and len(node.ops) == 1 and isinstance(node.ops[0], ast.Eq):
-            return value(node.left) == value(node.comparators[0])
+        if isinstance(node, ast.Compare) and len(node.ops) == 1 and isinstance(node.ops[0], (ast.Eq, ast.NotEq)):
+            equal = value(node.left) == value(node.comparators[0])
+            return equal if isinstance(node.ops[0], ast.Eq) else not equal
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
+            args = [value(arg) for arg in node.args]
+            if node.func.id == 'hashFiles':
+                return 'fixture-input-hash'
+            if node.func.id == 'format':
+                return args[0].format(*args[1:])
         if isinstance(node, ast.BoolOp):
             result = value(node.values[0])
             for child in node.values[1:]:
@@ -184,12 +191,47 @@ class WorkflowCacheCITests(unittest.TestCase):
             self.assertEqual(len(saves),len(restores))
             for save,restore in zip(saves,restores):
                 self.assertEqual(restore['if'],"inputs.cache-mode == 'warm'")
-                self.assertEqual(save['if'],"success() && steps.cache.outputs.cache-hit != 'true'")
+                self.assertEqual(save['if'],"(github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'")
                 self.assertEqual(save['with'],restore['with'])
                 self.assertIn('--cache',execute['run'])
             if name=='kernel':
                 self.assertFalse(saves)
                 self.assertNotIn('--cache',execute['run'])
+
+    def test_actual_cache_expressions_event_mode_hit_success_matrix(self):
+        jobs = self.staged['jobs']
+        compiler = next(s['with'] for s in jobs['compiler']['steps']
+                        if s.get('uses', '').startswith('docker/build-push-action@'))
+        saves = [(name, step) for name, job in jobs.items() for step in job['steps']
+                 if step.get('uses', '').startswith('actions/cache/save@')]
+        self.assertEqual([name for name, _ in saves], ['native', 'vpp', 'kea', 'salt', 'runtime'])
+        for event in ('pull_request_target', 'workflow_dispatch', 'pull_request', 'push',
+                      'workflow_call', 'schedule'):
+            for mode in ('cold', 'warm'):
+                for hit in ('true', 'false', ''):
+                    for success in (True, False):
+                        for arch in ('amd64', 'arm64'):
+                            with self.subTest(event=event, mode=mode, hit=hit,
+                                              success=success, architecture=arch):
+                                context = {'github.event_name': event, 'inputs.cache-mode': mode,
+                                           'steps.cache.outputs.cache-hit': hit,
+                                           'success()': success, 'matrix.architecture': arch}
+                                allowed = event in ('workflow_dispatch', 'pull_request')
+                                scope = 'scope=shirube-staged-compiler-' + arch + '-fixture-input-hash'
+                                self.assertEqual(expression_value(compiler['cache-to'], context),
+                                                 'type=gha,mode=max,ignore-error=true,' + scope
+                                                 if allowed else '')
+                                self.assertEqual(expression_value(compiler['cache-from'], context),
+                                                 'type=gha,' + scope if mode == 'warm' else '')
+                                self.assertEqual(expression_value(compiler['no-cache'], context),
+                                                 mode == 'cold')
+                                for name, save in saves:
+                                    self.assertEqual(expression_value(save['if'], context),
+                                                     allowed and success and hit != 'true', name)
+                                    restore = next(s for s in jobs[name]['steps']
+                                                   if s.get('uses', '').startswith('actions/cache/restore@'))
+                                    self.assertEqual(expression_value(restore['if'], context),
+                                                     mode == 'warm', name)
 
     def test_publication_keeps_two_architecture_and_uploaded_artifact_gates(self):
         self.assertEqual(self.release['on'],{'pull_request_target':{'types':['closed'],'branches':['main']}})

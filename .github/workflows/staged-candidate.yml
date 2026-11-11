@@ -56,7 +56,7 @@ jobs:
             BASE=${{ matrix.architecture == 'amd64' && 'debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018' || 'debian@sha256:ec8534cda2cb30f29f44f23e135297af7a1496f2990fd8e4e84aa36b081a757a' }}
           cache-from: ${{ inputs.cache-mode == 'warm' && format('type=gha,scope=shirube-staged-compiler-{0}-{1}', matrix.architecture, hashFiles('.dockerignore', 'containers/native/**', 'producer/**', 'guest/**', 'patches/kernel/**', 'patches/vyos/**', 'patches/nmap/**', 'LICENSE', 'NOTICE', 'source-lock.json', 'license-audit.json', 'shirube-os-logo.svg', 'LICENSES/**', 'third_party/geoip/**')) || '' }}
           no-cache: ${{ inputs.cache-mode == 'cold' }}
-          cache-to: type=gha,mode=max,ignore-error=true,scope=shirube-staged-compiler-${{ matrix.architecture }}-${{ hashFiles('.dockerignore', 'containers/native/**', 'producer/**', 'guest/**', 'patches/kernel/**', 'patches/vyos/**', 'patches/nmap/**', 'LICENSE', 'NOTICE', 'source-lock.json', 'license-audit.json', 'shirube-os-logo.svg', 'LICENSES/**', 'third_party/geoip/**') }}
+          cache-to: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && format('type=gha,mode=max,ignore-error=true,scope=shirube-staged-compiler-{0}-{1}', matrix.architecture, hashFiles('.dockerignore', 'containers/native/**', 'producer/**', 'guest/**', 'patches/kernel/**', 'patches/vyos/**', 'patches/nmap/**', 'LICENSE', 'NOTICE', 'source-lock.json', 'license-audit.json', 'shirube-os-logo.svg', 'LICENSES/**', 'third_party/geoip/**')) || '' }}
       - name: Export exact native compiler
         env:
           SOURCE_COMMIT: ${{ inputs.commit }}
@@ -128,7 +128,7 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: success() && steps.cache.outputs.cache-hit != 'true'
+        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
           key: shirube-stage-v1-native-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
@@ -204,7 +204,7 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: success() && steps.cache.outputs.cache-hit != 'true'
+        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
           key: shirube-stage-v1-vpp-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
@@ -280,7 +280,7 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: success() && steps.cache.outputs.cache-hit != 'true'
+        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
           key: shirube-stage-v1-kea-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
@@ -356,7 +356,7 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: success() && steps.cache.outputs.cache-hit != 'true'
+        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
           key: shirube-stage-v1-salt-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
@@ -432,7 +432,7 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: success() && steps.cache.outputs.cache-hit != 'true'
+        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
           key: shirube-stage-v1-runtime-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
