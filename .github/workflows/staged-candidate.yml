@@ -655,7 +655,7 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           COMPILER_ARTIFACT: ${{ runner.temp }}/compiler-artifact
         run: |
-          python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
+          python3 -m producer.compiler_artifact load --discard-archive --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
       - name: Execute iso with verified predecessors
         env:
@@ -668,7 +668,7 @@ jobs:
           STAGE_OUTPUT: ${{ runner.temp }}/stage-output
           STAGE_CACHE: ${{ runner.temp }}/stage-cache
         run: |
-          python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+          python3 scripts/run-native-stage.py --discard-input-archives --stage "$STAGE" --architecture "$ARCHITECTURE" \
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
