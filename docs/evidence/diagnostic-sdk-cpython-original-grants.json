@@ -1,0 +1,62 @@
+{
+  "kind": "exact-cpython-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "salt-sdk:cpython",
+  "version": "3.11.14",
+  "source_identity": "8d3ed8ec5c88c1c95f5e558612a725450d2452813ddad5e58fdb1a53b1209b78",
+  "aggregate_notice_sha256": "9161e831e5cb5337c01ce58fce136f318eef5d72d1223eb37436382e224e410e",
+  "original_notices": [
+    {
+      "member": "Python-3.11.14/Doc/copyright.rst",
+      "sha256": "9e5e6634a7f5444dd83da55ccb265bac825abf72ecddccf7e394f284636bd9df"
+    },
+    {
+      "member": "Python-3.11.14/Doc/license.rst",
+      "sha256": "2b734ec5975b21b29ae8b9756a00fc3dfe701abe51687cec4c98a21c51005bca"
+    },
+    {
+      "member": "Python-3.11.14/LICENSE",
+      "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+    },
+    {
+      "member": "Python-3.11.14/Mac/BuildScript/resources/License.rtf",
+      "sha256": "ab6df6040a4e24babad38f98454eb3263722fa6a1c441bfaa271798efbe55f27"
+    },
+    {
+      "member": "Python-3.11.14/Modules/_ctypes/darwin/LICENSE",
+      "sha256": "8088ec43d0290e44628a5c2c84c1ca37983080d47e0bb6e0c89aa695b12630ec"
+    },
+    {
+      "member": "Python-3.11.14/Modules/_ctypes/libffi_osx/LICENSE",
+      "sha256": "40a537c7d74baeed3831304e92d1664ababd7ad8a3cf29f11a257c9e47145248"
+    },
+    {
+      "member": "Python-3.11.14/Modules/_sha3/LICENSE",
+      "sha256": "4633fc5859344c6f244939c27700fb941d12c4636215a8eccde17d9a6d1dcb0d"
+    },
+    {
+      "member": "Python-3.11.14/Modules/expat/COPYING",
+      "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534"
+    },
+    {
+      "member": "Python-3.11.14/Tools/msi/bundle/bootstrap/LICENSE.txt",
+      "sha256": "cb95daf98edda8e08a242e1060691b6941f0911692bf468a3f9c5e4b58c09b8f"
+    }
+  ],
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Apache-2.0.txt",
+      "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+    }
+  ],
+  "scope": "Exact fixed CPython source and all nine original notices only. Three newly encountered originals fully read (complete documentation license through original-root word comparison plus all incorporated-software clauses, copyright page and Windows bootstrap license); six complete notices match previously read original texts. No SDK or OS parent clearance.",
+  "conditions": [
+    "Retain original PSF, BeOpen, CNRI, CWI and independently scoped third-party copyrights, all historical licenses, complete disclaimers and author/nonendorsement restrictions in source and binary documentation.",
+    "Supply exact preferred source and complete recipes, preserve PSF modification summaries and plainly mark altered zlib sources; do not misrepresent origin or use upstream names for endorsement.",
+    "Windows bootstrap MS-RL applies only to the stated bootstrapper files, with their exact source, reciprocal file license and full notice supplied; it does not relicense Linux Python or unrelated files.",
+    "Preserve Lucent permission in full in covered source and supporting documentation; retain full Apache license and applicable notices for OpenSSL, and all W3C, BSD, MIT, Sun and PSF scopes. No patent or trademark permission is inferred beyond actual grants.",
+    "The original Darwin libffi notice refers to an AUTHORS file absent from this fixed Python source archive. Preserve the complete original notice and all existing per-file credits; no missing author list is represented as recovered."
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

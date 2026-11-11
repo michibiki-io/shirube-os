@@ -1,0 +1,22 @@
+{
+  "kind": "fixed-prometheus-codicon-original-license-inspection",
+  "status": "PASS_COMPONENT_SCOPE_ONLY",
+  "source_url": "https://proxy.golang.org/github.com/prometheus/prometheus/@v/v0.46.0.zip",
+  "source_identity": "501c6bafc0e5945acdcc4a859e466cf8160f14c838d3e487ea92d98f8762008a",
+  "font_member": "github.com/prometheus/prometheus@v0.46.0/web/ui/react-app/src/fonts/codicon.ttf",
+  "font_sha256": "1b55f12eca93ba6743e7a196adb0fd4828a4f85311d17f21d03a65a6fe763b6e",
+  "font_size": 61024,
+  "upstream_font_introduction_commit": "faacb619c0a5a0418ffdf788c40ef083dfe17039",
+  "original_license_url": "https://raw.githubusercontent.com/microsoft/vscode-codicons/e73899bb0229fe1a653416d429f39bab8ae00ee1/LICENSE",
+  "original_license_commit_date": "2019-10-15",
+  "original_license_sha256": "d6239afa918961b465b07bf7411cbe34ff6685854f58553db7966f4881a0211f",
+  "complete_license_comparison": [
+    {
+      "old": "\"Licensor.\"",
+      "new": "\u201cLicensor.\u201d The text of the Creative Commons public licenses is dedicated to the public domain under the CC0 Public Domain Dedication."
+    }
+  ],
+  "scope": "The exact Go source ZIP and its sole included font were inspected. The original Prometheus NOTICE identifies Microsoft Codicons and its copyright; the immutable creator license predates the font introduction. Complete license compared with the previously read original CC-BY4 text and every difference read. Preserve the original font, author/source attribution, full license and modification status; no product branding use. Dependencies merely referenced in package manifests are not represented as bundled node_modules.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

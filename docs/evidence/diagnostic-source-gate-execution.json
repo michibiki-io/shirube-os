@@ -1,0 +1,33 @@
+{
+  "kind": "diagnostic-production-source-gate-execution",
+  "status": "PASS_SOURCE_GATE_ONLY",
+  "consumer_recipe_commit": "9442ce428d0830a0bcccb2b781d4b69a30f55512",
+  "compiled_cohort_commit": "3b94e3bfdf8335377c3c03eb3e29e1e1321a5736",
+  "source_set_reconstruction": {
+    "proof": {
+      "kind": "complete-source-set-restoration",
+      "status": "PASS_SOURCE_SET_ONLY",
+      "architecture": "amd64",
+      "source_commit": "3b94e3bfdf8335377c3c03eb3e29e1e1321a5736",
+      "manifest_sha256": "e4fc36830b16218835dc32c02e0c7c25ce0b1aabfa606c646f2d8506377bcb3c",
+      "inventory_sha256": "fe0ecf7c9530aaf520a17690903d477753f115f56e4bfafdcd248f5e49c41fd3",
+      "source_archives": 512,
+      "restored_regular_members": 207262,
+      "shipped_packages": 730,
+      "archive_byte_integrity": "PASS",
+      "all_source_license_recipe_references": "PASS",
+      "binary_reconstruction": "NOT_RUN",
+      "license_clearance": "NOT_ESTABLISHED_BY_RESTORATION",
+      "release_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "actual_project_build_input_sha256": "6e45c29db077b696b4de08ba24060a69ebd8cba8bd28fee2aaae4ec892df9918",
+      "actual_project_build_input_binding": "PASS"
+    }
+  },
+  "intermediate_publication": "REJECTED_EXPECTED",
+  "license_clearance": "FAIL",
+  "binary_reconstruction": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "scope": "Actual production restorer and project-input binding executed against the legacy declared package set. Unowned GeoIP data discovered later is outside this receipt; licenses and complete new candidate remain gated."
+}

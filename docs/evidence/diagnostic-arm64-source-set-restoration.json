@@ -1,0 +1,27 @@
+{
+  "kind": "diagnostic-arm64-legacy-source-set-restoration",
+  "scope": "Legacy declared730-package set only; excludes later GeoIP and individual VPP input closure. Frozen d5 collector/validator, original554 compiled project input, explicit notices/payload repairs. Not a current-head candidate or license/binary-recompile clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "status": "PASS_SOURCE_SET_ONLY",
+  "restoration": {
+    "kind": "complete-source-set-restoration",
+    "status": "PASS_SOURCE_SET_ONLY",
+    "architecture": "arm64",
+    "source_commit": "554aa3df773453e9e88a8990b41dfa2b4e5cc1e2",
+    "manifest_sha256": "837d4e5ae26de332b8abffa7da045ce8d6dd3249328cdcef4007e73fe9f098a6",
+    "inventory_sha256": "dfdb2896cd774ee8a9644bcfff4cd551c22b131b9b0143e47354a8aa7ac9c4bb",
+    "source_archives": 513,
+    "restored_regular_members": 207244,
+    "shipped_packages": 730,
+    "archive_byte_integrity": "PASS",
+    "all_source_license_recipe_references": "PASS",
+    "binary_reconstruction": "NOT_RUN",
+    "license_clearance": "NOT_ESTABLISHED_BY_RESTORATION",
+    "release_clearance": "NOT_CLEARED",
+    "oci": "NOT_RUN"
+  },
+  "actual_project_build_input_sha256": "2515ca8b68fd1579aa68ab443d65bfa5f515cd2e1244cb1a5f5dc7420698b80a",
+  "actual_project_build_input_binding": "PASS",
+  "source_archive_bytes": 3692090992
+}

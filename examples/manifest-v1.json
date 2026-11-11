@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "manifest_kind": "example",
+  "project": "Shirube OS",
+  "provider": "michibiki-io",
+  "version": "v2026.03.0",
+  "source_commit": "0000000000000000000000000000000000000000",
+  "source_clean": true,
+  "upstream": {
+    "version": "2026.03",
+    "sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+    "signature": "NOT_RUN",
+    "vpp_commit": "8a3f587695fe6ad4d8297bd4b2f331b7262698d9",
+    "vpp_patches_commit": "9cab3c94679592ef27a58e6a0e9becdd9f847754",
+    "substitution": "Public VPP 25.10 and public VyOS patches replace vendor VPP; vendor-byte-identical output is not claimed."
+  },
+  "architectures": {
+    "amd64": {
+      "checks": {
+        "architecture": "NOT_RUN",
+        "branding": "NOT_RUN",
+        "build": "NOT_RUN",
+        "corresponding_source": "NOT_RUN",
+        "disk_equivalence": "NOT_RUN",
+        "identity_regeneration": "NOT_RUN",
+        "licenses": "NOT_RUN",
+        "local_boot": "NOT_RUN",
+        "module_signatures": "NOT_RUN",
+        "netbird": "NOT_RUN",
+        "provisioned_access": "NOT_RUN",
+        "sanitization": "NOT_RUN",
+        "unprovisioned_boot": "NOT_RUN",
+        "cloud_init": "NOT_RUN",
+        "iso_boot_modes": "NOT_RUN"
+      },
+      "oci": "NOT_RUN",
+      "virtual_size": 53687091200,
+      "standalone": true,
+      "vmdk_subformat": "streamOptimized",
+      "signing_certificate_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "repository_fingerprint": "EXAMPLE_ONLY",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000",
+      "firmware": "UEFI",
+      "console": {
+        "device": "ttyS0",
+        "baud": 115200
+      },
+      "provisioning": {
+        "method": "cloud-init-or-console-v1",
+        "default_credentials": false
+      },
+      "qemu_accelerator": "kvm",
+      "iso_boot_modes": [
+        "BIOS",
+        "UEFI"
+      ]
+    },
+    "arm64": {
+      "checks": {
+        "architecture": "NOT_RUN",
+        "branding": "NOT_RUN",
+        "build": "NOT_RUN",
+        "corresponding_source": "NOT_RUN",
+        "disk_equivalence": "NOT_RUN",
+        "identity_regeneration": "NOT_RUN",
+        "licenses": "NOT_RUN",
+        "local_boot": "NOT_RUN",
+        "module_signatures": "NOT_RUN",
+        "netbird": "NOT_RUN",
+        "provisioned_access": "NOT_RUN",
+        "sanitization": "NOT_RUN",
+        "unprovisioned_boot": "NOT_RUN",
+        "cloud_init": "NOT_RUN",
+        "iso_boot_modes": "NOT_RUN"
+      },
+      "oci": "NOT_RUN",
+      "virtual_size": 53687091200,
+      "standalone": true,
+      "vmdk_subformat": "streamOptimized",
+      "signing_certificate_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "repository_fingerprint": "EXAMPLE_ONLY",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000",
+      "firmware": "UEFI",
+      "console": {
+        "device": "ttyAMA0",
+        "baud": 115200
+      },
+      "provisioning": {
+        "method": "cloud-init-or-console-v1",
+        "default_credentials": false
+      },
+      "qemu_accelerator": "kvm",
+      "iso_boot_modes": [
+        "UEFI"
+      ]
+    }
+  },
+  "assets": [
+    {
+      "name": "shirube-os-v2026.03.0-amd64.iso",
+      "role": "iso",
+      "architecture": "amd64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-amd64.qcow2",
+      "role": "qcow2",
+      "architecture": "amd64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-amd64.vmdk",
+      "role": "vmdk",
+      "architecture": "amd64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-amd64.source.tar.gz",
+      "role": "source",
+      "architecture": "amd64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-amd64.licenses.json",
+      "role": "licenses",
+      "architecture": "amd64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-amd64.evidence.json",
+      "role": "evidence",
+      "architecture": "amd64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-arm64.iso",
+      "role": "iso",
+      "architecture": "arm64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-arm64.qcow2",
+      "role": "qcow2",
+      "architecture": "arm64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-arm64.vmdk",
+      "role": "vmdk",
+      "architecture": "arm64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-arm64.source.tar.gz",
+      "role": "source",
+      "architecture": "arm64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-arm64.licenses.json",
+      "role": "licenses",
+      "architecture": "arm64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "shirube-os-v2026.03.0-arm64.evidence.json",
+      "role": "evidence",
+      "architecture": "arm64",
+      "size": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generation": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}

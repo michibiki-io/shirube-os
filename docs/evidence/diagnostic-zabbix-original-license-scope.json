@@ -1,0 +1,751 @@
+{
+  "kind": "exact-zabbix-original-license-scope-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": {
+    "source": "zabbix",
+    "version": "1:7.0.9+dfsg-1~bpo12+1",
+    "dsc_sha256": "8ca7493db7ad0de663150f74812291ab09bd862367b3c083fb0240b15c83a3dd",
+    "binaries": [
+      {
+        "name": "zabbix-agent2",
+        "version": "1:7.0.9+dfsg-1~bpo12+1",
+        "architecture": "arm64",
+        "copyright_sha256": "c35642e08254ec781851191e2123df8e9f63bb7473b3a9749eff4dd39f66f9d9"
+      }
+    ],
+    "copyright_sha256": "c35642e08254ec781851191e2123df8e9f63bb7473b3a9749eff4dd39f66f9d9",
+    "original_legal_matches": [
+      {
+        "member": "COPYING",
+        "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "COPYING",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "src/go/LICENSE",
+        "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "COPYING",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "src/go/cmd/zabbix_agent2/copyright_extra.go",
+        "sha256": "16e86404f06e3b22d4b9973bf1bd6c3529de315157640778e7f629db128330b6",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "src/go/cmd/zabbix_agent2/copyright_extra.go",
+          "sha256": "16e86404f06e3b22d4b9973bf1bd6c3529de315157640778e7f629db128330b6"
+        }
+      },
+      {
+        "member": "templates/media/mattermost/LICENSE",
+        "sha256": "6b18bc37795de0befa10bff0f6c677fa1b2a1554d6ff816cd3413a85e206bf5c",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "templates/media/mattermost/LICENSE",
+          "sha256": "6b18bc37795de0befa10bff0f6c677fa1b2a1554d6ff816cd3413a85e206bf5c"
+        }
+      },
+      {
+        "member": "templates/media/mattermost/LICENSE-APACHE2",
+        "sha256": "9ad803232e3df42332c24c2adbc32bcd8b181b58b44692d4240741a0079513a1",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "templates/media/mattermost/LICENSE-APACHE2",
+          "sha256": "9ad803232e3df42332c24c2adbc32bcd8b181b58b44692d4240741a0079513a1",
+          "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+          "read_reference": {
+            "component": "pypi:msgpack",
+            "member": "msgpack-1.0.2/COPYING",
+            "sha256": "ffb4180fb7e90bde94d4f4fc2e599866d71a11524fafcb5c5e5ca29adeee98ab",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        }
+      },
+      {
+        "member": "ui/assets/styles/vendors/Leaflet/LICENSE",
+        "sha256": "ef473866f292e9feb4a02035adfef5427f828e099f0ff66b759736b4ac13f813",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/assets/styles/vendors/Leaflet/LICENSE",
+          "sha256": "ef473866f292e9feb4a02035adfef5427f828e099f0ff66b759736b4ac13f813",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/js/vendors/D3/LICENSE",
+        "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/js/vendors/D3/LICENSE",
+          "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/js/vendors/Leaflet/LICENSE",
+        "sha256": "4172e5d9d709cf78cd9b18bce59a2905cb4a072fb72d5fa0331805520019e320",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/js/vendors/Leaflet/LICENSE",
+          "sha256": "4172e5d9d709cf78cd9b18bce59a2905cb4a072fb72d5fa0331805520019e320",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/js/vendors/Leaflet.markercluster/LICENSE",
+        "sha256": "3133dacd38250bd1f524d8166cc60a016a382522e062fce143691c65bf5e4b3d",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/js/vendors/Leaflet.markercluster/LICENSE",
+          "sha256": "3133dacd38250bd1f524d8166cc60a016a382522e062fce143691c65bf5e4b3d",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/js/vendors/jQuery/LICENSE",
+        "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/js/vendors/jQuery/LICENSE",
+          "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/js/vendors/jQueryUI/LICENSE",
+        "sha256": "de33fb695880d0b07615d4b86f78cd43796906959ade5fdfef70968827a0db78",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/js/vendors/jQueryUI/LICENSE",
+          "sha256": "de33fb695880d0b07615d4b86f78cd43796906959ade5fdfef70968827a0db78"
+        }
+      },
+      {
+        "member": "ui/js/vendors/qrcode/LICENSE",
+        "sha256": "aaa1f349028a59432eb00222b8ddfe4d2ccebdce04cf8348dcb8d41b7068107b",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/js/vendors/qrcode/LICENSE",
+          "sha256": "aaa1f349028a59432eb00222b8ddfe4d2ccebdce04cf8348dcb8d41b7068107b",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/composer/LICENSE",
+        "sha256": "c8cce4b6b9729f264ffdf9296d505d63432497feeed1f586d1902b942197e024",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/composer/LICENSE",
+          "sha256": "c8cce4b6b9729f264ffdf9296d505d63432497feeed1f586d1902b942197e024",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/duosecurity/duo_universal_php/LICENSE",
+        "sha256": "b7c6878a51e588431e120ad9a02238026a82c41988f9ad04f5e191e64da269c4",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/duosecurity/duo_universal_php/LICENSE",
+          "sha256": "b7c6878a51e588431e120ad9a02238026a82c41988f9ad04f5e191e64da269c4",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/firebase/php-jwt/LICENSE",
+        "sha256": "00e641cb185172e752bb3ab744925502c099dca06c9ecf53ea6fba941a65910c",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/firebase/php-jwt/LICENSE",
+          "sha256": "00e641cb185172e752bb3ab744925502c099dca06c9ecf53ea6fba941a65910c",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/onelogin/php-saml/LICENSE",
+        "sha256": "cdc2294a296d851614df21755af8351df951a2457d21c584e067714a8257db05",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/onelogin/php-saml/LICENSE",
+          "sha256": "cdc2294a296d851614df21755af8351df951a2457d21c584e067714a8257db05",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/paragonie/constant_time_encoding/LICENSE.txt",
+        "sha256": "d175ac2e6bc71c13117ea49cc2c3be95284690dc07cc7fc441c6538c280641fd",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/paragonie/constant_time_encoding/LICENSE.txt",
+          "sha256": "d175ac2e6bc71c13117ea49cc2c3be95284690dc07cc7fc441c6538c280641fd",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/pragmarx/google2fa/LICENSE.md",
+        "sha256": "1d5304c79db3db570892c66ea61e715b5c43f936c97eca34012b20b013c7538a",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/pragmarx/google2fa/LICENSE.md",
+          "sha256": "1d5304c79db3db570892c66ea61e715b5c43f936c97eca34012b20b013c7538a",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/robrichards/xmlseclibs/LICENSE",
+        "sha256": "1ca7b9045731e74cbe8987835497f366a9af82f6a90a863539134d03c70d25d0",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/robrichards/xmlseclibs/LICENSE",
+          "sha256": "1ca7b9045731e74cbe8987835497f366a9af82f6a90a863539134d03c70d25d0",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/symfony/deprecation-contracts/LICENSE",
+        "sha256": "b4dd7e49bb2ed062da4dc3cc2cd733377d38fcc702c55b4bef20f94b543b3042",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/symfony/deprecation-contracts/LICENSE",
+          "sha256": "b4dd7e49bb2ed062da4dc3cc2cd733377d38fcc702c55b4bef20f94b543b3042",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/symfony/polyfill-ctype/LICENSE",
+        "sha256": "8a8251570f35ecbfd2dd2c7e1b992181565edbe9c7642dcb15ca5b2348940c51",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/symfony/polyfill-ctype/LICENSE",
+          "sha256": "8a8251570f35ecbfd2dd2c7e1b992181565edbe9c7642dcb15ca5b2348940c51",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "ui/vendor/symfony/yaml/LICENSE",
+        "sha256": "45b74a394cc6df4f268170bd3ce839e0b50cff66c44c2354562ce8d069091659",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "ui/vendor/symfony/yaml/LICENSE",
+          "sha256": "45b74a394cc6df4f268170bd3ce839e0b50cff66c44c2354562ce8d069091659",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/chromedp/cdproto/LICENSE",
+        "sha256": "ab7cf54dcb0b4de0442aa073f93501b667dcfba13e7576d9a54f46e1109a6365",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/chromedp/cdproto/LICENSE",
+          "sha256": "ab7cf54dcb0b4de0442aa073f93501b667dcfba13e7576d9a54f46e1109a6365",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/chromedp/chromedp/LICENSE",
+        "sha256": "849d803c74764f23ab9f18799e480bee99ac58c33aefc0e8dc621993372a6f53",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/chromedp/chromedp/LICENSE",
+          "sha256": "849d803c74764f23ab9f18799e480bee99ac58c33aefc0e8dc621993372a6f53",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/chromedp/sysutil/LICENSE",
+        "sha256": "7c3f40700432f459a90770b4108f8526a6a62380c2a2720d8cf279ea8751662a",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/chromedp/sysutil/LICENSE",
+          "sha256": "7c3f40700432f459a90770b4108f8526a6a62380c2a2720d8cf279ea8751662a",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/dustin/gomemcached/LICENSE",
+        "sha256": "93fc0681f72f321a8928d3420e00ad249f64cfc4d190717958c98e9152265f7a",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/dustin/gomemcached/LICENSE",
+          "sha256": "93fc0681f72f321a8928d3420e00ad249f64cfc4d190717958c98e9152265f7a",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/go-ole/go-ole/LICENSE",
+        "sha256": "d883dbca28769ff23dd4368a8edb7ad9f9f23a8f86adde2875c6e41a828aac62",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/go-ole/go-ole/LICENSE",
+          "sha256": "d883dbca28769ff23dd4368a8edb7ad9f9f23a8f86adde2875c6e41a828aac62",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/gobwas/httphead/LICENSE",
+        "sha256": "7d168561ad5212bf5b3023d55cba37c9594eb011ba74445d99f82055be662589",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/gobwas/httphead/LICENSE",
+          "sha256": "7d168561ad5212bf5b3023d55cba37c9594eb011ba74445d99f82055be662589",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/gobwas/pool/LICENSE",
+        "sha256": "bcc745631c0144db2c601650c55d108172c80d601cf2346c71594a0bc32f6f1c",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/gobwas/pool/LICENSE",
+          "sha256": "bcc745631c0144db2c601650c55d108172c80d601cf2346c71594a0bc32f6f1c",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/gobwas/ws/LICENSE",
+        "sha256": "db823214b3ef18274418accda3812faac38a1545b8bd589aeb613a849b949c7a",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/gobwas/ws/LICENSE",
+          "sha256": "db823214b3ef18274418accda3812faac38a1545b8bd589aeb613a849b949c7a",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/godror/godror/LICENSE.md",
+        "sha256": "0fee0d30efedb1b3f88258a48362bde7027c6929f186ac9eaa3610ba181ef570",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/godror/godror/LICENSE.md",
+          "sha256": "0fee0d30efedb1b3f88258a48362bde7027c6929f186ac9eaa3610ba181ef570",
+          "method": "Complete original normalized-word comparison, every difference read, exact author and per-file scope retained."
+        }
+      },
+      {
+        "member": "vendor/github.com/godror/godror/odpi/LICENSE.txt",
+        "sha256": "4b51e3a8bf1f6c9d4153f060f5f5799ab62b6255661f06b4f3c39090cc74f526",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/godror/godror/odpi/LICENSE.txt",
+          "sha256": "4b51e3a8bf1f6c9d4153f060f5f5799ab62b6255661f06b4f3c39090cc74f526",
+          "method": "Complete original normalized-word comparison, every difference read, exact author and per-file scope retained."
+        }
+      },
+      {
+        "member": "vendor/github.com/godror/knownpb/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "read_reference": {
+          "component": "aardvark-dns",
+          "member": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      },
+      {
+        "member": "vendor/github.com/mediocregopher/radix/v3/LICENSE.txt",
+        "sha256": "d9ca630e58304853484335e394816618ee9433dfadc5c61e73552847446e0efc",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/mediocregopher/radix/v3/LICENSE.txt",
+          "sha256": "d9ca630e58304853484335e394816618ee9433dfadc5c61e73552847446e0efc",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/memcachier/mc/v3/LICENSE",
+        "sha256": "bafb00969fa26a45f78901e338d0b79ed68d3323338de18daef067db8a89210a",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/memcachier/mc/v3/LICENSE",
+          "sha256": "bafb00969fa26a45f78901e338d0b79ed68d3323338de18daef067db8a89210a",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/miekg/dns/COPYRIGHT",
+        "sha256": "66550c0ad5ca7ec1e08683e5f872cc45c741f311eee3b8ee484206ecbf9c740d",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/miekg/dns/COPYRIGHT",
+          "sha256": "66550c0ad5ca7ec1e08683e5f872cc45c741f311eee3b8ee484206ecbf9c740d",
+          "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+        }
+      },
+      {
+        "member": "vendor/github.com/miekg/dns/LICENSE",
+        "sha256": "f200ff9bad73385db2ed81e23ee2c1fe069eb5776e17fae4ee85ad0a9e1361a5",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/miekg/dns/LICENSE",
+          "sha256": "f200ff9bad73385db2ed81e23ee2c1fe069eb5776e17fae4ee85ad0a9e1361a5",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/omeid/go-yarn/LICENSE",
+        "sha256": "0674605f81d7b3fecfedd151df2f622a844390589760dd98259ebcaef3380a0e",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/omeid/go-yarn/LICENSE",
+          "sha256": "0674605f81d7b3fecfedd151df2f622a844390589760dd98259ebcaef3380a0e",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/github.com/sokurenko/go-netstat/LICENSE",
+        "sha256": "72b1d69cda1ccbb89d4f86e27a20fb36f21da1cf688b45842dc0047da3c89d3c",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/github.com/sokurenko/go-netstat/LICENSE",
+          "sha256": "72b1d69cda1ccbb89d4f86e27a20fb36f21da1cf688b45842dc0047da3c89d3c",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/golang.org/x/sync/LICENSE",
+        "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/golang.org/x/sync/LICENSE",
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      },
+      {
+        "member": "vendor/golang.zabbix.com/sdk/LICENSE",
+        "sha256": "1ff21edf27540212da61b4f7057219c4df926ac6b5f2f1f1d3b2b982354bf4c0",
+        "read_reference": {
+          "component": "zabbix",
+          "member": "vendor/golang.zabbix.com/sdk/LICENSE",
+          "sha256": "1ff21edf27540212da61b4f7057219c4df926ac6b5f2f1f1d3b2b982354bf4c0",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      }
+    ],
+    "license_definitions": [
+      {
+        "label": "custom-BSD-like",
+        "full_normalized_body_sha256": "7b35d4e411a167cbe2dfde13baeb3761829e5c4c3a85a30fe96b0fc285326426",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "custom-BSD-like"
+        }
+      },
+      {
+        "label": "Public-Domain",
+        "full_normalized_body_sha256": "7852faa6e649d9706c2a5c5e2ab271f6d83330d1b1e2dbde31142dc3c2e811c6",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "Public-Domain"
+        }
+      },
+      {
+        "label": "ISC",
+        "full_normalized_body_sha256": "4829cc8e654be69dd1edcebedbda21758a239c230e38f532d6bf4b0adc1a0427",
+        "read_reference": {
+          "label": "ISC ",
+          "component": "at"
+        }
+      },
+      {
+        "label": "BSD-2-Clause",
+        "full_normalized_body_sha256": "971850f7f84e5dc88bd6b52e0d0c1fbffdaec4eae2fd311b1511d42bf7855c51",
+        "read_reference": {
+          "label": "BSD-2-Clause",
+          "component": "libbpf"
+        }
+      },
+      {
+        "label": "BSD-3-Clause~RR",
+        "full_normalized_body_sha256": "ebc9b3171f1f4c4ce617fd8d6c56d378d19919f455858ab96a8bd08ce278ec1b",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "BSD-3-Clause~RR"
+        }
+      },
+      {
+        "label": "bitstream-font-license",
+        "full_normalized_body_sha256": "7829756abf35566078cd6cbd22d68443719a1acb86193334ca29566381b4b9f5",
+        "read_reference": {
+          "label": "bitstream-vera",
+          "component": "fonts-dejavu"
+        }
+      },
+      {
+        "label": "BSD-3-Clause",
+        "full_normalized_body_sha256": "62026297ff963401183d38bdf53c2af078617e9d6178d8ebc339658404883295",
+        "read_reference": {
+          "label": "BSD3_Google",
+          "component": "boost1.74"
+        }
+      },
+      {
+        "label": "Apache-2.0",
+        "full_normalized_body_sha256": "2073bba1428c25ddc2f2ca604123eea3d0df1e855d24224a4b8dedc6745b9d4d",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "Apache-2.0"
+        }
+      },
+      {
+        "label": "Expat",
+        "full_normalized_body_sha256": "8a08afa3627bb2d4a4a91122b308e60ae60c11978e3f560598d569ae2a47475b",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "Expat"
+        }
+      },
+      {
+        "label": "GPL-2+",
+        "full_normalized_body_sha256": "cd9d3cebfa05ac3c8c3392f092459d0f7d369e316b61453ae2004ff1e3ffee7c",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "GPL-2+"
+        }
+      },
+      {
+        "label": "GPL-2",
+        "full_normalized_body_sha256": "32d2f0624e1fe38407e55e33318da38aded41a6df9a69f1d9e205b5325c2c912",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "GPL-2"
+        }
+      },
+      {
+        "label": "UPL-1.0",
+        "full_normalized_body_sha256": "be39a4a1d06a79944c129ef39f45b63b29d7f30fea27fecc8b61648033b930f9",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "UPL-1.0"
+        }
+      },
+      {
+        "label": "AGPL-3",
+        "full_normalized_body_sha256": "9e954295226a7ced151ea6a4415ce6afb60153db754d3c98ce6c7745997f3e8a",
+        "read_reference": {
+          "component": "zabbix",
+          "label": "AGPL-3",
+          "review_method": "Complete Debian AGPL rendering differences read against retained actual root COPYING; Debian transcription errors are not treated as a replacement license. Original root AGPL3 controls."
+        }
+      }
+    ],
+    "fields_for_reading": [
+      {
+        "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+        "Upstream-Name": "Zabbix",
+        "Upstream-Contact": "Alexei Vladishev <alexei.vladishev@zabbix.com>",
+        "Source": "http://www.zabbix.com/download.php",
+        "Copyright": "2000-2025 Zabbix SIA",
+        "Files-Excluded": "\nbin/win*/*.exe\nbin/win*/dev/*.dll\nbin/win*/dev/*.lib\nsrc/zabbix_java/lib/*.jar\nsrc/go/vendor",
+        "Files-Excluded-templates": "\nnet/cisco/cisco_catalyst*",
+        "Files-Excluded-vendor": "\nvendor/github.com/BurntSushi/locker\n~~vendor/github.com/chromedp/sysutil\nvendor/github.com/DATA-DOG/go-sqlmock\nvendor/github.com/eclipse/paho.mqtt.golang\nvendor/github.com/fsnotify/fsnotify\nvendor/github.com/goburrow/modbus\nvendor/github.com/goburrow/serial\nvendor/github.com/godbus/dbus\nvendor/github.com/go-ldap/ldap\nvendor/github.com/go-logfmt/logfmt\nvendor/github.com/go-logr/logr\nvendor/github.com/google/go-cmp\nvendor/github.com/gorilla/websocket\nvendor/github.com/go-sql-driver/mysql\n~~vendor/github.com/jackc/chunkreader\n~~vendor/github.com/jackc/pgconn\n~~vendor/github.com/jackc/pgio\n~~vendor/github.com/jackc/pgpassfile\n~~vendor/github.com/jackc/pgproto3\n~~vendor/github.com/jackc/pgservicefile\n~~vendor/github.com/jackc/pgtype\n~vendor/github.com/jackc/pgx\n~~vendor/github.com/jackc/puddle\nvendor/github.com/josharian/intern\nvendor/github.com/mailru/easyjson\nvendor/github.com/mattn/go-sqlite3\nvendor/github.com/Microsoft/go-winio\n~vendor/github.com/miekg/dns\nvendor/golang.org/x/mod\nvendor/golang.org/x/net\nvendor/golang.org/x/sys\nvendor/golang.org/x/text\nvendor/golang.org/x/tools\nvendor/golang.org/x/xerrors\nvendor/google.golang.org/protobuf\nvendor/gopkg.in",
+        "Comment": "\nThis package was debianized by Michael Ablassmeier <abi@debian.org>\non Tue, 23 Mar 2004 22:46:45 +0100.\n\n\"~~\" denotes bundled dependencies not present in Bullseye-Backports.",
+        "LicenseExpression": "AGPL-3"
+      },
+      {
+        "Files": "*",
+        "Copyright": "2000-2025 Zabbix SIA",
+        "Comment": "\nAuthor: Alexei Vladishev <alexei.vladishev@zabbix.com>",
+        "LicenseExpression": "AGPL-3"
+      },
+      {
+        "Files": "\nsrc/libs/zbxembed/duktape.c",
+        "Copyright": "\n2013-2019 Duktape authors",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\ninclude/zbxgetopt.h\nsrc/libs/zbxgetopt/getopt.c",
+        "Copyright": "\n1985,1987,1988-1993 Free Software Foundation, Inc",
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "Files": "\nsrc/libs/zbxhash/md5.c",
+        "Copyright": "1999,2000,2002 Aladdin Enterprises.",
+        "LicenseExpression": "custom-BSD-like"
+      },
+      {
+        "Files": "src/libs/zbxcommon/str.c",
+        "Copyright": "2000-2025 Zabbix SIA",
+        "Comment": "with portions\nCopyright: 1998 Todd C. Miller <Todd.Miller@courtesan.com>\nPermission to use, copy, modify, and distribute this software for any\npurpose with or without fee is hereby granted, provided that the above\ncopyright notice and this permission notice appear in all copies.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\nWITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\nMERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR\nANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\nWHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\nACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF\nOR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.",
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "Files": "src/libs/zbxcrypt/sha*crypt.c",
+        "Copyright": "N/A",
+        "LicenseExpression": "Public-Domain"
+      },
+      {
+        "Files": "misc/init.d/suse/*",
+        "Copyright": "2004 A.Tophofen",
+        "Comment": "assuming the same license as for the whole application",
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "Files": "misc/images/png_classic/*.png",
+        "Copyright": "Jakub \"Jimmac\" Steiner",
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "Files": "\nui/js/vendors/D3/*",
+        "Copyright": "\n2010-2023 Mike Bostock",
+        "LicenseExpression": "ISC"
+      },
+      {
+        "Files": "\nui/js/vendors/jQuery/*\nui/js/vendors/jQueryUI/*",
+        "Copyright": "\n2005-2024 OpenJS Foundation and other contributors, https://openjsf.org/",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nui/js/vendors/Leaflet/*",
+        "Copyright": "\n2010-2021, Vladimir Agafonkin\n2010-2011, CloudMade",
+        "Comment": "https://github.com/Leaflet/Leaflet",
+        "LicenseExpression": "BSD-2-Clause"
+      },
+      {
+        "Files": "\nui/js/vendors/Leaflet.markercluster/*",
+        "Copyright": "\n2012 Literate Programs\n2012 David Leaver",
+        "Comment": "https://literateprograms.org/quickhull__javascript_.html",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nui/js/vendors/qrcode/*",
+        "Copyright": "\n2012 davidshimjs",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "ui/vendor/composer/*",
+        "Copyright": "Nils Adermann, Jordi Boggiano",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nui/vendor/onelogin/*",
+        "Copyright": "\n2010-2016 OneLogin, Inc.",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "ui/vendor/symfony/*",
+        "Copyright": "2004-2020 Fabien Potencier",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nui/vendor/robrichards/xmlseclibs/*",
+        "Copyright": "\n2007-2019 Robert Richards <rrichards@cdatazone.org>",
+        "LicenseExpression": "BSD-3-Clause~RR"
+      },
+      {
+        "Files": "ui/assets/fonts/*.ttf",
+        "Copyright": "2003 Bitstream, Inc. All Rights Reserved.\nBitstream Vera is a trademark of Bitstream, Inc.\nDejaVu changes are in public domain.",
+        "LicenseExpression": "bitstream-font-license"
+      },
+      {
+        "Files": "\ntemplates/media/mattermost/*",
+        "Copyright": "\n2001-2025 Zabbix SIA",
+        "LicenseExpression": "GPL-2 or Apache-2.0"
+      },
+      {
+        "Files": "\nvendor/github.com/chromedp/*",
+        "Copyright": "\n2016-2020 Kenneth Shaw",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/github.com/dustin/gomemcached/*",
+        "Copyright": "\n2013 Dustin Sallings",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/github.com/go-ole/go-ole/*",
+        "Copyright": "\n2013-2017 Yasuhiro Matsumoto <mattn.jp@gmail.com>",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/github.com/gobwas/*",
+        "Copyright": "\n2017-2019 Sergey Kamardin <gobwas@gmail.com>",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/github.com/godror/godror/*",
+        "Copyright": "\n2016-2020 Tamás Gulácsi\n2016-2020 The Godror Authors\n2016-2020 Oracle and/or its affiliates",
+        "LicenseExpression": "UPL-1.0 or Apache-2.0"
+      },
+      {
+        "Files": "\nvendor/github.com/godror/knownpb/*",
+        "Copyright": "\n2014-2021 Tamás Gulácsi",
+        "LicenseExpression": "Apache-2.0"
+      },
+      {
+        "Files": "\nvendor/github.com/mediocregopher/radix/*",
+        "Copyright": "N/A",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/github.com/memcachier/mc/*",
+        "Copyright": "\n2015 David Terei\n2011 Blake Mizerany",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/github.com/miekg/dns/*\nvendor/google.golang.org/protobuf/*",
+        "Copyright": "\n2009 The Go Authors\n2011 Miek Gieben\n2014 CloudFlare",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "\nvendor/github.com/omeid/go-yarn/*",
+        "Copyright": "\n2015 omeid <public@omeid.me>",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/github.com/sokurenko/go-netstat/*",
+        "Copyright": "\n2018 Cihangir Akturk",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "\nvendor/golang.zabbix.com/sdk/*",
+        "Copyright": "\n2001-2025 Zabbix SIA",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "Files": "debian/*",
+        "Copyright": "\n2009-2012 Christoph Haas <haas@debian.org>\n2012-2025 Dmitry Smirnov <onlyjob@debian.org>\n2006-2009 Fabio Tranchitella <kobold@debian.org>\n2006-2011 Michael Ablassmeier <abi@debian.org>",
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "LicenseExpression": "Apache-2.0"
+      },
+      {
+        "Comment": "\nThis license also known as \"MIT/X11 (BSD like)\" or \"MIT\" however FSF\nconsider \"MIT\" labelling ambiguous and copyright-format specification\nrecommend to label such license as \"Expat\".",
+        "LicenseExpression": "Expat"
+      },
+      {
+        "LicenseExpression": "GPL-2+"
+      },
+      {
+        "LicenseExpression": "GPL-2"
+      },
+      {
+        "LicenseExpression": "UPL-1.0"
+      },
+      {
+        "LicenseExpression": "AGPL-3"
+      }
+    ]
+  },
+  "controlling_original_agpl_sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+  "required_notices": [
+    {
+      "path": "LICENSES/Zabbix-original-AGPL-3.0.txt",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "path": "LICENSES/Zabbix-license-scope.txt",
+      "sha256": "4004b471419010f62a6faf12b9219f448628f05c6f6ce5a76ab8d78fe8fac7bb"
+    }
+  ],
+  "packaging_rendering": "Original retained; known transcription differences do not amend controlling original upstream AGPL3.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

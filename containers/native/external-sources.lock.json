@@ -1,0 +1,37 @@
+{
+  "vpp": {
+    "url": "https://github.com/FDio/vpp",
+    "commit": "8a3f587695fe6ad4d8297bd4b2f331b7262698d9",
+    "tag": "v25.10"
+  },
+  "vpp-patches": {
+    "url": "https://github.com/vyos/vyos-vpp-patches",
+    "commit": "9cab3c94679592ef27a58e6a0e9becdd9f847754"
+  },
+  "vyos-utils": {
+    "url": "https://github.com/vyos-legacy/vyos-utils",
+    "commit": "5136180e78d9794e100ac8c8ccc9d6716670be75"
+  },
+  "nat-rtsp": {
+    "url": "https://github.com/maru-sama/rtsp-linux",
+    "commit": "475af0aa62dc30f1b823126eceed4eb32de52e5b"
+  },
+  "ipt-netflow": {
+    "url": "https://github.com/nuclearcat/ipt-netflow",
+    "commit": "613555120416fe23f914db7333f9ced19d5e58f9"
+  },
+  "kea-packaging": {
+    "url": "https://gitlab.isc.org/isc-projects/kea-packaging.git",
+    "commit": "a75475f7079556edd1923ae9d66b55b5e1492405"
+  },
+  "salt-tools": {
+    "url": "https://github.com/saltstack/python-tools-scripts",
+    "commit": "1274cf2ecc913a5b6e7b11cef3062fe7e6cb097c",
+    "tag": "0.20.0"
+  },
+  "note": "Pinned public substitutions for Shirube OS; public VPP differs from vendor Stream VPP.",
+  "i2util": {
+    "url": "https://github.com/perfsonar/i2util",
+    "commit": "2de423a1cac208c1b2ceec7d0058a92914ae15a2"
+  }
+}

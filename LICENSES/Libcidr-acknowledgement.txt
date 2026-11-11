@@ -1,0 +1,9 @@
+The libcidr 1.2.3 source distribution includes tools/lorder under the
+original BSD advertising condition. Preserve its complete original license
+and the following acknowledgement in materials mentioning that software:
+
+This product includes software developed by the University of
+California, Berkeley and its contributors.
+
+Copyright 1990, 1993 The Regents of the University of California.
+No endorsement by the University or its contributors is implied.

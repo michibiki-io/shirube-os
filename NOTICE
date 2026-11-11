@@ -1,0 +1,71 @@
+Shirube OS
+Built and maintained by michibiki-io.
+
+Original repository-owned code and the supplied Shirube OS SVG are covered by
+LICENSE. This does not relicense bundled or derived upstream components.
+
+containers/native/package.sh and its package catalog retain MIT-licensed
+implementation portions: Copyright (c) 2026 michibiki.io.
+Modified 2026-11-08 for native AMD64/ARM64 architecture selection and a
+container-only producer. See LICENSE for the MIT text.
+
+VyOS, Linux, Debian, VPP and NetBird retain their own copyright and licenses.
+Shirube OS is an independent distribution based on VyOS Stream; it is not an
+official VyOS product and does not imply endorsement. Public source links are
+provenance, not a replacement for complete corresponding source distribution.
+No binary distribution is cleared by this notice alone.
+
+patches/kernel/0001-perf-unwind-libdw-stable-6.6-fix.patch is a Linux stable
+6.6 perf fix, under GPL-2.0-only (LICENSES/GPL-2.0.txt). Original authorship,
+commit and Signed-off-by records are retained. Public provenance:
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/stable-queue/+/271080340126e030ca379be32e892ced47966fe5/queue-6.6/revert-perf-unwind-libdw-fix-invalid-reference-count.patch
+
+Native extras/signature/repository/ARM console recipe helpers also retain
+MIT-licensed portions: Copyright (c) 2026 michibiki.io. Modified 2026-11-08 for
+Shirube OS native architecture selection and task-private runtime builds.
+Modified VyOS display/installer/boot artifacts retain upstream licensing; the
+producer's modification scripts and this date accompany corresponding sources.
+
+Conserver 8.2.7 retains its upstream copyright/license chain, including
+conserver.com, GNAC, Purdue Research Foundation and The Ohio State University.
+See LICENSES/Conserver-8.2.7.txt for the complete original terms.
+This product includes software developed by The Ohio State University and its contributors.
+Credit is retained for the original Conserver authors and Purdue University.
+These acknowledgements do not imply endorsement.
+
+Acknowledgements retained with the corresponding Go/BoringSSL source notices:
+This product includes software developed by the OpenSSL Project
+for use in the OpenSSL Toolkit (http://www.openssl.org/)
+This product includes cryptographic software written by Eric Young
+(eay@cryptsoft.com).
+This product includes software written by Tim Hudson (tjh@cryptsoft.com).
+Original terms, including the conditional boringcrypto notices, remain intact
+in each exact corresponding-source archive; these credits imply no endorsement.
+
+IP Geolocation by DB-IP (https://db-ip.com/), Country Lite November 2026.
+Original CSV is provided under CC-BY-4.0; attribution and complete terms are
+retained in third_party/geoip/. Shirube OS converts the data to native SQLite
+range records with lowercase country codes. No endorsement is implied.
+
+LibTI-RPC retains its original Bull, Sun, Oracle, BSD and LGPL notices.
+This product includes software developed by Bill Paul.
+The original BSD4 acknowledgement must accompany advertising materials that
+mention the features or use of the covered software; no endorsement is implied.
+
+patches/vyos/force_mtu_host.sh retains GNU GPL version 2 and original
+VyOS maintainers/contributors attribution. Modified by michibiki-io on
+2026-11-10 to delegate probing and presentation to Nmap without parsing scanner
+results. See LICENSES/GPL-2.0.txt.
+
+patches/nmap/shirube-path-mtu.nse is derived from Nmap 7.93 path-mtu.nse,
+by Kris Katterjohn, under NPSL 0.94. Original probing code and author/license
+notices are retained. Modified by michibiki-io on 2026-11-10 for conservative
+MTU/MSS presentation. See LICENSES/Nmap-NPSL-0.94.txt.
+
+Shirube OS uses the Nmap Security Scanner (https://nmap.org/) for its
+port-scan and path-MTU commands. Nmap remains separately licensed under its
+original terms; no endorsement by the Nmap Project is implied.
+This product includes software developed by the University of
+California, Berkeley and its contributors.
+Use, modification, copying and distribution of the covered Cisco XML DTD
+is by permission of Cisco Systems, Inc.; original notices remain intact.

@@ -1,0 +1,26 @@
+{
+  "kind": "synthetic-zero-write-allocation-probe",
+  "architecture": "arm64",
+  "status": "PASS",
+  "scope": "Synthetic disk only; not an OS or release acceptance",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "cases": [
+    {
+      "case": "control",
+      "zeroing_seconds": 247.24877603165805,
+      "physical_bytes_after_zero_before_trim": 2092969984,
+      "logical_deleted_canary_absent": "PASS",
+      "journal_recreated_fsck": "PASS"
+    },
+    {
+      "case": "sparse",
+      "zeroing_seconds": 248.9729828517884,
+      "physical_bytes_after_zero_before_trim": 2301952,
+      "logical_deleted_canary_absent": "PASS",
+      "journal_recreated_fsck": "PASS"
+    }
+  ],
+  "consumer_recipe_commit": "208bf117ffaea5b79b886cad72b886ba44d57668",
+  "observed_limit": "Physical allocation reduction only; no observed speedup in native ARM64 TCG; complete 50 GiB ARM64 execution of this option remains unrun."
+}

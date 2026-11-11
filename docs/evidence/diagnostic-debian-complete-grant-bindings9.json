@@ -1,0 +1,2015 @@
+{
+  "kind": "exact-debian-complete-grant-and-path-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 10,
+  "components": [
+    {
+      "source": "apparmor",
+      "version": "3.0.8-3",
+      "dsc_sha256": "f92c7dc0519e89747148af64d6678f526fde3925eb59d58f6414f8c1262f69e4",
+      "binaries": [
+        {
+          "name": "libapparmor1",
+          "version": "3.0.8-3",
+          "architecture": "arm64",
+          "copyright_sha256": "52b7cf37d674ca47296cf6270a95ecda0ecbef976cc090d702acbd741e36b3b4"
+        }
+      ],
+      "copyright_sha256": "52b7cf37d674ca47296cf6270a95ecda0ecbef976cc090d702acbd741e36b3b4",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "a7e0cdcbea5c14927cedfc600d46526bdcbb1eb0a4d951e2ea53c2a6de159cb4",
+          "read_reference": {
+            "component": "apparmor",
+            "member": "LICENSE",
+            "sha256": "a7e0cdcbea5c14927cedfc600d46526bdcbb1eb0a4d951e2ea53c2a6de159cb4",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "changehat/mod_apparmor/COPYING.LGPL",
+          "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3",
+          "read_reference": {
+            "component": "kmod",
+            "member": "COPYING",
+            "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3"
+          }
+        },
+        {
+          "member": "changehat/pam_apparmor/COPYING",
+          "sha256": "0a977a2f4bdc7bb0d03bebe54bac1c5872930240b18c1763bc82657aab33c170",
+          "read_reference": {
+            "component": "apparmor",
+            "member": "changehat/pam_apparmor/COPYING",
+            "sha256": "0a977a2f4bdc7bb0d03bebe54bac1c5872930240b18c1763bc82657aab33c170",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "libraries/libapparmor/COPYING.LGPL",
+          "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3",
+          "read_reference": {
+            "component": "kmod",
+            "member": "COPYING",
+            "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3"
+          }
+        },
+        {
+          "member": "parser/COPYING.GPL",
+          "sha256": "dd54950fa69a3096fe907a466a454d217ccca9bca77398d5232704766d5a0040",
+          "read_reference": {
+            "component": "apparmor",
+            "member": "parser/COPYING.GPL",
+            "sha256": "dd54950fa69a3096fe907a466a454d217ccca9bca77398d5232704766d5a0040",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "b47bc5fdf0b3f5c5e3db7f36fca9ce71fb8724ef1b5b4bbd3a845ceb522a1e02",
+          "read_reference": {
+            "component": "apparmor",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "c1ec0ac41584c859bc5df1b6f165ebd2042e828061c669500cb38c2af886dc15",
+          "read_reference": {
+            "component": "apparmor",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "7f3c571b6ab3a4aa4503560e53e43eb2222e9adbc35f45fc2526692dc55029fc",
+          "read_reference": {
+            "component": "apparmor",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "b9b1945eeabcaad952673ef84b70081ce305c37e3e3b6f5eac8605646fbd7cd5",
+          "read_reference": {
+            "component": "apparmor",
+            "label": "LGPL-2.1+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "AppArmor",
+          "Upstream-Contact": "apparmor@lists.ubuntu.com",
+          "Source": "https://launchpad.net/apparmor"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1998-2010 Novell/SuSE/Immunix\n2008-2014 Canonical Ltd."
+        },
+        {
+          "Files": "changehat/pam_apparmor/*",
+          "Copyright": "2006 SUSE Linux Products GmbH, Nuernberg, Germany\n2002, 2003, 2004 SuSE GmbH Nuernberg, Germany\n2002-2006 Novell/SuSE\n2010 Canonical Ltd."
+        },
+        {
+          "Files": "changehat/mod_apparmor/*",
+          "Copyright": "2004-2006 Novell\n2014 Canonical Ltd."
+        },
+        {
+          "Files": "libraries/libapparmor/* parser/libapparmor_re/*",
+          "Copyright": "1999-2008 Novell\n2009-2013 Canonical Ltd."
+        },
+        {
+          "Files": "profiles/apparmor.d/abstractions/mysql",
+          "Copyright": "2002-2006 Novell/SUSE\n2013 Christian Boltz"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.sbin.dnsmasq",
+          "Copyright": "2009 John Dong <jdong@ubuntu.com>\n2010 Canonical Ltd."
+        },
+        {
+          "Files": "profiles/apparmor.d/sbin.syslog-ng",
+          "Copyright": "2006-2009 Novell/SUSE\n2006 Christian Boltz\n2010 Canonical Ltd."
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.*",
+          "Copyright": "2013 Christian Boltz"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.auth",
+          "Copyright": "2013 Christian Boltz\n2014 Christian Wittmer"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.deliver",
+          "Copyright": "2009 Dulmandakh Sukhbaatar <dulmandakh@gmail.com>\n2009-2014 Canonical Ltd.\n2011-2013 Christian Boltz"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.dovecot-auth",
+          "Copyright": "2009-2013 Canonical Ltd.\n2013 Christian Boltz"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.imap profiles/apparmor.d/usr.lib.dovecot.pop3",
+          "Copyright": "2009-2010 Canonical Ltd.\n2011-2013 Christian Boltz"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.imap-login profiles/apparmor.d/usr.lib.dovecot.pop3-login",
+          "Copyright": "2009-2011 Canonical Ltd.\n2013 Christian Boltz"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.managesieve",
+          "Copyright": "2013 Christian Boltz\n2014 Christian Wittmer"
+        },
+        {
+          "Files": "profiles/apparmor.d/usr.lib.dovecot.managesieve-login",
+          "Copyright": "2009 Dulmandakh Sukhbaatar <dulmandakh@gmail.com>\n2009-2011 Canonical Ltd.\n2013 Christian Boltz\n2014 Christian Wittmer"
+        },
+        {
+          "Files": "profiles/apparmor/profiles/extras/usr.bin.mlmmj-make-ml.sh",
+          "Copyright": "2002-2005 Novell/SUSE"
+        },
+        {
+          "Files": "profiles/apparmor/profiles/extras/usr.bin.passwd",
+          "Copyright": "2006 Volker Kuhlmann"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2007-2011 Canonical Ltd.\n2014-2022 intrigeri"
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "crun",
+      "version": "1.8.1-1+deb12u1",
+      "dsc_sha256": "1123b9a36a95fc2d05966972f7198f20497f466459b07df4e336db5ba1dc8a45",
+      "binaries": [
+        {
+          "name": "crun",
+          "version": "1.8.1-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "8e724ad21c317d687a7929d4732740ded06dcc629e076ef366e70991caa8859d"
+        }
+      ],
+      "copyright_sha256": "8e724ad21c317d687a7929d4732740ded06dcc629e076ef366e70991caa8859d",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "COPYING.libcrun",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "fuse",
+            "member": "COPYING.LIB",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "libocispec/COPYING",
+          "sha256": "379eb8d7a6cc3ba61820f3cc2a4823e005622852b82f2af1aadcbdf837ee444a",
+          "read_reference": {
+            "component": "crun",
+            "member": "libocispec/COPYING",
+            "sha256": "379eb8d7a6cc3ba61820f3cc2a4823e005622852b82f2af1aadcbdf837ee444a",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "libocispec/image-spec/LICENSE",
+          "sha256": "b0a3f39513927db306adabea11d14c23f079d4febcea241d123a68d1a0d45418",
+          "read_reference": {
+            "component": "crun",
+            "member": "libocispec/image-spec/LICENSE",
+            "sha256": "b0a3f39513927db306adabea11d14c23f079d4febcea241d123a68d1a0d45418",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "libocispec/runtime-spec/LICENSE",
+          "sha256": "a964a27c435167bdd78827ff83e4bd4473eca53d583a39598d2f445894a9225d",
+          "read_reference": {
+            "component": "crun",
+            "member": "libocispec/runtime-spec/LICENSE",
+            "sha256": "a964a27c435167bdd78827ff83e4bd4473eca53d583a39598d2f445894a9225d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "libocispec/yajl/COPYING",
+          "sha256": "054bf2c11686c5442850b1da58ad592e3d1d2a236a362e67279b957f8e662f5a",
+          "read_reference": {
+            "component": "yajl",
+            "member": "COPYING",
+            "sha256": "054bf2c11686c5442850b1da58ad592e3d1d2a236a362e67279b957f8e662f5a"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "cab1e9d631dca8aea9186c360cf5d82f4f19efcec700e604d5e522c1904f03b6",
+          "read_reference": {
+            "component": "crun",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "FSFULLR",
+          "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "coreutils"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "8a5e5517b2625f574fe44b756552e83812b7381603b72cb57c7f095caf1cdf93",
+          "read_reference": {
+            "component": "crun",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GPL-2+ with Autoconf exception",
+          "full_normalized_body_sha256": "dbf47af1ad15922efc773f846bdf6946d15b8d37d5856144ed67b67601c708a7",
+          "read_reference": {
+            "label": "GPL-2+ with Autoconf exception",
+            "component": "libsigsegv"
+          }
+        },
+        {
+          "label": "GPL-2+ with Libtool exception",
+          "full_normalized_body_sha256": "5e11ef986a5b4925bc3fc015c5e173c8cdca1b94c689cce8410b4017cb022015",
+          "read_reference": {
+            "component": "crun",
+            "label": "GPL-2+ with Libtool exception"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "9e8c4a786975c9a57e2344415d5ec69eadb1b246d5ec278c1b27479db21236a7",
+          "read_reference": {
+            "component": "crun",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "GPL-3+ with Autoconf exception",
+          "full_normalized_body_sha256": "d80b37e5da8edad09e3881e6a1451d6546902ffa8740646ac4f3ae6c9e095e2c",
+          "read_reference": {
+            "component": "crun",
+            "label": "GPL-3+ with Autoconf exception"
+          }
+        },
+        {
+          "label": "GPL-3+ with libocispec exception",
+          "full_normalized_body_sha256": "b437b3d4502a36fd3a2db8d080d2fdeb5e107be5a324278ac0e7b8406513e451",
+          "read_reference": {
+            "component": "crun",
+            "label": "GPL-3+ with libocispec exception"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "fe8f783f279ff7be6542de30602dd7dc18f78fa774c9f20aff627130b7e82b4c",
+          "read_reference": {
+            "component": "crun",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "MIT-X11",
+          "full_normalized_body_sha256": "ae7e631eb2bb6daeb59744680738ca162367950630ffaf2fa687b839cfaeb2b9",
+          "read_reference": {
+            "component": "crun",
+            "label": "MIT-X11"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "4829cc8e654be69dd1edcebedbda21758a239c230e38f532d6bf4b0adc1a0427",
+          "read_reference": {
+            "label": "ISC",
+            "component": "iw"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "crun",
+          "Source": "https://github.com/containers/crun"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\n2017-2021 Giuseppe Scrivano <giuseppe@scrivano.org>"
+        },
+        {
+          "Files": "\npython/*\nsrc/libcrun/*\ntests/tests_libcrun_errors.c\ntests/tests_libcrun_fuzzer.c\ntests/tests_libcrun_utils.c",
+          "Copyright": "\n2017-2019 Giuseppe Scrivano <giuseppe@scrivano.org>"
+        },
+        {
+          "Files": "\nsrc/checkpoint.h\nsrc/restore.h\nsrc/checkpoint.c\nsrc/restore.c\ntests/test_checkpoint_restore.py",
+          "Copyright": "\n2020 Adrian Reber <areber@redhat.com>"
+        },
+        {
+          "Files": "\nsrc/libcrun/criu.h\nsrc/libcrun/criu.c",
+          "Copyright": "\n2020 Adrian Reber <areber@redhat.com>"
+        },
+        {
+          "Files": "\nsrc/libcrun/chroot_realpath.c",
+          "Copyright": "\n1993 Rick Sladkey <jrs@world.std.com>"
+        },
+        {
+          "Files": "\nsrc/libcrun/cloned_binary.c",
+          "Copyright": "\n2019 Aleksa Sarai <cyphar@cyphar.com>\n2019 SUSE LLC"
+        },
+        {
+          "Files": "\nlibocispec/*",
+          "Copyright": "\n2017, 2019 Giuseppe Scrivano <giuseppe@scrivano.org>"
+        },
+        {
+          "Files": "\nlibocispec/src/ocispec/generate.py\nlibocispec/src/ocispec/headers.py\nlibocispec/src/ocispec/helpers.py\nlibocispec/src/ocispec/sources.py",
+          "Copyright": "\n2017, 2019 Giuseppe Scrivano <giuseppe@scrivano.org>\n2018-2020 Huawei Technologies., Ltd. 2018-2020"
+        },
+        {
+          "Files": "\nlibocispec/src/ocispec/read-file.c\nlibocispec/src/ocispec/read-file.h",
+          "Copyright": "\n2017, 2019 Giuseppe Scrivano <giuseppe@scrivano.org>"
+        },
+        {
+          "Files": "\nlibocispec/tests/test-3.c\nlibocispec/tests/test-4.c\nlibocispec/tests/test-5.c\nlibocispec/tests/test-7.c",
+          "Copyright": "\n2017 Wang Long <w@laoqinren.net>"
+        },
+        {
+          "Files": "\nlibocispec/tests/test-6.c\nlibocispec/tests/test-8.c",
+          "Copyright": "\n2017 YiFeng Tan <tanyifeng1@huawei.com>"
+        },
+        {
+          "Files": "\nlibocispec/tests/test-9.c\nlibocispec/tests/test-10.c\nlibocispec/tests/test-11.c",
+          "Copyright": "\n2020-2021 duguhaotian <knowledgehao@163.com>"
+        },
+        {
+          "Files": "\nlibocispec/image-spec/*",
+          "Copyright": "\n2016-2022 The Linux Foundation",
+          "Comment": "\nThis is an embedded copy that is not used to generate the binaries, in favor\nof a version of this library provided by Debian in a different package\n(golang-github-opencontainers-image-spec-dev)."
+        },
+        {
+          "Files": "\nlibocispec/runtime-spec/*",
+          "Copyright": "\n2015 The Linux Foundation",
+          "Comment": "\nThis is an embedded copy that is not used to generate the binaries, in favor\nof a version of this library provided by Debian in a different package\n(golang-github-opencontainers-specs-dev)."
+        },
+        {
+          "Files": "\nlibocispec/yajl/*",
+          "Copyright": "\n2007-2014 Lloyd Hilaiel <me@lloyd.io>",
+          "Comment": "\nThis is an embedded copy that is not used to generate the binaries, in favor\nof a version of this library provided by Debian in a different package\n(libyajl)."
+        },
+        {
+          "Files": "\nlibocispec/yajl/src/yajl_tree.c\nlibocispec/yajl/src/api/yajl_tree.h\nlibocispec/yajl/src/headers/yajl/yajl_tree.h",
+          "Copyright": "\n2010-2011 Florian Forster <ff@octo.it>",
+          "Comment": "\nThis is an embedded copy that is not used to generate the binaries, in favor\nof a version of this library provided by Debian in a different package\n(libyajl)."
+        },
+        {
+          "Files": "\naclocal.m4\nm4/libtool.m4\nm4/lt~obsolete.m4\nm4/ltoptions.m4\nm4/ltsugar.m4\nm4/ltversion.m4\nlibocispec/m4/libtool.m4\nlibocispec/m4/lt~obsolete.m4\nlibocispec/m4/ltoptions.m4\nlibocispec/m4/ltsugar.m4\nlibocispec/m4/ltversion.m4\nlibocispec/yajl/aclocal.m4",
+          "Copyright": "\n1996-2018 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "\nbuild-aux/compile\nbuild-aux/depcomp\nbuild-aux/missing\nbuild-aux/tap-driver.sh\nlibocispec/build-aux/compile\nlibocispec/build-aux/depcomp\nlibocispec/build-aux/missing\nlibocispec/build-aux/test-driver\nlibocispec/yajl/compile\nlibocispec/yajl/depcomp\nlibocispec/yajl/missing",
+          "Copyright": "\n1996-2018 Free Software Foundation, Inc"
+        },
+        {
+          "Files": "\nbuild-aux/ltmain.sh\nlibocispec/build-aux/ltmain.sh\nlibocispec/yajl/ltmain.sh",
+          "Copyright": "\n1996-2015 Free Software Foundation, Inc"
+        },
+        {
+          "Files": "\nbuild-aux/config.guess\nbuild-aux/config.sub\nlibocispec/build-aux/config.guess\nlibocispec/build-aux/config.sub\nlibocispec/yajl/config.guess\nlibocispec/yajl/config.sub",
+          "Copyright": "\n1992-2018 Free Software Foundation, Inc"
+        },
+        {
+          "Files": "\nbuild-aux/install-sh\nlibocispec/build-aux/install-sh\nlibocispec/yajl/install-sh",
+          "Copyright": "\n1994 X Consortium"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n2019-2021 Dmitry Smirnov <onlyjob@debian.org>\n2022-2023 Faidon Liambotis <paravoid@debian.org>"
+        },
+        {
+          "Comment": "\nThis license also known as \"MIT\" however FSF consider \"MIT\" labelling\nambiguous and copyright-format specification recommends to mark such\nlicense as \"Expat\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the Apache License,\nVersion 2.0 can be found in \"/usr/share/common-licenses/Apache-2.0\"."
+        },
+        {},
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public\nLicense Version 2 can be found in \"/usr/share/common-licenses/GPL-2\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public\nLicense Version 2 can be found in \"/usr/share/common-licenses/GPL-2\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public\nLicense Version 2 can be found in \"/usr/share/common-licenses/GPL-2\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public\nLicense Version 3 can be found in \"/usr/share/common-licenses/GPL-3\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public\nLicense Version 3 can be found in \"/usr/share/common-licenses/GPL-3\"."
+        },
+        {
+          "Comment": "\nOn Debian systems, the full text of the GNU General Public License\nversion 3 can be found in the file '/usr/share/common-licenses/GPL-3'."
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU Lesser General Public\nLicense Version 2.1 can be found in \"/usr/share/common-licenses/LGPL-2.1\"."
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "cryptsetup",
+      "version": "2:2.6.1-4~deb12u2",
+      "dsc_sha256": "9f5fb2d485143099f50ec6cbe3bd92585f8f56bf92bb92a6849aa74e7eff208d",
+      "binaries": [
+        {
+          "name": "cryptsetup",
+          "version": "2:2.6.1-4~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "41650d7a87bcbc5ba394f581876ccdcf3f4cbf31f01168f1584db6b3db532691"
+        },
+        {
+          "name": "cryptsetup-bin",
+          "version": "2:2.6.1-4~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "41650d7a87bcbc5ba394f581876ccdcf3f4cbf31f01168f1584db6b3db532691"
+        },
+        {
+          "name": "libcryptsetup12",
+          "version": "2:2.6.1-4~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "41650d7a87bcbc5ba394f581876ccdcf3f4cbf31f01168f1584db6b3db532691"
+        }
+      ],
+      "copyright_sha256": "41650d7a87bcbc5ba394f581876ccdcf3f4cbf31f01168f1584db6b3db532691",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "45670cce8b6a0ddd66c8016cd8ccef6cd71f35717cbacc7f1e895b3855207b33",
+          "read_reference": {
+            "component": "cryptsetup",
+            "member": "COPYING",
+            "sha256": "45670cce8b6a0ddd66c8016cd8ccef6cd71f35717cbacc7f1e895b3855207b33",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "COPYING.LGPL",
+          "sha256": "8c33cc37871654ec7ed87e6fbb896c8cf33ef5ef05b1611a5aed857596ffafa5",
+          "read_reference": {
+            "component": "cryptsetup",
+            "member": "COPYING.LGPL",
+            "sha256": "8c33cc37871654ec7ed87e6fbb896c8cf33ef5ef05b1611a5aed857596ffafa5",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "lib/crypto_backend/argon2/LICENSE",
+          "sha256": "3335fd61125d7733f813a9626317d165560253a0fe766b4f599f469d320b4af8",
+          "read_reference": {
+            "component": "cryptsetup",
+            "member": "lib/crypto_backend/argon2/LICENSE",
+            "sha256": "3335fd61125d7733f813a9626317d165560253a0fe766b4f599f469d320b4af8",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "e47b8b54710ffd820bb8b252ffa59aefa6ab923cc0275954c011e50f69ae02a6",
+          "read_reference": {
+            "component": "cryptsetup",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "5397ecede1fa439768828c6ac22eb3d3e271f1d2b2c182a90e9ca29b6dda350c",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "usb-modeswitch"
+          }
+        },
+        {
+          "label": "GPL-2+ with OpenSSL exception",
+          "full_normalized_body_sha256": "c1d44c50ade16d4306f838859e2efaa1e5803817e1930cf30bd744cd2fcfcc46",
+          "read_reference": {
+            "component": "cryptsetup",
+            "label": "GPL-2+ with OpenSSL exception"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "3762c7069284ac3552e05a165a380ace711b74964541906b206a2bc9640f1525",
+          "read_reference": {
+            "component": "cryptsetup",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "e859072aa9def462f125ba5de843d30145be7e75a9f304a1eb45302873262516",
+          "read_reference": {
+            "component": "cryptsetup",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+ with OpenSSL exception",
+          "full_normalized_body_sha256": "549ad94326e2da02399572074f08de8167d0ad5cf6d3335a359188d505ba6994",
+          "read_reference": {
+            "component": "cryptsetup",
+            "label": "LGPL-2.1+ with OpenSSL exception"
+          }
+        },
+        {
+          "label": "CC0",
+          "full_normalized_body_sha256": "29a070b37a5f444a0167f55c12237267dfae8b423476ae345e0ac1fdce60ec4b",
+          "read_reference": {
+            "component": "cryptsetup",
+            "label": "CC0"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "7d8235fda2d39a99441bcb3fcf2ddf4507c89b6adb6eebcd9ddcc84ae3a5f2ab",
+          "read_reference": {
+            "component": "cryptsetup",
+            "label": "Apache-2.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Contact": "Milan Broz <mbroz@redhat.com>",
+          "Source": "https://gitlab.com/cryptsetup/cryptsetup",
+          "Upstream-Name": "cryptsetup"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\u00a9 2004      Christophe Saout <christophe@saout.de>\n\u00a9 2004-2008 Clemens Fruhwirth <clemens@endorphin.org>\n\u00a9 2008-2023 Red Hat, Inc.\n\u00a9 2008-2023 Milan Broz <gmazyland@gmail.com>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\u00a9 2004-2005 Wesley W. Terpstra <terpstra@debian.org>\n\u00a9 2005-2006 Michael Gebetsroither <michael.geb@gmx.at>\n\u00a9 2006-2008 David H\u00e4rdeman <david@hardeman.nu>\n\u00a9 2005-2015 Jonas Meurer <jonas@freesources.org>\n\u00a9 2016-2023 Guilhem Moulin <guilhem@debian.org>"
+        },
+        {
+          "Files": "debian/scripts/suspend/cryptsetup-suspend.c",
+          "Copyright": "\u00a9 2018 Guilhem Moulin <guilhem@debian.org>\n\u00a9 2018-2020 Jonas Meurer <jonas@freesources.org>"
+        },
+        {
+          "Files": "debian/scripts/suspend/cryptsetup-suspend-wrapper",
+          "Copyright": "\u00a9 2019-2020 Tim <tim@systemli.org>\n\u00a9 2019-2020 Jonas Meurer <jonas@freesources.org>\n\u00a9 2020-2022 Guilhem Moulin <guilhem@debian.org>"
+        },
+        {
+          "Files": "debian/askpass.c debian/scripts/passdev.c",
+          "Copyright": "\u00a9 2008 David H\u00e4rdeman <david@hardeman.nu>"
+        },
+        {
+          "Files": "debian/initramfs/cryptroot-unlock",
+          "Copyright": "\u00a9 2015-2018 Guilhem Moulin <guilhem@debian.org>"
+        },
+        {
+          "Files": "debian/README.opensc",
+          "Copyright": "\u00a9 2008 Benjamin Kiessling <benjaminkiessling@bttec.org>"
+        },
+        {
+          "Files": "debian/scripts/cryptdisks_start",
+          "Copyright": "\u00a9 2007 Jon Dowland <jon@alcopop.org>"
+        },
+        {
+          "Files": "debian/scripts/luksformat",
+          "Copyright": "\u00a9 2005 Canonical Ltd."
+        },
+        {
+          "Files": "debian/scripts/decrypt_gnupg-sc debian/README.gnupg-sc debian/initramfs/hooks/cryptgnupg-sc debian/initramfs/scripts/local-bottom/cryptgnupg-sc",
+          "Copyright": "\u00a9 2005-2015 Jonas Meurer <jonas@freesources.org>\n\u00a9 2016-2018 Guilhem Moulin <guilhem@debian.org>\n\u00a9 2009,2014 Peter Lebbing <peter@digitalbrains.com>\n\u00a9 2018 Erik Nellessen"
+        },
+        {
+          "Files": "debian/tests/*",
+          "Copyright": "\u00a9 2021-2022 Guilhem Moulin <guilhem@debian.org>"
+        },
+        {
+          "Files": "docs/examples/* tests/all-symbols-test.c",
+          "Copyright": "\u00a9 2011-2023 Red Hat, Inc."
+        },
+        {
+          "Files": "lib/bitlk/*",
+          "Copyright": "\u00a9 2019-2023 Red Hat, Inc.\n\u00a9 2019-2023 Milan Broz <gmazyland@gmail.com>\n\u00a9 2019-2023 Vojtech Trefny"
+        },
+        {
+          "Files": "tokens/ssh/*",
+          "Copyright": "\u00a9 2016-2023 Milan Broz <gmazyland@gmail.com>\n\u00a9 2020-2023 Vojtech Trefny"
+        },
+        {
+          "Files": "tokens/ssh/cryptsetup-ssh.c",
+          "Copyright": "\u00a9 2016-2023 Milan Broz <gmazyland@gmail.com>\n\u00a9 2021-2023 Vojtech Trefny"
+        },
+        {
+          "Files": "lib/crypto_backend/* lib/integrity/* lib/loopaes/* lib/tcrypt/* lib/verity/*",
+          "Copyright": "\u00a9 2009-2023 Red Hat, Inc.\n\u00a9 2010-2023 Milan Broz <gmazyland@gmail.com>"
+        },
+        {
+          "Files": "lib/crypto_backend/base64.c",
+          "Copyright": "\u00a9 2010 Lennart Poettering\n\u00a9 2021-2023 Milan Broz <gmazyland@gmail.com>"
+        },
+        {
+          "Files": "lib/crypto_backend/utf8.c",
+          "Copyright": "\u00a9 2010 Lennart Poettering\n\u00a9 2021-2023 Vojtech Trefny\n\u00a9 1999 Tom Tromey\n\u00a9 2000 Red Hat, Inc."
+        },
+        {
+          "Files": "lib/crypto_backend/crypto_openssl.c",
+          "Copyright": "\u00a9 2009-2023 Red Hat, Inc.\n\u00a9 2010-2023 Milan Broz <gmazyland@gmail.com>"
+        },
+        {
+          "Files": "lib/fvault2/fvault2.c lib/fvault2/fvault2.h",
+          "Copyright": "\u00a9 2021-2022 Pavel Tobias"
+        },
+        {
+          "Files": "lib/keyslot_context.c lib/keyslot_context.h",
+          "Copyright": "\u00a9 2022-2023 Red Hat, Inc.\n\u00a9 2022-2023 Ondrej Kozina <okozina@redhat.com>"
+        },
+        {
+          "Files": "lib/crypto_backend/argon2/*",
+          "Copyright": "\u00a9 2015 Daniel Dinu\n\u00a9 2015 Dmitry Khovratovich\n\u00a9 2015 Jean-Philippe Aumasson\n\u00a9 2015 Samuel Neves"
+        },
+        {
+          "Files": "lib/crypto_backend/argon2/encoding.c",
+          "Copyright": "\u00a9 2015 Thomas Pornin <pornin@bolet.org>"
+        },
+        {
+          "Files": "lib/crypto_backend/crc32.c",
+          "Copyright": "\u00a9 1986 Gary S. Brown"
+        },
+        {
+          "Files": "lib/bitops.h",
+          "Copyright": "\u00a9 Karel Zak <kzak@redhat.com>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "diffutils",
+      "version": "1:3.8-4",
+      "dsc_sha256": "783af1a151c2a0f42a8a427693cc4bb16037c0d17282d28672d906f2eab424b8",
+      "binaries": [
+        {
+          "name": "diffutils",
+          "version": "1:3.8-4",
+          "architecture": "arm64",
+          "copyright_sha256": "8654d7cc7cdae1f31bb67a3ce5bf35d512c0bdfffd071df757edc54153cc7930"
+        }
+      ],
+      "copyright_sha256": "8654d7cc7cdae1f31bb67a3ce5bf35d512c0bdfffd071df757edc54153cc7930",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+ with autoconf exception",
+          "full_normalized_body_sha256": "9f1d4eb7881f15bfc4a43c7f5e6b4e61ee69155b6404e9bdc700378cfef3bc82",
+          "read_reference": {
+            "label": "GPL-3+ with autoconf exception",
+            "component": "diffutils"
+          }
+        },
+        {
+          "label": "GPL-3+ with texinfo exception",
+          "full_normalized_body_sha256": "2398866f21edf0505ca87f235212870d61f772a289f51ae5d0fc7fdb0954a90f",
+          "read_reference": {
+            "label": "GPL-3+ with texinfo exception",
+            "component": "diffutils"
+          }
+        },
+        {
+          "label": "X11",
+          "full_normalized_body_sha256": "c8c0049710bc4c09f9dcade779915d46ad5c92f5b0cf33ee32a5e0a12c0b2ca7",
+          "read_reference": {
+            "label": "X11",
+            "component": "pcre2"
+          }
+        },
+        {
+          "label": "FSFAP",
+          "full_normalized_body_sha256": "c2e3073868c9deda97904ad5808476fe66957f2de5721ece68bb3a9b597fae3f",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "FSFAP"
+          }
+        },
+        {
+          "label": "LGPL-3.0+ or GPL-2+",
+          "full_normalized_body_sha256": "aacbc36ecd6f4feaee5e04d02700274035427ea90f19938dea4e73cd5f95e8d0",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "LGPL-3.0+ or GPL-2+"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "dc4055d28419173126679c7d56c437355e4863bd6c810aed7591a7474f451f78",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "LGPL-2.0+",
+          "full_normalized_body_sha256": "b43c1795c1debd1e07a9f2490a349da25246d2734045b45553b934a437cc3cb4",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "LGPL-2.0+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "86f5ef48704b0b007674733cd872771f0a8eb25629c8eeb61b19a7bb7201c21b",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "LGPL-3.0+",
+          "full_normalized_body_sha256": "bdf8cf5d54f41f0c319ba6dd76ecd557862b30c4310180c2f08644f07f249e7f",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "LGPL-3.0+"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "d03d4a1c274e81edc4fc35d16a8f1badec963af7cb6fa321f0465fdba49d6f18",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "eafd83d9adcb4df38e376dc29af8aaf08a8cabf64fac03299bab2d5418c3ed0d",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "FSFULLR",
+          "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "coreutils"
+          }
+        },
+        {
+          "label": "GFDL-NIV-1.3",
+          "full_normalized_body_sha256": "421f8a4032f4bd569c7d48aae2405f69e667fafa2a9c0c7f40c2ec12d8e69a7c",
+          "read_reference": {
+            "component": "diffutils",
+            "label": "GFDL-NIV-1.3"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "diffutils",
+          "Upstream-Contact": "bug-diffutils@gnu.org",
+          "Source": "https://ftp.gnu.org/gnu/diffutils/",
+          "Comment": "This is the Debian prepackaged version of the GNU diffutils package.\nGNU `diff' was written by Mike Haertel, David Hayes, Richard Stallman,\nLen Tower, and Paul Eggert.  Wayne Davison designed and implemented\nthe unified output format. GNU `diff3' was written by Randy Smith.\nGNU `sdiff' was written by Thomas Lord.  GNU `cmp' was written by\nTorbjorn Granlund and David MacKenzie."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1985-1986, 1988-1989, 1990-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "aclocal.m4\nbuild-aux/config.rpath\nm4/*",
+          "Copyright": "1996-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "*/Makefile.in",
+          "Copyright": "1994-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "lib/*\ngnulib-tests/accept.c\ngnulib-tests/arpa_inet.in.h\ngnulib-tests/bind.c\ngnulib-tests/connect.c\ngnulib-tests/fdopen.c\ngnulib-tests/fpucw.h\ngnulib-tests/getcwd-lgpl.c\ngnulib-tests/glthread/thread.c\ngnulib-tests/glthread/thread.h\ngnulib-tests/hash-pjw.c\ngnulib-tests/hash-pjw.h\ngnulib-tests/ioctl.c\ngnulib-tests/listen.c\ngnulib-tests/nanosleep.c\ngnulib-tests/netinet_in.in.h\ngnulib-tests/perror.c\ngnulib-tests/pipe.c\ngnulib-tests/pthread-thread.c\ngnulib-tests/pthread.in.h\ngnulib-tests/pthread_sigmask.c\ngnulib-tests/same-inode.h\ngnulib-tests/sched.in.h\ngnulib-tests/select.c\ngnulib-tests/setsockopt.c\ngnulib-tests/sig-handler.c\ngnulib-tests/sig-handler.h\ngnulib-tests/sigaction.c\ngnulib-tests/sigprocmask.c\ngnulib-tests/sleep.c\ngnulib-tests/snprintf.c\ngnulib-tests/socket.c\ngnulib-tests/sockets.c\ngnulib-tests/sockets.h\ngnulib-tests/strerror_r.c\ngnulib-tests/sys_ioctl.in.h\ngnulib-tests/sys_select.in.h\ngnulib-tests/sys_socket.c\ngnulib-tests/sys_socket.in.h\ngnulib-tests/sys_uio.in.h\ngnulib-tests/w32sock.h\ngnulib-tests/wctomb-impl.h\ngnulib-tests/wctomb.c\ngnulib-tests/windows-thread.c\ngnulib-tests/windows-thread.h\ngnulib-tests/windows-tls.c\ngnulib-tests/windows-tls.h",
+          "Copyright": "1985, 1987-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "gnulib-tests/gnulib.mk\nlib/gnulib.mk",
+          "Copyright": "Copyright (C) 2002-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/texinfo.tex",
+          "Copyright": "Copyright 1985, 1986, 1988, 1990-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "gnulib-tests/_Noreturn.h\ngnulib-tests/arg-nonnull.h\ngnulib-tests/c++defs.h\ngnulib-tests/warn-on-use.h\nlib/_Noreturn.h\nlib/arg-nonnull.h\nlib/c++defs.h\nlib/warn-on-use.h",
+          "Copyright": "1995-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/ar-lib\nbuild-aux/compile\nbuild-aux/depcomp\nbuild-aux/gnupload\nbuild-aux/mdate-sh\nbuild-aux/missing\nbuild-aux/test-driver\ngnulib-tests/altstack-util.h\ngnulib-tests/mmap-anon-util.h\ngnulib-tests/test-dynarray.c\ngnulib-tests/test-sigsegv-catch-segv1.c\ngnulib-tests/test-sigsegv-catch-segv2.c\ngnulib-tests/test-sigsegv-catch-stackoverflow1.c\ngnulib-tests/test-sigsegv-catch-stackoverflow2.c\nlib/sigsegv.in.h",
+          "Copyright": "1995-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "lib/sigsegv.c",
+          "Copyright": "1993-2021 Free Software Foundation, Inc.\n2018  Nylon Chen <nylon7@andestech.com>"
+        },
+        {
+          "Files": "lib/stackvma.c\nlib/stackvma.h",
+          "Copyright": "2002-2021 Free Software Foundation, Inc.\n2003-2006 Paolo Bonzini <bonzini@gnu.org>"
+        },
+        {
+          "Files": "build-aux/install-sh",
+          "Copyright": "1994 X Consortium"
+        },
+        {
+          "Files": "INSTALL",
+          "Copyright": "1994-1996, 1999-2002, 2004-2017, 2020-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "README\ndoc/*.texi\ndoc/diffutils.info",
+          "Copyright": "1992-1994, 1998, 2001-2002, 2004, 2006, 2007, 2008, 2009-2021\nFree Software Foundation, Inc."
+        },
+        {
+          "Files": "lib/Makefile.am\nlib/argmatch.c\nlib/argmatch.h\nlib/basename.c\nlib/c-stack.c\nlib/c-stack.h\nlib/cmpbuf.c\nlib/cmpbuf.h\nlib/diffseq.h\nlib/dirname.c\nlib/exclude.c\nlib/exclude.h\nlib/file-type.c\nlib/file-type.h\nlib/filenamecat.c\nlib/prepargs.c\nlib/progname.c\nlib/progname.h\nlib/propername.c\nlib/propername.h\nlib/quote.h\nlib/quotearg.c\nlib/quotearg.h\nlib/sh-quote.c\nlib/sh-quote.h\nlib/stat-macros.h\nlib/stdopen.c\nlib/stdopen.h\nlib/system-quote.c\nlib/system-quote.h\nlib/trim.c\nlib/trim.h\nlib/unlocked-io.h\nlib/xalloc-die.c\nlib/xalloc.h\nlib/xasprintf.c\nlib/xfreopen.c\nlib/xfreopen.h\nlib/xmalloc.c\nlib/xmalloca.c\nlib/xmalloca.h\nlib/xreadlink.c\nlib/xreadlink.h\nlib/xstdopen.c\nlib/xstdopen.h\nlib/xstriconv.c\nlib/xstriconv.h\nlib/xstrtoimax.c\nlib/xstrtol.c\nlib/xstrtol.h\nlib/xstrtoul.c\nlib/xvasprintf.c\nlib/xvasprintf.h\nm4/gnulib-comp.m4",
+          "Copyright": "1985-1986, 1988-1989, 1990-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "gnulib-tests/atoll.c\ngnulib-tests/putenv.c\ngnulib-tests/symlink.c\ngnulib-tests/wctob.c\nlib/freopen.c\nlib/gettime.c\nlib/ialloc.c\nlib/ialloc.h\nlib/mbscasecmp.c\nlib/mbslen.c\nlib/mbsstr.c\nlib/mbuiter.c\nlib/mbuiter.h\nlib/nstrftime.c\nlib/strftime.h\nlib/strtoimax.c\nlib/strtol.c\nlib/strtoll.c\nlib/time-internal.h\nlib/time_rz.c\nlib/timespec.c\nlib/timespec.h\nlib/tzset.c\nlib/version-etc-fsf.c\nlib/version-etc.c\nlib/version-etc.h",
+          "Copyright": "1985-1986, 1988-1989, 1990-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "lib/str-kmp.h",
+          "Copyright": "2005-2021 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2022 Santiago Vila"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "dnsdist",
+      "version": "1.7.3-2",
+      "dsc_sha256": "d29996f498dd2c8ea23b05a2becdbaf2de3816cb0eaf8f329404c23fae681ed7",
+      "binaries": [
+        {
+          "name": "dnsdist",
+          "version": "1.7.3-2",
+          "architecture": "arm64",
+          "copyright_sha256": "a4ce564ad85ab2f21aa006332f410441079653e6e0c6f136d714fdfc12c03a57"
+        }
+      ],
+      "copyright_sha256": "a4ce564ad85ab2f21aa006332f410441079653e6e0c6f136d714fdfc12c03a57",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "ext/ipcrypt/LICENSE",
+          "sha256": "5db969f9a5ebe277f58cd3654464a36bb8d7f6ad1c1c271f9f1342406c3eed7f",
+          "read_reference": {
+            "component": "dnsdist",
+            "member": "ext/ipcrypt/LICENSE",
+            "sha256": "5db969f9a5ebe277f58cd3654464a36bb8d7f6ad1c1c271f9f1342406c3eed7f",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "ext/yahttp/LICENSE",
+          "sha256": "486396ac4804f36419dbc7ca75d6a0991cfe5eba61d86d5676470edc95b5fc43",
+          "read_reference": {
+            "component": "dnsdist",
+            "member": "ext/yahttp/LICENSE",
+            "sha256": "486396ac4804f36419dbc7ca75d6a0991cfe5eba61d86d5676470edc95b5fc43",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2 with OpenSSL Exception",
+          "full_normalized_body_sha256": "8ce177075eb6d53ccd2c3d12cc3c538d58f6620b3cb4519487915c7b4f261dd9",
+          "read_reference": {
+            "component": "dnsdist",
+            "label": "GPL-2 with OpenSSL Exception"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "4829cc8e654be69dd1edcebedbda21758a239c230e38f532d6bf4b0adc1a0427",
+          "read_reference": {
+            "label": "ISC",
+            "component": "iw"
+          }
+        },
+        {
+          "label": "BSD-3",
+          "full_normalized_body_sha256": "3c47b535056cf04fbf091a98cfa9a1523d1c41800dd3f7ab6fe9e9562a942b0b",
+          "read_reference": {
+            "component": "dnsdist",
+            "label": "BSD-3"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "8af0e2069bf41bf551aff7f422e30d44e754e6883ccf8ab3bdec890356a10f27",
+          "read_reference": {
+            "component": "dnsdist",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "0c5e0167fd38765dd5adf951e41884319dbf3f51a5cab3e855fe948cc748015b",
+          "read_reference": {
+            "component": "dnsdist",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f203de9b47178388c0da6113378d0c22f31face1b97f4cbc45ee515029bf27f4",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "htop"
+          }
+        },
+        {
+          "label": "GPL-3-or-Autoconf",
+          "full_normalized_body_sha256": "58702f0fac8ead90f21c1fc268af92a84982e4a645e9dbdfc048a76babf000b6",
+          "read_reference": {
+            "component": "dnsdist",
+            "label": "GPL-3-or-Autoconf"
+          }
+        },
+        {
+          "label": "free-fsf",
+          "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "coreutils"
+          }
+        },
+        {
+          "label": "free-generic",
+          "full_normalized_body_sha256": "c50be4410087c77f715f5277fe4b6e6751269721094ce6267f93bf96a80cf3d6",
+          "read_reference": {
+            "component": "dnsdist",
+            "label": "free-generic"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "dnsdist",
+          "Source": "https://dnsdist.org",
+          "Upstream-Contact": "https://mailman.powerdns.com/mailman/listinfo/dnsdist"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2002-2022 PowerDNS.COM BV and contributors"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2002-2022 PowerDNS.COM BV and contributors\n2016-2022 Chris Hofstaedtler <zeha@debian.org>",
+          "Comment": "Debian packaging is under same license as upstream code"
+        },
+        {
+          "Files": "ext/ipcrypt/*",
+          "Copyright": "2015-2018, Frank Denis <j@pureftpd.org>"
+        },
+        {
+          "Files": "ext/json11/*",
+          "Copyright": "2013 Dropbox, Inc."
+        },
+        {
+          "Files": "ext/libbpf/*",
+          "Copyright": "2015, 2016 Alexei Starovoitov <ast@plumgrid.com>",
+          "Comment": "taken from Linux kernel source"
+        },
+        {
+          "Files": "ext/luawrapper/*",
+          "Copyright": "2013, Pierre KRIEGER"
+        },
+        {
+          "Files": "ext/yahttp/*",
+          "Copyright": "2014 Aki Tuomi"
+        },
+        {
+          "Files": "compile ltmain.sh",
+          "Copyright": "1996-2011 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "m4/ax_cxx_compile_stdcxx_17.m4",
+          "Copyright": "2008 Benjamin Kosnik <bkoz@redhat.com>\n2012 Zack Weinberg <zackw@panix.com>\n2013 Roy Stogner <roystgnr@ices.utexas.edu>\n2014, 2015 Google Inc.; contributed by Alexey Sokolov <sokolov@google.com>"
+        },
+        {
+          "Files": "m4/boost.m4",
+          "Copyright": "2007-2011, 2014  Benoit Sigoure <tsuna@lrde.epita.fr>"
+        },
+        {
+          "Files": "m4/libtool.m4 m4/lt*.m4",
+          "Copyright": "1996-2011 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "m4/systemd.m4",
+          "Copyright": "2014 Luis R. Rodriguez <mcgrof@suse.com>\n2016 Pieter Lexis <pieter.lexis@powerdns.com>"
+        },
+        {
+          "Files": "m4/warnings.m4",
+          "Copyright": "2008-2015 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "m4/pdns_d_fortify_source.m4 m4/pdns_param_ssp_buffer_size.m4 m4/pdns_pie.m4 m4/pdns_relro.m4 m4/pdns_stack_protector.m4",
+          "Copyright": "2013 Red Hat, Inc."
+        },
+        {
+          "Files": "src_js/d3.js",
+          "Copyright": "2010-2016 Mike Bostock"
+        },
+        {
+          "Files": "src_js/jquery.js",
+          "Copyright": "JS Foundation and other contributors"
+        },
+        {
+          "Files": "src_js/moment.js",
+          "Copyright": "JS Foundation and other contributors"
+        },
+        {
+          "Files": "src_js/rickshaw.js",
+          "Copyright": "2011-2014 by Shutterstock Images, LLC"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "gmp",
+      "version": "2:6.2.1+dfsg1-1.1",
+      "dsc_sha256": "2831ed4f83bc3304c2403474b335652ab2dc507cd517de44414d9142171748f0",
+      "binaries": [
+        {
+          "name": "libgmp10",
+          "version": "2:6.2.1+dfsg1-1.1",
+          "architecture": "arm64",
+          "copyright_sha256": "7d366aef5ba325150246de1d7820c4c9926cd27ca61a69948492b26cd3b61601"
+        }
+      ],
+      "copyright_sha256": "7d366aef5ba325150246de1d7820c4c9926cd27ca61a69948492b26cd3b61601",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.LESSERv3",
+          "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c",
+          "read_reference": {
+            "component": "rsyslog",
+            "member": "COPYING.LESSER",
+            "sha256": "4038442ca5bde8ffd243cfc235cb4455e7d618d47558ea3d8284733f71d904ed"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+ with Bison exception",
+          "full_normalized_body_sha256": "5cb6efb9b88564a8ee5f1de56487b9a9a8a41b5d9f77e150a8152a80af1f2298",
+          "read_reference": {
+            "component": "gmp",
+            "label": "GPL-3+ with Bison exception"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "65be74172d6e0458d7fcca1c435f549a9cc65fc7c8931d604629d54fa89fc3ef",
+          "read_reference": {
+            "component": "gmp",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "fb8b9ce0adb387075cabcce0ee9ba30639736c13205955ef2212dabbc412096b",
+          "read_reference": {
+            "component": "gmp",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-3+",
+          "full_normalized_body_sha256": "67799cf363d969a2ea07a9c16c4f89c3de88cf5c4619af48c2953617c204d926",
+          "read_reference": {
+            "component": "gmp",
+            "label": "LGPL-3+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "GMP",
+          "Source": "http://gmplib.org/",
+          "Comment": "This gmp package was built for Debian by\nSteve M. Robbins <smr@debian.org>\nPhilipp Matthias Hahn <pmhahn@debian.org>\n\nThe documentation is released under the GNU Free Documentation License\n(GFDL) and it has cover texts.  As such, it has been determined not to\nmeet the Debian Free Software Guidelines, and is not shipped in the\ndebian packages.",
+          "Files-Excluded": "doc"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1991, 1996, 1999, 2000, 2007 Free Software Foundation, Inc.",
+          "Comment": "\nThis file is part of the GNU MP Library.\n\nThe GNU MP Library is free software; you can redistribute it and/or modify\nit under the terms of either:\n\n* the GNU Lesser General Public License as published by the Free\nSoftware Foundation; either version 3 of the License, or (at your\noption) any later version.\n\nor\n\n* the GNU General Public License as published by the Free Software\nFoundation; either version 2 of the License, or (at your option) any\nlater version.\n\nor both in parallel, as here.\n\nThe GNU MP Library is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License\nfor more details.\n\nYou should have received copies of the GNU General Public License and the\nGNU Lesser General Public License along with the GNU MP Library.  If not,\nsee https://www.gnu.org/licenses/."
+        },
+        {
+          "Files": "demos/calc/*.[chyl]\ndemos/factorize.c demos/isprime.c demos/primes.[ch] demos/qcn.c demos/pexpr*",
+          "Copyright": "1995, 1997-2003, 2005, 2006, 2008, 2009, 2012, 2015 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "demos/calc/calc.[ch]",
+          "Copyright": "(C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation, Inc."
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "h2o",
+      "version": "2.2.5+dfsg2-7",
+      "dsc_sha256": "5d0acd56b83c9338fbc28e32c4863a19e82f505d86d1807a9f72aa9b961d13d3",
+      "binaries": [
+        {
+          "name": "libh2o-evloop0.13",
+          "version": "2.2.5+dfsg2-7",
+          "architecture": "arm64",
+          "copyright_sha256": "249e70ef801e33fc934a870a9e8715077afd96476b34f2b203a38e47d3a2e6f6"
+        }
+      ],
+      "copyright_sha256": "249e70ef801e33fc934a870a9e8715077afd96476b34f2b203a38e47d3a2e6f6",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "b45f7144e4aa85d6157799934e9b425295b376431f74b8fab00adf0967053a7b",
+          "read_reference": {
+            "component": "h2o",
+            "member": "LICENSE",
+            "sha256": "b45f7144e4aa85d6157799934e9b425295b376431f74b8fab00adf0967053a7b",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "deps/brotli/LICENSE",
+          "sha256": "6e86408ccace4d14d2a9116cb81fe9fbab65f51fb01e123596e1ff5f010abe0c",
+          "read_reference": {
+            "component": "h2o",
+            "member": "deps/brotli/LICENSE",
+            "sha256": "6e86408ccace4d14d2a9116cb81fe9fbab65f51fb01e123596e1ff5f010abe0c",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "deps/libyrmcds/COPYING",
+          "sha256": "d5a6d7903cbed2d051aa5887bffbc8b3cd8a0c9f45078725fa248e9a0596f564",
+          "read_reference": {
+            "component": "h2o",
+            "member": "deps/libyrmcds/COPYING",
+            "sha256": "d5a6d7903cbed2d051aa5887bffbc8b3cd8a0c9f45078725fa248e9a0596f564",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "deps/mruby-input-stream/LICENSE",
+          "sha256": "490c42bf2f7a37a4f8dd7195a315cd26cb8591df7ea9a75bb54028acbe4e48db",
+          "read_reference": {
+            "component": "h2o",
+            "member": "deps/mruby-input-stream/LICENSE",
+            "sha256": "490c42bf2f7a37a4f8dd7195a315cd26cb8591df7ea9a75bb54028acbe4e48db",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "deps/neverbleed/LICENSE",
+          "sha256": "5d9c50d175db903e7b777ca8a72f8f03cb9345e1ea6b0d466d83728a2a92d357",
+          "read_reference": {
+            "component": "h2o",
+            "member": "deps/neverbleed/LICENSE",
+            "sha256": "5d9c50d175db903e7b777ca8a72f8f03cb9345e1ea6b0d466d83728a2a92d357",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "deps/picotls/deps/cifra/COPYING",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+          "read_reference": {
+            "component": "vpp-inputs",
+            "member": "quicly_0.1.5-vpp/deps/picotls/deps/cifra/COPYING",
+            "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+          }
+        },
+        {
+          "member": "deps/picotls/deps/micro-ecc/LICENSE.txt",
+          "sha256": "ffd8b033d2df7568c25a98866bd92b1656f7da82d7f813c0b2eb85ec36611193",
+          "read_reference": {
+            "component": "vpp-inputs",
+            "member": "quicly_0.1.5-vpp/deps/picotls/deps/micro-ecc/LICENSE.txt",
+            "sha256": "ffd8b033d2df7568c25a98866bd92b1656f7da82d7f813c0b2eb85ec36611193"
+          }
+        },
+        {
+          "member": "deps/ssl-conservatory/LICENSE",
+          "sha256": "a37a73b738a5bb346d2e68446a382fee381709d98c6d75b3bd251c431cabdcd0",
+          "read_reference": {
+            "component": "h2o",
+            "member": "deps/ssl-conservatory/LICENSE",
+            "sha256": "a37a73b738a5bb346d2e68446a382fee381709d98c6d75b3bd251c431cabdcd0",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "deps/yaml/LICENSE",
+          "sha256": "d0d8b09800a45cd982e9568fc7669d9c1a4c330e275a821bbe24d54366d16fe9",
+          "read_reference": {
+            "component": "h2o",
+            "member": "deps/yaml/LICENSE",
+            "sha256": "d0d8b09800a45cd982e9568fc7669d9c1a4c330e275a821bbe24d54366d16fe9",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "ISC-UC",
+          "full_normalized_body_sha256": "2c5218167594086a5fb605de4c3579e28d21f20f6c4478788ff28cc10a13740e",
+          "read_reference": {
+            "component": "h2o",
+            "label": "ISC-UC"
+          }
+        },
+        {
+          "label": "Public-Domain",
+          "full_normalized_body_sha256": "c530cfd92b92d17c54478fa9715f7a1769079e6ed65fda73d19ad01d140d278b",
+          "read_reference": {
+            "component": "h2o",
+            "label": "Public-Domain"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "ff3ca1037e4ab0bedf562598cbbf1d6e3f428f76879f55d2a44d29d22f23bdaa",
+          "read_reference": {
+            "component": "h2o",
+            "label": "ISC"
+          }
+        },
+        {
+          "label": "RubyLicense",
+          "full_normalized_body_sha256": "225c3f9d940199d7263d8c92a1e58ce3edd798fd67130c2f6d9a9490813e9a8d",
+          "read_reference": {
+            "component": "h2o",
+            "label": "RubyLicense"
+          }
+        },
+        {
+          "label": "BSD-2-Clause",
+          "full_normalized_body_sha256": "ba564e1b393e3f2687c91cb17b979ef68d0dd4cde89596d9a6a37b53b34486a7",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "bgpq3"
+          }
+        },
+        {
+          "label": "BSD-3-Clause",
+          "full_normalized_body_sha256": "5ffade812fe281ca5a9ecec2f88b0cb194f8811bd88ac61894b1e45d787d6817",
+          "read_reference": {
+            "component": "h2o",
+            "label": "BSD-3-Clause"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "79865d0229c74b421d2f458f139a62282b7167aeb220ea685de10c9d0bcfd326",
+          "read_reference": {
+            "component": "h2o",
+            "label": "LGPL-2.1+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "h2o",
+          "Source": "https://github.com/h2o/h2o",
+          "Files-Excluded": "\ndeps/brotli/docs\ndeps/ssl-conservatory/openssl/*.pdf\ndoc/search/jquery*"
+        },
+        {
+          "Files": "*",
+          "Copyright": "Copyright (c) 2014-2017 DeNA Co., Ltd., Kazuho Oku, Tatsuhiko Kubo,\nDomingo Alvarez Duarte, Nick Desaulniers, Marc H\u00f6rsken, Masahiro Nagano, Jeff\nMarrison, Daisuke Maki, Laurentiu Nicola, Justin Zhu, Tatsuhiro Tsujikawa,\nRyosuke Matsumoto, Masaki TAGAWA, Masayoshi Takahashi, Chul-Woong Yang, Shota\nFukumori, Satoh Hiroh, Fastly, Inc., David Carlier, Frederik Deweerdt, Jonathan\nFoote, Yannick Koechlin, Harrison Bowden, Kazantsev Mikhail"
+        },
+        {
+          "Files": "deps/brotli/*",
+          "Copyright": "(c) 2009, 2010, 2013-2015 by the Brotli Authors.\n(c) 2010-2015 Google Inc."
+        },
+        {
+          "Files": "deps/klib/*",
+          "Copyright": "(c) 2008, 2009, 2011 by Attractive Chaos <attractor@live.co.uk>"
+        },
+        {
+          "Files": "deps/klib/bgzf.*",
+          "Copyright": "(c) 2008 Broad Institute / Massachusetts Institute of Technology\n(c) 2011 Attractive Chaos <attractor@live.co.uk>"
+        },
+        {
+          "Files": "deps/klib/kbtree.h",
+          "Copyright": "1997-1999, 2001, John-Mark Gurney.\n2008-2009, Attractive Chaos <attractor@live.co.uk>"
+        },
+        {
+          "Files": "deps/klib/knetfile.c",
+          "Copyright": "(c) 2008 by Genome Research Ltd (GRL).\n(c) 2010 Attractive Chaos <attractor@live.co.uk>"
+        },
+        {
+          "Files": "deps/klib/ksa.c",
+          "Copyright": "(c) 2008 Yuta Mori\n(c) 2011 Attractive Chaos <attractor@live.co.uk>"
+        },
+        {
+          "Files": "deps/klib/test/ksort_test.cc",
+          "Copyright": "(c) 2004 Paul Hsieh"
+        },
+        {
+          "Files": "deps/libgkc/*",
+          "Copyright": "(c) 2016 Fastly, Inc."
+        },
+        {
+          "Files": "deps/libyrmcds/*",
+          "Copyright": "(c) 2013-2015, Cybozu et al"
+        },
+        {
+          "Files": "deps/mruby/*",
+          "Copyright": "(c) 2017 mruby developers\n(C) 1997 - 2016, Makoto Matsumoto and Takuji Nishimura"
+        },
+        {
+          "Files": "deps/mruby/src/string.c",
+          "Copyright": "(c) 2017 mruby developers\n(c) 1988-1993 The Regents of the University of California\n(c) 1994 Sun Microsystems, Inc."
+        },
+        {
+          "Files": "deps/picohttpparser/*",
+          "Copyright": "(c) 2009-2014 Kazuho Oku, Tokuhiro Matsuno, Daisuke Murase, Shigeo Mitsunari",
+          "Comment": "Dual-licensed under the MIT or Perl licenses"
+        },
+        {
+          "Files": "deps/picotls/deps/cifra/*",
+          "Copyright": "N/A",
+          "Comment": "Written by Joseph Birr-Pixton <jpixton@gmail.com>"
+        },
+        {
+          "Files": "deps/picotls/deps/cifra/src/curve25519.donna.c",
+          "Copyright": "2008, Google Inc."
+        },
+        {
+          "Files": "deps/picotls/deps/cifra/src/ext/cutest.h",
+          "Copyright": "(c) 2013-2014 Martin Mitas"
+        },
+        {
+          "Files": "deps/picotls/deps/micro-ecc/*",
+          "Copyright": "(c) 2014-2015, Kenneth MacKay"
+        },
+        {
+          "Files": "deps/ssl-conservatory/*",
+          "Copyright": "(c) 2012-2014 iSEC Partners"
+        },
+        {
+          "Files": "deps/yaml/*",
+          "Copyright": "(c) 2006 Kirill Simonov",
+          "Comment": "Not used by the Debian package."
+        },
+        {
+          "Files": "deps/mruby-digest/*\ndeps/mruby-dir/*\ndeps/mruby-env/*\ndeps/mruby-errno/*\ndeps/mruby-iijson/*\ndeps/mruby-io/*\ndeps/mruby-pack/*\ndeps/mruby-require/*",
+          "Copyright": "(c) 2012-2015 Internet Initiative Japan Inc."
+        },
+        {
+          "Files": "deps/mruby-dir/src/Win/dirent.c",
+          "Copyright": "Copyright Kevlin Henney, 1997, 2003, 2012. All rights reserved."
+        },
+        {
+          "Files": "deps/mruby-onig-regexp/*",
+          "Copyright": "(c) 2015 mattn"
+        },
+        {
+          "Files": "deps/mruby-input-stream/*",
+          "Copyright": "(c) 2015 Masayoshi Takahashi"
+        },
+        {
+          "Files": "deps/mruby-file-stat/*",
+          "Copyright": "(C) 1993-2007 Yukihiro Matsumoto\n(C) 2000  Network Applied Communication Laboratory, Inc.\n(C) 2000  Information-technology Promotion Agency, Japan"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2017 Apollon Oikonomopoulos <apoikos@debian.org>\n2017 Anton Gladky <gladk@debian.org>"
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "librtr",
+      "version": "0.8.0-1",
+      "dsc_sha256": "ab473a7556cd57ec093116c66196635e4a40b9c423f63aac2c63503ccdd51ecf",
+      "binaries": [
+        {
+          "name": "librtr0",
+          "version": "0.8.0-1+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "6cc3cdf3b7a157e4253b64d2115773dd64bad52f13609072b3352ffa06e754b3"
+        }
+      ],
+      "copyright_sha256": "6cc3cdf3b7a157e4253b64d2115773dd64bad52f13609072b3352ffa06e754b3",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "f6e825cedadac970f681e3714dad396fd62cb811b98a94d8e8e02e0c5abe765a",
+          "read_reference": {
+            "component": "librtr",
+            "member": "LICENSE",
+            "sha256": "f6e825cedadac970f681e3714dad396fd62cb811b98a94d8e8e02e0c5abe765a",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "third-party/mustach/LICENSE-2.0.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "read_reference": {
+            "component": "aardvark-dns",
+            "member": "LICENSE",
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          }
+        },
+        {
+          "member": "third-party/tommyds/LICENSE",
+          "sha256": "bab51c39824b5d9346634d99d14f9413fbae197449971c94d1b9f9972fe98b83",
+          "read_reference": {
+            "component": "librtr",
+            "member": "third-party/tommyds/LICENSE",
+            "sha256": "bab51c39824b5d9346634d99d14f9413fbae197449971c94d1b9f9972fe98b83",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "d845a7ea11eace0ba2bb8bfd3cd980a11099ec6d44c7c113f61c700c203afebf",
+          "read_reference": {
+            "component": "librtr",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "96b046f94c3fc1384c5de1a33414e56b3f75f6ef033a35a90ca27dca1a7635fb",
+          "read_reference": {
+            "component": "librtr",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "BSD-3-Clause",
+          "full_normalized_body_sha256": "f45d1142a104b285758c9f4bcb829e56c75acb2a50ccaee25fda467291cdc843",
+          "read_reference": {
+            "component": "librtr",
+            "label": "BSD-3-Clause"
+          }
+        },
+        {
+          "label": "BSD-2-Clause",
+          "full_normalized_body_sha256": "e3d19f4bcea27563f14a80de413dbcfdad2bd4c2e6909c36e293b2abcd96d761",
+          "read_reference": {
+            "component": "librtr",
+            "label": "BSD-2-Clause"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "4044f2cfe4e8568b3d7d4b11517e4366079cc5002f191aaed1a4df3374189ffc",
+          "read_reference": {
+            "label": "Apache-2.0",
+            "component": "libfastjson"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "rtrlib",
+          "Source": "https://github.com/rtrlib/rtrlib"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2011-2018 The RTRlib authors"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2011-2021 The RTRlib authors\n2018-2021 Lukas Schwaighofer <lukas@schwaighofer.name>\n2019      Samuel Henrique <samueloph@debian.org>\n2020-2021 Francisco Vilmar Cardoso Ruviaro <francisco.ruviaro@riseup.net>"
+        },
+        {
+          "Files": "scripts/checkpatch.pl\nscripts/spelling.txt",
+          "Copyright": "2001      Dave Jones\n2005      Joel Schopp <jschopp@austin.ibm.com>\n2007,2008 Andy Whitcroft <apw@uk.ibm.com>\n2008-2010 Andy Whitcroft <apw@canonical.com>\n2010-2018 Joe Perches <joe@perches.com>"
+        },
+        {
+          "Files": "cmake/modules/Findcodecov.cmake\ncmake/modules/FindLcov.cmake\ncmake/modules/FindGcov.cmake",
+          "Copyright": "2015-2016 RWTH Aachen University, Federal Republic of Germany"
+        },
+        {
+          "Files": "cmake/modules/FindPackageVersionCheck.cmake",
+          "Copyright": "2009 Andreas Schneider <mail@cynapses.org>"
+        },
+        {
+          "Files": "third-party/tommyds/*",
+          "Copyright": "2010-2015 Andrea Mazzoleni"
+        },
+        {
+          "Files": "third-party/mustach/*",
+          "Copyright": "? Jos\u00e9 Bollo <jobol@nonadev.net>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libunistring",
+      "version": "1.0-2",
+      "dsc_sha256": "9b9a9d9d4cd1c2118df8cf5ca0dfb787d89afcd99400d7cd01b4c4e9b0bc1ae5",
+      "binaries": [
+        {
+          "name": "libunistring2",
+          "version": "1.0-2",
+          "architecture": "arm64",
+          "copyright_sha256": "0035f89e5317f3cec389383e8727788521b0fde3e75cea881fa0e92e1d48cb57"
+        }
+      ],
+      "copyright_sha256": "0035f89e5317f3cec389383e8727788521b0fde3e75cea881fa0e92e1d48cb57",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "COPYING.LIB",
+          "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c",
+          "read_reference": {
+            "component": "rsyslog",
+            "member": "COPYING.LESSER",
+            "sha256": "4038442ca5bde8ffd243cfc235cb4455e7d618d47558ea3d8284733f71d904ed"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "FreeSoftware",
+          "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "coreutils"
+          }
+        },
+        {
+          "label": "GPL-2+ with distribution exception",
+          "full_normalized_body_sha256": "66e85d86fc7de9aff37cf7382a94ef282ed08efd6fe1b7c58b1fba5ac92e0143",
+          "read_reference": {
+            "component": "libunistring",
+            "label": "GPL-2+ with distribution exception"
+          }
+        },
+        {
+          "label": "LGPL-3+",
+          "full_normalized_body_sha256": "2b6f6e8980d6c9e478b236573136608ead40bb4b2b5751a06bbc2bc307ccfbbd",
+          "read_reference": {
+            "component": "libunistring",
+            "label": "LGPL-3+"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "dd436fa6f2f916e3f07376cb4c295201c3c1be11634300ebdce312f5edeb5f3b",
+          "read_reference": {
+            "component": "libunistring",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "0f648f42459c3ca105c5277c77394ada7028b5e62be910377da1239e43a83724",
+          "read_reference": {
+            "component": "libunistring",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GFDL-1.2+",
+          "full_normalized_body_sha256": "503be15dc571fca086d75180e5ba2f3542b172c76cfd0e2224eae52ad4858f23",
+          "read_reference": {
+            "component": "libunistring",
+            "label": "GFDL-1.2+"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "c8c0049710bc4c09f9dcade779915d46ad5c92f5b0cf33ee32a5e0a12c0b2ca7",
+          "read_reference": {
+            "label": "X11",
+            "component": "pcre2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libunistring",
+          "Upstream-Contact": "Bruno Haible <bruno@clisp.org>",
+          "Source": "http://ftp.gnu.org/gnu/libunistring/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1995-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "gnulib-m4/* m4/*.m4",
+          "Copyright": "1995-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "doc/*",
+          "Copyright": "2001-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "tests/* woe32dll/* autogen.sh",
+          "Copyright": "1990-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/*",
+          "Copyright": "1995-2017 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "m4/init-package-version.m4\nbuild-aux/ltmain.sh",
+          "Copyright": "1992-2021, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/texi2html",
+          "Copyright": "1999-2005 Patrice Dumas <dumas@centre-cired.fr>,\n1999-2005 Derek Price <derek@ximbiot.com>,\n1999-2005 Adrian Aichner <adrian@xemacs.org>"
+        },
+        {
+          "Files": "build-aux/install-sh",
+          "Copyright": "1994, X Consortium"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009-2011 Andreas Rottmann <rotty@debian.org>\n2017-2022 J\u00f6rg Frings-F\u00fcrst <debian@jff.email>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "pam",
+      "version": "1.5.2-6+deb12u2",
+      "dsc_sha256": "049316ffb7c8be35b14e6815351397b52d65f283041f90fecf884db2c0bec7b1",
+      "binaries": [
+        {
+          "name": "libpam-modules",
+          "version": "1.5.2-6+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+        },
+        {
+          "name": "libpam-modules-bin",
+          "version": "1.5.2-6+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+        },
+        {
+          "name": "libpam-runtime",
+          "version": "1.5.2-6+deb12u2",
+          "architecture": "all",
+          "copyright_sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+        },
+        {
+          "name": "libpam0g",
+          "version": "1.5.2-6+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce"
+        }
+      ],
+      "copyright_sha256": "9596b9028339d66c285422237728d6170e1e29d0b0d9adf0e9f1bda82e2391ce",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "133d98e7a2ab3ffd330b4debb0bfc10fea21e4b2b5a5b09de2e924293be5ff08",
+          "read_reference": {
+            "component": "pam",
+            "member": "COPYING",
+            "sha256": "133d98e7a2ab3ffd330b4debb0bfc10fea21e4b2b5a5b09de2e924293be5ff08",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "Copyright",
+          "sha256": "133d98e7a2ab3ffd330b4debb0bfc10fea21e4b2b5a5b09de2e924293be5ff08",
+          "read_reference": {
+            "component": "pam",
+            "member": "COPYING",
+            "sha256": "133d98e7a2ab3ffd330b4debb0bfc10fea21e4b2b5a5b09de2e924293be5ff08",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "libpamc/License",
+          "sha256": "127056435e3a1686ef7366f117da9fdca48fdfe4191a97777b44a5bcbabef34d",
+          "read_reference": {
+            "component": "pam",
+            "member": "libpamc/License",
+            "sha256": "127056435e3a1686ef7366f117da9fdca48fdfe4191a97777b44a5bcbabef34d",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause or GPL",
+          "full_normalized_body_sha256": "8b4288115840f493ab77821fad66a4ee370e99dd2b5081f5f2da010ff2b848aa",
+          "read_reference": {
+            "component": "pam",
+            "label": "BSD-3-clause or GPL"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "986609d75856f58d3e1ad832301457a2215ea0b1647b65130e73beec59bcaf32",
+          "read_reference": {
+            "component": "pam",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "472e95de49b74c057d6f09f3ca17a49321540cb73bfd987f819f87a116908ca0",
+          "read_reference": {
+            "component": "pam",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GPL-3",
+          "full_normalized_body_sha256": "cc726064d144a3296e8031789d632fd1d6b704bda5424b2a71f0e660f0523eec",
+          "read_reference": {
+            "component": "pam",
+            "label": "GPL-3"
+          }
+        },
+        {
+          "label": "GPL-3+ with Bison exception",
+          "full_normalized_body_sha256": "14500634e0fe71b5ef824e7278145e3321a3fd9a7d65593daa6e6a0130b46178",
+          "read_reference": {
+            "component": "pam",
+            "label": "GPL-3+ with Bison exception"
+          }
+        },
+        {
+          "label": "BSD-tcp_wrappers",
+          "full_normalized_body_sha256": "4182435533403f21523759bc82f61744fb413a5f030902ebcfb612b899f59630",
+          "read_reference": {
+            "component": "pam",
+            "label": "BSD-tcp_wrappers"
+          }
+        },
+        {
+          "label": "LGPL-2+",
+          "full_normalized_body_sha256": "265e139146c761c85f9f944b9fc60e85e32d7c13717651f7daa71ef9bc0cac5d",
+          "read_reference": {
+            "component": "pam",
+            "label": "LGPL-2+"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "e3a6d47d2888dc2aec2d8b811ac2975a5c23cb881c9259567b867f0668c759bd",
+          "read_reference": {
+            "component": "pam",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "Beerware",
+          "full_normalized_body_sha256": "46ec4584d21ab964d2c53df2e8250eae56d24f748d2a7776704a33f9351063b3",
+          "read_reference": {
+            "component": "pam",
+            "label": "Beerware"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Linux-PAM",
+          "Comment": "This package was debianized by J.H.M. Dassen (Ray) jdassen@debian.org.",
+          "Source": "https://github.com/linux-pam/linux-pam/releases"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\nCopyright (C) 1994, 1995, 1996 Olaf Kirch, <okir@monad.swb.de>\nCopyright (C) 1995 Wietse Venema\nCopyright (C) 1995, 2001-2008 Red Hat, Inc.\nCopyright (C) 1996-1999, 2000-2003, 2005 Andrew G. Morgan <morgan@kernel.org>\nCopyright (C) 1996, 1997, 1999 Cristian Gafton <gafton@redhat.com>\nCopyright (C) 1996, 1999 Theodore Ts'o\nCopyright (C) 1996 Alexander O. Yuriev\nCopyright (C) 1996 Elliot Lee\nCopyright (C) 1997 Philip W. Dalrymple <pwd@mdtsoft.com>\nCopyright (C) 1999 Jan R\u0119korajski\nCopyright (C) 1999 Ben Collins <bcollins@debian.org>\nCopyright (C) 2000-2001, 2003, 2005, 2007 Steve Langasek\nCopyright (C) 2003, 2005 IBM Corporation\nCopyright (C) 2003, 2006 SuSE Linux AG.\nCopyright (C) 2003 Nalin Dahyabhai <nalin@redhat.com>\nCopyright (C) 2005-2008 Thorsten Kukuk <kukuk@thkukuk.de>\nCopyright (C) 2005 Darren Tucker",
+          "Comment": "\nOn Debian GNU/Linux systems, the complete text of the GNU General\nPublic License can be found in `/usr/share/common-licenses/GPL'."
+        },
+        {
+          "Files": "tests/tst-pam_mkargv.c",
+          "Copyright": "(C) Thorsten Kukuk <kukuk@suse.de> 2009",
+          "Comment": "\nOn Debian GNU/Linux systems, the complete text of the GNU General\nPublic License version 2 can be found in `/usr/share/common-licenses/GPL-2'."
+        },
+        {
+          "Files": "tests/tst-dlopen.c\nmodules/pam_keyinit/pam_keyinit.c\nmodules/pam_loginuid/pam_loginuid.c\nmodules/pam_unix/yppasswd.h\nmodules/pam_unix/yppasswd_xdr.c\ndebian/local/pam_getenv",
+          "Copyright": "\nCopyright 2005 Red Hat Inc., Durham, North Carolina.\nCopyright (C) Nalin Dahyabhai <nalin@redhat.com> 2003\nCopyright 2004 by Sam Hartman\nCopyright 1994, 1995, 1996 Olaf Kirch, <okir@lst.de>",
+          "Comment": "\nOn Debian GNU/Linux systems, the complete text of the GNU General\nPublic License version 2 can be found in `/usr/share/common-licenses/GPL-2'."
+        },
+        {
+          "Files": "debian/local/pam-auth-update*",
+          "Copyright": "(C) 2008 Canonical Ltd.",
+          "Comment": "\nOn Debian GNU/Linux systems, the complete text of the GNU General\nPublic License version 3 can be found in `/usr/share/common-licenses/GPL-3'."
+        },
+        {
+          "Files": "doc/specs/parse_y.*\nconf/pam_conv1/pam_conv_y.*",
+          "Copyright": "(C) 1984-2021 Free Software Foundation, Inc.",
+          "Comment": "\nOn Debian GNU/Linux systems, the complete text of the GNU General\nPublic License version 3 can be found in `/usr/share/common-licenses/GPL-3'."
+        },
+        {
+          "Files": "modules/pam_access/pam_access.c",
+          "Copyright": "1995 by Wietse Venema. All rights reserved. Individual files\nmay be covered by other copyrights (as noted in the file itself.)"
+        },
+        {
+          "Files": "modules/pam_mkhomedir/mkhomedir_helper.c\nmodules/pam_mkhomedir/pam_mkhomedir.c\nmodules/pam_issue/pam_issue.c",
+          "Copyright": "\nCopyright (c) Red Hat, Inc. 2009\nCopyright 1999 by Ben Collins <bcollins@debian.org>",
+          "Comment": "\nOn Debian GNU/Linux systems, the complete text of the GNU Lesser General\nPublic License version 2 can be found in `/usr/share/common-licenses/LGPL-2'."
+        },
+        {
+          "Files": "modules/pam_unix/md5.c\nmodules/pam_namespace/md5.c",
+          "Copyright": "1993 Colin Plumb"
+        },
+        {
+          "Files": "modules/pam_unix/lckpwdf.-c",
+          "Copyright": "Marek Michalkiewicz <marekm@i17linuxb.ists.pwr.wroc.pl>"
+        },
+        {
+          "Files": "modules/pam_unix/md5_crypt.c",
+          "Copyright": "Poul-Henning Kamp <phk@login.dknet.dk>"
+        }
+      ]
+    }
+  ],
+  "deferred": [
+    "libffi: original make_sunver.pl grant needs source inspection",
+    "kitty: preferred font source correspondence needs inspection"
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,3022 @@
+{
+  "kind": "observed-runtime-exact-original-notice-reconciliation",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "name": "opam:astring",
+      "version": "0.8.5",
+      "source_identity": "e06b2d710b88795e2d2c3c3740bad7ec03b22883d0af22106bbf1e4360b0625b",
+      "copyright_sha256": "bdbcc03b94f9ac7f66629d63153db0c06b79b57b6ae8ee484cf22588dd43fec2",
+      "evidence_member": "opam/notices/astring.0.8.5.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "4bc0504d109ea8dadbd9c76867c51f9d7246ab64947d39bf3d9f0457bc3d0171",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/bdbcc03b94f9ac7f66629d63153db0c06b79b57b6ae8ee484cf22588dd43fec2.txt",
+          "sha256": "bdbcc03b94f9ac7f66629d63153db0c06b79b57b6ae8ee484cf22588dd43fec2"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE.md",
+          "prefix": "Copyright (c) 2016 The astring programmers\n\n"
+        }
+      ]
+    },
+    {
+      "name": "opam:containers",
+      "version": "3.18",
+      "source_identity": "0658a311199ed6c13df46c98968032381e780fd9b46060301d76a71722613fbd",
+      "copyright_sha256": "8f5b193aa44aeeffb12cb92e6f9ad1c27f5eacb16cec300741f93da96e2c767c",
+      "evidence_member": "opam/notices/containers.3.18.copyright",
+      "license": "BSD-2-Clause",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "96cd7505e04d69c624edb97974f4d922bbd50078cae65df46c97c284ca9c25e6",
+          "license": "BSD-2-Clause",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/gorilla/websocket",
+            "license": "BSD-2-Clause",
+            "copyright_sha256": "3f9b1761219f85b2e5d44e096ef4208a56a361c2a0854b11c05a71a9565b1f93",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8f5b193aa44aeeffb12cb92e6f9ad1c27f5eacb16cec300741f93da96e2c767c.txt",
+          "sha256": "8f5b193aa44aeeffb12cb92e6f9ad1c27f5eacb16cec300741f93da96e2c767c"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE",
+          "prefix": "Copyright (c) 2013, Simon Cruanes\nAll rights reserved.\n\n"
+        }
+      ]
+    },
+    {
+      "name": "opam:fmt",
+      "version": "0.11.0",
+      "source_identity": "58d1313fd37727735a95f38dac8d5dda83277cb7866c9152d0300dced9e763f2",
+      "copyright_sha256": "bd51807a585d64dccf9a81016502a1751d4e35a96480166da21f54efabb59cb0",
+      "evidence_member": "opam/notices/fmt.0.11.0.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "e58274a95df1e911020ddde3e89b023beb0e9f681752a7bb592043a0f7e9fc17",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/bd51807a585d64dccf9a81016502a1751d4e35a96480166da21f54efabb59cb0.txt",
+          "sha256": "bd51807a585d64dccf9a81016502a1751d4e35a96480166da21f54efabb59cb0"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE.md",
+          "prefix": "Copyright (c) 2016 The fmt programmers\n\n"
+        }
+      ]
+    },
+    {
+      "name": "opam:fpath",
+      "version": "0.7.3",
+      "source_identity": "a440a87012fd301956deb3293352eb1238a1f3f08597e6ee9c4dea3499e71632",
+      "copyright_sha256": "8c31a5d2b1ecbc82945e55ddb7990c086d720383a43a1cc16bd866514a88ea2d",
+      "evidence_member": "opam/notices/fpath.0.7.3.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "1a46fc65d00e74ba58dac9db8b0b91af8cff34f3b515f665ca254e75fb581d2f",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8c31a5d2b1ecbc82945e55ddb7990c086d720383a43a1cc16bd866514a88ea2d.txt",
+          "sha256": "8c31a5d2b1ecbc82945e55ddb7990c086d720383a43a1cc16bd866514a88ea2d"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE.md",
+          "prefix": "Copyright (c) 2014 The fpath programmers\n\n"
+        }
+      ]
+    },
+    {
+      "name": "opam:jsonm",
+      "version": "1.0.2",
+      "source_identity": "661566b86f9e4e81082d20975a6d7b6bc4797251025a8c542a74a1c3c9fa0c34",
+      "copyright_sha256": "508b649dfa533d65a63f3018d009031b5354adde54e395507c116b50031b9581",
+      "evidence_member": "opam/notices/jsonm.1.0.2.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "c0141294ac14a9e95704fac75e3eb0f7586ea037fc8e788d100e8311e06f493f",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/508b649dfa533d65a63f3018d009031b5354adde54e395507c116b50031b9581.txt",
+          "sha256": "508b649dfa533d65a63f3018d009031b5354adde54e395507c116b50031b9581"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE.md",
+          "prefix": "Copyright (c) 2012 The jsonm programmers\n\n"
+        }
+      ]
+    },
+    {
+      "name": "opam:topkg",
+      "version": "1.1.1",
+      "source_identity": "8de44fbb67547ff51d01769c98df0e70902dfa853087071ed595ac6159fe35a2",
+      "copyright_sha256": "c3cbcca2ff31dd97885710e017d0485b36e1cf0e8eb31042bf7ff355af7c6d81",
+      "evidence_member": "opam/notices/topkg.1.1.1.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "31fe21f2b1b404e3832815f32e8bb35b0f9a28995cd050d5bbdebf976952d5b4",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/c3cbcca2ff31dd97885710e017d0485b36e1cf0e8eb31042bf7ff355af7c6d81.txt",
+          "sha256": "c3cbcca2ff31dd97885710e017d0485b36e1cf0e8eb31042bf7ff355af7c6d81"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE.md",
+          "prefix": "Copyright (c) 2016 Daniel C. Bünzli\n\n"
+        }
+      ]
+    },
+    {
+      "name": "opam:uutf",
+      "version": "1.0.4",
+      "source_identity": "faf931f2ba3476373394bcfd1f3ebe84a41aefc384ac1d0199ccf8dc250663f5",
+      "copyright_sha256": "e38e56167c40e97097d707cbb987f0a4b41733f90f5c18421a862964699ddcc9",
+      "evidence_member": "opam/notices/uutf.1.0.4.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "083a0c0760961779bdd0584a05e7cf1de2f7ff781c58e2e0eaa7ec23f89bca69",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e38e56167c40e97097d707cbb987f0a4b41733f90f5c18421a862964699ddcc9.txt",
+          "sha256": "e38e56167c40e97097d707cbb987f0a4b41733f90f5c18421a862964699ddcc9"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE.md",
+          "prefix": "Copyright (c) 2016 The uutf programmers\n\n"
+        }
+      ]
+    },
+    {
+      "name": "pyhumps",
+      "version": "3.8.0-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "ce680e8c039864788c7fea58df40f500ad9b69bf5eef9fdde1a1371638ae5fc3",
+      "evidence_member": "copyright",
+      "license": "Unlicense",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "ca2abdf695884c77ea4b4a5b64ca7b732d9d9dbade4eebc1c2e76c53e9e3bc83",
+          "license": "Unlicense",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/amir/raidman",
+            "license": "Unlicense",
+            "copyright_sha256": "8a2a38c15eea61316d5a92dfcea0db4dd49839696d63af3ff6529712e3b064fe",
+            "member": "UNLICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ce680e8c039864788c7fea58df40f500ad9b69bf5eef9fdde1a1371638ae5fc3.txt",
+          "sha256": "ce680e8c039864788c7fea58df40f500ad9b69bf5eef9fdde1a1371638ae5fc3"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:autocfg",
+      "version": "1.3.0",
+      "source_identity": "0c4b4d0bd25bd0b74681c0ad21497610ce1b7c91b1022cd21c80c6fbdd9476b0",
+      "copyright_sha256": "0f81238e82e3a5a4f037ccb27864d69d559170fd72532743bb5ef2d286487673",
+      "evidence_member": "third-party-notices/watchfiles/cargo/autocfg-1.3.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "99afaa30c17801207692138b8a7d9f7522b52711dabb4cde25855dadc950e4c8",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:autocfg",
+            "member": "autocfg-1.1.0/LICENSE-MIT",
+            "sha256": "99afaa30c17801207692138b8a7d9f7522b52711dabb4cde25855dadc950e4c8",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "Apache-2.0 OR MIT"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0f81238e82e3a5a4f037ccb27864d69d559170fd72532743bb5ef2d286487673.txt",
+          "sha256": "0f81238e82e3a5a4f037ccb27864d69d559170fd72532743bb5ef2d286487673"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:base64",
+      "version": "0.22.1",
+      "source_identity": "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6",
+      "copyright_sha256": "0c0a41db110750ef3922afc5e449c9c18326fa63d5ac8236a84ac87c9f3efb03",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/base64-0.22.1/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "6a8da4c78c729176907b068222cc6e8e612b09c7345628c98cbceb22c0f06979",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:base64",
+            "member": "base64-0.21.7/LICENSE-MIT",
+            "sha256": "6a8da4c78c729176907b068222cc6e8e612b09c7345628c98cbceb22c0f06979",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0c0a41db110750ef3922afc5e449c9c18326fa63d5ac8236a84ac87c9f3efb03.txt",
+          "sha256": "0c0a41db110750ef3922afc5e449c9c18326fa63d5ac8236a84ac87c9f3efb03"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:cc",
+      "version": "1.0.101",
+      "source_identity": "ac367972e516d45567c7eafc73d24e1c193dcf200a8d94e9db7b3d38b349572d",
+      "copyright_sha256": "5070b37ef21be1d943d7e3b3c4f1829056f879ae64c9785bc0def2fe58a876de",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/cc-1.0.101/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:cc",
+            "member": "cc-1.0.83/LICENSE-MIT",
+            "sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5070b37ef21be1d943d7e3b3c4f1829056f879ae64c9785bc0def2fe58a876de.txt",
+          "sha256": "5070b37ef21be1d943d7e3b3c4f1829056f879ae64c9785bc0def2fe58a876de"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:cfg-if",
+      "version": "1.0.0",
+      "source_identity": "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd",
+      "copyright_sha256": "3c5a58548229dda3d71a8e39f958901a4b75fdf7708c81a34d7d4b668a5a4205",
+      "evidence_member": "third-party-notices/watchfiles/cargo/cfg-if-1.0.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:cc",
+            "member": "cc-1.0.83/LICENSE-MIT",
+            "sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/3c5a58548229dda3d71a8e39f958901a4b75fdf7708c81a34d7d4b668a5a4205.txt",
+          "sha256": "3c5a58548229dda3d71a8e39f958901a4b75fdf7708c81a34d7d4b668a5a4205"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:displaydoc",
+      "version": "0.2.5",
+      "source_identity": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+      "copyright_sha256": "7bc6801cff585668b313230dba6d2979ddb3a36f5c3ebc2da7f90f6715e2f8d0",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/displaydoc-0.2.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/7bc6801cff585668b313230dba6d2979ddb3a36f5c3ebc2da7f90f6715e2f8d0.txt",
+          "sha256": "7bc6801cff585668b313230dba6d2979ddb3a36f5c3ebc2da7f90f6715e2f8d0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:heck",
+      "version": "0.5.0",
+      "source_identity": "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea",
+      "copyright_sha256": "7fd379f03eadfc10d86b2ffc28c2f7967a0adb622ea00c021020af016ca32457",
+      "evidence_member": "third-party-notices/watchfiles/cargo/heck-0.5.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "033a9383ff21d1e4811d98dd2e0081b0ba0d9c9a31d6c7ba9e63e3488479bf29",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:heck",
+            "member": "heck-0.4.1/LICENSE-MIT",
+            "sha256": "033a9383ff21d1e4811d98dd2e0081b0ba0d9c9a31d6c7ba9e63e3488479bf29",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/7fd379f03eadfc10d86b2ffc28c2f7967a0adb622ea00c021020af016ca32457.txt",
+          "sha256": "7fd379f03eadfc10d86b2ffc28c2f7967a0adb622ea00c021020af016ca32457"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:indoc",
+      "version": "2.0.5",
+      "source_identity": "b248f5224d1d606005e02c97f5aa4e88eeb230488bcc03bc9ca4d7991399f2b5",
+      "copyright_sha256": "dd95a730c48eaf5f012b7feef177dc7193f5803b8e48b57931c78d8f21701eca",
+      "evidence_member": "third-party-notices/watchfiles/cargo/indoc-2.0.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/dd95a730c48eaf5f012b7feef177dc7193f5803b8e48b57931c78d8f21701eca.txt",
+          "sha256": "dd95a730c48eaf5f012b7feef177dc7193f5803b8e48b57931c78d8f21701eca"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:itoa",
+      "version": "1.0.11",
+      "source_identity": "49f1f14873335454500d59611f1cf4a4b0f786f9ac11f4312a78e4cf2566695b",
+      "copyright_sha256": "39a54f8d59eb526a133cb347111f5fb8d3c5a0d5c6a7be39dbc7b21921409f35",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/itoa-1.0.11/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/39a54f8d59eb526a133cb347111f5fb8d3c5a0d5c6a7be39dbc7b21921409f35.txt",
+          "sha256": "39a54f8d59eb526a133cb347111f5fb8d3c5a0d5c6a7be39dbc7b21921409f35"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:lexical-util",
+      "version": "0.8.5",
+      "source_identity": "5255b9ff16ff898710eb9eb63cb39248ea8a5bb036bea8085b1a767ff6c4e3fc",
+      "copyright_sha256": "ee5c9dd29542f11701e165e3252061a146ec6504a79e9a2cf7f56ed5214cbd61",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/lexical-util-0.8.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "7e1b38c60796dd9949d6f26bd124e353a4a709b70e90810e2608f30195454da0",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ee5c9dd29542f11701e165e3252061a146ec6504a79e9a2cf7f56ed5214cbd61.txt",
+          "sha256": "ee5c9dd29542f11701e165e3252061a146ec6504a79e9a2cf7f56ed5214cbd61"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:libc",
+      "version": "0.2.155",
+      "source_identity": "97b3888a4aecf77e811145cadf6eef5901f4782c53886191b2f693f24761847c",
+      "copyright_sha256": "c2c264ae82ed2588bc2977e020871bcd635028541b1fdcab366e38fef4a08f13",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/libc-0.2.155/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "98ed3581f1f1338414ec61cb65850f41e456b450ce210620d05933d7d0f63bc6",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:libc",
+            "member": "libc-0.2.152/LICENSE-MIT",
+            "sha256": "98ed3581f1f1338414ec61cb65850f41e456b450ce210620d05933d7d0f63bc6",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/c2c264ae82ed2588bc2977e020871bcd635028541b1fdcab366e38fef4a08f13.txt",
+          "sha256": "c2c264ae82ed2588bc2977e020871bcd635028541b1fdcab366e38fef4a08f13"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:memoffset",
+      "version": "0.9.1",
+      "source_identity": "488016bfae457b036d996092f6cb448677611ce4449e970ceaf42695203f218a",
+      "copyright_sha256": "ef85c0610a7ecf9f8af87faacbe73c2b055eeb14e51924787f6d17637ea40f0f",
+      "evidence_member": "third-party-notices/watchfiles/cargo/memoffset-0.9.1/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "3234ac55816264ee7b6c7ee27efd61cf0a1fe775806870e3d9b4c41ea73c5cb1",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:memoffset",
+            "member": "memoffset-0.9.0/LICENSE",
+            "sha256": "3234ac55816264ee7b6c7ee27efd61cf0a1fe775806870e3d9b4c41ea73c5cb1",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ef85c0610a7ecf9f8af87faacbe73c2b055eeb14e51924787f6d17637ea40f0f.txt",
+          "sha256": "ef85c0610a7ecf9f8af87faacbe73c2b055eeb14e51924787f6d17637ea40f0f"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:num-bigint",
+      "version": "0.4.6",
+      "source_identity": "a5e44f723f1133c9deac646763579fdb3ac745e418f2a7af9cd0c431da1f20b9",
+      "copyright_sha256": "dc4e13cd059367f01591416a51f51598c495ebfd508a4c271c93cc16bce9121e",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/num-bigint-0.4.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/dc4e13cd059367f01591416a51f51598c495ebfd508a4c271c93cc16bce9121e.txt",
+          "sha256": "dc4e13cd059367f01591416a51f51598c495ebfd508a4c271c93cc16bce9121e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:num-integer",
+      "version": "0.1.46",
+      "source_identity": "7969661fd2958a5cb096e56c8e1ad0444ac2bbcd0061bd28660485a44879858f",
+      "copyright_sha256": "2c3fd652175f8d3777a502354d8112eace83ba553d628b55683a0daa61e3a9b0",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/num-integer-0.1.46/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/2c3fd652175f8d3777a502354d8112eace83ba553d628b55683a0daa61e3a9b0.txt",
+          "sha256": "2c3fd652175f8d3777a502354d8112eace83ba553d628b55683a0daa61e3a9b0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:num-traits",
+      "version": "0.2.19",
+      "source_identity": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841",
+      "copyright_sha256": "3bf4d8e60f4b89571ca76443610b1dae03dd0b6f597932efbdf42867728b22e0",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/num-traits-0.2.19/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/3bf4d8e60f4b89571ca76443610b1dae03dd0b6f597932efbdf42867728b22e0.txt",
+          "sha256": "3bf4d8e60f4b89571ca76443610b1dae03dd0b6f597932efbdf42867728b22e0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:once_cell",
+      "version": "1.19.0",
+      "source_identity": "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92",
+      "copyright_sha256": "929dbd5ba626f20ba837451e82d9b40d8f9e633ab351a2242a3cb5c4b0b9aa06",
+      "evidence_member": "third-party-notices/watchfiles/cargo/once_cell-1.19.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/929dbd5ba626f20ba837451e82d9b40d8f9e633ab351a2242a3cb5c4b0b9aa06.txt",
+          "sha256": "929dbd5ba626f20ba837451e82d9b40d8f9e633ab351a2242a3cb5c4b0b9aa06"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:portable-atomic",
+      "version": "1.6.0",
+      "source_identity": "7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0",
+      "copyright_sha256": "04a985cf77efc775041ae2cf77a5f68abaf9743cb4d5e1e6b19760909241a083",
+      "evidence_member": "third-party-notices/watchfiles/cargo/portable-atomic-1.6.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "4bf96504d6e83ce5c6fc7167f1795d9ceaa68e70ab86bc5d08ab93184262bbbe",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/04a985cf77efc775041ae2cf77a5f68abaf9743cb4d5e1e6b19760909241a083.txt",
+          "sha256": "04a985cf77efc775041ae2cf77a5f68abaf9743cb4d5e1e6b19760909241a083"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:proc-macro2",
+      "version": "1.0.86",
+      "source_identity": "5e719e8df665df0d1c8fbfd238015744736151d4445ec0836b8e628aae103b77",
+      "copyright_sha256": "38e3a2d3134ccad19646e0657fc376d8a74230a9c4213973b9adf0ef0dfacb28",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/proc-macro2-1.0.86/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/38e3a2d3134ccad19646e0657fc376d8a74230a9c4213973b9adf0ef0dfacb28.txt",
+          "sha256": "38e3a2d3134ccad19646e0657fc376d8a74230a9c4213973b9adf0ef0dfacb28"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:pyo3",
+      "version": "0.22.6",
+      "source_identity": "f402062616ab18202ae8319da13fa4279883a2b8a9d9f83f20dbade813ce1884",
+      "copyright_sha256": "84dff4e9d125c9ab9ddd24e76811556559bbefd4929c7029777dd6cb93d788e4",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/pyo3-0.22.6/copyright",
+      "license": "MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-APACHE",
+            "sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-MIT",
+            "sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "pyo3-runtime/LICENSE-APACHE",
+          "original_notice_block_sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-APACHE",
+            "sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "pyo3-runtime/LICENSE-MIT",
+          "original_notice_block_sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-MIT",
+            "sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/84dff4e9d125c9ab9ddd24e76811556559bbefd4929c7029777dd6cb93d788e4.txt",
+          "sha256": "84dff4e9d125c9ab9ddd24e76811556559bbefd4929c7029777dd6cb93d788e4"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:pyo3-build-config",
+      "version": "0.22.6",
+      "source_identity": "b14b5775b5ff446dd1056212d778012cbe8a0fbffd368029fd9e25b514479c38",
+      "copyright_sha256": "16991c17065be7dbe12b584453aa7db5fbf739f9d70a9b3c9e616d2c167f1782",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/pyo3-build-config-0.22.6/copyright",
+      "license": "MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-APACHE",
+            "sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-MIT",
+            "sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/16991c17065be7dbe12b584453aa7db5fbf739f9d70a9b3c9e616d2c167f1782.txt",
+          "sha256": "16991c17065be7dbe12b584453aa7db5fbf739f9d70a9b3c9e616d2c167f1782"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:pyo3-ffi",
+      "version": "0.22.6",
+      "source_identity": "9ab5bcf04a2cdcbb50c7d6105de943f543f9ed92af55818fd17b660390fc8636",
+      "copyright_sha256": "dacdbc2cfd10022362870ac89fcaca12444aff33af71f50f7726df356a1135d5",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/pyo3-ffi-0.22.6/copyright",
+      "license": "MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-APACHE",
+            "sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-MIT",
+            "sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/dacdbc2cfd10022362870ac89fcaca12444aff33af71f50f7726df356a1135d5.txt",
+          "sha256": "dacdbc2cfd10022362870ac89fcaca12444aff33af71f50f7726df356a1135d5"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:pyo3-macros",
+      "version": "0.22.6",
+      "source_identity": "0fd24d897903a9e6d80b968368a34e1525aeb719d568dba8b3d4bfa5dc67d453",
+      "copyright_sha256": "37278cb093d3fc538a537f17e635b73da85ae21720b315ce0cc7453bdf3d3163",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/pyo3-macros-0.22.6/copyright",
+      "license": "MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-APACHE",
+            "sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-MIT",
+            "sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/37278cb093d3fc538a537f17e635b73da85ae21720b315ce0cc7453bdf3d3163.txt",
+          "sha256": "37278cb093d3fc538a537f17e635b73da85ae21720b315ce0cc7453bdf3d3163"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:pyo3-macros-backend",
+      "version": "0.22.6",
+      "source_identity": "36c011a03ba1e50152b4b394b479826cad97e7a21eb52df179cd91ac411cbfbe",
+      "copyright_sha256": "634b599d1bca4a17df7ef64a2032e930370089623bc0619dd5407b3af04d17bd",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/pyo3-macros-backend-0.22.6/copyright",
+      "license": "MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-APACHE",
+            "sha256": "8534ddde503798a38ee52c9ada055c977d863ba5a476db524dc1a48ed39809ad",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:pyo3",
+            "member": "pyo3-0.20.3/LICENSE-MIT",
+            "sha256": "cff53bcf0a6c4dc140ce21eda35bd4ce2db2f6eb59316445a95e686252118116",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/634b599d1bca4a17df7ef64a2032e930370089623bc0619dd5407b3af04d17bd.txt",
+          "sha256": "634b599d1bca4a17df7ef64a2032e930370089623bc0619dd5407b3af04d17bd"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:quote",
+      "version": "1.0.36",
+      "source_identity": "0fa76aaf39101c457836aec0ce2316dbdc3ab723cdda1c6bd4e6ad4208acaca7",
+      "copyright_sha256": "71750e889fe5c89dee20eb274584127e780fc770833fedb998aa90ca5126155b",
+      "evidence_member": "third-party-notices/watchfiles/cargo/quote-1.0.36/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/71750e889fe5c89dee20eb274584127e780fc770833fedb998aa90ca5126155b.txt",
+          "sha256": "71750e889fe5c89dee20eb274584127e780fc770833fedb998aa90ca5126155b"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:regex",
+      "version": "1.11.1",
+      "source_identity": "b544ef1b4eac5dc2db33ea63606ae9ffcfac26c1416a2806ae0bf5f56b201191",
+      "copyright_sha256": "ae6f05652a2e76b5d4c16c7ecf553534665f509a91ef646cbb233be588950e47",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/regex-1.11.1/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ae6f05652a2e76b5d4c16c7ecf553534665f509a91ef646cbb233be588950e47.txt",
+          "sha256": "ae6f05652a2e76b5d4c16c7ecf553534665f509a91ef646cbb233be588950e47"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:regex-automata",
+      "version": "0.4.8",
+      "source_identity": "368758f23274712b504848e9d5a6f010445cc8b87a7cdb4d7cbee666c1288da3",
+      "copyright_sha256": "0fe0ec886c1726a3d3315379cdbabbb4a9eb3b1a187a19af75de09ea3785384f",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/regex-automata-0.4.8/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0fe0ec886c1726a3d3315379cdbabbb4a9eb3b1a187a19af75de09ea3785384f.txt",
+          "sha256": "0fe0ec886c1726a3d3315379cdbabbb4a9eb3b1a187a19af75de09ea3785384f"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:rustversion",
+      "version": "1.0.17",
+      "source_identity": "955d28af4278de8121b7ebeb796b6a45735dc01436d898801014aced2773a3d6",
+      "copyright_sha256": "48939707b0248308e798ff69237407271c3802f1e19123b429c6d37fbc84f9ce",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/rustversion-1.0.17/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/48939707b0248308e798ff69237407271c3802f1e19123b429c6d37fbc84f9ce.txt",
+          "sha256": "48939707b0248308e798ff69237407271c3802f1e19123b429c6d37fbc84f9ce"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:ryu",
+      "version": "1.0.18",
+      "source_identity": "f3cb5ba0dc43242ce17de99c180e96db90b235b8a9fdc9543c96d2209116bd9f",
+      "copyright_sha256": "35baab18a2ca49f44bcce4db7f791ba36e764821ea4b9e0648cd6122bbf84910",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/ryu-1.0.18/copyright",
+      "license": "Apache-2.0 AND BSL-1.0",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-BOOST",
+          "original_notice_block_sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+          "license": "BSL-1.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/BSL-1.0.txt",
+            "license": "BSL-1.0",
+            "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/35baab18a2ca49f44bcce4db7f791ba36e764821ea4b9e0648cd6122bbf84910.txt",
+          "sha256": "35baab18a2ca49f44bcce4db7f791ba36e764821ea4b9e0648cd6122bbf84910"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:serde",
+      "version": "1.0.214",
+      "source_identity": "f55c3193aca71c12ad7890f1785d2b73e1b9f63a0bbc353c08ef26fe03fc56b5",
+      "copyright_sha256": "0116044042ff1a1b707dce6cbfa9b5e0acea9f6c81b190ca5d8a61a16e448739",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/serde-1.0.214/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0116044042ff1a1b707dce6cbfa9b5e0acea9f6c81b190ca5d8a61a16e448739.txt",
+          "sha256": "0116044042ff1a1b707dce6cbfa9b5e0acea9f6c81b190ca5d8a61a16e448739"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:serde_derive",
+      "version": "1.0.214",
+      "source_identity": "de523f781f095e28fa605cdce0f8307e451cc0fd14e2eb4cd2e98a355b147766",
+      "copyright_sha256": "c558c4cb0b4506782bdfc1caf88f12374ba29f372e63c651483df13af3ef0020",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/serde_derive-1.0.214/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/c558c4cb0b4506782bdfc1caf88f12374ba29f372e63c651483df13af3ef0020.txt",
+          "sha256": "c558c4cb0b4506782bdfc1caf88f12374ba29f372e63c651483df13af3ef0020"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:serde_json",
+      "version": "1.0.132",
+      "source_identity": "d726bfaff4b320266d395898905d0eba0345aae23b54aee3a737e260fd46db03",
+      "copyright_sha256": "64e9d3915f01259b2c5cb6e4edabf0d7cc737bbed9fdab2797ce58d72173afda",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/serde_json-1.0.132/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/64e9d3915f01259b2c5cb6e4edabf0d7cc737bbed9fdab2797ce58d72173afda.txt",
+          "sha256": "64e9d3915f01259b2c5cb6e4edabf0d7cc737bbed9fdab2797ce58d72173afda"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:smallvec",
+      "version": "1.13.2",
+      "source_identity": "3c5e1a9a646d36c3599cd173a41282daf47c44583ad367b8e6837255952e5c67",
+      "copyright_sha256": "f4dd445a6204f097c08f529839d50880a968f40d209c90c63a6a26697e7f934e",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/smallvec-1.13.2/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "7f194ae45c2525a57443f7edabd392e8218109ee81a4bce70d385104c87c1a71",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:smallvec",
+            "member": "smallvec-1.13.1/LICENSE-MIT",
+            "sha256": "7f194ae45c2525a57443f7edabd392e8218109ee81a4bce70d385104c87c1a71",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/f4dd445a6204f097c08f529839d50880a968f40d209c90c63a6a26697e7f934e.txt",
+          "sha256": "f4dd445a6204f097c08f529839d50880a968f40d209c90c63a6a26697e7f934e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:syn",
+      "version": "2.0.82",
+      "source_identity": "83540f837a8afc019423a8edb95b52a8effe46957ee402287f4292fae35be021",
+      "copyright_sha256": "7b2be69a9bd0b2d6e7f635a0b05e8faa175e101b84796d9267a81cc3dd81e64b",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/syn-2.0.82/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/7b2be69a9bd0b2d6e7f635a0b05e8faa175e101b84796d9267a81cc3dd81e64b.txt",
+          "sha256": "7b2be69a9bd0b2d6e7f635a0b05e8faa175e101b84796d9267a81cc3dd81e64b"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:target-lexicon",
+      "version": "0.12.14",
+      "source_identity": "e1fc403891a21bcfb7c37834ba66a547a8f402146eba7265b5a6d88059c9ff2f",
+      "copyright_sha256": "edd71a03718185d8792168675be2727a2325ed5300ac91c74e7ec8cfeb2e06c2",
+      "evidence_member": "third-party-notices/watchfiles/cargo/target-lexicon-0.12.14/copyright",
+      "license": "Apache-2.0 WITH LLVM-exception",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "2f213ec6b1355dc841dc489c9e7ce1dddd07611df474efcf61b8a960797398e9",
+          "license": "Apache-2.0 WITH LLVM-exception",
+          "complete_previously_read_reference": {
+            "component": "re2",
+            "member": "re2/fuzzing/compiler-rt/LICENSE",
+            "sha256": "f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd",
+            "license": "LicenseRef-Lucent AND (Apache-2.0 WITH LLVM-exception) AND BSD-3-Clause"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/edd71a03718185d8792168675be2727a2325ed5300ac91c74e7ec8cfeb2e06c2.txt",
+          "sha256": "edd71a03718185d8792168675be2727a2325ed5300ac91c74e7ec8cfeb2e06c2"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:unicode-ident",
+      "version": "1.0.12",
+      "source_identity": "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b",
+      "copyright_sha256": "33484b53f63ab6e6672f5ad3c28a96ea169314da813218ed234f90f667448c70",
+      "evidence_member": "third-party-notices/watchfiles/cargo/unicode-ident-1.0.12/copyright",
+      "license": "((MIT OR Apache-2.0) AND Unicode-DFS-2016) AND Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        },
+        {
+          "member": "LICENSE-UNICODE",
+          "original_notice_block_sha256": "3fb017459cc69d26728ed955a787345bdd3c37ef0624d6d99d3e94aa04c90765",
+          "license": "(MIT OR Apache-2.0) AND Unicode-DFS-2016",
+          "complete_previously_read_reference": {
+            "component": "cargo:unicode-ident",
+            "member": "unicode-ident-1.0.12/LICENSE-UNICODE",
+            "sha256": "3fb017459cc69d26728ed955a787345bdd3c37ef0624d6d99d3e94aa04c90765",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/33484b53f63ab6e6672f5ad3c28a96ea169314da813218ed234f90f667448c70.txt",
+          "sha256": "33484b53f63ab6e6672f5ad3c28a96ea169314da813218ed234f90f667448c70"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:unindent",
+      "version": "0.2.3",
+      "source_identity": "c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce",
+      "copyright_sha256": "a0aab943cfeb4ca67e40ae2ff415805cc5d02560492ce5b31b907aa172126ef4",
+      "evidence_member": "third-party-notices/watchfiles/cargo/unindent-0.2.3/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a0aab943cfeb4ca67e40ae2ff415805cc5d02560492ce5b31b907aa172126ef4.txt",
+          "sha256": "a0aab943cfeb4ca67e40ae2ff415805cc5d02560492ce5b31b907aa172126ef4"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:wasi",
+      "version": "0.11.0+wasi-snapshot-preview1",
+      "source_identity": "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423",
+      "copyright_sha256": "23e9a5108ea28629da0c1d6ec8cbadab89b770be6d339edf03affa6827081e5f",
+      "evidence_member": "third-party-notices/watchfiles/cargo/wasi-0.11.0+wasi-snapshot-preview1/copyright",
+      "license": "Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-Apache-2.0_WITH_LLVM-exception",
+          "original_notice_block_sha256": "2f213ec6b1355dc841dc489c9e7ce1dddd07611df474efcf61b8a960797398e9",
+          "license": "Apache-2.0 WITH LLVM-exception",
+          "complete_previously_read_reference": {
+            "component": "re2",
+            "member": "re2/fuzzing/compiler-rt/LICENSE",
+            "sha256": "f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd",
+            "license": "LicenseRef-Lucent AND (Apache-2.0 WITH LLVM-exception) AND BSD-3-Clause"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/23e9a5108ea28629da0c1d6ec8cbadab89b770be6d339edf03affa6827081e5f.txt",
+          "sha256": "23e9a5108ea28629da0c1d6ec8cbadab89b770be6d339edf03affa6827081e5f"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:pyyaml",
+      "version": "6.0.2",
+      "source_identity": "d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e",
+      "copyright_sha256": "39104b9aceb8b590f1e84d11f6dcb65a37d8c925518eb570d2cd7eaddc842488",
+      "evidence_member": "third-party-notices/pyyaml/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "PyYAML-6.0.2.dist-info/LICENSE",
+          "original_notice_block_sha256": "d387564cc3a28ec35ea44a033c74dae724dbd31457fdbba30f1ee2f7090c4e40",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:pyyaml",
+            "member": "PyYAML-6.0.1/LICENSE",
+            "sha256": "d387564cc3a28ec35ea44a033c74dae724dbd31457fdbba30f1ee2f7090c4e40",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT"
+          }
+        },
+        {
+          "member": "pyyaml-6.0.2/LICENSE",
+          "original_notice_block_sha256": "d387564cc3a28ec35ea44a033c74dae724dbd31457fdbba30f1ee2f7090c4e40",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:pyyaml",
+            "member": "PyYAML-6.0.1/LICENSE",
+            "sha256": "d387564cc3a28ec35ea44a033c74dae724dbd31457fdbba30f1ee2f7090c4e40",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/39104b9aceb8b590f1e84d11f6dcb65a37d8c925518eb570d2cd7eaddc842488.txt",
+          "sha256": "39104b9aceb8b590f1e84d11f6dcb65a37d8c925518eb570d2cd7eaddc842488"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:bitflags",
+      "version": "1.3.2",
+      "source_identity": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a",
+      "copyright_sha256": "08c793077f4ccdbfd91a99a64e0d62e7addfe735017042168fe062b13dcd7a0e",
+      "evidence_member": "third-party-notices/watchfiles/cargo/bitflags-1.3.2/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/08c793077f4ccdbfd91a99a64e0d62e7addfe735017042168fe062b13dcd7a0e.txt",
+          "sha256": "08c793077f4ccdbfd91a99a64e0d62e7addfe735017042168fe062b13dcd7a0e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:bitflags",
+      "version": "2.6.0",
+      "source_identity": "b048fb63fd8b5923fc5aa7b340d8e156aec7ec02f0c78fa8a6ddc2613f6f71de",
+      "copyright_sha256": "fc6a72f9af75eb5f2f1670a68e6a603e6b0c2476cc34b431abd6a3bc51e4e35e",
+      "evidence_member": "third-party-notices/watchfiles/cargo/bitflags-2.6.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/fc6a72f9af75eb5f2f1670a68e6a603e6b0c2476cc34b431abd6a3bc51e4e35e.txt",
+          "sha256": "fc6a72f9af75eb5f2f1670a68e6a603e6b0c2476cc34b431abd6a3bc51e4e35e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:cc",
+      "version": "1.0.96",
+      "source_identity": "065a29261d53ba54260972629f9ca6bffa69bac13cd1fed61420f7fa68b9f8bd",
+      "copyright_sha256": "ee49fe26176deedc5cb67c47c10831de1f8844259fd350d43fb521e36e20c896",
+      "evidence_member": "third-party-notices/watchfiles/cargo/cc-1.0.96/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:cc",
+            "member": "cc-1.0.83/LICENSE-MIT",
+            "sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ee49fe26176deedc5cb67c47c10831de1f8844259fd350d43fb521e36e20c896.txt",
+          "sha256": "ee49fe26176deedc5cb67c47c10831de1f8844259fd350d43fb521e36e20c896"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:filetime",
+      "version": "0.2.24",
+      "source_identity": "bf401df4a4e3872c4fe8151134cf483738e74b67fc934d6532c882b3d24a4550",
+      "copyright_sha256": "43de11e5c0ef6881008fb5c9c6eb1f35c5c445c6af3291a31b0c1c84e9d2f5d2",
+      "evidence_member": "third-party-notices/watchfiles/cargo/filetime-0.2.24/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:cc",
+            "member": "cc-1.0.83/LICENSE-MIT",
+            "sha256": "84e1bbfebd74e4196cfa0ea5cf58e677aa24b47c6661adbb19fb07920d089d1d",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/43de11e5c0ef6881008fb5c9c6eb1f35c5c445c6af3291a31b0c1c84e9d2f5d2.txt",
+          "sha256": "43de11e5c0ef6881008fb5c9c6eb1f35c5c445c6af3291a31b0c1c84e9d2f5d2"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:inotify",
+      "version": "0.10.2",
+      "source_identity": "fdd168d97690d0b8c412d6b6c10360277f4d7ee495c5d0d5d5fe0854923255cc",
+      "copyright_sha256": "d79dfc1648f2853cefdc25793acf36dc2ba6d16e85807edc7df24435cbb0572d",
+      "evidence_member": "third-party-notices/watchfiles/cargo/inotify-0.10.2/copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "f68878c9ca61b25d4b2c470de571cb85ce97804a62bb153607f7e0e0d2684c8a",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d79dfc1648f2853cefdc25793acf36dc2ba6d16e85807edc7df24435cbb0572d.txt",
+          "sha256": "d79dfc1648f2853cefdc25793acf36dc2ba6d16e85807edc7df24435cbb0572d"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE",
+          "prefix": "Copyright (c) Hanno Braun and contributors\n\n"
+        }
+      ]
+    },
+    {
+      "name": "cargo:inotify-sys",
+      "version": "0.1.5",
+      "source_identity": "e05c02b5e89bff3b946cedeca278abc628fe811e604f027c45a8aa3cf793d0eb",
+      "copyright_sha256": "8a5f7fafb4f73f936dfab84ed86f7a15cf2b753750a6e95f2f360351f3a204c7",
+      "evidence_member": "third-party-notices/watchfiles/cargo/inotify-sys-0.1.5/copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "f68878c9ca61b25d4b2c470de571cb85ce97804a62bb153607f7e0e0d2684c8a",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "go:collectd.org",
+            "license": "ISC",
+            "copyright_sha256": "d4c9e64ab824ba67a1f51a1af080b9322da364fd322809b17b10cbba668f671a",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8a5f7fafb4f73f936dfab84ed86f7a15cf2b753750a6e95f2f360351f3a204c7.txt",
+          "sha256": "8a5f7fafb4f73f936dfab84ed86f7a15cf2b753750a6e95f2f360351f3a204c7"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "LICENSE",
+          "prefix": "Copyright (c) Hanno Braun and contributors\n\n"
+        }
+      ]
+    },
+    {
+      "name": "cargo:libc",
+      "version": "0.2.154",
+      "source_identity": "ae743338b92ff9146ce83992f766a31066a91a8c84a45e0e9f21e7cf6de6d346",
+      "copyright_sha256": "c06424c94d19d33bf739b86891fbe2106b8cf271f63c17c9c1d140199899419e",
+      "evidence_member": "third-party-notices/watchfiles/cargo/libc-0.2.154/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "98ed3581f1f1338414ec61cb65850f41e456b450ce210620d05933d7d0f63bc6",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:libc",
+            "member": "libc-0.2.152/LICENSE-MIT",
+            "sha256": "98ed3581f1f1338414ec61cb65850f41e456b450ce210620d05933d7d0f63bc6",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/c06424c94d19d33bf739b86891fbe2106b8cf271f63c17c9c1d140199899419e.txt",
+          "sha256": "c06424c94d19d33bf739b86891fbe2106b8cf271f63c17c9c1d140199899419e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:log",
+      "version": "0.4.22",
+      "source_identity": "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24",
+      "copyright_sha256": "c88151dfd649120e9acaf61f413cc750a2ed4c112a751f02199f24821054eb96",
+      "evidence_member": "third-party-notices/watchfiles/cargo/log-0.4.22/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitflags",
+            "member": "bitflags-1.3.2/LICENSE-MIT",
+            "sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/c88151dfd649120e9acaf61f413cc750a2ed4c112a751f02199f24821054eb96.txt",
+          "sha256": "c88151dfd649120e9acaf61f413cc750a2ed4c112a751f02199f24821054eb96"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:proc-macro2",
+      "version": "1.0.81",
+      "source_identity": "3d1597b0c024618f09a9c3b8655b7e430397a36d23fdafec26d6965e9eec3eba",
+      "copyright_sha256": "ebbe9585a972e044466306575e7ad211586d61d7a924809ffecc3212db12cf24",
+      "evidence_member": "third-party-notices/watchfiles/cargo/proc-macro2-1.0.81/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ebbe9585a972e044466306575e7ad211586d61d7a924809ffecc3212db12cf24.txt",
+          "sha256": "ebbe9585a972e044466306575e7ad211586d61d7a924809ffecc3212db12cf24"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:redox_syscall",
+      "version": "0.5.3",
+      "source_identity": "2a908a6e00f1fdd0dfd9c0eb08ce85126f6d8bbda50017e74bc4a4b7d4a926a4",
+      "copyright_sha256": "802921e630e84d5e0d27049965120f20248a786530ea1502f32c8a543e3e3155",
+      "evidence_member": "third-party-notices/watchfiles/cargo/redox_syscall-0.5.3/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "fde59e25bf5342ef0a8cedab73e00e1febca26650ce34a16122ea234ac5ddcbe",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:redox_syscall",
+            "member": "redox_syscall-0.4.1/LICENSE",
+            "sha256": "fde59e25bf5342ef0a8cedab73e00e1febca26650ce34a16122ea234ac5ddcbe",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/802921e630e84d5e0d27049965120f20248a786530ea1502f32c8a543e3e3155.txt",
+          "sha256": "802921e630e84d5e0d27049965120f20248a786530ea1502f32c8a543e3e3155"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:syn",
+      "version": "2.0.60",
+      "source_identity": "909518bc7b1c9b779f1bbf07f2929d35af9f0f37e47c6e9ef7f9dddc1e1821f3",
+      "copyright_sha256": "2c1e9a114d90c810e30ddcea732ac02861345b8d0e446691c720cea0b1b3c242",
+      "evidence_member": "third-party-notices/watchfiles/cargo/syn-2.0.60/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "85ad950cce8752f716dbf49be95b2639172cb49f291336d57f1fdc9989e38179",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/aristanetworks/goarista",
+            "license": "Apache-2.0 AND BSD-3-Clause",
+            "copyright_sha256": "cfd6e2d7de4d01f23bab7ab15e560fb07edbed14a5a62d356be3853a69f8a7ad",
+            "member": "COPYING"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/2c1e9a114d90c810e30ddcea732ac02861345b8d0e446691c720cea0b1b3c242.txt",
+          "sha256": "2c1e9a114d90c810e30ddcea732ac02861345b8d0e446691c720cea0b1b3c242"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows-sys",
+      "version": "0.48.0",
+      "source_identity": "677d2418bec65e3338edb076e806bc1ec15693c5d0104683f2efe857f61056a9",
+      "copyright_sha256": "e0933cc06657f482bc51d8e605e6a40cbdee79d3d19855c51ab41740e513ec5d",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows-sys-0.48.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e0933cc06657f482bc51d8e605e6a40cbdee79d3d19855c51ab41740e513ec5d.txt",
+          "sha256": "e0933cc06657f482bc51d8e605e6a40cbdee79d3d19855c51ab41740e513ec5d"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows-sys",
+      "version": "0.52.0",
+      "source_identity": "282be5f36a8ce781fad8c8ae18fa3f9beff57ec1b52cb3de0789201425d9a33d",
+      "copyright_sha256": "0d3a92f562582298e3294795e009734c3ad892f9d55d49f25e97b8c232b72e3e",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows-sys-0.52.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0d3a92f562582298e3294795e009734c3ad892f9d55d49f25e97b8c232b72e3e.txt",
+          "sha256": "0d3a92f562582298e3294795e009734c3ad892f9d55d49f25e97b8c232b72e3e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows-sys",
+      "version": "0.59.0",
+      "source_identity": "1e38bc4d79ed67fd075bcc251a1c39b32a1776bbe92e5bef1f0bf1f8c531853b",
+      "copyright_sha256": "e0b67aacccc666f1853c3e661d04b5ebcaf17131e180e506a0783a7d9775a160",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows-sys-0.59.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e0b67aacccc666f1853c3e661d04b5ebcaf17131e180e506a0783a7d9775a160.txt",
+          "sha256": "e0b67aacccc666f1853c3e661d04b5ebcaf17131e180e506a0783a7d9775a160"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows-targets",
+      "version": "0.48.5",
+      "source_identity": "9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c",
+      "copyright_sha256": "57ad3a4115dd26a78e576362be660fed9230ffbd33968695d965c6af593237f2",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows-targets-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/57ad3a4115dd26a78e576362be660fed9230ffbd33968695d965c6af593237f2.txt",
+          "sha256": "57ad3a4115dd26a78e576362be660fed9230ffbd33968695d965c6af593237f2"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows-targets",
+      "version": "0.52.6",
+      "source_identity": "9b724f72796e036ab90c1021d4780d4d3d648aca59e491e6b98e725b84e99973",
+      "copyright_sha256": "8ca5d9815a66a5b70aecbaa32ea0b15044104258c55cf348e1468019048c4680",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows-targets-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8ca5d9815a66a5b70aecbaa32ea0b15044104258c55cf348e1468019048c4680.txt",
+          "sha256": "8ca5d9815a66a5b70aecbaa32ea0b15044104258c55cf348e1468019048c4680"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_aarch64_gnullvm",
+      "version": "0.48.5",
+      "source_identity": "2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8",
+      "copyright_sha256": "102175a873fb5f3d7f40926fec2eb004c66d9072eaaf0d9ed4b8422a73133513",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_aarch64_gnullvm-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/102175a873fb5f3d7f40926fec2eb004c66d9072eaaf0d9ed4b8422a73133513.txt",
+          "sha256": "102175a873fb5f3d7f40926fec2eb004c66d9072eaaf0d9ed4b8422a73133513"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_aarch64_gnullvm",
+      "version": "0.52.6",
+      "source_identity": "32a4622180e7a0ec044bb555404c800bc9fd9ec262ec147edd5989ccd0c02cd3",
+      "copyright_sha256": "59ea40a7b6b853e783f3e0cea942925c01c55ff453f46bb976f85f91e6d3e851",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_aarch64_gnullvm-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/59ea40a7b6b853e783f3e0cea942925c01c55ff453f46bb976f85f91e6d3e851.txt",
+          "sha256": "59ea40a7b6b853e783f3e0cea942925c01c55ff453f46bb976f85f91e6d3e851"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_aarch64_msvc",
+      "version": "0.48.5",
+      "source_identity": "dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc",
+      "copyright_sha256": "52608b5e6729e3cf250195d2d6df11f9add7ff216cf95b38139ec41ca8890706",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_aarch64_msvc-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/52608b5e6729e3cf250195d2d6df11f9add7ff216cf95b38139ec41ca8890706.txt",
+          "sha256": "52608b5e6729e3cf250195d2d6df11f9add7ff216cf95b38139ec41ca8890706"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_aarch64_msvc",
+      "version": "0.52.6",
+      "source_identity": "09ec2a7bb152e2252b53fa7803150007879548bc709c039df7627cabbd05d469",
+      "copyright_sha256": "9ae41d062021a472ed48c374e85bedb1d1562949dc96a7ce333c233ab8b36aff",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_aarch64_msvc-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/9ae41d062021a472ed48c374e85bedb1d1562949dc96a7ce333c233ab8b36aff.txt",
+          "sha256": "9ae41d062021a472ed48c374e85bedb1d1562949dc96a7ce333c233ab8b36aff"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_i686_gnu",
+      "version": "0.48.5",
+      "source_identity": "a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e",
+      "copyright_sha256": "f7b1570c84edfeed0d1fc660a641c70f9c1e414941d986033d614ac45c0f8a67",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_i686_gnu-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/f7b1570c84edfeed0d1fc660a641c70f9c1e414941d986033d614ac45c0f8a67.txt",
+          "sha256": "f7b1570c84edfeed0d1fc660a641c70f9c1e414941d986033d614ac45c0f8a67"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_i686_gnu",
+      "version": "0.52.6",
+      "source_identity": "8e9b5ad5ab802e97eb8e295ac6720e509ee4c243f69d781394014ebfe8bbfa0b",
+      "copyright_sha256": "8b9f44f1caa77ab28d039ef5d5c87b256702c6edb4a7ba3b8c73765f48eaf1df",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_i686_gnu-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8b9f44f1caa77ab28d039ef5d5c87b256702c6edb4a7ba3b8c73765f48eaf1df.txt",
+          "sha256": "8b9f44f1caa77ab28d039ef5d5c87b256702c6edb4a7ba3b8c73765f48eaf1df"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_i686_gnullvm",
+      "version": "0.52.6",
+      "source_identity": "0eee52d38c090b3caa76c563b86c3a4bd71ef1a819287c19d586d7334ae8ed66",
+      "copyright_sha256": "d4af15f9bdb092ade56be130733f1431d976130c023a219723fd35066cb11677",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_i686_gnullvm-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d4af15f9bdb092ade56be130733f1431d976130c023a219723fd35066cb11677.txt",
+          "sha256": "d4af15f9bdb092ade56be130733f1431d976130c023a219723fd35066cb11677"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_i686_msvc",
+      "version": "0.48.5",
+      "source_identity": "8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406",
+      "copyright_sha256": "167e82d9ac862b575eebe8304d6dc7897addb3b2e1e12ca9c4612d4cf56d7dba",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_i686_msvc-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/167e82d9ac862b575eebe8304d6dc7897addb3b2e1e12ca9c4612d4cf56d7dba.txt",
+          "sha256": "167e82d9ac862b575eebe8304d6dc7897addb3b2e1e12ca9c4612d4cf56d7dba"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_i686_msvc",
+      "version": "0.52.6",
+      "source_identity": "240948bc05c5e7c6dabba28bf89d89ffce3e303022809e73deaefe4f6ec56c66",
+      "copyright_sha256": "9d0917d85c6a7e7c9a9eab87e6027ba83d0d92fe8d818f5bf925d15e01fbe724",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_i686_msvc-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/9d0917d85c6a7e7c9a9eab87e6027ba83d0d92fe8d818f5bf925d15e01fbe724.txt",
+          "sha256": "9d0917d85c6a7e7c9a9eab87e6027ba83d0d92fe8d818f5bf925d15e01fbe724"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_x86_64_gnu",
+      "version": "0.48.5",
+      "source_identity": "53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e",
+      "copyright_sha256": "e7f60ba1d14d013374922c6b8ca15d2201d1fd7e30190a86d0db160689bfb384",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_x86_64_gnu-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e7f60ba1d14d013374922c6b8ca15d2201d1fd7e30190a86d0db160689bfb384.txt",
+          "sha256": "e7f60ba1d14d013374922c6b8ca15d2201d1fd7e30190a86d0db160689bfb384"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_x86_64_gnu",
+      "version": "0.52.6",
+      "source_identity": "147a5c80aabfbf0c7d901cb5895d1de30ef2907eb21fbbab29ca94c5b08b1a78",
+      "copyright_sha256": "57fb1cd3ae2f686e4483040ed063cbbee4c13ddea3c5dda054723a7e28460b48",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_x86_64_gnu-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/57fb1cd3ae2f686e4483040ed063cbbee4c13ddea3c5dda054723a7e28460b48.txt",
+          "sha256": "57fb1cd3ae2f686e4483040ed063cbbee4c13ddea3c5dda054723a7e28460b48"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_x86_64_gnullvm",
+      "version": "0.48.5",
+      "source_identity": "0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc",
+      "copyright_sha256": "46d11e3738be1cccba4e981829bb0ff8dbc916b8d50fedfbe333de22744c423d",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_x86_64_gnullvm-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/46d11e3738be1cccba4e981829bb0ff8dbc916b8d50fedfbe333de22744c423d.txt",
+          "sha256": "46d11e3738be1cccba4e981829bb0ff8dbc916b8d50fedfbe333de22744c423d"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_x86_64_gnullvm",
+      "version": "0.52.6",
+      "source_identity": "24d5b23dc417412679681396f2b49f3de8c1473deb516bd34410872eff51ed0d",
+      "copyright_sha256": "19bd2c71096e1c09bd59ef1a21f031db63d38f3399f42cba5d9689729d628c8f",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_x86_64_gnullvm-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/19bd2c71096e1c09bd59ef1a21f031db63d38f3399f42cba5d9689729d628c8f.txt",
+          "sha256": "19bd2c71096e1c09bd59ef1a21f031db63d38f3399f42cba5d9689729d628c8f"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_x86_64_msvc",
+      "version": "0.48.5",
+      "source_identity": "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538",
+      "copyright_sha256": "ca3a49d393e7a9ab7aed487a282677994757947062f2fe10ad63185fb3bb1d47",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_x86_64_msvc-0.48.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ca3a49d393e7a9ab7aed487a282677994757947062f2fe10ad63185fb3bb1d47.txt",
+          "sha256": "ca3a49d393e7a9ab7aed487a282677994757947062f2fe10ad63185fb3bb1d47"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:windows_x86_64_msvc",
+      "version": "0.52.6",
+      "source_identity": "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec",
+      "copyright_sha256": "d29bfd38d673a4bae04f9e5885aa046ddadd5fbc09eb44fe4dc540f2afc8056e",
+      "evidence_member": "third-party-notices/watchfiles/cargo/windows_x86_64_msvc-0.52.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "license-apache-2.0",
+          "original_notice_block_sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:windows-targets",
+            "member": "windows-targets-0.48.5/license-apache-2.0",
+            "sha256": "783829b43aacb86cb8e6cedcd777210c13f2081aae94419cc7a30e112977d488",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding",
+            "license": "MIT OR Apache-2.0"
+          }
+        },
+        {
+          "member": "license-mit",
+          "original_notice_block_sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/Azure/azure-sdk-for-go/sdk/azcore",
+            "license": "MIT",
+            "copyright_sha256": "433d8c2fa14a4e45a898d09a99fd39487d1b1d24d403d27181ac394e00989754",
+            "member": "LICENSE.txt"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d29bfd38d673a4bae04f9e5885aa046ddadd5fbc09eb44fe4dc540f2afc8056e.txt",
+          "sha256": "d29bfd38d673a4bae04f9e5885aa046ddadd5fbc09eb44fe4dc540f2afc8056e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:websockets",
+      "version": "14.1",
+      "source_identity": "398b10c77d471c0aab20a845e7a60076b6390bfdaac7a6d2edb0d2c59d75e8d8",
+      "copyright_sha256": "0260223276aa9db1f967fa52010e7868b8bbc71c4f30dd9cf0fb6adff531032e",
+      "evidence_member": "third-party-notices/websockets/copyright",
+      "license": "BSD-3-Clause",
+      "original_blocks": [
+        {
+          "member": "websockets-14.1.dist-info/LICENSE",
+          "original_notice_block_sha256": "b4802610e0210758f0027d0c792e40e13219e00464b427247bad04d8cc82c1b9",
+          "license": "BSD-3-Clause",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/robinson/gos7",
+            "license": "BSD-3-Clause",
+            "copyright_sha256": "d48cb06b41b90c907e5baf5f79a4cf20402329dc6a51eb81cc0afbea6c5b5850",
+            "member": "LICENSE"
+          }
+        },
+        {
+          "member": "websockets-14.1/LICENSE",
+          "original_notice_block_sha256": "b4802610e0210758f0027d0c792e40e13219e00464b427247bad04d8cc82c1b9",
+          "license": "BSD-3-Clause",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/robinson/gos7",
+            "license": "BSD-3-Clause",
+            "copyright_sha256": "d48cb06b41b90c907e5baf5f79a4cf20402329dc6a51eb81cc0afbea6c5b5850",
+            "member": "LICENSE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0260223276aa9db1f967fa52010e7868b8bbc71c4f30dd9cf0fb6adff531032e.txt",
+          "sha256": "0260223276aa9db1f967fa52010e7868b8bbc71c4f30dd9cf0fb6adff531032e"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "websockets-14.1.dist-info/LICENSE",
+          "prefix": "Copyright (c) Aymeric Augustin and contributors\n\n"
+        },
+        {
+          "member": "websockets-14.1/LICENSE",
+          "prefix": "Copyright (c) Aymeric Augustin and contributors\n\n"
+        }
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "scope": "Exact source/notice pairs from a frozen observed inventory. Full original bodies reused with exact comparisons; distinct packaging metadata and copyrights remain retained. No compilation or ISO recreation required for this notice reconciliation."
+}

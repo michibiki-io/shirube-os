@@ -1,0 +1,336 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "curl",
+      "version": "7.88.1-10+deb12u15",
+      "source_identity": "2744f12e3aef161c0361743fa1b318296b122e566e47f381e4a63320fbcc23f4",
+      "copyright_sha256": "a7c131b21e6e73b3b085a7d9f1637b68f5f92b832cc6f462e0c978fbe7841ccb",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "b1d7feb949ea5023552029fbe0bf5db4f23c2f85e9b8e51e18536f0ecbf9c524",
+          "read_reference": {
+            "component": "curl",
+            "member": "COPYING",
+            "sha256": "b1d7feb949ea5023552029fbe0bf5db4f23c2f85e9b8e51e18536f0ecbf9c524",
+            "method": "Entire original legal file read; explicit scopes, attributions and all special obligations retained; no parent clearance inferred"
+          }
+        }
+      ],
+      "scope_group_counts": {
+        "curl": 35,
+        "OLDAP-2.8": 1,
+        "ISC": 3,
+        "GPL-2+ with Autoconf-data exception": 1,
+        "GPL-3+ with Autoconf-data exception": 1,
+        "GPL-2+ with Libtool exception": 1,
+        "BSD-3-clause": 1,
+        "BSD-4-Clause-UC": 1,
+        "FSFULLR": 1,
+        "X11": 1
+      },
+      "retained_scope_metadata_sha256": "26b24bbcdc503f6c439dc619b901bde54586894e955c6d68d56222c78ac574a2",
+      "scope_review": "All operative license bodies and original named legal files matched to read complete originals; every file/license-expression mapping, comment and condition-bearing attribution inspected. Full original attribution is retained byte-exactly; individual manual reading of every author name is not claimed. Case-only label differences do not change operative terms. Not OS release clearance.",
+      "required_notices": [
+        {
+          "path": "LICENSES/Curl-original-COPYING.txt",
+          "sha256": "b1d7feb949ea5023552029fbe0bf5db4f23c2f85e9b8e51e18536f0ecbf9c524"
+        }
+      ],
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers, modification markings and corresponding preferred sources, patches and complete configuration/build/install inputs; no source license is replaced by repository-wide branding.",
+        "Preserve original curl permissions, separate ISC/VMS, X11, OpenLDAP test and GNU/Libtool/Autoconf output exceptions. BSD3 label capitalization differs in the copyright mapping and definition but the original complete operative grant is retained unchanged. Preserve the original documented Regents advertising waiver only for its own covered copyright; do not extend it to unrelated authors."
+      ]
+    },
+    {
+      "source": "xen",
+      "version": "4.17.7+13-g2445b30a44-0+deb12u1",
+      "source_identity": "8bf01bcad94067022f27c38529e10593cbd2f145bc0d305a72f7634f2865ffba",
+      "copyright_sha256": "fb89466b3283e3f49ebb1d862a3c1213cc45555c386189175197567c5ae00d0f",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "9eeacf4e4f91bdbcd16b3282bb86779e3122da032953ebccad4fccdfcf4cb3ac",
+          "read_reference": {
+            "component": "xen",
+            "member": "COPYING",
+            "sha256": "9eeacf4e4f91bdbcd16b3282bb86779e3122da032953ebccad4fccdfcf4cb3ac"
+          }
+        },
+        {
+          "member": "LICENSES/BSD-2-Clause",
+          "sha256": "6313108c23efffa36948f8b2cff1560a5935373b527b0e1a837cc77e6ed1bacd",
+          "read_reference": {
+            "component": "linux",
+            "member": "LICENSES/preferred/BSD-2-Clause",
+            "sha256": "6313108c23efffa36948f8b2cff1560a5935373b527b0e1a837cc77e6ed1bacd"
+          }
+        },
+        {
+          "member": "LICENSES/BSD-3-Clause",
+          "sha256": "7a83b1aeb460458db9a4bd521d7f237c45b1650f6e60ea5ffc71e49472454de3",
+          "read_reference": {
+            "component": "linux",
+            "member": "LICENSES/preferred/BSD-3-Clause",
+            "sha256": "7a83b1aeb460458db9a4bd521d7f237c45b1650f6e60ea5ffc71e49472454de3"
+          }
+        },
+        {
+          "member": "LICENSES/BSD-3-Clause-Clear",
+          "sha256": "3f8a01d020e77c045e364c4681ee78c591041b7a38aa61972f689f4bc4cb5088",
+          "read_reference": {
+            "component": "linux",
+            "member": "LICENSES/preferred/BSD-3-Clause-Clear",
+            "sha256": "3f8a01d020e77c045e364c4681ee78c591041b7a38aa61972f689f4bc4cb5088"
+          }
+        },
+        {
+          "member": "LICENSES/CC-BY-4.0",
+          "sha256": "c4b2cd68902b8c4a82c9b5ddebe15538acbce7f70a88fcc751e1e921bde89f7f",
+          "read_reference": {
+            "component": "linux",
+            "member": "LICENSES/dual/CC-BY-4.0",
+            "sha256": "84d5ad08940d29065d8a6f062effa4204c2235c9f2487aa53748ed0a0a6cce86"
+          }
+        },
+        {
+          "member": "LICENSES/GPL-2.0",
+          "sha256": "f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79",
+          "read_reference": {
+            "component": "linux",
+            "member": "LICENSES/preferred/GPL-2.0",
+            "sha256": "f6b78c087c3ebdf0f3c13415070dd480a3f35d8fc76f3d02180a407c1c812f79"
+          }
+        },
+        {
+          "member": "LICENSES/LGPL-2.0",
+          "sha256": "b62fa9feac8de9899cd1738f5845cedbad9ca2acd8056513b77666c9ba1ef600",
+          "read_reference": {
+            "component": "linux",
+            "member": "LICENSES/preferred/LGPL-2.0",
+            "sha256": "b62fa9feac8de9899cd1738f5845cedbad9ca2acd8056513b77666c9ba1ef600"
+          }
+        },
+        {
+          "member": "LICENSES/LGPL-2.1",
+          "sha256": "0b9a4febcdee6de55872501d5c1a8f5d8b0d1650cd4d5351995ceb22e889f8ca",
+          "read_reference": {
+            "component": "libbpf",
+            "member": "LICENSE.LGPL-2.1",
+            "sha256": "0b9a4febcdee6de55872501d5c1a8f5d8b0d1650cd4d5351995ceb22e889f8ca"
+          }
+        },
+        {
+          "member": "LICENSES/MIT",
+          "sha256": "323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f",
+          "read_reference": {
+            "component": "linux",
+            "member": "LICENSES/preferred/MIT",
+            "sha256": "323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f"
+          }
+        },
+        {
+          "member": "LICENSES/MIT-0",
+          "sha256": "32546d22026070567811ef3f40191c9adf9df99a69a8595ef037b3ccc9e49473",
+          "read_reference": {
+            "component": "xen",
+            "member": "LICENSES/MIT-0",
+            "sha256": "32546d22026070567811ef3f40191c9adf9df99a69a8595ef037b3ccc9e49473",
+            "method": "Entire copyright/scope prefix read; complete operative body normalized-word-identical to a separately read complete original",
+            "read_reference": {
+              "component": "pypi:cffi",
+              "member": "cffi-2.0.0/LICENSE",
+              "sha256": "5e2a79a5ccf5bdb3e5077d8faba9a28787ed04f7a2a5551914e4d40bfd298750",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        },
+        {
+          "member": "stubdom/COPYING",
+          "sha256": "13b1209cb663683d46e107c3c994a88c30b675f0177cde9c3ee29c67dc16f7e0",
+          "read_reference": {
+            "component": "xen",
+            "member": "stubdom/COPYING",
+            "sha256": "13b1209cb663683d46e107c3c994a88c30b675f0177cde9c3ee29c67dc16f7e0"
+          }
+        },
+        {
+          "member": "stubdom/vtpm/COPYING",
+          "sha256": "ea870fec7a0ad9686addc42cf3c776def1c1395763c6ee385d4ec41f60846125",
+          "read_reference": {
+            "component": "xen",
+            "member": "stubdom/vtpm/COPYING",
+            "sha256": "ea870fec7a0ad9686addc42cf3c776def1c1395763c6ee385d4ec41f60846125"
+          }
+        },
+        {
+          "member": "tools/firmware/vgabios/COPYING",
+          "sha256": "032a25eb621456402a5f8be197fb232002bcc37bfd2a644cbefe81762827b70b",
+          "read_reference": {
+            "component": "xen",
+            "member": "tools/firmware/vgabios/COPYING",
+            "sha256": "032a25eb621456402a5f8be197fb232002bcc37bfd2a644cbefe81762827b70b",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "tools/golang/xenlight/LICENSE",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "tools/libacpi/COPYING",
+          "sha256": "fa863b0eae536ededc2976f44fec3d88a276d95f5837f7db66b20847bc75b68d",
+          "read_reference": {
+            "component": "xen",
+            "member": "tools/libacpi/COPYING",
+            "sha256": "fa863b0eae536ededc2976f44fec3d88a276d95f5837f7db66b20847bc75b68d",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "tools/libs/guest/COPYING",
+          "sha256": "f54616518f5d6e2f34342499b70f07a2c0e05ce3e6e0e4a98cbf53ad5f8bddd4",
+          "read_reference": {
+            "component": "xen",
+            "member": "tools/libs/guest/COPYING",
+            "sha256": "f54616518f5d6e2f34342499b70f07a2c0e05ce3e6e0e4a98cbf53ad5f8bddd4",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "tools/libs/stat/COPYING",
+          "sha256": "9e7d131456a660329bec318f6ebc8870620021c2b07bcf8b355c12c0bb99802b",
+          "read_reference": {
+            "component": "xen",
+            "member": "tools/libs/stat/COPYING",
+            "sha256": "9e7d131456a660329bec318f6ebc8870620021c2b07bcf8b355c12c0bb99802b",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "tools/ocaml/LICENSE",
+          "sha256": "cae1c4febcfa9c01fb651378a08007fc3410a93267b0afa622f3b796d31c769d",
+          "read_reference": {
+            "component": "xen",
+            "member": "tools/ocaml/LICENSE",
+            "sha256": "cae1c4febcfa9c01fb651378a08007fc3410a93267b0afa622f3b796d31c769d",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "tools/xenmon/COPYING",
+          "sha256": "89533b86bfa836fccee7c610fcdeb36dd9ab660fed55266128ab7d1cdfe783c7",
+          "read_reference": {
+            "component": "xen",
+            "member": "tools/xenmon/COPYING",
+            "sha256": "89533b86bfa836fccee7c610fcdeb36dd9ab660fed55266128ab7d1cdfe783c7",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "tools/xenstore/COPYING",
+          "sha256": "c07e7c265b682b5c9e12cbe54274ffaf9ade36911d1eec5d2f893caf701e88a3",
+          "read_reference": {
+            "component": "xen",
+            "member": "tools/xenstore/COPYING",
+            "sha256": "c07e7c265b682b5c9e12cbe54274ffaf9ade36911d1eec5d2f893caf701e88a3",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "xen/COPYING",
+          "sha256": "ef3ef58353d65cdc29184d6f94ed8e97f880c5d9ec5363db211698ccc9e42637",
+          "read_reference": {
+            "component": "xen",
+            "member": "xen/COPYING",
+            "sha256": "ef3ef58353d65cdc29184d6f94ed8e97f880c5d9ec5363db211698ccc9e42637",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "xen/common/COPYING",
+          "sha256": "e34b4ab361d599a3a14afd0cf9f06199c7b039c43a30f1603ebb08e8dfce424c",
+          "read_reference": {
+            "component": "xen",
+            "member": "xen/common/COPYING",
+            "sha256": "e34b4ab361d599a3a14afd0cf9f06199c7b039c43a30f1603ebb08e8dfce424c",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "xen/common/libelf/COPYING",
+          "sha256": "569538499a77e06a8d7b751b19e8df895bf4354ae77fe4274b27d8b3e38f916b",
+          "read_reference": {
+            "component": "xen",
+            "member": "xen/common/libelf/COPYING",
+            "sha256": "569538499a77e06a8d7b751b19e8df895bf4354ae77fe4274b27d8b3e38f916b",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "xen/include/public/COPYING",
+          "sha256": "ed0cccc11399100736bd880047786131cbf2bf36e4cdfe82b9288d33911ba6ac",
+          "read_reference": {
+            "component": "xen",
+            "member": "xen/include/public/COPYING",
+            "sha256": "ed0cccc11399100736bd880047786131cbf2bf36e4cdfe82b9288d33911ba6ac",
+            "method": "Entire copyright/scope prefix read; complete operative body normalized-word-identical to a separately read complete original",
+            "read_reference": {
+              "component": "bmon",
+              "member": "LICENSE.MIT",
+              "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+            }
+          }
+        }
+      ],
+      "scope_group_counts": {
+        "GPL-2": 4,
+        "Expat": 3,
+        "LGPL-2.1": 5,
+        "GPL-2 or LGPL-2.1": 1,
+        "GPL-2+ or BSD-2-clause": 1,
+        "BSD-2-clause": 1,
+        "MISC-XZ-PUBLIC-DOMAIN-WHATEVER": 1,
+        "XEN-MISC-PUBLIC-DOMAIN-RIJNDAEL": 1,
+        "XEN-MISC-PUBLIC-DOMAIN-VMAC": 1,
+        "CC-BY-4.0": 1,
+        "XEN-MISC-M4-AX": 1,
+        "GPL-2+": 3,
+        "BSD-3-Clause": 1
+      },
+      "retained_scope_metadata_sha256": "08d99b8b4316be0a8dd3729d451b45d33edc29d298ddb32bfe019f5513715c9a",
+      "scope_review": "All operative license bodies and original named legal files matched to read complete originals; every file/license-expression mapping, comment and condition-bearing attribution inspected. Full original attribution is retained byte-exactly; individual manual reading of every author name is not claimed. Case-only label differences do not change operative terms. Not OS release clearance.",
+      "required_notices": [
+        {
+          "path": "LICENSES/Xen-original-project-COPYING.txt",
+          "sha256": "9eeacf4e4f91bdbcd16b3282bb86779e3122da032953ebccad4fccdfcf4cb3ac"
+        },
+        {
+          "path": "LICENSES/Xen-original-hypervisor-COPYING.txt",
+          "sha256": "ef3ef58353d65cdc29184d6f94ed8e97f880c5d9ec5363db211698ccc9e42637"
+        },
+        {
+          "path": "LICENSES/Xen-original-public-header-COPYING.txt",
+          "sha256": "ed0cccc11399100736bd880047786131cbf2bf36e4cdfe82b9288d33911ba6ac"
+        },
+        {
+          "path": "LICENSES/CC-BY-4.0.txt",
+          "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+        }
+      ],
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers, modification markings and corresponding preferred sources, patches and complete configuration/build/install inputs; no source license is replaced by repository-wide branding.",
+        "Retain GNU2-only Xen scope, its normal-hypercall boundary and separate Expat public-header permissions. Select GNU2-compatible alternatives for libfdt and xmalloc; preserve LGPL2.1-only libelf and its explicit GNU2-only conversion limitation. Keep original source exceptions, public-domain/AES/XZ/macro declarations and BSD scopes. CC-BY4 applies to Sphinx source and specifically identified documentation, while other unlabelled documentation retains the GNU2 default."
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

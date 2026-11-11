@@ -1,0 +1,20 @@
+[Unit]
+Description=Shirube OS per-instance local-console enrollment
+After=vyos-router.service
+ConditionPathExists=|/config/shirube-first-boot
+ConditionPathExists=|/usr/share/shirube/needs-enrollment
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/shirube/first-boot
+StandardInput=tty-force
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/console
+TTYReset=yes
+TTYVHangup=yes
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

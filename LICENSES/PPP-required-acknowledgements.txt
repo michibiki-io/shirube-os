@@ -1,0 +1,17 @@
+Original PPP component acknowledgements
+
+This product includes software developed by Paul Mackerras <paulus@samba.org>.
+This product includes software developed by Pedro Roque Marques <pedro_m@yahoo.com>.
+This product includes software developed by Tommi Komulainen <Tommi.Komulainen@iki.fi>.
+This product includes software developed by Computing Services at Carnegie Mellon University (http://www.cmu.edu/computing/).
+
+Copying and distribution of the applicable RADIUS code is by permission of
+Roaring Penguin Software Inc. and Lars Fenneberg.
+
+The original RSA algorithm is identified as the
+RSA Data Security, Inc. MD5 Message-Digest Algorithm.
+Any derivatives must retain the original required derived-from identification.
+
+These credits do not imply endorsement. All complete original source-specific
+copyright, permissions and disclaimers remain in the retained PPP copyright
+and corresponding sources; these acknowledgements do not replace those terms.

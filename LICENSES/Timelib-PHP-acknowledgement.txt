@@ -1,0 +1,6 @@
+This product includes PHP software, freely available from
+<http://www.php.net/software/>.
+
+The unmodified PHP timelib sources are wrapped by timelib. Shirube OS does not
+imply PHP Group endorsement. Original PHP and PediaPress notices and complete
+PHP-3.01 / zlib terms remain with the corresponding sources and notices.

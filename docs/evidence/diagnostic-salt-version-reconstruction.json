@@ -1,0 +1,16 @@
+{
+  "kind": "salt-version-reconstruction-without-git-history",
+  "status": "PASS",
+  "expected_shipped_version": "3006.21+0.ge35fd3e",
+  "without_version_stamp": "3007.0",
+  "restored_version": "3006.21+0.ge35fd3e",
+  "version_module_sha256": "7682018a7a6958dbd7ee8f2da5470859677e5f3b327aaef10d9417b1ea98bc7b",
+  "installed_version_stamp_sha256": "dc7278b19257a089d911ceb43a9e10e435a8ad3ea47d367cdd0ddfbdbac20bcd",
+  "git_history_included": false,
+  "complete_os_reconstruction": "NOT_RUN",
+  "license_clearance": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "debian_source_package_version": "3006.21",
+  "version_fields": "Debian source-package version and installed Python revision are distinct and must be checked against their separate fixed lock values."
+}

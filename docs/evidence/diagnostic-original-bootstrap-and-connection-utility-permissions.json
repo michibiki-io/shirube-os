@@ -1,0 +1,159 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "busybox",
+      "version": "1:1.35.0-4+deb12u1",
+      "source_identity": "9c01fe128b0eeded371c70e37d474fdb5055f71b5d0a778db44c6b0c62d3a7fa",
+      "copyright_sha256": "336d995e819d3a7a3fdbf3f5041c07094f75ee849acb3bb742b7503d45786329",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "bbfc9843646d483c334664f651c208b9839626891d8f17604db2146962f43548",
+          "read_reference": {
+            "component": "busybox",
+            "member": "LICENSE",
+            "sha256": "bbfc9843646d483c334664f651c208b9839626891d8f17604db2146962f43548",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "archival/libarchive/bz/LICENSE",
+          "sha256": "b5a136ed67798e51fe2e0ca0b2a21cb01b904ff0c9f7d563a6292e276607e58f",
+          "read_reference": {
+            "component": "busybox",
+            "member": "archival/libarchive/bz/LICENSE",
+            "sha256": "b5a136ed67798e51fe2e0ca0b2a21cb01b904ff0c9f7d563a6292e276607e58f",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:bzip2",
+              "member": "bzip2-1.0.8/LICENSE",
+              "sha256": "702826200cdc44979a2a4b00deaf1df46180bef02ef9c1edde6209883ead3752",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Busybox-bzip2-original-LICENSE.txt",
+          "sha256": "b5a136ed67798e51fe2e0ca0b2a21cb01b904ff0c9f7d563a6292e276607e58f"
+        }
+      ],
+      "scope": "Keep aggregate BusyBox GPL2-only grant and original individually licensed components, including bzip2 permission, unmodified notice and modified-source identification requirements."
+    },
+    {
+      "source": "klibc",
+      "version": "2.0.12-1",
+      "source_identity": "053a39799defc3f42a5415d1b098236feda12830f60877694e43ed60100da86c",
+      "copyright_sha256": "d0f580bd7629b15b6bb1b36468b51182545a8002612a030fca39fec2e3203707",
+      "original_legal_matches": [
+        {
+          "member": "usr/gzip/COPYING",
+          "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad",
+          "read_reference": {
+            "component": "acpid",
+            "member": "COPYING",
+            "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad"
+          }
+        },
+        {
+          "member": "usr/klibc/LICENSE",
+          "sha256": "22dfaa33873313d6dc2ea13f8c42b7fec6ac1c55aa0368fab0b198bf70cc28d5",
+          "read_reference": {
+            "component": "klibc",
+            "member": "usr/klibc/LICENSE",
+            "sha256": "22dfaa33873313d6dc2ea13f8c42b7fec6ac1c55aa0368fab0b198bf70cc28d5",
+            "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Klibc-original-LICENSE.txt",
+          "sha256": "22dfaa33873313d6dc2ea13f8c42b7fec6ac1c55aa0368fab0b198bf70cc28d5"
+        }
+      ],
+      "scope": "Retain complete library-specific original LICENSE and independent gzip GNU2 source scope. Preserve all original Regents and other authors attribution and source-specific permissions rather than extending the Berkeley advertising waiver to unrelated authors."
+    },
+    {
+      "source": "libtasn1-6",
+      "version": "4.19.0-2+deb12u1",
+      "source_identity": "54eabe8526f590a52771d99ce8c592d3edd549e98d84ea6649db473d528cc6ec",
+      "copyright_sha256": "572ad60ad184d8f52c6dc66d83a61a68f137db560b3452ce00588c9ecf128a65",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "7446831f659f7ebfd8d497acc7f05dfa8e31c6cb6ba1b45df33d4895ab80f5a6",
+          "read_reference": {
+            "component": "libtasn1-6",
+            "member": "COPYING",
+            "sha256": "7446831f659f7ebfd8d497acc7f05dfa8e31c6cb6ba1b45df33d4895ab80f5a6"
+          }
+        },
+        {
+          "member": "doc/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "doc/COPYING.LESSER",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "scope": "Retain separate LGPL2.1-or-later library, GPL3-or-later tools/build/tests and FDL1.3-or-later documentation with no invariant or cover texts."
+    },
+    {
+      "source": "socat",
+      "version": "1.7.4.4-2",
+      "source_identity": "d69a6c1c1f3e36959b3f43b0383c537a924e5f0dcae6f803621aef9491a71e5a",
+      "copyright_sha256": "6b60279553fd318b8bbe4ed92517e1826e335f76026e3825c09da321b828f6d9",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "COPYING.OpenSSL",
+          "sha256": "fd9e48ca316a5032069b9521f4f4b4d9b1c60365012bae1e62286bcd5bd2e761",
+          "read_reference": {
+            "component": "socat",
+            "member": "COPYING.OpenSSL",
+            "sha256": "fd9e48ca316a5032069b9521f4f4b4d9b1c60365012bae1e62286bcd5bd2e761",
+            "method": "Complete original legal text read, preserving separately scoped grants, source obligations, attribution, advertising and nonendorsement conditions. Not parent component clearance."
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Socat-original-OpenSSL-notice.txt",
+          "sha256": "fd9e48ca316a5032069b9521f4f4b4d9b1c60365012bae1e62286bcd5bd2e761"
+        }
+      ],
+      "scope": "Exercise GNU3 option permitted by the operative GNU2-or-later program grant, alongside GNU3 packaging. Preserve the original explicitly scoped OpenSSL exception and complete COPYING.OpenSSL rather than treating that historical exception as a grant for differently licensed code. Retain MIT install-sh terms."
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "stream_version": "2026.03",
+  "source_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+  "jobs": [
+    {
+      "name": "ipaddrcheck",
+      "source": "ipaddrcheck_1.4/ipaddrcheck"
+    },
+    {
+      "name": "hvinfo",
+      "source": "hvinfo_1.2.0/hvinfo"
+    },
+    {
+      "name": "vyos-user-utils",
+      "source": "vyos-user-utils_1.4.0+vyos1+current/vyos-user-utils"
+    },
+    {
+      "name": "vyatta-biosdevname",
+      "source": "vyatta-biosdevname_0.3.11+vyos2+current2/vyatta-biosdevname"
+    },
+    {
+      "name": "vyatta-bash",
+      "source": "vyatta-bash_4.1-3+vyos2+current2/vyatta-bash"
+    },
+    {
+      "name": "vyatta-cfg",
+      "source": "vyatta-cfg_0.102.0+vyos2+current6/vyatta-cfg"
+    },
+    {
+      "name": "vyos-http-api-tools",
+      "source": "vyos-http-api-tools_2.3/vyos-http-api-tools",
+      "recipe": "http-api"
+    },
+    {
+      "name": "libtacplus-map",
+      "source": "libtacplus-map_master/libtacplus-map"
+    },
+    {
+      "name": "libpam-tacplus",
+      "source": "libpam-tacplus_master/libpam-tacplus",
+      "requires": [
+        "libtacplus-map"
+      ]
+    },
+    {
+      "name": "libnss-tacplus",
+      "source": "libnss-tacplus_master/libnss-tacplus",
+      "requires": [
+        "libtacplus-map",
+        "libpam-tacplus"
+      ]
+    },
+    {
+      "name": "libnss-mapuser",
+      "source": "libnss-mapuser_circinus/libnss-mapuser"
+    },
+    {
+      "name": "libpam-radius-auth",
+      "source": "libpam-radius-auth_1.5.0-cl3u7/libpam-radius-auth"
+    },
+    {
+      "name": "python3-vici",
+      "source": "strongswan_debian_5.9.11-2/strongswan",
+      "recipe": "vici"
+    },
+    {
+      "name": "wide-dhcpv6",
+      "source": "wide-dhcpv6_debian_20080615-23/wide-dhcpv6"
+    },
+    {
+      "name": "ndppd",
+      "source": "ndppd_debian_0.2.5-6/ndppd"
+    },
+    {
+      "name": "live-boot",
+      "source": "live-boot_20151213/live-boot"
+    },
+    {
+      "name": "bash-completion",
+      "source": "bash-completion_debian_2.8-6/bash-completion"
+    },
+    {
+      "name": "ethtool",
+      "source": "ethtool_debian_1%6.10-1/ethtool"
+    },
+    {
+      "name": "radvd",
+      "source": "radvd_v2.20/radvd",
+      "recipe": "radvd"
+    },
+    {
+      "name": "dropbear",
+      "source": "dropbear_debian_2022.83-1+deb12u1/dropbear"
+    },
+    {
+      "name": "libnftnl",
+      "source": "pkg-libnftnl_debian_1.2.6-2/pkg-libnftnl"
+    },
+    {
+      "name": "nftables",
+      "source": "pkg-nftables_debian_1.0.9-1/pkg-nftables",
+      "recipe": "nftables",
+      "requires": [
+        "libnftnl"
+      ]
+    },
+    {
+      "name": "libyang",
+      "source": "libyang_v3.13.6/libyang",
+      "recipe": "libyang"
+    },
+    {
+      "name": "frr",
+      "source": "frr_168ade7da9/frr",
+      "recipe": "frr",
+      "requires": [
+        "libyang"
+      ]
+    },
+    {
+      "name": "vyos-1x",
+      "source": "vyos-1x/vyos-1x",
+      "recipe": "vyos-1x",
+      "forbidden_binary_packages": ["vyos-1x-smoketest"],
+      "requires": [
+        "python3-vici"
+      ]
+    },
+    {
+      "name": "kernel",
+      "source": "linux-kernel-6.6.128/linux-6.6.128",
+      "recipe": "kernel"
+    }
+  ]
+}

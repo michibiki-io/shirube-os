@@ -1,0 +1,4 @@
+# Preserve upstream patch context and signatures verbatim.
+patches/**/*.patch -whitespace
+# Required upstream notices are hash-bound, including their original line endings.
+LICENSES/** -text -whitespace

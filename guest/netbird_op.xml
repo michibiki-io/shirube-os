@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<interfaceDefinition>
+  <node name="generate">
+    <children>
+      <node name="netbird">
+        <properties><help>NetBird instance enrollment</help></properties>
+        <children>
+          <leafNode name="enrollment">
+            <properties><help>Enroll using a hidden one-time setup key prompt</help></properties>
+            <command>sudo /usr/libexec/shirube/netbird-control enroll</command>
+          </leafNode>
+        </children>
+      </node>
+    </children>
+  </node>
+  <node name="show">
+    <children>
+      <leafNode name="netbird">
+        <properties><help>Show NetBird connection status</help></properties>
+        <command>sudo /usr/libexec/shirube/netbird-control status</command>
+      </leafNode>
+    </children>
+  </node>
+</interfaceDefinition>

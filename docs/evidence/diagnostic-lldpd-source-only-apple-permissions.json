@@ -1,0 +1,41 @@
+{
+  "kind": "exact-lldpd-source-only-apple-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "1.0.16-1+deb12u1",
+  "source_identity": "1fd430c69c5fe708d0e31e1c2dd0dca880f84bdd5aa319e71402d2dd15983e4a",
+  "copyright_sha256": "872c080b8a80d4975a0f4b26a6e2b8ecd4b590b87b66ce80a712dd7e9422d0fc",
+  "original_source_sha256": "e3b391650c7ba67cea2fe84d67fdb4d7fc8aa1ec5cf86eb8bb984711df8465a9",
+  "apple_license_source": "https://opensource.apple.com/apsl/",
+  "reviewed_apple_license": "APSL 2.0, August 6 2003; complete sections 1\u201313 and Exhibit A. The source headers explicitly select this version.",
+  "source_header_bindings": [
+    {
+      "member": "include/osx/if_bond_var.h",
+      "sha256": "1490fa7c868f6b98cea4f2e419b1a4d9c4541e4e13c2cc599ccfb9662ea171d0"
+    },
+    {
+      "member": "include/osx/if_bridgevar.h",
+      "sha256": "2772a5dba5daea19770d5e1a08f96e9e2fee5ec33d3130e6914edee2ec9a8ea5"
+    },
+    {
+      "member": "include/osx/if_vlan_var.h",
+      "sha256": "1e355aeaf39d11c81423b4217a45ad16423b3cc665c5bdd4fa8243795abe6a7a"
+    },
+    {
+      "member": "include/osx/lacp.h",
+      "sha256": "6dcb7f3dda54d3f23bec108e7a1239b552b3d787611a4ed0e762037f3695cda9"
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/Apple-APSL-2.0.txt",
+      "sha256": "02253dbba68de7b9599c6a91f6855aa1015ccce20b48b3ba9d2236e66db4df4b"
+    },
+    {
+      "path": "LICENSES/Lldpd-original-OSX-header-notices.txt",
+      "sha256": "49a7ded337f501f14f8f46e3d92df836c98a615dc4e4d8a6667b621463abff22"
+    }
+  ],
+  "scope": "Original Apple and independent BSD4 source scopes retained. No public-domain interface assumption and no GNU/APSL compatibility claim.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

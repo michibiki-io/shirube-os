@@ -1,0 +1,335 @@
+{
+  "kind": "exact-linked-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 12,
+  "components": [
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/golang/snappy",
+      "version": "v0.0.4",
+      "source_identity": "ea4545ca44ee990554094df6de440386a440a5bd99106e048939409d63beb423",
+      "copyright_sha256": "3eb83e091b7543dd4db7ce9e5bc2947f862fd7e20b50850dd76df8351dbda2e6",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cae6402753eed30d31cc91431a8492cac944172306abeba5d1c2a1537d07d00d.txt",
+      "license": "BSD-3-Clause",
+      "matches": [],
+      "full_original_read": true
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:google.golang.org/api",
+      "version": "v0.147.0",
+      "source_identity": "161f13bb1590db645d043f05b0604200161e484aeb9992a9a38d0784ab8e8cd8",
+      "copyright_sha256": "6bc70de1a7186db5c8cd44822f94978969bea477525064a72f1ec27f49d7d66f",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7539a53f737cd809c8c55930faa8eb2a0cdc9242b3c1596de4b95247296ba3a8.txt",
+      "license": "BSD-3-Clause",
+      "matches": [],
+      "full_original_read": true
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:k8s.io/utils",
+      "version": "v0.0.0-20230711102312-30195339c3c7",
+      "source_identity": "755df44d714f0c28df51b94f096c1ff5af7625a00c92ca03b5914217a759b391",
+      "copyright_sha256": "3369290c5d1a69e2cae4da71c1b3d6721ce6c5ff8e50d8e80a0df5a92131484c",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7dac5be3eed00e31ca5c5afbd0425e09957875aeadaddb39ec2cdf06a0872c07.txt",
+      "license": "Apache-2.0 AND BSD-3-Clause AND BSD-3-Clause AND LicenseRef-Go-Patent-Grant",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "full_normalized_notice_sha256": "0ffddef9e48f8a09aed5caf2d44f7ba1c1be2d9b8e0a6f693b1635b2d5566645",
+          "read_original": {
+            "component": "go:github.com/prometheus/exporter-toolkit",
+            "source_identity": "4dfa044e0eec3579d5af1f059e25d78a9ea691e5736c679120ea9477a7ce7142",
+            "notice_sha256": "ae6880810cf9ec12bd6766d3c01c8eff8d71e53f639e26c13e96073bd1374902",
+            "member": "LICENSE",
+            "license": "Apache-2.0"
+          }
+        },
+        {
+          "member": "inotify/LICENSE",
+          "full_normalized_notice_sha256": "afe6db7ac9854eeca8785b7dcb8f606fa82597a9a22f465e7411f37080f66e07",
+          "read_original": {
+            "component": "go:github.com/xhit/go-str2duration/v2",
+            "source_identity": "907db1bdf362568191e659f82339c21a4031d433bc5ac52f36de23eeceb8cb26",
+            "notice_sha256": "d692b72ad890dd37160ab83b36941c800f5b548eb1b99f114b88bc0cb4a27e10",
+            "member": "LICENSE",
+            "license": "BSD-3-Clause"
+          }
+        },
+        {
+          "member": "inotify/PATENTS",
+          "full_normalized_notice_sha256": "f1a3af7e25702266bf76f8cbc0bdeeab2d46755944ace382db4aac52d2fe5f46",
+          "read_original": {
+            "component": "go:golang.org/x/crypto",
+            "source_identity": "959d6b2fb5ee7d50113a0cb26dbdd8fa06710d4e97fae709be2d2755e827ede7",
+            "notice_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+            "member": "PATENTS",
+            "license": "BSD-3-Clause AND LicenseRef-Go-Patent-Grant"
+          }
+        },
+        {
+          "member": "internal/third_party/forked/golang/LICENSE",
+          "full_normalized_notice_sha256": "e9f95572dbf106bc301dd913063f9d8d865cd63d44ece58bfb283f0fa9effed4",
+          "read_original": {
+            "component": "go:github.com/remyoudompheng/bigfft",
+            "source_identity": "9be16c32c384d55d0f7bd7b03f1ff1e9a4e4b91b000f0aa87a567a01b9b82398",
+            "notice_sha256": "86eac369b09d22525d8e6cf73f7025a1f40daca73e6b3060f72d44629ba7b459",
+            "member": "LICENSE",
+            "license": "BSD-3-Clause"
+          }
+        },
+        {
+          "member": "internal/third_party/forked/golang/PATENTS",
+          "full_normalized_notice_sha256": "f1a3af7e25702266bf76f8cbc0bdeeab2d46755944ace382db4aac52d2fe5f46",
+          "read_original": {
+            "component": "go:golang.org/x/crypto",
+            "source_identity": "959d6b2fb5ee7d50113a0cb26dbdd8fa06710d4e97fae709be2d2755e827ede7",
+            "notice_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+            "member": "PATENTS",
+            "license": "BSD-3-Clause AND LicenseRef-Go-Patent-Grant"
+          }
+        },
+        {
+          "member": "third_party/forked/golang/LICENSE",
+          "full_normalized_notice_sha256": "e9f95572dbf106bc301dd913063f9d8d865cd63d44ece58bfb283f0fa9effed4",
+          "read_original": {
+            "component": "go:github.com/remyoudompheng/bigfft",
+            "source_identity": "9be16c32c384d55d0f7bd7b03f1ff1e9a4e4b91b000f0aa87a567a01b9b82398",
+            "notice_sha256": "86eac369b09d22525d8e6cf73f7025a1f40daca73e6b3060f72d44629ba7b459",
+            "member": "LICENSE",
+            "license": "BSD-3-Clause"
+          }
+        },
+        {
+          "member": "third_party/forked/golang/PATENTS",
+          "full_normalized_notice_sha256": "f1a3af7e25702266bf76f8cbc0bdeeab2d46755944ace382db4aac52d2fe5f46",
+          "read_original": {
+            "component": "go:golang.org/x/crypto",
+            "source_identity": "959d6b2fb5ee7d50113a0cb26dbdd8fa06710d4e97fae709be2d2755e827ede7",
+            "notice_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+            "member": "PATENTS",
+            "license": "BSD-3-Clause AND LicenseRef-Go-Patent-Grant"
+          }
+        }
+      ],
+      "full_original_read": false
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:modernc.org/mathutil",
+      "version": "v1.5.0",
+      "source_identity": "c17a767eaa5eb62d9bb105b8ece7f249186dd52b9b533301bec140b3d5fd260f",
+      "copyright_sha256": "e047cf81383b3e50d6d3193614c9e7de5791b4ac5c1549f42ace99d65120679c",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/246e4280be2d254424d36853628fca6874e71e8feed350335d668862c7855811.txt",
+      "license": "BSD-3-Clause",
+      "matches": [],
+      "full_original_read": true
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:modernc.org/memory",
+      "version": "v1.5.0",
+      "source_identity": "f79e8ada14c36d08817ee2bf6b2103f65c1a61a91b042b59016465869624043c",
+      "copyright_sha256": "5705778869c0fefc1c99b0bed6de65ae3a393c9f4988cc43373450d6d3f663bf",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fa2b135ac783b04bb43f77a9e7cf3b1e7f811e113198d4c006ed2998e329b287.txt",
+      "license": "BSD-3-Clause",
+      "matches": [],
+      "full_original_read": true
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:modernc.org/sqlite",
+      "version": "v1.24.0",
+      "source_identity": "71a7c6c3cbe0afb01fda12fdd309d896b713875b7a4b86c621b75b1d0e246186",
+      "copyright_sha256": "6425a95af98d3dee3086dc586eb6afb4f4a620b5b169f5d02746df97406413ff",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/1d39f267b5ba2b91177a5432a6658cd962dfbf040916456c7c4b860511f36287.txt",
+      "license": "BSD-3-Clause AND LicenseRef-SQLite-public-domain",
+      "matches": [],
+      "full_original_read": true
+    },
+    {
+      "parent": "podman",
+      "name": "go:github.com/go-jose/go-jose/v3",
+      "version": "v3.0.3",
+      "source_identity": "dc9cbe5065c29a373a7be2fd522267e5b1d073aef0fe32e23907f20140e6d933",
+      "copyright_sha256": "92adb7f65a0f10e6a033a091cfeb6f4c234a0a8940b2dabf0ca3e5cdd940e304",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/815297563d16f80c902c492b45168a7764a544294d3693c248d6e65ab3c76525.txt",
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "full_normalized_notice_sha256": "0ffddef9e48f8a09aed5caf2d44f7ba1c1be2d9b8e0a6f693b1635b2d5566645",
+          "read_original": {
+            "component": "go:github.com/prometheus/exporter-toolkit",
+            "source_identity": "4dfa044e0eec3579d5af1f059e25d78a9ea691e5736c679120ea9477a7ce7142",
+            "notice_sha256": "ae6880810cf9ec12bd6766d3c01c8eff8d71e53f639e26c13e96073bd1374902",
+            "member": "LICENSE",
+            "license": "Apache-2.0"
+          }
+        },
+        {
+          "member": "json/LICENSE",
+          "full_normalized_notice_sha256": "e9f95572dbf106bc301dd913063f9d8d865cd63d44ece58bfb283f0fa9effed4",
+          "read_original": {
+            "component": "go:github.com/remyoudompheng/bigfft",
+            "source_identity": "9be16c32c384d55d0f7bd7b03f1ff1e9a4e4b91b000f0aa87a567a01b9b82398",
+            "notice_sha256": "86eac369b09d22525d8e6cf73f7025a1f40daca73e6b3060f72d44629ba7b459",
+            "member": "LICENSE",
+            "license": "BSD-3-Clause"
+          }
+        }
+      ],
+      "full_original_read": false
+    },
+    {
+      "parent": "podman",
+      "name": "go:github.com/go-openapi/runtime",
+      "version": "v0.26.0",
+      "source_identity": "97c985e14b4c12d895c58becbc5397a40b07c507a4ba9725e1c66cafa9ddb19c",
+      "copyright_sha256": "6db5add53ebca91b380d50f9f0c18f9c4b99ee51b287a3f0ee11af21f9114906",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/646db25d7726a24a227c4251fdb0b44ce31801f20df0561fc9faa3aeabc8750b.txt",
+      "license": "Apache-2.0 AND MIT",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "full_normalized_notice_sha256": "0ffddef9e48f8a09aed5caf2d44f7ba1c1be2d9b8e0a6f693b1635b2d5566645",
+          "read_original": {
+            "component": "go:github.com/prometheus/exporter-toolkit",
+            "source_identity": "4dfa044e0eec3579d5af1f059e25d78a9ea691e5736c679120ea9477a7ce7142",
+            "notice_sha256": "ae6880810cf9ec12bd6766d3c01c8eff8d71e53f639e26c13e96073bd1374902",
+            "member": "LICENSE",
+            "license": "Apache-2.0"
+          }
+        },
+        {
+          "member": "middleware/denco/LICENSE",
+          "full_normalized_notice_sha256": "9b872fdf3dbacd605db503715b1e760b30596f958c53bcdfb3befbdbca7f69bb",
+          "read_original": {
+            "component": "go:github.com/influxdata/toml",
+            "source_identity": "063900af2a10b57dca2c45d00dfe12cc94035b2d55bdcf57fdfab7e977d6ee5f",
+            "notice_sha256": "83ae3beb7ec3fe2e68da0c22811c943140f84c593b2c2a06157c4b32d07d52a1",
+            "member": "LICENSE",
+            "license": "MIT"
+          }
+        }
+      ],
+      "full_original_read": false
+    },
+    {
+      "parent": "podman",
+      "name": "go:gopkg.in/go-jose/go-jose.v2",
+      "version": "v2.6.3",
+      "source_identity": "5003c4bacf33b820d60e647c588b41fe3e2f72cb44534fafe11a9b1066c8ea48",
+      "copyright_sha256": "92adb7f65a0f10e6a033a091cfeb6f4c234a0a8940b2dabf0ca3e5cdd940e304",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/6a6a6eb98f8749031455f13c383a7f954c0c767d095492926433040ae6c371de.txt",
+      "license": "Apache-2.0 AND BSD-3-Clause",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "full_normalized_notice_sha256": "0ffddef9e48f8a09aed5caf2d44f7ba1c1be2d9b8e0a6f693b1635b2d5566645",
+          "read_original": {
+            "component": "go:github.com/prometheus/exporter-toolkit",
+            "source_identity": "4dfa044e0eec3579d5af1f059e25d78a9ea691e5736c679120ea9477a7ce7142",
+            "notice_sha256": "ae6880810cf9ec12bd6766d3c01c8eff8d71e53f639e26c13e96073bd1374902",
+            "member": "LICENSE",
+            "license": "Apache-2.0"
+          }
+        },
+        {
+          "member": "json/LICENSE",
+          "full_normalized_notice_sha256": "e9f95572dbf106bc301dd913063f9d8d865cd63d44ece58bfb283f0fa9effed4",
+          "read_original": {
+            "component": "go:github.com/remyoudompheng/bigfft",
+            "source_identity": "9be16c32c384d55d0f7bd7b03f1ff1e9a4e4b91b000f0aa87a567a01b9b82398",
+            "notice_sha256": "86eac369b09d22525d8e6cf73f7025a1f40daca73e6b3060f72d44629ba7b459",
+            "member": "LICENSE",
+            "license": "BSD-3-Clause"
+          }
+        }
+      ],
+      "full_original_read": false
+    },
+    {
+      "parent": "netbird",
+      "name": "go:codeberg.org/cunicu/circl",
+      "version": "v0.0.0-20230801113412-fec58fc7b5f6",
+      "source_identity": "h1:b8xUw3004wk+3ipBhu0VU4RtUJsegMIiqjxSK4++lzA=",
+      "copyright_sha256": "c809ed6e5e57ed45140edb4348df4a31d2a35bcebfd76123e93a8d0792b26b0a",
+      "evidence_member": "netbird/linked/notices/0e0413764d5ba44b783ec276886a47eb7ff2486e2994a1a183e8bef3022f06a2.txt",
+      "license": "BSD-3-Clause",
+      "matches": [],
+      "full_original_read": true
+    },
+    {
+      "parent": "netbird",
+      "name": "go:github.com/google/gopacket",
+      "version": "v1.1.19",
+      "source_identity": "h1:ves8RnFZPGiFnTS0uPQStjwru6uO6h+nlr9j6fL7kF8=",
+      "copyright_sha256": "96144455563046e2a71a618cdd0ff44370bc1415ed151f3cf8d69b9488248785",
+      "evidence_member": "netbird/linked/notices/edbe9e0ca15e2673fb1f821d22ba43ab16d4a2a5b722d329a691dc27e3e08d67.txt",
+      "license": "BSD-3-Clause",
+      "matches": [
+        {
+          "member": "github.com/google/gopacket@v1.1.19/AUTHORS",
+          "full_normalized_notice_sha256": "21ac02ebafaa702f9ecb85b0426cccdbee1cce5f7b1bb3b6da42c3bcf9124a32",
+          "read_original": {
+            "component": "go:github.com/google/gopacket",
+            "source_identity": "fc8cbe2239683199e677cb39f9303ae8d4a365f3c8cd8a2dcfa1f14c41bcff88",
+            "notice_sha256": "f352f7080fa189120c2b903ec1c783232d072248e2f6864e3d9dda852b84cc2b",
+            "member": "AUTHORS",
+            "license": "BSD-3-Clause"
+          }
+        },
+        {
+          "member": "github.com/google/gopacket@v1.1.19/LICENSE",
+          "full_normalized_notice_sha256": "cc76105f08cb1cd60995ed29c72d6d9a3fbbf436b84991de1f7f347b1c55d0ce",
+          "read_original": {
+            "component": "go:github.com/google/gopacket",
+            "source_identity": "fc8cbe2239683199e677cb39f9303ae8d4a365f3c8cd8a2dcfa1f14c41bcff88",
+            "notice_sha256": "f352f7080fa189120c2b903ec1c783232d072248e2f6864e3d9dda852b84cc2b",
+            "member": "LICENSE",
+            "license": "BSD-3-Clause"
+          }
+        }
+      ],
+      "full_original_read": true
+    },
+    {
+      "parent": "netbird",
+      "name": "go:github.com/gopacket/gopacket",
+      "version": "v1.4.0",
+      "source_identity": "h1:cr1OlFpzksCkZHNO0eLjaSSOrMQnpPXg0j6qHIY3y2U=",
+      "copyright_sha256": "3ac4b2eb6c0026f41ead8bb3adc1cd03f0bb9be6c8d7eaecc04016382f33aed7",
+      "evidence_member": "netbird/linked/notices/c26acd6da94d472aeb96f821ea1b1fabaa677065a18fad440af26e707e432184.txt",
+      "license": "BSD-3-Clause",
+      "matches": [
+        {
+          "member": "github.com/gopacket/gopacket@v1.4.0/AUTHORS",
+          "full_normalized_notice_sha256": "21ac02ebafaa702f9ecb85b0426cccdbee1cce5f7b1bb3b6da42c3bcf9124a32",
+          "read_original": {
+            "component": "go:github.com/google/gopacket",
+            "source_identity": "fc8cbe2239683199e677cb39f9303ae8d4a365f3c8cd8a2dcfa1f14c41bcff88",
+            "notice_sha256": "f352f7080fa189120c2b903ec1c783232d072248e2f6864e3d9dda852b84cc2b",
+            "member": "AUTHORS",
+            "license": "BSD-3-Clause"
+          }
+        },
+        {
+          "member": "github.com/gopacket/gopacket@v1.4.0/LICENSE",
+          "full_normalized_notice_sha256": "cc76105f08cb1cd60995ed29c72d6d9a3fbbf436b84991de1f7f347b1c55d0ce",
+          "read_original": {
+            "component": "go:github.com/google/gopacket",
+            "source_identity": "fc8cbe2239683199e677cb39f9303ae8d4a365f3c8cd8a2dcfa1f14c41bcff88",
+            "notice_sha256": "f352f7080fa189120c2b903ec1c783232d072248e2f6864e3d9dda852b84cc2b",
+            "member": "LICENSE",
+            "license": "BSD-3-Clause"
+          }
+        }
+      ],
+      "full_original_read": true
+    }
+  ],
+  "scope": "Complete original readings or complete normalized-word equality to read original legal blocks. No classification by module name or SPDX label alone. All independently scoped original grants and authorship preserved.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

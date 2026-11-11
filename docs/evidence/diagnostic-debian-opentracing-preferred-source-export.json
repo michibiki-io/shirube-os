@@ -1,0 +1,95 @@
+{
+  "kind": "diagnostic-debian-opentracing-preferred-source-export",
+  "status": "PASS_SOURCE_EXPORT_AND_NATIVE_COMPONENT_TESTS",
+  "source": "opentracing-cpp",
+  "version": "1.6.0-4",
+  "original_descriptor_sha256": "09ae6b43e38df9a6798d721bd76e5c610e20865415e4f6e2efedb7a218f6e9e0",
+  "preferred_source_identity": "0dfb801608cba50bdba4f284084b5a980d3eceb2b9066477f190bf76a3e38df5",
+  "unchanged_original_regular_files": 117,
+  "original_regular_files": 118,
+  "changed_members": [
+    {
+      "member": "3rd_party/include/opentracing/catch2/LICENSE.txt",
+      "original_sha256": "b7d05132c435c3d69f9dead9b5f3f4a9d70b6f8b45dfa887f533b33e54dd128d",
+      "preferred_sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    }
+  ],
+  "added_members": [
+    {
+      "member": "SHIRUBE-ORIGINAL-SOURCE.dsc",
+      "sha256": "09ae6b43e38df9a6798d721bd76e5c610e20865415e4f6e2efedb7a218f6e9e0"
+    },
+    {
+      "member": "SHIRUBE-SOURCE-EXPORT.json",
+      "sha256": "0dfb801608cba50bdba4f284084b5a980d3eceb2b9066477f190bf76a3e38df5"
+    }
+  ],
+  "deleted_members": [],
+  "unchanged_catch_header": {
+    "member": "3rd_party/include/opentracing/catch2/catch.hpp",
+    "sha256": "7c6ac88b2d592d11e889396d9bc5f825e6759e38b6200f339e4b6100fa320205",
+    "version": "2.0.1",
+    "copyright": "2017 Two Blue Cubes Ltd.",
+    "explicit_license": "Boost Software License1.0"
+  },
+  "full_license_origin": "https://www.boost.org/LICENSE_1_0.txt",
+  "retained_original_legal_files": [
+    {
+      "member": "3rd_party/include/opentracing/expected/LICENSE",
+      "sha256": "775d121dccad9612c0eff17543ccb091ffb4695f58dd8191de7607130977b2f8",
+      "bytes": 1144,
+      "distribution_path": "LICENSES/OpenTracing-1.6.0/3rd_party/include/opentracing/expected/LICENSE"
+    },
+    {
+      "member": "3rd_party/include/opentracing/variant/LICENSE",
+      "sha256": "7686f81e580cd6774f609a2d8a41b2cebdf79bc30e6b46c3efff5a656158981c",
+      "bytes": 1460,
+      "distribution_path": "LICENSES/OpenTracing-1.6.0/3rd_party/include/opentracing/variant/LICENSE"
+    },
+    {
+      "member": "LICENSE",
+      "sha256": "076d03156735d5ff2df2ea0f8b12351ef65e5e9222b5c8c6a35101dadb41e717",
+      "bytes": 11347,
+      "distribution_path": "LICENSES/OpenTracing-1.6.0/LICENSE"
+    },
+    {
+      "member": "mocktracer/LICENSE.apache",
+      "sha256": "58a365fe99e6a28ca903dad980080f109a18ccad888db1a010ce0ada20f90042",
+      "bytes": 11358,
+      "distribution_path": "LICENSES/OpenTracing-1.6.0/mocktracer/LICENSE.apache"
+    }
+  ],
+  "normal_component_trials": [
+    {
+      "architecture": "amd64",
+      "network": "none",
+      "cpu_limit": 2,
+      "memory_gib": 2,
+      "elapsed_seconds": 65,
+      "cmake": "Default shared/static/mocktracer/dynamic-loading/testing/example features; Release build",
+      "build_parallel_jobs": 2,
+      "ctest": {
+        "passed": 11,
+        "failed": 0
+      },
+      "build_test_install_exit_code": 0
+    },
+    {
+      "architecture": "arm64",
+      "network": "none",
+      "cpu_limit": 2,
+      "memory_gib": 2,
+      "elapsed_seconds": 161,
+      "cmake": "Same preferred bytes and default features as AMD64",
+      "build_parallel_jobs": 2,
+      "ctest": {
+        "passed": 11,
+        "failed": 0
+      },
+      "build_test_install_exit_code": 0
+    }
+  ],
+  "scope": "These already completed component trials do not establish a full OS rebuild or require rebuilding an ISO for a license-text-only change. Further such edits use source diffs/hashes. Final current coherent sources/binaries and release capacity remain separate gates.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

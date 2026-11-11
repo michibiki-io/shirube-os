@@ -1,0 +1,2209 @@
+{
+  "kind": "complete-original-license-file-word-comparisons",
+  "status": "PASS_TEXT_READING_ONLY",
+  "originals": 157,
+  "reviewed_on": "2026-11-10",
+  "files": [
+    {
+      "original": {
+        "component": "apparmor",
+        "member": "changehat/pam_apparmor/COPYING",
+        "sha256": "0a977a2f4bdc7bb0d03bebe54bac1c5872930240b18c1763bc82657aab33c170"
+      },
+      "read_reference": {
+        "component": "libcap2",
+        "member": "pam_cap/License",
+        "sha256": "f3236a2484acb34f9f995873861f7d62e3692506e10de720a771b27ead26f058"
+      },
+      "full_normalized_original_sha256": "d9c1fe1efb106009cbbc8d1501be752b77c7575e93bbff0374c6c8ba61f714da",
+      "complete_word_difference": "0 ORIGINAL apparmor/changehat/pam_apparmor/COPYING REFERENCE libcap2/pam_cap/License\n@ @@ -1,26 +1,18 @@ \n- Unless otherwise *explicitly* stated the following text describes the\n+ The pam_apparmor package is\n  licensed\n- conditions\n  under\n- which the contents of this module release may be distributed:\n+ the same license as Linux-PAM <http://www.kernel.org/pub/linux/libs/pam/>, quoted below:\n  ------------------------------------------------------------------------- Redistribution and use\n@ @@ -29,10 +21,9 @@ \n  and binary forms of\n- this module,\n+ Linux-PAM,\n  with or without modification,\n@ @@ -136,9 +127,8 @@ \n  terms of the GNU\n- Library\n  General Public License, in\n@ @@ -148,9 +138,9 @@ \n  provisions of the GNU\n- LGPL\n+ GPL\n  are required INSTEAD OF\n@ @@ -168,9 +158,9 @@ \n  conflict between the GNU\n- LGPL\n+ GPL\n  and the restrictions contained"
+    },
+    {
+      "original": {
+        "component": "base-files",
+        "member": "licenses/BSD",
+        "sha256": "5d588eb3b157d52112afea935c88a7ff9efddc1e2d95a42c25d3b96ad9055008"
+      },
+      "read_reference": {
+        "component": "libedit",
+        "member": "COPYING",
+        "sha256": "9da6c9c74987a36c84302982799d17d2f748ba1c1c0c471425716173c1d07649"
+      },
+      "full_normalized_original_sha256": "becae3c9384e822ba098d0691ae37ab9a1d87bae17a014aa0bda09e21697c99e",
+      "complete_word_difference": "1 ORIGINAL base-files/licenses/BSD REFERENCE libedit/COPYING\n@ @@ -1,8 +1,6 @@ \n  Copyright (c)\n- 1992, 1993\n  The Regents of the\n@ @@ -11,23 +9,8 @@ \n  California. All rights reserved.\n- This code is derived from software contributed to Berkeley by Christos Zoulas of Cornell University.\n  Redistribution and use in"
+    },
+    {
+      "original": {
+        "component": "base-files",
+        "member": "licenses/GFDL-1.2",
+        "sha256": "d8e94ae5fdb5433fcae2961aeb1a8cf17174d6f4a0465d24bf37dd8a038bd439"
+      },
+      "read_reference": {
+        "component": "base-files",
+        "member": "licenses/GFDL-1.3",
+        "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+      },
+      "full_normalized_original_sha256": "c329bc4ea770a2d540e612ec08b5e93508c0826329c2d6cb021f6b1b2eb89704",
+      "complete_word_difference": "2 ORIGINAL base-files/licenses/GFDL-1.2 REFERENCE base-files/licenses/GFDL-1.3\n@ @@ -2,24 +2,27 @@ \n  Free Documentation License Version\n- 1.3, 3\n+ 1.2,\n  November\n- 2008\n+ 2002\n  Copyright (C)\n- 2000, 2001, 2002, 2007, 2008\n+ 2000,2001,2002\n  Free Software Foundation, Inc.\n- <https://fsf.org/>\n+ 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA\n  Everyone is permitted to\n@ @@ -858,24 +861,8 @@ \n  body of the text.\n- The \"publisher\" means any person or entity that distributes copies of the Document to the public.\n  A section \"Entitled XYZ\"\n@ @@ -2893,21 +2880,23 @@ \n  except as expressly provided\n+ for\n  under this License. Any\n+ other\n  attempt\n- otherwise\n  to copy, modify,\n- sublicense,\n+ sublicense\n  or distribute\n- it\n+ the Document\n  is void, and will\n@ @@ -2918,181 +2907,35 @@ \n  under this License. However,\n- if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation. Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice. Termination of your rights under this section does not terminate the licenses of\n  parties who have received\n- copies or rights\n+ copies, or rights,\n  from you under this\n- License. If your rights\n+ License will not\n  have\n- been\n+ their licenses\n  terminated\n- and not permanently reinstated, receipt of a copy of some or all of the same material does not give you any rights to use it.\n+ so long as such parties remain in full compliance.\n  10. FUTURE REVISIONS OF\n@ @@ -3232,262 +3075,8 @@ \n  the Free Software Foundation.\n- If the Document specifies that a proxy can decide which future versions of this License can be used, that proxy's public statement of acceptance of a version permanently authorizes you to choose that version for the Document. 11. RELICENSING \"Massive Multiauthor Collaboration Site\" (or \"MMC Site\") means any World Wide Web server that publishes copyrightable works and also provides prominent facilities for anybody to edit those works. A public wiki that anybody can edit is an example of such a server. A \"Massive Multiauthor Collaboration\" (or \"MMC\") contained in the site means any set of copyrightable works thus published on the MMC site. \"CC-BY-SA\" means the Creative Commons Attribution-Share Alike 3.0 license published by Creative Commons Corporation, a not-for-profit corporation with a principal place of business in San Francisco, California, as well as future copyleft versions of that license published by that same organization. \"Incorporate\" means to publish or republish a Document, in whole or in part, as part of another Document. An MMC is \"eligible for relicensing\" if it is licensed under this License, and if all works that were first published under this License somewhere other than this MMC, and subsequently incorporated in whole or in part into the MMC, (1) had no cover texts or invariant sections, and (2) were thus incorporated prior to November 1, 2008. The operator of an MMC Site may republish an MMC contained in the site under CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is eligible for relicensing.\n  ADDENDUM: How to use\n@ @@ -3552,9 +3141,9 @@ \n  Free Documentation License, Version\n- 1.3\n+ 1.2\n  or any later version"
+    },
+    {
+      "original": {
+        "component": "base-files",
+        "member": "licenses/MPL-2.0",
+        "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/config/_validate_pyproject/NOTICE",
+        "sha256": "09c9bcea95ca086f8bc5bed174e40bc835b297d40fb5f86bbbb570fe0a5581a7"
+      },
+      "full_normalized_original_sha256": "a7fae6cb34ec631564f892e475d03e5d8781b78949caf5c54d404d384e30fffe",
+      "complete_word_difference": "3 ORIGINAL base-files/licenses/MPL-2.0 REFERENCE vpp-inputs/setuptools/config/_validate_pyproject/NOTICE\n@ @@ -1,351 +1,13 @@ \n- The code contained in this directory was automatically generated using the following command: python -m validate_pyproject.pre_compile --output-dir=setuptools/config/_validate_pyproject --enable-plugins setuptools distutils --very-verbose -t distutils=setuptools/config/distutils.schema.json -t setuptools=setuptools/config/setuptools.schema.json Please avoid changing it manually. You can report issues or suggest changes directly to `validate-pyproject` (or to the relevant plugin repository) - https://github.com/abravalheri/validate-pyproject/issues *** The following files include code from opensource projects (either as direct copies or modified versions): - `fastjsonschema_exceptions.py`: - project: `fastjsonschema` - licensed under BSD-3-Clause (https://github.com/horejsek/python-fastjsonschema) - `extra_validations.py` and `format.py`, `error_reporting.py`: - project: `validate-pyproject` - licensed under MPL-2.0 (https://github.com/abravalheri/validate-pyproject) Additionally the following files are automatically generated by tools provided by the same projects: - `__init__.py` - `fastjsonschema_validations.py` The relevant copyright notes and licenses are included below. *** `fastjsonschema` ================ Copyright (c) 2018, Michal Horejsek All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. Neither the name of the {organization} nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. *** `validate-pyproject` ====================\n  Mozilla Public\n- License, version\n+ License Version\n  2.0\n+ ==================================\n  1. Definitions\n+ --------------\n  1.1. \"Contributor\" means each\n@ @@ -440,9 +102,9 @@ \n  With Secondary Licenses\" means\n- a.\n+ (a)\n  that the initial Contributor\n@ @@ -458,9 +120,9 @@ \n  the Covered Software; or\n- b.\n+ (b)\n  that the Covered Software\n@ @@ -570,9 +232,9 @@ \n  any of the following:\n- a.\n+ (a)\n  any file in Source\n@ @@ -594,9 +256,9 @@ \n  of Covered Software; or\n- b.\n+ (b)\n  any new file in\n@ @@ -799,8 +461,9 @@ \n  License Grants and Conditions\n+ --------------------------------\n  2.1. Grants Each Contributor\n@ @@ -811,9 +474,9 @@ \n  world-wide, royalty-free, non-exclusive license:\n- a.\n+ (a)\n  under intellectual property rights\n@ @@ -854,9 +517,9 @@ \n  a Larger Work; and\n- b.\n+ (b)\n  under Patent Claims of\n@ @@ -960,9 +623,9 @@ \n  granted by a Contributor:\n- a.\n+ (a)\n  for any code that\n@ @@ -973,9 +636,9 @@ \n  from Covered Software; or\n- b.\n+ (b)\n  for infringements caused by:\n@ @@ -1007,9 +670,9 @@ \n  its Contributor Version); or\n- c.\n+ (c)\n  under Patent Claims infringed\n@ @@ -1173,8 +836,9 @@ \n  Section 2.1. 3. Responsibilities\n+ -------------------\n  3.1. Distribution of Source\n@ @@ -1267,9 +931,9 @@ \n  in Executable Form then:\n- a.\n+ (a)\n  such Covered Software must\n@ @@ -1326,9 +990,9 @@ \n  to the recipient; and\n- b.\n+ (b)\n  You may distribute such\n@ @@ -1651,8 +1315,9 @@ \n  to Statute or Regulation\n+ ---------------------------------------------------\n  If it is impossible\n@ @@ -1759,8 +1424,9 @@ \n  understand it. 5. Termination\n+ --------------\n  5.1. The rights granted\n@ @@ -1992,12 +1658,23 @@ \n  termination shall survive termination.\n+ ************************************************************************ * * *\n  6. Disclaimer of Warranty\n+ * * ------------------------- * * * *\n  Covered Software is provided\n@ @@ -2007,8 +1684,10 @@ \n  on an \"as is\"\n+ * *\n  basis, without warranty of\n@ @@ -2017,15 +1696,19 @@ \n  either expressed, implied, or\n+ * *\n  statutory, including, without limitation, warranties that the\n+ * *\n  Covered Software is free\n@ @@ -2034,8 +1717,10 @@ \n  merchantable, fit for a\n+ * *\n  particular purpose or non-infringing.\n@ @@ -2044,8 +1729,10 @@ \n  risk as to the\n+ * *\n  quality and performance of\n@ @@ -2054,8 +1741,10 @@ \n  Software is with You.\n+ * *\n  Should any Covered Software\n@ @@ -2064,8 +1753,10 @@ \n  in any respect, You\n+ * *\n  (not any Contributor) assume\n@ @@ -2074,8 +1765,10 @@ \n  of any necessary servicing,\n+ * *\n  repair, or correction. This\n@ @@ -2083,8 +1776,10 @@ \n  of warranty constitutes an\n+ * *\n  essential part of this\n@ @@ -2095,20 +1790,37 @@ \n  any Covered Software is\n+ * *\n  authorized under this License except under this disclaimer.\n+ * * * ************************************************************************ ************************************************************************ * * *\n  7. Limitation of Liability\n+ * * -------------------------- * * * *\n  Under no circumstances and\n@ @@ -2117,23 +1829,29 @@ \n  legal theory, whether tort\n+ * *\n  (including negligence), contract, or otherwise, shall any\n+ * *\n  Contributor, or anyone who distributes Covered Software as\n+ * *\n  permitted above, be liable\n@ @@ -2142,16 +1860,20 @@ \n  for any direct, indirect,\n+ * *\n  special, incidental, or consequential damages of any character\n+ * *\n  including, without limitation, damages\n@ @@ -2159,8 +1881,10 @@ \n  lost profits, loss of\n+ * *\n  goodwill, work stoppage, computer\n@ @@ -2168,8 +1892,10 @@ \n  or malfunction, or any\n+ * *\n  and all other commercial\n@ @@ -2179,8 +1905,10 @@ \n  even if such party\n+ * *\n  shall have been informed\n@ @@ -2190,8 +1918,10 @@ \n  of such damages. This\n+ * *\n  limitation of liability shall\n@ @@ -2201,8 +1931,10 @@ \n  liability for death or\n+ * *\n  personal injury resulting from\n@ @@ -2210,15 +1942,19 @@ \n  party's negligence to the\n+ * *\n  extent applicable law prohibits such limitation. Some\n+ * *\n  jurisdictions do not allow\n@ @@ -2226,24 +1962,33 @@ \n  exclusion or limitation of\n+ * *\n  incidental or consequential damages, so this exclusion and\n+ * *\n  limitation may not apply to You.\n+ * * * ************************************************************************\n  8. Litigation\n+ -------------\n  Any litigation relating to\n@ @@ -2300,8 +2045,9 @@ \n  or counter-claims. 9. Miscellaneous\n+ ----------------\n  This License represents the\n@ @@ -2370,8 +2116,9 @@ \n  Versions of the License\n+ ---------------------------\n  10.1. New Versions Mozilla\n@ @@ -2569,8 +2316,9 @@ \n  Code Form License Notice\n+ -------------------------------------------\n  This Source Code Form\n@ @@ -2602,9 +2350,9 @@ \n  can obtain one at\n- https://mozilla.org/MPL/2.0/.\n+ http://mozilla.org/MPL/2.0/.\n  If it is not\n@ @@ -2665,8 +2413,9 @@ \n  With Secondary Licenses\" Notice\n+ ---------------------------------------------------------\n  This Source Code Form"
+    },
+    {
+      "original": {
+        "component": "bgpq3",
+        "member": "COPYRIGHT",
+        "sha256": "da803dd072b08043817d44d8d25543219e69ff41d2014e39ba69f957b703ce4d"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.BSD",
+        "sha256": "59ae3d59c672bfb955917a8e32f5cacba7f8ce716c499a4c63dc8cd8cb5c4991"
+      },
+      "full_normalized_original_sha256": "b6b36ebd0c1024262053550728b8bae2a352382d9bf6576d77f6b1b4a0c71e43",
+      "complete_word_difference": "4 ORIGINAL bgpq3/COPYRIGHT REFERENCE bmon/LICENSE.BSD\n@ @@ -1,4 +1,18 @@ \n+ /*- * Copyright (c) 2007-2021 Alexandre Snarskii <snar@snar.spb.ru> * All rights reserved. * *\n  Redistribution and use in\n@ @@ -8,18 +22,21 @@ \n  forms, with or without\n+ *\n  modification, are permitted provided that the following conditions\n+ *\n  are met:\n+ *\n  1. Redistributions of source\n@ @@ -28,8 +45,9 @@ \n  retain the above copyright\n+ *\n  notice, this list of\n@ @@ -37,8 +55,9 @@ \n  and the following disclaimer.\n+ *\n  2. Redistributions in binary\n@ @@ -47,8 +66,9 @@ \n  reproduce the above copyright\n+ *\n  notice, this list of\n@ @@ -58,26 +78,32 @@ \n  following disclaimer in the\n+ *\n  documentation and/or other materials provided with the distribution.\n+ * *\n  THIS SOFTWARE IS PROVIDED BY THE AUTHOR\n+ AND CONTRIBUTORS\n  ``AS IS'' AND\n+ *\n  ANY EXPRESS OR IMPLIED\n@ @@ -87,8 +113,9 @@ \n  NOT LIMITED TO, THE\n+ *\n  IMPLIED WARRANTIES OF MERCHANTABILITY\n@ @@ -97,18 +124,22 @@ \n  FOR A PARTICULAR PURPOSE\n+ *\n  ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR\n+ OR CONTRIBUTORS\n  BE LIABLE\n+ *\n  FOR ANY DIRECT, INDIRECT,\n@ @@ -116,8 +147,9 @@ \n  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n+ *\n  DAMAGES (INCLUDING, BUT NOT\n@ @@ -126,8 +158,9 @@ \n  PROCUREMENT OF SUBSTITUTE GOODS\n+ *\n  OR SERVICES; LOSS OF\n@ @@ -137,8 +170,9 @@ \n  PROFITS; OR BUSINESS INTERRUPTION)\n+ *\n  HOWEVER CAUSED AND ON\n@ @@ -149,8 +183,9 @@ \n  WHETHER IN CONTRACT, STRICT\n+ *\n  LIABILITY, OR TORT (INCLUDING\n@ @@ -160,8 +195,9 @@ \n  ARISING IN ANY WAY\n+ *\n  OUT OF THE USE\n@ @@ -174,6 +210,9 @@ \n  OF THE POSSIBILITY OF\n+ *\n  SUCH DAMAGE.\n+ * */"
+    },
+    {
+      "original": {
+        "component": "bind9",
+        "member": "COPYING",
+        "sha256": "d3d6ed2a709a8b82c04a556fc93654a7d4f40d53724d8fdac0ea69aff7087c1e"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/config/_validate_pyproject/NOTICE",
+        "sha256": "09c9bcea95ca086f8bc5bed174e40bc835b297d40fb5f86bbbb570fe0a5581a7"
+      },
+      "full_normalized_original_sha256": "de3fddc647dbaefe24292eb5d40339aafa2fe3391be4e36329de44545427f6a0",
+      "complete_word_difference": "5 ORIGINAL bind9/COPYING REFERENCE vpp-inputs/setuptools/config/_validate_pyproject/NOTICE\n@ @@ -1,344 +1,4 @@ \n- The code contained in this directory was automatically generated using the following command: python -m validate_pyproject.pre_compile --output-dir=setuptools/config/_validate_pyproject --enable-plugins setuptools distutils --very-verbose -t distutils=setuptools/config/distutils.schema.json -t setuptools=setuptools/config/setuptools.schema.json Please avoid changing it manually. You can report issues or suggest changes directly to `validate-pyproject` (or to the relevant plugin repository) - https://github.com/abravalheri/validate-pyproject/issues *** The following files include code from opensource projects (either as direct copies or modified versions): - `fastjsonschema_exceptions.py`: - project: `fastjsonschema` - licensed under BSD-3-Clause (https://github.com/horejsek/python-fastjsonschema) - `extra_validations.py` and `format.py`, `error_reporting.py`: - project: `validate-pyproject` - licensed under MPL-2.0 (https://github.com/abravalheri/validate-pyproject) Additionally the following files are automatically generated by tools provided by the same projects: - `__init__.py` - `fastjsonschema_validations.py` The relevant copyright notes and licenses are included below. *** `fastjsonschema` ================ Copyright (c) 2018, Michal Horejsek All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. Neither the name of the {organization} nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. *** `validate-pyproject` ====================\n  Mozilla Public License, version"
+    },
+    {
+      "original": {
+        "component": "boost1.74",
+        "member": "libs/beast/test/bench/parser/nodejs-parser/LICENSE-MIT",
+        "sha256": "2996a1c43ee757f9c997a829d82bdd584052323e73cf02ff8126c6fbd95c2d87"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "8aaeb01682168af00f664c6c9f9115283f322ebea7d892247bd436ad29cd1172",
+      "complete_word_difference": "6 ORIGINAL boost1.74/libs/beast/test/bench/parser/nodejs-parser/LICENSE-MIT REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,35 @@ \n+ http_parser.c is based on src/http/ngx_http_parse.c from NGINX copyright Igor Sysoev. Additional changes are licensed under the same terms as NGINX and copyright Joyent, Inc. and other Node contributors. All rights reserved.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "boost1.74",
+        "member": "libs/yap/example/autodiff_library/LICENSE",
+        "sha256": "bd1684bf806817f26f02585bc992fe5f5ea8788896398234b8a8187328af550b"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "cbb963b286492282f3175d07b1da43f3fd0c26a93cdebb8c4362dacfbfb921b0",
+      "complete_word_difference": "7 ORIGINAL boost1.74/libs/yap/example/autodiff_library/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,10 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2014 fqiang\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "conmon",
+        "member": "LICENSE",
+        "sha256": "9c9d771d4004725237a31ada889fe06c85a24fd0a29e41825181ab4cde54f016"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "0f15b707e115c83afa6f8747e4a319262312aacca5c7f635fefd33a905f42eca",
+      "complete_word_difference": "8 ORIGINAL conmon/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -1410,4 +1410,86 @@ \n  OF TERMS AND CONDITIONS\n+ Copyright 2018-2019 github.com/containers authors Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+    },
+    {
+      "original": {
+        "component": "crun",
+        "member": "libocispec/image-spec/LICENSE",
+        "sha256": "b0a3f39513927db306adabea11d14c23f079d4febcea241d123a68d1a0d45418"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "31f1f4d10346c4414106958ef66ff5da76a59f784013e77f205e328226c75193",
+      "complete_word_difference": "9 ORIGINAL crun/libocispec/image-spec/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -1410,4 +1410,87 @@ \n  OF TERMS AND CONDITIONS\n+ Copyright 2016 The Linux Foundation. Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+    },
+    {
+      "original": {
+        "component": "crun",
+        "member": "libocispec/runtime-spec/LICENSE",
+        "sha256": "a964a27c435167bdd78827ff83e4bd4473eca53d583a39598d2f445894a9225d"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "cb2207ec3524ebe78e676e5e297b41f4dd667188d6e28bf4427ae698721a1904",
+      "complete_word_difference": "10 ORIGINAL crun/libocispec/runtime-spec/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -1410,4 +1410,87 @@ \n  OF TERMS AND CONDITIONS\n+ Copyright 2015 The Linux Foundation. Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+    },
+    {
+      "original": {
+        "component": "cryptsetup",
+        "member": "lib/crypto_backend/argon2/LICENSE",
+        "sha256": "3335fd61125d7733f813a9626317d165560253a0fe766b4f599f469d320b4af8"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "quicly_0.1.5-vpp/deps/picotls/deps/cifra/COPYING",
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      "full_normalized_original_sha256": "e700ff9e9cee4aad06d22d2b5d2ecff0102c55a0e35750e1a31d9e13e89f8d28",
+      "complete_word_difference": "11 ORIGINAL cryptsetup/lib/crypto_backend/argon2/LICENSE REFERENCE vpp-inputs/quicly_0.1.5-vpp/deps/picotls/deps/cifra/COPYING\n@ @@ -1,11 +1,4 @@ \n- Creative Commons Legal Code CC0 1.0 Universal\n  CREATIVE COMMONS CORPORATION IS\n@ @@ -348,9 +341,8 @@ \n  limited to, the following:\n- i.\n  the right to reproduce,\n@ @@ -362,9 +354,8 @@ \n  and translate a Work;\n- ii.\n  moral rights retained by\n@ @@ -372,9 +363,8 @@ \n  original author(s) and/or performer(s);\n- iii.\n  publicity and privacy rights\n@ @@ -388,9 +378,8 @@ \n  depicted in a Work;\n- iv.\n  rights protecting against unfair\n@ @@ -407,9 +396,8 @@ \n  in paragraph 4(a), below;\n- v.\n  rights protecting the extraction,\n@ @@ -421,9 +409,8 @@ \n  data in a Work;\n- vi.\n  database rights (such as\n@ @@ -465,9 +452,8 @@ \n  of such directive); and\n- vii.\n  other similar, equivalent or\n@ @@ -894,9 +880,8 @@ \n  4. Limitations and Disclaimers.\n- a.\n  No trademark or patent\n@ @@ -914,9 +899,8 @@ \n  affected by this document.\n- b.\n  Affirmer offers the Work\n@ @@ -980,9 +964,8 @@ \n  permissible under applicable law.\n- c.\n  Affirmer disclaims responsibility for\n@ @@ -1032,9 +1015,8 @@ \n  use of the Work.\n- d.\n  Affirmer understands and acknowledges"
+    },
+    {
+      "original": {
+        "component": "dbus-python",
+        "member": "LICENSES/MIT.txt",
+        "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+        "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
+      },
+      "full_normalized_original_sha256": "c963879647034d6c5d7027d8e2b024213589b749d11ba7320032802307bced9c",
+      "complete_word_difference": "12 ORIGINAL dbus-python/LICENSES/MIT.txt REFERENCE vpp-inputs/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE\n@ @@ -1,9 +1,9 @@ \n  MIT License Copyright (c)\n- 2026\n+ <year>\n  <copyright holders> Permission is"
+    },
+    {
+      "original": {
+        "component": "dnsdist",
+        "member": "ext/ipcrypt/LICENSE",
+        "sha256": "5db969f9a5ebe277f58cd3654464a36bb8d7f6ad1c1c271f9f1342406c3eed7f"
+      },
+      "read_reference": {
+        "component": "lsb-release-minimal",
+        "member": "LICENSE.txt",
+        "sha256": "cb67becb7e7441ca4319b509650752fd59a3a99d84d1eb0ebe694554656032e2"
+      },
+      "full_normalized_original_sha256": "564fdf7a40375d313f8b8e63e2d8cb9ff53cadc270931e951025aaa4b3da82e2",
+      "complete_word_difference": "13 ORIGINAL dnsdist/ext/ipcrypt/LICENSE REFERENCE lsb-release-minimal/LICENSE.txt\n@ @@ -1,9 +1,14 @@ \n  Copyright (c)\n- 2021-2022 Gioele Barabucci\n+ 2015-2018, Frank Denis <j at pureftpd dot org>\n  Permission to use, copy,"
+    },
+    {
+      "original": {
+        "component": "dnsdist",
+        "member": "ext/yahttp/LICENSE",
+        "sha256": "486396ac4804f36419dbc7ca75d6a0991cfe5eba61d86d5676470edc95b5fc43"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "1f11b9b73b2f784c92deaa6b6a206e99cf13b2d57cf4df20ed0bf75a31dbaf90",
+      "complete_word_difference": "14 ORIGINAL dnsdist/ext/yahttp/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,11 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2014 Aki Tuomi\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "duktape",
+        "member": "LICENSE.txt",
+        "sha256": "c6b6659630ca6cb837afe982ecc79511bfca878b56296d628b02eb6f18789c29"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "72a20416926a29ec67830180da6f097b07a3cfaed874da39a6991b25ff8c9ec8",
+      "complete_word_difference": "15 ORIGINAL duktape/LICENSE.txt REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,17 @@ \n+ =============== Duktape license =============== (http://opensource.org/licenses/MIT) Copyright (c) 2013-present by Duktape authors (see AUTHORS.rst)\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "duktape",
+        "member": "licenses/murmurhash2.txt",
+        "sha256": "f5cc7809b02b801c96be4a0464daa9cdba49800f5351ed83eb6acca1c42981fb"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+        "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
+      },
+      "full_normalized_original_sha256": "361609ed917897cc38ef2ae23623aa8591f29aebc215f8fb9452c70a3b221009",
+      "complete_word_difference": "16 ORIGINAL duktape/licenses/murmurhash2.txt REFERENCE vpp-inputs/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE\n@ @@ -1,9 +1,10 @@ \n+ The\n  MIT License Copyright (c)\n- 2026\n+ <year>\n  <copyright holders> Permission is"
+    },
+    {
+      "original": {
+        "component": "e2fsprogs",
+        "member": "lib/uuid/COPYING",
+        "sha256": "9b718a9460fed5952466421235bc79eb49d4e9eacc920d7a9dd6285ab8fd6c6d"
+      },
+      "read_reference": {
+        "component": "pcre2",
+        "member": "cmake/COPYING-CMAKE-SCRIPTS",
+        "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+      },
+      "full_normalized_original_sha256": "0a6249520e48a59d94625cc2151aa03236b8efeb8d87a40302f67317db1c10a1",
+      "complete_word_difference": "17 ORIGINAL e2fsprogs/lib/uuid/COPYING REFERENCE pcre2/cmake/COPYING-CMAKE-SCRIPTS\n@ @@ -26,26 +26,33 @@ \n  code must retain the\n+ above\n  copyright notice,\n- this list of conditions and the following disclaimer.\n+ and the entire permission notice in its entirety, including the disclaimer of warranties.\n  2. Redistributions in binary form must reproduce the\n+ above\n  copyright notice, this list\n@ @@ -92,11 +99,8 @@ \n  THIS SOFTWARE IS PROVIDED\n- BY THE AUTHOR\n  ``AS IS'' AND ANY\n@ @@ -118,10 +122,14 @@ \n  FITNESS FOR A PARTICULAR\n- PURPOSE\n+ PURPOSE, ALL OF WHICH\n  ARE\n+ HEREBY\n  DISCLAIMED. IN NO EVENT\n@ @@ -191,8 +199,9 @@ \n  THIS SOFTWARE, EVEN IF\n+ NOT\n  ADVISED OF THE POSSIBILITY"
+    },
+    {
+      "original": {
+        "component": "elfutils",
+        "member": "COPYING-LGPLV3",
+        "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
+        "sha256": "ade78d04982d69972d444a8e14a94f87a2334dd3855cc80348ea8e240aa0df2d"
+      },
+      "full_normalized_original_sha256": "7b3ee35820a089523b4d31482806e1a0c3db035f7ab1856d167d61d89876b480",
+      "complete_word_difference": "18 ORIGINAL elfutils/COPYING-LGPLV3 REFERENCE vpp-inputs/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE\n@ @@ -14,9 +14,9 @@ \n  Free Software Foundation, Inc.\n- <https://fsf.org/>\n+ <http://fsf.org/>\n  Everyone is permitted to"
+    },
+    {
+      "original": {
+        "component": "elfutils",
+        "member": "doc/COPYING-GFDL",
+        "sha256": "62b0aef0fcad4d041e9de52278b2dcbbf999fe0650fa162f37a25cfd969cf4dd"
+      },
+      "read_reference": {
+        "component": "base-files",
+        "member": "licenses/GFDL-1.3",
+        "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+      },
+      "full_normalized_original_sha256": "d0e1295a31108cc7b018887f7d97fceb40b16821cd3f99ea9790b89e7c47dff5",
+      "complete_word_difference": "19 ORIGINAL elfutils/doc/COPYING-GFDL REFERENCE base-files/licenses/GFDL-1.3\n@ @@ -1,4 +1,40 @@ \n+ This license applies to the eu-readelf.1 man page which was forked from the binutils readelf version of the man page. The rest of the documentation is provided under the license found in the top level directory.\n  GNU Free Documentation License"
+    },
+    {
+      "original": {
+        "component": "expat",
+        "member": "COPYING",
+        "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534"
+      },
+      "read_reference": {
+        "component": "popt",
+        "member": "COPYING",
+        "sha256": "2b488b239927935f34769a39309c0680be16e3725a1f55dbb06ed20d53852801"
+      },
+      "full_normalized_original_sha256": "b8bddda96c03bd509ea3b7b542bcaa5f9397c7edf3291235d97ef00bce14f4ea",
+      "complete_word_difference": "20 ORIGINAL expat/COPYING REFERENCE popt/COPYING\n@ @@ -1,10 +1,21 @@ \n  Copyright (c)\n- 1998 Red Hat\n+ 1998-2000 Thai Open Source\n  Software\n+ Center Ltd and Clark Cooper Copyright (c) 2001-2022 Expat maintainers\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "file",
+        "member": "python/LICENSE",
+        "sha256": "9d402e401ecfd65d9c600cf84ecb317aba1c5c6fcb788dd79af94fd1fdc527a8"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.BSD",
+        "sha256": "59ae3d59c672bfb955917a8e32f5cacba7f8ce716c499a4c63dc8cd8cb5c4991"
+      },
+      "full_normalized_original_sha256": "8c638c8db8d9f61917f64b1fb8a23aeb3d2a5d71c00474a2f940a8699b8eebba",
+      "complete_word_difference": "21 ORIGINAL file/python/LICENSE REFERENCE bmon/LICENSE.BSD\n@ @@ -1,4 +1,25 @@ \n+ Copyright (c) Ian F. Darwin 1986-1995. Software written by Ian F. Darwin and others; maintained 1995-present by Christos Zoulas and others.\n  Redistribution and use in\n@ @@ -28,13 +49,22 @@ \n  retain the above copyright\n- notice,\n+ notice immediately at the beginning of the file, without modification,\n  this list of\n- conditions\n+ conditions,\n  and the following disclaimer.\n@ @@ -73,8 +103,10 @@ \n  PROVIDED BY THE AUTHOR\n+ AND CONTRIBUTORS\n  ``AS IS'' AND ANY\n@ @@ -105,8 +137,10 @@ \n  EVENT SHALL THE AUTHOR\n+ OR CONTRIBUTORS\n  BE LIABLE FOR ANY"
+    },
+    {
+      "original": {
+        "component": "freeipmi",
+        "member": "COPYING.sunbmc",
+        "sha256": "48f44386b3f359e70d7e4a5d7f1d529d8591a7c64c47df3f4abdf2ad45a6d537"
+      },
+      "read_reference": {
+        "component": "ipmitool",
+        "member": "COPYING",
+        "sha256": "b7e2382a8be43b5f6cb092f2d2bda163bf1a1938be9300f821a845cbcd535f56"
+      },
+      "full_normalized_original_sha256": "119ab4ac6d70a747b4acaf630163850840a3101ab5fe20268410ac417bb2c544",
+      "complete_word_difference": "22 ORIGINAL freeipmi/COPYING.sunbmc REFERENCE ipmitool/COPYING\n@ @@ -1,4 +1,18 @@ \n+ The file libfreeipmi/driver/freeipmi_bmc_intf.h is from ipmitool (http://sourceforge.net/projects/ipmitool) and comes with the following license. ----\n  Copyright (c) 2003 Sun\n@ @@ -228,4 +242,5 @@ \n  POSSIBILITY OF SUCH DAMAGES.\n+ ----"
+    },
+    {
+      "original": {
+        "component": "fstrm",
+        "member": "COPYRIGHT",
+        "sha256": "fb7b6df23d37e4d9f60ea5e7b8a1ac793f1db07915539d2d201949f30f3aff23"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "fe63182452d933a789234e89a7fbe96d889e23efad3132211a9e705f8e158eab",
+      "complete_word_difference": "23 ORIGINAL fstrm/COPYRIGHT REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,11 @@ \n+ Copyright (c) 2014 by Farsight Security, Inc.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "fstrm",
+        "member": "libmy/COPYRIGHT",
+        "sha256": "dea202400ed83807d727d9ad01e44774ebd87235fd65a42df0ac00afa36e37f7"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "aaf37ed0d9079d9f9ee0478fd7c9811ebfe5c538ac5e53f9ce16a9a116d5b959",
+      "complete_word_difference": "24 ORIGINAL fstrm/libmy/COPYRIGHT REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,11 @@ \n+ Copyright (c) 2012-2014 by Farsight Security, Inc.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "git",
+        "member": "reftable/LICENSE",
+        "sha256": "8aa118e56e554e9086beb82494e8044d0856d5eb0b162a9061f3553a58f04d67"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "35378cab01ce644bd5abf53a34068b61bddbb36a605cfd55ddeb6b1d28e11595",
+      "complete_word_difference": "25 ORIGINAL git/reftable/LICENSE REFERENCE conserver/LICENSE\n@ @@ -1,11 +1,11 @@ \n  BSD\n- 3-Clause\n  License Copyright (c)\n- 2000, conserver.com\n+ 2020, Google LLC\n  All rights reserved. Redistribution\n@ @@ -81,11 +81,10 @@ \n  Neither the name of\n- the copyright holder\n+ Google LLC\n  nor the names of\n@ @@ -149,9 +148,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "git",
+        "member": "sha1dc/LICENSE.txt",
+        "sha256": "9daac99c665ddc38fde6d7c91b9173c112d5e6c6e7e5f7d8bb8747c630efc83d"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+        "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
+      },
+      "full_normalized_original_sha256": "dea31a7ad7de9337d9fdd4b5567c4a6ca61ff9e11551a9a1886beb6127a17202",
+      "complete_word_difference": "26 ORIGINAL git/sha1dc/LICENSE.txt REFERENCE vpp-inputs/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE\n@ @@ -1,11 +1,30 @@ \n  MIT License Copyright (c)\n- 2026 <copyright holders>\n+ 2017: Marc Stevens Cryptology Group Centrum Wiskunde & Informatica P.O. Box 94079, 1090 GB Amsterdam, Netherlands marc@marc-stevens.nl Dan Shumow Microsoft Research danshu@microsoft.com\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "gnupg2",
+        "member": "COPYING.CC0",
+        "sha256": "ec4a7d97de212428cd53e09e0524616f0f584528e0698203fb4d71d6c55b48c5"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "quicly_0.1.5-vpp/deps/picotls/deps/cifra/COPYING",
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      "full_normalized_original_sha256": "8d8ac8abb7ccc9f56211a296ec341808c668eebca5af03a5f54c4ad67d057599",
+      "complete_word_difference": "27 ORIGINAL gnupg2/COPYING.CC0 REFERENCE vpp-inputs/quicly_0.1.5-vpp/deps/picotls/deps/cifra/COPYING\n@ @@ -1,4 +1,15 @@ \n+ [Note that only a few files are distributed under this license.]\n  Creative Commons Legal Code"
+    },
+    {
+      "original": {
+        "component": "gnupg2",
+        "member": "COPYING.LGPL3",
+        "sha256": "b40f7806e14dd7aad5e0254c04c61bf1212de37296f1cd5782ffbc9e98cbee87"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
+        "sha256": "ade78d04982d69972d444a8e14a94f87a2334dd3855cc80348ea8e240aa0df2d"
+      },
+      "full_normalized_original_sha256": "8c2e43e1669136e83f192105256447730a31b0a89a9983cb29d4210a98c4421c",
+      "complete_word_difference": "28 ORIGINAL gnupg2/COPYING.LGPL3 REFERENCE vpp-inputs/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE\n@ @@ -1,4 +1,15 @@ \n+ [Note that only a few files are distributed under this license.]\n  GNU LESSER GENERAL PUBLIC"
+    },
+    {
+      "original": {
+        "component": "gnupg2",
+        "member": "tests/gpgscm/LICENSE.TinySCHEME",
+        "sha256": "67adb18c0247a227dcf843d2dc18f69b7f8935ead643afbf4dd306834c5f1f8d"
+      },
+      "read_reference": {
+        "component": "liblinear",
+        "member": "COPYRIGHT",
+        "sha256": "c366abf1cb3a003d8c6e6d9c111a23c432db1d001294f88d479b70b60d7c0af2"
+      },
+      "full_normalized_original_sha256": "cdb36e0fa319ae81c146a571d871357ace93d7af19e6751221183a26da9f131e",
+      "complete_word_difference": "29 ORIGINAL gnupg2/tests/gpgscm/LICENSE.TinySCHEME REFERENCE liblinear/COPYRIGHT\n@ @@ -1,10 +1,11 @@ \n+ LICENSE TERMS\n  Copyright (c)\n- 2007-2019 The LIBLINEAR Project.\n+ 2000, Dimitrios Souflis\n  All rights reserved. Redistribution\n@ @@ -27,9 +28,8 @@ \n  following conditions are met:\n- 1.\n  Redistributions of source code\n@ @@ -46,9 +46,8 @@ \n  and the following disclaimer.\n- 2.\n  Redistributions in binary form\n@ @@ -75,19 +74,19 @@ \n  provided with the distribution.\n- 3.\n  Neither\n+ the\n  name of\n- copyright holders\n+ Dimitrios Souflis\n  nor the names of\n- its\n+ the\n  contributors may be used"
+    },
+    {
+      "original": {
+        "component": "gnutls28",
+        "member": "doc/examples/tlsproxy/LICENSE",
+        "sha256": "b42dbe48110754b99f026ad30e69b1069f826fb07e7c616b526bd1090952fb1b"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "9273ece57cc3a7398fc3aaec9d1a5a3d2dc652ecac3314c6df3346acbb804d62",
+      "complete_word_difference": "30 ORIGINAL gnutls28/doc/examples/tlsproxy/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,12 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2016 Wrymouth Innovation Ltd\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "gnutls28",
+        "member": "lib/inih/LICENSE.txt",
+        "sha256": "9ae3b39e83e9158e44b67733baa3bb2d84e80efdcfb14a5820210a42c7abdf7f"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "5ff59d38cdd7b75e04f38a346643170daa11ff3761e70b6e776eafbdec44b276",
+      "complete_word_difference": "31 ORIGINAL gnutls28/lib/inih/LICENSE.txt REFERENCE conserver/LICENSE\n@ @@ -1,11 +1,19 @@ \n+ The \"inih\" library is distributed under the New\n  BSD\n- 3-Clause License\n+ license:\n  Copyright (c)\n- 2000, conserver.com\n+ 2009, Ben Hoyt\n  All rights reserved. Redistribution\n@ @@ -81,11 +89,10 @@ \n  Neither the name of\n- the copyright holder\n+ Ben Hoyt\n  nor the names of\n@ @@ -112,15 +119,12 @@ \n  SOFTWARE IS PROVIDED BY\n- THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n+ BEN HOYT ''AS IS''\n  AND ANY EXPRESS OR\n@ @@ -147,13 +151,10 @@ \n  IN NO EVENT SHALL\n- THE COPYRIGHT HOLDER OR CONTRIBUTORS\n+ BEN HOYT\n  BE LIABLE FOR ANY"
+    },
+    {
+      "original": {
+        "component": "golang-github-containers-common",
+        "member": "LICENSE",
+        "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "958e28cd3f37c23ec02881fe20cb82d4151668349e1c7beb2daea4ce2640dcf0",
+      "complete_word_difference": "32 ORIGINAL golang-github-containers-common/LICENSE REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1439,9 +1439,9 @@ \n  fields enclosed by brackets\n- \"[]\"\n+ \"{}\"\n  replaced with your own\n@ @@ -1495,13 +1495,13 @@ \n  within third-party archives. Copyright\n- [yyyy] [name\n+ {yyyy} {name\n  of copyright\n- owner]\n+ owner}\n  Licensed under the Apache"
+    },
+    {
+      "original": {
+        "component": "golang-github-containers-common",
+        "member": "pkg/report/camelcase/LICENSE.md",
+        "sha256": "b2ffbe485b8e503f07853fbdfa79a51b0d2902f9d44e18d913666b6ddde83b57"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "a74be2687386e426c927c5f928fc13a076b778baa626a853589a9f3920c26a8e",
+      "complete_word_difference": "33 ORIGINAL golang-github-containers-common/pkg/report/camelcase/LICENSE.md REFERENCE python-configargparse/LICENSE\n@ @@ -4,9 +4,10 @@ \n  (MIT) Copyright (c) 2015\n- bw2\n+ Fatih Arslan\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "golang-github-containers-image",
+        "member": "LICENSE",
+        "sha256": "716a8b80635c394681e652823e1e42e411ad2d254e1f202403422d74f4b0b106"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "1f414e87382fd65904f09599f8411ac3b8561127230e11dbca73fadf7fb3c460",
+      "complete_word_difference": "34 ORIGINAL golang-github-containers-image/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -3,9 +3,9 @@ \n  Version 2.0, January 2004\n- http://www.apache.org/licenses/\n+ https://www.apache.org/licenses/\n  TERMS AND CONDITIONS FOR\n@ @@ -1410,4 +1410,82 @@ \n  OF TERMS AND CONDITIONS\n+ Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at https://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+    },
+    {
+      "original": {
+        "component": "h2o",
+        "member": "LICENSE",
+        "sha256": "b45f7144e4aa85d6157799934e9b425295b376431f74b8fab00adf0967053a7b"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "1d2456dfb7de20c6ce9664023f033c2ff02cb93442472bf5774080ac7c967a91",
+      "complete_word_difference": "35 ORIGINAL h2o/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,10 @@ \n+ Copyright (c) 2014 DeNA Co., Ltd.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "h2o",
+        "member": "deps/brotli/LICENSE",
+        "sha256": "6e86408ccace4d14d2a9116cb81fe9fbab65f51fb01e123596e1ff5f010abe0c"
+      },
+      "read_reference": {
+        "component": "brotli",
+        "member": "LICENSE",
+        "sha256": "3d180008e36922a4e8daec11c34c7af264fed5962d07924aea928c38e8663c94"
+      },
+      "full_normalized_original_sha256": "2bad2e75ee79ca185107720c6c735e945a220f4e9b81fe599b2d1b2573de225e",
+      "complete_word_difference": "36 ORIGINAL h2o/deps/brotli/LICENSE REFERENCE brotli/LICENSE\n@ @@ -1,9 +1,9 @@ \n  Copyright (c) 2009, 2010,\n- 2013-2016\n+ 2013-2015\n  by the Brotli Authors."
+    },
+    {
+      "original": {
+        "component": "h2o",
+        "member": "deps/libyrmcds/COPYING",
+        "sha256": "d5a6d7903cbed2d051aa5887bffbc8b3cd8a0c9f45078725fa248e9a0596f564"
+      },
+      "read_reference": {
+        "component": "lz4",
+        "member": "contrib/djgpp/LICENSE",
+        "sha256": "d011d1e02cb32b71c1ce2922ab41a2e2ad30f4ecf8de22c078d53618205abc05"
+      },
+      "full_normalized_original_sha256": "cb448ece1f6e1823d718fe44309de92a0c2e176dc6e13ad924d114fd243f1d82",
+      "complete_word_difference": "37 ORIGINAL h2o/deps/libyrmcds/COPYING REFERENCE lz4/contrib/djgpp/LICENSE\n@ @@ -1,11 +1,26 @@ \n  Copyright (c)\n- 2014, lpsantil All rights reserved.\n+ 2013-2015, Cybozu et al. Copyright belongs to the authors or to the authors' employers of each contribution. Refer to https://github.com/cybozu/libyrmcds/commits/\n  Redistribution and use in"
+    },
+    {
+      "original": {
+        "component": "h2o",
+        "member": "deps/mruby-input-stream/LICENSE",
+        "sha256": "490c42bf2f7a37a4f8dd7195a315cd26cb8591df7ea9a75bb54028acbe4e48db"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "459bb7216c3bf972b0ff39622f090f05794126603ba531be6037e5e16ab37453",
+      "complete_word_difference": "38 ORIGINAL h2o/deps/mruby-input-stream/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2015 Masayoshi Takahashi\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "h2o",
+        "member": "deps/neverbleed/LICENSE",
+        "sha256": "5d9c50d175db903e7b777ca8a72f8f03cb9345e1ea6b0d466d83728a2a92d357"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "c9a1608e9f8bfb53ee066334f7f00a9de841436328db6dc88fe85c3e4b8a204f",
+      "complete_word_difference": "39 ORIGINAL h2o/deps/neverbleed/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -4,9 +4,13 @@ \n  (MIT) Copyright (c) 2015\n- bw2\n+ Kazuho Oku, DeNA Co., Ltd.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "h2o",
+        "member": "deps/ssl-conservatory/LICENSE",
+        "sha256": "a37a73b738a5bb346d2e68446a382fee381709d98c6d75b3bd251c431cabdcd0"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "8557c24f248f8a7a36f098044f688232d3511f10b7939470eafd3ecd87811467",
+      "complete_word_difference": "40 ORIGINAL h2o/deps/ssl-conservatory/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (C) 2012, iSEC Partners.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "h2o",
+        "member": "deps/yaml/LICENSE",
+        "sha256": "d0d8b09800a45cd982e9568fc7669d9c1a4c330e275a821bbe24d54366d16fe9"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "dad3ce4fae2ca56edb3e3fc34cb13eecf5356d3d7109eff6e1f31733805b5a33",
+      "complete_word_difference": "41 ORIGINAL h2o/deps/yaml/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2006 Kirill Simonov\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "http-parser",
+        "member": "LICENSE-MIT",
+        "sha256": "79e6ba8b687cb54786207342b9b6fcee0ac10218453ed9009b84d949b2233cc0"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "8932e8e47f25ddce7e119fa7a3cf39502f3fe80112005bd6105d81f2220e2b4c",
+      "complete_word_difference": "42 ORIGINAL http-parser/LICENSE-MIT REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,11 @@ \n+ Copyright Joyent, Inc. and other Node contributors.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "iperf3",
+        "member": "docs/_esnet/LICENSE",
+        "sha256": "537bd023331c2666799474415509b4dd33b9abeb8d37a543d9efce1e843f2f10"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "9cbf4ee7368a3d6592967a4e08cd00c17bcc41b623737979806474cfc49fcb76",
+      "complete_word_difference": "43 ORIGINAL iperf3/docs/_esnet/LICENSE REFERENCE conserver/LICENSE\n@ @@ -1,11 +1,8 @@ \n- BSD 3-Clause License\n  Copyright (c)\n- 2000, conserver.com\n+ 2014, ESnet\n  All rights reserved. Redistribution\n@ @@ -82,10 +79,9 @@ \n  the name of the\n- copyright holder\n+ {organization}\n  nor the names of"
+    },
+    {
+      "original": {
+        "component": "isc-dhcp",
+        "member": "LICENSE",
+        "sha256": "45a39c430be0920cb9570f34b32d2378fe6048c034f2f3265b9326d64ada73df"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/config/_validate_pyproject/NOTICE",
+        "sha256": "09c9bcea95ca086f8bc5bed174e40bc835b297d40fb5f86bbbb570fe0a5581a7"
+      },
+      "full_normalized_original_sha256": "35ff1f4c21323528f4b3b253abbbe303436ec7318e3d525207305e2d0b9e9c33",
+      "complete_word_difference": "44 ORIGINAL isc-dhcp/LICENSE REFERENCE vpp-inputs/setuptools/config/_validate_pyproject/NOTICE\n@ @@ -1,344 +1,58 @@ \n- The code contained in this directory was automatically generated using the following command: python -m validate_pyproject.pre_compile --output-dir=setuptools/config/_validate_pyproject --enable-plugins setuptools distutils --very-verbose -t distutils=setuptools/config/distutils.schema.json -t setuptools=setuptools/config/setuptools.schema.json Please avoid changing it manually. You can report issues or suggest changes directly to `validate-pyproject` (or to the relevant plugin repository) - https://github.com/abravalheri/validate-pyproject/issues *** The following files include code from opensource projects (either as direct copies or modified versions): - `fastjsonschema_exceptions.py`: - project: `fastjsonschema` - licensed under BSD-3-Clause (https://github.com/horejsek/python-fastjsonschema) - `extra_validations.py` and `format.py`, `error_reporting.py`: - project: `validate-pyproject` - licensed under MPL-2.0 (https://github.com/abravalheri/validate-pyproject) Additionally the following files are automatically generated by tools provided by the same projects: - `__init__.py` - `fastjsonschema_validations.py` The relevant copyright notes and licenses are\n+ # Copyright (c) 2004-2022 by Internet Systems Consortium, Inc. (\"ISC\") # Copyright (c) 1995-2003 by Internet Software Consortium # # This Source Code Form is subject to the terms of the Mozilla Public # License, v. 2.0,\n  included below.\n- *** `fastjsonschema` ================ Copyright (c) 2018, Michal Horejsek All rights reserved. Redistribution and use in\n+ # # See the specific\n  source\n- and binary forms, with or without modification, are permitted provided that the following conditions are met: Redistributions of source code must retain the above\n+ files for any additional\n  copyright\n- notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. Neither the name of the {organization} nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. *** `validate-pyproject` ====================\n+ or # license statements.\n  Mozilla Public License, version\n@ @@ -2602,9 +2316,9 @@ \n  can obtain one at\n- https://mozilla.org/MPL/2.0/.\n+ http://mozilla.org/MPL/2.0/.\n  If it is not"
+    },
+    {
+      "original": {
+        "component": "jimtcl",
+        "member": "jsmn/LICENSE",
+        "sha256": "4675b94a50d2afe811c52785463c854f1156056632cce17cc7133939eac8ed55"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "767c3f1285bf0e947a806ee70ea64e8844e82c2072ac75f5c34a394470af9a0b",
+      "complete_word_difference": "45 ORIGINAL jimtcl/jsmn/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,10 @@ \n+ Copyright (c) 2010 Serge A. Zaitsev\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "jinja2",
+        "member": "LICENSE.rst",
+        "sha256": "3b49dcee4105eb37bac10faf1be260408fe85d252b8e9df2e0979fc1e094437b"
+      },
+      "read_reference": {
+        "component": "markupsafe",
+        "member": "LICENSE.rst",
+        "sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea"
+      },
+      "full_normalized_original_sha256": "9575197ff604c1db90410d8a4808d91c6e36b9bff84e22698c5be4b6edb90a3c",
+      "complete_word_difference": "46 ORIGINAL jinja2/LICENSE.rst REFERENCE markupsafe/LICENSE.rst\n@ @@ -1,6 +1,6 @@ \n  Copyright\n- 2010\n+ 2007\n  Pallets Redistribution and use"
+    },
+    {
+      "original": {
+        "component": "lapack",
+        "member": "LAPACKE/LICENSE",
+        "sha256": "871f415ebd2fd06c7ab8cc3c0016aa2d26b918622345116e2d0c740b688d4843"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "cca2dc98007f31cd64e4dda24f664a747f6d2ac7ef96686a0af7c26545071bd2",
+      "complete_word_difference": "47 ORIGINAL lapack/LAPACKE/LICENSE REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,12 @@ \n  Copyright (c)\n- 2012-2024,\n+ 2012,\n  Intel\n- Corporation\n+ Corp. All rights reserved.\n  Redistribution and use in"
+    },
+    {
+      "original": {
+        "component": "libcapture-tiny-perl",
+        "member": "LICENSE",
+        "sha256": "d48b5e081ee6afea47e09bb3f25027c88792a248058d81f360b306c28ba4e07d"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "66aa357637f98565658c68941ec42df71fd3b60d642e5b5c54cfeb4fb61a956f",
+      "complete_word_difference": "48 ORIGINAL libcapture-tiny-perl/LICENSE REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1,4 +1,26 @@ \n+ This software is Copyright (c) 2009 by David Golden. This is free software, licensed under: The Apache License, Version 2.0, January 2004\n  Apache License Version 2.0,"
+    },
+    {
+      "original": {
+        "component": "libecap",
+        "member": "LICENSE",
+        "sha256": "eaee2fc3ac4ab91a9aa325cf8752b8a087ec562f0b29e305cf8e73c8647c3c3c"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.BSD",
+        "sha256": "59ae3d59c672bfb955917a8e32f5cacba7f8ce716c499a4c63dc8cd8cb5c4991"
+      },
+      "full_normalized_original_sha256": "8c0376d5a375b0a38cdf4899f3bc0bd5c12b314bfff9c234bba32166f5845825",
+      "complete_word_difference": "49 ORIGINAL libecap/LICENSE REFERENCE bmon/LICENSE.BSD\n@ @@ -1,4 +1,12 @@ \n+ Copyright 2008 The Measurement Factory. All rights reserved.\n  Redistribution and use in\n@ @@ -72,9 +80,10 @@ \n  IS PROVIDED BY THE\n- AUTHOR\n+ MEASUREMENT FACTORY\n  ``AS IS'' AND ANY\n@ @@ -104,9 +113,12 @@ \n  NO EVENT SHALL THE\n- AUTHOR\n+ MEASUREMENT FACTORY OR CONTRIBUTORS\n  BE LIABLE FOR ANY"
+    },
+    {
+      "original": {
+        "component": "libffi",
+        "member": "LICENSE",
+        "sha256": "2c9c2acb9743e6b007b91350475308aee44691d96aa20eacef8e199988c8c388"
+      },
+      "read_reference": {
+        "component": "popt",
+        "member": "COPYING",
+        "sha256": "2b488b239927935f34769a39309c0680be16e3725a1f55dbb06ed20d53852801"
+      },
+      "full_normalized_original_sha256": "0b133f677136fdd91b43a2ba3a0c3888fd14ed7d158d8f5122e6e9a74f51a544",
+      "complete_word_difference": "50 ORIGINAL libffi/LICENSE REFERENCE popt/COPYING\n@ @@ -1,10 +1,21 @@ \n+ libffi -\n  Copyright (c)\n- 1998\n+ 1996-2022 Anthony Green,\n  Red\n- Hat Software\n+ Hat, Inc and others. See source files for details.\n  Permission is hereby granted,\n@ @@ -24,9 +35,9 @@ \n  associated documentation files (the\n- \"Software\"),\n+ ``Software''),\n  to deal in the\n@ @@ -93,10 +104,10 @@ \n  THE SOFTWARE IS PROVIDED\n- \"AS IS\",\n+ ``AS IS'',\n  WITHOUT WARRANTY OF ANY"
+    },
+    {
+      "original": {
+        "component": "libfido2",
+        "member": "LICENSE",
+        "sha256": "037d5a56acbd845c25ff0e99f65a0a9c0945ec160a7f875c107a0a436af3eabe"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+        "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      },
+      "full_normalized_original_sha256": "239914924bd5ebd5c08bc892f09ea0245d35506a20cb363e5aa94b40a3ca8043",
+      "complete_word_difference": "51 ORIGINAL libfido2/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.BSD\n@ @@ -1,11 +1,9 @@ \n  Copyright (c)\n- Donald Stufft and individual contributors.\n+ 2018-2022 Yubico AB.\n  All rights reserved. Redistribution\n@ @@ -192,4 +190,6 @@ \n  POSSIBILITY OF SUCH DAMAGE.\n+ SPDX-License-Identifier: BSD-2-Clause"
+    },
+    {
+      "original": {
+        "component": "liblognorm",
+        "member": "COPYING.ASL20",
+        "sha256": "8743ad560dea1229d4f46cd603e10874db41a27f3c74f64e958ef123f3943fab"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "d519e4d9af7ed2ddccf8de208959710e162e8ad5a79ac8179afc114a5ff7e9b9",
+      "complete_word_difference": "52 ORIGINAL liblognorm/COPYING.ASL20 REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -709,9 +709,9 @@ \n  meet the following conditions:\n- (a)\n+ 1.\n  You must give any\n@ @@ -728,9 +728,9 @@ \n  of this License; and\n- (b)\n+ 2.\n  You must cause any\n@ @@ -746,9 +746,9 @@ \n  changed the files; and\n- (c)\n+ 3.\n  You must retain, in\n@ @@ -790,9 +790,9 @@ \n  the Derivative Works; and\n- (d)\n+ 4.\n  If the Work includes\n@ @@ -1405,9 +1405,4 @@ \n  warranty or additional liability.\n- END OF TERMS AND CONDITIONS"
+    },
+    {
+      "original": {
+        "component": "libnet",
+        "member": "doc/COPYING",
+        "sha256": "961355c8bac6de11ecb8f634111986712e80a88272c0bb0954fd1810e6f47cab"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.BSD",
+        "sha256": "59ae3d59c672bfb955917a8e32f5cacba7f8ce716c499a4c63dc8cd8cb5c4991"
+      },
+      "full_normalized_original_sha256": "56f4d0a4cb5625c8227fc555b94bb27f4ffa1ff541043b71ee47039ebf07e348",
+      "complete_word_difference": "53 ORIGINAL libnet/doc/COPYING REFERENCE bmon/LICENSE.BSD\n@ @@ -1,4 +1,36 @@ \n+ $Id: COPYING,v 1.1.1.1 2003/06/26 21:55:10 route Exp $ libnet 1.1.x Copyright (c) 1998 - 2002 Mike D. Schiffman <mike@infonexus.com> http://www.packetfactory.net/libnet LIBNET 1.1.3+ (c) 2009 - 2012 Sam Roberts <vieuxtech@gmail.com> All rights reserved.\n  Redistribution and use in\n@ @@ -73,8 +105,10 @@ \n  PROVIDED BY THE AUTHOR\n+ AND CONTRIBUTORS\n  ``AS IS'' AND ANY\n@ @@ -105,8 +139,10 @@ \n  EVENT SHALL THE AUTHOR\n+ OR CONTRIBUTORS\n  BE LIABLE FOR ANY\n@ @@ -176,4 +212,5 @@ \n  POSSIBILITY OF SUCH DAMAGE.\n+ EOF"
+    },
+    {
+      "original": {
+        "component": "libonig",
+        "member": "COPYING",
+        "sha256": "70ba5469ea0bab6e18a32d7009068f996503168d27be57747e08da34337ff26f"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.BSD",
+        "sha256": "59ae3d59c672bfb955917a8e32f5cacba7f8ce716c499a4c63dc8cd8cb5c4991"
+      },
+      "full_normalized_original_sha256": "06318f30cb4eaa9a1579da9fbdc86593a74bd1347ba9b91660610b8b25bdd353",
+      "complete_word_difference": "54 ORIGINAL libonig/COPYING REFERENCE bmon/LICENSE.BSD\n@ @@ -1,4 +1,15 @@ \n+ Oniguruma LICENSE ----------------- Copyright (c) 2002-2021 K.Kosako <kkosako0@gmail.com> All rights reserved.\n  Redistribution and use in\n@ @@ -73,8 +84,10 @@ \n  PROVIDED BY THE AUTHOR\n+ AND CONTRIBUTORS\n  ``AS IS'' AND ANY\n@ @@ -105,8 +118,10 @@ \n  EVENT SHALL THE AUTHOR\n+ OR CONTRIBUTORS\n  BE LIABLE FOR ANY"
+    },
+    {
+      "original": {
+        "component": "libpath-tiny-perl",
+        "member": "LICENSE",
+        "sha256": "c1a19c0d83f668a784640c0b41e024f37b182ad38011b170f9200123e57f6070"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "a5e3b244edc7cf895e01f22db80ca6f65721ba5e4af1294c702d39744dd28f50",
+      "complete_word_difference": "55 ORIGINAL libpath-tiny-perl/LICENSE REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1,4 +1,26 @@ \n+ This software is Copyright (c) 2014 by David Golden. This is free software, licensed under: The Apache License, Version 2.0, January 2004\n  Apache License Version 2.0,\n@ @@ -1495,13 +1517,11 @@ \n  within third-party archives. Copyright\n- [yyyy] [name of copyright owner]\n+ 2014 David Golden\n  Licensed under the Apache"
+    },
+    {
+      "original": {
+        "component": "libpsl",
+        "member": "COPYING",
+        "sha256": "776cd11d54f0ea3e5efdd25ff1a0d952a1744215bb5858ea7aeb91808e70c9f7"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "72d97555091a8ebc7ed230cc457bee2b8f414a3f1a1d3e7789c9f108470c87d7",
+      "complete_word_difference": "56 ORIGINAL libpsl/COPYING REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (C) 2014-2022 Tim R\u00fchsen\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "libqmi",
+        "member": "gobi-api/GobiAPI_1.0.40/COPYING",
+        "sha256": "14af91f029cc45c409839d1b8b2fbd99d5bd43d391cda54fb7211b66fca859d3"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "ee8e10eda562a45d8dd1796ad41cc0801a633c297fa730fcf8c9ca2c4b9679d0",
+      "complete_word_difference": "57 ORIGINAL libqmi/gobi-api/GobiAPI_1.0.40/COPYING REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,13 @@ \n  Copyright (c)\n- 2012-2024, Intel Corporation\n+ 2011, Code Aurora Forum. All rights reserved.\n  Redistribution and use in\n@ @@ -76,10 +80,11 @@ \n  Neither the name of\n- Intel Corporation\n+ Code Aurora Forum\n  nor the names of"
+    },
+    {
+      "original": {
+        "component": "libregexp-common-perl",
+        "member": "COPYRIGHT.BSD",
+        "sha256": "ebe4989893eeeca6daefccca138810c4d2027efe1b3f464be19d9a9a1e676fb3"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "3e119e42227de52bc3a98fa2e201d8539faca6b05816c7a28d72f34cdbb40ca3",
+      "complete_word_difference": "58 ORIGINAL libregexp-common-perl/COPYRIGHT.BSD REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,16 @@ \n  Copyright (c)\n- 2012-2024, Intel Corporation\n+ 2001 - 2008, Damian Conway and Abigail All rights reserved.\n  Redistribution and use in\n@ @@ -72,21 +79,15 @@ \n  with the distribution. *\n- Neither the name of Intel Corporation nor the\n+ The\n  names of its contributors may\n+ not\n  be used to endorse"
+    },
+    {
+      "original": {
+        "component": "libregexp-common-perl",
+        "member": "COPYRIGHT.MIT",
+        "sha256": "f4d0dab889363592f1eff63f18ada54e16d31fa868d5f112355e9f798d262afd"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "19b4a000ccfe89c7130329f05a9690e108f4e9025bd0b7451d4a6c700e2701f1",
+      "complete_word_difference": "59 ORIGINAL libregexp-common-perl/COPYRIGHT.MIT REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,13 @@ \n+ Copyright (c) 2001 - 2008, Damian Conway and Abigail\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "librtr",
+        "member": "LICENSE",
+        "sha256": "f6e825cedadac970f681e3714dad396fd62cb811b98a94d8e8e02e0c5abe765a"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "c280330535699ee9de666730cf070b615f1a47e81adc556b67f327ec8097c7d3",
+      "complete_word_difference": "60 ORIGINAL librtr/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,14 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2011 - 2017 The RTRlib authors\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "librtr",
+        "member": "third-party/tommyds/LICENSE",
+        "sha256": "bab51c39824b5d9346634d99d14f9413fbae197449971c94d1b9f9972fe98b83"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+        "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      },
+      "full_normalized_original_sha256": "b84b6221472d5d2702d2323be902750f182e3e08314b234e5e00aac6bb420c8c",
+      "complete_word_difference": "61 ORIGINAL librtr/third-party/tommyds/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.BSD\n@ @@ -1,11 +1,9 @@ \n  Copyright (c)\n- Donald Stufft and individual contributors.\n+ 2010, Andrea Mazzoleni.\n  All rights reserved. Redistribution\n@ @@ -118,9 +116,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "libsodium",
+        "member": "LICENSE",
+        "sha256": "dea1855c9809f3faf22aa4a1fba20ec8af5a5587f23115012e5b98279cedc4af"
+      },
+      "read_reference": {
+        "component": "minisign",
+        "member": "LICENSE",
+        "sha256": "d775d155cbf31638714c31c6f990f9fdc5f07998d91e42d1bf15483bd2d1706b"
+      },
+      "full_normalized_original_sha256": "d97621730c3a7a80ee29bf2b44753760157c9570b0632f28c4b2ccef4905e38b",
+      "complete_word_difference": "62 ORIGINAL libsodium/LICENSE REFERENCE minisign/LICENSE\n@ @@ -1,11 +1,13 @@ \n+ /* *\n  ISC\n- LICENSE. /*\n+ License *\n  * Copyright (c)\n- 2015-2023\n+ 2013-2019\n  * Frank Denis <j"
+    },
+    {
+      "original": {
+        "component": "libssh",
+        "member": "doc/that_style/LICENSE",
+        "sha256": "54e50cdc116a90e300006d50d02199dcec7317cc903a9d43a7dc800ce289f580"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+        "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
+      },
+      "full_normalized_original_sha256": "4a9e2a1dde80d561327e951c292ecb05eaaae46b45d5d103f89bd0fae0056f03",
+      "complete_word_difference": "63 ORIGINAL libssh/doc/that_style/LICENSE REFERENCE vpp-inputs/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE\n@ @@ -1,11 +1,11 @@ \n  MIT License Copyright (c)\n- 2026 <copyright holders>\n+ 2017 Jan-Lukas Wynen\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "libtirpc",
+        "member": "COPYING",
+        "sha256": "17cf6098f95bdbb269f0bbc68e76c88fe20487ca7ec53f454923ab4256ecd2e7"
+      },
+      "read_reference": {
+        "component": "pcre2",
+        "member": "cmake/COPYING-CMAKE-SCRIPTS",
+        "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+      },
+      "full_normalized_original_sha256": "4742a831c938bee9b2c2d1206c69941d435209f7ad06d606d977c5aac16c7127",
+      "complete_word_difference": "64 ORIGINAL libtirpc/COPYING REFERENCE pcre2/cmake/COPYING-CMAKE-SCRIPTS\n@ @@ -1,4 +1,17 @@ \n+ /* * Copyright (c) Copyright (c) Bull S.A. 2005 All Rights Reserved. *\n  Redistribution and use in\n@ @@ -8,27 +21,32 @@ \n  forms, with or without\n+ *\n  modification, are permitted provided that the following conditions\n+ *\n  are met:\n+ *\n  1. Redistributions of source code must retain the\n+ above\n  copyright\n+ *\n  notice, this list of\n@ @@ -36,17 +54,20 @@ \n  and the following disclaimer.\n+ *\n  2. Redistributions in binary form must reproduce the\n+ above\n  copyright\n+ *\n  notice, this list of\n@ @@ -56,16 +77,18 @@ \n  following disclaimer in the\n+ *\n  documentation and/or other materials provided with the distribution.\n+ *\n  3. The name of\n@ @@ -79,8 +102,9 @@ \n  endorse or promote products\n+ *\n  derived from this software\n@ @@ -88,8 +112,10 @@ \n  specific prior written permission.\n+ * *\n  THIS SOFTWARE IS PROVIDED\n@ @@ -101,8 +127,9 @@ \n  AND ANY EXPRESS OR\n+ *\n  IMPLIED WARRANTIES, INCLUDING, BUT\n@ @@ -111,8 +138,9 @@ \n  TO, THE IMPLIED WARRANTIES\n+ *\n  OF MERCHANTABILITY AND FITNESS\n@ @@ -121,8 +149,9 @@ \n  PARTICULAR PURPOSE ARE DISCLAIMED.\n+ *\n  IN NO EVENT SHALL\n@ @@ -133,16 +162,18 @@ \n  FOR ANY DIRECT, INDIRECT,\n+ *\n  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n+ *\n  NOT LIMITED TO, PROCUREMENT\n@ @@ -153,8 +184,9 @@ \n  SERVICES; LOSS OF USE,\n+ *\n  DATA, OR PROFITS; OR\n@ @@ -164,8 +196,9 @@ \n  CAUSED AND ON ANY\n+ *\n  THEORY OF LIABILITY, WHETHER\n@ @@ -174,8 +207,9 @@ \n  STRICT LIABILITY, OR TORT\n+ *\n  (INCLUDING NEGLIGENCE OR OTHERWISE)\n@ @@ -187,8 +221,9 @@ \n  OF THE USE OF\n+ *\n  THIS SOFTWARE, EVEN IF\n@ @@ -198,4 +233,5 @@ \n  POSSIBILITY OF SUCH DAMAGE.\n+ */"
+    },
+    {
+      "original": {
+        "component": "libunwind",
+        "member": "COPYING",
+        "sha256": "6a0dbbdaec2b3136b7bf045586f4212bdf74e7af688bf9dfe9154607cf5ec156"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "737b39cf394f39eb3dd13be9a9343471907f345408ee87b27fe2132a3d88b257",
+      "complete_word_difference": "65 ORIGINAL libunwind/COPYING REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2002 Hewlett-Packard Co.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "libzstd",
+        "member": "LICENSE",
+        "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "6c34e57889f7620c8977fe9d0d383b97dc1dcdcdb6987165187ccaedaed49914",
+      "complete_word_difference": "66 ORIGINAL libzstd/LICENSE REFERENCE conserver/LICENSE\n@ @@ -1,11 +1,16 @@ \n  BSD\n- 3-Clause\n  License\n+ For Zstandard software\n  Copyright (c)\n- 2000, conserver.com\n+ Meta Platforms, Inc. and affiliates.\n  All rights reserved. Redistribution\n@ @@ -80,12 +85,11 @@ \n  * Neither the name\n- of the copyright holder\n+ Facebook, nor Meta,\n  nor the names of"
+    },
+    {
+      "original": {
+        "component": "linux",
+        "member": "LICENSES/deprecated/GFDL-1.2",
+        "sha256": "8924806fea842f1166f891a2f07cdaac771cd3a99e6c5d4b9ac76b0dfcd0b28b"
+      },
+      "read_reference": {
+        "component": "base-files",
+        "member": "licenses/GFDL-1.3",
+        "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+      },
+      "full_normalized_original_sha256": "0d41e2878a9bf7956d66945adf4680c06c711baaae2f28cb46a54370b551b54d",
+      "complete_word_difference": "67 ORIGINAL linux/LICENSES/deprecated/GFDL-1.2 REFERENCE base-files/licenses/GFDL-1.3\n@ @@ -1,25 +1,110 @@ \n+ Valid-License-Identifier: GPL-2.0 OR GFDL-1.2-no-invariants-or-later Valid-License-Identifier: GPL-2.0 OR GFDL-1.2-no-invariants-only Valid-License-Identifier: GFDL-1.2-no-invariants-or-later Valid-License-Identifier: GFDL-1.2-no-invariants-only SPDX-URL: https://spdx.org/licenses/GFDL-1.2-no-invariants-or-later.html Usage-Guide: The GNU Free Documentation License should only be used without Invariant Sections, Front-Cover Texts or Back-Cover Texts. It should not be used for new documents. To use the license in source code, put the following SPDX tag/value pair into a comment according to the placement guidelines in the licensing rules documentation: SPDX-License-Identifier: GPL-2.0 OR GFDL-1.2-no-invariants-or-later or SPDX-License-Identifier: GPL-2.0 OR GFDL-1.1-no-invariants-only or SPDX-License-Identifier: GFDL-1.2-no-invariants-or-later or SPDX-License-Identifier: GFDL-1.2-no-invariants-only License-Text:\n  GNU Free Documentation License Version\n- 1.3, 3\n+ 1.2,\n  November\n- 2008\n+ 2002\n  Copyright (C)\n- 2000, 2001, 2002, 2007, 2008\n+ 2000,2001,2002\n  Free Software Foundation, Inc.\n- <https://fsf.org/>\n+ 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA\n  Everyone is permitted to\n@ @@ -858,24 +943,8 @@ \n  body of the text.\n- The \"publisher\" means any person or entity that distributes copies of the Document to the public.\n  A section \"Entitled XYZ\"\n@ @@ -2893,21 +2962,23 @@ \n  except as expressly provided\n+ for\n  under this License. Any\n+ other\n  attempt\n- otherwise\n  to copy, modify,\n- sublicense,\n+ sublicense\n  or distribute\n- it\n+ the Document\n  is void, and will\n@ @@ -2918,181 +2989,35 @@ \n  under this License. However,\n- if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation. Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice. Termination of your rights under this section does not terminate the licenses of\n  parties who have received\n- copies or rights\n+ copies, or rights,\n  from you under this\n- License. If your rights\n+ License will not\n  have\n- been\n+ their licenses\n  terminated\n- and not permanently reinstated, receipt of a copy of some or all of the same material does not give you any rights to use it.\n+ so long as such parties remain in full compliance.\n  10. FUTURE REVISIONS OF\n@ @@ -3232,262 +3157,8 @@ \n  the Free Software Foundation.\n- If the Document specifies that a proxy can decide which future versions of this License can be used, that proxy's public statement of acceptance of a version permanently authorizes you to choose that version for the Document. 11. RELICENSING \"Massive Multiauthor Collaboration Site\" (or \"MMC Site\") means any World Wide Web server that publishes copyrightable works and also provides prominent facilities for anybody to edit those works. A public wiki that anybody can edit is an example of such a server. A \"Massive Multiauthor Collaboration\" (or \"MMC\") contained in the site means any set of copyrightable works thus published on the MMC site. \"CC-BY-SA\" means the Creative Commons Attribution-Share Alike 3.0 license published by Creative Commons Corporation, a not-for-profit corporation with a principal place of business in San Francisco, California, as well as future copyleft versions of that license published by that same organization. \"Incorporate\" means to publish or republish a Document, in whole or in part, as part of another Document. An MMC is \"eligible for relicensing\" if it is licensed under this License, and if all works that were first published under this License somewhere other than this MMC, and subsequently incorporated in whole or in part into the MMC, (1) had no cover texts or invariant sections, and (2) were thus incorporated prior to November 1, 2008. The operator of an MMC Site may republish an MMC contained in the site under CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is eligible for relicensing.\n  ADDENDUM: How to use\n@ @@ -3552,9 +3223,9 @@ \n  Free Documentation License, Version\n- 1.3\n+ 1.2\n  or any later version"
+    },
+    {
+      "original": {
+        "component": "linux",
+        "member": "LICENSES/dual/Apache-2.0",
+        "sha256": "7e4d3fba250d15e9e0afa380d4b611828fa2560cc8fdebe95bcf2f01a487de12"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "d48a7a023bc7b656d4ed04abe28293d685f5065e3c71c463a8d7eac69041ab35",
+      "complete_word_difference": "68 ORIGINAL linux/LICENSES/dual/Apache-2.0 REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -1,4 +1,80 @@ \n+ Valid-License-Identifier: Apache-2.0 SPDX-URL: https://spdx.org/licenses/Apache-2.0.html Usage-Guide: Do NOT use. The Apache-2.0 is not GPL2 compatible. It may only be used for dual-licensed files where the other license is GPL2 compatible. If you end up using this it MUST be used together with a GPL2 compatible license using \"OR\". To use the Apache License version 2.0 put the following SPDX tag/value pair into a comment according to the placement guidelines in the licensing rules documentation: SPDX-License-Identifier: Apache-2.0 License-Text:\n  Apache License Version 2.0,\n@ @@ -709,9 +785,9 @@ \n  meet the following conditions:\n- (a)\n+ a.\n  You must give any\n@ @@ -728,9 +804,9 @@ \n  of this License; and\n- (b)\n+ b.\n  You must cause any\n@ @@ -746,9 +822,9 @@ \n  changed the files; and\n- (c)\n+ c.\n  You must retain, in\n@ @@ -790,9 +866,9 @@ \n  the Derivative Works; and\n- (d)\n+ d.\n  If the Work includes"
+    },
+    {
+      "original": {
+        "component": "linux",
+        "member": "LICENSES/preferred/BSD-3-Clause",
+        "sha256": "7a83b1aeb460458db9a4bd521d7f237c45b1650f6e60ea5ffc71e49472454de3"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "xdp-tools-1.5.5/LICENSES/BSD-2-Clause",
+        "sha256": "6313108c23efffa36948f8b2cff1560a5935373b527b0e1a837cc77e6ed1bacd"
+      },
+      "full_normalized_original_sha256": "9b71e292b2d6b9a0143e2f8c1aa9356a8eaef3147f6efa32cfc8fb474c63bc85",
+      "complete_word_difference": "69 ORIGINAL linux/LICENSES/preferred/BSD-3-Clause REFERENCE vpp-inputs/xdp-tools-1.5.5/LICENSES/BSD-2-Clause\n@ @@ -1,15 +1,17 @@ \n  Valid-License-Identifier:\n- BSD-2-Clause\n+ BSD-3-Clause\n  SPDX-URL:\n- https://spdx.org/licenses/BSD-2-Clause.html\n+ https://spdx.org/licenses/BSD-3-Clause.html\n  Usage-Guide: To use the BSD\n- 2-clause \"Simplified\"\n+ 3-clause \"New\" or \"Revised\"\n  License put the following\n@ @@ -29,9 +31,9 @@ \n  licensing rules documentation: SPDX-License-Identifier:\n- BSD-2-Clause\n+ BSD-3-Clause\n  License-Text: Copyright (c) <year>\n@ @@ -108,8 +110,39 @@ \n  provided with the distribution.\n+ 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n  THIS SOFTWARE IS PROVIDED"
+    },
+    {
+      "original": {
+        "component": "lldpd",
+        "member": "osx/resources/license.html",
+        "sha256": "3b573822fc6983a6be4dab0273b8aa4a42450b0e43577536db6f6bbcc2f12220"
+      },
+      "read_reference": {
+        "component": "lsb-release-minimal",
+        "member": "LICENSE.txt",
+        "sha256": "cb67becb7e7441ca4319b509650752fd59a3a99d84d1eb0ebe694554656032e2"
+      },
+      "full_normalized_original_sha256": "ab6f149c8d8b1dadb35f4c1dd0405475bab32241342e1fd530089219469cb785",
+      "complete_word_difference": "70 ORIGINAL lldpd/osx/resources/license.html REFERENCE lsb-release-minimal/LICENSE.txt\n@ @@ -1,9 +1,19 @@ \n+ <html> <body style=\"font-family: Gill Sans, sans-serif\"> <p>\n  Copyright\n- (c) 2021-2022 Gioele Barabucci\n+ &copy; 2013-2016 <a href=\"mailto:bernat@luffy.cx\">Vincent Bernat</a> </p> <p>\n  Permission to use, copy,\n@ @@ -35,8 +45,10 @@ \n  appear in all copies.\n+ </p> <p>\n  THE SOFTWARE IS PROVIDED\n@ @@ -113,4 +125,7 @@ \n  PERFORMANCE OF THIS SOFTWARE.\n+ </p> </body> </html>"
+    },
+    {
+      "original": {
+        "component": "log4cplus",
+        "member": "threadpool/COPYING",
+        "sha256": "3c9c482a68a9249d61d5c36da3085846411efa845ce1ecedd0cbe9679220b722"
+      },
+      "read_reference": {
+        "component": "zlib",
+        "member": "LICENSE",
+        "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243"
+      },
+      "full_normalized_original_sha256": "4a341625eca16de766d0ea643aff6e44eb7115851f2b8fa2f105a1ed58b1f855",
+      "complete_word_difference": "71 ORIGINAL log4cplus/threadpool/COPYING REFERENCE zlib/LICENSE\n@ @@ -1,13 +1,9 @@ \n  Copyright\n- notice: (C) 1995-2022 Jean-loup Gailly and Mark Adler\n+ (c) 2012-2015 Jakob Progsch\n  This software is provided\n@ @@ -138,10 +134,12 @@ \n  from any source distribution.\n- Jean-loup Gailly Mark Adler jloup@gzip.org madler@alumni.caltech.edu\n+ Modified for log4cplus, copyright (c) 2014-2015 V\u00e1clav Zeman."
+    },
+    {
+      "original": {
+        "component": "lvm2",
+        "member": "COPYING.BSD",
+        "sha256": "eea9f9e35fbabc4c425a47fcd70f48b41c546f4da1ecb3f8dd710bf5f6ac6208"
+      },
+      "read_reference": {
+        "component": "lz4",
+        "member": "contrib/djgpp/LICENSE",
+        "sha256": "d011d1e02cb32b71c1ce2922ab41a2e2ad30f4ecf8de22c078d53618205abc05"
+      },
+      "full_normalized_original_sha256": "162d1ecb7f7ca58b643d3127437d133824b353707ab3f4fcaaf45fe2f062cfbd",
+      "complete_word_difference": "72 ORIGINAL lvm2/COPYING.BSD REFERENCE lz4/contrib/djgpp/LICENSE\n@ @@ -1,8 +1,13 @@ \n+ BSD 2-Clause License\n  Copyright (c) 2014,\n- lpsantil\n+ Red Hat, Inc.\n  All rights reserved. Redistribution\n@ @@ -25,9 +30,9 @@ \n  following conditions are met:\n- *\n+ 1.\n  Redistributions of source code\n@ @@ -44,9 +49,9 @@ \n  and the following disclaimer.\n- *\n+ 2.\n  Redistributions in binary form"
+    },
+    {
+      "original": {
+        "component": "nano",
+        "member": "COPYING.DOC",
+        "sha256": "f45cc81b400a048b56c9edbd4c3317f7a8958463dfd55aa96f268ecfd6baa12c"
+      },
+      "read_reference": {
+        "component": "base-files",
+        "member": "licenses/GFDL-1.3",
+        "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+      },
+      "full_normalized_original_sha256": "794d19837795c0779a89ca8ab5513c16d6b1a92d2451f21c8c1ed56d691dcbfd",
+      "complete_word_difference": "73 ORIGINAL nano/COPYING.DOC REFERENCE base-files/licenses/GFDL-1.3\n@ @@ -2,24 +2,27 @@ \n  Free Documentation License Version\n- 1.3, 3\n+ 1.2,\n  November\n- 2008\n+ 2002\n  Copyright (C)\n- 2000, 2001, 2002, 2007, 2008\n+ 2000,2001,2002\n  Free Software Foundation, Inc.\n- <https://fsf.org/>\n+ 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA\n  Everyone is permitted to\n@ @@ -858,24 +861,8 @@ \n  body of the text.\n- The \"publisher\" means any person or entity that distributes copies of the Document to the public.\n  A section \"Entitled XYZ\"\n@ @@ -2893,21 +2880,23 @@ \n  except as expressly provided\n+ for\n  under this License. Any\n+ other\n  attempt\n- otherwise\n  to copy, modify,\n- sublicense,\n+ sublicense\n  or distribute\n- it\n+ the Document\n  is void, and will\n@ @@ -2918,181 +2907,35 @@ \n  under this License. However,\n- if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation. Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice. Termination of your rights under this section does not terminate the licenses of\n  parties who have received\n- copies or rights\n+ copies, or rights,\n  from you under this\n- License. If your rights\n+ License will not\n  have\n- been\n+ their licenses\n  terminated\n- and not permanently reinstated, receipt of a copy of some or all of the same material does not give you any rights to use it.\n+ so long as such parties remain in full compliance.\n  10. FUTURE REVISIONS OF\n@ @@ -3140,9 +2983,9 @@ \n  problems or concerns. See\n- https://www.gnu.org/licenses/.\n+ http://www.gnu.org/copyleft/.\n  Each version of the\n@ @@ -3232,262 +3075,8 @@ \n  the Free Software Foundation.\n- If the Document specifies that a proxy can decide which future versions of this License can be used, that proxy's public statement of acceptance of a version permanently authorizes you to choose that version for the Document. 11. RELICENSING \"Massive Multiauthor Collaboration Site\" (or \"MMC Site\") means any World Wide Web server that publishes copyrightable works and also provides prominent facilities for anybody to edit those works. A public wiki that anybody can edit is an example of such a server. A \"Massive Multiauthor Collaboration\" (or \"MMC\") contained in the site means any set of copyrightable works thus published on the MMC site. \"CC-BY-SA\" means the Creative Commons Attribution-Share Alike 3.0 license published by Creative Commons Corporation, a not-for-profit corporation with a principal place of business in San Francisco, California, as well as future copyleft versions of that license published by that same organization. \"Incorporate\" means to publish or republish a Document, in whole or in part, as part of another Document. An MMC is \"eligible for relicensing\" if it is licensed under this License, and if all works that were first published under this License somewhere other than this MMC, and subsequently incorporated in whole or in part into the MMC, (1) had no cover texts or invariant sections, and (2) were thus incorporated prior to November 1, 2008. The operator of an MMC Site may republish an MMC contained in the site under CC-BY-SA on the same site at any time before August 1, 2009, provided the MMC is eligible for relicensing.\n  ADDENDUM: How to use\n@ @@ -3552,9 +3141,9 @@ \n  Free Documentation License, Version\n- 1.3\n+ 1.2\n  or any later version"
+    },
+    {
+      "original": {
+        "component": "nghttp2",
+        "member": "COPYING",
+        "sha256": "6b94f3abc1aabd0c72a7c7d92a77f79dda7c8a0cb3df839a97890b4116a2de2a"
+      },
+      "read_reference": {
+        "component": "wslay",
+        "member": "COPYING",
+        "sha256": "0e602a00db6ce15c1311a180b13563aa638918a77f813b24cd78c9fe5cab63d0"
+      },
+      "full_normalized_original_sha256": "f2f1dcd04983bb1d04f0025b21df6c9578d6517dcaa7434a9af0babfd501b703",
+      "complete_word_difference": "74 ORIGINAL nghttp2/COPYING REFERENCE wslay/COPYING\n@ @@ -2,13 +2,22 @@ \n  MIT License Copyright (c)\n- 2011,\n  2012,\n- 2015\n+ 2014, 2015, 2016\n  Tatsuhiro Tsujikawa\n+ Copyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "nghttp2",
+        "member": "doc/_exts/rubydomain/LICENSE.rubydomain",
+        "sha256": "2dee6027d254030e382dd8e9f0f1b4ac2c186bd409c85ca2bef80d38b4da283c"
+      },
+      "read_reference": {
+        "component": "lz4",
+        "member": "contrib/djgpp/LICENSE",
+        "sha256": "d011d1e02cb32b71c1ce2922ab41a2e2ad30f4ecf8de22c078d53618205abc05"
+      },
+      "full_normalized_original_sha256": "33a8c940105acba3da8b8de2e55a71869d249892fa9e183898345515621c551c",
+      "complete_word_difference": "75 ORIGINAL nghttp2/doc/_exts/rubydomain/LICENSE.rubydomain REFERENCE lz4/contrib/djgpp/LICENSE\n@ @@ -1,8 +1,28 @@ \n+ If not otherwise noted, the extensions in this package are licensed under the following license.\n  Copyright (c)\n- 2014, lpsantil\n+ 2010 by the contributors (see AUTHORS file).\n  All rights reserved. Redistribution\n@ @@ -115,9 +135,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "nghttp2",
+        "member": "third-party/llhttp/LICENSE-MIT",
+        "sha256": "ebca854e0134cd256d673627c20499f42577eb74bacf08b9f25b626a73c91277"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "f9bf7488b305bc8d08a59de7f26e07714a7a159eafd3be5aca865aa861307975",
+      "complete_word_difference": "76 ORIGINAL nghttp2/third-party/llhttp/LICENSE-MIT REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,16 @@ \n+ This software is licensed under the MIT License. Copyright Fedor Indutny, 2018.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "nmap",
+        "member": "docs/licenses/LIBLINEAR-license.txt",
+        "sha256": "a7a153d7e4efbc66f5dc332a279e1a4a99a8805a7057a89b8188bd94280675c9"
+      },
+      "read_reference": {
+        "component": "liblinear",
+        "member": "COPYRIGHT",
+        "sha256": "c366abf1cb3a003d8c6e6d9c111a23c432db1d001294f88d479b70b60d7c0af2"
+      },
+      "full_normalized_original_sha256": "3a2c61625fe2bc99b7fb016ff84918e84c1fd7c273331ae4e04b667b83013950",
+      "complete_word_difference": "77 ORIGINAL nmap/docs/licenses/LIBLINEAR-license.txt REFERENCE liblinear/COPYRIGHT\n@ @@ -1,7 +1,7 @@ \n  Copyright (c)\n- 2007-2019\n+ 2007-2011\n  The LIBLINEAR Project. All"
+    },
+    {
+      "original": {
+        "component": "nmap",
+        "member": "docs/licenses/Libdnet-license.txt",
+        "sha256": "1d6836269212a5112788d98e07ba9ed4ff9144e1d4c191b7c3a2a15073be3a85"
+      },
+      "read_reference": {
+        "component": "pcre2",
+        "member": "cmake/COPYING-CMAKE-SCRIPTS",
+        "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+      },
+      "full_normalized_original_sha256": "03c948270a3d0590ebb5748c2d12f5c26cf01dc840828c592aa320e68a94abf0",
+      "complete_word_difference": "78 ORIGINAL nmap/docs/licenses/Libdnet-license.txt REFERENCE pcre2/cmake/COPYING-CMAKE-SCRIPTS\n@ @@ -1,4 +1,16 @@ \n+ Copyright (c) 2000-2006 Dug Song <dugsong@monkey.org> All rights reserved, all wrongs reversed.\n  Redistribution and use in\n@ @@ -26,8 +38,9 @@ \n  code must retain the\n+ above\n  copyright notice, this list\n@ @@ -44,8 +57,9 @@ \n  form must reproduce the\n+ above\n  copyright notice, this list\n@ @@ -66,12 +80,15 @@ \n  the distribution. 3. The\n- name of the author\n+ names of the authors and copyright holders\n  may not be used\n@ @@ -92,11 +109,8 @@ \n  THIS SOFTWARE IS PROVIDED\n- BY THE AUTHOR\n  ``AS IS'' AND ANY"
+    },
+    {
+      "original": {
+        "component": "nmap",
+        "member": "docs/licenses/Lua-license.txt",
+        "sha256": "f4759de4dbdcb2297f0913afee664e7177606eca2baef55920db161c41e5c03c"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "26371e38bf11a283310f3ada221c069a63627cfff788687be5ec6740473a30e4",
+      "complete_word_difference": "79 ORIGINAL nmap/docs/licenses/Lua-license.txt REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright \u00a9 1994\u20132016 Lua.org, PUC-Rio.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "nmap",
+        "member": "docs/licenses/MIT",
+        "sha256": "2367a894a18178677800179de62b46d374dada7c15999e11942bcd3a236bd0ae"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+        "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
+      },
+      "full_normalized_original_sha256": "d4ad188a110e14514c2c95f6b22c467ed043d496b76e3863b2b4b29208353989",
+      "complete_word_difference": "80 ORIGINAL nmap/docs/licenses/MIT REFERENCE vpp-inputs/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE\n@ @@ -1,9 +1,7 @@ \n- MIT License\n  Copyright (c)\n- 2026\n+ <year>\n  <copyright holders> Permission is"
+    },
+    {
+      "original": {
+        "component": "nmap",
+        "member": "docs/licenses/zlib-license.txt",
+        "sha256": "e9da8efe5e5876fadcb38af76f9dfdf5c1f4626ededa003e01d0514fbc1077dd"
+      },
+      "read_reference": {
+        "component": "zlib",
+        "member": "LICENSE",
+        "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243"
+      },
+      "full_normalized_original_sha256": "9c1292004095cf75727b517a32ab4d6d3441fca087d9d06949d6ce1283371c0e",
+      "complete_word_difference": "81 ORIGINAL nmap/docs/licenses/zlib-license.txt REFERENCE zlib/LICENSE\n@ @@ -1,8 +1,7 @@ \n  Copyright\n- notice:\n  (C)\n- 1995-2022\n+ 1995-2017\n  Jean-loup Gailly and Mark"
+    },
+    {
+      "original": {
+        "component": "openssl",
+        "member": "LICENSE.txt",
+        "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "2e2b94025b4c2fdb1864973c1497dd82e21bbfe3225d27d52c8c7e8792240b7a",
+      "complete_word_difference": "82 ORIGINAL openssl/LICENSE.txt REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -3,9 +3,9 @@ \n  Version 2.0, January 2004\n- http://www.apache.org/licenses/\n+ https://www.apache.org/licenses/\n  TERMS AND CONDITIONS FOR"
+    },
+    {
+      "original": {
+        "component": "opentracing-c-wrapper",
+        "member": "LICENSE",
+        "sha256": "be423628ee439e865484c61939ef73c85587400a7efb68ec64523dd4a5d146d4"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "c9faea984c8da56191dd4729aa5d2ccda8fd0fb725755ab33a314e6d96ae02e5",
+      "complete_word_difference": "83 ORIGINAL opentracing-c-wrapper/LICENSE REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1495,13 +1495,11 @@ \n  within third-party archives. Copyright\n- [yyyy] [name of copyright owner]\n+ 2020 HAProxy Technologies\n  Licensed under the Apache"
+    },
+    {
+      "original": {
+        "component": "opentracing-cpp",
+        "member": "3rd_party/include/opentracing/expected/LICENSE",
+        "sha256": "775d121dccad9612c0eff17543ccb091ffb4695f58dd8191de7607130977b2f8"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "66dce68b8c02c6d023bf700b678fa000b0761a2f82a10a469fa0136d4a850099",
+      "complete_word_difference": "84 ORIGINAL opentracing-cpp/3rd_party/include/opentracing/expected/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -4,9 +4,18 @@ \n  (MIT) Copyright (c) 2015\n- bw2\n+ Martin Moene Copyright (c) 2015 Microsoft Corporation. All rights reserved.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "opentracing-cpp",
+        "member": "3rd_party/include/opentracing/variant/LICENSE",
+        "sha256": "7686f81e580cd6774f609a2d8a41b2cebdf79bc30e6b46c3efff5a656158981c"
+      },
+      "read_reference": {
+        "component": "voluptuous",
+        "member": "COPYING",
+        "sha256": "247b4976b7a7fa4d89d9587caa5095561eb46dc5457f2279f62a62b5452adea9"
+      },
+      "full_normalized_original_sha256": "95c6f1b4125f7e02c14439e2fc100a2cab79ae79c3a19e97c3612224ba98b1b2",
+      "complete_word_difference": "85 ORIGINAL opentracing-cpp/3rd_party/include/opentracing/variant/LICENSE REFERENCE voluptuous/COPYING\n@ @@ -1,9 +1,7 @@ \n  Copyright (c)\n- 2010, Alec Thomas\n+ MapBox\n  All rights reserved. Redistribution\n@ @@ -78,10 +76,9 @@ \n  - Neither the name\n- of SwapOff.org\n+ \"MapBox\"\n  nor the names of"
+    },
+    {
+      "original": {
+        "component": "opentracing-cpp",
+        "member": "LICENSE",
+        "sha256": "076d03156735d5ff2df2ea0f8b12351ef65e5e9222b5c8c6a35101dadb41e717"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "ebf440b728385315ea9563b8425a1fa5ff4d1c49a53365a7001e0e79447ece8f",
+      "complete_word_difference": "86 ORIGINAL opentracing-cpp/LICENSE REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1439,9 +1439,9 @@ \n  fields enclosed by brackets\n- \"[]\"\n+ \"{}\"\n  replaced with your own\n@ @@ -1495,13 +1495,11 @@ \n  within third-party archives. Copyright\n- [yyyy] [name of copyright owner]\n+ The OpenTracing Authors\n  Licensed under the Apache"
+    },
+    {
+      "original": {
+        "component": "opentracing-cpp",
+        "member": "mocktracer/LICENSE.apache",
+        "sha256": "58a365fe99e6a28ca903dad980080f109a18ccad888db1a010ce0ada20f90042"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "d38d301bf8d86261eec644bb2b547f1f1d1c69890774e431bb3d0789bb452e0a",
+      "complete_word_difference": "87 ORIGINAL opentracing-cpp/mocktracer/LICENSE.apache REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1499,9 +1499,9 @@ \n  [yyyy] [name of copyright\n- owner]\n+ owner].\n  Licensed under the Apache"
+    },
+    {
+      "original": {
+        "component": "p11-kit",
+        "member": "COPYING",
+        "sha256": "2e1ba993904df807a10c3eda1e5c272338edc35674b679773a8b3ad460731054"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "7420e395f7375453660bf3d2df49c4a9ce8cd66ae5235df8490dc04298694cfe",
+      "complete_word_difference": "88 ORIGINAL p11-kit/COPYING REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,4 @@ \n- Copyright (c) 2012-2024, Intel Corporation\n  Redistribution and use in\n@ @@ -72,21 +67,17 @@ \n  with the distribution. *\n- Neither the name of Intel Corporation nor the\n+ The\n  names of\n- its\n  contributors\n+ to this software\n  may\n+ not\n  be used to endorse"
+    },
+    {
+      "original": {
+        "component": "pam",
+        "member": "COPYING",
+        "sha256": "133d98e7a2ab3ffd330b4debb0bfc10fea21e4b2b5a5b09de2e924293be5ff08"
+      },
+      "read_reference": {
+        "component": "libcap2",
+        "member": "pam_cap/License",
+        "sha256": "f3236a2484acb34f9f995873861f7d62e3692506e10de720a771b27ead26f058"
+      },
+      "full_normalized_original_sha256": "895d0647fc69b23cd79397320f345c7e89056857f6457beddff3bad16ab65971",
+      "complete_word_difference": "89 ORIGINAL pam/COPYING REFERENCE libcap2/pam_cap/License\n@ @@ -14,9 +14,9 @@ \n  the contents of this\n- module\n+ Linux-PAM\n  release may be distributed:\n@ @@ -29,10 +29,9 @@ \n  and binary forms of\n- this module,\n+ Linux-PAM,\n  with or without modification,\n@ @@ -136,9 +135,8 @@ \n  terms of the GNU\n- Library\n  General Public License, in\n@ @@ -148,9 +146,9 @@ \n  provisions of the GNU\n- LGPL\n+ GPL\n  are required INSTEAD OF\n@ @@ -168,9 +166,9 @@ \n  conflict between the GNU\n- LGPL\n+ GPL\n  and the restrictions contained"
+    },
+    {
+      "original": {
+        "component": "pam",
+        "member": "libpamc/License",
+        "sha256": "127056435e3a1686ef7366f117da9fdca48fdfe4191a97777b44a5bcbabef34d"
+      },
+      "read_reference": {
+        "component": "libcap2",
+        "member": "pam_cap/License",
+        "sha256": "f3236a2484acb34f9f995873861f7d62e3692506e10de720a771b27ead26f058"
+      },
+      "full_normalized_original_sha256": "041e75dc8279a80fc5b696630c94a28264a639b2c9c19bc10aeb8d5d92bfb357",
+      "complete_word_difference": "90 ORIGINAL pam/libpamc/License REFERENCE libcap2/pam_cap/License\n@ @@ -14,9 +14,9 @@ \n  the contents of this\n- module\n+ libpamc\n  release may be distributed:\n@ @@ -29,10 +29,9 @@ \n  and binary forms of\n- this module,\n+ libpamc,\n  with or without modification,\n@ @@ -139,9 +138,10 @@ \n  GNU Library General Public\n- License,\n+ License (LGPL),\n  in which case the"
+    },
+    {
+      "original": {
+        "component": "parsedatetime",
+        "member": "LICENSE.txt",
+        "sha256": "239475e79019a57f1ce58f8a81b9e2ae484c73fd2dc48beca8ade8c3ca0404a9"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "85bf8e80ddba4a3ac84c9a8d8433dd11b55f35d52441bb3547aff90026623561",
+      "complete_word_difference": "91 ORIGINAL parsedatetime/LICENSE.txt REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -709,9 +709,9 @@ \n  meet the following conditions:\n- (a)\n+ 1.\n  You must give any\n@ @@ -728,9 +728,9 @@ \n  of this License; and\n- (b)\n+ 2.\n  You must cause any\n@ @@ -746,9 +746,9 @@ \n  changed the files; and\n- (c)\n+ 3.\n  You must retain, in\n@ @@ -790,9 +790,9 @@ \n  the Derivative Works; and\n- (d)\n+ 4.\n  If the Work includes"
+    },
+    {
+      "original": {
+        "component": "pdns-recursor",
+        "member": "ext/json11/LICENSE.txt",
+        "sha256": "950e288a2548cb33f6a90d23958806b0803f510ab17c600d661619a73ae3a6c8"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "16de762bf02d01694f415d2260159843e83dc9743f6763245d9a71641e1f52f5",
+      "complete_word_difference": "92 ORIGINAL pdns-recursor/ext/json11/LICENSE.txt REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2013 Dropbox, Inc.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "pkcs11-helper",
+        "member": "COPYING.BSD",
+        "sha256": "865496cf23a6c792739ff2f9ea11e95ac99db89cfe3780a295b4e1495a9c19fe"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "9eda2501ddedc3a61db7c1bb0552753c8d62fc9c49cc48805f7681ecf8c35c8c",
+      "complete_word_difference": "93 ORIGINAL pkcs11-helper/COPYING.BSD REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,10 @@ \n  Copyright (c)\n- 2012-2024, Intel Corporation\n+ 2005-2018, Alon Bar-Lev <alon.barlev@gmail.com>\n  Redistribution and use in\n@ @@ -23,9 +24,9 @@ \n  following conditions are met:\n- *\n+ o\n  Redistributions of source code\n@ @@ -42,9 +43,9 @@ \n  and the following disclaimer.\n- *\n+ o\n  Redistributions in binary form\n@ @@ -71,15 +72,16 @@ \n  provided with the distribution.\n- *\n+ o\n  Neither the name of\n- Intel Corporation\n+ the Alon Bar-Lev\n  nor the names of"
+    },
+    {
+      "original": {
+        "component": "publicsuffix",
+        "member": "LICENSE",
+        "sha256": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/config/_validate_pyproject/NOTICE",
+        "sha256": "09c9bcea95ca086f8bc5bed174e40bc835b297d40fb5f86bbbb570fe0a5581a7"
+      },
+      "full_normalized_original_sha256": "e8ba82e63ba908724aaee6043943c5a2629b9ebf1af581ea0eea19a713123685",
+      "complete_word_difference": "94 ORIGINAL publicsuffix/LICENSE REFERENCE vpp-inputs/setuptools/config/_validate_pyproject/NOTICE\n@ @@ -1,351 +1,13 @@ \n- The code contained in this directory was automatically generated using the following command: python -m validate_pyproject.pre_compile --output-dir=setuptools/config/_validate_pyproject --enable-plugins setuptools distutils --very-verbose -t distutils=setuptools/config/distutils.schema.json -t setuptools=setuptools/config/setuptools.schema.json Please avoid changing it manually. You can report issues or suggest changes directly to `validate-pyproject` (or to the relevant plugin repository) - https://github.com/abravalheri/validate-pyproject/issues *** The following files include code from opensource projects (either as direct copies or modified versions): - `fastjsonschema_exceptions.py`: - project: `fastjsonschema` - licensed under BSD-3-Clause (https://github.com/horejsek/python-fastjsonschema) - `extra_validations.py` and `format.py`, `error_reporting.py`: - project: `validate-pyproject` - licensed under MPL-2.0 (https://github.com/abravalheri/validate-pyproject) Additionally the following files are automatically generated by tools provided by the same projects: - `__init__.py` - `fastjsonschema_validations.py` The relevant copyright notes and licenses are included below. *** `fastjsonschema` ================ Copyright (c) 2018, Michal Horejsek All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. Neither the name of the {organization} nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. *** `validate-pyproject` ====================\n  Mozilla Public\n- License, version\n+ License Version\n  2.0\n+ ==================================\n  1. Definitions\n+ --------------\n  1.1. \"Contributor\" means each\n@ @@ -440,9 +102,9 @@ \n  With Secondary Licenses\" means\n- a.\n+ (a)\n  that the initial Contributor\n@ @@ -458,9 +120,9 @@ \n  the Covered Software; or\n- b.\n+ (b)\n  that the Covered Software\n@ @@ -570,9 +232,9 @@ \n  any of the following:\n- a.\n+ (a)\n  any file in Source\n@ @@ -594,9 +256,9 @@ \n  of Covered Software; or\n- b.\n+ (b)\n  any new file in\n@ @@ -799,8 +461,9 @@ \n  License Grants and Conditions\n+ --------------------------------\n  2.1. Grants Each Contributor\n@ @@ -811,9 +474,9 @@ \n  world-wide, royalty-free, non-exclusive license:\n- a.\n+ (a)\n  under intellectual property rights\n@ @@ -854,9 +517,9 @@ \n  a Larger Work; and\n- b.\n+ (b)\n  under Patent Claims of\n@ @@ -960,9 +623,9 @@ \n  granted by a Contributor:\n- a.\n+ (a)\n  for any code that\n@ @@ -973,9 +636,9 @@ \n  from Covered Software; or\n- b.\n+ (b)\n  for infringements caused by:\n@ @@ -1007,9 +670,9 @@ \n  its Contributor Version); or\n- c.\n+ (c)\n  under Patent Claims infringed\n@ @@ -1173,8 +836,9 @@ \n  Section 2.1. 3. Responsibilities\n+ -------------------\n  3.1. Distribution of Source\n@ @@ -1267,9 +931,9 @@ \n  in Executable Form then:\n- a.\n+ (a)\n  such Covered Software must\n@ @@ -1326,9 +990,9 @@ \n  to the recipient; and\n- b.\n+ (b)\n  You may distribute such\n@ @@ -1651,8 +1315,9 @@ \n  to Statute or Regulation\n+ ---------------------------------------------------\n  If it is impossible\n@ @@ -1759,8 +1424,9 @@ \n  understand it. 5. Termination\n+ --------------\n  5.1. The rights granted\n@ @@ -1992,12 +1658,23 @@ \n  termination shall survive termination.\n+ ************************************************************************ * * *\n  6. Disclaimer of Warranty\n+ * * ------------------------- * * * *\n  Covered Software is provided\n@ @@ -2007,8 +1684,10 @@ \n  on an \"as is\"\n+ * *\n  basis, without warranty of\n@ @@ -2017,15 +1696,19 @@ \n  either expressed, implied, or\n+ * *\n  statutory, including, without limitation, warranties that the\n+ * *\n  Covered Software is free\n@ @@ -2034,8 +1717,10 @@ \n  merchantable, fit for a\n+ * *\n  particular purpose or non-infringing.\n@ @@ -2044,8 +1729,10 @@ \n  risk as to the\n+ * *\n  quality and performance of\n@ @@ -2054,8 +1741,10 @@ \n  Software is with You.\n+ * *\n  Should any Covered Software\n@ @@ -2064,8 +1753,10 @@ \n  in any respect, You\n+ * *\n  (not any Contributor) assume\n@ @@ -2074,8 +1765,10 @@ \n  of any necessary servicing,\n+ * *\n  repair, or correction. This\n@ @@ -2083,8 +1776,10 @@ \n  of warranty constitutes an\n+ * *\n  essential part of this\n@ @@ -2095,20 +1790,37 @@ \n  any Covered Software is\n+ * *\n  authorized under this License except under this disclaimer.\n+ * * * ************************************************************************ ************************************************************************ * * *\n  7. Limitation of Liability\n+ * * -------------------------- * * * *\n  Under no circumstances and\n@ @@ -2117,23 +1829,29 @@ \n  legal theory, whether tort\n+ * *\n  (including negligence), contract, or otherwise, shall any\n+ * *\n  Contributor, or anyone who distributes Covered Software as\n+ * *\n  permitted above, be liable\n@ @@ -2142,16 +1860,20 @@ \n  for any direct, indirect,\n+ * *\n  special, incidental, or consequential damages of any character\n+ * *\n  including, without limitation, damages\n@ @@ -2159,8 +1881,10 @@ \n  lost profits, loss of\n+ * *\n  goodwill, work stoppage, computer\n@ @@ -2168,8 +1892,10 @@ \n  or malfunction, or any\n+ * *\n  and all other commercial\n@ @@ -2179,8 +1905,10 @@ \n  even if such party\n+ * *\n  shall have been informed\n@ @@ -2190,8 +1918,10 @@ \n  of such damages. This\n+ * *\n  limitation of liability shall\n@ @@ -2201,8 +1931,10 @@ \n  liability for death or\n+ * *\n  personal injury resulting from\n@ @@ -2210,15 +1942,19 @@ \n  party's negligence to the\n+ * *\n  extent applicable law prohibits such limitation. Some\n+ * *\n  jurisdictions do not allow\n@ @@ -2226,24 +1962,33 @@ \n  exclusion or limitation of\n+ * *\n  incidental or consequential damages, so this exclusion and\n+ * *\n  limitation may not apply to You.\n+ * * * ************************************************************************\n  8. Litigation\n+ -------------\n  Any litigation relating to\n@ @@ -2300,8 +2045,9 @@ \n  or counter-claims. 9. Miscellaneous\n+ ----------------\n  This License represents the\n@ @@ -2370,8 +2116,9 @@ \n  Versions of the License\n+ ---------------------------\n  10.1. New Versions Mozilla\n@ @@ -2569,8 +2316,9 @@ \n  Code Form License Notice\n+ -------------------------------------------\n  This Source Code Form\n@ @@ -2665,8 +2413,9 @@ \n  With Secondary Licenses\" Notice\n+ ---------------------------------------------------------\n  This Source Code Form"
+    },
+    {
+      "original": {
+        "component": "pyroute2",
+        "member": "LICENSE.Apache-2.0",
+        "sha256": "4739b32a2478e9c204bf010bad5d565d188e59ff905e3c8f71fe3398098b7093"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "187c22254c10ef409bba3c2173badcae27b42ad14e786b4b9b4f77607bfbeedd",
+      "complete_word_difference": "95 ORIGINAL pyroute2/LICENSE.Apache-2.0 REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1495,13 +1495,12 @@ \n  within third-party archives. Copyright\n- [yyyy] [name of copyright owner]\n+ 2016 Peter V. Saveliev\n  Licensed under the Apache"
+    },
+    {
+      "original": {
+        "component": "python-acme",
+        "member": "LICENSE.txt",
+        "sha256": "2cc5de715ae5a976f086fba4930880c9e421914173fc85111bff514d4757123f"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "c1ab56edac156d6b02027277d74c7895a5e48ff1a782b34c5e0e37cfa88667fd",
+      "complete_word_difference": "96 ORIGINAL python-acme/LICENSE.txt REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -1,4 +1,89 @@ \n+ Copyright 2015 Electronic Frontier Foundation and others Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n  Apache License Version 2.0,"
+    },
+    {
+      "original": {
+        "component": "python-certbot",
+        "member": "LICENSE.txt",
+        "sha256": "09469ed16fa61a319a788800b9ecdfd0a1d6ab8e10e3e17e2c75cd57b1173f71"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "967d92aa9a881c82512d99683a715d1f1248861e0ed5eb55951f513e17952928",
+      "complete_word_difference": "97 ORIGINAL python-certbot/LICENSE.txt REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -1,4 +1,37 @@ \n+ Certbot ACME Client Copyright (c) Electronic Frontier Foundation and others Licensed Apache Version 2.0 The nginx plugin incorporates code from nginxparser Copyright (c) 2014 Fatih Erikli Licensed MIT Text of Apache License ======================\n  Apache License Version 2.0,\n@ @@ -1405,9 +1438,171 @@ \n  warranty or additional liability.\n- END\n+ Text of MIT License =================== Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY\n  OF\n- TERMS\n+ ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE\n  AND\n- CONDITIONS\n+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    },
+    {
+      "original": {
+        "component": "python-charset-normalizer",
+        "member": "LICENSE",
+        "sha256": "eb31a0c5a4fb09b8a4e32055d25c1e5f9c358a2752fef3cd720213d1ccfee241"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+        "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
+      },
+      "full_normalized_original_sha256": "9a757b6d5f1c9f1f1607af2343933a9674f205245acbbc970c62f0237367baa6",
+      "complete_word_difference": "98 ORIGINAL python-charset-normalizer/LICENSE REFERENCE vpp-inputs/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE\n@ @@ -1,11 +1,12 @@ \n  MIT License Copyright (c)\n- 2026 <copyright holders>\n+ 2019 TAHRI Ahmed R.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "python-cryptography",
+        "member": "LICENSE.APACHE",
+        "sha256": "aac73b3148f6d1d7111dbca32099f68d26c644c6813ae1e4f05f6579aa2663fe"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "a0b9af0d1614b5e8f3004aaf2092bf005b64398ef067ca868d81a8beeb6cb0b5",
+      "complete_word_difference": "99 ORIGINAL python-cryptography/LICENSE.APACHE REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -3,9 +3,9 @@ \n  Version 2.0, January 2004\n- http://www.apache.org/licenses/\n+ https://www.apache.org/licenses/\n  TERMS AND CONDITIONS FOR\n@ @@ -1530,9 +1530,9 @@ \n  of the License at\n- http://www.apache.org/licenses/LICENSE-2.0\n+ https://www.apache.org/licenses/LICENSE-2.0\n  Unless required by applicable"
+    },
+    {
+      "original": {
+        "component": "python-cryptography",
+        "member": "LICENSE.BSD",
+        "sha256": "602c4c7482de6479dd2e9793cda275e5e63d773dacd1eca689232ab7008fb4fb"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "dpdk-25.07/license/bsd-3-clause.txt",
+        "sha256": "9acc4bc871a4742550158e3696dcb381953172ef808d04ca248184f9f6322712"
+      },
+      "full_normalized_original_sha256": "c268cc09d949fefffa9309d0d6c0b44674a873823ad419680e623919478e4619",
+      "complete_word_difference": "100 ORIGINAL python-cryptography/LICENSE.BSD REFERENCE vpp-inputs/dpdk-25.07/license/bsd-3-clause.txt\n@ @@ -1,4 +1,11 @@ \n+ Copyright (c) Individual contributors. All rights reserved.\n  Redistribution and use in\n@ @@ -71,11 +78,10 @@ \n  Neither the name of\n- the copyright holder\n+ PyCA Cryptography\n  nor the names of\n@ @@ -139,9 +145,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "python-idna",
+        "member": "LICENSE.md",
+        "sha256": "a2d6e4d940bd24dbe7b9645cde19a9792cc51db7ae0d5acd301ac860caa3e836"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "dba7052b661063829f0d5ad76afcf35f8bbd5517f59fba9608e764127c8e0b2e",
+      "complete_word_difference": "101 ORIGINAL python-idna/LICENSE.md REFERENCE conserver/LICENSE\n@ @@ -2,10 +2,11 @@ \n  3-Clause License Copyright (c)\n- 2000, conserver.com\n+ 2013-2021, Kim Davies\n  All rights reserved. Redistribution\n@ @@ -28,9 +29,9 @@ \n  following conditions are met:\n- *\n+ 1.\n  Redistributions of source code\n@ @@ -47,9 +48,9 @@ \n  and the following disclaimer.\n- *\n+ 2.\n  Redistributions in binary form\n@ @@ -76,9 +77,9 @@ \n  provided with the distribution.\n- *\n+ 3.\n  Neither the name of"
+    },
+    {
+      "original": {
+        "component": "python-nacl",
+        "member": "LICENSE",
+        "sha256": "d3174ad63e721d4c9dccb8ad4320848992d314369bc46319720b5802c9153fe9"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      "full_normalized_original_sha256": "09ae9bf1886f530f7338889ef805f37b288ec6adedd1e1e32058921acf05a782",
+      "complete_word_difference": "102 ORIGINAL python-nacl/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.APACHE\n@ @@ -1405,9 +1405,4 @@ \n  warranty or additional liability.\n- END OF TERMS AND CONDITIONS"
+    },
+    {
+      "original": {
+        "component": "python-nacl",
+        "member": "src/libsodium/LICENSE",
+        "sha256": "bb55dac9e65555b91aa790eb0655a523ab78f343ab500b326b1d51d7854abb9d"
+      },
+      "read_reference": {
+        "component": "minisign",
+        "member": "LICENSE",
+        "sha256": "d775d155cbf31638714c31c6f990f9fdc5f07998d91e42d1bf15483bd2d1706b"
+      },
+      "full_normalized_original_sha256": "ae04a5dafa757063c9d36668438095c33ed8e6e7f9a3b38f9b8fe709752ca65a",
+      "complete_word_difference": "103 ORIGINAL python-nacl/src/libsodium/LICENSE REFERENCE minisign/LICENSE\n@ @@ -1,11 +1,13 @@ \n+ /* *\n  ISC\n- LICENSE. /*\n+ License *\n  * Copyright (c)\n- 2015-2023\n+ 2013-2021\n  * Frank Denis <j"
+    },
+    {
+      "original": {
+        "component": "python-netaddr",
+        "member": "LICENSE",
+        "sha256": "0e53de62547787462f41eefb5cee31a14f7ea767ba0362c6f9304f1742486d47"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "9a483605b8f411b868d965c8ffb5cd61dca09d0d14605773fbf0ed02f638b30c",
+      "complete_word_difference": "104 ORIGINAL python-netaddr/LICENSE REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,33 @@ \n+ Here are the licenses applicable to the use of the netaddr library. ------- netaddr ------- COPYRIGHT AND LICENSE\n  Copyright (c)\n- 2012-2024, Intel Corporation\n+ 2008 by David P. D. Moss. All rights reserved.\n  Redistribution and use in\n@ @@ -76,15 +100,16 @@ \n  Neither the name of\n- Intel Corporation\n+ David P. D. Moss\n  nor the names of\n- its\n  contributors may be used"
+    },
+    {
+      "original": {
+        "component": "python-urllib3",
+        "member": "LICENSE.txt",
+        "sha256": "c37bf186e27cf9dbe9619e55edfe3cea7b30091ceb3da63c7dacbe0e6d77907b"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/wheel-0.46.3.dist-info/licenses/LICENSE.txt",
+        "sha256": "30c23618679108f3e8ea1d2a658c7ca417bdfc891c98ef1a89fa4ff0c9828654"
+      },
+      "full_normalized_original_sha256": "cfe43f799d8f2209f30208777d23e1f76e6180630bbe11c8ee187c61b00522ea",
+      "complete_word_difference": "105 ORIGINAL python-urllib3/LICENSE.txt REFERENCE vpp-inputs/setuptools/_vendor/wheel-0.46.3.dist-info/licenses/LICENSE.txt\n@ @@ -1,14 +1,15 @@ \n  MIT License Copyright (c)\n- 2012 Daniel Holth <dholth@fastmail.fm>\n+ 2008-2020 Andrey Petrov\n  and contributors\n+ (see CONTRIBUTORS.txt)\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "python3.11",
+        "member": "Modules/_ctypes/libffi_osx/LICENSE",
+        "sha256": "40a537c7d74baeed3831304e92d1664ababd7ad8a3cf29f11a257c9e47145248"
+      },
+      "read_reference": {
+        "component": "popt",
+        "member": "COPYING",
+        "sha256": "2b488b239927935f34769a39309c0680be16e3725a1f55dbb06ed20d53852801"
+      },
+      "full_normalized_original_sha256": "3491960fcb3926f28b2d1cbad506023493256b9727c1c0103f98b7bee3983c5a",
+      "complete_word_difference": "106 ORIGINAL python3.11/Modules/_ctypes/libffi_osx/LICENSE REFERENCE popt/COPYING\n@ @@ -1,10 +1,12 @@ \n+ libffi -\n  Copyright (c)\n- 1998\n+ 1996-2003\n  Red\n- Hat Software\n+ Hat, Inc.\n  Permission is hereby granted,\n@ @@ -24,9 +26,9 @@ \n  associated documentation files (the\n- \"Software\"),\n+ ``Software''),\n  to deal in the\n@ @@ -93,10 +95,10 @@ \n  THE SOFTWARE IS PROVIDED\n- \"AS IS\",\n+ ``AS IS'',\n  WITHOUT WARRANTY OF ANY\n@ @@ -123,13 +125,10 @@ \n  IN NO EVENT SHALL\n- THE AUTHORS OR COPYRIGHT HOLDERS\n+ CYGNUS SOLUTIONS\n  BE LIABLE FOR ANY"
+    },
+    {
+      "original": {
+        "component": "python3.11",
+        "member": "Modules/_sha3/LICENSE",
+        "sha256": "4633fc5859344c6f244939c27700fb941d12c4636215a8eccde17d9a6d1dcb0d"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "30458dfdb8ba85df8eeb86aea5f7f1b5c1c51423813f00e17e857d46f5b165a6",
+      "complete_word_difference": "107 ORIGINAL python3.11/Modules/_sha3/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -4,9 +4,11 @@ \n  (MIT) Copyright (c) 2015\n- bw2\n+ Markku-Juhani O. Saarinen\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "pyzmq",
+        "member": "COPYING.BSD",
+        "sha256": "aef3b80570351d44e29c22d080d4e9e106b34f3fdbc5cdf9636994474c72b1a2"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "de28a32fa1e3caa05477a0cd9263885497b1b9189b9ca4ebf986d31511bcff75",
+      "complete_word_difference": "108 ORIGINAL pyzmq/COPYING.BSD REFERENCE conserver/LICENSE\n@ @@ -1,11 +1,31 @@ \n+ PyZMQ is licensed under the terms of the Modified\n  BSD\n- 3-Clause\n  License\n+ (also known as New or Revised BSD), as follows:\n  Copyright (c)\n- 2000, conserver.com\n+ 2009-2012, Brian Granger, Min Ragan-Kelley\n  All rights reserved. Redistribution\n@ @@ -28,9 +48,8 @@ \n  following conditions are met:\n- *\n  Redistributions of source code\n@ @@ -47,9 +66,8 @@ \n  and the following disclaimer.\n- *\n  Redistributions in binary form\n@ @@ -76,16 +94,13 @@ \n  provided with the distribution.\n- *\n  Neither the name of\n- the copyright holder\n+ PyZMQ\n  nor the names of\n@ @@ -149,9 +164,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "pyzmq",
+        "member": "COPYING.LESSER",
+        "sha256": "44b23767df3c0fe27f88981f09bc7f50a1695cec4b24252fa5f55f03e76bcd6d"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
+        "sha256": "ade78d04982d69972d444a8e14a94f87a2334dd3855cc80348ea8e240aa0df2d"
+      },
+      "full_normalized_original_sha256": "3b12f27a6a02c48b68cb5bb930c335b27f8d88962643f537688a6333225458c5",
+      "complete_word_difference": "109 ORIGINAL pyzmq/COPYING.LESSER REFERENCE vpp-inputs/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE\n@ @@ -14,9 +14,9 @@ \n  Free Software Foundation, Inc.\n- <https://fsf.org/>\n+ <http://fsf.org/>\n  Everyone is permitted to\n@ @@ -1231,4 +1231,130 @@ \n  version for the Library.\n+ -------------------------------------------------------------------------------- SPECIAL EXCEPTION GRANTED BY COPYRIGHT HOLDERS As a special exception, copyright holders give you permission to link this library with independent modules to produce an executable, regardless of the license terms of these independent modules, and to copy and distribute the resulting executable under terms of your choice, provided that you also meet, for each linked independent module, the terms and conditions of the license of that module. An independent module is a module which is not derived from or based on this library. If you modify this library, you must extend this exception to your version of the library. Note: this exception relieves you of any obligations under sections 4 and 5 of this license, and section 6 of the GNU General Public License."
+    },
+    {
+      "original": {
+        "component": "re2",
+        "member": "LICENSE",
+        "sha256": "6040cda75d90b1738292a631d89934c411ef7ffd543c4d6a1b7edfc8edf29449"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "ed308bd369f2718667170aa926544836cc6dd902d4592cf6b29d0df11e13fcee",
+      "complete_word_difference": "110 ORIGINAL re2/LICENSE REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,16 @@ \n+ //\n  Copyright (c)\n- 2012-2024, Intel Corporation\n+ 2009 The RE2 Authors. All rights reserved. // //\n  Redistribution and use in\n@ @@ -13,8 +20,9 @@ \n  forms, with or without\n+ //\n  modification, are permitted provided\n@ @@ -22,9 +30,12 @@ \n  the following conditions are\n+ //\n  met:\n+ // //\n  * Redistributions of source\n@ @@ -33,8 +44,9 @@ \n  retain the above copyright\n+ //\n  notice, this list of\n@ @@ -42,8 +54,9 @@ \n  and the following disclaimer.\n+ //\n  * Redistributions in binary\n@ @@ -51,8 +64,9 @@ \n  must reproduce the above\n+ //\n  copyright notice, this list\n@ @@ -61,8 +75,9 @@ \n  and the following disclaimer\n+ //\n  in the documentation and/or\n@ @@ -70,21 +85,24 @@ \n  materials provided with the\n+ //\n  distribution.\n+ //\n  * Neither the name of\n- Intel Corporation\n+ Google Inc.\n  nor the names of its\n+ //\n  contributors may be used\n@ @@ -94,15 +112,18 @@ \n  promote products derived from\n+ //\n  this software without specific prior written permission.\n+ // //\n  THIS SOFTWARE IS PROVIDED\n@ @@ -111,8 +132,9 @@ \n  COPYRIGHT HOLDERS AND CONTRIBUTORS\n+ //\n  \"AS IS\" AND ANY\n@ @@ -122,8 +144,9 @@ \n  WARRANTIES, INCLUDING, BUT NOT\n+ //\n  LIMITED TO, THE IMPLIED\n@ @@ -132,8 +155,9 @@ \n  MERCHANTABILITY AND FITNESS FOR\n+ //\n  A PARTICULAR PURPOSE ARE\n@ @@ -143,8 +167,9 @@ \n  EVENT SHALL THE COPYRIGHT\n+ //\n  OWNER OR CONTRIBUTORS BE\n@ @@ -153,16 +178,18 @@ \n  ANY DIRECT, INDIRECT, INCIDENTAL,\n+ //\n  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n+ //\n  LIMITED TO, PROCUREMENT OF\n@ @@ -172,8 +199,9 @@ \n  SERVICES; LOSS OF USE,\n+ //\n  DATA, OR PROFITS; OR\n@ @@ -183,8 +211,9 @@ \n  CAUSED AND ON ANY\n+ //\n  THEORY OF LIABILITY, WHETHER\n@ @@ -193,8 +222,9 @@ \n  STRICT LIABILITY, OR TORT\n+ //\n  (INCLUDING NEGLIGENCE OR OTHERWISE)\n@ @@ -205,8 +235,9 @@ \n  OUT OF THE USE\n+ //\n  OF THIS SOFTWARE, EVEN"
+    },
+    {
+      "original": {
+        "component": "re2",
+        "member": "re2/fuzzing/compiler-rt/LICENSE",
+        "sha256": "f72b120d1385408e9e380acc020756eb6ba1b461d66c328ea67327ba08d7dcfd"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "meson-0.57.2/COPYING",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "full_normalized_original_sha256": "f42a00ac54d036890559853a40f95622ab3e63d52173f5714284134b2af11e3c",
+      "complete_word_difference": "111 ORIGINAL re2/re2/fuzzing/compiler-rt/LICENSE REFERENCE vpp-inputs/meson-0.57.2/COPYING\n@ @@ -1578,4 +1578,148 @@ \n  limitations under the License.\n+ --- LLVM Exceptions to the Apache 2.0 License ---- As an exception, if, as a result of your compiling your source code, portions of this Software are embedded into an Object form of such source code, you may redistribute such embedded portions in such Object form without complying with the conditions of Sections 4(a), 4(b) and 4(d) of the License. In addition, if you combine or link compiled forms of this Software with software that is licensed under the GPLv2 (\"Combined Software\") and if a court of competent jurisdiction determines that the patent provision (Section 3), the indemnity provision (Section 9) or other Section of the License conflicts with the conditions of the GPLv2, you may retroactively and prospectively choose to deem waived or otherwise exclude such Section(s) of the License, but only in their entirety and only with respect to the Combined Software."
+    },
+    {
+      "original": {
+        "component": "setuptools",
+        "member": "LICENSE",
+        "sha256": "db3f0246b1f9278f15845b99fec478b8b506eb76487993722f8c6e254285faf8"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "1cb125fa6978d3f78f65d3435702ef0c4858288201c9f80f8c4ce9fc0d37cf6f",
+      "complete_word_difference": "112 ORIGINAL setuptools/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,8 @@ \n+ Copyright Jason R. Coombs\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "sharutils",
+        "member": "libopts/COPYING.lgplv3",
+        "sha256": "bea02abe9d2ea7b1daee63339d8f6a45d9f0fcf09431641529fb7aafce862f3a"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
+        "sha256": "ade78d04982d69972d444a8e14a94f87a2334dd3855cc80348ea8e240aa0df2d"
+      },
+      "full_normalized_original_sha256": "b418cf5a2982cc7a744afd028981dd494b18ad0547c05bcd2c2b9487afee3d34",
+      "complete_word_difference": "113 ORIGINAL sharutils/libopts/COPYING.lgplv3 REFERENCE vpp-inputs/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE\n@ @@ -9,14 +9,16 @@ \n  June 2007 Copyright (C)\n- 2007 Free Software Foundation, Inc. <https://fsf.org/>\n+ 1992-2015 by Bruce Korb - all rights reserved\n  Everyone is permitted to"
+    },
+    {
+      "original": {
+        "component": "sharutils",
+        "member": "libopts/COPYING.mbsd",
+        "sha256": "f25852c3d4615a1bac10844c4c30a3449137eb1a81098eb159a149522caba430"
+      },
+      "read_reference": {
+        "component": "pcre2",
+        "member": "cmake/COPYING-CMAKE-SCRIPTS",
+        "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+      },
+      "full_normalized_original_sha256": "0470a8edfa9085bf7770674aed5e7d7f217dd5fd1599ac3a9a11a4157f1d4893",
+      "complete_word_difference": "114 ORIGINAL sharutils/libopts/COPYING.mbsd REFERENCE pcre2/cmake/COPYING-CMAKE-SCRIPTS\n@ @@ -1,4 +1,14 @@ \n+ Copyright (C) 1992-2015 by Bruce Korb - all rights reserved\n  Redistribution and use in\n@ @@ -26,8 +36,9 @@ \n  code must retain the\n+ above\n  copyright notice, this list\n@ @@ -44,8 +55,9 @@ \n  form must reproduce the\n+ above\n  copyright notice, this list"
+    },
+    {
+      "original": {
+        "component": "sipcalc",
+        "member": "COPYING",
+        "sha256": "948cf5e1d37501a46396f03a42ac143198792071b7201a2af9f0d977cd46aec3"
+      },
+      "read_reference": {
+        "component": "pcre2",
+        "member": "cmake/COPYING-CMAKE-SCRIPTS",
+        "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+      },
+      "full_normalized_original_sha256": "e1f91c3fec40a3e494ed803d2f804262336be579be0c366dd998271e9a94cfc8",
+      "complete_word_difference": "115 ORIGINAL sipcalc/COPYING REFERENCE pcre2/cmake/COPYING-CMAKE-SCRIPTS\n@ @@ -1,4 +1,12 @@ \n+ Copyright (c) 2003 Simon Ekstrand All rights reserved.\n  Redistribution and use in\n@ @@ -26,8 +34,9 @@ \n  code must retain the\n+ above\n  copyright notice, this list\n@ @@ -44,8 +53,9 @@ \n  form must reproduce the\n+ above\n  copyright notice, this list"
+    },
+    {
+      "original": {
+        "component": "strongswan",
+        "member": "src/libcharon/plugins/vici/python/LICENSE",
+        "sha256": "7cf763909a5be21bcc7dabb9dc92dbf60bd8afff850a1a01c7621174ce72ce7d"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "b404cffef703f6c576353e81e768bcfd56062657f141daa7485210ab6514cd0c",
+      "complete_word_difference": "116 ORIGINAL strongswan/src/libcharon/plugins/vici/python/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,19 @@ \n+ Copyright (c) 2015 Bj\u00f6rn Schuberg Copyright (c) 2015 Martin Willi Copyright (c) 2015 Tobias Brunner\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "systemd",
+        "member": "LICENSES/BSD-2-Clause.txt",
+        "sha256": "e5a8645ad94aab24e312dd0c6be2aa54236eb9374480b1b14ea5c61598874fd5"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+        "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      },
+      "full_normalized_original_sha256": "2f94ba5f33d73410aea44ebe843d29d719bee3c1e13da84204c09455fef3686c",
+      "complete_word_difference": "117 ORIGINAL systemd/LICENSES/BSD-2-Clause.txt REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.BSD\n@ @@ -1,11 +1,8 @@ \n  Copyright (c)\n- Donald Stufft and individual contributors.\n+ <year> <owner>\n  All rights reserved. Redistribution"
+    },
+    {
+      "original": {
+        "component": "systemd",
+        "member": "LICENSES/BSD-3-Clause.txt",
+        "sha256": "83bb6bd9ccd2cf5230cb1807ed16258289768dc4d9cb80069a814e04415a1275"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "8c3aa978823b35387a86414c854dd80920c68b267fd1be83de8cdbd799457932",
+      "complete_word_difference": "118 ORIGINAL systemd/LICENSES/BSD-3-Clause.txt REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,16 @@ \n+ //\n  Copyright\n- (c) 2012-2024, Intel Corporation\n+ 2014 The Chromium OS Authors. All rights reserved. // //\n  Redistribution and use in\n@ @@ -13,8 +20,9 @@ \n  forms, with or without\n+ //\n  modification, are permitted provided\n@ @@ -22,9 +30,12 @@ \n  the following conditions are\n+ //\n  met:\n+ // //\n  * Redistributions of source\n@ @@ -33,8 +44,9 @@ \n  retain the above copyright\n+ //\n  notice, this list of\n@ @@ -42,8 +54,9 @@ \n  and the following disclaimer.\n+ //\n  * Redistributions in binary\n@ @@ -51,8 +64,9 @@ \n  must reproduce the above\n+ //\n  copyright notice, this list\n@ @@ -61,8 +75,9 @@ \n  and the following disclaimer\n+ //\n  in the documentation and/or\n@ @@ -70,21 +85,24 @@ \n  materials provided with the\n+ //\n  distribution.\n+ //\n  * Neither the name of\n- Intel Corporation\n+ Google Inc.\n  nor the names of its\n+ //\n  contributors may be used\n@ @@ -94,15 +112,18 @@ \n  promote products derived from\n+ //\n  this software without specific prior written permission.\n+ // //\n  THIS SOFTWARE IS PROVIDED\n@ @@ -111,8 +132,9 @@ \n  COPYRIGHT HOLDERS AND CONTRIBUTORS\n+ //\n  \"AS IS\" AND ANY\n@ @@ -122,8 +144,9 @@ \n  WARRANTIES, INCLUDING, BUT NOT\n+ //\n  LIMITED TO, THE IMPLIED\n@ @@ -132,8 +155,9 @@ \n  MERCHANTABILITY AND FITNESS FOR\n+ //\n  A PARTICULAR PURPOSE ARE\n@ @@ -143,8 +167,9 @@ \n  EVENT SHALL THE COPYRIGHT\n+ //\n  OWNER OR CONTRIBUTORS BE\n@ @@ -153,16 +178,18 @@ \n  ANY DIRECT, INDIRECT, INCIDENTAL,\n+ //\n  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n+ //\n  LIMITED TO, PROCUREMENT OF\n@ @@ -172,8 +199,9 @@ \n  SERVICES; LOSS OF USE,\n+ //\n  DATA, OR PROFITS; OR\n@ @@ -183,8 +211,9 @@ \n  CAUSED AND ON ANY\n+ //\n  THEORY OF LIABILITY, WHETHER\n@ @@ -193,8 +222,9 @@ \n  STRICT LIABILITY, OR TORT\n+ //\n  (INCLUDING NEGLIGENCE OR OTHERWISE)\n@ @@ -205,8 +235,9 @@ \n  OUT OF THE USE\n+ //\n  OF THIS SOFTWARE, EVEN"
+    },
+    {
+      "original": {
+        "component": "unionfs-fuse",
+        "member": "LICENSE",
+        "sha256": "f56a5579d670e18e0667700bc599acbc0b8217ca1f76b2adb3dad7d2953c4049"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "e69d63a0a2d03be83991674a4235e98411f5285998561b0a60d765b41e921fb9",
+      "complete_word_difference": "119 ORIGINAL unionfs-fuse/LICENSE REFERENCE conserver/LICENSE\n@ @@ -1,11 +1,22 @@ \n+ Unionfs-fuse is provided under the terms of the new\n  BSD\n- 3-Clause License\n+ license.\n  Copyright (c)\n- 2000, conserver.com\n+ 2008, Radek Podgorny, Bernd Schubert\n  All rights reserved. Redistribution\n@ @@ -82,15 +93,15 @@ \n  the name of the\n- copyright holder\n+ original author;\n  nor the names of\n- its\n+ any\n  contributors may be used\n@ @@ -149,9 +160,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "util-linux",
+        "member": "Documentation/licenses/COPYING.ISC",
+        "sha256": "e53348ce276358e9997014071c5294b36a18c4b34f32f00ee57b9acce0aafd63"
+      },
+      "read_reference": {
+        "component": "lsb-release-minimal",
+        "member": "LICENSE.txt",
+        "sha256": "cb67becb7e7441ca4319b509650752fd59a3a99d84d1eb0ebe694554656032e2"
+      },
+      "full_normalized_original_sha256": "4829cc8e654be69dd1edcebedbda21758a239c230e38f532d6bf4b0adc1a0427",
+      "complete_word_difference": "120 ORIGINAL util-linux/Documentation/licenses/COPYING.ISC REFERENCE lsb-release-minimal/LICENSE.txt\n@ @@ -1,9 +1,4 @@ \n- Copyright (c) 2021-2022 Gioele Barabucci\n  Permission to use, copy,"
+    },
+    {
+      "original": {
+        "component": "xxhash",
+        "member": "LICENSE",
+        "sha256": "553d0035773ddd1590045f8fdc3a4c6ead31e36336721aeca8421e88ed1c9f80"
+      },
+      "read_reference": {
+        "component": "lz4",
+        "member": "lib/LICENSE",
+        "sha256": "8b58c446121a109ccf32edc094bba3010a3d85e4ee3702950db55e4d3e87736c"
+      },
+      "full_normalized_original_sha256": "b6cd530bbe3f6674b64e81812321fea36151296d9e58be566fb2a61436a00604",
+      "complete_word_difference": "121 ORIGINAL xxhash/LICENSE REFERENCE lz4/lib/LICENSE\n@ @@ -1,14 +1,18 @@ \n- LZ4\n+ xxHash\n  Library Copyright (c)\n- 2011-2020,\n+ 2012-2020\n  Yann Collet All rights reserved.\n+ BSD 2-Clause License (https://www.opensource.org/licenses/bsd-license.php)\n  Redistribution and use in"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "COPYING",
+        "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+      },
+      "read_reference": {
+        "component": "gettext",
+        "member": "COPYING",
+        "sha256": "e79e9c8a0c85d735ff98185918ec94ed7d175efc377012787aebcf3b80f0d90b"
+      },
+      "full_normalized_original_sha256": "2cd0fb7883a3b3553dedbb0bad171646d46f51e2642951aae7c59cb5cec86c46",
+      "complete_word_difference": "122 ORIGINAL zabbix/COPYING REFERENCE gettext/COPYING\n@ @@ -1,12 +1,13 @@ \n  GNU\n+ AFFERO\n  GENERAL PUBLIC LICENSE Version 3,\n- 29 June\n+ 19 November\n  2007 Copyright (C) 2007\n@ @@ -36,8 +37,9 @@ \n  allowed. Preamble The GNU\n+ Affero\n  General Public License is\n@ @@ -50,9 +52,24 @@ \n  and other kinds of\n- works.\n+ works, specifically designed to ensure cooperation with the community in the case of network server software.\n  The licenses for most\n@ @@ -75,14 +92,13 @@ \n  the works. By contrast,\n- the GNU\n+ our\n  General Public\n- License is\n+ Licenses are\n  intended to guarantee your\n@ @@ -105,45 +121,8 @@ \n  for all its users.\n- We, the Free Software Foundation, use the GNU General Public License for most of our software; it applies also to any other work released this way by its authors. You can apply it to your programs, too.\n  When we speak of\n@ @@ -219,114 +198,15 @@ \n  can do these things.\n- To protect your rights, we need to prevent others from denying you these rights or asking you to surrender the rights. Therefore, you have certain responsibilities if you distribute copies of the software, or if you modify it: responsibilities to respect the freedom of others. For example, if you distribute copies of such a program, whether gratis or for a fee, you must pass on to the recipients the same freedoms that you received. You must make sure that they, too, receive or can get the source code. And you must show them these terms so they know their rights.\n  Developers that use\n- the GNU GPL\n+ our General Public Licenses\n  protect your rights with\n@ @@ -343,243 +223,229 @@ \n  offer you this License\n- giving\n+ which gives\n  you legal permission to copy, distribute and/or modify\n- it. For the developers' and authors' protection, the GPL clearly explains that there is no warranty for this free\n+ the\n  software.\n- For both users' and authors' sake, the GPL requires that modified versions be marked as changed, so that their problems will not be attributed erroneously to authors of previous versions. Some devices are designed to deny users access to install or run modified versions of the software inside them, although the manufacturer can do so. This is fundamentally incompatible with the aim of protecting\n+ A secondary benefit of defending all\n  users' freedom\n- to change the software.\n+ is that improvements made in alternate versions of the program, if they receive widespread use, become available for other developers to incorporate. Many developers of free software are heartened and encouraged by the resulting cooperation. However, in the case of software used on network servers, this result may fail to come about.\n  The\n- systematic pattern of\n+ GNU General Public License permits making a modified version and letting the public access it on a server without ever releasing its source code to the public. The GNU Affero General Public License is designed specifically to ensure that, in\n  such\n- abuse occurs in the area of products for individuals to use,\n+ cases, the modified source code becomes available to the community. It requires the operator of a network server to provide the source code of the modified version running there to the users of that server. Therefore, public use of a modified version, on a publicly accessible server, gives the public access to the source code of the modified version. An older license, called the Affero General Public License and published by Affero, was designed to accomplish similar goals. This is a different license, not a version of the Affero GPL, but Affero has released a new version of the Affero GPL\n  which\n- is precisely where it is most unacceptable. Therefore, we have designed this version of the GPL to prohibit the practice for those products. If such problems arise substantially in other domains, we stand ready to extend this provision to those domains in future versions of the GPL, as needed to protect the freedom of users. Finally, every program is threatened constantly by software patents. States should not allow patents to restrict development and use of software on general-purpose computers, but in those that do, we wish to avoid the special danger that patents applied to a free program could make it effectively proprietary. To prevent this, the GPL assures that patents cannot be used to render the program non-free.\n+ permits relicensing under this license.\n  The precise terms and\n@ @@ -603,8 +469,9 @@ \n  3 of the GNU\n+ Affero\n  General Public License. \"Copyright\"\n@ @@ -4642,13 +4509,15 @@ \n  conveying the Program. 13.\n+ Remote Network Interaction;\n  Use with the GNU\n- Affero\n  General Public License. Notwithstanding\n@ @@ -4657,8 +4526,106 @@ \n  provision of this License,\n+ if you modify the Program, your modified version must prominently offer all users interacting with it remotely through a computer network (if your version supports such interaction) an opportunity to receive the Corresponding Source of your version by providing access to the Corresponding Source from a network server at no charge, through some standard or customary means of facilitating copying of software. This Corresponding Source shall include the Corresponding Source for any work covered by version 3 of the GNU General Public License that is incorporated pursuant to the following paragraph. Notwithstanding any other provision of this License,\n  you have permission to\n@ @@ -4677,9 +4644,8 @@ \n  3 of the GNU\n- Affero\n  General Public License into\n@ @@ -4711,31 +4677,26 @@ \n  covered work, but the\n- special requirements\n+ work with which it is combined will remain governed by version 3\n  of the GNU\n- Affero\n  General Public\n- License, section 13, concerning interaction through a network will apply to the combination as such.\n+ License.\n  14. Revised Versions of\n@ @@ -4753,8 +4714,9 @@ \n  versions of the GNU\n+ Affero\n  General Public License from\n@ @@ -4803,8 +4765,9 @@ \n  version of the GNU\n+ Affero\n  General Public License \"or\n@ @@ -4851,8 +4814,9 @@ \n  number of the GNU\n+ Affero\n  General Public License, you\n@ @@ -4881,8 +4845,9 @@ \n  versions of the GNU\n+ Affero\n  General Public License can\n@ @@ -5351,8 +5316,9 @@ \n  terms of the GNU\n+ Affero\n  General Public License as\n@ @@ -5406,8 +5372,9 @@ \n  PURPOSE. See the GNU\n+ Affero\n  General Public License for\n@ @@ -5421,8 +5388,9 @@ \n  copy of the GNU\n+ Affero\n  General Public License along\n@ @@ -5446,102 +5414,84 @@ \n  and paper mail. If\n- the\n+ your software can interact with users remotely through a computer network, you should also make sure that it provides a way for users to get its source. For example, if your\n  program\n- does terminal interaction, make it output a short notice like this when it starts in\n+ is a web application, its interface could display a \"Source\" link that leads users to\n  an\n- interactive mode: <program> Copyright (C) <year> <name of author> This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'. This is free software, and you\n+ archive of the code. There\n  are\n- welcome to redistribute it under certain conditions; type `show c' for details. The hypothetical commands `show w' and `show c' should show the appropriate parts of the General Public License. Of course, your program's commands might\n+ many ways you could offer source, and different solutions will\n  be\n- different; for a GUI interface, you would use an \"about box\".\n+ better for different programs; see section 13 for the specific requirements.\n  You should also get\n@ @@ -5579,66 +5529,7 @@ \n  and follow the GNU\n- GPL,\n+ AGPL,\n  see <https://www.gnu.org/licenses/>.\n- The GNU General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. But first, please read <https://www.gnu.org/philosophy/why-not-lgpl.html>."
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/assets/styles/vendors/Leaflet/LICENSE",
+        "sha256": "ef473866f292e9feb4a02035adfef5427f828e099f0ff66b759736b4ac13f813"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+        "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      },
+      "full_normalized_original_sha256": "7698640d06049cd7088fd971db22e7473c7b79b9960bf8ab8a8eaf06debc6269",
+      "complete_word_difference": "123 ORIGINAL zabbix/ui/assets/styles/vendors/Leaflet/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.BSD\n@ @@ -1,11 +1,13 @@ \n  Copyright (c)\n- Donald Stufft and individual contributors.\n+ 2010-2021, Vladimir Agafonkin Copyright (c) 2010-2011, CloudMade\n  All rights reserved. Redistribution"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/js/vendors/D3/LICENSE",
+        "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4"
+      },
+      "read_reference": {
+        "component": "lsb-release-minimal",
+        "member": "LICENSE.txt",
+        "sha256": "cb67becb7e7441ca4319b509650752fd59a3a99d84d1eb0ebe694554656032e2"
+      },
+      "full_normalized_original_sha256": "d1275ef26b2cc0bdd12dac66ff0c3069abb95d72bdd26cdf069505acad680196",
+      "complete_word_difference": "124 ORIGINAL zabbix/ui/js/vendors/D3/LICENSE REFERENCE lsb-release-minimal/LICENSE.txt\n@ @@ -1,9 +1,8 @@ \n  Copyright\n- (c) 2021-2022 Gioele Barabucci\n+ 2010-2023 Mike Bostock\n  Permission to use, copy,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/js/vendors/Leaflet/LICENSE",
+        "sha256": "4172e5d9d709cf78cd9b18bce59a2905cb4a072fb72d5fa0331805520019e320"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+        "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      },
+      "full_normalized_original_sha256": "fc180ecf7522080d19cbf92a6049835d2f473bcf9dea0968a41bd6ca412ae864",
+      "complete_word_difference": "125 ORIGINAL zabbix/ui/js/vendors/Leaflet/LICENSE REFERENCE vpp-inputs/packaging-26.3.dist-info/licenses/LICENSE.BSD\n@ @@ -1,11 +1,13 @@ \n  Copyright (c)\n- Donald Stufft and individual contributors.\n+ 2010-2019, Vladimir Agafonkin Copyright (c) 2010-2011, CloudMade\n  All rights reserved. Redistribution"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/js/vendors/Leaflet.markercluster/LICENSE",
+        "sha256": "3133dacd38250bd1f524d8166cc60a016a382522e062fce143691c65bf5e4b3d"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "9b739625ae7032b094106d184ec797bbbf83eb721eee77bade7868ed6bcf472d",
+      "complete_word_difference": "126 ORIGINAL zabbix/ui/js/vendors/Leaflet.markercluster/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,8 @@ \n+ Copyright 2012 David Leaver\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/js/vendors/jQuery/LICENSE",
+        "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "796cf9be244693be24c03166d8e0a0f9a8b985099d6f9189043405664539ab6e",
+      "complete_word_difference": "127 ORIGINAL zabbix/ui/js/vendors/jQuery/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,11 @@ \n+ Copyright OpenJS Foundation and other contributors, https://openjsf.org/\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/js/vendors/qrcode/LICENSE",
+        "sha256": "aaa1f349028a59432eb00222b8ddfe4d2ccebdce04cf8348dcb8d41b7068107b"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "ad06e975313ad1805f182381f67e12f8c15e36b6d54f39b04d93770267261c83",
+      "complete_word_difference": "128 ORIGINAL zabbix/ui/js/vendors/qrcode/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -1,12 +1,13 @@ \n  The MIT License (MIT)\n+ ---------------------\n  Copyright (c)\n- 2015 bw2\n+ 2012 davidshimjs\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/composer/LICENSE",
+        "sha256": "c8cce4b6b9729f264ffdf9296d505d63432497feeed1f586d1902b942197e024"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "9a1fde4ef4fcf6a8ecfe00e3c89f85447feab6d9213068326dd9c29bde924350",
+      "complete_word_difference": "129 ORIGINAL zabbix/ui/vendor/composer/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,10 @@ \n+ Copyright (c) Nils Adermann, Jordi Boggiano\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/duosecurity/duo_universal_php/LICENSE",
+        "sha256": "b7c6878a51e588431e120ad9a02238026a82c41988f9ad04f5e191e64da269c4"
+      },
+      "read_reference": {
+        "component": "pcre2",
+        "member": "cmake/COPYING-CMAKE-SCRIPTS",
+        "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+      },
+      "full_normalized_original_sha256": "fbbd2c8e9bc65b9f3dcaafcbca5721495d44480b5609e4692a49d3a1f6d3671f",
+      "complete_word_difference": "130 ORIGINAL zabbix/ui/vendor/duosecurity/duo_universal_php/LICENSE REFERENCE pcre2/cmake/COPYING-CMAKE-SCRIPTS\n@ @@ -1,4 +1,16 @@ \n+ Copyright (c) 2022 Cisco Systems, Inc. and/or its affiliates All rights reserved.\n  Redistribution and use in\n@ @@ -26,8 +38,9 @@ \n  code must retain the\n+ above\n  copyright notice, this list\n@ @@ -44,8 +57,9 @@ \n  form must reproduce the\n+ above\n  copyright notice, this list"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/firebase/php-jwt/LICENSE",
+        "sha256": "00e641cb185172e752bb3ab744925502c099dca06c9ecf53ea6fba941a65910c"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "679daf9ef6dce12c85f8797e570afd82e7fd8274966bda1f0d99562d3db4ce4e",
+      "complete_word_difference": "131 ORIGINAL zabbix/ui/vendor/firebase/php-jwt/LICENSE REFERENCE conserver/LICENSE\n@ @@ -1,11 +1,9 @@ \n- BSD 3-Clause License\n  Copyright (c)\n- 2000, conserver.com\n+ 2011, Neuman Vong\n  All rights reserved. Redistribution\n@ @@ -88,9 +86,9 @@ \n  nor the names of\n- its\n+ other\n  contributors may be used\n@ @@ -149,9 +147,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/onelogin/php-saml/LICENSE",
+        "sha256": "cdc2294a296d851614df21755af8351df951a2457d21c584e067714a8257db05"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "b8f0144c75f5033daba17d479906638565da618b69d961b4beb49e1882d648f0",
+      "complete_word_difference": "132 ORIGINAL zabbix/ui/vendor/onelogin/php-saml/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2010-2016 OneLogin, Inc.\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/paragonie/constant_time_encoding/LICENSE.txt",
+        "sha256": "d175ac2e6bc71c13117ea49cc2c3be95284690dc07cc7fc441c6538c280641fd"
+      },
+      "read_reference": {
+        "component": "json-c",
+        "member": "COPYING",
+        "sha256": "74c1e6ca5eba76b54d0ad00d4815c8315c1b3bc45ff99de61d103dc92486284c"
+      },
+      "full_normalized_original_sha256": "f64e97dc2aa676133ce32c0787fb2a3d1afd3ecdbf934792fdbe757394ea12ef",
+      "complete_word_difference": "133 ORIGINAL zabbix/ui/vendor/paragonie/constant_time_encoding/LICENSE.txt REFERENCE json-c/COPYING\n@ @@ -1,9 +1,16 @@ \n+ The MIT License (MIT)\n  Copyright (c)\n- 2009-2012 Eric Haszlakiewicz\n+ 2016 - 2022 Paragon Initiative Enterprises\n  Permission is hereby granted,\n@ @@ -164,16 +171,30 @@ \n  DEALINGS IN THE SOFTWARE.\n- ----------------------------------------------------------------\n+ ------------------------------------------------------------------------------ This library was based on the work of Steve \"Sc00bz\" Thomas. ------------------------------------------------------------------------------ The MIT License (MIT)\n  Copyright (c)\n- 2004, 2005 Metaparadigm Pte Ltd\n+ 2014 Steve Thomas\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/pragmarx/google2fa/LICENSE.md",
+        "sha256": "1d5304c79db3db570892c66ea61e715b5c43f936c97eca34012b20b013c7538a"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "a2fbb1fe0adef9a09970e11daf123af1c5afbcec469c34283369486c5f770c60",
+      "complete_word_difference": "134 ORIGINAL zabbix/ui/vendor/pragmarx/google2fa/LICENSE.md REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,13 @@ \n+ Copyright 2014-2018 Phil, Antonio Carlos Ribeiro and All Contributors\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/robrichards/xmlseclibs/LICENSE",
+        "sha256": "1ca7b9045731e74cbe8987835497f366a9af82f6a90a863539134d03c70d25d0"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "15a9b53d630fcdd479f7e789c8bd5c81511e4fd34bd263967400d73b1f26b4c1",
+      "complete_word_difference": "135 ORIGINAL zabbix/ui/vendor/robrichards/xmlseclibs/LICENSE REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,13 @@ \n  Copyright (c)\n- 2012-2024, Intel Corporation\n+ 2007-2019, Robert Richards <rrichards@cdatazone.org>. All rights reserved.\n  Redistribution and use in\n@ @@ -76,15 +80,15 @@ \n  Neither the name of\n- Intel Corporation\n+ Robert Richards\n  nor the names of\n- its\n+ his\n  contributors may be used"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/symfony/deprecation-contracts/LICENSE",
+        "sha256": "b4dd7e49bb2ed062da4dc3cc2cd733377d38fcc702c55b4bef20f94b543b3042"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "f0dee9b2575b81c0478de634bef6df747f238b192eb613cdd099af41866aae2d",
+      "complete_word_difference": "136 ORIGINAL zabbix/ui/vendor/symfony/deprecation-contracts/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2020-2022 Fabien Potencier\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/symfony/polyfill-ctype/LICENSE",
+        "sha256": "8a8251570f35ecbfd2dd2c7e1b992181565edbe9c7642dcb15ca5b2348940c51"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "a6b1c12089fb668ac335c637fb95d314eb4bbad26afdd89c94495fae46474044",
+      "complete_word_difference": "137 ORIGINAL zabbix/ui/vendor/symfony/polyfill-ctype/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2018-2019 Fabien Potencier\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "ui/vendor/symfony/yaml/LICENSE",
+        "sha256": "45b74a394cc6df4f268170bd3ce839e0b50cff66c44c2354562ce8d069091659"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "8fb95618dffb645281fb1e9a23567b9349584f9af8ce3fec38f3a8494d5f9023",
+      "complete_word_difference": "138 ORIGINAL zabbix/ui/vendor/symfony/yaml/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2004-2020 Fabien Potencier\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/chromedp/cdproto/LICENSE",
+        "sha256": "ab7cf54dcb0b4de0442aa073f93501b667dcfba13e7576d9a54f46e1109a6365"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "aeefded25e31d5325e7db7d6a897339241d1d6303851ce9a20e2655b4d362c12",
+      "complete_word_difference": "139 ORIGINAL zabbix/vendor/github.com/chromedp/cdproto/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,11 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2016-2021 Kenneth Shaw\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/chromedp/chromedp/LICENSE",
+        "sha256": "849d803c74764f23ab9f18799e480bee99ac58c33aefc0e8dc621993372a6f53"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "9b24f25e3c426becd091119f13951c3195c1d0ec5823ecbaa3e4e56ca51654e4",
+      "complete_word_difference": "140 ORIGINAL zabbix/vendor/github.com/chromedp/chromedp/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,11 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2016-2022 Kenneth Shaw\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/chromedp/sysutil/LICENSE",
+        "sha256": "7c3f40700432f459a90770b4108f8526a6a62380c2a2720d8cf279ea8751662a"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "076dc1810d96b9de5f9cf2fcb55967457da1c9b79a9c8b09ff72261abf85dbe2",
+      "complete_word_difference": "141 ORIGINAL zabbix/vendor/github.com/chromedp/sysutil/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,11 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2016-2017 Kenneth Shaw\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/dustin/gomemcached/LICENSE",
+        "sha256": "93fc0681f72f321a8928d3420e00ad249f64cfc4d190717958c98e9152265f7a"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "1477281a1a31b6287222b3ecb373d9baf80a8480cf17fd09d11c762d87e1d2ef",
+      "complete_word_difference": "142 ORIGINAL zabbix/vendor/github.com/dustin/gomemcached/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (c) 2013 Dustin Sallings\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/go-ole/go-ole/LICENSE",
+        "sha256": "d883dbca28769ff23dd4368a8edb7ad9f9f23a8f86adde2875c6e41a828aac62"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "7d88e3d68680d96f5a473b6e5d02660c79c4e881a9e24ba8b072f988635ae93c",
+      "complete_word_difference": "143 ORIGINAL zabbix/vendor/github.com/go-ole/go-ole/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -2,11 +2,13 @@ \n  MIT License (MIT) Copyright\n- (c) 2015 bw2\n+ \u00a9 2013-2017 Yasuhiro Matsumoto, <mattn.jp@gmail.com>\n  Permission is hereby granted,\n@ @@ -26,9 +28,9 @@ \n  associated documentation files (the\n- \"Software\"),\n+ \u201cSoftware\u201d),\n  to deal in the\n@ @@ -95,10 +97,10 @@ \n  THE SOFTWARE IS PROVIDED\n- \"AS IS\",\n+ \u201cAS IS\u201d,\n  WITHOUT WARRANTY OF ANY"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/gobwas/httphead/LICENSE",
+        "sha256": "7d168561ad5212bf5b3023d55cba37c9594eb011ba74445d99f82055be662589"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "adb6d38b2e2638887ae9199c16f3a40f78f4d4b306deaa12b24b4dfdcaa23d01",
+      "complete_word_difference": "144 ORIGINAL zabbix/vendor/github.com/gobwas/httphead/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,11 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2017 Sergey Kamardin\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/gobwas/pool/LICENSE",
+        "sha256": "bcc745631c0144db2c601650c55d108172c80d601cf2346c71594a0bc32f6f1c"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "1d5ef83d9ced3918bfcd2ded8d6a577be8d3c5ca90099383e7a7afde55f3a98d",
+      "complete_word_difference": "145 ORIGINAL zabbix/vendor/github.com/gobwas/pool/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,12 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2017-2019 Sergey Kamardin <gobwas@gmail.com>\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/gobwas/ws/LICENSE",
+        "sha256": "db823214b3ef18274418accda3812faac38a1545b8bd589aeb613a849b949c7a"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "c1f34dbbbca2ca1929440ee3b3f9d5aa71ed8ab7680881fbf8ce5572375468d4",
+      "complete_word_difference": "146 ORIGINAL zabbix/vendor/github.com/gobwas/ws/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,12 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ 2017-2021 Sergey Kamardin <gobwas@gmail.com>\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/mediocregopher/radix/v3/LICENSE.txt",
+        "sha256": "d9ca630e58304853484335e394816618ee9433dfadc5c61e73552847446e0efc"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "7c9b48b52decb9837c70f608678129e1ac79e056829c8d1e82e8cdd8aed562f8",
+      "complete_word_difference": "147 ORIGINAL zabbix/vendor/github.com/mediocregopher/radix/v3/LICENSE.txt REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,6 @@ \n+ MIT License\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/memcachier/mc/v3/LICENSE",
+        "sha256": "bafb00969fa26a45f78901e338d0b79ed68d3323338de18daef067db8a89210a"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "ef3eae51a5c9558c002f385c0d407665302dcd9b6b73bd71b0027da1b68467d2",
+      "complete_word_difference": "148 ORIGINAL zabbix/vendor/github.com/memcachier/mc/v3/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,16 @@ \n+ Copyright (C) 2015 by David Terei Copyright (C) 2011 by Blake Mizerany\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/miekg/dns/LICENSE",
+        "sha256": "f200ff9bad73385db2ed81e23ee2c1fe069eb5776e17fae4ee85ad0a9e1361a5"
+      },
+      "read_reference": {
+        "component": "conserver",
+        "member": "LICENSE",
+        "sha256": "d857e5f3b2825b8394dafe3dddee6348d3f2af47657b35ecbac072092760c3db"
+      },
+      "full_normalized_original_sha256": "c6c3ff19d7d047c456ef75b908f9eebe8c950e5e1b46b6f2ccf1aaec3f9e526b",
+      "complete_word_difference": "149 ORIGINAL zabbix/vendor/github.com/miekg/dns/LICENSE REFERENCE conserver/LICENSE\n@ @@ -2,10 +2,18 @@ \n  3-Clause License Copyright (c)\n- 2000, conserver.com\n+ 2009, The Go Authors. Extensions copyright (c) 2011, Miek Gieben.\n  All rights reserved. Redistribution\n@ @@ -28,9 +36,9 @@ \n  following conditions are met:\n- *\n+ 1.\n  Redistributions of source code\n@ @@ -47,9 +55,9 @@ \n  and the following disclaimer.\n- *\n+ 2.\n  Redistributions in binary form\n@ @@ -76,9 +84,9 @@ \n  provided with the distribution.\n- *\n+ 3.\n  Neither the name of"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/omeid/go-yarn/LICENSE",
+        "sha256": "0674605f81d7b3fecfedd151df2f622a844390589760dd98259ebcaef3380a0e"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "ea1457a5c687b4c205d3a4db1b29a95eee1d3c3ad78bfe5c008fbeb9d0b2c80e",
+      "complete_word_difference": "150 ORIGINAL zabbix/vendor/github.com/omeid/go-yarn/LICENSE REFERENCE python-configargparse/LICENSE\n@ @@ -4,9 +4,10 @@ \n  (MIT) Copyright (c) 2015\n- bw2\n+ omeid <public@omeid.me>\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/github.com/sokurenko/go-netstat/LICENSE",
+        "sha256": "72b1d69cda1ccbb89d4f86e27a20fb36f21da1cf688b45842dc0047da3c89d3c"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+        "sha256": "9755a18519666e5f0f4cae3daad3d7012bcae48a600b31237d75e9fe134e6683"
+      },
+      "full_normalized_original_sha256": "50954f6662f3c3c0a0e9357922668eab55d0ccd9cfe52eed2e017d895efd9924",
+      "complete_word_difference": "151 ORIGINAL zabbix/vendor/github.com/sokurenko/go-netstat/LICENSE REFERENCE vpp-inputs/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE\n@ @@ -1,11 +1,11 @@ \n  MIT License Copyright (c)\n- 2026 <copyright holders>\n+ 2018 Cihangir Akturk\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/golang.org/x/sync/LICENSE",
+        "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad"
+      },
+      "read_reference": {
+        "component": "vpp-inputs",
+        "member": "intel-ipsec-mb-2.0/LICENSE",
+        "sha256": "0ef13d5961603a66ba15337c59f0e670ec97167cb2aabe5fd03397e1e43733f2"
+      },
+      "full_normalized_original_sha256": "08c323783124ef61bfe5407c92aaf2a743a401593ea8d30acb2d215ee5b11777",
+      "complete_word_difference": "152 ORIGINAL zabbix/vendor/golang.org/x/sync/LICENSE REFERENCE vpp-inputs/intel-ipsec-mb-2.0/LICENSE\n@ @@ -1,9 +1,9 @@ \n  Copyright\n- (c) 2012-2024, Intel Corporation\n+ 2009 The Go Authors.\n  Redistribution and use in\n@ @@ -76,10 +76,10 @@ \n  Neither the name of\n- Intel Corporation\n+ Google LLC\n  nor the names of"
+    },
+    {
+      "original": {
+        "component": "zabbix",
+        "member": "vendor/golang.zabbix.com/sdk/LICENSE",
+        "sha256": "1ff21edf27540212da61b4f7057219c4df926ac6b5f2f1f1d3b2b982354bf4c0"
+      },
+      "read_reference": {
+        "component": "bmon",
+        "member": "LICENSE.MIT",
+        "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+      },
+      "full_normalized_original_sha256": "3981d78fb07ee63302cb5da9257ae28bbbed9c4239d36b39a96b1ca3f06f9fc2",
+      "complete_word_difference": "153 ORIGINAL zabbix/vendor/golang.zabbix.com/sdk/LICENSE REFERENCE bmon/LICENSE.MIT\n@ @@ -1,4 +1,9 @@ \n+ Copyright (C) 2001-2025 Zabbix SIA\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zeromq3",
+        "member": "external/sha1/license.txt",
+        "sha256": "cb1a4e594fc67ecde3e6d704b94d6ac4385a6027d0605702c675d182f186eeb6"
+      },
+      "read_reference": {
+        "component": "liblinear",
+        "member": "COPYRIGHT",
+        "sha256": "c366abf1cb3a003d8c6e6d9c111a23c432db1d001294f88d479b70b60d7c0af2"
+      },
+      "full_normalized_original_sha256": "a03d6ac7bc1e8b0fb2ee89d362d3d882ccdf6acf497665f87ee390aa0758bf04",
+      "complete_word_difference": "154 ORIGINAL zeromq3/external/sha1/license.txt REFERENCE liblinear/COPYRIGHT\n@ @@ -1,9 +1,12 @@ \n  Copyright\n- (c) 2007-2019 The LIBLINEAR\n+ (C) 1995, 1996, 1997, and 1998 WIDE\n  Project. All rights reserved.\n@ @@ -77,12 +80,13 @@ \n  the distribution. 3. Neither\n+ the\n  name of\n- copyright holders\n+ the project\n  nor the names of\n@ @@ -110,10 +114,9 @@ \n  IS PROVIDED BY THE\n- COPYRIGHT HOLDERS\n+ PROJECT\n  AND CONTRIBUTORS ``AS IS''\n@ @@ -145,9 +148,9 @@ \n  NO EVENT SHALL THE\n- REGENTS\n+ PROJECT\n  OR CONTRIBUTORS BE LIABLE"
+    },
+    {
+      "original": {
+        "component": "zeromq3",
+        "member": "external/unity/license.txt",
+        "sha256": "3ed9b51da86f52c729c96cc99fdde6444b2297c788a9cf4ad1d3649dc34c4985"
+      },
+      "read_reference": {
+        "component": "python-configargparse",
+        "member": "LICENSE",
+        "sha256": "4a01a0948e46d7a94f44fda042d3e02e5319c2aa351357cd13492ca827e01d07"
+      },
+      "full_normalized_original_sha256": "cf10b913739a70261bb3ac3270d99bca213f8ad1a6525e51e443d9b3f63dd4c6",
+      "complete_word_difference": "155 ORIGINAL zeromq3/external/unity/license.txt REFERENCE python-configargparse/LICENSE\n@ @@ -3,10 +3,16 @@ \n  License (MIT) Copyright (c)\n- 2015 bw2\n+ <year> 2007-14 Mike Karlesky, Mark VanderVoord, Greg Williams\n  Permission is hereby granted,"
+    },
+    {
+      "original": {
+        "component": "zeromq3",
+        "member": "external/wepoll/license.txt",
+        "sha256": "3c385cc8b036be73b77982e2b2e49f44b2fb5b23f8b94d060f8b9ddf383c80ad"
+      },
+      "read_reference": {
+        "component": "lz4",
+        "member": "contrib/djgpp/LICENSE",
+        "sha256": "d011d1e02cb32b71c1ce2922ab41a2e2ad30f4ecf8de22c078d53618205abc05"
+      },
+      "full_normalized_original_sha256": "32cd9bfb4a39502a5e6a65f1e64c70cb0f63f2819316a0794e08638805b6a6a7",
+      "complete_word_difference": "156 ORIGINAL zeromq3/external/wepoll/license.txt REFERENCE lz4/contrib/djgpp/LICENSE\n@ @@ -1,8 +1,15 @@ \n+ wepoll - epoll for Windows https://github.com/piscisaureus/wepoll\n  Copyright\n- (c) 2014, lpsantil\n+ 2012-2018, Bert Belder <bertbelder@gmail.com>\n  All rights reserved. Redistribution\n@ @@ -115,9 +122,9 @@ \n  EVENT SHALL THE COPYRIGHT\n- HOLDER\n+ OWNER\n  OR CONTRIBUTORS BE LIABLE"
+    }
+  ],
+  "scope": "Every complete original normalized-word comparison and all additions/deletions read. This is not a claim that compared licenses are equivalent: GPL3/AGPL3 network-source terms, GFDL1.2/1.3 version-specific differences, MPL source obligations, PAM GPL/LGPL alternatives, LLVM/PyZMQ exceptions and all original author notices remain distinct and unchanged. No package redistribution decision or release clearance is inferred.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

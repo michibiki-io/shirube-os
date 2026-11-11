@@ -1,0 +1,89 @@
+{
+  "kind": "exact-rust-stdlib-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "rust-stdlib",
+  "version": "1.63.0+dfsg1-2",
+  "source_identity": "186126527c236e0e3619995101199e1393df913f13fc6b22e6dabd785e307ba9",
+  "source_set": [
+    "ad79e62b57ab06516595da2513369b0285b6e2bde1331c00a4197f492f7fad3d",
+    "523aaadf48741ad0d47bfba0dc677d9f50d114f5913794dafd00ae01ea74acff",
+    "bf8819414af73093f2227658da8a77b5ae6cf04697cdc01cae8b877392b917a4"
+  ],
+  "aggregate_notice_sha256": "7ece4aade8621bd76b5cdd11aaed9f3cc6a99aeff860d3924e46d268662cc110",
+  "original_notices": [
+    {
+      "member": "rustc-1.63.0-src/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    {
+      "member": "rustc-1.63.0-src/COPYRIGHT",
+      "sha256": "401266ab45019fe25d501eb10f11b85140ecf54a739fc1e3d26800ed276f899a"
+    },
+    {
+      "member": "rustc-1.63.0-src/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    {
+      "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/NanumBarunGothic-LICENSE.txt",
+      "sha256": "4106bf21c67fb046e909f8b8d2c9c3d5cce41f35ec70306f189ce10f0c30d7f6"
+    },
+    {
+      "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/SourceCodePro-LICENSE.txt",
+      "sha256": "1092f40afcc93c66c3abca1bae7bd89caef18fd70f8fea25ac3c5e5258ee5e5b"
+    },
+    {
+      "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/FiraSans-LICENSE.txt",
+      "sha256": "67b5b41bbc8e43efc55015d2b1704be4e66ec875c2fdc4809283504fe7c3aa6a"
+    },
+    {
+      "member": "rustc-1.63.0-src/src/librustdoc/html/static/fonts/SourceSerif4-LICENSE.md",
+      "sha256": "acb2b8ba7420e412cd26f7d2b05d1692951ea8c6f4118a3a2c903a0f1fff1feb"
+    }
+  ],
+  "supplemental_notices": [
+    {
+      "member": "debian/copyright",
+      "sha256": "adc1fc569f91e8c20ab9a753b515154f69c1769ea8c500b10ef1ae4b5fa88c34"
+    }
+  ],
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Apache-2.0.txt",
+      "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+    },
+    {
+      "path": "LICENSES/MPL-2.0.txt",
+      "sha256": "c76f740d1521b9bed9ca7a04ad526c310493c62621b1341d623b431736533b30"
+    },
+    {
+      "path": "LICENSES/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "LICENSES/GPL-2.0.txt",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    }
+  ],
+  "scope": "Exact Debian Rust source archive, Debian packaging/patches and DSC only. Full upstream COPYRIGHT read; complete Debian copyright file inspected through all file/author/comment metadata and license definitions, previously read complete grant comparisons, all new operative clauses read, and full CC-BY4 word differences read. All four original font permission files newly retained and read in full; no SDK or OS parent clearance.",
+  "conditions": [
+    "Keep full original Rust and every vendored component copyright, license, disclaimer, modification and nonendorsement notice, choosing MIT where expressly offered while preserving all alternatives and independently licensed files.",
+    "Provide exact preferred code, Debian patches and full build/install configuration. Keep GPL2-or-later build scripts and MPL2-covered files under their own licenses with complete corresponding sources available to binary recipients.",
+    "Retain original NCSA/MIT/Clay/libbacktrace attribution, LLVM exceptions and full Apache license without extending exception scopes. The removed LLVM submodule is not represented as supplied by this Debian DFSG archive.",
+    "Bundle unmodified fonts with their four complete original OFL1.1 notices and all reserved font names; do not sell fonts alone, relicense them, use reserved names for modified fonts or imply endorsement. Debian copyright OFL transcription truncates its disclaimer; original complete font notices are retained alongside it.",
+    "Keep Rust-logo CC-BY4 original credit, source reference and license unchanged as upstream source attribution; it is not Shirube OS product branding. No extra restrictions or DRM apply to covered CC-BY4 material. Preserve CC0 waiver/fallback only for its stated work, with no implied patent/trademark rights."
+  ],
+  "cc_by4_comparison": [
+    {
+      "tag": "replace",
+      "known_geoip": "More considerations",
+      "rust_original": "More_considerations"
+    },
+    {
+      "tag": "replace",
+      "known_geoip": "\u201cLicensor.\u201d The text of the Creative Commons public licenses is dedicated to the public domain under the CC0 Public Domain Dedication.",
+      "rust_original": "\"Licensor.\""
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "required-notice-original-byte-retention",
+  "status": "PASS_NOTICE_RETENTION_ONLY",
+  "original_notice_commit": "33e88e09e40661a9a9d3f2bfa1cc40f1bf3f4030",
+  "original_notice_sha256": "52a6a9b1783764539bc01aea90b63d2345348831165995451878f019fb209072",
+  "current_notice_sha256": "1528c420f41c799f6ddcae167d660552fc7a0f61e5c09925e034741a4f9034b7",
+  "entire_original_notice_exact_prefix": true,
+  "original_bytes": 2882,
+  "current_bytes": 3166,
+  "components": [
+    {
+      "component_key": "conserver@8.2.7-2",
+      "source_identity": "b02a59d8101320fdd9f62629ddf542f56e4fcd1651c0fd80be6f76e8febba569",
+      "copyright_sha256": "a887aee30637d0fd5c0a41bab3a3e2e9987817f24887b3c1eaba4ee38c989f87"
+    }
+  ],
+  "scope": "Full original required NOTICE bytes remain an exact prefix. Only the distributor notice digest is renewed; source identity, upstream copyright digest, permission decision and all prior conditions remain unchanged. No other source or parent distribution approval.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

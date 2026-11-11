@@ -1,0 +1,53 @@
+/* --------------------------------------------------------------------------
+   Title       :  The NIST Statistical Test Suite
+
+   Date        :  December 1999
+
+   Programmer  :  Juan Soto
+
+   Summary     :  For use in the evaluation of the randomness of bitstreams
+		  produced by cryptographic random number generators.
+
+   Package     :  Version 1.0
+
+   Copyright   :  (c) 1999 by the National Institute Of Standards & Technology
+
+   History     :  Version 1.0 by J. Soto, October 1999
+		  Revised by J. Soto, November 1999
+
+   Keywords    :  Pseudorandom Number Generator (PRNG), Randomness, Statistical
+                  Tests, Complementary Error functions, Incomplete Gamma
+	          Function, Random Walks, Rank, Fast Fourier Transform,
+                  Template, Cryptographically Secure PRNG (CSPRNG),
+		  Approximate Entropy (ApEn), Secure Hash Algorithm (SHA-1),
+                  Blum-Blum-Shub (BBS) CSPRNG, Micali-Schnorr (MS) CSPRNG,
+
+   Source      :  David Banks, Elaine Barker, James Dray, Allen Heckert,
+		  Stefan Leigh, Mark Levenson, James Nechvatal, Andrew Rukhin,
+		  Miles Smid, Juan Soto, Mark Vangel, and San Vo.
+
+   Technical
+   Assistance  :  Lawrence Bassham, Ron Boisvert, James Filliben, Sharon Keller,
+		  Daniel Lozier, and Bert Rust.
+
+   Warning     :  Portability Issues.
+
+   Limitation  :  Amount of memory allocated for workspace.
+
+   Restrictions:  Permission to use, copy, and modify this software without
+		  fee is hereby granted, provided that this entire notice is
+		  included in all copies of any software which is or includes
+                  a copy or modification of this software and in all copies
+                  of the supporting documentation for such software.
+   -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+ * Derived by Andre Seznec (IRISA/INRIA - www.irisa.fr/caps) to overcome the
+ * limitations on the sequences size. It should now work on sequences larger
+ * than 1MB and smaller than 256MB.
+ *
+ * Modified on March 2002, last update on June 2002
+ *
+ * Modified Aug 2008 for clean compilation under gcc 4.4
+ * --------------------------------------------------------------------------
+ */

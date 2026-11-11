@@ -1,0 +1,131 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "c-ares",
+      "version": "1.18.1-3",
+      "source_identity": "91d95bb080e4cd1d0d507f4693496e323a593f6611161361fd76735292bda6b6",
+      "copyright_sha256": "a7bb031e8e32d65f76e35ba7a8801a5eae1369b5fd2eded44abe67ef13359a6d",
+      "original_legal_files": [
+        {
+          "member": "LICENSE.md",
+          "sha256": "db4eb63fe09daebdf57d3f79b091bb5ee5070c0d761040e83264e648d307af4c"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "a7bb031e8e32d65f76e35ba7a8801a5eae1369b5fd2eded44abe67ef13359a6d"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/C-ares-original-LICENSE.md.txt",
+          "sha256": "db4eb63fe09daebdf57d3f79b091bb5ee5070c0d761040e83264e648d307af4c"
+        }
+      ],
+      "conditions": [
+        "Retain original MIT acknowledgement and nonendorsement wording in source and supporting binary documentation; condensed Debian MIT grant does not replace that original. Preserve distinct ISC code and public-domain mkinstalldirs scopes, original AUTHORS and packaging GPL permissions."
+      ]
+    },
+    {
+      "source": "dosfstools",
+      "version": "4.2-1",
+      "source_identity": "598c495fe393caedbe15c3595e62d66371114f08dd7482c0af5e3f25acd7e5c2",
+      "copyright_sha256": "e97b0b837a88c06b64986e8d5856bc5f208cca28ee9a0f8225ed0ffa8a049b1c",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "e97b0b837a88c06b64986e8d5856bc5f208cca28ee9a0f8225ed0ffa8a049b1c"
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Preserve GNU3-or-later program conditions and explicit public-domain src/blkdev scope; provide complete source, modifications and build/install material."
+      ]
+    },
+    {
+      "source": "google-authenticator",
+      "version": "20191231-2",
+      "source_identity": "64c6f8c809b99b307f94189dfe4d0ef23eca8d5898dbb693d0776a0745d9f4ad",
+      "copyright_sha256": "b6368dc6d5691c5f7056544c3f07b44228bcc049795b1f04de7f5dfbe5a200e6",
+      "original_legal_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "b6368dc6d5691c5f7056544c3f07b44228bcc049795b1f04de7f5dfbe5a200e6"
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Preserve complete Apache2 license and any applicable NOTICE and modification markings; retain separate Bouncy Castle MIT and public-domain Debian packaging scopes. Exact original Apache2 text matched to a previously read original."
+      ]
+    },
+    {
+      "source": "libonig",
+      "version": "6.9.8-1",
+      "source_identity": "5f834eab1fb4cce8ba8869c64b52358615daa726235eb106e1cd0c4051fafe4c",
+      "copyright_sha256": "77dc6885b3057e16c7341ccc256bfbbc2047adb140b704278a2f36ede4c8a6a3",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "70ba5469ea0bab6e18a32d7009068f996503168d27be57747e08da34337ff26f"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "77dc6885b3057e16c7341ccc256bfbbc2047adb140b704278a2f36ede4c8a6a3"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Oniguruma-original-COPYING.txt",
+          "sha256": "70ba5469ea0bab6e18a32d7009068f996503168d27be57747e08da34337ff26f"
+        }
+      ],
+      "conditions": [
+        "Retain complete original BSD2 library notice including original 2021 copyright year; retain independent packaging GPL2-or-later terms and corresponding source/build/install material."
+      ]
+    },
+    {
+      "source": "libksba",
+      "version": "1.6.3-2",
+      "source_identity": "cc3b1c34eafe187a16f6150607b9729beba2934192fff0b800ac1554746f6faf",
+      "copyright_sha256": "b84c864ba35df1f3160ad00a4e4ee32e8a95783c3d3604301b2909163ff198cf",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "6197b98c6bf69838c624809c509d84333de1bc847155168c0e84527446a27076"
+        },
+        {
+          "member": "COPYING.GPLv2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "member": "COPYING.GPLv3",
+          "sha256": "0abbff814cd00e2b0b6d08395af2b419c1a92026c4b4adacbb65ccda45fa58cf"
+        },
+        {
+          "member": "COPYING.LGPLv3",
+          "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "b84c864ba35df1f3160ad00a4e4ee32e8a95783c3d3604301b2909163ff198cf"
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Use LGPL3-or-later library/header alternative, retain LGPL2.1-or-later der-builder and FSFUL generated constants scopes. Keep manuals, build and tests GPL3-or-later, distinct from the library.",
+        "Retain Internet Society specification copyright and no-warranty notice. Preserve the original specification text and references; derived implementation commentary is permitted by its explicit implementation-assistance grant. No general permission to modify the specification document is inferred."
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

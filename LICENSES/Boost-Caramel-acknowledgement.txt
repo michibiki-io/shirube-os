@@ -1,0 +1,5 @@
+This product includes software developed at the University of Notre Dame and the Pervasive Technology Labs at Indiana University. For technical information contact Andrew Lumsdaine at the Pervasive Technology Labs at Indiana University. For administrative and license questions contact the Advanced Research and Technology Institute at 351 West 10th Street. Indianapolis, Indiana 46202, phone 317-278-4100, fax 317-274-5902.
+
+No endorsement by Indiana University, the University of Notre Dame or Caramel
+is implied. The product is named Shirube OS. Complete original Caramel license,
+authors, conditions and disclaimers accompany the exact corresponding sources.

@@ -1,0 +1,42 @@
+{
+  "kind": "exact-original-native-sdk-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "salt-sdk:libffi",
+  "version": "3.5.2",
+  "source_identity": "f3a3082a23b37c293a4fcd1053147b371f2ff91fa7ea1b2a52e335676bac82dc",
+  "aggregate_notice_sha256": "42c38341f6dfbbcfce7fd26269894f79276f17bb5392f343b829028ef3997c91",
+  "original_notices": [
+    {
+      "member": "libffi-3.5.2/LICENSE",
+      "sha256": "d5699fa516968e3a1550e6c902b7441c78856f2603d61bedd0b0662a26655366"
+    },
+    {
+      "member": "libffi-3.5.2/LICENSE-BUILDTOOLS",
+      "sha256": "e67978cd18816c0cb7d29aaaacde7b7447402c2fb321a051698890a8eaedda94"
+    },
+    {
+      "member": "libffi-3.5.2/msvcc.sh",
+      "sha256": "a1663d73f5cce3d7c1bc5d87c5fa1bc2ddf1e0798f5157ac115f353264acc318",
+      "prefix_bytes": 1718,
+      "notice_sha256": "3dcc68982b9cf763858decc2cc1f137fc0540beb76965cb5f04d89d37c28f252"
+    }
+  ],
+  "additional_original_notices": [
+    {
+      "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-11.2.0/README",
+      "sha256": "49306c701a64d02dc25de7c89eac5643a3e73c159b4aa9438b47f6b9d86ba0df"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-11.2.0/COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    }
+  ],
+  "scope": "The original libffi runtime grant remains MIT. Its tooling notice is separate; msvcc explicitly permits GPL2-or-later and that option is selected while preserving all alternatives. The complete unlicensed-header make_sunver.pl is byte-identical to GCC11.2 contrib/make_sunver.pl; the original GCC project README directs copying permission to COPYING files, and its original full GPL3 is retained for that independent build tool. No secondary distributor label supplies permission. Component only; parent SDK/OS remain gated.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "gcc_original_tool": {
+    "member": "gcc-11.2.0/contrib/make_sunver.pl",
+    "sha256": "ca40d3458893e03a90807be87d720a59e921ee6bf678c6696779d635004a261f",
+    "complete_file_byte_equal": true
+  }
+}

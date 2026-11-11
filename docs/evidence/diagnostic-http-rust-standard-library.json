@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "diagnostic-both-architecture-http-rust-standard-library-source-binding",
+  "status": "PASS",
+  "architectures": {
+    "amd64": {
+      "schema_version": 1,
+      "kind": "diagnostic-http-rust-standard-library-source-binding",
+      "status": "PASS",
+      "architecture": "amd64",
+      "http_distributions": 26,
+      "cargo_dependency_bindings": 158,
+      "standard_library_version": "1.82.0",
+      "standard_library_source_sha256": "1276a0bb8fa12288ba6fa96597d28b40e74c44257c051d3bc02c2b049bb38210",
+      "original_legal_member_bindings": 3583,
+      "original_legal_aliases_materialized": 32,
+      "original_notice_sha256": "029c1ecd41dcad5543d9907c8fddda0dbd31531eb3c43992243daaf884f41e6c",
+      "package_sha256": "c9c8648314300ee430b8e9d15d3f357e90d7144f0069757ea865daf76713ad3d",
+      "fixed_source_and_wheel_declarations": "PASS",
+      "actual_extensions_match_reference_wheels_and_compiler": "PASS",
+      "installed_and_recreated_source_notices": "PASS",
+      "old_missing_inventory_rejected": "PASS",
+      "build_network": "none; previously checksum-verified public input cache",
+      "full_os_reconstruction": "NOT_RUN",
+      "license_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "implementation_files": {
+        "producer/http_rust_sources.py": "61004c28eaacba641fb85cbafc7f2a6a07212fcfd1901866aff9e8edfd5a4bcb",
+        "producer/collect.py": "4a144888fa9a7e063b421a91923815d2226d3801f13cfa0a3a49aea8b16b38fe",
+        "containers/native/http_api.py": "0495bfc7bf69da545c55896322060ca6e4eea92850529be401ba2f31cc543c68",
+        "containers/native/http-rust.lock.json": "cbfab82a068aad2762aec255f36ce34f334fbaf9738456c850cf7f557d18fa32"
+      }
+    },
+    "arm64": {
+      "schema_version": 1,
+      "kind": "diagnostic-http-rust-standard-library-source-binding",
+      "status": "PASS",
+      "architecture": "arm64",
+      "http_distributions": 26,
+      "cargo_dependency_bindings": 158,
+      "standard_library_version": "1.82.0",
+      "standard_library_source_sha256": "1276a0bb8fa12288ba6fa96597d28b40e74c44257c051d3bc02c2b049bb38210",
+      "original_legal_member_bindings": 3583,
+      "original_legal_aliases_materialized": 32,
+      "original_notice_sha256": "029c1ecd41dcad5543d9907c8fddda0dbd31531eb3c43992243daaf884f41e6c",
+      "package_sha256": "004c09543d5c98bafce06c07dd7523424950f7472c689261f63dc593ed42c15d",
+      "fixed_source_and_wheel_declarations": "PASS",
+      "actual_extensions_match_reference_wheels_and_compiler": "PASS",
+      "installed_and_recreated_source_notices": "PASS",
+      "old_missing_inventory_rejected": "PASS",
+      "build_network": "none; previously checksum-verified public input cache",
+      "full_os_reconstruction": "NOT_RUN",
+      "license_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "implementation_files": {
+        "producer/http_rust_sources.py": "61004c28eaacba641fb85cbafc7f2a6a07212fcfd1901866aff9e8edfd5a4bcb",
+        "producer/collect.py": "4a144888fa9a7e063b421a91923815d2226d3801f13cfa0a3a49aea8b16b38fe",
+        "containers/native/http_api.py": "0495bfc7bf69da545c55896322060ca6e4eea92850529be401ba2f31cc543c68",
+        "containers/native/http-rust.lock.json": "cbfab82a068aad2762aec255f36ce34f334fbaf9738456c850cf7f557d18fa32"
+      }
+    }
+  },
+  "limits": [
+    "This is package/source/notice correspondence and gate validation, not whole OS or clean-head candidate acceptance.",
+    "Named legal files and confined aliases were retained from the exact original source archive; complete distribution license clearance remains open.",
+    "Rebuilt extensions are separate component evidence; no byte-identical wheel or complete OS reconstruction claim is made.",
+    "OCI live validation and release clearance remain NOT_RUN/NOT_CLEARED."
+  ]
+}

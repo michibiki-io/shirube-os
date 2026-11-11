@@ -1,0 +1,1174 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 5,
+  "components": [
+    {
+      "source": "boost1.74",
+      "version": "1.74.0+ds1-21",
+      "dsc_sha256": "864ad1a08599ac878b277acbd55cd29602ca575951a986f5f3e5a63f423fef04",
+      "binaries": [
+        {
+          "name": "libboost-context1.74.0",
+          "version": "1.74.0+ds1-21",
+          "architecture": "arm64",
+          "copyright_sha256": "a5b14e71f8c30e113a41b09109a08a0c6371f9085aaeeff53c764eb4f6fa19b9"
+        },
+        {
+          "name": "libboost-filesystem1.74.0",
+          "version": "1.74.0+ds1-21",
+          "architecture": "arm64",
+          "copyright_sha256": "a5b14e71f8c30e113a41b09109a08a0c6371f9085aaeeff53c764eb4f6fa19b9"
+        },
+        {
+          "name": "libboost-iostreams1.74.0",
+          "version": "1.74.0+ds1-21",
+          "architecture": "arm64",
+          "copyright_sha256": "a5b14e71f8c30e113a41b09109a08a0c6371f9085aaeeff53c764eb4f6fa19b9"
+        }
+      ],
+      "copyright_sha256": "a5b14e71f8c30e113a41b09109a08a0c6371f9085aaeeff53c764eb4f6fa19b9",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/assign/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/beast/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/beast/test/bench/parser/nodejs-parser/LICENSE-MIT",
+          "sha256": "2996a1c43ee757f9c997a829d82bdd584052323e73cf02ff8126c6fbd95c2d87",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/beast/test/bench/parser/nodejs-parser/LICENSE-MIT",
+            "sha256": "2996a1c43ee757f9c997a829d82bdd584052323e73cf02ff8126c6fbd95c2d87",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "libs/callable_traits/LICENSE.md",
+          "sha256": "754f0d4ecb5f254feaa1b0d3e4180696a8af2abcc2969e5abf590834a63610e5",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/callable_traits/LICENSE.md",
+            "sha256": "754f0d4ecb5f254feaa1b0d3e4180696a8af2abcc2969e5abf590834a63610e5",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/compute/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/concept_check/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/contract/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/date_time/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/date_time/xmldoc/license.xml",
+          "sha256": "477ea844df37c895dbf0aa39f935631965b0bc963024d6ca36215294cf0ed7ee",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/date_time/xmldoc/license.xml",
+            "sha256": "477ea844df37c895dbf0aa39f935631965b0bc963024d6ca36215294cf0ed7ee",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/dynamic_bitset/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/format/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/geometry/doc/copyright_note_policy.txt",
+          "sha256": "521a8764f0025b076bc492805d4b2bb3d8f9eceb0bc781b61611c18c8c77af09",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/geometry/doc/copyright_note_policy.txt",
+            "sha256": "521a8764f0025b076bc492805d4b2bb3d8f9eceb0bc781b61611c18c8c77af09",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/geometry/doc/src/copyright_block.qbk",
+          "sha256": "e91652ee33d62e6afbafd86ab29c2407ea1ae0a557809f0be84fd66f135f1787",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/geometry/doc/src/copyright_block.qbk",
+            "sha256": "e91652ee33d62e6afbafd86ab29c2407ea1ae0a557809f0be84fd66f135f1787",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/contrib/rapidxml-1.13/license.txt",
+          "sha256": "6094a09542ee0835df4c212203ae0a19c93b47a24d78ccf4951b0282268570ae",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/geometry/doc/src/docutils/tools/doxygen_xml2qbk/contrib/rapidxml-1.13/license.txt",
+            "sha256": "6094a09542ee0835df4c212203ae0a19c93b47a24d78ccf4951b0282268570ae",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/gil/LICENSE.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/hana/LICENSE.md",
+          "sha256": "41f7e1f40b970e151d7f517e3ea1a7e4d02244629a9121fa80f35853bd8b8c3b",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/hana/LICENSE.md",
+            "sha256": "41f7e1f40b970e151d7f517e3ea1a7e4d02244629a9121fa80f35853bd8b8c3b",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/histogram/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/hof/LICENSE.md",
+          "sha256": "859bddbbef21decf692e6bd16bd8a6c96cde1b989fa88ddd63bd2bde98b58b2e",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/hof/LICENSE.md",
+            "sha256": "859bddbbef21decf692e6bd16bd8a6c96cde1b989fa88ddd63bd2bde98b58b2e",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/hof/doc/src/license.md",
+          "sha256": "bebd6881aed727d47ba90806b67624093a829badd5b49644e00314564324f10c",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/hof/doc/src/license.md",
+            "sha256": "bebd6881aed727d47ba90806b67624093a829badd5b49644e00314564324f10c",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/iostreams/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/logic/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/math/doc/sf/license.qbk",
+          "sha256": "cd1fa4b1126b015d9705f52d2f71b0824a7844410cdc57fadf26699e6b386017",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/math/doc/sf/license.qbk",
+            "sha256": "cd1fa4b1126b015d9705f52d2f71b0824a7844410cdc57fadf26699e6b386017",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/move/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/mpl/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/nowide/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/nowide/doc/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/numeric/interval/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/pool/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/property_map/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/ptr_container/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/python/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/rational/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/safe_numerics/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/signals2/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/static_string/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/stl_interfaces/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/system/doc/system/copyright.adoc",
+          "sha256": "7a5863083c396007373c97963aabfc329cc07ca545e733c006c712e87e28e4bc",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/system/doc/system/copyright.adoc",
+            "sha256": "7a5863083c396007373c97963aabfc329cc07ca545e733c006c712e87e28e4bc",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/test/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/tokenizer/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/uuid/LICENSE",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/variant2/doc/variant2/copyright.adoc",
+          "sha256": "bc83b50aad002dac1754419d136cfc4f33b4db6df72088a9c76b29f1f0283816",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/variant2/doc/variant2/copyright.adoc",
+            "sha256": "bc83b50aad002dac1754419d136cfc4f33b4db6df72088a9c76b29f1f0283816",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "libs/yap/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "libs/yap/example/autodiff_library/LICENSE",
+          "sha256": "bd1684bf806817f26f02585bc992fe5f5ea8788896398234b8a8187328af550b",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "libs/yap/example/autodiff_library/LICENSE",
+            "sha256": "bd1684bf806817f26f02585bc992fe5f5ea8788896398234b8a8187328af550b",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "tools/bcp/licence_info.hpp",
+          "sha256": "ea35f89f0810bf38316bf6f6615ddade662d0b9ca1b7a6d5ef8630045e61ca16",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/bcp/licence_info.hpp",
+            "sha256": "ea35f89f0810bf38316bf6f6615ddade662d0b9ca1b7a6d5ef8630045e61ca16",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "tools/boostbook/xsl/caramel/LICENSE",
+          "sha256": "2f59ce71dd2b1538db0976cf0886685de2cead1dbf1ddebabd90c7df21e469e7",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/boostbook/xsl/caramel/LICENSE",
+            "sha256": "2f59ce71dd2b1538db0976cf0886685de2cead1dbf1ddebabd90c7df21e469e7",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "tools/build/LICENSE.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "tools/docca/LICENSE_1_0.txt",
+          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+          "read_reference": {
+            "component": "salt-sdk:zlib",
+            "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+            "sha256": "8d8291caf1cee26d23acf3eb67c9f9a2d58f1c681b16a4fbe8cbfb9e3c0b5a9b",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "tools/inspect/copyright_check.hpp",
+          "sha256": "5f5945fabdc65a3444bd858fc5088d9042ceaafa062ef2883acc61d6e676483b",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/inspect/copyright_check.hpp",
+            "sha256": "5f5945fabdc65a3444bd858fc5088d9042ceaafa062ef2883acc61d6e676483b",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "tools/inspect/license_check.hpp",
+          "sha256": "f1598455d2cb69634f6db48596e010fcf49db8f25a5d21ed3fcb2a402f0a485f",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/inspect/license_check.hpp",
+            "sha256": "f1598455d2cb69634f6db48596e010fcf49db8f25a5d21ed3fcb2a402f0a485f",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "tools/quickbook/test/doc-info/copyright-fail1.quickbook",
+          "sha256": "bd89d709133ae673668ff52ce725d364062124527af052223710294a464f2de4",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/quickbook/test/doc-info/copyright-fail1.quickbook",
+            "sha256": "bd89d709133ae673668ff52ce725d364062124527af052223710294a464f2de4",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        },
+        {
+          "member": "tools/quickbook/test/doc-info/copyright-fail2.quickbook",
+          "sha256": "3fc858792098fb0172da4a237ac1f48a03bc4d80249b218db5702e3149c593b2",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/quickbook/test/doc-info/copyright-fail2.quickbook",
+            "sha256": "3fc858792098fb0172da4a237ac1f48a03bc4d80249b218db5702e3149c593b2",
+            "method": "Entire original legal file read; explicit scopes, attributions and all special obligations retained; no parent clearance inferred"
+          }
+        },
+        {
+          "member": "tools/quickbook/test/doc-info/copyright1.gold",
+          "sha256": "4f43931d49ac37272a68e190ba7c42b1917d8af0426ef4391d9c8fcde8bdb7e7",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/quickbook/test/doc-info/copyright1.gold",
+            "sha256": "4f43931d49ac37272a68e190ba7c42b1917d8af0426ef4391d9c8fcde8bdb7e7",
+            "method": "Entire original legal file read; explicit scopes, attributions and all special obligations retained; no parent clearance inferred"
+          }
+        },
+        {
+          "member": "tools/quickbook/test/doc-info/copyright1.gold-html",
+          "sha256": "beb6239569d319f950914ee1d7002cb4e8bf7c952b4def3a218338cda1c4ff79",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/quickbook/test/doc-info/copyright1.gold-html",
+            "sha256": "beb6239569d319f950914ee1d7002cb4e8bf7c952b4def3a218338cda1c4ff79",
+            "method": "Entire original legal file read; explicit scopes, attributions and all special obligations retained; no parent clearance inferred"
+          }
+        },
+        {
+          "member": "tools/quickbook/test/doc-info/copyright1.quickbook",
+          "sha256": "36e530006d690a0c5511b2bbedf4b190bd68f098b443bbf2d8479ef5e8e3e324",
+          "read_reference": {
+            "component": "boost1.74",
+            "member": "tools/quickbook/test/doc-info/copyright1.quickbook",
+            "sha256": "36e530006d690a0c5511b2bbedf4b190bd68f098b443bbf2d8479ef5e8e3e324",
+            "method": "Entire original legal file read; explicit scopes, attributions and all special obligations retained; no parent clearance inferred"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "7744851c54d4aba0fb437b073348db84750ed53d7b1cedd7f977261f52ba2fd0",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "BSD2",
+          "full_normalized_body_sha256": "e6452f8bb9f61807201120c7056c952b2714090f2d9d5040516b764b86995476",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "dctrl-tools"
+          }
+        },
+        {
+          "label": "BSD3_DEShaw",
+          "full_normalized_body_sha256": "6569ab61ecb3df192fbe7281953b9bb4284f01aface6ce475176ee203384ba6c",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "BSD3_DEShaw"
+          }
+        },
+        {
+          "label": "BSD3_Google",
+          "full_normalized_body_sha256": "62026297ff963401183d38bdf53c2af078617e9d6178d8ebc339658404883295",
+          "read_reference": {
+            "label": "BSD-3-Clause-Google",
+            "component": "jemalloc"
+          }
+        },
+        {
+          "label": "BSL-1.0",
+          "full_normalized_body_sha256": "a796d5730b60337084397744dbaaad751d2995d421f96e8842e4a22007ee284f",
+          "read_reference": {
+            "label": "BSL",
+            "component": "libevent"
+          }
+        },
+        {
+          "label": "Caramel",
+          "full_normalized_body_sha256": "71bccc42fd28780e6f90a5e4b450a14e1b8cff5c0ecbca967081bb341c2c9fbc",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "Caramel"
+          }
+        },
+        {
+          "label": "CrystalClear",
+          "full_normalized_body_sha256": "45a34010abb9744b2f8add32e936b7694a764488750cb490931b8122ce6deda0",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "CrystalClear"
+          }
+        },
+        {
+          "label": "HP",
+          "full_normalized_body_sha256": "407b50c559269a5a2da0098e3ee82284f87a15c38ce596a2c10992893fed26f1",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "HP"
+          }
+        },
+        {
+          "label": "Jam",
+          "full_normalized_body_sha256": "46165ca68c09055de911128fe0e317505288d459a73f30df6642102b212872df",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "Jam"
+          }
+        },
+        {
+          "label": "Kempf",
+          "full_normalized_body_sha256": "8f7af55541d69a242237fcfff92da37397d67947935030e1063985275549beaa",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "Kempf"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "NIST",
+          "full_normalized_body_sha256": "c80fa98379ed52bad5a153abdb10b17f40520fd0ea3a51a2bb5efa6120ab60f3",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "NIST"
+          }
+        },
+        {
+          "label": "OldBoost1",
+          "full_normalized_body_sha256": "13c8ac758d0fed4bbe4983d9bc7d9cb35bb7fdb5d383fc6925f40ae198da3df8",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "OldBoost1"
+          }
+        },
+        {
+          "label": "OldBoost2",
+          "full_normalized_body_sha256": "62ea80899bb6f8889b2f0e036a403660acb8dd898bef21ed43cd834d79fad128",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "OldBoost2"
+          }
+        },
+        {
+          "label": "OldBoost3",
+          "full_normalized_body_sha256": "95ca0e6765e3895128266703f4b3efef75218ebb879e58a72dc2a2d7e1a486e0",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "OldBoost3"
+          }
+        },
+        {
+          "label": "Python",
+          "full_normalized_body_sha256": "53223f1bb7fb339281a40ec3f89cdb048c4b5cad15989a487e76d780021bbd8d",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "Python"
+          }
+        },
+        {
+          "label": "SGI",
+          "full_normalized_body_sha256": "1257652b444c2fe2202dec568d73dec28241af61c8cba81649c8bfdda0979b68",
+          "read_reference": {
+            "component": "boost1.74",
+            "label": "SGI"
+          }
+        },
+        {
+          "label": "Spencer",
+          "full_normalized_body_sha256": "8c1cdeb1b407b6e632926d67c2a1d3e6c7c9e3365825ecfda7db051929fbf74a",
+          "read_reference": {
+            "label": "Spencer-86",
+            "component": "less"
+          }
+        },
+        {
+          "label": "Zlib",
+          "full_normalized_body_sha256": "444399c3da8f18f32878c6f8b7348110f33985558ca7abe98d4c8ed26f013109",
+          "read_reference": {
+            "label": "Zlib",
+            "component": "freetype"
+          }
+        }
+      ],
+      "retained_author_and_path_table": {
+        "rows": 1541,
+        "canonical_fields_sha256": "d13472a5fe198776d5d2cb8a0d44a09e346c02761ec22e6f6b062f945899a423",
+        "original_preserved_in_source_copyright": true,
+        "manual_every_author_or_path_row_read": false,
+        "all_non_table_and_potentially_operative_statements_read": true
+      }
+    },
+    {
+      "source": "libdbi-perl",
+      "version": "1.643-4+deb12u3",
+      "dsc_sha256": "73a9c5c956104cd95e478f2f5e145937fe669f43a5b692f017850d32ffcd5aef",
+      "binaries": [
+        {
+          "name": "libdbi-perl",
+          "version": "1.643-4+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "57d2dfda7c353999012ecf14b0a932b734f685df5c684ad04bf86f12f8a954c5"
+        }
+      ],
+      "copyright_sha256": "57d2dfda7c353999012ecf14b0a932b734f685df5c684ad04bf86f12f8a954c5",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "33453c8b0d8d474a42669ac702a13c20f39c91a34b3df4e6ca778fc2f0f711c7",
+          "read_reference": {
+            "component": "libdbi-perl",
+            "member": "LICENSE",
+            "sha256": "33453c8b0d8d474a42669ac702a13c20f39c91a34b3df4e6ca778fc2f0f711c7",
+            "method": "Complete original normalized-word comparison, every difference read, exact author and per-file scope retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "DBI",
+          "Upstream-Contact": "Tim Bunce <Tim.Bunce@pobox.com>",
+          "Source": "https://metacpan.org/release/DBI"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1994-2015, Tim Bunce <Tim.Bunce@pobox.com>"
+        },
+        {
+          "Files": "Driver.xst",
+          "Copyright": "1997-2002, Tim Bunce <Tim.Bunce@pobox.com>\n2002, Jonathan Leffler <j.leffler@acm.org>"
+        },
+        {
+          "Files": "dbd_xsh.h",
+          "Copyright": "2000-2002, Tim Bunce <Tim.Bunce@pobox.com>\n2002, Jonathan Leffler <j.leffler@acm.org>"
+        },
+        {
+          "Files": "dbipport.h",
+          "Copyright": "2004-2013, Marcus Holland-Moritz <mhx-cpan@gmx.net>\n2001, Paul Marquess <pmqs@cpan.org> (Version 2.x)\n1999, Kenneth Albanowski <kjahds@kjahds.com> (Version 1.x)"
+        },
+        {
+          "Files": "dbiprof.PL",
+          "Copyright": "2002, Sam Tregar <sam@tregar.com>"
+        },
+        {
+          "Files": "dbiproxy.PL\nlib/DBI/ProxyServer.pm",
+          "Copyright": "1997, Jochen Wiedmann <jwied@cpan.org>"
+        },
+        {
+          "Files": "lib/DBI/DBD.pm",
+          "Copyright": "1997-2006, Tim Bunce <Tim.Bunce@pobox.com>\n1997-2006, Jochen Wiedmann <jwied@cpan.org>\n1997-2006, Jonathan Leffler <j.leffler@acm.org>\n1997-2006, Steffen Goeldner <sgoeldner@cpan.org>"
+        },
+        {
+          "Files": "lib/DBD/DBM.pm",
+          "Copyright": "2004, Jeff Zucker <jzucker@cpan.org>\n2010-2013, Jens Rehsack & H.Merijn Brand"
+        },
+        {
+          "Files": "lib/DBD/Mem.pm",
+          "Copyright": "2016, 2017, Jens Rehsack"
+        },
+        {
+          "Files": "lib/DBI/SQL/Nano.pm",
+          "Copyright": "\n2004, Jeff Zucker <jzucker@cpan.org>\n2010, Jens Rehsack <rehsack@cpan.org>"
+        },
+        {
+          "Files": "lib/DBI/ProfileData.pm\nlib/DBI/ProfileDumper/Apache.pm\nlib/DBI/ProfileDumper.pm",
+          "Copyright": "2002, Sam Tregar <sam@tregar.com>"
+        },
+        {
+          "Files": "lib/DBI/DBD/Metadata.pm",
+          "Copyright": "1997-2003, Tim Bunce <Tim.Bunce@pobox.com>\n1997-2003, Jochen Wiedmann <jwied@cpan.org>\n1997-2003, Jonathan Leffler <j.leffler@acm.org>\n1997-2003, Steffen Goeldner <sgoeldner@cpan.org>"
+        },
+        {
+          "Files": "lib/DBI/DBD/SqlEngine.pm",
+          "Copyright": "\n1998, Jochen Wiedmann\n2004, Jeff Zucker\n2009-2013, H.Merijn Brand\n2009-2013, Jens Rehsack"
+        },
+        {
+          "Files": "lib/DBD/File.pm\nlib/DBD/File/*",
+          "Copyright": "\n2009-2013, H.Merijn Brand\n2009-2013, Jens Rehsack\n2004-2009, Jeff Zucker\n1998-2004, Jochen Wiedmann"
+        },
+        {
+          "Files": "lib/DBD/Proxy.pm",
+          "Copyright": "1997,1998, Jochen Wiedmann"
+        },
+        {
+          "Files": "lib/DBD/File/HowTo.pod\nlib/DBI/DBD/SqlEngine/HowTo.pod",
+          "Copyright": "2010, H.Merijn Brand\n2010, Jens Rehsack"
+        },
+        {
+          "Files": "lib/DBI/DBD/SqlEngine/Developers.pod",
+          "Copyright": "2010-2013, H.Merijn Brand\n2010-2013, Jens Rehsack"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n1997-1999, Martin Schulze <joey@finlandia.infodrom.north.de>\n1997-1998, Ben Gertzfield <che@debian.org>\n1997, Christian Schwarz <schwarz@debian.org>\n1999-2007, Christian Hammers <ch@debian.org>\n2002, Dirk Eddelbuettel <edd@debian.org>\n2007-2017, Damyan Ivanov <dmn@debian.org>\n2008-2020, gregor herrmann <gregoa@debian.org>\n2008, Niko Tyni <ntyni@debian.org>\n2009, Ryan Niebur <ryan@debian.org>\n2010, Ansgar Burchardt <ansgar@debian.org>\n2010, Nicholas Bamber <nicholas@periapt.co.uk>\n2013, Xavier Guimard <yadd@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libregexp-common-perl",
+      "version": "2017060201-3",
+      "dsc_sha256": "32afa5b4376cea62397f14e647c1385570c9c4fff198c2ec412d5a88d54f0876",
+      "binaries": [
+        {
+          "name": "libregexp-common-perl",
+          "version": "2017060201-3",
+          "architecture": "all",
+          "copyright_sha256": "b7112956cfce06b4f926ed20ef23948742e18b431533f33a69f084069b50fead"
+        }
+      ],
+      "copyright_sha256": "b7112956cfce06b4f926ed20ef23948742e18b431533f33a69f084069b50fead",
+      "original_legal_matches": [
+        {
+          "member": "COPYRIGHT",
+          "sha256": "258995c044cb435c943c50002dd0e90873f5405ef8cdc66a74a51ec542a23257",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "member": "COPYRIGHT",
+            "sha256": "258995c044cb435c943c50002dd0e90873f5405ef8cdc66a74a51ec542a23257",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "COPYRIGHT.AL",
+          "sha256": "3a904735dfe97a2529984f34926d36f1c26141d5a215dd2b633de3ef5a60902a",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "member": "COPYRIGHT.AL",
+            "sha256": "3a904735dfe97a2529984f34926d36f1c26141d5a215dd2b633de3ef5a60902a",
+            "method": "Complete original full normalized-word comparison, every addition/deletion read; original per-file scopes and license alternatives retained."
+          }
+        },
+        {
+          "member": "COPYRIGHT.AL2",
+          "sha256": "fce50220933f3640485d2b39b9dcd6e976b37b9dede185f97d4f5996f65cad11",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "member": "COPYRIGHT.AL2",
+            "sha256": "fce50220933f3640485d2b39b9dcd6e976b37b9dede185f97d4f5996f65cad11",
+            "method": "Complete original word differences read; original scopes, copyright changes and exact operative terms retained."
+          }
+        },
+        {
+          "member": "COPYRIGHT.BSD",
+          "sha256": "ebe4989893eeeca6daefccca138810c4d2027efe1b3f464be19d9a9a1e676fb3",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "member": "COPYRIGHT.BSD",
+            "sha256": "ebe4989893eeeca6daefccca138810c4d2027efe1b3f464be19d9a9a1e676fb3",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "COPYRIGHT.MIT",
+          "sha256": "f4d0dab889363592f1eff63f18ada54e16d31fa868d5f112355e9f798d262afd",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "member": "COPYRIGHT.MIT",
+            "sha256": "f4d0dab889363592f1eff63f18ada54e16d31fa868d5f112355e9f798d262afd",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "258995c044cb435c943c50002dd0e90873f5405ef8cdc66a74a51ec542a23257",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "member": "COPYRIGHT",
+            "sha256": "258995c044cb435c943c50002dd0e90873f5405ef8cdc66a74a51ec542a23257",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Artistic",
+          "full_normalized_body_sha256": "a2ad19d146046e274a26d10b68a6b878aa17d9595065d125fbae59a7d8599103",
+          "read_reference": {
+            "label": "Artistic",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "Artistic-2.0",
+          "full_normalized_body_sha256": "8e21a4e0f1ab4c6baa642d48378e116fd1572107aa8d945a80deea139f20172e",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "label": "Artistic-2.0"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "3e119e42227de52bc3a98fa2e201d8539faca6b05816c7a28d72f34cdbb40ca3",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "GPL-1+",
+          "full_normalized_body_sha256": "2f71054e5f927889c72b62ac2ba5584d7274fa7cf1f30adfb52d9f226f503a5c",
+          "read_reference": {
+            "label": "GPL-1+",
+            "component": "io-stringy"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "19b4a000ccfe89c7130329f05a9690e108f4e9025bd0b7451d4a6c700e2701f1",
+          "read_reference": {
+            "component": "libregexp-common-perl",
+            "label": "Expat"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Regexp-Common",
+          "Upstream-Contact": "Abigail <regexp-common@abigail.be>",
+          "Source": "https://metacpan.org/release/Regexp-Common"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2001-2017, Abigail <regexp-common@abigail.be>\n2001-2017, Damian Conway <damian@conway.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2003, 2004, 2005, 2006, Stephen Quinney <sjq@debian.org>\n2006, Krzysztof Krzyzaniak (eloy) <eloy@debian.org>\n2008, 2011, gregor herrmann <gregoa@debian.org>\n2010, Jonathan Yu <jawnsy@cpan.org>\n2011-2017, Salvatore Bonaccorso <carnil@debian.org>",
+          "Comment": "this package was initially Debianized by Stephen Quinney,\nbut licensing terms for debian/* files were not mentioned. It is\nassumed that all authors chose to license their work under the same\nterms as upstream."
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "mawk",
+      "version": "1.3.4.20200120-3.1",
+      "dsc_sha256": "ed0543e3111f718e918a73033292fe2616760c8791c13efa0da3818ca835cdc1",
+      "binaries": [
+        {
+          "name": "mawk",
+          "version": "1.3.4.20200120-3.1",
+          "architecture": "arm64",
+          "copyright_sha256": "167d04422f2fdf76ab565878c23be8ba0c2ebb2c57a5dac0a5a59ccd27e747a5"
+        }
+      ],
+      "copyright_sha256": "167d04422f2fdf76ab565878c23be8ba0c2ebb2c57a5dac0a5a59ccd27e747a5",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "package/debian/copyright",
+          "sha256": "5fbf53d3ad762fc76f1189d71a45a470a4133be2e901f9c6961ba3a40959a134",
+          "read_reference": {
+            "component": "mawk",
+            "member": "package/debian/copyright",
+            "sha256": "5fbf53d3ad762fc76f1189d71a45a470a4133be2e901f9c6961ba3a40959a134",
+            "method": "Complete original full normalized-word comparison, every addition/deletion read; original per-file scopes and license alternatives retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "X11",
+          "full_normalized_body_sha256": "c8c0049710bc4c09f9dcade779915d46ad5c92f5b0cf33ee32a5e0a12c0b2ca7",
+          "read_reference": {
+            "label": "X11",
+            "component": "diffutils"
+          }
+        },
+        {
+          "label": "CC-BY-3.0",
+          "full_normalized_body_sha256": "b5d5f34c2061eb6b70957933ee0ff2cb22eadb9c3b3dd88c8d4da54428b83433",
+          "read_reference": {
+            "component": "mawk",
+            "label": "CC-BY-3.0"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "ea6244e0048dd486390bf41201f37f1c1aa602fb35faf294228e789dbfb4a19c",
+          "read_reference": {
+            "component": "mawk",
+            "label": "GPL-2"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Comment": "This is the Debian GNU prepackaged version of mawk,\nan implementation of the AWK Programming Language.\nThis package was put together by Chris Fearnley <cjf@netaxs.com>.",
+          "Upstream-Contact": "Mike Brennan <brennan@whidbey.com>",
+          "Source": "https://invisible-island.net/mawk/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1996, Michael D. Brennan.\n2009-2020, Thomas E. Dickey."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "(C) 1995-96 Chris Fearnley.\n(C) 1998-2003 James Troup."
+        },
+        {
+          "Files": "install-sh",
+          "Copyright": "(C) 1994 X Consortium",
+          "Comment": "FSF changes to this file are in the public domain."
+        },
+        {
+          "Files": "icons/mawk48.svg",
+          "Copyright": "2012, Thomas E. Dickey."
+        },
+        {}
+      ]
+    },
+    {
+      "source": "pcsc-lite",
+      "version": "1.9.9-2",
+      "dsc_sha256": "7f41763f994336ce4371b5a67fefda900c7f3e61b52e3acb77b3a70632869cba",
+      "binaries": [
+        {
+          "name": "libpcsclite1",
+          "version": "1.9.9-2",
+          "architecture": "arm64",
+          "copyright_sha256": "458ddd6711f0527ee4c3c2880e2653d053a8b6c6f323964b4897a425ad309a5f"
+        }
+      ],
+      "copyright_sha256": "458ddd6711f0527ee4c3c2880e2653d053a8b6c6f323964b4897a425ad309a5f",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "40d4358bb8dc8d30f5365ae6d999b6f820bbc051b292912482f2e4d0ebd837e1",
+          "read_reference": {
+            "component": "pcsc-lite",
+            "member": "COPYING",
+            "sha256": "40d4358bb8dc8d30f5365ae6d999b6f820bbc051b292912482f2e4d0ebd837e1",
+            "method": "Complete original full normalized-word comparison, every addition/deletion read; original per-file scopes and license alternatives retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "821cc8b5b3478b13d545ecd73be85965e25b0e7e8d5fa3910f1faaa7d0ae715d",
+          "read_reference": {
+            "component": "pcsc-lite",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "15824d08efdd156a65aeb2cce9fd7ee914b2adc5231f5f2a26d998c8ccf05214",
+          "read_reference": {
+            "label": "MIT-Old-Style-with-legal-disclaimer-2",
+            "component": "file"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "7ebcc3ab24a622c90c0afefe8fd2acc2c03d951fe8b4fd73cbbace928249632a",
+          "read_reference": {
+            "component": "pcsc-lite",
+            "label": "GPL-3+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "pcsc-lite",
+          "Upstream-Contact": "muscle@lists.musclecard.com\nludovic.rousseau@free.fr",
+          "Source": "https://salsa.debian.org/rousseau/PCSC"
+        },
+        {
+          "Files": "*",
+          "Copyright": "Copyright (c) 1999-2003 David Corcoran <corcoran@linuxnet.com>\nCopyright (c) 2001-2022 Ludovic Rousseau <ludovic.rousseau@free.fr>"
+        },
+        {
+          "Files": "src/simclist.?",
+          "Copyright": "Copyright (c) 2007,2008 Mij <mij@bitchx.it>"
+        },
+        {
+          "Files": "debian/*  src/spy/*",
+          "Copyright": "2002-2022, Ludovic Rousseau <ludovic.rousseau@free.fr>"
+        }
+      ]
+    }
+  ],
+  "scope": "Complete original grant comparisons and separately read scope/notice conditions. The large Boost author/path table is structurally inspected and retained without claiming manual reading of every personal-name row or independent copyright-title verification.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

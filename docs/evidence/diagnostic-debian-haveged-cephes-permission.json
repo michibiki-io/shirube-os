@@ -1,0 +1,57 @@
+{
+  "kind": "exact-debian-haveged-cephes-permission",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "haveged",
+  "version": "1.9.14-1+deb12u1",
+  "dsc_sha256": "6978f6939adb5766336126b2045a1c5c514d7ad7f63eeff7af9f039316f2b3a5",
+  "copyright_sha256": "f640ffd58ee2aa544f0a43e4e42274be75b80dfd89e7326734a5702d0c696f23",
+  "primary_published_permission": {
+    "distribution": "cephes2.0.0",
+    "url": "https://registry.npmjs.org/cephes/-/cephes-2.0.0.tgz",
+    "repository": "https://github.com/nearform/node-cephes",
+    "archive_sha256": "ebba6bfc851a8df2fcb469bdcd2214724d391d2021efd6683cb6605f5197c65c",
+    "registry_sha512_integrity": "sha512-4GMUzkcXHZ0HMZ3gZdBrv8pQs1/zkJh2Q9rQOF8NJZHanM359y3XOSdeqmDBPfxQKYQpJt58R3dUpofrIXJ2mg==",
+    "complete_license_sha256": "0a08ba553e0e7c3a8d4533234c1d50ded2695b13d3e31fb16ef637800d9d77ec",
+    "author_permission_date": "2018-09-07",
+    "permission_scope": "Cephes material posted to the net, distributed under BSD by the authorized publisher; not a new private correspondence or an invented public-domain grant."
+  },
+  "source_scope": {
+    "haveged_mconf_sha256": "2d6cebc91de54b565860df9c074fd4d8f6b0ce93d648fa367998a9b5fe08061d",
+    "authorized_mconf_sha256": "e77c236b99591b543c8cc4faae0c556f6a0ac554eeca156fb1eb9f26224c9a8d",
+    "all_complete_word_differences_read": true,
+    "differences": "Configuration definitions, conditional guards/prototypes and Cephes name-prefix adaptation. All original haveged sources remain unchanged. Actual nist/cephes.c has additional old Cephes notices retained in full."
+  },
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Haveged-1.9.14/COPYING",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "LICENSES/Haveged-1.9.14/nist/mconf.h",
+      "sha256": "2d6cebc91de54b565860df9c074fd4d8f6b0ce93d648fa367998a9b5fe08061d"
+    },
+    {
+      "path": "LICENSES/Haveged-1.9.14/nist/cephes.c",
+      "sha256": "bd7c570798a898a85adb32f506c5481279e6a4a6e4d54b703e94272a6e89494e"
+    },
+    {
+      "path": "LICENSES/Haveged-1.9.14/dfft.c.original-notice.txt",
+      "sha256": "21b36f2234f824c4462d25a2dc0cf5f3d5c010427cdd9c5d684fb4ef5fc5d2eb"
+    },
+    {
+      "path": "LICENSES/Haveged-1.9.14/packtest.c.original-notice.txt",
+      "sha256": "7a1c9d053b22db8644be1c004d439bf634db7b79e5b427202b791fdbfc32fa0f"
+    },
+    {
+      "path": "LICENSES/Haveged-1.9.14/debian-copyright.txt",
+      "sha256": "f640ffd58ee2aa544f0a43e4e42274be75b80dfd89e7326734a5702d0c696f23"
+    },
+    {
+      "path": "LICENSES/Haveged-1.9.14/Cephes-published-BSD-license.txt",
+      "sha256": "d40ab631870d41b48ca3a3852f42b80a7c100dee6fe1a4c45b0d89db4ceb9e79"
+    }
+  ],
+  "scope": "Static exact source, original grants, additional published BSD permission and notice retention. Native rebuild/boot NOT_RUN and not needed for notice-only additions.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

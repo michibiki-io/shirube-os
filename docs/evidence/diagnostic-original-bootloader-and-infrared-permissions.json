@@ -1,0 +1,485 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "grub2",
+      "version": "2.06-13+deb12u2",
+      "dsc_sha256": "9c0f89f34907e0e50df46401c811347f9559cd405b8c83659042f2c4687622b7",
+      "binaries": [
+        {
+          "name": "grub-common",
+          "version": "2.06-13+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "bd3b5f8b4b6f3592bb1b597c6fb4557516db1a3a51a8c0ade5eb1e0dd09a7e1e"
+        },
+        {
+          "name": "grub-efi-arm64",
+          "version": "2.06-13+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "bd3b5f8b4b6f3592bb1b597c6fb4557516db1a3a51a8c0ade5eb1e0dd09a7e1e"
+        },
+        {
+          "name": "grub-efi-arm64-bin",
+          "version": "2.06-13+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "bd3b5f8b4b6f3592bb1b597c6fb4557516db1a3a51a8c0ade5eb1e0dd09a7e1e"
+        },
+        {
+          "name": "grub2-common",
+          "version": "2.06-13+deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "bd3b5f8b4b6f3592bb1b597c6fb4557516db1a3a51a8c0ade5eb1e0dd09a7e1e"
+        }
+      ],
+      "copyright_sha256": "bd3b5f8b4b6f3592bb1b597c6fb4557516db1a3a51a8c0ade5eb1e0dd09a7e1e",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "debian/grub-extras/915resolution/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "debian/grub-extras/disabled/zfs/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "debian/grub-extras/lua/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "debian/grub-extras/ntldr-img/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        },
+        {
+          "member": "debian/signing-template/copyright",
+          "sha256": "683c1225fe2ce61a206709cc4ff967213b0e080412dedc0fb538d09cddfa6431",
+          "read_reference": {
+            "component": "grub2",
+            "member": "debian/signing-template/copyright",
+            "sha256": "683c1225fe2ce61a206709cc4ff967213b0e080412dedc0fb538d09cddfa6431",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        },
+        {
+          "member": "themes/starfield/COPYING.CC-BY-SA-3.0",
+          "sha256": "a26e359bb0d570318adfe431dbe14e114514b279c1afb8ef5520c4a120720610",
+          "read_reference": {
+            "component": "grub2",
+            "member": "themes/starfield/COPYING.CC-BY-SA-3.0",
+            "sha256": "a26e359bb0d570318adfe431dbe14e114514b279c1afb8ef5520c4a120720610",
+            "method": "Every unmatched segment read; all other whole operative grants exactly matched to previously fully read originals."
+          }
+        },
+        {
+          "member": "unicode/COPYING",
+          "sha256": "6b7d6ae8fee37d672525b0407fc01921862dec3ab6bdd48bcf9702f4327159f9",
+          "read_reference": {
+            "component": "grub2",
+            "member": "unicode/COPYING",
+            "sha256": "6b7d6ae8fee37d672525b0407fc01921862dec3ab6bdd48bcf9702f4327159f9",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "2d71e4fc986124044965eb7db7c90fb1bf82558ecf90919227a86575a7e3a9c4",
+          "read_reference": {
+            "label": "GPL-3",
+            "component": "tpm2-tss"
+          }
+        },
+        {
+          "label": "CC-BY-SA-3.0",
+          "full_normalized_body_sha256": "ecef21f46065b288ea7646cb65ad83072e8ec9608932ddd09dca24cdcded7f16",
+          "read_reference": {
+            "label": "CC-BY-SA-3.0",
+            "component": "python-charset-normalizer"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "GNU GRUB",
+          "Source": "https://www.gnu.org/software/grub/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009  Free Software Foundation, Inc",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2003, 2004, 2005, 2006, 2007, 2008, 2009, Robert Millan\n2005, 2006, 2007, Otavio Salvador\n2008, 2009, Felix Zielcke\n2009, Jordi Mallach",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "debian/grub-extras/*",
+          "Copyright": "Nathan Coulson\n2003, 2007  Free Software Foundation, Inc\n2003  NIIBE Yutaka",
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "Files": "themes/starfield/*",
+          "Copyright": "2012  Free Software Foundation, Inc",
+          "LicenseExpression": "CC-BY-SA-3.0"
+        },
+        {
+          "Files": "themes/starfield/theme.txt",
+          "Copyright": "2011  Daniel Tschudi",
+          "LicenseExpression": "Expat"
+        },
+        {
+          "LicenseExpression": "GPL-3+"
+        },
+        {
+          "LicenseExpression": "CC-BY-SA-3.0"
+        },
+        {
+          "LicenseExpression": "Expat"
+        }
+      ]
+    },
+    {
+      "source": "lirc",
+      "version": "0.10.1-7.2",
+      "dsc_sha256": "7a0d1303d94be4d6d934a7e7a75da9d52ccd0be0516a1924bcf1b429bb69a638",
+      "binaries": [
+        {
+          "name": "liblirc-client0",
+          "version": "0.10.1-7.2",
+          "architecture": "arm64",
+          "copyright_sha256": "82cbafef448f54c88ae169147d73258e93bc71dd95cdda536c4417c9bfbcf3d8"
+        }
+      ],
+      "copyright_sha256": "82cbafef448f54c88ae169147d73258e93bc71dd95cdda536c4417c9bfbcf3d8",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "apt",
+            "member": "COPYING.GPL",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "COPYING.ciniparser",
+          "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e",
+          "read_reference": {
+            "component": "bmon",
+            "member": "LICENSE.MIT",
+            "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+          }
+        },
+        {
+          "member": "COPYING.curl",
+          "sha256": "d50ec3fa0d8889ac0c004b2bc5f6821ace59466b4c38dca94b0cec455bef84c5",
+          "read_reference": {
+            "component": "lirc",
+            "member": "COPYING.curl",
+            "sha256": "d50ec3fa0d8889ac0c004b2bc5f6821ace59466b4c38dca94b0cec455bef84c5",
+            "method": "Complete original word differences read; original scopes, copyright changes and exact operative terms retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "02041645bcc302c3f9e00ad07aae5c626e6f2c436e16902ea098a7b8dc7a4e56",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "conntrack-tools"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "lirc",
+          "Upstream-Contact": "Alec Leamas <leamas.alec@gmail.com>",
+          "Source": "http://lirc.org/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1996-1997, Ralph Metzler <rjkm@thp.uni-koeln.de>\n1998-2010, Christoph Bartelmus <lirc@bartelmus.de>\n2010-2011, Jarod Wilson <jarod@redhat.com>\n2013-2014, Alec Leamas <leamas.alec@gmail.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "lib/ciniparser.*\nlib/dictionary.*",
+          "Copyright": "2000-2007, Nicolas Devillard\n2009, Tim Post <tinkertim@gmail.com>",
+          "LicenseExpression": "MIT"
+        },
+        {
+          "Files": "lib/config_file.*\nlib/dump_config.*",
+          "Copyright": "1998, Pablo d'Angelo <pablo@ag-trek.allgaeu.org>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "lib/curl_poll.*",
+          "Copyright": "Copyright (C) 1998 - 2012, Daniel Stenberg, <daniel@haxx.se>, et al",
+          "LicenseExpression": "MIT"
+        },
+        {
+          "Files": "plugins/accent.*",
+          "Copyright": "2007, Christoph Bartelmus <lirc@bartelmus.de>\n2007, Bart Alewijnse <scarfboy@yahoo.com>\n2007, Leandro Dardini <ldardini@tiscali.it>\n2007, Niccolo Rigacci <niccolo@rigacci.org>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/alsa_usb.c",
+          "Copyright": "2005, Clemens Ladisch <clemens@ladisch.de>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/atilibusb.c",
+          "Copyright": "2004, Michael Gold <mgold@scs.carleton.ca>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/atwf83.c",
+          "Copyright": "2010, Romain Henriet <romain-devel@laposte.net>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/audio.c",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n2001-2002, Pavel Machek <pavel@ucw.cz>\n2002, Matthias Ringwald <ringwald@inf.ethz.ch>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/audio_alsa.c",
+          "Copyright": "2003, Andrew Zabolotny <andyz@users.sourceforge.net>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/awlibusb.c",
+          "Copyright": "2008, Arif <azeemarif@gmail.com>\n2008, Awox Pte Ltd <marif@awox.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/bte.*",
+          "Copyright": "2003-2005, Vadim Shliakhov <svadim@nm.ru>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/commandir.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n2008-2010, Matthew Bodkin",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/creative.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n2003, Isaac Lauer <inl101@alumni.psu.edu>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/creative_infracd.*",
+          "Copyright": "2003, Leonid Froenchenko <lfroen@il.marvell.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/devinput.*",
+          "Copyright": "2002, Oliver Endriss <o.endriss@gmx.de>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/dfclibusb.c",
+          "Copyright": "2010, Davio Franke <davio@daviofranke.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/dsp.c",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n2001-2002, Pavel Machek <pavel@ucw.cz>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/ea65.*",
+          "Copyright": "2004, Max Krasnyansky <maxk@qualcomm.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/ftdi.c",
+          "Copyright": "2002, Jim Paris <jim@jtan.com>\n2008, Albert Huitsing <albert@huitsing.nl>\n2008, Adam Sampson <ats@offog.org>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/girs.c",
+          "Copyright": "2015, 2016, Bengt Martensson",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/hiddev.c",
+          "Copyright": "2002, Oliver Endriss <o.endriss@gmx.de>\n2004, Chris Pascoe <c.pascoe@itee.uq.edu.au>\n2005, William Uther <william.uther@nicta.com.au>\n2007, Brice DUBOST <ml@braice.net>\n2007, Benjamin Drung <benjamin.drung@gmail.com>\n2007, Stephen Williams <stephen.gw@gmail.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/i2cuser.c",
+          "Copyright": "2000, Gerd Knorr <kraxel@goldbach.in-berlin.de>\n2003, Leonid Froenchenko <lfroen@il.marvell.com>\n2004, Michael Gold <mgold@scs.carleton.ca>\n2006-2007, Adam Sampson <ats@offog.org>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/irtoy.c",
+          "Copyright": "2011, Peter Kooiman <pkooiman@gmail.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/irlink.*",
+          "Copyright": "2007, Maxim Muratov <mumg@mail.ru>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/livedrive_*",
+          "Copyright": "2003, Stephen Beahm <stephenbeahm@adelphia.net>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/logitech.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n1999, Isaac Lauer <inl101@alumni.psu.edu>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/mouseremote.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n1999, Isaac Lauer <inl101@alumni.psu.edu>\n2005, Shawn Nycz <dscordia@eden.rutgers.edu>\n2005, Brian Craft <bcboy@thecraftstudio.com>\n2005, Geoffrey Hausheer <zcke0au02@sneakemail.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/mp3anywhere.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n1999, Isaac Lauer <inl101@alumni.psu.edu>\n2003, Shawn Nycz <dscordia@eden.rutgers.edu>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/mplay.*",
+          "Copyright": "2007, Benoit Laurent <ben905@free.fr>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/osx_usbraw.*",
+          "Copyright": "2014, Eric Anderson",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/pcmak.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n2004, Pawel Nowak <pablozrudnika@wp.pl>\n1999, Isaac Lauer <inl101@alumni.psu.edu>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/pinsys.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n2000, Bart Alewijnse <scarfboy@yahoo.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/silitek.*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n1999, Isaac Lauer <inl101@alumni.psu.edu>\n2001, Krister Wicksell <krister.wicksell@spray.se>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/srm7500libusb.*",
+          "Copyright": "2002, Oliver Endriss <o.endriss@gmx.de>\n2004, Michael Gold <mgold@scs.carleton.ca>\n2009, Henning Glawe <glaweh@debian.org>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/tira.*",
+          "Copyright": "2003, Gregory McLean <gregm@gxsnmp.org>\n2003, Arnold Pakolitz <spud28@gmail.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/udp.c",
+          "Copyright": "2002, Jim Paris <jim@jtan.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/uirt2*",
+          "Copyright": "1999, Christoph Bartelmus <lirc@bartelmus.de>\n1999, Isaac Lauer <inl101@alumni.psu.edu>\n2003, Mikael Magnusson <mikma@users.sourceforge.net>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "plugins/usbx.*",
+          "Copyright": "2007, Jelle Foks <jelle@foks.8m.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "daemons/lircmd.cpp",
+          "Copyright": "1998, Ryan Gammon <rggammon@engmail.uwaterloo.ca>\n1998, Christoph Bartelmus <lirc@bartelmus.de>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "tools/irexec.cpp\ntools/irw.cpp\ntools/irxevent.cpp\ntools/mode2.cpp",
+          "Copyright": "1998, Trent Piepho <xyzzy@u.washington.edu>\n1998, Christoph Bartelmus <lirc@bartelmus.de>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "lib/lirc_client.*",
+          "Copyright": "1998, Trent Piepho <xyzzy@u.washington.edu>\n1998, Christoph Bartelmus <lirc@bartelmus.de>\n2009, Michal Svec <rebel@atrey.karlin.mff.cuni.cz>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "tools/pronto2lirc",
+          "Copyright": "2008, Olavi Akerman <olavi.akerman@gmail.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "tools/xmode2.cpp",
+          "Copyright": "1999, Heinrich Langos <heinrich@mad.scientist.com>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2000, Tom Lees <tom@debian.org>\n2001, Gopal Narayanan <gopal@debian.org>\n2001-2003, Manuel Estrada Sainz <ranty@debian.org>\n2004, Pierre Machard <pmachard@debian.org>\n2004-2006, Amaya Rodrigo Sastre <amaya@debian.org>\n2005, Blars Blarson <blarson@blars.org>\n2006, Hector Garcia <hector@debian.org>\n2006, Julien Danjou <acid@debian.org>\n2006, Aurelien Jarno <aurel32@debian.org>\n2006, Cyril Lacoux <clacoux@easter-eggs.com>\n2007, Loic Minier <lool@dooz.org>\n2007-2008, Sven Mueller <sven@debian.org>\n2008-2011, Matthew Johnson <mjj29@debian.org>\n2008-2014, Stefan Lippers-Hollmann <s.l-h@gmx.de>",
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "LicenseExpression": "GPL-2.0+"
+        },
+        {
+          "LicenseExpression": "MIT"
+        }
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

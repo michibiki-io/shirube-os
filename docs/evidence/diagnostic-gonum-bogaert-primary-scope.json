@@ -1,0 +1,39 @@
+{
+  "kind": "gonum-bogaert-primary-source-license-scope",
+  "status": "PASS_PRIMARY_ORIGIN_INSPECTION_ONLY",
+  "gonum_source_url": "https://proxy.golang.org/gonum.org/v1/gonum/@v/v0.14.0.zip",
+  "gonum_source_identity": "6956ff2cf9f6d1da2adeb67e5281ad3f66808135aae256e5ef7fdaa1751821e9",
+  "creator_project": "https://sourceforge.net/projects/fastgausslegendrequadrature/",
+  "creator_published_license": "BSD License",
+  "original_archive_url": "https://downloads.sourceforge.net/project/fastgausslegendrequadrature/FastGL.zip",
+  "original_archive_sha256": "f5c39bf0cbc8fc3f8c7a364a22a87626edaa73e119916d46143419afa7163695",
+  "original_archive_size": 79921,
+  "original_gonum_notice_sha256": "1abc0b62762a2014356ffa490dc6e2f86abfffd5fbd04374fd0ab3ae99e88158",
+  "inspected_go_source": [
+    {
+      "member": "gonum.org/v1/gonum@v0.14.0/integrate/quad/legendre.go",
+      "sha256": "1420c3cf113b82b041d8adab37188d7b199dbbdd106142ca8533cfd88c6a7d05",
+      "lines": [
+        {
+          "line": 3,
+          "context": "// Copyright \u00a92015 The Gonum Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style\n// license that can be found in the LICENSE file.\n\npackage quad\n\nimport \"math\"\n\n// Legendre integrates an unweighted function over finite bounds\n//\n//\tint_min^max f(x) dx\ntype Legendre struct{}"
+        },
+        {
+          "line": 17,
+          "context": "//\tint_min^max f(x) dx\ntype Legendre struct{}\n\nfunc (l Legendre) FixedLocations(x, weight []float64, min, max float64) {\n\t// References:\n\t// Algorithm:\n\t// Bogaert, Ignace. \"Iteration-Free Computation of Gauss--Legendre\n\t// Quadrature Nodes and Weights.\" SIAM Journal on Scientific Computing\n\t// 36.3 (2014): A1008-A1026.\n\t//\n\t// Excellent review article:\n\t// Townsend, Alex. \"The race for high order Gauss\u2013Legendre quadrature.\"\n\t// http://math.mit.edu/~ajt/papers/QuadratureEssay.pdf\n\t//\n\t// Original C++ source code: http://sourceforge.net/projects/fastgausslegendrequadrature\n"
+        },
+        {
+          "line": 60,
+          "context": "}\n\n// Algorithm adapted from http://sourceforge.net/projects/fastgausslegendrequadrature.\n\n// Original Copyright Notice:\n//*******************************************\n//   Copyright (C) 2014 by Ignace Bogaert   *\n//*******************************************\n\n// This software package is based on the paper\n//    I. Bogaert, \"Iteration-Free Computation of Gauss-Legendre Quadrature Nodes and Weights\",\n//    to be published in the SIAM Journal of Scientific Computing.\n\n// The main features of this software are:\n// - Speed: due to the simple formulas and the O(1) complexity computation of individual Gauss-Legendre\n//   quadrature nodes and weights. This makes it compatible with parallel computing paradigms."
+        },
+        {
+          "line": 64,
+          "context": "// Original Copyright Notice:\n//*******************************************\n//   Copyright (C) 2014 by Ignace Bogaert   *\n//*******************************************\n\n// This software package is based on the paper\n//    I. Bogaert, \"Iteration-Free Computation of Gauss-Legendre Quadrature Nodes and Weights\",\n//    to be published in the SIAM Journal of Scientific Computing.\n\n// The main features of this software are:\n// - Speed: due to the simple formulas and the O(1) complexity computation of individual Gauss-Legendre\n//   quadrature nodes and weights. This makes it compatible with parallel computing paradigms.\n// - Accuracy: the error on the nodes and weights is within a few ulps (see the paper for details).\n\n// Disclaimer:\n// THIS SOFTWARE IS PROVIDED \"AS IS\" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED"
+        }
+      ]
+    }
+  ],
+  "scope": "The original creator publication, original C++ copyright/disclaimer, exact Gonum source/header/README and complete Gonum BSD grant were inspected together. The Bogaert notice does not print a standalone redistribution paragraph; preserve it without inventing replacement terms. The creator publication identifies the originating work as BSD, and the Gonum project explicitly identifies third-party scopes as BSD or MIT. This records a manual origin/scope decision, not a classifier result or a claim that the short notice itself contains a complete BSD grant.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

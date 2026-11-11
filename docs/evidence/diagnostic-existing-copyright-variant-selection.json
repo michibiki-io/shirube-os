@@ -1,0 +1,149 @@
+{
+  "kind": "explicit-existing-source-and-copyright-decision-selection",
+  "status": "PASS_EXISTING_EXACT_BINDINGS_ONLY",
+  "components": [
+    {
+      "name": "cargo:bitflags",
+      "version": "1.3.2",
+      "source_identity": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a",
+      "copyright_sha256": "ccc1c41c64944d2e0723ffe084500bc60ce3425706a3ee74f265375fc1157de4",
+      "inherited_exact_decision": "cargo:bitflags@1.3.2",
+      "selected_key": "cargo:bitflags@1.3.2#bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a#ccc1c41c64944d2e0723ffe084500bc60ce3425706a3ee74f265375fc1157de4",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:cfg-if",
+      "version": "1.0.0",
+      "source_identity": "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd",
+      "copyright_sha256": "df4243c60b360a19ae8415213cdc36f5b53f326e92a7d415fee03dd0d5dde9b3",
+      "inherited_exact_decision": "cargo:cfg-if@1.0.0",
+      "selected_key": "cargo:cfg-if@1.0.0#baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd#df4243c60b360a19ae8415213cdc36f5b53f326e92a7d415fee03dd0d5dde9b3",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:once_cell",
+      "version": "1.19.0",
+      "source_identity": "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92",
+      "copyright_sha256": "bd3bdd831b19745a5ae86e3c56a3022b8b1eabffdfe673cad8a6a24b33cacffe",
+      "inherited_exact_decision": "cargo:once_cell@1.19.0",
+      "selected_key": "cargo:once_cell@1.19.0#3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92#bd3bdd831b19745a5ae86e3c56a3022b8b1eabffdfe673cad8a6a24b33cacffe",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:portable-atomic",
+      "version": "1.6.0",
+      "source_identity": "7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0",
+      "copyright_sha256": "af77dc8f9af5d615bc5956c409c42958cff305928478de956d832b27e19167ed",
+      "inherited_exact_decision": "cargo:portable-atomic@1.6.0",
+      "selected_key": "cargo:portable-atomic@1.6.0#7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0#af77dc8f9af5d615bc5956c409c42958cff305928478de956d832b27e19167ed",
+      "required_notice_files": [],
+      "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "name": "cargo:unicode-ident",
+      "version": "1.0.12",
+      "source_identity": "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b",
+      "copyright_sha256": "2acb64e1857489b99b3af72f3d5a7f2c81534d86ff7de821a40353cdcd4a3b0d",
+      "inherited_exact_decision": "cargo:unicode-ident@1.0.12",
+      "selected_key": "cargo:unicode-ident@1.0.12#3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b#2acb64e1857489b99b3af72f3d5a7f2c81534d86ff7de821a40353cdcd4a3b0d",
+      "required_notice_files": [],
+      "license": "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
+    },
+    {
+      "name": "cargo:unindent",
+      "version": "0.2.3",
+      "source_identity": "c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce",
+      "copyright_sha256": "a4595d0a97b843b40e01bb293c8be39df458ee305725908de5d661cda38d5b91",
+      "inherited_exact_decision": "cargo:unindent@0.2.3",
+      "selected_key": "cargo:unindent@0.2.3#c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce#a4595d0a97b843b40e01bb293c8be39df458ee305725908de5d661cda38d5b91",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows-targets",
+      "version": "0.48.5",
+      "source_identity": "9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c",
+      "copyright_sha256": "d86e7e912e7a98133996f3c09135eccde3abd91c5dac384b53e592b39b945756",
+      "inherited_exact_decision": "cargo:windows-targets@0.48.5",
+      "selected_key": "cargo:windows-targets@0.48.5#9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c#d86e7e912e7a98133996f3c09135eccde3abd91c5dac384b53e592b39b945756",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows_aarch64_gnullvm",
+      "version": "0.48.5",
+      "source_identity": "2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8",
+      "copyright_sha256": "d7cd063c73fbddc7f520f1dd6073a1eb24dbb8ef41f40557e09c9990e48aafa1",
+      "inherited_exact_decision": "cargo:windows_aarch64_gnullvm@0.48.5",
+      "selected_key": "cargo:windows_aarch64_gnullvm@0.48.5#2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8#d7cd063c73fbddc7f520f1dd6073a1eb24dbb8ef41f40557e09c9990e48aafa1",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows_aarch64_msvc",
+      "version": "0.48.5",
+      "source_identity": "dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc",
+      "copyright_sha256": "8c46a0252d5b8938a8585dce4817d08543aca11c7d8880d0ad899ff645aecd0d",
+      "inherited_exact_decision": "cargo:windows_aarch64_msvc@0.48.5",
+      "selected_key": "cargo:windows_aarch64_msvc@0.48.5#dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc#8c46a0252d5b8938a8585dce4817d08543aca11c7d8880d0ad899ff645aecd0d",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows_i686_gnu",
+      "version": "0.48.5",
+      "source_identity": "a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e",
+      "copyright_sha256": "d267c4b8e0971ace1af0a311f08ad5c2402592ba218cbe16dd34b9ef2b555d36",
+      "inherited_exact_decision": "cargo:windows_i686_gnu@0.48.5",
+      "selected_key": "cargo:windows_i686_gnu@0.48.5#a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e#d267c4b8e0971ace1af0a311f08ad5c2402592ba218cbe16dd34b9ef2b555d36",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows_i686_msvc",
+      "version": "0.48.5",
+      "source_identity": "8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406",
+      "copyright_sha256": "ec0cf4e9d6c645fc1bd6f99303f4d99a29bc4abd7b2c601f7532339ab13d03dd",
+      "inherited_exact_decision": "cargo:windows_i686_msvc@0.48.5",
+      "selected_key": "cargo:windows_i686_msvc@0.48.5#8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406#ec0cf4e9d6c645fc1bd6f99303f4d99a29bc4abd7b2c601f7532339ab13d03dd",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows_x86_64_gnu",
+      "version": "0.48.5",
+      "source_identity": "53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e",
+      "copyright_sha256": "336cf9c0f6f734471ccaef3df46b011a7518b1efa90a2b5bc91bfa3d28f977bd",
+      "inherited_exact_decision": "cargo:windows_x86_64_gnu@0.48.5",
+      "selected_key": "cargo:windows_x86_64_gnu@0.48.5#53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e#336cf9c0f6f734471ccaef3df46b011a7518b1efa90a2b5bc91bfa3d28f977bd",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows_x86_64_gnullvm",
+      "version": "0.48.5",
+      "source_identity": "0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc",
+      "copyright_sha256": "95282df174d48ab0e7ea8743cdfdb1eba12fff6cb9ea328107566c8bd6a9a403",
+      "inherited_exact_decision": "cargo:windows_x86_64_gnullvm@0.48.5",
+      "selected_key": "cargo:windows_x86_64_gnullvm@0.48.5#0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc#95282df174d48ab0e7ea8743cdfdb1eba12fff6cb9ea328107566c8bd6a9a403",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "cargo:windows_x86_64_msvc",
+      "version": "0.48.5",
+      "source_identity": "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538",
+      "copyright_sha256": "d3650b53d2799ea74d7df024c398a575e73da0ad25245ab4cdb6b1767847ba04",
+      "inherited_exact_decision": "cargo:windows_x86_64_msvc@0.48.5",
+      "selected_key": "cargo:windows_x86_64_msvc@0.48.5#ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538#d3650b53d2799ea74d7df024c398a575e73da0ad25245ab4cdb6b1767847ba04",
+      "required_notice_files": [],
+      "license": "MIT OR Apache-2.0"
+    }
+  ],
+  "scope": "Keep existing approved source/copyright pairs explicitly selectable alongside other packaging notice variants. All source and notice hashes are unchanged; this adds no permission for a different source or document. Original decisions and required notices are inherited, not a new license-body reading.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,608 @@
+{
+  "kind": "exact-linked-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 3,
+  "components": [
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/prometheus/prometheus",
+      "version": "v0.46.0",
+      "source_identity": "501c6bafc0e5945acdcc4a859e466cf8160f14c838d3e487ea92d98f8762008a",
+      "copyright_sha256": "e90fe3339d856d85c66aff4ed73908b6a0bd24332a526c2e5fb3c7b8a092378b",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3a32ac4ccad08f603dee67229e52500c32a3d281bf73bf6c4166e46357382bfb.txt",
+      "matches": [
+        {
+          "member": "LICENSE",
+          "license": "Apache-2.0",
+          "complete_normalized_original_notice_sha256": "0ffddef9e48f8a09aed5caf2d44f7ba1c1be2d9b8e0a6f693b1635b2d5566645"
+        },
+        {
+          "member": "NOTICE",
+          "previously_read_complete_supporting_notice_sha256": "6c998609a1edecccb4c8f3a920f66d1a176a3d7c888d7aba5eaa60ac9bc07fb5"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:github.com/vmware/govmomi",
+      "version": "v0.32.0",
+      "source_identity": "337e9a24b97c00ad6e98853e154145160735d5aec1b0267fd33998b229ba4368",
+      "copyright_sha256": "021d592f969793bf2665dd958e1a92aa5a8b62620a38df20b5af13e7d44b1e5c",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/d1a8176bac5c02bfdca2617cb2fd84c14bf1c4fa7bd45cb7a0fca7789151e771.txt",
+      "matches": [
+        {
+          "member": "CONTRIBUTORS",
+          "previously_read_complete_supporting_notice_sha256": "48f02bd3505997437ba27634b0e0811f2b3f596ce5108bc2013226ced0288ef9"
+        },
+        {
+          "member": "LICENSE.txt",
+          "license": "Apache-2.0",
+          "complete_normalized_original_notice_sha256": "0ffddef9e48f8a09aed5caf2d44f7ba1c1be2d9b8e0a6f693b1635b2d5566645"
+        },
+        {
+          "member": "govc/test/license.bats",
+          "previously_read_complete_supporting_notice_sha256": "bff0d2812fcc3d8b8bd77191ddb9b33fd61a56d431cd05ff7dbe31821e3ae861"
+        },
+        {
+          "member": "scripts/contributors.sh",
+          "previously_read_complete_supporting_notice_sha256": "f1b585385631bdd09701cb0383774fcd68d5fcd3c033c79f1028262288956504"
+        },
+        {
+          "member": "scripts/license.sh",
+          "previously_read_complete_supporting_notice_sha256": "a7eaf3c9a6e207957960eff28dec3b8f184fa3261c2bb1b8c89c8bd9f0afea8f"
+        },
+        {
+          "member": "simulator/license_manager.go",
+          "previously_read_complete_supporting_notice_sha256": "d15e8c07ef9bfe246abe3f447a1104fc516ea0ef911db71f0bb74f68c9291544"
+        },
+        {
+          "member": "simulator/license_manager_test.go",
+          "previously_read_complete_supporting_notice_sha256": "21b2c474d27d058f54d7baaf1da5750a2aa9d2c5d017f93c1728df73df260353"
+        },
+        {
+          "member": "vim25/json/LICENSE",
+          "license": "BSD-3-Clause",
+          "complete_operative_body_sha256": "62026297ff963401183d38bdf53c2af078617e9d6178d8ebc339658404883295"
+        },
+        {
+          "member": "vim25/xml/LICENSE",
+          "license": "BSD-3-Clause",
+          "complete_operative_body_sha256": "62026297ff963401183d38bdf53c2af078617e9d6178d8ebc339658404883295"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0",
+        "BSD-3-Clause"
+      ]
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:modernc.org/libc",
+      "version": "v1.22.5",
+      "source_identity": "cce29930e5f04d9be39525346530215dcf52ae160d6710bd2b26fa51902c6be6",
+      "copyright_sha256": "6512947fae1828049cb7b0d6ef8c9ccaabd0f79b05a4a823057b271d442fea3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b4f423558acab11f075e3a5bb24962db25348d4cd7a36c2dd34307a0a834792f.txt",
+      "matches": [
+        {
+          "member": "AUTHORS",
+          "previously_read_complete_supporting_notice_sha256": "f660b8660b653ff16e6c4802e9def9caf4ab84e2feec0a85193f9d453389ca3e"
+        },
+        {
+          "member": "CONTRIBUTORS",
+          "previously_read_complete_supporting_notice_sha256": "30525cb3a31e45b35071346166c6fa1c2ba44f72cd7ac79470aa8a40a898d06e"
+        },
+        {
+          "member": "LICENSE",
+          "license": "BSD-3-Clause",
+          "complete_operative_body_sha256": "8b0526d86d2cbc8a79ae3ace4200b6d09e944528be8a02916c413c98001c967e"
+        },
+        {
+          "member": "LICENSE-GO",
+          "license": "BSD-3-Clause",
+          "complete_operative_body_sha256": "62026297ff963401183d38bdf53c2af078617e9d6178d8ebc339658404883295"
+        },
+        {
+          "member": "honnef.co/go/netdb/LICENSE",
+          "license": "MIT",
+          "complete_operative_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5"
+        },
+        {
+          "member": "musl/COPYRIGHT",
+          "license": "MIT AND BSD-2-Clause AND BSD-3-Clause AND SunPro AND LicenseRef-Public-Domain",
+          "complete_normalized_original_notice_sha256": "2854653f3d621500b54fb1a38a217e0b267b12b589c8ededf43961c80f8eec17"
+        },
+        {
+          "member": "musl/copyright.c",
+          "previously_read_complete_supporting_notice_sha256": "fc33b1532d61cdf3efb25b46933d287653808d716a9ba24f3cc4b6691fbb3b33"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "MIT",
+        "MIT AND BSD-2-Clause AND BSD-3-Clause AND SunPro AND LicenseRef-Public-Domain"
+      ]
+    }
+  ],
+  "supporting_notice_readings": [
+    {
+      "component": "go:google.golang.org/grpc",
+      "member": "AUTHORS",
+      "text_sha256": "a4bb41f046ccf372841b388a09b50bac265128deda0cd4828c03f1fd16f00728"
+    },
+    {
+      "component": "go:github.com/oklog/ulid",
+      "member": "AUTHORS.md",
+      "text_sha256": "f54aa134a709d24c3b88452ff73229d0e5cda5659afc539f0482d13ab6471371"
+    },
+    {
+      "component": "go:github.com/coreos/go-semver",
+      "member": "NOTICE",
+      "text_sha256": "d647d40647c01bec10122e5ee7389d562008b7099566ea7dc0149ff2773807a4"
+    },
+    {
+      "component": "go:github.com/coreos/go-oidc/v3",
+      "member": "NOTICE",
+      "text_sha256": "fff231f3c4c9426a0a2b6912892808d67ebd7a739b1b1333e4f65c2890f1b944"
+    },
+    {
+      "component": "go:github.com/awslabs/kinesis-aggregation/go",
+      "member": "shirube-corresponding-inputs/upstream-notices/a1fc3f41c0a98783d749c6148194bd94969dacbfb1a2625a61ba814c4170dd3c.txt",
+      "text_sha256": "6216c4dff51ca88cd206cf626e49228bbfe92f686dab2831460cc6b26eed3621"
+    },
+    {
+      "component": "go:github.com/prometheus/client_model",
+      "member": "NOTICE",
+      "text_sha256": "1c6ae0107fb9e87ce26f8098d5d173914331217f4d11d7ff3956d37ecb9c49a3"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/internal/third_party/go-json-experiment/json/AUTHORS",
+      "text_sha256": "3e38c088e0966f0a8230c816d2964017d23158fe160114728d961c79d2e85ed8"
+    },
+    {
+      "component": "go:github.com/prometheus/common",
+      "member": "NOTICE",
+      "text_sha256": "a964149ae204f5510720cb1e569beabf22458a8a571d9d4e9773bbe3f895d13e"
+    },
+    {
+      "component": "go:github.com/jaegertracing/jaeger",
+      "member": "NOTICE",
+      "text_sha256": "edd4b08226a08fdc486fc2a696851f928161f8f02152f22605c138a3454f99dc"
+    },
+    {
+      "component": "go:github.com/prometheus/procfs",
+      "member": "NOTICE",
+      "text_sha256": "322c24deae12157c69417716f0237cb08f4f99953d21be813067a62551227edc"
+    },
+    {
+      "component": "go:github.com/opensearch-project/opensearch-go/v2",
+      "member": ".github/license-header.txt",
+      "text_sha256": "e13823156ebacda10d72315bee91fb6dfbe42a72c67938763356b426f213e21b"
+    },
+    {
+      "component": "go:github.com/opencontainers/image-spec",
+      "member": ".tool/check-license",
+      "text_sha256": "a844d1c2ec8001a01be9223aea28e840f7905a89580b811d413ba2047e1fb008"
+    },
+    {
+      "component": "go:github.com/go-stomp/stomp",
+      "member": "AUTHORS.md",
+      "text_sha256": "e42ee65eca7e4180c76d1b1db825e284bf985270a88f565e2092857c172e4bc1"
+    },
+    {
+      "component": "go:gvisor.dev/gvisor",
+      "member": "gvisor.dev/gvisor@v0.0.0-20260219192049-0f2374377e89/AUTHORS",
+      "text_sha256": "a0767c11515293c346a6de8fa1053211b22b82dd93d2ef55560c17af3bf0c699"
+    },
+    {
+      "component": "go:github.com/awnumar/memguard",
+      "member": "AUTHORS",
+      "text_sha256": "b130d5add04a7c73a9e49163f8a701f9114c116467c40f8a7f4dd1402363af7f"
+    },
+    {
+      "component": "go:github.com/digitalocean/go-qemu",
+      "member": "AUTHORS",
+      "text_sha256": "bc9e3899f8e9683fe5485753ed13ed72c039a71ca6f8ea1ae7ceca6ab7384c19"
+    },
+    {
+      "component": "go:github.com/opencontainers/runc",
+      "member": "NOTICE",
+      "text_sha256": "f43dab2fe7478cf2c8ba5249bfb8a735bc0a67b7fff01514f1d9c1405b39178b"
+    },
+    {
+      "component": "go:github.com/boschrexroth/ctrlx-datalayer-golang",
+      "member": "CONTRIBUTORS.md",
+      "text_sha256": "709ee967b175c73cf49e0fd036747e0d6c656b3cc0f0263be714d41cbda14124"
+    },
+    {
+      "component": "go:gopkg.in/yaml.v2",
+      "member": "NOTICE",
+      "text_sha256": "2f98f631d8368007c773bd80bf13f9351669e90146d34a24609920052d2fed5f"
+    },
+    {
+      "component": "go:github.com/sigstore/fulcio",
+      "member": "COPYRIGHT.txt",
+      "text_sha256": "1e60412f66750fd947c5fcc200d8dfd603aa80a155688612d2a72df9bf38d4ab"
+    },
+    {
+      "component": "go:modernc.org/libc",
+      "member": "AUTHORS",
+      "text_sha256": "f660b8660b653ff16e6c4802e9def9caf4ab84e2feec0a85193f9d453389ca3e"
+    },
+    {
+      "component": "go:github.com/aristanetworks/goarista",
+      "member": "AUTHORS",
+      "text_sha256": "cf513167756155475f0c30eb9bbfe6270edc7adee29cb8cd2d0c6ac3f63788b3"
+    },
+    {
+      "component": "go:github.com/prometheus/client_golang",
+      "member": "NOTICE",
+      "text_sha256": "f6c7b09c73554da233e12f776eede9a9a3f1a0f7e00b19178e41473af53853b4"
+    },
+    {
+      "component": "go:github.com/docker/go-plugins-helpers",
+      "member": "NOTICE",
+      "text_sha256": "0bdb7143fde17fd1d5b7be65868d81bec148a416389bd6ed2e2783aa26ef12a3"
+    },
+    {
+      "component": "go:github.com/digitalocean/go-libvirt",
+      "member": "AUTHORS",
+      "text_sha256": "18cd912217008622264c50d72f2d2b8c3d2b15e6bb7fb3cc072145fb3ce73e49"
+    },
+    {
+      "component": "go:github.com/prometheus/client_golang",
+      "member": "NOTICE",
+      "text_sha256": "f6f15882320841c3d29b54e91bccf957cccaceeb1db455324164c651b7136bff"
+    },
+    {
+      "component": "go:code.cloudfoundry.org/clock",
+      "member": "NOTICE",
+      "text_sha256": "c81bd91dcbc5b394efca534c6df97adad22b342479c02fff9833515b7e057b89"
+    },
+    {
+      "component": "go:github.com/Azure/azure-sdk-for-go",
+      "member": "NOTICE.txt",
+      "text_sha256": "78d3d5176a5fecc9ceb4940aa77266dca42ca1359b3018ef6bb260e1c245feb9"
+    },
+    {
+      "component": "go:github.com/pion/transport/v2",
+      "member": "github.com/pion/transport/v2@v2.2.4/AUTHORS.txt",
+      "text_sha256": "d42f8fd649afcb5d63ea6d69faeccced9d2ca23077d53ed1d29ed446b82f487f"
+    },
+    {
+      "component": "go:github.com/linkedin/goavro/v2",
+      "member": "AUTHORS",
+      "text_sha256": "597e94aa133be729a4ee64d5c226745c1bac99aa7d0f3a2bfae51616167bc1c0"
+    },
+    {
+      "component": "go:github.com/pion/stun/v2",
+      "member": "github.com/pion/stun/v2@v2.0.0/AUTHORS.txt",
+      "text_sha256": "d22e3df0b2156f666ae1af0fa1ca0cc564732a97e75cd8c3d84e0fef95c5cbbf"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/internal/third_party/go-json-experiment/json/CONTRIBUTORS",
+      "text_sha256": "70b0585b2c183dff446cfe169006ca5b05cc3beb658378ab3083cbf9cac64f7a"
+    },
+    {
+      "component": "go:github.com/opensearch-project/opensearch-go/v2",
+      "member": ".github/workflows/license.yml",
+      "text_sha256": "8e619dd479c21813e48f9a51d4241fbd6a6b8a600b43b70a4cd2d980a1b4a470"
+    },
+    {
+      "component": "go:google.golang.org/grpc",
+      "member": "NOTICE.txt",
+      "text_sha256": "9adbb7dfa641695a33dffb40cf4c43f84006ed3cd3ae7f1e2c6358f32cbe27e3"
+    },
+    {
+      "component": "go:modernc.org/libc",
+      "member": "CONTRIBUTORS",
+      "text_sha256": "30525cb3a31e45b35071346166c6fa1c2ba44f72cd7ac79470aa8a40a898d06e"
+    },
+    {
+      "component": "go:github.com/go-openapi/spec",
+      "member": "license.go",
+      "text_sha256": "e0844c4d20f8a7fbfa055db9e1dfa0554ac90926c472d99bea69cc5eb815b9aa"
+    },
+    {
+      "component": "go:github.com/pion/turn/v3",
+      "member": "github.com/pion/turn/v3@v3.0.1/AUTHORS.txt",
+      "text_sha256": "2294ebb8cab3ced2e8ab457062a3653d357e3d5e5dc56ac75d69093a109d39e0"
+    },
+    {
+      "component": "go:github.com/aws/aws-sdk-go-v2",
+      "member": ".github/workflows/license-check.yml",
+      "text_sha256": "134ce8f83d7f6b3566481ef22d6bf6d4cfc132b362551ec9eba2ac448974f2c9"
+    },
+    {
+      "component": "go:github.com/moby/buildkit",
+      "member": "AUTHORS",
+      "text_sha256": "d6894c82c70408f5ee91ddb798c4c904b601981e53f3d37d9c5a770f13637594"
+    },
+    {
+      "component": "go:github.com/boschrexroth/ctrlx-datalayer-golang",
+      "member": "pkg/fbs/common/systemcore/licenseproxy/LicenseCapabilities.go",
+      "text_sha256": "3ffe7a6f51c205bd9bfd8fdd18e209ec4f42910d5348b48510e7e62347ea8bc6"
+    },
+    {
+      "component": "go:github.com/gosnmp/gosnmp",
+      "member": "AUTHORS.md",
+      "text_sha256": "2348191f1546cbb82dc6c731941f057ecf38b99a2d8da7c419361e15b2a25ad7"
+    },
+    {
+      "component": "go:github.com/Azure/azure-sdk-for-go",
+      "member": "services/consumption/mgmt/2019-10-01/consumption/credits.go",
+      "text_sha256": "8d4a691607459c81b8f438fd8679abb72edd3e2ab842453489bb98077d3ce63b"
+    },
+    {
+      "component": "go:github.com/sigstore/rekor",
+      "member": "CONTRIBUTORS.md",
+      "text_sha256": "2cbb6f45f91feadc554eaed8edc1227626f9dff339f8080316daf3930d9b3e88"
+    },
+    {
+      "component": "go:github.com/go-sql-driver/mysql",
+      "member": "AUTHORS",
+      "text_sha256": "ab5d1106bd197e94396d3c531202cefc5fa09815668c44979521cbdea7e9f873"
+    },
+    {
+      "component": "go:github.com/aws/aws-sdk-go-v2",
+      "member": "NOTICE.txt",
+      "text_sha256": "84d46d3cdc0297b9ff03819cf523e65eeecec7fdb74ae521e8f44261e8d6a9ad"
+    },
+    {
+      "component": "go:github.com/opensearch-project/opensearch-go/v2",
+      "member": "NOTICE.txt",
+      "text_sha256": "e0198a80f43b1fd34ce2a7d0fbc4fc293eb492538208b9a8c8304ed1ce5c789b"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/validation/spec/license.go",
+      "text_sha256": "181be33a89e97de3ae95724c6ac1fce1a55ddd11198b7c3ced7db6c02e5db261"
+    },
+    {
+      "component": "go:github.com/aws/smithy-go",
+      "member": "NOTICE",
+      "text_sha256": "120d77a203a6708ec9a4c8f19e2167286f35bf05375fc5fb3ff225a6f560e515"
+    },
+    {
+      "component": "go:github.com/compose-spec/compose-go",
+      "member": "NOTICE",
+      "text_sha256": "144f13d35faaa48535267ddc8e36031f631e1828d431332ae370262a80ba00b5"
+    },
+    {
+      "component": "go:github.com/containerd/containerd",
+      "member": "NOTICE",
+      "text_sha256": "f999814733111874764c69c9f31a7a99ab0aad40cb96570d4088e73725d7b1ba"
+    },
+    {
+      "component": "go:github.com/moby/patternmatcher",
+      "member": "NOTICE",
+      "text_sha256": "4df88496cfda89cd3ddf307fefb90d0bc50bbb14f7f9fd20215ec4db63d3f7f9"
+    },
+    {
+      "component": "go:github.com/openshift/imagebuilder",
+      "member": "dockerfile/NOTICE",
+      "text_sha256": "493408dfd5a5beb31fedcfe672c3740ad4f6dff833b32c59f76bd3b0cd557708"
+    },
+    {
+      "component": "go:k8s.io/kube-openapi",
+      "member": "pkg/validation/spec/license_test.go",
+      "text_sha256": "eef85d1e9a20965330df10561a026aa5eabfd2d8a65c51788cfea01dd4d0eda0"
+    },
+    {
+      "component": "go:github.com/digitalocean/go-libvirt",
+      "member": "scripts/licensecheck.sh",
+      "text_sha256": "6558b5da2619cc8c093de0f267bd755624c8d9193bc622d467a7805158ec500f"
+    },
+    {
+      "component": "go:github.com/google/go-github/v32",
+      "member": "AUTHORS",
+      "text_sha256": "cf87db779aff70bcda08857d51c012cda77b76edbc60068013eeeb56f5a6fa0b",
+      "line_count": 295,
+      "terms_lines": [
+        [
+          1,
+          "# This is the official list of go-github authors for copyright purposes."
+        ],
+        [
+          4,
+          "# some cases, their employer may be the copyright holder. To see the full list"
+        ]
+      ]
+    },
+    {
+      "component": "go:github.com/olivere/elastic",
+      "member": "CONTRIBUTORS",
+      "text_sha256": "959421181f096cb414162bb77fba0793dee96ded49331b7fe76240dc489a3771",
+      "line_count": 206,
+      "terms_lines": []
+    },
+    {
+      "component": "go:github.com/vmware/govmomi",
+      "member": "CONTRIBUTORS",
+      "text_sha256": "48f02bd3505997437ba27634b0e0811f2b3f596ce5108bc2013226ced0288ef9",
+      "line_count": 262,
+      "terms_lines": []
+    },
+    {
+      "component": "go:gonum.org/v1/gonum",
+      "member": "AUTHORS",
+      "text_sha256": "67a76f184070d3de9f1c3ced784969076105399a6ee716a06c567ae254ecb996",
+      "line_count": 128,
+      "terms_lines": [
+        [
+          1,
+          "# This is the official list of Gonum authors for copyright purposes."
+        ]
+      ]
+    },
+    {
+      "component": "go:gopkg.in/olivere/elastic.v5",
+      "member": "CONTRIBUTORS",
+      "text_sha256": "39d9e5774eb78af71847a976a5c6e98faf49063beeae71b1c475ab4d439cb800",
+      "line_count": 199,
+      "terms_lines": []
+    },
+    {
+      "component": "go:github.com/containers/buildah",
+      "member": "docker/AUTHORS",
+      "text_sha256": "35bb47df962b767c04f46b3e53204d9e38ab8ecf443485e797d0733654bbc169",
+      "line_count": 1788,
+      "terms_lines": [
+        [
+          605,
+          "Grant Reaber <grant.reaber@gmail.com>"
+        ]
+      ]
+    },
+    {
+      "component": "go:github.com/containers/storage",
+      "member": "AUTHORS",
+      "text_sha256": "c055b3b7c5c01c8e0e3318efcddefa95336b989dc94072ac387018643cbf5e8e",
+      "line_count": 1523,
+      "terms_lines": [
+        [
+          509,
+          "Grant Reaber <grant.reaber@gmail.com>"
+        ]
+      ]
+    },
+    {
+      "component": "go:github.com/docker/docker",
+      "member": "AUTHORS",
+      "text_sha256": "1f4d86796b587ac2b256a759d7b32d40153eda2a8474e27e27119111dbad131c",
+      "line_count": 2390,
+      "terms_lines": [
+        [
+          809,
+          "Grant Millar <rid@cylo.io>"
+        ],
+        [
+          810,
+          "Grant Reaber <grant.reaber@gmail.com>"
+        ]
+      ]
+    },
+    {
+      "component": "go:github.com/hashicorp/go-envparse",
+      "member": "NOTICES.txt",
+      "text_sha256": "01bf4c50f91e5555357214c20d45f09b273fc3d968b34c4bd4006cd2f489f792"
+    },
+    {
+      "component": "go:github.com/hashicorp/serf",
+      "member": "ops-misc/debian/copyright",
+      "text_sha256": "d3797cf219e30540f02b9d18fb8bc261e723aea552d0b0c96119e7152154ee27"
+    },
+    {
+      "component": "go:github.com/intel/iaevents",
+      "member": "LICENSE_OF_DEPENDENCIES.md",
+      "text_sha256": "c861eeec46bceb93c2938415ebc902e758c54be92707af5fd7f643987bf2dff5"
+    },
+    {
+      "component": "go:github.com/docker/docker",
+      "member": "NOTICE",
+      "text_sha256": "e3c0ba364c150cadee577a71f038a4bca8426d7698acbdd7bcee01d7a31b6f61"
+    },
+    {
+      "component": "go:github.com/olivere/elastic",
+      "member": "aws/v4/CREDITS",
+      "text_sha256": "f298f26eb0e6e9bb8cfcb1d13a937b3cbc4e3f858c39550703aeee7d19c540da"
+    },
+    {
+      "component": "go:github.com/vmware/govmomi",
+      "member": "govc/test/license.bats",
+      "text_sha256": "bff0d2812fcc3d8b8bd77191ddb9b33fd61a56d431cd05ff7dbe31821e3ae861"
+    },
+    {
+      "component": "go:github.com/google/go-github/v32",
+      "member": "github/licenses.go",
+      "text_sha256": "2fdb38f73a77bf2a2dbbc643aee31c2a4f22b2f41a1e3b41bf08a33882475b34"
+    },
+    {
+      "component": "go:github.com/aliyun/alibaba-cloud-sdk-go",
+      "member": "services/avatar/license_auth.go",
+      "text_sha256": "5ddea6c4ff65d74a817bb9df388c40ff712a338ee4e799526bd45fba8750a27c"
+    },
+    {
+      "component": "go:github.com/boschrexroth/ctrlx-datalayer-golang",
+      "member": "pkg/fbs/common/systemcore/licenseproxy/LicenseCapability.go",
+      "text_sha256": "42da2caa9bba79a84787c868975bbe4c2bdcd9c22663a95f9e7f323baf2c9e77"
+    },
+    {
+      "component": "go:gonum.org/v1/gonum",
+      "member": "CONTRIBUTORS",
+      "text_sha256": "c95864b29c66317742f9716b01b68943e0588d33b8889f3ac7d32c580d2aa83f"
+    },
+    {
+      "component": "go:github.com/boschrexroth/ctrlx-datalayer-golang",
+      "member": "pkg/fbs/common/systemcore/licenseproxy/LicenseRequest.go",
+      "text_sha256": "47d3904db69ddc0a08e6d29378f723b834dbb85a29dcf50e33ee0dac8e91c434"
+    },
+    {
+      "component": "go:github.com/google/go-github/v32",
+      "member": "github/licenses_test.go",
+      "text_sha256": "a6ca7c295e66ea98624b085d68b3271861ef9d1421b2787640b91f1b7a0c75b1"
+    },
+    {
+      "component": "go:github.com/vmware/govmomi",
+      "member": "scripts/contributors.sh",
+      "text_sha256": "f1b585385631bdd09701cb0383774fcd68d5fcd3c033c79f1028262288956504"
+    },
+    {
+      "component": "go:github.com/apache/iotdb-client-go",
+      "member": "NOTICE",
+      "text_sha256": "2b83994aa5a868e04e0e84c167b88387282342541c4ada78e87b833218af98be"
+    },
+    {
+      "component": "go:github.com/vmware/govmomi",
+      "member": "scripts/license.sh",
+      "text_sha256": "a7eaf3c9a6e207957960eff28dec3b8f184fa3261c2bb1b8c89c8bd9f0afea8f"
+    },
+    {
+      "component": "go:github.com/containers/storage",
+      "member": "NOTICE",
+      "text_sha256": "4f25bd96be4800a97aa6d7ff43230bdc86b2748917f580ce0b1db3050d71b01f"
+    },
+    {
+      "component": "go:github.com/apache/thrift",
+      "member": "NOTICE",
+      "text_sha256": "e86df1d318f15ddd5f96f2232a41381af28ed80db8242210823f2b25587fb16f"
+    },
+    {
+      "component": "go:github.com/boschrexroth/ctrlx-datalayer-golang",
+      "member": "pkg/fbs/common/systemcore/licenseproxy/LicenseResponse.go",
+      "text_sha256": "bc0c28dd0e4ddc610267ce56bdc9dc6f2c419c22f8dab08a0b63f6293acf8a59"
+    },
+    {
+      "component": "go:github.com/eclipse/paho.mqtt.golang",
+      "member": "NOTICE.md",
+      "text_sha256": "91b47f681f03af6b4b6ab9cdce0fc773e522693eca729ed9a56c6178dc1e6323"
+    },
+    {
+      "component": "go:github.com/vmware/govmomi",
+      "member": "simulator/license_manager.go",
+      "text_sha256": "d15e8c07ef9bfe246abe3f447a1104fc516ea0ef911db71f0bb74f68c9291544"
+    },
+    {
+      "component": "go:github.com/prometheus/prometheus",
+      "member": "NOTICE",
+      "text_sha256": "6c998609a1edecccb4c8f3a920f66d1a176a3d7c888d7aba5eaa60ac9bc07fb5"
+    },
+    {
+      "component": "go:github.com/vmware/govmomi",
+      "member": "simulator/license_manager_test.go",
+      "text_sha256": "21b2c474d27d058f54d7baaf1da5750a2aa9d2c5d017f93c1728df73df260353"
+    },
+    {
+      "component": "go:modernc.org/libc",
+      "member": "musl/copyright.c",
+      "text_sha256": "fc33b1532d61cdf3efb25b46933d287653808d716a9ba24f3cc4b6691fbb3b33"
+    }
+  ],
+  "scope": "All new operative grants and copyright prefixes read. Original author/contributor lists are retained in full; metadata-only rows are mechanically checked and any potentially operative terms individually reviewed. All operative grants exactly matched to already read original grants. No scope inferred from module names, SPDX labels, templates or contributor lists alone.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

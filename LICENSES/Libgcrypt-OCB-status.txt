@@ -1,0 +1,15 @@
+Libgcrypt OCB notice context
+
+Retain the complete original Libgcrypt LICENSES and Debian copyright, including
+the historical OCB license 1 text and all other copyright/permission notices.
+
+On 2026-11-10 the original OCB IP holder Phillip Rogaway states that his
+OCB-related intellectual property is in the public domain and may be used
+without restrictions. His original publication retains the older licenses
+for historical reference:
+https://www.cs.ucdavis.edu/~rogaway/ocb/license.htm
+
+This records the named holder's published declaration; it does not assert a
+warranty or independently adjudicate intellectual-property claims of others.
+The Libgcrypt code retains its original LGPL/GPL and separately scoped
+permissive licenses.

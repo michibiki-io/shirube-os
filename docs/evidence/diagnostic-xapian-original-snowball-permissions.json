@@ -1,0 +1,34 @@
+{
+  "kind": "exact-xapian-original-snowball-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "1.4.22-1",
+  "source_identity": "8d03655fc0d669d7681dfaeb8c766f8c8b0d1cbe642d1786156a846d8d3eb71b",
+  "copyright_review": {
+    "source": "xapian-core",
+    "version": "1.4.22-1",
+    "copyright_sha256": "d530c1aa427b7e55f170f48b43f3657f847255438496847796eb8a0496bdd5d6",
+    "original_chars": 7122,
+    "unmatched_chars": 4986,
+    "matched_complete_legal_texts": [
+      {
+        "normalized_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+        "read_reference": {
+          "label": "Expat",
+          "component": "apt"
+        },
+        "count": 2
+      }
+    ],
+    "unmatched_text": "This is the Debian package of the Xapian search engine library. This package was originally created and maintained by Richard Boulton <richard@tartarus.org>. It is currently maintained by Olly Betts <olly@survex.com>. It was downloaded from https://xapian.org/download Upstream Authors: Olly Betts <olly@survex.com> Hein Ragas <hragas@users.sourceforge.net> Sam Liddicott <samjam@users.sourceforge.net> Ananova Ltd Orange PCS Ltd BrightStation PLC Dr Martin Porter Free Software Foundation, Inc. Silicon Graphics Computer Systems, Inc. Richard Boulton Lemur Consulting Ltd Copyright: Copyright (C) 2002-2017 Olly Betts Copyright (C) 2003 Sam Liddicott Copyright (C) 2001,2002 Ananova Ltd Copyright (C) 2003 Orange PCS Ltd Copyright (C) 1999,2000,2001 BrightStation PLC Copyright (C) 2001 Hein Ragas Copyright (C) 2003,2006,2009,2010,2011 Richard Boulton Copyright (C) 2007,2008,2009,2010 Lemur Consulting Ltd Copyright (C) 2007,2008 Yung-chung Lin Copyright (C) 2007 Jenny Black Copyright (C) 2007 Deron Meranda Copyright (C) 2009 Kan-Ru Chen Copyright (C) 2010 Adam Sjøgren Copyright (C) 2010 Evgeny Sizikov Copyright (C) 2011 Brandon Schaefer Copyright (C) 2011 Action Without Borders Copyright (C) 2011,2012 Dan Colish Copyright (C) 2012 Mihai Bivol Copyright (C) 2012 Gaurav Arora Copyright (C) 2013,2014 Aarsh Shah Copyright (C) 2016 Vivek Pal This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA See /usr/share/common-licenses/GPL-2 for the full text of the GNU GPL. The snowball sources in the languages subdirectory are licensed under the three clause BSD license: Copyright (c) 2001, Dr Martin Porter Copyright (c) 2004,2005, Richard Boulton Copyright (c) 2006,2007, Olly Betts Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. * The name of the author may be used to endorse or promote products derived from this software without specific prior written permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. The following files are licensed under the MIT/X licence: common/serialise-double.cc common/serialise-double.h Copyright (C) 2006,2007,2008,2009 Olly Betts  [COMPLETE_PREVIOUSLY_READ_LEGAL_TEXT:fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5]  The files queryparser/lemon.c and queryparser/queryparser.lt (which are a parser generator and its output template file) bear the following statements respectively: The authors of this program disclaim copyright. The author disclaims copyright to this source code. The file m4/ax_cxx_compile_stdcxx_11.m4 is licensed as follows: Copyright (c) 2008 Benjamin Kosnik <bkoz@redhat.com> Copyright (c) 2012 Zack Weinberg <zackw@panix.com> Copyright (c) 2013 Roy Stogner <roystgnr@ices.utexas.edu> Copyright (c) 2014, 2015 Google Inc.; contributed by Alexey Sokolov <sokolov@google.com> Copying and distribution of this file, with or without modification, are permitted in any medium without royalty provided the copyright notice and this notice are preserved. This file is offered as-is, without any warranty. The Debian packaging is licensed under the MIT/X licence: Copyright (C) 2004,2005,2006 Lemur Consulting Ltd Copyright (C) 2006-2017 Olly Betts  [COMPLETE_PREVIOUSLY_READ_LEGAL_TEXT:fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5] "
+  },
+  "original_notice_member": "xapian-core-1.4.22/languages/steminternal.cc",
+  "original_source_member_sha256": "8689b4a948bdb3eafdd313d0880fcf3fc3087f98e5ec137d764ad7909de94392",
+  "required_notices": [
+    {
+      "path": "LICENSES/Xapian-original-Snowball-notice.txt",
+      "sha256": "998a44f9f5f2ff0c831fb61b3c84963216fc3d851ea8da0c5ee6ecffc8e6932f"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

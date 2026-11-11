@@ -1,0 +1,69 @@
+{
+  "kind": "actual-native-ext4-free-space-erasure",
+  "status": "PASS_COMPONENT_ONLY",
+  "helper_sha256": "875dc557b28cfd25fbd0f9b3a8b9f2b79ebe9cb4d51fcd4709f8dc884cc64c14",
+  "trials": [
+    {
+      "architecture": "amd64",
+      "virtual_size": 2147483648,
+      "status": "PASS",
+      "release_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "erasure_seconds": 12.995,
+      "deleted_marker_present_before": "PASS",
+      "deleted_marker_absent_entire_disk_after": "PASS",
+      "allocated_file_unchanged": "PASS",
+      "journal_recreated": "PASS",
+      "qemu_img_check": "PASS",
+      "entire_disk_raw_scan_bytes": 2147483648
+    },
+    {
+      "architecture": "arm64",
+      "virtual_size": 2147483648,
+      "status": "PASS",
+      "release_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "erasure_seconds": 104.21,
+      "deleted_marker_present_before": "PASS",
+      "deleted_marker_absent_entire_disk_after": "PASS",
+      "allocated_file_unchanged": "PASS",
+      "journal_recreated": "PASS",
+      "qemu_img_check": "PASS",
+      "entire_disk_raw_scan_bytes": 2147483648
+    },
+    {
+      "architecture": "amd64",
+      "virtual_size": 53687091200,
+      "status": "PASS",
+      "release_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "erasure_seconds": 282.043,
+      "deleted_marker_present_before": "PASS",
+      "deleted_marker_absent_entire_disk_after": "PASS",
+      "allocated_file_unchanged": "PASS",
+      "journal_recreated": "PASS",
+      "qemu_img_check": "PASS",
+      "entire_disk_raw_scan_bytes": 53687091200
+    },
+    {
+      "architecture": "arm64",
+      "virtual_size": 53687091200,
+      "status": "PASS",
+      "release_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "erasure_seconds": 2506.93,
+      "deleted_marker_present_before": "PASS",
+      "deleted_marker_absent_entire_disk_after": "PASS",
+      "allocated_file_unchanged": "PASS",
+      "journal_recreated": "PASS",
+      "qemu_img_check": "PASS",
+      "entire_disk_raw_scan_bytes": 53687091200
+    }
+  ],
+  "execution": "Native architecture containers; explicit TCG libguestfs appliance; task-owned newly created disks; network disabled. No existing test disk is converted into a distribution artifact.",
+  "method": "Filesystem check, journal removal, unmounted zerofree, mounted trim, unmount, journal recreation, final filesystem check. No full-volume temporary zero file.",
+  "coverage": "Deleted random marker must exist before erasure and be absent from an entire raw logical-disk scan after it. Allocated file bytes unchanged, deleted file absent, journal recreated and qemu-img integrity checked.",
+  "limits": "These are actual synthetic-disk component trials, not complete OS/image acceptance, hosted-job capacity proof or OCI execution. Final installed candidates require the complete sanitizer and fresh boot/access lifecycle.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

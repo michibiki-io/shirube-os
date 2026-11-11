@@ -1,0 +1,82 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "dialog",
+      "version": "1.3-20230209-1",
+      "source_identity": "0e4c7ae0be1f9ea6793dfc50fd7db8715b9cdab04c2d8a23705f176bb945a797",
+      "copyright_sha256": "12ed09df1b7c25ef883755915b88754a072403415a4a6e21d3f5ad631198316b",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "12ed09df1b7c25ef883755915b88754a072403415a4a6e21d3f5ad631198316b"
+        },
+        {
+          "member": "package/debian/copyright",
+          "sha256": "d9e70057ddae5a1e57f71ceb6c4e437da8979749226ebbd663ea232983fa8ff6"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Dialog-original-build-script-notices.txt",
+          "sha256": "d9e70057ddae5a1e57f71ceb6c4e437da8979749226ebbd663ea232983fa8ff6"
+        }
+      ],
+      "conditions": [
+        "Keep the LGPL2.1-only program grant distinct from the MIT-style aclocal/install-sh and generated configuration permissions. Preserve the complete upstream package/debian/copyright in addition to the shorter installed copyright, with attribution and nonendorsement. The original full LGPL2.1 differs from the previously read original only by two Street/St address spellings, both read."
+      ]
+    },
+    {
+      "source": "libxinerama",
+      "version": "2:1.1.4-3",
+      "source_identity": "5fe68b94d4cbc4be1ba37bbf676fbece3920b2c59a33cc94c4e4c7a140958edd",
+      "copyright_sha256": "e49d9732f261b3ffcb50c40914bd9d144de5557dad9b2ae20dbe8e3c5b3d17fb",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "f661fd883b6e980b3b118e0fbe230fbf10eef8d4d4a35931355f29ed647ddbe3"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "e49d9732f261b3ffcb50c40914bd9d144de5557dad9b2ae20dbe8e3c5b3d17fb"
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Retain complete Oracle, Open Group and Digital notices and supporting-documentation attribution and nonendorsement requirements. Original COPYING matches the complete installed copyright except its download-origin prefix."
+      ]
+    },
+    {
+      "source": "libxext",
+      "version": "2:1.3.4-1",
+      "source_identity": "25024f57d955739c6b858822bf93ec3c71400b56fc0d666826f440e3661fd7c0",
+      "copyright_sha256": "bc57e445ca1d9fe082c8d54189dd411ff26caa8552c9c63d44ea06a982f32124",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "80767ac915f2f0f94de9efb15f0197a59b6f1e609cae85059f8703272dc3e146"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "bc57e445ca1d9fe082c8d54189dd411ff26caa8552c9c63d44ea06a982f32124"
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/LibXext-original-COPYING.txt",
+          "sha256": "80767ac915f2f0f94de9efb15f0197a59b6f1e609cae85059f8703272dc3e146"
+        }
+      ],
+      "conditions": [
+        "Preserve every complete original legacy software/documentation permission, supporting-documentation attribution and nonendorsement scope. Retain original Oracle 2013 year omitted from the installed copyright by requiring the complete original COPYING alongside it."
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

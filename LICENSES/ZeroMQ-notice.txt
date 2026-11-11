@@ -1,0 +1,6 @@
+Shirube OS includes the ZeroMQ library through PyZMQ in the Salt SDK.
+ZeroMQ and its use are covered by GNU LGPL version 3 or later with the original
+ZeroMQ independent-module linking exception. PyZMQ retains its BSD license.
+Original contributors, complete GPL/LGPL terms, the full linking exception and
+the exact preferred sources accompany this distribution. No upstream endorsement
+is implied. Modifications to ZeroMQ must retain and extend its exception.

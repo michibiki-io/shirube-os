@@ -1,0 +1,50 @@
+{
+  "kind": "exact-debian-bind-original-license-review",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "bind9",
+  "version": "1:9.18.49-1~deb12u3",
+  "dsc_sha256": "bd6c191cd09fbc46b0283d2e598b539079f402663f22f9c9a7bdc7194734ac44",
+  "original_archive": {
+    "name": "bind9_9.18.49.orig.tar.xz",
+    "sha256": "c43ce4548ebed788cd9df63658a7de105ceafba43fcd63fa352b1093e525cd24",
+    "size": 5476288
+  },
+  "copyright_sha256": "fdc344548623105885017a34801922e376d919ae1c13f2ebc31096898a3fd5fa",
+  "original_legal_files": [
+    {
+      "member": "COPYING",
+      "sha256": "d3d6ed2a709a8b82c04a556fc93654a7d4f40d53724d8fdac0ea69aff7087c1e",
+      "bytes": 15922,
+      "distribution_path": "LICENSES/BIND-9.18.49/COPYING"
+    },
+    {
+      "member": "COPYRIGHT",
+      "sha256": "9734825d67a3ac967b2c2f7c9a83c9e5db1c2474dbe9599157c3a4188749ebd4",
+      "bytes": 19672,
+      "distribution_path": "LICENSES/BIND-9.18.49/COPYRIGHT"
+    },
+    {
+      "member": "LICENSE",
+      "sha256": "d3d6ed2a709a8b82c04a556fc93654a7d4f40d53724d8fdac0ea69aff7087c1e",
+      "bytes": 15922,
+      "distribution_path": "LICENSES/BIND-9.18.49/LICENSE"
+    }
+  ],
+  "original_copyright_encoding": "Latin1; raw original SHA256 retained, not treated as binary/no-license",
+  "root_mpl_comparison": "COPYING and LICENSE match each other exactly. Full normalized-word comparison to the read MPL2 text differs only in title capitalization/punctuation, list labels, formatting borders and one Mozilla notice URL scheme. All terms and both standard exhibit templates retained.",
+  "actual_source_census": {
+    "archive_members": 5233,
+    "historical_paths_absent": [
+      "lib/isc/tests/random_test.c",
+      "lib/isc/include/pkcs11/pkcs11.h",
+      "lib/dns/spnego.c",
+      "lib/dns/spnego.asn1",
+      "OpenSSL-LICENSE"
+    ],
+    "content_search": "All regular text files below1MB scanned for Moshier/RFC4178/InternetSociety2005/OpenSSL-LICENSE. Relevant matches occur only in aggregate COPYRIGHT and a SPNEGO protocol construction reference in a system test. No C/H/ASN/ASN1/Python source file is1MB or larger.",
+    "local_removals": 0
+  },
+  "scope": "Exact source permission/notice scope only. No current complete OS rebuild, hosted release feasibility or OCI acceptance claim.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

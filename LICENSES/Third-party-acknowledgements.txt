@@ -1,0 +1,12 @@
+Arpwatch / University of California, Lawrence Berkeley Laboratory:
+This product includes software developed by the University of California,
+Lawrence Berkeley Laboratory and its contributors.
+
+SquidGuard / CERN:
+This product includes computer software created and made available by CERN.
+
+The original copyright, permission conditions, disclaimers and dated upstream
+modification notices remain in the corresponding component sources and installed
+copyright files. These acknowledgements do not imply endorsement. Retain them
+in advertising materials that mention Arpwatch features or use, as required by
+its original license. W3C terms are in W3C-Software-1998.txt.

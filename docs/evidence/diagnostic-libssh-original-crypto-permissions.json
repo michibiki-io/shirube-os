@@ -1,0 +1,47 @@
+{
+  "kind": "exact-libssh-original-crypto-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "0.10.6-0+deb12u3",
+  "source_identity": "28fd7712a35660d49afd960107ebec8c24d9fbf0a97ca3d5b063b86a444fc339",
+  "copyright_sha256": "1b33ec0b1d0d521afb21d8e6b98fa4abf52b1ffb69a8461a045db9d586ce141f",
+  "original_source": {
+    "name": "libssh_0.10.6.orig.tar.xz",
+    "sha256": "1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1",
+    "size": 561036
+  },
+  "actual_original_public_domain_declarations": [
+    {
+      "member": "libssh-0.10.6/src/external/ed25519.c",
+      "sha256": "323541e03193e9e0a5a0e9f1ff5a8d22f412ee788a797c24f988f0474925566b"
+    },
+    {
+      "member": "libssh-0.10.6/src/external/curve25519_ref.c",
+      "sha256": "281f3af5dc77d739fc50173b6df7676c383cafacbae4c07f3c80dd677a62e055"
+    },
+    {
+      "member": "libssh-0.10.6/src/external/ge25519_base.data",
+      "sha256": "9f25072b8ba324dc58152fe1c256e3f18aae8c0fd325af4056a2caaac8f49b03"
+    },
+    {
+      "member": "libssh-0.10.6/src/external/fe25519.c",
+      "sha256": "b2f548be9a17a3e4baf85cdfbddde0950bd70c2acfeb292b03c09bf3d13135a6"
+    },
+    {
+      "member": "libssh-0.10.6/src/external/ge25519.c",
+      "sha256": "8b227f95224ec114954c54a53fc0c8fa8f456dfcded762c8e9d3666d299bf947"
+    },
+    {
+      "member": "libssh-0.10.6/src/external/sc25519.c",
+      "sha256": "eb51cc9ae98539f5aa47b3384fe1e14f1e37d6aba474dd32b5ec8ea4d726468d"
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/Libssh-original-public-domain-notices.txt",
+      "sha256": "c1e2fe33c3fb90a08f0083d0767a04324563c4e6f1a9c9f7d72dc4727a38d24a"
+    }
+  ],
+  "scope": "Actual source declarations and independent LGPL2.1-only header scope; no source-version upgrade.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

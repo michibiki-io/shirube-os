@@ -1,0 +1,1511 @@
+{
+  "kind": "actual-go-compiler-and-linked-source-notice-audit",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "reviewed_on": "2026-11-09",
+  "new_exact_decisions": 45,
+  "unique_read_original_legal_blocks": 12,
+  "scope": "Complete original compiler/standard-library legal notices and exact identical linked-module blocks, including source-only conditional BoringSSL terms; all required credits retained. No root-license-only inference and no unknown block omitted.",
+  "components": [
+    {
+      "parent": "blackbox-exporter",
+      "name": "go-stdlib",
+      "version": "1.23.2",
+      "source_identity": "542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e",
+      "copyright_sha256": "fc9ce00667cf2c942087846e6df18ab772a028cf6cf6e761a95a360b136ccf70",
+      "evidence_member": "source/shirube-corresponding-inputs/go-copyright",
+      "matched_original_blocks": [
+        {
+          "member": "go/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/google/pprof/AUTHORS",
+          "full_original_block_sha256": "8a196dfd9252ad9cb0670365e680d6b19560c688776fa76f0203854ae2c0e29c",
+          "license": "copyright-only"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/google/pprof/LICENSE",
+          "full_original_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/google/pprof/third_party/svgpan/LICENSE",
+          "full_original_block_sha256": "c7287a4cbffa1871b367cd7ad6fab60741e3ba193853e784db3e7957e8f85969",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/ianlancetaylor/demangle/LICENSE",
+          "full_original_block_sha256": "85f443f07d59f2d078084211f41e09643655f2ced1dc59c21fc6d49ae5831fc5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/arch/LICENSE",
+          "full_original_block_sha256": "85f443f07d59f2d078084211f41e09643655f2ced1dc59c21fc6d49ae5831fc5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/arch/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/build/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/build/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/mod/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/mod/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sync/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sync/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sys/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sys/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/telemetry/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/telemetry/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/term/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/term/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/text/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/text/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/tools/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/tools/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/rsc.io/markdown/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/crypto/internal/boring/LICENSE",
+          "full_original_block_sha256": "260dae0c6ca4ed1e77e334a1cbeb454768b47177d0a3489ccd742824959e5438",
+          "license": "BSD-3-Clause AND ISC AND OpenSSL"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/crypto/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/crypto/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/net/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/net/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/sys/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/sys/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/text/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/text/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0",
+        "BSD-3-Clause",
+        "BSD-3-Clause AND ISC AND OpenSSL",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": [
+        {
+          "path": "NOTICE",
+          "sha256": "a1fae99d451f3d6a63d0ee907861352b23c8f73e2ee5214483ccdb70b621a9b3"
+        }
+      ]
+    },
+    {
+      "parent": "blackbox-exporter",
+      "name": "go:golang.org/x/crypto",
+      "version": "v0.32.0",
+      "source_identity": "959d6b2fb5ee7d50113a0cb26dbdd8fa06710d4e97fae709be2d2755e827ede7",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/f11d5afb2d3e4307547e0b2b87a2ee1ca450cb40bfbc17425d1296ab42c50945.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "blackbox-exporter",
+      "name": "go:golang.org/x/net",
+      "version": "v0.34.0",
+      "source_identity": "49c43b74811dc9864fe35dcfcc8b1c64917d2cce30882adde4f86a981465b594",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b76f7d9abb2f87ac6b8a24ed2a049a186e187910736e780a0f474de309a5015e.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "blackbox-exporter",
+      "name": "go:golang.org/x/sync",
+      "version": "v0.10.0",
+      "source_identity": "94ea75ea625ecb8d81ab473a2d7e03433e63083768cd27d48a03f8c1c9da3d8d",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/bab96167ebcf6f0002599171f6ac616e553458e1b4943b4e8ff5d31cbbb5aa03.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "blackbox-exporter",
+      "name": "go:golang.org/x/sys",
+      "version": "v0.29.0",
+      "source_identity": "1d759c017d09328a4dacdd4a1a0170cf21641995c6e3ca1f96213369d73c6846",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/a7cd0d3d63c0314959f07e908e08d9fa4da34a4911f0caa515ddeccc2b7da1e9.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "blackbox-exporter",
+      "name": "go:golang.org/x/text",
+      "version": "v0.21.0",
+      "source_identity": "be3db791651af6f2cb0225aa5d5578c23149b2017246ba8e59586080baadd612",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/c02cd1c3d98a41e4c2b246c9bf9492e2f7a149ee4746a4706e629a7a999c2124.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "frr-exporter",
+      "name": "go:golang.org/x/crypto",
+      "version": "v0.37.0",
+      "source_identity": "7ce6b2be21be1ce9e04dc784830e08931f09b5903596b8017839322c9e828667",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/126c585bb4195a7d15860634ba8f652f1043da842b38da0cbb10ee3589c50a4d.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "frr-exporter",
+      "name": "go:golang.org/x/net",
+      "version": "v0.39.0",
+      "source_identity": "d8434ce72d2356472570adbbd38c538d24fe9a9678bffaa6ef99ec47ca3be0a5",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/2c6e42cf81d98fff6c47c0b0c6d33357895d5e2e92e50aa1ad9d4451b8cc47db.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "frr-exporter",
+      "name": "go:golang.org/x/sync",
+      "version": "v0.13.0",
+      "source_identity": "4bdaaffe69cc7c997cff97cd81dc9c6777777bd311175f100f76b049bbbe7ed9",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3f41e8bae7a80f0a6efcee116701722866817672c01e5f6263ce9f4748f2e8cf.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "frr-exporter",
+      "name": "go:golang.org/x/sys",
+      "version": "v0.32.0",
+      "source_identity": "85d47075d21fd7ef35d9a47fc73f2356fb3cd2e7fab7f45c874b814bf312127d",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cff0a90c70663a023322dd9b1f065fb51335372683b5358daa6e053b2eb235a6.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "frr-exporter",
+      "name": "go:golang.org/x/text",
+      "version": "v0.24.0",
+      "source_identity": "f585335a57a6fa5fa0c0bf319b45f0909e5ff1aba91e8567187ba8e423084c00",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b41f6e90be3c1a436ff4f5a8ad2c851561d03bbe74acd0f2ea746e9a3acc1eaf.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "node-exporter",
+      "name": "go:golang.org/x/crypto",
+      "version": "v0.36.0",
+      "source_identity": "86bb4875b3d2bd173b820d2d81d4ae630508fa65183a44dac2cb915e4f904180",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cb844e32e44e72a38728e660b062529250639ccfc512685e931d9147d04d532a.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "node-exporter",
+      "name": "go:golang.org/x/exp",
+      "version": "v0.0.0-20240909161429-701f63a606c0",
+      "source_identity": "447a436882177a2a9fc281116f1858d6e0533c790a90f55cf3a64f1cafb752c6",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/5d6f45c729e67452a8b2298c52d34fa780f226577d90869002c3bdd00d512b80.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "node-exporter",
+      "name": "go:golang.org/x/net",
+      "version": "v0.37.0",
+      "source_identity": "5ac3c526c078cbccfb600ae49acd21705ba97e9f70e7812618cbb0616985df83",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/7d6e2c017742c2fad7a42b117d78cbdd65f4f0d8c0dc8cfd0881d4d82d4cb960.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "node-exporter",
+      "name": "go:golang.org/x/sync",
+      "version": "v0.12.0",
+      "source_identity": "a35481e5ae73e51ef01cf42bcad09c3b73bb3a4abb67d495d4a575021541ed02",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/76effc2969ba3556a902e31821bc39ad3574853823bba68022b8a8f54a8b8ea7.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "node-exporter",
+      "name": "go:golang.org/x/sys",
+      "version": "v0.31.0",
+      "source_identity": "55f8255602c7a68419745943298893f0a83d6d6696199cfe6b644054669509f3",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/0fdb5306251767f0d0ab375e321b2cbdc08181a7c1ef96152e2c3d6872512c28.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "node-exporter",
+      "name": "go:golang.org/x/text",
+      "version": "v0.23.0",
+      "source_identity": "49043b8f569a76d094e6be46ee983df62ff93be4988f665f39f05da1b28b7102",
+      "copyright_sha256": "423ede029e73f3d7aabfa2c74a7553ecb99b90052c06e3201df92c0ba15a8293",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/96e43c71fc8a241706d589470b6f82e3ddded4caf36345113243320b23085d48.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/crypto",
+      "version": "v0.14.0",
+      "source_identity": "a72c57e71d0fbd460d8493c958fb2841357e3babbb32d7fe2cd533564b1d66b7",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/fe94e9f15c06c4cf9c0158c9f650a4959a26e9eae6d619a1670dc8b41fe63978.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/exp",
+      "version": "v0.0.0-20230713183714-613f0c0eb8a1",
+      "source_identity": "1e339671afbe9278127c7a061e0b1c74d1149d59e24d364a5ac2192c23c1a963",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/cc3b590fc9e9a829dcf12864f013d7f1747ca7ecf989029f4d89fa5e50a2a20d.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/net",
+      "version": "v0.17.0",
+      "source_identity": "d99428e95af6fd8fdc23285d69b8f6e7c52c964c990295e45183718e33ebeb5a",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/948755071f1c3bc5d529e16c70ea8e36ed0ed288f65846a9cf31c0e14a983f3d.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/sync",
+      "version": "v0.4.0",
+      "source_identity": "77c5d9c48ba1c440060c87d9a1b67f2ef5216994228e14ad3fcfe2dd9b3f2134",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/d6a9f43f988622215e2e538152eaec2927b3859df9489dd3c5b959f0cd3d6b73.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/sys",
+      "version": "v0.13.0",
+      "source_identity": "3d149afc9939980354374c0d47461dcdbd1d3980eb2f77e60304b23fee6f3d37",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/004e5459204660b50863870333f57cf7e2fc68f667fe24ad2cb9f1e2cae3f153.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/term",
+      "version": "v0.13.0",
+      "source_identity": "a2140133ab5edea486ec9239da01995e606e6261d66d1a673cd2add33d080fdd",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/e02e8b4d45c38a4f24226333a26710cd0eef5ea822f39082e128d30873c17c9b.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/text",
+      "version": "v0.13.0",
+      "source_identity": "ed544fb017e967c053892df7b068612fce707ba32b57f35824cb041e31c6ae0f",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/e1505ca7bfa11a8cec18e9799d3dd65a448c3790f29955445b324101176d5e39.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:golang.org/x/time",
+      "version": "v0.3.0",
+      "source_identity": "fa9a1fcd03a4acb817faa5d44e95f0a73182a96cb81012c9b94f832d70f7296b",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/380527c60c0ca84399b27a8471b54668642d075e7dff0bdc01aacfde6e9c1602.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:k8s.io/apimachinery",
+      "version": "v0.28.2",
+      "source_identity": "e006533970f892c51b7a378fb9e884a00ee19c3b8600e7f6473ee02281515df9",
+      "copyright_sha256": "d4cc294d4b6700dd4d3a79469a185c567026a98b1bcdf0ed99e8dae437ed624d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3dd7a8deaf0ae8d1baa7b12f20a76aca38d64f3ffc7beea56034881b81be0abb.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0"
+        },
+        {
+          "member": "third_party/forked/golang/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "third_party/forked/golang/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0",
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "telegraf",
+      "name": "go:k8s.io/client-go",
+      "version": "v0.28.2",
+      "source_identity": "435692d0b6b435260c49fde6caf1852cdd8d5d69714db147d7d07a3684cdd65e",
+      "copyright_sha256": "d4cc294d4b6700dd4d3a79469a185c567026a98b1bcdf0ed99e8dae437ed624d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/f741ccf90893a54340f93362c8a20ba18583c2420a7c03ec2957db2fd2b0bbc3.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0"
+        },
+        {
+          "member": "third_party/forked/golang/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "third_party/forked/golang/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0",
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/crypto",
+      "version": "v0.19.0",
+      "source_identity": "a5d060c3922cbc05980ae515c4cff659bf57386cfb867030df07490c2a4e5c93",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/159606c7b7e9691a4025eee354563c5c2c6fd04f6c577d9bc699c2889122c575.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/exp",
+      "version": "v0.0.0-20231006140011-7918f672742d",
+      "source_identity": "a06362b7ed9754c8430e3eed1c8cf8ef6617c56fc919ba02ef9af54738bce003",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/b9e0038b5679da0d03f5617afdb5582071cb454cf1216b394b8cd6c7862275b7.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/mod",
+      "version": "v0.13.0",
+      "source_identity": "2181d0e89fe1321e62b351748349e9c6bef6d82d617cc45b593334338f163293",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3955b2684b36b474beb1551094e012a4b8a16510bc19377e656150fcaaa5d41b.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/net",
+      "version": "v0.18.0",
+      "source_identity": "2877e45818acde41bbd2fc02d3023ecfdae896b992223d448906860a69b5b5ac",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/3e4aa96992545eb83faf8cdb7f478850a12fdf128e7185ede7c85843f4548258.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/sync",
+      "version": "v0.6.0",
+      "source_identity": "e090de7809b2c1b81bd3ada1adb3d7d8c64cb587c58cc561817e9a880831394d",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/db2013a1dae0769f38d4ed250ca0fd4b2f75a0461a908f6069ea749e15399e44.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/sys",
+      "version": "v0.17.0",
+      "source_identity": "17ba779f3740c506f5bbc8b618dc6c7d1d09054febd609136ce3a04dd22189bc",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/24f70bee608bc7b30ad7644edfe48ea2eeef0f1f8d2c542eca885d82d9f28955.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/term",
+      "version": "v0.17.0",
+      "source_identity": "94bad384836be2a2e4fd6b2e27258035956b5ea38f7806c8d036afe480276e69",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/4a1f2b0a7e10930562335542168047b0bead2c515d29b867bc7d5ae364d169c0.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:golang.org/x/text",
+      "version": "v0.14.0",
+      "source_identity": "6aae7e1a8539ecc1bcce0904eeba10be3ab492feb94c883066713eaeac18a56e",
+      "copyright_sha256": "fed328f34351cf9a0bb307297e077ec65023dafa67ecc0259169587c9dc2aa3d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/9c9a78618f6e91c09fb96602888f927b470bfb13d0a09c69511f4edd3a08f876.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "podman",
+      "name": "go:k8s.io/kubernetes",
+      "version": "v1.28.4",
+      "source_identity": "bdb0ae52df5adb6985a5dd7edc131499a0aca9c316ce76575873f510fa3257b8",
+      "copyright_sha256": "d4cc294d4b6700dd4d3a79469a185c567026a98b1bcdf0ed99e8dae437ed624d",
+      "evidence_member": "source/shirube-corresponding-inputs/notices/bd7c0e5408adbf5da0a46d182fdddf58a57f82f235ba6be09fa07ec39343bb5f.txt",
+      "matched_original_blocks": [
+        {
+          "member": "LICENSE",
+          "full_original_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0"
+        },
+        {
+          "member": "third_party/forked/golang/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "third_party/forked/golang/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0",
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/crypto",
+      "version": "v0.55.0",
+      "source_identity": "h1:+KWHjbgOaAQ66dh/YlkZKHlz9ZUlq61AFirAR9ntP8M=",
+      "copyright_sha256": "1990e4bedd6ce9bbee95088ff6e866f3a7765fe68a57931415d2c8eed055d5dd",
+      "evidence_member": "netbird/linked/notices/b51318a5f09d656708edfa84c539595393389ea1119f58b21dd45de5c65964ea.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/crypto@v0.55.0/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/crypto@v0.55.0/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/exp",
+      "version": "v0.0.0-20260410095643-746e56fc9e2f",
+      "source_identity": "h1:W3F4c+6OLc6H2lb//N1q4WpJkhzJCK5J6kUi1NTVXfM=",
+      "copyright_sha256": "e1ffdb968de6aed76171ba1acf51ec2be11045ca1ac41b6492c8ac517f70d7fd",
+      "evidence_member": "netbird/linked/notices/3c28872f4c09339355b9439f07a388bf764141afd1dfe703989d256d89150767.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/exp@v0.0.0-20260410095643-746e56fc9e2f/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/exp@v0.0.0-20260410095643-746e56fc9e2f/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/net",
+      "version": "v0.58.0",
+      "source_identity": "h1:ynWG7rqYi4ccpTEuPZ2QGWHktVEM9DMCj9yzDE0Q7To=",
+      "copyright_sha256": "76fad9eb594d76ada4d7a1d7b3cf20c0dd4e33c66e6e9763a3a4f1d1ecff38db",
+      "evidence_member": "netbird/linked/notices/4e8349f3905a88b19afd444c19d733fb9fd9de1417de8ec7c3e549f18724b21b.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/net@v0.58.0/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/net@v0.58.0/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/sync",
+      "version": "v0.23.0",
+      "source_identity": "h1:KameEIfc1IkluZyXWLn39Wd4tURc6GbCiISGiZm2bQk=",
+      "copyright_sha256": "d25abe4d149bc1516ad631888b2390a6211db1f853c4c8e287da004ee9213936",
+      "evidence_member": "netbird/linked/notices/ebe0252705d09641daffd4b792ca80d6a56278ef324d6b189c794da4c8b248d8.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/sync@v0.23.0/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/sync@v0.23.0/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/sys",
+      "version": "v0.47.0",
+      "source_identity": "h1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=",
+      "copyright_sha256": "52ba2a09bd2f9217bcd39e09ffe14af966d9dab737d145ad521d008984f55baf",
+      "evidence_member": "netbird/linked/notices/dc957412cc909276320f70037599d72891e1f71a764e36c332bace8e873c07d2.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/sys@v0.47.0/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/sys@v0.47.0/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/term",
+      "version": "v0.45.0",
+      "source_identity": "h1:NwWyBmoJCbfTHpxrWoZ9C6/VxOf7ic219I8xZZFdrf0=",
+      "copyright_sha256": "ea3294e4aaef15eba064b1cdf55b7193604452b5c9433380a77f0ee15d26ad06",
+      "evidence_member": "netbird/linked/notices/6b13efd86cb2d64e3b141d445a3599b3150a065dffae3f5f9266bdceabc07dd2.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/term@v0.45.0/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/term@v0.45.0/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/text",
+      "version": "v0.41.0",
+      "source_identity": "h1:vz/seA0lnX87Othu2f/0L24RcgrXD9/YFTSuGjj3rH8=",
+      "copyright_sha256": "00a0c1b8c68a8832f4ce8dffa38fb6d591b256cdbd15b3aab25b9ce993b9669a",
+      "evidence_member": "netbird/linked/notices/7ed23dec1da49410ed6cc36169daa76432a442e898564e679e9c644c7bc44837.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/text@v0.41.0/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/text@v0.41.0/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go:golang.org/x/time",
+      "version": "v0.15.0",
+      "source_identity": "h1:bbrp8t3bGUeFOx08pvsMYRTCVSMk89u4tKbNOZbp88U=",
+      "copyright_sha256": "73519a4d2eac2a7d4978220159da809fac21ef52fa06f282dd6e884f1ed97409",
+      "evidence_member": "netbird/linked/notices/45c2972ee85c68bd7e63faf1d672d4379053581409ddba5763d2afdf6832b943.txt",
+      "matched_original_blocks": [
+        {
+          "member": "golang.org/x/time@v0.15.0/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "golang.org/x/time@v0.15.0/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "BSD-3-Clause",
+        "LicenseRef-Go-Patent-Grant"
+      ],
+      "required_notice_files": []
+    },
+    {
+      "parent": "netbird",
+      "name": "go-stdlib",
+      "version": "1.26.10",
+      "source_identity": "fd63e883ba2f2bfca93c1646b31ebef63e2b1e4d2b317c9789d976a68d81f36f",
+      "copyright_sha256": "4a4253253f022d293390e62eb27814cff10dff08a2c00fe9353737969326c665",
+      "evidence_member": "netbird/go-copyright",
+      "matched_original_blocks": [
+        {
+          "member": "go/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/compile/internal/ssa/_gen/vendor/golang.org/x/tools/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/compile/internal/ssa/_gen/vendor/golang.org/x/tools/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/google/pprof/AUTHORS",
+          "full_original_block_sha256": "8a196dfd9252ad9cb0670365e680d6b19560c688776fa76f0203854ae2c0e29c",
+          "license": "copyright-only"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/google/pprof/LICENSE",
+          "full_original_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/google/pprof/third_party/svgpan/LICENSE",
+          "full_original_block_sha256": "c7287a4cbffa1871b367cd7ad6fab60741e3ba193853e784db3e7957e8f85969",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/github.com/ianlancetaylor/demangle/LICENSE",
+          "full_original_block_sha256": "85f443f07d59f2d078084211f41e09643655f2ced1dc59c21fc6d49ae5831fc5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/arch/LICENSE",
+          "full_original_block_sha256": "4d0e96489305962f3f238a92744b8a2846f33565d131ab176d71b09eef301c13",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/arch/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/build/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/build/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/mod/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/mod/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sync/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sync/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sys/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/sys/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/telemetry/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/telemetry/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/term/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/term/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/text/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/text/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/tools/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/cmd/vendor/golang.org/x/tools/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/cmd/vendor/rsc.io/markdown/LICENSE",
+          "full_original_block_sha256": "4214d8afcc3620b7fb7aa9c7695e8f659a90011a830caf0e0c72a385d7d3b2a5",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/crypto/internal/boring/LICENSE",
+          "full_original_block_sha256": "f9a80abe24446ec19cdf96bfba69f1dca4eecc8c9059699500ec1401940e17a8",
+          "license": "BSD-3-Clause AND ISC AND OpenSSL"
+        },
+        {
+          "member": "go/src/internal/copyright/copyright_test.go",
+          "full_original_block_sha256": "4b9505c13bdb846c5b01032f0de44d801e7411f0645b6bf119b895a2d5928834",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/runtime/testdata/testgoroutineleakprofile/goker/LICENSE",
+          "full_original_block_sha256": "f99df8ae6da6de047ed002d9dbe8682d9a19c88e9a7473abdadf3ac206621a85",
+          "license": "MIT"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/crypto/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/crypto/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/net/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/net/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/sys/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/sys/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/text/LICENSE",
+          "full_original_block_sha256": "22975ebe413674bc619428a26e53412013dccffa69e2f27100dbd8d946fde287",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "member": "go/src/vendor/golang.org/x/text/PATENTS",
+          "full_original_block_sha256": "2728f4d067c60d35428020435045d9a8340391082b792d9529fa52bfa4f40993",
+          "license": "LicenseRef-Go-Patent-Grant"
+        }
+      ],
+      "selected_licenses": [
+        "Apache-2.0",
+        "BSD-3-Clause",
+        "BSD-3-Clause AND ISC AND OpenSSL",
+        "LicenseRef-Go-Patent-Grant",
+        "MIT"
+      ],
+      "required_notice_files": [
+        {
+          "path": "NOTICE",
+          "sha256": "a1fae99d451f3d6a63d0ee907861352b23c8f73e2ee5214483ccdb70b621a9b3"
+        }
+      ]
+    }
+  ],
+  "parent_distribution_license_clearance": "NOT_CLEARED",
+  "complete_source_reconstruction": "NOT_RUN",
+  "oci": "NOT_RUN"
+}

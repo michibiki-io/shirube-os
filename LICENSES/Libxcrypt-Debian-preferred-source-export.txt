@@ -1,0 +1,20 @@
+Debian libxcrypt 1:4.4.33-2 preferred-source delivery
+
+Original descriptor SHA256: 910ae411c9462f07667e46540af3dbb30f46413ddd90f1f176781666042dbb38
+Preferred-source declaration SHA256: ee5eda707069be601bf8eb8e61342e9519d9187c2974bae3808071e80a1a4754
+
+Only the nine present source-only tests explicitly identified in upstream
+LICENSING as having unknown individual copyrights/licenses are omitted.
+The seven other historical names in that inventory are already absent upstream.
+All installed library, algorithm and public-header sources are unchanged.
+The original per-file permissions and complete LGPL2.1 text remain with the
+preferred source. Only Makefile.am removes the omitted test header from all-am;
+its original attribution is retained and the change is marked with its date.
+The raw original archives are not cleared for redistribution by this decision.
+
+The original descriptor is retained only as provenance, not as a descriptor of
+a new signed Debian source set. SHIRUBE-SOURCE-EXPORT.json records exact omissions,
+original and modified build-control hashes, and reconstruction instructions.
+The original check suite is incomplete and has not passed. Normal library build
+and install have been verified separately on AMD64 and ARM64; Debian package
+rebuild, bit-identical reproduction and whole-OS verification remain separate.

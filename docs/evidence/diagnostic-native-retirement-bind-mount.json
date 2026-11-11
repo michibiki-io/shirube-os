@@ -1,0 +1,14 @@
+{
+  "kind": "actual-native-retirement-bind-mount-preservation",
+  "status": "PASS_COMPONENT_ONLY",
+  "actual_same_filesystem_bind_mount": "REJECTED_BEFORE_ANY_DELETE",
+  "unmounted_private_scratch_retirement": "PASS",
+  "exports_and_external_cache_preserved": "PASS",
+  "complete_release_peak_storage": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "implementation_files": {
+    "producer/workspace.py": "f41101adc2eb7c5e6b9cc2c800f155c4e345480a02c47991eea3b9abb5fd4a20",
+    "containers/native/build.py": "98bb9fa1cb4c6d3c548fbb77a45b8d047b1b1d395a0f796070ce0473585c086b"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "kind": "diagnostic-arm64-tcg-qcow2-current-netbird-controller",
+  "status": "PASS",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "prior_trial": "arm64-disks-notices-tcg2",
+  "prior_trial_status": "FAIL",
+  "scope": "Actual native ARM64 TCG fresh-instance QCOW2 clone and full NetBird lifecycle using exact current product controller/unit bytes installed and hashed in the disposable guest. Reuses the prior TCG-installed fully sanitized immutable standalone50GiB base; installation and full zeroing were not repeated in this focused trial. Base unchanged and clean shutdown passed. Not a current-head release candidate, license clearance, hosted-runner resource/time acceptance or OCI execution.",
+  "base_sha256_before": "cfb53ff7a0f902103e143556167c51445950a2ddfe71f5ee6fd54db00b3cb32d",
+  "qcow2_standalone_50GiB": "PASS",
+  "diagnostic_controller_source_commit": "f3bc85019a97a88017f5cfb9bb588e1339391ef0",
+  "diagnostic_controller_files": [
+    {
+      "path": "/usr/libexec/shirube/netbird-control",
+      "sha256": "e894eb3a48a762a077fd34a11b08a43adfa0a1a985ddb4964bd2c6df319d8a4a"
+    },
+    {
+      "path": "/usr/lib/systemd/system/shirube-netbird.service",
+      "sha256": "1fa4eadf540f1db78225e34157bd00954196ba189f1bfed607344a73bfaa8456"
+    }
+  ],
+  "netbird": {
+    "native_config_commit_save": "PASS",
+    "real_enrollment": "PASS",
+    "real_enrollment_rejection_and_cleanup": "PASS",
+    "management_and_signal": "PASS",
+    "disable_enable_identity": "PASS",
+    "saved_configuration_reboot_identity": "PASS",
+    "removed_configuration_reboot_inactive": "PASS",
+    "setup_key_absence_in_config_state_history_logs": "PASS"
+  },
+  "base_sha256_after": "cfb53ff7a0f902103e143556167c51445950a2ddfe71f5ee6fd54db00b3cb32d",
+  "clean_shutdown": "PASS"
+}

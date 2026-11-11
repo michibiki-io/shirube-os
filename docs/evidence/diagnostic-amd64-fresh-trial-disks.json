@@ -1,0 +1,42 @@
+{
+  "kind": "diagnostic-amd64-native-trial-fresh-disks-and-netbird",
+  "architecture": "amd64",
+  "version": "v2026.03.0",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "status": "PASS",
+  "iso_sha256": "f684874697c6817cf3d2a476c13edcc716f38d1917cfe17f4bef504bc7c3082f",
+  "implementation_files": {
+    "producer/vm.py": "e9d371b587948f23a08bf7138aa3657ed79d21e866300731a58a082944cd13f6",
+    "producer/sanitize.py": "0a3c1b5e6473e10f6c2dccaff380fef953703acd3a6d3f059e745e0f0625cd2a",
+    "producer/guestfs_kernel.py": "ad79c96423c7424c6f635146e0a534433238b1bf12cf1aabe88b5317e96bf90c",
+    "producer/netbird_guest.py": "6eb0785c190d205585cca161801907f001513d1952fe02b3d3e1b6c472da8e46",
+    "producer/erasure.py": "875dc557b28cfd25fbd0f9b3a8b9f2b79ebe9cb4d51fcd4709f8dc884cc64c14"
+  },
+  "identity_regeneration": "PASS",
+  "netbird": "PASS",
+  "observations": [
+    "qcow2-unprovisioned: fresh firmware, no ISO, enrollment prompt with no reusable login",
+    "qcow2-provisioned: actual console login, sudo, DHCP, route, virtio NIC and identity checks passed",
+    "qcow2-provisioned: native GeoIP cache restored and country lookup passed",
+    "vmdk-unprovisioned: fresh firmware, no ISO, enrollment prompt with no reusable login",
+    "vmdk-provisioned: actual console login, sudo, DHCP, route, virtio NIC and identity checks passed",
+    "vmdk-provisioned: native GeoIP cache restored and country lookup passed"
+  ],
+  "images": {
+    "qcow2": {
+      "name": "shirube-os-v2026.03.0-amd64.qcow2",
+      "sha256": "fbad68ebbedff1a03d272b3c7bd636ee1cb64681a4271beb241bf5cc0f54f3b8",
+      "physical_size": 658112512
+    },
+    "vmdk": {
+      "name": "shirube-os-v2026.03.0-amd64.vmdk",
+      "sha256": "13de259f5e6cc09fb36f7e24eabbe27188ec0e51b31130a962d6d83a4cdfbb6a",
+      "physical_size": 666285568
+    }
+  },
+  "source_cohort_commit": "574bd7f3a2c956d77750e86590ea5d02a4a56b1b",
+  "test_controller_commit": "aea61594e11ff7e650ada121845c5f754f061931",
+  "accelerator": "tcg",
+  "scope": "Actual fresh ISO installation, offline sanitization, conversions and fresh guest acceptance using a frozen diagnostic cohort. Not a current-head release candidate."
+}

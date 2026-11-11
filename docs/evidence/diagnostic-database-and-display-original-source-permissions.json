@@ -1,0 +1,123 @@
+{
+  "kind": "exact-database-and-display-original-source-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "db5.3",
+      "version": "5.3.28+dfsg2-1",
+      "source_identity": "fe84d3cd7cde381f1c5a18f223377cf84ea7627ced8063ef33ef8fd93f6e09f4",
+      "copyright_sha256": "8b53da37d73289d9df7317b3a2dbe16491f1fa9fec8b77b86d69704b40ce2c26",
+      "original_legal_files": [
+        {
+          "member": "LICENSE",
+          "sha256": "b78815181a53241f9347c6b47d1031fd669946f863e1edc807a291354cec024b"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "8b53da37d73289d9df7317b3a2dbe16491f1fa9fec8b77b86d69704b40ce2c26"
+        },
+        {
+          "member": "dist/vx_setup/LICENSE.TXT",
+          "sha256": "4670f1bf946b99733016a2e862f7e9dbabc84059e941c97436a6140b0f9db933"
+        },
+        {
+          "member": "docs/license/license_db.html",
+          "sha256": "a486eae9af2c9a65d95dc1ea7966e3569fb0a6c986ba031c3dcaf654ea976a09"
+        },
+        {
+          "member": "lang/sql/jdbc/license.terms",
+          "sha256": "f9dfb12cbf261db988b06685a3f0a58caf606d5ccc0389f77c2eb269602b3399"
+        },
+        {
+          "member": "lang/sql/odbc/debian/copyright",
+          "sha256": "722f5f051e52a54d92db3e77bbabbd634b23ecdc0873fcc78e5693e919b27b4e"
+        },
+        {
+          "member": "lang/sql/odbc/license.terms",
+          "sha256": "1a893ba3ef5a4a61ab4aa30fed14763553525f24c942644611ae12c713717c7c"
+        },
+        {
+          "member": "test/c/cutest/license.txt",
+          "sha256": "16e4a1d071d1fdefdbb2db32bc6ac4133b8121fcfa9eaa1288824e324cb25dae"
+        }
+      ],
+      "source_scope_table_sha256": "1db1798ebe581171079d1da5c6af49f9d21bf17cb1af7492b52ca07b04d3684a",
+      "scope": "Complete original root LICENSE and every per-file license class, inline operative grant, exception and comment read. Complete standard GNU/Artistic texts previously read and retained. Not release clearance.",
+      "conditions": [
+        "Satisfy the original Sleepycat complete-source condition for DB and every accompanying application that uses it: deliver freely redistributable complete source with information on obtaining it, not only the library source. Preserve full Oracle/Regents/Harvard/ASM original notices and nonendorsement terms.",
+        "Keep source-only C# Ms-PL scope under Ms-PL with its complete original license and notices; do not relabel it GNU-compatible. Select the explicit BSD3 alternative for the Mersenne source and the stated GNU alternative for Perl bindings. Keep separate GNU2-compatible Debian rules and GNU3-only ODBC packaging scopes.",
+        "Retain MIT-old supporting-documentation notice, X11 nonendorsement, TCL-like source permissions, BSD Fjord and Zlib modification/origin requirements. Supply every retained preferred source, Debian modification/patch, configuration/build/install input and standard full license. Original upstream DFSG exclusions are not newly introduced feature deletions."
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Berkeley-DB-5.3-original-LICENSE.txt",
+          "sha256": "b78815181a53241f9347c6b47d1031fd669946f863e1edc807a291354cec024b"
+        },
+        {
+          "path": "LICENSES/Berkeley-DB-source-availability.txt",
+          "sha256": "af67dc8d486f7fcd630aa974d16a74cdf5f33884bc0c9c679e13b293028d4592"
+        }
+      ],
+      "scope_classes": {
+        "Sleepycat and BSD-3-clause": 2,
+        "BSD-3-clause": 1,
+        "Ms-PL": 1,
+        "GPL or Artistic": 1,
+        "X11": 1,
+        "MIT-old": 1,
+        "TCL-like": 1,
+        "BSD-3-clause-fjord": 1,
+        "GPL-3": 1,
+        "zlib": 1,
+        "Artistic or BSD-3-clause": 1,
+        "GPL": 1
+      }
+    },
+    {
+      "source": "lcdproc",
+      "version": "0.5.9-6",
+      "source_identity": "2e1177d4f2ff2978cbcbc84e4e2947896478f64baec0abb7aec9a3f613af8b9e",
+      "copyright_sha256": "041faf7aa3520a3203eabb18f848ab20fdd702184f5bae2c01959104f724b382",
+      "original_legal_files": [
+        {
+          "member": "COPYING",
+          "sha256": "1b2a567f289f66a143c56353e7b3d4fa5862514a5e3c5cfdf8b02ee5e5aaa953"
+        },
+        {
+          "member": "debian/copyright",
+          "sha256": "041faf7aa3520a3203eabb18f848ab20fdd702184f5bae2c01959104f724b382"
+        },
+        {
+          "member": "docs/lcdproc-dev/license.docbook",
+          "sha256": "6226e62bef2d2129b06b10ac8f40a63e5d9af5e49749a0bce2056ddaa572dbf7"
+        },
+        {
+          "member": "docs/lcdproc-user/license.docbook",
+          "sha256": "6226e62bef2d2129b06b10ac8f40a63e5d9af5e49749a0bce2056ddaa572dbf7"
+        }
+      ],
+      "source_scope_table_sha256": "16a5f3fb4312adccd2ff15cfa6df4f2bdd8b760acf28ebe266f380177a762555",
+      "scope": "Every license class and condition-bearing comment read, with the complete source/license-expression table machine-indexed and retained exactly. Individual manual reading of every uniform GNU file/author entry is not claimed. Original GNU-only pointers are controlled by the explicit original COPYING GNU2 text and publisher scope declaration. Not release clearance.",
+      "conditions": [
+        "Retain GNU2-only default and explicitly later-version GNU2-or-later exceptions, source-only BSD3 platform modules and the independent Artistic-Perl snprintf source. Do not upgrade GNU2-only source to GNU3 merely because a generic GNU pointer has no version label.",
+        "Keep complete original Artistic terms and fulfill source/modification requirements, including complete machine-readable accompanying sources under 4(b) and freely available modifications under 3(a). Preserve original author/nonendorsement notices; do not claim standard-version status for modified upstream code or advertise a third-party package as the distributor\u2019s own.",
+        "Preserve all preferred sources, patches, documentation, original notice/legal texts and complete configuration/build/install inputs. The original source COPYing/reference controls the GNU2 meaning; the pointer by itself does not grant permission for unrelated files."
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Artistic-1.0-Perl.txt",
+          "sha256": "b7fd9b73ea99602016a326e0b62e6646060d18febdd065ceca8bb482208c3d88"
+        }
+      ],
+      "scope_classes": {
+        "GPL-2": 17,
+        "GPL-2+": 50,
+        "GPL": 55,
+        "BSD-3-clause": 2,
+        "Artistic": 1
+      }
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,23 @@
+Host sFlow — sFlow(R)
+
+Host sFlow includes software by InMon Corp., Neil McKee, Sonia Panchen,
+Stuart Johnston and the original upstream contributors.
+sFlow(R) is the InMon trademark identifying the covered telemetry capability.
+Original upstream names, notices and trademarks are retained.
+
+The publisher sFlow license governs the covered software, documentation and
+specifications. Its full redistribution grant and conditions are retained in
+InMon-sFlow-license.txt. This is not a generic BSD or MIT license.
+The independent Shirube OS project does not claim ownership of InMon marks.
+
+The complete original source also contains the InMon-completed Adaptive Public
+License 1.0 for sFlow Agent, including its original Exhibit A. The original
+Windows/WindowsXP RTF documents and readable license.txt copies remain here.
+Those original selections specify no patent license; no additional patent
+license is inferred. No Windows executable is distributed in the OS image.
+
+cJSON and Unity retain their original MIT terms, author copyrights and
+disclaimers in their separate original files.
+
+Complete corresponding original source and build/install inputs accompany
+the binary distribution. Original license conditions remain in force.

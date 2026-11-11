@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "diagnostic-component-validation",
+  "project": "Shirube OS",
+  "architecture": "amd64",
+  "version": "v2026.03.0",
+  "release_clearance": "NOT_CLEARED",
+  "current_head_clean_candidate": false,
+  "provenance": {
+    "frozen_package_source_commit": "de086d34bf50cf1a4ee762871ac689697ebf7344",
+    "targeted_guest_and_installer_fixes": true,
+    "iso_sha256": "c9e9898bdf183465c80b3877eeed40a2bb4ce1977490a3212522dc05ecaa67be"
+  },
+  "execution": {
+    "architecture": "native amd64",
+    "accelerator": "TCG",
+    "firmware": "fresh OVMF for each clone",
+    "iso_attached_to_export_tests": false
+  },
+  "distribution_preparation": {
+    "input": "new disposable 50 GiB installation",
+    "installed_factory_matches_iso": "PASS",
+    "stopped_before_offline_sanitization": "PASS",
+    "runtime_overlay_removed": "PASS",
+    "factory_root_logical_audit": "PASS",
+    "journal_recreated_and_free_space_zeroed_discarded": "PASS",
+    "qcow2_and_streamoptimized_vmdk_format_content_comparison": "PASS"
+  },
+  "vmdk_conversion": {
+    "kind": "diagnostic-native-amd64-vmdk-from-immutable-fresh-export",
+    "source_sha256": "ef09dbc71abb77f14f6319fab656d99842d8a316d02adda7644ef6080c3b0cab",
+    "vmdk_sha256": "ed3af5d21114fffd3d94dd1399a2e4ec39fe03d4a7d50901b2a1730f9aebca7b",
+    "physical_size": 531402752,
+    "virtual_size": 53687091200,
+    "subformat": "streamOptimized",
+    "format_integrity_and_content_equivalence": "PASS",
+    "boot": "NOT_RUN",
+    "oci": "NOT_RUN",
+    "release_clearance": "NOT_CLEARED"
+  },
+  "runtime": {
+    "kind": "diagnostic-native-amd64-tcg-both-immutable-format-clones",
+    "release_clearance": "NOT_CLEARED",
+    "oci": "NOT_RUN",
+    "status": "PASS",
+    "accelerator": "TCG",
+    "firmware": "fresh OVMF for each clone",
+    "test_driver_sha256": "06eee2fb63dda9a24d0d54a655aaf3a5ba462f5023edcf9dbd3bc8c3cf57eec6",
+    "formats": {
+      "qcow2": {
+        "unprovisioned_prompt": "PASS",
+        "individual_enrollment_login": "PASS",
+        "architecture_sudo_dhcp_route_virtio_version_identity": "PASS",
+        "netbird": {
+          "native_config_commit_save": "PASS",
+          "real_enrollment": "PASS",
+          "real_enrollment_rejection_and_cleanup": "PASS",
+          "management_and_signal": "PASS",
+          "disable_enable_identity": "PASS",
+          "saved_configuration_reboot_identity": "PASS",
+          "removed_configuration_reboot_inactive": "PASS",
+          "setup_key_absence_in_config_state_history_logs": "PASS"
+        },
+        "clean_shutdown": "PASS",
+        "immutable_base": "PASS",
+        "sha256": "ef09dbc71abb77f14f6319fab656d99842d8a316d02adda7644ef6080c3b0cab"
+      },
+      "vmdk": {
+        "unprovisioned_prompt": "PASS",
+        "individual_enrollment_login": "PASS",
+        "architecture_sudo_dhcp_route_virtio_version_identity": "PASS",
+        "netbird": {
+          "native_config_commit_save": "PASS",
+          "real_enrollment": "PASS",
+          "real_enrollment_rejection_and_cleanup": "PASS",
+          "management_and_signal": "PASS",
+          "disable_enable_identity": "PASS",
+          "saved_configuration_reboot_identity": "PASS",
+          "removed_configuration_reboot_inactive": "PASS",
+          "setup_key_absence_in_config_state_history_logs": "PASS"
+        },
+        "clean_shutdown": "PASS",
+        "immutable_base": "PASS",
+        "sha256": "ed3af5d21114fffd3d94dd1399a2e4ec39fe03d4a7d50901b2a1730f9aebca7b"
+      }
+    },
+    "implementation_files": {
+      "producer/vm.py": "3767b675d738fdd85079305dd5c24a40fe79df22715913b4373d82501a57f484",
+      "producer/netbird_guest.py": "6eb0785c190d205585cca161801907f001513d1952fe02b3d3e1b6c472da8e46"
+    },
+    "identity_regeneration": "PASS"
+  },
+  "remaining_gates": {
+    "complete_clean_current_head_candidates": "NOT_RUN",
+    "complete_corresponding_source_reconstruction": "NOT_RUN",
+    "complete_distribution_license_clearance": "NOT_RUN",
+    "applicable_runner_class_acceptance": "NOT_RUN",
+    "oci_live": "NOT_RUN"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "diagnostic-debian-source-tree-and-legal-validation",
+  "project": "Shirube OS",
+  "architecture": "arm64",
+  "version": "v2026.03.0",
+  "release_clearance": "NOT_CLEARED",
+  "current_head_clean_candidate": false,
+  "provenance": {
+    "frozen_package_source_commit": "de086d34bf50cf1a4ee762871ac689697ebf7344",
+    "diagnostic_iso_sha256": "4f870f962777c92840f5b82dad231615a2cca7c8ee181e1e4c892ef125d9fc32",
+    "factory_squashfs_sha256": "a06237a74192156a1379fac02618831f5081375f846e87b16fe87c14bbc3150f"
+  },
+  "results": {
+    "signed_fixed_snapshot_source_acquisition": "PASS",
+    "source_groups": 460,
+    "covered_debian_binary_packages": 658,
+    "original_source_members": 998,
+    "source_archive_membership_and_hashes": "PASS",
+    "offline_dpkg_source_tree_restoration": "PASS",
+    "installed_source_copyright_byte_matches": 460,
+    "original_named_legal_files": 1497
+  },
+  "generated_notices": [
+    {
+      "source": "libxcb",
+      "version": "1.15-1",
+      "recipe": "Exact upstream cat debian/copyright.debian COPYING",
+      "source_descriptor_sha256": "f689569f33e70ca4c95c91b094d0659eb49a958d9ac43186640338f9290e298b"
+    },
+    {
+      "source": "libxcrypt",
+      "version": "1:4.4.33-2",
+      "recipe": "Exact upstream cat debian/copyright.in LICENSING",
+      "source_descriptor_sha256": "910ae411c9462f07667e46540af3dbb30f46413ddd90f1f176781666042dbb38"
+    }
+  ],
+  "receipt_sha256": {
+    "arm64-debian-sources1-evidence.json": "98f6bbc29fd355accb936d6cf1dcbc09ea656dd1bd5a99595a1f987aca0a6962",
+    "arm64-debian-restore2-evidence.json": "b88c69c1c77c14c3cd6d8a6cb6f301f0cd6b1985ca386c9627490cbcfb0697a0",
+    "evidence.json": "2e801152538e2fdc99d9b5e2cf6bd5cd4115063d6911ec614cd0cfbe224046d4"
+  },
+  "verification_code_sha256": {
+    "legal_discovery_phase": "d2cac7ca0b04f1851d19ed5cf1aeb0d44d546c128514c8694bd74a71b150c259",
+    "descriptor_membership_phase": "fc1c959e1f74f29149130671957983cfd7246084dc548dec61bbc5b555b8db3c"
+  },
+  "limits": {
+    "custom_binary_packages_not_covered": 72,
+    "complete_os_binary_reconstruction": "NOT_RUN",
+    "complete_distribution_license_clearance": "NOT_RUN",
+    "complete_clean_current_head_candidates": "NOT_RUN",
+    "oci_live": "NOT_RUN"
+  }
+}

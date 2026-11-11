@@ -1,0 +1,50 @@
+name: Test
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Unit and failure-path tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Shell syntax
+        run: bash -n scripts/*.sh containers/native/package.sh
+      - name: Workflow structure, expressions and security context
+        run: bash scripts/check-workflows.sh
+  hosted-capability:
+    name: Native hosted capability (${{ matrix.architecture }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Measure native container privileges and available resources
+        env:
+          SHIRUBE_TEST_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          PROBE_STORAGE: ${{ runner.temp }}
+          PROBE_ARCHITECTURE: ${{ matrix.architecture }}
+        run: python3 -m producer.runner_probe "$PROBE_ARCHITECTURE" --storage "$PROBE_STORAGE" --output "$PROBE_STORAGE/runner-capability/$PROBE_ARCHITECTURE.json"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: runner-capability-${{ matrix.architecture }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/runner-capability/${{ matrix.architecture }}.json
+          if-no-files-found: error
+          retention-days: 14

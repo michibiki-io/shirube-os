@@ -1,0 +1,35 @@
+{
+  "kind": "diagnostic-arm64-tcg-vmdk-current-netbird-controller",
+  "status": "PASS",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "prior_trial": "arm64-disks-notices-tcg2",
+  "prior_trial_status": "FAIL",
+  "scope": "Actual native ARM64 TCG fresh-instance VMDK clone, standalone streamOptimized50GiB conversion/equivalence, and full NetBird lifecycle using exact current product controller/unit bytes installed and hashed in the disposable guest. Reuses a prior TCG-installed fully sanitized immutable base; installation and full zeroing were not repeated in this focused trial. Both base images remained unchanged. Not a current-head release candidate, license clearance or OCI execution.",
+  "base_sha256_before": "cfb53ff7a0f902103e143556167c51445950a2ddfe71f5ee6fd54db00b3cb32d",
+  "vmdk_standalone_streamOptimized_50GiB_equivalence": "PASS",
+  "vmdk_sha256_before": "d62b17c02bf9e983c5b0294fca30ea4e5e2ef7945b73ea4d3d1359a24efad627",
+  "diagnostic_controller_source_commit": "28101c3321df51eae0ec3208464ee37d434be833",
+  "diagnostic_controller_files": [
+    {
+      "path": "/usr/libexec/shirube/netbird-control",
+      "sha256": "e894eb3a48a762a077fd34a11b08a43adfa0a1a985ddb4964bd2c6df319d8a4a"
+    },
+    {
+      "path": "/usr/lib/systemd/system/shirube-netbird.service",
+      "sha256": "1fa4eadf540f1db78225e34157bd00954196ba189f1bfed607344a73bfaa8456"
+    }
+  ],
+  "netbird": {
+    "native_config_commit_save": "PASS",
+    "real_enrollment": "PASS",
+    "real_enrollment_rejection_and_cleanup": "PASS",
+    "management_and_signal": "PASS",
+    "disable_enable_identity": "PASS",
+    "saved_configuration_reboot_identity": "PASS",
+    "removed_configuration_reboot_inactive": "PASS",
+    "setup_key_absence_in_config_state_history_logs": "PASS"
+  },
+  "base_sha256_after": "cfb53ff7a0f902103e143556167c51445950a2ddfe71f5ee6fd54db00b3cb32d",
+  "vmdk_sha256_after": "d62b17c02bf9e983c5b0294fca30ea4e5e2ef7945b73ea4d3d1359a24efad627"
+}

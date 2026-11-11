@@ -1,0 +1,248 @@
+"""Synthetic metadata fixtures test rejection; they are never boot evidence."""
+import copy
+import hashlib
+import io
+import json
+from pathlib import Path
+import tarfile
+import tempfile
+import unittest
+from unittest.mock import patch
+from producer.release import CHECKS, validate, reconcile_published
+from producer.sources import sha256
+
+
+class ReleaseTests(unittest.TestCase):
+    def test_total_asset_count_includes_manifest_and_checksums(self):
+        self.manifest['assets'] = [{'name': f'asset-{i}', 'role': 'source'} for i in range(999)]
+        (self.root/'manifest.json').write_text(json.dumps(self.manifest))
+        with self.assertRaisesRegex(ValueError, 'release asset count limit'):
+            validate(self.root, self.commit, self.version)
+
+    def test_release_version_must_match_stream_month(self):
+        self.manifest['version']='v2026.04.0';self.write()
+        with self.assertRaisesRegex(ValueError,'Stream baseline'):
+            validate(self.root,self.commit,'v2026.04.0')
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.commit, self.version = 'a'*40, 'v2026.03.0'
+        self.manifest = {'schema_version':1, 'manifest_kind':'release', 'provider':'michibiki-io', 'project':'Shirube OS', 'version':self.version,
+                         'source_commit':self.commit, 'source_clean':True, 'upstream':{'version':'2026.03', 'sha256':'e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910', 'signature':'PASS', 'vpp_commit':'8a3f587695fe6ad4d8297bd4b2f331b7262698d9', 'vpp_patches_commit':'9cab3c94679592ef27a58e6a0e9becdd9f847754', 'substitution':'public VPP substitute, not vendor-identical'},
+                         'architectures':{}, 'assets':[]}
+        source = self.root/'source.tar.gz'
+        with tarfile.open(source, 'w:gz') as archive:
+            for name in ['source', 'LICENSE', 'recipe']:
+                member = tarfile.TarInfo(name); data = ('synthetic '+name).encode(); member.size = len(data)
+                archive.addfile(member, io.BytesIO(data))
+        self.add(source, 'source', 'all', None)
+        import hashlib
+        def reference(name):
+            return {'asset':source.name, 'member':name, 'sha256':hashlib.sha256(('synthetic '+name).encode()).hexdigest()}
+        for architecture in ['amd64', 'arm64']:
+            generation = ('b' if architecture == 'amd64' else 'c')*64
+            self.manifest['architectures'][architecture] = {
+                'checks':{x:'PASS' for x in CHECKS}, 'oci':'NOT_RUN', 'virtual_size':50*1024**3,'qemu_accelerator':'kvm',
+                'standalone':True, 'vmdk_subformat':'streamOptimized', 'signing_certificate_sha256':'d'*64,
+                'repository_fingerprint':'TEST-FIXTURE', 'generation':generation, 'firmware':'UEFI',
+                'iso_boot_modes':['BIOS','UEFI'] if architecture=='amd64' else ['UEFI'],
+                'console':{'device':'ttyAMA0' if architecture=='arm64' else 'ttyS0','baud':115200},
+                'provisioning':{'method':'cloud-init-or-console-v1','default_credentials':False}}
+            for role in ['iso', 'qcow2', 'vmdk']:
+                file = self.root/f'shirube-os-{self.version}-{architecture}.{role}'; file.write_bytes(b'synthetic fixture, never a real image')
+                self.add(file, role, architecture, generation)
+            inventory = self.root/f'{architecture}-licenses.json'
+            package = {'name':'synthetic', 'version':'1', 'architecture':architecture}
+            inventory.write_text(json.dumps({'shipped_packages':[package], 'components':[{
+                **package, 'license':'MIT', 'redistributable':True, 'sources':[reference('source')],
+                'license_files':[reference('LICENSE')], 'build_inputs':[reference('recipe')]}]}))
+            self.add(inventory, 'licenses', architecture, generation)
+            evidence = self.root/f'{architecture}-evidence.json'
+            evidence.write_text(json.dumps({'source_commit':self.commit, 'version':self.version,
+                'architecture':architecture, 'generation':generation,'qemu_accelerator':'kvm',
+                'checks':{x:{'status':'PASS','observations':['synthetic validator fixture only']} for x in CHECKS}}))
+            self.add(evidence, 'evidence', architecture, generation)
+        self.write()
+
+    def add(self, path, role, architecture, generation):
+        item = {'name':path.name, 'size':path.stat().st_size, 'sha256':sha256(path),
+                'role':role, 'architecture':architecture}
+        if generation:
+            item['generation'] = generation
+        self.manifest['assets'].append(item)
+
+    def write(self):
+        (self.root/'manifest.json').write_text(json.dumps(self.manifest))
+        names = [x['name'] for x in self.manifest['assets']] + ['manifest.json']
+        (self.root/'SHA256SUMS').write_text(''.join(f'{sha256(self.root/name)}  {name}\n' for name in names))
+
+    def test_complete_metadata_contract(self):
+        validate(self.root, self.commit, self.version)
+
+    def add_source_archive(self, architecture, data):
+        path = self.root/f'{architecture}-extra-source.tar.gz'
+        with tarfile.open(path, 'w:gz') as archive:
+            member = tarfile.TarInfo('source/test/vector'); member.size = len(data)
+            archive.addfile(member, io.BytesIO(data))
+        generation = self.manifest['architectures'].get(architecture, {}).get('generation')
+        self.add(path, 'source', architecture, generation)
+        return {'asset':path.name, 'member':'source/test/vector',
+                'sha256':hashlib.sha256(data).hexdigest()}
+
+    def test_public_source_fixtures_are_scoped_to_each_architecture(self):
+        vector = b'-----BEGIN PRIVATE KEY-----\n'+b'A'*64+b'\n'
+        origin = 'stream:'+'a'*64
+        for architecture in ['amd64', 'arm64']:
+            reference = self.add_source_archive(architecture, vector)
+            path = self.root/f'{architecture}-licenses.json'
+            inventory = json.loads(path.read_text())
+            inventory['components'][0]['sources'].append(reference)
+            inventory['components'][0]['source_origin'] = {'stream_archive_sha256':'a'*64}
+            path.write_text(json.dumps(inventory))
+            asset = next(item for item in self.manifest['assets'] if item['name'] == path.name)
+            asset.update(size=path.stat().st_size, sha256=sha256(path))
+        self.write()
+        with patch.dict('producer.source_fixtures.KNOWN',
+                        {origin:{'source/test/vector':hashlib.sha256(vector).hexdigest()}}):
+            validate(self.root, self.commit, self.version)
+
+    def test_unknown_keys_in_owned_and_shared_source_assets_block(self):
+        vector = b'-----BEGIN PRIVATE KEY-----\n'+b'B'*64+b'\n'
+        for architecture in ['amd64', 'arm64', 'all']:
+            with self.subTest(architecture=architecture):
+                reference = self.add_source_archive(architecture, vector)
+                self.write()
+                with self.assertRaisesRegex(ValueError, 'Private signing key'):
+                    validate(self.root, self.commit, self.version)
+                self.manifest['assets'].pop()
+                (self.root/reference['asset']).unlink()
+
+    def test_source_assets_require_known_architecture(self):
+        for architecture in ['unknown', None]:
+            with self.subTest(architecture=architecture):
+                reference = self.add_source_archive(architecture, b'synthetic source')
+                if architecture is None:
+                    self.manifest['assets'][-1].pop('architecture')
+                self.write()
+                with self.assertRaisesRegex(ValueError, 'Source asset architecture'):
+                    validate(self.root, self.commit, self.version)
+                self.manifest['assets'].pop()
+                (self.root/reference['asset']).unlink()
+
+    def test_source_asset_architecture_requires_declared_candidate(self):
+        self.manifest['architectures'].pop('arm64')
+        removed = [item for item in self.manifest['assets'] if item['architecture'] == 'arm64']
+        for item in removed:
+            self.manifest['assets'].remove(item)
+            (self.root/item['name']).unlink()
+        self.write()
+        validate(self.root, self.commit, self.version, architectures={'amd64'})
+        self.add_source_archive('arm64', b'synthetic source')
+        self.write()
+        with self.assertRaisesRegex(ValueError, 'Source asset architecture'):
+            validate(self.root, self.commit, self.version, architectures={'amd64'})
+
+    def test_unlisted_source_archive_blocks(self):
+        (self.root/'unlisted-source.tar.gz').write_bytes((self.root/'source.tar.gz').read_bytes())
+        with self.assertRaisesRegex(ValueError, 'Unlisted files'):
+            validate(self.root, self.commit, self.version)
+
+    def test_explicit_accelerator_must_match_actual_candidate_evidence(self):
+        for architecture in ['amd64','arm64']:
+            with self.subTest(architecture=architecture):
+                candidate=self.manifest['architectures'][architecture]
+                candidate['qemu_accelerator']='tcg'
+                evidence=self.root/(architecture+'-evidence.json')
+                data=json.loads(evidence.read_text());data['qemu_accelerator']='tcg'
+                evidence.write_text(json.dumps(data))
+                asset=next(item for item in self.manifest['assets'] if item['name']==evidence.name)
+                asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
+                validate(self.root,self.commit,self.version)
+                data['qemu_accelerator']='kvm';evidence.write_text(json.dumps(data))
+                asset.update(size=evidence.stat().st_size,sha256=sha256(evidence));self.write()
+                with self.assertRaisesRegex(ValueError,'accelerator differs'):
+                    validate(self.root,self.commit,self.version)
+                candidate['qemu_accelerator']='kvm';self.write()
+
+    def test_parent_clearance_cannot_hide_unreviewed_bundled_dependency(self):
+        path=self.root/'amd64-licenses.json'
+        inventory=json.loads(path.read_text());parent=inventory['components'][0]
+        parent['bundled_components']=[{**copy.deepcopy(parent),'name':'pypi:unreviewed',
+            'version':'1','redistributable':False}]
+        path.write_text(json.dumps(inventory))
+        asset=next(item for item in self.manifest['assets'] if item['name']==path.name)
+        asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+        with self.assertRaisesRegex(ValueError,'license clearance'):
+            validate(self.root,self.commit,self.version)
+
+    def test_configuration_library_requires_its_own_dependency_inventory(self):
+        path=self.root/'amd64-licenses.json'
+        inventory=json.loads(path.read_text())
+        for name in ['vyos-1x','libvyosconfig0','salt-common','salt-minion']:
+            with self.subTest(name=name):
+                inventory['components'][0]['name']=name
+                inventory['shipped_packages'][0]['name']=name
+                path.write_text(json.dumps(inventory))
+                asset=next(item for item in self.manifest['assets'] if item['name']==path.name)
+                asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+                with self.assertRaisesRegex(ValueError,'own source/license inventory'):
+                    validate(self.root,self.commit,self.version)
+
+    def test_salt_sdk_leaf_is_distinct_from_shipped_salt_package_family(self):
+        path=self.root/'amd64-licenses.json'
+        inventory=json.loads(path.read_text());parent=inventory['components'][0]
+        child={**copy.deepcopy(parent),'name':'salt-sdk:openssl'}
+        parent.update(name='salt-common',bundled_components=[child])
+        inventory['shipped_packages'][0]['name']='salt-common'
+        path.write_text(json.dumps(inventory))
+        asset=next(item for item in self.manifest['assets'] if item['name']==path.name)
+        asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+        validate(self.root,self.commit,self.version)
+        child['redistributable']=False;path.write_text(json.dumps(inventory))
+        asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+        with self.assertRaisesRegex(ValueError,'license clearance'):
+            validate(self.root,self.commit,self.version)
+
+    def test_required_skips_failures_missing_checks_block(self):
+        for value in ['SKIP', 'FAIL', 'NOT_RUN', None]:
+            with self.subTest(value=value):
+                checks = self.manifest['architectures']['arm64']['checks']
+                if value is None:
+                    checks.pop('local_boot')
+                else:
+                    checks['local_boot'] = value
+                self.write()
+                with self.assertRaises(ValueError):
+                    validate(self.root, self.commit, self.version)
+                checks['local_boot'] = 'PASS'
+
+    def test_wrong_commit_mixed_generation_oci_claim_and_missing_architecture_block(self):
+        original = copy.deepcopy(self.manifest)
+        mutations = [lambda x: x.update(source_commit='e'*40),
+                     lambda x: x['architectures'].pop('arm64'),
+                     lambda x: x['architectures']['amd64'].update(oci='PASS'),
+                     lambda x: x['architectures']['amd64'].update(generation='f'*64)]
+        for mutation in mutations:
+            self.manifest = copy.deepcopy(original); mutation(self.manifest); self.write()
+            with self.assertRaises(ValueError):
+                validate(self.root, self.commit, self.version)
+
+    def test_asset_tampering_and_missing_checksum_block(self):
+        (self.root/f'shirube-os-{self.version}-amd64.iso').write_bytes(b'tampered')
+        with self.assertRaises(ValueError):
+            validate(self.root, self.commit, self.version)
+
+    def test_unreviewed_license_blocks_even_when_all_claimed_checks_pass(self):
+        path=self.root/'amd64-licenses.json'
+        inventory=json.loads(path.read_text());inventory['components'][0]['redistributable']=False
+        path.write_text(json.dumps(inventory))
+        asset=next(x for x in self.manifest['assets'] if x['name']==path.name)
+        asset.update(size=path.stat().st_size,sha256=sha256(path));self.write()
+        with self.assertRaises(ValueError):validate(self.root,self.commit,self.version)
+
+    def test_published_release_is_immutable(self):
+        existing = {'manifest.json':'a'*64, 'SHA256SUMS':'b'*64, 'image.iso':'c'*64}
+        self.assertEqual(reconcile_published(existing, dict(existing)), 'NO_OP')
+        with self.assertRaises(ValueError):
+            reconcile_published(existing, {'manifest.json':'a'*64})

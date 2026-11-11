@@ -1,0 +1,56 @@
+{
+  "kind": "exact-original-native-sdk-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "salt-sdk:ncurses",
+  "version": "6.6",
+  "source_identity": "355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11",
+  "aggregate_notice_sha256": "0811ec3dc9b7f362d81d2bbfb248dcdc4e2a37503a4fd0994fb9eb540472f5d1",
+  "original_notices": [
+    {
+      "member": "ncurses-6.6/AUTHORS",
+      "sha256": "94ee3c58154b9fe6c800e4d3801d95cde5f8fa409241f4ed661afffe4a892b11"
+    },
+    {
+      "member": "ncurses-6.6/COPYING",
+      "sha256": "708999f95527e1ffa670c6fce288c6c600cb477dd04afcc1171422b3dd4ee226"
+    },
+    {
+      "member": "ncurses-6.6/Ada95/package/debian/copyright",
+      "sha256": "64bd2a9301a046987f547c2309e21b9900305941fa1883f4d698c126feba99e2"
+    },
+    {
+      "member": "ncurses-6.6/package/debian-mingw/copyright",
+      "sha256": "0371fd27cc0e7613c6abbf0aed476934ddb0948d9d360b3e5f9424202d6ff1ee"
+    },
+    {
+      "member": "ncurses-6.6/package/debian-mingw64/copyright",
+      "sha256": "0371fd27cc0e7613c6abbf0aed476934ddb0948d9d360b3e5f9424202d6ff1ee"
+    },
+    {
+      "member": "ncurses-6.6/package/debian/copyright",
+      "sha256": "0371fd27cc0e7613c6abbf0aed476934ddb0948d9d360b3e5f9424202d6ff1ee"
+    },
+    {
+      "member": "ncurses-6.6/test/package/debian-mingw64/copyright",
+      "sha256": "4635cf9bcc370cbc5320ffc29f11861bb2a60d1949bd28e46156b1a04511baea"
+    },
+    {
+      "member": "ncurses-6.6/test/package/debian-mingw/copyright",
+      "sha256": "4635cf9bcc370cbc5320ffc29f11861bb2a60d1949bd28e46156b1a04511baea"
+    },
+    {
+      "member": "ncurses-6.6/test/package/debian/copyright",
+      "sha256": "4635cf9bcc370cbc5320ffc29f11861bb2a60d1949bd28e46156b1a04511baea"
+    },
+    {
+      "member": "ncurses-6.6/test/terminal.xbm",
+      "sha256": "be47eb4b0e460e5abe9e23cc36d5ab0e34630420a9e3b0842f07b5492463b559",
+      "prefix_bytes": 1920,
+      "notice_sha256": "9355804fc66d107b1fbeccebb786ee1cc6e2a1e941622ee32bb51f3b8d41f481"
+    }
+  ],
+  "additional_original_notices": [],
+  "scope": "Complete original root/authors/Ada95/MinGW/test packaging notices read, including actual per-file BSD3 terms. The packaging summary omits the full terminal bitmap grant; its complete actual Evans and Sutherland original header is read and retained. Independent X11 variants and bitmap grant remain separately scoped. Component only; parent SDK/OS remain gated.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

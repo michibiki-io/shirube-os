@@ -1,0 +1,25 @@
+{
+  "kind": "diagnostic-authenticated-runtime-extra-source-fixtures",
+  "status": "PASS",
+  "stream_archive_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+  "files": [
+    {
+      "component": "podman",
+      "member": "source/test/certs/domain.key",
+      "sha256": "1340383164554a3fe8fa2d11658467323683c0ab227e02ceddfa9b2b42d18e4e",
+      "original_stream_member": "podman_v4.9.5/podman/test/certs/domain.key",
+      "matches_authenticated_original": true
+    },
+    {
+      "component": "podman",
+      "member": "source/vendor/go.mozilla.org/pkcs7/verify_test_dsa.go",
+      "sha256": "f7bf74cda7cf86c74febd919a6a169fd2062fa17ea0a38f2c303b5491e137872",
+      "original_stream_member": "podman_v4.9.5/podman/vendor/go.mozilla.org/pkcs7/verify_test_dsa.go",
+      "matches_authenticated_original": true
+    }
+  ],
+  "scope": "Preferred original Podman, accel, sFlow, OWAMP, OTP, humps and PAM source scanned; the only additional original source-key markers are these two exact Podman self-tests. No binary, signing or instance credential recognition.",
+  "license_clearance": "NOT_RUN",
+  "complete_source_reconstruction": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED"
+}

@@ -1,0 +1,517 @@
+{
+  "schema_version": 1,
+  "stream": {
+    "version": "2026.03",
+    "url": "https://community-downloads.vyos.dev/stream/2026.03/circinus-2026.03.tar.gz",
+    "sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+    "signature_url": "https://community-downloads.vyos.dev/stream/2026.03/circinus-2026.03.tar.gz.minisig",
+    "minisign_public_key": "RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP",
+    "key_authority": "https://vyos.net/get/stream/"
+  },
+  "container_bases": {
+    "amd64": "debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018",
+    "arm64": "debian@sha256:ec8534cda2cb30f29f44f23e135297af7a1496f2990fd8e4e84aa36b081a757a"
+  },
+  "debian_snapshot": "https://snapshot.debian.org/archive/debian/20261105T000000Z/",
+  "netbird": {
+    "version": "0.82.0",
+    "checksums_url": "https://github.com/netbirdio/netbird/releases/download/v0.82.0/netbird_0.82.0_checksums.txt",
+    "assets": {
+      "amd64": {
+        "url": "https://github.com/netbirdio/netbird/releases/download/v0.82.0/netbird_0.82.0_linux_amd64.tar.gz",
+        "sha256": "b569f65de303d21317bc716f3116002e2cf175ae22a9f6d2bed91200a2f5000b"
+      },
+      "arm64": {
+        "url": "https://github.com/netbirdio/netbird/releases/download/v0.82.0/netbird_0.82.0_linux_arm64.tar.gz",
+        "sha256": "c2e5ccb5824cb29fe008a5a54854fd5926b89d3aaff7ab8721f77abf8e8b3e62"
+      }
+    },
+    "source_commit": "3c00a97878e6af537d28c3bdd4f42cb4286aa883",
+    "source_url": "https://codeload.github.com/netbirdio/netbird/tar.gz/3c00a97878e6af537d28c3bdd4f42cb4286aa883",
+    "source_sha256": "a02eee7a4e7072eed8f74b4fcc5a8637f4243bf2848a70f1d1d5097b74bbafe4",
+    "build_toolchain": {
+      "version": "1.26.10",
+      "authority": "https://go.dev/dl/?mode=json&include=all",
+      "source": {
+        "url": "https://go.dev/dl/go1.26.10.src.tar.gz",
+        "sha256": "fd63e883ba2f2bfca93c1646b31ebef63e2b1e4d2b317c9789d976a68d81f36f"
+      },
+      "assets": {
+        "amd64": {
+          "url": "https://go.dev/dl/go1.26.10.linux-amd64.tar.gz",
+          "sha256": "ccfe7ae822d2c2f41f4fe7c956199967a4dac22d0ee0d2b2bfdb440aab3b20c5"
+        },
+        "arm64": {
+          "url": "https://go.dev/dl/go1.26.10.linux-arm64.tar.gz",
+          "sha256": "3f4227ce7b206a513e794f1393adb473a07b46e94d18bd15d1c684bbb7319797"
+        }
+      }
+    },
+    "vendor_modules_sha256": "7778f311eebdb243e5c74394147b9d64e47b17ec687f88e6600ea3f5c26fe9a5"
+  },
+  "external_git": {
+    "vpp": {
+      "url": "https://github.com/FDio/vpp",
+      "commit": "8a3f587695fe6ad4d8297bd4b2f331b7262698d9"
+    },
+    "vpp-patches": {
+      "url": "https://github.com/vyos/vyos-vpp-patches",
+      "commit": "9cab3c94679592ef27a58e6a0e9becdd9f847754"
+    }
+  },
+  "substitutions": [
+    "Public VPP 25.10 with public VyOS VPP patches replaces vendor VPP; vendor-byte-identical output is not claimed.",
+    "AMD64 virtual-appliance profile omits vendor-only physical NIC/QAT packages; UEFI and virtio NIC/disk support use the matching source-built kernel. Physical hardware parity is not claimed.",
+    "The HTTP API dependency wrapper is independently packaged as 2.3+shirube1; the Stream dependency versions and compatible installation path are retained. Upstream wrapper code with an empty copyright notice is not redistributed.",
+    "Node exporter 1.9.1 uses the upstream nobtrfs build tag on both architectures: its optional btrfs collector links github.com/dennwc/ioctl v1.0.0, whose exact verified source ZIP lacks a permission notice. Btrfs-specific metrics are omitted; unresolved code is not linked or cleared for redistribution.",
+    "Telegraf keeps version 1.28.3 and all plugins; its RCON dependency is fixed to upstream MIT-license-only commit 34a67ca2b2d65052cacddc7a1415b568f8b932a1 (both Go source files unchanged)."
+  ],
+  "debian_security_snapshot": "https://snapshot.debian.org/archive/debian-security/20261105T000000Z/",
+  "opam_repository": {
+    "url": "https://github.com/ocaml/opam-repository.git",
+    "commit": "d74e2449deccd679e0a28814bfc75ba47656a7b2",
+    "compiler": "4.14.2"
+  },
+  "pyhumps": {
+    "version": "3.8.0",
+    "wheel_sha256": "060e1954d9069f428232a1adda165db0b9d8dfdce1d265d36df7fbff540acfd6",
+    "source_sha256": "498026258f7ee1a8e447c2e28526c0bea9407f9a59c03260aee4bd6c04d681a3"
+  },
+  "go": {
+    "version": "1.23.2",
+    "sha256": {
+      "amd64": "542d3c1705f1c6a1c5a80d5dc62e2e45171af291e755d591c5e6531ef63b454e",
+      "arm64": "f626cdd92fc21a88b31c1251f419c17782933a42903db87a174ce74eeecc66a9"
+    }
+  },
+  "j2lint": {
+    "url": "https://github.com/aristanetworks/j2lint.git",
+    "commit": "341b5d5db86e095b622f09770cb6367a1583620e"
+  },
+  "http_api": {
+    "dependency_lock": "containers/native/http-api.lock.json",
+    "version": "2.3+shirube1",
+    "scope": "Own MIT packaging replaces the empty-notice upstream wrapper; the same 26 pinned API dependency versions are retained with exact source/wheel hashes for both architectures."
+  },
+  "kea_build_tool": {
+    "name": "meson",
+    "version": "1.9.2",
+    "url": "https://files.pythonhosted.org/packages/18/ca/0e3c232fb20f0707bbddf7bb639882a3dba8684bf2f9f4eced266775fcbc/meson-1.9.2.tar.gz",
+    "sha256": "3499b59bb23982496e01e57b4103ac2f826f9c3a3f59e507a0a832487fe55e3d"
+  },
+  "go_notice_overrides": {
+    "github.com/JohnCGriffin/overflow@v0.0.0-20211019200055-46fa312c352c": [
+      {
+        "path": "README.md",
+        "sha256": "48d559e8e6cd1227c0649a5a4cbef02676d0143b02b227e540e439ba42c13de6",
+        "reason": "Complete MIT permission and copyright notice embedded in upstream README."
+      }
+    ],
+    "github.com/awslabs/kinesis-aggregation/go@v0.0.0-20210630091500-54e17340d32f": [
+      {
+        "url": "https://raw.githubusercontent.com/awslabs/kinesis-aggregation/54e17340d32f4d3d37cc5ac6a0c1145a1c6f416e/LICENSE.txt",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "reason": "Parent repository notice at the exact submodule source commit."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/awslabs/kinesis-aggregation/54e17340d32f4d3d37cc5ac6a0c1145a1c6f416e/NOTICE.txt",
+        "sha256": "d9d41b13c7e0b6f4e36978a31da8b33c974fc9cd98fef1c49ecee75fbf6518ae",
+        "reason": "Parent repository notice at the exact submodule source commit."
+      }
+    ]
+  },
+  "go_dependency_overrides": {
+    "telegraf": {
+      "github.com/james4k/rcon": {
+        "version": "v0.0.0-20210222224819-34a67ca2b2d6",
+        "sha256": "19165bc186854296084cc3a99e807cc755a9d801644788fa6a0a3545670f152e",
+        "h1": "h1:SNrbIpIMlIBYe8AQTLfsDJqlXSaEC64CjulMXzR0kS0=",
+        "commit": "34a67ca2b2d65052cacddc7a1415b568f8b932a1",
+        "reason": "Upstream MIT-license-only commit; both Go files identical to the former unlicensed snapshot."
+      }
+    }
+  },
+  "public_test_fixtures": {
+    "vpp_tls_sample": {
+      "source_commit": "8a3f587695fe6ad4d8297bd4b2f331b7262698d9",
+      "source_path": "src/vnet/tls/tls_test.h",
+      "source_sha256": "d8b30ffb02e16b3d530caa4e629de53bb39f96da187bfd1eab54a750e43b318e",
+      "pem_sha256": "ccc1b38f71b762cbc276b07134072549643cbc9423142b2ddd347960e2617c78"
+    },
+    "scope": "Exact published upstream test fixture only; preserve upstream functionality. Build signing, enrollment and actual instance credentials are never exempt.",
+    "salt": {
+      "pycryptodomex_version": "3.19.1",
+      "source_url": "https://files.pythonhosted.org/packages/3f/13/84f2aea851d75e12e7f32ccc11a00f1defc3d285b4ed710e5d049f31c5a6/pycryptodomex-3.19.1.tar.gz",
+      "source_sha256": "0b7154aff2272962355f8941fd514104a88cb29db2d8f43a29af900d6398eb1c",
+      "files": {
+        "Cryptodome/SelfTest/Cipher/test_pkcs1_15.py": "dc699df4f6e1829bd2bbc73a618cc9f6e911c0b687895aff017fb0b10ab78638",
+        "Cryptodome/SelfTest/Protocol/test_ecdh.py": "6305e54259cf60bef2e740b41c8a7b5034a41764b56113a3c16c17aae93f8f87",
+        "Cryptodome/SelfTest/PublicKey/test_import_DSA.py": "e9f2e62884d2a0fd7976568a66ad5db77f201e952c8e663a678811d07e417247",
+        "Cryptodome/SelfTest/PublicKey/test_import_ECC.py": "c3518afba34480a1cbdb82aecfadd88c0b0adbb6334b48ca3990d9634a58ce0f",
+        "Cryptodome/SelfTest/PublicKey/test_import_RSA.py": "5e5c9936dd02cdce24cd28e0082d328caa9978255bec39cf383aaad7ad6f90f2",
+        "Cryptodome/SelfTest/Signature/test_pss.py": "536e4123b0b734ece634b4ec241e444a1eda5a13b4ec5e3d5750957daa23951a",
+        "salt/wheel/key.py": "fc48476e5ad95c98537171cf86b709a60772263a9f935ad1809632381f83f78f"
+      },
+      "salt_example_origin": "stream:e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910"
+    }
+  },
+  "embedded_legal_notices": {
+    "openvpn-dco": {
+      "stream_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "files": [
+        {
+          "path": "README",
+          "sha256": "b252a1e25bcbc115325e825d0fbad9ee940a63df5ce28fc680ac3c74fcfd5822",
+          "prefix_bytes": 3851,
+          "notice_sha256": "b252a1e25bcbc115325e825d0fbad9ee940a63df5ce28fc680ac3c74fcfd5822"
+        },
+        {
+          "path": "compat-include/net/gso.h",
+          "sha256": "d1de121bd7e79572163421bab8c174ef96d6d486c96f25bdb328307414528913",
+          "prefix_bytes": 180,
+          "notice_sha256": "02fbb60fcf9c9ed40b360dd4181a4ca188415acba8ddbf38d6547b90b10a9928"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/addr.h",
+          "sha256": "b5e8f8a0f0b50c4e02ec0fb197bece34305a5a478440df6563d18700a70031af",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/bind.c",
+          "sha256": "53dc90f9d9714a5e4c09d8e16ed7e1aa4894a8ac587fef0dfaaa8a3ca03063e9",
+          "prefix_bytes": 214,
+          "notice_sha256": "4d58c3911e616a15283b2ddec98e420d7a4114483db2489981dc5375275f0f2e"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/bind.h",
+          "sha256": "f3b0c7fd62a292c06a25f95f6622d8721fe4f2850308f7dbfab1ad0b0776bdcc",
+          "prefix_bytes": 211,
+          "notice_sha256": "98f77a7fb03d6a33d4a0c1aae1a745cef7cd6503aff8a5511a7a9cd9f02981a1"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto.c",
+          "sha256": "56c24ac4a4a7b50a4600b5baa44ce5985998812f0196e226ec8e71f55d400b1a",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto.h",
+          "sha256": "9c4e55f3da0379562b7b9e344586209f2a9fca3dd69deca6b18cc310c7b9cfa1",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto_aead.c",
+          "sha256": "18aff5dd0e6a04f570990d1a4f2eda4bfd1529969f69fabb6d8335a8140dda2b",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/crypto_aead.h",
+          "sha256": "78692a2872850fefad19f2bdbb25b2d12d0510d9395f73c644e85b10bfa1e5d2",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/main.c",
+          "sha256": "b515d1f58b6b21e8659ad4394ec16769997853463cffd8594eec0d08b6dbec92",
+          "prefix_bytes": 214,
+          "notice_sha256": "8c84d773299b2d20fe07f67c1af532f8918082d8e8f701d0eb527855d7bb2da3"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/main.h",
+          "sha256": "ba9d2badf13d02969aebe39031debd53bd5b9c0e9e60a2657aabcdf20828492f",
+          "prefix_bytes": 222,
+          "notice_sha256": "39414a81880430c65315e098b4fcae2d77f8c0a37ab2aa3fd035fa6c3a7d9b4f"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/netlink.c",
+          "sha256": "b957287bffb25367a47ac1751b6e54f37a460f4b41edd9258c34fb7749f2f1fa",
+          "prefix_bytes": 178,
+          "notice_sha256": "c6cffc89e8a9c859c0f13119b8da0377c217bb1dcbb417973539e33f7dd7b926"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/netlink.h",
+          "sha256": "16857c2dec2f2c7a605db0266ad7f20b7727d953f95748c8f493365389a52c99",
+          "prefix_bytes": 186,
+          "notice_sha256": "c9a49238d22ba873d9ec12c3f79e667c8393145e15337194bf7f2f3d583ca0a5"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/ovpn.c",
+          "sha256": "ed94b2f7d48aa9c7ed4121e2c210a8bbee20130ebf0688151132105cca51adba",
+          "prefix_bytes": 214,
+          "notice_sha256": "2f21f7aac3169fa141c63d22975a848d3fe32e0f8435cb7d88be6cf8131df3a5"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/ovpn.h",
+          "sha256": "f0e7036c64dc53c80f8eaca7c64ef12f6fa7997c3138f085a90f02883e92d704",
+          "prefix_bytes": 221,
+          "notice_sha256": "c43bba6aca471eb116c3cce01a601fdb45db51c6d6fb5963801b47135330b073"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/ovpnstruct.h",
+          "sha256": "a6df65c30e9c76d311379b67aa5d5447a1ac185e1baa0607ee44360f8f9baf65",
+          "prefix_bytes": 222,
+          "notice_sha256": "39414a81880430c65315e098b4fcae2d77f8c0a37ab2aa3fd035fa6c3a7d9b4f"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/peer.c",
+          "sha256": "79d5d9beed7077288553fd9a3151fe832427a2de09a17ed3ecfc19cd8274e26d",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/peer.h",
+          "sha256": "0d26861f1643db5a8d67e860f093b3ab364bba460c1fd4f762524ab6c5fc687a",
+          "prefix_bytes": 221,
+          "notice_sha256": "b10efb6e8b5d1c0a97419960f59678bd45c54034d05cabc8f890b7c8f4887564"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/pktid.c",
+          "sha256": "fb03252a9a1cd439383aef500ec737a36c6fb2f23a8e1074bf42b47bb71d0834",
+          "prefix_bytes": 214,
+          "notice_sha256": "8c84d773299b2d20fe07f67c1af532f8918082d8e8f701d0eb527855d7bb2da3"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/pktid.h",
+          "sha256": "bd2c57e1f31a8a36fc4934189e7178fbad18549eba8cdb562be0c359cf3e9e80",
+          "prefix_bytes": 222,
+          "notice_sha256": "21d8ee4edaca142c73be41caea3815b3f8d9346b306678873879a004565ea204"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/proto.h",
+          "sha256": "41132f7d32a546eef257dd5520ca816db0dd91e552ee24214d2ecf82200361fa",
+          "prefix_bytes": 222,
+          "notice_sha256": "21d8ee4edaca142c73be41caea3815b3f8d9346b306678873879a004565ea204"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/rcu.h",
+          "sha256": "dc30764cb7e04224139c1558e21caec5f5cd4d2fa85c3732d9264d50fba5d6c8",
+          "prefix_bytes": 222,
+          "notice_sha256": "39414a81880430c65315e098b4fcae2d77f8c0a37ab2aa3fd035fa6c3a7d9b4f"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/skb.h",
+          "sha256": "e8342c983ea9c64a56e50c088f6829fabfdd70788b4d6bf07ee33fc457cde47e",
+          "prefix_bytes": 222,
+          "notice_sha256": "21d8ee4edaca142c73be41caea3815b3f8d9346b306678873879a004565ea204"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/sock.c",
+          "sha256": "d3a92fa0c0540ab7607589671326b4ce6424660a52341e49827c3c7fc027049e",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/sock.h",
+          "sha256": "a2eff2bce16135a8a38abb5df49e9301bdc484d558ec4300fdae88d446982835",
+          "prefix_bytes": 222,
+          "notice_sha256": "36b4e9c1e3dd406ab580217595b779d6aae337fa8610d087440c18fa47c6eba2"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/stats.c",
+          "sha256": "85809b89d62b17562b15b22c81effe0f7ade8592853d3f7077c5e930afafd259",
+          "prefix_bytes": 214,
+          "notice_sha256": "93654645521e11ca3f1b2aaf941def8929f010cbc0c92f187462bbdd73991450"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/stats.h",
+          "sha256": "a27298b261ff41508e87065a0084466cd56a7a2558b1c8be890d415248ec749b",
+          "prefix_bytes": 257,
+          "notice_sha256": "33d76525acb0028eae717252745a713520e04ed7b3a341ee6a82957c2e486167"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/tcp.c",
+          "sha256": "b87fe3824e09434ebc7107908fdfe87402177a1828e6590950c4bb48abfd9226",
+          "prefix_bytes": 178,
+          "notice_sha256": "6b3df0a6cc86bef3020b4b764bc3489a248a71d30f95fe9be8d2e79040753f64"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/tcp.h",
+          "sha256": "fccbbea4e99c5d4c007cbd2f37c6780e49aea79f2e29d1fbdca29faec446d8f5",
+          "prefix_bytes": 186,
+          "notice_sha256": "dda93d038ece95280faadaf3ef9c4658ceb3f0869eb8e43881fa6637db832426"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/udp.c",
+          "sha256": "4a32eb82d3c56ad4b4ed4cc7341551f8d266c0164c2c2a2ebe2fe7574b5ce823",
+          "prefix_bytes": 178,
+          "notice_sha256": "6b3df0a6cc86bef3020b4b764bc3489a248a71d30f95fe9be8d2e79040753f64"
+        },
+        {
+          "path": "drivers/net/ovpn-dco/udp.h",
+          "sha256": "6ba43888311928c2e978566e1d5b119f1590c97fff8dae4c7b6fa62c184b1f1c",
+          "prefix_bytes": 186,
+          "notice_sha256": "dda93d038ece95280faadaf3ef9c4658ceb3f0869eb8e43881fa6637db832426"
+        },
+        {
+          "path": "include/uapi/linux/ovpn_dco.h",
+          "sha256": "92c86ba6c37fde7205232825fb3429360bfc291817a88f4b5ddc6218d0daf982",
+          "prefix_bytes": 258,
+          "notice_sha256": "2410d78f4c8649fe68c9776050d41ad72f5acdcf4b9433cc72c096f4b1e00e2b"
+        },
+        {
+          "path": "linux-compat.h",
+          "sha256": "15daa68f940dd7228e9301a91d829bc9a935b5d1b08350c492e756d06c556e41",
+          "prefix_bytes": 220,
+          "notice_sha256": "53e08319be3d89887689ece29930fb08a051f95584d7025d02ea2c364e3f0758"
+        },
+        {
+          "path": "tests/ovpn-cli.c",
+          "sha256": "b9d8d988be1c6973a8bf5cfd777869de58b1474a3463f97ae040228a4374c782",
+          "prefix_bytes": 178,
+          "notice_sha256": "c6cffc89e8a9c859c0f13119b8da0377c217bb1dcbb417973539e33f7dd7b926"
+        }
+      ],
+      "full_licenses": [
+        {
+          "source": "common:GPL-2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "source": "kernel:exceptions/Linux-syscall-note",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ]
+    },
+    "nat-rtsp": {
+      "stream_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "origin": {
+        "url": "https://github.com/maru-sama/rtsp-linux",
+        "commit": "475af0aa62dc30f1b823126eceed4eb32de52e5b"
+      },
+      "files": [
+        {
+          "path": "netfilter_helpers.h",
+          "sha256": "3dba81ff9d1e49911500167cd5367a4013b351e9db116f435111f45edaede04c",
+          "prefix_bytes": 401,
+          "notice_sha256": "c00fc9f940906d6ebac56da73d2ccdff6fcd3dbe01c746baf3e10ddc48b957ab"
+        },
+        {
+          "path": "netfilter_mime.h",
+          "sha256": "cb34a3615cd6c53ade334e09fcb4620082a669f061af00f28fe2813620253707",
+          "prefix_bytes": 370,
+          "notice_sha256": "6180e10727d9aadbba15588501f054ffd5a620f35373d578312dfe50ae4fe961"
+        },
+        {
+          "path": "nf_conntrack_rtsp.c",
+          "sha256": "8fc7ae99f236bb6d56f52ef8bf953b04167fcd50597013792a4e621543bc8162",
+          "prefix_bytes": 1487,
+          "notice_sha256": "3ed59d613dcc7995848689c23785cea8247d320c92738f3198e4f99517bccb8b"
+        },
+        {
+          "path": "nf_conntrack_rtsp.h",
+          "sha256": "45d4465a0513edbeaeb1de9cf82916d4ce489e454f03e35d885076e09b8f3405",
+          "prefix_bytes": 566,
+          "notice_sha256": "113db5b5550a68679cba709e11a5e9585a3e0ca99490aca2599b29a589549f55"
+        },
+        {
+          "path": "nf_nat_rtsp.c",
+          "sha256": "bd79a264e1a47d3e89d9086483d365cf0e412d423887399cdb24e41b3ea50062",
+          "prefix_bytes": 1706,
+          "notice_sha256": "3a39d3696bf79d9839d9afba17c9c67831b09257274d55f28463dd73354ab6ff"
+        },
+        {
+          "path": "README.rst",
+          "sha256": "26933779ff39c3f74f75b0d8ee09414f75e6c2056e499809ed075344b784f576",
+          "prefix_bytes": 1337,
+          "notice_sha256": "26933779ff39c3f74f75b0d8ee09414f75e6c2056e499809ed075344b784f576"
+        }
+      ],
+      "full_licenses": [
+        {
+          "source": "common:GPL-2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    },
+    "vyos-ipt-netflow": {
+      "stream_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "origin": {
+        "url": "https://github.com/nuclearcat/ipt-netflow",
+        "commit": "613555120416fe23f914db7333f9ced19d5e58f9"
+      },
+      "files": [
+        {
+          "path": "compat.h",
+          "sha256": "6b38aaacdca047e0a6aab51be163ebbd5845bb7f589da98ec816291e24ff4cc9",
+          "prefix_bytes": 244,
+          "notice_sha256": "d65599f3a3e188ad393ee51709a2a29b66dde16a1d7c07b9a6de85587abefe9d"
+        },
+        {
+          "path": "ipt_NETFLOW.c",
+          "sha256": "43e26ff62ac136c900db6ca077b53f951564c512edb34610641d87a029259cb5",
+          "prefix_bytes": 823,
+          "notice_sha256": "b014a1aec34ff7b124d7578de83b237bd888921ca2ea6c8be01b6ba08034c144"
+        },
+        {
+          "path": "ipt_NETFLOW.h",
+          "sha256": "fdc5d92349e7100d1262a90f98727c69714e130f05547fc4df47d6e6480f2c6b",
+          "prefix_bytes": 773,
+          "notice_sha256": "49eae4bb1de926547613b33abe00a95d031083bf5921c9f8bd7635cd1b86a5cf"
+        },
+        {
+          "path": "libipt_NETFLOW.c",
+          "sha256": "7094e07a932409e3edd59198a7733cb93d44b20b53b36eb7d9a3894dffc95531",
+          "prefix_bytes": 837,
+          "notice_sha256": "437185ef195ef123986a664b2dc3de05a8be2cedb3f69440b1cb4626af83cae3"
+        },
+        {
+          "path": "murmur3.h",
+          "sha256": "93a40bd8e85cf60a67bae6c6cdc0cbd2eee3cbf097be9a40a7caeedc4e9a55dd",
+          "prefix_bytes": 83,
+          "notice_sha256": "425de3270c393fb461d4c3897b02a0a91ad6ece5333f633674d0bdacd277fc8b"
+        },
+        {
+          "path": "snmp_NETFLOW.c",
+          "sha256": "81ad383605936a865d39276bef178d2e6d8f78dc3a7c9a17c19259da738f1e7e",
+          "prefix_bytes": 358,
+          "notice_sha256": "5a4fa8cbd6a6e3a0fa35c27bc5d899ff330e92d7ad531d8df034f01e06817baf"
+        },
+        {
+          "path": "CREDITS",
+          "sha256": "9e99f694fab03ed25d8328e981709961240b3d57d4ef2cf5edcee6c4138dbc9a",
+          "prefix_bytes": 3254,
+          "notice_sha256": "9e99f694fab03ed25d8328e981709961240b3d57d4ef2cf5edcee6c4138dbc9a"
+        }
+      ],
+      "full_licenses": [
+        {
+          "source": "common:GPL-2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    }
+  },
+  "geoip": {
+    "version": "2026-11",
+    "source_url": "https://download.db-ip.com/free/dbip-country-lite-2026-11.csv.gz",
+    "authority_url": "https://db-ip.com/db/download/ip-to-country-lite",
+    "license_authority": "https://db-ip.com/db/lite.php",
+    "license": "CC-BY-4.0",
+    "compressed_size": 4623153,
+    "uncompressed_size": 32485911,
+    "rows": 732796,
+    "ip_versions": {
+      "4": 362998,
+      "6": 369798
+    },
+    "publisher_md5": "93c945395f0bc2ceefea7dd55750417a",
+    "publisher_sha1": "e2061015c43ec91c94a12191a6a613279eb94c0c",
+    "filename": "dbip-country-lite-2026-11.csv.gz",
+    "sha256": "e5c8459d638a272ece7f4d7cfa49dce18d91b4f403f6940ba9249bf0db3781fd",
+    "uncompressed_sha256": "5e968a64a29b973f794c5abc46d0711a0ba87c8a16c411e1cd70312db7a5d4e1",
+    "logical_rows_sha256": "727329172eff9ab8733245f60f52c37d2823dea1c8a2957d1d0e6cbf40fd0ed6",
+    "native_api_sha256": "fb7d258839e251dbc8305e3d497f8e38532f1198ac3c35d36e543d09b3cf3b19",
+    "upstream_hook_sha256": "a9639022d9019c2b3bd3cf6af185bd7e3f3e97a9fce41cac6412eeb6f4b9b6a4",
+    "notice_sha256": "e4189eb50081aec67f721bdf97e48fd723c55ffb783c5212c0f215b59cf38462",
+    "license_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+  },
+  "cloud_init": {
+    "version": "22.1",
+    "commit": "95d1283f58175eefd04ca6daa8c1a892c76420e0",
+    "url": "https://codeload.github.com/vyos/vyos-cloud-init/tar.gz/95d1283f58175eefd04ca6daa8c1a892c76420e0",
+    "sha256": "4012eb426c0a6a7dc5c0994637bc2e19dfc4e2d69cb57f90327239cf32fceb8c"
+  }
+}

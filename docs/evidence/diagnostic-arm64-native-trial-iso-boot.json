@@ -1,0 +1,20 @@
+{
+  "kind": "diagnostic-arm64-native-source-built-iso-boot",
+  "source_commit": "682b868e0b11fa752125186c411eb6a846843cdd",
+  "iso_sha256": "66fa7b0259704788e797d952b71db179fc5afba8b2fc0974a3b1340c9c7a194a",
+  "controller_commit": "6ef9451b4618a5ce14269f57e574b6e314a513cd",
+  "accelerator": "tcg",
+  "status": "PASS",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "fresh_console_enrollment_and_login": "PASS",
+  "clean_shutdown": "PASS",
+  "iso_name": "shirube-os-v2026.03.0-arm64.iso",
+  "iso_bytes": 577849344,
+  "iso_receipt_and_actual_sha256_match": true,
+  "scope": "Frozen native trial ISO and the recorded diagnostic controller revision. Actual UEFI/TCG enrollment, login, hostname, sudo/machine-id and clean shutdown. Not current-head release clearance.",
+  "complete_source_restoration": "PASS_SOURCE_SET_ONLY",
+  "fresh_disks": "NOT_RUN",
+  "source_collection": "PASS",
+  "subsequent_source_restoration_evidence": "diagnostic-arm64-fresh-trial-source-restoration.json"
+}

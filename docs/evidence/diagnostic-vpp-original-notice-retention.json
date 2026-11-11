@@ -1,0 +1,13 @@
+{
+  "kind": "diagnostic-vpp-preferred-source-and-original-notice-binding",
+  "components": 12,
+  "original_legal_files": 55,
+  "preferred_source_archives": 6,
+  "preferred_source_legal_files": 27,
+  "actual_source_and_notice_verification": "PASS",
+  "license_clearance": "NOT_CLEARED",
+  "fresh_iso": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "scope": "Actual fixed native inputs/wheels and six pinned preferred-source archives checked offline; complete declared original legal files retained and installed bytes independently rechecked. PyPI version and trusted SHA256 metadata bind each source input. No offline wheel recompilation, new ISO boot or redistribution clearance is claimed."
+}

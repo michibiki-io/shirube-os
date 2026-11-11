@@ -1,0 +1,42 @@
+libssh-0.10.6/src/external/ed25519.c
+/*
+ * Public Domain, Authors: Daniel J. Bernstein, Niels Duif, Tanja Lange,
+ * Peter Schwabe, Bo-Yin Yang.
+ * Copied from supercop-20130419/crypto_sign/ed25519/ref/ed25519.c
+ */
+
+libssh-0.10.6/src/external/curve25519_ref.c
+/*
+version 20081011
+Matthew Dempsky
+Public domain.
+Derived from public domain code by D. J. Bernstein.
+*/
+
+libssh-0.10.6/src/external/ge25519_base.data
+/*
+ * Public Domain, Authors: Daniel J. Bernstein, Niels Duif, Tanja Lange,
+ * Peter Schwabe, Bo-Yin Yang.
+ * Copied from supercop-20130419/crypto_sign/ed25519/ref/ge25519_base.data
+ */
+
+libssh-0.10.6/src/external/fe25519.c
+/*
+ * Public Domain, Authors: Daniel J. Bernstein, Niels Duif, Tanja Lange,
+ * Peter Schwabe, Bo-Yin Yang.
+ * Copied from supercop-20130419/crypto_sign/ed25519/ref/fe25519.c
+ */
+
+libssh-0.10.6/src/external/ge25519.c
+/*
+ * Public Domain, Authors: Daniel J. Bernstein, Niels Duif, Tanja Lange,
+ * Peter Schwabe, Bo-Yin Yang.
+ * Copied from supercop-20130419/crypto_sign/ed25519/ref/ge25519.c
+ */
+
+libssh-0.10.6/src/external/sc25519.c
+/*
+ * Public Domain, Authors: Daniel J. Bernstein, Niels Duif, Tanja Lange,
+ * Peter Schwabe, Bo-Yin Yang.
+ * Copied from supercop-20130419/crypto_sign/ed25519/ref/sc25519.c
+ */

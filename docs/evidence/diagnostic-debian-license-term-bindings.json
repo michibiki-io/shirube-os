@@ -1,0 +1,328 @@
+{
+  "kind": "exact-Debian-complete-license-term-comparison",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "reviewed_on": "2026-11-09",
+  "new_exact_decisions": 6,
+  "scope": "Five complete original source legal-file and operative Debian grant comparisons, plus one independently read complete PCRE2 legal set. Names alone, SPDX labels alone or Debian archive membership never establish permission. Full original bytes remain retained.",
+  "matched_components": [
+    {
+      "source": "atop",
+      "version": "2.8.1-1+deb12u1",
+      "dsc_sha256": "3c04fdd4342d2b199d3a8348213e0e839e5eff36ae8b67c4bf5ba57529ccbe50",
+      "binaries": [
+        {
+          "name": "atop",
+          "version": "2.8.1-1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "f9ca07bfc21abe71606c324dcaa446d0399065819a00b4f025dcf99ba82e0b1e"
+        }
+      ],
+      "copyright_sha256": "f9ca07bfc21abe71606c324dcaa446d0399065819a00b4f025dcf99ba82e0b1e",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994",
+          "read_reference": {
+            "component": "usb-modeswitch-data",
+            "member": "COPYING",
+            "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "aec57a2872a3d669d345a354e83f047226e690edb5c32d32202857ebdd4f18b1",
+          "read_reference": {
+            "label": "GPL-2",
+            "component": "python-inotify"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f667f6731b078d75be1065e3bd7db460f3dfa8624da1ce941bf5462733c8bb39",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "sgml-base"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "atop",
+          "Upstream-Contact": "Gerlof Langeveld <gerlof.langeveld@atoptool.nl>",
+          "Source": "https://atoptool.nl/"
+        },
+        {
+          "Copyright": "Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2014 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2000-2010 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2000-2021 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2000-2012 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2020 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2007-2010 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2007-2021 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2000-2018 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2018-2021 Gerlof Langeveld <gerlof.langeveld@atoptool.nl>"
+        },
+        {
+          "Copyright": "2009 JC van Winkel - AT Computing, Nijmegen, Holland"
+        },
+        {
+          "Copyright": "2009-2010 JC van Winkel - AT Computing, Nijmegen, Holland"
+        },
+        {
+          "Copyright": "Gerlof Langeveld 2007-2021"
+        },
+        {
+          "Copyright": "2003 Edelhard Becker <becker@edelhard.de>\n2012-2022 Marc Haber <mh+debian-packages@zugschlus.de>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "efibootmgr",
+      "version": "17-2",
+      "dsc_sha256": "4656de6b7865a86f69ea465dc74634a7578dc1723e5d5f1a382c294ef0db4745",
+      "binaries": [
+        {
+          "name": "efibootmgr",
+          "version": "17-2",
+          "architecture": "arm64",
+          "copyright_sha256": "bb4b0640529bb3a7614ef3d8fb6a98960c9cab6c5c786976304bdcaf287ba488"
+        }
+      ],
+      "copyright_sha256": "bb4b0640529bb3a7614ef3d8fb6a98960c9cab6c5c786976304bdcaf287ba488",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "dcc100d4161cc0b7177545ab6e47216f84857cda3843847c792a25289852dcaa",
+          "read_reference": {
+            "component": "kexec-tools",
+            "member": "COPYING",
+            "sha256": "fa5fc1d1eec39532ea517518eeefd7b6e3c14341a55e5880a0e2a49eee47a5b7"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "9e38b95d1b9640894d0740cf2e577ed08ae46fb0ada14ce3d681afc7eca77c2a",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "lsscsi"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "efibootmgr",
+          "Upstream-Contact": "Peter Jones <pjones@redhat.com>",
+          "Source": "https://github.com/vathpela/efibootmgr"
+        },
+        {
+          "Copyright": "2001-2009 Dell, Inc <Matt_Domsch@Dell.com>\n2012-2014 Dell, Inc <Jordan_Hargrave@Dell.com>\n2013-2014 Peter Jones <pjones@redhat.com>"
+        },
+        {
+          "Copyright": "2001-2013 Bdale Garbee <bdale@gag.com>\n2013 Steve McIntyre <93sam@debian.org>\n2014 Daniel Jared Dominguez <Jared_Dominguez@Dell.com>"
+        },
+        {}
+      ]
+    },
+    {
+      "source": "libnetfilter-cthelper",
+      "version": "1.0.1-1",
+      "dsc_sha256": "f23b13b11389ed5135a74cf3e13be67e8ed4dda0bb93f215db6988af46430e9e",
+      "binaries": [
+        {
+          "name": "libnetfilter-cthelper0",
+          "version": "1.0.1-1",
+          "architecture": "arm64",
+          "copyright_sha256": "b3f2af6e5877b76e10f1a8c22548fd58c898971c5656e7467f7444792149854f"
+        }
+      ],
+      "copyright_sha256": "b3f2af6e5877b76e10f1a8c22548fd58c898971c5656e7467f7444792149854f",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad",
+          "read_reference": {
+            "component": "acpid",
+            "member": "COPYING",
+            "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "1a2e3f2936ab1a0799781a37df4228c4c380be5992d31e7b3a57289c31e94313",
+          "read_reference": {
+            "label": "GPL-2.0+",
+            "component": "libnfnetlink"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libnetfilter-cthelper",
+          "Source": "http://www.netfilter.org/projects/libnetfilter_cthelper/index.html"
+        },
+        {
+          "Copyright": "2012 Pablo Neira Ayuso <pablo@netfilter.org>"
+        },
+        {
+          "Copyright": "2013 Alexander Wirt <formorer@debian.org>\n2020, 2022 Jeremy Sowden <jeremy@azazel.net>"
+        },
+        {}
+      ]
+    },
+    {
+      "source": "libnetfilter-cttimeout",
+      "version": "1.0.1-1",
+      "dsc_sha256": "4e5e2597712cb77a54f3b34ee15a081b97aa8f676faeb56b0b435567eb5972ea",
+      "binaries": [
+        {
+          "name": "libnetfilter-cttimeout1",
+          "version": "1.0.1-1",
+          "architecture": "arm64",
+          "copyright_sha256": "0b5e2b32baac7d1a24e44bab798d8ea0d6416b5d02b21545e17fff3a16aeabef"
+        }
+      ],
+      "copyright_sha256": "0b5e2b32baac7d1a24e44bab798d8ea0d6416b5d02b21545e17fff3a16aeabef",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad",
+          "read_reference": {
+            "component": "acpid",
+            "member": "COPYING",
+            "sha256": "91df39d1816bfb17a4dda2d3d2c83b1f6f2d38d53e53e41e8f97ad5ac46a0cad"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "1a2e3f2936ab1a0799781a37df4228c4c380be5992d31e7b3a57289c31e94313",
+          "read_reference": {
+            "label": "GPL-2.0+",
+            "component": "libnfnetlink"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libnetfilter-cttimeout",
+          "Source": "http://www.netfilter.org/projects/libnetfilter_cttimeout/index.html"
+        },
+        {
+          "Copyright": "2012 Pablo Neira Ayuso <pablo@netfilter.org>"
+        },
+        {
+          "Copyright": "2012, 2013 Alexander Wirt <formorer@debian.org>\n2020, 2022 Jeremy Sowden <jeremy@azazel.net>"
+        },
+        {}
+      ]
+    },
+    {
+      "source": "tuned",
+      "version": "2.20.0-1",
+      "dsc_sha256": "8240f9c3281983fffac802a86ad216a95a967abd2c02683bb2d6098db460c81d",
+      "binaries": [
+        {
+          "name": "tuned",
+          "version": "2.20.0-1",
+          "architecture": "all",
+          "copyright_sha256": "f8127134c322efbb250906faf8522fe500f99963771164a7abb56d2f5f0d2328"
+        }
+      ],
+      "copyright_sha256": "f8127134c322efbb250906faf8522fe500f99963771164a7abb56d2f5f0d2328",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "f667f6731b078d75be1065e3bd7db460f3dfa8624da1ce941bf5462733c8bb39",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "sgml-base"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "tuned",
+          "Source": "http://www.tuned-project.org/"
+        },
+        {
+          "Copyright": "2008-2017 Red Hat, Inc."
+        },
+        {
+          "Copyright": "2017 Evgeni Golov <evgeni@debian.org>"
+        },
+        {}
+      ]
+    }
+  ],
+  "manual_component": {
+    "source": "pcre2",
+    "version": "10.42-1+deb12u2",
+    "source_identity": "63be58a94a6d2c7f03324cc0fe1ffb32d1f366d82d0fabef581ba3cc8a8ba5a6",
+    "copyright_sha256": "030511beb4d9d620ad09914c369c36ec0528dcf301d1923cc643c948ee7c6a38",
+    "original_legal_files": [
+      {
+        "member": "COPYING",
+        "sha256": "99272c55f3dcfa07a8a7e15a5c1a33096e4727de74241d65fa049fccfdd59507"
+      },
+      {
+        "member": "LICENCE",
+        "sha256": "87d884eceb7fc54611470ce9f74280d28612b0c877adfc767e9676892a638987"
+      },
+      {
+        "member": "cmake/COPYING-CMAKE-SCRIPTS",
+        "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+      },
+      {
+        "member": "debian/copyright",
+        "sha256": "030511beb4d9d620ad09914c369c36ec0528dcf301d1923cc643c948ee7c6a38"
+      }
+    ]
+  },
+  "complete_binary_reconstruction": "NOT_RUN",
+  "parent_distribution_license_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

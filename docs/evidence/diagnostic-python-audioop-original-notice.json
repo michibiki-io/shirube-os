@@ -1,0 +1,26 @@
+{
+  "kind": "cpython-original-audioop-license-clarification",
+  "status": "PASS_NOTICE_SCOPE_ONLY",
+  "source_archive_sha256": "2411c74bda5bbcfcddaf4531f66d1adc73f247f529aee981b029513aefdbf849",
+  "source_member": "Python-3.11.2/Modules/audioop.c",
+  "source_member_sha256": "184cad4d222e36161bf8ec385541e77d377c3af0908017b48de0ff4bd168f5cf",
+  "original_documentation_member": "Python-3.11.2/Doc/license.rst",
+  "original_documentation_sha256": "4d6119c3d88da68c95cf4d61683e327758074d32ff205651254369481fd76bd7",
+  "upstream_explanation": "https://github.com/python/cpython/pull/115094",
+  "immutable_upstream_correction": "https://github.com/python/cpython/commit/b39119916c0daaf5e5fdfec63e18ad97f29e2e72",
+  "correction_scope": "The pinned archive and exact audioop header were inspected. Complete original upstream correction patch and its explanation were read: the restrictive Sound Blaster document reference was erroneous and the incorporated SoX code instead carries the retained Sun unrestricted-use permission. No code or Python version is changed and no noncommercial exception is used. This does not approve other CPython components or grants. The actual original SoX 12.17.7 g711.c header was independently downloaded and completely read, with its full permission/disclaimer matched to the corrected notice. The original source member is bound explicitly rather than relying on the typographic g771/g777 references.",
+  "retained_notice": {
+    "path": "LICENSES/Python-audioop-Sun-notice.txt",
+    "sha256": "7427062e399d000b705990ccd39f433486b6abd685241b7d43937f44b7d62d2f"
+  },
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "original_sox_source": {
+    "url": "https://downloads.sourceforge.net/project/sox/sox/12.17.7/sox-12.17.7.tar.gz",
+    "sha256": "e55e248176f6ed528d4719fa551d734d0b56c62f8a7b90897aae6c43748dd680",
+    "size": 466570,
+    "member": "sox-12.17.7/src/g711.c",
+    "member_sha256": "3de5eac8cc317f3d53495c162b0b3354774e82ef2bbed32545a0f749f71267ab",
+    "complete_original_header_matches_corrected_notice": "PASS_WHITESPACE_NORMALIZATION_ONLY"
+  }
+}

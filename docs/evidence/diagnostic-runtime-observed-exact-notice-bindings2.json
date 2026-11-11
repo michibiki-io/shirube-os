@@ -1,0 +1,3031 @@
+{
+  "kind": "observed-runtime-exact-original-notice-reconciliation",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "name": "jool",
+      "version": "4.1.11+stream202603-1",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "5aba7d3e3d6115a32fb4c2965c47cb1dce3da15bc02aef3bb762cad828fc254a",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only AND GPL-2.0-only AND GFDL-1.3-only",
+      "original_blocks": [
+        {
+          "member": "COPYING",
+          "original_notice_block_sha256": "1be990a929b50ca91d815cea1cd3cebb5c49e86076ade82b1103f2b9cd71a3af",
+          "license": "GPL-2.0-only",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/GPL-2.0.txt",
+            "license": "GPL-2.0-only",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "license.md",
+          "original_notice_block_sha256": "fc88f3b8905a67a4f9e7f492af9bee53b9575893b3ed34917d69cb99fd47d3de",
+          "license": "GPL-2.0-only AND GFDL-1.3-only",
+          "complete_previously_read_reference": {
+            "component": "jool",
+            "member": "license.md",
+            "sha256": "fc88f3b8905a67a4f9e7f492af9bee53b9575893b3ed34917d69cb99fd47d3de",
+            "license": "GPL-2.0-only AND GFDL-1.3-only",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5aba7d3e3d6115a32fb4c2965c47cb1dce3da15bc02aef3bb762cad828fc254a.txt",
+          "sha256": "5aba7d3e3d6115a32fb4c2965c47cb1dce3da15bc02aef3bb762cad828fc254a"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:cppo",
+      "version": "1.8.0",
+      "source_identity": "6c5a9efbcea892ae1a7c9f9a069af416352c17af8ac57c5d5bc811c76df2d7d2",
+      "copyright_sha256": "a5366e2918729e9c3c32efb1be57010b4cb5b3f075caeb259a482180281e7967",
+      "evidence_member": "opam/notices/cppo.1.8.0.copyright",
+      "license": "BSD-3-Clause",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "ace6acd11e7251426e333247bd637061fa0438abaa5a31dd8bbe4395e83f6e43",
+          "license": "BSD-3-Clause",
+          "complete_previously_read_reference": {
+            "component": "opam:cppo",
+            "member": "LICENSE.md",
+            "sha256": "ace6acd11e7251426e333247bd637061fa0438abaa5a31dd8bbe4395e83f6e43",
+            "license": "BSD-3-Clause",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a5366e2918729e9c3c32efb1be57010b4cb5b3f075caeb259a482180281e7967.txt",
+          "sha256": "a5366e2918729e9c3c32efb1be57010b4cb5b3f075caeb259a482180281e7967"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:csexp",
+      "version": "1.5.2",
+      "source_identity": "4e2c5f828bbbc4ab6d4db687eb5a11d6f63f423af73db23b099da3c381290495",
+      "copyright_sha256": "a57772ace2ccb387b15cb5001127fb41d829bdfb3c189a62172615db867df29f",
+      "evidence_member": "opam/notices/csexp.1.5.2.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "5934bcde31839260a2b27390e7adfd9df8e5ba5b28eb10d81cc47742e8180660",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:csexp",
+            "member": "LICENSE.md",
+            "sha256": "5934bcde31839260a2b27390e7adfd9df8e5ba5b28eb10d81cc47742e8180660",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a57772ace2ccb387b15cb5001127fb41d829bdfb3c189a62172615db867df29f.txt",
+          "sha256": "a57772ace2ccb387b15cb5001127fb41d829bdfb3c189a62172615db867df29f"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:cstruct",
+      "version": "6.3.0",
+      "source_identity": "5f3d50b73fc4a1d5b328ee4238eb6d0a09a45c484d81c11f92c6d472b6295e22",
+      "copyright_sha256": "a955d3bf1d770ecd3962fc0e674501e6c017e5d370bc5dee97aa6636caf842b0",
+      "evidence_member": "opam/notices/cstruct.6.3.0.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "c1e61fdb97f372448790b5f0b005799dc1c01c604dd26528170c02d37a1c2f59",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "opam:cstruct",
+            "member": "LICENSE.md",
+            "sha256": "c1e61fdb97f372448790b5f0b005799dc1c01c604dd26528170c02d37a1c2f59",
+            "license": "ISC",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a955d3bf1d770ecd3962fc0e674501e6c017e5d370bc5dee97aa6636caf842b0.txt",
+          "sha256": "a955d3bf1d770ecd3962fc0e674501e6c017e5d370bc5dee97aa6636caf842b0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ctypes",
+      "version": "0.24.0",
+      "source_identity": "24778f7b8f40f3d7d61d41614a89b60d16675439b98cdeb21d1eed5f9687ddfb",
+      "copyright_sha256": "565bcd179b3016d6435108f8cba4ede4fa77fdd83d20ff8ea17ba83adc586447",
+      "evidence_member": "opam/notices/ctypes.0.24.0.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "8607404171de6993bd1a4dc7f823cdd90b99b6a12b13a42c7506b3f37f992d33",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ctypes",
+            "member": "LICENSE",
+            "sha256": "8607404171de6993bd1a4dc7f823cdd90b99b6a12b13a42c7506b3f37f992d33",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/565bcd179b3016d6435108f8cba4ede4fa77fdd83d20ff8ea17ba83adc586447.txt",
+          "sha256": "565bcd179b3016d6435108f8cba4ede4fa77fdd83d20ff8ea17ba83adc586447"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ctypes-build",
+      "version": "0.0.2",
+      "source_identity": "ea69cd6029aa08503e567fa9c9c4f35b39e533cd314304e197e5b98bef05380d",
+      "copyright_sha256": "bf43a8b2e93a310a0ea7027bb0f00ac206501bab1db0d2df79a2d15447782b3b",
+      "evidence_member": "opam/notices/ctypes-build.0.0.2.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "53614b198e16b3cab37b05f9678feda5038136271cc3d1b6b4ac7bc686147d26",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ctypes-build",
+            "member": "LICENSE",
+            "sha256": "53614b198e16b3cab37b05f9678feda5038136271cc3d1b6b4ac7bc686147d26",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/bf43a8b2e93a310a0ea7027bb0f00ac206501bab1db0d2df79a2d15447782b3b.txt",
+          "sha256": "bf43a8b2e93a310a0ea7027bb0f00ac206501bab1db0d2df79a2d15447782b3b"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ctypes-foreign",
+      "version": "0.24.0",
+      "source_identity": "24778f7b8f40f3d7d61d41614a89b60d16675439b98cdeb21d1eed5f9687ddfb",
+      "copyright_sha256": "12c908f4fe7bc08eda8ddba77cd6c0cc97acf702d387b6e8aa8e77d4692e4bb9",
+      "evidence_member": "opam/notices/ctypes-foreign.0.24.0.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "8607404171de6993bd1a4dc7f823cdd90b99b6a12b13a42c7506b3f37f992d33",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ctypes",
+            "member": "LICENSE",
+            "sha256": "8607404171de6993bd1a4dc7f823cdd90b99b6a12b13a42c7506b3f37f992d33",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/12c908f4fe7bc08eda8ddba77cd6c0cc97acf702d387b6e8aa8e77d4692e4bb9.txt",
+          "sha256": "12c908f4fe7bc08eda8ddba77cd6c0cc97acf702d387b6e8aa8e77d4692e4bb9"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:either",
+      "version": "1.0.0",
+      "source_identity": "44d7acda4607935451370e62a95976f2c9f4ab6334dd0863b77a6991ddfa9863",
+      "copyright_sha256": "ffe042f25df8d685d581eb25e34789bd12e3959749c57324529cf5e8148eb9f6",
+      "evidence_member": "opam/notices/either.1.0.0.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "23ba8ea3e60ea26ccc68c642b62c00b3dff6b41b7290757df4e3f25495ac1c71",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:either",
+            "member": "LICENSE",
+            "sha256": "23ba8ea3e60ea26ccc68c642b62c00b3dff6b41b7290757df4e3f25495ac1c71",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/ffe042f25df8d685d581eb25e34789bd12e3959749c57324529cf5e8148eb9f6.txt",
+          "sha256": "ffe042f25df8d685d581eb25e34789bd12e3959749c57324529cf5e8148eb9f6"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ezjsonm",
+      "version": "1.3.0",
+      "source_identity": "eef5bb422fae917958bf493c4d8e1dfbc7008ff9a8b1d0e9019e49b5ac96355d",
+      "copyright_sha256": "e56cec0e8eae37a2e175535e5cdc2f8a179f7ab156ac0bdaf3d3e10282e12a51",
+      "evidence_member": "opam/notices/ezjsonm.1.3.0.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "5b158665042dac0f92fa3993421a98f45e50568c56fbeefe12cdd9398637e1d0",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "opam:ezjsonm",
+            "member": "LICENSE",
+            "sha256": "5b158665042dac0f92fa3993421a98f45e50568c56fbeefe12cdd9398637e1d0",
+            "license": "ISC",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e56cec0e8eae37a2e175535e5cdc2f8a179f7ab156ac0bdaf3d3e10282e12a51.txt",
+          "sha256": "e56cec0e8eae37a2e175535e5cdc2f8a179f7ab156ac0bdaf3d3e10282e12a51"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:hex",
+      "version": "1.5.0",
+      "source_identity": "1c56995e57578ca4331382ea7a862afb41c0e2d869b31cdf89d1232ddadf5769",
+      "copyright_sha256": "06de3a4b27a281c12a3b2a1662f800f97f933923ae29e6508a56f6932bfcc3a6",
+      "evidence_member": "opam/notices/hex.1.5.0.copyright",
+      "license": "ISC",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "8c2b35e47bc8b48dbc228825daa8539382a5f2c1f5db4bad571a38227be99488",
+          "license": "ISC",
+          "complete_previously_read_reference": {
+            "component": "opam:hex",
+            "member": "LICENSE.md",
+            "sha256": "8c2b35e47bc8b48dbc228825daa8539382a5f2c1f5db4bad571a38227be99488",
+            "license": "ISC",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/06de3a4b27a281c12a3b2a1662f800f97f933923ae29e6508a56f6932bfcc3a6.txt",
+          "sha256": "06de3a4b27a281c12a3b2a1662f800f97f933923ae29e6508a56f6932bfcc3a6"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:integers",
+      "version": "0.8.0",
+      "source_identity": "703031de9c6b0c1318a7f9f8911401b33b424f8556ab679aac2764c3956c516b",
+      "copyright_sha256": "74851596dc98e504263e398633665b8b85b126fcc1c2efdb2c036caab1272f38",
+      "evidence_member": "opam/notices/integers.0.8.0.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "d65f2c2e4be0c49461f67925d396efa75ffc4a81cf929507c3af3d0cbe7193ab",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:integers",
+            "member": "LICENSE.md",
+            "sha256": "d65f2c2e4be0c49461f67925d396efa75ffc4a81cf929507c3af3d0cbe7193ab",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/74851596dc98e504263e398633665b8b85b126fcc1c2efdb2c036caab1272f38.txt",
+          "sha256": "74851596dc98e504263e398633665b8b85b126fcc1c2efdb2c036caab1272f38"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ocaml-compiler-libs",
+      "version": "v0.12.4",
+      "source_identity": "3c56302b9dfd6f185b3f8036f721e9048e6cc8be07647cb9641cb7f9f6324830",
+      "copyright_sha256": "6ed8d579f3f56f8b35b4e1daf64cbb3fe2d3998ceb49f5be10430a28d01f0950",
+      "evidence_member": "opam/notices/ocaml-compiler-libs.v0.12.4.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "6b2dfd4812557e3fcaa8a5c944f48ad87be0ab3303c203bcc175184690e9f81e",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ocaml-compiler-libs",
+            "member": "LICENSE.md",
+            "sha256": "6b2dfd4812557e3fcaa8a5c944f48ad87be0ab3303c203bcc175184690e9f81e",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/6ed8d579f3f56f8b35b4e1daf64cbb3fe2d3998ceb49f5be10430a28d01f0950.txt",
+          "sha256": "6ed8d579f3f56f8b35b4e1daf64cbb3fe2d3998ceb49f5be10430a28d01f0950"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ocamlfind",
+      "version": "1.9.8",
+      "source_identity": "740ccc934581e8f1321faa91913135447fd4ad6d0bd9508080daf2a64ebe35c1",
+      "copyright_sha256": "37a7e6a96bcfbd581a9c52752fcc3335fedc4b6a94cc4a0cf51e9a0028314bff",
+      "evidence_member": "opam/notices/ocamlfind.1.9.8.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "82542d2f71da991de4f802e941d765b897f501db5d7a3d5a700e89a15de7073b",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:num",
+            "member": "toplevel/LICENSE-findlib",
+            "sha256": "82542d2f71da991de4f802e941d765b897f501db5d7a3d5a700e89a15de7073b",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/37a7e6a96bcfbd581a9c52752fcc3335fedc4b6a94cc4a0cf51e9a0028314bff.txt",
+          "sha256": "37a7e6a96bcfbd581a9c52752fcc3335fedc4b6a94cc4a0cf51e9a0028314bff"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:parsexp",
+      "version": "v0.16.0",
+      "source_identity": "0609a98f55a5137bc568218c73a5ccd6a19088638de7261b8fef7036c16e79d1",
+      "copyright_sha256": "751e93c11d80403052bdad31dc9dd0bb286a279a3cf1c9985694ff7f45e104b8",
+      "evidence_member": "opam/notices/parsexp.v0.16.0.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "7383fe80dd3fe33a933bbfff7d2824917127af1f003e011ad4313b218ad8b9c3",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:parsexp",
+            "member": "LICENSE.md",
+            "sha256": "7383fe80dd3fe33a933bbfff7d2824917127af1f003e011ad4313b218ad8b9c3",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/751e93c11d80403052bdad31dc9dd0bb286a279a3cf1c9985694ff7f45e104b8.txt",
+          "sha256": "751e93c11d80403052bdad31dc9dd0bb286a279a3cf1c9985694ff7f45e104b8"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ppx_deriving",
+      "version": "6.0.3",
+      "source_identity": "d51c79b808e074de6ff8c4055f8346ea35a208c2769a6a6a9289292b32243277",
+      "copyright_sha256": "d545c0deded8290e856fdcdc853b23cd0462a3d602fcabb6f3bc310ef0335c81",
+      "evidence_member": "opam/notices/ppx_deriving.6.0.3.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.txt",
+          "original_notice_block_sha256": "577e71e03a6c4ed230790b54e0b137d830a3ece1cff71f0b7b5db03ac49c252f",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ppx_deriving",
+            "member": "LICENSE.txt",
+            "sha256": "577e71e03a6c4ed230790b54e0b137d830a3ece1cff71f0b7b5db03ac49c252f",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d545c0deded8290e856fdcdc853b23cd0462a3d602fcabb6f3bc310ef0335c81.txt",
+          "sha256": "d545c0deded8290e856fdcdc853b23cd0462a3d602fcabb6f3bc310ef0335c81"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ppx_deriving_yojson",
+      "version": "3.9.1",
+      "source_identity": "a1b2e1dc266b3853b65801d813383fdf801006a566e798e46a1b5ce7f9c04673",
+      "copyright_sha256": "d695a6beabd333cb560e569d1bef12dfd4fab52199c0246af33787fa90ae618b",
+      "evidence_member": "opam/notices/ppx_deriving_yojson.3.9.1.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.txt",
+          "original_notice_block_sha256": "59277dfd90768695c9c3bf91aaf7b66de4123ab7276cbe1482e0b09a611de2fb",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ppx_deriving_yojson",
+            "member": "LICENSE.txt",
+            "sha256": "59277dfd90768695c9c3bf91aaf7b66de4123ab7276cbe1482e0b09a611de2fb",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d695a6beabd333cb560e569d1bef12dfd4fab52199c0246af33787fa90ae618b.txt",
+          "sha256": "d695a6beabd333cb560e569d1bef12dfd4fab52199c0246af33787fa90ae618b"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:ppxlib",
+      "version": "0.35.0",
+      "source_identity": "13e9425fef3ff2c8776a7b42a7d9aa1ae7b84923b9f875901e1dee5bc5efc4f9",
+      "copyright_sha256": "570e005b275189b027484b3f2559c67e72f255c9bc2a80a5e20c16f890fe90b8",
+      "evidence_member": "opam/notices/ppxlib.0.35.0.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "ae238933eefa84e935ab34116d0de63851522b33487c310d8cd404c01a3ddc52",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ppxlib",
+            "member": "LICENSE.md",
+            "sha256": "ae238933eefa84e935ab34116d0de63851522b33487c310d8cd404c01a3ddc52",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "bench/vendored/ppx_sexp_conv.v0.15.1/LICENSE.md",
+          "original_notice_block_sha256": "2c7cb343a10cbc4a21c8a7cfe9ab08bc66259d58c6f248297965a757d6f040f2",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:ppxlib",
+            "member": "bench/vendored/ppx_sexp_conv.v0.15.1/LICENSE.md",
+            "sha256": "2c7cb343a10cbc4a21c8a7cfe9ab08bc66259d58c6f248297965a757d6f040f2",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/570e005b275189b027484b3f2559c67e72f255c9bc2a80a5e20c16f890fe90b8.txt",
+          "sha256": "570e005b275189b027484b3f2559c67e72f255c9bc2a80a5e20c16f890fe90b8"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "opam:sexplib0",
+      "version": "v0.16.0",
+      "source_identity": "e85ce3796577d6c642c52d4788bdfb9bc378220500a60954026b07bfd9542b71",
+      "copyright_sha256": "848810dcd1b68986f2bb41ca7543c23192bebcc4973b880c72086d5157d5d3b0",
+      "evidence_member": "opam/notices/sexplib0.v0.16.0.copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.md",
+          "original_notice_block_sha256": "7e0de27f9e02959570b979de350d91ce028dc7e451880bfd90c98502b9c8b502",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "opam:sexplib",
+            "member": "LICENSE.md",
+            "sha256": "7e0de27f9e02959570b979de350d91ce028dc7e451880bfd90c98502b9c8b502",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/848810dcd1b68986f2bb41ca7543c23192bebcc4973b880c72086d5157d5d3b0.txt",
+          "sha256": "848810dcd1b68986f2bb41ca7543c23192bebcc4973b880c72086d5157d5d3b0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "udp-broadcast-relay",
+      "version": "0.3+vyos",
+      "source_identity": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+      "copyright_sha256": "0274727330a722bb04018f639731ea1452ce23ed1dd443644d2a0642ace57768",
+      "evidence_member": "copyright",
+      "license": "GPL-2.0-only AND GPL-2.0-or-later",
+      "original_blocks": [
+        {
+          "member": "COPYING",
+          "original_notice_block_sha256": "78790c31e56ff044f327e7e07ab1b5db87353c2725a1a7f4a9ab7277332315c3",
+          "license": "GPL-2.0-only",
+          "complete_previously_read_reference": {
+            "component": "lcdproc",
+            "member": "COPYING",
+            "sha256": "1b2a567f289f66a143c56353e7b3d4fa5862514a5e3c5cfdf8b02ee5e5aaa953",
+            "license": "GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause AND Artistic-1.0-Perl"
+          }
+        },
+        {
+          "member": "debian/copyright",
+          "original_notice_block_sha256": "b039bad951142e9a5c06a11aa3a201c033012d5b22e5adf13afd4b1cd34691fb",
+          "license": "GPL-2.0-or-later",
+          "complete_previously_read_reference": {
+            "component": "udp-broadcast-relay",
+            "member": "debian/copyright",
+            "sha256": "b039bad951142e9a5c06a11aa3a201c033012d5b22e5adf13afd4b1cd34691fb",
+            "license": "GPL-2.0-or-later",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/0274727330a722bb04018f639731ea1452ce23ed1dd443644d2a0642ace57768.txt",
+          "sha256": "0274727330a722bb04018f639731ea1452ce23ed1dd443644d2a0642ace57768"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:httptools",
+      "version": "0.6.4",
+      "source_identity": "4e93eee4add6493b59a5c514da98c939b244fce4a0d8879cd3f466562f4b7d5c",
+      "copyright_sha256": "723e21a4f3108bf6882b3a984b0bd29bad8fa1c48f942f5c3d0134c0750d6c4b",
+      "evidence_member": "third-party-notices/httptools/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "httptools-0.6.4.dist-info/LICENSE",
+          "original_notice_block_sha256": "f4c4ead59af266e5f42e4074e133875eb4220a1a9fa5e7a83d8267da90108251",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:httptools",
+            "member": "httptools-0.6.4.dist-info/LICENSE",
+            "sha256": "f4c4ead59af266e5f42e4074e133875eb4220a1a9fa5e7a83d8267da90108251",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "httptools-0.6.4/LICENSE",
+          "original_notice_block_sha256": "f4c4ead59af266e5f42e4074e133875eb4220a1a9fa5e7a83d8267da90108251",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:httptools",
+            "member": "httptools-0.6.4.dist-info/LICENSE",
+            "sha256": "f4c4ead59af266e5f42e4074e133875eb4220a1a9fa5e7a83d8267da90108251",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "httptools-0.6.4/vendor/http-parser/LICENSE-MIT",
+          "original_notice_block_sha256": "e45b68915bc99ad7cfb4792e546320a2b558e6171cb567fb23a4a55b8af928fe",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "http-parser",
+            "member": "LICENSE-MIT",
+            "sha256": "79e6ba8b687cb54786207342b9b6fcee0ac10218453ed9009b84d949b2233cc0",
+            "license": "MIT"
+          }
+        },
+        {
+          "member": "httptools-0.6.4/vendor/llhttp/LICENSE-MIT",
+          "original_notice_block_sha256": "d3dc560193a68529bdb2443a70960f0360988bed2c91e4879fbf54eb22b43463",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "nghttp2",
+            "member": "third-party/llhttp/LICENSE-MIT",
+            "sha256": "ebca854e0134cd256d673627c20499f42577eb74bacf08b9f25b626a73c91277",
+            "license": "MIT AND BSD-2-Clause AND LicenseRef-FSF-permissive AND LicenseRef-Autoconf-exception"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/723e21a4f3108bf6882b3a984b0bd29bad8fa1c48f942f5c3d0134c0750d6c4b.txt",
+          "sha256": "723e21a4f3108bf6882b3a984b0bd29bad8fa1c48f942f5c3d0134c0750d6c4b"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:pydantic-core",
+      "version": "2.27.1",
+      "source_identity": "62a763352879b84aa31058fc931884055fd75089cccbd9d58bb6afd01141b235",
+      "copyright_sha256": "9eb15843a3d7a704ff9252bb57745d2e4054f5a0f3d257f9e65a3a514589c29e",
+      "evidence_member": "third-party-notices/pydantic-core/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "pydantic_core-2.27.1.dist-info/licenses/LICENSE",
+          "original_notice_block_sha256": "9fdfea2efa6070205b3857ead97b9092729dd900821122691f2a840952846236",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:pydantic-core",
+            "member": "pydantic_core-2.27.1.dist-info/licenses/LICENSE",
+            "sha256": "9fdfea2efa6070205b3857ead97b9092729dd900821122691f2a840952846236",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "pydantic_core-2.27.1/LICENSE",
+          "original_notice_block_sha256": "9fdfea2efa6070205b3857ead97b9092729dd900821122691f2a840952846236",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:pydantic-core",
+            "member": "pydantic_core-2.27.1.dist-info/licenses/LICENSE",
+            "sha256": "9fdfea2efa6070205b3857ead97b9092729dd900821122691f2a840952846236",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/9eb15843a3d7a704ff9252bb57745d2e4054f5a0f3d257f9e65a3a514589c29e.txt",
+          "sha256": "9eb15843a3d7a704ff9252bb57745d2e4054f5a0f3d257f9e65a3a514589c29e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:ahash",
+      "version": "0.8.11",
+      "source_identity": "e89da841a80418a9b391ebaea17f5c112ffaaa96f621d2c285b5174da76b9011",
+      "copyright_sha256": "77324bf7f33566784678da59abec2db101e23cde2ffe631ae0c15fdd878f53af",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/ahash-0.8.11/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "d03325792f3dbc2674fb489cc812dc0e792f4c627a660275ebabe1d9a229de62",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:ahash",
+            "member": "LICENSE-MIT",
+            "sha256": "d03325792f3dbc2674fb489cc812dc0e792f4c627a660275ebabe1d9a229de62",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/77324bf7f33566784678da59abec2db101e23cde2ffe631ae0c15fdd878f53af.txt",
+          "sha256": "77324bf7f33566784678da59abec2db101e23cde2ffe631ae0c15fdd878f53af"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:aho-corasick",
+      "version": "1.1.3",
+      "source_identity": "8e60d3430d3a69478ad0993f19238d2df97c507009a52b3c10addcd7f6bcb916",
+      "copyright_sha256": "a5f71aef224cfa00ba9d2e5a30f4777a06d9b8b62fc3b7f4169d5d799e1caf93",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/aho-corasick-1.1.3/copyright",
+      "license": "MIT AND (MIT OR Unlicense)",
+      "original_blocks": [
+        {
+          "member": "COPYING",
+          "original_notice_block_sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+          "license": "MIT OR Unlicense",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "COPYING",
+            "sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+            "license": "MIT OR Unlicense",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "LICENSE-MIT",
+            "sha256": "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a5f71aef224cfa00ba9d2e5a30f4777a06d9b8b62fc3b7f4169d5d799e1caf93.txt",
+          "sha256": "a5f71aef224cfa00ba9d2e5a30f4777a06d9b8b62fc3b7f4169d5d799e1caf93"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:bitvec",
+      "version": "1.0.1",
+      "source_identity": "1bc2832c24239b0141d5674bb9174f9d68a8b5b3f2753311927c172ca46f7e9c",
+      "copyright_sha256": "d656ff6331bba0b6cf1f4fa8373efe46699d3410336dd2cdef0fc9155d92a272",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/bitvec-1.0.1/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.txt",
+          "original_notice_block_sha256": "667fdb63d9abc6e572b47947a9b2ed3d73f317b1a7ee36def6c52b4b83b6b166",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitvec",
+            "member": "LICENSE.txt",
+            "sha256": "667fdb63d9abc6e572b47947a9b2ed3d73f317b1a7ee36def6c52b4b83b6b166",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d656ff6331bba0b6cf1f4fa8373efe46699d3410336dd2cdef0fc9155d92a272.txt",
+          "sha256": "d656ff6331bba0b6cf1f4fa8373efe46699d3410336dd2cdef0fc9155d92a272"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:enum_dispatch",
+      "version": "0.3.13",
+      "source_identity": "aa18ce2bc66555b3218614519ac839ddb759a7d6720732f979ef8d13be147ecd",
+      "copyright_sha256": "a5b33d174e8b89f9b002257c49a8f66a16632d77eb41f7a7416c0de59d03f2b7",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/enum_dispatch-0.3.13/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "5c0ef05f84394e44c041d9a28fc66d5f62158baa861ec1b3496f21815af8dade",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:enum_dispatch",
+            "member": "LICENSE",
+            "sha256": "5c0ef05f84394e44c041d9a28fc66d5f62158baa861ec1b3496f21815af8dade",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a5b33d174e8b89f9b002257c49a8f66a16632d77eb41f7a7416c0de59d03f2b7.txt",
+          "sha256": "a5b33d174e8b89f9b002257c49a8f66a16632d77eb41f7a7416c0de59d03f2b7"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:equivalent",
+      "version": "1.0.1",
+      "source_identity": "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5",
+      "copyright_sha256": "9bf968be92b07c5ce04e07dc4d231bd9cbb39e8f4b177edceba18eb0a19884d0",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/equivalent-1.0.1/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "4428cd87371acbd49f9f6380125492cd1e89df621d2fd7f55e30a0891f96a433",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:equivalent",
+            "member": "LICENSE-MIT",
+            "sha256": "4428cd87371acbd49f9f6380125492cd1e89df621d2fd7f55e30a0891f96a433",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/9bf968be92b07c5ce04e07dc4d231bd9cbb39e8f4b177edceba18eb0a19884d0.txt",
+          "sha256": "9bf968be92b07c5ce04e07dc4d231bd9cbb39e8f4b177edceba18eb0a19884d0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:form_urlencoded",
+      "version": "1.2.1",
+      "source_identity": "e13624c2627564efccf4934284bdd98cbaa14e79b0b5a141218e507b3a823456",
+      "copyright_sha256": "71609b5195567c17b84a474702f1b6b7018272269c1d93974b7188a3270a0d91",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/form_urlencoded-1.2.1/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "33ed9a8ecf556f161ec5d7e8761712f404d082bf9eeb8f6085d43517b5938be4",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:form_urlencoded",
+            "member": "LICENSE-MIT",
+            "sha256": "33ed9a8ecf556f161ec5d7e8761712f404d082bf9eeb8f6085d43517b5938be4",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/71609b5195567c17b84a474702f1b6b7018272269c1d93974b7188a3270a0d91.txt",
+          "sha256": "71609b5195567c17b84a474702f1b6b7018272269c1d93974b7188a3270a0d91"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:funty",
+      "version": "2.0.0",
+      "source_identity": "e6d5a32815ae3f33302d95fdcb2ce17862f8c65363dcfd29360480ba1001fc9c",
+      "copyright_sha256": "d931a11a73e1ef9aa357a8f29089207ec574324d2b87332667a5a0c193182799",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/funty-2.0.0/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.txt",
+          "original_notice_block_sha256": "72641d65642c759f84f06cfbb6028c4f97a5d19387792d0a7c26fae27b5752fb",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:funty",
+            "member": "LICENSE.txt",
+            "sha256": "72641d65642c759f84f06cfbb6028c4f97a5d19387792d0a7c26fae27b5752fb",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d931a11a73e1ef9aa357a8f29089207ec574324d2b87332667a5a0c193182799.txt",
+          "sha256": "d931a11a73e1ef9aa357a8f29089207ec574324d2b87332667a5a0c193182799"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:getrandom",
+      "version": "0.2.15",
+      "source_identity": "c4567c8db10ae91089c99af84c68c38da3ec2f087c3f82960bcdbf3656b6f4d7",
+      "copyright_sha256": "a64453761262d0b3d38eccfb763db17750e3c7559d60e9363afe7354dab82da7",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/getrandom-0.2.15/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "e7330bf53074b4a9c5896f4a03d782be7f163381e45923d5e2369fe194a19f99",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "python-cryptography",
+            "member": "LICENSE.APACHE",
+            "sha256": "aac73b3148f6d1d7111dbca32099f68d26c644c6813ae1e4f05f6579aa2663fe",
+            "license": "Apache-2.0 AND BSD-3-Clause AND PSF-2.0 AND MIT"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "478d530cbce79fc122b1a7c067ad706b000ef79ae914a4d060195f0f23b4a50d",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:getrandom",
+            "member": "LICENSE-MIT",
+            "sha256": "478d530cbce79fc122b1a7c067ad706b000ef79ae914a4d060195f0f23b4a50d",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a64453761262d0b3d38eccfb763db17750e3c7559d60e9363afe7354dab82da7.txt",
+          "sha256": "a64453761262d0b3d38eccfb763db17750e3c7559d60e9363afe7354dab82da7"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:hashbrown",
+      "version": "0.14.5",
+      "source_identity": "e5274423e17b7c9fc20b6e7e208532f9b19825d82dfd615708b70edd83df41f1",
+      "copyright_sha256": "fa174206d617b8dfdebfc14ce2a7ad2158615271f0135cdade4af9decbd0b4b6",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/hashbrown-0.14.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "ae9791f02f2bbe0ce17b434753af97be6e5284b6f8e9f22db3c1f0f11b2e015a",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:hashbrown",
+            "member": "LICENSE-MIT",
+            "sha256": "ae9791f02f2bbe0ce17b434753af97be6e5284b6f8e9f22db3c1f0f11b2e015a",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/fa174206d617b8dfdebfc14ce2a7ad2158615271f0135cdade4af9decbd0b4b6.txt",
+          "sha256": "fa174206d617b8dfdebfc14ce2a7ad2158615271f0135cdade4af9decbd0b4b6"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:hex",
+      "version": "0.4.3",
+      "source_identity": "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70",
+      "copyright_sha256": "8ce2155fc3b33aef3364e187eb4356e70cd4b31f0407f5c89c9bbc36fd07dbfa",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/hex-0.4.3/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/mwitkow/go-conntrack",
+            "license": "Apache-2.0",
+            "copyright_sha256": "32ab60e08da2622252e0e956c9f689f98520406ab73a2f484413f38e5ce141ef",
+            "member": "LICENSE"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "9dde4a6ad496606322ae0b61b70dc7123fa231be543caa0896d567e34d20fbf8",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:hex",
+            "member": "LICENSE-MIT",
+            "sha256": "9dde4a6ad496606322ae0b61b70dc7123fa231be543caa0896d567e34d20fbf8",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8ce2155fc3b33aef3364e187eb4356e70cd4b31f0407f5c89c9bbc36fd07dbfa.txt",
+          "sha256": "8ce2155fc3b33aef3364e187eb4356e70cd4b31f0407f5c89c9bbc36fd07dbfa"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:idna",
+      "version": "0.5.0",
+      "source_identity": "634d9b1461af396cad843f47fdba5597a4f9e6ddd4bfb6ff5d85028c25cb12f6",
+      "copyright_sha256": "d696a8141b4e73668fb0f207eba7215df05f82ac2f7b562ae961a421267389f7",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/idna-0.5.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:idna",
+            "member": "LICENSE-MIT",
+            "sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d696a8141b4e73668fb0f207eba7215df05f82ac2f7b562ae961a421267389f7.txt",
+          "sha256": "d696a8141b4e73668fb0f207eba7215df05f82ac2f7b562ae961a421267389f7"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:idna",
+      "version": "1.0.2",
+      "source_identity": "bd69211b9b519e98303c015e21a007e293db403b6c85b9b124e133d25e242cdd",
+      "copyright_sha256": "b8c8d9a55adaa0f17ab49410f33044159142f0b1fd1d94d7316e25684c18f015",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/idna-1.0.2/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:idna",
+            "member": "LICENSE-MIT",
+            "sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/b8c8d9a55adaa0f17ab49410f33044159142f0b1fd1d94d7316e25684c18f015.txt",
+          "sha256": "b8c8d9a55adaa0f17ab49410f33044159142f0b1fd1d94d7316e25684c18f015"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:indexmap",
+      "version": "2.2.6",
+      "source_identity": "168fb715dda47215e360912c096649d23d58bf392ac62f73919e831745e40f26",
+      "copyright_sha256": "47ddd7d5ce772fb36aa381eab4b0f186de862ae7bd27e98b79e90164f023ddae",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/indexmap-2.2.6/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "4f2ac128e429d9646bf481baaa120eb561234f980503d337c710c06d0af6bbf9",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:indexmap",
+            "member": "LICENSE-MIT",
+            "sha256": "4f2ac128e429d9646bf481baaa120eb561234f980503d337c710c06d0af6bbf9",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/47ddd7d5ce772fb36aa381eab4b0f186de862ae7bd27e98b79e90164f023ddae.txt",
+          "sha256": "47ddd7d5ce772fb36aa381eab4b0f186de862ae7bd27e98b79e90164f023ddae"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:jiter",
+      "version": "0.7.1",
+      "source_identity": "07f69a121b68af57bc10f151f3f67444a64d1d3a0eb48b042801ea917a38dd25",
+      "copyright_sha256": "a5d31310baa2459de5c556f375535c01ee7e33d5271f660c21ea0f4442aecf85",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/jiter-0.7.1/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "1df9b09b4224f291a078f9325aa878be26e83147c6078e0320e94a35c6762da4",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:jiter",
+            "member": "LICENSE",
+            "sha256": "1df9b09b4224f291a078f9325aa878be26e83147c6078e0320e94a35c6762da4",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a5d31310baa2459de5c556f375535c01ee7e33d5271f660c21ea0f4442aecf85.txt",
+          "sha256": "a5d31310baa2459de5c556f375535c01ee7e33d5271f660c21ea0f4442aecf85"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:memchr",
+      "version": "2.7.4",
+      "source_identity": "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3",
+      "copyright_sha256": "767b9a5be5697c6e1d79b3b19bae2b0dc6c5dd4f92095f9441cfd44888ac5c84",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/memchr-2.7.4/copyright",
+      "license": "MIT AND (MIT OR Unlicense)",
+      "original_blocks": [
+        {
+          "member": "COPYING",
+          "original_notice_block_sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+          "license": "MIT OR Unlicense",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "COPYING",
+            "sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+            "license": "MIT OR Unlicense",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "LICENSE-MIT",
+            "sha256": "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/767b9a5be5697c6e1d79b3b19bae2b0dc6c5dd4f92095f9441cfd44888ac5c84.txt",
+          "sha256": "767b9a5be5697c6e1d79b3b19bae2b0dc6c5dd4f92095f9441cfd44888ac5c84"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:percent-encoding",
+      "version": "2.3.1",
+      "source_identity": "e3148f5046208a5d56bcfc03053e3ca6334e51da8dfb19b6cdc8b306fae3283e",
+      "copyright_sha256": "295f16abbeee2d8a6e3285f5636cab144581d094177ead5c775d9f1cdf447271",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/percent-encoding-2.3.1/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:idna",
+            "member": "LICENSE-MIT",
+            "sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/295f16abbeee2d8a6e3285f5636cab144581d094177ead5c775d9f1cdf447271.txt",
+          "sha256": "295f16abbeee2d8a6e3285f5636cab144581d094177ead5c775d9f1cdf447271"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:python3-dll-a",
+      "version": "0.2.10",
+      "source_identity": "bd0b78171a90d808b319acfad166c4790d9e9759bbc14ac8273fe133673dd41b",
+      "copyright_sha256": "4f3028cf83a9c69ffe3058b3669ac7de7c3b030adb9d92beca83fb7a56b5e5f2",
+      "evidence_member": "third-party-notices/watchfiles/cargo/python3-dll-a-0.2.10/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "e604a6a51dc5610e6b0fa639bce91d2749aaf497acf61e5161c2481f91d26c2f",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:python3-dll-a",
+            "member": "LICENSE",
+            "sha256": "e604a6a51dc5610e6b0fa639bce91d2749aaf497acf61e5161c2481f91d26c2f",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/4f3028cf83a9c69ffe3058b3669ac7de7c3b030adb9d92beca83fb7a56b5e5f2.txt",
+          "sha256": "4f3028cf83a9c69ffe3058b3669ac7de7c3b030adb9d92beca83fb7a56b5e5f2"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:radium",
+      "version": "0.7.0",
+      "source_identity": "dc33ff2d4973d518d823d61aa239014831e521c75da58e3df4840d3f47749d09",
+      "copyright_sha256": "c4a0cc1cfbbec36a8954e9dd249a63b06d7206c782a67640131727ebd9b457da",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/radium-0.7.0/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.txt",
+          "original_notice_block_sha256": "fa811b6d5b5d154bff9018882a06d1b0bcbe9c214c64b78aaaeaa59d98a3f3c3",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:radium",
+            "member": "LICENSE.txt",
+            "sha256": "fa811b6d5b5d154bff9018882a06d1b0bcbe9c214c64b78aaaeaa59d98a3f3c3",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/c4a0cc1cfbbec36a8954e9dd249a63b06d7206c782a67640131727ebd9b457da.txt",
+          "sha256": "c4a0cc1cfbbec36a8954e9dd249a63b06d7206c782a67640131727ebd9b457da"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:regex-syntax",
+      "version": "0.8.5",
+      "source_identity": "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c",
+      "copyright_sha256": "3de04888ecbd12dff957c8d90485183309119f96c57713aff216507c53c2c3eb",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/regex-syntax-0.8.5/copyright",
+      "license": "(((MIT OR Apache-2.0) AND Unicode-DFS-2016) AND Apache-2.0 AND MIT) AND Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "14435fbcd271e2783f721b57b7bf4f6502c1379249a4300e0e5bb774686c2d90",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:num-bigint@0.4.6#a5e44f723f1133c9deac646763579fdb3ac745e418f2a7af9cd0c431da1f20b9",
+            "license": "Apache-2.0 AND MIT",
+            "copyright_sha256": "dc4e13cd059367f01591416a51f51598c495ebfd508a4c271c93cc16bce9121e",
+            "member": "LICENSE-MIT"
+          }
+        },
+        {
+          "member": "src/unicode_tables/LICENSE-UNICODE",
+          "original_notice_block_sha256": "ea8df489e83b7674d5c9d50c320bec3b15d2e2eeb7a3a8879a666d91e5640c16",
+          "license": "((MIT OR Apache-2.0) AND Unicode-DFS-2016) AND Apache-2.0 AND MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:unicode-ident@1.0.12#3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b",
+            "license": "((MIT OR Apache-2.0) AND Unicode-DFS-2016) AND Apache-2.0 AND MIT",
+            "copyright_sha256": "33484b53f63ab6e6672f5ad3c28a96ea169314da813218ed234f90f667448c70",
+            "member": "LICENSE-UNICODE"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/3de04888ecbd12dff957c8d90485183309119f96c57713aff216507c53c2c3eb.txt",
+          "sha256": "3de04888ecbd12dff957c8d90485183309119f96c57713aff216507c53c2c3eb"
+        }
+      ],
+      "new_copyright_prefixes_read": [
+        {
+          "member": "src/unicode_tables/LICENSE-UNICODE",
+          "prefix": "UNICODE, INC. LICENSE AGREEMENT - DATA FILES AND SOFTWARE\n\nUnicode Data Files include all data files under the directories\nhttp://www.unicode.org/Public/, http://www.unicode.org/reports/,\nhttp://www.unicode.org/cldr/data/, http://source.icu-project.org/repos/icu/, and\nhttp://www.unicode.org/utility/trac/browser/.\n\nUnicode Data Files do not include PDF online code charts under the\ndirectory http://www.unicode.org/Public/.\n\nSoftware includes any source code published in the Unicode Standard\nor under the directories\nhttp://www.unicode.org/Public/, http://www.unicode.org/reports/,\nhttp://www.unicode.org/cldr/data/, http://source.icu-project.org/repos/icu/, and\nhttp://www.unicode.org/utility/trac/browser/.\n\nNOTICE TO USER: Carefully read the following legal agreement.\nBY DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING UNICODE INC.'S\nDATA FILES (\"DATA FILES\"), AND/OR SOFTWARE (\"SOFTWARE\"),\nYOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE\nTERMS AND CONDITIONS OF THIS AGREEMENT.\nIF YOU DO NOT AGREE, DO NOT DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE\nTHE DATA FILES OR SOFTWARE.\n\nCOPYRIGHT AND PERMISSION NOTICE\n\nCopyright © 1991-2018 Unicode, Inc. All rights reserved.\nDistributed under the Terms of Use in http://www.unicode.org/copyright.html.\n\n"
+        }
+      ]
+    },
+    {
+      "name": "cargo:speedate",
+      "version": "0.15.0",
+      "source_identity": "9a5e7adf4e07e7de39a64d77962ca14a09165e592d42d0c9f9acadb679f4f937",
+      "copyright_sha256": "85d69006cf856ed311edefd92d2754181b01460b0866463bffd0361c0e72a3b3",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/speedate-0.15.0/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "9fdfea2efa6070205b3857ead97b9092729dd900821122691f2a840952846236",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:pydantic-core",
+            "member": "pydantic_core-2.27.1.dist-info/licenses/LICENSE",
+            "sha256": "9fdfea2efa6070205b3857ead97b9092729dd900821122691f2a840952846236",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/85d69006cf856ed311edefd92d2754181b01460b0866463bffd0361c0e72a3b3.txt",
+          "sha256": "85d69006cf856ed311edefd92d2754181b01460b0866463bffd0361c0e72a3b3"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:stable_deref_trait",
+      "version": "1.2.0",
+      "source_identity": "a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3",
+      "copyright_sha256": "4eccd463f3e314c11fb6aa4f8cec8fcee234777f5e48a67aa2e7332015a9a705",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/stable_deref_trait-1.2.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:stable_deref_trait",
+            "member": "LICENSE-MIT",
+            "sha256": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/4eccd463f3e314c11fb6aa4f8cec8fcee234777f5e48a67aa2e7332015a9a705.txt",
+          "sha256": "4eccd463f3e314c11fb6aa4f8cec8fcee234777f5e48a67aa2e7332015a9a705"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:static_assertions",
+      "version": "1.1.0",
+      "source_identity": "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f",
+      "copyright_sha256": "7ac99e6b39599260113264732faf8b647d306f1dda50cdee03b67e0093953ffc",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/static_assertions-1.1.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "95a6a71a30f39d33a1fe6c03a52d1b57f0d1d43305a9137780a0c616231b4a52",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:static_assertions",
+            "member": "LICENSE-MIT",
+            "sha256": "95a6a71a30f39d33a1fe6c03a52d1b57f0d1d43305a9137780a0c616231b4a52",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/7ac99e6b39599260113264732faf8b647d306f1dda50cdee03b67e0093953ffc.txt",
+          "sha256": "7ac99e6b39599260113264732faf8b647d306f1dda50cdee03b67e0093953ffc"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:strum",
+      "version": "0.26.3",
+      "source_identity": "8fec0f0aef304996cf250b31b5a10dee7980c85da9d759361292b8bca5a18f06",
+      "copyright_sha256": "385a0307778d137e4d7b6af5c5906ebdaea5c29976d495b2827d49adf7646c7e",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/strum-0.26.3/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "26da0e99dd332e7626ce0ee45de06548670992e7e321f7edaf17c0b48f126ac7",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:strum",
+            "member": "LICENSE",
+            "sha256": "26da0e99dd332e7626ce0ee45de06548670992e7e321f7edaf17c0b48f126ac7",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/385a0307778d137e4d7b6af5c5906ebdaea5c29976d495b2827d49adf7646c7e.txt",
+          "sha256": "385a0307778d137e4d7b6af5c5906ebdaea5c29976d495b2827d49adf7646c7e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:strum_macros",
+      "version": "0.26.4",
+      "source_identity": "4c6bee85a5a24955dc440386795aa378cd9cf82acd5f764469152d2270e581be",
+      "copyright_sha256": "8207ca44b5140f9220b1cb13443a22213165f38e89ae298db437acd18ef90ba0",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/strum_macros-0.26.4/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "26da0e99dd332e7626ce0ee45de06548670992e7e321f7edaf17c0b48f126ac7",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:strum",
+            "member": "LICENSE",
+            "sha256": "26da0e99dd332e7626ce0ee45de06548670992e7e321f7edaf17c0b48f126ac7",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8207ca44b5140f9220b1cb13443a22213165f38e89ae298db437acd18ef90ba0.txt",
+          "sha256": "8207ca44b5140f9220b1cb13443a22213165f38e89ae298db437acd18ef90ba0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:synstructure",
+      "version": "0.13.1",
+      "source_identity": "c8af7666ab7b6390ab78131fb5b0fce11d6b7a6951602017c35fa82800708971",
+      "copyright_sha256": "1a9d1b3e77f95ec2c95c98251715af9027297bc65d9a951532e8725776fe4e29",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/synstructure-0.13.1/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "3a036676ec8c0dba1c24b96f83595456280b7a754ddee64585dd8048ed2b087f",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:synstructure",
+            "member": "LICENSE",
+            "sha256": "3a036676ec8c0dba1c24b96f83595456280b7a754ddee64585dd8048ed2b087f",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/1a9d1b3e77f95ec2c95c98251715af9027297bc65d9a951532e8725776fe4e29.txt",
+          "sha256": "1a9d1b3e77f95ec2c95c98251715af9027297bc65d9a951532e8725776fe4e29"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:tap",
+      "version": "1.0.1",
+      "source_identity": "55937e1799185b12863d447f42597ed69d9928686b8d88a1df17376a097d8369",
+      "copyright_sha256": "4116894c279ad621d6f18a762866ab2925d0dd3daec12e8a53ae24d9b63a3640",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/tap-1.0.1/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.txt",
+          "original_notice_block_sha256": "386091cda07036e7f6d8e2d30137b358b355484c29a305ececb63d0386025daa",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:tap",
+            "member": "LICENSE.txt",
+            "sha256": "386091cda07036e7f6d8e2d30137b358b355484c29a305ececb63d0386025daa",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/4116894c279ad621d6f18a762866ab2925d0dd3daec12e8a53ae24d9b63a3640.txt",
+          "sha256": "4116894c279ad621d6f18a762866ab2925d0dd3daec12e8a53ae24d9b63a3640"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:tinyvec",
+      "version": "1.6.1",
+      "source_identity": "c55115c6fbe2d2bef26eb09ad74bde02d8255476fc0c7b515ef09fbb35742d82",
+      "copyright_sha256": "05120695278c3e5191dbf20dd93ddd1f267c34790af8bf7056f08c74a8a9d8ae",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/tinyvec-1.6.1/copyright",
+      "license": "Apache-2.0 AND MIT AND Zlib",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE.md",
+          "original_notice_block_sha256": "988b2ce6b5e93eea134cde8c7294e00dc50e5e798e979968a5c62f98b308f686",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT.md",
+          "original_notice_block_sha256": "b39e19dd350574a682343b35ba61389a324b79613c26c2725693f53ebfc28505",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "go:github.com/antchfx/jsonquery",
+            "license": "MIT",
+            "copyright_sha256": "bfb9effe6ece1717c2d5f4691e9724f2b05c322693f2a70bb7809393148c35ba",
+            "member": "LICENSE"
+          }
+        },
+        {
+          "member": "LICENSE-ZLIB.md",
+          "original_notice_block_sha256": "be0e9e35defb43a2ebab2fdb9e40776ed3af7e733e7214a68866fce8fc134cfc",
+          "license": "Zlib",
+          "complete_previously_read_reference": {
+            "component": "cargo:tinyvec",
+            "member": "LICENSE-ZLIB.md",
+            "sha256": "be0e9e35defb43a2ebab2fdb9e40776ed3af7e733e7214a68866fce8fc134cfc",
+            "license": "Zlib",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/05120695278c3e5191dbf20dd93ddd1f267c34790af8bf7056f08c74a8a9d8ae.txt",
+          "sha256": "05120695278c3e5191dbf20dd93ddd1f267c34790af8bf7056f08c74a8a9d8ae"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:unicode-bidi",
+      "version": "0.3.15",
+      "source_identity": "08f95100a766bf4f8f28f90d77e0a5461bbdb219042e7679bebe79004fed8d75",
+      "copyright_sha256": "2b4b198db741b00690c376c62fb342d1cf467aa5795c737f7f1a5c82de586079",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/unicode-bidi-0.3.15/copyright",
+      "license": "Apache-2.0 AND MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "COPYRIGHT",
+          "original_notice_block_sha256": "7c7940368dc9f42d4f9f428662ee2117ec490b32de45382eab47805e1280a754",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:unicode-bidi",
+            "member": "COPYRIGHT",
+            "sha256": "7c7940368dc9f42d4f9f428662ee2117ec490b32de45382eab47805e1280a754",
+            "license": "MIT OR Apache-2.0",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "033a9383ff21d1e4811d98dd2e0081b0ba0d9c9a31d6c7ba9e63e3488479bf29",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:heck@0.5.0#2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea",
+            "license": "Apache-2.0 AND MIT",
+            "copyright_sha256": "7fd379f03eadfc10d86b2ffc28c2f7967a0adb622ea00c021020af016ca32457",
+            "member": "LICENSE-MIT"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/2b4b198db741b00690c376c62fb342d1cf467aa5795c737f7f1a5c82de586079.txt",
+          "sha256": "2b4b198db741b00690c376c62fb342d1cf467aa5795c737f7f1a5c82de586079"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:unicode-normalization",
+      "version": "0.1.23",
+      "source_identity": "a56d1686db2308d901306f92a263857ef59ea39678a5458e7cb17f01415101f5",
+      "copyright_sha256": "b46e47a3cbfb6b5bcafa959576a77ec647df18d615f9b845be44255352c7ee36",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/unicode-normalization-0.1.23/copyright",
+      "license": "Apache-2.0 AND MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "COPYRIGHT",
+          "original_notice_block_sha256": "20cec30ad77804372faa6c82e5a1a4be426a75e32808a159ef646c2037649071",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:unicode-normalization",
+            "member": "COPYRIGHT",
+            "sha256": "20cec30ad77804372faa6c82e5a1a4be426a75e32808a159ef646c2037649071",
+            "license": "MIT OR Apache-2.0",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "033a9383ff21d1e4811d98dd2e0081b0ba0d9c9a31d6c7ba9e63e3488479bf29",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:heck@0.5.0#2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea",
+            "license": "Apache-2.0 AND MIT",
+            "copyright_sha256": "7fd379f03eadfc10d86b2ffc28c2f7967a0adb622ea00c021020af016ca32457",
+            "member": "LICENSE-MIT"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/b46e47a3cbfb6b5bcafa959576a77ec647df18d615f9b845be44255352c7ee36.txt",
+          "sha256": "b46e47a3cbfb6b5bcafa959576a77ec647df18d615f9b845be44255352c7ee36"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:url",
+      "version": "2.5.2",
+      "source_identity": "22784dbdf76fdde8af1aeda5622b546b422b6fc585325248a2bf9f5e41e94d6c",
+      "copyright_sha256": "dfe4b1788d5cd08f49b62141d385fe3eb0a1c14e94c5fb2d24be74caf21bd3f0",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/url-2.5.2/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:idna",
+            "member": "LICENSE-MIT",
+            "sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/dfe4b1788d5cd08f49b62141d385fe3eb0a1c14e94c5fb2d24be74caf21bd3f0.txt",
+          "sha256": "dfe4b1788d5cd08f49b62141d385fe3eb0a1c14e94c5fb2d24be74caf21bd3f0"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:uuid",
+      "version": "1.11.0",
+      "source_identity": "f8c5f0a0af699448548ad1a2fbf920fb4bee257eae39953ba95cb84891a0446a",
+      "copyright_sha256": "e779de615ab5c7f62797caae3a318870ee32e14543d997f94e38710ca2639d2d",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/uuid-1.11.0/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "11cd7e6caed4b2377bdc3a08deb5a565efb76f0d747cfb2e26c7f7c1f6302e54",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:uuid",
+            "member": "LICENSE-MIT",
+            "sha256": "11cd7e6caed4b2377bdc3a08deb5a565efb76f0d747cfb2e26c7f7c1f6302e54",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e779de615ab5c7f62797caae3a318870ee32e14543d997f94e38710ca2639d2d.txt",
+          "sha256": "e779de615ab5c7f62797caae3a318870ee32e14543d997f94e38710ca2639d2d"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:version_check",
+      "version": "0.9.5",
+      "source_identity": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a",
+      "copyright_sha256": "2cdbf83aaf018c89afbe516f1396f529cd99cbcfe994f7ebd2937e47d3bf1c3f",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/version_check-0.9.5/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "ed2fda479dacddadebb37fe6594515ed84a03e892721189c06cf3f86fa8e3af0",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:version_check",
+            "member": "LICENSE-MIT",
+            "sha256": "ed2fda479dacddadebb37fe6594515ed84a03e892721189c06cf3f86fa8e3af0",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/2cdbf83aaf018c89afbe516f1396f529cd99cbcfe994f7ebd2937e47d3bf1c3f.txt",
+          "sha256": "2cdbf83aaf018c89afbe516f1396f529cd99cbcfe994f7ebd2937e47d3bf1c3f"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:write16",
+      "version": "1.0.0",
+      "source_identity": "d1890f4022759daae28ed4fe62859b1236caebfc61ede2f63ed4e695f3f6d936",
+      "copyright_sha256": "b19f3fe77e474040686fe75bf7ee953a5c0e31a42460be36f9b6d95efbced504",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/write16-1.0.0/copyright",
+      "license": "Apache-2.0 AND MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "COPYRIGHT",
+          "original_notice_block_sha256": "48fb3f740d1502eabf5dcfae443b6f6a54221e5e4d0f606eb4513e4b6a545e98",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "cargo:write16",
+            "member": "COPYRIGHT",
+            "sha256": "48fb3f740d1502eabf5dcfae443b6f6a54221e5e4d0f606eb4513e4b6a545e98",
+            "license": "MIT OR Apache-2.0",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "7dc2f64024477c92b147ae4a93bbcef90031b33ba0de6a84bd570d59e6c0688b",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:utf16_iter",
+            "member": "LICENSE-MIT",
+            "sha256": "7dc2f64024477c92b147ae4a93bbcef90031b33ba0de6a84bd570d59e6c0688b",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/b19f3fe77e474040686fe75bf7ee953a5c0e31a42460be36f9b6d95efbced504.txt",
+          "sha256": "b19f3fe77e474040686fe75bf7ee953a5c0e31a42460be36f9b6d95efbced504"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:wyz",
+      "version": "0.5.1",
+      "source_identity": "05f360fc0b24296329c78fda852a1e9ae82de9cf7b27dae4b7f62f118f77b9ed",
+      "copyright_sha256": "a9be72c06f5b69e4f68af561c3f605d1c51d40a7e61dc9cf86577fb06d6494e2",
+      "evidence_member": "third-party-notices/pydantic-core/cargo/wyz-0.5.1/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE.txt",
+          "original_notice_block_sha256": "667fdb63d9abc6e572b47947a9b2ed3d73f317b1a7ee36def6c52b4b83b6b166",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:bitvec",
+            "member": "LICENSE.txt",
+            "sha256": "667fdb63d9abc6e572b47947a9b2ed3d73f317b1a7ee36def6c52b4b83b6b166",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a9be72c06f5b69e4f68af561c3f605d1c51d40a7e61dc9cf86577fb06d6494e2.txt",
+          "sha256": "a9be72c06f5b69e4f68af561c3f605d1c51d40a7e61dc9cf86577fb06d6494e2"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:python-multipart",
+      "version": "0.0.19",
+      "source_identity": "905502ef39050557b7a6af411f454bc19526529ca46ae6831508438890ce12cc",
+      "copyright_sha256": "5c6e4343ace09f0906051582440f318306c5cd0c6c9c38836c08d35a0671f512",
+      "evidence_member": "third-party-notices/python-multipart/copyright",
+      "license": "Apache-2.0",
+      "original_blocks": [
+        {
+          "member": "python_multipart-0.0.19.dist-info/licenses/LICENSE.txt",
+          "original_notice_block_sha256": "a03476989bc7c6dce3b9e5b31d09183a381bd44989e4dce1f52c1edeb5d78c8f",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "pypi:python-multipart",
+            "member": "python_multipart-0.0.19.dist-info/licenses/LICENSE.txt",
+            "sha256": "a03476989bc7c6dce3b9e5b31d09183a381bd44989e4dce1f52c1edeb5d78c8f",
+            "license": "Apache-2.0",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "python_multipart-0.0.19/LICENSE.txt",
+          "original_notice_block_sha256": "a03476989bc7c6dce3b9e5b31d09183a381bd44989e4dce1f52c1edeb5d78c8f",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "pypi:python-multipart",
+            "member": "python_multipart-0.0.19.dist-info/licenses/LICENSE.txt",
+            "sha256": "a03476989bc7c6dce3b9e5b31d09183a381bd44989e4dce1f52c1edeb5d78c8f",
+            "license": "Apache-2.0",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5c6e4343ace09f0906051582440f318306c5cd0c6c9c38836c08d35a0671f512.txt",
+          "sha256": "5c6e4343ace09f0906051582440f318306c5cd0c6c9c38836c08d35a0671f512"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:sniffio",
+      "version": "1.3.1",
+      "source_identity": "f4324edc670a0f49750a81b895f35c3adb843cca46f0530f79fc1babb23789dc",
+      "copyright_sha256": "1e2afad723cf959e578019e6ad5caf988fb2086c753ebb7b6ca06e3f67616f7d",
+      "evidence_member": "third-party-notices/sniffio/copyright",
+      "license": "Apache-2.0 AND MIT AND (MIT OR Apache-2.0)",
+      "original_blocks": [
+        {
+          "member": "sniffio-1.3.1.dist-info/LICENSE",
+          "original_notice_block_sha256": "e0d047cdba609cd20780fd67d58080f864ffc2f63ebd7a294dc5842471ece87e",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "pypi:sniffio",
+            "member": "sniffio-1.3.1.dist-info/LICENSE",
+            "sha256": "e0d047cdba609cd20780fd67d58080f864ffc2f63ebd7a294dc5842471ece87e",
+            "license": "MIT OR Apache-2.0",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "sniffio-1.3.1.dist-info/LICENSE.APACHE2",
+          "original_notice_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "sniffio-1.3.1.dist-info/LICENSE.MIT",
+          "original_notice_block_sha256": "34c2402bc2c1d1977806aa9559ade2e4342800982294477b9d7ab4f98d1657ac",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:sniffio",
+            "member": "sniffio-1.3.1.dist-info/LICENSE.MIT",
+            "sha256": "34c2402bc2c1d1977806aa9559ade2e4342800982294477b9d7ab4f98d1657ac",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "sniffio-1.3.1/LICENSE",
+          "original_notice_block_sha256": "e0d047cdba609cd20780fd67d58080f864ffc2f63ebd7a294dc5842471ece87e",
+          "license": "MIT OR Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "pypi:sniffio",
+            "member": "sniffio-1.3.1.dist-info/LICENSE",
+            "sha256": "e0d047cdba609cd20780fd67d58080f864ffc2f63ebd7a294dc5842471ece87e",
+            "license": "MIT OR Apache-2.0",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "sniffio-1.3.1/LICENSE.APACHE2",
+          "original_notice_block_sha256": "283ea6cc2997a1a70da0049e09adf9317bb60ca1b51279b65196b83a69e1996b",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "sniffio-1.3.1/LICENSE.MIT",
+          "original_notice_block_sha256": "34c2402bc2c1d1977806aa9559ade2e4342800982294477b9d7ab4f98d1657ac",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:sniffio",
+            "member": "sniffio-1.3.1.dist-info/LICENSE.MIT",
+            "sha256": "34c2402bc2c1d1977806aa9559ade2e4342800982294477b9d7ab4f98d1657ac",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/1e2afad723cf959e578019e6ad5caf988fb2086c753ebb7b6ca06e3f67616f7d.txt",
+          "sha256": "1e2afad723cf959e578019e6ad5caf988fb2086c753ebb7b6ca06e3f67616f7d"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:typing-extensions",
+      "version": "4.12.2",
+      "source_identity": "1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8",
+      "copyright_sha256": "d3c82d2713441c4e2162c9161d7cf5a1ecb7b0c40cc69032bd4f594c575913fd",
+      "evidence_member": "third-party-notices/typing-extensions/copyright",
+      "license": "Python-2.0 AND 0BSD",
+      "original_blocks": [
+        {
+          "member": "typing_extensions-4.12.2.dist-info/LICENSE",
+          "original_notice_block_sha256": "0e700f6605c5b82ecda8eba25e24577f7ea7a9842266777093f8756216cabe1e",
+          "license": "Python-2.0 AND 0BSD",
+          "complete_previously_read_reference": {
+            "component": "python3.11",
+            "member": "LICENSE",
+            "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+            "license": "Python-2.0 AND 0BSD AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND MS-RL AND GPL-2.0-or-later AND LicenseRef-Python-Original-Notices"
+          }
+        },
+        {
+          "member": "typing_extensions-4.12.2/LICENSE",
+          "original_notice_block_sha256": "0e700f6605c5b82ecda8eba25e24577f7ea7a9842266777093f8756216cabe1e",
+          "license": "Python-2.0 AND 0BSD",
+          "complete_previously_read_reference": {
+            "component": "python3.11",
+            "member": "LICENSE",
+            "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+            "license": "Python-2.0 AND 0BSD AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND MS-RL AND GPL-2.0-or-later AND LicenseRef-Python-Original-Notices"
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/d3c82d2713441c4e2162c9161d7cf5a1ecb7b0c40cc69032bd4f594c575913fd.txt",
+          "sha256": "d3c82d2713441c4e2162c9161d7cf5a1ecb7b0c40cc69032bd4f594c575913fd"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "pypi:watchfiles",
+      "version": "1.0.0",
+      "source_identity": "37566c844c9ce3b5deb964fe1a23378e575e74b114618d211fbda8f59d7b5dab",
+      "copyright_sha256": "f89ad2de9b8702fff1a83bb6b937e77213006c08ef94b3a32458a4a8cfda0502",
+      "evidence_member": "third-party-notices/watchfiles/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "watchfiles-1.0.0.dist-info/licenses/LICENSE",
+          "original_notice_block_sha256": "8edd7d1ec25e517b82aaa7403185a283c3eaa1f8db633f77b9ec6f1b77884ddd",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:watchfiles",
+            "member": "watchfiles-1.0.0.dist-info/licenses/LICENSE",
+            "sha256": "8edd7d1ec25e517b82aaa7403185a283c3eaa1f8db633f77b9ec6f1b77884ddd",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "watchfiles-1.0.0/LICENSE",
+          "original_notice_block_sha256": "8edd7d1ec25e517b82aaa7403185a283c3eaa1f8db633f77b9ec6f1b77884ddd",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "pypi:watchfiles",
+            "member": "watchfiles-1.0.0.dist-info/licenses/LICENSE",
+            "sha256": "8edd7d1ec25e517b82aaa7403185a283c3eaa1f8db633f77b9ec6f1b77884ddd",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/f89ad2de9b8702fff1a83bb6b937e77213006c08ef94b3a32458a4a8cfda0502.txt",
+          "sha256": "f89ad2de9b8702fff1a83bb6b937e77213006c08ef94b3a32458a4a8cfda0502"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:crossbeam-utils",
+      "version": "0.8.19",
+      "source_identity": "248e3bacc7dc6baa3b21e405ee045c3047101a49145e7e9eca583ab4c2ca5345",
+      "copyright_sha256": "e15fffe9e105801fbb05e248c4ee37167b4ce4f41d221b64336e5efbe7a39d93",
+      "evidence_member": "third-party-notices/watchfiles/cargo/crossbeam-utils-0.8.19/copyright",
+      "license": "Apache-2.0 AND MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE-APACHE",
+          "original_notice_block_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76",
+          "license": "Apache-2.0",
+          "complete_previously_read_reference": {
+            "component": "canonical-license-document",
+            "member": "LICENSES/Apache-2.0.txt",
+            "license": "Apache-2.0",
+            "sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "5a7d13c6710cdec29e74eb3172b80712049c34099ab7259661ada051fc90777b",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:crossbeam-channel",
+            "member": "LICENSE-MIT",
+            "sha256": "5a7d13c6710cdec29e74eb3172b80712049c34099ab7259661ada051fc90777b",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/e15fffe9e105801fbb05e248c4ee37167b4ce4f41d221b64336e5efbe7a39d93.txt",
+          "sha256": "e15fffe9e105801fbb05e248c4ee37167b4ce4f41d221b64336e5efbe7a39d93"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:fsevent-sys",
+      "version": "4.1.0",
+      "source_identity": "76ee7a02da4d231650c7cea31349b889be2f45ddb3ef3032d2ec8185f6313fd2",
+      "copyright_sha256": "a5b495d78d59b0c47da435b0275535136c0a039624812d068b1c840286ff308b",
+      "evidence_member": "third-party-notices/watchfiles/cargo/fsevent-sys-4.1.0/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "983a293c55cd84a374b96ca1aacc798b6d0c6cfb307326d360a8d8e7e131b3c4",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:fsevent-sys",
+            "member": "LICENSE",
+            "sha256": "983a293c55cd84a374b96ca1aacc798b6d0c6cfb307326d360a8d8e7e131b3c4",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a5b495d78d59b0c47da435b0275535136c0a039624812d068b1c840286ff308b.txt",
+          "sha256": "a5b495d78d59b0c47da435b0275535136c0a039624812d068b1c840286ff308b"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:kqueue",
+      "version": "1.0.8",
+      "source_identity": "7447f1ca1b7b563588a205fe93dea8df60fd981423a768bc1c0ded35ed147d0c",
+      "copyright_sha256": "a498a02b579f24456d72f6bfe87de65020f1417cca4367573cca9baa3997c647",
+      "evidence_member": "third-party-notices/watchfiles/cargo/kqueue-1.0.8/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "208693b9bfa93e69337436e8a85ab3ebbb2e9d4ee6ff644474583a5ca8ef31b5",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:kqueue",
+            "member": "LICENSE",
+            "sha256": "208693b9bfa93e69337436e8a85ab3ebbb2e9d4ee6ff644474583a5ca8ef31b5",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/a498a02b579f24456d72f6bfe87de65020f1417cca4367573cca9baa3997c647.txt",
+          "sha256": "a498a02b579f24456d72f6bfe87de65020f1417cca4367573cca9baa3997c647"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:kqueue-sys",
+      "version": "1.0.4",
+      "source_identity": "ed9625ffda8729b85e45cf04090035ac368927b8cebc34898e7c120f52e4838b",
+      "copyright_sha256": "5a24022bf4ab927ae8fccc70eea299da1b59e372eda9d1d898f8a48e04ea6344",
+      "evidence_member": "third-party-notices/watchfiles/cargo/kqueue-sys-1.0.4/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "208693b9bfa93e69337436e8a85ab3ebbb2e9d4ee6ff644474583a5ca8ef31b5",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:kqueue",
+            "member": "LICENSE",
+            "sha256": "208693b9bfa93e69337436e8a85ab3ebbb2e9d4ee6ff644474583a5ca8ef31b5",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/5a24022bf4ab927ae8fccc70eea299da1b59e372eda9d1d898f8a48e04ea6344.txt",
+          "sha256": "5a24022bf4ab927ae8fccc70eea299da1b59e372eda9d1d898f8a48e04ea6344"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:libredox",
+      "version": "0.1.3",
+      "source_identity": "c0ff37bd590ca25063e35af745c343cb7a0271906fb7b37e4813e8f79f00268d",
+      "copyright_sha256": "8464c38c6d229e6be5f6b0b88f9d0bca08a4a8d8169987ea5fe4fe00c08043a6",
+      "evidence_member": "third-party-notices/watchfiles/cargo/libredox-0.1.3/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "7dbbefcddfaa1e0748935e84fe8f3ad29bb21b7556a02e423b47ac48706b5d02",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:libredox",
+            "member": "LICENSE",
+            "sha256": "7dbbefcddfaa1e0748935e84fe8f3ad29bb21b7556a02e423b47ac48706b5d02",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/8464c38c6d229e6be5f6b0b88f9d0bca08a4a8d8169987ea5fe4fe00c08043a6.txt",
+          "sha256": "8464c38c6d229e6be5f6b0b88f9d0bca08a4a8d8169987ea5fe4fe00c08043a6"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:mio",
+      "version": "0.8.11",
+      "source_identity": "a4a650543ca06a924e8b371db273b2756685faae30f8487da1b56505a8f78b0c",
+      "copyright_sha256": "260c89f33f14c336b49f7bd0726086ecd773975b8db848676dc4c4de24ebfdf5",
+      "evidence_member": "third-party-notices/watchfiles/cargo/mio-0.8.11/copyright",
+      "license": "MIT",
+      "original_blocks": [
+        {
+          "member": "LICENSE",
+          "original_notice_block_sha256": "c804065b0956d00a65ce119456ec48ee456f5446b904b07ee85225ba5a88ce41",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:mio",
+            "member": "LICENSE",
+            "sha256": "c804065b0956d00a65ce119456ec48ee456f5446b904b07ee85225ba5a88ce41",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/260c89f33f14c336b49f7bd0726086ecd773975b8db848676dc4c4de24ebfdf5.txt",
+          "sha256": "260c89f33f14c336b49f7bd0726086ecd773975b8db848676dc4c4de24ebfdf5"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:same-file",
+      "version": "1.0.6",
+      "source_identity": "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502",
+      "copyright_sha256": "31666ae0105e1768e14adca5aefba6c1b353be36f6cb7a8aceac920ba5e4195f",
+      "evidence_member": "third-party-notices/watchfiles/cargo/same-file-1.0.6/copyright",
+      "license": "MIT AND (MIT OR Unlicense)",
+      "original_blocks": [
+        {
+          "member": "COPYING",
+          "original_notice_block_sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+          "license": "MIT OR Unlicense",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "COPYING",
+            "sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+            "license": "MIT OR Unlicense",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "739620ea44ad8f99e96ea272e583b63a7d44a83a71250d7550b2544ea6b49fbf",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:same-file",
+            "member": "LICENSE-MIT",
+            "sha256": "739620ea44ad8f99e96ea272e583b63a7d44a83a71250d7550b2544ea6b49fbf",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/31666ae0105e1768e14adca5aefba6c1b353be36f6cb7a8aceac920ba5e4195f.txt",
+          "sha256": "31666ae0105e1768e14adca5aefba6c1b353be36f6cb7a8aceac920ba5e4195f"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:walkdir",
+      "version": "2.5.0",
+      "source_identity": "29790946404f91d9c5d06f9874efddea1dc06c5efe94541a7d6863108e3a5e4b",
+      "copyright_sha256": "eabb2d0ffaedb846ac765a16eeeeef9fd3e942b7eae2b0bcdd2581a90844d49a",
+      "evidence_member": "third-party-notices/watchfiles/cargo/walkdir-2.5.0/copyright",
+      "license": "MIT AND (MIT OR Unlicense)",
+      "original_blocks": [
+        {
+          "member": "COPYING",
+          "original_notice_block_sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+          "license": "MIT OR Unlicense",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "COPYING",
+            "sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+            "license": "MIT OR Unlicense",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "LICENSE-MIT",
+            "sha256": "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/eabb2d0ffaedb846ac765a16eeeeef9fd3e942b7eae2b0bcdd2581a90844d49a.txt",
+          "sha256": "eabb2d0ffaedb846ac765a16eeeeef9fd3e942b7eae2b0bcdd2581a90844d49a"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    },
+    {
+      "name": "cargo:winapi-util",
+      "version": "0.1.9",
+      "source_identity": "cf221c93e13a30d793f7645a0e7762c55d169dbb0a49671918a2319d289b10bb",
+      "copyright_sha256": "7dbf54c573a77512acec3e6efc1bfde9119c5b8b2cfe8e73ec737ab80b01a30e",
+      "evidence_member": "third-party-notices/watchfiles/cargo/winapi-util-0.1.9/copyright",
+      "license": "MIT AND (MIT OR Unlicense)",
+      "original_blocks": [
+        {
+          "member": "COPYING",
+          "original_notice_block_sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+          "license": "MIT OR Unlicense",
+          "complete_previously_read_reference": {
+            "component": "cargo:aho-corasick",
+            "member": "COPYING",
+            "sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+            "license": "MIT OR Unlicense",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        },
+        {
+          "member": "LICENSE-MIT",
+          "original_notice_block_sha256": "739620ea44ad8f99e96ea272e583b63a7d44a83a71250d7550b2544ea6b49fbf",
+          "license": "MIT",
+          "complete_previously_read_reference": {
+            "component": "cargo:same-file",
+            "member": "LICENSE-MIT",
+            "sha256": "739620ea44ad8f99e96ea272e583b63a7d44a83a71250d7550b2544ea6b49fbf",
+            "license": "MIT",
+            "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+          }
+        }
+      ],
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Runtime-exact-notices/7dbf54c573a77512acec3e6efc1bfde9119c5b8b2cfe8e73ec737ab80b01a30e.txt",
+          "sha256": "7dbf54c573a77512acec3e6efc1bfde9119c5b8b2cfe8e73ec737ab80b01a30e"
+        }
+      ],
+      "new_copyright_prefixes_read": []
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "newly_read_original_blocks": [
+    {
+      "component": "cargo:aho-corasick",
+      "member": "COPYING",
+      "sha256": "65314a6c96683f76f7495709bb0ddecb4eaa6fa244b28f23c4812ef8e5524066",
+      "license": "MIT OR Unlicense",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "pypi:sniffio",
+      "member": "sniffio-1.3.1.dist-info/LICENSE",
+      "sha256": "e0d047cdba609cd20780fd67d58080f864ffc2f63ebd7a294dc5842471ece87e",
+      "license": "MIT OR Apache-2.0",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ocamlbuild",
+      "member": "manual/LICENSE",
+      "sha256": "d6939d2babd8b08f202fff62e930a79cc86a68eaaffb2002dd6de8a46c64f162",
+      "license": "CC0-1.0",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "jool",
+      "member": "license.md",
+      "sha256": "fc88f3b8905a67a4f9e7f492af9bee53b9575893b3ed34917d69cb99fd47d3de",
+      "license": "GPL-2.0-only AND GFDL-1.3-only",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:unicode-normalization",
+      "member": "COPYRIGHT",
+      "sha256": "20cec30ad77804372faa6c82e5a1a4be426a75e32808a159ef646c2037649071",
+      "license": "MIT OR Apache-2.0",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:unicode-bidi",
+      "member": "COPYRIGHT",
+      "sha256": "7c7940368dc9f42d4f9f428662ee2117ec490b32de45382eab47805e1280a754",
+      "license": "MIT OR Apache-2.0",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:dune",
+      "member": "doc/reference/dune-project/license.rst",
+      "sha256": "9fe5daf89c28803248455bbfddffb78e69c2102b4921822c437921e4877324a8",
+      "license": null,
+      "method": "Complete original block read. Original author/permission scope retained. Support-only metadata is not an independent license grant."
+    },
+    {
+      "component": "opam:sexplib",
+      "member": "COPYRIGHT.txt",
+      "sha256": "3b694a4daeaf50146efe4f2c8641109a579bb037af7b4d7b3e37a281ff143a2c",
+      "license": null,
+      "method": "Complete original block read. Original author/permission scope retained. Support-only metadata is not an independent license grant."
+    },
+    {
+      "component": "pypi:python-multipart",
+      "member": "python_multipart-0.0.19.dist-info/licenses/LICENSE.txt",
+      "sha256": "a03476989bc7c6dce3b9e5b31d09183a381bd44989e4dce1f52c1edeb5d78c8f",
+      "license": "Apache-2.0",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "udp-broadcast-relay",
+      "member": "debian/copyright",
+      "sha256": "b039bad951142e9a5c06a11aa3a201c033012d5b22e5adf13afd4b1cd34691fb",
+      "license": "GPL-2.0-or-later",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:write16",
+      "member": "COPYRIGHT",
+      "sha256": "48fb3f740d1502eabf5dcfae443b6f6a54221e5e4d0f606eb4513e4b6a545e98",
+      "license": "MIT OR Apache-2.0",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:dune",
+      "member": "vendor/patch/LICENSE.md",
+      "sha256": "ee77ee664ffb816937467e844338bab2dd2b006f5e5e615ecb7c53b30b6e5c44",
+      "license": "ISC",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ezjsonm",
+      "member": "LICENSE",
+      "sha256": "5b158665042dac0f92fa3993421a98f45e50568c56fbeefe12cdd9398637e1d0",
+      "license": "ISC",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:tinyvec",
+      "member": "LICENSE-ZLIB.md",
+      "sha256": "be0e9e35defb43a2ebab2fdb9e40776ed3af7e733e7214a68866fce8fc134cfc",
+      "license": "Zlib",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:tinyvec_macros",
+      "member": "LICENSE-ZLIB.md",
+      "sha256": "26d1e12fda78c82891263c8f1251bc22e629ef732c6ca4346fbfddc3594a0dd9",
+      "license": "Zlib",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:hex",
+      "member": "LICENSE.md",
+      "sha256": "8c2b35e47bc8b48dbc228825daa8539382a5f2c1f5db4bad571a38227be99488",
+      "license": "ISC",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:xml-light",
+      "member": "LICENSE",
+      "sha256": "31a186cbc3fb1616e4ba52bef9c704dcf8b066623301efb9ee763e3d70151311",
+      "license": "LicenseRef-OCaml-Library-Linking-Exception",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "pypi:sniffio",
+      "member": "sniffio-1.3.1.dist-info/LICENSE.MIT",
+      "sha256": "34c2402bc2c1d1977806aa9559ade2e4342800982294477b9d7ab4f98d1657ac",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:equivalent",
+      "member": "LICENSE-MIT",
+      "sha256": "4428cd87371acbd49f9f6380125492cd1e89df621d2fd7f55e30a0891f96a433",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:indexmap",
+      "member": "LICENSE-MIT",
+      "sha256": "4f2ac128e429d9646bf481baaa120eb561234f980503d337c710c06d0af6bbf9",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:synstructure",
+      "member": "LICENSE",
+      "sha256": "3a036676ec8c0dba1c24b96f83595456280b7a754ddee64585dd8048ed2b087f",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:utf16_iter",
+      "member": "LICENSE-MIT",
+      "sha256": "7dc2f64024477c92b147ae4a93bbcef90031b33ba0de6a84bd570d59e6c0688b",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ctypes",
+      "member": "LICENSE",
+      "sha256": "8607404171de6993bd1a4dc7f823cdd90b99b6a12b13a42c7506b3f37f992d33",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:ahash",
+      "member": "LICENSE-MIT",
+      "sha256": "d03325792f3dbc2674fb489cc812dc0e792f4c627a660275ebabe1d9a229de62",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:stable_deref_trait",
+      "member": "LICENSE-MIT",
+      "sha256": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:zerocopy",
+      "member": "LICENSE-MIT",
+      "sha256": "a03d4daa4f46496a592dbf6734f5ee16ed52f1eb7a56ae4648d609ebf0efd0b7",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:hashbrown",
+      "member": "LICENSE-MIT",
+      "sha256": "ae9791f02f2bbe0ce17b434753af97be6e5284b6f8e9f22db3c1f0f11b2e015a",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:integers",
+      "member": "LICENSE.md",
+      "sha256": "d65f2c2e4be0c49461f67925d396efa75ffc4a81cf929507c3af3d0cbe7193ab",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:tinyvec_macros",
+      "member": "LICENSE-MIT.md",
+      "sha256": "d9ec1d89801f4ea76d05dbde2c3a09697c1b10001feeded1a2ae721321ff5aa6",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:libredox",
+      "member": "LICENSE",
+      "sha256": "7dbbefcddfaa1e0748935e84fe8f3ad29bb21b7556a02e423b47ac48706b5d02",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:notify",
+      "member": "file-id/LICENSE-MIT",
+      "sha256": "4b2af3889ac2bda608aaec4d0ce8fa277c6338fa293b1925e1148f1a498834d8",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:dune",
+      "member": "vendor/lwd/LICENSE",
+      "sha256": "effdfd7196bdd26dd0ccddc24e5bd0f4abe3ac30cfed573a70cacfacd3d3fbab",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:enum_dispatch",
+      "member": "LICENSE",
+      "sha256": "5c0ef05f84394e44c041d9a28fc66d5f62158baa861ec1b3496f21815af8dade",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ctypes-build",
+      "member": "LICENSE",
+      "sha256": "53614b198e16b3cab37b05f9678feda5038136271cc3d1b6b4ac7bc686147d26",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:form_urlencoded",
+      "member": "LICENSE-MIT",
+      "sha256": "33ed9a8ecf556f161ec5d7e8761712f404d082bf9eeb8f6085d43517b5938be4",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:idna",
+      "member": "LICENSE-MIT",
+      "sha256": "270843d8187195a62f779cd69500f5a249b1aa06733eed10c8b39ab8cda2a253",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:static_assertions",
+      "member": "LICENSE-MIT",
+      "sha256": "95a6a71a30f39d33a1fe6c03a52d1b57f0d1d43305a9137780a0c616231b4a52",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:strum",
+      "member": "LICENSE",
+      "sha256": "26da0e99dd332e7626ce0ee45de06548670992e7e321f7edaf17c0b48f126ac7",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:either",
+      "member": "LICENSE",
+      "sha256": "23ba8ea3e60ea26ccc68c642b62c00b3dff6b41b7290757df4e3f25495ac1c71",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:kqueue",
+      "member": "LICENSE",
+      "sha256": "208693b9bfa93e69337436e8a85ab3ebbb2e9d4ee6ff644474583a5ca8ef31b5",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:radium",
+      "member": "LICENSE.txt",
+      "sha256": "fa811b6d5b5d154bff9018882a06d1b0bcbe9c214c64b78aaaeaa59d98a3f3c3",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "pypi:uvloop",
+      "member": "uvloop-0.21.0/vendor/libuv/LICENSE",
+      "sha256": "889d426101c09310e25a62beb458afb207cd69e34a318a54d4316cd2892d0289",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "pypi:pydantic-core",
+      "member": "pydantic_core-2.27.1.dist-info/licenses/LICENSE",
+      "sha256": "9fdfea2efa6070205b3857ead97b9092729dd900821122691f2a840952846236",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:aho-corasick",
+      "member": "LICENSE-MIT",
+      "sha256": "154c1af2b38e25e5c18613dfe352eed29b0863cb39e494007822cdeb39150ac5",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:fsevent-sys",
+      "member": "LICENSE",
+      "sha256": "983a293c55cd84a374b96ca1aacc798b6d0c6cfb307326d360a8d8e7e131b3c4",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:same-file",
+      "member": "LICENSE-MIT",
+      "sha256": "739620ea44ad8f99e96ea272e583b63a7d44a83a71250d7550b2544ea6b49fbf",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:bitvec",
+      "member": "LICENSE.txt",
+      "sha256": "667fdb63d9abc6e572b47947a9b2ed3d73f317b1a7ee36def6c52b4b83b6b166",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:funty",
+      "member": "LICENSE.txt",
+      "sha256": "72641d65642c759f84f06cfbb6028c4f97a5d19387792d0a7c26fae27b5752fb",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:mio",
+      "member": "LICENSE",
+      "sha256": "c804065b0956d00a65ce119456ec48ee456f5446b904b07ee85225ba5a88ce41",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:version_check",
+      "member": "LICENSE-MIT",
+      "sha256": "ed2fda479dacddadebb37fe6594515ed84a03e892721189c06cf3f86fa8e3af0",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ppx_deriving",
+      "member": "LICENSE.txt",
+      "sha256": "577e71e03a6c4ed230790b54e0b137d830a3ece1cff71f0b7b5db03ac49c252f",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ppx_deriving_yojson",
+      "member": "LICENSE.txt",
+      "sha256": "59277dfd90768695c9c3bf91aaf7b66de4123ab7276cbe1482e0b09a611de2fb",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:num",
+      "member": "toplevel/LICENSE-findlib",
+      "sha256": "82542d2f71da991de4f802e941d765b897f501db5d7a3d5a700e89a15de7073b",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:tap",
+      "member": "LICENSE.txt",
+      "sha256": "386091cda07036e7f6d8e2d30137b358b355484c29a305ececb63d0386025daa",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:jiter",
+      "member": "LICENSE",
+      "sha256": "1df9b09b4224f291a078f9325aa878be26e83147c6078e0320e94a35c6762da4",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "pypi:httptools",
+      "member": "httptools-0.6.4.dist-info/LICENSE",
+      "sha256": "f4c4ead59af266e5f42e4074e133875eb4220a1a9fa5e7a83d8267da90108251",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:crossbeam-channel",
+      "member": "LICENSE-MIT",
+      "sha256": "5a7d13c6710cdec29e74eb3172b80712049c34099ab7259661ada051fc90777b",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:dune",
+      "member": "vendor/ocaml-lmdb/LICENSE.md",
+      "sha256": "cf50307f68f8280c6e5fe86266c791f3194cef7dcbdeff71f2805a319d91c790",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "pypi:uvloop",
+      "member": "uvloop-0.21.0.dist-info/LICENSE-MIT",
+      "sha256": "5cb0b69e4d41bd3e7f614fad24406c551fcd77a9690aad6fe332b62de027b943",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "pypi:watchfiles",
+      "member": "watchfiles-1.0.0.dist-info/licenses/LICENSE",
+      "sha256": "8edd7d1ec25e517b82aaa7403185a283c3eaa1f8db633f77b9ec6f1b77884ddd",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:csexp",
+      "member": "LICENSE.md",
+      "sha256": "5934bcde31839260a2b27390e7adfd9df8e5ba5b28eb10d81cc47742e8180660",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ppxlib",
+      "member": "LICENSE.md",
+      "sha256": "ae238933eefa84e935ab34116d0de63851522b33487c310d8cd404c01a3ddc52",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:dune",
+      "member": "vendor/spawn/LICENSE.md",
+      "sha256": "e62c0ad5948e52df5249aa15cea010348e8eca30abb87d47769d843a5cec753e",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ocaml-compiler-libs",
+      "member": "LICENSE.md",
+      "sha256": "6b2dfd4812557e3fcaa8a5c944f48ad87be0ab3303c203bcc175184690e9f81e",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ppxlib",
+      "member": "bench/vendored/ppx_sexp_conv.v0.15.1/LICENSE.md",
+      "sha256": "2c7cb343a10cbc4a21c8a7cfe9ab08bc66259d58c6f248297965a757d6f040f2",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:python3-dll-a",
+      "member": "LICENSE",
+      "sha256": "e604a6a51dc5610e6b0fa639bce91d2749aaf497acf61e5161c2481f91d26c2f",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:hex",
+      "member": "LICENSE-MIT",
+      "sha256": "9dde4a6ad496606322ae0b61b70dc7123fa231be543caa0896d567e34d20fbf8",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:parsexp",
+      "member": "LICENSE.md",
+      "sha256": "7383fe80dd3fe33a933bbfff7d2824917127af1f003e011ad4313b218ad8b9c3",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:sexplib",
+      "member": "LICENSE.md",
+      "sha256": "7e0de27f9e02959570b979de350d91ce028dc7e451880bfd90c98502b9c8b502",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:getrandom",
+      "member": "LICENSE-MIT",
+      "sha256": "478d530cbce79fc122b1a7c067ad706b000ef79ae914a4d060195f0f23b4a50d",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "cargo:uuid",
+      "member": "LICENSE-MIT",
+      "sha256": "11cd7e6caed4b2377bdc3a08deb5a565efb76f0d747cfb2e26c7f7c1f6302e54",
+      "license": "MIT",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:ocaml-base-compiler",
+      "member": "manual/LICENSE-for-the-manual",
+      "sha256": "c70a48bc6981785e1f087d7e7869650da2d6ed9b7d79bbe9f94d3a3d10eedc45",
+      "license": "CC-BY-SA-4.0",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:cstruct",
+      "member": "LICENSE.md",
+      "sha256": "c1e61fdb97f372448790b5f0b005799dc1c01c604dd26528170c02d37a1c2f59",
+      "license": "ISC",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:dune",
+      "member": "vendor/bigstringaf/LICENSE",
+      "sha256": "06bb53881762f778903ffc7f635949bbbce16ffff72de85a833abf2285c6a150",
+      "license": "BSD-3-Clause",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    },
+    {
+      "component": "opam:cppo",
+      "member": "LICENSE.md",
+      "sha256": "ace6acd11e7251426e333247bd637061fa0438abaa5a31dd8bbe4395e83f6e43",
+      "license": "BSD-3-Clause",
+      "method": "Complete original grant/declaration read; root and separately licensed component scopes remain independent."
+    }
+  ],
+  "scope": "Exact source/notice pairs from a frozen observed inventory. Full original bodies reused with exact comparisons; distinct packaging metadata and copyrights remain retained. No compilation or ISO recreation required for this notice reconciliation."
+}

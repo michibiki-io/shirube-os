@@ -1,0 +1,266 @@
+{
+  "kind": "exact-sdk-current-lock-original-notice-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "name": "pypi:backports-tarfile",
+      "version": "1.2.0",
+      "source_identity": "d75e02c268746e1b8144c278978b6e98e85de6ad16f8e4b0844a154557eca991",
+      "notice_sha256": "1b912f63a9b3848a524fb1de59bcc909090e6ea4da6adda28b3622e29d9b4e6d",
+      "notice_member": "salt-sdk/notices/d75e02c268746e1b8144c278978b6e98e85de6ad16f8e4b0844a154557eca991.copyright",
+      "license": "MIT",
+      "original_notice_declarations": [
+        {
+          "member": "backports_tarfile-1.2.0/LICENSE",
+          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741"
+        },
+        {
+          "member": "backports_tarfile-1.2.0/backports/tarfile/__init__.py",
+          "sha256": "3f07f6a9421f0744a89493c229cc77bf3dd412efda89db38838b007f1cbde2a8",
+          "prefix_bytes": 1368,
+          "notice_sha256": "13d8bece0ca98d87a405d27f47fa4844fc657d473fa79b35d86ea423456df967"
+        }
+      ]
+    },
+    {
+      "name": "pypi:cffi",
+      "version": "2.0.0",
+      "source_identity": "44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529",
+      "notice_sha256": "cf739db23d8c4c17eefce9f4274903e523674fbbf7bdab058bcc6e47835aea97",
+      "notice_member": "salt-sdk/notices/44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529.copyright",
+      "license": "MIT-0",
+      "original_notice_declarations": [
+        {
+          "member": "cffi-2.0.0/AUTHORS",
+          "sha256": "2a67a60bbfb33759d67d645ff131b8e6d6bc4cafc232d751fcac3eda4d314cc8"
+        },
+        {
+          "member": "cffi-2.0.0/LICENSE",
+          "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+        }
+      ]
+    },
+    {
+      "name": "pypi:pycparser",
+      "version": "2.21",
+      "source_identity": "e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206",
+      "notice_sha256": "fc0eebb4a8e268bd3e8e8dda33d8f577d033672236dafbceeb2ef2f39a8487f6",
+      "notice_member": "salt-sdk/notices/e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206.copyright",
+      "license": "BSD-3-Clause",
+      "original_notice_declarations": [
+        {
+          "member": "pycparser-2.21/LICENSE",
+          "sha256": "3e7df25b8dfb658c9a91501930d4d943b05087a8347c7e2b4325616af535047b"
+        },
+        {
+          "member": "pycparser-2.21/pycparser/ply/lex.py",
+          "sha256": "ed0a25e7bc7bd361d9c2303764ba7ef38094116ab511e856f8debb5b38218be3",
+          "prefix_bytes": 1713,
+          "notice_sha256": "9d116dbd98353b928552d38a1079046e00240ea0842255f17e825694cd3d68c7"
+        },
+        {
+          "member": "pycparser-2.21/pycparser/ply/yacc.py",
+          "sha256": "79ab520e444b811afa5f7fa1a0393f49042fd3ae51d0174bd8aedf439e028153",
+          "prefix_bytes": 1714,
+          "notice_sha256": "d9290f9c057aa28f633fb72522937b3ecef3df5f0339fb932956e1db66e725ea"
+        },
+        {
+          "member": "pycparser-2.21/pycparser/ply/cpp.py",
+          "sha256": "52d0b7ca54d6a79ff530a03e3cb0aec0a411f3348e9e51ae18621dce3f314bdf",
+          "prefix_bytes": 336,
+          "notice_sha256": "b3c28d35224c7a5a2611c94b900e863d3b2d105222d997bdfe5dc678e9159015"
+        }
+      ]
+    },
+    {
+      "name": "pypi:timelib",
+      "version": "0.3.0",
+      "source_identity": "d1b22706557186e6058da88ba0f85837401b2ae9de157f59353dc978d825187a",
+      "notice_sha256": "066f5b1b2c013faa9830356a9920480fc2cca683a8270ee075fbc9eb4cf04df3",
+      "notice_member": "salt-sdk/notices/d1b22706557186e6058da88ba0f85837401b2ae9de157f59353dc978d825187a.copyright",
+      "license": "Zlib AND PHP-3.01",
+      "original_notice_declarations": [
+        {
+          "member": "timelib-0.3.0/README.rst",
+          "sha256": "df0d75d7767161f78a04fcc1f2db204b05bd426c36ee6d2b114a4dddb6815b87"
+        }
+      ]
+    },
+    {
+      "name": "pypi:virtualenv",
+      "version": "20.36.1",
+      "source_identity": "8befb5c81842c641f8ee658481e42641c68b5eab3521d8e092d18320902466ba",
+      "notice_sha256": "250a074f2b3ba1f20a85ee1b169e6bdf5db6fe2ff30b0e56f9c142744f01f07a",
+      "notice_member": "salt-sdk/notices/8befb5c81842c641f8ee658481e42641c68b5eab3521d8e092d18320902466ba.copyright",
+      "license": "MIT",
+      "original_notice_declarations": [
+        {
+          "member": "virtualenv-20.36.1/LICENSE",
+          "sha256": "5c15919378c5b2aaab7b19cea70d8cdc75f76879e32454e4c0399f8b71d171e9"
+        }
+      ]
+    },
+    {
+      "name": "salt-sdk:zlib",
+      "version": "1.3.1",
+      "source_identity": "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23",
+      "notice_sha256": "15adddcce0dc2ecc4457f592e33513dec6d908d63107ee28683d15ad57cf75bb",
+      "notice_member": "salt-sdk/notices/9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23.copyright",
+      "license": "Zlib AND BSL-1.0",
+      "original_notice_declarations": [
+        {
+          "member": "zlib-1.3.1/LICENSE",
+          "sha256": "845efc77857d485d91fb3e0b884aaa929368c717ae8186b66fe1ed2495753243"
+        },
+        {
+          "member": "zlib-1.3.1/contrib/dotzlib/LICENSE_1_0.txt",
+          "sha256": "36266a8fd073568394cb81cdb2b124f7fdae2c64c1a7ed09db34b4d22efa2951"
+        }
+      ]
+    },
+    {
+      "name": "salt-sdk:bzip2",
+      "version": "1.0.8",
+      "source_identity": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269",
+      "notice_sha256": "6d1ec2a25e39d6a89b778b2fb4f8600a889578a96700052cda564fcc75f08db8",
+      "notice_member": "salt-sdk/notices/ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269.copyright",
+      "license": "bzip2-1.0.6",
+      "original_notice_declarations": [
+        {
+          "member": "bzip2-1.0.8/LICENSE",
+          "sha256": "c6dbbf828498be844a89eaa3b84adbab3199e342eb5cb2ed2f0d4ba7ec0f38a3"
+        }
+      ]
+    },
+    {
+      "name": "salt-sdk:expat",
+      "version": "2.7.4",
+      "source_identity": "9e9cabb457c1e09de91db2706d8365645792638eb3be1f94dbb2149301086ac0",
+      "notice_sha256": "23334ebb5dbbac70861d3f62c5d77275bbfa35e3c14fe490072cc89dfea1b070",
+      "notice_member": "salt-sdk/notices/9e9cabb457c1e09de91db2706d8365645792638eb3be1f94dbb2149301086ac0.copyright",
+      "license": "MIT",
+      "original_notice_declarations": [
+        {
+          "member": "expat-2.7.4/COPYING",
+          "sha256": "31b15de82aa19a845156169a17a5488bf597e561b2c318d159ed583139b25e87"
+        },
+        {
+          "member": "expat-2.7.4/AUTHORS",
+          "sha256": "59f14371c6b75912cfebb46e6247ee5146766e803a0365b124e5d3011e7d0877"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:cffi",
+      "version": "2.1.1",
+      "source_identity": "dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be",
+      "notice_sha256": "30297127e0b73b68928bd68a013d2828d303807a0a2f77f4f0d05417af425e5b",
+      "notice_member": "salt-sdk/notices/dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be.copyright",
+      "license": "MIT-0",
+      "original_notice_declarations": [
+        {
+          "member": "cffi-2.1.1/LICENSE",
+          "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+        },
+        {
+          "member": "cffi-2.1.1/AUTHORS",
+          "sha256": "2a67a60bbfb33759d67d645ff131b8e6d6bc4cafc232d751fcac3eda4d314cc8"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:coherent-licensed",
+      "version": "0.5.2",
+      "source_identity": "d8071403ce742d3ac3592ddc4fb7057a46caffb415b928b4d52802e5f208416d",
+      "notice_sha256": "3d5448f56905bf15279aa71cc9ce50a2fc8d1f22b9d5dd5f2cfb35403de81c36",
+      "notice_member": "salt-sdk/notices/d8071403ce742d3ac3592ddc4fb7057a46caffb415b928b4d52802e5f208416d.copyright",
+      "license": "MIT",
+      "original_notice_declarations": [
+        {
+          "member": "coherent_licensed-0.5.2/LICENSE",
+          "sha256": "5a57cb4db85e2a2dd88c290628908add57e3451449e0a9a71fdfb38776fd759d"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:flit-core",
+      "version": "3.12.0",
+      "source_identity": "18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2",
+      "notice_sha256": "fb76ffa7830e1c9f2a0a2598dbad3d84167fe3043f7dec3a2c76e4a9e90ee1cb",
+      "notice_member": "salt-sdk/notices/18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2.copyright",
+      "license": "BSD-3-Clause AND MIT",
+      "original_notice_declarations": [
+        {
+          "member": "flit_core-3.12.0/LICENSE",
+          "sha256": "35b4f1dec512e617077fd6980dbb43ef8c2887adc5d0185edb4c04da175dd816"
+        },
+        {
+          "member": "flit_core-3.12.0/flit_core/vendor/tomli-1.2.3.dist-info/LICENSE",
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep517/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep621/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep621_license_files/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/pep621_license_files/module/vendor/LICENSE_VENDOR",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-3.12.0/tests_core/samples/with_data_dir/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:flit-core",
+      "version": "4.2.0",
+      "source_identity": "84e4e4d8fdd45ba2613800a3ebc6834de26d47ec9746efc3719f94181137b460",
+      "notice_sha256": "0b1621523c39a0374588b14286121103b35f744f00d4937f08841d1f796676a3",
+      "notice_member": "salt-sdk/notices/84e4e4d8fdd45ba2613800a3ebc6834de26d47ec9746efc3719f94181137b460.copyright",
+      "license": "BSD-3-Clause AND MIT",
+      "original_notice_declarations": [
+        {
+          "member": "flit_core-4.2.0/LICENSE",
+          "sha256": "35b4f1dec512e617077fd6980dbb43ef8c2887adc5d0185edb4c04da175dd816"
+        },
+        {
+          "member": "flit_core-4.2.0/flit_core/vendor/tomli-1.2.3.dist-info/LICENSE",
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep517/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep621/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep621_license_files/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/pep621_license_files/module/vendor/LICENSE_VENDOR",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        },
+        {
+          "member": "flit_core-4.2.0/tests_core/samples/with_data_dir/LICENSE",
+          "sha256": "729df96f52c48b21fb51c0616ffad1f7170ec07656b0faf1d5b4bf72e376130f"
+        }
+      ]
+    }
+  ],
+  "count": 12,
+  "scope": "All complete aggregate notices read. Current-lock declarations regenerated from original source hashes, including additional tarfile/PLY/CFFI attribution. Other unresolved SDK inputs remain blocked.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

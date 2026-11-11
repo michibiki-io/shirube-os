@@ -1,0 +1,95 @@
+{
+  "kind": "diagnostic-debian-libxcrypt-preferred-source-export",
+  "status": "PASS_COMPONENT_SOURCE_EXPORT_AND_NORMAL_BUILD",
+  "source": "libxcrypt",
+  "version": "1:4.4.33-2",
+  "original_descriptor_sha256": "910ae411c9462f07667e46540af3dbb30f46413ddd90f1f176781666042dbb38",
+  "preferred_source_identity": "ee5eda707069be601bf8eb8e61342e9519d9187c2974bae3808071e80a1a4754",
+  "excluded": [
+    {
+      "member": "test/alg-des.c",
+      "sha256": "9fea30478d98555dd63e728337d3ee92b39a30a72ae397c3dd2135d315f1b28f"
+    },
+    {
+      "member": "test/alg-md4.c",
+      "sha256": "89ed45e58a97b7ff77b14bc84ef2af9ab8f4c2a1c9d6869d2bf9e1926dc40ef3"
+    },
+    {
+      "member": "test/alg-md5.c",
+      "sha256": "b170a320fb0a25f2b73f663e0665301c44f5a0042f3e6c1fea8dca71cea70c43"
+    },
+    {
+      "member": "test/alg-sha256.c",
+      "sha256": "cdc994d99bc2eaf431f93f9176f7929c907d1f5b3e8c5f028c5feab83ab0b963"
+    },
+    {
+      "member": "test/alg-sha512.c",
+      "sha256": "db248ba87ad2c9b58c56b3b4fe4cbf51db65586356a4302982eb85a182f413ea"
+    },
+    {
+      "member": "test/des-cases.h",
+      "sha256": "981f38df966ac20f7654958d50cafdcc042037ad2760e1461ed24f89108886c9"
+    },
+    {
+      "member": "test/des-obsolete.c",
+      "sha256": "6905966af0e8ccc4ed6a51c2ce59583409560be2c413b94b4363acec7f148b4f"
+    },
+    {
+      "member": "test/des-obsolete_r.c",
+      "sha256": "a52e5c51f63abb8996d23db6bf5a8e48f91f90ca501b205f9939c99a42b04495"
+    },
+    {
+      "member": "test/gensalt.c",
+      "sha256": "03092022b36d5b4108c474c099e1d300fdb2dadb50c3f1359245fe8099db2132"
+    }
+  ],
+  "modified_build_control": {
+    "member": "Makefile.am",
+    "original_sha256": "ab8c03d9321acdd36bf292b2342f6364972ca2c7c9eb687297dd85b05d8d8e3d",
+    "modified_sha256": "3f02d72fca674c3c2756806a5ef3b0d420795760a85570682d9e4b87f5004d26"
+  },
+  "retained_unchanged_regular_files": 195,
+  "library_and_header_sources_unchanged": true,
+  "raw_original_archives_delivered": false,
+  "validation": {
+    "amd64": {
+      "normal_library_build_install": "PASS",
+      "container_exit_code": 0,
+      "oom_killed": false,
+      "seconds": 10.978,
+      "network": "none",
+      "cpu_limit": 2,
+      "memory_limit_gib": 1
+    },
+    "arm64": {
+      "normal_library_build_install": "PASS",
+      "container_exit_code": 0,
+      "oom_killed": false,
+      "seconds": 40.111,
+      "network": "none",
+      "cpu_limit": 2,
+      "memory_limit_gib": 1
+    }
+  },
+  "commands": [
+    "autoreconf -fi",
+    "./configure --disable-werror --prefix=/usr --disable-xcrypt-compat-files --enable-obsolete-api=glibc",
+    "make -j2",
+    "make install DESTDIR=/installed"
+  ],
+  "limitations": {
+    "original_check_suite": "INCOMPLETE_NOT_RUN",
+    "debian_binary_package_rebuild": "NOT_RUN",
+    "bit_identical_binary_reproduction": "NOT_RUN",
+    "whole_os_reconstruction": "NOT_ESTABLISHED"
+  },
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "source_archive_byte_verification": {
+    "status": "PASS",
+    "regular_files": 200,
+    "original_raw_archives_absent": true,
+    "excluded_test_members_absent": true,
+    "original_identity_has_no_redistribution_approval": true
+  }
+}

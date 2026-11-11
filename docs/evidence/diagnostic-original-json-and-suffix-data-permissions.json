@@ -1,0 +1,174 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "jq",
+      "version": "1.6-2.1+deb12u3",
+      "dsc_sha256": "28492fec6ddf9e46841e2286674091a1231a248d8893a9c0204591e00e8e725a",
+      "binaries": [
+        {
+          "name": "jq",
+          "version": "1.6-2.1+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "fa95e7bf94b039285c93ad3bdd615736ee833c16fa61e6322f8d95bced49d95c"
+        },
+        {
+          "name": "libjq1",
+          "version": "1.6-2.1+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "fa95e7bf94b039285c93ad3bdd615736ee833c16fa61e6322f8d95bced49d95c"
+        }
+      ],
+      "copyright_sha256": "fa95e7bf94b039285c93ad3bdd615736ee833c16fa61e6322f8d95bced49d95c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "111136aebcbfa68b6b0084e582b30e981da76adcff84eab6f9be32a1f38c5bf1",
+          "read_reference": {
+            "component": "jq",
+            "member": "COPYING",
+            "sha256": "111136aebcbfa68b6b0084e582b30e981da76adcff84eab6f9be32a1f38c5bf1",
+            "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "Expat",
+            "component": "apt"
+          }
+        },
+        {
+          "label": "CC-BY-3.0",
+          "full_normalized_body_sha256": "b22420f0082734b75b5a82fdab8753f2de47f279ada57d4e7c8b7c6f7c94bcce",
+          "read_reference": {
+            "component": "jq",
+            "label": "CC-BY-3.0"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "afdd60a6c0cda4e861455431393384bcbeab47229f3e441bf5884292454a2453",
+          "read_reference": {
+            "component": "jq",
+            "label": "Expat"
+          }
+        },
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "02041645bcc302c3f9e00ad07aae5c626e6f2c436e16902ea098a7b8dc7a4e56",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "conntrack-tools"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "jq",
+          "Source": "<https://github.com/stedolan/jq>"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2012 Stephen Dolan <mu@netsoc.tcd.ie>",
+          "LicenseExpression": "MIT"
+        },
+        {
+          "Files": "docs/*",
+          "Copyright": "2012 Stephen Dolan <mu@netsoc.tcd.ie>",
+          "LicenseExpression": "CC-BY-3.0"
+        },
+        {
+          "Files": "src/jv_dtoa.c",
+          "Copyright": "1991, 2000, 2001 by Lucent Technologies\n1991, 1996 by Lucent Technologies",
+          "LicenseExpression": "Expat"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2012 Simon Elsbrock <simon@iodev.org>",
+          "LicenseExpression": "GPL-2.0+"
+        }
+      ]
+    },
+    {
+      "source": "publicsuffix",
+      "version": "20230209.2326-1",
+      "dsc_sha256": "452acfa3adb446a9a801d4807dfd58e3f3a6be32ea277728cdb3fe900c78ca4f",
+      "binaries": [
+        {
+          "name": "publicsuffix",
+          "version": "20230209.2326-1",
+          "architecture": "all",
+          "copyright_sha256": "530b417d4ee40fa0308e42505cec3304999728a925bb8ff8112c1f36bd904979"
+        }
+      ],
+      "copyright_sha256": "530b417d4ee40fa0308e42505cec3304999728a925bb8ff8112c1f36bd904979",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+          "read_reference": {
+            "component": "publicsuffix",
+            "member": "LICENSE",
+            "sha256": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "MPL-2.0",
+          "full_normalized_body_sha256": "ebbac269fe7fd4a2cd6489967309a03bb1958f6b626a969a398c302a29633eb1",
+          "read_reference": {
+            "component": "publicsuffix",
+            "label": "MPL-2.0"
+          }
+        },
+        {
+          "label": "CC0",
+          "full_normalized_body_sha256": "48d43e6b3a7e7d95f72adc6297cebd7400fb9da4257353b5aa1c36f6407f2231",
+          "read_reference": {
+            "component": "publicsuffix",
+            "label": "CC0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Public Suffix List",
+          "Upstream-Contact": "Public Suffix List <contact@publicsuffix.org>",
+          "Source": "https://publicsuffix.org/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2010-2022 PSL maintainers,\nDaniel Veditz,\nEhsan Akhgari,\nGervase Markham,\nJason Duell,\nJothan Frakes,\nMitchell Field,\nMounir Lamouri,\nRuben Arakelyan,\nSimone Carletti",
+          "LicenseExpression": "MPL-2.0"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2012-2023 Daniel Kahn Gillmor <dkg@fifthhorseman.net>",
+          "LicenseExpression": "MPL-2.0"
+        },
+        {
+          "Files": "tests/test_psl.txt",
+          "Copyright": "Dedicated to the Public Domain",
+          "LicenseExpression": "CC0"
+        },
+        {
+          "LicenseExpression": "MPL-2.0"
+        },
+        {
+          "LicenseExpression": "CC0"
+        }
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

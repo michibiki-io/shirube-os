@@ -1,0 +1,122 @@
+{
+  "kind": "exact-original-component-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "libexporter-tiny-perl",
+      "version": "1.006000-1",
+      "source_identity": "00149c109311e13db0d563c55c2be84d248c29613f93b8ec8bed2bbf37bed580",
+      "copyright_sha256": "587fb6c2463e2b5fe7974af715b06a958321672a5209aa0ba445b83752f8a529",
+      "original_legal_matches": [
+        {
+          "member": "COPYRIGHT",
+          "sha256": "5b2e7652175d557f7b138a7f28a43858f728f83d24ca4a090f2a1841a7e1d1b4",
+          "read_reference": {
+            "component": "libexporter-tiny-perl",
+            "member": "COPYRIGHT",
+            "sha256": "5b2e7652175d557f7b138a7f28a43858f728f83d24ca4a090f2a1841a7e1d1b4",
+            "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "a4f85c6f4d6e8bdd37b7ab08013e3e3bee1fe8e910e20f8f54d5025ffe40f384",
+          "read_reference": {
+            "component": "libexporter-tiny-perl",
+            "member": "LICENSE",
+            "sha256": "a4f85c6f4d6e8bdd37b7ab08013e3e3bee1fe8e910e20f8f54d5025ffe40f384",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "salt-sdk:openssl",
+              "member": "openssl-3.6.1/external/perl/Text-Template-1.56/LICENSE",
+              "sha256": "b0675c355b041ca7de4c8a0a6ba871894664d4fb1d5f7cc6b273d6517faae550",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        },
+        {
+          "member": "debian/copyright-check",
+          "sha256": "058bdd5ff4e1977837813e94a65ae0b20b763ea914502d9c05580b9b40ea3e1b",
+          "read_reference": {
+            "component": "libexporter-tiny-perl",
+            "member": "debian/copyright-check",
+            "sha256": "058bdd5ff4e1977837813e94a65ae0b20b763ea914502d9c05580b9b40ea3e1b",
+            "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+          }
+        },
+        {
+          "member": "debian/copyright_hints",
+          "sha256": "c8cb10e8cfbdd4aaf78af8e2be870b4e70494490b09ee45de8396a38dc7308f9",
+          "read_reference": {
+            "component": "libexporter-tiny-perl",
+            "member": "debian/copyright_hints",
+            "sha256": "c8cb10e8cfbdd4aaf78af8e2be870b4e70494490b09ee45de8396a38dc7308f9",
+            "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+          }
+        }
+      ],
+      "required_notices": [],
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Select GNU2-or-later option permitted by explicit same-as-Perl5 GNU1-or-later grant; preserve original Artistic alternative, separate Try::Tiny MIT and GNU3-or-later packaging declarations and full original licenses."
+      ]
+    },
+    {
+      "source": "libpng1.6",
+      "version": "1.6.39-2+deb12u6",
+      "source_identity": "efd9099f7f74c7bcd4f1540a97be3ce1cb9bc4ff97dfc2062ea66117b17ce686",
+      "copyright_sha256": "68bd3997355bc44ccb97ff5e2bb146360e762c7d9c721945a4fabf77d1349e4a",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "dfe5a536b0e5a531f844fb9c101a3089aca60772a503893b8e15f9457e369960",
+          "read_reference": {
+            "component": "libpng1.6",
+            "member": "LICENSE",
+            "sha256": "dfe5a536b0e5a531f844fb9c101a3089aca60772a503893b8e15f9457e369960",
+            "method": "Complete original legal text read, preserving separately scoped grants, source obligations, attribution, advertising and nonendorsement conditions. Not parent component clearance."
+          }
+        },
+        {
+          "member": "contrib/gregbook/COPYING",
+          "sha256": "d6cb0e9e560f51085556949a84af12b79a00f10ab8b66c752537faf7cd665572",
+          "read_reference": {
+            "component": "atop",
+            "member": "COPYING",
+            "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+          }
+        },
+        {
+          "member": "contrib/gregbook/LICENSE",
+          "sha256": "b6a03c1803eb58ffb1f1278d5c7d4096c4c116e66dce8a7553e8c77d163c3438",
+          "read_reference": {
+            "component": "libpng1.6",
+            "member": "contrib/gregbook/LICENSE",
+            "sha256": "b6a03c1803eb58ffb1f1278d5c7d4096c4c116e66dce8a7553e8c77d163c3438"
+          }
+        },
+        {
+          "member": "contrib/pngminus/LICENSE.txt",
+          "sha256": "71778de2e263e60e18d6e0112e65fc7229e90e4dc0d2b8e06640e442125a6dbe",
+          "read_reference": {
+            "component": "libpng1.6",
+            "member": "contrib/pngminus/LICENSE.txt",
+            "sha256": "71778de2e263e60e18d6e0112e65fc7229e90e4dc0d2b8e06640e442125a6dbe"
+          }
+        }
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Libpng-original-LICENSE.txt",
+          "sha256": "dfe5a536b0e5a531f844fb9c101a3089aca60772a503893b8e15f9457e369960"
+        }
+      ],
+      "conditions": [
+        "Retain complete original attribution, permissions, disclaimers and modifications in source and binary legal materials; provide exact preferred sources, patches and complete configuration/build/install inputs.",
+        "Retain original PNG library permission, attribution and modification/origin conditions. Select GNU2-or-later alternative for Gregbook examples rather than imposing the advertising alternative on GNU code. Preserve all original alternatives, separate pngminus MIT and source-only OSS-fuzz alternatives/Apache Dockerfile scopes; uppercase OR spelling is not treated as a different grant."
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

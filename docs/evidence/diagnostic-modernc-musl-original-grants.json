@@ -1,0 +1,61 @@
+{
+  "kind": "modernc-libc-fixed-musl-original-grant-inspection",
+  "status": "PASS_COMPONENT_SCOPE_ONLY",
+  "source_url": "https://proxy.golang.org/modernc.org/libc/@v/v1.22.5.zip",
+  "source_identity": "cce29930e5f04d9be39525346530215dcf52ae160d6710bd2b26fa51902c6be6",
+  "original_musl_source_files": 1860,
+  "inspected_original_scoped_grants": [
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/crypt/crypt_blowfish.c",
+      "source_sha256": "d5061af9e0653ffa290f7b38c9336a91ab30e95c0a3102c385991635f1d485ee",
+      "notice_prefix_bytes": 2130,
+      "notice_prefix_sha256": "5312a207f3dc16efdb2a4e76e476a5d04238e26fafdc85acc2bab72013fcba9f"
+    },
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/crypt/crypt_des.c",
+      "source_sha256": "546b4ee35446fb2a551d7414779395789f81d53aefbabd8914375686af5d228e",
+      "notice_prefix_bytes": 2775,
+      "notice_prefix_sha256": "b8facc2fdf75f54ccb5fc2e2b55b9dc6d1750e303daea66a34a67cb0a01d4cab"
+    },
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/math/acos.c",
+      "source_sha256": "cc6f9017e7e2e0ef01516fa12c68aa63865e6415c90dc039dfce9abffae09a4c",
+      "notice_prefix_bytes": 1192,
+      "notice_prefix_sha256": "e43973f03c0fbe02d5d68db5ffcb1c4bdd73c5a67394519fff965821c11becf0"
+    },
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/math/exp.c",
+      "source_sha256": "7db56f21ca9b8915d36dd5099b707aafeb6a736eae798e19b76b074764e75f34",
+      "notice_prefix_bytes": 111,
+      "notice_prefix_sha256": "7e52a70e5de1143e4fdb710116f76b27eced3e41be7ab70310138928a3b34e5e"
+    },
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/regex/regcomp.c",
+      "source_sha256": "56b0a765e084a5cd3ed7113a893b50d259265ba76b6bea98889c45d7aec302a0",
+      "notice_prefix_bytes": 1444,
+      "notice_prefix_sha256": "8313e732fdeef03ee534e30bdb0b2df8fea4c9e6618aa5abda363f873c5c961a"
+    },
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/stdlib/qsort.c",
+      "source_sha256": "a520c44672ba94435de6d0cbc926786f3ff5fdda8ef35a361108dec2ea6875f4",
+      "notice_prefix_bytes": 1340,
+      "notice_prefix_sha256": "d300190545aad8dad7c33d029c5b76714b8c32ef602baecc91a9f714afebab27"
+    },
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/string/aarch64/memcpy.S",
+      "source_sha256": "1ead3716276e8a58e2e015e89fd565d9f33c10b2bc482c303b68b90c9d0f7cef",
+      "notice_prefix_bytes": 179,
+      "notice_prefix_sha256": "4177b8f865bdcd3df51f32c847cebcb8c612aa87e5914df2ddea94cb09713986"
+    },
+    {
+      "member": "modernc.org/libc@v1.22.5/musl/src/string/arm/memcpy.S",
+      "source_sha256": "f963aa07a7e5296c62dbe892b9e3e8383a95683bb282e68d75a3c0553ba184ee",
+      "notice_prefix_bytes": 1926,
+      "notice_prefix_sha256": "ca4d57d932b7c54445bb34471b2816e7a2ef7c2f9065362fbe3fc10c9990e6f9"
+    }
+  ],
+  "required_notice_sha256": "a5430d5be99ffbfdda88804c05e42d358e5403f0452a8eecb059609e473e1873",
+  "scope": "Exact public source ZIP verified; full original musl COPYRIGHT read, with actual original code-level grants inspected for its named TRE, Sun math, Arm/Android, DES, blowfish and smoothsort scopes. Preserve the whole original C tree and all per-file notices. Root MIT terms do not erase BSD or Sun conditions. This is license/source scope inspection, not a behavioral review of every C implementation.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

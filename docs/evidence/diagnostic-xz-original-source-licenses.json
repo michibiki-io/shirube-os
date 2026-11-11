@@ -1,0 +1,46 @@
+{
+  "kind": "original-xz-source-license-check",
+  "source_sha256": "ce09c50a5962786b83e5da389c90dd2c15ecd0980a258dd01f70f9e7ce58a8f1",
+  "checker_original_member": "xz-5.8.2/build-aux/license-check.sh",
+  "checker_output_sha256": "875b56360b863de7f205f6033ee4769c304554f4a71b6dbb597fbe9b086426e8",
+  "exit_code": 0,
+  "scope": "Unmodified upstream source checker, read-only fixed source tree in a bounded native container, no network or privileges. Not binary build/OS clearance.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "status": "PASS_COMPONENT_SOURCE_CHECK_ONLY",
+  "component": "salt-sdk:xz",
+  "version": "5.8.2",
+  "copyright_sha256": "4fbcafb992d437cc38795573718bf5c4e5c28e78463dea5b926adf232fb08969",
+  "original_notice_members": [
+    {
+      "member": "xz-5.8.2/AUTHORS",
+      "normalized_text_sha256": "b4ce8f2275f4951d0b4c8d6e744cd383e1f87b3ae2571236123ff3aa60ef63d5"
+    },
+    {
+      "member": "xz-5.8.2/COPYING",
+      "normalized_text_sha256": "c65e3a803af3c2c429e09be22e976e9126fdbd12136ca2ebd3e12ec36f331dbc"
+    },
+    {
+      "member": "xz-5.8.2/COPYING.0BSD",
+      "normalized_text_sha256": "1fc595850815e2afbaf6b3aa49edaa2fb51a99028bc3a78d0ebe834ead586914"
+    },
+    {
+      "member": "xz-5.8.2/COPYING.GPLv2",
+      "normalized_text_sha256": "0108d5335b496dcbe2e0f071e87abcd7bd7cc739dced16c7e6f4da4fffe3be4d"
+    },
+    {
+      "member": "xz-5.8.2/COPYING.GPLv3",
+      "normalized_text_sha256": "972a178adadacfbdddec346b16d45fd4ed9937ec5e4a5bb46d8685ba4e73a0b1"
+    },
+    {
+      "member": "xz-5.8.2/COPYING.LGPLv2.1",
+      "normalized_text_sha256": "793d7c0ea2590fee2000dd5a81b63d5f58dd04bf9205537a77689d388360e579"
+    },
+    {
+      "member": "xz-5.8.2/build-aux/license-check.sh",
+      "normalized_text_sha256": "0bd4efc098b4f4fb2ca70b1bddba4bc1fe714bbe2af3e4b4c8ec96bc10468c6f"
+    }
+  ],
+  "generated_file_checker_coverage": "Explicitly skipped generated files; no source checker certification claimed for them",
+  "license_clearance": "Exact component permission decision, not parent OS"
+}

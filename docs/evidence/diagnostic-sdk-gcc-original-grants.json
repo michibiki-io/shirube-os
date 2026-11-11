@@ -1,0 +1,165 @@
+{
+  "kind": "exact-gcc-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": "salt-sdk:gcc",
+  "version": "11.2.0",
+  "source_identity": "d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b",
+  "aggregate_notice_sha256": "37f82f7d11ecd2d4ec7597241840999bbfad1ca23b34c1a021e5711c25d30b43",
+  "original_notices": [
+    {
+      "member": "gcc-11.2.0/include/COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "member": "gcc-11.2.0/include/COPYING",
+      "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+    },
+    {
+      "member": "gcc-11.2.0/libffi/LICENSE",
+      "sha256": "0f4d7a0bfb83c37465d42dc305f124189196cc0cc2cc8d6f8461103682aebbc5"
+    },
+    {
+      "member": "gcc-11.2.0/zlib/contrib/dotzlib/LICENSE_1_0.txt",
+      "sha256": "36266a8fd073568394cb81cdb2b124f7fdae2c64c1a7ed09db34b4d22efa2951"
+    },
+    {
+      "member": "gcc-11.2.0/libsanitizer/LICENSE.TXT",
+      "sha256": "74c2b24539a53c34abddb559266d89cb653b0198cd2faf9c04763d3223db7f6d"
+    },
+    {
+      "member": "gcc-11.2.0/COPYING.RUNTIME",
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+    },
+    {
+      "member": "gcc-11.2.0/libphobos/libdruntime/LICENSE",
+      "sha256": "2f5b6237bbd8263f8669e5ed3d9b34e59de8883d3cdc9a32ca5ca4c965e67baa"
+    },
+    {
+      "member": "gcc-11.2.0/libphobos/src/LICENSE_1_0.txt",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    {
+      "member": "gcc-11.2.0/COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/LICENSE",
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/PATENTS",
+      "sha256": "96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/go/golang.org/x/xerrors/LICENSE",
+      "sha256": "84d554e7a5d139b7c7b5d6ef0670ae556c4cdcfa354eaad72a1c07c08012c96f"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/go/golang.org/x/xerrors/PATENTS",
+      "sha256": "96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/go/golang.org/x/tools/LICENSE",
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/go/golang.org/x/tools/PATENTS",
+      "sha256": "96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/go/golang.org/x/mod/LICENSE",
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067"
+    },
+    {
+      "member": "gcc-11.2.0/libgo/go/golang.org/x/mod/PATENTS",
+      "sha256": "96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/COPYING.LIB",
+      "sha256": "32434afcc8666ba060e111d715bfdb6c2d5dd8a35fa4d3ab8ad67d8f850d2f2b"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/testsuite/gcc.dg/params/LICENSE",
+      "sha256": "4919cfb14a73cd64fcef67b107613970cf1659a09aa675dba31314f373bc7204"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/COPYING3.LIB",
+      "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/ada/doc/share/copyright.tex",
+      "sha256": "c0a2678e14049ef3d4ba0d9dd7abf8b0dbb8335d6e2311b2d2f568035321f2b7"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/go/gofrontend/LICENSE",
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/go/gofrontend/PATENTS",
+      "sha256": "96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc"
+    },
+    {
+      "member": "gcc-11.2.0/gcc/COPYING",
+      "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+    },
+    {
+      "member": "gcc-11.2.0/COPYING.LIB",
+      "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+    },
+    {
+      "member": "gcc-11.2.0/COPYING3.LIB",
+      "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+    },
+    {
+      "member": "gcc-11.2.0/libstdc++-v3/include/pstl/LICENSE.txt",
+      "sha256": "0ca8cbe9219a841f9bc8fbb1f8ecdf5e39b1b0e23ee10fb6b0c090d8987dd1eb"
+    },
+    {
+      "member": "gcc-11.2.0/libstdc++-v3/doc/html/manual/license.html",
+      "sha256": "2906eca1abfe0c78daea99197a6eb130603c2dac4aa8cd7863526ea52cd3f030"
+    },
+    {
+      "member": "gcc-11.2.0/libstdc++-v3/doc/xml/authors.xml",
+      "sha256": "e02be7d2149a441f89943a509675bc1545808f9f4e4d09884c8684c39655c93f"
+    },
+    {
+      "member": "gcc-11.2.0/libiberty/copying-lib.texi",
+      "sha256": "64d3c888ca3b2fe74e89412573b6af219c3e4edffa3f3d10577fe48bd19c13c8"
+    },
+    {
+      "member": "gcc-11.2.0/libiberty/COPYING.LIB",
+      "sha256": "32434afcc8666ba060e111d715bfdb6c2d5dd8a35fa4d3ab8ad67d8f850d2f2b"
+    },
+    {
+      "member": "gcc-11.2.0/libquadmath/COPYING.LIB",
+      "sha256": "32434afcc8666ba060e111d715bfdb6c2d5dd8a35fa4d3ab8ad67d8f850d2f2b"
+    },
+    {
+      "member": "gcc-11.2.0/libcody/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "member": "gcc-11.2.0/COPYING",
+      "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+    },
+    {
+      "member": "gcc-11.2.0/README",
+      "sha256": "49306c701a64d02dc25de7c89eac5643a3e73c159b4aa9438b47f6b9d86ba0df"
+    }
+  ],
+  "required_notice_files": [
+    {
+      "path": "LICENSES/GFDL-1.3.txt",
+      "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+    }
+  ],
+  "scope": "Every declared complete original legal text matched to read original text, or its complete normalized-word differences read; all remaining GCC runtime exception, Ada/documentation scopes, author list, Google PATENTS, sanitizer and full PSTL grants read. Root project copying context retained. Source-only compiler and independently licensed runtimes/documentation remain separately scoped; no parent SDK/OS clearance.",
+  "documentation_conditions": "Retain all unmodified transparent documentation, original title/copyright/license notices, every stated invariant section and cover text, and the full GFDL1.3. The Ada template specifies GNAT Reference Manual as front-cover text; libstdc++ manual explicitly has no invariants or cover texts. Do not remove or rewrite either scope.",
+  "upstream_missing_credits": "Preserve original LLVM/NCSA/Intel and Google named nonendorsement and patent conditions, the full PSTL Apache/LLVM exception and legacy alternatives. Original libsanitizer notice references CREDITS.TXT absent from this fixed upstream release; retain original copyright text as provided and every per-file copyright in the full source, without inventing authors or claiming a recovered credits list.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

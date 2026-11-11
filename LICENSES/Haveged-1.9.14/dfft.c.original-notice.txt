@@ -1,0 +1,55 @@
+/* Notes from RFB: 
+
+   Looks like the user-level routines are:
+
+   Real FFT
+
+   void __ogg_fdrffti(int n, double *wsave, int *ifac)
+   void __ogg_fdrfftf(int n,double *r,double *wsave,int *ifac)
+   void __ogg_fdrfftb(int n, double *r, double *wsave, int *ifac)
+
+     __ogg_fdrffti == initialization
+     __ogg_fdrfftf == forward transform
+     __ogg_fdrfftb == backward transform
+
+     Parameters are
+     n == length of sequence
+     r == sequence to be transformed (input)
+       == transformed sequence (output)
+     wsave == work array of length 2n (allocated by caller)
+     ifac == work array of length 15 (allocated by caller)
+
+   Cosine quarter-wave FFT
+
+   void __ogg_fdcosqi(int n, double *wsave, int *ifac)
+   void __ogg_fdcosqf(int n,double *x,double *wsave,int *ifac)
+   void __ogg_fdcosqb(int n,double *x,double *wsave,int *ifac)
+*/
+
+/********************************************************************
+ *                                                                  *
+ * THIS FILE IS PART OF THE OggSQUISH SOFTWARE CODEC SOURCE CODE.   *
+ *                                                                  *
+ ********************************************************************
+
+  file: fft.c
+  function: Fast discrete Fourier and cosine transforms and inverses
+  author: Monty <xiphmont@mit.edu>
+  modifications by: Monty
+  last modification date: Jul 1 1996
+
+ ********************************************************************/
+
+/* These Fourier routines were originally based on the Fourier
+   routines of the same names from the NETLIB bihar and fftpack
+   fortran libraries developed by Paul N. Swarztrauber at the National
+   Center for Atmospheric Research in Boulder, CO USA.  They have been
+   reimplemented in C and optimized in a few ways for OggSquish. */
+
+/* As the original fortran libraries are public domain, the C Fourier
+   routines in this file are hereby released to the public domain as
+   well.  The C routines here produce output exactly equivalent to the
+   original fortran routines.  Of particular interest are the facts
+   that (like the original fortran), these routines can work on
+   arbitrary length vectors that need not be powers of two in
+   length. */

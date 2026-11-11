@@ -1,0 +1,22 @@
+{
+  "kind": "diagnostic-amd64-debian-source-and-notice-correspondence",
+  "status": "PASS",
+  "architecture": "amd64",
+  "debian_binaries": 658,
+  "source_groups": 459,
+  "all_groups_in_authenticated_restored_source_set": true,
+  "same_installed_copyright_as_arm64": 658,
+  "differing_notices": [],
+  "custom_binaries_excluded": 72,
+  "complete_os_reconstruction": "NOT_RUN",
+  "license_clearance": "NOT_CLEARED",
+  "release_clearance": "NOT_CLEARED",
+  "schema_version": 1,
+  "current_head_clean_candidate": false,
+  "frozen_package_source_commit": "de086d34bf50cf1a4ee762871ac689697ebf7344",
+  "dpkg_status_sha256": "7e3d19bcd853dc3eb5490b006b048094e7e2a25177c667b9b8aedc5b2892e520",
+  "verification_code_sha256": "723bdbd6bef4df35f164c709bebde13aaf0dd2714c2efb2b3d301bae51222897",
+  "authenticated_source_set_receipt": "diagnostic-debian-source-v2026.03.0-arm64.json",
+  "shared_source_set_receipt_sha256": "98f6bbc29fd355accb936d6cf1dcbc09ea656dd1bd5a99595a1f987aca0a6962",
+  "scope": "The exact 459 source name/version pairs are present in the authenticated and restored 460-group source set. All 658 installed Debian copyright files match the corresponding ARM64-source records. The 72 custom producer binary names are excluded identically; no custom source or whole-OS clearance is inferred."
+}

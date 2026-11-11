@@ -1,0 +1,45 @@
+{
+  "kind": "pinned-native-geoip-source-import",
+  "source": {
+    "version": "2026-11",
+    "source_url": "https://download.db-ip.com/free/dbip-country-lite-2026-11.csv.gz",
+    "authority_url": "https://db-ip.com/db/download/ip-to-country-lite",
+    "license_authority": "https://db-ip.com/db/lite.php",
+    "license": "CC-BY-4.0",
+    "compressed_size": 4623153,
+    "uncompressed_size": 32485911,
+    "rows": 732796,
+    "ip_versions": {
+      "4": 362998,
+      "6": 369798
+    },
+    "publisher_md5": "93c945395f0bc2ceefea7dd55750417a",
+    "publisher_sha1": "e2061015c43ec91c94a12191a6a613279eb94c0c",
+    "filename": "dbip-country-lite-2026-11.csv.gz",
+    "sha256": "e5c8459d638a272ece7f4d7cfa49dce18d91b4f403f6940ba9249bf0db3781fd",
+    "uncompressed_sha256": "5e968a64a29b973f794c5abc46d0711a0ba87c8a16c411e1cd70312db7a5d4e1",
+    "logical_rows_sha256": "727329172eff9ab8733245f60f52c37d2823dea1c8a2957d1d0e6cbf40fd0ed6",
+    "native_api_sha256": "fb7d258839e251dbc8305e3d497f8e38532f1198ac3c35d36e543d09b3cf3b19",
+    "upstream_hook_sha256": "a9639022d9019c2b3bd3cf6af185bd7e3f3e97a9fce41cac6412eeb6f4b9b6a4",
+    "notice_sha256": "e4189eb50081aec67f721bdf97e48fd723c55ffb783c5212c0f215b59cf38462",
+    "license_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+  },
+  "native_api_source": "authenticated Stream vyos-1x/python/vyos/geoip.py",
+  "offline_container_network": "none",
+  "native_import": "PASS",
+  "native_country_lookup": "PASS",
+  "import": {
+    "rows": 732796,
+    "ip_versions": {
+      "4": 362998,
+      "6": 369798
+    },
+    "logical_rows_sha256": "727329172eff9ab8733245f60f52c37d2823dea1c8a2957d1d0e6cbf40fd0ed6",
+    "database_sha256": "a0bcc9d416e8383c61dd9ef121e9ee42d6f53661c9d670cb3bb8ed0de6fb4a2a"
+  },
+  "tmpfiles_missing_cache_creation": "PASS",
+  "tmpfiles_existing_cache_preserved": "PASS",
+  "fresh_guest_boot": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

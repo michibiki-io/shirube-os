@@ -1,0 +1,17 @@
+Radcli source and supporting-documentation acknowledgements
+
+This product includes software developed by the NetBSD Foundation, Inc.
+and its contributors.
+
+Copying and distribution of the covered software is by permission of
+Lars Fenneberg and, for the separately covered portions, Livingston
+Enterprises, Inc. Their complete original copyright, permissions and
+disclaimers are retained in Radcli-original-COPYRIGHT.txt and the original
+source notices. These credits do not permit endorsement or publicity in
+their names beyond the original permissions.
+
+RSA Data Security, Inc. MD5 Message-Digest Algorithm
+Derivatives must be identified as derived from the RSA Data Security,
+Inc. MD5 Message-Digest Algorithm. Original attribution and notices are
+retained. This decision does not assume public-domain dedication merely
+from the absence of a license in a different release.

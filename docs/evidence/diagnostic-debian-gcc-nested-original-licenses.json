@@ -1,0 +1,126 @@
+{
+  "kind": "exact-debian-gcc-nested-original-license-review",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "gcc-12",
+  "version": "12.2.0-14+deb12u1",
+  "dsc_sha256": "3aed0b189189c744dc9f4b74798a51d3e512ea85e492568db788a927c88e20ba",
+  "original_archive": {
+    "name": "gcc-12_12.2.0.orig.tar.gz",
+    "sha256": "b8298be16aeeb96a889c6afed0a8e2241b47452e89cc81fe65ea849d5c740fcb",
+    "size": 87090343
+  },
+  "copyright_sha256": "da8191658b3452ce9caf31638ba61dab31a38c619fa39df119812e050f592fd3",
+  "nested_original_legal_files": [
+    {
+      "nested_archive": "gcc-12.2.0-dfsg.tar.xz",
+      "member": "COPYING",
+      "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING",
+      "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+    },
+    {
+      "nested_archive": "gcc-12.2.0-dfsg.tar.xz",
+      "member": "COPYING.LIB",
+      "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING.LIB",
+      "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+    },
+    {
+      "nested_archive": "gcc-12.2.0-dfsg.tar.xz",
+      "member": "COPYING.RUNTIME",
+      "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING.RUNTIME",
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+    },
+    {
+      "nested_archive": "gcc-12.2.0-dfsg.tar.xz",
+      "member": "COPYING3",
+      "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "nested_archive": "gcc-12.2.0-dfsg.tar.xz",
+      "member": "COPYING3.LIB",
+      "path": "LICENSES/GCC-12.2.0/gcc-12.2.0-dfsg.tar.xz/COPYING3.LIB",
+      "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+    },
+    {
+      "nested_archive": "newlib-4.1.0.tar.xz",
+      "member": "COPYING",
+      "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING",
+      "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+    },
+    {
+      "nested_archive": "newlib-4.1.0.tar.xz",
+      "member": "COPYING.LIB",
+      "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING.LIB",
+      "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+    },
+    {
+      "nested_archive": "newlib-4.1.0.tar.xz",
+      "member": "COPYING.LIBGLOSS",
+      "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING.LIBGLOSS",
+      "sha256": "39859c73b5694929982241326d0508f8687708e4f3c15b733a9859ab62f94bb6"
+    },
+    {
+      "nested_archive": "newlib-4.1.0.tar.xz",
+      "member": "COPYING.NEWLIB",
+      "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING.NEWLIB",
+      "sha256": "bc1fbe427c6165ae8d06203f65af8c9f5fd5463788f2e8f56bceb50eeda19449"
+    },
+    {
+      "nested_archive": "newlib-4.1.0.tar.xz",
+      "member": "COPYING3",
+      "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "nested_archive": "newlib-4.1.0.tar.xz",
+      "member": "COPYING3.LIB",
+      "path": "LICENSES/GCC-12.2.0/newlib-4.1.0.tar.xz/COPYING3.LIB",
+      "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+    },
+    {
+      "nested_archive": "gm2-20220506.tar.xz",
+      "member": "gm2/gcc/m2/COPYING.RUNTIME",
+      "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING.RUNTIME",
+      "sha256": "0e1355c3acaa921b2f3bccad89a1bf1f1edb2cec437827ededaabd52adf85008"
+    },
+    {
+      "nested_archive": "gm2-20220506.tar.xz",
+      "member": "gm2/gcc/m2/COPYING.FDL",
+      "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING.FDL",
+      "sha256": "3a30b682339e57bea48a0f8e2eda4db987467f8de31d9dd602f5bc56975cae73"
+    },
+    {
+      "nested_archive": "gm2-20220506.tar.xz",
+      "member": "gm2/gcc/m2/COPYING3.LIB",
+      "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING3.LIB",
+      "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+    },
+    {
+      "nested_archive": "gm2-20220506.tar.xz",
+      "member": "gm2/gcc/m2/images/LICENSE.IMG",
+      "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/images/LICENSE.IMG",
+      "sha256": "a09161b2b8936bcdd8222842c60b885d22c4c323e42be443d9055324484aa783"
+    },
+    {
+      "nested_archive": "gm2-20220506.tar.xz",
+      "member": "gm2/gcc/m2/COPYING3",
+      "path": "LICENSES/GCC-12.2.0/gm2-20220506.tar.xz/gm2/gcc/m2/COPYING3",
+      "sha256": "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227"
+    }
+  ],
+  "review_method": "Complete Debian copyright scope/terms read with exact complete previously read body reuse. Actual nested notices, full normalized-word comparisons to read GNU texts, all newlib/libgloss word differences and Modula-2 image grant read. Original bytes retained, without rewriting licensing documents.",
+  "comparisons": {
+    "gcc_and_newlib_common_gnu_texts": "COPYING, COPYING.LIB, COPYING3 and COPYING3.LIB are byte-identical across both nested archives.",
+    "newlib_vs_debian_copyright": {
+      "full_word_difference_groups": 47,
+      "added_or_replaced_words": 5258
+    },
+    "libgloss_vs_newlib": {
+      "full_word_difference_groups": 45,
+      "added_or_replaced_words": 945
+    }
+  },
+  "scope": "Component permission and notice retention only; no complete OS rebuild, runtime acceptance, hosted release capacity or OCI claim.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

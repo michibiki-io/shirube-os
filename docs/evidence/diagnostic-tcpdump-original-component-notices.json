@@ -1,0 +1,58 @@
+{
+  "kind": "exact-tcpdump-original-notice-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "4.99.3-1",
+  "source_identity": "e5a75fad08aacff81a58799bedaacc61fa281839d8f68cdf1c9df45deb66afd1",
+  "copyright_sha256": "3e640f444358d031690de4c8fb040fb866386460dd9c51f3ffb875bbfb2342e2",
+  "original_source": {
+    "name": "tcpdump_4.99.3.orig.tar.gz",
+    "sha256": "ad75a6ed3dc0d9732945b2e5483cb41dc8b4b528a169315e499c6861952e73b3",
+    "size": 1901814
+  },
+  "notice_source_members": [
+    {
+      "member": "tcpdump-4.99.3/print-802_11.c",
+      "sha256": "76e0d1a68ce83098f909ac28e5264074da5ea6df1298e30b72c28124d855522a"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-aodv.c",
+      "sha256": "2bc865c904cd7bc2bac805e821834ac18ae0922c45b7b996e2002df2f30a6e94"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-ascii.c",
+      "sha256": "22cd6f9a00e1b8cf7c19c8c609cd16b69d7c78f125b10e7759c55989a2f099be"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-cnfp.c",
+      "sha256": "6a2690819fb91758d32f4e8862f2ae6d9bff66d767d3f0ebaeb03c8d2d112708"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-gre.c",
+      "sha256": "4f60cb8ca464639ad1f637d974fb2abf076e6f102e4708f95d850d5c5469088b"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-mobile.c",
+      "sha256": "5b0e180a2ad1715f7f258ff54fc3d0aa42629afe452b79e9b1fd899ae7d4a8a6"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-sunatm.c",
+      "sha256": "479f59a1abdf2fa09ed7d6a066cd513b9098e4bd3ddb239a13d0a1fcd020adbc"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-telnet.c",
+      "sha256": "1206587d99da6792f1e2c612001a75b16e9c009bbd290f125066b1a32fc1994d"
+    },
+    {
+      "member": "tcpdump-4.99.3/print-timed.c",
+      "sha256": "a8fa37239bdbabc60cbc4537528f0f9b71e2fe332e7546366ae677d53d46924b"
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/Tcpdump-original-component-notices.txt",
+      "sha256": "ff01b34edde65e476371967d29af58bec8a6a1cb3e056e09a23fbeb05505e051"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

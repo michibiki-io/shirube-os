@@ -1,0 +1,644 @@
+{
+  "kind": "diagnostic-fresh-arm64-complete-source-restoration",
+  "consumer_recipe_commit": "42db6776d43fa9c187d53262f4782edd4d6f9f15",
+  "consumer_architecture": "amd64",
+  "target_architecture": "arm64",
+  "source_cohort_commit": "682b868e0b11fa752125186c411eb6a846843cdd",
+  "source_set_reconstruction": {
+    "scope": "Complete source-set restoration and actual build-recipe binding",
+    "input_manifest": {
+      "schema_version": 1,
+      "manifest_kind": "candidate-source-set",
+      "project": "Shirube OS",
+      "provider": "michibiki-io",
+      "source_commit": "682b868e0b11fa752125186c411eb6a846843cdd",
+      "version": "v2026.03.0",
+      "assets": [
+        {
+          "name": "shirube-os-v2026.03.0-arm64-licenses.json",
+          "role": "licenses",
+          "architecture": "arm64",
+          "size": 305866787,
+          "sha256": "86358ca28f10b8e8f9992f495045ebd09070246925e0fd13451963d506992ef4"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-shared-build-inputs.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 5956991,
+          "sha256": "c3f89f338c31ce65dd4b9057cd19b355331a438c3015758b0251ef8b3a6001e1"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-ocaml-source.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 36707020,
+          "sha256": "04bd2ba843c34e42a932ae01c1c9b45b2632b92fff5e6780929114bac13f1473"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0001.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 3218322,
+          "sha256": "44402c5e5a106bb5b2fe8d21b481ef338df0addddf89f0c713d815ad1eb9d70c"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0014.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 473155,
+          "sha256": "7be0bf78086c1d1c4465758b3e50e529451d55a2eb0add8554bf507230728d71"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0018.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 130952269,
+          "sha256": "a942c5c22a9e94f4aae9372dee07cf7a378d08ba51ffec917f5a35227988b707"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0042.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 900808,
+          "sha256": "9028a1ff91d73b458245e782efb205135a380a4b0860c31259c450a64c3e92a1"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0055.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 2954073,
+          "sha256": "0c3a9fc97a31225806d65901b3dee38f1062844e9df8bca0aabf890918b524e0"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0060.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 504944,
+          "sha256": "05ca6b1f56d2a07d1f184ada232402283ce73635dad2bc92cf6cd01744ddf497"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0069.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 12077486,
+          "sha256": "0bc39730fc640f84eb229cb3c85a7f3a1c54417bede9a011226632faf17ad5b8"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0070.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 87570985,
+          "sha256": "1096128cb35c1f7694fb64bf1dfbd5bf1941eb365abf060bb2ce302489395a27"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0090.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 3739536,
+          "sha256": "d72ee75d9c0743c5f4abe2e501c24c6b022344f40adaacb18b98f85bd1d13e31"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0092.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 147571,
+          "sha256": "8174f9821175485e25ef97c8b94fab9d4c64f6365b51077cb5a71ab56e41e779"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0101.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 272978,
+          "sha256": "c1917d9c75bb8d0136e4966bd774f1e9531589806c21a6a3d9b739c066dfab46"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0111.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 12865127,
+          "sha256": "a48926377d288de292e0cfef504aa04460336bc7e0a2b23c8e51b747c8a5119e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0113.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 2890948,
+          "sha256": "7b324d62a6964bc48eebacb7818f008cab9d4470a2ca7bd999d3ba4a58fc7216"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0246.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 1602656,
+          "sha256": "ff6e47e0b3596532de9650f8717d37ed47d57224ec4b3d443e9a21f604c5fd33"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0247.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 658827,
+          "sha256": "3126422e55fdc58d3dcdc7065d37df93cf43c3371ce2fcb136e5ad8fcc94e45d"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0255.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 472357,
+          "sha256": "42c44112bd490d15c01692616e3bebc32dc095b0632380b8d133731bbb982e78"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0266.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 209356,
+          "sha256": "5d33a3308707bccf500865b4f6829e4322cf3c37107659ee29730968b9ad824d"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0320.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 155004,
+          "sha256": "68fec5fc97cd0bde4a9536a057a2180f2c047c0270e9ebdb7bd5009330d5232c"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0335.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 83631952,
+          "sha256": "97c7f3e503e21a5b9e5c1fcfc228efb8d1eeb0dc8b9138afc82e80db89d4c37f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0336.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 367914,
+          "sha256": "9e9e985dc7b23a618dba5026bdb2c178a3b61c248b2dc166395264838540ff0a"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0337.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 2256100,
+          "sha256": "f314067a0409c7d01091b1c9c5af003982055811463bba68b797bfdf6d29db98"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0355.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 1491796,
+          "sha256": "9ce9afc36731607ea82e95e293b17b433e6e844cb6c1d1c8b72f9b5745ae18b8"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0359.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 307042619,
+          "sha256": "af9911b350399c2727fb4634e9bceec5f46d494ccb1220cee383fcb7708e0c13"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0360.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 294871,
+          "sha256": "10f5c366cec1f0bca8bc959ec8c26336ff948d47fd46c074da9e14f4968990cb"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0377.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 165499,
+          "sha256": "73731317cb2ffa9f0890660e993fcf611ea650d28bdb5913da2041117f0a9ecb"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0379.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 166944,
+          "sha256": "f04d5814ea8cbf9baf96541c3e6ac3f0e02a97d0b3cfd4b33b7b5f8e7e42ca78"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0387.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 127863291,
+          "sha256": "255abc19db3ea120a54c77d220f5eacbb61392ce97d9b291b890a19b48c86bca"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0394.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 221486,
+          "sha256": "e8bded4b8c6707fbf6d35ee8d3530f6abe46936cad04f5f844eff52ad2199dfb"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0395.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 1256654,
+          "sha256": "ad3c78e721ee7a6112010a72d4253afe860f22c932059ee95fbb09d4b560367a"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-static-i2util-source.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 5474235,
+          "sha256": "183bef2388ae3598aef46c1b9113969bf9f6060d11e074a04913e7e6601f8461"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0396.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 6146265,
+          "sha256": "712312bfdc9dec490a88d97e7f03c44f0233ee371cdb5aa1b96a1795c2567f19"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0400.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 327768298,
+          "sha256": "d624128beb3d69c8fdb9d08d29304ee5a22b201631a9a6cef7bc52ed4648f141"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0434.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 2612629,
+          "sha256": "2f731d9fba9042792f5ad8344d7e527c3a91de60a473ebbe5471667eb068d581"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0445.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 7805977,
+          "sha256": "04b45a2ab9c5ebbc6ee47b2b66c092a0df0f01e78cbbb90c77b9b0402b3bad63"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0449.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 214077,
+          "sha256": "46a1c0d720e0109aacc4e93d45f62accf550897e6d0344d7f8154bf635a5cfb1"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0450.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 240590,
+          "sha256": "025897d767738048dad4b607d17c9ecf62d4e58f18b7134170b7407aa919a5cb"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-salt-sdk-source.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 259940239,
+          "sha256": "4b75d6e4846436bf42257e64b308d9013d4e51a8e3ab2bb7dc78c719b1b682bf"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0454.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 16806706,
+          "sha256": "367dc070aab14803f619563b5b221afc2dc333367259160a1d6dffa0a95a51a3"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0460.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 209460051,
+          "sha256": "4b0cd012fe9104cc7bb44cf80f5b1f786475d2f6670adea0fe4c529ad719baec"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0477.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 524325955,
+          "sha256": "33c3b679aa2dd8f3ad495fded9638ab1ca77448a20e3ffe31290542a482d7e60"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0485.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 164746,
+          "sha256": "6b69994f45a2611d521246edf14b2c45c28565dc9b21c017a3a2c65dcf8c4a4f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0492.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 5217790,
+          "sha256": "a510dbef4602b4086dd179b82e0e7826027bc446ab419e07f5617e8fcb90e197"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0493.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 226001,
+          "sha256": "53dc6730a626bcc296c993027bf71868c4d4d2310fb1da944f63dbb53fd01d0e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0494.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 2256242,
+          "sha256": "8a46277717728f3fa85cb820a6eb5e4d174e1fddbc8d97e79035411e3f391053"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0495.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 294982462,
+          "sha256": "3042c5ec5f7ae760856f7e029595be0a4889567f648d3e740a5a05dd0a9e8c84"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0496.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 341770,
+          "sha256": "e3a35a063cafe8b3f05388c9ce3c8ae49f23d235227ed7f673e5b7cd3858e119"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0497.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 158505,
+          "sha256": "7b851a8f184c64ed12a868f5459a45eb8cf571f6ce91f3cc5e6f65b3c6fbc21d"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0498.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 497536,
+          "sha256": "be7678813a0843b420e967e749b4679afd4b11aa717ca9ad7d14a537b3a1294c"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0499.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 141535,
+          "sha256": "a4c659982ab7f716abf1f397199d0109d950bc8c748456e2ca0456eeb6eec7d9"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0500.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 17352864,
+          "sha256": "d4eee65f97c36add6bf0db96eb9ef9808796692875f0f03546ef87616d795a6c"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-source-0503.tar.gz",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 437651,
+          "sha256": "fe8fc7eae16aa289f779893a2d11d2621a0f40eb830d4a3c4729c77897bb7b44"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0001.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 37120000,
+          "sha256": "84eaaaca80e4747b6f4370fe850e74fbb4174646d26eb9df8360756c9ce0397d"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0002.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 35676160,
+          "sha256": "3bd885e4ceed5232037f015aeca10c670cc5763884b808e3be7f6e2ebe06e616"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0003.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 44247040,
+          "sha256": "824839fc574b01c2763479cd573f3fd9297ec44e7160b7dcf21f52fba0163f6f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0004.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 48087040,
+          "sha256": "a590a08833d6b0e90d385720170b0a5fa61a3c212db9c16855e35ae6eb979a6e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0005.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 147128320,
+          "sha256": "a53d4678ec6d5835431feeefe9f3802168a5262ed1c68d677dae399de921269b"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0006.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 24012800,
+          "sha256": "40789582401b1b3280b1fa6d56b123a8c91616968c92a36cf02301120381c310"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0007.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 32133120,
+          "sha256": "3e5ea3edb0ba474cbf8da591dd2284f6a8f3752207b63e144b7f46eb740ba0f1"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0008.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 161863680,
+          "sha256": "a4d902109d97bb0c358ff44a5f03e900d0c1b7bd93c20b058a28faa4abaf1411"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0009.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 152698880,
+          "sha256": "cf5baba5785f082a46e5343ed1f9019a9b7ae447950f806da498ddf2471971e9"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0010.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 45066240,
+          "sha256": "f5aeeaa93acc441c997440903bf5a28084b562089dbb1cde0ab11cf2045fffdb"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0011.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 33474560,
+          "sha256": "bd126da9b90dbc11e173f6a3434b01f8a02e1d11ba47c08a7c9f3ca2eb809c18"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0012.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 78069760,
+          "sha256": "292615c54a741bfc05ccd5824d24eedade559e2dfa357f8bab685d128e238fe8"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0013.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 25835520,
+          "sha256": "39382ea4e37bbed6d1a192de184a2ee2ceb414c526a8ce19c15e5cc928c73a04"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0014.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 16199680,
+          "sha256": "77d697cc16cf402ff2ce9e441a9c1b9ea7087dc04f6e4f820f05e3e17e943bf3"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0015.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 34273280,
+          "sha256": "54d2800bee8b4ae27b7c663b404649e9765394bc34165d8ca9eb3b5c9e1deb51"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0016.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 21299200,
+          "sha256": "7760b4e860eb4979f4d8fd574db493c72ea3318084cb073a90afd5982d675b20"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0017.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 38963200,
+          "sha256": "44e58585bde04bcd925dd65ec8fe98aa2a24303f113a2baa1cbbb3349c6f6287"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0018.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 45117440,
+          "sha256": "9c6c9a43b6f75ccfbc4408023ba8015fe8a8364e0f2f97a09de34c11f3252e2f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0019.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 49571840,
+          "sha256": "70734439e3ce1efca433e03c292ee312ab6b0ce0682177321b58d19125fc681a"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0020.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 25958400,
+          "sha256": "2a80595a214ad056100ce2a1a9639ac5e1cbfa82efc0979344f8dd593c3dbecb"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0021.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 26613760,
+          "sha256": "29c28b680263a63c3ea40604b9d14eaff71a7f10fbc46772cb97b8c4291c6106"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0022.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 14561280,
+          "sha256": "d998ecd38ca4f6f06bfa96e7872b3febf39b952fe647d2ae3e634fc4cb2d7674"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0023.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 26767360,
+          "sha256": "f96bd79bc33f4eaef13f9843343c5053fa5d5a16069b7b29242a76b403c892f4"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0024.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 17264640,
+          "sha256": "c780200a135f8c70186c44c46f57b425370f9eb445e8db674edd417c61c443a9"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0025.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 16926720,
+          "sha256": "9e5c82dd6702a4674e96a682509fe0c607296a821bbd23fcf70a86fdb73e5290"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0026.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 15943680,
+          "sha256": "244cf3b812de026cc61b75c522b970b17ad7a6cb29139c15c9b8679103b6ff56"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0027.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 25231360,
+          "sha256": "f23220d96e715e9d496d86cf4c9f7b6a8035f814075179cbc04ec2c6b6398d58"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0028.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 22067200,
+          "sha256": "007d6f2c55d6144ce511ab4358a92456e4b0d17e0d4b780119b112b297807a85"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-arm64-debian-sources-0029.tar",
+          "role": "source",
+          "architecture": "arm64",
+          "size": 52695040,
+          "sha256": "fbeae1796298b7a67104de46c8393ff57c7a44c08b9e58bc10d775c46441aeab"
+        }
+      ],
+      "source_license_clearance": "FAIL",
+      "release_clearance": "NOT_CLEARED"
+    },
+    "proof": {
+      "kind": "complete-source-set-restoration",
+      "status": "PASS_SOURCE_SET_ONLY",
+      "architecture": "arm64",
+      "source_commit": "682b868e0b11fa752125186c411eb6a846843cdd",
+      "manifest_sha256": "906f3b0311244b4249b4995b38e21173472d032b40e55b67331a8ce786e77c55",
+      "inventory_sha256": "86358ca28f10b8e8f9992f495045ebd09070246925e0fd13451963d506992ef4",
+      "source_archives": 82,
+      "restored_regular_members": 219996,
+      "restored_regular_bytes": 6149483962,
+      "largest_archive_payload_bytes": 1685629184,
+      "restored_tree_retained": false,
+      "shipped_packages": 730,
+      "archive_byte_integrity": "PASS",
+      "all_source_license_recipe_references": "PASS",
+      "binary_reconstruction": "NOT_RUN",
+      "license_clearance": "NOT_ESTABLISHED_BY_RESTORATION",
+      "release_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "actual_project_build_input_sha256": "c7adca21edcce96291294e5d81ee819b7593d91fb1895630ef6a9dfa54bdf270",
+      "actual_project_build_input_binding": "PASS"
+    }
+  },
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "execution": {
+    "cpu_limit": 2,
+    "memory_limit_gib": 3,
+    "network": "none",
+    "exit_code": 0,
+    "oom_killed": false,
+    "elapsed_seconds": 161.748,
+    "scope": "Portable ARM64 source-set restoration on an AMD64 consumer; no target binaries executed."
+  },
+  "prior_attempt": {
+    "memory_limit_gib": 1,
+    "status": "FAIL_RESOURCE_LIMIT",
+    "exit_code": 137,
+    "oom_killed": true,
+    "target_architecture": "arm64",
+    "scope": "Source verification process only; not a native compilation or ISO/guest failure."
+  }
+}

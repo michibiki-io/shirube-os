@@ -1,0 +1,3008 @@
+{
+  "kind": "exact-debian-original-grants-round-21",
+  "reviewed_on": "2026-11-10",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 19,
+  "components": [
+    {
+      "source": "bash",
+      "version": "5.2.15-2",
+      "dsc_sha256": "f51753e946af43eb58549c81e03b35a47af9fe6c6364179ccd4ef862b7c3b2d3",
+      "binaries": [
+        {
+          "name": "bash",
+          "version": "5.2.15-2+b13",
+          "architecture": "arm64",
+          "copyright_sha256": "06319d84c3e5ed096036f6a9310a030c7e84e50dff2b8a6792285c83ec0ada73"
+        }
+      ],
+      "copyright_sha256": "06319d84c3e5ed096036f6a9310a030c7e84e50dff2b8a6792285c83ec0ada73",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "examples/shellmath/LICENSE",
+          "sha256": "5908bd3b6f430bffa4f8a20290eebdd933b62e2213908b83da1230355f3e9c1a",
+          "read_reference": {
+            "component": "bash",
+            "member": "examples/shellmath/LICENSE",
+            "sha256": "5908bd3b6f430bffa4f8a20290eebdd933b62e2213908b83da1230355f3e9c1a",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "lib/readline/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "tests/COPYRIGHT",
+          "sha256": "e649815d1b6becdc545dda87c91f1b65497ddf6461240b904b2d8511a63476fb",
+          "read_reference": {
+            "component": "bash",
+            "member": "tests/COPYRIGHT",
+            "sha256": "e649815d1b6becdc545dda87c91f1b65497ddf6461240b904b2d8511a63476fb",
+            "method": "Complete original small legal file read in this continuation; per-file terms and scope preserved"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "50073b42027396b415a046e33780a8f4f6ee612bef2a0c3ed723d13802686882",
+          "read_reference": {
+            "component": "bash",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "GPL-3+ with Bison exception",
+          "full_normalized_body_sha256": "14500634e0fe71b5ef824e7278145e3321a3fd9a7d65593daa6e6a0130b46178",
+          "read_reference": {
+            "label": "GPL-3+ with Bison exception",
+            "component": "pam"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f1d6426d9abc66ee10e330830b200053f554dd3c6fed76ff859a23ca5fe9a6fa",
+          "read_reference": {
+            "component": "bash",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GFDL-NIV-1.3",
+          "full_normalized_body_sha256": "01f4982350b6176043ad2390f3cef69d7ecdab64fa67d0123645253b32d97a73",
+          "read_reference": {
+            "component": "bash",
+            "label": "GFDL-NIV-1.3"
+          }
+        },
+        {
+          "label": "Latex2e",
+          "full_normalized_body_sha256": "d2df27efc98cb5fa047aa99aff0cfbe96e562b139d9bd424a3a2d8e9f6846b3d",
+          "read_reference": {
+            "component": "bash",
+            "label": "Latex2e"
+          }
+        },
+        {
+          "label": "BSD-4-clause-UC",
+          "full_normalized_body_sha256": "f410845f413b3bb2f7f2d4be988c3e99413dad988afa0cd3cc114cc6a3a3f7a5",
+          "read_reference": {
+            "component": "bash",
+            "label": "BSD-4-clause-UC"
+          }
+        },
+        {
+          "label": "MIT-like",
+          "full_normalized_body_sha256": "123bf27b6e3d9fd633ef6b19c3ce3ea9c21f14896ac47078729c78dad72f4f87",
+          "read_reference": {
+            "component": "bash",
+            "label": "MIT-like"
+          }
+        },
+        {
+          "label": "permissive",
+          "full_normalized_body_sha256": "02bb798da94d03eff2f3cfe490022bd6c0d4c16fb956185c514d25a79047b915",
+          "read_reference": {
+            "component": "bash",
+            "label": "permissive"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Contact": "chet@po.cwru.edu",
+          "Comment": "\nThis is Debian GNU/Linux's prepackaged version of the FSF's GNU Bash,\nthe Bourne Again SHell.\n\nThis package was put together by Matthias Klose <doko@debian.org>.",
+          "Source": "\nftp.gnu.org:/pub/gnu/bash",
+          "Files-Excluded": "\ndoc/FAQ\ndoc/aosa-bash*.pdf\ndoc/article.*\ndoc/rose94.*"
+        },
+        {
+          "Files": "*",
+          "Copyright": "(C) 1987-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "examples/shellmath/*",
+          "Copyright": "(c) 2020 by Michael Wood. All rights reserved."
+        },
+        {
+          "Files": "support/bash.xbm",
+          "Copyright": "(C) 1992 Simon Marshall"
+        },
+        {
+          "Files": "support/checkbashisms",
+          "Copyright": "\nCopyright (C) 1998 Richard Braakman\nCopyright (C) 2002 Josip Rodin\nCopyright (C) 2003 Julian Gilbey"
+        },
+        {
+          "Files": "\ntests/ifs-posix.tests\ntests/posix2.tests",
+          "Copyright": "(C) 2005 Glen Fowler\nCopyright (c) 1995 Stephen Gildea"
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public License\nversion 3 can be found in `/usr/share/common-licenses/GPL-3'."
+        },
+        {
+          "Files": "y.tab.*",
+          "Copyright": "(C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,\nInc.",
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public License\nversion 3 can be found in `/usr/share/common-licenses/GPL-3'."
+        },
+        {
+          "Files": "\nexamples/functions/array-stuff\nexamples/functions/fstty\nexamples/functions/func\nexamples/functions/inetaddr\nexamples/functions/isnum2\nexamples/functions/ksh*\nexamples/functions/notify.bash\nexamples/functions/seq*\nexamples/functions/sort-pos-params\nexamples/functions/substr*\nexamples/functions/substr2\nexamples/functions/w*\ntests/complete.tests",
+          "Copyright": "1992-2020 Chester Ramey"
+        },
+        {
+          "Files": "\ndebian/clear_console.c\nexamples/complete/bash_completion",
+          "Copyright": "\nCopyright (C) 2006-2019 Canonical Ltd.\nCopyright (C) Ian Macdonald <ian@caliban.org>"
+        },
+        {
+          "Comment": "\nOn Debian systems, the complete text of the GNU General Public License\nversion 2 can be found in `/usr/share/common-licenses/GPL-2'."
+        },
+        {
+          "Files": "\ndoc/bashref.texi\nlib/readline/doc/history.texi\nlib/readline/doc/rl*man.texi",
+          "Copyright": "(c) 1988-2022 Free Software Foundation, Inc.",
+          "Comment": "\nOn Debian systems, the complete text of the GNU Free Documentation License\nversion 1.3 can be found in `/usr/share/common-licenses/GFDL-1.3'."
+        },
+        {
+          "Files": "\nlib/readline/doc/rltech.texi\nlib/readline/doc/rluser.texi\nlib/readline/doc/hs*.texi",
+          "Copyright": "(C) 1988-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "lib/sh/inet_aton.c",
+          "Copyright": "\n* Copyright (c) 1983, 1990, 1993\n*    The Regents of the University of California.  All rights reserved.\n* Portions Copyright (c) 1993 by Digital Equipment Corporation."
+        },
+        {},
+        {},
+        {
+          "Files": "support/man2html.c",
+          "Copyright": "Richard Verhoeven"
+        }
+      ]
+    },
+    {
+      "source": "gpgme1.0",
+      "version": "1.18.0-3",
+      "dsc_sha256": "568e0a8f342ab129c8761bbbd30e54934102914141b8e38c9f504be9d4d1de5a",
+      "binaries": [
+        {
+          "name": "libgpgme11",
+          "version": "1.18.0-3+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "51deca7ec94e2ffd48d9e399b4481258f857e451c30a5a9c586bde962794c40c"
+        }
+      ],
+      "copyright_sha256": "51deca7ec94e2ffd48d9e399b4481258f857e451c30a5a9c586bde962794c40c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
+          "read_reference": {
+            "component": "atop",
+            "member": "COPYING",
+            "sha256": "204d8eff92f95aac4df6c8122bc1505f468f3a901e5a4cc08940e0ede1938994"
+          }
+        },
+        {
+          "member": "COPYING.LESSER",
+          "sha256": "ca0061fc1381a3ab242310e4b3f56389f28e3d460eb2fd822ed7a21c6f030532",
+          "read_reference": {
+            "component": "gpgme1.0",
+            "member": "COPYING.LESSER",
+            "sha256": "ca0061fc1381a3ab242310e4b3f56389f28e3d460eb2fd822ed7a21c6f030532",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "LICENSES",
+          "sha256": "950fbc07a2b8e34514936ad591544e6857b8e68079c92b78b5f8e997f415208a",
+          "read_reference": {
+            "component": "gpgme1.0",
+            "member": "LICENSES",
+            "sha256": "950fbc07a2b8e34514936ad591544e6857b8e68079c92b78b5f8e997f415208a",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "LGPL-3+",
+          "full_normalized_body_sha256": "14f315256c8cf5edcfb4118714c3ee49547fdb7aa7c97e8aafdf11794632fa7a",
+          "read_reference": {
+            "component": "gpgme1.0",
+            "label": "LGPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "f1239bb79a880e3c2050e2ff9dd4c6e53e8423f474816b73c8515a2190169717",
+          "read_reference": {
+            "component": "gpgme1.0",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "LGPL-2+",
+          "full_normalized_body_sha256": "4b07ec66b401a0d2dc3c9f9c61381fe1dc04cbeef1df1e4fe43a51dba871e29e",
+          "read_reference": {
+            "component": "gpgme1.0",
+            "label": "LGPL-2+"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "c884e473406640a0c39137330d9b51ea91ae01eca3fbaf27ddf059506df465af",
+          "read_reference": {
+            "component": "gpgme1.0",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "f6831970f916b523133e8a6fffeeed9b8359b7d12eda089744cac425f6db3bc5",
+          "read_reference": {
+            "component": "gpgme1.0",
+            "label": "GPL-3+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "GnuPG Made Easy (GPGME)",
+          "Upstream-Contact": "GnuPG development mailing list <gnupg-devel@gnupg.org>",
+          "Source": "https://www.gnupg.org/related_software/gpgme/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\ng10 Code GmbH,\nFree Software Foundation, Inc.,\nWerner Koch"
+        },
+        {
+          "Files": "src/argparse.*",
+          "Copyright": "\n1998-2001, 2006-2008, 2012 Free Software Foundation, Inc.,\n1997-2001, 2006-2008, 2013-2015 Werner Koch"
+        },
+        {
+          "Files": "src/gpgme-tool.c doc/*",
+          "Copyright": "\n2002-2016 g10 Code GmbH"
+        },
+        {
+          "Files": "lang/cl/*",
+          "Copyright": "2003, 2006, 2008 g10 Code GmbH"
+        },
+        {
+          "Files": "lang/python/*",
+          "Copyright": "\n2002 John Goerzen,\n2004-2008 Igor Belyi,\n2014-2015 Martin Albrecht,\n2015 Ben McGinnes,\n2016 g10 Code GmbH"
+        },
+        {
+          "Files": "lang/cpp/*",
+          "Copyright": "\n2003-2005, 2007-2010, 2016 Klarälvdalens Datakonsult AB,\n2016 Intevation GmbH,"
+        },
+        {
+          "Files": "lang/qt/*",
+          "Copyright": "\n2004, 2005, 2007-2010, 2016 Klarälvdalens Datakonsult AB,\n2016 Intevation GmbH"
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "haproxy",
+      "version": "2.6.12-1+deb12u4",
+      "dsc_sha256": "0397de4cd917406bb710246fb0d0416b88f2105eb65454cb273b4ae78977333c",
+      "binaries": [
+        {
+          "name": "haproxy",
+          "version": "2.6.12-1+deb12u4",
+          "architecture": "arm64",
+          "copyright_sha256": "38abd31c03ab1115b2e5c04cba10faa395ab74c39a493285dffa2f8ed17715b1"
+        }
+      ],
+      "copyright_sha256": "38abd31c03ab1115b2e5c04cba10faa395ab74c39a493285dffa2f8ed17715b1",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "0717ca51fceaa25ac9e5ccc62e0c727dcf27796057201fb5fded56a25ff6ca28",
+          "read_reference": {
+            "component": "haproxy",
+            "member": "LICENSE",
+            "sha256": "0717ca51fceaa25ac9e5ccc62e0c727dcf27796057201fb5fded56a25ff6ca28",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        },
+        {
+          "member": "debian/dconv/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "read_reference": {
+            "component": "aardvark-dns",
+            "member": "LICENSE",
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          }
+        },
+        {
+          "member": "debian/dconv/NOTICE",
+          "sha256": "c4b9e4dae78466fea71284ec4875cb9e9d62a7961faf09c845c33a64a56adcee",
+          "read_reference": {
+            "component": "haproxy",
+            "member": "debian/dconv/NOTICE",
+            "sha256": "c4b9e4dae78466fea71284ec4875cb9e9d62a7961faf09c845c33a64a56adcee",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "pypi:relenv",
+              "member": "relenv-0.22.3/NOTICE",
+              "sha256": "36cd00c9b3c706c80928925f8c4e989c681611043d17b950e9036560b9504f71",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "ec163d12955aa29166fd1a6c0a180e3299eb64ffc4c5cbf8f94088fce9717a4f",
+          "read_reference": {
+            "component": "haproxy",
+            "label": "Apache-2.0"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "278abc70ee8c9f9fe19b8ba5648916c99ee1e32643b2f84520f33ccc809502a9",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "libev"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "e031db30b2ce546fa8ba63ae28f934642d3c5c28cd8f402188f0cf3e55c631c2",
+          "read_reference": {
+            "component": "haproxy",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "9e38b95d1b9640894d0740cf2e577ed08ae46fb0ada14ce3d681afc7eca77c2a",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "at"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "9538709e1afbe3d21b5a387233edafb7bc8117865203a3b470aa8fc43255efa0",
+          "read_reference": {
+            "component": "haproxy",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-2.1",
+          "full_normalized_body_sha256": "4133dfa9031ca065ecbc9bd0b095055253f1f05586f99f71ddd60232f5f42dc0",
+          "read_reference": {
+            "component": "haproxy",
+            "label": "LGPL-2.1"
+          }
+        },
+        {
+          "label": "MPL-2.0",
+          "full_normalized_body_sha256": "70a36eec47271c67e5aef12c5cd5fdee9cfc32552eca60a22898658ac91d8600",
+          "read_reference": {
+            "component": "haproxy",
+            "label": "MPL-2.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "haproxy",
+          "Upstream-Contact": "Willy Tarreau <w@1wt.eu>",
+          "Source": "http://www.haproxy.org/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "Copyright 2000-2021  Willy Tarreau <w@1wt.eu>.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": ".github/matrix.py",
+          "Copyright": "2020, Tim Duesterhus <tim@bastelstu.be>\n2019, Ilya Shipitsin <chipitsine@gmail.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "addons/51degrees/dummy/*",
+          "Copyright": "51Degrees Mobile Experts Limited. / 2019, 51Degrees Mobile Experts Limited, 5 Charlotte Close",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "addons/ot/*",
+          "Copyright": "2017, 2020, HAProxy Technologies",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "addons/promex/service-prometheus.c",
+          "Copyright": "2018, 2019, Christopher Faulet <cfaulet@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "addons/wurfl/dummy/*",
+          "Copyright": "ScientiaMobile, Inc.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "addons/wurfl/dummy/Makefile",
+          "Copyright": "Copyright 2000-2021  Willy Tarreau <w@1wt.eu>.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "admin/halog/fgets2.c",
+          "Copyright": "2000-2012, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "admin/halog/halog.c",
+          "Copyright": "2000-2020, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "admin/iprange/*",
+          "Copyright": "2000-2021, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "admin/netsnmp-perl/*",
+          "Copyright": "2007-2010, Krzysztof Piotr Oledzki <ole@ans.pl>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "admin/release-estimator/release-estimator.py",
+          "Copyright": "2020, HAProxy Technologies, Daniel Corbett <dcorbett@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "admin/wireshark-dissectors/peers/packet-happp.c",
+          "Copyright": "2016, Frédéric Lécaille <flecaille@haproxy.com>\n1998, Gerald Combs",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "Copyright (C) 2007-2011, Arnaud Cornet <acornet@debian.org>\nCopyright (C) 2011, Christo Buschek <crito@30loops.net>\nCopyright (C) 2013, Prach Pongpanich <prachpub@gmail.com>\nCopyright (C) 2013-2016, Apollon Oikonomopoulos <apoikos@debian.org>\nCopyright (C) 2013-2016, Vincent Bernat <bernat@debian.org>"
+        },
+        {
+          "Files": "debian/dconv/*",
+          "Copyright": "2012, Cyril Bonté",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "debian/dconv/js/*",
+          "Copyright": "2013-2015, Twitter, Inc. and other contributors; Licensed MIT",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "debian/dconv/js/typeahead.bundle.js",
+          "Copyright": "Copyright 2013-2015 Twitter, Inc. and other contributors"
+        },
+        {
+          "Files": "dev/base64/*",
+          "Copyright": "2009, 2010, Krzysztof Piotr Oledzki <ole@ans.pl>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "dev/tcploop/tcploop.c",
+          "Copyright": "2012-2017, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "include/*",
+          "Copyright": "2000-2020, Willy Tarreau - w@1wt.eu"
+        },
+        {
+          "Files": "include/haproxy/api-t.h\ninclude/haproxy/api.h\ninclude/haproxy/buf-t.h\ninclude/haproxy/buf.h\ninclude/haproxy/bug.h\ninclude/haproxy/initcall.h\ninclude/haproxy/istbuf.h",
+          "Copyright": "2000-2020, Willy Tarreau - w@1wt.eu"
+        },
+        {
+          "Files": "include/haproxy/arg-t.h\ninclude/haproxy/arg.h\ninclude/haproxy/protobuf-t.h\ninclude/haproxy/protobuf.h",
+          "Copyright": "2012, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/haproxy/atomic.h\ninclude/haproxy/thread-t.h\ninclude/haproxy/thread.h",
+          "Copyright": "2020, Willy Tarreau - w@1wt.eu\n2017, Christopher Faulet - cfaulet@haproxy.com"
+        },
+        {
+          "Files": "include/haproxy/auth-t.h\ninclude/haproxy/auth.h",
+          "Copyright": "2009, 2010, Krzysztof Piotr Oledzki <ole@ans.pl>"
+        },
+        {
+          "Files": "include/haproxy/base64.h\ninclude/haproxy/signal-t.h\ninclude/haproxy/signal.h\ninclude/haproxy/uri_auth-t.h\ninclude/haproxy/uri_auth.h",
+          "Copyright": "2000-2020, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/haproxy/check-t.h",
+          "Copyright": "2008, 2009, Krzysztof Piotr Oledzki <ole@ans.pl>\n2000-2020, Willy Tarreau - w@1wt.eu"
+        },
+        {
+          "Files": "include/haproxy/compression-t.h",
+          "Copyright": "2012, Exceliance, David Du Colombier <dducolombier@exceliance.fr>"
+        },
+        {
+          "Files": "include/haproxy/compression.h",
+          "Copyright": "2012, (C) Exceliance, David Du Colombier <dducolombier@exceliance.fr>"
+        },
+        {
+          "Files": "include/haproxy/counters-t.h",
+          "Copyright": "2011-2014, Willy Tarreau <w@1wt.eu>\n2008, 2009, Krzysztof Piotr Oledzki <ole@ans.pl>"
+        },
+        {
+          "Files": "include/haproxy/dgram-t.h\ninclude/haproxy/dgram.h\ninclude/haproxy/dns-t.h\ninclude/haproxy/fix-t.h\ninclude/haproxy/fix.h\ninclude/haproxy/mqtt-t.h\ninclude/haproxy/mqtt.h\ninclude/haproxy/resolvers-t.h\ninclude/haproxy/resolvers.h",
+          "Copyright": "2014, 2020, Baptiste Assmann <bedis9@gmail.com>"
+        },
+        {
+          "Files": "include/haproxy/dict-t.h\ninclude/haproxy/dict.h",
+          "Copyright": "2019, Frédéric Lécaille <flecaille@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/dns.h",
+          "Copyright": "2020, HAProxy Technologies"
+        },
+        {
+          "Files": "include/haproxy/extcheck.h",
+          "Copyright": "2014, Horms Solutions Ltd, Simon Horman <horms@verge.net.au>\n2000-2009, 2020, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/haproxy/fcgi-app-t.h\ninclude/haproxy/fcgi-app.h\ninclude/haproxy/fcgi.h\ninclude/haproxy/h1_htx.h\ninclude/haproxy/http_htx-t.h\ninclude/haproxy/http_htx.h\ninclude/haproxy/htx-t.h\ninclude/haproxy/htx.h\ninclude/haproxy/spoe-t.h\ninclude/haproxy/spoe.h",
+          "Copyright": "2017-2019, HAProxy Technologies, Christopher Faulet <cfaulet@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/filters-t.h\ninclude/haproxy/filters.h\ninclude/haproxy/flt_http_comp.h",
+          "Copyright": "2015, Qualys Inc., Christopher Faulet <cfaulet@qualys.com>"
+        },
+        {
+          "Files": "include/haproxy/h2.h",
+          "Copyright": "2017, HAProxy Technologies\n2000-2017, Willy Tarreau - w@1wt.eu"
+        },
+        {
+          "Files": "include/haproxy/hlua-t.h\ninclude/haproxy/hlua.h\ninclude/haproxy/hlua_fcn.h",
+          "Copyright": "2015, 2016, Thierry Fournier <tfournier@arpalert.org>"
+        },
+        {
+          "Files": "include/haproxy/hpack-dec.h\ninclude/haproxy/hpack-enc.h\ninclude/haproxy/hpack-huff.h\ninclude/haproxy/hpack-tbl-t.h\ninclude/haproxy/hpack-tbl.h\ninclude/haproxy/http-hdr-t.h\ninclude/haproxy/http-hdr.h",
+          "Copyright": "2017, HAProxy Technologies\n2014-2020, Willy Tarreau <willy@haproxy.org>"
+        },
+        {
+          "Files": "include/haproxy/mailers-t.h",
+          "Copyright": "2015, Horms Solutions Ltd., Simon Horman <horms@verge.net.au>\n2010, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>"
+        },
+        {
+          "Files": "include/haproxy/mailers.h",
+          "Copyright": "2020, Willy Tarreau <w@1wt.eu>\n2015, Horms Solutions Ltd., Simon Horman <horms@verge.net.au>\n2010, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>"
+        },
+        {
+          "Files": "include/haproxy/mworker-t.h\ninclude/haproxy/mworker.h",
+          "Copyright": "HAProxy Technologies 2019, - William Lallemand <wlallemand@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/namespace-t.h\ninclude/haproxy/namespace.h",
+          "Copyright": "2015-2020, Willy Tarreau\n2014, Tamas Kovacs, Sarkozi Laszlo, Krisztian Kovacs"
+        },
+        {
+          "Files": "include/haproxy/net_helper.h",
+          "Copyright": "2017-2020, Willy Tarreau\n2017, Olivier Houchard"
+        },
+        {
+          "Files": "include/haproxy/openssl-compat.h",
+          "Copyright": "Copyright 2000-2013 Willy Tarreau - w@1wt.eu"
+        },
+        {
+          "Files": "include/haproxy/peers-t.h\ninclude/haproxy/peers.h\ninclude/haproxy/ssl_sock-t.h\ninclude/haproxy/ssl_sock.h",
+          "Copyright": "2010, 2012, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>"
+        },
+        {
+          "Files": "include/haproxy/proto_quic.h\ninclude/haproxy/quic_sock.h",
+          "Copyright": "2020, Frédéric Lécaille <flecaille@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/proto_sockpair.h",
+          "Copyright": "HAProxy Technologies - William Lallemand <wlallemand@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/proto_udp.h\ninclude/haproxy/quic_cc-t.h\ninclude/haproxy/quic_cc.h\ninclude/haproxy/quic_frame-t.h\ninclude/haproxy/quic_frame.h\ninclude/haproxy/quic_loss-t.h\ninclude/haproxy/quic_loss.h\ninclude/haproxy/xprt_quic-t.h\ninclude/haproxy/xprt_quic.h",
+          "Copyright": "2019, 2020, HAProxy Technologies, Frédéric Lécaille <flecaille@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/qpack-tbl-t.h",
+          "Copyright": "2020, HAProxy Technologies, Frédéric Lécaille <flecaille@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/quic_tls-t.h\ninclude/haproxy/quic_tls.h",
+          "Copyright": "2019, 2020, HAProxy Technologies, Frédéric Lécaille <flecaille@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/sample-t.h\ninclude/haproxy/sample.h\ninclude/haproxy/sample_data-t.h\ninclude/haproxy/stick_table-t.h\ninclude/haproxy/stick_table.h",
+          "Copyright": "2010, 2012, 2013, 2020, Willy Tarreau <w@1wt.eu>\n2009, 2010, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>"
+        },
+        {
+          "Files": "include/haproxy/shctx-t.h\ninclude/haproxy/shctx.h",
+          "Copyright": "2011, 2012, EXCELIANCE"
+        },
+        {
+          "Files": "include/haproxy/ssl_ckch-t.h\ninclude/haproxy/ssl_ckch.h\ninclude/haproxy/ssl_crtlist-t.h\ninclude/haproxy/ssl_crtlist.h",
+          "Copyright": "2020, HAProxy Technologies, William Lallemand <wlallemand@haproxy.com>"
+        },
+        {
+          "Files": "include/haproxy/ssl_utils.h",
+          "Copyright": "2020, HAProxy Technologies, William Lallemand <wlallemand@haproxy.com>\n2012, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>"
+        },
+        {
+          "Files": "include/haproxy/tcpcheck-t.h",
+          "Copyright": "2020, Gaetan Rivet <grive@u256.net>\n2020, Christopher Faulet <cfaulet@haproxy.com>\n2013, Baptiste Assmann <bedis9@gmail.com>\n2007-2010, Krzysztof Piotr Oledzki <ole@ans.pl>\n2000-2009, 2020, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/haproxy/tcpcheck.h",
+          "Copyright": "2020, Gaetan Rivet <grive@u256.net>\n2020, Christopher Faulet <cfaulet@haproxy.com>\n2013, Baptiste Assmann <bedis9@gmail.com>\n2007-2010, Krzysztof Piotr Oledzki <ole@ans.pl>\n2000-2009, 2020, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/haproxy/uri_normalizer-t.h\ninclude/haproxy/uri_normalizer.h",
+          "Copyright": "2021, Tim Duesterhus <tim@bastelstu.be>"
+        },
+        {
+          "Files": "include/haproxy/vars-t.h\ninclude/haproxy/vars.h",
+          "Copyright": "2015, Thierry FOURNIER <tfournier@arpalert.org>"
+        },
+        {
+          "Files": "include/haproxy/xref-t.h\ninclude/haproxy/xref.h",
+          "Copyright": "2020, Willy Tarreau - w@1wt.eu\n2017, Thierry Fournier <thierry.fournier@ozon.io>"
+        },
+        {
+          "Files": "include/import/*",
+          "Copyright": "2002-2011, - Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/import/atomic-ops.h",
+          "Copyright": "Copyright 2000-2013 Willy Tarreau - w@1wt.eu"
+        },
+        {
+          "Files": "include/import/eb32sctree.h",
+          "Copyright": "2002-2017, - Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/import/ist.h",
+          "Copyright": "2000-2020, Willy Tarreau - w@1wt.eu"
+        },
+        {
+          "Files": "include/import/lru.h\ninclude/import/plock.h\ninclude/import/slz.h",
+          "Copyright": "2012-2017, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "include/import/mjson.h",
+          "Copyright": "2018-2020, Cesanta Software Limited"
+        },
+        {
+          "Files": "include/import/sha1.h",
+          "Copyright": "2009-2015, Linus Torvalds and others."
+        },
+        {
+          "Files": "include/import/xxhash.h",
+          "Copyright": "2012-2020, Yann Collet"
+        },
+        {
+          "Files": "src/*",
+          "Copyright": "2000-2020, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/action.c\nsrc/fcgi-app.c\nsrc/flt_spoe.c\nsrc/h1_htx.c\nsrc/http_ana.c\nsrc/http_htx.c\nsrc/htx.c\nsrc/mux_fcgi.c\nsrc/server_state.c",
+          "Copyright": "2016-2019, 2021, HAProxy Technologies, Christopher Faulet <cfaulet@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/auth.c",
+          "Copyright": "2009, 2010, Krzysztof Piotr Oledzki <ole@ans.pl>"
+        },
+        {
+          "Files": "src/base64.c\nsrc/server.c\nsrc/stats.c",
+          "Copyright": "2007-2010, Krzysztof Piotr Oledzki <ole@ans.pl>\n2000-2012, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "src/cache.c",
+          "Copyright": "2017, 2020, HAProxy Technologies",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/cfgparse-global.c\nsrc/cfgparse-listen.c\nsrc/dict.c\nsrc/namespace.c\nsrc/vars.c\nsrc/version.c",
+          "Copyright": "Copyright 2000-2015  Willy Tarreau <w@1wt.eu>.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/cfgparse-ssl.c\nsrc/ssl_sample.c\nsrc/ssl_utils.c",
+          "Copyright": "2020, HAProxy Technologies, William Lallemand <wlallemand@haproxy.com>\n2012, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/check.c\nsrc/cli.c",
+          "Copyright": "2007-2010, Krzysztof Piotr Oledzki <ole@ans.pl>\n2000-2012, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/compression.c",
+          "Copyright": "2012, Exceliance, David Du Colombier <dducolombier@exceliance.fr>"
+        },
+        {
+          "Files": "src/debug.c\nsrc/haproxy.c\nsrc/wdt.c",
+          "Copyright": "2000-2021, Willy Tarreau <willy@haproxy.org>.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/dgram.c\nsrc/fix.c\nsrc/mqtt.c\nsrc/resolvers.c",
+          "Copyright": "2014, 2020, Baptiste Assmann <bedis9@gmail.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/dns.c",
+          "Copyright": "2017, 2020, HAProxy Technologies"
+        },
+        {
+          "Files": "src/eb32sctree.c\nsrc/eb32tree.c\nsrc/eb64tree.c\nsrc/ebimtree.c\nsrc/ebistree.c\nsrc/ebmbtree.c\nsrc/ebpttree.c\nsrc/ebsttree.c\nsrc/ebtree.c",
+          "Copyright": "2002-2011, - Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/ev_evports.c",
+          "Copyright": "2018, Joyent, Inc.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/extcheck.c",
+          "Copyright": "2014, Horms Solutions Ltd, Simon Horman <horms@verge.net.au>\n2000-2009, 2020, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/fcgi.c",
+          "Copyright": "2019, HAProxy Technologies, Christopher Faulet <cfaulet@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/filters.c\nsrc/flt_http_comp.c\nsrc/flt_trace.c",
+          "Copyright": "2015, Qualys Inc., Christopher Faulet <cfaulet@qualys.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/h2.c",
+          "Copyright": "2017, Willy Tarreau <w@1wt.eu>\n2017, HAProxy Technologies",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/hlua.c\nsrc/hlua_fcn.c",
+          "Copyright": "2015, 2016, Thierry Fournier <tfournier@arpalert.org>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/hpack-dec.c\nsrc/hpack-enc.c\nsrc/hpack-huff.c\nsrc/hpack-tbl.c",
+          "Copyright": "2017, HAProxy Technologies\n2014-2020, Willy Tarreau <willy@haproxy.org>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/lru.c",
+          "Copyright": "2012-2017, Willy Tarreau <w@1wt.eu>"
+        },
+        {
+          "Files": "src/mailers.c",
+          "Copyright": "2020, Willy Tarreau <w@1wt.eu>\n2015, Horms Solutions Ltd, Simon Horman <horms@verge.net.au>"
+        },
+        {
+          "Files": "src/mjson.c",
+          "Copyright": "2018-2020, Cesanta Software Limited",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/mux_h1.c",
+          "Copyright": "2018, 2019, Christopher Faulet <cfaulet@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/mworker-prog.c\nsrc/proto_sockpair.c",
+          "Copyright": "HAProxy Technologies - William Lallemand <wlallemand@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/mworker.c",
+          "Copyright": "HAProxy Technologies 2019, - William Lallemand <wlallemand@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/peers.c\nsrc/ssl_sock.c",
+          "Copyright": "2010, 2012, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>"
+        },
+        {
+          "Files": "src/proto_quic.c",
+          "Copyright": "2020, Frédéric Lécaille <flecaille@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/proto_udp.c\nsrc/quic_frame.c\nsrc/quic_sock.c\nsrc/xprt_quic.c",
+          "Copyright": "2019, 2020, HAProxy Technologies, Frédéric Lécaille <flecaille@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/proto_uxdg.c",
+          "Copyright": "2020, HAProxy Technologies, Emeric Brun <ebrun@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/qpack-tbl.c",
+          "Copyright": "2020, HAProxy Technologies, Frédéric Lécaille <flecaille@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/quic_cc.c\nsrc/quic_cc_newreno.c",
+          "Copyright": "2019, 2020, HAProxy Technologies, Frédéric Lécaille <flecaille@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/ring.c\nsrc/sink.c\nsrc/trace.c",
+          "Copyright": "2000-2020, Willy Tarreau - w@1wt.eu",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/sample.c\nsrc/stick_table.c",
+          "Copyright": "2010, 2012, Willy Tarreau <w@1wt.eu>\n2009, 2010, EXCELIANCE, Emeric Brun <ebrun@exceliance.fr>"
+        },
+        {
+          "Files": "src/sha1.c",
+          "Copyright": "2009-2015, Linus Torvalds and others.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/shctx.c",
+          "Copyright": "2011, 2012, EXCELIANCE"
+        },
+        {
+          "Files": "src/slz.c",
+          "Copyright": "2012-2017, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/ssl_ckch.c\nsrc/ssl_crtlist.c",
+          "Copyright": "2020, HAProxy Technologies, William Lallemand <wlallemand@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/tcpcheck.c",
+          "Copyright": "2020, Gaetan Rivet <grive@u256.net>\n2020, Christopher Faulet <cfaulet@haproxy.com>\n2013, Baptiste Assmann <bedis9@gmail.com>\n2007-2010, Krzysztof Piotr Oledzki <ole@ans.pl>\n2000-2009, 2020, Willy Tarreau <w@1wt.eu>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/thread.c",
+          "Copyright": "2017, Christopher Fauet - cfaulet@haproxy.com",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/uri_normalizer.c",
+          "Copyright": "2021, Tim Duesterhus <tim@bastelstu.be>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "src/xprt_handshake.c",
+          "Copyright": "2019, HAProxy Technologies, Olivier Houchard <ohouchard@haproxy.com>",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {
+          "Files": "tests/exp/filltab25.c",
+          "Copyright": "2007, willy tarreau.",
+          "Comment": "\nAn OpenSSL exception is present in the LICENSE file: \"This program is\nreleased under the GPL with the additional exemption that compiling,\nlinking, and/or using OpenSSL is allowed.\""
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "iperf",
+      "version": "2.1.8+dfsg-1",
+      "dsc_sha256": "d875902714d6b2a80971ff5f4f0adfd4e2f588cad3e4b988787950ecf0363f49",
+      "binaries": [
+        {
+          "name": "iperf",
+          "version": "2.1.8+dfsg-1",
+          "architecture": "arm64",
+          "copyright_sha256": "7f376949e0003cd15cb15838280e9bf82ce10e93753b7019a83abd55193d3242"
+        }
+      ],
+      "copyright_sha256": "7f376949e0003cd15cb15838280e9bf82ce10e93753b7019a83abd55193d3242",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "5f9f5c4feca3347c3b3c0ada8b16b4e6b698aac4e6f016a24adf61a5915336d1",
+          "read_reference": {
+            "component": "iperf",
+            "member": "COPYING",
+            "sha256": "5f9f5c4feca3347c3b3c0ada8b16b4e6b698aac4e6f016a24adf61a5915336d1",
+            "review_method": "Complete original text read, preserving exact file scope, nonendorsement, patent conditions and original referenced licenses."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "e6452f8bb9f61807201120c7056c952b2714090f2d9d5040516b764b86995476",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "dctrl-tools"
+          }
+        },
+        {
+          "label": "FSF-something",
+          "full_normalized_body_sha256": "236519e8309d8881985773c6ce2b6063e9aa65fe929e92c8f149c981b77d43ee",
+          "read_reference": {
+            "label": "All-permissive",
+            "component": "sensible-utils"
+          }
+        },
+        {
+          "label": "GPL-3-WithACException",
+          "full_normalized_body_sha256": "7e2e8951b64dd10b7ab44adc2a54c4eccbd623108c6bfd8300d5202349b48df7",
+          "read_reference": {
+            "component": "iperf",
+            "label": "GPL-3-WithACException"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "a4ae2100acaa9ea730ada4a3b2d8460114707b012c30f82b5e72b07171bf7cc8",
+          "read_reference": {
+            "label": "installsh",
+            "component": "sensible-utils"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "80dc34892ec8c8d81b10f6a90635d0866826079a6fdf702a74fd9b1a04131c45",
+          "read_reference": {
+            "label": "ISC",
+            "component": "sed"
+          }
+        },
+        {
+          "label": "LGPL-2+",
+          "full_normalized_body_sha256": "68440ad5549a979c21a254e6e970c36a07bc74bb7113b9698501658f55211852",
+          "read_reference": {
+            "component": "iperf",
+            "label": "LGPL-2+"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "5a34a52aa03a214aaf6615e1068aeda561c0caaf4396ebacfef26b7d9aaefedf",
+          "read_reference": {
+            "component": "iperf",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "bd6e4a2cdb34e4a34b79a2d7f8a2dddec1f05676582e158318ba2080ead7b9f3",
+          "read_reference": {
+            "component": "iperf",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "GPL-2-WithACException",
+          "full_normalized_body_sha256": "b50e230bfb54ab8a2878931250d5a0442534653e3995c80585e0b4916ae77110",
+          "read_reference": {
+            "component": "iperf",
+            "label": "GPL-2-WithACException"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "iperf",
+          "Source": "https://sourceforge.net/projects/iperf2/",
+          "Files-Excluded": "include/service.h src/service.c",
+          "Comment": "\nThese files are deleted from the Debian distributed sources because\nthey hold a restrictive copyright and are only used in Windows."
+        },
+        {
+          "Files": "*",
+          "Copyright": "1999-2005 The Board of Trustees of the University of Illinois"
+        },
+        {
+          "Files": "include/checksums.h include/histogram.h include/isochronous.hpp include/packet_ring.h include/payloads.h include/pdfs.h src/checkdelay.c src/checkisoch.cpp src/checkpdfs.c src/checksums.c src/histogram.c src/igmp_querier.c src/isochronous.cpp src/packet_ring.c src/pdfs.c src/ReportOutputs.c include/gettcpinfo.h compat/gettcpinfo.c include/dscp.h",
+          "Copyright": "2017-2022 Broadcom Corporation"
+        },
+        {
+          "Files": "src/dscp.c",
+          "Copyright": "2000 Markus Friedl, 2005,2006 Damien Miller, 2022 Robert McMahon"
+        },
+        {
+          "Files": "aclocal.m4 Makefile.in */Makefile.in",
+          "Copyright": "1994-2018 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "m4/ax_create_stdint_h.m4",
+          "Copyright": "2003 Guido Draheim <guidod@gmx.de>"
+        },
+        {
+          "Files": "m4/ax_pthread.m4",
+          "Copyright": "2008 Steven G. Johnson <stevenj@alum.mit.edu>, 2011 Daniel Richard G. <skunk@iSKUNK.ORG>"
+        },
+        {
+          "Files": "depcomp missing compile",
+          "Copyright": "1996-2018 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "config.guess config.sub",
+          "Copyright": "1992-2017 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "install-sh",
+          "Copyright": "1994 X Consortium"
+        },
+        {
+          "Files": "compat/inet_ntop.*",
+          "Copyright": "1996-2001 Internet Software Consortium"
+        },
+        {
+          "Files": "include/gnu_getopt.h src/gnu_getopt.c src/gnu_getopt_long.c",
+          "Copyright": "1989-1997 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1998-2014 Roberto Lumbreras <rover@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "liblognorm",
+      "version": "2.0.6-4",
+      "dsc_sha256": "252a78fc7049a31a6f21a9e057a36171ddceb1d9ec09a58ddb74aedc9a66bc70",
+      "binaries": [
+        {
+          "name": "liblognorm5",
+          "version": "2.0.6-4",
+          "architecture": "arm64",
+          "copyright_sha256": "6f25d58e295f549da87ac041f2137b1a209f25b0a4dd5e4117e607451538b52a"
+        }
+      ],
+      "copyright_sha256": "6f25d58e295f549da87ac041f2137b1a209f25b0a4dd5e4117e607451538b52a",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "81f60f32d9f580e5dbbdce08a4e45d4200e000a7090e4d89adfde09b627426a7",
+          "read_reference": {
+            "component": "liblognorm",
+            "member": "COPYING",
+            "sha256": "81f60f32d9f580e5dbbdce08a4e45d4200e000a7090e4d89adfde09b627426a7",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "COPYING.ASL20",
+          "sha256": "8743ad560dea1229d4f46cd603e10874db41a27f3c74f64e958ef123f3943fab",
+          "read_reference": {
+            "component": "rsyslog",
+            "member": "COPYING.ASL20",
+            "sha256": "8743ad560dea1229d4f46cd603e10874db41a27f3c74f64e958ef123f3943fab"
+          }
+        },
+        {
+          "member": "doc/license.rst",
+          "sha256": "28181dfc1d65a2c69353c1bdeb9ba1477e0746b80a9f51ce7951438e8c69bb50",
+          "read_reference": {
+            "component": "liblognorm",
+            "member": "doc/license.rst",
+            "sha256": "28181dfc1d65a2c69353c1bdeb9ba1477e0746b80a9f51ce7951438e8c69bb50",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "cd85a7f4a3846319b2ed3166d476da973761c498bbb38eca6bb9d27f1ac0a7fc",
+          "read_reference": {
+            "component": "liblognorm",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "30534bfa1a0206b67c6b43aad0d2ad8089aa3e75874c4b7dc39e5ed7699b14b2",
+          "read_reference": {
+            "component": "liblognorm",
+            "label": "Apache-2.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "liblognorm",
+          "Upstream-Contact": "Rainer Gerhards <rgerhards@adiscon.com>, Adiscon GmbH.",
+          "Source": "https://github.com/rsyslog/liblognorm"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2010-2018 Rainer Gerhards and Adiscon GmbH."
+        },
+        {
+          "Files": "compat/asprintf.c compat/strndup.c\ntools/logrecord.h",
+          "Copyright": "2015 Rainer Gerhards and Adiscon"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2010-2016 Pierre Chifflier <pollux@debian.org>\n2022 Florian Ernst <florian@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libmaxminddb",
+      "version": "1.7.1-1",
+      "dsc_sha256": "2b644c068739179907df3be7728d39f823aacc1f3d295788b8439a09fe222556",
+      "binaries": [
+        {
+          "name": "libmaxminddb0",
+          "version": "1.7.1-1",
+          "architecture": "arm64",
+          "copyright_sha256": "33e034d37ba537df4ad70642f6a231436077af15167dcdab63617347d0a9c09b"
+        }
+      ],
+      "copyright_sha256": "33e034d37ba537df4ad70642f6a231436077af15167dcdab63617347d0a9c09b",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "read_reference": {
+            "component": "aardvark-dns",
+            "member": "LICENSE",
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+          }
+        },
+        {
+          "member": "NOTICE",
+          "sha256": "33326dfb385200e7000fb0b4b4880f254a893680ce2914d251b9dd3d7b44b341",
+          "read_reference": {
+            "component": "libmaxminddb",
+            "member": "NOTICE",
+            "sha256": "33326dfb385200e7000fb0b4b4880f254a893680ce2914d251b9dd3d7b44b341",
+            "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+            "read_reference": {
+              "component": "pypi:relenv",
+              "member": "relenv-0.22.3/NOTICE",
+              "sha256": "36cd00c9b3c706c80928925f8c4e989c681611043d17b950e9036560b9504f71",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        },
+        {
+          "member": "t/libtap/COPYING",
+          "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+          "read_reference": {
+            "component": "gmp",
+            "member": "COPYING.LESSERv3",
+            "sha256": "a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c"
+          }
+        },
+        {
+          "member": "t/maxmind-db/LICENSE",
+          "sha256": "bfee06753068397e716bd0c2b168d0962ee347c2baf6151f22cdbb5dd0e09175",
+          "read_reference": {
+            "component": "libmaxminddb",
+            "member": "t/maxmind-db/LICENSE",
+            "sha256": "bfee06753068397e716bd0c2b168d0962ee347c2baf6151f22cdbb5dd0e09175",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "4044f2cfe4e8568b3d7d4b11517e4366079cc5002f191aaed1a4df3374189ffc",
+          "read_reference": {
+            "label": "Apache-2.0",
+            "component": "golang-github-containers-common"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "6450a8dc8e9d1155976c3df4ebe13872f9f1feb5d3b65bd22d5c7b606ebbfd06",
+          "read_reference": {
+            "component": "libmaxminddb",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "BSD-2-clause and BSD-3-clause and BSD-4-clause",
+          "full_normalized_body_sha256": "0cc83c078b09056e0223756df6d5b8bd099eb2e0216df9eb904e281899d2bf1d",
+          "read_reference": {
+            "component": "libmaxminddb",
+            "label": "BSD-2-clause and BSD-3-clause and BSD-4-clause"
+          }
+        },
+        {
+          "label": "CC-BY-SA-3.0",
+          "full_normalized_body_sha256": "a32565102ad2391044be3ed81ae4a7560300e3ed62f0f10ab59d05e40ade413a",
+          "read_reference": {
+            "component": "libmaxminddb",
+            "label": "CC-BY-SA-3.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "libmaxminddb",
+          "Source": "https://maxmind.github.io/libmaxminddb/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013-2022 MaxMind, Inc."
+        },
+        {
+          "Files": "t/maxmind-db/*",
+          "Copyright": "2013-2014 MaxMind, Inc."
+        },
+        {
+          "Files": "t/libtap/*",
+          "Copyright": "2012 Jake Gelbman <gelbman@gmail.com>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2014-2023 Faidon Liambotis <paravoid@debian.org>"
+        },
+        {},
+        {},
+        {
+          "Files": "src/maxminddb-compat-util.h",
+          "Copyright": "2005 Pascal Gloor <pascal.gloor@spale.com>\n2009 David Schultz <das@FreeBSD.org>\n1988, 1993 The Regents of the University of California",
+          "Comment": "The memmem, strdup, and strndup functions were all copied from the\nFreeBSD source, along with the relevant copyright notice."
+        },
+        {}
+      ]
+    },
+    {
+      "source": "libpgm",
+      "version": "5.3.128~dfsg-2",
+      "dsc_sha256": "c7e3f34b8d5ae96763b76979c228dacd44c0c77d4239b46160d383481bb50b77",
+      "binaries": [
+        {
+          "name": "libpgm-5.3-0",
+          "version": "5.3.128~dfsg-2",
+          "architecture": "arm64",
+          "copyright_sha256": "07836d892d92dcef15583e4e01569805498b95769f1c85d79bc996821dace2cf"
+        }
+      ],
+      "copyright_sha256": "07836d892d92dcef15583e4e01569805498b95769f1c85d79bc996821dace2cf",
+      "original_legal_matches": [
+        {
+          "member": "openpgm/pgm/COPYING",
+          "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "openpgm/pgm/LICENSE",
+          "sha256": "4a7d4ec71fa60969399fd4caad64d5a3003fee2775445f271a5a36a8ae743a29",
+          "read_reference": {
+            "component": "libpgm",
+            "member": "openpgm/pgm/LICENSE",
+            "sha256": "4a7d4ec71fa60969399fd4caad64d5a3003fee2775445f271a5a36a8ae743a29"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "LGPL-2.1",
+          "full_normalized_body_sha256": "73f6f2c4a0ecd336b97ed9e3c1770c66989350a870d8b377f67335b0008933d4",
+          "read_reference": {
+            "component": "libpgm",
+            "label": "LGPL-2.1"
+          }
+        },
+        {
+          "label": "LGPL-2+",
+          "full_normalized_body_sha256": "5256f924ccb7dbd03c139fe0dcfd17ccb43eba8998987be08ec63ca545155484",
+          "read_reference": {
+            "component": "libpgm",
+            "label": "LGPL-2+"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "0da6de8ac332049b70701876811ec7d3ba395a48ac2eb5e1fa7164ebd6bab45c",
+          "read_reference": {
+            "component": "libpgm",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "80dc34892ec8c8d81b10f6a90635d0866826079a6fdf702a74fd9b1a04131c45",
+          "read_reference": {
+            "label": "ISC",
+            "component": "sed"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "OpenPGM",
+          "Upstream-Contact": "Steven McCoy <steven.mccoy@miru.hk>",
+          "Source": "https://github.com/steve-o/openpgm"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2006-     Miru Limited."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "Copyright (C) 2014-     Laszlo Boszormenyi (GCS) <gcs@debian.org>,\nCopyright (C) 2006-2011 Miru Limited & Gabriel de Perthuis"
+        },
+        {},
+        {
+          "Files": "openpgm/pgm/md5.c*",
+          "Copyright": "1995, 1996, 2001, 2003 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "openpgm/pgm/include/impl/ip.h",
+          "Copyright": "1982, 1986, 1993 The Regents of the University of California.\n1996-1999 by Internet Software Consortium."
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "lvm2",
+      "version": "2.03.16-2",
+      "dsc_sha256": "9f01f4f44d4126ff4e588d46ede1bdefffd255c5441bb105684978b5193d2318",
+      "binaries": [
+        {
+          "name": "dmsetup",
+          "version": "2:1.02.185-2",
+          "architecture": "arm64",
+          "copyright_sha256": "85275778bfeeb4461375e42feb6a52343e521286ef7ba073e98a37a8c6f5143c"
+        },
+        {
+          "name": "libdevmapper1.02.1",
+          "version": "2:1.02.185-2",
+          "architecture": "arm64",
+          "copyright_sha256": "85275778bfeeb4461375e42feb6a52343e521286ef7ba073e98a37a8c6f5143c"
+        }
+      ],
+      "copyright_sha256": "85275778bfeeb4461375e42feb6a52343e521286ef7ba073e98a37a8c6f5143c",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "e76fbcd2fb97cf202da330301327754d2db5c58b5b4bebd3a8a749393e7603d1",
+          "read_reference": {
+            "component": "lvm2",
+            "member": "COPYING",
+            "sha256": "e76fbcd2fb97cf202da330301327754d2db5c58b5b4bebd3a8a749393e7603d1",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "COPYING.BSD",
+          "sha256": "eea9f9e35fbabc4c425a47fcd70f48b41c546f4da1ecb3f8dd710bf5f6ac6208",
+          "read_reference": {
+            "component": "lvm2",
+            "member": "COPYING.BSD",
+            "sha256": "eea9f9e35fbabc4c425a47fcd70f48b41c546f4da1ecb3f8dd710bf5f6ac6208",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "COPYING.LIB",
+          "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "tools/license.inc",
+          "sha256": "971c9698afa801f69e31f3ef940395bb1bd6559a6d2e96a24f4d97f879a2adb5",
+          "read_reference": {
+            "component": "lvm2",
+            "member": "tools/license.inc",
+            "sha256": "971c9698afa801f69e31f3ef940395bb1bd6559a6d2e96a24f4d97f879a2adb5",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0",
+          "full_normalized_body_sha256": "55c45097acb82efc055af1cc32f70a2e7d4575138bea95daf660d23901846f91",
+          "read_reference": {
+            "component": "lvm2",
+            "label": "GPL-2.0"
+          }
+        },
+        {
+          "label": "LGPL-2.1",
+          "full_normalized_body_sha256": "bed3256e1d57f3af30f082da2945ce89a8ac59c5be5e801b4fd85fc18d64c4d9",
+          "read_reference": {
+            "component": "lvm2",
+            "label": "LGPL-2.1"
+          }
+        },
+        {
+          "label": "BSD-2-Clause",
+          "full_normalized_body_sha256": "971850f7f84e5dc88bd6b52e0d0c1fbffdaec4eae2fd311b1511d42bf7855c51",
+          "read_reference": {
+            "label": "BSD-2-Clause",
+            "component": "libbpf"
+          }
+        },
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "f667f6731b078d75be1065e3bd7db460f3dfa8624da1ce941bf5462733c8bb39",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "atop"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "lvm2",
+          "Source": "https://sourceware.org/pub/lvm2/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\n1994 X Consortium\n1997-2004 Sistina Software\n1999,2000 IBM Corp.\n2003 Theodore Ts'o\n2004-2018 Red Hat, Inc.\n2004 Luca Berra\n2005-2007 NEC Corporation\n2005 Zak Kipling\n2006 Rackable Systems\n2007-2008 NEC Corporation\n2009 Chris Procter\n2013 Gabriele Svelto <gabriele.svelto@gmail.com>\n2015-2016, Vratislav Podzimek <vpodzime@redhat.com>"
+        },
+        {
+          "Files": "\nbase/*\ndaemons/*\ndevice_mapper/*\nlib/*\nlibdm/*\ntools/*",
+          "Copyright": "\n1994 X Consortium\n1997-2004 Sistina Software\n1999,2000 IBM Corp.\n2003 Theodore Ts'o\n2004-2018 Red Hat, Inc.\n2004 Luca Berra\n2005-2007 NEC Corporation\n2005 Zak Kipling\n2006 Rackable Systems\n2007-2008 NEC Corporation\n2009 Chris Procter\n2013 Gabriele Svelto <gabriele.svelto@gmail.com>\n2015-2016, Vratislav Podzimek <vpodzime@redhat.com>"
+        },
+        {
+          "Files": "\ntest/lib/brick-shelltest.h\ntest/lib/runner.cpp",
+          "Copyright": "\n2014 Petr Rockai <me@mornfall.net>\n2014 Red Hat, Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2005-2018 Bastian Blank <waldi@debian.org>"
+        }
+      ]
+    },
+    {
+      "source": "oath-toolkit",
+      "version": "2.6.7-3.1+deb12u1",
+      "dsc_sha256": "eb7a06a36ba537b83acf7c754d2b6d7789664a9641300bd689a2300855ae581e",
+      "binaries": [
+        {
+          "name": "liboath0",
+          "version": "2.6.7-3.1+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "9efe89c90f2ccf8eb136381c8414fc9599c4518e23d840876449dc159ff64241"
+        }
+      ],
+      "copyright_sha256": "9efe89c90f2ccf8eb136381c8414fc9599c4518e23d840876449dc159ff64241",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "920838edfd9808b9edd791067c8a7769d4a8185e142e0eb8572c926568150760",
+          "read_reference": {
+            "component": "oath-toolkit",
+            "member": "COPYING",
+            "sha256": "920838edfd9808b9edd791067c8a7769d4a8185e142e0eb8572c926568150760"
+          }
+        },
+        {
+          "member": "liboath/COPYING",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "oathtool/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        },
+        {
+          "member": "pam_oath/COPYING",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "read_reference": {
+            "component": "cpio",
+            "member": "COPYING",
+            "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "b1d3f3f8662cb7f5237b4cf1cb29d4c30031e245628cf7fbb753151af0563a52",
+          "read_reference": {
+            "component": "oath-toolkit",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "5cd2295b2482fb0be4cd775c6296f43bcabfa59e8b1def3fcd1ac65b2e1939a1",
+          "read_reference": {
+            "component": "oath-toolkit",
+            "label": "LGPL-2.1+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "OATH Toolkit",
+          "Upstream-Contact": "Simon Josefsson <simon@josefsson.org>",
+          "Source": "http://www.nongnu.org/oath-toolkit/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "Copyright (C) 2009-2013 Simon Josefsson"
+        },
+        {
+          "Files": "liboath/*",
+          "Copyright": "Copyright (C) 2009-2012 Simon Josefsson"
+        },
+        {
+          "Files": "libpskc/*",
+          "Copyright": "Copyright (C) 2012-2013 Simon Josefsson"
+        }
+      ]
+    },
+    {
+      "source": "ocserv",
+      "version": "1.1.6-3",
+      "dsc_sha256": "621a92ce371b829df8ba1d55d0087815c45b45d9503afb7268ecd15668436b8a",
+      "binaries": [
+        {
+          "name": "ocserv",
+          "version": "1.1.6-3",
+          "architecture": "arm64",
+          "copyright_sha256": "cd38fc9d8614238fa6db6e3d9ed9371dca31b9f5f876f3b3e6efb2ac13e1751d"
+        }
+      ],
+      "copyright_sha256": "cd38fc9d8614238fa6db6e3d9ed9371dca31b9f5f876f3b3e6efb2ac13e1751d",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "LICENSE",
+          "sha256": "ed41f9aa634e61dffbba93e405780c9c28dd93891928332f845be52fcb77bb19",
+          "read_reference": {
+            "component": "ocserv",
+            "member": "LICENSE",
+            "sha256": "ed41f9aa634e61dffbba93e405780c9c28dd93891928332f845be52fcb77bb19",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "src/ccan/licenses/BSD-MIT",
+          "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e",
+          "read_reference": {
+            "component": "bmon",
+            "member": "LICENSE.MIT",
+            "sha256": "a2a6760c2c6fa779a635e4a7ad00f668862ebcadb2a8a57d16662543e103e08c"
+          }
+        },
+        {
+          "member": "src/ccan/licenses/CC0",
+          "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+          "read_reference": {
+            "component": "libnvme",
+            "member": "ccan/ccan/array_size/LICENSE",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29"
+          }
+        },
+        {
+          "member": "src/ccan/licenses/LGPL-2.1",
+          "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861",
+          "read_reference": {
+            "component": "apparmor",
+            "member": "changehat/mod_apparmor/COPYING.LGPL",
+            "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "f5e867e21de5a18d96bcf2e5e1da3d32ab13b4665e8e8c7a77c390a530b85a86",
+          "read_reference": {
+            "component": "ocserv",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "f203de9b47178388c0da6113378d0c22f31face1b97f4cbc45ee515029bf27f4",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "dnsdist"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "29ae3759572ceb90e32c599a7fda7972ce48608242e41a0f65a7e8ec97c0400c",
+          "read_reference": {
+            "component": "ocserv",
+            "label": "LGPL-2.1+"
+          }
+        },
+        {
+          "label": "LGPL-2.1",
+          "full_normalized_body_sha256": "51ced2ec35ae4ce221df2e1da163efc7daf219b47279580c5fd5b512da989507",
+          "read_reference": {
+            "component": "ocserv",
+            "label": "LGPL-2.1"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "dash"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "278abc70ee8c9f9fe19b8ba5648916c99ee1e32643b2f84520f33ccc809502a9",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "libev"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "ocserv",
+          "Upstream-Contact": "OpenConnect <openconnect-devel@lists.infradead.org>",
+          "Source": "http://www.infradead.org/ocserv/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013-2017 Nikos Mavrogiannopoulos\n2014-2017 Red Hat, Inc.\n2012-2013 David Woodhouse\n2009-2015 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "build-aux/snippet/*",
+          "Copyright": "1995-2014 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "src/ccan/build_assert/build_assert.h\nsrc/ccan/check_type/check_type.h\nsrc/ccan/container_of/container_of.h\nsrc/ccan/hash/hash.c\nsrc/ccan/hash/hash.h\nsrc/ccan/htable/htable.c\nsrc/ccan/htable/htable.h\nsrc/ccan/htable/htable_type.h\nsrc/ccan/list/list.c\nsrc/ccan/list/list.h",
+          "Copyright": "The C Code Archive Network (http://ccodearchive.net)"
+        },
+        {
+          "Files": "src/http-parser/*",
+          "Copyright": "Joyent, Inc. and other Node contributors\nIgor Sysoev"
+        },
+        {
+          "Files": "src/icmp-ping.*",
+          "Copyright": "1989 The Regents of the University of California\n1999 Randolph Chung <tausq@debian.org>"
+        },
+        {
+          "Files": "src/lzs.* src/vasprintf.*",
+          "Copyright": "2008-2015 Intel Corporation"
+        },
+        {
+          "Files": "src/occtl/time.c",
+          "Copyright": "2014 Nikos Mavrogiannopoulos\n2002 Albert Cahalan\n1996 Charles Blake\n1993 Larry Greenfield and Michael K. Johnson"
+        },
+        {
+          "Files": "src/pcl/*",
+          "Copyright": "2003-2010 Davide Libenzi <davidel@xmailserver.org>"
+        },
+        {
+          "Files": "src/protobuf/*",
+          "Copyright": "2008-2014, Dave Benson and the protobuf-c authors."
+        },
+        {
+          "Files": "gl/*",
+          "Copyright": "1991-2015 Free Software Foundation, Inc."
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "protobuf-c",
+      "version": "1.4.1-1",
+      "dsc_sha256": "480082f3a320b6d718a8a218191168be9ab19e8115994739ee11e954498848e4",
+      "binaries": [
+        {
+          "name": "libprotobuf-c1",
+          "version": "1.4.1-1+b1",
+          "architecture": "arm64",
+          "copyright_sha256": "606bc4c317643d4acd4ea6b8ae35d2bb0a0757a3a2b2556feac98f61851942a3"
+        }
+      ],
+      "copyright_sha256": "606bc4c317643d4acd4ea6b8ae35d2bb0a0757a3a2b2556feac98f61851942a3",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "b8999cb392cc5bbe8cd679de59584ad8d2f26033123e76f1d662fa14b9d4f287",
+          "read_reference": {
+            "component": "protobuf-c",
+            "member": "LICENSE",
+            "sha256": "b8999cb392cc5bbe8cd679de59584ad8d2f26033123e76f1d662fa14b9d4f287"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-2-Clause",
+          "full_normalized_body_sha256": "efb04d36acc561093ca58fb16aee09cce1883bbdeb6a0612d63e102faf80e3fa",
+          "read_reference": {
+            "component": "protobuf-c",
+            "label": "BSD-2-Clause"
+          }
+        },
+        {
+          "label": "BSD-3-Clause",
+          "full_normalized_body_sha256": "62026297ff963401183d38bdf53c2af078617e9d6178d8ebc339658404883295",
+          "read_reference": {
+            "label": "BSD-3-Clause-Google",
+            "component": "jemalloc"
+          }
+        },
+        {
+          "label": "permissive",
+          "full_normalized_body_sha256": "1b3a26607dce5393ae580763f15a855e58f649ab255052d36014d3adf5eb91bf",
+          "read_reference": {
+            "component": "protobuf-c",
+            "label": "permissive"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2008-2019 Dave Benson and the protobuf-c authors"
+        },
+        {
+          "Files": "protoc-c/*",
+          "Copyright": "2008 Google Inc."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009-2019 Robert Edmonds <edmonds@debian.org>"
+        }
+      ]
+    },
+    {
+      "source": "pyroute2",
+      "version": "0.7.2-2",
+      "dsc_sha256": "2bb558747dacfbe8a65311d2f7a76489943add5d3db8192afe1164ac0c6068a8",
+      "binaries": [
+        {
+          "name": "python3-pyroute2",
+          "version": "0.7.2-2",
+          "architecture": "all",
+          "copyright_sha256": "c8ad1821d91ad7b0b80ac814f7525b2246fc7565fef99f3b0f52016ec693af47"
+        }
+      ],
+      "copyright_sha256": "c8ad1821d91ad7b0b80ac814f7525b2246fc7565fef99f3b0f52016ec693af47",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "79dc28c2a57075ed200f831ecaa4c9a71a347f9733f165c5e2232eba52fa144b",
+          "read_reference": {
+            "component": "pyroute2",
+            "member": "LICENSE",
+            "sha256": "79dc28c2a57075ed200f831ecaa4c9a71a347f9733f165c5e2232eba52fa144b",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "LICENSE.Apache-2.0",
+          "sha256": "4739b32a2478e9c204bf010bad5d565d188e59ff905e3c8f71fe3398098b7093",
+          "read_reference": {
+            "component": "pyroute2",
+            "member": "LICENSE.Apache-2.0",
+            "sha256": "4739b32a2478e9c204bf010bad5d565d188e59ff905e3c8f71fe3398098b7093",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "LICENSE.GPL-2.0-or-later",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+-and-Apache-2.0",
+          "full_normalized_body_sha256": "2f1df2a458aa9688e90c28ba2db0e2e639205031437ecf5648c462e79e7706d0",
+          "read_reference": {
+            "component": "pyroute2",
+            "label": "GPL-3+-and-Apache-2.0"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "203727d52f147ba95092ffdd55d680ee2e419db66a63e94302e380da560a3a01",
+          "read_reference": {
+            "component": "pyroute2",
+            "label": "GPL-2+"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "1bfba22f2e8aae7e96307f23718dfe2586618a4e377d103554e4044e0caaae5f",
+          "read_reference": {
+            "component": "pyroute2",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "d4154d7ac8b609b1d9bcd8e892987be52754c2f40dec242b212e4eddc69c7480",
+          "read_reference": {
+            "label": "Apache-2.0",
+            "component": "python-bcrypt"
+          }
+        },
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "2d2bc4fe9ba8ff979db2317c050a77769295781ad555134d4f619567d778209c",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "lz4"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "pyroute2",
+          "Upstream-Contact": "Peter V. Saveliev <peter@svinota.eu>",
+          "Source": "https://github.com/svinota/pyroute2"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2013-2017 Peter V. Saveliev",
+          "Comment": "\nThis program is dual-licensed GPL-3+ and Apache-2.0."
+        },
+        {
+          "Files": "docs/html/_static/doctools.js docs/html/_static/basic.css\ndocs/html/_static/custom.css docs/html/_static/searchtools.js\ndocs/html/_static/sidebar.js docs/html/_static/websupport.js",
+          "Copyright": "the Sphinx team"
+        },
+        {
+          "Files": "docs/html/_static/jquery*",
+          "Copyright": "JS Foundation and other contributors"
+        },
+        {
+          "Files": "cli/ss2",
+          "Copyright": "(C) 2018, Matthias Tafelmeier"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "(c) 2015-2018, Florian Pelgrim <florian.pelgrim@craneworks.de>\n(c) 2019, Thomas Goirand <zigo@debian.org>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "python-charset-normalizer",
+      "version": "3.0.1-2",
+      "dsc_sha256": "7689350da792de0de8e1e87e3cb028663d5ec65529839e4fcc357edaae0bac15",
+      "binaries": [
+        {
+          "name": "python3-charset-normalizer",
+          "version": "3.0.1-2",
+          "architecture": "all",
+          "copyright_sha256": "7102677e623efdc70a2e7356029aa0886346dd9232ca9e2c61a8bd1e6014bda3"
+        }
+      ],
+      "copyright_sha256": "7102677e623efdc70a2e7356029aa0886346dd9232ca9e2c61a8bd1e6014bda3",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "eb31a0c5a4fb09b8a4e32055d25c1e5f9c358a2752fef3cd720213d1ccfee241",
+          "read_reference": {
+            "component": "python-charset-normalizer",
+            "member": "LICENSE",
+            "sha256": "eb31a0c5a4fb09b8a4e32055d25c1e5f9c358a2752fef3cd720213d1ccfee241",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "data/NOTICE.md",
+          "sha256": "0cb3efcfd8f7a02a337e98dc3de4b0b57424d7208a332b26e7deb8cb94c13922",
+          "read_reference": {
+            "component": "pypi:charset-normalizer",
+            "member": "charset-normalizer-3.2.0/data/NOTICE.md",
+            "sha256": "bff63d312e63cb1684d7136a8799f7684ca4281d817ce39889ca7357d91f6852",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "CC-BY-SA-3.0",
+          "full_normalized_body_sha256": "ecef21f46065b288ea7646cb65ad83072e8ec9608932ddd09dca24cdcded7f16",
+          "read_reference": {
+            "component": "python-charset-normalizer",
+            "label": "CC-BY-SA-3.0"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "PUBLIC-DOMAIN",
+          "full_normalized_body_sha256": "036e336e85cbc754b9a91b7225fbb1ca2ce76cdd95634144466259c37a2da70d",
+          "read_reference": {
+            "component": "python-charset-normalizer",
+            "label": "PUBLIC-DOMAIN"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "charset-normalizer",
+          "Upstream-Contact": "TAHRI Ahmed R.",
+          "Source": "https://github.com/ousret/charset_normalizer"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2019-2022, TAHRI Ahmed R."
+        },
+        {
+          "Files": "data/*",
+          "Copyright": "various contributors on Wikipedia",
+          "Comment": "According to the file data/NOTICE.md."
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2021, Dominik George <natureshadow@debia.org>\n2022, Carsten Schoenert <c.schoenert@t-online.de>"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "requests",
+      "version": "2.28.1+dfsg-1",
+      "dsc_sha256": "87a61417f320136f6b2277173762d4cc1a22231f2f1d2866c0ebe28d4f2e9f85",
+      "binaries": [
+        {
+          "name": "python3-requests",
+          "version": "2.28.1+dfsg-1",
+          "architecture": "all",
+          "copyright_sha256": "8b550041e7f71467cf9fc0295b0029232977a3e339c1ae47cc1710fafcc2f606"
+        }
+      ],
+      "copyright_sha256": "8b550041e7f71467cf9fc0295b0029232977a3e339c1ae47cc1710fafcc2f606",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+          "read_reference": {
+            "component": "python-nacl",
+            "member": "LICENSE",
+            "sha256": "d3174ad63e721d4c9dccb8ad4320848992d314369bc46319720b5802c9153fe9"
+          }
+        },
+        {
+          "member": "NOTICE",
+          "sha256": "f5110972dedad2b4e9d314518daf3b7d72d6e02e499acd802181de6f74571dcc",
+          "read_reference": {
+            "component": "pypi:requests",
+            "member": "requests-2.32.5/NOTICE",
+            "sha256": "ebc19cdf0249fe96acdff2231a76e51b7fdac9bd6c43c6ddb7184531b7b80b81",
+            "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+          }
+        },
+        {
+          "member": "docs/_themes/LICENSE",
+          "sha256": "6afc9d58f919ab52f4806a895a37aefe4d263f8e52278e6a1e87c5d7ec82299c",
+          "read_reference": {
+            "component": "requests",
+            "member": "docs/_themes/LICENSE",
+            "sha256": "6afc9d58f919ab52f4806a895a37aefe4d263f8e52278e6a1e87c5d7ec82299c"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "other",
+          "full_normalized_body_sha256": "b10b9cc324f36ee2c16cb6f3b0a9b57a5b69f961af3894f364f20199eb98f5c9",
+          "read_reference": {
+            "component": "requests",
+            "label": "other"
+          }
+        },
+        {
+          "label": "Apache",
+          "full_normalized_body_sha256": "b6d89af73b0caa35a77bc67a6673d9d4f78e16f489a5f7a00e0435b06f495382",
+          "read_reference": {
+            "component": "requests",
+            "label": "Apache"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "requests",
+          "Upstream-Contact": "Kenneth Reitz <me@kennethreitz.com>",
+          "Source": "https://pypi.org/project/requests/",
+          "Files-Excluded": "ext docs/_static/*.png"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2019, Kenneth Reitz"
+        },
+        {
+          "Files": "docs/_themes/flask_theme_support.py",
+          "Copyright": "2010, Armin Ronacher\n2011, Kenneth Reitz"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2011-2022, Daniele Tricoli <eriol@debian.org>"
+        },
+        {}
+      ]
+    },
+    {
+      "source": "sshguard",
+      "version": "2.4.2-1",
+      "dsc_sha256": "c1c05b5c02862a335896cf5b08223301719025dd6c72b075a50a08f59090987f",
+      "binaries": [
+        {
+          "name": "sshguard",
+          "version": "2.4.2-1+b2",
+          "architecture": "arm64",
+          "copyright_sha256": "326c6bc0b629b47f6ce06d2083910d765ca3ceea3693c56d180edc737277734a"
+        }
+      ],
+      "copyright_sha256": "326c6bc0b629b47f6ce06d2083910d765ca3ceea3693c56d180edc737277734a",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "c3ae64f12153a1bc55bc234d09f40a08ab0e0149fffc972c0b7f02d5a12c1a5c",
+          "read_reference": {
+            "component": "sshguard",
+            "member": "COPYING",
+            "sha256": "c3ae64f12153a1bc55bc234d09f40a08ab0e0149fffc972c0b7f02d5a12c1a5c"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "24086cfaff3e3f8f60c0292b1f2b8a8d238b74a8e4dfef51842ae256852dca20",
+          "read_reference": {
+            "component": "sshguard",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "GPL-3+-with-bison-exception",
+          "full_normalized_body_sha256": "42017b4e685f48e5a8c848eda3e27fba30825a73e7fa7b85282f182b8e99fb8c",
+          "read_reference": {
+            "component": "sshguard",
+            "label": "GPL-3+-with-bison-exception"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "15824d08efdd156a65aeb2cce9fd7ee914b2adc5231f5f2a26d998c8ccf05214",
+          "read_reference": {
+            "label": "MIT-Old-Style-with-legal-disclaimer-2",
+            "component": "file"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "sshguard",
+          "Upstream-Contact": "Mij <mij@bitchx.it>",
+          "Source": "https://bitbucket.org/sshguard/sshguard/src"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2007-2011 Mij <mij@bitchx.it>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2009-2021 Julián Moreno Patiño <julian@debian.org>\n2007 Ernesto Nadir Crespo Avila <ecrespo@debianvenezuela.org>"
+        },
+        {
+          "Files": "src/*",
+          "Copyright": "2007-2011, Mij <mij@sshguard.net>"
+        },
+        {
+          "Files": "src/parser/attack_parser.c\nsrc/parser/attack_parser.h",
+          "Copyright": "1984, 1989, 1990, 2000-2015, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "src/blocker/fnv.h\nsrc/blocker/hash_32a.c",
+          "Copyright": "2009 Landon Curt Noll <chongo@mellis.com>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "stunnel4",
+      "version": "3:5.68-2+deb12u1",
+      "dsc_sha256": "0dd75f679eaca8b06bb8e813b6299c10c953ab2341a8a80b709a1f7196ac5768",
+      "binaries": [
+        {
+          "name": "stunnel4",
+          "version": "3:5.68-2+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "fd21a09d8e26f8895f3b94024c230fc2e77cd1744a375f19df6062b0189a36df"
+        }
+      ],
+      "copyright_sha256": "fd21a09d8e26f8895f3b94024c230fc2e77cd1744a375f19df6062b0189a36df",
+      "original_legal_matches": [
+        {
+          "member": "COPYING.md",
+          "sha256": "c172514e95e387eb4c77cdfbb55b635bf96e2dfcb85d785d993f64c40c4f89c4",
+          "read_reference": {
+            "component": "stunnel4",
+            "member": "COPYING.md",
+            "sha256": "c172514e95e387eb4c77cdfbb55b635bf96e2dfcb85d785d993f64c40c4f89c4"
+          }
+        },
+        {
+          "member": "COPYRIGHT.md",
+          "sha256": "62f171d4d8b6726df61f18a6bbc0a70f79c4bc2134d837d35c81fc6289a2d84d",
+          "read_reference": {
+            "component": "stunnel4",
+            "member": "COPYRIGHT.md",
+            "sha256": "62f171d4d8b6726df61f18a6bbc0a70f79c4bc2134d837d35c81fc6289a2d84d",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2+-openssl",
+          "full_normalized_body_sha256": "cfa92f1f60f20e6d7baf29ba7367106b7d4a4287d486a2555710f80497ca64d1",
+          "read_reference": {
+            "component": "stunnel4",
+            "label": "GPL-2+-openssl"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "fd9b09e72aadf69c56bc177564a47aadc433c895d7fa2ef4f2847abceee4309d",
+          "read_reference": {
+            "component": "stunnel4",
+            "label": "GPL-2+"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "stunnel",
+          "Upstream-Contact": "Michal Trojnara <Michal.Trojnara@stunnel.org>",
+          "Source": "https://www.stunnel.org/downloads.html"
+        },
+        {
+          "Files": "*",
+          "Copyright": "\n(C) 1998-2023  Michal Trojnara <Michal.Trojnara@stunnel.org>\n(c) 2014 Mark Theunissen"
+        },
+        {
+          "Files": "src/stunnel3.in",
+          "Copyright": "(C) 1998-2018  Michal Trojnara <Michal.Trojnara@stunnel.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "\n(C) 1998-2001  Paolo Molaro <lupus@debian.org>\n(C) 2003-2007  Julien Lemoine <speedblue@debian.org>\n(C) 2007-2012  Luis Rodrigo Gallardo Cruz <rodrigo@debian.org>\n(C) 2013       Salvatore Bonaccorso <carnil@debian.org>\n(C) 2014-2023  Peter Pentchev <roam@debian.org>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "systemd",
+      "version": "252.39-1~deb12u2",
+      "dsc_sha256": "f2f952ae61fd40f1ef3ee48c8721e23eaaec5396ef5f1b0c2e138d78fade9c6e",
+      "binaries": [
+        {
+          "name": "libnss-myhostname",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        },
+        {
+          "name": "libpam-systemd",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        },
+        {
+          "name": "libsystemd-shared",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        },
+        {
+          "name": "libsystemd0",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        },
+        {
+          "name": "libudev1",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        },
+        {
+          "name": "systemd",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        },
+        {
+          "name": "systemd-sysv",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        },
+        {
+          "name": "udev",
+          "version": "252.39-1~deb12u2",
+          "architecture": "arm64",
+          "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3"
+        }
+      ],
+      "copyright_sha256": "a7d06854714a1ca99f6dbd1a1641dde5bcf28635be149f6554449618f8f427f3",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE.GPL2",
+          "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "LICENSE.LGPL2.1",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/LGPL-2.1",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+          }
+        },
+        {
+          "member": "LICENSES/BSD-2-Clause.txt",
+          "sha256": "e5a8645ad94aab24e312dd0c6be2aa54236eb9374480b1b14ea5c61598874fd5",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/BSD-2-Clause.txt",
+            "sha256": "e5a8645ad94aab24e312dd0c6be2aa54236eb9374480b1b14ea5c61598874fd5",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "LICENSES/BSD-3-Clause.txt",
+          "sha256": "83bb6bd9ccd2cf5230cb1807ed16258289768dc4d9cb80069a814e04415a1275",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/BSD-3-Clause.txt",
+            "sha256": "83bb6bd9ccd2cf5230cb1807ed16258289768dc4d9cb80069a814e04415a1275",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "LICENSES/CC0-1.0.txt",
+          "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/CC0-1.0",
+            "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+          }
+        },
+        {
+          "member": "LICENSES/LGPL-2.0-or-later.txt",
+          "sha256": "61778e80a2fd85955b626b29aa2bcf06144c714277bded65633e4a81479d9fb3",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/LGPL-2.0-or-later.txt",
+            "sha256": "61778e80a2fd85955b626b29aa2bcf06144c714277bded65633e4a81479d9fb3",
+            "review_method": "Complete original full-word diff read against previously read original; all scope/exception additions retained."
+          }
+        },
+        {
+          "member": "LICENSES/Linux-syscall-note.txt",
+          "sha256": "5bcef4fedbfc08776630e65d5d0d074dd31208037eddb167ca46a9ec4f737764",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/Linux-syscall-note.txt",
+            "sha256": "5bcef4fedbfc08776630e65d5d0d074dd31208037eddb167ca46a9ec4f737764"
+          }
+        },
+        {
+          "member": "LICENSES/MIT-0.txt",
+          "sha256": "8a6fc0879cecc0b96bf4c08159b9d733bf0f15fcf32879aec98c4ffd05424554",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/MIT-0.txt",
+            "sha256": "8a6fc0879cecc0b96bf4c08159b9d733bf0f15fcf32879aec98c4ffd05424554",
+            "method": "Entire copyright/scope prefix read; complete operative body normalized-word-identical to a separately read complete original",
+            "read_reference": {
+              "component": "pypi:cffi",
+              "member": "cffi-2.0.0/LICENSE",
+              "sha256": "5e2a79a5ccf5bdb3e5077d8faba9a28787ed04f7a2a5551914e4d40bfd298750",
+              "method": "Complete original SDK source notice already read and approved at its exact source/notice binding"
+            }
+          }
+        },
+        {
+          "member": "LICENSES/MIT.txt",
+          "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0",
+          "read_reference": {
+            "component": "dbus-python",
+            "member": "LICENSES/MIT.txt",
+            "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0",
+            "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+          }
+        },
+        {
+          "member": "LICENSES/OFL-1.1.txt",
+          "sha256": "1a7adaa2c86cedfd6c7f5c0c7c72fd6d3e02cd0c9593f21fdb53c89bb2b130ec",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/OFL-1.1.txt",
+            "sha256": "1a7adaa2c86cedfd6c7f5c0c7c72fd6d3e02cd0c9593f21fdb53c89bb2b130ec",
+            "method": "Complete original word differences read; original scopes, copyright changes and exact operative terms retained."
+          }
+        },
+        {
+          "member": "LICENSES/README.md",
+          "sha256": "9fe3df5b85d72a20d28505494a3ef6b68c48f8ee5f6c7ce7490f0e45399dd686",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/README.md",
+            "sha256": "9fe3df5b85d72a20d28505494a3ef6b68c48f8ee5f6c7ce7490f0e45399dd686"
+          }
+        },
+        {
+          "member": "LICENSES/lookup3-public-domain.txt",
+          "sha256": "790ac93fb2859097bdda4cf08b5a4feb5e479d0cb2c74f403248241bc3e7c216",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/lookup3-public-domain.txt",
+            "sha256": "790ac93fb2859097bdda4cf08b5a4feb5e479d0cb2c74f403248241bc3e7c216",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        },
+        {
+          "member": "LICENSES/murmurhash2-public-domain.txt",
+          "sha256": "2a98749f6bec00dfaed86fa9c1edea871aaae4f11ee4d100b671aaf4ce353a73",
+          "read_reference": {
+            "component": "systemd",
+            "member": "LICENSES/murmurhash2-public-domain.txt",
+            "sha256": "2a98749f6bec00dfaed86fa9c1edea871aaae4f11ee4d100b671aaf4ce353a73",
+            "method": "Complete original text read; license references and supporting metadata preserve their scopes and do not grant parent permission."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "9a96a46cb0acbe0be7afc7932530648eab2948f91c9dbb3b88211e5a16f35d1a",
+          "read_reference": {
+            "component": "systemd",
+            "label": "public-domain"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "GPL-2 with Linux-syscall-note exception",
+          "full_normalized_body_sha256": "f7beb17c974554264d910f53920c6864580162ce5675258ff9b54f615691d795",
+          "read_reference": {
+            "component": "systemd",
+            "label": "GPL-2 with Linux-syscall-note exception"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "271370c0d1a878d170112eb8ca4ce74a1e5cc2908dddb52d0091a84ed6bb5e51",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "dash"
+          }
+        },
+        {
+          "label": "LGPL-2.1+",
+          "full_normalized_body_sha256": "7a45e89e5598297e9d31e87d6068bcee41aaa80c2092ccdf862173845c927c0b",
+          "read_reference": {
+            "label": "LGPL-2.1+",
+            "component": "python-systemd"
+          }
+        },
+        {
+          "label": "CC0-1.0",
+          "full_normalized_body_sha256": "285b29f380a43a5559f95224fe2430ff9fab26406e92b4f9178db225408511e5",
+          "read_reference": {
+            "component": "systemd",
+            "label": "CC0-1.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "systemd",
+          "Upstream-Contact": "systemd-devel@lists.freedesktop.org",
+          "Source": "https://www.freedesktop.org/wiki/Software/systemd/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2008-2015 Kay Sievers <kay@vrfy.org>\n2010-2015 Lennart Poettering\n2012-2015 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>\n2013-2015 Tom Gundersen <teg@jklm.no>\n2013-2015 Daniel Mack\n2010-2015 Harald Hoyer\n2013-2015 David Herrmann\n2013, 2014 Thomas H.P. Andersen\n2013, 2014 Daniel Buch\n2014 Susant Sahani\n2009-2015 Intel Corporation\n2000, 2005 Red Hat, Inc.\n2009 Alan Jenkins <alan-jenkins@tuffmail.co.uk>\n2010 ProFUSION embedded systems\n2010 Maarten Lankhorst\n1995-2004 Miquel van Smoorenburg\n1999 Tom Tromey\n2011 Michal Schmidt\n2012 B. Poettering\n2012 Holger Hans Peter Freyther\n2012 Dan Walsh\n2012 Roberto Sassu\n2013 David Strauss\n2013 Marius Vollmer\n2013 Jan Janssen\n2013 Simon Peeters"
+        },
+        {
+          "Files": "src/basic/siphash24.h\nsrc/basic/siphash24.c",
+          "Copyright": "2012 Jean-Philippe Aumasson <jeanphilippe.aumasson@gmail.com>\n2012 Daniel J. Bernstein <djb@cr.yp.to>"
+        },
+        {
+          "Files": "src/shared/linux/*\nsrc/basic/linux/*",
+          "Copyright": "2004-2009 Red Hat, Inc.\n2011-2014 PLUMgrid\n2001-2003 Sistina Software (UK) Limited.\n2008 Ian Kent <raven@themaw.net>\n1998 David S. Miller >davem@redhat.com>\n2001 Jeff Garzik <jgarzik@pobox.com>\n2006-2010 Johannes Berg <johannes@sipsolutions.net\n2008 Michael Wu <flamingice@sourmilk.net>\n2008 Luis Carlos Cobo <luisca@cozybit.com>\n2008 Michael Buesch <m@bues.ch>\n2008, 2009 Luis R. Rodriguez <lrodriguez@atheros.com>\n2008 Jouni Malinen <jouni.malinen@atheros.com>\n2008 Colin McCabe <colin@cozybit.com>\n2018-2019 Intel Corporation\n2007 Oracle.\n2009 Wolfgang Grandegger <wg@grandegger.com>\n1999 Thomas Davis <tadavis@lbl.gov>\n2015 Sabrina Dubroca <sd@queasysnail.net>\n1999-2000 Maxim Krasnyansky <max_mk@yahoo.com>\n2015-2019 Jason A. Donenfeld <Jason@zx2c4.com>"
+        },
+        {
+          "Files": "src/basic/sparse-endian.h",
+          "Copyright": "2012 Josh Triplett <josh@joshtriplett.org>"
+        },
+        {
+          "Files": "src/basic/MurmurHash2.c\nsrc/basic/MurmurHash2.h\nsrc/libsystemd/sd-journal/lookup3.c\nsrc/libsystemd/sd-journal/lookup3.h",
+          "Copyright": "none"
+        },
+        {
+          "Files": "src/udev/ata_id/ata_id.c\nsrc/udev/cdrom_id/cdrom_id.c\nsrc/udev/dmi_memory_id/dmi_memory_id.c\nsrc/udev/mtd_probe/mtd_probe.c\nsrc/udev/mtd_probe/mtd_probe.h\nsrc/udev/mtd_probe/probe_smartmedia.c\nsrc/udev/scsi_id/scsi.h\nsrc/udev/scsi_id/scsi_id.c\nsrc/udev/scsi_id/scsi_id.h\nsrc/udev/scsi_id/scsi_serial.c\nsrc/udev/udevadm.c\nsrc/udev/udevadm-control.c\nsrc/udev/udevadm.h\nsrc/udev/udevadm-info.c\nsrc/udev/udevadm-monitor.c\nsrc/udev/udevadm-settle.c\nsrc/udev/udevadm-test-builtin.c\nsrc/udev/udevadm-test.c\nsrc/udev/udevadm-trigger.c\nsrc/udev/udevadm-util.c\nsrc/udev/udevadm-util.h\nsrc/udev/udev-builtin-blkid.c\nsrc/udev/udev-builtin.h\nsrc/udev/udev-builtin-input_id.c\nsrc/udev/udev-builtin-kmod.c\nsrc/udev/udev-builtin-path_id.c\nsrc/udev/udev-builtin-uaccess.c\nsrc/udev/udev-builtin-usb_id.c\nsrc/udev/udev-ctrl.h\nsrc/udev/udevd.c\nsrc/udev/udevd.h\nsrc/udev/udev-event.c\nsrc/udev/udev-event.h\nsrc/udev/udev-node.c\nsrc/udev/udev-node.h\nsrc/udev/udev-rules.c\nsrc/udev/udev-rules.h\nsrc/udev/udev-watch.c\nsrc/udev/udev-watch.h\nsrc/udev/v4l_id/v4l_id.c",
+          "Copyright": "2003-2012 Kay Sievers <kay@vrfy.org>\n2003-2004 Greg Kroah-Hartman <greg@kroah.com>\n2004 Chris Friesen <chris_friesen@sympatico.ca>\n2004, 2009, 2010 David Zeuthen <david@fubar.dk>\n2005, 2006 SUSE Linux Products GmbH\n2003 IBM Corp.\n2007 Hannes Reinecke <hare@suse.de>\n2009 Canonical Ltd.\n2009 Scott James Remnant <scott@netsplit.com>\n2009 Martin Pitt <martin.pitt@ubuntu.com>\n2009 Piter Punk <piterpunk@slackware.com>\n2009, 2010 Lennart Poettering\n2009 Filippo Argiolas <filippo.argiolas@gmail.com>\n2010 Maxim Levitsky\n2011 ProFUSION embedded systems\n2011 Karel Zak <kzak@redhat.com>\n2014 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>\n2014 David Herrmann <dh.herrmann@gmail.com>\n2014 Carlos Garnacho <carlosg@gnome.org>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2010-2013 Tollef Fog Heen <tfheen@debian.org>\n2011 Josh Triplett <josh@joshtriplett.org>\n2013-2014 Michael Stapelberg <stapelberg@debian.org>\n2013-2020 Martin Pitt <martin.pitt@ubuntu.com>\n2013-2022 Michael Biebl <biebl@debian.org>\n2013 Daniel Schaal <farbing@web.de>\n2013 Guido Günther <agx@sigxcpu.org>\n2014-2015 Didier Roche <didrocks@ubuntu.com>\n2014-2015 Marco d'Itri <md@linux.it>\n2014-2017 Sjoerd Simons <sjoerd.simons@collabora.co.uk>\n2014 Ansgar Burchardt <ansgar@debian.org>\n2014 Jon Severinsson <jon@severinsson.net>\n2015-2019 Felipe Sateler <fsateler@debian.org>\n2015 Adam Conrad <adconrad@debian.org>\n2015 Andreas Henriksson <andreas@fatal.se>\n2015 Christian Seiler <christian@iwakd.de>\n2015 Julian Wollrath <jwollrath@web.de>\n2016-2018 Evgeny Vereshchagin <evvers@ya.ru>\n2016,2018 Laurent Bigonville <bigon@debian.org>\n2016-2019 Dimitri John Ledkov <xnox@ubuntu.com>\n2016,2019 Michael Prokop <mika@debian.org>\n2016 Alexander Kurtz <alexander@kurtz.be>\n2016 Antonio Ospite <ao2@ao2.it>\n2016 Iain Lane <iain@orangesquash.org.uk>\n2016 Simon McVittie <simon.mcvittie@collabora.co.uk>\n2017-2018 Nicolas Braud-Santoni <nicolas@braud-santoni.eu>\n2017-2019 Martin Pitt <mpitt@debian.org>\n2017 Cyril Brulebois <kibi@debian.org>\n2017 Ondřej Nový <onovy@debian.org>\n2018-2019 Mert Dirik <mertdirik@gmail.com>\n2018 Adam Borowski <kilobyte@angband.pl>\n2018 Alf Gaida <agaida@siduction.org>\n2018 Benjamin Drung <benjamin.drung@profitbricks.com>\n2018 Gunnar Hjalmarsson <gunnarhj@ubuntu.com>\n2018 Manuel A. Fernandez Montecelo <manuel.montezelo@gmail.com>\n2019-2021 Balint Reczey <balint.reczey@canonical.com>\n2019-2021 Dan Streetman <ddstreet@canonical.com>\n2019 Daniel Kahn Gillmor <dkg@fifthhorseman.net>\n2020-2021 Helmut Grohne <helmut@subdivi.de>\n2020 Topi Miettinen <toiwoton@gmail.com>\n2020 Youfu Zhang <zhangyoufu@gmail.com>\n2020 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>\n2020 наб <nabijaczleweli@nabijaczleweli.xyz>\n2021-2022 Luca Boccassi <bluca@debian.org>\n2021-2022 Lukas Märdian <slyon@ubuntu.com>\n2021 Frantisek Sumsal <frantisek@sumsal.cz>\n2021 Ioanna Alifieraki <ioanna-maria.alifieraki@canonical.com>\n2021 Jan Kiszka <jan.kiszka@web.de>\n2021 Matthias Klumpp <matthias@tenstral.net>\n2021 Salvatore Bonaccorso <carnil@debian.org>"
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "sysvinit",
+      "version": "3.06-4",
+      "dsc_sha256": "f153cd1ef48698089494aac14cebdcb8130ce4d4af5533a41cd3f1950e9e42fa",
+      "binaries": [
+        {
+          "name": "sysvinit-utils",
+          "version": "3.06-4",
+          "architecture": "arm64",
+          "copyright_sha256": "ad7cb339e58a88918a883d553ca236795191f027e158788a8b33f747ff502fb2"
+        }
+      ],
+      "copyright_sha256": "ad7cb339e58a88918a883d553ca236795191f027e158788a8b33f747ff502fb2",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+          "read_reference": {
+            "component": "aptitude",
+            "member": "COPYING",
+            "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+          }
+        },
+        {
+          "member": "COPYRIGHT",
+          "sha256": "dd960a84c54301f7cb4fb2c9d27d3e5fd512e4e0c8a831ac359729a9227c16a5",
+          "read_reference": {
+            "component": "sysvinit",
+            "member": "COPYRIGHT",
+            "sha256": "dd960a84c54301f7cb4fb2c9d27d3e5fd512e4e0c8a831ac359729a9227c16a5"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-2.0+",
+          "full_normalized_body_sha256": "e8fb95457634ea279e9c0c127baebe2b5b7dff73036c49230c48476e9c0f692d",
+          "read_reference": {
+            "component": "sysvinit",
+            "label": "GPL-2.0+"
+          }
+        },
+        {
+          "label": "GPL-3.0",
+          "full_normalized_body_sha256": "7537564ab45a9150d2a6b2bf51cc12b79656a0ddccd7589d2c20fdbfb19b81dd",
+          "read_reference": {
+            "component": "sysvinit",
+            "label": "GPL-3.0"
+          }
+        },
+        {
+          "label": "GPL-2.0",
+          "full_normalized_body_sha256": "d1380036e45220873e94af92eccfc3b4209aa12dcd32fc3cfdc34145756d1e38",
+          "read_reference": {
+            "component": "sysvinit",
+            "label": "GPL-2.0"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "sysvinit",
+          "Upstream-Contact": "sysvinit-devel@nongnu.org",
+          "Source": "https://download.savannah.gnu.org/releases/sysvinit/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "1989, 1991 Free Software Foundation, Inc.\n1997-2005 Miquel van Smoorenburg <miquels@cistron.nl>\n1998 Danek Duvall\n2003 Theodore Ts'o\n2009, 2011, 2012 the sysvinit's copyright holder\n2010 Michael Krapp\n2011 SuSE LINUX Products GmbH\n2017-2019 Jesse Smith"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "1996-2004 Miquel van Smoorenburg <miquels@cistron.nl>\n2005-2010, 2014 Petter Reinholdtsen <pere@debian.org>\n2006 Henrique de Moraes Holschuh <hmh@debian.org>\n2006 Thomas Hood <jdthood@yahoo.co.uk>\n2006-2007 Steinar H. Gunderson <sesse@debian.org>\n2009 Software in the Public Interest\n2009 Hideki Yamane <henrich@debian.or.jp>\n2009 Free Software Foundation, Inc.\n2009 Clytie Siddall <clytie@riverland.net.au>\n2009-2020 Adriano Rafael Gomes <adrianorg@debian.org>\n2010-2012 Christian Perrier <bubulle@debian.org>\n2010-2019 Joe Hansen <joedalton2@yahoo.dk>\n2011, 2016 Ben Hutchings <ben@decadent.org.uk>\n2011-2013 Roger Leigh <rleigh@debian.org>\n2012 Martin Bagge <brother@bsnet.se>\n2012 Debian French l10n Team\n2012-2013 Steve Langasek <vorlon@debian.org>\n2014 Robert Millan <rmh@debian.org>\n2014 Thomas Goirand <zigo@debian.org>\n2014-2018 Michael Biebl <biebl@debian.org>\n2015 Adam Conrad <adconrad@debian.org>\n2015-2016 Andreas Henriksson <andreas@fatal.se>\n2015-2016 Martin Pitt <mpitt@debian.org>\n2017 Ian Jackson <ijackson@chiark.greenend.org.uk>\n2018 Dmitry Bogatov <KAction@gnu.org>\n2018 Vincenzo (KatolaZ) Nicosia <katolaz@freaknet.org>\n2021 Mark Hindley <leepen@debian.org>"
+        },
+        {
+          "Files": "contrib/sysd2v.sh",
+          "Copyright": "2019 Trek http://www.trek.eu.org/devel/sysd2v"
+        },
+        {
+          "Files": "doc/Install\nman/fstab-decode.8\nman/initctl.5\nsrc/fstab-decode.c\nsrc/runlevellog.h\nsrc/runlevellog.c",
+          "Copyright": "2006 Red Hat, Inc.\n2018 Jesse Smith"
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "wpa",
+      "version": "2:2.10-12+deb12u3",
+      "dsc_sha256": "1f8c9f13ca9ca75a68860fafe2fa0a6aaf57bb6f573d96d19ea95900c0c22958",
+      "binaries": [
+        {
+          "name": "hostapd",
+          "version": "2:2.10-12+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "9aebd4fa48a707a069d18fee53b98925956022f9e1da1821bce55288ff1a3246"
+        },
+        {
+          "name": "wpasupplicant",
+          "version": "2:2.10-12+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "9aebd4fa48a707a069d18fee53b98925956022f9e1da1821bce55288ff1a3246"
+        }
+      ],
+      "copyright_sha256": "9aebd4fa48a707a069d18fee53b98925956022f9e1da1821bce55288ff1a3246",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "a87ac4e333d0f120408a9d814e40c3672cd27f365af89b4f2f6631f7a9338953",
+          "read_reference": {
+            "component": "wpa",
+            "member": "COPYING",
+            "sha256": "a87ac4e333d0f120408a9d814e40c3672cd27f365af89b4f2f6631f7a9338953"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "ad60c218c7fa4d361e00f88dafb8428122b96e5741eb6209ece973b251b6ecbb",
+          "read_reference": {
+            "component": "wpa",
+            "label": "BSD-3-clause"
+          }
+        },
+        {
+          "label": "GPL-2",
+          "full_normalized_body_sha256": "81dff1ebced4836e7df9c3a500e43de19ba1a6a52b08e8564abfa07019700220",
+          "read_reference": {
+            "component": "wpa",
+            "label": "GPL-2"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "4829cc8e654be69dd1edcebedbda21758a239c230e38f532d6bf4b0adc1a0427",
+          "read_reference": {
+            "label": "ISC ",
+            "component": "at"
+          }
+        },
+        {
+          "label": "public-domain",
+          "full_normalized_body_sha256": "bc884a4413b0682bf5fb0b556614abf7d7972d96d8e681e69083b0d3083b0555",
+          "read_reference": {
+            "component": "wpa",
+            "label": "public-domain"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "hostapd",
+          "Upstream-Contact": "Jouni Malinen <j@w1.fi>",
+          "Source": "git://w1.fi/srv/git/hostap.git",
+          "Files-Excluded": "\ndoc/*\neap_example/*\nmac80211_hwsim/*\nradius_example/*\ntests/*\nwlantest/*\nwpadebug/*\nwpaspy/*\nAndroid.mk\nbuild_release"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2002-2021, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "hostapd/logwatch/*",
+          "Copyright": "2005, Henrik Brix Andersen <brix@gentoo.org>"
+        },
+        {
+          "Files": "hostapd/Android.mk",
+          "Copyright": "2008, The Android Open Source Project"
+        },
+        {
+          "Files": "hostapd/hostapd.8\nhostapd/hostapd_cli.1",
+          "Copyright": "2005, Faidon Liambotis <faidon@cube.gr>"
+        },
+        {
+          "Files": "hs20/*",
+          "Copyright": "2012-2014, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/ap/acs.*",
+          "Copyright": "2011, Atheros Communications\n2013, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/ap/ap_list.*\nsrc/ap/ap_mlme.*\nsrc/ap/beacon.*\nsrc/ap/hw_features.*\nsrc/ap/vlan_init.*\nsrc/ap/wmm.*",
+          "Copyright": "2002-2009, Jouni Malinen <j@w1.fi>\n2002-2004, Instant802 Networks, Inc.\n2005-2006, Devicescape Software, Inc."
+        },
+        {
+          "Files": "src/ap/dfs.*",
+          "Copyright": "2002-2013, Jouni Malinen <j@w1.fi>\n2013, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/ap/gas_serv.*\nsrc/ap/wnm_ap.*\nsrc/common/ieee802_1x_defs.h\nsrc/common/qca-vendor*",
+          "Copyright": "2011-2014, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/ap/hs20.*\nwpa_supplicant/hs20_supplicant.*",
+          "Copyright": "2009, Atheros Communications, Inc.\n2011-2013, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/ap/ieee802_11_ht.c",
+          "Copyright": "2002-2009, Jouni Malinen <j@w1.fi>\n2007-2008, Intel Corporation"
+        },
+        {
+          "Files": "src/ap/p2p_hostapd.*",
+          "Copyright": "2009-2010, Atheros Communications"
+        },
+        {
+          "Files": "src/ap/vlan_util.*",
+          "Copyright": "2012, Michael Braun <michael-dev@fami-braun.de>"
+        },
+        {
+          "Files": "src/common/gas.*",
+          "Copyright": "2009, Atheros Communications\n2011-2012, Qualcomm Atheros"
+        },
+        {
+          "Files": "src/common/ieee802_11_defs.h",
+          "Copyright": "2002-2009, Jouni Malinen <j@w1.fi>\n2007-2008, Intel Corporation"
+        },
+        {
+          "Files": "src/common/wpa_helpers.*",
+          "Copyright": "2010-2011, Atheros Communications, Inc.\n2011-2012, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/crypto/aes-internal*",
+          "Copyright": "2000, Vincent Rijmen <vincent.rijmen@esat.kuleuven.ac.be>\n2000, Antoon Bosselaers <antoon.bosselaers@esat.kuleuven.ac.be>\n2000, Paulo Barreto <paulo.barreto@terra.com.br>\n2003-2012, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "src/crypto/des-internal.c",
+          "Copyright": "2005, Tom St Denis <tomstdenis@gmail.com>\n2006-2009, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "src/crypto/md4-internal.c",
+          "Copyright": "1993, Colin Plumb\n2004, Todd C. Miller\n2006, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "src/crypto/md5-internal.c",
+          "Copyright": "1993, Colin Plumb\n2003-2005, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "src/crypto/sha1-internal.c",
+          "Copyright": "1998, Steve Reid <sreid@sea-to-sky.net>\n1998, James H. Brown <jbrown@burgoyne.com>\n2001, Saul Kravitz <Saul.Kravitz@celera.com>\n2001-2005, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "src/drivers/driver_atheros.c",
+          "Copyright": "2004, Sam Leffler <sam@errno.com>\n2004, Video54 Technologies\n2005-2007, Jouni Malinen <j@w1.fi>\n2009, Atheros Communications"
+        },
+        {
+          "Files": "src/drivers/driver_bsd.c",
+          "Copyright": "2004, Sam Leffler <sam@errno.com>\n2004, 2Wire, Inc"
+        },
+        {
+          "Files": "src/drivers/driver_macsec_qca.c",
+          "Copyright": "2004, Gunter Burchardt <tira@isx.de>\n2005-2009, Jouni Malinen <j@w1.fi>\n2013-2014, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/drivers/driver_nl80211.c",
+          "Copyright": "2002-2014, Jouni Malinen <j@w1.fi>\n2003-2004, Instant802 Networks, Inc.\n2005-2006, Devicescape Software, Inc.\n2007, Johannes Berg <johannes@sipsolutions.net>\n2009-2010, Atheros Communications"
+        },
+        {
+          "Files": "src/drivers/driver_none.c",
+          "Copyright": "2008, Atheros Communications"
+        },
+        {
+          "Files": "src/drivers/driver_openbsd.c",
+          "Copyright": "2013, Mark Kettenis <mark.kettenis@xs4all.nl>"
+        },
+        {
+          "Files": "src/drivers/driver_roboswitch.c",
+          "Copyright": "2008-2009, Jouke Witteveen"
+        },
+        {
+          "Files": "src/drivers/driver_wired.c",
+          "Copyright": "2005-2009, Jouni Malinen <j@w1.fi>\n2004, Gunter Burchardt <tira@isx.de>"
+        },
+        {
+          "Files": "src/drivers/nl80211_copy.h",
+          "Copyright": "2006-2010, Johannes Berg <johannes@sipsolutions.net>\n2008, Michael Wu <flamingice@sourmilk.net>\n2008, Luis Carlos Cobo <luisca@cozybit.com>\n2008, Michael Buesch <m@bues.ch>\n2008-2009, Luis R. Rodriguez <lrodriguez@atheros.com>\n2008, Jouni Malinen <jouni.malinen@atheros.com>\n2008, Colin McCabe <colin@cozybit.com>"
+        },
+        {
+          "Files": "src/eap_common/eap_pwd_common.*\nsrc/eap_peer/eap_pwd.c\nsrc/eap_server/eap_server_pwd.c",
+          "Copyright": "2010, Dan Harkins <dharkins@lounge.org>"
+        },
+        {
+          "Files": "src/eap_peer/eap_proxy*",
+          "Copyright": "2011-2013 Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/l2_packet/l2_packet_freebsd.c",
+          "Copyright": "2003-2005, Jouni Malinen <j@w1.fi>\n2005, Sam Leffler <sam@errno.com>"
+        },
+        {
+          "Files": "src/p2p/*",
+          "Copyright": "2009-2010, Atheros Communications"
+        },
+        {
+          "Files": "src/pae/*",
+          "Copyright": "2013-2014, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/rsn_supp/tdls.c",
+          "Copyright": "2010-2011, Atheros Communications"
+        },
+        {
+          "Files": "src/tls/libtommath.c",
+          "Copyright": "2005-2007, Tom St Denis <tomstdenis@gmail.com>"
+        },
+        {
+          "Files": "src/utils/browser*\nsrc/utils/http*\nsrc/utils/xml*",
+          "Copyright": "2012-2014, Qualcomm Atheros, Inc."
+        },
+        {
+          "Files": "src/utils/radiotap.c",
+          "Copyright": "2007, Andy Green <andy@warmcat.com>\n2009, Johannes Berg <johannes@sipsolutions.net>"
+        },
+        {
+          "Files": "src/utils/radiotap.h",
+          "Copyright": "2003-2004, David Young"
+        },
+        {
+          "Files": "src/wps/http.h\nsrc/wps/upnp_xml.*\nsrc/wps/wps_upnp.*\nsrc/wps/wps_upnp_event.c\nsrc/wps/wps_upnp_i.h\nsrc/wps/wps_upnp_ssdp.c\nsrc/wps/wps_upnp_web.c",
+          "Copyright": "2000-2003, Intel Corporation\n2006-2007, Sony Corporation\n2008-2009, Atheros Communications\n2009, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "src/wps/httpread.*",
+          "Copyright": "2008, Ted Merrill, Atheros Communications"
+        },
+        {
+          "Files": "src/wps/ndef.c",
+          "Copyright": "2009-2012, Masashi Honma <honma@ictec.co.jp>"
+        },
+        {
+          "Files": "src/wps/wps_validate.c",
+          "Copyright": "2010, Atheros Communications, Inc."
+        },
+        {
+          "Files": "wpa_supplicant/dbus/dbus_common.*\nwpa_supplicant/dbus/dbus_common_i.h\nwpa_supplicant/dbus/dbus_new.*\nwpa_supplicant/dbus/dbus_new_handlers.*\nwpa_supplicant/dbus/dbus_new_handlers_wps.c\nwpa_supplicant/dbus/dbus_new_helpers.*\nwpa_supplicant/dbus/dbus_new_introspect.c",
+          "Copyright": "2006, Dan Williams <dcbw@redhat.com> and Red Hat, Inc.\n2009-2010, Witold Sowa <witold.sowa@gmail.com>\n2009-2010, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "wpa_supplicant/dbus/dbus_dict_helpers.*",
+          "Copyright": "2006, Dan Williams <dcbw@redhat.com> and Red Hat, Inc."
+        },
+        {
+          "Files": "wpa_supplicant/dbus/dbus_new_handlers_p2p.*\nwpa_supplicant/examples/p2p/*\nwpa_supplicant/examples/dbus-listen-preq.py",
+          "Copyright": "2011-2012, Intel Corporation"
+        },
+        {
+          "Files": "wpa_supplicant/utils/log2pcap.py",
+          "Copyright": "Johannes Berg <johannes@sipsolutions.net>, Intel Corporation"
+        },
+        {
+          "Files": "wpa_supplicant/wpa_gui-qt4/icons/ap.svg",
+          "Copyright": "2008, mystica"
+        },
+        {
+          "Files": "wpa_supplicant/wpa_gui-qt4/icons/group.svg",
+          "Copyright": "2009, Andrew Fitzsimon / Anonymous"
+        },
+        {
+          "Files": "wpa_supplicant/wpa_gui-qt4/icons/invitation.svg",
+          "Copyright": "2009, Jean Victor Balin"
+        },
+        {
+          "Files": "wpa_supplicant/wpa_gui-qt4/icons/laptop.svg",
+          "Copyright": "2008, metalmarious"
+        },
+        {
+          "Files": "wpa_supplicant/wpa_gui-qt4/icons/wpa_gui.svg",
+          "Copyright": "2008, Bernard Gray <bernard.gray@gmail.com>"
+        },
+        {
+          "Files": "wpa_supplicant/wpa_gui-qt4/peers.*\nwpa_supplicant/wpa_gui-qt4/stringquery.*",
+          "Copyright": "2009-2010, Atheros Communications"
+        },
+        {
+          "Files": "wpa_supplicant/wpa_gui-qt4/signalbar.*",
+          "Copyright": "2011, Kel Modderman <kel@otaku42.de>"
+        },
+        {
+          "Files": "wpa_supplicant/Android.mk\nwpa_supplicant/wpa_supplicant_conf.*",
+          "Copyright": "2008-2010, The Android Open Source Project"
+        },
+        {
+          "Files": "wpa_supplicant/ap.*",
+          "Copyright": "2003-2009, Jouni Malinen <j@w1.fi>\n2009, Atheros Communications"
+        },
+        {
+          "Files": "wpa_supplicant/autoscan*",
+          "Copyright": "2012, Intel Corporation"
+        },
+        {
+          "Files": "wpa_supplicant/gas_query.*\nwpa_supplicant/offchannel.*\nwpa_supplicant/p2p_supplicant.*\nwpa_supplicant/wifi_display.*",
+          "Copyright": "2009-2011, Atheros Communications\n2011-2014, Qualcomm Atheros\n2011-2014, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "wpa_supplicant/interworking.*\nwpa_supplicant/wnm_sta.*\nwpa_supplicant/wpas_kay.*",
+          "Copyright": "2011-2014, Qualcomm Atheros\n2011-2014, Jouni Malinen <j@w1.fi>"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2004-2006, Kyle McMartin <kyle@debian.org>\n2005-2009, Faidon Liambotis <paravoid@debian.org>\n2006-2008, Reinhard Tartler <siretart@tauware.de>\n2006-2012, Kel Modderman <kel@otaku42.de>\n2010, Jan Dittberner <jandd@debian.org>\n2010-2014, Stefan Lippers-Hollmann <s.l-h@gmx.de>\n2016-2021, Andrej Shadura <andrewsh@debian.org>"
+        },
+        {},
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "scope": "Complete original notice comparisons and independently read all operative grant differences, metadata and file scopes. Original upstream grants supplement packaging summaries, without rewriting original notices. Pending components and parent-release clearance remain separate.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

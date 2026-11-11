@@ -1,0 +1,76 @@
+{
+  "kind": "exact-cairo-original-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "1.16.0-7",
+  "source_identity": "96b21b7b9c9ab4ae689b1191830b53d0b3c38e5664105c36a3c39dee6bcf29a4",
+  "copyright_review": {
+    "source": "cairo",
+    "version": "1.16.0-7",
+    "copyright_sha256": "408fb9e704e875cd42d432e7c9b3b378f568e3c89db2b5c5ef3d11c025319574",
+    "original_chars": 28461,
+    "unmatched_chars": 2701,
+    "matched_complete_legal_texts": [
+      {
+        "normalized_sha256": "e36b8c229c19c2c1b491871b199cdfd914cd615a1b61dfd8b1d74888dd4657d4",
+        "read_reference": {
+          "component": "cairo",
+          "member": "COPYING-MPL-1.1",
+          "sha256": "53692a2ed6c6a2c6ec9b32dd0b820dfae91e0a1fcdf625ca9ed0bdf8705fcc4f",
+          "method": "Complete original normalized word difference read, all new/removed scope, exceptions and conditions retained; no license equivalence or parent clearance inferred",
+          "read_reference": {
+            "component": "base-files",
+            "member": "licenses/MPL-1.1",
+            "sha256": "f849fc26a7a99981611a3a370e83078deb617d12a45776d6c4cada4d338be469"
+          }
+        },
+        "count": 1
+      }
+    ],
+    "unmatched_text": "This is the Debian package of the Cairo multi-platform 2D graphics library Packaged by Dave Beckett <dajobe@debian.org> It was downloaded from https://cairographics.org/snapshots/ ---------------------------------------------------------------------- Copyright 1999 Tom Tromey Copyright 2002, 2003 University of Southern California, Information Sciences Institute (ISI) Copyright 2000, 2002, 2004, 2005 Keith Packard Copyright 2004 Calum Robinson Copyright 2004 Richard D. Worth Copyright 2004, 2005 Red Hat, Inc. Copyright 2004 David Reveman Permission to use, copy, modify, distribute, and sell this software and its documentation for any purpose is hereby granted without fee, provided that the above copyright notice appear in all copies and that both that copyright notice and this permission notice appear in supporting documentation, and that the name of David Reveman not be used in advertising or publicity pertaining to distribution of the software without specific, written prior permission. David Reveman makes no representations about the suitability of this software for any purpose. It is provided \"as is\" without express or implied warranty. DAVID REVEMAN DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL DAVID REVEMAN BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. Author: David Reveman <davidr@novell.com> ---------------------------------------------------------------------- Cairo is free software. Every source file in the implementation of cairo is available to be redistributed and/or modified under the terms of either the GNU Lesser General Public License (LGPL) version 2.1 or the Mozilla Public License (MPL) version 1.1. Some files are available under more liberal terms, but we believe that in all cases, each file may be used under either the LGPL or the MPL. See the following files in this directory for the precise terms and conditions of either license: COPYING-LGPL-2.1 COPYING-MPL-1.1 Please see each file in the implementation for Copyright and licensing information. ---------------------------------------------------------------------- On Debian systems, the complete text of the GNU General Lesser Public License 2.1 can be found in /usr/share/common-licenses/LGPL-2.1 The Mozilla Public License 1.1 (COPYING-MPL-1.1 above) follows:  [COMPLETE_PREVIOUSLY_READ_LEGAL_TEXT:e36b8c229c19c2c1b491871b199cdfd914cd615a1b61dfd8b1d74888dd4657d4] "
+  },
+  "original_legal_files": [
+    {
+      "member": "COPYING",
+      "sha256": "67228a9f7c5f9b67c58f556f1be178f62da4d9e2e6285318d8c74d567255abdf"
+    },
+    {
+      "member": "COPYING-LGPL-2.1",
+      "sha256": "9e9e8608c4cdda51a78cc3a385f4ec9a2e4c96d5ecad74ac8bca5fca3e563b7d"
+    },
+    {
+      "member": "COPYING-MPL-1.1",
+      "sha256": "53692a2ed6c6a2c6ec9b32dd0b820dfae91e0a1fcdf625ca9ed0bdf8705fcc4f"
+    },
+    {
+      "member": "debian/copyright",
+      "sha256": "408fb9e704e875cd42d432e7c9b3b378f568e3c89db2b5c5ef3d11c025319574"
+    },
+    {
+      "member": "perf/COPYING",
+      "sha256": "6f93b45ea874706058ae35bc02df79c3f9daf00948672eea8394cc25d1327d49"
+    },
+    {
+      "member": "test/COPYING",
+      "sha256": "a37812e0e27a211272d4c27fa45028c3653e78bb708acccb77c94128dc72b98e"
+    },
+    {
+      "member": "util/COPYING",
+      "sha256": "008e976b6e5e7155ee24322073f42cab7cd6daf90bc2322f1d5c3aacab94111c"
+    },
+    {
+      "member": "util/cairo-script/COPYING",
+      "sha256": "25f4d4ce651b1ee6aff713ff986275d6c190a8537e36437886f8bf1497b0a174"
+    },
+    {
+      "member": "util/cairo-trace/COPYING",
+      "sha256": "421158645572270264a980b8b130dd988138e4dae20144e22455446e0ef90902"
+    },
+    {
+      "member": "util/cairo-trace/COPYING-GPL-3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    }
+  ],
+  "license_choice": "Original LGPL2.1 implementation alternative; original MPL1.1 and permissive alternatives preserved.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

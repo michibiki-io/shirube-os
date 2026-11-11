@@ -1,0 +1,133 @@
+{
+  "kind": "exact-original-filesystem-and-rpc-source-permissions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "source": "findutils",
+      "version": "4.9.0-4",
+      "source_identity": "3bb39a6a5f96101f9bb28fed234db186fcec198e064478fef3c0fdf2434f0681",
+      "copyright_sha256": "8fbcc77ed31f480a85654e9b6d1d25cbb95b62e9dc5159ae1565bca684c3e1dc",
+      "scope": "All file/license-expression mappings, license classes and special exceptions reviewed; complete original standards already read. Uniform per-file attributions remain retained exactly; manual reading of every individual author name is not claimed. Actual original mkinstalldirs grant resolves the packaging placeholder. Not release clearance.",
+      "conditions": [
+        "Keep GNU3-or-later programs, distinct GNU2-or-later packaging/helpers, LGPL2/2.1/3 and LGPL3-only source scopes. Select compatible GNU3 alternatives where offered, without treating LGPL3-only as or-later or changing a GNU2-only component.",
+        "Retain no-invariant/no-cover GFDL1.3-or-later documentation, full original attribution, permissive X11/ISC/BSD/FSF grants, Autoconf/Automake and Bison2.2 output exceptions. Supply exact preferred source including generator inputs, patches and configuration/build/install material.",
+        "Retain the original explicit public-domain Noah Friedman mkinstalldirs notice and independent public-domain alloca grant. The installed copyright placeholder blah is not used as an affirmative permission."
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Findutils-original-mkinstalldirs-notice.txt",
+          "sha256": "5372852ef1842cbb61436229bc2c6af6e969688a36bd7e7f3578356f983f5791"
+        },
+        {
+          "path": "LICENSES/GFDL-1.3.txt",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4"
+        }
+      ],
+      "actual_public_domain_member": "build-aux/mkinstalldirs",
+      "actual_member_sha256": "42262b72fea21c2b40e283498d74c3fd704a11292da195e813896cebd1528b91",
+      "debian_placeholder": "The body blah is not treated as a grant; actual original source explicitly states Public domain with Noah Friedman attribution."
+    },
+    {
+      "source": "libtirpc",
+      "version": "1.3.3+ds-1",
+      "source_identity": "c05c5d76027d4162d5a29d73eef90076559bde0fa5133b2e0045d82155e1b2af",
+      "copyright_sha256": "401dcf98d8ef2b712ec6ab310dbf727fc2cdce290bfde5b6d0b609a927530217",
+      "scope": "Every file/license class and original copyright condition inspected. Actual original license headers for all 18 build-control files in the AUTO_PERMISSIVE placeholder scope were read; both GNU copyleft/output-exception and permissive grants retained explicitly. Not release clearance.",
+      "conditions": [
+        "Retain original BSD2/BSD3 runtime and LGPL2.1-or-later DES source scopes, GNU2-only Debian packaging and source-only Bill Paul BSD4 permissions. Preserve the Bill Paul advertising acknowledgement and nonendorsement restrictions; do not extend a Regents advertising waiver to unrelated authors.",
+        "The AUTO_PERMISSIVE metadata label is not a license. Keep actual FSF unlimited-copy/modify grants, X11 installation script permissions, GNU2/GNU3 Autoconf output exceptions and GNU2 Libtool exception, with their original scope and full texts. They do not relicense the runtime library under unrestricted permissive terms.",
+        "Retain every original attribution, disclaimer, preferred source, patches and complete configuration/build/install inputs. Original upstream Makefile leaves crypt_client.c outside the library source list; source-only BSD4 code is retained as separate corresponding-source material. No feature is deleted or disabled by this decision."
+      ],
+      "required_notices": [
+        {
+          "path": "LICENSES/Libtirpc-original-COPYING.txt",
+          "sha256": "17cf6098f95bdbb269f0bbc68e76c88fe20487ca7ec53f454923ab4256ecd2e7"
+        },
+        {
+          "path": "LICENSES/Libtirpc-original-Bill-Paul-notice.txt",
+          "sha256": "1c2e5f49e879be96cec1cc598560bcee31eab82f85003dd9c7fea5e81650735c"
+        }
+      ],
+      "original_archive_sha256": "facd98473c3a16fe6564c6458ef96ebb84d144345d1171f034fa019424bba027",
+      "crypt_client_source_sha256": "d00ebe3c8433707ad0f2d35cb21511f95b30efdd9cef3ae2eb55f2f1f3dc5ab7",
+      "upstream_src_Makefile_am_sha256": "761fdde59b33cd34b0e84c970deff498648089cc7e408a1c25822f461e25faf9",
+      "source_only_scope": "Original upstream source list does not compile crypt_client.c. BSD4 source/crypt.x permission and acknowledgements remain retained separately. No source/runtime feature was removed for this decision; no new ELF audit is claimed.",
+      "generated_source_header_bindings": [
+        {
+          "member": "Makefile.in",
+          "sha256": "c3b0b1a482ee5d503114dc8d5ba177a197732816750e730367743787d2737918"
+        },
+        {
+          "member": "aclocal.m4",
+          "sha256": "a030069aaa3a79dbef9c9f53cdcc81283c9732ad191a9b32acd063d39e9c6c39"
+        },
+        {
+          "member": "compile",
+          "sha256": "c207b390aac6323062b982214a6c63448e53e6911107993abe96f35fe7a30a18"
+        },
+        {
+          "member": "config.guess",
+          "sha256": "b77f1c2590a134d80400c4a93ef4fe634686a2b6b91b7bb2c607dcbf92cbedff"
+        },
+        {
+          "member": "config.sub",
+          "sha256": "d610c87d79f710594108811421be52ecda60cfd2e2c8b82c94665d9d38858e6d"
+        },
+        {
+          "member": "configure",
+          "sha256": "8c798653222520b4cca4ff5aa8e1e58691d0892b30457de83d4bedcb7cef2287"
+        },
+        {
+          "member": "depcomp",
+          "sha256": "e44b49f71b265788187993090027193a6cd2b4718f9aa7be34412f537bce6873"
+        },
+        {
+          "member": "doc/Makefile.in",
+          "sha256": "b2ea7eb0aae8383a09a95653637f9f9a7d8c94768c2397d2ffb54b346fb0ed9b"
+        },
+        {
+          "member": "install-sh",
+          "sha256": "3d7488bebd0cfc9b5c440c55d5b44f1c6e2e3d3e19894821bae4a27f9307f1d2"
+        },
+        {
+          "member": "ltmain.sh",
+          "sha256": "081520d00d2d90421cd2756efd0e28aae8fb64f76c3f431270a12f1d646897f5"
+        },
+        {
+          "member": "m4/libtool.m4",
+          "sha256": "a0d44f9e9c469b70be2eb28b6f127c8fa5d771d60fa5ea31bf0f5e98ce184cdf"
+        },
+        {
+          "member": "m4/ltoptions.m4",
+          "sha256": "f3d4ed0426501308028dd7690cf343cb280479d637a2ebee6c289ec2e708df3b"
+        },
+        {
+          "member": "m4/ltsugar.m4",
+          "sha256": "0896f153a5a40546566028a4272642ae291532f3e65c25fcae950c8812b8c265"
+        },
+        {
+          "member": "m4/ltversion.m4",
+          "sha256": "2a6baf40b64f34234e0b76c7ff62b01a1f6bbf60089f4f74506b49f800ffaf9e"
+        },
+        {
+          "member": "m4/lt~obsolete.m4",
+          "sha256": "8533006830e1ea9625fc5e4c060e653eedf9d5464a9b2f5f494244ee272e2e2f"
+        },
+        {
+          "member": "man/Makefile.in",
+          "sha256": "8724ce169725aefb9307d080d3f27be7eb24dbd849a9aeb2b6b9ca99b191e89b"
+        },
+        {
+          "member": "missing",
+          "sha256": "a9865db4f39574ff128c0312c367f070d20f81847817021ecce95fd70a610c9d"
+        },
+        {
+          "member": "src/Makefile.in",
+          "sha256": "efd592ca554d709b4e0cc17d4b0c75c44cc561c9e648cb58bfba20a10615cd40"
+        }
+      ]
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

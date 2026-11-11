@@ -1,0 +1,156 @@
+{
+  "kind": "exact-debian-kitty-font-license-scopes",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "kitty",
+  "version": "0.26.5-5",
+  "dsc_sha256": "a86574bc654ac00a7046fe32c52cb3d491ac3066da2ae77ba1d4b5712e7fc4f5",
+  "copyright_sha256": "19bc64e244f1e883a9c2f72fe2451d7520b40939467ca2eea8f6b655b735a69c",
+  "original_font_name_tables": [
+    {
+      "member": "kitty-0.26.5/kitty_tests/CascadiaCode-Regular.otf",
+      "sha256": "dc76f084f91b7eaab0a0f2b43eeb7b2f759085bfae7ee58037a014089692f4d2",
+      "names": {
+        "0": [
+          "© 2020 Microsoft Corporation. All Rights Reserved."
+        ],
+        "1": [
+          "Cascadia Code"
+        ],
+        "3": [
+          "2102.003;SAJA;CascadiaCode-Regular"
+        ],
+        "5": [
+          "Version 2102.003"
+        ],
+        "13": [
+          "Microsoft supplied font. You may use this font to create, display, and print content as permitted by the license terms or terms of use, of the Microsoft product, service, or content in which this font was included. You may only (i) embed this font in content as permitted by the embedding restrictions included in this font; and (ii) temporarily download this font to a printer or other output device to help print content. Any other use is prohibited.\n \nThe following license, based on the SIL Open Font license (https://scripts.sil.org/OFL), applies to this font. Additional license terms may be found on the GitHub repository for this font (https://github.com/microsoft/cascadia-code/blob/main/LICENSE).\n \nPermission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:\n \n1) Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.\n \n2) Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.\n \n3) No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.\n \n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.\n \n5) The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.\n \nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE."
+        ],
+        "14": [
+          "https://scripts.sil.org/OFL"
+        ]
+      }
+    },
+    {
+      "member": "kitty-0.26.5/kitty_tests/FiraCode-Medium.otf",
+      "sha256": "f94d9fa1ffb46463e6d8fda12041088397adea1c47de7c50a8f9f57ce9a6d788",
+      "names": {
+        "0": [
+          "Copyright 2014-2020 The Fira Code Project Authors (https://github.com/tonsky/FiraCode)"
+        ],
+        "1": [
+          "Fira Code",
+          "Fira Code Medium"
+        ],
+        "3": [
+          "5.002;CTDB;FiraCode-Medium"
+        ],
+        "5": [
+          "Version 5.002"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+        ],
+        "14": [
+          "http://scripts.sil.org/OFL"
+        ]
+      }
+    },
+    {
+      "member": "kitty-0.26.5/kitty_tests/LiberationMono-Regular.ttf",
+      "sha256": "a9b21391536aec1c8fad37f2d5f24750e7f2d63cd86bccbb2463b6e17005f52e",
+      "names": {
+        "0": [
+          "Digitized data copyright (c) 2010 Google Corporation.\nCopyright (c) 2012 Red Hat, Inc."
+        ],
+        "1": [
+          "Liberation Mono"
+        ],
+        "3": [
+          "Ascender - Liberation Mono"
+        ],
+        "5": [
+          "Version 2.00.1"
+        ],
+        "13": [
+          "Licensed under the SIL Open Font License, Version 1.1"
+        ],
+        "14": [
+          "http://scripts.sil.org/OFL"
+        ]
+      }
+    },
+    {
+      "member": "kitty-0.26.5/kitty_tests/iosevka-regular.ttf",
+      "sha256": "b2b9380c706d8cc85ebcdb60963abe6191a62ea657ab7d7f45f808a9a641e97e",
+      "names": {
+        "0": [
+          "Copyright 2015-2021, Renzhi Li (aka. Belleve Invis, belleve@typeof.net)."
+        ],
+        "1": [
+          "Iosevka"
+        ],
+        "3": [
+          "Iosevka Regular Version 7.0.3"
+        ],
+        "5": [
+          "Version 7.0.3; ttfautohint (v1.8.3)"
+        ],
+        "13": [
+          "This font software is licenced under the SIL Open Font Licence, Version 1.1. This licence is available with a FAQ at: http://scripts.sil.org/OFL. This font software is distributed on an 'AS IS' basis, without warranties or conditions of any kind, either express or implied. See the SIL Open Font licence for the specific language, permissions and limitations governing your use of this font software."
+        ]
+      }
+    }
+  ],
+  "primary_licenses": {
+    "cascadia": "https://github.com/microsoft/cascadia-code/blob/8f5eea81a73632fa46be8a0d5095c6a2ab23b32d/LICENSE",
+    "fira": "https://github.com/tonsky/FiraCode/blob/8da49d55f8b5978c5f888dd85452b79aad16cca2/LICENSE",
+    "iosevka": "https://github.com/be5invis/Iosevka/blob/bede9b82c07cb56696abe72d19041c8d9bd9966c/LICENSE.md",
+    "liberation": "https://github.com/liberationfonts/liberation-fonts/blob/380277b57ffb0b49ca655962c850ff0224a61cae/LICENSE"
+  },
+  "metadata_resolution": "Actual LiberationMono-Regular.ttf2.00.1 explicitly names OFL1.1 and2010Google/2012RedHat. Original Debian older GPL-font summary is retained as history, not applied to the identifiedOFL font. All four complete primary font licenses read and retained; no fonts removed or modified.",
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Kitty-0.26.5/LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "LICENSES/Kitty-0.26.5/debian-copyright.txt",
+      "sha256": "19bc64e244f1e883a9c2f72fe2451d7520b40939467ca2eea8f6b655b735a69c"
+    },
+    {
+      "path": "LICENSES/Kitty-0.26.5/font-metadata.json",
+      "sha256": "d9b6460ef702a67d624d193328bdabe3cc261ad5449e9c3d72aa6f8271dadd5c"
+    },
+    {
+      "path": "LICENSES/Kitty-0.26.5/fonts/Cascadia-Code-OFL.txt",
+      "sha256": "51882cd3cdba4e16f220f44ddb08a635c38c44ea6e0975db2574f4be6f958238"
+    },
+    {
+      "path": "LICENSES/Kitty-0.26.5/fonts/Fira-Code-OFL.txt",
+      "sha256": "1d41e10031ab125302780a05ec4c91d218e47db0c7e37cf315cce5e608cdc25c"
+    },
+    {
+      "path": "LICENSES/Kitty-0.26.5/fonts/Iosevka-OFL.md",
+      "sha256": "72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80"
+    },
+    {
+      "path": "LICENSES/Kitty-0.26.5/fonts/Liberation-2-OFL.txt",
+      "sha256": "93fed46019c38bbe566b479d22148e2e8a1e85ada614accb0211c37b2c61c19b"
+    },
+    {
+      "path": "LICENSES/LGPL-2.1.txt",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    },
+    {
+      "path": "LICENSES/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "sha256": "41e8feade09c9f5ecacb113bfaf1183129f4908fc8bfcab1ee616dbf13add49b"
+    }
+  ],
+  "scope": "Static actual source/metadata/grant/notice checks. No code changes or native rebuild.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

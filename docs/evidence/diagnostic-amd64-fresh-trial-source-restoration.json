@@ -1,0 +1,625 @@
+{
+  "kind": "diagnostic-fresh-amd64-complete-source-restoration",
+  "consumer_recipe_commit": "19c5e77a48138eb8839ed9d0ddd96361570a8876",
+  "source_cohort_commit": "574bd7f3a2c956d77750e86590ea5d02a4a56b1b",
+  "source_set_reconstruction": {
+    "scope": "Complete source-set restoration and actual build-recipe binding",
+    "input_manifest": {
+      "schema_version": 1,
+      "manifest_kind": "candidate-source-set",
+      "project": "Shirube OS",
+      "provider": "michibiki-io",
+      "source_commit": "574bd7f3a2c956d77750e86590ea5d02a4a56b1b",
+      "version": "v2026.03.0",
+      "assets": [
+        {
+          "name": "shirube-os-v2026.03.0-amd64-licenses.json",
+          "role": "licenses",
+          "architecture": "amd64",
+          "size": 305353618,
+          "sha256": "d5dcf2e91e19aee3ab9a3c3d9e93a8f839906fe385309c7dc1b2e830d2247260"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-shared-build-inputs.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 5895354,
+          "sha256": "5a10dd91a1ceb113b8f54573e95aadc887caf6433a0777f2c126d39016e5ac9f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-ocaml-source.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 36707020,
+          "sha256": "04bd2ba843c34e42a932ae01c1c9b45b2632b92fff5e6780929114bac13f1473"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0001.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 3192918,
+          "sha256": "86a5e7094969778f1a0924ff7e96665f4f5dca27867c882ee0a857a73f96778d"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0014.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 465632,
+          "sha256": "9ccba55a296b49ffffe1cb77372cf9a1d0d1be538310fefdb6b5a0f0ae594a85"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0018.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 134309499,
+          "sha256": "93fe04226904a74f85c4e32b3eb06a2711e8abe00978b2660401ba176e5aa545"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0042.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 891812,
+          "sha256": "00a4cb640a3d51f919d66b607624841f293b3bb1db3c397e178b5143f64b5955"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0055.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 2947237,
+          "sha256": "4b8edb4ac68ece8f713164fb71f095f1d83c2a7a80a314c8d9495c9b21dcbdec"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0060.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 497544,
+          "sha256": "7191a7ece5e73810c5d2685287bcc953b76f8a6b17bdfb70963022a7088fd88a"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0069.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 12073561,
+          "sha256": "fb484233c8bf693de558b1c64cef9130ab7a54eafe35b712fb45b9ed7285258f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0070.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 90927983,
+          "sha256": "cc817d3b7452b2fa54a11d59027425836ede377b0a6e1136a1f7df46adb1881b"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0090.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 3770163,
+          "sha256": "11906cb134c27923c36c1665d57d011944c547cb7c3dbecfd85eed320af8a5ae"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0092.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 140039,
+          "sha256": "f08e4cb0697ab302842f5c5da07fdf9df212ac8734c002f638ee5aecb6d6daaf"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0101.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 265508,
+          "sha256": "a567daa46f6fcabf40dcd2e3b55bdacbd6e22497f2b25dfa4eec4d497b6c9850"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0111.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 12857278,
+          "sha256": "8bfb4598e00f11bd54a2d335018fed7ed389e2024993bbf1d22fecc930d71a2c"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0113.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 2889019,
+          "sha256": "397a46a0f66c6a0cb28c15da06a1a1895cfc11ec2f19355171519df8437512d7"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0245.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 1596854,
+          "sha256": "afe3a277867f28719195d97e7b56c2320d7ddee32c39bf202671c4ed1779bbe8"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0246.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 651009,
+          "sha256": "088504698feca54aecc593838fa3717a093d41de28646704861b81e02534c985"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0254.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 465186,
+          "sha256": "903c1679edf6c5d526e49da46f1e588935a8d157bbd574bffec2a1951b455dbd"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0265.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 201923,
+          "sha256": "62f55d215aade465ef83c3dbfd3d05087769835eca8be6b79139e00d9cd9f2b5"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0319.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 147565,
+          "sha256": "436ab10bcc4bf2d53e38464e2acc3d7677d0ac0afcbbfef9e32aa50aca4461ba"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0334.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 83628361,
+          "sha256": "8ec14e0b31174c7881c78355feaaa0036230a2ae08b75b86cb505195c1681c59"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0335.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 360552,
+          "sha256": "851699024fc805eb22f65ba0726718b4c60b7ac1c12ec812ac4045b87c6f8a5e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0336.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 2248443,
+          "sha256": "2d87909194dc522a51faea8e5efef0ddf3b3d2762394685f52d7c69960292b70"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0354.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 1484173,
+          "sha256": "3275d4d6ed526a1567a9ea943b9abf9298f1e49e1cc6a0a6d8df0545c2aad17d"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0358.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 307034332,
+          "sha256": "70bea5a253c459cfc6aca5ad16b4bd5f6942ea54eeb3a0b7e2e6246654190701"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0359.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 287735,
+          "sha256": "bd1a470e14db0580fee45e5793f10725672d5c79cd7556372be8dd387de36efc"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0376.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 158128,
+          "sha256": "8db98fcbf8ad45778af47e03304bf04b7124d792f6aa09e27aaef91255c658aa"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0378.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 159554,
+          "sha256": "bdeb0e15b4ed94b6c19cf6ac7a865264bc461b60fb223d2b324d2b5f45180d79"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0386.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 131219110,
+          "sha256": "ca699e68de0bb13183231fdd641235a8e5d5e7580cb167e33435fca80782a9f9"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0393.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 214307,
+          "sha256": "6098c4b74313184e868a722d9b5a92c52e28a9bc5fc4d255e4c9d57ef35cfd12"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0394.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 1249517,
+          "sha256": "8f01eec2137a9e10840638ccd7abab272f6aaa45634e9f3f07e2a7189d8dacc4"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-static-i2util-source.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 5412375,
+          "sha256": "21098290a63deb9e4c7eaa5649037dd2feecbd58343a464a2858c04896b00208"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0395.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 8434956,
+          "sha256": "62f41a0f7cd9191db94c81414335c7cf973b5f13a412a460847f942f35af06d7"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0399.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 347741372,
+          "sha256": "24c05df524a2c6372a428524f8284457064f4281326b1213c89a5aed49fcf1f3"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0433.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 2604911,
+          "sha256": "6209d28c3509738c3cc6e6aaa86d3c72aacd9669918321aec17ac9ea20119d5e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0444.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 7798203,
+          "sha256": "c5071a684a7f9e0ef3478991bdcf2002687512aa5b05e8ccc8a4b7f6eddd3c48"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0448.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 206623,
+          "sha256": "ba09d2202f8081c16e41369cc5613c6a96b35cb3d4b733c272e15c153c39d728"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0449.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 233210,
+          "sha256": "6f01e39eef2a97c9841d05e156f219a68ee1787594060f1ff822733bd8b75b92"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-salt-sdk-source.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 259938177,
+          "sha256": "2e6c1326e705884fbce4a686e60982baf6c4b8aaa22f63af2843fab9dbb0ee71"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0453.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 16799524,
+          "sha256": "09dde30520675765517934008bfe9df8e38a8a88125e8efb803877cbd73e2aa8"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0459.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 212864879,
+          "sha256": "39514f65ca951d40f9a4b7c5c6107b6ecbd01019bb7a4e4865e6e72625f2d845"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0476.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 528196743,
+          "sha256": "762e2fd8295df7d84328510e6dc3276109d812aecbb155473fa5b4cf0c54aaea"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0484.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 155379,
+          "sha256": "8b9a63b2215f661bde2075e102e5c85aa0318989707f697ab71e1287207e8c57"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0491.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 5211140,
+          "sha256": "3bc0537655dd3c909315552fe4bb418e28fa3fa3739993ed5f8143d25de307f7"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0492.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 218537,
+          "sha256": "211fb18aeb59e50bbde2ddc5cc7a39639e9da3834b37c7a41db296f8f866af16"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0493.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 2248618,
+          "sha256": "965cae19f0eb747052aec145ab2cd4f3d551a9354d1bc2a505582014e67fbdb2"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0494.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 295309285,
+          "sha256": "77598d7f1a509c44f30b1f611d658cee3ee7dd76d97c8367adfbd1802f0bff57"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0495.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 334047,
+          "sha256": "e9ee0e5c69ad1fe14f5a5006de0763be901729e33ba950c05b55bb081eefd4c4"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0496.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 151125,
+          "sha256": "9d1a7f97fea3edf2484b65db404a0b564ab765f6d22f84f4dd6f40aefe8d539b"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0497.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 488568,
+          "sha256": "f120605848bda494a6a79fc0b4df73d403499d3acfe2d2829a3e77eb567599c1"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0498.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 134026,
+          "sha256": "adf273f05f5b5ca4c95ec03a0a97f9618824ecabf7f3c81abd77f5f6dc51d34f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0499.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 16227906,
+          "sha256": "49327fce44d2dd75966aa1d81aa583ed0d644c95b8f230acbe7c168433c56346"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-source-0502.tar.gz",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 430164,
+          "sha256": "5cf6898dbd6e839b9f0885ad47a7fd14feaf2d7b1aaa2354280d6644acbe7385"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0001.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 36618240,
+          "sha256": "7a27310d648090db765a0210feaf6ae540c1fc5328be8e33345e3d592969cf26"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0002.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 35205120,
+          "sha256": "e60cc65790134e7c79f41d11d438b4222bf29ab75f98ec8ea43d311d07da78e1"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0003.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 43806720,
+          "sha256": "f17eb382fc1a80b1eb5ee9ae1f1150ed58e0e12b8ede64e86ea151734d0f4882"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0004.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 47646720,
+          "sha256": "df677577bdfa438e425033bfc46517a8af223285183d415de2dbe99173f341db"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0005.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 146688000,
+          "sha256": "d5e7900bfc5a15c5158b30999f9454729d6c5ce4ff19d4a8e0ab742c5beddc97"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0006.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 23572480,
+          "sha256": "f8422d8eb09ae55611af22d66fd340e9c561fd46a7fd7367dd2fcfba803bd25a"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0007.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 31692800,
+          "sha256": "900063a76d0ee7f180c8b4aae339409c9db6a284dd647e048df8495791491fdf"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0008.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 161423360,
+          "sha256": "6b05bd19528b1542e39116399f015d0796e73bc6d7ce6f0aabcfced79e600e8f"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0009.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 151941120,
+          "sha256": "9e68a1d14d5394ecd01338643b8e3989cafdea28c2f7631ae8429229e4faa46b"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0010.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 44605440,
+          "sha256": "c0cbccf61d0e6eecdf77490b72de39f6086dde5ce9fb33945f89fff594b47ff7"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0011.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 38686720,
+          "sha256": "533fd715bc26b4bffeaba9c94928ae6698683cbe64914b20d3af0fdb8ded0194"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0012.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 72529920,
+          "sha256": "47267def26c2f9c408d8d0eef2c66cd15c99c084af8bb5793ebfd66d41212bc4"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0013.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 24934400,
+          "sha256": "f884e3319f2097b6497753fba36d10c5a6924d6fad8b898898a9398bdd77c9dd"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0014.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 16977920,
+          "sha256": "65eddae3ff1fd63646a3512ab52cfaebd060a31b34d170eaa32b9c73ede06b7d"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0015.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 32460800,
+          "sha256": "08acc721ffe3102aae024b366dbf8f36c23212c54cb1ed5c0c895111c77d9a92"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0016.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 21667840,
+          "sha256": "641a410d38ed227412bba14ff084a301192491fa93dcd6c398ce3f49b521ddad"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0017.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 37693440,
+          "sha256": "7505aa40dc238e15d3862e65e5b4838113ad24060ee7ffb1d86b17f905a25804"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0018.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 45004800,
+          "sha256": "92dcfc0bc6b026b22b36801925c75c24870e4747497186570a280fa2efc254bb"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0019.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 50411520,
+          "sha256": "f7310b9bac97787b2e72a1b19b60a501ee367a98d0f56a8b9c9a215b11e7928e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0020.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 26705920,
+          "sha256": "f07948d45b97e4417a193341ecceaea01f6f6e0239522798e597e738d35ce709"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0021.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 23121920,
+          "sha256": "7062bb67dc9e90764ecbcfc4f6ef9de6972e8e92e584d44161fcc8f1dcc375bf"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0022.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 15790080,
+          "sha256": "e94848b4aebd476624fac1fb6a6cfadc725dda7da2257b23c8c6701a2775c85e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0023.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 26224640,
+          "sha256": "2375bb5099d0e3605b3d2dd78f0d22a4e53e405900e686310cedca7e0e2da8c0"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0024.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 15820800,
+          "sha256": "4ece594af6234f1f133d3efcd09d1e7c8298f1d75c89eedcc9c713fde1af7c1e"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0025.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 18534400,
+          "sha256": "512efabddcaf63e80590096ae3eb2c5f8c45bb0404a7c8174ba38f9c37bbf634"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0026.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 14120960,
+          "sha256": "e6fbfb4b7357c3fdde27c622f1c698b3d19d0cf90e8697124bec8e56ec16e75b"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0027.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 23521280,
+          "sha256": "4cfd8c9a5b632a9fcf42c5708055e15cf8a1e3ea4f6231ecf2bdea3658f3bbda"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0028.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 21667840,
+          "sha256": "1ab2abc3d2ae5d6ead58e50f043e34c4a0351ceb2aba8c7522537edd280204f8"
+        },
+        {
+          "name": "shirube-os-v2026.03.0-amd64-debian-sources-0029.tar",
+          "role": "source",
+          "architecture": "amd64",
+          "size": 51742720,
+          "sha256": "c6e737cea475e7b60aecbffa2f82218d096e307e7ee491523c80836eef88adad"
+        }
+      ],
+      "source_license_clearance": "FAIL",
+      "release_clearance": "NOT_CLEARED"
+    },
+    "proof": {
+      "kind": "complete-source-set-restoration",
+      "status": "PASS_SOURCE_SET_ONLY",
+      "architecture": "amd64",
+      "source_commit": "574bd7f3a2c956d77750e86590ea5d02a4a56b1b",
+      "manifest_sha256": "7c7f0a90634feeb4b3c60d818bab120f3772e1221f572d4c7e46ee85cef4ff1f",
+      "inventory_sha256": "d5dcf2e91e19aee3ab9a3c3d9e93a8f839906fe385309c7dc1b2e830d2247260",
+      "source_archives": 82,
+      "restored_regular_members": 218465,
+      "restored_regular_bytes": 6170297989,
+      "largest_archive_payload_bytes": 1685604805,
+      "restored_tree_retained": false,
+      "shipped_packages": 730,
+      "archive_byte_integrity": "PASS",
+      "all_source_license_recipe_references": "PASS",
+      "binary_reconstruction": "NOT_RUN",
+      "license_clearance": "NOT_ESTABLISHED_BY_RESTORATION",
+      "release_clearance": "NOT_CLEARED",
+      "oci": "NOT_RUN",
+      "actual_project_build_input_sha256": "311f763fb09fc23e8f684173b1b944d31c557fc67e8460d2560c95b7df6ae16f",
+      "actual_project_build_input_binding": "PASS"
+    }
+  },
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

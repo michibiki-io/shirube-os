@@ -1,0 +1,11 @@
+{
+  "kind": "diagnostic-amd64-native-source-built-iso-boot",
+  "source_commit": "d5d0d7ad70066a1b0aca7d3ac76e162e5891dd18",
+  "iso_sha256": "8d4a19f24a20bdd464e99b4b0e96948f9e94dfe66dbe6eababeff845ca026676",
+  "accelerator": "tcg",
+  "status": "PASS",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "fresh_console_enrollment_and_login": "PASS",
+  "clean_shutdown": "PASS"
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "exact-source-license-scope",
+  "status": "PASS_COMPONENT_SCOPE_ONLY",
+  "sources": [
+    {
+      "component": "go:github.com/apache/arrow/go/v12",
+      "version": "v12.0.1",
+      "source_identity": "5eb05ed9c2c5e164503b00912b7b2456400578de29e7e8a8956a41acd861ab5b",
+      "source_url": "https://proxy.golang.org/github.com/apache/arrow/go/v12/@v/v12.0.1.zip",
+      "source_size": 3727395,
+      "members": 816,
+      "license_member": "github.com/apache/arrow/go/v12@v12.0.1/LICENSE.txt",
+      "original_license_sha256": "44d90a666995d20b37141973bf1193685cc9a5eb39ffa9492f53fd8b65b7ebd1",
+      "stripped_notice_text_sha256": "091bd59222479d2e99decd7e3c2ccfec833341985017311c18709f02dc8f5f8e",
+      "other_language_and_binary_distribution_paths": [],
+      "named_external_benchmark_data": []
+    },
+    {
+      "component": "go:github.com/apache/arrow/go/v13",
+      "version": "v13.0.0",
+      "source_identity": "0fe988bf72cdfb2d9b99716575965f4a54920b3579e0f1ef55b260858dc476be",
+      "source_url": "https://proxy.golang.org/github.com/apache/arrow/go/v13/@v/v13.0.0.zip",
+      "source_size": 3789308,
+      "members": 829,
+      "license_member": "github.com/apache/arrow/go/v13@v13.0.0/LICENSE.txt",
+      "original_license_sha256": "44d90a666995d20b37141973bf1193685cc9a5eb39ffa9492f53fd8b65b7ebd1",
+      "stripped_notice_text_sha256": "091bd59222479d2e99decd7e3c2ccfec833341985017311c18709f02dc8f5f8e",
+      "other_language_and_binary_distribution_paths": [],
+      "named_external_benchmark_data": []
+    }
+  ],
+  "reading": "Complete shared original license coverage inherited from the recorded exact-segment grant comparison and unmatched-clause reading. Actual ZIP member scopes inspected independently.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

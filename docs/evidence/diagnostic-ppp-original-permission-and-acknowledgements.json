@@ -1,0 +1,63 @@
+{
+  "kind": "exact-ppp-original-permission-and-acknowledgement-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "2.4.9-1+1.1",
+  "source_identity": "2e77d2986272acc05e9a20d8eb48ca14c0fba8d60975007a601e6b618fad05a0",
+  "copyright_sha256": "a3f8763208a1813bffe80d219500d092cfec182d2e8baa088eba4de55198d4f1",
+  "original_legal_files": [
+    {
+      "member": "debian/copyright",
+      "sha256": "a3f8763208a1813bffe80d219500d092cfec182d2e8baa088eba4de55198d4f1"
+    },
+    {
+      "member": "pppd/plugins/pppoatm/COPYING",
+      "sha256": "1822ead9d2854adfbd282322b29730a3fec4cc67f6f6a2e487aad3476e3afd59"
+    },
+    {
+      "member": "pppd/plugins/radius/COPYRIGHT",
+      "sha256": "e679371727407fac17ba44b9dcb1420e288d0c05357c0cdd5bd07fb4d41e3301"
+    }
+  ],
+  "matched_complete_legal_texts": [
+    {
+      "normalized_sha256": "94e74eca1219a43d6eb9950b9db929c345854d8e37ba285dd5f7930660bc04bd",
+      "read_reference": {
+        "component": "radcli",
+        "label": "Michigan"
+      },
+      "count": 1
+    },
+    {
+      "normalized_sha256": "3deaeac82401a718fd896564c7005890bad99d30454412795e9ec50be5f45b3a",
+      "read_reference": {
+        "label": "RSA-MD",
+        "component": "cyrus-sasl2"
+      },
+      "count": 1
+    },
+    {
+      "normalized_sha256": "eb02145cf9b18eeb8c3339f1176f9fb5eecd24f05168d6a100ff2769f3ae00a7",
+      "read_reference": {
+        "component": "radcli",
+        "label": "Livingston"
+      },
+      "count": 1
+    },
+    {
+      "normalized_sha256": "f144c2c6c5eebb1bb0652b192fcdb2550ef7de977b7d4f312caa61df25f8a86f",
+      "read_reference": {
+        "component": "radcli",
+        "label": "Fenneberg"
+      },
+      "count": 1
+    }
+  ],
+  "required_notices": [
+    {
+      "path": "LICENSES/PPP-required-acknowledgements.txt",
+      "sha256": "c8bd28ed2fae8c13580eca8d658e0bf5b70cda5e8799e28a253b84f8e4dd9d96"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

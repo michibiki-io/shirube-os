@@ -1,0 +1,37 @@
+FUSE 2.9.9 original source licensing notices
+
+fuse-2.9.9/util/fusermount.c
+Source SHA256: db5e20366f904d843cb914a2a937157c267acceba610f0b340487c68173451e1
+/*
+  FUSE: Filesystem in Userspace
+  Copyright (C) 2001-2007  Miklos Szeredi <miklos@szeredi.hu>
+
+  This program can be distributed under the terms of the GNU GPL.
+  See the file COPYING.
+*/
+
+fuse-2.9.9/lib/fuse_lowlevel.c
+Source SHA256: 7c4c8b900115e5a65b38c5b341a8854fad1fe252ecbf1e25cf9201e220014495
+/*
+  FUSE: Filesystem in Userspace
+  Copyright (C) 2001-2007  Miklos Szeredi <miklos@szeredi.hu>
+
+  This program can be distributed under the terms of the GNU LGPLv2.
+  See the file COPYING.LIB
+*/
+
+fuse-2.9.9/lib/fuse.c
+Source SHA256: af840715287dc99c36271ea76a2699d86850cb3bc96952c4388b5297cf24c6ce
+/*
+  FUSE: Filesystem in Userspace
+  Copyright (C) 2001-2007  Miklos Szeredi <miklos@szeredi.hu>
+
+  This program can be distributed under the terms of the GNU LGPLv2.
+  See the file COPYING.LIB
+*/
+
+The original library headers refer to LGPLv2 and COPYING.LIB, whose full text
+is LGPL version 2.1. Retain both original wording and the complete LGPL-2 and
+LGPL-2.1 texts, along with GPL-2 for the utility/source portions. Complete
+preferred source and Debian modifications accompany the binaries. No upstream
+source notice or library replacement/relinking right is changed.

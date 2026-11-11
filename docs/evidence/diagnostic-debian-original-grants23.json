@@ -1,0 +1,444 @@
+{
+  "kind": "exact-debian-original-permission-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "new_exact_decisions": 3,
+  "components": [
+    {
+      "source": "argon2",
+      "version": "0~20171227-0.3+deb12u1",
+      "dsc_sha256": "64b82cae9e03543f045506391398472f5659a391d626b4ad701c845bd5cfb862",
+      "binaries": [
+        {
+          "name": "libargon2-1",
+          "version": "0~20171227-0.3+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "9482894dde0cdc3eea4abff3a9c54495d2a1ae4c6c87f4f647908ee0078b5b80"
+        }
+      ],
+      "copyright_sha256": "9482894dde0cdc3eea4abff3a9c54495d2a1ae4c6c87f4f647908ee0078b5b80",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "220f8736a89ff51c92ef3d497f413b48e6cf1df3d6278bc909c6308c78e1718e",
+          "read_reference": {
+            "component": "argon2",
+            "member": "LICENSE",
+            "sha256": "220f8736a89ff51c92ef3d497f413b48e6cf1df3d6278bc909c6308c78e1718e",
+            "method": "Every unmatched segment read; all other whole operative grants exactly matched to previously fully read originals."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "CC0",
+          "full_normalized_body_sha256": "2e7ac29ccca55f620549983da214e83b11eb17a94de2e44e0fa30823abc3cc81",
+          "read_reference": {
+            "component": "argon2",
+            "label": "CC0"
+          }
+        },
+        {
+          "label": "Apache-2.0",
+          "full_normalized_body_sha256": "7d8235fda2d39a99441bcb3fcf2ddf4507c89b6adb6eebcd9ddcc84ae3a5f2ab",
+          "read_reference": {
+            "label": "Apache-2.0",
+            "component": "cryptsetup"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "phc-winner-argon2",
+          "Source": "https://github.com/P-H-C/phc-winner-argon2",
+          "Upstream-Contact": "https://github.com/P-H-C/phc-winner-argon2/issues"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2015, Daniel Dinu\n2015, Dmitry Khovratovich\n2015, Jean-Philippe Aumasson\n2015, Samuel Neves"
+        },
+        {
+          "Files": "src/blake2/*",
+          "Copyright": "2013-2015, Samuel Neves"
+        },
+        {
+          "Files": "src/encoding.c",
+          "Copyright": "2015, Thomas Pornin"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2016, Luca Bruno <lucab@debian.org>"
+        },
+        {
+          "Files": "debian/argon2.1",
+          "Copyright": "2016, Daniel Kahn Gillmor <dkg@fifthhorseman.net>"
+        },
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "inetutils",
+      "version": "2:2.4-2+deb12u3",
+      "dsc_sha256": "4f6544f84b3fc6940784181d4afedc91304d84bd274f865698953fa44e94d07a",
+      "binaries": [
+        {
+          "name": "inetutils-telnet",
+          "version": "2:2.4-2+deb12u3",
+          "architecture": "arm64",
+          "copyright_sha256": "c4eeea6c40c414860072baa11bbe9199b56d77a43e2b8978017ebee806b1d59f"
+        },
+        {
+          "name": "telnet",
+          "version": "0.17+2.4-2+deb12u3",
+          "architecture": "all",
+          "copyright_sha256": "c4eeea6c40c414860072baa11bbe9199b56d77a43e2b8978017ebee806b1d59f"
+        }
+      ],
+      "copyright_sha256": "c4eeea6c40c414860072baa11bbe9199b56d77a43e2b8978017ebee806b1d59f",
+      "original_legal_matches": [
+        {
+          "member": "COPYING",
+          "sha256": "f03a12bef9dfb7281864a0dd965166d4f4ec7a66633df2bc72fa4363e57de02c",
+          "read_reference": {
+            "component": "bash",
+            "member": "COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "d2b8cf2075f81707fd6c2906c25b44be574a7cf86696d36d7e42fa493e2d830f",
+          "read_reference": {
+            "label": "GPL-3+",
+            "component": "inetutils"
+          }
+        },
+        {
+          "label": "GFDL-1.3+",
+          "full_normalized_body_sha256": "64f90ca7dbfc0cbe3c3dcbe831a7c27f10891747691270eb151e76cc550c10cc",
+          "read_reference": {
+            "label": "GFDL-1.3+",
+            "component": "inetutils"
+          }
+        },
+        {
+          "label": "Wietse",
+          "full_normalized_body_sha256": "5e2309bc07c3ec26f329afbf909696d9a78ff20bba5bbc98eb9f8df7a41cb576",
+          "read_reference": {
+            "component": "inetutils",
+            "label": "Wietse"
+          }
+        },
+        {
+          "label": "MIT",
+          "full_normalized_body_sha256": "72d890958907925f5c5045c0d254ae48cc2974e517ba175ab9a842c551fe188d",
+          "read_reference": {
+            "component": "inetutils",
+            "label": "MIT"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+          "read_reference": {
+            "label": "BSD-3-clause",
+            "component": "dash"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Source": "https://ftp.gnu.org/pub/gnu/inetutils/",
+          "Upstream-Name": "inetutils",
+          "Upstream-Contact": "bug-inetutils@gnu.org"
+        },
+        {
+          "Files": "\n*",
+          "Copyright": "\nCopyright © 1985-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "\ndoc/*",
+          "Copyright": "\nCopyright © 2000-2022 Free Software Foundation, Inc."
+        },
+        {
+          "Files": "\nlibinetutils/utmp_init.c\nlibinetutils/utmp_logout.c",
+          "Copyright": "\nCopyright © 1985-2022 Free Software Foundation, Inc.\nCopyright © 1995 Wietse Venema"
+        },
+        {
+          "Files": "\nlibtelnet/auth-proto.h\nlibtelnet/auth.c\nlibtelnet/auth.h\nlibtelnet/enc-proto.h\nlibtelnet/encrypt.c\nlibtelnet/encrypt.h\nlibtelnet/kerberos.c\nlibtelnet/key-proto.h\nlibtelnet/misc-proto.h",
+          "Copyright": "\nCopyright © 1985-2022 Free Software Foundation, Inc.\nCopyright © 1985-1988, 1990, 2000 Massachusetts Institute of Technology.\nCopyright © 1991, 1993 The Regents of the University of California."
+        },
+        {
+          "Files": "\nftp/*.c\nftp/*.h\nftpd/extern.h\nftpd/ftpcmd.y\nftpd/ftpd.c\nftpd/popen.c\nlibinetutils/daemon.c\nlibinetutils/kcmd.c\nlibinetutils/krcmd.c\nlibinetutils/tftpsubs.c\nlibinetutils/tftpsubs.h\nlibinetutils/ttymsg.c\nlibls/*.c\nlibls/*.h\nlibtelnet/enc_des.c\nlibtelnet/forward.c\nlibtelnet/genget.c\nlibtelnet/misc.c\nlibtelnet/misc.h\nlibtelnet/read_passwd.c\nsrc/inetd.c\nsrc/logprio.h\nsrc/rcp.c\nsrc/rexecd.c\nsrc/rlogin.c\nsrc/rsh.c\nsrc/rshd.c\nsrc/syslogd.c\nsrc/tftp.c\nsrc/tftpd.c\nsrc/uucpd.c\ntalk/*.c\ntalk/*.h\ntelnet/*.c\ntelnet/defines.h\ntelnet/externs.h\ntelnet/general.h\ntelnet/ring.h\ntelnet/types.h\ntelnetd/slc.c\ntelnetd/state.c\ntelnetd/termstat.c",
+          "Copyright": "\nCopyright © 1985-2022 Free Software Foundation, Inc.\nCopyright © 1983-1985, 1988-1994, 1996, 2000, 2002\nThe Regents of the University of California."
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    {
+      "source": "libevent",
+      "version": "2.1.12-stable-8+deb12u1",
+      "dsc_sha256": "acc01f440019a0369c1cf0e6256a22037a65f032b5192ee14bad548889074b55",
+      "binaries": [
+        {
+          "name": "libevent-2.1-7",
+          "version": "2.1.12-stable-8+deb12u1",
+          "architecture": "arm64",
+          "copyright_sha256": "d32d223a2f96bb222faa1f6d2b4573b512465b2b234f56e040a4d7daab060d69"
+        }
+      ],
+      "copyright_sha256": "d32d223a2f96bb222faa1f6d2b4573b512465b2b234f56e040a4d7daab060d69",
+      "original_legal_matches": [
+        {
+          "member": "LICENSE",
+          "sha256": "ff02effc9b331edcdac387d198691bfa3e575e7d244ad10cb826aa51ef085670",
+          "read_reference": {
+            "component": "libevent",
+            "member": "LICENSE",
+            "sha256": "ff02effc9b331edcdac387d198691bfa3e575e7d244ad10cb826aa51ef085670",
+            "method": "Every unmatched segment read; all other whole operative grants exactly matched to previously fully read originals."
+          }
+        },
+        {
+          "member": "cmake/COPYING-CMAKE-SCRIPTS",
+          "sha256": "8c33ed647ccfaa4e682ffe56b677f4d5d0dc51e2ccc40038015df784c7be51dd",
+          "read_reference": {
+            "component": "pcre2",
+            "member": "cmake/COPYING-CMAKE-SCRIPTS",
+            "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b"
+          }
+        },
+        {
+          "member": "cmake/Copyright.txt",
+          "sha256": "c0164fd32c6dd4ae663dc5e830a943880a7bb49fcb18faa257c3cc84d41a878c",
+          "read_reference": {
+            "component": "libevent",
+            "member": "cmake/Copyright.txt",
+            "sha256": "c0164fd32c6dd4ae663dc5e830a943880a7bb49fcb18faa257c3cc84d41a878c",
+            "review_method": "Complete original text read, including attribution/scope conditions and historical/generated metadata. Unknown metadata is not used as permission; original referred grants remain prerequisites."
+          }
+        }
+      ],
+      "license_definitions": [
+        {
+          "label": "BSD-2-clause",
+          "full_normalized_body_sha256": "e6452f8bb9f61807201120c7056c952b2714090f2d9d5040516b764b86995476",
+          "read_reference": {
+            "label": "BSD-2-clause",
+            "component": "dctrl-tools"
+          }
+        },
+        {
+          "label": "BSD-3-clause",
+          "full_normalized_body_sha256": "b0f88a062edfe9c27147b46d8a4a8b1220f32f447f52da67a44e64bd7a94e267",
+          "read_reference": {
+            "label": "BSD-3-Clause",
+            "component": "netcat-openbsd"
+          }
+        },
+        {
+          "label": "BSL",
+          "full_normalized_body_sha256": "a796d5730b60337084397744dbaaad751d2995d421f96e8842e4a22007ee284f",
+          "read_reference": {
+            "label": "BSL-1",
+            "component": "sed"
+          }
+        },
+        {
+          "label": "curl",
+          "full_normalized_body_sha256": "13b22d86573b8d6ff50c0c56bc9542a0d62eb8b0b113f6753dd6880e45a15324",
+          "read_reference": {
+            "component": "curl",
+            "label": "curl"
+          }
+        },
+        {
+          "label": "Expat",
+          "full_normalized_body_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5",
+          "read_reference": {
+            "label": "MIT",
+            "component": "beep"
+          }
+        },
+        {
+          "label": "FSFUL",
+          "full_normalized_body_sha256": "6b67719d76b493c426bc94fd9e5385217a85a1c1cbfa7829ff2afdc406750f0e",
+          "read_reference": {
+            "label": "FSFUL",
+            "component": "bgpq3"
+          }
+        },
+        {
+          "label": "FSFULLR",
+          "full_normalized_body_sha256": "dd665685731358287f85adee4a403b3086d9c366658d6385ef89e590da6907cc",
+          "read_reference": {
+            "label": "FSFULLR",
+            "component": "coreutils"
+          }
+        },
+        {
+          "label": "FSFULLR-No-Warranty",
+          "full_normalized_body_sha256": "236519e8309d8881985773c6ce2b6063e9aa65fe929e92c8f149c981b77d43ee",
+          "read_reference": {
+            "label": "FSF-something",
+            "component": "iperf"
+          }
+        },
+        {
+          "label": "GPL-2+",
+          "full_normalized_body_sha256": "2644d2da5c0c4efd657be8d799a9c4a887e146301a118be488e9d3ae1a56f2cc",
+          "read_reference": {
+            "label": "GPL-2+",
+            "component": "gdbm"
+          }
+        },
+        {
+          "label": "GPL-3+",
+          "full_normalized_body_sha256": "d21f3056b43ff160aae110b50b1bbc0d58a2667ace6e17ddb6379e1f4966de44",
+          "read_reference": {
+            "component": "libevent",
+            "label": "GPL-3+"
+          }
+        },
+        {
+          "label": "ISC",
+          "full_normalized_body_sha256": "15824d08efdd156a65aeb2cce9fd7ee914b2adc5231f5f2a26d998c8ccf05214",
+          "read_reference": {
+            "label": "MIT-Old-Style-with-legal-disclaimer-2",
+            "component": "file"
+          }
+        }
+      ],
+      "fields_for_reading": [
+        {
+          "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "Upstream-Name": "Libevent",
+          "Source": "https://libevent.org/"
+        },
+        {
+          "Files": "*",
+          "Copyright": "2000-2007 Niels Provos <provos@citi.umich.edu>\n2007-2012 Niels Provos and Nick Mathewson"
+        },
+        {
+          "Files": "debian/*",
+          "Copyright": "2002-2005 Simon Law <sfllaw@debian.org>\n2005 Javier Fernandez-Sanguino Pen~a <jfs@computer.org>\n2007-2015  Anibal Monsalve Salazar <anibal@debian.org>\n2017-2020 Balint Reczey <rbalint@ubuntu.com>\n2022 Balint Reczey <balint@balintreczey.hu>\n2022-2023 Nicolas Mora <babelouest@debian.org>"
+        },
+        {
+          "Files": "WIN32-Code/getopt.c\nWIN32-Code/getopt_long.c\ncompat/sys/queue.h",
+          "Copyright": "1987, 1993-1994, 1996, The Regents of the University of California.\n1987, 1993-1995, The Regents of the University of California.\n1991, 1993, The Regents of the University of California."
+        },
+        {
+          "Files": "m4/ltoptions.m4\nm4/ltsugar.m4\nm4/lt~obsolete.m4",
+          "Copyright": "2004-2005, 2007, 2009, 2011-2018, Free Software\n2004-2005, 2007-2008, 2011-2018, Free Software\n2004-2005, 2007-2009, 2011-2018, Free Software"
+        },
+        {
+          "Files": "Makefile.in\naclocal.m4\nm4/ltversion.m4",
+          "Copyright": "1994-2018, Free Software Foundation, Inc.\n1996-2018, Free Software Foundation, Inc.\n2004, 2011-2018, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "sample/openssl_hostname_validation.c\nsample/openssl_hostname_validation.h",
+          "Copyright": "2012, iSEC Partners."
+        },
+        {
+          "Files": "event_rpcgen.py",
+          "Copyright": "2001-2007, Niels Provos <provos@citi.umich.edu>\n2005-2007, Niels Provos <provos@citi.umich.edu>\n2007-2012, Niels Provos and Nick Mathewson",
+          "Comment": "https://github.com/libevent/libevent/issues/881\nI assume it is under BSD-3-clause by the author's intent, but the BSD text is forgotten"
+        },
+        {
+          "Files": "WIN32-Code/tree.h",
+          "Copyright": "2002, Niels Provos <provos@citi.umich.edu>"
+        },
+        {
+          "Files": "log.c",
+          "Copyright": "1993, The Regents of the University of California.\n2000, Dug Song <dugsong@monkey.org>\n2005-2012, Niels Provos and Nick Mathewson"
+        },
+        {
+          "Files": "cmake/Copyright.txt",
+          "Copyright": "2000-2011, Insight Software Consortium\n2000-2013, Kitware, Inc."
+        },
+        {
+          "Files": "minheap-internal.h",
+          "Copyright": "2006, Maxim Yegorushkin <maxim.yegorushkin@gmail.com>\n2007-2012, Niels Provos and Nick Mathewson"
+        },
+        {
+          "Files": "win32select.c",
+          "Copyright": "2000-2007, Niels Provos <provos@citi.umich.edu>\n2003, Michael A. Davis <mike@datanerds.net>\n2007-2012, Niels Provos and Nick Mathewson"
+        },
+        {
+          "Files": "test/regress_util.c",
+          "Copyright": "2009-2012, Nick Mathewson and Niels Provos"
+        },
+        {
+          "Files": "evdns.c",
+          "Copyright": "2006-2007, Niels Provos\n2007-2012, Nick Mathewson and Niels Provos"
+        },
+        {
+          "Files": "evport.c",
+          "Copyright": "2006-2007, Niels Provos\n2007-2012, Niels Provos and Nick Mathewson"
+        },
+        {
+          "Files": "test/test-fdleak.c",
+          "Copyright": "2012, Ross Lagerwall <rosslagerwall@gmail.com>"
+        },
+        {
+          "Files": "strlcpy.c",
+          "Copyright": "1998, Todd C. Miller <Todd.Miller@courtesan.com>"
+        },
+        {
+          "Files": "cmake/CodeCoverage.cmake",
+          "Copyright": "NONE"
+        },
+        {
+          "Files": "configure",
+          "Copyright": "1992-1996, 1998-2012, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "m4/libtool.m4",
+          "Copyright": "1996-2001, 2003-2018, Free Software Foundation, Inc."
+        },
+        {
+          "Files": "m4/acx_pthread.m4",
+          "Copyright": "2007, Steven G. Johnson <stevenj@alum.mit.edu>"
+        },
+        {
+          "Files": "arc4random.c",
+          "Copyright": "2010, Chris Davis, Niels Provos, and Nick Mathewson\n2010-2012, Niels Provos and Nick Mathewson"
+        },
+        {
+          "Files": "ht-internal.h",
+          "Copyright": "2002, Christopher Clark\n2005-2012, Nick Mathewson\n2009-2012, Niels Provos and Nick Mathewson"
+        },
+        {
+          "Files": "cmake/CheckFileOffsetBits.cmake",
+          "Copyright": "2009, Michihiro NAKAJIMA"
+        },
+        {
+          "Files": "sample/hostcheck.c",
+          "Copyright": "1998-2012, Daniel Stenberg, <daniel@haxx.se>, et al."
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    }
+  ],
+  "scope": "Original complete legal/grant comparisons and full remaining scope-field readings; source and copyright digests remain mandatory.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

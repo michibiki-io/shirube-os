@@ -1,0 +1,68 @@
+{
+  "kind": "exact-debian-numactl-original-license-scopes",
+  "status": "PASS_COMPONENT_ONLY",
+  "source": "numactl",
+  "version": "2.0.16-1",
+  "dsc_sha256": "d77b5d389ac5cf5098752fd27c382fce13e0340cf15c84a52ba38b167999fb95",
+  "copyright_sha256": "179c34f5e56cd0b6b73dd7970a97357ee784e2236e8293826656c7ebb3bface7",
+  "required_notice_files": [
+    {
+      "path": "LICENSES/Numactl-2.0.16/LICENSE.GPL2",
+      "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/LICENSE.LGPL2.1",
+      "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/README.md",
+      "sha256": "0507f8a310b7a6e825b9f77ace0a88a31d0bc5aa4be20dcb5e031f0d669dfbc8"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/numa.3",
+      "sha256": "b7577c1487869919bcfebd170a103b587eb00d24b8565a099d629f1c52fe230e"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/numactl.8",
+      "sha256": "d71464cb0473b9ce3da26e89ccb357226684428b5cbbb1af2049dc573c99450e"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/numastat.8",
+      "sha256": "747b32d9ed727bac9c0c9fdad3334ea6ed7f92a16d0fd28736664fd5d5ed39c3"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/memhog.8",
+      "sha256": "0cd76b7f700ed040db479dec729d0ec003a3ccc260999503c78d2d9f753321bd"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/migratepages.8",
+      "sha256": "b1fb3b3637b343c99d2ed24bd3a5241b5dd9fbd5151e0e0a67860d0cf2a7bba3"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/migspeed.8",
+      "sha256": "5af75b2bc435ae28b175d36fd80d8ec4851cf5260bbda7bea678519e6c102814"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/stream_lib.c",
+      "sha256": "111b84ccc0076c493335628b709a21774025fa9e3162d6b88401e38a6be1f145"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/mt.c",
+      "sha256": "f75835ddcd95c5e1361a97c86793a7b95fbffc40498ed35748183456dbaec0eb"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/debian-copyright.txt",
+      "sha256": "179c34f5e56cd0b6b73dd7970a97357ee784e2236e8293826656c7ebb3bface7"
+    },
+    {
+      "path": "LICENSES/Numactl-2.0.16/STREAM-author-license.txt",
+      "sha256": "86335bc00c91e5acb13a7e7ebfd7e0e566d47c589b8d02bb6e774f12a9e6f9f5"
+    }
+  ],
+  "primary_stream_reference": "https://www.cs.virginia.edu/stream/ref.html",
+  "primary_reference_sha256": "389dec0efed8af1da5c3a4fff7c35689cebf5c1f682a6cb44e7ec13a1eeb22a1",
+  "permission_scope": "Author program-wide reference grants redistribution and commercial modification while preserving benchmark result-label rules; no assumption of a1995 file-local license or public-domain status.",
+  "scope": "Static original grant/source/notice analysis only. Native rebuild, benchmark and boot NOT_RUN; no rebuild needed for notice additions.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "diagnostic-arm64-native-trial-fresh-disks-and-netbird",
+  "architecture": "arm64",
+  "version": "v2026.03.0",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "source_commit": "682b868e0b11fa752125186c411eb6a846843cdd",
+  "controller_commit": "6ef9451b4618a5ce14269f57e574b6e314a513cd",
+  "status": "PASS",
+  "iso_sha256": "66fa7b0259704788e797d952b71db179fc5afba8b2fc0974a3b1340c9c7a194a",
+  "implementation_files": {
+    "producer/vm.py": "e9d371b587948f23a08bf7138aa3657ed79d21e866300731a58a082944cd13f6",
+    "producer/sanitize.py": "0a3c1b5e6473e10f6c2dccaff380fef953703acd3a6d3f059e745e0f0625cd2a",
+    "producer/guestfs_kernel.py": "ad79c96423c7424c6f635146e0a534433238b1bf12cf1aabe88b5317e96bf90c",
+    "producer/netbird_guest.py": "6eb0785c190d205585cca161801907f001513d1952fe02b3d3e1b6c472da8e46",
+    "producer/erasure.py": "875dc557b28cfd25fbd0f9b3a8b9f2b79ebe9cb4d51fcd4709f8dc884cc64c14"
+  },
+  "identity_regeneration": "PASS",
+  "netbird": "PASS",
+  "observations": [
+    "qcow2-unprovisioned: fresh firmware, no ISO, enrollment prompt with no reusable login",
+    "qcow2-provisioned: actual console login, sudo, DHCP, route, virtio NIC and identity checks passed",
+    "qcow2-provisioned: native GeoIP cache restored and country lookup passed",
+    "vmdk-unprovisioned: fresh firmware, no ISO, enrollment prompt with no reusable login",
+    "vmdk-provisioned: actual console login, sudo, DHCP, route, virtio NIC and identity checks passed",
+    "vmdk-provisioned: native GeoIP cache restored and country lookup passed"
+  ],
+  "images": {
+    "qcow2": {
+      "name": "shirube-os-v2026.03.0-arm64.qcow2",
+      "sha256": "44814eea55737307540cb73b7e3b6c2de46dec1671d045a4b908d477c4f60c01",
+      "physical_size": 619577344
+    },
+    "vmdk": {
+      "name": "shirube-os-v2026.03.0-arm64.vmdk",
+      "sha256": "d7c05c3da77b9d3027bc888b34c93a664f4f7bee2022b26af3142129d7eee549",
+      "physical_size": 627550720
+    }
+  },
+  "accelerator": "tcg",
+  "scope": "Actual fresh ISO installation, offline sanitization, conversions and fresh guest acceptance using a frozen diagnostic cohort. Not a current-head release candidate."
+}

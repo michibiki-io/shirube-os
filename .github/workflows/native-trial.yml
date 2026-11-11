@@ -1,0 +1,67 @@
+name: Native hosted candidate trial
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Explicit diagnostic scope; neither option publishes a release
+        type: choice
+        required: true
+        default: iso
+        options: [iso, release]
+permissions:
+  contents: read
+concurrency:
+  group: shirube-native-trial-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  trial:
+    if: github.repository == 'michibiki-io/shirube-os' && startsWith(github.ref, 'refs/heads/feature/')
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - architecture: amd64
+            runner: ubuntu-24.04
+            base: debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018
+          - architecture: arm64
+            runner: ubuntu-24.04-arm
+            base: debian@sha256:ec8534cda2cb30f29f44f23e135297af7a1496f2990fd8e4e84aa36b081a757a
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 360
+    env:
+      SHIRUBE_BUILD_CPUS: '4'
+      SHIRUBE_BUILD_MEMORY_GIB: '8'
+      DOCKER_BUILD_RECORD_UPLOAD: 'false'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - id: compiler-builder
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+      - name: Restore compiler tool layers only
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
+        with:
+          context: .
+          file: containers/native/Dockerfile
+          platforms: linux/${{ matrix.architecture }}
+          build-args: BASE=${{ matrix.base }}
+          load: true
+          push: false
+          cache-from: type=gha,scope=shirube-compiler-${{ matrix.architecture }}
+          cache-to: type=gha,scope=shirube-compiler-${{ matrix.architecture }},mode=max
+      - name: Measure the explicitly selected cold native trial
+        env:
+          BUILDX_BUILDER: ${{ steps.compiler-builder.outputs.name }}
+          TRIAL_ARCHITECTURE: ${{ matrix.architecture }}
+          TRIAL_STORAGE: ${{ runner.temp }}
+          TRIAL_STAGE: ${{ inputs.stage || 'iso' }}
+        run: python3 -m producer.native_trial "$TRIAL_ARCHITECTURE" --stage "$TRIAL_STAGE" --storage "$TRIAL_STORAGE" --report "$TRIAL_STORAGE/native-trial-$TRIAL_ARCHITECTURE.json"
+      - name: Retain sanitized measurements only
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: native-trial-${{ matrix.architecture }}-${{ inputs.stage || 'iso' }}-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/native-trial-${{ matrix.architecture }}.json
+          if-no-files-found: error
+          retention-days: 14

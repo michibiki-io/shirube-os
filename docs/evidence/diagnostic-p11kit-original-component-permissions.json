@@ -1,0 +1,184 @@
+{
+  "kind": "exact-p11kit-original-component-permission-decision",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "component": {
+    "source": "p11-kit",
+    "version": "0.24.1-2",
+    "dsc_sha256": "b88a483cb9afd5556ea4ac64d5df4543123a53bf0e50d1c01454887220259a89",
+    "binaries": [
+      {
+        "name": "libp11-kit0",
+        "version": "0.24.1-2",
+        "architecture": "arm64",
+        "copyright_sha256": "ed139379f7c874f0ee75f3ddcc2e01091dd828d84ee1a0bdff6a1c5673ee6e58"
+      }
+    ],
+    "copyright_sha256": "ed139379f7c874f0ee75f3ddcc2e01091dd828d84ee1a0bdff6a1c5673ee6e58",
+    "original_legal_matches": [
+      {
+        "member": "COPYING",
+        "sha256": "2e1ba993904df807a10c3eda1e5c272338edc35674b679773a8b3ad460731054",
+        "read_reference": {
+          "component": "p11-kit",
+          "member": "COPYING",
+          "sha256": "2e1ba993904df807a10c3eda1e5c272338edc35674b679773a8b3ad460731054",
+          "review_method": "Full original normalized-word comparison and every addition/deletion read, preserving distinct licenses and exceptions."
+        }
+      }
+    ],
+    "license_definitions": [
+      {
+        "label": "permissive-like-automake-output",
+        "full_normalized_body_sha256": "984d754a7b81bf36ca46af229bc5fcc61d2a3e0c64223852c47cae449e6e87c0",
+        "read_reference": {
+          "component": "p11-kit",
+          "label": "permissive-like-automake-output"
+        }
+      },
+      {
+        "label": "ISC",
+        "full_normalized_body_sha256": "b5ae9dd7ed223a4abad7b534db90a1b14e2758916cd21fb01e4c690d8104503e",
+        "read_reference": {
+          "label": "ISC",
+          "component": "libsodium"
+        }
+      },
+      {
+        "label": "ISC+IBM",
+        "full_normalized_body_sha256": "f35bc225d688595f657c0e719ac2223070ddddd0a85baa86074e86ac77b50d0b",
+        "read_reference": {
+          "component": "p11-kit",
+          "label": "ISC+IBM"
+        }
+      },
+      {
+        "label": "same-as-rest-of-p11kit",
+        "full_normalized_body_sha256": "d6afa53859fb8eec90f49850c83d98a82e9d96aec8eecb617fa66794ca36ce37",
+        "read_reference": {
+          "component": "p11-kit",
+          "label": "same-as-rest-of-p11kit"
+        }
+      },
+      {
+        "label": "BSD-3-Clause",
+        "full_normalized_body_sha256": "20b8877abeb35f2aec76c4c66e73bc82ae612765a47e9980835450b439ac626c",
+        "read_reference": {
+          "label": "BSD-3-clause",
+          "component": "cyrus-sasl2"
+        }
+      },
+      {
+        "label": "LGPL-2.1+",
+        "full_normalized_body_sha256": "85e12563e5a6f4e668fb288466452d721e0b7d5623f991f581b0575c37dab8b7",
+        "read_reference": {
+          "component": "p11-kit",
+          "label": "LGPL-2.1+"
+        }
+      },
+      {
+        "label": "Apache-2.0",
+        "full_normalized_body_sha256": "2fc22c405aedbf8981b6f6c62ab6414b918b6514af47d28dd6c056a0d8e790dc",
+        "read_reference": {
+          "component": "p11-kit",
+          "label": "Apache-2.0"
+        }
+      }
+    ],
+    "fields_for_reading": [
+      {
+        "Format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+        "Upstream-Name": "p11-kit",
+        "Source": "https://p11-glue.github.io/p11-glue/p11-kit.html"
+      },
+      {
+        "Files": "*",
+        "Copyright": "2011 Collabora Ltd.\n2004, 2005, 2007, 2008, 2012, 2013 Stefan Walter\n2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Red Hat, Inc.\n2012, 2013 Redhat Inc.",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "common/pkcs11.h",
+        "Copyright": "2006, 2007 g10 Code GmbH\n2006 Andreas Jellinghaus\nCopyright 2017 Red Hat, Inc.",
+        "LicenseExpression": "permissive-like-automake-output"
+      },
+      {
+        "Files": "common/vsock.c common/vsock.h",
+        "Copyright": "2020 Amazon.com, Inc. or its affiliates.",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "p11-kit/server.c\ncommon/unix-peer.h",
+        "Copyright": "2014 Red Hat Inc.",
+        "Comment": "make_private_security_descriptor() and the helper functions were\n* copied from putty/windows/winsecur.c in the PuTTY source code as of\n* git commit 12bd5a6c722152aa27f24598785593e72b3284ea.\n*\n* PuTTY is copyright 1997-2017 Simon Tatham.\n*\n* Portions copyright Robert de Bath, Joris van Rantwijk, Delian\n* Delchev, Andreas Schultz, Jeroen Massar, Wez Furlong, Nicolas Barry,\n* Justin Bradford, Ben Harris, Malcolm Smith, Ahmad Khalifa, Markus\n* Kuhn, Colin Watson, Christopher Staite, and CORE SDI S.A.\n*\n* Permission is hereby granted, free of charge, to any person\n* obtaining a copy of this software and associated documentation files\n* (the \"Software\"), to deal in the Software without restriction,\n* including without limitation the rights to use, copy, modify, merge,\n* publish, distribute, sublicense, and/or sell copies of the Software,\n* and to permit persons to whom the Software is furnished to do so,\n* subject to the following conditions:\n*\n* The above copyright notice and this permission notice shall be\n* included in all copies or substantial portions of the Software.",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "trust/digest.c common/hash.c",
+        "Copyright": "2004, 2005, 2007, 2011  Internet Systems Consortium, Inc. (\"ISC\")\n2000, 2001, 2003  Internet Software Consortium.",
+        "LicenseExpression": "ISC"
+      },
+      {
+        "Files": "trust/base64.c trust/base64.h",
+        "Copyright": "1996, 1998 by Internet Software Consortium\nPortions Copyright (c) 1995 by International Business Machines, Inc.",
+        "LicenseExpression": "ISC+IBM"
+      },
+      {
+        "Files": "common/compat.c",
+        "Copyright": "Copyright (c) 2011 Collabora Ltd.\nPortions of this file are covered by the following copyright:\nCopyright (c) 2001 Mike Barcroft <mike@FreeBSD.org>\nCopyright (c) 1990, 1993\nCopyright (c) 1987, 1993\nThe Regents of the University of California.",
+        "Comment": "This code is derived from software contributed to Berkeley by\nChris Torek.",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "common/unix-peer.c",
+        "Copyright": "2013 Nikos Mavrogiannopoulos",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "common/frob-getprogname.c",
+        "Copyright": "2020 Red Hat Inc.",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "p11-kit/mock-module-ep8.c",
+        "Copyright": "2012 Stefan Walter\n2020 Red Hat, Inc.",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "fuzz/main.c",
+        "Copyright": "2017 Nikos Mavrogiannopoulos",
+        "LicenseExpression": "LGPL-2.1+"
+      },
+      {
+        "Files": "fuzz/rpc_fuzzer.c",
+        "Copyright": "2016 Google Inc",
+        "LicenseExpression": "Apache-2.0"
+      },
+      {
+        "Files": "debian/*",
+        "Copyright": "2011 Chris Coulson <chris.coulson@canonical.com>\n2011-2022 Andreas Metzler <ametzler@debian.org>",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "po/de.po",
+        "Copyright": "2011 Chris Leick",
+        "Comment": "This file is distributed under the same license as the\ndebian files of the p11-kit package.",
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "Files": "po/fi.po",
+        "Copyright": "2012 Rosetta Contributors and Canonical Ltd 2012\nEerik Uusi-Illikainen https://launchpad.net/~ekiuusi-4, 2012\nTimo Jyrinki <timo.jyrinki@iki.fi>, 2012",
+        "LicenseExpression": "same-as-rest-of-p11kit"
+      },
+      {
+        "LicenseExpression": "BSD-3-Clause"
+      },
+      {
+        "LicenseExpression": "LGPL-2.1+"
+      },
+      {
+        "LicenseExpression": "Apache-2.0"
+      }
+    ]
+  },
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

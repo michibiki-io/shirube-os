@@ -1,0 +1,58 @@
+{
+  "kind": "native-preferred-source-public-test-fixture-correspondence",
+  "source_archive_sha256": "e9f5b20261b166b72c60b591d00b173673fe704c5f6aaf90404db457c2804910",
+  "native_jobs_checked": 26,
+  "fixtures": [
+    {
+      "job": "python3-vici",
+      "member": "source/src/libcharon/plugins/load_tester/load_tester_creds.c",
+      "sha256": "7ff94823cbf26c497aa94ea97d5f3ee16b16d379d460d160fac4b4a5b771ff11",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "job": "dropbear",
+      "member": "source/libtomcrypt/testprof/test.key",
+      "sha256": "76ec7faebdc42a4de35ca70024c2d273e9f7856ca61612e89f5f66350ba8cf5f",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "job": "dropbear",
+      "member": "source/libtomcrypt/tests/test.key",
+      "sha256": "76ec7faebdc42a4de35ca70024c2d273e9f7856ca61612e89f5f66350ba8cf5f",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "job": "dropbear",
+      "member": "source/libtomcrypt/tests/test_dsa.key",
+      "sha256": "8a44ced5b373b6124f56bb33577a98585cce3d65671e5303384c4236f9b4d41c",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "job": "vyos-1x",
+      "member": "source/smoketest/bin/vyos-configtest-pki",
+      "sha256": "9cba36b9c814e089e11f1de73f022db072406e433203fcf94dffc15d15e20ae5",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "job": "vyos-1x",
+      "member": "source/smoketest/scripts/cli/test_service_ssh.py",
+      "sha256": "08a768f7711ea7d0ac53616e20b8d63659e26b8d8311f1483d97e2633a80d62e",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    },
+    {
+      "job": "kernel",
+      "member": "source/tools/testing/selftests/sgx/sign_key.pem",
+      "sha256": "1f6566d02247dc09d4dcb542ee2399522ceebf9b435ee00fe2053aa5582541e2",
+      "original_file_exists": true,
+      "matches_authenticated_original": true
+    }
+  ],
+  "scope": "Exact original preferred source only; no runtime or build signing-key exception. Generated kernel staging and build-tool links are excluded from preferred-source exports.",
+  "release_clearance": "NOT_CLEARED"
+}

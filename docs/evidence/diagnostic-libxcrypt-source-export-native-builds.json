@@ -1,0 +1,129 @@
+{
+  "kind": "exact-libxcrypt-preferred-source-export-and-native-builds",
+  "status": "PASS_COMPONENT_SOURCE_EXPORT_ONLY",
+  "component": "salt-sdk:libxcrypt",
+  "version": "4.5.2",
+  "original_source_sha256": "71513a31c01a428bccd5367a32fd95f115d6dac50fb5b60c779d5c7942aec071",
+  "exported_source_sha256": "47d23d5390c80404bf5aeb6828bb03280e19c69aa02021bcec58ff49945fd690",
+  "aggregate_notice_sha256": "3ffed616e6c5d331ff379521fb0ac6e7cd0cf0082d76a4b96c45808e8ef8fbc8",
+  "export_manifest": {
+    "kind": "libxcrypt-4.5.2-without-unlabelled-source-only-tests",
+    "modified_by": "michibiki-io",
+    "modified_on": "2026-11-10",
+    "original_source_sha256": "71513a31c01a428bccd5367a32fd95f115d6dac50fb5b60c779d5c7942aec071",
+    "excluded": [
+      {
+        "member": "libxcrypt-4.5.2/test/alg-des.c",
+        "sha256": "9fea30478d98555dd63e728337d3ee92b39a30a72ae397c3dd2135d315f1b28f",
+        "size": 1552
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/alg-md4.c",
+        "sha256": "523775ade07d802cbbf35e69d1dc7bdfabd58ea18fd65563490434b0e4281629",
+        "size": 2472
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/alg-md5.c",
+        "sha256": "25f7f861de840e1cad25160a248133f2dbfa067bc2be94e0edaa6f061bf2fc91",
+        "size": 3273
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/alg-sha256.c",
+        "sha256": "74c98b743c328afbe4ffcb698522616aaafab5d8d0cc6de60beee7296f995d59",
+        "size": 3813
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/alg-sha512.c",
+        "sha256": "d547c426c733a1f33e42b9b138b978ff601e5bb8089199db4386a878c9b97f4e",
+        "size": 5560
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/des-cases.h",
+        "sha256": "820b821198b2c1d8a67ea2698bb299fc136b6f03bf1c5de1d4b98e432c0e3962",
+        "size": 20116
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/des-obsolete.c",
+        "sha256": "d7e6d50c8187fead250f971cd9d590207c173ffded172e3c9f91cebc4048be7b",
+        "size": 4557
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/des-obsolete_r.c",
+        "sha256": "a52e5c51f63abb8996d23db6bf5a8e48f91f90ca501b205f9939c99a42b04495",
+        "size": 4642
+      },
+      {
+        "member": "libxcrypt-4.5.2/test/gensalt.c",
+        "sha256": "59bc6799ffa390143c82a923e905c703d309aa0702aae49edd8953dab44873ce",
+        "size": 18219
+      }
+    ],
+    "modified_build_controls": [
+      {
+        "member": "libxcrypt-4.5.2/Makefile.am",
+        "original_sha256": "05fd097b5b49d979eaa9f1afa31a008f347ea3f41b074009aeb95ab9415a5b23",
+        "modified_sha256": "12f46d28099b40848af4dbd188ab48956397d5681e2ef99434d8c77ffe77e3ee"
+      },
+      {
+        "member": "libxcrypt-4.5.2/Makefile.in",
+        "original_sha256": "f5827b51b702534e30bfe0a59fd5aa36d9c5a502695f5f4182dfde1a25007c0c",
+        "modified_sha256": "b968dda53c174ca141cbc22e36fa40b7af385a5e694bf96436077538627d1f07"
+      }
+    ],
+    "scope": "Only nine original source-only test files identified by the upstream LICENSING inventory as having unknown individual copyrights/licenses are omitted. All library, algorithm, public header, configure/install code and original legal files are preserved byte-for-byte. Only the two original Makefile control files remove the now-absent test header from the noninstalled all-am prerequisite list; original attribution remains intact. The upstream check suite is incomplete and must not be reported as passing. Normal library build/install is verified separately."
+  },
+  "retained_original_legal_members": 91,
+  "native_build_install": {
+    "amd64": {
+      "status": "PASS_NORMAL_LIBRARY_BUILD_INSTALL",
+      "architecture": "amd64",
+      "elf_sha256": "4243c7dc76f38b6e8c8e96bfe4e2f25bca5e4699207c352fd45b67b68937526d",
+      "upstream_check_suite": "NOT_RUN_INCOMPLETE_SOURCE_ONLY_TESTS",
+      "release_clearance": "NOT_CLEARED"
+    },
+    "arm64": {
+      "status": "PASS_NORMAL_LIBRARY_BUILD_INSTALL",
+      "architecture": "arm64",
+      "elf_sha256": "cc95bac747e539dedf15a5edc07cbcf15f433d71f45349893ad9466a06d87184",
+      "upstream_check_suite": "NOT_RUN_INCOMPLETE_SOURCE_ONLY_TESTS",
+      "release_clearance": "NOT_CLEARED"
+    }
+  },
+  "producer_export_matches_both_tested_inputs": true,
+  "initial_raw_test_omission_probe": {
+    "status": "FAIL",
+    "reason": "Original all-am prerequisite still required the omitted source-only des-cases.h; the exact two original Makefile lists were then adjusted and both corrected builds passed."
+  },
+  "focused_export_and_collector_tests": "PASS",
+  "scope": "Complete original root licensing/author notices and 86 actual C/H leading legal headers read through complete deduplicated bodies plus every attribution prefix. Overall library LGPL2.1 and separate source grants retained; the original licensing inventory is supplemented by actual headers where its file list is historical. Only the exact source export is cleared: nine existing source-only tests explicitly listed with unknown individual licensing are omitted, two all-am noninstalled header lists adjusted, all library/algorithm/public header/configure/install code unchanged. Normal native library build/install passes from identical exported bytes on both architectures; no installed SDK byte reproduction or full upstream check-suite claim.",
+  "runtime_feature_removal": false,
+  "upstream_check_suite": "NOT_RUN_INCOMPLETE",
+  "installed_sdk_byte_reproduction": "NOT_RUN",
+  "clean_head_release_candidate": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "native_build_profile": {
+    "cpus": 2,
+    "memory_mib": 512,
+    "network": "none",
+    "filesystem": "read-only container; bounded disposable writable build directory",
+    "configure": [
+      "./configure",
+      "--disable-werror",
+      "--prefix=/usr"
+    ],
+    "build": [
+      "make",
+      "-j2"
+    ],
+    "install": [
+      "make",
+      "install",
+      "DESTDIR=<disposable staging>"
+    ],
+    "elf_machine_check": {
+      "amd64": 62,
+      "arm64": 183
+    }
+  }
+}

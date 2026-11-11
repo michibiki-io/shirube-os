@@ -1,0 +1,17 @@
+{
+  "kind": "scoped-charset-normalizer-source-export-reconstruction",
+  "architecture": "amd64",
+  "source_export_sha256": "78b587367ca010b1f4e761fc9646f004d9f6928660c265e2433fbbcc2e59ea95",
+  "status": "PASS",
+  "offline_wheel_build": "PASS",
+  "installed_library_files_compared": 13,
+  "runtime_text_detection": "PASS",
+  "upstream_sample_tests": "NOT_RUN_EXCLUDED_UNCLEARED_DATA",
+  "complete_os_reconstruction": "NOT_RUN",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN",
+  "original_source_sha256": "3bb3d25a8e6c0aedd251753a79ae98a093c7e7b471faa3aa9a93a81431987ace",
+  "omitted_test_sample_count": 18,
+  "original_full_source_license_clearance": "NOT_CLEARED",
+  "scope": "Source-only sample data excluded; installed runtime and build source preserved."
+}

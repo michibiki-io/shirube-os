@@ -1,0 +1,42 @@
+{
+  "kind": "exact-sqlite-original-source-permission-scope",
+  "status": "PASS_COMPONENT_DECISION_ONLY",
+  "version": "3.40.1-2+deb12u2",
+  "source_identity": "ee3459ae9d00939741c7708fc1b8ce1bde12d8c3fb1dfa005bbbc8651d884e23",
+  "copyright_sha256": "78e9df8f8153c91c762ec970b82d224ac4d30f05aa7773e7e17e268141e53873",
+  "original_legal_files": [
+    {
+      "member": "LICENSE.md",
+      "sha256": "9c6479123f32a1ed50d9a0af203dfe8972e65035b0cdeef436b5f8d0924517fe",
+      "utf8_text": true
+    },
+    {
+      "member": "autoconf/tea/license.terms",
+      "sha256": "66e056b6e8687f32af30d5187611b98b12a8f46f07aaf62f43585f276e8f0ac9",
+      "utf8_text": true
+    },
+    {
+      "member": "debian/copyright",
+      "sha256": "78e9df8f8153c91c762ec970b82d224ac4d30f05aa7773e7e17e268141e53873",
+      "utf8_text": true
+    },
+    {
+      "member": "www/copyright-release.html",
+      "sha256": "5c412b62178e71d3f50d5c1f8bee2be49bed70e04473772d4979ae7759f04b02",
+      "utf8_text": true
+    },
+    {
+      "member": "www/copyright-release.pdf",
+      "sha256": "a403fc07d4c4810555623f89bde45b41fb0d5e0c4d6db4250d9e30b0f0800a2d",
+      "utf8_text": false
+    },
+    {
+      "member": "www/copyright.html",
+      "sha256": "b95b56ddc3f8fcf9828ec00895462dca97acaedc3a3101c2513fe6558b3e2edd",
+      "utf8_text": true
+    }
+  ],
+  "scope": "Original deliverable code/document public-domain grant and separate build/packaging scopes. Binary documentation remains under the explicit original documentation grant; no independent title warranty or manual every-PDF-byte review is asserted.",
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}

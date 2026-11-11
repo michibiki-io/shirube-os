@@ -1,0 +1,209 @@
+{
+  "kind": "exact-sdk-current-lock-original-notice-decisions",
+  "status": "PASS_COMPONENT_DECISIONS_ONLY",
+  "components": [
+    {
+      "name": "pypi:setuptools",
+      "version": "84.2.1",
+      "source_identity": "3ff8b3b5492a0aa66960f4419365a86b84e013070d4313e4d4a6894f5d64d6bc",
+      "copyright_sha256": "33b6438fe9be536964719db4526bb06560739e17a6dd5c830dfd5536a642601c",
+      "notice_member": "salt-sdk/notices/3ff8b3b5492a0aa66960f4419365a86b84e013070d4313e4d4a6894f5d64d6bc.copyright",
+      "original_notice_members": [
+        {
+          "member": "setuptools-84.2.1/LICENSE",
+          "normalized_text_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5"
+        },
+        {
+          "member": "setuptools-84.2.1/docs/userguide/license_migration.rst",
+          "normalized_text_sha256": "18973d75655d0fec164cfe28a9145938fba3ec5c7493c2682f830de5bb360da4"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
+          "normalized_text_sha256": "690578875bea796fcc9a52eef18909104d21a3c1e0052e0dac70955d3e419899"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/LICENSE",
+          "normalized_text_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/importlib_metadata-8.7.1.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "53f14e38194c995373f9b753fc7ac41ed26e21f685210981b9e37d00f54d3c9f"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/jaraco.text-4.0.0.dist-info/LICENSE",
+          "normalized_text_sha256": "fe2a9817987f862eaced948f0468c7f51d2fedfc48c5c505b246a49a3870e9a5"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "f9c0a6f1b2e9d12ab75cf01fff2911e2174491e1d52dff8aba60881b98b69630"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "4b7a3c4bffcfb16f18d41d94a54a1d99207078b56d2fd0be47393d21c4884d46"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/more_itertools-10.8.0.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "a484842e07854dd6f26505ce28348049a1df40b6ec233880fc7ec20e7d373499"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/packaging-26.3.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "4456c8e282202cfddd8665522fd320e8b7f64d8a1f7d9abfd7802080576cf117"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+          "normalized_text_sha256": "59d8f0ba87ad9a2f1a431123c8d16646e5b89ba53653e818f16d136d77263c99"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/packaging-26.3.dist-info/licenses/LICENSE.BSD",
+          "normalized_text_sha256": "13c6a3608faee72d1b3a7aad6d1c8036408ed82d9a28a7cf0ef87d6acc4f91c9"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/platformdirs-4.4.0.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "f5b7ac31c1f325624b3be222caac8725b8d4b84918edec1f3d3edca39648a6ca"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/tomli-2.4.0.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "dac5dd6340285211dbcd0e7e6c218eee42ea598928803917e8237be43e286184"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/wheel-0.46.3.dist-info/licenses/LICENSE.txt",
+          "normalized_text_sha256": "90f31599679e6b5ba0ca8d84cb91cc1ea4e4c004f678c0f8543419847225c195"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/_vendor/zipp-3.23.0.dist-info/licenses/LICENSE",
+          "normalized_text_sha256": "4b7a3c4bffcfb16f18d41d94a54a1d99207078b56d2fd0be47393d21c4884d46"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/config/NOTICE",
+          "normalized_text_sha256": "787f48e4241f4b2d89e067f6c1dea948f7e46128f2a0fa2414dd7663f694a4fe"
+        },
+        {
+          "member": "setuptools-84.2.1/setuptools/config/_validate_pyproject/NOTICE",
+          "normalized_text_sha256": "06b79d2a712ef55f79a123d7579e321dde1ced2a36404647c4040fe3a87edd66"
+        }
+      ]
+    },
+    {
+      "name": "salt-sdk:readline",
+      "version": "8.3",
+      "source_identity": "fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc",
+      "copyright_sha256": "b1f3f4f15d3282702ff04dad8e5bfb091d74c936f8e799e934910b2776256668",
+      "notice_member": "salt-sdk/notices/fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc.copyright",
+      "original_notice_members": [
+        {
+          "member": "readline-8.3/COPYING",
+          "normalized_text_sha256": "0366f6619935ba5e41cf905e400e53d1a491751f103d3739d9e0aec22e171d92"
+        }
+      ]
+    },
+    {
+      "name": "salt-sdk:gdbm",
+      "version": "1.26",
+      "source_identity": "6a24504a14de4a744103dcb936be976df6fbe88ccff26065e54c1c47946f4a5e",
+      "copyright_sha256": "ed71a346fd2459b84452f2ea01b7a037d49ca4ec24f36aaa7133b8733bad5c9c",
+      "notice_member": "salt-sdk/notices/6a24504a14de4a744103dcb936be976df6fbe88ccff26065e54c1c47946f4a5e.copyright",
+      "original_notice_members": [
+        {
+          "member": "gdbm-1.26/AUTHORS",
+          "normalized_text_sha256": "a888e644aef5ff21a86f796462cede9238ac77f2b4a39024673bf9a03d1860e0"
+        },
+        {
+          "member": "gdbm-1.26/COPYING",
+          "normalized_text_sha256": "fb35df8ffa6a40290b7348f8d250d828a9eb90d4370389ea433d09a4f4eb1df0"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:cython",
+      "version": "0.29.37",
+      "source_identity": "f813d4a6dd94adee5d4ff266191d1d95bf6d4164a4facc535422c021b2504cfb",
+      "copyright_sha256": "85a4410129ce1bfc5b454244eab937f781deb8d49de32dec144cb544654b01e1",
+      "notice_member": "salt-sdk/notices/f813d4a6dd94adee5d4ff266191d1d95bf6d4164a4facc535422c021b2504cfb.copyright",
+      "original_notice_members": [
+        {
+          "member": "Cython-0.29.37/COPYING.txt",
+          "normalized_text_sha256": "6d094b5798120ad482998197c441537e89533696529d8fa36116709f1dc69470"
+        },
+        {
+          "member": "Cython-0.29.37/LICENSE.txt",
+          "normalized_text_sha256": "59d8f0ba87ad9a2f1a431123c8d16646e5b89ba53653e818f16d136d77263c99"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:cython",
+      "version": "3.3.1",
+      "source_identity": "e0e45989e821bef6aa9ae15c7d583ab5e055f7406c4b3624e49e06d24e90375a",
+      "copyright_sha256": "a736257e78231cf9b49bcc5da6cb4737aa29329572086c30b859bb7a690a1aa5",
+      "notice_member": "salt-sdk/notices/e0e45989e821bef6aa9ae15c7d583ab5e055f7406c4b3624e49e06d24e90375a.copyright",
+      "original_notice_members": [
+        {
+          "member": "cython-3.3.1/COPYING.txt",
+          "normalized_text_sha256": "6d094b5798120ad482998197c441537e89533696529d8fa36116709f1dc69470"
+        },
+        {
+          "member": "cython-3.3.1/LICENSE.txt",
+          "normalized_text_sha256": "2e2b94025b4c2fdb1864973c1497dd82e21bbfe3225d27d52c8c7e8792240b7a"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:packaging",
+      "version": "26.3",
+      "source_identity": "94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+      "copyright_sha256": "105cf0941a40c1208862830eb16f090a78873ef3b98d9542900e184ce651843b",
+      "notice_member": "salt-sdk/notices/94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79.copyright",
+      "original_notice_members": [
+        {
+          "member": "packaging-26.3/LICENSE",
+          "normalized_text_sha256": "4456c8e282202cfddd8665522fd320e8b7f64d8a1f7d9abfd7802080576cf117"
+        },
+        {
+          "member": "packaging-26.3/LICENSE.APACHE",
+          "normalized_text_sha256": "59d8f0ba87ad9a2f1a431123c8d16646e5b89ba53653e818f16d136d77263c99"
+        },
+        {
+          "member": "packaging-26.3/LICENSE.BSD",
+          "normalized_text_sha256": "13c6a3608faee72d1b3a7aad6d1c8036408ed82d9a28a7cf0ef87d6acc4f91c9"
+        },
+        {
+          "member": "packaging-26.3/docs/licenses.rst",
+          "normalized_text_sha256": "42335f5bf694ac7990739237a0fe1c68c5ac0008aa57c60f3dfe0cbcdf0e80b7"
+        }
+      ]
+    },
+    {
+      "name": "build-pypi:pbr",
+      "version": "7.1.3",
+      "source_identity": "9a4a85b84e906337708009af0b5f5cdabeeb72d4dc213c9e97974da54fd9acc5",
+      "copyright_sha256": "85471706d4b3f78d22b6df60f314da6d021a35224d160aade0a96093e12372d3",
+      "notice_member": "salt-sdk/notices/9a4a85b84e906337708009af0b5f5cdabeeb72d4dc213c9e97974da54fd9acc5.copyright",
+      "original_notice_members": [
+        {
+          "member": "pbr-7.1.3/LICENSE",
+          "normalized_text_sha256": "09ae9bf1886f530f7338889ef805f37b288ec6adedd1e1e32058921acf05a782"
+        },
+        {
+          "member": "pbr-7.1.3/pbr/tests/testpackage/LICENSE.txt",
+          "normalized_text_sha256": "9f6c7188beca678d7328a956798aec39b66f43d355eb81d536527b57307fc5cb"
+        }
+      ]
+    }
+  ],
+  "count": 7,
+  "scope": "Current original complete legal bytes matched to separately read originals and full word differences. Complete grant text and any changed scope/exception/attribution retained. Other components remain independently gated.",
+  "selected_original_word_comparisons": [
+    {
+      "notice_sha256": "9f6c7188beca678d7328a956798aec39b66f43d355eb81d536527b57307fc5cb",
+      "component": "build-pypi:pbr",
+      "member": "pbr-7.1.3/pbr/tests/testpackage/LICENSE.txt",
+      "read_reference": {
+        "component": "pcre2",
+        "member": "cmake/COPYING-CMAKE-SCRIPTS"
+      },
+      "complete_word_diff": "--- pcre2/cmake/COPYING-CMAKE-SCRIPTS\n\n+++ build-pypi:pbr/pbr-7.1.3/pbr/tests/testpackage/LICENSE.txt\n\n@@ -1,3 +1,14 @@\n\n+Copyright\n+(C)\n+2005\n+Association\n+of\n+Universities\n+for\n+Research\n+in\n+Astronomy\n+(AURA)\n Redistribution\n and\n use\n@@ -27,6 +38,7 @@\n\n must\n retain\n the\n+above\n copyright\n notice,\n this\n@@ -45,6 +57,7 @@\n\n must\n reproduce\n the\n+above\n copyright\n notice,\n this\n@@ -69,8 +82,10 @@\n\n The\n name\n of\n-the\n-author\n+AURA\n+and\n+its\n+representatives\n may\n not\n be\n@@ -94,8 +109,7 @@\n\n IS\n PROVIDED\n BY\n-THE\n-AUTHOR\n+AURA\n ``AS\n IS''\n AND\n@@ -126,8 +140,7 @@\n\n NO\n EVENT\n SHALL\n-THE\n-AUTHOR\n+AURA\n BE\n LIABLE\n FOR"
+    }
+  ],
+  "release_clearance": "NOT_CLEARED",
+  "oci": "NOT_RUN"
+}
