@@ -79,7 +79,7 @@ def export(directory, expected, image):
     (directory / 'compiler.json').write_text(json.dumps(manifest, sort_keys=True) + '\n')
 
 
-def load(directory, expected):
+def load(directory, expected, *, discard_archive=False):
     if (directory.is_symlink() or not directory.is_dir()
             or {p.name for p in directory.iterdir()} != {'compiler.tar', 'compiler.json'}
             or any(p.is_symlink() or not p.is_file() for p in directory.iterdir())):
@@ -101,6 +101,8 @@ def load(directory, expected):
     archive_identity(archive, manifest['image_id'], expected['architecture'])
     subprocess.run(['docker', 'image', 'load', '--input', str(archive)], check=True, stdout=sys.stderr)
     inspect(manifest['image_id'], expected['architecture'])
+    if discard_archive:
+        archive.unlink()
     return manifest['image_id']
 
 
@@ -112,12 +114,16 @@ def main():
     parser.add_argument('--architecture', required=True)
     parser.add_argument('--run-id', required=True)
     parser.add_argument('--image')
+    parser.add_argument('--discard-archive', action='store_true',
+                        help='Retire the task-owned downloaded tar after successful load/inspect')
     args = parser.parse_args()
+    if args.discard_archive and args.operation != 'load':
+        parser.error('--discard-archive requires load')
     expected = identity(args.commit, args.architecture, args.run_id)
     if args.operation == 'export':
         export(args.directory, expected, args.image or '')
     else:
-        print('imageid=' + load(args.directory, expected))
+        print('imageid=' + load(args.directory, expected, discard_archive=args.discard_archive))
 
 
 if __name__ == '__main__':

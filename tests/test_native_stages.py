@@ -411,8 +411,8 @@ class StageLauncherTests(unittest.TestCase):
         import sys
         spec = importlib.util.spec_from_file_location('stage_launcher', 'scripts/run-native-stage.py')
         launcher = importlib.util.module_from_spec(spec);spec.loader.exec_module(launcher)
-        for stage in launcher.STAGES:
-            with self.subTest(stage=stage), tempfile.TemporaryDirectory() as temporary:
+        for stage, discard in [(s, False) for s in launcher.STAGES] + [('iso', True)]:
+            with self.subTest(stage=stage, discard=discard), tempfile.TemporaryDirectory() as temporary:
                 root = Path(temporary); output = root/'output'; inputs = root/'inputs'; cache = root/'cache'
                 image = 'sha256:'+'b'*64; commit = 'a'*40
                 def read(command, **kwargs):
@@ -427,7 +427,8 @@ class StageLauncherTests(unittest.TestCase):
                         for suffix in ('tar','json'): (output/('transfer.'+suffix)).write_text('fixture')
                 argv = ['launcher','--stage',stage,'--architecture','amd64','--image',image,
                         '--commit',commit,'--version','v2026.03.0','--output',str(output),
-                        '--inputs',str(inputs),'--cache',str(cache)]
+                        '--inputs',str(inputs),'--cache',str(cache),
+                        *(['--discard-input-archives'] if discard else [])]
                 with patch.object(sys,'argv',argv), patch.object(launcher,'native'), \
                      patch.object(launcher.subprocess,'check_output',side_effect=read), \
                      patch.object(launcher,'run',side_effect=run) as execute, \
@@ -451,8 +452,8 @@ class StageLauncherTests(unittest.TestCase):
                 project_mount = tail[5]
                 self.assertTrue(project_mount.endswith('/project-source.tar:/project-source.tar:ro'))
                 self.assertEqual(tail, ('-v',str(output.resolve())+':/output',
-                    '-v',str(inputs.resolve())+':/inputs:ro','-v',project_mount,
+                    '-v',str(inputs.resolve())+':/inputs:'+('rw' if discard else 'ro'),'-v',project_mount,
                     '-v',str(cache.resolve())+':/stage-cache','--entrypoint','python3',image,
                     '-m','producer.staged',stage,'amd64','--commit',commit,'--version','v2026.03.0',
-                    '--cache','/stage-cache'))
+                    '--cache','/stage-cache',*(['--discard-input-archives'] if discard else [])))
                 self.assertNotIn('never-forward', str(command))

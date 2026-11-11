@@ -224,6 +224,47 @@ that diagnostic cannot clear a candidate. Metrics and diagnostics are separate f
 assets. GitHub download/upload step timings and compiler preparation resource
 peaks still require job-log evidence; worker wall time excludes those outer steps.
 
+## ISO transfer retirement and builder entrypoint
+
+Issue [#15](https://github.com/michibiki-io/shirube-os/issues/15) adds two explicit
+opt-ins for disposable, task-owned downloads. `producer.compiler_artifact load
+--discard-archive` removes only `compiler.tar`, after provenance, hash/size and
+archive checks, Docker load and final image identity/platform inspection succeed.
+`compiler.json` remains; default loading retains the tar. Export rejects this
+flag before checking identity or creating outputs. Load progress stays on stderr;
+stdout contains only the successful validated `imageid=...` assignment.
+
+`run-native-stage.py --discard-input-archives` and the corresponding staged CLI
+flag are ISO-only. Supplying them asserts that the input directory is dedicated
+to this task and its downloaded tars may be consumed. The launcher rejects broad
+host roots, symlinked input paths and overlap with output/cache/build paths before
+creating outputs or starting Docker. Only this opt-in mounts `/inputs` writable;
+all default mounts remain read-only and guest handling is unchanged. After
+`restore_inputs` verifies the entire expected cohort, including dependency
+ancestry, and metrics copy its hashes/sizes, ISO retires only the seven expected
+predecessor `.tar` files before the unchanged **75 GiB** workspace gate. JSON
+receipts and unpacked payloads remain. Earlier validation failures delete no tars;
+any retirement error aborts assembly/export (already deleted tars are not rolled
+back). The ISO job enables both flags for AMD64 and ARM64 in its existing two run
+steps. Shared caches, Docker objects and durable Actions artifacts are untouched.
+
+Regular-file transfer still materializes confined source aliases. ISO assembly
+therefore patches and invokes `scripts/image-build/build-vyos-image`, with the
+builder root as cwd, so Python can import its adjacent modules. The same canonical
+file receives Shirube branding and ARM64 `ttyAMA0`; AMD64 retains `ttyS0`.
+Notices, build environment/arguments and all provenance, source/license,
+signature, guest-storage and publication gates remain in force.
+
+Focused synthetic tests cover compiler retention/failures and real CLI output,
+complete-cohort retention and metrics, launcher/workflow opt-ins, and real
+`files`/`copy_selected` → pack/unpack → canonical-script imports. These checks do
+not build packages/images or establish release acceptance. The observed artifact
+ZIP total of approximately **7.96 GiB** includes overhead and is not a measurement
+of reclaimed storage or proof that the disk gate passes. Actual acceptance on
+both architectures remains pending for the next eligible merged revision and its
+complete hosted pipeline; rerunning the failed old revision cannot validate this
+correction.
+
 ## One ISO, one clearance, fresh guests
 
 Integration moves the hidden NetBird offline build out of ISO assembly.

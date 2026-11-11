@@ -205,6 +205,28 @@ def guest_package(arch, version):
     run('dpkg-deb','--root-owner-group','-b',str(package),str(debs/f'shirube-integration_{version[1:]}_{arch}.deb'))
 
 
+def brand_image_builder(source, arch):
+    """Patch the canonical script; transferred top-level aliases are regular files."""
+    build = source/'scripts/image-build/build-vyos-image'
+    text = build.read_text().replace('NAME="VyOS"', 'NAME="Shirube OS"')
+    text = text.replace('PRETTY_NAME="VyOS ', 'PRETTY_NAME="Shirube OS ')
+    text = text.replace('ID=vyos\n', 'ID=shirube-os\nID_LIKE="vyos debian"\n')
+    text = text.replace('--iso-application "VyOS"', '--iso-application "Shirube OS"')
+    text = text.replace('--iso-volume "VyOS"', '--iso-volume "Shirube OS"')
+    if arch == 'arm64':
+        text = text.replace('console=ttyS0,115200', 'console=ttyAMA0,115200')
+    build.write_text(text)
+    return build
+
+
+def run_image_builder(build, source, arch, version, public, env):
+    from producer.livebuild_transport import build as build_live_image
+    build_live_image(['./'+str(build.relative_to(source)), '--architecture', arch,
+                      '--build-type', 'release', '--version', version[1:],
+                      '--build-by', 'michibiki-io', '--vyos-mirror', 'http://127.0.0.1:18080',
+                      '--custom-apt-key', str(public), 'generic'], cwd=source, env=env)
+
+
 def assemble(sources, packages, arch, version, output, *, prepared=None):
     from producer.debootstrap import configure_retry
     configure_retry()
@@ -277,9 +299,7 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         for key,suffix in [('support_url','/issues'),('bugtracker_url','/issues'),('documentation_url','/tree/main/docs'),('project_news_url','/releases')]:
             text=re.sub(r'^'+key+r' = .*$',key+' = "https://github.com/michibiki-io/shirube-os'+suffix+'"',text,flags=re.M)
         defaults.write_text(text)
-        build=source/'build-vyos-image';text=build.read_text().replace('NAME="VyOS"','NAME="Shirube OS"').replace('PRETTY_NAME="VyOS ', 'PRETTY_NAME="Shirube OS ').replace('ID=vyos\n','ID=shirube-os\nID_LIKE="vyos debian"\n').replace('--iso-application "VyOS"','--iso-application "Shirube OS"').replace('--iso-volume "VyOS"','--iso-volume "Shirube OS"');
-        if arch=='arm64':text=text.replace('console=ttyS0,115200','console=ttyAMA0,115200')
-        build.write_text(text)
+        build=brand_image_builder(source, arch)
         flavor=source/'data/build-flavors/generic.toml';flavor.write_text(flavor.read_text().replace('packages = []','packages = ["shirube-integration"]'))
         artwork=Path('/guest-package/core/usr/share/shirube/boot-background.png')
         if prepared is not None:
@@ -318,8 +338,7 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         handler=functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(repo))
         server=http.server.ThreadingHTTPServer(('127.0.0.1',18080),handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         try:
-            from producer.livebuild_transport import build as build_live_image
-            build_live_image(['./build-vyos-image','--architecture',arch,'--build-type','release','--version',version[1:],'--build-by','michibiki-io','--vyos-mirror','http://127.0.0.1:18080','--custom-apt-key',str(public),'generic'],cwd=source,env=env)
+            run_image_builder(build, source, arch, version, public, env)
         finally:server.shutdown();server.server_close();thread.join()
         candidates=list((source/'build').glob(f'vyos-{version[1:]}-generic-{arch}.iso'))
         if len(candidates)!=1:raise ValueError('Expected exactly one assembled ISO')

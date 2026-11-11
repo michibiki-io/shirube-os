@@ -1,6 +1,7 @@
 """Synthetic docker-save files with unit guards and real CLI/subprocess checks."""
 import hashlib
 import io
+from itertools import product
 import json
 import os
 from pathlib import Path
@@ -53,10 +54,13 @@ class CompilerArtifactTests(unittest.TestCase):
         self.write_manifest()
 
     def rejected_before_load(self):
-        with patch.object(ca.subprocess,'run') as run:
-            with self.assertRaises((ValueError,KeyError)):
-                ca.load(self.directory,self.expected)
-            run.assert_not_called()
+        before = {p.name: p.read_bytes() for p in self.directory.iterdir() if p.is_file()}
+        for discard in (False, True):
+            with patch.object(ca.subprocess, 'run') as run:
+                with self.assertRaises((ValueError, KeyError)):
+                    ca.load(self.directory, self.expected, discard_archive=discard)
+                run.assert_not_called()
+            self.assertEqual({p.name: p.read_bytes() for p in self.directory.iterdir() if p.is_file()}, before)
 
     def test_exact_load_and_inspect_for_both_architectures(self):
         for arch in ('amd64','arm64'):
@@ -71,6 +75,10 @@ class CompilerArtifactTests(unittest.TestCase):
                     self.assertEqual(ca.load(self.directory,self.expected),self.image)
                     run.assert_called_once_with(['docker','image','load','--input',str(self.archive)],check=True,stdout=sys.stderr)
                     inspect.assert_called_once_with(self.image,arch)
+                    self.assertTrue(self.archive.is_file())
+                    self.assertEqual(ca.load(self.directory,self.expected,discard_archive=True),self.image)
+                    self.assertFalse(self.archive.exists())
+                    self.assertEqual(json.loads((self.directory/'compiler.json').read_text()),self.manifest)
 
     def test_manifest_mismatches_fail_before_docker(self):
         for key,value in [('source_commit','c'*40),('architecture','arm64'),('run_id','124'),
@@ -110,6 +118,25 @@ class CompilerArtifactTests(unittest.TestCase):
             record=dict(Id=self.image,Architecture='amd64',Os='linux');record[field]=value
             with patch.object(ca.subprocess,'check_output',return_value=json.dumps([record]).encode()):
                 with self.assertRaises(ValueError):ca.inspect(self.image,'amd64')
+
+    def test_discard_failure_has_no_success_result(self):
+        with patch.object(ca.subprocess, 'run'), patch.object(ca, 'inspect'), \
+             patch.object(Path, 'unlink', side_effect=OSError('retirement failed')):
+            with self.assertRaisesRegex(OSError, 'retirement failed'):
+                ca.load(self.directory, self.expected, discard_archive=True)
+        self.assertTrue(self.archive.exists())
+        self.assertTrue((self.directory/'compiler.json').exists())
+
+    def test_export_rejects_discard_before_identity_or_side_effects(self):
+        argv = ['compiler', 'export', '--discard-archive', '--directory', str(self.directory),
+                '--commit', 'a'*40, '--architecture', 'amd64', '--run-id', '123']
+        with patch.object(sys, 'argv', argv), patch.object(ca, 'identity') as identity, \
+             patch.object(ca, 'export') as export, patch.object(sys, 'stderr', io.StringIO()):
+            with self.assertRaises(SystemExit) as error:
+                ca.main()
+            self.assertEqual(error.exception.code, 2)
+            identity.assert_not_called()
+            export.assert_not_called()
 
     def test_export_uses_only_immutable_image_and_records_archive(self):
         destination=Path(self.temp.name)/'export'
@@ -191,9 +218,9 @@ else:
         output = Path(self.temp.name) / 'github-output'
         calls = Path(self.temp.name) / 'docker-calls'
         for arch in ('amd64', 'arm64'):
-            for scenario in ('success', 'load-failure', 'invalid-archive',
-                             'invalid-provenance', 'inspect-failure'):
-                with self.subTest(architecture=arch, scenario=scenario):
+            for scenario, discard in product(('success', 'load-failure', 'invalid-archive',
+                                               'invalid-provenance', 'inspect-failure'), (False, True)):
+                with self.subTest(architecture=arch, scenario=scenario, discard=discard):
                     config = json.dumps({'architecture': arch, 'os': 'linux'}).encode()
                     image = 'sha256:' + hashlib.sha256(config).hexdigest()
                     self.write_archive(config=config)
@@ -220,8 +247,11 @@ else:
                         result = subprocess.run(
                             [sys.executable, '-m', 'producer.compiler_artifact', 'load',
                              '--directory', str(self.directory), '--commit', commit,
-                             '--architecture', arch, '--run-id', '123'],
+                             '--architecture', arch, '--run-id', '123',
+                             *(['--discard-archive'] if discard else [])],
                             cwd=checkout, env=env, stdout=stream, stderr=subprocess.PIPE)
+                    self.assertEqual(self.archive.exists(), not (discard and scenario == 'success'))
+                    self.assertEqual(json.loads((self.directory/'compiler.json').read_text()), self.manifest)
                     actual = output.read_text()
                     output.unlink()
                     if scenario == 'success':

@@ -8,7 +8,7 @@ import subprocess
 import sys
 import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from producer.staged import STAGES
+from producer.staged import STAGES, validate_discard_inputs
 from producer.architecture import native
 from producer.stage_artifacts import attribution
 from producer.sources import sha256
@@ -25,7 +25,13 @@ def main():
     parser.add_argument('--commit', required=True); parser.add_argument('--version', required=True)
     parser.add_argument('--image', required=True); parser.add_argument('--inputs', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True); parser.add_argument('--cache', type=Path)
+    parser.add_argument('--discard-input-archives', action='store_true',
+                        help='ISO only: allow retirement of task-owned downloaded input tars')
     args = parser.parse_args()
+    if args.discard_input_archives:
+        if len(args.inputs.resolve().parts) < 3:
+            raise ValueError('Dedicated task input directory required, not a host root')
+        validate_discard_inputs(args.stage, args.inputs, args.output, args.cache)
     native(args.architecture); attribution(args.commit, args.version)
     if (not re.fullmatch('sha256:[0-9a-f]{64}', args.image)
             or subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()!=args.commit
@@ -44,6 +50,8 @@ def main():
                 '--private',str(Path(temporary)/'fixture'),'--version',args.version,'--commit',args.commit,
                 '--qemu-accelerator','tcg','--staged-inputs',str(args.inputs.resolve()))
         else:
+            discard_args = ['--discard-input-archives'] if args.discard_input_archives else []
+            input_mode = 'rw' if args.discard_input_archives else 'ro'
             cache_args=[]; cache_mount=[]
             if args.cache:
                 args.cache.mkdir(parents=True,exist_ok=True)
@@ -55,10 +63,10 @@ def main():
             privileged=({'iso':['--privileged'], 'integration':['--cap-add=SYS_ADMIN']}
                         .get(args.stage, []))
             run('docker','run','--rm',*privileged,'--cpus=4','--memory=8g','--memory-swap=8g','--pids-limit=4096',
-                '-v',str(args.output.resolve())+':/output', '-v',str(args.inputs.resolve())+':/inputs:ro',
+                '-v',str(args.output.resolve())+':/output', '-v',str(args.inputs.resolve())+':/inputs:'+input_mode,
                 '-v',str(project)+':/project-source.tar:ro',*cache_mount,
                 '--entrypoint','python3',args.image,'-m','producer.staged',args.stage,args.architecture,
-                '--commit',args.commit,'--version',args.version,*cache_args)
+                '--commit',args.commit,'--version',args.version,*cache_args,*discard_args)
     if args.stage != 'guests':
         for suffix in ('tar','json'):
             (args.output/('transfer.'+suffix)).rename(args.output/(args.stage+'.'+suffix))
