@@ -304,7 +304,7 @@ This completion does not change unrelated historical hosted, OCI or cache eviden
 `2026-11-12T13:48:33Z`に公開済みです（`draft=false`、`prerelease=false`）。
 [復旧run 43229875239](https://github.com/michibiki-io/shirube-os/actions/runs/43229875239)は6分1秒で成功しました。
 元ソースとtagは`4498c6104b65dfae37be1e5ebe8d78c27100884b`、
-controllerは`937431ecac06efcc8198535a1dbc008f8f08808c`で、両者の対応を保持しました。
+controllerは`937431ecac06efcc8198535a1dbc008f8f08808c`で、両者は別々のcommitのままです。
 
 元runは`43164071342`のattempt `1`、artifactは`13941132568`です。
 GitHub upload digestは
