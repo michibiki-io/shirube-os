@@ -11,12 +11,14 @@ on:
       cache-mode:
         type: string
         default: warm
-permissions:
-  contents: read
 # Cache jobs inherit the caller's effective mode and cap; do not set a workflow
 # default here, which would override that inheritance. Other jobs opt into read.
+# Importing jobs also inherit token permissions: only Release supplies actions:read.
+# Explicit contents-only grants below keep that token scope out of other jobs.
 jobs:
   admission:
+    permissions:
+      contents: read
     cache-mode: read
     runs-on: ubuntu-24.04
     timeout-minutes: 5
@@ -73,6 +75,8 @@ jobs:
               output.write('cache-write=' + str(write).lower() + '\n')
           PYCODE
   compiler:
+    permissions:
+      contents: read
     needs: [admission]
     strategy:
       fail-fast: false
@@ -186,6 +190,22 @@ jobs:
         with:
           path: ${{ runner.temp }}/stage-cache
           key: ${{ steps.scope.outputs.key }}
+      - name: Import bounded original Release stage on warm miss
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && inputs.cache-mode == 'warm' && steps.cache.outputs.cache-hit != 'true'
+        timeout-minutes: 11
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          CACHE_MODE: ${{ inputs.cache-mode }}
+          CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+          STAGE: native
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          STAGE_KEY: ${{ steps.scope.outputs.key }}
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/import_release_stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --key "$STAGE_KEY" --cache "$STAGE_CACHE"
       - name: Execute native with verified predecessors
         env:
           STAGE: native
@@ -271,6 +291,22 @@ jobs:
         with:
           path: ${{ runner.temp }}/stage-cache
           key: ${{ steps.scope.outputs.key }}
+      - name: Import bounded original Release stage on warm miss
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && inputs.cache-mode == 'warm' && steps.cache.outputs.cache-hit != 'true'
+        timeout-minutes: 11
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          CACHE_MODE: ${{ inputs.cache-mode }}
+          CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+          STAGE: vpp
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          STAGE_KEY: ${{ steps.scope.outputs.key }}
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/import_release_stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --key "$STAGE_KEY" --cache "$STAGE_CACHE"
       - name: Execute vpp with verified predecessors
         env:
           STAGE: vpp
@@ -356,6 +392,22 @@ jobs:
         with:
           path: ${{ runner.temp }}/stage-cache
           key: ${{ steps.scope.outputs.key }}
+      - name: Import bounded original Release stage on warm miss
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && inputs.cache-mode == 'warm' && steps.cache.outputs.cache-hit != 'true'
+        timeout-minutes: 11
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          CACHE_MODE: ${{ inputs.cache-mode }}
+          CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+          STAGE: kea
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          STAGE_KEY: ${{ steps.scope.outputs.key }}
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/import_release_stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --key "$STAGE_KEY" --cache "$STAGE_CACHE"
       - name: Execute kea with verified predecessors
         env:
           STAGE: kea
@@ -441,6 +493,22 @@ jobs:
         with:
           path: ${{ runner.temp }}/stage-cache
           key: ${{ steps.scope.outputs.key }}
+      - name: Import bounded original Release stage on warm miss
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && inputs.cache-mode == 'warm' && steps.cache.outputs.cache-hit != 'true'
+        timeout-minutes: 11
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          CACHE_MODE: ${{ inputs.cache-mode }}
+          CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+          STAGE: salt
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          STAGE_KEY: ${{ steps.scope.outputs.key }}
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/import_release_stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --key "$STAGE_KEY" --cache "$STAGE_CACHE"
       - name: Execute salt with verified predecessors
         env:
           STAGE: salt
@@ -526,6 +594,22 @@ jobs:
         with:
           path: ${{ runner.temp }}/stage-cache
           key: ${{ steps.scope.outputs.key }}
+      - name: Import bounded original Release stage on warm miss
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && inputs.cache-mode == 'warm' && steps.cache.outputs.cache-hit != 'true'
+        timeout-minutes: 11
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          CACHE_MODE: ${{ inputs.cache-mode }}
+          CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+          STAGE: runtime
+          ARCHITECTURE: ${{ matrix.architecture }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          STAGE_KEY: ${{ steps.scope.outputs.key }}
+          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+        run: |
+          python3 scripts/import_release_stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
+            --commit "$SOURCE_COMMIT" --key "$STAGE_KEY" --cache "$STAGE_CACHE"
       - name: Execute runtime with verified predecessors
         env:
           STAGE: runtime
@@ -565,6 +649,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   kernel:
+    permissions:
+      contents: read
     cache-mode: read
     needs: [admission, compiler, vpp]
     strategy:
@@ -635,6 +721,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   integration:
+    permissions:
+      contents: read
     cache-mode: read
     needs: [admission, compiler, native, vpp]
     strategy:
@@ -709,6 +797,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   iso:
+    permissions:
+      contents: read
     cache-mode: read
     needs: [admission, compiler, native, vpp, kea, salt, runtime, kernel, integration]
     strategy:
@@ -803,6 +893,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   clearance:
+    permissions:
+      contents: read
     cache-mode: read
     needs: [admission, compiler, iso]
     strategy:
@@ -873,6 +965,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   guests:
+    permissions:
+      contents: read
     cache-mode: read
     needs: [admission, compiler, clearance]
     strategy:

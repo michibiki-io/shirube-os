@@ -72,23 +72,26 @@ class WorkflowCacheCITests(unittest.TestCase):
         release=self.release['jobs']['build'];validation=self.validation['jobs']['validate']
         self.assertEqual(release['uses'],'./.github/workflows/staged-candidate.yml')
         self.assertEqual(release['uses'],validation['uses'])
-        self.assertEqual(release['permissions'],{'contents':'read'})
+        self.assertEqual(release['permissions'],{'contents':'read','actions':'read'})
         self.assertEqual(validation['permissions'],{'contents':'read'})
         self.assertEqual(set(self.validation['on']),{'workflow_dispatch','pull_request'})
         self.assertEqual(self.validation['on']['pull_request']['types'],['labeled'])
         self.assertEqual(self.validation['permissions'],{'contents':'read'})
-        self.assertEqual(self.staged['permissions'], {'contents': 'read'})
+        self.assertNotIn('permissions',self.staged)
         self.assertEqual(self.release['permissions'], {'contents': 'read'})
         self.assertEqual({name: job['permissions'] for name, job in self.release['jobs'].items()}, {
             'resolve': {'contents': 'write', 'pull-requests': 'read'},
-            'build': {'contents': 'read'},
+            'build': {'contents': 'read', 'actions': 'read'},
             'stage': {'contents': 'write', 'actions': 'read'},
             'publish': {'contents': 'write', 'actions': 'read'}})
         for node in mappings(self.validation):
             self.assertNotIn('GH_TOKEN',node)
             self.assertNotIn('secrets',node)
         for node in mappings(self.staged):
-            self.assertNotIn('GH_TOKEN',node)
+            if 'GH_TOKEN' in node:
+                self.assertEqual(node['GH_TOKEN'],'${{ github.token }}')
+                self.assertEqual(set(node),{'GH_TOKEN','CACHE_WRITE','CACHE_MODE','CACHE_HIT','STAGE',
+                                            'ARCHITECTURE','SOURCE_COMMIT','STAGE_KEY','STAGE_CACHE'})
             self.assertNotIn('secrets',node)
             self.assertNotEqual(node.get('contents'),'write')
 
@@ -160,7 +163,7 @@ class WorkflowCacheCITests(unittest.TestCase):
                 {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
             commands=[step['run'] for step in job['steps'] if 'run' in step]
             cacheable = stage in {'native','vpp','kea','salt','runtime'}
-            self.assertEqual(len(commands),3 if cacheable else 2)
+            self.assertEqual(len(commands),4 if cacheable else 2)
             if cacheable:
                 self.assertIn('producer.component_inputs stage-key',commands[1])
                 self.assertIn('--read-only --network none',commands[1])

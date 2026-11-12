@@ -774,3 +774,18 @@ Synthetic regression tests exercise recovery, exhaustion and fail-fast behavior,
 including both architecture renderings without network or compilation. Real
 dependency downloads, native compilation, hosted CI/review of this change, full
 builds and license scans remain `NOT_RUN` for this fix.
+
+## Temporary unsigned transfer fallback
+
+The ordinary warm merged-main Release has a fixed artifact fallback window;
+local, PR, manual and cold builds compile normally. See the
+[bounded fallback contract](STAGED-BUILD.md#bounded-original-release-artifact-fallback)
+for full verification, original/current provenance and disk/quota limits.
+The old compiler docker-save is not a BuildKit cache. Fixture results do not
+prove hosted import, cache save or subsequent HIT; these remain NOT_RUN.
+
+通常のwarmマージ後Releaseには固定成果物の取り込み期限があります。
+ローカル、PR、手動、coldのビルドは通常どおりコンパイルします。
+検証、元と現行の来歴、ディスクとquotaの制限は上記contractを参照してください。
+古いcompilerのdocker-saveはBuildKit cacheではありません。
+fixtureはhosted import、保存、後続HITの証拠にはならず、これらはNOT_RUNです。

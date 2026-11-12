@@ -67,8 +67,8 @@ GitHub keyword `cache-mode` (`read`/`write`) controls service access, separately
 from `inputs.cache-mode` (`cold`/`warm`), which selects intentional prior-cache use.
 Stage saves require success and no exact outer hit; optional compiler export uses
 `ignore-error=true`. Buildx keeps `cache-binary: false` to prevent implicit binary
-post-saves. Cache-v2 keys, inner inventory/integrity/provenance checks and token
-permissions are unchanged. Kernel signing secrets/state, clearance and guest
+post-saves. Cache-v2 keys and inner inventory/integrity/provenance checks remain
+unchanged. Kernel signing secrets/state, clearance and guest
 success remain fresh and outside shared caches. Actual runner saves and the next
 warm hit remain **NOT_RUN**; fixtures and optional exports prove neither.
 Hosted acceptance of the new Release/validation caller configuration is also
@@ -119,7 +119,7 @@ GitHubの`cache-mode`（read/write）はサービス側のアクセス制御で�
 既存キャッシュを使うか選ぶ`inputs.cache-mode`（cold/warm）とは別です。
 ステージは成功し、正確な外側キーのヒットがない場合だけ保存します。
 コンパイラーのexportは`ignore-error=true`による任意の試行です。
-Buildxの`cache-binary: false`、cache-v2のキー、内容と来歴の検証、token権限は維持します。
+Buildxの`cache-binary: false`、cache-v2のキー、内容と来歴の検証は維持します。
 kernelの署名用秘密鍵と状態、clearance、guest成功結果は共有キャッシュに入れず、毎回検証します。
 実runnerでの保存成功と次回のwarm hitは**NOT_RUN**で、fixtureや任意のexportでは実証できません。
 新しいRelease・検証caller構成のGitHub上での受理も**NOT_RUN**です。Testはそれらを実行しません。
@@ -288,3 +288,18 @@ manifestと検証記録の仮想化方式も照合します。不足・不一致
 TCGを受け付け、hosted runnerの既定値もTCGです。ただし設定の受入れは実行試験の
 合格ではありません。過去のARM64 TCGコンポーネント試験と、保持候補のnative KVM
 試験は区別し、hosted候補全体の容量・時間・ランタイムの合格は別途必要です。
+
+## Fixed unsigned artifact migration window
+
+Normal trusted warm Release misses may use the fixed successful unsigned stages
+from run `43164071342` until `2026-11-19T05:50:46Z`. The build caller alone adds
+`actions: read`, inherited only by the five importing jobs; PR/manual callers
+retain contents-only permissions. Full bounds, provenance, failure behavior and
+NOT_RUN hosted evidence are in the [fallback contract](STAGED-BUILD.md#bounded-original-release-artifact-fallback).
+No source Release operation or separate full build is part of this migration.
+
+通常の信頼済みwarm Releaseのmissでは、`2026-11-19T05:50:46Z`まで固定runの成功した署名前stageを取り込めます。
+build callerにだけ`actions: read`を追加し、対象5jobが継承します。
+PRと手動callerの権限は広げません。
+制限、来歴、失敗時の動作、NOT_RUNの実環境証拠は上記contractを参照してください。
+元Releaseの操作や別の全工程ビルドは行いません。

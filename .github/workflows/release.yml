@@ -47,6 +47,7 @@ jobs:
     if: needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'
     permissions:
       contents: read
+      actions: read
     uses: ./.github/workflows/staged-candidate.yml
     with:
       commit: ${{ needs.resolve.outputs.commit }}

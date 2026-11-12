@@ -219,8 +219,9 @@ Optional main dispatch writes require source exactly equal to `github.sha`;
 the resolver checks this in inline shell before repository Python. PR validation,
 fork repositories and non-main dispatches cannot populate shared main caches.
 Unknown events, malformed commits, cache modes other than cold/warm and mismatched
-source/event data are rejected. Buildx keeps `cache-binary: false`; token
-permissions and cache-v2 input/provenance code are unchanged.
+source/event data are rejected. Buildx keeps `cache-binary: false` and cache-v2
+input/provenance code is unchanged. The bounded import below adds only its
+necessary token read grant.
 
 GitHub `cache-mode` (`read`/`write`) controls service access; `inputs.cache-mode`
 (`cold`/`warm`) selects prior-cache use. Merge approval authorizes the merged build
@@ -379,6 +380,92 @@ downstream-gate tests remain required. These tests establish no actual hosted
 cache hit, native speedup or current native acceptance. Actual runner saves and
 the next warm hit are explicitly **NOT_RUN**. No workflow was triggered and the
 ongoing release was left untouched.
+
+### Bounded original Release artifact fallback
+
+Until **2026-11-19T05:50:46Z**, an admitted normal closed/merged-main Release
+may fill a warm outer miss from fixed run `43164071342`, attempt `1`, in
+`michibiki-io/shirube-os`. `scripts/release-stage-import.json` pins ten successful
+unsigned native/vpp/kea/salt/runtime jobs and artifact IDs for amd64/arm64.
+The original source is PR #21's merge `4498c6104b65dfae37be1e5ebe8d78c27100884b`,
+version `v2026.03.8`. The API head `42f6706d21f7bf306e9d8bcbf7af968242763cdf`
+and `feature/#20` describe the PR head, not the payload source. The importer
+checks the merged/closed main PR, repository IDs, Release workflow/event/path,
+run attempt, main reusable-workflow SHA, individual successful job and exact
+artifact ownership/digest/size/expiry. Overall run success is not required:
+a later clearance failure cannot erase a successful unsigned stage, and these
+artifacts grant no clearance or guest acceptance.
+
+The verified same-run compiler computes the current exact outer key first.
+Before any network request the host recomputes scope using the pinned actual
+compiler fingerprint and current checkout and requires both pinned input ID
+and current outer-key equality. Host dpkg is never used. PR, fork-repository,
+feature/manual validation, cold mode, exact outer hits, incompatible scope and
+expired windows never import. No separate validation dispatch or migration job
+is needed. Old compiler docker-save artifacts are not BuildKit caches and are
+never converted or imported. Kernel, signing, integration, ISO, clearance and
+guests always follow the existing fresh path.
+
+During a real import, the host bounds time (600 seconds), download bytes,
+metadata, ZIP expansion and scratch storage, requires free disk margin, and
+verifies the complete pinned ZIP hash, exactly two regular unique stored files,
+original tar hash/size, receipt/metadata equality and full inventory with the
+existing unpack validator. Only the verified original pair is atomically
+installed at `<input_id>/transfer.tar` and `transfer.json`, without replacement.
+The stage independently validates again, repacks current source/version and
+preserves original `content_source_commit`; the missing-key save retains the
+original cache bytes. Missing, expired, 403/404, timeout, wrong metadata or
+corruption emits a safe skip warning, removes import scratch and falls back to
+source compilation. A corrupt exact outer hit is never imported over: existing
+`MISS_INVALID` compilation runs, but the unchanged save condition cannot replace
+that immutable hosted key.
+
+The ten unsigned transfers total **6,268,180,480 bytes**, before cache compression,
+in addition to compiler caches. Quota and eviction can prevent durable reuse.
+Per import, free disk must cover the ZIP, tar, unpacked payload, metadata and
+512 MiB margin; scratch is cleaned on failure and success. No cache deletion or
+capacity purchase is performed. `GH_TOKEN` exists only in the five host import
+steps. Release's build caller adds `actions: read`; those jobs inherit caller
+permissions, while compiler/admission and other jobs explicitly keep
+`contents: read`. PR/manual callers retain their existing contents-only grants.
+
+Small mocked fixtures cover integrity and the real stage cache HIT/repack path.
+Historical metric scope equality is a compatibility observation, not full artifact
+verification. Actual full artifact verification, hosted import/save/later HIT,
+GitHub caller acceptance and next-run compiler fingerprint equality remain
+**NOT_RUN**. The source Release is untouched; no extra build is started.
+
+**2026-11-19T05:50:46Z**まで、通常のマージ済みmain Releaseはwarmの外側miss時だけ、
+固定run `43164071342`（attempt `1`）の署名前成果物を取り込めます。
+元ソースはPR #21のmerge `4498c6104b65dfae37be1e5ebe8d78c27100884b`、versionは`v2026.03.8`です。
+APIのhead SHAと`feature/#20`はPR headを表します。
+固定manifestで10件の成功jobとartifactを指定し、repository、workflow、event、attempt、
+mainのreusable SHA、PRのmerge関係、job成功、artifactの所有者とhash、サイズ、期限を照合します。
+後続のclearanceが失敗しても成功した署名前stageは対象ですが、Release合格の根拠にはしません。
+
+同一runの検証済みcompilerが出した外側keyと、現checkoutと固定fingerprintから再計算したscopeを、通信前に照合します。
+PR、fork repository、featureや手動検証、cold、外側exact hit、scope不一致、期限後は取得しません。
+別の検証dispatchは不要です。
+古いcompilerのdocker-saveはBuildKit cacheへ変換せず、kernel、署名、integration、ISO、clearance、guestも取り込みません。
+
+実際の取り込み時に、時間、取得量、metadata、展開量、一時ディスクを制限し、ZIP全体と2つの通常ファイル、
+元tarのhashとサイズ、receiptとmetadataの完全一致、全inventoryを既存validatorで検証します。
+検証済みの原本2ファイルだけをatomicに配置し、既存entryを上書きしません。
+stageが独立して再検証し、現commitとversionへ再梱包しても`content_source_commit`は元のままです。
+欠落、失効、403/404、timeout、不正なmetadataや破損では警告を出し、一時領域を片付けて通常コンパイルへ戻ります。
+外側exact hitの破損は既存の`MISS_INVALID`で再ビルドしますが、不変keyのsave条件は変更しません。
+
+署名前transferの合計は**6,268,180,480 bytes**で、別にcompiler cacheも必要です。
+quotaやevictionで保存と保持が制限される場合があります。
+各取り込みではZIP、tar、展開payload、metadata、512 MiBの余裕を確保します。
+cache削除や容量購入は行いません。
+tokenは5つのhost stepだけに渡し、Release callerの`actions: read`を継承させます。
+他のjobとPR、手動callerは既存の`contents: read`を維持します。
+
+小さなmock fixtureで実stageのHITと来歴の再梱包を検証します。
+過去10scopeの一致は互換性の観測であり、実artifact全体の検証ではありません。
+実artifact検証、hosted import/save/後続HIT、GitHubでのcaller受理、次のcompiler fingerprint一致は**NOT_RUN**です。
+元Releaseは操作せず、追加ビルドも開始しません。
 
 ## ISO, clearance and guest transfer retirement and builder entrypoint
 
