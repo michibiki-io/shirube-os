@@ -3,7 +3,8 @@
 This document preserves revision-scoped component and diagnostic observations,
 not a rolling release-approval ledger. [PR #2](https://github.com/michibiki-io/shirube-os/pull/2)
 records current artifact hashes, exact-head CI, focused runtime results and formal
-reviews. No public binary release has been published. Static fixtures never
+reviews. [v2026.03.8](https://github.com/michibiki-io/shirube-os/releases/tag/v2026.03.8)
+was published on 2026-11-12. Static fixtures never
 substitute for a source build, disk boot or actual access test.
 
 ## Retained candidate evidence (2026-11-11)

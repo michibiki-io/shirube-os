@@ -800,6 +800,38 @@ class PublicationClassificationTests(unittest.TestCase):
                     identity.assert_not_called()
                     releases.assert_not_called()
 
+    def test_retirement_full_deleted_inventory_across_pages_stops_before_allocation(self):
+        pages = [
+            [{'filename': '.github/workflows/recover-release.yml', 'status': 'removed'},
+             {'filename': 'producer/recover_release.py', 'status': 'removed'}],
+            [{'filename': 'tests/test_recover_release.py', 'status': 'removed'},
+             {'filename': 'producer/actions.py', 'status': 'modified'},
+             {'filename': 'tests/test_actions.py', 'status': 'modified'}],
+            [{'filename': path, 'status': 'modified'} for path in
+             ['README.md', 'docs/RELEASE.md', 'docs/VALIDATION.md']],
+        ]
+        event = {'action': 'closed', 'pull_request': {'number': 26, 'merged': True,
+                 'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40,
+                 'changed_files': sum(len(page) for page in pages)}}
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = Path(tmp)/'event.json'
+            payload.write_text(json.dumps(event))
+            with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload),
+                                         'GITHUB_EVENT_NAME': 'pull_request_target'}), \
+                    patch.object(actions, 'gh', return_value=pages) as gh, \
+                    patch.object(actions, 'emit') as emit, \
+                    patch.object(actions, 'identity') as identity, \
+                    patch.object(actions, 'releases') as releases, \
+                    patch.object(actions, 'next_version') as next_version:
+                actions.resolve()
+                gh.assert_called_once_with('api', '--paginate', '--slurp',
+                                           f'repos/{actions.REPO}/pulls/26/files',
+                                           json_result=True)
+                emit.assert_called_once_with({'eligible': 'false'})
+                identity.assert_not_called()
+                releases.assert_not_called()
+                next_version.assert_not_called()
+
     def test_unknown_mixed_and_both_rename_directions_still_reach_policy(self):
         event = {'action': 'closed', 'pull_request': {'merged': True,
                  'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40}}

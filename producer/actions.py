@@ -16,6 +16,8 @@ REPO = 'michibiki-io/shirube-os'
 
 # Exact publication-only paths, not directory exemptions. New/unknown image
 # inputs and both sides of renames still reach policy.eligible before allocation.
+# Keep the three retired recovery paths: deleted files remain in the PR inventory,
+# so these exact entries keep the deletion PR non-image after merge.
 PUBLICATION_PATHS = frozenset({
     'producer/actions.py', 'producer/recover_release.py',
     'tests/test_actions.py', 'tests/test_recover_release.py',
