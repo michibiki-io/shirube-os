@@ -248,12 +248,17 @@ def publish():
                 gh('api','--method','DELETE',f'repos/{REPO}/releases/assets/{asset["id"]}')
         require_draft(version,commit)
         gh('release','upload',version,'--repo',REPO,str(root/'manifest.json'),str(root/'SHA256SUMS'))
+        import shutil
+        # Only this internally generated tree is disposable after upload succeeds.
+        shutil.rmtree(root)
         # Verify remote staging bytes, not only the local directory, before the
         # one publication transition. Uncertain outcomes are reconciled once.
         remote=Path(temporary)/'remote'; download(version,remote); validate(remote,commit,version)
-        import shutil
         public=Path(os.environ['SHIRUBE_PUBLIC_DIRECTORY'])
-        shutil.copytree(remote,public)
+        # move() would otherwise nest into an existing caller-owned directory.
+        if public.exists() or public.is_symlink():
+            raise FileExistsError('Fresh public destination required')
+        shutil.move(str(remote), str(public))
 
 
 def promote():

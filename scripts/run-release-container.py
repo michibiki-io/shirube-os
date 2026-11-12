@@ -9,6 +9,7 @@ import subprocess
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from producer.netbird_fixture import Fixture
+from producer.staged import validate_discard_inputs
 from producer.policy import version_parts
 from producer.architecture import release_accelerator,container_runtime
 
@@ -26,9 +27,17 @@ def main():
     parser.add_argument('--memory-gib',type=int,default=8)
     parser.add_argument('--cached-libraries',type=Path)
     parser.add_argument('--staged-inputs',type=Path)
+    parser.add_argument('--discard-input-archives',action='store_true')
     parser.add_argument('--qemu-accelerator',choices=['kvm','tcg'],default='kvm')
     parser.add_argument('--docker-runtime',default='')
     args=parser.parse_args()
+    if args.discard_input_archives:
+        if args.staged_inputs is None:
+            raise ValueError('Input retirement requires staged inputs')
+        if len(args.staged_inputs.resolve().parts) < 3:
+            raise ValueError('Dedicated task input directory required, not a host root')
+        validate_discard_inputs('guests', args.staged_inputs, args.output, args.cached_libraries,
+                                protected_paths=(args.private, args.project_source))
     release_accelerator(args.architecture,args.qemu_accelerator)
     container_runtime(args.docker_runtime,registered=True)
     if not re.fullmatch('sha256:[0-9a-f]{64}',args.image):raise ValueError('Immutable native toolchain image required')
@@ -54,10 +63,11 @@ def main():
         producer_command=[args.image,args.architecture,'--target','release','--version',args.version,
                           '--commit',args.commit,'--netbird-fixture-stdin','--qemu-accelerator',args.qemu_accelerator,*library_args]
         if args.staged_inputs:
-            library_mounts += ['-v',str(args.staged_inputs.resolve())+':/inputs:ro']
+            library_mounts += ['-v',str(args.staged_inputs.resolve())+':/inputs:'+('rw' if args.discard_input_archives else 'ro')]
             producer_command=['--entrypoint','python3',args.image,'-m','producer.staged','guests',args.architecture,
                               '--commit',args.commit,'--version',args.version,'--netbird-fixture-stdin',
-                              '--qemu-accelerator',args.qemu_accelerator]
+                              '--qemu-accelerator',args.qemu_accelerator,
+                              *(['--discard-input-archives'] if args.discard_input_archives else [])]
         build=fixture.docker('create','-i','--network','bridge',
             '--label','io.michibiki.shirube.fixture='+fixture.nonce,
             '--add-host',fixture.hostname+':'+address,

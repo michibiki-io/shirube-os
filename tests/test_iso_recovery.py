@@ -48,15 +48,15 @@ class ISOInputRetirementTests(unittest.TestCase):
         self.commit = 'c'*40; self.version = 'v2026.03.0'
         self.records = {}
         self.identities = {}
-        for stage in (*staged.DEPENDENCIES['iso'], 'iso'):
-            if stage == 'iso' and self.stage == 'iso':
+        for stage in (*staged.DEPENDENCIES['iso'], 'iso', 'clearance'):
+            if stage == self.stage:
                 break
             self.write_transfer(stage)
 
     def write_transfer(self, stage, dependencies=None, commit=None):
         payload = self.root/('payload-'+stage); payload.mkdir(exist_ok=True)
         (payload/'notice').write_text('synthetic '+stage+' public payload')
-        if stage == 'iso':
+        if stage == 'iso' or stage == 'clearance':
             for name, data in self.iso_files.items():
                 path = payload/name; path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(data)
@@ -100,17 +100,19 @@ class ISOInputRetirementTests(unittest.TestCase):
             for stage, payload in payloads.items():
                 self.assertEqual((payload/'notice').read_text(), 'synthetic '+stage+' public payload')
                 self.assertEqual(json.loads((self.inputs/(stage+'.json')).read_text()), self.records[stage])
-            if self.stage == 'clearance':
+            if self.stage in {'clearance', 'guests'}:
                 for name, data in self.iso_files.items():
-                    self.assertEqual((payloads['iso']/name).read_bytes(), data)
+                    self.assertEqual((payloads[staged.DEPENDENCIES[self.stage][0]]/name).read_bytes(), data)
+            if self.stage == 'guests':
+                storage(output, 56, phase='Fresh guest disk stage')
             (output/'fixture.iso').write_bytes(b'synthetic ISO')
             (output/'assembly.json').write_text('{"iso":"fixture.iso"}')
         def storage(root, minimum, **kwargs):
-            self.assertEqual(minimum, 75)
+            self.assertEqual(minimum, 56 if self.stage == 'guests' else 75)
             self.assertEqual({p.stem for p in self.inputs.glob('*.tar')},
                              set() if discard else set(staged.DEPENDENCIES[self.stage]))
             if failure == 'storage':
-                with patch('shutil.disk_usage', return_value=SimpleNamespace(free=69 * 1024**3)):
+                with patch('shutil.disk_usage', return_value=SimpleNamespace(free=(minimum - 1) * 1024**3)):
                     require_storage(root, minimum, **kwargs)
         from producer.stage_metrics import measure
         details = {}
@@ -131,9 +133,14 @@ class ISOInputRetirementTests(unittest.TestCase):
             return unlink(path, *args, **kwargs)
         argv = ['staged', self.stage, self.architecture, '--commit', self.commit, '--version', self.version,
                 '--inputs', str(self.inputs), '--output', str(self.output),
+                *(['--netbird-fixture-stdin'] if self.stage == 'guests' else []),
                 *(['--discard-input-archives'] if discard else [])]
         with ExitStack() as stack:
             stack.enter_context(patch.object(sys, 'argv', argv))
+            if self.stage == 'guests':
+                stack.enter_context(patch('producer.netbird_guest.Management'))
+                stack.enter_context(patch.object(sys, 'stdin', io.StringIO('{}')))
+                stack.enter_context(patch('os.dup2'))
             stack.enter_context(patch.object(staged, 'Path', side_effect=self.mapped))
             stack.enter_context(patch('producer.architecture.native'))
             admission = stack.enter_context(patch('producer.architecture.require_storage', side_effect=storage))
@@ -152,13 +159,16 @@ class ISOInputRetirementTests(unittest.TestCase):
             if failure:
                 with self.assertRaises((ValueError, OSError)):
                     staged.main()
-                assembly.assert_not_called(); export.assert_not_called()
+                if self.stage != 'guests' or failure != 'storage':
+                    assembly.assert_not_called()
+                export.assert_not_called()
                 if failure != 'storage':
                     admission.assert_not_called()
                 self.assertFalse((self.output/'transfer.tar').exists())
             else:
                 staged.main()
-                assembly.assert_called_once(); export.assert_called_once()
+                assembly.assert_called_once()
+                self.assertEqual(export.call_count, 0 if self.stage == 'guests' else 1)
         if failure and failure != 'storage':
             self.assertEqual({p.name: p.read_bytes() for p in self.inputs.iterdir()}, before)
         metrics = json.loads((self.output/'resources.json').read_text())
@@ -173,8 +183,11 @@ class ISOInputRetirementTests(unittest.TestCase):
         self.invoke()
         self.assertEqual({p.name for p in self.inputs.iterdir()},
                          {stage+'.json' for stage in staged.DEPENDENCIES[self.stage]})
-        self.assertTrue((self.output/'transfer.tar').is_file())
-        self.assertTrue((self.output/'transfer.json').is_file())
+        if self.stage == 'guests':
+            self.assertTrue((self.output/'candidate/fixture.iso').is_file())
+        else:
+            self.assertTrue((self.output/'transfer.tar').is_file())
+            self.assertTrue((self.output/'transfer.json').is_file())
 
     def test_default_retains_entire_cohort(self):
         self.invoke(discard=False)
@@ -187,7 +200,7 @@ class ISOInputRetirementTests(unittest.TestCase):
 
     def test_hash_valid_scope_or_ancestry_mismatch_retains_every_archive(self):
         dependency = staged.DEPENDENCIES[self.stage][-1]
-        if self.stage == 'clearance':
+        if self.stage in {'clearance', 'guests'}:
             original = self.architecture
             self.architecture = 'arm64' if original == 'amd64' else 'amd64'
             self.write_transfer(dependency)
@@ -256,7 +269,45 @@ class ARM64ClearanceInputRetirementTests(ClearanceInputRetirementTests):
     architecture = 'arm64'
 
 
+class GuestInputRetirementTests(ISOInputRetirementTests):
+    stage = 'guests'
+    iso_files = {**ISOInputRetirementTests.iso_files,
+                 'clearance.json': b'{"source_proof":"retained"}',
+                 'manifest.json': b'{"reconstruction":"retained"}',
+                 'guest-kernel/cert.der': b'public guest certificate',
+                 'guest-kernel/kernel.deb': b'guest kernel'}
+
+
+class ARM64GuestInputRetirementTests(GuestInputRetirementTests):
+    architecture = 'arm64'
+
+
 class WritableInputBoundaryTests(unittest.TestCase):
+    def test_container_default_absolute_mounts_accept_retirement(self):
+        # Use real absolute container paths; remapping Path hides this contract.
+        for stage, arch in product(('iso', 'clearance', 'guests'), ('amd64', 'arm64')):
+            with self.subTest(stage=stage, architecture=arch):
+                staged.validate_discard_inputs(stage, Path('/inputs'), Path('/output'))
+                argv = ['staged', stage, arch, '--commit', 'c'*40,
+                        '--version', 'v2026.03.0', '--discard-input-archives']
+                with patch.object(sys, 'argv', argv), \
+                     patch('producer.architecture.native', side_effect=RuntimeError('validation passed')) as native:
+                    with self.assertRaisesRegex(RuntimeError, 'validation passed'):
+                        staged.main()
+                    native.assert_called_once_with(arch)
+
+    def test_container_absolute_protected_roots_and_overlaps_remain_rejected(self):
+        for stage in ('iso', 'clearance', 'guests'):
+            for directory in ('/', '/tmp', '/var/tmp', '/src/inputs',
+                              '/build-private/inputs', '/stage-dependencies/inputs'):
+                with self.subTest(stage=stage, inputs=directory), self.assertRaises(ValueError):
+                    staged.validate_discard_inputs(stage, directory, '/output')
+            for output, cache in (('/inputs', None), ('/inputs/output', None),
+                                  ('/', None), ('/output', '/inputs/cache'),
+                                  ('/output', '/inputs'), ('/output', '/')):
+                with self.subTest(stage=stage, output=output, cache=cache), self.assertRaises(ValueError):
+                    staged.validate_discard_inputs(stage, '/inputs', output, cache)
+
     def test_launcher_mount_and_flag_defaults_for_both_architectures(self):
         launcher = load_module('stage_launcher_mounts', 'scripts/run-native-stage.py')
         for stage, arch, discard in product(('iso', 'clearance'), ('amd64', 'arm64'), (False, True)):
@@ -286,10 +337,11 @@ class WritableInputBoundaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary); inputs = root/'inputs'; inputs.mkdir()
             alias = root/'alias'; alias.symlink_to(inputs, target_is_directory=True)
-            paths = ((Path('/mnt'), root/'output'),
+            paths = tuple((Path(path), root/'output') for path in
+                          ('/', '/mnt', '/etc', '/var', '/usr', '/home', '/inputs', '/tmp')) + (
                      (alias, root/'output'), (inputs, inputs/'output'))
             for stage, arch, (directory, output) in product(
-                    ('iso', 'clearance'), ('amd64', 'arm64'), paths):
+                    ('iso', 'clearance', 'guests'), ('amd64', 'arm64'), paths):
                 argv = ['launcher', '--stage', stage, '--architecture', arch,
                         '--image', 'sha256:'+'b'*64, '--commit', 'c'*40,
                         '--version', 'v2026.03.0', '--inputs', str(directory),
@@ -306,7 +358,7 @@ class WritableInputBoundaryTests(unittest.TestCase):
     def test_other_stage_flags_rejected_before_side_effects_in_both_clis(self):
         launcher = load_module('stage_launcher_boundary', 'scripts/run-native-stage.py')
         for stage in staged.STAGES:
-            if stage in {'iso', 'clearance'}:
+            if stage in {'iso', 'clearance', 'guests'}:
                 continue
             for cli in (launcher, staged):
                 with self.subTest(stage=stage, cli=cli.__name__):

@@ -26,7 +26,7 @@ def main():
     parser.add_argument('--image', required=True); parser.add_argument('--inputs', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True); parser.add_argument('--cache', type=Path)
     parser.add_argument('--discard-input-archives', action='store_true',
-                        help='ISO and clearance only: allow retirement of task-owned downloaded input tars')
+                        help='ISO, clearance and guests only: allow retirement of task-owned downloaded input tars')
     args = parser.parse_args()
     if args.discard_input_archives:
         if len(args.inputs.resolve().parts) < 3:
@@ -48,7 +48,8 @@ def main():
             run(sys.executable,'scripts/run-release-container.py','--architecture',args.architecture,
                 '--image',args.image,'--output',str(args.output.resolve()),'--project-source',str(project),
                 '--private',str(Path(temporary)/'fixture'),'--version',args.version,'--commit',args.commit,
-                '--qemu-accelerator','tcg','--staged-inputs',str(args.inputs.resolve()))
+                '--qemu-accelerator','tcg','--staged-inputs',str(args.inputs.resolve()),
+                *(['--discard-input-archives'] if args.discard_input_archives else []))
         else:
             discard_args = ['--discard-input-archives'] if args.discard_input_archives else []
             input_mode = 'rw' if args.discard_input_archives else 'ro'
