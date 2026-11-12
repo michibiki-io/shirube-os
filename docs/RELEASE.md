@@ -25,9 +25,12 @@ unpublished draft, builds native ISO/QCOW2/VMDK/source candidates, stages comple
 per-architecture sets, validates the aggregate, uploads its Actions artifact, and
 only then promotes the draft. A missing/failed/skipped required stage blocks the
 publication transition. `producer.actions.promote` requires the uploaded
-artifact ID/digest and checks its exact workflow source commit.
+artifact ID/digest, current run ID, exact version/source/attempt-derived name and
+non-expired metadata. The PR event head may differ from the merged build source;
+exact clean checkout identity and full remote validation still bind that source.
 
-No public binary release has been published. The latest retained native cohorts
+[v2026.03.8](https://github.com/michibiki-io/shirube-os/releases/tag/v2026.03.8)
+was published on 2026-11-12. The latest retained native cohorts
 have corresponding-source restoration, component clearance and guest-lifecycle
 receipts; exact candidate results and remaining failures are recorded in
 [PR #2](https://github.com/michibiki-io/shirube-os/pull/2). Historical component
@@ -303,3 +306,67 @@ build callerにだけ`actions: read`を追加し、対象5jobが継承します�
 PRと手動callerの権限は広げません。
 制限、来歴、失敗時の動作、NOT_RUNの実環境証拠は上記contractを参照してください。
 元Releaseの操作や別の全工程ビルドは行いません。
+
+## Completed v2026.03.8 recovery (Issues #24 and #26)
+
+English
+
+[v2026.03.8](https://github.com/michibiki-io/shirube-os/releases/tag/v2026.03.8)
+was published at `2026-11-12T13:48:33Z` (`draft=false`, `prerelease=false`).
+[Recovery run 43229875239](https://github.com/michibiki-io/shirube-os/actions/runs/43229875239)
+passed in 6m 1s. Original source/tag
+`4498c6104b65dfae37be1e5ebe8d78c27100884b` remained distinct from controller
+`937431ecac06efcc8198535a1dbc008f8f08808c`.
+
+The original run was `43164071342`, attempt `1`, artifact `13941132568`.
+Its GitHub upload digest was
+`783c13ef2ef1a80c42ec66c561fe2c59bdc014cec1296031213d53731d34d0e2`;
+this is upload evidence, not a fresh ZIP-byte hash.
+The 182 existing assets totaling 19,162,268,023 bytes were downloaded once and
+validated with the original source's validator, without rebuilding or re-uploading.
+The published bytes remained unchanged. Metadata SHA256 values were:
+
+- `manifest.json`: `326b10ea6b13bcf83d4a9f6845cdc7b8505b6584881dc0d2cb2b60dcdb438745`
+- `SHA256SUMS`: `11d0bb47006a6ff6a7f6ffcff49319dd4c89941ece35560765bcf7548d26e874`
+
+Issue #26 retires the one-time workflow, module and dedicated tests; their
+implementation remains in Git history. Normal artifact/run/source binding,
+ownership/inventory checks and promotion regressions remain in place.
+`producer.actions.resolve` still excludes only the five exact `PUBLICATION_PATHS`
+entries before identity checks, release lookup or version allocation. The three
+retired entries (`.github/workflows/recover-release.yml`,
+`producer/recover_release.py`, `tests/test_recover_release.py`) remain because
+removed files are included in the deletion PR's complete changed-file inventory.
+Together with `producer/actions.py` and `tests/test_actions.py`, these exact
+exemptions keep that PR non-image after merge. Both rename origins and destinations
+are classified; unknown relevant paths and mixed image changes remain eligible.
+This completion does not change unrelated historical hosted, OCI or cache evidence.
+
+日本語
+
+[v2026.03.8](https://github.com/michibiki-io/shirube-os/releases/tag/v2026.03.8)は
+`2026-11-12T13:48:33Z`に公開済みです（`draft=false`、`prerelease=false`）。
+[復旧run 43229875239](https://github.com/michibiki-io/shirube-os/actions/runs/43229875239)は6分1秒で成功しました。
+元ソースとtagは`4498c6104b65dfae37be1e5ebe8d78c27100884b`、
+controllerは`937431ecac06efcc8198535a1dbc008f8f08808c`で、両者は別々のcommitのままです。
+
+元runは`43164071342`のattempt `1`、artifactは`13941132568`です。
+GitHub upload digestは
+`783c13ef2ef1a80c42ec66c561fe2c59bdc014cec1296031213d53731d34d0e2`です。
+これはuploadの証拠であり、新たにZIPのbytesを取得してhashしたという記録ではありません。
+既存の182 assets（合計19,162,268,023 bytes）を一度だけ取得し、元ソースの検証器で検証しました。
+再ビルドや再uploadはなく、公開したbytesも変更していません。
+metadataのSHA256は次のとおりです。
+
+- `manifest.json`: `326b10ea6b13bcf83d4a9f6845cdc7b8505b6584881dc0d2cb2b60dcdb438745`
+- `SHA256SUMS`: `11d0bb47006a6ff6a7f6ffcff49319dd4c89941ece35560765bcf7548d26e874`
+
+Issue #26で一回限りのworkflow、module、専用テストを削除し、実装はGit履歴に残します。
+通常公開のartifact、run、sourceの対応検証、所有権と一覧の検証、公開処理の回帰テストは保持します。
+`producer.actions.resolve`はidentity確認、release取得、版の割り当てより前に、
+`PUBLICATION_PATHS`の5つの完全一致パスだけを除外します。
+削除した3パス（`.github/workflows/recover-release.yml`、`producer/recover_release.py`、
+`tests/test_recover_release.py`）も削除PRの全変更一覧に含まれるため、除外に残します。
+`producer/actions.py`、`tests/test_actions.py`と合わせて、削除PRをmerge後もイメージ対象外に保ちます。
+rename元とrename先の両方を判定し、未知の関連パスやイメージ入力との混合変更は対象のままです。
+今回の完了によって、無関係な過去のhosted、OCI、cacheの検証記録は変わりません。

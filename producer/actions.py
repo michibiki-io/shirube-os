@@ -1,5 +1,6 @@
 """Trusted merged-PR release orchestration. Never used by untrusted PR CI."""
 import argparse
+from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
@@ -12,6 +13,62 @@ from .release import validate, RELEASE_ASSET_LIMIT
 from .sources import sha256
 
 REPO = 'michibiki-io/shirube-os'
+
+# Exact publication-only paths, not directory exemptions. New/unknown image
+# inputs and both sides of renames still reach policy.eligible before allocation.
+# Keep the three retired recovery paths: deleted files remain in the PR inventory,
+# so these exact entries keep the deletion PR non-image after merge.
+PUBLICATION_PATHS = frozenset({
+    'producer/actions.py', 'producer/recover_release.py',
+    'tests/test_actions.py', 'tests/test_recover_release.py',
+    '.github/workflows/recover-release.yml',
+})
+
+
+def image_paths(paths):
+    return [path for path in paths if path not in PUBLICATION_PATHS]
+
+
+def artifact_evidence(artifact, artifact_id, digest, run_id, attempt, version, commit):
+    if (not re.fullmatch(r'[1-9][0-9]*', str(artifact_id))
+            or not re.fullmatch(r'[1-9][0-9]*', str(run_id))
+            or not re.fullmatch(r'[1-9][0-9]*', str(attempt))
+            or not re.fullmatch('[0-9a-f]{64}', digest or '')):
+        raise ValueError('Successful Actions artifact upload evidence is required')
+    if (artifact.get('id') != int(artifact_id)
+            or artifact.get('workflow_run', {}).get('id') != int(run_id)
+            or artifact.get('name') != f'shirube-os-{version}-{commit}-{attempt}'
+            or artifact.get('expired') is not False
+            or artifact.get('digest') != 'sha256:'+digest):
+        raise ValueError('Actions artifact identity/run/name/digest/expiry mismatch')
+    try:
+        expiry = datetime.fromisoformat(artifact['expires_at'].replace('Z', '+00:00'))
+        if expiry <= datetime.now(timezone.utc):
+            raise ValueError('Actions artifact expired')
+    except (KeyError, TypeError, AttributeError) as error:
+        raise ValueError('Actions artifact expiry is required') from error
+    # workflow_run.head_sha is the PR event head, not the merged build source.
+    # Exact checkout identity and full remote validation establish that source.
+
+
+def release_snapshot(live):
+    """Stable ownership and complete asset identity; download counts may change."""
+    fields = ('id', 'node_id', 'name', 'label', 'size', 'digest', 'state',
+              'content_type', 'url', 'browser_download_url', 'created_at', 'updated_at')
+    assets = live['assets']
+    if len({a['id'] for a in assets}) != len(assets) or len({a['name'] for a in assets}) != len(assets):
+        raise ValueError('Ambiguous release asset inventory')
+    return ({k: live.get(k) for k in ('id', 'tag_name', 'target_commitish', 'body',
+                                     'name', 'prerelease', 'draft')},
+            sorted([tuple(a.get(k) for k in fields) + ((a.get('uploader') or {}).get('id'),)
+                    for a in assets], key=lambda a: a[0]))
+
+
+def unchanged_draft(version, commit, snapshot):
+    live = require_draft(version, commit)
+    if release_snapshot(live) != snapshot:
+        raise ValueError('Draft ownership or asset inventory changed')
+    return live
 
 
 def gh(*args, json_result=False):
@@ -134,7 +191,7 @@ def resolve():
     if isinstance(pr.get('changed_files'),int) and len(changed)!=pr['changed_files']:
         raise ValueError('Incomplete changed-file inventory; refusing to classify trigger')
     paths=[path for item in changed for path in [item['filename'],item.get('previous_filename','')] if path]
-    if not eligible(os.environ['GITHUB_EVENT_NAME'], event, paths):
+    if not eligible(os.environ['GITHUB_EVENT_NAME'], event, image_paths(paths)):
         emit({'eligible':'false'}); return
     commit = pr['merge_commit_sha']
     identity(commit)
@@ -270,23 +327,31 @@ def promote():
     if not live['draft']:
         verify_published(version,commit);return
     require_draft(version,commit)
+    if (type(live.get('id')) is not int or live['id'] <= 0
+            or live.get('tag_name') != version
+            or f'Source commit: `{commit}`' not in (live.get('body') or '')):
+        raise ValueError('Draft release ID/body/source ownership is required')
+    snapshot=release_snapshot(live)
     require_not_superseded(version)
     artifact_id=os.environ.get('SHIRUBE_ACTIONS_ARTIFACT_ID','')
     digest=os.environ.get('SHIRUBE_ACTIONS_ARTIFACT_DIGEST','')
-    if not artifact_id.isdigit() or not re.fullmatch('[0-9a-f]{64}',digest):
+    run_id=os.environ.get('GITHUB_RUN_ID', '')
+    attempt=os.environ.get('GITHUB_RUN_ATTEMPT', '')
+    if not all(re.fullmatch(r'[1-9][0-9]*', v) for v in (artifact_id, run_id, attempt)) or not re.fullmatch('[0-9a-f]{64}', digest):
         raise ValueError('Successful Actions artifact upload evidence is required')
     artifact=gh('api',f'repos/{REPO}/actions/artifacts/{artifact_id}',json_result=True)
-    if artifact.get('expired') or artifact.get('workflow_run',{}).get('head_sha')!=commit:
-        raise ValueError('Actions artifact is expired or belongs to another source commit')
-    if artifact.get('digest')!='sha256:'+digest:
-        raise ValueError('Actions artifact digest mismatch')
+    artifact_evidence(artifact, artifact_id, digest, run_id, attempt, version, commit)
     with tempfile.TemporaryDirectory() as temporary:
         remote=Path(temporary)/'remote';download(version,remote);validate(remote,commit,version)
+        unchanged_draft(version,commit,snapshot)
         notes=Path(temporary)/'notes.md'
         notes.write_text((live.get('body') or '')+'\n\nVerified Actions artifact: '+
                          f'https://github.com/{REPO}/actions/runs/{artifact["workflow_run"]["id"]}/artifacts/{artifact_id}'+
                          '\nArtifact SHA256: `'+digest+'`\n')
+        artifact_evidence(gh('api', f'repos/{REPO}/actions/artifacts/{artifact_id}', json_result=True),
+                          artifact_id, digest, run_id, attempt, version, commit)
         require_not_superseded(version)
+        unchanged_draft(version,commit,snapshot)
         try:
             gh('release','edit',version,'--repo',REPO,'--notes-file',str(notes),'--draft=false')
         except subprocess.CalledProcessError:
