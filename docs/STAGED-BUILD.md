@@ -353,6 +353,9 @@ successful missing-key stages. Actual outer restores and inner HITs are needed
 to establish reuse. Saves can fail and entries can be evicted. Kernel builds/signs
 freshly, and source/license, ISO, clearance and guest gates still run.
 Actual runner saves and the next warm hit remain **NOT_RUN**.
+Hosted acceptance of the changed Release/validation callers is also **NOT_RUN**;
+local fixtures and lint do not run GitHub's parser. Inspect startup and the
+expected write-capable cache-mode warning on the first ordinary post-merge Release.
 
 既存の適格なマージ後Releaseが通常ビルド中にcache-v2を補充するため、別の全工程ビルドは不要です。
 任意の手動main検証では元リポジトリを使い、`source-ref`を空にしてdispatchの正確なSHAを選びます。
@@ -360,6 +363,9 @@ Stream互換versionとcold/warmの選択は維持します。
 実際の保存と再利用の証拠には、runのSHA、ref、architecture、外側のrestore/save結果、
 内側のHITと入力ID、fingerprint、transfer receiptを記録します。
 この変更では追加ビルドやdispatchを行わず、進行中のReleaseも操作していません。
+変更したRelease・検証callerのGitHub上での受理も**NOT_RUN**です。
+ローカルfixtureとlintはGitHub側のパーサーを実行しません。
+最初の通常のマージ後Releaseで、起動とwrite指定に伴う警告を確認します。
 
 Evidence for issue #17 is offline and synthetic: the mutation matrix covers
 component locks/code, shared contracts, missing/deleted inputs, architecture and

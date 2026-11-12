@@ -71,6 +71,10 @@ post-saves. Cache-v2 keys, inner inventory/integrity/provenance checks and token
 permissions are unchanged. Kernel signing secrets/state, clearance and guest
 success remain fresh and outside shared caches. Actual runner saves and the next
 warm hit remain **NOT_RUN**; fixtures and optional exports prove neither.
+Hosted acceptance of the new Release/validation caller configuration is also
+**NOT_RUN**: Test does not execute those workflows. On the first ordinary
+post-merge Release, inspect workflow startup and the expected write-capable
+cache-mode warning before treating its cache logs as evidence.
 
 Approval to merge into main authorizes executing the merged build recipes with
 cache credentials. Those recipes and **all shared-main cache writers** must be
@@ -118,6 +122,9 @@ GitHubの`cache-mode`（read/write）はサービス側のアクセス制御で�
 Buildxの`cache-binary: false`、cache-v2のキー、内容と来歴の検証、token権限は維持します。
 kernelの署名用秘密鍵と状態、clearance、guest成功結果は共有キャッシュに入れず、毎回検証します。
 実runnerでの保存成功と次回のwarm hitは**NOT_RUN**で、fixtureや任意のexportでは実証できません。
+新しいRelease・検証caller構成のGitHub上での受理も**NOT_RUN**です。Testはそれらを実行しません。
+最初の通常のマージ後Releaseでworkflowの起動と、write指定に伴う警告を確認してから、
+キャッシュログを保存の証拠として扱います。
 
 mainへのマージ承認は、キャッシュ認証情報を持つビルドレシピの実行許可になります。
 承認済みレシピと、mainの共有キャッシュに書き込むすべてのwriterを信頼する必要があります。
