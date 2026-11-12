@@ -382,7 +382,15 @@ In Release `43136908797` at `208705dabd7569a905a661b063e503429ffcc758`, both ISO
 stages passed, but AMD64 clearance stopped at **69.0 GiB** before its body ran.
 AMD64 `iso.tar` measured **5,598,208,000 bytes** (about 5.214 GiB), with sampled
 free space **74.487 → 69.031 GiB**. That tar alone would not cover the 75 GiB
-shortfall. ARM64 clearance succeeded and produced `clearance.tar` of
+shortfall. The same run's AMD64 compiler artifact **13908471514** records
+`compiler.tar` at **3,136,224,256 bytes** in `compiler.json` (`archive_bytes`);
+the ZIP central directory independently reports the same logical file size.
+The two transfer files total **8,734,432,256 bytes** (about 8.135 GiB). Adding
+that logical size to the sampled free space gives about **77.166 GiB**, above
+the gate, but is not a measurement or guarantee of actual filesystem recovery.
+Only 66,114 bytes of bounded ZIP metadata ranges were read for this follow-up;
+the manifest length and ZIP CRC were verified, not the complete tar hash.
+ARM64 clearance succeeded and produced `clearance.tar` of
 **8,290,990,080 bytes** (about 7.722 GiB), with sampled free space
 **95.345 → 69.617 GiB** (the observed minimum). These are 2-second
 whole-filesystem samples, not exact stage peaks or measurements of recovered
@@ -390,7 +398,9 @@ capacity. The original Release finished in failure due to AMD64 admission;
 guests and publish were skipped. No guest capacity failure was observed.
 Source/license success does not establish guest or release acceptance.
 
-Publish previously retained three complete two-architecture asset sets. After
+Publish previously retained three complete two-architecture asset sets. For a
+draft, it now rejects an existing public destination before any download or
+remote mutation, and checks again immediately before moving. After
 aggregate metadata upload succeeds, it now retires only its internally generated
 temporary candidate tree, then freshly downloads and fully validates remote
 assets. It explicitly rejects an existing public destination (including a dangling

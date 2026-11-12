@@ -160,7 +160,8 @@ class ActionsTests(unittest.TestCase):
     def test_publish_lifetime_failures_and_same_or_cross_device_move(self):
         import errno
         for mode in ('same', 'cross', 'upload', 'download', 'validate', 'retire',
-                     'rename-copy-failure', 'copy-delete-failure', 'existing', 'existing-link'):
+                     'rename-copy-failure', 'copy-delete-failure', 'existing', 'existing-link',
+                     'late-existing', 'late-existing-link'):
             with self.subTest(mode=mode), tempfile.TemporaryDirectory() as temporary:
                 base=Path(temporary); store=base/'remote-store'; public=base/'public'
                 if mode=='existing':
@@ -199,6 +200,11 @@ class ActionsTests(unittest.TestCase):
                     manifest=json.loads((path/'manifest.json').read_text())
                     for asset in manifest['assets']:
                         self.assertEqual((path/asset['name']).read_bytes(), asset['name'][:-4].encode())
+                    if path.name=='remote':
+                        if mode=='late-existing':
+                            public.mkdir(); (public/'caller').write_bytes(b'preserve')
+                        if mode=='late-existing-link':
+                            public.symlink_to(base/'absent', target_is_directory=True)
                 def remove(path, *args, **kwargs):
                     if Path(path)==paths.get('candidates'):
                         self.assertEqual(events[-1], 'upload'); events.append('retire')
@@ -219,9 +225,10 @@ class ActionsTests(unittest.TestCase):
                     return real_copy(src,dst,*args,**kwargs)
                 with patch.dict(os.environ, dict(self.environment, SHIRUBE_PUBLIC_DIRECTORY=str(public))), \
                      patch.object(actions,'identity'), patch.object(actions,'gh',side_effect=api) as gh, \
-                     patch.object(actions,'download',side_effect=download), \
+                     patch.object(actions,'download',side_effect=download) as downloads, \
                      patch.object(actions,'validate',side_effect=validate), \
                      patch('shutil.rmtree',side_effect=remove), patch('shutil.copytree',side_effect=copy), \
+                     patch('shutil.move',wraps=shutil.move) as moves, \
                      patch('os.rename',side_effect=rename):
                     if mode in ('same','cross'):
                         actions.publish()
@@ -229,10 +236,25 @@ class ActionsTests(unittest.TestCase):
                         self.assertEqual((public/'amd64.iso').read_bytes(), b'amd64')
                         self.assertEqual((public/'arm64.iso').read_bytes(), b'arm64')
                     else:
-                        with self.assertRaises((OSError,ValueError)): actions.publish()
-                        if mode=='existing': self.assertEqual((public/'caller').read_bytes(), b'preserve')
-                        elif mode=='existing-link': self.assertTrue(public.is_symlink())
+                        error = FileExistsError if mode in ('existing', 'existing-link',
+                                                           'late-existing', 'late-existing-link') else (OSError,ValueError)
+                        with self.assertRaises(error): actions.publish()
+                        if mode in ('existing', 'late-existing'):
+                            self.assertEqual((public/'caller').read_bytes(), b'preserve')
+                            self.assertEqual(list(public.iterdir()), [public/'caller'])
+                        elif mode in ('existing-link', 'late-existing-link'):
+                            self.assertTrue(public.is_symlink())
+                            self.assertEqual(public.readlink(), base/'absent')
                         elif mode!='copy-delete-failure': self.assertFalse(public.exists())
+                    if mode in ('existing', 'existing-link'):
+                        downloads.assert_not_called()
+                        self.assertTrue(all(call.args[0]=='api' and '--method' not in call.args
+                                            for call in gh.call_args_list))
+                    if mode in ('existing', 'existing-link', 'late-existing', 'late-existing-link'):
+                        moves.assert_not_called()
+                    if mode in ('late-existing', 'late-existing-link'):
+                        self.assertEqual(downloads.call_count, 2)
+                        self.assertEqual(events[-1], 'validate-remote')
                     self.assertFalse(any(c.args[:2]==('release','edit') for c in gh.call_args_list))
                 if mode=='upload': self.assertNotIn('retire',events)
                 if mode=='retire': self.assertNotIn('download-remote',events)
