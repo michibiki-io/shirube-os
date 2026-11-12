@@ -17,6 +17,7 @@ on:
         default: cold
   pull_request:
     types: [labeled]
+cache-mode: read
 permissions:
   contents: read
 concurrency:
@@ -50,11 +51,21 @@ jobs:
           fi
           echo "commit=$resolved" >> "$GITHUB_OUTPUT"
   validate:
+    if: github.event_name != 'workflow_dispatch' || github.repository != 'michibiki-io/shirube-os' || github.ref != 'refs/heads/main'
+    cache-mode: read
     needs: resolve
     permissions:
       contents: read
     uses: ./.github/workflows/staged-candidate.yml
-    with:
+    with: &validation-inputs
       commit: ${{ needs.resolve.outputs.commit }}
       version: ${{ inputs.version || 'v2026.03.0' }}
       cache-mode: ${{ inputs.cache-mode || (github.event_name == 'pull_request' && github.event.label.name == 'validate-staged-warm' && 'warm') || 'cold' }}
+  validate-main:
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'michibiki-io/shirube-os' && github.ref == 'refs/heads/main'
+    cache-mode: write
+    needs: resolve
+    permissions:
+      contents: read
+    uses: ./.github/workflows/staged-candidate.yml
+    with: *validation-inputs

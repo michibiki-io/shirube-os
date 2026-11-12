@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "repository": "michibiki-io/shirube-os",
+  "repository_id": 1449410161,
+  "workflow_id": 414368882,
+  "workflow_path": ".github/workflows/release.yml",
+  "run_id": 43164071342,
+  "run_attempt": 1,
+  "source_pr": 21,
+  "source_commit": "4498c6104b65dfae37be1e5ebe8d78c27100884b",
+  "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+  "version": "v2026.03.8",
+  "expires_at": "2026-11-19T05:50:46Z",
+  "entries": [
+    {
+      "stage": "kea",
+      "architecture": "amd64",
+      "input_id": "6f594816cb156ddbe107a85788c8f377e210bbfad874ae2a3fa42b4d09ad24db",
+      "compiler_fingerprint": "sha256:0a99ccb32e350253dcea5cf7b5e70305df166add4bbf5a6a9f37dab7ffe9e960",
+      "transfer": {
+        "bytes": 251258880,
+        "sha256": "834f00ef98233b05745e94f70bdb6d0f82493e8c3239b34108d30b67fa700b45"
+      },
+      "artifact": {
+        "id": 13920583405,
+        "name": "shirube-stage-amd64-kea",
+        "digest": "sha256:0822a8c494ccb55f3cb8cf4814197b1ae604d02d6b7373e169a294cd62ed9500",
+        "size_in_bytes": 252045764,
+        "expires_at": "2026-11-19T06:25:20Z",
+        "created_at": "2026-11-12T06:25:22Z"
+      },
+      "job": {
+        "id": 131005220956,
+        "name": "build / kea (amd64, ubuntu-24.04)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:54Z",
+        "completed_at": "2026-11-12T06:25:24Z"
+      }
+    },
+    {
+      "stage": "native",
+      "architecture": "amd64",
+      "input_id": "03167994ace3a375f89f39caccd1dd9c136aef0d91276fc3f7336f53c78e8c9a",
+      "compiler_fingerprint": "sha256:0a99ccb32e350253dcea5cf7b5e70305df166add4bbf5a6a9f37dab7ffe9e960",
+      "transfer": {
+        "bytes": 826849280,
+        "sha256": "d85128fcfa148c0dc132e9863e56c509b1b33d191d4cde499a96afbc6b824f39"
+      },
+      "artifact": {
+        "id": 13920268182,
+        "name": "shirube-stage-amd64-native",
+        "digest": "sha256:a83b9a02ec546ea72f147e4e39ff61f59269d8739f6df8ec66d69c33c2b20ada",
+        "size_in_bytes": 834503774,
+        "expires_at": "2026-11-19T06:19:21Z",
+        "created_at": "2026-11-12T06:19:27Z"
+      },
+      "job": {
+        "id": 131005220957,
+        "name": "build / native (amd64, ubuntu-24.04)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:54Z",
+        "completed_at": "2026-11-12T06:19:31Z"
+      }
+    },
+    {
+      "stage": "runtime",
+      "architecture": "amd64",
+      "input_id": "18fe386741688bb4103547fb34c1547ec8db4e9c63c99d7d6cab49a251fe6624",
+      "compiler_fingerprint": "sha256:0a99ccb32e350253dcea5cf7b5e70305df166add4bbf5a6a9f37dab7ffe9e960",
+      "transfer": {
+        "bytes": 1359175680,
+        "sha256": "65ed4ef5e15ef79e7508c839dc3af9ff352431cedbe5378777a1b4d821909f52"
+      },
+      "artifact": {
+        "id": 13920875757,
+        "name": "shirube-stage-amd64-runtime",
+        "digest": "sha256:072f38588df25e599ea61686e265758868ededb17c875873f2d77a9a5fe96c98",
+        "size_in_bytes": 1362465197,
+        "expires_at": "2026-11-19T06:17:10Z",
+        "created_at": "2026-11-12T06:17:22Z"
+      },
+      "job": {
+        "id": 131005220933,
+        "name": "build / runtime (amd64, ubuntu-24.04)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:54Z",
+        "completed_at": "2026-11-12T06:17:26Z"
+      }
+    },
+    {
+      "stage": "salt",
+      "architecture": "amd64",
+      "input_id": "28553c4bbdedc9e1b196e590a49d0be18af9af9586e74ce95acc33adea3954ed",
+      "compiler_fingerprint": "sha256:0a99ccb32e350253dcea5cf7b5e70305df166add4bbf5a6a9f37dab7ffe9e960",
+      "transfer": {
+        "bytes": 131932160,
+        "sha256": "8fb3efce85bf840985b149c4e2ccdd72e4064f65f4a8dd4c2d9988bc040c01b6"
+      },
+      "artifact": {
+        "id": 13920492416,
+        "name": "shirube-stage-amd64-salt",
+        "digest": "sha256:4960fc79df58e7618eda30ab9ddae047bca8a84595c837af7bd9ef5a90dc1fdd",
+        "size_in_bytes": 133273769,
+        "expires_at": "2026-11-19T06:18:56Z",
+        "created_at": "2026-11-12T06:18:58Z"
+      },
+      "job": {
+        "id": 131005221086,
+        "name": "build / salt (amd64, ubuntu-24.04)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:54Z",
+        "completed_at": "2026-11-12T06:19:02Z"
+      }
+    },
+    {
+      "stage": "vpp",
+      "architecture": "amd64",
+      "input_id": "d786755069942a2bc4bf260bf4b4de77e5689161b13a4b745702fa040f7c5a51",
+      "compiler_fingerprint": "sha256:0a99ccb32e350253dcea5cf7b5e70305df166add4bbf5a6a9f37dab7ffe9e960",
+      "transfer": {
+        "bytes": 606126080,
+        "sha256": "ebd69073d10a4ac8eab754e41a030bb569e470d72bbae51cbf9cd9a6eaf88da1"
+      },
+      "artifact": {
+        "id": 13922570047,
+        "name": "shirube-stage-amd64-vpp",
+        "digest": "sha256:928e9a053001b3cca21059c37df63e8ca28d0a11cbe9d00d89071fe985900394",
+        "size_in_bytes": 607226531,
+        "expires_at": "2026-11-19T06:47:04Z",
+        "created_at": "2026-11-12T06:47:08Z"
+      },
+      "job": {
+        "id": 131005220970,
+        "name": "build / vpp (amd64, ubuntu-24.04)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:54Z",
+        "completed_at": "2026-11-12T06:47:13Z"
+      }
+    },
+    {
+      "stage": "kea",
+      "architecture": "arm64",
+      "input_id": "8f03bc5cef4187eeb7965f51accf90c1ad5b1ed56702f5e4bbe337279311ea59",
+      "compiler_fingerprint": "sha256:192c43f754628573badda628476e6464be70908c8c07985a7e5b7bf781b9aa43",
+      "transfer": {
+        "bytes": 248719360,
+        "sha256": "639414aeb291160e9213cadc326e663a345a9ad30a3ba328d69c9a0ccaf18776"
+      },
+      "artifact": {
+        "id": 13919868471,
+        "name": "shirube-stage-arm64-kea",
+        "digest": "sha256:f2c17e43a9b76e933084ab7b5854c03bf5b06bba968d106dadc0ee5792961f88",
+        "size_in_bytes": 249506244,
+        "expires_at": "2026-11-19T06:17:07Z",
+        "created_at": "2026-11-12T06:17:09Z"
+      },
+      "job": {
+        "id": 131005220986,
+        "name": "build / kea (arm64, ubuntu-24.04-arm)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:56Z",
+        "completed_at": "2026-11-12T06:17:11Z"
+      }
+    },
+    {
+      "stage": "native",
+      "architecture": "arm64",
+      "input_id": "909003f73a76e409eb9a08d39726c5697c606a844a1ba19cc657415068764f82",
+      "compiler_fingerprint": "sha256:192c43f754628573badda628476e6464be70908c8c07985a7e5b7bf781b9aa43",
+      "transfer": {
+        "bytes": 824289280,
+        "sha256": "581794958ecfb35e17c2f80e6363cb078c2693c8f876113dfc4f34ef43e78412"
+      },
+      "artifact": {
+        "id": 13920387613,
+        "name": "shirube-stage-arm64-native",
+        "digest": "sha256:a3823d06c0718c8a33ed768a65d4dddc672a865a5cb4271e61d1ff47698ceacb",
+        "size_in_bytes": 831943708,
+        "expires_at": "2026-11-19T06:18:47Z",
+        "created_at": "2026-11-12T06:18:51Z"
+      },
+      "job": {
+        "id": 131005220981,
+        "name": "build / native (arm64, ubuntu-24.04-arm)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:56Z",
+        "completed_at": "2026-11-12T06:18:54Z"
+      }
+    },
+    {
+      "stage": "runtime",
+      "architecture": "arm64",
+      "input_id": "19418c8c7435a4c22dea531786f213cd017023a3366319c6e5542f2767ae3f0a",
+      "compiler_fingerprint": "sha256:192c43f754628573badda628476e6464be70908c8c07985a7e5b7bf781b9aa43",
+      "transfer": {
+        "bytes": 1327872000,
+        "sha256": "ae8b328c9fe603a02cd0fefc37464091fd84e0c738ef215535c62d04492a65f3"
+      },
+      "artifact": {
+        "id": 13920685868,
+        "name": "shirube-stage-arm64-runtime",
+        "digest": "sha256:ec30d2de89457164209059fe5af5fb517d52b86f90ee845b9d1c38435159af90",
+        "size_in_bytes": 1331159983,
+        "expires_at": "2026-11-19T06:11:56Z",
+        "created_at": "2026-11-12T06:12:04Z"
+      },
+      "job": {
+        "id": 131005220972,
+        "name": "build / runtime (arm64, ubuntu-24.04-arm)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:57Z",
+        "completed_at": "2026-11-12T06:12:07Z"
+      }
+    },
+    {
+      "stage": "salt",
+      "architecture": "arm64",
+      "input_id": "10354ea3c38e44ebba24317726ba0c9a0f7f8eb3d2e73ef185d086ff0f814811",
+      "compiler_fingerprint": "sha256:192c43f754628573badda628476e6464be70908c8c07985a7e5b7bf781b9aa43",
+      "transfer": {
+        "bytes": 130682880,
+        "sha256": "2db157150c32970201b3d276ee61746173cbcc649d414584bb8a4f57d8493e39"
+      },
+      "artifact": {
+        "id": 13920661888,
+        "name": "shirube-stage-arm64-salt",
+        "digest": "sha256:b845c9e08c1036e4e72cebe501d497a0fbf4faca5b508459df832cde84614d98",
+        "size_in_bytes": 132024489,
+        "expires_at": "2026-11-19T06:17:43Z",
+        "created_at": "2026-11-12T06:17:46Z"
+      },
+      "job": {
+        "id": 131005220893,
+        "name": "build / salt (arm64, ubuntu-24.04-arm)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:57Z",
+        "completed_at": "2026-11-12T06:17:50Z"
+      }
+    },
+    {
+      "stage": "vpp",
+      "architecture": "arm64",
+      "input_id": "9a966afb2bd54409e3548dea580ad01f5ab518e33402097290e7096417a3205c",
+      "compiler_fingerprint": "sha256:192c43f754628573badda628476e6464be70908c8c07985a7e5b7bf781b9aa43",
+      "transfer": {
+        "bytes": 561274880,
+        "sha256": "5d3241b32c448bff3418ec2997b5bb59b1e83701ace6110bac3b25a407f004a7"
+      },
+      "artifact": {
+        "id": 13920288988,
+        "name": "shirube-stage-arm64-vpp",
+        "digest": "sha256:359e78369c5416384a105c60e67323b3be8e58b12dfd5b556acde783ebc513c8",
+        "size_in_bytes": 562375331,
+        "expires_at": "2026-11-19T06:25:14Z",
+        "created_at": "2026-11-12T06:25:17Z"
+      },
+      "job": {
+        "id": 131005220947,
+        "name": "build / vpp (arm64, ubuntu-24.04-arm)",
+        "run_id": 43164071342,
+        "run_attempt": 1,
+        "head_sha": "42f6706d21f7bf306e9d8bcbf7af968242763cdf",
+        "conclusion": "success",
+        "started_at": "2026-11-12T06:00:57Z",
+        "completed_at": "2026-11-12T06:25:20Z"
+      }
+    }
+  ],
+  "referenced_workflow": {
+    "path": "michibiki-io/shirube-os/.github/workflows/staged-candidate.yml@4498c6104b65dfae37be1e5ebe8d78c27100884b",
+    "sha": "4498c6104b65dfae37be1e5ebe8d78c27100884b",
+    "ref": "refs/heads/main"
+  },
+  "head_branch": "feature/#20"
+}

@@ -3,6 +3,7 @@ on:
   pull_request_target:
     types: [closed]
     branches: [main]
+cache-mode: read
 permissions:
   contents: read
 concurrency:
@@ -41,10 +42,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python3 -m producer.actions resolve
   build:
+    cache-mode: write
     needs: resolve
     if: needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'
     permissions:
       contents: read
+      actions: read
     uses: ./.github/workflows/staged-candidate.yml
     with:
       commit: ${{ needs.resolve.outputs.commit }}

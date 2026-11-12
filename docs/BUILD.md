@@ -75,7 +75,8 @@ prunes shared Docker state or stops unrelated workloads.
 The native Dockerfile separates the `toolchain` stage from the final producer
 code, guest integration and logo copies. The merged-release workflow restores
 public compiler layers from the architecture-specific GitHub Actions BuildKit cache
-without exporting new layers. Buildx setup also disables its remote binary cache
+and attempts exports during the existing eligible, non-no-op Release. Buildx
+setup also disables its remote binary cache
 to prevent the action's implicit post-save; local tool-cache reuse is unchanged.
 Runtime containers, signing keys and guest enrollment state never enter those
 layers. Absent or evicted caches can cause a cold build when a release is later run.
@@ -91,21 +92,36 @@ The artifact image contains only library DEBs, preferred sources, notices,
 recipes and hash receipts; compiler workspaces are not exported.
 
 Set `SHIRUBE_LIBRARY_CACHE_STORE` to opt into this path for a local ISO build.
-The release workflow configures it automatically and restores curated artifact
-image archives without saving to GitHub Actions caches. Local compiler/artifact
+The supported [staged Release](STAGED-BUILD.md) automatically restores and saves
+verified public unsigned `native/vpp/kea/salt/runtime` payloads in shared main
+cache-v2 entries. No separate full-build priming run is needed. The local library
+artifact-image store remains a separate reuse path. Local compiler/artifact
 reuse remains available. Before import, image configuration and archive members
 are checked. Before consumption, the producer recomputes its current source and
 dependency identities and audits the actual packages. Changed inputs cause a
 fresh build; corrupt matching entries fail rather than weakening validation.
 
-マージ後のリリースは、アーキテクチャ別のコンパイラーレイヤーとライブラリーの
-アーカイブを復元します。GitHub Actionsキャッシュへのexportや保存は行いません。
-Buildx setupの暗黙のpost保存を防ぐため、そのリモートバイナリーキャッシュも無効にします。
-ローカルのtool-cache再利用は維持します。
-`SHIRUBE_LIBRARY_CACHE_STORE`によるローカル再利用と、入力やパッケージの検証は維持します。
-キャッシュが存在しない場合や削除された場合、後日のリリース実行でコールドビルドが
-必要になることがあります。feature branchのnative trialが既定ブランチのリリース用
-キャッシュを補充するとは限りません。
+GitHub `cache-mode` uses literal `read`/`write` for service access; the existing
+`inputs.cache-mode` uses `cold`/`warm` for prior-cache use. Cache jobs inherit the
+admitted caller mode; other staged jobs explicitly use read. Optional manual
+validation can write only on exact-main dispatch in the original repository.
+Merged recipes and all shared-main writers must be trusted: hashes do not protect
+against a malicious trusted writer. Kernel signing secrets/state, clearance and
+guest results remain fresh. Actual runner saves and the next warm hit are
+**NOT_RUN**. See [Release trust and rules snapshot](RELEASE.md).
+
+マージ後の適格かつno-opでない既存Releaseで、公開コンパイラーレイヤーと
+`native/vpp/kea/salt/runtime`の署名前ペイロードをmainの共有キャッシュに保存します。
+別の全工程ビルドによる初期化は不要です。
+Buildxの暗黙のpost保存は`cache-binary: false`で無効にし、ローカル再利用と入力検証は維持します。
+GitHub `cache-mode`のread/writeはサービス側の権限、`inputs.cache-mode`のcold/warmは
+既存キャッシュの使用選択です。保存ジョブは呼び出し元のモードを継承し、他はreadにします。
+任意の手動検証で書き込めるのは、元リポジトリの正確なmain commitを使うdispatchだけです。
+承認済みレシピとmainの全writerを信頼する必要があり、ハッシュでは悪意ある信頼済みwriterを防げません。
+kernelの署名用秘密鍵と状態、clearance、guestの結果は毎回新しく生成または検証します。
+実runnerでの保存成功と次回warm hitは**NOT_RUN**です。
+キャッシュの欠落や削除で再ビルドが必要になる場合があり、feature branchのnative trialは
+mainキャッシュの補充を保証しません。
 
 Native AMD64 probes built two libraries, saved their artifact images, removed
 their local tags, and restored them with version/artwork/guest-code changes.
@@ -758,3 +774,18 @@ Synthetic regression tests exercise recovery, exhaustion and fail-fast behavior,
 including both architecture renderings without network or compilation. Real
 dependency downloads, native compilation, hosted CI/review of this change, full
 builds and license scans remain `NOT_RUN` for this fix.
+
+## Temporary unsigned transfer fallback
+
+The ordinary warm merged-main Release has a fixed artifact fallback window;
+local, PR, manual and cold builds compile normally. See the
+[bounded fallback contract](STAGED-BUILD.md#bounded-original-release-artifact-fallback)
+for full verification, original/current provenance and disk/quota limits.
+The old compiler docker-save is not a BuildKit cache. Fixture results do not
+prove hosted import, cache save or subsequent HIT; these remain NOT_RUN.
+
+通常のwarmマージ後Releaseには固定成果物の取り込み期限があります。
+ローカル、PR、手動、coldのビルドは通常どおりコンパイルします。
+検証、元と現行の来歴、ディスクとquotaの制限は上記contractを参照してください。
+古いcompilerのdocker-saveはBuildKit cacheではありません。
+fixtureはhosted import、保存、後続HITの証拠にはならず、これらはNOT_RUNです。

@@ -12,13 +12,13 @@ workflow](STAGED-BUILD.md), whose hosted acceptance remains NOT_RUN.
 Release runs are serialized with `queue: max`, retaining up to 100 pending runs
 instead of replacing a previous pending merge. GitHub's queue limit still applies;
 cancelled runs can be retried for the same eligible merge. The pinned actionlint
-does not yet understand `queue`; the workflow checker validates its values,
-cancellation policy and duplicate keys separately, suppressing only that known
-unsupported-key diagnostic. All other actionlint checks remain enabled.
+does not yet understand `queue` or `cache-mode`; independent workflow validators
+check queue/cancellation policy, literal cache access, reusable caller caps and
+duplicate keys, suppressing only those unsupported-key diagnostics. All other actionlint checks remain enabled.
 
 リリースは`queue: max`で直列実行し、GitHubの上限である100件まで待機できます。
 待機中のマージを次のマージで置き換えません。取り消された実行は同じ適格マージで再実行します。
-固定版actionlintが未対応の`queue`は別途検証し、他のlint検証は維持します。
+固定版actionlintが未対応の`queue`と`cache-mode`は別途検証し、他のlint検証は維持します。
 
 The workflow resolves the commit/version and both runners once, reserves an
 unpublished draft, builds native ISO/QCOW2/VMDK/source candidates, stages complete
@@ -52,32 +52,48 @@ the exact merged source before expensive builds. Test success does not establish
 image acceptance. The native trial remains explicitly dispatched on feature
 branches with its existing cache behavior.
 
-Release caches are restore-only: compiler `cache-from` and library
-`actions/cache/restore` keep their keys, scopes and paths. There is no GHA export,
-cache save (including post/failure paths), or cache-write privilege override.
-Buildx setup uses `cache-binary: false` to prevent its implicit remote binary
-cache post-save, including on runners without preinstalled Buildx.
-Local reuse and package/source checks remain in place. Absent or evicted caches
-may require a cold build when a release is later run; feature-branch native-trial
-caches cannot be assumed to populate default-branch release caches.
-The staged workflow permits compiler export and unsigned-stage saves only for
-intentional `workflow_dispatch` or `pull_request` validation, with event/ref-scoped
-cache visibility. PR merge-ref caches are not generally visible to a later main
-release. The dispatch ref determines cache scope; `source-ref` only selects source.
-Restores are attempts, and optional compiler exports with `ignore-error=true`
-are not evidence of verified hits or successful warming. Hosted warm acceptance
-and capacity remain NOT_RUN.
+The existing eligible, non-no-op merged Release automatically attempts to populate
+shared main caches: public compiler layers and unsigned `native`, `vpp`, `kea`,
+`salt` and `runtime` payloads. No separate full-build priming run is required.
+Release defaults to GitHub `cache-mode: read`; its gated build caller explicitly
+uses literal `write`. The six cache jobs inherit that effective mode and caller
+cap. Admission and all other staged jobs explicitly use `read`. Inline admission
+independently gates every compiler export and stage save after checking the
+original repository, main ref, closed/merged main PR and exact event merge SHA.
+A queued merge SHA may differ from `github.sha` or the later main tip.
+PR validation, fork-repository dispatch and feature dispatch use a read caller.
+Optional exact-main manual validation uses a separate, mutually exclusive write
+caller only in `michibiki-io/shirube-os`; its resolver checks source equals
+`github.sha` before repository Python. See [cache contracts](STAGED-BUILD.md#automatic-main-cache-population-and-optional-validation).
+
+GitHub keyword `cache-mode` (`read`/`write`) controls service access, separately
+from `inputs.cache-mode` (`cold`/`warm`), which selects intentional prior-cache use.
+Stage saves require success and no exact outer hit; optional compiler export uses
+`ignore-error=true`. Buildx keeps `cache-binary: false` to prevent implicit binary
+post-saves. Cache-v2 keys and inner inventory/integrity/provenance checks remain
+unchanged. Kernel signing secrets/state, clearance and guest
+success remain fresh and outside shared caches. Actual runner saves and the next
+warm hit remain **NOT_RUN**; fixtures and optional exports prove neither.
+Hosted acceptance of the new Release/validation caller configuration is also
+**NOT_RUN**: Test does not execute those workflows. On the first ordinary
+post-merge Release, inspect workflow startup and the expected write-capable
+cache-mode warning before treating its cache logs as evidence.
+
+Approval to merge into main authorizes executing the merged build recipes with
+cache credentials. Those recipes and **all shared-main cache writers** must be
+trusted. Hashes preserve integrity/provenance; they cannot protect against a
+malicious trusted writer. Cache eviction may still require fresh compilation.
 
 Existing compiler artifacts remain bound to the original source commit and run.
 Same-run recovery revalidates those bindings; it cannot establish acceptance of
 a new commit. Rerunning an old run uses its old workflow/code and does not apply
 this fix. Do not relabel or substitute artifacts across runs.
 
-The 2026-11-11 rule-inspection snapshot records
+The 2026-11-12 rule-inspection snapshot records
 [main ruleset 26762240](https://github.com/michibiki-io/shirube-os/rules/26762240):
-PR approval (including Code Owner review and resolved review threads), deletion
-protection and non-fast-forward protection. No required-status-check or merge-queue
-rule was returned; classic branch protection reported `Branch not protected`.
+one approving PR review (with stale-review dismissal, Code Owner review and
+resolved review threads), deletion protection and non-fast-forward protection. No required-status-check or merge-queue
+rule was returned.
 This snapshot is not a guarantee of future rules, and no repository settings
 were changed. If status-check or merge-queue requirements change,
 reassess the PR-only event mapping; Test currently has no `merge_group` coverage.
@@ -89,29 +105,43 @@ PRのclose、手動実行、`merge_group`では起動しません。ジョブ名
 Testの成功だけではイメージの合格を意味しません。native trialはfeature branchでの
 明示的な手動実行と既存のキャッシュ動作を維持します。
 
-リリースではコンパイラーとライブラリーのキャッシュを復元するだけで、キー、スコープ、
-パスを維持します。post処理や失敗時を含め、GHAへのexportや保存、書き込み権限の拡張は
-行いません。Buildx未導入のrunnerでも暗黙のpost保存が起きないよう、setupには
-`cache-binary: false`を指定します。ローカル再利用とパッケージ、ソースの検証は維持します。
-キャッシュの欠落や削除により、後日のリリース実行でコールドビルドが必要になる場合が
-あります。feature branchのnative trialによる既定ブランチのキャッシュ補充は保証しません。
-ステージ分割workflowでコンパイラーのexportと署名前ステージの保存を許可するのは、
-明示的な検証イベントの`workflow_dispatch`と`pull_request`だけです。
-キャッシュの可視範囲はイベントとrefに依存し、PRのmerge refのキャッシュを
-後日のmainリリースで利用できるとは限りません。
-手動実行ではdispatch refがキャッシュのスコープを決め、`source-ref`はソースだけを選びます。
-復元の試行や`ignore-error=true`による任意のexportは、検証済みのヒットや保存成功の証拠にはなりません。
-ホスト上のwarm合格判定と容量の検証はNOT_RUNです。
+既存のReleaseは、適格かつno-opでないマージ後の実行で、公開コンパイラーと
+署名前の`native`、`vpp`、`kea`、`salt`、`runtime`をmainの共有キャッシュに自動保存します。
+別の全工程ビルドによる初期化は不要です。
+ReleaseのGitHub `cache-mode`は既定で`read`とし、既存ゲートを通るbuild呼び出しだけを
+リテラルの`write`にします。保存する6ジョブは呼び出し元の実効モードと上限を継承し、
+admissionと他のステージジョブは明示的に`read`を指定します。
+inline admissionは元リポジトリ、main ref、mainへのclosedかつmergedなPR、
+イベントの正確なmerge SHAを検証し、すべてのexportとsaveを個別に制御します。
+待機中のmerge SHAは`github.sha`や後続のmain先端と異なっていても構いません。
+PR、forkリポジトリ、feature dispatchはreadで呼び出します。
+任意の手動検証は元リポジトリのmain dispatchだけを排他的なwrite経路にし、
+リポジトリのPython実行前にsourceと`github.sha`の一致を確認します。
+
+GitHubの`cache-mode`（read/write）はサービス側のアクセス制御で、
+既存キャッシュを使うか選ぶ`inputs.cache-mode`（cold/warm）とは別です。
+ステージは成功し、正確な外側キーのヒットがない場合だけ保存します。
+コンパイラーのexportは`ignore-error=true`による任意の試行です。
+Buildxの`cache-binary: false`、cache-v2のキー、内容と来歴の検証は維持します。
+kernelの署名用秘密鍵と状態、clearance、guest成功結果は共有キャッシュに入れず、毎回検証します。
+実runnerでの保存成功と次回のwarm hitは**NOT_RUN**で、fixtureや任意のexportでは実証できません。
+新しいRelease・検証caller構成のGitHub上での受理も**NOT_RUN**です。Testはそれらを実行しません。
+最初の通常のマージ後Releaseでworkflowの起動と、write指定に伴う警告を確認してから、
+キャッシュログを保存の証拠として扱います。
+
+mainへのマージ承認は、キャッシュ認証情報を持つビルドレシピの実行許可になります。
+承認済みレシピと、mainの共有キャッシュに書き込むすべてのwriterを信頼する必要があります。
+ハッシュは整合性と来歴を検証しますが、悪意ある信頼済みwriterからは保護できません。
+キャッシュの削除や欠落によって再コンパイルが必要になる場合もあります。
 
 既存のコンパイラー成果物は元のソースcommitとrunに結び付いたままです。
 同じrunの復旧でもこの対応を再検証し、新しいcommitの合格根拠にはできません。
 古いrunの再実行は古いworkflowとコードを使うため、この修正は適用されません。
 別runの成果物への付け替えや、ラベルを変更した流用はしません。
 
-2026-11-11の確認記録では、[mainのruleset 26762240](https://github.com/michibiki-io/shirube-os/rules/26762240)に
-PR承認、Code Ownerレビュー、レビュースレッドの解決、削除禁止、non-fast-forward禁止が
-あります。required status checkとmerge queueのルールは返されず、従来のbranch protectionは
-`Branch not protected`でした。この記録は将来のルールを保証せず、設定も変更していません。
+2026-11-12の確認記録では、[mainのruleset 26762240](https://github.com/michibiki-io/shirube-os/rules/26762240)に
+1件のPR承認、追加push時の承認失効、Code Ownerレビュー、レビュースレッドの解決、削除禁止、non-fast-forward禁止が
+あります。required status checkとmerge queueのルールは返されていません。この記録は将来のルールを保証せず、設定も変更していません。
 status checkやmerge queueの要件が変わる場合は、PR専用の起動条件を再確認します。
 現状のTestは`merge_group`を検証しません。
 
@@ -262,6 +292,20 @@ TCGを受け付け、hosted runnerの既定値もTCGです。ただし設定の�
 合格ではありません。過去のARM64 TCGコンポーネント試験と、保持候補のnative KVM
 試験は区別し、hosted候補全体の容量・時間・ランタイムの合格は別途必要です。
 
+## Fixed unsigned artifact migration window
+
+Normal trusted warm Release misses may use the fixed successful unsigned stages
+from run `43164071342` until `2026-11-19T05:50:46Z`. The build caller alone adds
+`actions: read`, inherited only by the five importing jobs; PR/manual callers
+retain contents-only permissions. Full bounds, provenance, failure behavior and
+NOT_RUN hosted evidence are in the [fallback contract](STAGED-BUILD.md#bounded-original-release-artifact-fallback).
+No source Release operation or separate full build is part of this migration.
+
+通常の信頼済みwarm Releaseのmissでは、`2026-11-19T05:50:46Z`まで固定runの成功した署名前stageを取り込めます。
+build callerにだけ`actions: read`を追加し、対象5jobが継承します。
+PRと手動callerの権限は広げません。
+制限、来歴、失敗時の動作、NOT_RUNの実環境証拠は上記contractを参照してください。
+元Releaseの操作や別の全工程ビルドは行いません。
 
 ## Completed v2026.03.8 recovery (Issues #24 and #26)
 
