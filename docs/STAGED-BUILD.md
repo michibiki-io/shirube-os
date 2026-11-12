@@ -196,21 +196,60 @@ host state or publication credentials.
 
 Cold compiler production omits cache-from and sets no-cache; cold stage jobs
 skip Actions cache restore and start with empty cache directories.
-Release-origin `pull_request_target` executions are restore-only, including
-post/failure paths; Buildx uses `cache-binary: false`.
-Only a `workflow_dispatch` on `refs/heads/main` in `michibiki-io/shirube-os`,
-with resolved source exactly equal to `github.sha`, can write these shared
-compiler/stage namespaces. The resolver checks the resolved SHA in inline shell
-before repository Python. The reusable workflow independently admits the caller
-in a job with no checkout or project imports; all build jobs depend on it.
-Its trusted `cache-write` output controls every BuildKit export and stage save.
-Merged `pull_request_target` releases must be closed, merged into main in the
-caller repository, run on main, and pass the exact event merge SHA. Queued merge
-SHAs need not equal the newer main tip. They remain restore-only, as do PR
-validation and non-main dispatches. Unknown events, malformed commits, cache
-modes other than cold/warm, and mismatched source/event data are rejected.
-No `cache-mode: write`, extra credentials, security-setting changes or new
-build scheduler are introduced.
+Eligible, non-no-op `pull_request_target` Releases automatically attempt shared
+main cache population after the existing resolution/reservation gates. Release
+and validation callers default to literal GitHub `cache-mode: read`. Release's
+build caller explicitly uses `write`. Validation uses mutually exclusive callers:
+only original-repository main `workflow_dispatch` uses literal `write`; PR,
+feature and fork-repository validation use `read`. The reusable workflow has no
+top-level cache-mode: compiler/native/vpp/kea/salt/runtime inherit the caller's
+effective mode and cap; admission/kernel/integration/iso/clearance/guests explicitly
+use `read`. A job overrides its workflow default. A callee requesting beyond an
+explicit caller cap is a validation error even if step guards would block saves.
+No expressions are used for this keyword. The independent cache-mode validator
+checks literals, inheritance and caller caps before the narrow actionlint 1.7.12
+unsupported-key suppression; other lint checks remain enabled.
+
+The reusable workflow independently admits the caller with no checkout or project
+imports; every build job depends on it. Its `cache-write` output controls every
+BuildKit export and stage save. Release writes require `michibiki-io/shirube-os`,
+main ref, closed/merged main PR, matching base repository and exact event merge
+SHA. A queued merge SHA need not equal `github.sha` or the later main tip.
+Optional main dispatch writes require source exactly equal to `github.sha`;
+the resolver checks this in inline shell before repository Python. PR validation,
+fork repositories and non-main dispatches cannot populate shared main caches.
+Unknown events, malformed commits, cache modes other than cold/warm and mismatched
+source/event data are rejected. Buildx keeps `cache-binary: false`; token
+permissions and cache-v2 input/provenance code are unchanged.
+
+GitHub `cache-mode` (`read`/`write`) controls service access; `inputs.cache-mode`
+(`cold`/`warm`) selects prior-cache use. Merge approval authorizes the merged build
+recipes to execute with cache credentials. All merged recipes and all shared-main
+cache writers must be trusted: hashes verify integrity/provenance but cannot
+protect against a malicious trusted writer. The [2026-11-12 rules snapshot](RELEASE.md)
+records ruleset 26762240 approval/Code Owner/resolved-thread requirements and
+deletion/non-fast-forward protection, with no returned required status checks or
+merge_queue rule. No protections were changed.
+
+既存Releaseは、適格かつno-opでないmainマージで共有キャッシュへの保存を自動的に試みます。
+Releaseと検証workflowはGitHub `cache-mode: read`を既定とし、Releaseのbuild呼び出しと
+元リポジトリのmain手動検証だけがリテラルの`write`を指定します。
+再利用workflowにはトップレベルの指定を置かず、保存する6ジョブが呼び出し元の実効モードと上限を継承します。
+admission、kernel、integration、iso、clearance、guestsは明示的にreadを指定します。
+ジョブ指定はworkflow既定値を上書きします。呼び出し元の明示的な上限を超える要求は、
+保存stepの条件に関係なく検証エラーになります。
+inline admissionはcheckout前にイベントと正確なソースを検証し、すべてのexportとsaveを制御します。
+Releaseはイベントのmerge SHAを使い、待機中に進んだmain先端との一致は求めません。
+手動main検証は`github.sha`との一致が必要で、PR、fork、feature dispatchはreadに制限します。
+
+GitHubのread/writeはアクセス権限で、`inputs.cache-mode`のcold/warmとは別です。
+mainへのマージ承認は、キャッシュ認証情報を持つレシピの実行許可になります。
+承認済みレシピとmainの全writerを信頼する必要があり、ハッシュでは悪意ある信頼済みwriterを防げません。
+2026-11-12のruleset 26762240の記録には承認、Code Owner、スレッド解決、削除禁止、
+non-fast-forward禁止があり、required status checkとmerge_queueは返されていません。
+保護設定は変更していません。
+kernelの署名用秘密鍵と状態、clearance、guest成功結果は共有キャッシュに入れず、毎回新しく生成または検証します。
+実runnerでの保存成功と次回warm hitは**NOT_RUN**です。
 
 Successful eligible stages save only after success when there was no exact
 outer hit. Compiler BuildKit export is optional (`ignore-error=true`). Restore
@@ -295,31 +334,32 @@ compiler fingerprint therefore gets a new outer key, which can be saved and
 restored on the following run instead of repeatedly missing inside an immutable
 outer hit. No fallback prefix keys are used.
 
-### Main cache priming after merge (not run for this change)
+### Automatic main cache population and optional validation
 
-The new v2 namespaces require an initial trusted main population. After merge,
-a maintainer can use the existing **Validate staged candidate without publishing**
-workflow on main, with a Stream-compatible version. Leave `source-ref` empty to
-use that dispatch's exact workflow SHA; the resolver and reusable admission both
-reject a main dispatch resolving to another commit. For example, these are
-**post-merge operator commands, not executions recorded here**:
+The existing eligible merged Release populates missing cache-v2 entries during
+its normal build; no separate full-build primer is required. Optional manual
+**Validate staged candidate without publishing** validation on main must use the
+original repository and the dispatch's exact workflow SHA. Leave `source-ref`
+empty for that SHA; an arbitrary source on main is rejected before repository
+Python. Keep the Stream-compatible version and intentional cold/warm selection.
+No additional full build or workflow dispatch was run for this change, and the
+ongoing Release was left untouched.
 
-```sh
-gh workflow run validate-staged.yml --ref main -f cache-mode=cold -f version=v2026.03.0
-# After the first run completes, inspect compiler/stage cache-save logs and gates.
-gh workflow run validate-staged.yml --ref main -f cache-mode=warm -f version=v2026.03.0
-```
+For actual post-merge evidence, record the run's exact source SHA, ref,
+architecture, outer restore/save results, inner `resources.json` cache status,
+input ID/fingerprint and transfer receipts. Compare unchanged relevant inputs
+on a later warm run. Cold skips restores and attempts saves; warm also saves
+successful missing-key stages. Actual outer restores and inner HITs are needed
+to establish reuse. Saves can fail and entries can be evicted. Kernel builds/signs
+freshly, and source/license, ISO, clearance and guest gates still run.
+Actual runner saves and the next warm hit remain **NOT_RUN**.
 
-Record each run's exact `head_sha`, ref, architecture, outer restore/save results,
-inner `resources.json` cache status/input ID/fingerprint and transfer receipts.
-Use identical relevant component/toolchain inputs for the warm comparison.
-The cold run skips restores and attempts saves; saves may fail or entries may
-be evicted. The warm run must show actual outer restores **and inner HITs** to
-establish reuse. Kernel must build/sign freshly in both runs, and source/license,
-ISO, clearance and guest acceptance still run. Subsequent normal merged releases
-read these default-branch entries without writing them. PR and non-main
-validation cannot populate this shared namespace, and an arbitrary `source-ref`
-on a main dispatch is rejected before project execution.
+既存の適格なマージ後Releaseが通常ビルド中にcache-v2を補充するため、別の全工程ビルドは不要です。
+任意の手動main検証では元リポジトリを使い、`source-ref`を空にしてdispatchの正確なSHAを選びます。
+Stream互換versionとcold/warmの選択は維持します。
+実際の保存と再利用の証拠には、runのSHA、ref、architecture、外側のrestore/save結果、
+内側のHITと入力ID、fingerprint、transfer receiptを記録します。
+この変更では追加ビルドやdispatchを行わず、進行中のReleaseも操作していません。
 
 Evidence for issue #17 is offline and synthetic: the mutation matrix covers
 component locks/code, shared contracts, missing/deleted inputs, architecture and
@@ -330,9 +370,9 @@ subsequent HIT, current commit rebinding and original content provenance. Workfl
 tests execute the trusted admission code and resolver guard, and cover event/ref/
 exact-commit/cache-mode/success/hit combinations. Existing archive/security and
 downstream-gate tests remain required. These tests establish no actual hosted
-cache hit, native speedup or current native acceptance. Main cold priming and
-native warm verification are explicitly **NOT_RUN premerge**. No workflow was
-triggered and the ongoing release was left untouched.
+cache hit, native speedup or current native acceptance. Actual runner saves and
+the next warm hit are explicitly **NOT_RUN**. No workflow was triggered and the
+ongoing release was left untouched.
 
 ## ISO, clearance and guest transfer retirement and builder entrypoint
 

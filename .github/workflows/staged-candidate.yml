@@ -13,8 +13,11 @@ on:
         default: warm
 permissions:
   contents: read
+# Cache jobs inherit the caller's effective mode and cap; do not set a workflow
+# default here, which would override that inheritance. Other jobs opt into read.
 jobs:
   admission:
+    cache-mode: read
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
@@ -56,6 +59,7 @@ jobs:
               require(ref == 'refs/heads/main' and pr.get('base', {}).get('ref') == 'main')
               require(pr.get('base', {}).get('repo', {}).get('full_name') == repo)
               require(commit == pr.get('merge_commit_sha'))
+              write = repo == 'michibiki-io/shirube-os'
           elif event == 'pull_request':
               pr = data.get('pull_request', {})
               require(data.get('action') == 'labeled')
@@ -561,6 +565,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   kernel:
+    cache-mode: read
     needs: [admission, compiler, vpp]
     strategy:
       fail-fast: false
@@ -630,6 +635,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   integration:
+    cache-mode: read
     needs: [admission, compiler, native, vpp]
     strategy:
       fail-fast: false
@@ -703,6 +709,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   iso:
+    cache-mode: read
     needs: [admission, compiler, native, vpp, kea, salt, runtime, kernel, integration]
     strategy:
       fail-fast: false
@@ -796,6 +803,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   clearance:
+    cache-mode: read
     needs: [admission, compiler, iso]
     strategy:
       fail-fast: false
@@ -865,6 +873,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   guests:
+    cache-mode: read
     needs: [admission, compiler, clearance]
     strategy:
       fail-fast: false
