@@ -23,7 +23,10 @@ class RecoveryTests(unittest.TestCase):
         self.content = {'manifest.json': b'manifest fixture', 'SHA256SUMS': b'checksum fixture'}
         self.content.update({f'asset-{i}': b'x' for i in range(180)})
         self.assets = [{'id': i+1, 'name': name, 'size': len(data), 'state': 'uploaded',
-                        'digest': 'sha256:'+digest(data), 'uploader': {'id': 10}}
+                        'digest': 'sha256:'+digest(data), 'uploader': {'id': 10},
+                        'url': f'https://api.github.com/repos/{actions.REPO}/releases/assets/{i+1}',
+                        'browser_download_url': f'https://github.com/{actions.REPO}/releases/download/'
+                                                f'untagged-c89c1a020127f1476b34/{name}'}
                        for i, (name, data) in enumerate(self.content.items())]
         self.metadata = {a['name']: (a['id'], a['size'], a['digest'][7:])
                          for a in self.assets[:2]}
@@ -58,6 +61,7 @@ class RecoveryTests(unittest.TestCase):
                           'object': {'type': 'commit', 'sha': recovery.SOURCE}}]
         self.tag_objects = {}
         self.after_download = lambda: None
+        self.after_edit = lambda: None
         self.edit_mode = 'success'
         self.controller = Path('/unused/controller')
         self.source = Path('/unused/original-source')
@@ -76,9 +80,11 @@ class RecoveryTests(unittest.TestCase):
                     self.tag_refs = [{'ref': f'refs/tags/{recovery.VERSION}',
                                       'object': {'type': 'commit', 'sha': recovery.SOURCE}}]
                 self.live['body'] = Path(args[args.index('--notes-file')+1]).read_text()
+                self.publish_asset_urls()
+                self.after_edit()
             if self.edit_mode in ('uncertain', 'still-draft'):
                 raise subprocess.CalledProcessError(1, ['gh', 'release', 'edit'])
-            if self.edit_mode == 'changed': self.assets[0]['id'] += 1000
+            if self.edit_mode == 'changed': self.assets[10]['id'] += 1000
             return ''
         prefix = f'repos/{actions.REPO}/'
         path = args[-1].removeprefix(prefix)
@@ -97,6 +103,17 @@ class RecoveryTests(unittest.TestCase):
         if path == f'git/matching-refs/tags/{recovery.VERSION}': return [copy.deepcopy(self.tag_refs)]
         if path.startswith('git/tags/'): return {'object': copy.deepcopy(self.tag_objects[path[9:]])}
         self.fail(f'Unexpected/forbidden gh operation: {args}')
+
+    def publish_asset_urls(self):
+        for asset in self.assets:
+            asset['browser_download_url'] = (f'https://github.com/{actions.REPO}/releases/download/'
+                                             f'{recovery.VERSION}/{asset["name"]}')
+
+    def assert_published_asset_urls(self):
+        for asset in self.assets:
+            self.assertEqual(asset['browser_download_url'],
+                             f'https://github.com/{actions.REPO}/releases/download/'
+                             f'{recovery.VERSION}/{asset["name"]}')
 
     def download(self, version, root):
         self.assertEqual(version, recovery.VERSION)
@@ -121,7 +138,12 @@ class RecoveryTests(unittest.TestCase):
 
     def test_unequal_head_source_success_one_download_one_edit(self):
         self.assertNotEqual(recovery.HEAD, recovery.SOURCE)
+        before = copy.deepcopy(self.assets)
         self.assertEqual(self.execute(), 'RECOVERED')
+        self.assert_published_asset_urls()
+        for draft, published in zip(before, self.assets):
+            self.assertNotEqual(draft['browser_download_url'], published['browser_download_url'])
+            self.assertEqual(draft['url'], published['url'])
         self.assertEqual(sum(c[:2] == ('release', 'edit') for c in self.calls), 1)
         self.assertIn('no aggregate ZIP was downloaded', self.live['body'])
         self.assertIn('`'+'c'*40+'`', self.live['body'])
@@ -292,7 +314,41 @@ class RecoveryTests(unittest.TestCase):
     def test_uncertain_edit_reconciles_without_second_edit_or_validation(self):
         self.edit_mode = 'uncertain'
         self.assertEqual(self.execute(), 'RECOVERED')
+        self.assert_published_asset_urls()
         self.assertEqual(sum(c[:2] == ('release', 'edit') for c in self.calls), 1)
+
+    def test_stable_asset_mutations_rejected_in_both_publication_readbacks(self):
+        original = copy.deepcopy(self.live)
+        for mode in ('success', 'uncertain'):
+            for field, value in [('id', 999), ('name', 'renamed'), ('size', 2),
+                                 ('digest', 'sha256:'+'a'*64), ('state', 'new'),
+                                 ('uploader', {'id': 99}), ('url', 'https://api.github.com/changed')]:
+                with self.subTest(mode=mode, field=field):
+                    self.live = copy.deepcopy(original)
+                    self.assets = self.live['assets']
+                    self.calls.clear()
+                    self.edit_mode = mode
+                    self.after_edit = lambda: self.assets[10].update({field: value})
+                    with self.assertRaises(ValueError): self.execute()
+                    self.assertEqual(sum(c[:2] == ('release', 'edit') for c in self.calls), 1)
+
+    def test_pre_edit_browser_url_mutation_rejected_at_both_boundaries(self):
+        original = recovery.unchanged
+        url = self.assets[10]['browser_download_url']
+        for boundary in (1, 2):
+            self.assets[10]['browser_download_url'] = url
+            self.calls.clear()
+            count = 0
+            def unchanged(snapshot):
+                nonlocal count
+                count += 1
+                if count == boundary:
+                    self.assets[10]['browser_download_url'] = url+'-changed'
+                return original(snapshot)
+            with self.subTest(boundary=boundary), patch.object(recovery, 'unchanged', side_effect=unchanged):
+                with self.assertRaisesRegex(ValueError, 'Release ownership/inventory changed'):
+                    self.execute()
+                self.no_mutation()
 
     def test_uncertain_still_draft_and_changed_readback_fail_without_retry(self):
         for mode in ('still-draft', 'changed'):
@@ -302,9 +358,21 @@ class RecoveryTests(unittest.TestCase):
 
     def test_published_rerun_only_verifies_despite_supersession(self):
         self.live['draft'] = False
+        self.publish_asset_urls()
+        before = actions.release_snapshot(self.live)
         self.artifact['expired'] = True  # published bytes outlive the upload evidence
         with patch.object(actions, 'require_not_superseded', side_effect=AssertionError('must not allocate')):
             self.assertEqual(self.execute(), 'NO_OP')
+        self.assertEqual(actions.release_snapshot(self.live), before)
+        self.assert_published_asset_urls()
+        self.no_mutation()
+
+    def test_published_no_op_still_rejects_browser_url_mutation(self):
+        self.live['draft'] = False
+        self.publish_asset_urls()
+        self.after_download = lambda: self.assets[10].update(browser_download_url='https://github.com/changed')
+        with self.assertRaisesRegex(ValueError, 'Release ownership/inventory changed'):
+            self.execute()
         self.no_mutation()
 
     def test_wrong_published_tag_and_changed_bytes_are_rejected(self):

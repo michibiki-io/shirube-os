@@ -189,6 +189,15 @@ def unchanged(snapshot):
     return live
 
 
+def publication_snapshot(live):
+    # Only publication readback may ignore the browser URL: GitHub replaces
+    # its draft untagged path with the version tag. Stable API URLs and all
+    # other ownership/asset fields still use the strict shared snapshot.
+    assets = [{k: v for k, v in asset.items() if k != 'browser_download_url'}
+              for asset in live['assets']]
+    return actions.release_snapshot(dict(live, assets=assets))
+
+
 def validate_original(source, root):
     # Run the untouched original module in its own cwd/import context. Its
     # module-relative source-lock and source_fixtures are retained. No GH token,
@@ -283,13 +292,13 @@ def recover():
             # Never retry the edit or download/validate the large asset set again.
             current = candidate()
             expected = dict(live, draft=False, body=notes)
-            require(actions.release_snapshot(current) == actions.release_snapshot(expected),
+            require(publication_snapshot(current) == publication_snapshot(expected),
                     'Uncertain publication did not produce the exact expected release')
             published_tag()
             return 'RECOVERED'
         current = candidate()
         expected = dict(live, draft=False, body=notes)
-        require(actions.release_snapshot(current) == actions.release_snapshot(expected),
+        require(publication_snapshot(current) == publication_snapshot(expected),
                 'Publication readback differs from verified release')
         published_tag()
     return 'RECOVERED'
