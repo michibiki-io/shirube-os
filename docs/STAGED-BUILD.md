@@ -198,19 +198,26 @@ Cold compiler production omits cache-from and sets no-cache; cold stage jobs
 skip Actions cache restore and start with empty cache directories.
 Release-origin `pull_request_target` executions are restore-only, including
 post/failure paths; Buildx uses `cache-binary: false`.
-Only intentional validation events `workflow_dispatch` and `pull_request` permit
-writes: compiler production attempts optional BuildKit export with
-`ignore-error=true` under the same architecture/input-content scope as restores.
-Successful unsigned stage jobs save verified payloads under identical cold/warm
-content keys when there was no exact cache hit. A cold validation run can seed
-later warm runs only if saving succeeds and their refs can access that cache.
-PR merge-ref caches are not generally visible to later main releases.
-The dispatch ref determines cache scope; selecting `source-ref` changes the
-source checkout, not that scope. Restore attempts and optional compiler exports
-do not establish verified cache hits or successful warming. Original
-content-commit attribution and all cache validation remain required; kernel
-signing and kernel state are never cached. Hosted warm acceptance, capacity,
-warm performance and actual cross-run reuse remain NOT_RUN.
+Only a `workflow_dispatch` on `refs/heads/main` in `michibiki-io/shirube-os`,
+with resolved source exactly equal to `github.sha`, can write these shared
+compiler/stage namespaces. The resolver checks the resolved SHA in inline shell
+before repository Python. The reusable workflow independently admits the caller
+in a job with no checkout or project imports; all build jobs depend on it.
+Its trusted `cache-write` output controls every BuildKit export and stage save.
+Merged `pull_request_target` releases must be closed, merged into main in the
+caller repository, run on main, and pass the exact event merge SHA. Queued merge
+SHAs need not equal the newer main tip. They remain restore-only, as do PR
+validation and non-main dispatches. Unknown events, malformed commits, cache
+modes other than cold/warm, and mismatched source/event data are rejected.
+No `cache-mode: write`, extra credentials, security-setting changes or new
+build scheduler are introduced.
+
+Successful eligible stages save only after success when there was no exact
+outer hit. Compiler BuildKit export is optional (`ignore-error=true`). Restore
+attempts and optional exports do not establish verified reuse. Original content
+attribution, exact inventory/hash/scope validation and all downstream gates
+remain required; kernel signing and kernel state are never cached. Hosted warm
+acceptance, capacity, warm performance and actual cross-run reuse remain NOT_RUN.
 Actions caches are acceleration, while Actions artifacts are required handoffs.
 Cache eviction cannot replace an artifact or a failed prerequisite.
 
@@ -223,6 +230,109 @@ a sanitized hash-bound clearance diagnostic, including a FAIL license decision;
 that diagnostic cannot clear a candidate. Metrics and diagnostics are separate from cleared release
 assets. GitHub download/upload step timings and compiler preparation resource
 peaks still require job-log evidence; worker wall time excludes those outer steps.
+
+### Component identities and conservative shared inputs (issue #17)
+
+[`producer/component_inputs.py`](../producer/component_inputs.py) defines one
+versioned manifest for each existing compile boundary. `build_scope()` hashes
+that manifest for both the producer's validation and the Actions outer key.
+The manifest records architecture, selected source-lock values, required recipe
+files (including executable state), ordered patch inventories and selected
+catalog jobs with their dependency graph and flags. Missing declared files,
+missing selected lock values, unknown components/architectures and incomplete
+selected job graphs fail closed. Repository `containers/native` and `patches/*`
+paths normalize to the Dockerfile's `/src/native`, `/src/vyos-patches` and
+`/kernel-patches` aliases; host/container equivalence is regression-tested.
+Compile identities never hash the entire `source-lock.json` or producer tree.
+Noncompile scope retains the existing broad inputs.
+
+| Component | Additional selected inputs |
+| --- | --- |
+| native | Nonkernel catalog jobs; package/HTTP/Rust recipes and locks; Cargo/Debian source helpers |
+| vpp | VPP and VPP-patches revisions; VPP Python/external locks and input helper |
+| kea | Kea packaging revision and pinned Meson build tool |
+| salt | Salt tools revision, SDK/source lock, Salt Python/Cargo/source helpers |
+| runtime | vyos-utils/i2util revisions; Go SDK, Telegraf dependency and notice overrides; Go module/notice helpers and FPM recipe |
+| kernel | Kernel job, ordered kernel patch tree, nat-rtsp/ipt-netflow revisions, embedded notices and module/signing recipes; verified VPP input and payload identity; **uncacheable** |
+
+All compile stages authenticate the Stream source and export full vyos-build
+recipe material, prepare branding, Bash archive and network-diagnostic metadata,
+and retain source preparation/provenance. Therefore every manifest includes the
+full Stream authentication record, selected architecture base, Debian snapshots,
+LICENSE/logo, `force_mtu_host.sh`, and explicit shared source/export/security
+helpers. Actual toolchain declarations include the Dockerfile toolchain prefix,
+architecture base pin, gem installer and gem lock. These declarations also cover
+pinned non-dpkg tools; the effective installed compiler fingerprint remains an
+independent input. The current `.dockerignore` excludes Git/work/output/Python
+cache artifacts and does not exclude declared build inputs. Same-run compiler
+artifact validation still checks it and the complete current COPY context.
+
+The full `build.py`, `producer/native_common.py`, shared contract modules, and
+(for stages using it) `extras.py.in` are conservative recipe inputs. Edits to an unrelated function
+in those shared files can still miss multiple component caches. This is deliberate;
+function-text hashing could omit a transitive dependency. New build dependencies
+must be declared and covered by mutation tests. The generic `go_notice()` helper
+moved unchanged to `producer/go_notices.py`, shared by FPM and NetBird consumers,
+so NetBird-specific code can change without losing runtime notice dependencies.
+The `generate()` and `run()` helpers moved unchanged from `image.py` to
+`producer/native_common.py`; `image.py` reexports them for existing consumers.
+Compile stages import the shared helpers directly and no longer include
+`image.py` in their manifests. NetBird lock/code (including guest packaging in
+`image.py`), guest, cloud-init and GeoIP-only changes leave these compile
+identities stable; integration/downstream identities remain broad and include
+`image.py`.
+
+The compiler BuildKit namespace uses `toolchain_identity()` rather than producer
+COPY content. BuildKit still receives the complete actual current context and
+rebuilds changed producer layers. This namespace is separate from exact same-run
+compiler image transfer verification. After verified compiler load, Actions runs
+the exact loaded image with `--read-only --network none` to compute the outer
+stage key. It calls the same `build_scope()` and `compiler_fingerprint()` as the
+actual stage. The immutable key is
+`shirube-stage-v2-<stage>-<architecture>-<inner input_id>`; the fingerprint is
+part of that input ID, and is **not** the Docker image config ID. A changed real
+compiler fingerprint therefore gets a new outer key, which can be saved and
+restored on the following run instead of repeatedly missing inside an immutable
+outer hit. No fallback prefix keys are used.
+
+### Main cache priming after merge (not run for this change)
+
+The new v2 namespaces require an initial trusted main population. After merge,
+a maintainer can use the existing **Validate staged candidate without publishing**
+workflow on main, with a Stream-compatible version. Leave `source-ref` empty to
+use that dispatch's exact workflow SHA; the resolver and reusable admission both
+reject a main dispatch resolving to another commit. For example, these are
+**post-merge operator commands, not executions recorded here**:
+
+```sh
+gh workflow run validate-staged.yml --ref main -f cache-mode=cold -f version=v2026.03.0
+# After the first run completes, inspect compiler/stage cache-save logs and gates.
+gh workflow run validate-staged.yml --ref main -f cache-mode=warm -f version=v2026.03.0
+```
+
+Record each run's exact `head_sha`, ref, architecture, outer restore/save results,
+inner `resources.json` cache status/input ID/fingerprint and transfer receipts.
+Use identical relevant component/toolchain inputs for the warm comparison.
+The cold run skips restores and attempts saves; saves may fail or entries may
+be evicted. The warm run must show actual outer restores **and inner HITs** to
+establish reuse. Kernel must build/sign freshly in both runs, and source/license,
+ISO, clearance and guest acceptance still run. Subsequent normal merged releases
+read these default-branch entries without writing them. PR and non-main
+validation cannot populate this shared namespace, and an arbitrary `source-ref`
+on a main dispatch is rejected before project execution.
+
+Evidence for issue #17 is offline and synthetic: the mutation matrix covers
+component locks/code, shared contracts, missing/deleted inputs, architecture and
+host/container aliases. A real stage-dispatch/transfer fixture mocks compilation
+and installed-environment observation, models immutable outer save/restore, and
+checks cold MISS, warm HIT, corrupt MISS_INVALID, changed-fingerprint save and
+subsequent HIT, current commit rebinding and original content provenance. Workflow
+tests execute the trusted admission code and resolver guard, and cover event/ref/
+exact-commit/cache-mode/success/hit combinations. Existing archive/security and
+downstream-gate tests remain required. These tests establish no actual hosted
+cache hit, native speedup or current native acceptance. Main cold priming and
+native warm verification are explicitly **NOT_RUN premerge**. No workflow was
+triggered and the ongoing release was left untouched.
 
 ## ISO transfer retirement and builder entrypoint
 

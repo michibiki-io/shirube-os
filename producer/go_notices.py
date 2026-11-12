@@ -15,4 +15,3 @@ def go_notice(archive,target):
                 data=source.extractfile(member).read()
                 if data.strip():output.write(('\nNotice: '+member.name+'\n').encode()+data+b'\n');count+=1
     if not count:raise ValueError('Go source has no retained legal notices')
-
