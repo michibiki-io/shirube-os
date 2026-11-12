@@ -214,13 +214,13 @@ class StageEntryPointTests(unittest.TestCase):
         import sys
         from types import SimpleNamespace
         from producer import staged
-        from producer.stage_artifacts import scope
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);src=root/'src';src.mkdir()
-            (src/'native').mkdir()
-            (src/'native/packages.json').write_text('{"jobs":[]}')
-            (src/'source-lock.json').write_text('{"stream":{"version":"2026.03"}}')
-            expected=scope('native','amd64',{'recipe':'a'*64},'sha256:'+'b'*64,{})
+            from component_fixture import component_project
+            from producer.component_inputs import outer_key
+            component_project(src, container=True)
+            expected=build_scope(src,'native','amd64','sha256:'+'b'*64,{})
+            hosted_store = {}
             original_path=Path
             def mapped(value='.',*parts):
                 value=str(value)
@@ -235,7 +235,15 @@ class StageEntryPointTests(unittest.TestCase):
                 payload=output/'stage';payload.mkdir()
                 (payload/'preferred-source.c').write_text('synthetic preferred source')
                 (payload/'fixture.deb').write_text('mock package; never compiled')
-            def invoke(name,commit='c'*40):
+            def invoke(name,commit='c'*40, compiler='sha256:'+'b'*64):
+                nonlocal expected
+                expected=build_scope(src,'native','amd64',compiler,{})
+                key=outer_key(expected)
+                # Model exact immutable hosted restore/save with disposable local cache.
+                import shutil
+                cache=root/'cache'
+                if cache.exists(): shutil.rmtree(cache)
+                if key in hosted_store: shutil.copytree(hosted_store[key],cache)
                 output=root/name;output.mkdir()
                 # Each invocation represents a fresh disposable container.
                 work=root/'work'
@@ -244,14 +252,16 @@ class StageEntryPointTests(unittest.TestCase):
                     shutil.rmtree(work)
                 with patch.object(staged,'Path',side_effect=mapped), \
                      patch('producer.architecture.native'), \
-                     patch('producer.library_cache.compiler_fingerprint',return_value='sha256:'+'b'*64), \
+                     patch('producer.library_cache.compiler_fingerprint',return_value=compiler), \
                      patch.object(staged,'restore_inputs',return_value=({},{})), \
-                     patch.object(staged,'build_scope',return_value=expected), \
                      patch.dict(sys.modules,{'build':SimpleNamespace(main=synthetic_compile)}), \
                      patch.object(sys,'argv',['staged','native','amd64','--commit',commit,'--version','v2026.03.0',
                                               '--output',str(output),'--cache',str(root/'cache')]), \
                      patch.object(sys,'path',list(sys.path)):
                     staged.main()
+                if key not in hosted_store:
+                    stored=root/('hosted-'+str(len(hosted_store)))
+                    shutil.copytree(cache,stored);hosted_store[key]=stored
                 return json.loads((output/'transfer.json').read_text()),json.loads((output/'resources.json').read_text())
             first,cold=invoke('cold')
             self.assertEqual(cold['cache'],'MISS');self.assertEqual(len(builds),1)
@@ -260,10 +270,21 @@ class StageEntryPointTests(unittest.TestCase):
             self.assertEqual(second['source_commit'],'d'*40)
             self.assertEqual(second['content_source_commit'],'c'*40)
             self.assertEqual(first['payload_id'],second['payload_id'])
-            (root/'cache'/expected['input_id']/'transfer.tar').write_bytes(b'corrupt fixture')
+            (hosted_store[outer_key(expected)]/expected['input_id']/'transfer.tar').write_bytes(b'corrupt fixture')
             third,retry=invoke('retry')
             self.assertEqual(retry['cache'],'MISS_INVALID');self.assertEqual(len(builds),2)
             self.assertEqual(first['payload_id'],third['payload_id'])
+            # Same declared manifest, different actual compiler: new immutable
+            # outer key gets saved; the following fresh runner is an inner HIT.
+            fourth,changed=invoke('changed-compiler', compiler='sha256:'+'e'*64)
+            self.assertEqual(changed['cache'],'MISS');self.assertEqual(len(builds),3)
+            self.assertEqual(first['scope']['inputs'],fourth['scope']['inputs'])
+            self.assertEqual(len(hosted_store),2)
+            fifth,rewarm=invoke('changed-compiler-warm','f'*40,compiler='sha256:'+'e'*64)
+            self.assertEqual(rewarm['cache'],'HIT');self.assertEqual(len(builds),3)
+            self.assertEqual(fifth['source_commit'],'f'*40)
+            self.assertEqual(fifth['content_source_commit'],'c'*40)
+            self.assertEqual(fourth['payload_id'],fifth['payload_id'])
 
 
 class SourceHandoffTests(unittest.TestCase):
@@ -389,11 +410,11 @@ class ContentIdentityTests(unittest.TestCase):
     def test_license_decisions_and_guest_changes_do_not_recompile_dependencies(self):
         from producer.staged import build_scope
         with tempfile.TemporaryDirectory() as temporary:
-            root=Path(temporary)
-            for name in ['source-lock.json','native/Dockerfile','native/build.py','native/package.sh',
-                         'native/extras.py.in','native/image.py','producer/recipe.py','LICENSE',
-                         'shirube-os-logo.svg','NOTICE','license-audit.json','guest/service.py']:
-                path=root/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('synthetic input')
+            root=Path(temporary)/'src'
+            from component_fixture import component_project
+            component_project(root, container=True)
+            (root/'guest').mkdir()
+            (root/'guest/service.py').write_text('synthetic guest')
             compiler='sha256:'+'b'*64
             before=build_scope(root,'vpp','amd64',compiler,{})
             downstream=build_scope(root,'clearance','amd64',compiler,{'iso':'c'*64})

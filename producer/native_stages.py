@@ -188,9 +188,7 @@ def export_compile(stage, sources, packages, destination, architecture):
 def finish_compile(stage, sources, packages, public_output, architecture):
     """All signing happens here, before the only export, in one private job."""
     from .stage_artifacts import inventory
-    import sys
-    sys.path.insert(0, '/src/native')
-    from image import generate, run
+    from .native_common import generate, run
     root = generate(architecture)
     Path('/sources').symlink_to(sources)
     debs = Path('/debs'); debs.mkdir(exist_ok=True)

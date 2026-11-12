@@ -36,7 +36,19 @@ jobs:
           persist-credentials: false
       - id: source
         name: Resolve one exact commit without reserving a release
-        run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+        env:
+          CALLER_EVENT: ${{ github.event_name }}
+          CALLER_REF: ${{ github.ref }}
+          WORKFLOW_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          resolved=$(git rev-parse HEAD)
+          [[ "$resolved" =~ ^[0-9a-f]{40}$ ]]
+          # Before any repository Python: main cache ownership requires this SHA.
+          if [[ "$CALLER_EVENT" == workflow_dispatch && "$CALLER_REF" == refs/heads/main ]]; then
+            test "$resolved" = "$WORKFLOW_SHA"
+          fi
+          echo "commit=$resolved" >> "$GITHUB_OUTPUT"
   validate:
     needs: resolve
     permissions:

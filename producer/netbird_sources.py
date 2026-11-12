@@ -10,6 +10,7 @@ import os
 from .architecture import native
 from .bundles import bundle
 from .go_modules import build_info,retain_inputs
+from .go_notices import go_notice
 from .sources import extract,sha256
 
 
@@ -78,20 +79,6 @@ def vendor_files(vendor,info,linked):
         for archive in opened.values():archive.close()
     if seen!=wanted:raise ValueError('Incomplete linked module source selection')
     return result
-
-
-def go_notice(archive,target):
-    count=0
-    with tarfile.open(archive) as source,target.open('wb') as output:
-        output.write(b'Go compiler/standard-library source notices; upstream terms remain applicable.\n')
-        for member in source:
-            path=Path(member.name)
-            if (member.isfile() and (path.name.lower().startswith(('license','licence','copying','copyright','notice','patents','authors'))
-                    or any(part.lower() in {'licenses','licences'} for part in path.parts))):
-                if member.size>4*1024**2:raise ValueError('Oversized Go legal notice')
-                data=source.extractfile(member).read()
-                if data.strip():output.write(('\nNotice: '+member.name+'\n').encode()+data+b'\n');count+=1
-    if not count:raise ValueError('Go source has no retained legal notices')
 
 
 def collect_prepared(binary,asset_archive,arch,prepared,output,restore):

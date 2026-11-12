@@ -59,7 +59,7 @@ def prepare(args):
             if not original.exists():download('https://go.dev/dl/'+sdk.name,original)
             if sha256(original)!=lock['sha256'][arch]:raise ValueError('Go reconstruction SDK checksum mismatch')
             shutil.copy2(original,sdk)
-            from producer.netbird_sources import go_notice
+            from producer.go_notices import go_notice
             standard=inputs/'go-copyright';go_notice(sdk,standard)
             notices.append(('Go standard library/runtime', [standard]))
             records.append({'kind':'go-sdk-with-standard-library-source','version':lock['version'],'file':sdk.name,'sha256':sha256(sdk),

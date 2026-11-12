@@ -1,6 +1,11 @@
 """Offline contracts for release cache restores and PR-only CI events."""
 from pathlib import Path
 import ast
+import copy
+import json
+import os
+import subprocess
+import tempfile
 import unittest
 
 import yaml
@@ -115,21 +120,27 @@ class WorkflowCacheCITests(unittest.TestCase):
     def test_heavy_stages_and_real_dependencies_have_separate_jobs(self):
         from producer.staged import DEPENDENCIES
         jobs=self.staged['jobs']
-        self.assertEqual(set(jobs),{'compiler',*DEPENDENCIES})
+        self.assertEqual(set(jobs),{'admission','compiler',*DEPENDENCIES})
+        self.assertEqual(jobs['compiler']['needs'], ['admission'])
         for stage,dependencies in DEPENDENCIES.items():
             job=jobs[stage]
-            self.assertEqual(set(job['needs']),{'compiler',*dependencies})
+            self.assertEqual(set(job['needs']),{'admission','compiler',*dependencies})
             self.assertLess(int(job['timeout-minutes']),360)
             self.assertEqual(job['strategy']['matrix']['include'],[
                 {'architecture':'amd64','runner':'ubuntu-24.04'},
                 {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
             commands=[step['run'] for step in job['steps'] if 'run' in step]
-            self.assertEqual(len(commands),2)
+            cacheable = stage in {'native','vpp','kea','salt','runtime'}
+            self.assertEqual(len(commands),3 if cacheable else 2)
+            if cacheable:
+                self.assertIn('producer.component_inputs stage-key',commands[1])
+                self.assertIn('--read-only --network none',commands[1])
+                self.assertIn('--entrypoint python3',commands[1])
             self.assertIn('producer.compiler_artifact load',commands[0])
-            self.assertIn('scripts/run-native-stage.py',commands[1])
+            self.assertIn('scripts/run-native-stage.py',commands[-1])
             self.assertEqual('--discard-archive' in commands[0], stage == 'iso')
-            self.assertEqual('--discard-input-archives' in commands[1], stage == 'iso')
-            self.assertNotIn('scripts/build-release.sh',commands[1])
+            self.assertEqual('--discard-input-archives' in commands[-1], stage == 'iso')
+            self.assertNotIn('scripts/build-release.sh',commands[-1])
             downloads=[step['with']['name'] for step in job['steps']
                        if step.get('uses','').startswith('actions/download-artifact@')]
             self.assertEqual(set(downloads),{'shirube-compiler-${{ matrix.architecture }}', *{'shirube-stage-${{ matrix.architecture }}-'+d for d in dependencies}})
@@ -144,7 +155,12 @@ class WorkflowCacheCITests(unittest.TestCase):
                 self.assertEqual(restore['if'],"inputs.cache-mode == 'warm'")
                 self.assertNotIn('restore-keys',restore['with'])
                 key=restore['with']['key']
-                self.assertIn('hashFiles',key)
+                self.assertEqual(key, '${{ steps.scope.outputs.key }}')
+                scope_step=next(step for step in job['steps'] if step.get('id')=='scope')
+                loader=next(step for step in job['steps'] if step.get('id')=='image')
+                self.assertLess(job['steps'].index(loader), job['steps'].index(scope_step))
+                self.assertEqual(scope_step['env']['COMPILER_IMAGE'], '${{ steps.image.outputs.imageid }}')
+                self.assertIn('--stage '+stage, scope_step['run'])
                 self.assertNotIn('inputs.commit',key)
                 self.assertNotIn('github.sha',key)
             for step in job['steps']:
@@ -156,7 +172,8 @@ class WorkflowCacheCITests(unittest.TestCase):
         compiler=[s for s in jobs['compiler']['steps'] if s.get('id')=='image'][0]['with']
         self.assertEqual(compiler['no-cache'],"${{ inputs.cache-mode == 'cold' }}")
         self.assertNotIn('github.run_id',compiler['cache-to'])
-        self.assertIn('hashFiles',compiler['cache-to'])
+        self.assertIn('steps.toolchain.outputs.key',compiler['cache-to'])
+        self.assertNotIn('hashFiles',compiler['cache-to'])
         self.assertTrue(compiler['cache-from'].startswith("${{ inputs.cache-mode == 'warm' &&"))
         self.assertTrue(compiler['cache-from'].endswith("|| '' }}"))
 
@@ -171,11 +188,13 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertNotIn('cache-mode',settings['cache-to'])
         # The same input patterns feed restore/save; neither run ID nor commit
         # attribution changes the content key for a subsequent warm run.
-        self.assertEqual(settings['cache-from'].split('hashFiles(',1)[1].split('))',1)[0],
-                         settings['cache-to'].split('hashFiles(',1)[1].split(')',1)[0])
+        for key in ('cache-from', 'cache-to'):
+            self.assertIn('steps.toolchain.outputs.key', settings[key])
+        namespace=next(step for step in producer if step.get('id')=='toolchain')
+        self.assertIn('producer.component_inputs compiler-key --project .', namespace['run'])
         self.assertTrue(any('producer.compiler_artifact export' in s.get('run','') for s in producer))
         for name,job in jobs.items():
-            if name=='compiler':continue
+            if name in {'admission','compiler'}:continue
             steps=job['steps']
             self.assertFalse(any(s.get('uses','').startswith(('docker/build-push-action@',
                                                                           'docker/setup-buildx-action@')) for s in steps))
@@ -193,7 +212,7 @@ class WorkflowCacheCITests(unittest.TestCase):
             self.assertEqual(len(saves),len(restores))
             for save,restore in zip(saves,restores):
                 self.assertEqual(restore['if'],"inputs.cache-mode == 'warm'")
-                self.assertEqual(save['if'],"(github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'")
+                self.assertEqual(save['if'],"needs.admission.outputs.cache-write == 'true' && success() && steps.cache.outputs.cache-hit != 'true'")
                 self.assertEqual(save['with'],restore['with'])
                 self.assertIn('--cache',execute['run'])
             if name=='kernel':
@@ -217,9 +236,11 @@ class WorkflowCacheCITests(unittest.TestCase):
                                               success=success, architecture=arch):
                                 context = {'github.event_name': event, 'inputs.cache-mode': mode,
                                            'steps.cache.outputs.cache-hit': hit,
-                                           'success()': success, 'matrix.architecture': arch}
-                                allowed = event in ('workflow_dispatch', 'pull_request')
-                                scope = 'scope=shirube-staged-compiler-' + arch + '-fixture-input-hash'
+                                           'success()': success, 'matrix.architecture': arch,
+                                           'needs.admission.outputs.cache-write': 'true' if event == 'workflow_dispatch' else 'false',
+                                           'steps.toolchain.outputs.key': 'compiler-fixture-key-'+arch}
+                                allowed = event == 'workflow_dispatch'
+                                scope = 'scope=compiler-fixture-key-' + arch
                                 self.assertEqual(expression_value(compiler['cache-to'], context),
                                                  'type=gha,mode=max,ignore-error=true,' + scope
                                                  if allowed else '')
@@ -234,6 +255,97 @@ class WorkflowCacheCITests(unittest.TestCase):
                                                    if s.get('uses', '').startswith('actions/cache/restore@'))
                                     self.assertEqual(expression_value(restore['if'], context),
                                                      mode == 'warm', name)
+
+    def admission(self, event='workflow_dispatch', ref='refs/heads/main', commit='a'*40,
+                  sha='a'*40, repo='michibiki-io/shirube-os', data=None, mode='cold'):
+        if data is None:
+            data = {'repository': {'full_name': repo}}
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); event_path=root/'event.json'; event_path.write_text(json.dumps(data))
+            output=root/'output'
+            env={**os.environ, 'SOURCE_COMMIT':commit, 'CACHE_MODE':mode,
+                 'GITHUB_SHA':sha, 'GITHUB_REF':ref, 'GITHUB_REPOSITORY':repo,
+                 'GITHUB_EVENT_NAME':event, 'GITHUB_EVENT_PATH':str(event_path),
+                 'GITHUB_OUTPUT':str(output)}
+            result=subprocess.run(['bash','-e','-c',self.staged['jobs']['admission']['steps'][0]['run']],
+                                  cwd=temp, env=env, capture_output=True, text=True)
+            return result.returncode, output.read_text().strip() if output.exists() else ''
+
+    def test_trusted_inline_admission_event_ref_repository_and_exact_sha_matrix(self):
+        repo='michibiki-io/shirube-os'
+        release={'repository':{'full_name':repo},'action':'closed', 'pull_request':{
+            'state':'closed','merged':True,'merge_commit_sha':'b'*40,'base':{'ref':'main','repo':{'full_name':repo}}}}
+        pr={'repository':{'full_name':repo},'action':'labeled','label':{'name':'validate-staged'},
+            'pull_request':{'head':{'sha':'b'*40},'base':{'repo':{'full_name':repo}}}}
+        # A queued merged release may be older than GITHUB_SHA/main's current tip.
+        cases=[({},True,True), ({'mode':'warm'},True,True),
+               ({'commit':'b'*40},False,False),
+               ({'commit':'main'},False,False), ({'sha':'main'},False,False),
+               ({'mode':'write'},False,False), ({'ref':'refs/tags/v1'},False,False),
+               ({'ref':'refs/heads/feature/cache','commit':'b'*40},True,False),
+               ({'repo':'fork/shirube-os'},True,False),
+               ({'event':'pull_request_target','commit':'b'*40,'data':release},True,False),
+               ({'event':'pull_request_target','data':release},False,False),
+               ({'event':'pull_request_target','commit':'b'*40,'ref':'refs/heads/other','data':release},False,False),
+               ({'event':'pull_request','commit':'b'*40,'ref':'refs/pull/17/merge','data':pr},True,False),
+               ({'event':'pull_request','commit':'b'*40,'data':pr},False,False),
+               ({'event':'pull_request','commit':'c'*40,'ref':'refs/pull/17/merge','data':pr},False,False)]
+        for event in ('push','workflow_run','workflow_call','schedule','unknown'):
+            cases.append(({'event':event},False,False))
+        for path,value in [(('action',),'opened'), (('pull_request','merged'),False),
+                           (('pull_request','state'),'open'),
+                           (('pull_request','base','ref'),'other'),
+                           (('pull_request','base','repo','full_name'),'fork/repo'),
+                           (('repository','full_name'),'fork/repo')]:
+            data=copy.deepcopy(release); parent=data
+            for key in path[:-1]: parent=parent[key]
+            parent[path[-1]]=value
+            cases.append(({'event':'pull_request_target','commit':'b'*40,'data':data},False,False))
+        for context,admitted,writes in cases:
+            with self.subTest(context=context):
+                status,output=self.admission(**context)
+                self.assertEqual(status==0,admitted)
+                self.assertEqual(output, 'cache-write='+str(writes).lower() if admitted else '')
+                for mode in ('cold','warm'):
+                    for hit in ('true','false',''):
+                        for success in (True,False):
+                            save=next(s for s in self.staged['jobs']['native']['steps']
+                                      if s.get('uses','').startswith('actions/cache/save@'))
+                            self.assertEqual(expression_value(save['if'], {
+                                'needs.admission.outputs.cache-write':str(writes).lower(),
+                                'success()':success,'steps.cache.outputs.cache-hit':hit}),
+                                writes and success and hit!='true')
+
+    def test_no_project_execution_before_admission_and_resolver_main_sha_guard(self):
+        jobs=self.staged['jobs']; admission=jobs['admission']
+        self.assertNotIn('needs',admission)
+        self.assertEqual(len(admission['steps']),1)
+        step=admission['steps'][0]
+        self.assertNotIn('uses',step)
+        self.assertIn('python3 -I',step['run'])
+        self.assertNotIn('producer',step['run'])
+        for name,job in jobs.items():
+            if name!='admission': self.assertIn('admission',job['needs'])
+        resolver=self.validation['jobs']['resolve']['steps']
+        guard=resolver[-1]
+        self.assertEqual(guard['id'],'source')
+        self.assertFalse(any('run' in step for step in resolver[:-1]))
+        self.assertNotIn('python', '\n'.join(line for line in guard['run'].lower().splitlines() if not line.lstrip().startswith('#')))
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); git=root/'git'; output=root/'output'
+            git.write_text('#!/bin/sh\nprintf "%s\\n" "$RESOLVED_SHA"\n');git.chmod(0o755)
+            for ref,resolved,admitted in [('refs/heads/main','a'*40,True),
+                                         ('refs/heads/main','b'*40,False),
+                                         ('refs/heads/feature/cache','b'*40,True),
+                                         ('refs/heads/main','main',False)]:
+                with self.subTest(ref=ref, resolved=resolved):
+                    output.unlink(missing_ok=True)
+                    result=subprocess.run(['bash','-e','-c',guard['run']],cwd=temp,capture_output=True,
+                        env={**os.environ,'PATH':temp+':'+os.environ['PATH'],'RESOLVED_SHA':resolved,
+                             'CALLER_EVENT':'workflow_dispatch','CALLER_REF':ref,'WORKFLOW_SHA':'a'*40,
+                             'GITHUB_OUTPUT':str(output)})
+                    self.assertEqual(result.returncode==0,admitted)
+                    self.assertEqual(output.exists(),admitted)
 
     def test_publication_keeps_two_architecture_and_uploaded_artifact_gates(self):
         self.assertEqual(self.release['on'],{'pull_request_target':{'types':['closed'],'branches':['main']}})

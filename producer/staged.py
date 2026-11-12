@@ -46,7 +46,14 @@ def validate_discard_inputs(stage, directory, output, cache=None):
 
 
 def build_scope(project, stage, architecture, compiler, dependencies):
-    """Hash actual recipes/patches/locks; commit remains separate attribution."""
+    """Canonical compile manifest or broad downstream inputs; separate attribution."""
+    if stage not in DEPENDENCIES: raise ValueError('Unknown build stage')
+    expected = set(DEPENDENCIES[stage])
+    if set(dependencies) != expected: raise ValueError('Incomplete stage predecessors')
+    if stage in COMPILE_STAGES:
+        from .component_inputs import manifest
+        return scope(stage, architecture, {'component-manifest-v1': digest(manifest(project, stage, architecture))},
+                     compiler, dependencies)
     project = Path(project)
     native = project / 'containers/native'
     if not native.is_dir(): native = project / 'native'
@@ -66,10 +73,6 @@ def build_scope(project, stage, architecture, compiler, dependencies):
         if directory.is_dir(): paths += [p for p in directory.rglob('*') if p.is_file()]
     inputs = {str(p.relative_to(project)) if p.is_relative_to(project) else 'kernel-patches/'+p.name: sha256(p)
               for p in paths}
-    # /src in producer images renames native/patch paths; scope is always
-    # calculated inside the producer, with this same public layout.
-    expected = set(DEPENDENCIES[stage])
-    if set(dependencies) != expected: raise ValueError('Incomplete stage predecessors')
     return scope(stage, architecture, inputs, compiler, dependencies)
 
 

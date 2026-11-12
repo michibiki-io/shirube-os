@@ -34,15 +34,11 @@ class ExtraStageAPTTests(unittest.TestCase):
                 'stage-dependencies/vpp/vpp-sdk/sdk.json': '{}',
                 'build-private/kernel/source/certs/signing_key.pem': 'synthetic key',
                 'build-private/kernel/source/certs/signing_key.x509': 'synthetic certificate',
-                'src/source-lock.json': '{"stream":{"version":"2026.03"}}',
-                'src/native/packages.json': '{"jobs":[]}',
-                'src/LICENSE': 'synthetic public license',
-                'src/shirube-os-logo.svg': '<svg/>',
-                **{'src/native/' + name: '# synthetic recipe input\n' for name in
-                   ('Dockerfile', 'build.py', 'package.sh', 'extras.py.in', 'image.py')},
             }.items():
                 path = root / name; path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(content)
+            from component_fixture import component_project
+            component_project(root / 'src', container=True)
             (root / 'inputs').mkdir()
             (root / 'stage-dependencies/vpp/debs').mkdir()
 
@@ -76,7 +72,8 @@ class ExtraStageAPTTests(unittest.TestCase):
             exporter = Mock(side_effect=export)
             with patch.object(native_stages, 'Path', side_effect=mapped), \
                  patch.object(staged, 'Path', side_effect=mapped), \
-                 patch.dict(sys.modules, {'image': SimpleNamespace(generate=generate, run=run)}), \
+                 patch('producer.native_common.generate', generate), \
+                 patch('producer.native_common.run', run), \
                  patch.object(native_stages, 'export_compile', exporter), \
                  patch('producer.library_cache.compiler_fingerprint', return_value=COMPILER), \
                  patch.object(native_stages.subprocess, 'check_output',

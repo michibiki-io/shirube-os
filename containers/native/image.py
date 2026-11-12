@@ -21,19 +21,7 @@ from producer.packages import audit
 from producer.notices import snapshot, mark_changed, PACKAGE_MODIFICATIONS
 from producer.sanitize import HOSTS
 from producer.integration import notice_bytes
-
-
-def run(*args, **kwargs):
-    return subprocess.run(args,check=True,**kwargs)
-
-
-def generate(arch):
-    root=Path('/opt/stream'); root.mkdir(parents=True)
-    multi=subprocess.check_output(['dpkg-architecture','-qDEB_HOST_MULTIARCH'],text=True).strip()
-    for template in Path('/src/native').glob('*.py.in'):
-        (root/template.name.removesuffix('.in')).write_text(template.read_text().replace('@ARCH@',arch).replace('@MULTIARCH@',multi))
-    shutil.copy2('/src/native/external-sources.lock.json',root/'external-sources.lock.json')
-    return root
+from producer.native_common import generate, run
 
 
 def guest_package(arch, version):
@@ -229,7 +217,9 @@ def run_image_builder(build, source, arch, version, public, env):
 
 def assemble(sources, packages, arch, version, output, *, prepared=None):
     from producer.debootstrap import configure_retry
+    from producer.livebuild_sources import configure_sources
     configure_retry()
+    configure_sources()
     root=generate(arch)
     source_link=Path('/sources')
     if not source_link.exists() and not source_link.is_symlink():source_link.symlink_to(sources)
