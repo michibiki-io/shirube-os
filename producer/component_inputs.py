@@ -19,7 +19,7 @@ COMMON_PRODUCER = (
     'stage_metrics', 'library_cache', 'architecture', 'sources', 'resources',
     'policy', 'collect', 'packages', 'signing', 'release', 'source_fixtures',
     'public_test_keys', 'sanitize', 'branding', 'bash_source',
-    'network_diagnostics', 'package_notices', 'ocaml_sources', 'bundles',
+    'network_diagnostics', 'package_notices', 'ocaml_sources', 'bundles', 'apt_archive',
 )
 COMMON_FILES = (
     'containers/native/Dockerfile', 'containers/native/build.py',
