@@ -217,7 +217,9 @@ def run_image_builder(build, source, arch, version, public, env):
 
 def assemble(sources, packages, arch, version, output, *, prepared=None):
     from producer.debootstrap import configure_retry
+    from producer.livebuild_sources import configure_sources
     configure_retry()
+    configure_sources()
     root=generate(arch)
     source_link=Path('/sources')
     if not source_link.exists() and not source_link.is_symlink():source_link.symlink_to(sources)

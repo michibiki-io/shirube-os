@@ -375,6 +375,49 @@ both architectures remains pending for the next eligible merged revision and its
 complete hosted pipeline; rerunning the failed old revision cannot validate this
 correction.
 
+## Fixed snapshot validity during ISO assembly
+
+Issue [#19](https://github.com/michibiki-io/shirube-os/issues/19) addresses expired
+snapshot metadata independently of download retries. ISO-only preparation in
+`containers/native/image.py:assemble` configures `producer/livebuild_sources.py`
+alongside debootstrap transport preparation, before the canonical builder runs
+for AMD64 and ARM64. It discovers the installed `sourcelist.sh` using
+`dpkg-query --listfiles live-build`, verifies the exact official 20230502 file
+SHA-256 and unique post-generation anchor, and adds one attributed hook while
+preserving upstream notices. Missing/ambiguous paths, changed implementations,
+repeated setup and transformation failures stop assembly.
+
+The hook processes `PARENT_LIST_FILE` after each generation and before source
+entries are optionally commented. This covers bootstrap, chroot install passes
+(including source), and binary/remove regeneration before subsequent APT updates.
+Only complete `deb`/`deb-src` URI matches to the lock's `debian_snapshot` and
+`debian_security_snapshot`, plus their existing HTTP scheme equivalents, receive
+`check-valid-until=no`. Suites, components, comments and nonconflicting options
+are preserved. Unrelated mirrors, local repositories, other dates, hosts and URI
+prefix matches are unchanged. Correct options are idempotent; malformed or
+conflicting targeted entries fail before any rewritten content is saved.
+
+Final-image immutable snapshot entries retain this source-local exception.
+There is no global APT validity override or authentication bypass: signed
+metadata and package hashes remain verified. Snapshot URLs/dates, canonical
+builder and branding/console choices, transfer retirement, same-run provenance,
+source/legal material, storage, guest and publication gates remain unchanged.
+No workflow or cache policy changes are part of this correction.
+
+Focused synthetic tests in `tests/test_livebuild_sources.py` cover parser and
+hook guards, failure propagation and regeneration. A bounded offline smoke check
+also passed against the already-downloaded
+[official live-build 20230502 source](https://deb.debian.org/debian/pool/main/l/live-build/live-build_20230502.tar.xz),
+`functions/sourcelist.sh` SHA-256
+`3b22c35af39430f903c6288ef822bd141d6b07accba2ea6413eface6f5cb53da`:
+56 regenerations followed by a checking APT stub across both architecture
+settings, HTTP/HTTPS and source-archive settings, plus actual-hook failure
+propagation. The upstream implementation is not vendored into the test suite.
+These checks perform no network access, package/ISO build or software install;
+they do not execute real APT or the complete archive-stage scripts. Actual
+hosted Release acceptance on both architectures remains **NOT_RUN**, requiring
+a future eligible merged revision and the complete existing pipeline.
+
 ## One ISO, one clearance, fresh guests
 
 Integration moves the hidden NetBird offline build out of ISO assembly.
