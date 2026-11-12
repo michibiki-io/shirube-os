@@ -412,6 +412,8 @@ verifies the complete pinned ZIP hash, exactly two regular unique stored files,
 original tar hash/size, receipt/metadata equality and full inventory with the
 existing unpack validator. Only the verified original pair is atomically
 installed at `<input_id>/transfer.tar` and `transfer.json`, without replacement.
+Import scratch sits beside the stage-cache on the same filesystem, outside the
+cache-save scope, so interrupted cleanup cannot save scratch with the verified pair.
 The stage independently validates again, repacks current source/version and
 preserves original `content_source_commit`; the missing-key save retains the
 original cache bytes. Missing, expired, 403/404, timeout, wrong metadata or
@@ -451,6 +453,7 @@ PR、fork repository、featureや手動検証、cold、外側exact hit、scope�
 実際の取り込み時に、時間、取得量、metadata、展開量、一時ディスクを制限し、ZIP全体と2つの通常ファイル、
 元tarのhashとサイズ、receiptとmetadataの完全一致、全inventoryを既存validatorで検証します。
 検証済みの原本2ファイルだけをatomicに配置し、既存entryを上書きしません。
+取り込み用の一時領域はstage-cacheと同じfilesystemの親ディレクトリ直下に置き、削除が中断されても検証済みの原本2ファイルと一緒にcacheへ保存されないようにします。
 stageが独立して再検証し、現commitとversionへ再梱包しても`content_source_commit`は元のままです。
 欠落、失効、403/404、timeout、不正なmetadataや破損では警告を出し、一時領域を片付けて通常コンパイルへ戻ります。
 外側exact hitの破損は既存の`MISS_INVALID`で再ビルドしますが、不変keyのsave条件は変更しません。

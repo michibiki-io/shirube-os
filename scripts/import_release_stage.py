@@ -252,13 +252,15 @@ def import_stage(project, cache, stage, architecture, key, commit, env, event, m
     expected = build_scope(project, stage, architecture, entry['compiler_fingerprint'], {})
     require(expected['input_id'] == entry['input_id'] and outer_key(expected) == key)
     cache = safe_directory(cache)
+    # Keep interrupted cleanup outside cache-save scope, but retain atomic rename.
+    require(cache.stat().st_dev == cache.parent.stat().st_dev)
     destination = cache/entry['input_id']
     require(not destination.exists() and not destination.is_symlink())
     required = entry['artifact']['size_in_bytes'] + 2 * entry['transfer']['bytes'] + METADATA_LIMIT + DISK_MARGIN
     require(shutil.disk_usage(cache).free >= required)
     api = api_factory(env.get('GH_TOKEN', ''))
     verify_remote(api, manifest, entry, now)
-    with tempfile.TemporaryDirectory(prefix='.release-import-', dir=cache) as temp:
+    with tempfile.TemporaryDirectory(prefix='.release-import-', dir=cache.parent) as temp:
         scratch = Path(temp)
         archive = scratch/'artifact.zip'
         api.download(entry['artifact']['id'], archive, entry['artifact']['size_in_bytes'])

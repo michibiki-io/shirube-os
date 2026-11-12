@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import importlib.util
 import io
 import json
+import os
 from pathlib import Path
 import shutil
 import stat
@@ -98,6 +99,54 @@ class ImportTests(unittest.TestCase):
     def assert_clean(self):
         self.assertFalse((self.cache/self.scope['input_id']).exists())
         if self.cache.exists(): self.assertEqual(list(self.cache.iterdir()),[])
+
+    def test_scratch_is_beside_cache_outside_save_scope(self):
+        def download(ident, dest, size):
+            self.assertEqual(dest.parent.parent, self.cache.parent)
+            self.assertFalse(dest.is_relative_to(self.cache))
+            shutil.copyfile(self.zip, dest)
+        self.api.download.side_effect = download
+        self.assertEqual(self.invoke(), 'IMPORTED')
+        self.api.download.assert_called_once()
+        self.assertEqual(list(self.root.glob('.release-import-*')), [])
+
+    def test_interrupted_cleanup_leaves_only_verified_pair_in_saved_cache(self):
+        leftovers = []
+        def interrupted(path, **kwargs):
+            scratch = Path(path)
+            leftovers.append(scratch)
+            self.assertTrue((scratch/'verified').is_dir())
+            (scratch/'artifact.zip').unlink()
+            raise TimeoutError('Import deadline during cleanup')
+        # TemporaryDirectory detaches its finalizer before calling _rmtree.
+        # The fixture root owns and cleans any scratch left by this interruption.
+        with patch.object(tempfile.TemporaryDirectory, '_rmtree', side_effect=interrupted):
+            with self.assertRaises(TimeoutError):
+                self.invoke()
+        self.assertEqual(len(leftovers), 1)
+        self.assertEqual(leftovers[0].parent, self.cache.parent)
+        self.assertTrue(leftovers[0].is_dir())
+        entry = self.cache/self.scope['input_id']
+        self.assertEqual(list(self.cache.iterdir()), [entry])
+        self.assertEqual({p.name for p in entry.iterdir()}, {'transfer.tar', 'transfer.json'})
+        self.assertEqual((entry/'transfer.tar').read_bytes(), self.tar.read_bytes())
+        self.assertEqual((entry/'transfer.json').read_bytes(), self.metadata.read_bytes())
+        receipt = importer.unpack(entry/'transfer.tar', self.root/'reverified', self.scope,
+                                  importer.COMMIT, self.manifest['version'], self.meta['sha256'])
+        self.assertEqual(self.meta, {**receipt, **self.entry['transfer']})
+
+    def test_cache_on_different_filesystem_rejects_before_fetch(self):
+        original_stat = Path.stat
+        def different_device(path, *args, **kwargs):
+            result = original_stat(path, *args, **kwargs)
+            if path == self.cache:
+                fields = list(result); fields[2] += 1
+                return os.stat_result(fields)
+            return result
+        with patch.object(Path, 'stat', different_device), self.assertRaises(ValueError):
+            self.invoke()
+        self.factory.assert_not_called()
+        self.assert_clean()
 
     def test_real_staged_hit_repack_and_immutable_original_pair(self):
         self.assertEqual(self.invoke(),'IMPORTED')
