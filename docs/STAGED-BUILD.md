@@ -334,7 +334,7 @@ cache hit, native speedup or current native acceptance. Main cold priming and
 native warm verification are explicitly **NOT_RUN premerge**. No workflow was
 triggered and the ongoing release was left untouched.
 
-## ISO transfer retirement and builder entrypoint
+## ISO and clearance transfer retirement and builder entrypoint
 
 Issue [#15](https://github.com/michibiki-io/shirube-os/issues/15) adds two explicit
 opt-ins for disposable, task-owned downloads. `producer.compiler_artifact load
@@ -345,18 +345,34 @@ flag before checking identity or creating outputs. Load progress stays on stderr
 stdout contains only the successful validated `imageid=...` assignment.
 
 `run-native-stage.py --discard-input-archives` and the corresponding staged CLI
-flag are ISO-only. Supplying them asserts that the input directory is dedicated
-to this task and its downloaded tars may be consumed. The launcher rejects broad
+flags accept only ISO and clearance (extended by Issue
+[#20](https://github.com/michibiki-io/shirube-os/issues/20)). Supplying them asserts
+that the input directory is dedicated to this task and its downloaded tars may be
+consumed. The launcher rejects broad
 host roots, symlinked input paths and overlap with output/cache/build paths before
 creating outputs or starting Docker. Only this opt-in mounts `/inputs` writable;
 all default mounts remain read-only and guest handling is unchanged. After
 `restore_inputs` verifies the entire expected cohort, including dependency
-ancestry, and metrics copy its hashes/sizes, ISO retires only the seven expected
-predecessor `.tar` files before the unchanged **75 GiB** workspace gate. JSON
-receipts and unpacked payloads remain. Earlier validation failures delete no tars;
-any retirement error aborts assembly/export (already deleted tars are not rolled
-back). The ISO job enables both flags for AMD64 and ARM64 in its existing two run
-steps. Shared caches, Docker objects and durable Actions artifacts are untouched.
+ancestry, metrics copy its hashes/sizes, and the consumer scope is calculated,
+ISO retires only the seven expected predecessor `.tar` files; clearance retires
+only `iso.tar`. Both happen before the unchanged **75 GiB** workspace gate. JSON
+receipts and unpacked payloads remain, including clearance's ISO bytes,
+`assembly.json`, `iso-binding.json`, public signing certificate, DEBs, corresponding
+sources and build material. Compiler retirement preserves the loaded image.
+Earlier validation failures delete no tars; any retirement error aborts the stage
+and export (already deleted tars are not rolled back). The ISO and clearance jobs
+enable both flags for AMD64 and ARM64 in their existing two run steps. Shared
+caches, Docker objects and durable Actions artifacts are untouched.
+
+A later capacity or clearance failure can still occur after successful retirement.
+The **75 GiB** gate remains mandatory, as does the separate **56 GiB** guest gate.
+The original same-run durable artifacts retain their provenance and retention and
+remain the recovery source; this opt-in consumes only task-local duplicates.
+In Release `43136908797` at `208705dabd7569a905a661b063e503429ffcc758`, both ISO
+stages passed, but AMD64 clearance stopped at **69.0 GiB** before its body ran.
+This change addresses that admission failure; it does not establish license
+clearance or guarantee enough free space. The separate guest fixture path is
+unchanged.
 
 Regular-file transfer still materializes confined source aliases. ISO assembly
 therefore patches and invokes `scripts/image-build/build-vyos-image`, with the
@@ -366,11 +382,15 @@ Notices, build environment/arguments and all provenance, source/license,
 signature, guest-storage and publication gates remain in force.
 
 Focused synthetic tests cover compiler retention/failures and real CLI output,
-complete-cohort retention and metrics, launcher/workflow opt-ins, and real
+both architectures' ISO/clearance cohort retention, metadata/payload preservation,
+corrupt inventory/attribution/metadata rejection, metrics/scope-before-retirement,
+cleanup and remaining-capacity failures, launcher path/mount boundaries, the exact
+ISO+clearance workflow opt-in set, and real
 `files`/`copy_selected` → pack/unpack → canonical-script imports. These checks do
-not build packages/images or establish release acceptance. The observed artifact
-ZIP total of approximately **7.96 GiB** includes overhead and is not a measurement
-of reclaimed storage or proof that the disk gate passes. Actual acceptance on
+not build packages/images or establish release acceptance. The historical ISO
+recovery in Issue #15 observed an artifact ZIP total of approximately **7.96 GiB**;
+that includes overhead and is not a measurement of reclaimed clearance storage
+or proof that its disk gate passes. Actual acceptance on
 both architectures remains pending for the next eligible merged revision and its
 complete hosted pipeline; rerunning the failed old revision cannot validate this
 correction.

@@ -28,8 +28,8 @@ STAGES = tuple(DEPENDENCIES)
 
 def validate_discard_inputs(stage, directory, output, cache=None):
     """Writable inputs must be a dedicated task directory, separate from outputs."""
-    if stage != 'iso':
-        raise ValueError('--discard-input-archives requires ISO')
+    if stage not in {'iso', 'clearance'}:
+        raise ValueError('--discard-input-archives requires ISO or clearance')
     directory = Path(directory)
     resolved = directory.resolve()
     protected = [Path(os.getcwd()), Path(os.path.expanduser('~')),
@@ -294,7 +294,7 @@ def main():
     parser.add_argument('--netbird-fixture-stdin', action='store_true')
     parser.add_argument('--cache', type=Path)
     parser.add_argument('--discard-input-archives', action='store_true',
-                        help='ISO only: retire task-owned input tars after verification and metrics')
+                        help='ISO and clearance only: retire task-owned input tars after verification and metrics')
     args = parser.parse_args()
     if args.discard_input_archives:
         validate_discard_inputs(args.stage, args.inputs, args.output, args.cache)

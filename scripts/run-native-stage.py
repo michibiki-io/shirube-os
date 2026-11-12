@@ -26,7 +26,7 @@ def main():
     parser.add_argument('--image', required=True); parser.add_argument('--inputs', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True); parser.add_argument('--cache', type=Path)
     parser.add_argument('--discard-input-archives', action='store_true',
-                        help='ISO only: allow retirement of task-owned downloaded input tars')
+                        help='ISO and clearance only: allow retirement of task-owned downloaded input tars')
     args = parser.parse_args()
     if args.discard_input_archives:
         if len(args.inputs.resolve().parts) < 3:
