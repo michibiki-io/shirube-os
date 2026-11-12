@@ -26,10 +26,10 @@ DEPENDENCIES.update(kernel=('vpp',), integration=('native', 'vpp'),
 STAGES = tuple(DEPENDENCIES)
 
 
-def validate_discard_inputs(stage, directory, output, cache=None):
+def validate_discard_inputs(stage, directory, output, cache=None, *, protected_paths=()):
     """Writable inputs must be a dedicated task directory, separate from outputs."""
-    if stage != 'iso':
-        raise ValueError('--discard-input-archives requires ISO')
+    if stage not in {'iso', 'clearance', 'guests'}:
+        raise ValueError('--discard-input-archives requires ISO, clearance or guests')
     directory = Path(directory)
     resolved = directory.resolve()
     protected = [Path(os.getcwd()), Path(os.path.expanduser('~')),
@@ -37,7 +37,7 @@ def validate_discard_inputs(stage, directory, output, cache=None):
     if (directory.absolute() != resolved
             or any(resolved == p or resolved in p.parents for p in protected)):
         raise ValueError('Dedicated non-symlink task input directory required')
-    for other in (output, cache, '/src', '/build-private', '/stage-dependencies'):
+    for other in (output, cache, '/src', '/build-private', '/stage-dependencies', *protected_paths):
         if other is None:
             continue
         other = Path(other).resolve()
@@ -294,7 +294,7 @@ def main():
     parser.add_argument('--netbird-fixture-stdin', action='store_true')
     parser.add_argument('--cache', type=Path)
     parser.add_argument('--discard-input-archives', action='store_true',
-                        help='ISO only: retire task-owned input tars after verification and metrics')
+                        help='ISO, clearance and guests only: retire task-owned input tars after verification and metrics')
     args = parser.parse_args()
     if args.discard_input_archives:
         validate_discard_inputs(args.stage, args.inputs, args.output, args.cache)

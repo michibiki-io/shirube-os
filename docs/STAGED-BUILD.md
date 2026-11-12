@@ -334,7 +334,7 @@ cache hit, native speedup or current native acceptance. Main cold priming and
 native warm verification are explicitly **NOT_RUN premerge**. No workflow was
 triggered and the ongoing release was left untouched.
 
-## ISO transfer retirement and builder entrypoint
+## ISO, clearance and guest transfer retirement and builder entrypoint
 
 Issue [#15](https://github.com/michibiki-io/shirube-os/issues/15) adds two explicit
 opt-ins for disposable, task-owned downloads. `producer.compiler_artifact load
@@ -345,18 +345,76 @@ flag before checking identity or creating outputs. Load progress stays on stderr
 stdout contains only the successful validated `imageid=...` assignment.
 
 `run-native-stage.py --discard-input-archives` and the corresponding staged CLI
-flag are ISO-only. Supplying them asserts that the input directory is dedicated
-to this task and its downloaded tars may be consumed. The launcher rejects broad
+flags accept only ISO, clearance and guests (extended by Issue
+[#20](https://github.com/michibiki-io/shirube-os/issues/20)). Supplying them asserts
+that the input directory is dedicated to this task and its downloaded tars may be
+consumed. The launcher rejects broad
 host roots, symlinked input paths and overlap with output/cache/build paths before
 creating outputs or starting Docker. Only this opt-in mounts `/inputs` writable;
-all default mounts remain read-only and guest handling is unchanged. After
+all default input mounts remain read-only. The guest launcher forwards the flag
+through `run-release-container.py` to the actual staged command. Before creating
+the private Fixture, that wrapper rejects retirement without staged inputs and
+rejects broad roots, symlink/parent aliases and overlap in either direction with
+output, private fixture state, project source, cached libraries or build paths.
+Project source and the fixture certificate remain read-only; fixture credentials
+travel only through stdin. Existing fixture ownership, isolation and cleanup are
+unchanged. After
 `restore_inputs` verifies the entire expected cohort, including dependency
-ancestry, and metrics copy its hashes/sizes, ISO retires only the seven expected
-predecessor `.tar` files before the unchanged **75 GiB** workspace gate. JSON
-receipts and unpacked payloads remain. Earlier validation failures delete no tars;
-any retirement error aborts assembly/export (already deleted tars are not rolled
-back). The ISO job enables both flags for AMD64 and ARM64 in its existing two run
-steps. Shared caches, Docker objects and durable Actions artifacts are untouched.
+ancestry, metrics copy its hashes/sizes, and the consumer scope is calculated,
+ISO retires only the seven expected predecessor `.tar` files; clearance retires
+only `iso.tar`; guests retire only `clearance.tar`. ISO/clearance retirement
+precedes the unchanged **75 GiB** workspace gate. Guest retirement precedes
+clearance proof/kernel verification and the unchanged **56 GiB** gate before
+fresh disks. JSON
+receipts and unpacked payloads remain, including clearance's ISO bytes,
+`assembly.json`, `iso-binding.json`, public signing certificate, DEBs, corresponding
+sources and build material. Compiler retirement preserves the loaded image.
+Earlier validation failures delete no tars; any retirement error aborts the stage
+and export (already deleted tars are not rolled back). The ISO, clearance and guest jobs
+enable both flags for AMD64 and ARM64 in their existing two run steps. Shared
+caches, Docker objects and durable Actions artifacts are untouched.
+
+A later capacity or clearance failure can still occur after successful retirement.
+The **75 GiB** gate remains mandatory, as does the separate **56 GiB** guest gate.
+The original same-run durable artifacts retain their provenance and retention and
+remain the recovery source; this opt-in consumes only task-local duplicates.
+In Release `43136908797` at `208705dabd7569a905a661b063e503429ffcc758`, both ISO
+stages passed, but AMD64 clearance stopped at **69.0 GiB** before its body ran.
+AMD64 `iso.tar` measured **5,598,208,000 bytes** (about 5.214 GiB), with sampled
+free space **74.487 → 69.031 GiB**. That tar alone would not cover the 75 GiB
+shortfall. The same run's AMD64 compiler artifact **13908471514** records
+`compiler.tar` at **3,136,224,256 bytes** in `compiler.json` (`archive_bytes`);
+the ZIP central directory independently reports the same logical file size.
+The two transfer files total **8,734,432,256 bytes** (about 8.135 GiB). Adding
+that logical size to the sampled free space gives about **77.166 GiB**, above
+the gate, but is not a measurement or guarantee of actual filesystem recovery.
+Only 66,114 bytes of bounded ZIP metadata ranges were read for this follow-up;
+the manifest length and ZIP CRC were verified, not the complete tar hash.
+ARM64 clearance succeeded and produced `clearance.tar` of
+**8,290,990,080 bytes** (about 7.722 GiB), with sampled free space
+**95.345 → 69.617 GiB** (the observed minimum). These are 2-second
+whole-filesystem samples, not exact stage peaks or measurements of recovered
+capacity. The original Release finished in failure due to AMD64 admission;
+guests and publish were skipped. No guest capacity failure was observed.
+Source/license success does not establish guest or release acceptance.
+
+Publish previously retained three complete two-architecture asset sets. For a
+draft, it now rejects an existing public destination before any download or
+remote mutation, and checks again immediately before moving. After
+aggregate metadata upload succeeds, it now retires only its internally generated
+temporary candidate tree, then freshly downloads and fully validates remote
+assets. It explicitly rejects an existing public destination (including a dangling
+symlink) and moves the verified tree there. Same-filesystem rename avoids a third
+copy; cross-filesystem copy-then-delete can transiently hold two sets. Retirement,
+download, validation or move failures block workflow publication; caller-owned
+directories are never removed. A failed cross-filesystem move may leave partial
+public output and must be resolved by the caller. Staging is unchanged, and
+promote still holds public assets plus a freshly downloaded, verified remote set.
+Ownership, supersession, published no-op verification, aggregate/hash checks,
+artifact ID/digest requirements and artifact-upload-before-promotion ordering
+remain mandatory. VM working disks, conversions and overlays are unchanged.
+Actual final release size/capacity and hosted guest acceptance are **NOT_RUN**;
+the remaining two-set bound is not a capacity guarantee.
 
 Regular-file transfer still materializes confined source aliases. ISO assembly
 therefore patches and invokes `scripts/image-build/build-vyos-image`, with the
@@ -366,11 +424,15 @@ Notices, build environment/arguments and all provenance, source/license,
 signature, guest-storage and publication gates remain in force.
 
 Focused synthetic tests cover compiler retention/failures and real CLI output,
-complete-cohort retention and metrics, launcher/workflow opt-ins, and real
+both architectures' ISO/clearance/guest cohort retention, metadata/payload preservation,
+corrupt inventory/attribution/metadata rejection, metrics/scope-before-retirement,
+cleanup and remaining-capacity failures, launcher path/mount boundaries, the exact
+ISO+clearance+guest workflow opt-in set, and real
 `files`/`copy_selected` → pack/unpack → canonical-script imports. These checks do
-not build packages/images or establish release acceptance. The observed artifact
-ZIP total of approximately **7.96 GiB** includes overhead and is not a measurement
-of reclaimed storage or proof that the disk gate passes. Actual acceptance on
+not build packages/images or establish release acceptance. The historical ISO
+recovery in Issue #15 observed an artifact ZIP total of approximately **7.96 GiB**;
+that includes overhead and is not a measurement of reclaimed clearance storage
+or proof that its disk gate passes. Actual acceptance on
 both architectures remains pending for the next eligible merged revision and its
 complete hosted pipeline; rerunning the failed old revision cannot validate this
 correction.

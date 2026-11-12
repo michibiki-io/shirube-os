@@ -223,6 +223,9 @@ def publish():
         verify_published(version,commit); return
     require_draft(version,commit)
     require_not_superseded(version)
+    public=Path(os.environ['SHIRUBE_PUBLIC_DIRECTORY'])
+    if public.exists() or public.is_symlink():
+        raise FileExistsError('Fresh public destination required')
     with tempfile.TemporaryDirectory() as temporary:
         root=Path(temporary)/'candidates'; download(version,root)
         candidates=[json.loads((root/f'candidate-{a}.json').read_text()) for a in ['amd64','arm64']]
@@ -248,12 +251,16 @@ def publish():
                 gh('api','--method','DELETE',f'repos/{REPO}/releases/assets/{asset["id"]}')
         require_draft(version,commit)
         gh('release','upload',version,'--repo',REPO,str(root/'manifest.json'),str(root/'SHA256SUMS'))
+        import shutil
+        # Only this internally generated tree is disposable after upload succeeds.
+        shutil.rmtree(root)
         # Verify remote staging bytes, not only the local directory, before the
         # one publication transition. Uncertain outcomes are reconciled once.
         remote=Path(temporary)/'remote'; download(version,remote); validate(remote,commit,version)
-        import shutil
-        public=Path(os.environ['SHIRUBE_PUBLIC_DIRECTORY'])
-        shutil.copytree(remote,public)
+        # move() would otherwise nest into an existing caller-owned directory.
+        if public.exists() or public.is_symlink():
+            raise FileExistsError('Fresh public destination required')
+        shutil.move(str(remote), str(public))
 
 
 def promote():

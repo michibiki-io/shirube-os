@@ -307,45 +307,64 @@ class SourceHandoffTests(unittest.TestCase):
         import sys
         from producer import staged
         from producer.sources import sha256
-        for changed in (False,True):
-            with self.subTest(changed=changed),tempfile.TemporaryDirectory() as temporary:
+        from itertools import product
+        from producer.pipeline import complete_candidate
+        from types import SimpleNamespace
+        for arch, changed in product(('amd64', 'arm64'), (False, True, 'proof', 'certificate', 'kernel', 'audit', 'storage')):
+            with self.subTest(arch=arch, changed=changed),tempfile.TemporaryDirectory() as temporary:
                 root=Path(temporary);payload=root/'cleared';payload.mkdir();output=root/'output';output.mkdir()
                 kernel=payload/'guest-kernel';kernel.mkdir()
-                (kernel/'linux-image-fixture_1_amd64.deb').write_bytes(b'synthetic kernel package')
+                (kernel/f'linux-image-fixture_1_{arch}.deb').write_bytes(b'synthetic kernel package')
                 (kernel/'cert.der').write_bytes(b'public certificate')
-                iso=payload/'shirube-os-v2026.03.0-amd64.iso';iso.write_bytes(b'same built ISO')
+                iso=payload/f'shirube-os-v2026.03.0-{arch}.iso';iso.write_bytes(b'same built ISO')
                 (payload/'manifest.json').write_text('{"manifest_kind":"candidate-source-set"}')
                 (payload/'licenses.json').write_text('{}');(payload/'source.tar.gz').write_bytes(b'synthetic sources')
-                record={'source_commit':'a'*40,'version':'v2026.03.0','architecture':'amd64',
+                record={'source_commit':'a'*40,'version':'v2026.03.0','architecture':arch,
                         'assembly':{'iso':iso.name,'generation':'d'*64,'kernel_certificate_sha256':sha256(kernel/'cert.der')},
                         'iso_sha256':sha256(iso),'branding_verified':True,
                         'source':{'inventory':'licenses.json','archives':['source.tar.gz'],'cleared':True},
                         'reconstruction':{'proof':{'status':'PASS_SOURCE_SET_ONLY'}}}
                 project=root/'project-source.tar';project.write_bytes(b'synthetic exact project source')
-                assets=[{'name':name,'architecture':'amd64','role':role,'size':(payload/name).stat().st_size,
+                assets=[{'name':name,'architecture':arch,'role':role,'size':(payload/name).stat().st_size,
                          'sha256':sha256(payload/name)} for name,role in [('licenses.json','licenses'),('source.tar.gz','source')]]
                 header={'source_commit':'a'*40,'version':'v2026.03.0','source_license_clearance':'PASS',
                         'manifest_kind':'candidate-source-set','assets':assets}
-                proof={'status':'PASS_SOURCE_SET_ONLY','source_commit':'a'*40,'architecture':'amd64',
+                proof={'status':'PASS_SOURCE_SET_ONLY','source_commit':'a'*40,'architecture':arch,
                        'actual_project_build_input_binding':'PASS','actual_project_build_input_sha256':sha256(project)}
                 record['reconstruction']={'input_manifest':header,'proof':proof}
                 (payload/'manifest.json').write_text(json.dumps({**header,'source_set_reconstruction':record['reconstruction']}))
                 (payload/'clearance.json').write_text(json.dumps(record))
-                if changed:iso.write_bytes(b'changed ISO')
+                if changed is True:iso.write_bytes(b'changed ISO')
+                if changed == 'proof': record['reconstruction']['proof']['status']='FAIL'
+                if changed == 'certificate': (kernel/'cert.der').write_bytes(b'changed cert')
+                if changed == 'kernel': (kernel/f'linux-image-fixture_1_{arch}.deb').unlink()
+                (payload/'clearance.json').write_text(json.dumps(record))
                 original_path=Path
                 def mapped(value='.',*parts):
                     return original_path(root/'debs',*parts) if str(value)=='/debs' else original_path(value,*parts)
                 verify=staged.verify_clearance
-                with patch.object(staged,'Path',side_effect=mapped),patch('producer.packages.audit'), \
+                with patch.object(staged,'Path',side_effect=mapped), \
+                     patch('producer.packages.audit', side_effect=ValueError('kernel audit failed') if changed=='audit' else None) as audit, \
                      patch.object(staged,'verify_clearance',side_effect=lambda *args:verify(*args,project=project)), \
-                     patch('producer.pipeline.complete_candidate') as complete, \
+                     patch('producer.pipeline.complete_candidate', side_effect=complete_candidate if changed=='storage' else None) as complete, \
+                     patch('producer.architecture.release_accelerator'), \
+                     patch('shutil.disk_usage', return_value=SimpleNamespace(free=55*1024**3)), \
+                     patch('producer.vm.build_disks') as disks, \
                      patch.dict(sys.modules,{'image':type('NoAssembly',(),{})}):
                     if changed:
-                        with self.assertRaisesRegex(ValueError,'Cleared ISO changed'):
-                            staged.guests({'clearance':payload},output,'amd64','v2026.03.0','a'*40,None,'tcg')
-                        complete.assert_not_called()
+                        message={True:'Cleared ISO changed', 'proof':'Cleared source proof',
+                                 'certificate':'kernel certificate', 'kernel':'One cleared guest',
+                                 'audit':'kernel audit failed', 'storage':'Fresh guest disk stage'}[changed]
+                        with self.assertRaisesRegex(ValueError,message):
+                            staged.guests({'clearance':payload},output,arch,'v2026.03.0','a'*40,None,'tcg')
+                        if changed=='storage':
+                            complete.assert_called_once()
+                            audit.assert_called_once_with(kernel/f'linux-image-fixture_1_{arch}.deb',arch,kernel/'cert.der')
+                        else: complete.assert_not_called()
+                        disks.assert_not_called()
                     else:
-                        staged.guests({'clearance':payload},output,'amd64','v2026.03.0','a'*40,None,'tcg')
+                        staged.guests({'clearance':payload},output,arch,'v2026.03.0','a'*40,None,'tcg')
+                        audit.assert_called_once_with(kernel/f'linux-image-fixture_1_{arch}.deb',arch,kernel/'cert.der')
                         result=complete.call_args.args[0]
                         self.assertEqual(result['generation'],'d'*64)
                         self.assertEqual(result['kernel_certificate_sha256'],record['assembly']['kernel_certificate_sha256'])
@@ -432,7 +451,7 @@ class StageLauncherTests(unittest.TestCase):
         import sys
         spec = importlib.util.spec_from_file_location('stage_launcher', 'scripts/run-native-stage.py')
         launcher = importlib.util.module_from_spec(spec);spec.loader.exec_module(launcher)
-        for stage, discard in [(s, False) for s in launcher.STAGES] + [('iso', True)]:
+        for stage, discard in [(s, False) for s in launcher.STAGES] + [(s, True) for s in ('iso', 'clearance', 'guests')]:
             with self.subTest(stage=stage, discard=discard), tempfile.TemporaryDirectory() as temporary:
                 root = Path(temporary); output = root/'output'; inputs = root/'inputs'; cache = root/'cache'
                 image = 'sha256:'+'b'*64; commit = 'a'*40
@@ -463,7 +482,8 @@ class StageLauncherTests(unittest.TestCase):
                         '--architecture','amd64','--image',image,'--output',str(output.resolve()),
                         '--project-source',project,'--private',str(Path(project).parent/'fixture'),
                         '--version','v2026.03.0','--commit',commit,'--qemu-accelerator','tcg',
-                        '--staged-inputs',str(inputs.resolve())))
+                        '--staged-inputs',str(inputs.resolve()),
+                        *(['--discard-input-archives'] if discard else [])))
                     continue
                 privileges = {'iso':['--privileged'], 'integration':['--cap-add=SYS_ADMIN']}.get(stage, [])
                 prefix = ('docker','run','--rm',*privileges,'--cpus=4','--memory=8g',

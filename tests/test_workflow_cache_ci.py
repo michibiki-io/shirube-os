@@ -138,8 +138,8 @@ class WorkflowCacheCITests(unittest.TestCase):
                 self.assertIn('--entrypoint python3',commands[1])
             self.assertIn('producer.compiler_artifact load',commands[0])
             self.assertIn('scripts/run-native-stage.py',commands[-1])
-            self.assertEqual('--discard-archive' in commands[0], stage == 'iso')
-            self.assertEqual('--discard-input-archives' in commands[-1], stage == 'iso')
+            self.assertEqual('--discard-archive' in commands[0], stage in {'iso', 'clearance', 'guests'})
+            self.assertEqual('--discard-input-archives' in commands[-1], stage in {'iso', 'clearance', 'guests'})
             self.assertNotIn('scripts/build-release.sh',commands[-1])
             downloads=[step['with']['name'] for step in job['steps']
                        if step.get('uses','').startswith('actions/download-artifact@')]
