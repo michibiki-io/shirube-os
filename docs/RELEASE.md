@@ -25,7 +25,9 @@ unpublished draft, builds native ISO/QCOW2/VMDK/source candidates, stages comple
 per-architecture sets, validates the aggregate, uploads its Actions artifact, and
 only then promotes the draft. A missing/failed/skipped required stage blocks the
 publication transition. `producer.actions.promote` requires the uploaded
-artifact ID/digest and checks its exact workflow source commit.
+artifact ID/digest, current run ID, exact version/source/attempt-derived name and
+non-expired metadata. The PR event head may differ from the merged build source;
+exact clean checkout identity and full remote validation still bind that source.
 
 No public binary release has been published. The latest retained native cohorts
 have corresponding-source restoration, component clearance and guest-lifecycle
@@ -258,3 +260,140 @@ manifestと検証記録の仮想化方式も照合します。不足・不一致
 TCGを受け付け、hosted runnerの既定値もTCGです。ただし設定の受入れは実行試験の
 合格ではありません。過去のARM64 TCGコンポーネント試験と、保持候補のnative KVM
 試験は区別し、hosted候補全体の容量・時間・ランタイムの合格は別途必要です。
+
+
+## Publication-only changes and pinned recovery (Issue #24)
+
+English
+
+Before draft reservation or version allocation, `producer.actions.resolve` removes
+only these five exact paths from the complete changed-file list before calling
+existing `policy.eligible`:
+
+- `producer/actions.py`
+- `producer/recover_release.py`
+- `tests/test_actions.py`
+- `tests/test_recover_release.py`
+- `.github/workflows/recover-release.yml`
+
+These are publication controllers and their dedicated tests. Both rename origins
+and destinations are classified. Unknown relevant files, mixed image changes,
+`producer/policy.py`, source-lock, builders, general tests and other workflows
+remain image eligible. There are no directory exemptions, labels or skip inputs.
+Documentation remains outside the existing relevant paths. Before merge, the
+maintainer must classify the actual complete PR file list, including rename origins,
+and confirm `eligible=false`. Keep PR #23 and other image-eligible merges pending
+until this recovery completes or its exact blocker is reported. Recheck pending
+Release work before merge and dispatch; preserve the shared concurrency queue.
+
+The manual `.github/workflows/recover-release.yml` accepts no target inputs. Its
+job and command admit only the repository's main `workflow_dispatch` context,
+using the same `shirube-os-release`, `queue: max`, `cancel-in-progress: false`
+queue. The controller checks out exact `github.sha`; the independent sibling
+`original-source` root checks out
+`4498c6104b65dfae37be1e5ebe8d78c27100884b`. Both must remain clean and exact.
+The original source is never relabeled as the controller revision. An isolated
+subprocess imports the original validator, source-lock and source-fixture policy
+from that root, without passing the publication token. All original source,
+license, gate and secret-fixture checks remain mandatory.
+
+After the reviewed fix is normally merged, recheck pending Release work and run
+this pinned workflow **once from main**. It admits only v2026.03.8, release
+442546669, PR #21, run 43164071342 attempt 1, and artifact 13941132568.
+The original PR head is `42f6706d21f7bf306e9d8bcbf7af968242763cdf`; the merge
+source is `4498c6104b65dfae37be1e5ebe8d78c27100884b`. It rechecks repository ID
+1449410161, the original release workflow/event, merged PR relationship, all 26
+successful predecessor jobs across every attempt-specific jobs page, and the
+publish job's successful validation/upload steps followed by its sole failed
+promotion step. Missing, duplicate, changed, expired or ambiguous evidence stops
+recovery. Rerunning the old publish job is unsuitable: its source has the old
+head/source bug and expects candidate JSON already removed from staging.
+
+The draft must retain 182 assets totaling 19,162,268,023 bytes. Recovery pins
+`manifest.json` ID 739252780 (63,191 bytes), SHA256
+`326b10ea6b13bcf83d4a9f6845cdc7b8505b6584881dc0d2cb2b60dcdb438745`, and
+`SHA256SUMS` ID 739252785 (20,660 bytes), SHA256
+`11d0bb47006a6ff6a7f6ffcff49319dd4c89941ece35560765bcf7548d26e874`.
+The aggregate artifact is 19,162,306,263 bytes, named
+`shirube-os-v2026.03.8-4498c6104b65dfae37be1e5ebe8d78c27100884b-1`, with
+GitHub upload digest
+`783c13ef2ef1a80c42ec66c561fe2c59bdc014cec1296031213d53731d34d0e2`.
+Its recorded expiry is 2027-02-10; live expiry is checked before publication.
+The archive digest is GitHub's upload evidence, not a fresh ZIP-byte hash claim.
+
+Recovery logs measured free/required space and refuses before download unless
+19,162,268,023 bytes plus 1 GiB headroom are available. It downloads the draft
+once into a private temporary directory, checks every API asset size/digest and
+both pinned metadata hashes, and invokes the full original validator once.
+There is no ZIP download, rebuild, guest run, cache priming, asset copy, upload,
+deletion or old `publish()` invocation. Full release ownership (ID, source, title,
+body) and stable complete asset identity are checked before/after download and
+immediately before the sole edit, together with supersession and live evidence.
+That edit changes `draft=false` and appends accurate recovery provenance. An
+uncertain outcome receives one read-only reconciliation, never another edit or
+validation download. Published reruns verify the original bytes and source,
+including tag resolution, without mutation even if a newer version exists.
+Published verification does not depend on the surviving upload artifact or its expiry.
+
+Inspect the resulting published release/tag/source and unchanged asset inventory.
+If any gate fails, report the exact blocker and stop; do not repeat builds or
+silently substitute artifacts. Actual recovery and published-release acceptance
+remain **NOT_RUN**, pending review, merge and the authorized main dispatch.
+The historical unit mock used identical artifact head and merge-source values;
+the new regression intentionally uses different SHAs.
+
+日本語
+
+`producer.actions.resolve`はdraft予約と版の割り当てより前に、上記5つの完全一致パスだけを
+変更一覧から除き、既存の`policy.eligible`へ渡します。
+公開制御と専用テストに限定した固定リストであり、ディレクトリー単位の除外はありません。
+rename元とrename先の両方を判定します。
+未知の関連ファイル、イメージ入力との混合変更、`producer/policy.py`、source-lock、builder、
+汎用テスト、他のworkflowは従来どおりイメージ対象です。
+ラベルやskip入力は追加しません。文書は既存の関連パス外です。
+merge前にメンテナーが実際のPR全変更一覧をrename元も含めて判定し、`eligible=false`を確認します。
+復旧完了または正確なblockerの報告までは、#23を含む他のイメージ対象PRをmergeしません。
+mergeとdispatchの前に待機中のReleaseを再確認し、共用キューを維持します。
+
+復旧workflowは任意の対象入力を受け付けず、jobとコマンドの両方で当該リポジトリーの
+mainからの`workflow_dispatch`だけを許可します。
+`shirube-os-release`、`queue: max`、`cancel-in-progress: false`で通常Releaseと直列化します。
+controllerは正確な`github.sha`、独立した兄弟ディレクトリー`original-source`は
+`4498c6104b65dfae37be1e5ebe8d78c27100884b`をcheckoutし、両方のcleanな状態を確認します。
+元ソースをcontrollerの版に付け替えません。
+元checkout内の検証器、source-lock、source-fixture方針を隔離subprocessで読み込み、
+公開用tokenを渡さず、既存のソース、ライセンス、gate、秘密情報fixtureの検証を維持します。
+
+修正PRの通常merge後、待機中のReleaseを再確認し、mainから復旧workflowを一度実行します。
+対象はv2026.03.8、release 442546669、PR #21、run 43164071342のattempt 1、
+artifact 13941132568に固定します。
+PR headは`42f6706d21f7bf306e9d8bcbf7af968242763cdf`、ビルド元mergeは
+`4498c6104b65dfae37be1e5ebe8d78c27100884b`です。
+repository ID 1449410161、元workflowとevent、PRのmerge関係、attempt専用APIの全ページにある
+先行26 jobの成功、publish jobの検証とuploadの成功、公開stepだけの失敗を照合します。
+不足、重複、変更、期限切れ、曖昧な証拠は拒否します。
+旧publish jobにはhead/sourceの不具合が残り、削除済みcandidate JSONも必要なため再実行しません。
+
+182 assetsの合計19,162,268,023 bytesと、上記のmanifest、SHA256SUMSのID、サイズ、
+SHA256を固定し、全assetの実bytesも照合します。
+集約artifactの名前、サイズ、GitHub upload digestも上記の値に固定し、公開直前にも
+有効期限を確認します。記録上の期限は2027-02-10です。
+archive digestはGitHubのupload証拠として記録し、新たにZIPを取得してhashしたとは主張しません。
+
+取得前に空き容量を実測して必要量とともに記録し、asset合計に1 GiBを加えた容量がなければ停止します。
+専用の一時ディレクトリーへdraftを一度だけ取得し、全assetのAPI digest、固定metadata、
+元ソースの完全な検証器を確認します。
+完全な検証器の実行は成功経路で一度です。
+ZIP取得、再ビルド、guest実行、cache準備、assetのコピー、upload、削除、旧`publish()`の実行はありません。
+取得前後と公開直前にreleaseのID、source、title、body、全assetの識別情報を照合し、
+後続版による失効とlive証拠も再確認します。
+唯一のeditで`draft=false`とし、正確な復旧経緯を追記します。
+edit結果が不明な場合は一度だけread-onlyで照合し、editや取得、完全検証を繰り返しません。
+公開済みの再実行はtagの解決先を含め、元ソースと全bytesを検証するだけです。
+後続版があっても変更しません。公開済みbytesの検証は、upload artifactの残存や期限には依存しません。
+
+公開後はrelease、tag、sourceとasset一覧の不変性を確認します。
+失敗時は正確なblockerを報告して停止し、再ビルドや別artifactへの差し替えは行いません。
+実際の復旧と公開結果の受入れはレビュー、merge、main dispatch待ちで**NOT_RUN**です。
+旧テストはartifact headとmerge sourceを同じ値にして不具合を見逃したため、
+回帰テストでは異なるSHAを使います。

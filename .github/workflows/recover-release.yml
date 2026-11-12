@@ -1,0 +1,34 @@
+name: Recover pinned v2026.03.8 release
+on:
+  workflow_dispatch:
+permissions: {}
+concurrency:
+  group: shirube-os-release
+  queue: max
+  cancel-in-progress: false
+jobs:
+  recover:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && github.repository == 'michibiki-io/shirube-os'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          path: controller
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 4498c6104b65dfae37be1e5ebe8d78c27100884b
+          path: original-source
+          persist-credentials: false
+      - name: Verify pinned evidence and existing bytes before sole publication edit
+        working-directory: controller
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B -m producer.recover_release
