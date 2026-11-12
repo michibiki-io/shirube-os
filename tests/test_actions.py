@@ -14,12 +14,14 @@ class ActionsTests(unittest.TestCase):
     def setUp(self):
         self.version = 'v2026.03.0'
         self.commit = 'a'*40
-        self.draft = {'tag_name': self.version, 'draft': True,
+        self.draft = {'id': 42, 'body': f'Source commit: `{self.commit}`',
+                      'tag_name': self.version, 'draft': True,
                       'target_commitish': self.commit, 'assets': []}
         self.records = [self.draft]
         self.environment = {'SHIRUBE_VERSION': self.version,
                             'SHIRUBE_SOURCE_COMMIT': self.commit,
                             'SHIRUBE_ACTIONS_ARTIFACT_ID': '123',
+                            'GITHUB_RUN_ID': '456', 'GITHUB_RUN_ATTEMPT': '1',
                             'SHIRUBE_ACTIONS_ARTIFACT_DIGEST': 'b'*64}
 
     def release_api(self, *args, **kwargs):
@@ -32,8 +34,11 @@ class ActionsTests(unittest.TestCase):
                 raise subprocess.CalledProcessError(1, ['gh', *args], stderr='HTTP 404: Not Found')
             return published[0]
         if args == ('api', f'repos/{actions.REPO}/actions/artifacts/123'):
-            return {'expired': False, 'digest': 'sha256:'+'b'*64,
-                    'workflow_run': {'head_sha': self.commit, 'id': 456}}
+            # The old mock used source==head and hid PR event semantics.
+            return {'id': 123, 'name': f'shirube-os-{self.version}-{self.commit}-1',
+                    'expired': False, 'expires_at': '2099-01-01T00:00:00Z',
+                    'digest': 'sha256:'+'b'*64,
+                    'workflow_run': {'head_sha': 'c'*40, 'id': 456}}
         if args[:2] in [('release', 'upload'), ('release', 'edit')] or args[:3] == ('api', '--method', 'DELETE'):
             return ''
         self.fail(f'Unexpected GitHub operation: {args}')
@@ -280,11 +285,11 @@ class ActionsTests(unittest.TestCase):
             actions.promote()
         validate.assert_called_once()
         calls = [call.args for call in gh.call_args_list]
-        self.assertEqual(calls[-3], ('api', f'repos/{actions.REPO}/actions/artifacts/123'))
+        self.assertIn(('api', f'repos/{actions.REPO}/actions/artifacts/123'), calls)
         self.assertEqual(calls[-2], ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/releases'))
         self.assertEqual(calls[-1][:5], ('release', 'edit', self.version, '--repo', actions.REPO))
         self.assertEqual(calls[-1][-1], '--draft=false')
-        self.assertEqual(len(calls), 6)
+        self.assertEqual(len(calls), 9)
 
     def test_failed_job_publish_and_promote_retries_reject_superseded_draft_without_mutation(self):
         for version in ['v2026.03.1', 'v2026.03.10', 'v2026.04.0']:
@@ -779,3 +784,102 @@ class ReleaseReservationTests(unittest.TestCase):
         with patch.object(actions, 'integration_preflight') as check:
             self.assertEqual(self.resolve('a'*40)['noop'], 'true')
         check.assert_not_called()
+
+
+class PublicationClassificationTests(unittest.TestCase):
+    def test_each_exact_path_and_docs_are_non_image_before_allocation(self):
+        event = {'action': 'closed', 'pull_request': {'number': 24, 'merged': True,
+                 'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40, 'changed_files': 1}}
+        for path in sorted(actions.PUBLICATION_PATHS) + ['docs/RELEASE.md']:
+            with self.subTest(path=path), tempfile.TemporaryDirectory() as tmp:
+                payload = Path(tmp)/'event.json'
+                payload.write_text(json.dumps(event))
+                with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload), 'GITHUB_EVENT_NAME': 'pull_request_target'}), patch.object(actions, 'gh', return_value=[[{'filename': path}]]), patch.object(actions, 'emit') as emit, patch.object(actions, 'identity') as identity, patch.object(actions, 'releases') as releases:
+                    actions.resolve()
+                    emit.assert_called_once_with({'eligible': 'false'})
+                    identity.assert_not_called()
+                    releases.assert_not_called()
+
+    def test_unknown_mixed_and_both_rename_directions_still_reach_policy(self):
+        event = {'action': 'closed', 'pull_request': {'merged': True,
+                 'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40}}
+        for path in ['producer/new.py', 'producer/policy.py', 'source-lock.json',
+                     '.github/workflows/release.yml', 'tests/test_release.py', 'containers/native/Dockerfile']:
+            for paths in [[path], ['producer/actions.py', path], [path, 'producer/actions.py']]:
+                with self.subTest(paths=paths):
+                    self.assertTrue(actions.eligible('pull_request_target', event, actions.image_paths(paths)))
+        self.assertEqual(actions.image_paths(['producer/actions.py.bak']), ['producer/actions.py.bak'])
+
+
+class ArtifactBindingTests(unittest.TestCase):
+    setUp = ActionsTests.setUp
+    release_api = ActionsTests.release_api
+
+    def test_artifact_and_required_environment_mismatches_fail_before_download(self):
+        original = self.release_api('api', f'repos/{actions.REPO}/actions/artifacts/123')
+        variants = []
+        for key, value in [('id', 124), ('name', 'wrong'), ('expired', True), ('digest', 'sha256:'+'c'*64), ('expires_at', '2000-01-01T00:00:00Z')]:
+            variants.append(dict(original, **{key: value}))
+        variants.append(dict(original, workflow_run={'id': 999, 'head_sha': self.commit}))
+        for key in original:
+            item = dict(original); del item[key]; variants.append(item)
+        for item in variants:
+            def api(*args, **kwargs):
+                if args == ('api', f'repos/{actions.REPO}/actions/artifacts/123'): return item
+                return self.release_api(*args, **kwargs)
+            with self.subTest(item=item), patch.dict(os.environ, self.environment, clear=True), patch.object(actions, 'identity'), patch.object(actions, 'gh', side_effect=api) as gh, patch.object(actions, 'download') as download:
+                with self.assertRaises((ValueError, TypeError)): actions.promote()
+                download.assert_not_called()
+                self.assertFalse(any(c.args[:2] == ('release', 'edit') for c in gh.call_args_list))
+        for key in ['GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT', 'SHIRUBE_ACTIONS_ARTIFACT_ID', 'SHIRUBE_ACTIONS_ARTIFACT_DIGEST']:
+            env = dict(self.environment); del env[key]
+            with self.subTest(missing=key), patch.dict(os.environ, env, clear=True), patch.object(actions, 'identity'), patch.object(actions, 'gh', side_effect=self.release_api), patch.object(actions, 'download') as download:
+                with self.assertRaises(ValueError): actions.promote()
+                download.assert_not_called()
+
+    def test_normal_promotion_rechecks_ownership_and_inventory(self):
+        for field, value in [('target_commitish', 'd'*40), ('body', 'changed'), ('id', 99), ('assets', [{'id': 1, 'name': 'new'}])]:
+            before = copy.deepcopy(self.draft)
+            def validate(*args): self.draft[field] = value
+            with self.subTest(field=field), patch.dict(os.environ, self.environment), patch.object(actions, 'identity'), patch.object(actions, 'download'), patch.object(actions, 'validate', side_effect=validate), patch.object(actions, 'gh', side_effect=self.release_api) as gh:
+                with self.assertRaises(ValueError): actions.promote()
+                self.assertFalse(any(c.args[:2] == ('release', 'edit') for c in gh.call_args_list))
+            self.draft = before; self.records = [self.draft]
+
+    def test_resolve_passes_rename_origins_and_all_pages_to_existing_policy(self):
+        event = {'action': 'closed', 'pull_request': {'number': 24, 'merged': True,
+                 'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40, 'changed_files': 2}}
+        for source, destination in [('producer/actions.py', 'producer/new.py'),
+                                    ('producer/new.py', 'producer/actions.py')]:
+            with self.subTest(source=source), tempfile.TemporaryDirectory() as tmp:
+                payload = Path(tmp)/'event'; payload.write_text(json.dumps(event))
+                pages = [[{'filename': destination, 'previous_filename': source}], [{'filename': 'docs/RELEASE.md'}]]
+                with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload), 'GITHUB_EVENT_NAME': 'pull_request_target'}), patch.object(actions, 'gh', return_value=pages), patch.object(actions, 'eligible', return_value=False) as eligible:
+                    with patch.object(actions, 'emit'):
+                        actions.resolve()
+                    self.assertEqual(eligible.call_args.args[2], ['producer/new.py', 'docs/RELEASE.md'])
+
+    def test_missing_release_ownership_and_wrong_attempt_environment_fail_closed(self):
+        original = copy.deepcopy(self.draft)
+        for field in ('id', 'body', 'target_commitish'):
+            self.draft = copy.deepcopy(original); self.draft.pop(field)
+            self.records = [self.draft]
+            with self.subTest(missing=field), patch.dict(os.environ, self.environment), patch.object(actions, 'identity'), patch.object(actions, 'gh', side_effect=self.release_api) as gh, patch.object(actions, 'download') as download:
+                with self.assertRaises((ValueError, KeyError)): actions.promote()
+                download.assert_not_called()
+                self.assertFalse(any(c.args[:2] == ('release', 'edit') for c in gh.call_args_list))
+        self.draft = original; self.records = [self.draft]
+        for key, value in [('GITHUB_RUN_ID', '999'), ('GITHUB_RUN_ATTEMPT', '2')]:
+            with self.subTest(key=key), patch.dict(os.environ, dict(self.environment, **{key: value})), patch.object(actions, 'identity'), patch.object(actions, 'gh', side_effect=self.release_api), patch.object(actions, 'download') as download:
+                with self.assertRaises(ValueError): actions.promote()
+                download.assert_not_called()
+
+    def test_artifact_expiry_rechecked_after_remote_validation(self):
+        artifact = self.release_api('api', f'repos/{actions.REPO}/actions/artifacts/123')
+        def api(*args, **kwargs):
+            if args == ('api', f'repos/{actions.REPO}/actions/artifacts/123'): return artifact
+            return self.release_api(*args, **kwargs)
+        def validate(*args): artifact['expired'] = True
+        with patch.dict(os.environ, self.environment), patch.object(actions, 'identity'), patch.object(actions, 'gh', side_effect=api) as gh, patch.object(actions, 'download'), patch.object(actions, 'validate', side_effect=validate):
+            with self.assertRaises(ValueError): actions.promote()
+            self.assertFalse(any(c.args[:2] == ('release', 'edit') for c in gh.call_args_list))
