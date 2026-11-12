@@ -34,12 +34,8 @@ class ISOInputRetirementTests(unittest.TestCase):
         self.inputs = self.root/'inputs'; self.inputs.mkdir()
         self.output = self.root/'output'; self.output.mkdir()
         self.project = self.root/'src'
-        for name in ('source-lock.json', 'LICENSE', 'NOTICE', 'license-audit.json',
-                     'shirube-os-logo.svg', 'native/Dockerfile', 'native/build.py',
-                     'native/package.sh', 'native/extras.py.in', 'native/image.py'):
-            path = self.project/name; path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text('synthetic public recipe')
-        (self.project/'source-lock.json').write_text('{"stream":{"version":"2026.03"}}')
+        from component_fixture import component_project
+        component_project(self.project, container=True)
         self.compiler = 'sha256:'+'b'*64
         self.commit = 'c'*40; self.version = 'v2026.03.0'
         self.records = {}

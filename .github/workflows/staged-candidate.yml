@@ -14,7 +14,62 @@ on:
 permissions:
   contents: read
 jobs:
+  admission:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      cache-write: ${{ steps.admit.outputs.cache-write }}
+    steps:
+      # Trusted inline code only: no checkout, project imports or image execution.
+      - id: admit
+        name: Admit exact caller source and trusted cache ownership
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          CACHE_MODE: ${{ inputs.cache-mode }}
+        run: |
+          python3 -I - <<'PYCODE'
+          import json, os, re
+          from pathlib import Path
+          def require(condition):
+              if not condition:
+                  raise SystemExit('Rejected staged workflow caller/source')
+          commit = os.environ['SOURCE_COMMIT']
+          sha = os.environ['GITHUB_SHA']
+          ref = os.environ['GITHUB_REF']
+          repo = os.environ['GITHUB_REPOSITORY']
+          event = os.environ['GITHUB_EVENT_NAME']
+          data = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          require(re.fullmatch('[0-9a-f]{40}', commit) is not None)
+          require(re.fullmatch('[0-9a-f]{40}', sha) is not None)
+          require(re.fullmatch('[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repo) is not None)
+          require(data.get('repository', {}).get('full_name') == repo)
+          require(os.environ['CACHE_MODE'] in {'cold', 'warm'})
+          write = False
+          if event == 'workflow_dispatch':
+              require(ref.startswith('refs/heads/') and len(ref) > len('refs/heads/'))
+              if ref == 'refs/heads/main':
+                  require(commit == sha)
+                  write = repo == 'michibiki-io/shirube-os'
+          elif event == 'pull_request_target':
+              pr = data.get('pull_request', {})
+              require(data.get('action') == 'closed' and pr.get('state') == 'closed' and pr.get('merged') is True)
+              require(ref == 'refs/heads/main' and pr.get('base', {}).get('ref') == 'main')
+              require(pr.get('base', {}).get('repo', {}).get('full_name') == repo)
+              require(commit == pr.get('merge_commit_sha'))
+          elif event == 'pull_request':
+              pr = data.get('pull_request', {})
+              require(data.get('action') == 'labeled')
+              require(data.get('label', {}).get('name') in {'validate-staged', 'validate-staged-warm'})
+              require(re.fullmatch(r'refs/pull/[1-9][0-9]*/merge', ref) is not None)
+              require(pr.get('base', {}).get('repo', {}).get('full_name') == repo)
+              require(commit == pr.get('head', {}).get('sha'))
+          else:
+              require(False)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('cache-write=' + str(write).lower() + '\n')
+          PYCODE
   compiler:
+    needs: [admission]
     strategy:
       fail-fast: false
       matrix:
@@ -41,6 +96,11 @@ jobs:
           case "$CACHE_MODE" in cold|warm) ;; *) exit 2 ;; esac
           test "$(git rev-parse HEAD)" = "$SOURCE_COMMIT"
           python3 -c 'import os; from pathlib import Path; from producer.architecture import preflight; preflight(os.environ["BUILD_ARCHITECTURE"],Path(os.environ["TASK_STORAGE"]))'
+      - name: Compute compiler toolchain cache namespace
+        id: toolchain
+        env:
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: python3 -m producer.component_inputs compiler-key --project . --architecture "$ARCHITECTURE" >> "$GITHUB_OUTPUT"
       - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
         with:
           cache-binary: false
@@ -54,9 +114,9 @@ jobs:
           push: false
           build-args: |
             BASE=${{ matrix.architecture == 'amd64' && 'debian@sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018' || 'debian@sha256:ec8534cda2cb30f29f44f23e135297af7a1496f2990fd8e4e84aa36b081a757a' }}
-          cache-from: ${{ inputs.cache-mode == 'warm' && format('type=gha,scope=shirube-staged-compiler-{0}-{1}', matrix.architecture, hashFiles('.dockerignore', 'containers/native/**', 'producer/**', 'guest/**', 'patches/kernel/**', 'patches/vyos/**', 'patches/nmap/**', 'LICENSE', 'NOTICE', 'source-lock.json', 'license-audit.json', 'shirube-os-logo.svg', 'LICENSES/**', 'third_party/geoip/**')) || '' }}
+          cache-from: ${{ inputs.cache-mode == 'warm' && format('type=gha,scope={0}', steps.toolchain.outputs.key) || '' }}
           no-cache: ${{ inputs.cache-mode == 'cold' }}
-          cache-to: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && format('type=gha,mode=max,ignore-error=true,scope=shirube-staged-compiler-{0}-{1}', matrix.architecture, hashFiles('.dockerignore', 'containers/native/**', 'producer/**', 'guest/**', 'patches/kernel/**', 'patches/vyos/**', 'patches/nmap/**', 'LICENSE', 'NOTICE', 'source-lock.json', 'license-audit.json', 'shirube-os-logo.svg', 'LICENSES/**', 'third_party/geoip/**')) || '' }}
+          cache-to: ${{ needs.admission.outputs.cache-write == 'true' && format('type=gha,mode=max,ignore-error=true,scope={0}', steps.toolchain.outputs.key) || '' }}
       - name: Export exact native compiler
         env:
           SOURCE_COMMIT: ${{ inputs.commit }}
@@ -76,7 +136,7 @@ jobs:
           retention-days: 7
           overwrite: true
   native:
-    needs: [compiler]
+    needs: [admission, compiler]
     strategy:
       fail-fast: false
       matrix:
@@ -107,12 +167,21 @@ jobs:
         run: |
           python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Compute exact inner scope key using verified compiler
+        id: scope
+        env:
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
+            --entrypoint python3 "$COMPILER_IMAGE" -m producer.component_inputs stage-key \
+            --stage native --architecture "$ARCHITECTURE" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         if: inputs.cache-mode == 'warm'
         id: cache
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-native-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - name: Execute native with verified predecessors
         env:
           STAGE: native
@@ -128,10 +197,10 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
+        if: needs.admission.outputs.cache-write == 'true' && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-native-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: shirube-stage-${{ matrix.architecture }}-native
@@ -152,7 +221,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   vpp:
-    needs: [compiler]
+    needs: [admission, compiler]
     strategy:
       fail-fast: false
       matrix:
@@ -183,12 +252,21 @@ jobs:
         run: |
           python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Compute exact inner scope key using verified compiler
+        id: scope
+        env:
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
+            --entrypoint python3 "$COMPILER_IMAGE" -m producer.component_inputs stage-key \
+            --stage vpp --architecture "$ARCHITECTURE" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         if: inputs.cache-mode == 'warm'
         id: cache
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-vpp-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - name: Execute vpp with verified predecessors
         env:
           STAGE: vpp
@@ -204,10 +282,10 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
+        if: needs.admission.outputs.cache-write == 'true' && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-vpp-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: shirube-stage-${{ matrix.architecture }}-vpp
@@ -228,7 +306,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   kea:
-    needs: [compiler]
+    needs: [admission, compiler]
     strategy:
       fail-fast: false
       matrix:
@@ -259,12 +337,21 @@ jobs:
         run: |
           python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Compute exact inner scope key using verified compiler
+        id: scope
+        env:
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
+            --entrypoint python3 "$COMPILER_IMAGE" -m producer.component_inputs stage-key \
+            --stage kea --architecture "$ARCHITECTURE" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         if: inputs.cache-mode == 'warm'
         id: cache
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-kea-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - name: Execute kea with verified predecessors
         env:
           STAGE: kea
@@ -280,10 +367,10 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
+        if: needs.admission.outputs.cache-write == 'true' && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-kea-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: shirube-stage-${{ matrix.architecture }}-kea
@@ -304,7 +391,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   salt:
-    needs: [compiler]
+    needs: [admission, compiler]
     strategy:
       fail-fast: false
       matrix:
@@ -335,12 +422,21 @@ jobs:
         run: |
           python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Compute exact inner scope key using verified compiler
+        id: scope
+        env:
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
+            --entrypoint python3 "$COMPILER_IMAGE" -m producer.component_inputs stage-key \
+            --stage salt --architecture "$ARCHITECTURE" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         if: inputs.cache-mode == 'warm'
         id: cache
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-salt-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - name: Execute salt with verified predecessors
         env:
           STAGE: salt
@@ -356,10 +452,10 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
+        if: needs.admission.outputs.cache-write == 'true' && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-salt-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: shirube-stage-${{ matrix.architecture }}-salt
@@ -380,7 +476,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   runtime:
-    needs: [compiler]
+    needs: [admission, compiler]
     strategy:
       fail-fast: false
       matrix:
@@ -411,12 +507,21 @@ jobs:
         run: |
           python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Compute exact inner scope key using verified compiler
+        id: scope
+        env:
+          COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
+            --entrypoint python3 "$COMPILER_IMAGE" -m producer.component_inputs stage-key \
+            --stage runtime --architecture "$ARCHITECTURE" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         if: inputs.cache-mode == 'warm'
         id: cache
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-runtime-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - name: Execute runtime with verified predecessors
         env:
           STAGE: runtime
@@ -432,10 +537,10 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" --cache "$STAGE_CACHE"
       - uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
-        if: (github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && success() && steps.cache.outputs.cache-hit != 'true'
+        if: needs.admission.outputs.cache-write == 'true' && success() && steps.cache.outputs.cache-hit != 'true'
         with:
           path: ${{ runner.temp }}/stage-cache
-          key: shirube-stage-v1-runtime-${{ matrix.architecture }}-${{ hashFiles('source-lock.json', 'containers/native/**', 'producer/**', 'patches/**', 'LICENSE', 'shirube-os-logo.svg') }}
+          key: ${{ steps.scope.outputs.key }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: shirube-stage-${{ matrix.architecture }}-runtime
@@ -456,7 +561,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   kernel:
-    needs: [compiler, vpp]
+    needs: [admission, compiler, vpp]
     strategy:
       fail-fast: false
       matrix:
@@ -525,7 +630,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   integration:
-    needs: [compiler, native, vpp]
+    needs: [admission, compiler, native, vpp]
     strategy:
       fail-fast: false
       matrix:
@@ -598,7 +703,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   iso:
-    needs: [compiler, native, vpp, kea, salt, runtime, kernel, integration]
+    needs: [admission, compiler, native, vpp, kea, salt, runtime, kernel, integration]
     strategy:
       fail-fast: false
       matrix:
@@ -691,7 +796,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   clearance:
-    needs: [compiler, iso]
+    needs: [admission, compiler, iso]
     strategy:
       fail-fast: false
       matrix:
@@ -760,7 +865,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   guests:
-    needs: [compiler, clearance]
+    needs: [admission, compiler, clearance]
     strategy:
       fail-fast: false
       matrix:
