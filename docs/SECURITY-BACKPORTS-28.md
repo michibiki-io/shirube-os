@@ -170,6 +170,51 @@ Kernel receipt names and original-source reconstruction remain unchanged.
 
 ## Focused validation
 
+Issue #32 repairs seven unused imports left by the component recipe split at
+`799b0ea23f0ec915e34b48d034c0525f9404257c`. Both native architecture jobs in
+Release run `43401629832` failed upstream vyos-1x pylint on the retained
+update-check `recipe.py` and `security_common.py`. Production preparation copies
+these complete modules into the source tree before `snapshot_git_import`, so
+upstream tracked-Python lint sees them too. Earlier replay tests verified patch
+behavior, complete retained bytes and receipt hashes; unused imports do not
+change those properties. Those tests did not invoke upstream pylint, and the
+earlier successful release predates the split.
+
+`test_retained_update_check_imports_are_used` now prepares the actual offline
+update-check fixture and checks import bindings against AST name loads in just
+those two retained modules. It rejects each of the seven restored unused
+bindings, including import-from and alias controls. This is a narrow guard for
+these modules' ordinary name use, without scope resolution or general lint
+coverage; upstream pylint remains the authority. The guard failed on the
+unchanged pre-fix modules and passed after removing the imports. Complete files,
+receipt/replay checks, the legacy shim exports and security patches are retained.
+
+Issue #32 local verification commands:
+
+```sh
+PYTHONPATH=tests:. python3 -m unittest test_security_backports.SecurityTests.test_retained_update_check_imports_are_used -v
+PYTHONPATH=tests:. python3 -m unittest test_security_backports test_recipes test_component_inputs test_component_graph -v
+git diff --check
+```
+
+The focused tests cover retained inventories/digests, standalone replay, repeat
+preparation, tamper rejection and component identity mutations on AMD64/ARM64.
+A separate temporary fixture comparison using the exact pre-fix and fixed file
+bytes confirms that `security_native.py` invalidates native only and
+`security_common.py` invalidates native and kernel on both architectures; other
+component and compiler identities stay reusable. These are offline host checks,
+not execution of architecture-specific packages. A temporary isolated environment
+with Python 3.12.3, pylint 3.3.9 and astroid 3.3.11 also checked only
+`unused-import` on the retained recipe and companion: exact pre-fix bytes produced
+seven W0611 warnings (exit 4), while fixed retained bytes produced none (exit 0).
+This is not the Debian compiler image or the complete upstream lint invocation;
+those remain normal release-build checks. No system dependency or image changed.
+Exact-head CI and final PR reviews remain publication checks. No full/hull
+harness, package/image rebuild, guest/runtime validation or broad license audit
+was run for this repair. The next normal merged release must supply full-build
+evidence. The calling-sid upgrade caveat above remains applicable; this import
+fix provides no additional legacy-configuration upgrade coverage.
+
 From the repository root, offline:
 
 ```sh

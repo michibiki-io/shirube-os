@@ -3,17 +3,13 @@
 Copyright (c) 2026 michibiki.io; MIT License (see NOTICE).
 """
 import argparse
-import hashlib
-import json
 from pathlib import Path
-import shutil
-import subprocess
 
 
 try:
-    from .security_common import digest, patch_root, inputs, retain, run_patch
+    from .security_common import patch_root, retain, run_patch
 except ImportError:
-    from security_common import digest, patch_root, inputs, retain, run_patch
+    from security_common import patch_root, retain, run_patch
 
 
 def apply(project, component, source):

@@ -102,6 +102,47 @@ class SecurityTests(unittest.TestCase):
                     if component == 'frr': security.prepare_frr(ROOT,source)
                     else: security.apply(ROOT,component,source)
 
+    def test_retained_update_check_imports_are_used(self):
+        # Bounded guard for these complete retained modules, not a Python linter:
+        # their imports bind names consumed through ordinary ast.Name loads.
+        def unused_imports(text):
+            tree = ast.parse(text)
+            loads = {node.id for node in ast.walk(tree)
+                     if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load)}
+            imports = set()
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.Import, ast.ImportFrom)):
+                    imports.update(alias.asname or (alias.name.split('.')[0]
+                                   if isinstance(node, ast.Import) else alias.name)
+                                   for alias in node.names)
+            return imports - loads
+
+        source = self.fixture('update-original', '-imports')
+        security.apply(ROOT, 'update-check', source)
+        retained = source/'shirube-corresponding-inputs/security-update-check'
+        for name in ('recipe.py', 'security_common.py'):
+            text = (retained/name).read_text()
+            with self.subTest(module=name):
+                self.assertEqual(unused_imports(text), set())
+            # Restore each of the seven pre-fix bindings independently, including
+            # import-from names used by the recipe's relative/standalone fallback.
+            restored = (('hashlib', 'json', 'shutil', 'subprocess', 'digest', 'inputs')
+                        if name == 'recipe.py' else ('argparse',))
+            for binding in restored:
+                statement = (f'from security_common import {binding}\n'
+                             if binding in ('digest', 'inputs') else f'import {binding}\n')
+                with self.subTest(module=name, restored=binding):
+                    self.assertEqual(unused_imports(statement+text), {binding})
+            # Resolve bound names, rather than treating a module/member's spelling
+            # or an attribute name as an import use.
+            for statement in ('import json as unused_alias\n',
+                              'from security_common import digest as unused_alias\n',
+                              'from .security_common import inputs as unused_alias\n'):
+                with self.subTest(module=name, alias=statement):
+                    self.assertEqual(unused_imports(statement+text), {'unused_alias'})
+            self.assertEqual(unused_imports('import os.path\nos.path.exists("x")\n'), set())
+            self.assertEqual(unused_imports('from os.path import exists as present\npresent("x")\n'), set())
+
     def test_immutable_provenance_hashes(self):
         kernel = ROOT/'patches/kernel'
         record = json.loads((kernel/'upstream/provenance.json').read_text())
