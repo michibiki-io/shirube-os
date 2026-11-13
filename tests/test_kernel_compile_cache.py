@@ -1,5 +1,7 @@
 """Small real compiler + adversarial archives; no kernel/image build."""
 import hashlib
+import http.client
+import contextlib
 import io
 import importlib.util
 import json
@@ -74,7 +76,19 @@ class CacheArchiveTests(unittest.TestCase):
 
     def test_bounded_export_and_unsafe_members(self):
         with patch.object(cache, 'FILE_LIMIT', 4):
-            with self.assertRaises(ValueError): cache.export(self.store, self.root/'too-big', self.scope)
+            result = cache.export(self.store, self.root/'too-big', self.scope)
+            self.assertEqual(result, {'entries': 0, 'skipped_capacity': 1})
+        cache.restore(self.root/'too-big', self.root/'empty', self.scope)
+        self.assertEqual(list((self.root/'empty').iterdir()), [])
+        other = self.store/'a/b/otherR'; other.write_bytes(b'another result')
+        with patch.object(cache, 'COUNT_LIMIT', 1):
+            result = cache.export(self.store, self.root/'bounded', self.scope)
+            self.assertEqual(result, {'entries': 1, 'skipped_capacity': 1})
+            self.assertEqual(cache.restore(self.root/'bounded', self.root/'one', self.scope), 1)
+        # Real physical tar budgeting, not just sum of payload sizes.
+        with patch.object(cache, 'LIMIT', 8 * 1024**2 + 10240):
+            result = cache.export(self.store, self.root/'bounded-bytes', self.scope)
+            self.assertEqual(result, {'entries': 0, 'skipped_capacity': 2})
         for name, kind in [('a/b/leakR', tarfile.SYMTYPE), ('../escape', tarfile.REGTYPE),
                            ('signing_key.pem', tarfile.REGTYPE), ('a/b/12345R', tarfile.FIFOTYPE)]:
             archive = self.root/'unsafe.tar'
@@ -156,7 +170,7 @@ class RealCompilerTests(unittest.TestCase):
             self.assertEqual({k for k in env if k.startswith('CCACHE_')}, {'CCACHE_CONFIGPATH'})
         config = Path(self.data['config']).read_text()
         for required in ['direct_mode = false', 'depend_mode = false', 'compiler_check = content',
-                         'sloppiness =\n', 'remote_storage =\n', 'max_size = 1GiB']:
+                         'sloppiness =\n', 'remote_storage =\n', 'max_size = 1GiB', 'max_files = 45000']:
             self.assertIn(required, config)
 
     def test_key_rotation_restored_compiler_hit_and_new_signature_only(self):
@@ -285,6 +299,26 @@ class ProducerTests(unittest.TestCase):
                         with self.subTest(arch=arch,invalid=invalid),self.assertRaises(ValueError):
                             host.import_cache(Remote(),directory,arch)
                         self.assertFalse((directory/'seed.tar').exists())
+
+    def test_interrupted_optional_import_falls_back_without_leaking_or_seed(self):
+        _,_,_,_,pr,_=self.fixture();pr['number']=2
+        event=dict(repository=pr['base']['repo'],action='closed',pull_request=pr)
+        for error in [http.client.IncompleteRead(b'private signed URL'),
+                      http.client.BadStatusLine('private response'), EOFError('private stream')]:
+            with tempfile.TemporaryDirectory() as temp:
+                root=Path(temp); path=root/'event.json';path.write_text(json.dumps(event))
+                destination=root/'cache';output=io.StringIO()
+                env=dict(CACHE_WRITE='true',CACHE_MODE='warm',GITHUB_EVENT_NAME='pull_request_target',
+                         GITHUB_REPOSITORY=host.REPO,GITHUB_REF='refs/heads/main',GITHUB_EVENT_PATH=str(path))
+                argv=['kernel_compile_cache.py','import','--directory',str(destination),
+                      '--architecture','amd64','--commit','a'*40]
+                with patch.object(host.sys,'argv',argv),patch.dict(os.environ,env), \
+                     patch.object(host,'API'),patch.object(host,'import_cache',side_effect=error), \
+                     contextlib.redirect_stdout(output):
+                    host.main()
+                self.assertIn('MISS_INVALID_OR_UNAVAILABLE',output.getvalue())
+                self.assertNotIn('private',output.getvalue())
+                self.assertEqual(list(destination.iterdir()),[])
 
     def test_current_writer_requires_exact_merged_main_and_existing_admission(self):
         _,_,_,_,pr,_=self.fixture();pr['number']=2

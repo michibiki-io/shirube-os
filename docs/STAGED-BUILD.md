@@ -898,8 +898,13 @@ there is no fallback to a shared Actions cache or another writer. The host's
 use, not an authenticity checker for arbitrary local files. Do not supply an
 untrusted local seed. Unexpected local export state fails the build closed.
 
-The dedicated store has a 1 GiB ccache eviction target. Export/import enforce a
+The dedicated store has ccache eviction targets of 1 GiB and 45,000 files. Export/import enforce a
 2 GiB tar limit, 64 MiB per result, 50,000 results and an 8 MiB manifest limit.
+Export retains a bounded subset if count, individual-result size, manifest or
+tar capacity would be exceeded; metrics report `skipped_capacity`. Capacity alone
+cannot fail a correctly signed build. Unknown files, links and malformed state
+still fail closed. Optional importer failures (including interrupted HTTP reads)
+are redacted and fall back to a fresh build without a seed.
 Only regular ccache result files are exported; configuration, logs, temporary
 files, statistics, source trees and signing state are excluded. The uncompressed
 ZIP must contain exactly `export.tar` and `provenance.json`; the optional artifact
@@ -945,9 +950,12 @@ PR validation と main dispatch はこの機能では常に fresh build です�
 
 content で compiler・設定・source・header・生成 header・引数を識別し、
 direct/depend mode、sloppiness、時刻や compiler 名だけの identity は使いません。
-保存対象は compiler 結果だけです。ccache の目標上限は 1 GiB、tar は 2 GiB、
+保存対象は compiler 結果だけです。ccache の目標上限は 1 GiB と45,000ファイル、tar は 2 GiB、
 1結果は 64 MiB、結果数は 50,000、manifest は 8 MiB、artifact 保持は7日です。
 一時 ZIP/tar の追加容量が必要で、eviction や期限切れは正常な miss になります。
+容量を超える結果は export から除外して統計に記録し、正常に署名した build は継続します。
+未知ファイルと link は引き続き拒否します。
+HTTP 読み取り中の切断を含む任意 import の障害は、内容を公開せず fresh build に戻します。
 compiler fingerprint の変更により既存 cache は一度 miss します。
 
 小さな実 compiler と不正入力 fixture で検証します。

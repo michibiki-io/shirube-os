@@ -149,8 +149,11 @@ def main():
         if os.environ.get('CACHE_MODE') == 'warm':
             try:
                 status = import_cache(API(os.environ.get('GH_TOKEN')), directory, args.architecture)
-            except (ValueError, OSError, KeyError, TypeError, AttributeError, zipfile.BadZipFile):
-                # No remote error body or credential reaches the logs.
+            except Exception:
+                # Optional acceleration includes HTTPException/IncompleteRead,
+                # truncated streams and metadata errors. Fail closed to a fresh
+                # build without leaking response bodies or signed URLs.
+                (directory / 'seed.tar').unlink(missing_ok=True)
                 status = 'MISS_INVALID_OR_UNAVAILABLE'
         print('Kernel compiler cache: ' + status)
     else:

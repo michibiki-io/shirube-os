@@ -22,7 +22,7 @@ from .stage_artifacts import digest
 LIMIT = 2 * 1024**3
 FILE_LIMIT = 64 * 1024**2
 COUNT_LIMIT = 50000
-RESULT = re.compile(r'[0-9a-f]/[0-9a-f]/[A-Za-z0-9]+R')
+RESULT = re.compile(r'[0-9a-f]/[0-9a-f]/[A-Za-z0-9]{1,64}R')
 STATE = Path('/build-private/kernel-compiler.json')
 SCHEMA = 1
 
@@ -98,7 +98,12 @@ def export(store, archive, expected):
     store, archive = Path(store), Path(archive)
     require(store.is_dir() and not store.is_symlink() and not archive.exists())
     records = []
-    total = 0
+    # Reserve the complete bounded manifest plus tar framing/padding. Keep a
+    # bounded subset when results exceed capacity; optional acceleration must
+    # not invalidate a correctly signed/audited build because of eviction lag.
+    total = 8 * 1024**2 + 10240
+    metadata_size = len(json.dumps({'scope': expected, 'files': []}, sort_keys=True).encode()) + 1
+    skipped = 0
     for path in sorted(store.rglob('*')):
         require(not path.is_symlink() and (path.is_file() or path.is_dir()))
         if not path.is_file():
@@ -110,13 +115,21 @@ def export(store, archive, expected):
             require(path.name in {'stats', 'CACHEDIR.TAG', 'ccache.conf'} or name == 'tmp/.cleaned')
             continue
         size = path.stat().st_size
-        require(0 < size <= FILE_LIMIT and len(records) < COUNT_LIMIT)
-        total += size
-        require(total <= LIMIT - 16 * 1024**2)
-        records.append(dict(name=name, size=size, sha256=sha256(path)))
+        require(size > 0)
+        cost = 512 + ((size + 511) // 512) * 512
+        record = dict(name=name, size=size, sha256='0' * 64)
+        record_size = len(json.dumps(record, sort_keys=True).encode()) + 2
+        if (size > FILE_LIMIT or len(records) >= COUNT_LIMIT or total + cost > LIMIT
+                or metadata_size + record_size > 8 * 1024**2):
+            skipped += 1
+            continue
+        total += cost
+        metadata_size += record_size
+        record['sha256'] = sha256(path)
+        records.append(record)
     meta = (json.dumps({'scope': expected, 'files': records}, sort_keys=True) + '\n').encode()
     require(len(meta) <= 8 * 1024**2)
-    with tarfile.open(archive, 'x') as output:
+    with tarfile.open(archive, 'x', format=tarfile.USTAR_FORMAT) as output:
         header = tarfile.TarInfo('manifest.json'); header.size = len(meta)
         output.addfile(header, io.BytesIO(meta))
         for record in records:
@@ -124,7 +137,7 @@ def export(store, archive, expected):
             with (store / record['name']).open('rb') as stream:
                 output.addfile(header, stream)
     require(archive.stat().st_size <= LIMIT)
-    return len(records)
+    return {'entries': len(records), 'skipped_capacity': skipped}
 
 
 def prepare(root, mount, architecture, *, state=STATE):
@@ -150,6 +163,7 @@ def prepare(root, mount, architecture, *, state=STATE):
     config = state.with_suffix('.conf')
     config.write_text(f'''cache_dir = {store}
 max_size = 1GiB
+max_files = 45000
 compiler_check = content
 direct_mode = false
 depend_mode = false
@@ -215,7 +229,7 @@ def finish(*, state=STATE):
     stats = subprocess.check_output(['ccache', '--print-stats'], env=env, text=True)
     report = {'scope': data['scope'], 'namespace': data['namespace'], 'restore': data['status'],
               'statistics': dict(line.split() for line in stats.splitlines())}
-    export(data['store'], Path(data['mount']) / 'export.tar', data['scope'])
+    report['export'] = export(data['store'], Path(data['mount']) / 'export.tar', data['scope'])
     (Path(data['mount']) / 'metrics.json').write_text(json.dumps(report, sort_keys=True) + '\n')
 
 
