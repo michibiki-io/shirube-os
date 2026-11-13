@@ -1,9 +1,6 @@
 """Commit-based releases for relevant merged PRs; no PR-title classification."""
 import re
 
-RELEVANT = ('producer/', 'containers/', 'scripts/', 'source-lock.json', 'patches/', 'guest/',
-            'tests/', '.github/workflows/', 'schemas/', 'shirube-os-logo.svg',
-            'license-audit.json', 'LICENSE', 'NOTICE', 'third_party/')
 VERSION_PATTERN=r'v([1-9][0-9]{3})\.(0[1-9]|1[0-2])\.(0|[1-9][0-9]*)'
 
 
@@ -26,7 +23,9 @@ def require_stream_version(version,stream_version):
 
 
 def relevant(paths):
-    return any(p.startswith(RELEVANT) for p in paths)
+    # The publication controller removes reviewed non-image paths first.
+    # Every remaining path, including unknown root files, requires a release.
+    return bool(paths)
 
 
 def eligible(event_name, event, paths):
