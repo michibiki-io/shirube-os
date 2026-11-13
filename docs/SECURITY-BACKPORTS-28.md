@@ -116,6 +116,14 @@ The template renders the exact `ipv6-peer-intf-id-secret` daemon option.
 Missing or invalid secrets in calling-sid mode raise ConfigError instead of
 silently negotiating with IID0. No secret is generated or assigned by this work;
 diagnostics name the constraint without printing supplied secret values.
+The old image has no secret CLI node, so operators cannot preconfigure it there.
+On the first boot after upgrading, existing calling-sid configurations without a
+secret fail verification and the affected PPPoE/L2TP/PPTP/SSTP service may remain
+unconfigured until the operator sets the secret and commits after boot.
+Alternatively, switch to another IID mode before upgrading, then configure the
+secret and restore calling-sid on the new image; plan for the service interruption.
+These upgrade-time effects follow the validation contract; boot and upgrade-time
+configuration loading have not been exercised here.
 Other IID modes and default configuration retain their existing behavior.
 Changing the IID mode or secret restarts PPPoE sessions so they renegotiate,
 as upstream intends; operators should account for that interruption.
