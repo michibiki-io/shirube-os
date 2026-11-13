@@ -368,7 +368,7 @@ FRR quilt preparation as well as update-check application. Native changes never
 alter a kernel retained recipe, and kernel changes never alter native/library
 source identity; a shared security helper change affects both.
 
-The offline audit derives module-level and delayed Python imports, bare native
+The offline audit recognizes Python by suffix or Python shebang (including the extensionless `apt-get` wrapper and its `apt_archive.py` dependency), and derives module-level and delayed Python imports, bare native
 imports, and both architecture renderings of templates. It resolves literal
 `/src/`, `/opt/stream/` and patch aliases, constant path joins, literal shell paths,
 `Path(...).glob/rglob(...)`, and literal `copytree` inputs. Every discovered file

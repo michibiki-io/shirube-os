@@ -115,14 +115,24 @@ def syntax(text):
     return nodes, strings
 
 
+def python_recipe(name, path):
+    """Recognize executable Python inputs independently of their filename suffix."""
+    if name.endswith(('.py', '.py.in')):
+        return True
+    with path.open('rb') as stream:
+        first = stream.readline(256)
+    return first.startswith(b'#!') and re.search(rb'(?:/|\s)python[0-9.]*(?:\s|$)', first) is not None
+
+
 def references(project, name, *, architecture="amd64", component=None):
     """Derive imports (at every AST depth), literal paths and literal globs."""
     path = regular(project, name)
-    if not name.endswith(('.py', '.py.in', '.sh')):
+    python = python_recipe(name, path)
+    if not python and not name.endswith('.sh'):
         return set()
     text = path.read_text()
     result = set()
-    if name.endswith(('.py', '.py.in')):
+    if python:
         try:
             nodes, strings = syntax(text.replace('@ARCH@', architecture).replace('@MULTIARCH@',
                 'x86_64-linux-gnu' if architecture == 'amd64' else 'aarch64-linux-gnu'))
@@ -202,7 +212,7 @@ def references(project, name, *, architecture="amd64", component=None):
                 else:
                     result.add(target)
     # Path('/src/native').glob('*.py.in') and similar constant path joins.
-    if name.endswith(('.py', '.py.in')):
+    if python:
         for node in nodes:
             if (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
                     and node.func.attr in {'glob', 'rglob'} and node.args
@@ -219,7 +229,7 @@ def references(project, name, *, architecture="amd64", component=None):
                             if not matched.is_dir(): found.append(member)
                         if not found: raise ValueError('Missing literal recipe glob')
                         result.update(found)
-    if name.endswith(('.py', '.py.in')):
+    if python:
         for node in nodes:
             if (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
                     and node.func.attr == 'copytree' and node.args):
@@ -293,7 +303,7 @@ def lock_selections(text):
 
 
 def lock_references(project, name, data):
-    if not name.endswith(('.py', '.py.in')): return
+    if not python_recipe(name, regular(project, name)): return
     allowed = {'source-lock.json': ('stream', 'container_bases', 'debian_snapshot',
                'debian_security_snapshot', *data['lock_values']),
                'external-sources.lock.json': tuple(data['external'])}
@@ -351,7 +361,7 @@ def graph(project, component):
             raise ValueError('Invalid dependency edges: '+name)
         for dep in edges:
             if dep not in nodes: raise ValueError('Unknown dependency: '+dep)
-        if name.endswith(('.py', '.py.in')):
+        if python_recipe(name, regular(project, name)):
             rendered = regular(project, name).read_text().replace('@ARCH@', 'amd64').replace('@MULTIARCH@', 'x86_64-linux-gnu')
             calls, _ = syntax(rendered)
             routes = set()

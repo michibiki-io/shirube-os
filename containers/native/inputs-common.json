@@ -22,7 +22,9 @@
   "graph": {
     "LICENSE": [],
     "containers/native/Dockerfile": [],
-    "containers/native/apt-get": [],
+    "containers/native/apt-get": [
+      "producer/apt_archive.py"
+    ],
     "containers/native/apt-retries.conf": [],
     "containers/native/build_compile.py": [
       "LICENSE",
@@ -151,6 +153,10 @@
     ],
     "producer/stage_metrics.py": [
       "producer/resources.py"
+    ],
+    "producer/apt_archive.py": [
+      "producer/sources.py",
+      "source-lock.json"
     ]
   },
   "dynamic": {

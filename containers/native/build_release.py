@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-"""Build the declared Stream package tranche in one private runtime container.
+"""Build legacy packages, ISO or a complete release outside compile cache scopes.
 
-This entry point deliberately does not certify an ISO or a distributable disk.
-The package tranche is a producer stage, not the complete runtime dependency set.
+Compile stages must use the graph-bound build_compile.py engine.
 """
 import argparse
 import json
@@ -51,6 +50,8 @@ def main():
     parser.add_argument('--cached-libraries',type=Path)
     parser.add_argument('--qemu-accelerator',choices=['kvm','tcg'],default='kvm')
     args = parser.parse_args()
+    if args.stage is not None:
+        raise ValueError('Compile stages require the graph-bound build_compile.py engine')
     native(args.architecture)
     if args.stage and (args.target != 'packages' or args.job):
         raise ValueError('Compile stages cannot also select a target or individual jobs')

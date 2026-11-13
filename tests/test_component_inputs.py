@@ -113,7 +113,7 @@ class ComponentInputTests(unittest.TestCase):
                  ('containers/native/extra_common.py.in', ('vpp', 'kea', 'salt', 'runtime', 'kernel')),
                  ('patches/kernel/new.patch', ('kernel',)),
                  ('patches/vyos/force_mtu_host.sh', STAGES),
-                 ('producer/source_selectors.py', STAGES),
+                 ('producer/source_selectors.py', STAGES), ('producer/apt_archive.py', STAGES),
                  ('producer/stage_artifacts.py', STAGES), ('producer/branding.py', STAGES),
                  ('producer/native_common.py', STAGES), ('LICENSE', STAGES), ('shirube-os-logo.svg', STAGES)]
         for name, changed in cases:

@@ -66,6 +66,7 @@ class ComponentGraphTests(unittest.TestCase):
                       ('containers/native/package_validate.sh', {'native', 'kernel'}),
                       ('containers/native/build_compile.py', set(COMPONENTS)),
                       ('producer/source_selectors.py', set(COMPONENTS)),
+                      ('producer/apt_archive.py', set(COMPONENTS)),
                       ('producer/component_graph.py', set(COMPONENTS)),
                       ('producer/component_inputs.py', set(COMPONENTS)),
                       ('producer/compile_scope.py', set(COMPONENTS)),
@@ -109,6 +110,19 @@ class ComponentGraphTests(unittest.TestCase):
                  patch.object(vpp_sdk, 'export_vpp_sdk', side_effect=SDKReached) as export:
                 with self.assertRaises(SDKReached): kernel.accel(self.root/'work')
                 export.assert_called_once_with(original, missing, multi, arch)
+
+    def test_extensionless_python_wrapper_imports_are_audited_both_architectures(self):
+        name = 'containers/native/apt-get'
+        original = (self.project/name).read_bytes()
+        for arch in ARCHITECTURES:
+            for stage in COMPONENTS:
+                manifest(self.project, stage, arch)  # the unmodified closure must be valid
+            for addition in (b'\nimport producer.geoip\n',
+                             b'\ndef delayed():\n    from producer import cloud_init\n'):
+                with self.subTest(arch=arch, addition=addition), self.edit(name, original+addition):
+                    for stage in COMPONENTS:
+                        with self.assertRaisesRegex(ValueError, 'Undeclared dependency in containers/native/apt-get'):
+                            manifest(self.project, stage, arch)
 
     def test_component_specific_sdk_and_signing_helper_code_is_scoped(self):
         # Mutate actual helper behavior, not only a comment or patch filename.

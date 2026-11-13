@@ -53,6 +53,19 @@ class RecipeTests(unittest.TestCase):
             self.assertEqual(compile_main.call_count, int(compiled))
             self.assertEqual(release_main.call_count, int(not compiled))
 
+    def test_release_engine_rejects_direct_compile_stage_before_side_effects(self):
+        import importlib.util
+        import sys
+        from unittest.mock import patch
+        spec = importlib.util.spec_from_file_location('release_build_engine', 'containers/native/build_release.py')
+        release = importlib.util.module_from_spec(spec)
+        with patch.object(sys, 'path', list(sys.path)): spec.loader.exec_module(release)
+        for arguments in (['amd64', '--stage', 'native'], ['arm64', '--stage=kernel']):
+            with patch.object(sys, 'argv', ['build_release.py', *arguments]), \
+                 patch.object(release, 'native', side_effect=AssertionError('Must reject before runtime setup')):
+                with self.assertRaisesRegex(ValueError, 'graph-bound build_compile'):
+                    release.main()
+
     def test_source_root_does_not_rewrite_output_receipt_filename(self):
         script='git rev-parse HEAD > /output/snapshot-git-commit.txt\ncp -a /snapshot/. /output/source/\n'
         rendered=package_script(script,'/build/job','/sources/core','/sources/builder','/deps')
