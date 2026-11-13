@@ -1,0 +1,6 @@
+{
+  "upstream": "https://github.com/vyos/vyos-1x/commit/",
+  "files": {
+    "0001-9698284cbe5a8515b453a58859e4c61f1a910337.patch": "d10c592e176bf5d63ae238bc208ac80785a593d9c21b8ecb55b4ab5376dd9c43"
+  }
+}

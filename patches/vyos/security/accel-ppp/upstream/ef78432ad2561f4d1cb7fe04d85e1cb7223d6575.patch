@@ -1,0 +1,42 @@
+From ef78432ad2561f4d1cb7fe04d85e1cb7223d6575 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 11 Sep 2026 13:12:27 -0700
+Subject: [PATCH] T9325: dhcpv6: validate Status-Code option payload minimum
+ length
+
+Adapt the payload-length validation from accel-ppp commit
+52a01730fd02c2579f474c01ebf72a312f737825.
+
+- A DHCPv6 Status-Code option needs at least a 2-byte payload.
+- For a zero- or one-byte payload, the function now returns before reading o->code.
+
+Original author: Denys Fedoryshchenko <denys.f@collabora.com>
+---
+ accel-pppd/ipv6/dhcpv6_packet.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/accel-pppd/ipv6/dhcpv6_packet.c b/accel-pppd/ipv6/dhcpv6_packet.c
+index ce835a8c..9bc86670 100644
+--- a/accel-pppd/ipv6/dhcpv6_packet.c
++++ b/accel-pppd/ipv6/dhcpv6_packet.c
+@@ -617,9 +617,14 @@ static void print_status(struct dhcpv6_option *opt, void (*print)(const char *fm
+ 		"UseMulticast",
+ 		"NoPrefixAvail"
+ 	};
+-	unsigned int status_code = ntohs(o->code);
++	unsigned int status_code;
+ 	size_t status_name_count = sizeof(status_name) / sizeof(status_name[0]);
+ 
++	if (ntohs(opt->hdr->len) < sizeof(o->code))
++		return;
++
++	status_code = ntohs(o->code);
++
+ 	if (status_code >= status_name_count)
+ 		print(" %u", status_code);
+ 	else
+@@ -704,4 +709,3 @@ static void print_ia_prefix(struct dhcpv6_option *opt, void (*print)(const char
+ 	inet_ntop(AF_INET6, &o->prefix, str, sizeof(str));
+ 	print(" %s/%i pref_lifetime=%i valid_lifetime=%i", str, o->prefix_len, ntohl(o->pref_lifetime), ntohl(o->valid_lifetime));
+ }
+-

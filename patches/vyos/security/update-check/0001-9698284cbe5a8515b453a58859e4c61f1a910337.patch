@@ -1,0 +1,26 @@
+From 9698284cbe5a8515b453a58859e4c61f1a910337 Mon Sep 17 00:00:00 2001
+From: Kyrylo Yatsenko <hedrok@gmail.com>
+Date: Tue, 14 Apr 2026 17:49:38 +0300
+Subject: [PATCH] T8497: vyos-system-update-check: fix vulnarability
+
+vyos-system-update-check.py was using data from untrusted source to pass
+to shell without escaping.
+
+Change to list in call to `call` to fix this.
+---
+ src/system/vyos-system-update-check.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/system/vyos-system-update-check.py b/src/system/vyos-system-update-check.py
+index b7d1fc7c59d..b1b6e138cf9 100755
+--- a/src/system/vyos-system-update-check.py
++++ b/src/system/vyos-system-update-check.py
+@@ -59,7 +59,7 @@
+             url = jmespath.search('[0].url', remote_data)
+             remote_version = jmespath.search('[0].version', remote_data)
+             if local_version != remote_version and remote_version:
+-                call(f'wall -n "Update available: {remote_version} \nUpdate URL: {url}"')
++                call(['wall', '-n', f"Update available: {remote_version} \nUpdate URL: {url}"])
+                 # MOTD used in /run/motd.d/10-vyos-update
+                 motd_file.parent.mkdir(exist_ok=True)
+                 motd_file.write_text(f'---\n'

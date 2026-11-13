@@ -1,0 +1,77 @@
+From cc42de1342ca64c5acbffba72dd8fd3bdbd544ba Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Tue, 15 Sep 2026 11:19:34 -0700
+Subject: [PATCH] T9325: dhcpv6: validate inner Relay-Message in RELAY-FORW
+
+- Reject Relay-Message payloads shorter than DHCPv6 message header
+- Reject malformed relay layers with missing or duplicate
+  Relay-Message options
+
+Ported relay-message specific validation from upstream accel-ppp
+commit 94993558dab2b79107c1d67c5cdb081604dada71.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+---
+ accel-pppd/ipv6/dhcpv6_packet.c | 29 +++++++++++++++++++++++------
+ 1 file changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/accel-pppd/ipv6/dhcpv6_packet.c b/accel-pppd/ipv6/dhcpv6_packet.c
+index 9bc86670..9f15cf70 100644
+--- a/accel-pppd/ipv6/dhcpv6_packet.c
++++ b/accel-pppd/ipv6/dhcpv6_packet.c
+@@ -166,9 +166,10 @@ struct dhcpv6_packet *dhcpv6_packet_parse(const void *buf, size_t size)
+ 	struct dhcpv6_opt_hdr *opth;
+ 	struct dhcpv6_relay *rel;
+ 	struct dhcpv6_relay_hdr *rhdr;
++	struct dhcpv6_msg_hdr *inner_hdr;
+ 	int aftr_name_seen = 0;
+ 	int relay_depth = 0;
+-	void *ptr, *endptr;
++	void *ptr, *endptr, *relay_end, *inner_end;
+ 
+ 	if (size < sizeof(struct dhcpv6_msg_hdr)) {
+ 		if (conf_verbose)
+@@ -214,22 +215,38 @@ struct dhcpv6_packet *dhcpv6_packet_parse(const void *buf, size_t size)
+ 
+ 		list_add_tail(&rel->entry, &pkt->relay_list);
+ 
++		inner_hdr = NULL;
++		inner_end = NULL;
++		relay_end = endptr;
+ 		ptr = rhdr->data;
+-		while (ptr < endptr) {
++		while (ptr < relay_end) {
+ 			opth = ptr;
+-			if (ptr + sizeof(*opth) > endptr ||
+-			    ptr + sizeof(*opth) + ntohs(opth->len) > endptr) {
++			if (ptr + sizeof(*opth) > relay_end ||
++			    ptr + sizeof(*opth) + ntohs(opth->len) > relay_end) {
+ 				log_warn("dhcpv6: invalid packet received\n");
+ 				goto error;
+ 			}
+ 
+ 			if (opth->code == htons(D6_OPTION_RELAY_MSG)) {
+-				pkt->hdr = (struct dhcpv6_msg_hdr *)opth->data;
+-				endptr = opth->data + ntohs(opth->len);
++				if (inner_hdr || ntohs(opth->len) < sizeof(*inner_hdr)) {
++					log_warn("dhcpv6: invalid packet received\n");
++					goto error;
++				}
++
++				inner_hdr = (struct dhcpv6_msg_hdr *)opth->data;
++				inner_end = opth->data + ntohs(opth->len);
+ 			}
+ 
+ 			ptr += sizeof(*opth) + ntohs(opth->len);
+ 		}
++
++		if (!inner_hdr) {
++			log_warn("dhcpv6: invalid packet received\n");
++			goto error;
++		}
++
++		pkt->hdr = inner_hdr;
++		endptr = inner_end;
+ 	}
+ 
+ 	ptr = pkt->hdr->data;

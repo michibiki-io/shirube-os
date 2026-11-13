@@ -1,0 +1,35 @@
+{
+  "base": "Linux 6.6.128 after existing Stream kernel preparation",
+  "upstream": "https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux/+/",
+  "originals": [
+    {
+      "commit": "742f73df544e03744f2981c467d6542fe8172a2a",
+      "path": "upstream/98432.patch",
+      "sha256": "8b2aba4cea0e2342f1dbd9f935750016789be2677dc253349316958b22dfa334"
+    },
+    {
+      "commit": "33aa3b7f4afbd3da85401c914b5e47ef91a86fb0",
+      "path": "upstream/nfqueue-prerequisite.patch",
+      "sha256": "b7de44a4cd0e3b31d2028f344c66820148cb83d589d1704a16fc5736cef1fc8a"
+    },
+    {
+      "commit": "a65f69e0f38ffbed1b128029e09097436416dc8b",
+      "path": "upstream/99999.patch",
+      "sha256": "b1edfa0cca0ef84110e4f8120a7ba15c2daa922790ce52c8b378332d7bbb82eb"
+    }
+  ],
+  "production": [
+    {
+      "path": "0001-perf-unwind-libdw-stable-6.6-fix.patch",
+      "sha256": "48d61fe787aca0651f30af88fba87ba8d2f9fca063f464c4cb15696842d44c77"
+    },
+    {
+      "path": "0002-ipv4-options-rcu.patch",
+      "sha256": "c2a612d85969f892979833496a06da6bade75ef6096428c941c6449847dbff9f"
+    },
+    {
+      "path": "0003-ipv4-checksum-with-nfqueue.patch",
+      "sha256": "1ba59999194afd3229055aba7c11119e49e89bf8f961791f5d546a5769f8d95d"
+    }
+  ]
+}

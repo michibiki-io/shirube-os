@@ -1,0 +1,204 @@
+From 4b6cd6d5c2f8458853343a48d038202dc8c11461 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Thu, 21 May 2026 15:50:42 +0300
+Subject: [PATCH] T9238: strip: Fix invalid parsing (port from accel-ppp 315)
+
+strip() memmove count was one short, dropping the NULL  terminator;
+dpado_parse error path leaked already-parsed range entries.
+Also affects ipoe.
+
+Since strip is identical in both, we can place fixed common function in utils.
+
+Reported-by: Khedor <khedor@gmail.com>
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 1b67ba0785a847eee6adb69b7e68995c33803805)
+---
+ accel-pppd/ctrl/ipoe/ipoe.c   | 32 +++++++++++++++-----------------
+ accel-pppd/ctrl/pppoe/dpado.c | 33 ++++++++++++++++-----------------
+ accel-pppd/utils.c            | 11 +++++++++++
+ accel-pppd/utils.h            |  1 +
+ 4 files changed, 43 insertions(+), 34 deletions(-)
+
+diff --git a/accel-pppd/ctrl/ipoe/ipoe.c b/accel-pppd/ctrl/ipoe/ipoe.c
+index 36fcfcf4..c7f61b08 100644
+--- a/accel-pppd/ctrl/ipoe/ipoe.c
++++ b/accel-pppd/ctrl/ipoe/ipoe.c
+@@ -3546,19 +3546,6 @@ static void load_radius_attrs(void)
+ }
+ #endif
+ 
+-static void strip(char *str)
+-{
+-	char *ptr = str;
+-	char *endptr = strchr(str, 0);
+-	while (1) {
+-		ptr = strchr(ptr, ' ');
+-		if (ptr)
+-			memmove(ptr, ptr + 1, endptr - ptr - 1);
+-		else
+-			break;
+-	}
+-}
+-
+ int parse_offer_delay(const char *str)
+ {
+ 	char *str1;
+@@ -3575,7 +3562,7 @@ int parse_offer_delay(const char *str)
+ 		return 0;
+ 
+ 	str1 = _strdup(str);
+-	strip(str1);
++	u_strstrip(str1, ' ');
+ 
+ 	ptr1 = str1;
+ 
+@@ -3591,17 +3578,23 @@ int parse_offer_delay(const char *str)
+ 		memset(r, 0, sizeof(*r));
+ 
+ 		r->delay = strtol(ptr1, &endptr, 10);
+-		if (*endptr)
++		if (*endptr) {
++			_free(r);
+ 			goto out_err;
++		}
+ 
+ 		if (list_empty(&conf_offer_delay))
+ 			r->conn_cnt = 0;
+ 		else {
+-			if (!ptr3)
++			if (!ptr3) {
++				_free(r);
+ 				goto out_err;
++			}
+ 			r->conn_cnt = strtol(ptr3 + 1, &endptr, 10);
+-			if (*endptr)
++			if (*endptr) {
++				_free(r);
+ 				goto out_err;
++			}
+ 		}
+ 
+ 		list_add_tail(&r->entry, &conf_offer_delay);
+@@ -3616,6 +3609,11 @@ int parse_offer_delay(const char *str)
+ 	return 0;
+ 
+ out_err:
++	while (!list_empty(&conf_offer_delay)) {
++		r = list_entry(conf_offer_delay.next, typeof(*r), entry);
++		list_del(&r->entry);
++		_free(r);
++	}
+ 	_free(str1);
+ 	log_error("ipoe: failed to parse offer-delay\n");
+ 	return -1;
+diff --git a/accel-pppd/ctrl/pppoe/dpado.c b/accel-pppd/ctrl/pppoe/dpado.c
+index 71faa130..b13b0517 100644
+--- a/accel-pppd/ctrl/pppoe/dpado.c
++++ b/accel-pppd/ctrl/pppoe/dpado.c
+@@ -11,6 +11,7 @@
+ #include "triton.h"
+ #include "log.h"
+ #include "memdebug.h"
++#include "utils.h"
+ 
+ #include "pppoe.h"
+ 
+@@ -60,19 +61,6 @@ void dpado_check_prev(int conn_cnt)
+ 	pthread_mutex_unlock(&dpado_range_lock);
+ }
+ 
+-static void strip(char *str)
+-{
+-	char *ptr = str;
+-	char *endptr = strchr(str, 0);
+-	while (1) {
+-		ptr = strchr(ptr, ' ');
+-		if (ptr)
+-			memmove(ptr, ptr + 1, endptr - ptr - 1);
+-		else
+-			break;
+-	}
+-}
+-
+ int dpado_parse(const char *str)
+ {
+ 	char *str1 = _strdup(str);
+@@ -80,7 +68,7 @@ int dpado_parse(const char *str)
+ 	LIST_HEAD(range_list);
+ 	struct dpado_range_t *r;
+ 
+-	strip(str1);
++	u_strstrip(str1, ' ');
+ 
+ 	ptr1 = str1;
+ 
+@@ -96,17 +84,23 @@ int dpado_parse(const char *str)
+ 		memset(r, 0, sizeof(*r));
+ 
+ 		r->pado_delay = strtol(ptr1, &endptr, 10);
+-		if (*endptr)
++		if (*endptr) {
++			_free(r);
+ 			goto out_err;
++		}
+ 
+ 		if (list_empty(&range_list))
+ 			r->conn_cnt = INT_MAX;
+ 		else {
+-			if (!ptr3)
++			if (!ptr3) {
++				_free(r);
+ 				goto out_err;
++			}
+ 			r->conn_cnt = strtol(ptr3 + 1, &endptr, 10);
+-			if (*endptr)
++			if (*endptr) {
++				_free(r);
+ 				goto out_err;
++			}
+ 		}
+ 
+ 		list_add_tail(&r->entry, &range_list);
+@@ -159,6 +153,11 @@ int dpado_parse(const char *str)
+ 	return 0;
+ 
+ out_err:
++	while (!list_empty(&range_list)) {
++		r = list_entry(range_list.next, typeof(*r), entry);
++		list_del(&r->entry);
++		_free(r);
++	}
+ 	_free(str1);
+ 	log_emerg("pppoe: pado_delay: invalid format\n");
+ 	return -1;
+diff --git a/accel-pppd/utils.c b/accel-pppd/utils.c
+index 018b6efa..f92ebe19 100644
+--- a/accel-pppd/utils.c
++++ b/accel-pppd/utils.c
+@@ -347,3 +347,14 @@ int __export u_randbuf(void *buf, size_t buf_len, int *err)
+ 
+ 	return 0;
+ }
++
++void __export u_strstrip(char *str, char c)
++{
++	char *src = str, *dst = str;
++	while (*src) {
++		if (*src != c)
++			*dst++ = *src;
++		src++;
++	}
++	*dst = '\0';
++}
+diff --git a/accel-pppd/utils.h b/accel-pppd/utils.h
+index 06859a6b..aad4025f 100644
+--- a/accel-pppd/utils.h
++++ b/accel-pppd/utils.h
+@@ -24,6 +24,7 @@ size_t u_parse_ip6cidr(const char *str, struct in6_addr *netp, uint8_t *plen);
+ size_t u_parse_ip4cidr(const char *str, struct in_addr *netp, uint8_t *plen);
+ size_t u_parse_ip4range(const char *str, struct in_addr *base_ip, uint8_t *max);
+ 
++void u_strstrip(char *str, char c);
+ int u_randbuf(void *buf, size_t buf_len, int *err);
+ 
+ #endif

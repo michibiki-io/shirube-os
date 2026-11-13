@@ -1,0 +1,45 @@
+From f03fd8d8fcc1f41037570f5f40e0007a128fd242 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 9 Aug 2026 07:16:38 +0300
+Subject: [PATCH] T9238: pptp: reject a malformed bind address (port from
+ accel-ppp 350)
+
+An unparsable bind= value went through inet_addr() unchecked and became
+255.255.255.255, so the only symptom was bind() failing with "Cannot
+assign requested address", which does not point at the configuration.
+Parse with inet_aton() and name the offending value instead.
+
+Also zero the address before filling it in, so the padding passed to
+bind() is not stack garbage.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 9d47f220a09eb30750f85973dc2f0d4157eb78be)
+---
+ accel-pppd/ctrl/pptp/pptp.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/accel-pppd/ctrl/pptp/pptp.c b/accel-pppd/ctrl/pptp/pptp.c
+index 29b2e056..8d5ca032 100644
+--- a/accel-pppd/ctrl/pptp/pptp.c
++++ b/accel-pppd/ctrl/pptp/pptp.c
+@@ -874,12 +874,17 @@ static void pptp_init(void)
+ 
+ 	fcntl(serv.hnd.fd, F_SETFD, fcntl(serv.hnd.fd, F_GETFD) | FD_CLOEXEC);
+ 
++	memset(&addr, 0, sizeof(addr));
+ 	addr.sin_family = AF_INET;
+ 
+ 	opt = conf_get_opt("pptp", "bind");
+-	if (opt)
+-		addr.sin_addr.s_addr = inet_addr(opt);
+-	else
++	if (opt) {
++		if (!inet_aton(opt, &addr.sin_addr)) {
++			log_emerg("pptp: failed to parse bind address '%s'\n", opt);
++			close(serv.hnd.fd);
++			return;
++		}
++	} else
+ 		addr.sin_addr.s_addr = htonl(INADDR_ANY);
+ 
+ 	opt = conf_get_opt("pptp", "port");

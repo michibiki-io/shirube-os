@@ -1,0 +1,43 @@
+From e13a8074358d26bed28ad08d2e48066677e61d92 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 22 May 2026 20:15:10 +0300
+Subject: [PATCH] T9238: pppoe/disc: fix free_net memmove count and overlap
+ handling (port from accel-ppp 315)
+
+free_net() compacts the nets[] array by sliding entries left after
+removing one:
+
+    memcpy(nets + i, nets + i + 1, net_cnt - i - 1);
+
+Two bugs:
+
+  1. The count is a raw element count, not a byte count. nets[] holds
+     'struct disc_net *' pointers, so only (net_cnt - i - 1) bytes are
+     moved instead of (net_cnt - i - 1) * sizeof(nets[0]). On the usual
+     8-byte-pointer build, 7 of every 8 surviving pointers are lost,
+     leaving uninitialised holes in the array.
+
+  2. Source and destination overlap (nets + i and nets + i + 1), so
+     memcpy is undefined behaviour. The correct primitive is memmove.
+
+Switch to memmove and multiply the count by sizeof(nets[0]).
+
+Authored-by: khedor <khedor@gmail.com>
+(cherry picked from commit a68821aecb2fecfc7c35fd5d49867f202d64df7f)
+---
+ accel-pppd/ctrl/pppoe/disc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/accel-pppd/ctrl/pppoe/disc.c b/accel-pppd/ctrl/pppoe/disc.c
+index d844c7fd..17ebd4ec 100644
+--- a/accel-pppd/ctrl/pppoe/disc.c
++++ b/accel-pppd/ctrl/pppoe/disc.c
+@@ -110,7 +110,7 @@ static void free_net(struct disc_net *net)
+ 	pthread_mutex_lock(&nets_lock);
+ 	for (i = 0; i < MAX_NET; i++) {
+ 		if (nets[i] == net) {
+-			memcpy(nets + i, nets + i + 1, net_cnt - i - 1);
++			memmove(nets + i, nets + i + 1, (net_cnt - i - 1) * sizeof(nets[0]));
+ 			net_cnt--;
+ 			break;
+ 		}

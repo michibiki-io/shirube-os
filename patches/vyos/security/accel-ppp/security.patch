@@ -1,0 +1,3620 @@
+Subject: Complete selected accel-ppp-ng security and dependent stability backports
+
+See inventory.json and upstream/ for complete original commits, authors, hashes,
+ordered dependencies and the one already-present accounting hunk. This is the
+complete before/after result; combining history permits strict repeat detection.
+
+diff --git a/accel-pppd/accel-ppp.conf b/accel-pppd/accel-ppp.conf
+--- a/accel-pppd/accel-ppp.conf
++++ b/accel-pppd/accel-ppp.conf
+@@ -61,6 +61,7 @@
+ ipv6=deny
+ ipv6-intf-id=0:0:0:1
+ ipv6-peer-intf-id=0:0:0:2
++#ipv6-peer-intf-id-secret=replace-with-random-secret
+ ipv6-accept-peer-intf-id=1
+ lcp-echo-interval=20
+ #lcp-echo-failure=3
+@@ -227,6 +228,8 @@
+ #strip-realm=0
+ #attr-tunnel-type=My-Tunnel-Type
+ #nas-port-id-in-req=1
++#message-authenticator-include-access-request=1
++#message-authenticator-require-access-response=1
+ 
+ [client-ip-range]
+ 10.0.0.0/8
+diff --git a/accel-pppd/accel-ppp.conf.5 b/accel-pppd/accel-ppp.conf.5
+--- a/accel-pppd/accel-ppp.conf.5
++++ b/accel-pppd/accel-ppp.conf.5
+@@ -226,7 +226,16 @@
+ - calculate interface identifier from IPv4 address, for example 192:168:0:1.
+ .br
+ .B calling-sid
+-- calculate interface identifier from Calling-Station-Id.
++- calculate an opaque interface identifier from Calling-Station-Id,
++control-plane context, and
++.BR ipv6-peer-intf-id-secret
++using HMAC-SHA256.
++.TP
++.BI "ipv6-peer-intf-id-secret=" secret
++Secret key used by
++.B ipv6-peer-intf-id=calling-sid
++to derive stable per-peer interface identifiers with HMAC-SHA256.
++The secret must be a printable non-whitespace ASCII string with length between 16 and 128 characters.
+ .TP
+ .BI "ipv6-accept-peer-intf-id=" 0|1
+ Specify whether to accept peer's interface identifier.
+@@ -571,7 +580,7 @@
+ seconds.
+ .TP
+ .BI "echo-failure=" n
+-Specifies maximum number of echo-requests may be sent without valid echo-reply, if exceeds connection will be terminated.
++Specifies maximum number of echo-requests may be sent without valid echo-reply, if exceeds connection will be terminated. Zero disables the check: echo-requests are still sent, but missing replies never terminate the connection (default 3).
+ .TP
+ .BI "timeout=" n
+ Timeout waiting reply from client in seconds (default 5).
+@@ -1004,6 +1013,16 @@
+ .TP
+ .BI "nas-port-id-in-req=" 0|1
+ Specifies should accel-ppp send NAS-Port-Id on Access-Request and Accounting-Request packets (default 1).
++.TP
++.BI "message-authenticator-include-access-request=" 0|1
++If this option is given and
++.B 1
++is specified then radius module will include Message-Authenticator attribute in Access-Request packets.
++.TP
++.BI "message-authenticator-require-access-response=" 0|1
++If this option is given and
++.B 1
++is specified then radius module will reject Access-Accept, Access-Reject, and Access-Challenge packets without Message-Authenticator attribute.
+ .SH [log]
+ .br
+ Configuration of log and log_file modules.
+diff --git a/accel-pppd/auth/auth_chap_md5.c b/accel-pppd/auth/auth_chap_md5.c
+--- a/accel-pppd/auth/auth_chap_md5.c
++++ b/accel-pppd/auth/auth_chap_md5.c
+@@ -36,7 +36,7 @@
+ static int conf_interval = 0;
+ static int conf_max_failure = 3;
+ static int conf_any_login = 0;
+-static const char *conf_challenge_name = "accel-ppp";
++static char *conf_challenge_name;
+ 
+ struct chap_hdr {
+ 	uint16_t proto;
+@@ -499,8 +499,9 @@
+ 		conf_any_login = atoi(opt);
+ 
+ 	opt = conf_get_opt("auth", "challenge-name");
+-	if (opt)
+-		conf_challenge_name = opt;
++	if (conf_challenge_name)
++		_free(conf_challenge_name);
++	conf_challenge_name = _strdup(opt ? opt : "accel-ppp");
+ }
+ 
+ static void auth_chap_md5_init()
+diff --git a/accel-pppd/ctrl/ipoe/ipoe.c b/accel-pppd/ctrl/ipoe/ipoe.c
+--- a/accel-pppd/ctrl/ipoe/ipoe.c
++++ b/accel-pppd/ctrl/ipoe/ipoe.c
+@@ -754,6 +754,10 @@
+ 		return;
+ 	}
+ 
++	/* take ownership now so the string is freed by ipoe_session_free()
++	 * even if the session terminates before auth_result() consumes it */
++	ses->username = username;
++
+ 	ses->ses.unit_idx = ses->serv->ifindex;
+ 
+ 	triton_event_fire(EV_CTRL_STARTING, &ses->ses);
+@@ -764,9 +768,9 @@
+ 	if (ses->serv->opt_shared && ipoe_create_interface(ses))
+ 		return;
+ 
+-	if (conf_noauth)
++	if (conf_noauth) {
+ 		r = PWDB_SUCCESS;
+-	else {
++	} else {
+ #ifdef RADIUS
+ 		if (radius_loaded) {
+ 			ses->radius.send_access_request = ipoe_rad_send_auth_request;
+@@ -783,7 +787,6 @@
+ 		} else
+ 			pass = username;
+ 
+-		ses->username = username;
+ 		r = pwdb_check(&ses->ses, (pwdb_callback)auth_result, ses, username, PPP_PAP, pass);
+ 
+ 		if (r == PWDB_WAIT)
+@@ -1212,6 +1215,9 @@
+ 
+ 	if (ses->l4_redirect_ipset)
+ 		_free(ses->l4_redirect_ipset);
++
++	if (ses->username)
++		_free(ses->username);
+ 
+ 	triton_context_unregister(&ses->ctx);
+ 
+@@ -2001,6 +2007,7 @@
+ 
+ 	if (!ses->dhcpv4_request) {
+ 		ses->dhcpv4_relay_reply = NULL;
++		dhcpv4_packet_free(pack);
+ 		return;
+ 	}
+ 
+@@ -3546,19 +3553,6 @@
+ }
+ #endif
+ 
+-static void strip(char *str)
+-{
+-	char *ptr = str;
+-	char *endptr = strchr(str, 0);
+-	while (1) {
+-		ptr = strchr(ptr, ' ');
+-		if (ptr)
+-			memmove(ptr, ptr + 1, endptr - ptr - 1);
+-		else
+-			break;
+-	}
+-}
+-
+ int parse_offer_delay(const char *str)
+ {
+ 	char *str1;
+@@ -3575,7 +3569,7 @@
+ 		return 0;
+ 
+ 	str1 = _strdup(str);
+-	strip(str1);
++	u_strstrip(str1, ' ');
+ 
+ 	ptr1 = str1;
+ 
+@@ -3591,17 +3585,23 @@
+ 		memset(r, 0, sizeof(*r));
+ 
+ 		r->delay = strtol(ptr1, &endptr, 10);
+-		if (*endptr)
++		if (*endptr) {
++			_free(r);
+ 			goto out_err;
++		}
+ 
+ 		if (list_empty(&conf_offer_delay))
+ 			r->conn_cnt = 0;
+ 		else {
+-			if (!ptr3)
++			if (!ptr3) {
++				_free(r);
+ 				goto out_err;
++			}
+ 			r->conn_cnt = strtol(ptr3 + 1, &endptr, 10);
+-			if (*endptr)
++			if (*endptr) {
++				_free(r);
+ 				goto out_err;
++			}
+ 		}
+ 
+ 		list_add_tail(&r->entry, &conf_offer_delay);
+@@ -3616,6 +3616,11 @@
+ 	return 0;
+ 
+ out_err:
++	while (!list_empty(&conf_offer_delay)) {
++		r = list_entry(conf_offer_delay.next, typeof(*r), entry);
++		list_del(&r->entry);
++		_free(r);
++	}
+ 	_free(str1);
+ 	log_error("ipoe: failed to parse offer-delay\n");
+ 	return -1;
+diff --git a/accel-pppd/ctrl/l2tp/packet.c b/accel-pppd/ctrl/l2tp/packet.c
+--- a/accel-pppd/ctrl/l2tp/packet.c
++++ b/accel-pppd/ctrl/l2tp/packet.c
+@@ -419,6 +419,8 @@
+ 			}
+ 
+ 			if (avp->flags & L2TP_AVP_FLAG_H) {
++				uint16_t orig_attr_len;
++
+ 				if (!RV) {
+ 					if (conf_verbose)
+ 						log_warn("l2tp: incorrect avp received (type=%i, H=1, but Random-Vector is not received)\n", ntohs(avp->type));
+@@ -434,7 +436,22 @@
+ 				if (decode_avp(avp, RV, secret, secret_len) < 0)
+ 					goto out_err;
+ 
+-				orig_avp_len = ntohs(*(uint16_t *)avp->val) + sizeof(*avp);
++				/* Extract original attribute length from the first two bytes of the decrypted value */
++				memcpy(&orig_attr_len, avp->val, sizeof(orig_attr_len));
++				orig_attr_len = ntohs(orig_attr_len);
++				if (orig_attr_len < sizeof(uint16_t)) {
++					if (conf_verbose)
++						log_warn("l2tp: hidden avp rejected: invalid orig_attr_len=%hu (too small)\n", orig_attr_len);
++					goto out_err;
++				}
++
++				size_t total_avp_len = (size_t)orig_attr_len + sizeof(*avp);
++				if (total_avp_len > avp_len) {
++					if (conf_verbose)
++						log_warn("l2tp: hidden avp rejected: orig_attr_len=%hu (total %zu) exceeds avp_len=%hu\n", orig_attr_len, total_avp_len, avp_len);
++					goto out_err;
++				}
++				orig_avp_len = total_avp_len;
+ 				orig_avp_val = avp->val + sizeof(uint16_t);
+ 			} else {
+ 				orig_avp_len = avp_len;
+diff --git a/accel-pppd/ctrl/pppoe/disc.c b/accel-pppd/ctrl/pppoe/disc.c
+--- a/accel-pppd/ctrl/pppoe/disc.c
++++ b/accel-pppd/ctrl/pppoe/disc.c
+@@ -77,7 +77,7 @@
+ 	fcntl(sock, F_SETFD, FD_CLOEXEC);
+ 	net->set_nonblocking(sock, 1);
+ 
+-	n = _malloc(sizeof(*net) + (HASH_BITS + 1) * sizeof(struct tree));
++	n = _malloc(sizeof(*n) + (HASH_BITS + 1) * sizeof(struct tree));
+ 	tree = n->tree;
+ 
+ 	for (i = 0; i <= HASH_BITS; i++) {
+@@ -110,7 +110,7 @@
+ 	pthread_mutex_lock(&nets_lock);
+ 	for (i = 0; i < MAX_NET; i++) {
+ 		if (nets[i] == net) {
+-			memcpy(nets + i, nets + i + 1, net_cnt - i - 1);
++			memmove(nets + i, nets + i + 1, (net_cnt - i - 1) * sizeof(nets[0]));
+ 			net_cnt--;
+ 			break;
+ 		}
+@@ -363,6 +363,7 @@
+ 		if (hdr->type != 1) {
+ 			if (conf_verbose)
+ 				log_warn("pppoe: discarding packet (unsupported type %i)\n", hdr->type);
++			continue;
+ 		}
+ 
+ 		if (forward(net, src.sll_ifindex, pack, n))
+diff --git a/accel-pppd/ctrl/pppoe/dpado.c b/accel-pppd/ctrl/pppoe/dpado.c
+--- a/accel-pppd/ctrl/pppoe/dpado.c
++++ b/accel-pppd/ctrl/pppoe/dpado.c
+@@ -11,6 +11,7 @@
+ #include "triton.h"
+ #include "log.h"
+ #include "memdebug.h"
++#include "utils.h"
+ 
+ #include "pppoe.h"
+ 
+@@ -60,19 +61,6 @@
+ 	pthread_mutex_unlock(&dpado_range_lock);
+ }
+ 
+-static void strip(char *str)
+-{
+-	char *ptr = str;
+-	char *endptr = strchr(str, 0);
+-	while (1) {
+-		ptr = strchr(ptr, ' ');
+-		if (ptr)
+-			memmove(ptr, ptr + 1, endptr - ptr - 1);
+-		else
+-			break;
+-	}
+-}
+-
+ int dpado_parse(const char *str)
+ {
+ 	char *str1 = _strdup(str);
+@@ -80,7 +68,7 @@
+ 	LIST_HEAD(range_list);
+ 	struct dpado_range_t *r;
+ 
+-	strip(str1);
++	u_strstrip(str1, ' ');
+ 
+ 	ptr1 = str1;
+ 
+@@ -96,17 +84,23 @@
+ 		memset(r, 0, sizeof(*r));
+ 
+ 		r->pado_delay = strtol(ptr1, &endptr, 10);
+-		if (*endptr)
++		if (*endptr) {
++			_free(r);
+ 			goto out_err;
++		}
+ 
+ 		if (list_empty(&range_list))
+ 			r->conn_cnt = INT_MAX;
+ 		else {
+-			if (!ptr3)
++			if (!ptr3) {
++				_free(r);
+ 				goto out_err;
++			}
+ 			r->conn_cnt = strtol(ptr3 + 1, &endptr, 10);
+-			if (*endptr)
++			if (*endptr) {
++				_free(r);
+ 				goto out_err;
++			}
+ 		}
+ 
+ 		list_add_tail(&r->entry, &range_list);
+@@ -159,6 +153,11 @@
+ 	return 0;
+ 
+ out_err:
++	while (!list_empty(&range_list)) {
++		r = list_entry(range_list.next, typeof(*r), entry);
++		list_del(&r->entry);
++		_free(r);
++	}
+ 	_free(str1);
+ 	log_emerg("pppoe: pado_delay: invalid format\n");
+ 	return -1;
+diff --git a/accel-pppd/ctrl/pppoe/mac_filter.c b/accel-pppd/ctrl/pppoe/mac_filter.c
+--- a/accel-pppd/ctrl/pppoe/mac_filter.c
++++ b/accel-pppd/ctrl/pppoe/mac_filter.c
+@@ -92,15 +92,17 @@
+ 			log_warn("pppoe: mac-filter:%s:%i: address is invalid\n", name, line);
+ 			continue;
+ 		}
++		for (i = 0; i < ETH_ALEN; i++) {
++			if (n[i] > 255)
++				break;
++		}
++		if (i < ETH_ALEN) {
++			log_warn("pppoe: mac-filter:%s:%i: address is invalid\n", name, line);
++			continue;
++		}
+ 		mac = _malloc(sizeof(*mac));
+-		for (i = 0; i < ETH_ALEN; i++) {
+-			if (n[i] > 255) {
+-				log_warn("pppoe: mac-filter:%s:%i: address is invalid\n", name, line);
+-				_free(mac);
+-				continue;
+-			}
++		for (i = 0; i < ETH_ALEN; i++)
+ 			mac->addr[i] = n[i];
+-		}
+ 		list_add_tail(&mac->entry, &mac_list);
+ 	}
+ 	pthread_rwlock_unlock(&lock);
+diff --git a/accel-pppd/ctrl/pppoe/pppoe.c b/accel-pppd/ctrl/pppoe/pppoe.c
+--- a/accel-pppd/ctrl/pppoe/pppoe.c
++++ b/accel-pppd/ctrl/pppoe/pppoe.c
+@@ -833,13 +833,17 @@
+ static int add_tag2(uint8_t *pack, size_t pack_size, const struct pppoe_tag *t)
+ {
+ 	struct pppoe_hdr *hdr = (struct pppoe_hdr *)(pack + ETH_HLEN);
+-	struct pppoe_tag *tag = (struct pppoe_tag *)(pack + ETH_HLEN + sizeof(*hdr) + ntohs(hdr->length));
+-	if (pack_size <= ETH_HLEN + sizeof(*hdr) + ntohs(hdr->length) + ntohs(t->tag_len) || ntohs(t->tag_len) < 0)
++	struct pppoe_tag *tag;
++	size_t tag_len = ntohs(t->tag_len);
++	if (pack_size < ETH_HLEN + sizeof(*hdr) + ntohs(hdr->length) + sizeof(struct pppoe_tag) + tag_len) {
++		log_error("pppoe: invalid tag len %zu\n", tag_len);
+ 		return -1;
+-
+-	memcpy(tag, t, sizeof(*t) + ntohs(t->tag_len));
+-
+-	hdr->length = htons(ntohs(hdr->length) + sizeof(*tag) + ntohs(t->tag_len));
++	}
++
++	tag = (struct pppoe_tag *)(pack + ETH_HLEN + sizeof(*hdr) + ntohs(hdr->length));
++	memcpy(tag, t, sizeof(*t) + tag_len);
++
++	hdr->length = htons(ntohs(hdr->length) + sizeof(*tag) + tag_len);
+ 	return 0;
+ }
+ 
+@@ -1088,6 +1092,8 @@
+ 	len = ntohs(hdr->length);
+ 	for (n = 0; n < len; n += sizeof(*tag) + ntohs(tag->tag_len)) {
+ 		tag = (struct pppoe_tag *)(pack + ETH_HLEN + sizeof(*hdr) + n);
++		if (n + sizeof(*tag) > len)
++			return;
+ 		if (n + sizeof(*tag) + ntohs(tag->tag_len) > len)
+ 			return;
+ 		switch (ntohs(tag->tag_type)) {
+@@ -1188,6 +1194,7 @@
+ 	struct pppoe_tag *ac_cookie_tag = NULL;
+ 	struct pppoe_tag *service_name_tag = NULL;
+ 	struct pppoe_tag *tr101_tag = NULL;
++	int service_name_tag_count = 0;
+ 	int n, service_match = 0;
+ 	struct pppoe_conn_t *conn;
+ 	int vendor_id;
+@@ -1237,6 +1244,7 @@
+ 				break;
+ 			case TAG_SERVICE_NAME:
+ 				service_name_tag = tag;
++				service_name_tag_count++;
+ 				if (tag->tag_len == 0)
+ 					service_match = 1;
+ 				else if (conf_service_name[0]) {
+@@ -1294,6 +1302,13 @@
+ 		return;
+ 	}
+ 
++	if (service_name_tag_count != 1) {
++		if (conf_verbose)
++			log_warn("pppoe: discard PADR packet (must contain exactly one Service-Name tag, found %d)\n", service_name_tag_count);
++		pppoe_send_err(serv, ethhdr->h_source, host_uniq_tag, relay_sid_tag, CODE_PADS, TAG_SERVICE_NAME_ERROR);
++		return;
++	}
++
+ 	if (!service_match && !conf_accept_any_service) {
+ 		if (conf_verbose)
+ 			log_warn("pppoe: Service-Name mismatch\n");
+diff --git a/accel-pppd/ctrl/pptp/pptp.c b/accel-pppd/ctrl/pptp/pptp.c
+--- a/accel-pppd/ctrl/pptp/pptp.c
++++ b/accel-pppd/ctrl/pptp/pptp.c
+@@ -149,6 +149,7 @@
+ 
+ 	if ( n<size ) {
+ 		memcpy(conn->out_buf, (uint8_t *)buf + n, size - n);
++		conn->out_size = size - n;
+ 		triton_md_enable_handler(&conn->hnd, MD_MODE_WRITE);
+ 	}
+ 
+@@ -306,7 +307,10 @@
+ 	src_addr.sa_protocol = PX_PROTO_PPTP;
+ 	src_addr.sa_addr.pptp.call_id = 0;
+ 	addrlen = sizeof(addr);
+-	getsockname(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen);
++	if (getsockname(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen)) {
++		log_ppp_error("pptp: getsockname: %s\n", strerror(errno));
++		return -1;
++	}
+ 	src_addr.sa_addr.pptp.sin_addr = addr.sin_addr;
+ 
+ 	memset(&dst_addr, 0, sizeof(dst_addr));
+@@ -314,7 +318,10 @@
+ 	dst_addr.sa_protocol = PX_PROTO_PPTP;
+ 	dst_addr.sa_addr.pptp.call_id = htons(msg->call_id);
+ 	addrlen = sizeof(addr);
+-	getpeername(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen);
++	if (getpeername(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen)) {
++		log_ppp_error("pptp: getpeername: %s\n", strerror(errno));
++		return -1;
++	}
+ 	dst_addr.sa_addr.pptp.sin_addr = addr.sin_addr;
+ 
+ 	pptp_sock = socket(AF_PPPOX, SOCK_STREAM, PX_PROTO_PPTP);
+@@ -331,7 +338,11 @@
+ 		return -1;
+ 	}
+ 	addrlen = sizeof(src_addr);
+-	getsockname(pptp_sock, (struct sockaddr*)&src_addr, &addrlen);
++	if (getsockname(pptp_sock, (struct sockaddr*)&src_addr, &addrlen)) {
++		log_ppp_error("pptp: getsockname: %s\n", strerror(errno));
++		close(pptp_sock);
++		return -1;
++	}
+ 
+ 	if (connect(pptp_sock, (struct sockaddr*)&dst_addr, sizeof(dst_addr))) {
+ 		log_ppp_error("failed to connect PPTP socket (%s)\n", strerror(errno));
+@@ -339,11 +350,13 @@
+ 		return -1;
+ 	}
+ 
+-	if (send_pptp_out_call_rply(conn, msg, src_addr.sa_addr.pptp.call_id, PPTP_CALL_RES_OK, 0))
++	if (send_pptp_out_call_rply(conn, msg, src_addr.sa_addr.pptp.call_id, PPTP_CALL_RES_OK, 0)) {
++		close(pptp_sock);
+ 		return -1;
++	}
+ 
+ 	conn->call_id = src_addr.sa_addr.pptp.call_id;
+-	conn->peer_call_id = msg->call_id;
++	conn->peer_call_id = ntohs(msg->call_id);
+ 	conn->ppp.fd = pptp_sock;
+ 	conn->ppp.ses.chan_name = _strdup(inet_ntoa(dst_addr.sa_addr.pptp.sin_addr));
+ 
+@@ -443,7 +456,7 @@
+ 		.header = PPTP_HEADER_CTRL(PPTP_ECHO_RQST),
+ 	};
+ 
+-	if (++conn->echo_sent == conf_echo_failure) {
++	if (conf_echo_failure && ++conn->echo_sent >= conf_echo_failure) {
+ 		log_ppp_warn("pptp: no echo reply\n");
+ 		disconnect(conn);
+ 		return;
+@@ -514,6 +527,10 @@
+ 				log_ppp_error("pptp: invalid magic\n");
+ 				goto drop;
+ 			}
++			if (ntohs(hdr->length) < sizeof(*hdr)) {
++				log_ppp_error("pptp: message is too short\n");
++				goto drop;
++			}
+ 			if (ntohs(hdr->length) >= PPTP_CTRL_SIZE_MAX) {
+ 				log_ppp_error("pptp: message is too long\n");
+ 				goto drop;
+@@ -634,12 +651,13 @@
+ 
+ static int pptp_connect(struct triton_md_handler_t *h)
+ {
+-  struct sockaddr_in addr;
+-	socklen_t size = sizeof(addr);
++  struct sockaddr_in addr, laddr;
++	socklen_t size;
+ 	int sock;
+ 	struct pptp_conn_t *conn;
+ 
+ 	while(1) {
++		size = sizeof(addr);
+ 		sock = accept(h->fd, (struct sockaddr *)&addr, &size);
+ 		if (sock < 0) {
+ 			if (errno == EAGAIN)
+@@ -672,6 +690,13 @@
+ 
+ 		if (iprange_client_check(addr.sin_addr.s_addr)) {
+ 			log_warn("pptp: IP is out of client-ip-range, droping connection...\n");
++			close(sock);
++			continue;
++		}
++
++		size = sizeof(laddr);
++		if (getsockname(sock, (struct sockaddr *)&laddr, &size)) {
++			log_error("pptp: getsockname: %s, closing connection...\n", strerror(errno));
+ 			close(sock);
+ 			continue;
+ 		}
+@@ -708,8 +733,7 @@
+ 		conn->ctrl.calling_station_id = _malloc(17);
+ 		conn->ctrl.called_station_id = _malloc(17);
+ 		u_inet_ntoa(addr.sin_addr.s_addr, conn->ctrl.calling_station_id);
+-		getsockname(sock, (struct sockaddr*)&addr, &size);
+-		u_inet_ntoa(addr.sin_addr.s_addr, conn->ctrl.called_station_id);
++		u_inet_ntoa(laddr.sin_addr.s_addr, conn->ctrl.called_station_id);
+ 
+ 		ppp_init(&conn->ppp);
+ 		conn->ppp.ses.ctrl = &conn->ctrl;
+@@ -834,7 +858,7 @@
+ {
+ 	struct sockaddr_in addr;
+ 	char *opt;
+-	int fd;
++	int fd, f = 1;
+ 
+ 	fd = socket(AF_PPPOX, SOCK_STREAM, PX_PROTO_PPTP);
+ 	if (fd >= 0)
+@@ -850,12 +874,17 @@
+ 
+ 	fcntl(serv.hnd.fd, F_SETFD, fcntl(serv.hnd.fd, F_GETFD) | FD_CLOEXEC);
+ 
++	memset(&addr, 0, sizeof(addr));
+ 	addr.sin_family = AF_INET;
+ 
+ 	opt = conf_get_opt("pptp", "bind");
+-	if (opt)
+-		addr.sin_addr.s_addr = inet_addr(opt);
+-	else
++	if (opt) {
++		if (!inet_aton(opt, &addr.sin_addr)) {
++			log_emerg("pptp: failed to parse bind address '%s'\n", opt);
++			close(serv.hnd.fd);
++			return;
++		}
++	} else
+ 		addr.sin_addr.s_addr = htonl(INADDR_ANY);
+ 
+ 	opt = conf_get_opt("pptp", "port");
+@@ -864,7 +893,7 @@
+ 	else
+ 		addr.sin_port = htons(PPTP_PORT);
+ 
+-  setsockopt(serv.hnd.fd, SOL_SOCKET, SO_REUSEADDR, &serv.hnd.fd, 4);
++  setsockopt(serv.hnd.fd, SOL_SOCKET, SO_REUSEADDR, &f, sizeof(f));
+   if (bind (serv.hnd.fd, (struct sockaddr *) &addr, sizeof (addr)) < 0) {
+     log_emerg("pptp: failed to bind socket: %s\n", strerror(errno));
+ 		close(serv.hnd.fd);
+diff --git a/accel-pppd/ctrl/sstp/sstp.c b/accel-pppd/ctrl/sstp/sstp.c
+--- a/accel-pppd/ctrl/sstp/sstp.c
++++ b/accel-pppd/ctrl/sstp/sstp.c
+@@ -1196,7 +1196,7 @@
+ 	ssize_t n;
+ 	int i;
+ 
+-	if (!list_empty(&conn->ppp_queue)) {
++	while (!list_empty(&conn->ppp_queue)) {
+ 		i = n = 0;
+ 		list_for_each_entry(buf, &conn->ppp_queue, entry) {
+ 			if (i < PPP_BUF_IOVEC && n < PPP_BUF_SIZE) {
+@@ -1228,9 +1228,6 @@
+ 			list_del(&buf->entry);
+ 			free_buf(buf);
+ 		} while (n > 0);
+-
+-		if (!list_empty(&conn->ppp_queue))
+-			goto defer;
+ 	}
+ 	triton_md_disable_handler(h, MD_MODE_WRITE);
+ 	return 0;
+@@ -1902,6 +1899,9 @@
+ 		if (n > SSTP_MAX_PACKET_SIZE) {
+ 			log_ppp_error("recv [SSTP too long packet]\n");
+ 			return -1;
++		} else if (n < (int)sizeof(*hdr)) {
++			log_ppp_error("recv [SSTP too short packet]\n");
++			return -1;
+ 		} else if (n > buf->len)
+ 			break;
+ 
+diff --git a/accel-pppd/ifcfg.c b/accel-pppd/ifcfg.c
+--- a/accel-pppd/ifcfg.c
++++ b/accel-pppd/ifcfg.c
+@@ -9,6 +9,7 @@
+ #include <arpa/inet.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
++#include <linux/if.h>
+ #include <linux/route.h>
+ #include "linux_ppp.h"
+ 
+@@ -359,10 +360,19 @@
+ #ifdef HAVE_VRF
+ int __export ap_session_vrf(struct ap_session *ses, const char *vrf_name, int len)
+ {
+-	if (len == -1)
+-		len = strlen(vrf_name);
+-
+ 	int vrf_ifindex = 0;
++
++	if (len == -1) {
++		if (!vrf_name)
++			len = 0;
++		else
++			len = strlen(vrf_name);
++	}
++
++	if (len < 0 || len >= IFNAMSIZ) {
++		log_ppp_error("vrf name length %d out of bounds (must be 0..%d)\n", len, IFNAMSIZ - 1);
++		return -1;
++	}
+ 
+ 	if (len) {
+ 		vrf_ifindex = ses->net->get_ifindex(vrf_name);
+diff --git a/accel-pppd/ipv6/dhcpv6.c b/accel-pppd/ipv6/dhcpv6.c
+--- a/accel-pppd/ipv6/dhcpv6.c
++++ b/accel-pppd/ipv6/dhcpv6.c
+@@ -231,7 +231,7 @@
+ 	pd->dp_active = 1;
+ }
+ 
+-static void insert_status(struct dhcpv6_packet *pkt, struct dhcpv6_option *opt, int code)
++static int insert_status(struct dhcpv6_packet *pkt, struct dhcpv6_option *opt, int code)
+ {
+ 	struct dhcpv6_option *opt1;
+ 	struct dhcpv6_opt_status *status;
+@@ -241,11 +241,16 @@
+ 	else
+ 		opt1 = dhcpv6_option_alloc(pkt, D6_OPTION_STATUS_CODE, sizeof(struct dhcpv6_opt_status) - sizeof(struct dhcpv6_opt_hdr));
+ 
++	if (!opt1)
++		return -1;
++
+ 	status = (struct dhcpv6_opt_status *)opt1->hdr;
+ 	status->code = htons(code);
+-}
+-
+-static void insert_oro(struct dhcpv6_packet *reply, struct dhcpv6_option *opt, struct ap_session *ses)
++
++	return 0;
++}
++
++static int insert_oro(struct dhcpv6_packet *reply, struct dhcpv6_option *opt, struct ap_session *ses)
+ {
+ 	struct dhcpv6_option *opt1;
+ 	int i = 0, j = 0, k = 0;
+@@ -263,6 +268,8 @@
+ 					j = 3;
+ 				}
+ 				opt1 = dhcpv6_option_alloc(reply, D6_OPTION_DNS_SERVERS, j * sizeof(addr));
++				if (!opt1)
++					return -1;
+ 				addr_ptr = (struct in6_addr *)opt1->hdr->data;
+ 				list_for_each_entry(dns, &ses->ipv6_dns->addr_list, entry) {
+ 					if (k < j) {
+@@ -277,6 +284,8 @@
+ 			} else {
+ 				if (conf_dns_count) {
+ 					opt1 = dhcpv6_option_alloc(reply, D6_OPTION_DNS_SERVERS, conf_dns_count * sizeof(addr));
++					if (!opt1)
++						return -1;
+ 					for (j = 0, addr_ptr = (struct in6_addr *)opt1->hdr->data; j < conf_dns_count; j++, addr_ptr++)
+ 						memcpy(addr_ptr, conf_dns + j, sizeof(addr));
+ 				}
+@@ -284,15 +293,21 @@
+ 		} else if (ntohs(*ptr) == D6_OPTION_DOMAIN_LIST) {
+ 			if (conf_dnssl_size) {
+ 				opt1 = dhcpv6_option_alloc(reply, D6_OPTION_DOMAIN_LIST, conf_dnssl_size);
++				if (!opt1)
++					return -1;
+ 				memcpy(opt1->hdr->data, conf_dnssl, conf_dnssl_size);
+ 			}
+ 		} else if (ntohs(*ptr) == D6_OPTION_AFTR_NAME) {
+ 			if (conf_aftr_gw_size) {
+ 				opt1 = dhcpv6_option_alloc(reply, D6_OPTION_AFTR_NAME, conf_aftr_gw_size);
++				if (!opt1)
++					return -1;
+ 				memcpy(opt1->hdr->data, conf_aftr_gw, conf_aftr_gw_size);
+ 			}
+ 		}
+ 	}
++
++	return 0;
+ }
+ 
+ static void dhcpv6_send_reply(struct dhcpv6_packet *req, struct dhcpv6_pd *pd, int code)
+@@ -319,6 +334,8 @@
+ 				continue;
+ 
+ 			opt1 = dhcpv6_option_alloc(reply, D6_OPTION_IA_NA, sizeof(struct dhcpv6_opt_ia_na) - sizeof(struct dhcpv6_opt_hdr));
++			if (!opt1)
++				goto out;
+ 			memcpy(opt1->hdr + 1, opt->hdr + 1, ntohs(opt1->hdr->len));
+ 
+ 			ia_na = (struct dhcpv6_opt_ia_na *)opt1->hdr;
+@@ -326,9 +343,11 @@
+ 			ia_na->T2 = conf_pref_lifetime == -1 ? -1 : htonl((conf_pref_lifetime * 4) / 5);
+ 
+ 			if (req->hdr->type == D6_RENEW && pd->addr_iaid != ia_na->iaid) {
+-				insert_status(reply, opt1, D6_STATUS_NoBinding);
++				if (insert_status(reply, opt1, D6_STATUS_NoBinding))
++					goto out;
+ 			} else if (list_empty(&ses->ipv6->addr_list) || f) {
+-				insert_status(reply, opt1, D6_STATUS_NoAddrsAvail);
++				if (insert_status(reply, opt1, D6_STATUS_NoAddrsAvail))
++					goto out;
+ 			} else {
+ 
+ 				if (req->hdr->type == D6_REQUEST || req->rapid_commit)
+@@ -338,6 +357,8 @@
+ 
+ 				list_for_each_entry(a, &ses->ipv6->addr_list, entry) {
+ 					opt2 = dhcpv6_nested_option_alloc(reply, opt1, D6_OPTION_IAADDR, sizeof(*ia_addr) - sizeof(struct dhcpv6_opt_hdr));
++					if (!opt2)
++						goto out;
+ 					ia_addr = (struct dhcpv6_opt_ia_addr *)opt2->hdr;
+ 
+ 					build_ip6_addr(a, ses->ipv6->peer_intf_id, &addr);
+@@ -384,13 +405,16 @@
+ 
+ 							if (!f1) {
+ 								opt3 = dhcpv6_nested_option_alloc(reply, opt1, D6_OPTION_IAADDR, sizeof(*ia_addr) - sizeof(struct dhcpv6_opt_hdr));
++								if (!opt3)
++									goto out;
+ 								memcpy(opt3->hdr->data, opt2->hdr->data, sizeof(*ia_addr) - sizeof(struct dhcpv6_opt_hdr));
+ 
+ 								ia_addr = (struct dhcpv6_opt_ia_addr *)opt3->hdr;
+ 								ia_addr->pref_lifetime = 0;
+ 								ia_addr->valid_lifetime = 0;
+ 
+-								insert_status(reply, opt3, D6_STATUS_NotOnLink);
++								if (insert_status(reply, opt3, D6_STATUS_NotOnLink))
++									goto out;
+ 							}
+ 						}
+ 					}
+@@ -405,6 +429,8 @@
+ 				continue;
+ 
+ 			opt1 = dhcpv6_option_alloc(reply, D6_OPTION_IA_PD, sizeof(struct dhcpv6_opt_ia_na) - sizeof(struct dhcpv6_opt_hdr));
++			if (!opt1)
++				goto out;
+ 			memcpy(opt1->hdr + 1, opt->hdr + 1, ntohs(opt1->hdr->len));
+ 
+ 			ia_na = (struct dhcpv6_opt_ia_na *)opt1->hdr;
+@@ -422,9 +448,11 @@
+ 			}
+ 
+ 			if ((req->hdr->type == D6_RENEW) && pd->dp_iaid != ia_na->iaid) {
+-				insert_status(reply, opt1, D6_STATUS_NoBinding);
++				if (insert_status(reply, opt1, D6_STATUS_NoBinding))
++					goto out;
+ 			} else if (!ses->ipv6_dp || list_empty(&ses->ipv6_dp->prefix_list) || f2) {
+-				insert_status(reply, opt1, D6_STATUS_NoPrefixAvail);
++				if (insert_status(reply, opt1, D6_STATUS_NoPrefixAvail))
++					goto out;
+ 			} else {
+ 
+ 				if (req->hdr->type == D6_REQUEST || req->rapid_commit) {
+@@ -437,6 +465,8 @@
+ 
+ 				list_for_each_entry(a, &ses->ipv6_dp->prefix_list, entry) {
+ 					opt2 = dhcpv6_nested_option_alloc(reply, opt1, D6_OPTION_IAPREFIX, sizeof(*ia_prefix) - sizeof(struct dhcpv6_opt_hdr));
++					if (!opt2)
++						goto out;
+ 					ia_prefix = (struct dhcpv6_opt_ia_prefix *)opt2->hdr;
+ 
+ 					memcpy(&ia_prefix->prefix, &a->addr, sizeof(a->addr));
+@@ -466,12 +496,15 @@
+ 
+ 							if (!f1) {
+ 								opt3 = dhcpv6_nested_option_alloc(reply, opt1, D6_OPTION_IAPREFIX, sizeof(*ia_prefix) - sizeof(struct dhcpv6_opt_hdr));
++								if (!opt3)
++									goto out;
+ 								memcpy(opt3->hdr->data, opt2->hdr->data, sizeof(*ia_prefix) - sizeof(struct dhcpv6_opt_hdr));
+ 								ia_prefix = (struct dhcpv6_opt_ia_prefix *)opt3->hdr;
+ 								ia_prefix->pref_lifetime = 0;
+ 								ia_prefix->valid_lifetime = 0;
+ 
+-								insert_status(reply, opt3, D6_STATUS_NotOnLink);
++								if (insert_status(reply, opt3, D6_STATUS_NotOnLink))
++									goto out;
+ 							}
+ 						}
+ 					}
+@@ -486,24 +519,31 @@
+ 				continue;
+ 
+ 			opt1 = dhcpv6_option_alloc(reply, D6_OPTION_IA_TA, sizeof(struct dhcpv6_opt_ia_ta) - sizeof(struct dhcpv6_opt_hdr));
++			if (!opt1)
++				goto out;
+ 			memcpy(opt1->hdr + 1, opt->hdr + 1, ntohs(opt1->hdr->len));
+ 
+-			insert_status(reply, opt1, D6_STATUS_NoAddrsAvail);
++			if (insert_status(reply, opt1, D6_STATUS_NoAddrsAvail))
++				goto out;
+ 
+ 		// Option Request
+ 		} else if (ntohs(opt->hdr->code) == D6_OPTION_ORO) {
+ 			if (ses->ipv6_dns &&!list_empty(&ses->ipv6_dns->addr_list)) {
+ 				log_ppp_info2("User specific IPv6 DNS entries\n");
+ 			} 
+-			insert_oro(reply, opt, ses);
+-
+-		} else if (ntohs(opt->hdr->code) == D6_OPTION_RAPID_COMMIT) {
+-			if (req->hdr->type == D6_SOLICIT)
+-				dhcpv6_option_alloc(reply, D6_OPTION_RAPID_COMMIT, 0);
+-		}
+-	}
++			if (insert_oro(reply, opt, ses))
++				goto out;
++
++		}
++	}
++
++	if (req->hdr->type == D6_SOLICIT && req->rapid_commit)
++		if (!dhcpv6_option_alloc(reply, D6_OPTION_RAPID_COMMIT, 0))
++			goto out;
+ 
+ 	opt1 = dhcpv6_option_alloc(reply, D6_OPTION_PREFERENCE, 1);
++	if (!opt1)
++		goto out;
+ 	*(uint8_t *)opt1->hdr->data = 255;
+ 
+ 	//insert_status(reply, NULL, D6_STATUS_Success);
+@@ -525,6 +565,7 @@
+ 		net->sendto(pd->hnd.fd, reply->hdr, reply->endptr - (void *)reply->hdr, 0, (struct sockaddr *)&req->addr, sizeof(req->addr));
+ 	}
+ 
++out:
+ 	dhcpv6_packet_free(reply);
+ }
+ 
+@@ -549,6 +590,8 @@
+ 		// IA_NA
+ 		if (ntohs(opt->hdr->code) == D6_OPTION_IA_NA) {
+ 			opt1 = dhcpv6_option_alloc(reply, D6_OPTION_IA_NA, sizeof(struct dhcpv6_opt_ia_na) - sizeof(struct dhcpv6_opt_hdr));
++			if (!opt1)
++				goto out;
+ 			memcpy(opt1->hdr + 1, opt->hdr + 1, ntohs(opt1->hdr->len));
+ 
+ 			ia_na = (struct dhcpv6_opt_ia_na *)opt1->hdr;
+@@ -578,6 +621,8 @@
+ 					}
+ 
+ 					opt3 = dhcpv6_nested_option_alloc(reply, opt1, D6_OPTION_IAADDR, sizeof(*ia_addr) - sizeof(struct dhcpv6_opt_hdr));
++					if (!opt3)
++						goto out;
+ 					memcpy(opt3->hdr->data, opt2->hdr->data, sizeof(*ia_addr) - sizeof(struct dhcpv6_opt_hdr));
+ 
+ 					ia_addr = (struct dhcpv6_opt_ia_addr *)opt3->hdr;
+@@ -602,6 +647,8 @@
+ 		// IA_PD
+ 		} else if (ntohs(opt->hdr->code) == D6_OPTION_IA_PD) {
+ 			opt1 = dhcpv6_option_alloc(reply, D6_OPTION_IA_PD, sizeof(struct dhcpv6_opt_ia_na) - sizeof(struct dhcpv6_opt_hdr));
++			if (!opt1)
++				goto out;
+ 			memcpy(opt1->hdr + 1, opt->hdr + 1, ntohs(opt1->hdr->len));
+ 
+ 			ia_na = (struct dhcpv6_opt_ia_na *)opt1->hdr;
+@@ -642,6 +689,8 @@
+ 					}
+ 
+ 					opt3 = dhcpv6_nested_option_alloc(reply, opt1, D6_OPTION_IAPREFIX, sizeof(*ia_prefix) - sizeof(struct dhcpv6_opt_hdr));
++					if (!opt3)
++						goto out;
+ 					memcpy(opt3->hdr->data, opt2->hdr->data, sizeof(*ia_prefix) - sizeof(struct dhcpv6_opt_hdr));
+ 					ia_prefix = (struct dhcpv6_opt_ia_prefix *)opt3->hdr;
+ 
+@@ -662,11 +711,15 @@
+ 				f2 = 1;
+ 			}
+ 		// Option Request
+-		} else if (ntohs(opt->hdr->code) == D6_OPTION_ORO)
+-			insert_oro(reply, opt, ses);
++		} else if (ntohs(opt->hdr->code) == D6_OPTION_ORO) {
++			if (insert_oro(reply, opt, ses))
++				goto out;
++		}
+ 	}
+ 
+ 	opt1 = dhcpv6_option_alloc(reply, D6_OPTION_PREFERENCE, 1);
++	if (!opt1)
++		goto out;
+ 	*(uint8_t *)opt1->hdr->data = 255;
+ 
+ 	//insert_status(reply, NULL, D6_STATUS_Success);
+@@ -960,12 +1013,14 @@
+ 
+ static void add_aftr_gw(const char *val)
+ {
+-	int n = strlen(val);
++	int n;
+ 	const char *ptr;
+ 	uint8_t *buf;
+ 
+-	if (!val)
+-		return;
++	if (!val || !*val)
++		return;
++
++	n = strlen(val);
+ 
+ 	if (val[n - 1] == '.')
+ 		n++;
+@@ -1007,12 +1062,14 @@
+ 
+ static void add_dnssl(const char *val)
+ {
+-	int n = strlen(val);
++	int n;
+ 	const char *ptr;
+ 	uint8_t *buf;
+ 
+-	if (!val)
+-		return;
++	if (!val || !*val)
++		return;
++
++	n = strlen(val);
+ 
+ 	if (val[n - 1] == '.')
+ 		n++;
+diff --git a/accel-pppd/ipv6/dhcpv6.h b/accel-pppd/ipv6/dhcpv6.h
+--- a/accel-pppd/ipv6/dhcpv6.h
++++ b/accel-pppd/ipv6/dhcpv6.h
+@@ -10,6 +10,7 @@
+ 
+ #define DHCPV6_CLIENT_PORT 546
+ #define DHCPV6_SERV_PORT 547
++#define DHCPV6_HOP_COUNT_LIMIT 8
+ 
+ #define D6_OPTION_CLIENTID         1
+ #define D6_OPTION_SERVERID         2
+diff --git a/accel-pppd/ipv6/dhcpv6_packet.c b/accel-pppd/ipv6/dhcpv6_packet.c
+--- a/accel-pppd/ipv6/dhcpv6_packet.c
++++ b/accel-pppd/ipv6/dhcpv6_packet.c
+@@ -61,16 +61,73 @@
+ 	{ 0 }
+ };
+ 
++/* Validation requirements for AFTR-Name option:
++ * 1) option-len > 3 and option-len <= 255
++ * 2) each label must fit within option-len
++ * 3) high order 2 bits of every label must be zero (no compression tags allowed)
++ * 4) domain name must be terminated by a zero-length label
++ * 5) at least one non-zero label must be present
++ */
++static int validate_aftr_name(const uint8_t *data, uint16_t len)
++{
++	uint16_t offset = 0;
++	int nonzero_label_present = 0;
++
++	if (len <= 3 || len > 255) {
++		log_warn("dhcpv6: invalid AFTR-Name option: invalid option length %u\n", len);
++		return 0;
++	}
++
++	while (offset < len) {
++		uint8_t label_len = data[offset++];
++
++		if (label_len == 0) {
++			if (!nonzero_label_present || offset != len) {
++				log_warn("dhcpv6: invalid AFTR-Name option: missing non-zero label "
++					 "and/or invalid termination\n");
++				return 0;
++			}
++			return 1;
++		}
++
++		if (label_len & 0xC0) {
++			log_warn("dhcpv6: invalid AFTR-Name option: compression or reserved bits set\n");
++			return 0;
++		}
++
++		if (offset + label_len > len) {
++			log_warn("dhcpv6: invalid AFTR-Name option: label exceeds total option length\n");
++			return 0;
++		}
++
++		nonzero_label_present = 1;
++		offset += label_len;
++	}
++
++	log_warn("dhcpv6: invalid AFTR-Name option: missing terminating zero-length label\n");
++	return 0;
++}
++
+ static void *parse_option(void *ptr, void *endptr, struct list_head *opt_list)
+ {
+ 	struct dict_option *dopt;
+ 	struct dhcpv6_opt_hdr *opth = ptr;
+ 	struct dhcpv6_option *opt;
++	uint16_t code;
++	uint16_t len;
+ 
+ 	if (ptr + sizeof(*opth) > endptr ||
+ 	    ptr + sizeof(*opth) + ntohs(opth->len) > endptr) {
+ 		log_warn("dhcpv6: invalid packet received\n");
+ 		return NULL;
++	}
++
++	code = ntohs(opth->code);
++	len = ntohs(opth->len);
++
++	if (code == D6_OPTION_AFTR_NAME) {
++		if (!validate_aftr_name(opth->data, len))
++			return NULL;
+ 	}
+ 
+ 	opt = _malloc(sizeof(*opt));
+@@ -85,7 +142,7 @@
+ 	list_add_tail(&opt->entry, opt_list);
+ 
+ 	for (dopt = known_options; dopt->code; dopt++) {
+-		if (dopt->code == ntohs(opth->code))
++		if (dopt->code == code)
+ 			break;
+ 	}
+ 
+@@ -109,7 +166,10 @@
+ 	struct dhcpv6_opt_hdr *opth;
+ 	struct dhcpv6_relay *rel;
+ 	struct dhcpv6_relay_hdr *rhdr;
+-	void *ptr, *endptr;
++	struct dhcpv6_msg_hdr *inner_hdr;
++	int aftr_name_seen = 0;
++	int relay_depth = 0;
++	void *ptr, *endptr, *relay_end, *inner_end;
+ 
+ 	if (size < sizeof(struct dhcpv6_msg_hdr)) {
+ 		if (conf_verbose)
+@@ -133,6 +193,10 @@
+ 	endptr = ((void *)pkt->hdr) + size;
+ 
+ 	while (pkt->hdr->type == D6_RELAY_FORW) {
++		if (relay_depth++ >= DHCPV6_HOP_COUNT_LIMIT) {
++			log_warn("dhcpv6: relay nesting depth exceeds HOP_COUNT_LIMIT \n");
++			goto error;
++		}
+ 		rhdr = (struct dhcpv6_relay_hdr *)pkt->hdr;
+ 		if (((void *)rhdr) + sizeof(*rhdr) > endptr) {
+ 			log_warn("dhcpv6: invalid packet received\n");
+@@ -151,22 +215,38 @@
+ 
+ 		list_add_tail(&rel->entry, &pkt->relay_list);
+ 
++		inner_hdr = NULL;
++		inner_end = NULL;
++		relay_end = endptr;
+ 		ptr = rhdr->data;
+-		while (ptr < endptr) {
++		while (ptr < relay_end) {
+ 			opth = ptr;
+-			if (ptr + sizeof(*opth) > endptr ||
+-			    ptr + sizeof(*opth) + ntohs(opth->len) > endptr) {
++			if (ptr + sizeof(*opth) > relay_end ||
++			    ptr + sizeof(*opth) + ntohs(opth->len) > relay_end) {
+ 				log_warn("dhcpv6: invalid packet received\n");
+ 				goto error;
+ 			}
+ 
+ 			if (opth->code == htons(D6_OPTION_RELAY_MSG)) {
+-				pkt->hdr = (struct dhcpv6_msg_hdr *)opth->data;
+-				endptr = opth->data + sizeof(*opth) + ntohs(opth->len);
++				if (inner_hdr || ntohs(opth->len) < sizeof(*inner_hdr)) {
++					log_warn("dhcpv6: invalid packet received\n");
++					goto error;
++				}
++
++				inner_hdr = (struct dhcpv6_msg_hdr *)opth->data;
++				inner_end = opth->data + ntohs(opth->len);
+ 			}
+ 
+ 			ptr += sizeof(*opth) + ntohs(opth->len);
+ 		}
++
++		if (!inner_hdr) {
++			log_warn("dhcpv6: invalid packet received\n");
++			goto error;
++		}
++
++		pkt->hdr = inner_hdr;
++		endptr = inner_end;
+ 	}
+ 
+ 	ptr = pkt->hdr->data;
+@@ -182,8 +262,22 @@
+ 			pkt->clientid = ptr;
+ 		else if (opth->code == htons(D6_OPTION_SERVERID))
+ 			pkt->serverid = ptr;
+-		else if (opth->code == htons(D6_OPTION_RAPID_COMMIT))
++		else if (opth->code == htons(D6_OPTION_AFTR_NAME)) {
++			if (aftr_name_seen) {
++				log_warn("dhcpv6: invalid packet (duplicate AFTR-Name options)\n");
++				goto error;
++			}
++
++			aftr_name_seen = 1;
++		}
++		else if (opth->code == htons(D6_OPTION_RAPID_COMMIT)) {
++			if (pkt->rapid_commit) {
++				log_warn("dhcpv6: invalid packet (duplicate Rapid-Commit options)\n");
++				goto error;
++			}
++
+ 			pkt->rapid_commit = 1;
++		}
+ 
+ 		ptr = parse_option(ptr, endptr, &pkt->opt_list);
+ 		if (!ptr)
+@@ -201,7 +295,8 @@
+ {
+ 	struct dhcpv6_option *opt;
+ 
+-	if ((void *)pkt->hdr->data + BUF_SIZE - pkt->endptr < sizeof(struct dhcpv6_opt_hdr) + len)
++	if (len < 0 || len > BUF_SIZE ||
++	    (char *)(pkt + 1) + BUF_SIZE - (char *)pkt->endptr < sizeof(struct dhcpv6_opt_hdr) + (size_t)len)
+ 		return NULL;
+ 
+ 	opt = _malloc(sizeof(*opt));
+@@ -228,7 +323,8 @@
+ {
+ 	struct dhcpv6_option *opt;
+ 
+-	if ((void *)pkt->hdr->data + BUF_SIZE - pkt->endptr < sizeof(struct dhcpv6_opt_hdr) + len)
++	if (len < 0 || len > BUF_SIZE ||
++	    (char *)(pkt + 1) + BUF_SIZE - (char *)pkt->endptr < sizeof(struct dhcpv6_opt_hdr) + (size_t)len)
+ 		return NULL;
+ 
+ 	opt = _malloc(sizeof(*opt));
+@@ -274,7 +370,7 @@
+ 		memcpy(&rhdr->peer_addr, &rel->peer_addr, sizeof(rhdr->peer_addr));
+ 		opt = (struct dhcpv6_opt_hdr *)rhdr->data;
+ 		opt->code = htons(D6_OPTION_RELAY_MSG);
+-		opt->len = (uint8_t *)pkt->endptr - rhdr->data;
++		opt->len = htons((uint8_t *)pkt->endptr - opt->data);
+ 	}
+ 
+ 	rel = list_entry(pkt->relay_list.next, typeof(*rel), entry);
+@@ -302,6 +398,11 @@
+ 
+ 	while (!list_empty(&req->relay_list)) {
+ 		rel = list_entry(req->relay_list.next, typeof(*rel), entry);
++		if ((char *)(pkt + 1) + BUF_SIZE - (char *)pkt->hdr <
++		    sizeof(struct dhcpv6_relay_hdr) + sizeof(struct dhcpv6_opt_hdr) + sizeof(*pkt->hdr)) {
++			log_warn("dhcpv6: relay layer count exceeds reply buffer capacity\n");
++			goto error;
++		}
+ 		rel->hdr = (void *)pkt->hdr;
+ 		pkt->hdr = (void *)rel->hdr + sizeof(struct dhcpv6_relay_hdr) + sizeof(struct dhcpv6_opt_hdr);
+ 		list_move_tail(&rel->entry, &pkt->relay_list);
+@@ -525,20 +626,27 @@
+ static void print_status(struct dhcpv6_option *opt, void (*print)(const char *fmt, ...))
+ {
+ 	struct dhcpv6_opt_status *o = (struct dhcpv6_opt_status *)opt->hdr;
+-	static char *status_name[] = {
++	static const char *status_name[] = {
+ 		"Success",
+ 		"UnspecFail",
+ 		"NoAddrsAvail",
+ 		"NoBindings",
+ 		"NotOnLink",
+-		"UseMulticast"
++		"UseMulticast",
+ 		"NoPrefixAvail"
+ 	};
+-
+-	if (ntohs(o->code) < 0 || ntohs(o->code) > sizeof(status_name))
+-		print(" %u", ntohs(o->code));
++	unsigned int status_code;
++	size_t status_name_count = sizeof(status_name) / sizeof(status_name[0]);
++
++	if (ntohs(opt->hdr->len) < sizeof(o->code))
++		return;
++
++	status_code = ntohs(o->code);
++
++	if (status_code >= status_name_count)
++		print(" %u", status_code);
+ 	else
+-		print(" %s", status_name[ntohs(o->code)]);
++		print(" %s", status_name[status_code]);
+ }
+ 
+ static void print_reconf(struct dhcpv6_option *opt, void (*print)(const char *fmt, ...))
+@@ -554,18 +662,60 @@
+ static void print_aftr_gw(struct dhcpv6_option *opt, void (*print)(const char *fmt, ...)) {
+ 	int len = ntohs(opt->hdr->len);
+ 	int offset = 0;
++	int dst = 0;
++	int nonzero_label_present = 0;
+ 	char domain[255];
+ 	uint8_t label_len;
+ 
+-	memset(domain, 0, 255);
++	if (len <= 3 || len > 255) {
++		print(" <invalid-aftr-name:invalid-length>");
++		return;
++	}
++
++	memset(domain, 0, sizeof(domain));
++
+ 	while (offset < len) {
+-		label_len = opt->hdr->data[offset];
+-		if (label_len == 0)
++		label_len = opt->hdr->data[offset++];
++
++		if (label_len == 0) {
++			if (!nonzero_label_present || offset != len) {
++				print(" <invalid-aftr-name:invalid-termination-or-empty>");
++				return;
++			}
++
+ 			break;
+-		memcpy(&domain[offset], &opt->hdr->data[offset + 1], label_len);
++		}
++
++		if (label_len & 0xC0) {
++			print(" <invalid-aftr-name:invalid-label-high-order-bits>");
++			return;
++		}
++
++		if (offset + label_len > len) {
++			print(" <invalid-aftr-name:label-overrun>");
++			return;
++		}
++
++		if (dst && dst < (int)sizeof(domain) - 1)
++			domain[dst++] = '.';
++
++		if (dst + label_len >= (int)sizeof(domain)) {
++			print(" <invalid-aftr-name:print-buffer-overflow>");
++			return;
++		}
++
++		memcpy(&domain[dst], &opt->hdr->data[offset], label_len);
++		dst += label_len;
+ 		offset += label_len;
+-		domain[offset++] = '.';
+-	}
++		nonzero_label_present = 1;
++	}
++
++	if (!nonzero_label_present) {
++		print(" <invalid-aftr-name:missing-nonzero-label>");
++		return;
++	}
++
++	domain[dst] = '\0';
+ 	print(" %s", domain);
+ }
+ 
+@@ -577,4 +727,3 @@
+ 	inet_ntop(AF_INET6, &o->prefix, str, sizeof(str));
+ 	print(" %s/%i pref_lifetime=%i valid_lifetime=%i", str, o->prefix_len, ntohl(o->pref_lifetime), ntohl(o->valid_lifetime));
+ }
+-
+diff --git a/accel-pppd/ipv6/nd.c b/accel-pppd/ipv6/nd.c
+--- a/accel-pppd/ipv6/nd.c
++++ b/accel-pppd/ipv6/nd.c
+@@ -494,12 +494,14 @@
+ 
+ static void add_dnssl(const char *val)
+ {
+-	int n = strlen(val);
++	int n;
+ 	const char *ptr;
+ 	uint8_t *buf;
+ 
+-	if (!val)
++	if (!val || !*val)
+ 		return;
++
++	n = strlen(val);
+ 
+ 	if (val[n - 1] == '.')
+ 		n++;
+diff --git a/accel-pppd/logs/log_file.c b/accel-pppd/logs/log_file.c
+--- a/accel-pppd/logs/log_file.c
++++ b/accel-pppd/logs/log_file.c
+@@ -385,7 +385,12 @@
+ {
+ 	const char *fname = conf_get_opt("log", "log-file");
+ 	int old_fd = -1;
+- 	int fd = open(fname, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, S_IRUSR | S_IWUSR);
++	int fd;
++
++	if (!fname)
++		return;
++
++	fd = open(fname, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, S_IRUSR | S_IWUSR);
+ 	if (fd < 0) {
+ 		log_emerg("log_file: open '%s': %s\n", fname, strerror(errno));
+ 		return;
+@@ -710,7 +715,8 @@
+ 	if (opt && atoi(opt) > 0)
+ 		conf_copy = 1;
+ 
+-	log_register_target(&general_target);
++	if (log_file)
++		log_register_target(&general_target);
+ 
+ 	if (conf_per_user_dir) {
+ 		log_register_target(&per_user_target);
+diff --git a/accel-pppd/logs/log_pgsql.c b/accel-pppd/logs/log_pgsql.c
+--- a/accel-pppd/logs/log_pgsql.c
++++ b/accel-pppd/logs/log_pgsql.c
+@@ -11,6 +11,8 @@
+ #include "ap_session.h"
+ 
+ #include "memdebug.h"
++
++#define min(x,y) ((x)<(y)?(x):(y))
+ 
+ static char *conf_conninfo;
+ static int conf_queue_max = 1000;
+@@ -57,20 +59,28 @@
+ 
+ static void set_hdr(struct log_msg_t *msg, struct ap_session *ses)
+ {
++	const char *username = ses && ses->username ? ses->username : "";
++	const char *sessionid = ses && ses->username ? ses->sessionid : "";
+ 	struct tm tm;
++	int pos, len, avail;
+ 
+ 	localtime_r(&msg->timestamp.tv_sec, &tm);
+ 
+ 	strftime(msg->hdr->msg, LOG_CHUNK_SIZE, "%Y-%m-%d %H:%M:%S", &tm);
+-	msg->hdr->len = strlen(msg->hdr->msg) + 1;
+-	if (ses && ses->username) {
+-		strcpy(msg->hdr->msg + msg->hdr->len, ses->username);
+-		msg->hdr->len += strlen(ses->username) + 1;
+-		strcpy(msg->hdr->msg + msg->hdr->len, ses->sessionid);
+-		msg->hdr->len += strlen(ses->sessionid) + 1;
+-	} else
+-		memset(msg->hdr->msg + msg->hdr->len, 0, 2);
+-
++	pos = strlen(msg->hdr->msg) + 1;
++
++	/* username is peer supplied and may be up to 255 bytes long,
++	 * truncate it to what is left of the chunk, keeping one byte
++	 * for the terminator of the sessionid */
++	avail = LOG_CHUNK_SIZE - pos - 1;
++	len = snprintf(msg->hdr->msg + pos, avail, "%s", username);
++	pos += min(len, avail - 1) + 1;
++
++	avail = LOG_CHUNK_SIZE - pos;
++	len = snprintf(msg->hdr->msg + pos, avail, "%s", sessionid);
++	pos += min(len, avail - 1) + 1;
++
++	msg->hdr->len = pos;
+ }
+ 
+ static void write_next_msg(void)
+diff --git a/accel-pppd/net.c b/accel-pppd/net.c
+--- a/accel-pppd/net.c
++++ b/accel-pppd/net.c
+@@ -223,9 +223,22 @@
+ {
+ 	struct kern_net *n = container_of(net, typeof(*n), net);
+ 	struct ifreq ifr;
++	size_t ifname_len;
++
++	if (!ifname) {
++		log_ppp_error("interface name is NULL\n");
++		return -1;
++	}
++
++	ifname_len = strlen(ifname);
++	if (ifname_len >= IFNAMSIZ) {
++		log_ppp_error("interface name too long (%zu >= %d): '%s'\n", ifname_len, IFNAMSIZ, ifname);
++		return -1;
++	}
+ 
+ 	memset(&ifr, 0, sizeof(ifr));
+-	strcpy(ifr.ifr_name, ifname);
++	memcpy(ifr.ifr_name, ifname, ifname_len);
++	ifr.ifr_name[ifname_len] = '\0';
+ 
+ 	if (ioctl(n->sock, SIOCGIFINDEX, &ifr)) {
+ 		log_ppp_error("ioctl(SIOCGIFINDEX): %s\n", strerror(errno));
+diff --git a/accel-pppd/ppp/ipv6cp_opt_intfid.c b/accel-pppd/ppp/ipv6cp_opt_intfid.c
+--- a/accel-pppd/ppp/ipv6cp_opt_intfid.c
++++ b/accel-pppd/ppp/ipv6cp_opt_intfid.c
+@@ -3,10 +3,14 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <string.h>
++#include <ctype.h>
+ #include <errno.h>
++#include <stdint.h>
+ #include <limits.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
++#include <openssl/hmac.h>
++#include <openssl/evp.h>
+ #include "linux_ppp.h"
+ 
+ #include "log.h"
+@@ -23,12 +27,16 @@
+ #define INTF_ID_CSID   2
+ #define INTF_ID_IPV4   3
+ 
++#define INTF_ID_SECRET_MIN_LEN 16
++#define INTF_ID_SECRET_MAX_LEN 128
++
+ static int conf_check_exists;
+ static int conf_intf_id = INTF_ID_FIXED;
+ static uint64_t conf_intf_id_val = 1;
+ static int conf_peer_intf_id = INTF_ID_FIXED;
+ static uint64_t conf_peer_intf_id_val = 2;
+ static int conf_accept_peer_intf_id;
++static const char *conf_peer_intf_id_secret;
+ 
+ static struct ipv6cp_option_t *ipaddr_init(struct ppp_ipv6cp_t *ipv6cp);
+ static void ipaddr_free(struct ppp_ipv6cp_t *ipv6cp, struct ipv6cp_option_t *opt);
+@@ -160,6 +168,126 @@
+ 	return id;
+ }
+ 
++static int is_iid_all_zero(const uint8_t iid[8])
++{
++	int i;
++
++	for (i = 0; i < 8; ++i) {
++		if (iid[i])
++			return 0;
++	}
++
++	return 1;
++}
++
++static int is_printable_ascii_secret(const char *secret)
++{
++	const unsigned char *p;
++
++	if (!secret || !*secret)
++		return 0;
++
++	for (p = (const unsigned char *)secret; *p; ++p) {
++		/* ASCII range 0x21 to 0x7E are printable non-whitespace characters */
++		if (*p <= 0x20 || *p > 0x7e)
++			return 0;
++	}
++
++	return 1;
++}
++
++/* RFC 5072 Section 4.1 requires the Interface-Identifier "u" bit to be
++ * zero unless an EUI-48/EUI-64-derived identifier is used for the remote
++ * peer. RFC 4291 requires avoiding the all-zero IID.
++ */
++static void normalize_opaque_iid(uint8_t iid[8])
++{
++	/* Clear EUI-64 U/L bit (0x02 in the first octet). */
++	iid[0] &= 0xfd;
++
++	if (is_iid_all_zero(iid))
++		iid[7] = 1;
++}
++
++static uint64_t generate_csid_intf_id(struct ppp_t *ppp)
++{
++	const char *csid;
++	const char *ctrl_name = "unknown";
++	unsigned int ctrl_type = 0;
++	char type_buf[12];
++	char *csid_norm = NULL;
++	char *context = NULL;
++	const char *prefix = "ctrl-type=";
++	const char *middle = "|ctrl-name=";
++	const char *suffix = "|csid=";
++	unsigned char digest[EVP_MAX_MD_SIZE];
++	unsigned int digest_len = 0;
++	uint8_t iid_bytes[8];
++	uint64_t id = 0;
++	size_t csid_len;
++	size_t ctrl_name_len;
++	size_t context_len;
++	int secret_len;
++	int i;
++	int n;
++
++	if (!ppp || !ppp->ses.ctrl)
++		return 0;
++
++	csid = ppp->ses.ctrl->calling_station_id;
++	if (!csid || !*csid)
++		return 0;
++
++	if (!conf_peer_intf_id_secret || !*conf_peer_intf_id_secret)
++		return 0;
++
++	ctrl_type = ppp->ses.ctrl->type;
++	if (ppp->ses.ctrl->name)
++		ctrl_name = ppp->ses.ctrl->name;
++
++	n = snprintf(type_buf, sizeof(type_buf), "%u", ctrl_type);
++	if (n <= 0 || n >= (int)sizeof(type_buf))
++		return 0;
++
++	csid_len = strlen(csid);
++	ctrl_name_len = strlen(ctrl_name);
++	context_len = strlen(prefix) + strlen(type_buf) + strlen(middle) + ctrl_name_len + strlen(suffix) + csid_len;
++
++	csid_norm = _malloc(csid_len + 1);
++	if (!csid_norm)
++		return 0;
++
++	for (i = 0; i < (int)csid_len; ++i)
++		csid_norm[i] = tolower((unsigned char)csid[i]);
++	csid_norm[csid_len] = '\0';
++
++	context = _malloc(context_len + 1);
++	if (!context)
++		goto out;
++
++	n = snprintf(context, context_len + 1, "%s%s%s%s%s%s", prefix, type_buf, middle, ctrl_name, suffix, csid_norm);
++	if (n <= 0 || (size_t)n != context_len)
++		goto out;
++
++	secret_len = (int)strlen(conf_peer_intf_id_secret);
++
++	if (!HMAC(EVP_sha256(), conf_peer_intf_id_secret, secret_len,
++			(const unsigned char *)context, context_len, digest, &digest_len))
++		goto out;
++
++	if (digest_len < sizeof(iid_bytes))
++		goto out;
++
++	memcpy(iid_bytes, digest, sizeof(iid_bytes));
++	normalize_opaque_iid(iid_bytes);
++	memcpy(&id, iid_bytes, sizeof(id));
++
++out:
++	_free(context);
++	_free(csid_norm);
++	return id;
++}
++
+ static uint64_t generate_peer_intf_id(struct ppp_t *ppp)
+ {
+ 	char str[4];
+@@ -168,7 +296,7 @@
+ 	union {
+ 		uint64_t intf_id;
+ 		uint16_t addr16[4];
+-	} u;
++	} u = { .intf_id = 0 };
+ 
+ 	switch (conf_peer_intf_id) {
+ 		case INTF_ID_FIXED:
+@@ -178,6 +306,7 @@
+ 			read(urandom_fd, &u, sizeof(u));
+ 			break;
+ 		case INTF_ID_CSID:
++			u.intf_id = generate_csid_intf_id(ppp);
+ 			break;
+ 		case INTF_ID_IPV4:
+ 			if (ppp->ses.ipv4) {
+@@ -316,6 +445,7 @@
+ static void load_config(void)
+ {
+ 	const char *opt;
++	size_t secret_len;
+ 
+ 	opt = conf_get_opt("ppp", "check-ip");
+ 	if (!opt)
+@@ -347,6 +477,22 @@
+ 		}
+ 	}
+ 
++	conf_peer_intf_id_secret = conf_get_opt("ppp", "ipv6-peer-intf-id-secret");
++	if (conf_peer_intf_id_secret && *conf_peer_intf_id_secret) {
++		secret_len = strlen(conf_peer_intf_id_secret);
++		if (secret_len < INTF_ID_SECRET_MIN_LEN ||
++		    secret_len > INTF_ID_SECRET_MAX_LEN) {
++			log_error("ppp: ipv6-peer-intf-id-secret length must be between %d and %d characters\n",
++				INTF_ID_SECRET_MIN_LEN, INTF_ID_SECRET_MAX_LEN);
++			conf_peer_intf_id_secret = NULL;
++		} else if (!is_printable_ascii_secret(conf_peer_intf_id_secret)) {
++			log_error("ppp: ipv6-peer-intf-id-secret must contain only printable non-whitespace ASCII characters\n");
++			conf_peer_intf_id_secret = NULL;
++		}
++	}
++	if (conf_peer_intf_id == INTF_ID_CSID && (!conf_peer_intf_id_secret || !*conf_peer_intf_id_secret))
++		log_error("ppp: ipv6-peer-intf-id=calling-sid requires non-empty ipv6-peer-intf-id-secret\n");
++
+ 	opt = conf_get_opt("ppp", "ipv6-accept-peer-intf-id");
+ 	if (opt)
+ 		conf_accept_peer_intf_id = atoi(opt);
+diff --git a/accel-pppd/ppp/ppp.c b/accel-pppd/ppp/ppp.c
+--- a/accel-pppd/ppp/ppp.c
++++ b/accel-pppd/ppp/ppp.c
+@@ -333,7 +333,7 @@
+ 		if (ppp->ses.net != def_net) {
+ 			if (net->move_link(def_net, ppp->ses.ifindex)) {
+ 				log_ppp_warn("failed to attach to default namespace\n");
+-				triton_md_unregister_handler(&ppp->unit_hnd, 1);
++				triton_md_unregister_handler(&ppp->unit_hnd, 0);
+ 				goto skip;
+ 			}
+ 			ppp->ses.net = def_net;
+@@ -346,7 +346,7 @@
+ 			strncpy(ifr.ifr_name, ppp->ses.ifname, IFNAMSIZ);
+ 			if (net->sock_ioctl(SIOCSIFNAME, &ifr)) {
+ 				log_ppp_warn("failed to rename ppp to default name\n");
+-				triton_md_unregister_handler(&ppp->unit_hnd, 1);
++				triton_md_unregister_handler(&ppp->unit_hnd, 0);
+ 				goto skip;
+ 			}
+ 		}
+@@ -359,10 +359,21 @@
+ 		uc->fd = ppp->unit_fd;
+ 		uc->unit_idx = ppp->ses.unit_idx;
+ 	} else
+-		triton_md_unregister_handler(&ppp->unit_hnd, 1);
++		triton_md_unregister_handler(&ppp->unit_hnd, 0);
+ 
+ skip:
+ 	ap_session_finished(&ppp->ses);
++
++	/* The unit fd is closed only after session cleanup (ip-down scripts,
++	 * radattr removal) has finished, so the kernel cannot give the same
++	 * unit index (and thus ifname) to a new session while cleanup still
++	 * references the ifname. */
++	if (!uc
++#ifdef HAVE_SESSION_HOOKS
++	    && !is_non_dev_ppp
++#endif /* HAVE_SESSION_HOOKS */
++	    )
++		close(ppp->unit_fd);
+ 
+ 	ppp->unit_fd = -1;
+ 
+diff --git a/accel-pppd/ppp/ppp_ccp.c b/accel-pppd/ppp/ppp_ccp.c
+--- a/accel-pppd/ppp/ppp_ccp.c
++++ b/accel-pppd/ppp/ppp_ccp.c
+@@ -665,6 +665,11 @@
+ 		log_ppp_warn("CCP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > ccp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("CCP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != ccp->fsm.id)
+ 		return;
+diff --git a/accel-pppd/ppp/ppp_ipcp.c b/accel-pppd/ppp/ppp_ipcp.c
+--- a/accel-pppd/ppp/ppp_ipcp.c
++++ b/accel-pppd/ppp/ppp_ipcp.c
+@@ -675,6 +675,11 @@
+ 		log_ppp_warn("IPCP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > ipcp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("IPCP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != ipcp->fsm.id)
+ 		return;
+diff --git a/accel-pppd/ppp/ppp_ipv6cp.c b/accel-pppd/ppp/ppp_ipv6cp.c
+--- a/accel-pppd/ppp/ppp_ipv6cp.c
++++ b/accel-pppd/ppp/ppp_ipv6cp.c
+@@ -205,8 +205,12 @@
+ 			ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_ERROR, 0);
+ 		else
+ 			ppp_layer_passive(ipv6cp->ppp, &ipv6cp->ld);
+-	} else if (!ipv6cp->ppp->ses.terminating)
+-		ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_ERROR, 0);
++	} else if (!ipv6cp->ppp->ses.terminating) {
++		if (conf_ipv6 == IPV6_REQUIRE)
++			ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_ERROR, 0);
++		else
++			log_ppp_info1("ipv6cp: closed, session continues without IPv6\n");
++	}
+ 
+ 	fsm->fsm_state = FSM_Closed;
+ }
+@@ -675,6 +679,11 @@
+ 		log_ppp_warn("IPV6CP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > ipv6cp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("IPV6CP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != ipv6cp->fsm.id)
+ 		return;
+@@ -738,7 +747,12 @@
+ 			if (conf_ppp_verbose)
+ 				log_ppp_info2("recv [IPV6CP TermReq id=%x]\n", hdr->id);
+ 			ppp_fsm_recv_term_req(&ipv6cp->fsm);
+-			ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_REQUEST, 0);
++			/* RFC 1661 sec 3.7: closing one NCP is not sufficient reason
++			 * to terminate the PPP link */
++			if (conf_ipv6 == IPV6_REQUIRE)
++				ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_REQUEST, 0);
++			else
++				ppp_layer_passive(ipv6cp->ppp, &ipv6cp->ld);
+ 			break;
+ 		case TERMACK:
+ 			if (conf_ppp_verbose)
+diff --git a/accel-pppd/ppp/ppp_lcp.c b/accel-pppd/ppp/ppp_lcp.c
+--- a/accel-pppd/ppp/ppp_lcp.c
++++ b/accel-pppd/ppp/ppp_lcp.c
+@@ -608,7 +608,15 @@
+ static void send_echo_reply(struct ppp_lcp_t *lcp)
+ {
+ 	struct lcp_hdr_t *hdr = (struct lcp_hdr_t*)lcp->ppp->buf;
++	uint16_t reply_len = ntohs(hdr->len);
+ 	//uint32_t magic = *(uint32_t *)(hdr + 1);
++
++	/* LCP Echo packets must be at least header+magic and must not exceed negotiated MTU. */
++	if (reply_len < PPP_HDRLEN + 4 || reply_len > lcp->ppp->mtu) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("LCP: invalid EchoReq length, discarding\n");
++		return;
++	}
+ 
+ 	lcp->echo_sent = 0;
+ 	lcp->last_echo_ts = _time();
+@@ -619,7 +627,7 @@
+ 	if (conf_ppp_verbose)
+ 		log_ppp_debug("send [LCP EchoRep id=%x <magic %08x>]\n", hdr->id, lcp->magic);
+ 
+-	ppp_chan_send(lcp->ppp, hdr, min(ntohs(hdr->len), lcp->ppp->mtu) + 2);
++	ppp_chan_send(lcp->ppp, hdr, reply_len + 2);
+ }
+ 
+ static void send_echo_request(struct triton_timer_t *t)
+@@ -748,6 +756,11 @@
+ 		log_ppp_warn("LCP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > lcp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("LCP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != lcp->fsm.id)
+ 		return;
+@@ -831,25 +844,55 @@
+ 			ppp_fsm_recv_code_rej_bad(&lcp->fsm);
+ 			break;
+ 		case ECHOREQ:
++			/* Echo packets carry a mandatory 4-byte Magic-Number after the LCP header. */
++			if (ntohs(hdr->len) < PPP_HDRLEN + 4) {
++				if (conf_ppp_verbose)
++					log_ppp_warn("LCP: short EchoReq packet, discarding\n");
++				break;
++			}
+ 			if (conf_ppp_verbose)
+ 				log_ppp_debug("recv [LCP EchoReq id=%x <magic %08x>]\n", hdr->id, ntohl(*(uint32_t*)(hdr + 1)));
+ 			send_echo_reply(lcp);
+ 			break;
+ 		case ECHOREP:
++			/* Echo packets carry a mandatory 4-byte Magic-Number after the LCP header. */
++			if (ntohs(hdr->len) < PPP_HDRLEN + 4) {
++				if (conf_ppp_verbose)
++					log_ppp_warn("LCP: short EchoRep packet, discarding\n");
++				break;
++			}
+ 			lcp_recv_echo_repl(lcp, (uint8_t*)(hdr + 1), ntohs(hdr->len) - PPP_HDRLEN);
+ 			break;
+ 		case PROTOREJ:
++			/* ProtoRej carries a mandatory 2-byte Rejected-Protocol field after the LCP header. */
++			if (ntohs(hdr->len) < PPP_HDRLEN + 2) {
++				if (conf_ppp_verbose)
++					log_ppp_warn("LCP: short ProtoRej packet, discarding\n");
++				break;
++			}
+ 			if (conf_ppp_verbose)
+ 				log_ppp_info2("recv [LCP ProtoRej id=%x <%04x>]\n", hdr->id, ntohs(*(uint16_t*)(hdr + 1)));
+ 			ppp_recv_proto_rej(lcp->ppp, ntohs(*(uint16_t *)(hdr + 1)));
+ 			break;
+ 		case DISCARDREQ:
++			/* DiscardReq carries a mandatory 4-byte Magic-Number after the LCP header. */
++			if (ntohs(hdr->len) < PPP_HDRLEN + 4) {
++				if (conf_ppp_verbose)
++					log_ppp_warn("LCP: short DiscardReq packet, discarding\n");
++				break;
++			}
+ 			if (conf_ppp_verbose)
+ 				log_ppp_info2("recv [LCP DiscardReq id=%x <magic %08x>]\n", hdr->id, ntohl(*(uint32_t*)(hdr + 1)));
+ 			break;
+ 		case IDENT:
++			/* Ident has a mandatory 4-byte Magic-Number; following remaining bytes are message text. */
++			if (ntohs(hdr->len) < PPP_HDRLEN + 4) {
++				if (conf_ppp_verbose)
++					log_ppp_warn("LCP: short Ident packet, discarding\n");
++				break;
++			}
+ 			if (conf_ppp_verbose) {
+-				term_msg = _strndup((char*)(hdr + 1) + 4, ntohs(hdr->len) - 4 - 4);
++				term_msg = _strndup((char*)(hdr + 1) + 4, ntohs(hdr->len) - PPP_HDRLEN - 4);
+ 				log_ppp_info2("recv [LCP Ident id=%x <%s>]\n", hdr->id, term_msg);
+ 				_free(term_msg);
+ 			}
+diff --git a/accel-pppd/radius/acct.c b/accel-pppd/radius/acct.c
+--- a/accel-pppd/radius/acct.c
++++ b/accel-pppd/radius/acct.c
+@@ -32,13 +32,26 @@
+ 	if (evp_ctx == NULL)
+ 		return -1;
+ 
+-	if (rad_packet_build(req->pack, req->RA))
++	/* Request Authenticator is MD5 over the packet with the
++	 * authenticator field set to zeros.
++	 */
++	memset(req->RA, 0, sizeof(req->RA));
++
++	if (rad_packet_build(req->pack, req->RA)) {
++		EVP_MD_CTX_free(evp_ctx);
+ 		return -1;
++	}
+ 
+ 	EVP_DigestInit_ex(evp_ctx, EVP_md5(), NULL);
+ 	EVP_DigestUpdate(evp_ctx, req->pack->buf, req->pack->len);
+ 	EVP_DigestUpdate(evp_ctx, secret, strlen(secret));
+ 	EVP_DigestFinal_ex(evp_ctx, req->pack->buf + 4, NULL);
++
++	/* The Response Authenticator from RADIUS server is MD5 hash that includes
++	 * the Request Authenticator. So, saving the computed Request Authenticator 
++	 * in order to validate the server's Accounting-Response later.
++	 */
++	memcpy(req->RA, req->pack->buf + 4, sizeof(req->RA));
+ 
+ 	EVP_MD_CTX_free(evp_ctx);
+ 
+@@ -376,6 +389,16 @@
+ 				rpd->acct_req = NULL;
+ 		} else if (req->rpd)
+ 			rad_acct_stop_defer(req->rpd);
++		else {
++			/* deferred request: the timeout timer is one-shot and
++			 * nobody else references this request, re-arm it to
++			 * retry later, otherwise the request and its socket
++			 * leak */
++			if (req->timeout.tpd)
++				triton_timer_mod(&req->timeout, 0);
++			else
++				triton_timer_add(NULL, &req->timeout, 0);
++		}
+ 
+ 		return;
+ 	}
+@@ -429,17 +452,28 @@
+ 			req->pack->id++;
+ 	}
+ 
+-	if (req->try == conf_max_try) {
++	if (req->try >= conf_max_try) {
++		if (req->rpd)
++			req->rpd->acct_req = NULL;
+ 		rad_req_free(req);
+ 		return;
+ 	}
+ 
+ 	if (rad_req_send(req)) {
+ 		if (ap_shutdown) {
++			if (req->rpd)
++				req->rpd->acct_req = NULL;
+ 			rad_req_free(req);
+ 			return;
+ 		}
+-		req->try = 0;
++		/* no server available at the moment; the timeout timer is
++		 * one-shot, re-arm it to retry later, otherwise the request
++		 * and its socket leak; failed attempts count towards
++		 * conf_max_try so the request is freed above eventually */
++		if (req->timeout.tpd)
++			triton_timer_mod(&req->timeout, 0);
++		else
++			triton_timer_add(req->rpd ? req->rpd->ses->ctrl->ctx : NULL, &req->timeout, 0);
+ 	}
+ }
+ 
+@@ -538,7 +572,7 @@
+ 	req_set_RA(req, req->serv->secret);
+ 
+ 	req->recv = rad_acct_stop_recv;
+-	req->timeout.expire = rad_acct_start_timeout;
++	req->timeout.expire = rad_acct_stop_timeout;
+ 	req->timeout.expire_tv.tv_sec = conf_timeout;
+ 	req->sent = rad_acct_stop_sent;
+ 	req->log = conf_verbose ? log_ppp_info1 : NULL;
+diff --git a/accel-pppd/radius/auth.c b/accel-pppd/radius/auth.c
+--- a/accel-pppd/radius/auth.c
++++ b/accel-pppd/radius/auth.c
+@@ -1,6 +1,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#include <openssl/crypto.h>
+ #include <openssl/evp.h>
+ 
+ #include "triton.h"
+@@ -13,6 +14,121 @@
+ #include "attr_defs.h"
+ 
+ #include "memdebug.h"
++
++static struct rad_attr_t *find_message_authenticator(struct rad_packet_t *pack, int *duplicate)
++{
++	struct rad_attr_t *attr;
++	struct rad_attr_t *ma_attr = NULL;
++
++	*duplicate = 0;
++
++	list_for_each_entry(attr, &pack->attrs, entry) {
++		if (attr->vendor || strcmp(attr->attr->name, "Message-Authenticator"))
++			continue;
++
++		if (ma_attr) {
++			*duplicate = 1;
++			return NULL;
++		}
++
++		ma_attr = attr;
++	}
++
++	return ma_attr;
++}
++
++int verify_response_authenticator(struct rad_req_t *req, struct rad_packet_t *pack)
++{
++	uint8_t expected[HMAC_MD5_LEN];
++	EVP_MD_CTX *evp_ctx = NULL;
++	unsigned int expected_len = 0;
++
++	if (!pack || !pack->buf || !req || !req->serv || !req->serv->secret)
++		return -1;
++	if (pack->len < RADIUS_HEADER_LEN)
++		return -1;
++
++	evp_ctx = EVP_MD_CTX_new();
++	if (!evp_ctx) {
++		log_ppp_error("radius: can't create EVP context\n");
++		return -1;
++	}
++
++	/* ResponseAuth = MD5(Code+ID+Length(4) + RequestAuth(16) + Attributes + Secret) */
++	EVP_DigestInit_ex(evp_ctx, EVP_md5(), NULL);
++	EVP_DigestUpdate(evp_ctx, pack->buf, RADIUS_AUTHENTICATOR_OFFSET);
++	EVP_DigestUpdate(evp_ctx, req->RA, sizeof(req->RA));
++	EVP_DigestUpdate(evp_ctx, pack->buf + RADIUS_HEADER_LEN, pack->len - RADIUS_HEADER_LEN);
++	EVP_DigestUpdate(evp_ctx, req->serv->secret, strlen(req->serv->secret));
++	EVP_DigestFinal_ex(evp_ctx, expected, &expected_len);
++	EVP_MD_CTX_free(evp_ctx);
++
++	if (expected_len != HMAC_MD5_LEN)
++		return -1;
++
++	return CRYPTO_memcmp(expected, pack->buf + RADIUS_AUTHENTICATOR_OFFSET, sizeof(expected));
++}
++
++int verify_message_authenticator(struct rad_req_t *req, struct rad_packet_t *pack)
++{
++	struct rad_attr_t *ma_attr;
++	uint8_t expected[HMAC_MD5_LEN];
++	uint8_t resp_auth[HMAC_MD5_LEN];
++	uint8_t recv_ma[HMAC_MD5_LEN];
++	uint8_t *ma_ptr;
++	const uint8_t *secret;
++	int duplicate;
++	int ret;
++
++	if (!req || !pack)
++		return -1;
++
++	if (pack->code != CODE_ACCESS_ACCEPT && pack->code != CODE_ACCESS_REJECT &&
++	    pack->code != CODE_ACCESS_CHALLENGE)
++		return 0;
++
++	ma_attr = find_message_authenticator(pack, &duplicate);
++	if (duplicate)
++		return -1;
++
++	if (!ma_attr) {
++		if (conf_ma_require_access_response)
++			return -1;
++
++		/* Some RADIUS servers still omit Message-Authenticator in Access responses.
++		 * Treat absence as compatible and rely on Response Authenticator validation.
++		 */
++		return 0;
++	}
++
++	if (req->pack && req->pack->secret)
++		secret = req->pack->secret;
++	else if (req->serv && req->serv->secret)
++		secret = (const uint8_t *)req->serv->secret;
++	else
++		return -1;
++
++	if (!pack->buf || pack->len < RADIUS_HEADER_LEN || ma_attr->len != HMAC_MD5_LEN || !ma_attr->raw)
++		return -1;
++
++	ma_ptr = (uint8_t *)ma_attr->raw;
++	memcpy(resp_auth, pack->buf + RADIUS_AUTHENTICATOR_OFFSET, sizeof(resp_auth));
++	memcpy(recv_ma, ma_ptr, sizeof(recv_ma));
++
++	/* Verify Message-Authenticator over the response packet with the original
++	 * request authenticator in the header and the MA attribute value zeroed.
++	 */
++	memcpy(pack->buf + RADIUS_AUTHENTICATOR_OFFSET, req->RA, sizeof(req->RA));
++	memset(ma_ptr, 0, HMAC_MD5_LEN);
++	ret = rad_hmac_md5(secret, strlen((const char *)secret), pack->buf, pack->len, expected);
++	memcpy(ma_ptr, recv_ma, sizeof(recv_ma));
++	memcpy(pack->buf + RADIUS_AUTHENTICATOR_OFFSET, resp_auth, sizeof(resp_auth));
++
++	if (ret < 0)
++		return -1;
++
++	return CRYPTO_memcmp(expected, recv_ma, sizeof(expected));
++}
+ 
+ static int decrypt_chap_mppe_keys(struct rad_req_t *req, struct rad_attr_t *attr, const uint8_t *challenge, uint8_t *key)
+ {
+@@ -455,7 +571,10 @@
+ 	if (req->reply->code == CODE_ACCESS_ACCEPT) {
+ 		ra = rad_packet_find_attr(req->reply, "Microsoft", "MS-CHAP2-Success");
+ 		if (!ra) {
+-			log_error("radius:auth:mschap-v2: 'MS-CHAP-Success' not found in radius response\n");
++			log_error("radius:auth:mschap-v2: 'MS-CHAP2-Success' not found in radius response\n");
++			return -1;
++		} else if (ra->len < 43) {
++			log_error("radius:auth:mschap-v2: 'MS-CHAP2-Success' too short (%i)\n", ra->len);
+ 			return -1;
+ 		} else
+ 			memcpy(rpd->auth_ctx->authenticator, ra->val.octets + 3, 40);
+diff --git a/accel-pppd/radius/dict.c b/accel-pppd/radius/dict.c
+--- a/accel-pppd/radius/dict.c
++++ b/accel-pppd/radius/dict.c
+@@ -92,7 +92,7 @@
+ 			continue;
+ 		r = split(buf, ptr);
+ 
+-		if (*ptr[r - 1] == '#')
++		if (r > 0 && *ptr[r - 1] == '#')
+ 			r--;
+ 
+ 		if (!strcmp(buf, "VENDOR")) {
+diff --git a/accel-pppd/radius/packet.c b/accel-pppd/radius/packet.c
+--- a/accel-pppd/radius/packet.c
++++ b/accel-pppd/radius/packet.c
+@@ -8,11 +8,18 @@
+ #include <sys/mman.h>
+ #include <linux/mman.h>
+ #include <arpa/inet.h>
++#include <openssl/evp.h>
++#if OPENSSL_VERSION_NUMBER >= 0x30000000L
++#include <openssl/core_names.h>
++#else
++#include <openssl/hmac.h>
++#endif
+ 
+ #include "log.h"
+ #include "mempool.h"
+ 
+ #include "radius_p.h"
++#include "attr_defs.h"
+ 
+ #include "memdebug.h"
+ 
+@@ -45,6 +52,81 @@
+ 	for(i=0;i<size;i++)
+ 		printf("%x ",buf[i]);
+ 	printf("\n");
++}
++
++int rad_hmac_md5(const uint8_t *key, size_t key_len,
++                 const uint8_t *data, size_t data_len,
++                 uint8_t out[HMAC_MD5_LEN])
++{
++#if OPENSSL_VERSION_NUMBER >= 0x30000000L
++	EVP_MAC *mac = EVP_MAC_fetch(NULL, "HMAC", NULL);
++	if (!mac)
++		return -1;
++
++	EVP_MAC_CTX *ctx = EVP_MAC_CTX_new(mac);
++	if (!ctx) {
++		EVP_MAC_free(mac);
++		return -1;
++	}
++
++	OSSL_PARAM params[] = {
++		OSSL_PARAM_construct_utf8_string(OSSL_MAC_PARAM_DIGEST, "MD5", 0),
++		OSSL_PARAM_construct_end()
++	};
++
++	size_t out_len = HMAC_MD5_LEN;
++	int ret = -1;
++
++	if (EVP_MAC_init(ctx, key, key_len, params) == 1 &&
++	    EVP_MAC_update(ctx, data, data_len) == 1 &&
++	    EVP_MAC_final(ctx, out, &out_len, HMAC_MD5_LEN) == 1 &&
++	    out_len == HMAC_MD5_LEN)
++		ret = 0;
++
++	EVP_MAC_CTX_free(ctx);
++	EVP_MAC_free(mac);
++	return ret;
++#else
++	unsigned int len = HMAC_MD5_LEN;
++	return (HMAC(EVP_md5(), key, (int)key_len, data, data_len, out, &len) != NULL &&
++	        len == HMAC_MD5_LEN) ? 0 : -1;
++#endif
++}
++
++static uint8_t *locate_message_authenticator_attr(struct rad_packet_t *pack)
++{
++	uint8_t *ptr;
++	uint8_t *ma_attr = NULL;
++	int len;
++
++	if (!pack || !pack->buf || pack->len < 20)
++		return NULL;
++
++	ptr = pack->buf + 20;
++	len = pack->len - 20;
++
++	while (len > 0) {
++		uint8_t attr_len;
++
++		if (len < 2)
++			return NULL;
++
++		attr_len = ptr[1];
++		if (attr_len < 2 || attr_len > len)
++			return NULL;
++
++		if (ptr[0] == Message_Authenticator) {
++			if (attr_len != HMAC_MD5_LEN + 2 || ma_attr)
++				return NULL;
++
++			ma_attr = ptr;
++		}
++
++		ptr += attr_len;
++		len -= attr_len;
++	}
++
++	return ma_attr;
+ }
+ 
+ int rad_packet_build(struct rad_packet_t *pack, uint8_t *RA)
+@@ -127,9 +209,8 @@
+ 	if (!pack)
+ 		return 0;
+ 
+-	//ptr = mmap(NULL, REQ_LENGTH_MAX, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
+ 	ptr = mempool_alloc(buf_pool);
+-	if (ptr == MAP_FAILED) {
++	if (!ptr) {
+ 		log_emerg("radius:packet: out of memory\n");
+ 		goto out_err;
+ 	}
+@@ -164,15 +245,25 @@
+ 	pack->id = *ptr; ptr++;
+ 	pack->len = ntohs(*(uint16_t*)ptr); ptr += 2;
+ 
++	if (pack->len < 20) {
++		log_ppp_warn("radius:packet: invalid packet length %i\n", pack->len);
++		goto out_err;
++	}
++
+ 	if (pack->len > n) {
+-		log_ppp_warn("radius:packet: short packet received %i, expected %i\n", pack->len, n);
++		log_ppp_warn("radius:packet: short packet received %i, expected %i\n", n, pack->len);
+ 		goto out_err;
+ 	}
+ 
+ 	ptr += 16;
+-	n -= 20;
++	n = pack->len - 20;
+ 
+ 	while (n>0) {
++		if (n < 2) {
++			log_ppp_warn("radius:packet: truncated attribute header received\n");
++			goto out_err;
++		}
++
+ 		id = *ptr; ptr++;
+ 		len = *ptr - 2; ptr++;
+ 		if (len < 0) {
+@@ -184,9 +275,17 @@
+ 			goto out_err;
+ 		}
+ 		if (id == 26) {
++			if (len < 4) {
++				log_ppp_warn("radius:packet: vendor attribute too short (%i)\n", len);
++				goto out_err;
++			}
+ 			vendor_id = ntohl(*(uint32_t *)ptr);
+ 			vendor = rad_dict_find_vendor_id(vendor_id);
+ 			if (vendor) {
++				if (len < 4 + vendor->tag + vendor->len) {
++					log_ppp_warn("radius:packet: vendor %i attribute too short (%i)\n", vendor_id, len);
++					goto out_err;
++				}
+ 				ptr += 4;
+ 
+ 				if (vendor->tag == 2)
+@@ -245,15 +344,22 @@
+ 						attr->val.octets = ptr;
+ 						break;
+ 					case ATTR_TYPE_INTEGER:
+-						if (len != da->size)
++						if (len != da->size) {
+ 							log_ppp_warn("radius:packet: attribute %s has invalid length %i (must be %i)\n", da->name, len, da->size);
+-					case ATTR_TYPE_DATE:
++							break;
++						}
+ 						if (len == 4)
+ 							attr->val.integer = ntohl(*(uint32_t*)ptr);
+ 						else if (len == 2)
+ 							attr->val.integer = ntohs(*(uint16_t*)ptr);
+ 						else if (len == 1)
+ 							attr->val.integer = *ptr;
++						break;
++					case ATTR_TYPE_DATE:
++						if (len == 4)
++							attr->val.integer = ntohl(*(uint32_t*)ptr);
++						else
++							log_ppp_warn("radius:packet: attribute %s has invalid length %i (must be 4)\n", da->name, len);
+ 						break;
+ 					case ATTR_TYPE_IPADDR:
+ 					case ATTR_TYPE_IFID:
+@@ -301,6 +407,9 @@
+ 	if (pack->buf)
+ 		mempool_free(pack->buf);
+ 		//munmap(pack->buf, REQ_LENGTH_MAX);
++
++	if (pack->secret)
++		_free(pack->secret);
+ 
+ 	while(!list_empty(&pack->attrs)) {
+ 		attr = list_entry(pack->attrs.next, typeof(*attr), entry);
+@@ -811,6 +920,34 @@
+ 
+ 	clock_gettime(CLOCK_MONOTONIC, &pack->tv);
+ 
++	if (pack->secret && pack->message_authenticator) {
++		uint8_t hmac[HMAC_MD5_LEN];
++		uint8_t *ma_attr = locate_message_authenticator_attr(pack);
++		uint8_t *hmac_ptr;
++
++		if (!ma_attr) {
++			log_emerg("radius:packet: Message-Authenticator attribute not found\n");
++			return -1;
++		}
++		hmac_ptr = ma_attr + 2;
++
++		/* Message-Authenticator must be zeroed while calculating the HMAC (RFC 3579). */
++		memset(hmac_ptr, 0, HMAC_MD5_LEN);
++		if (rad_hmac_md5(pack->secret, strlen((const char *)pack->secret),
++		             pack->buf, pack->len, hmac) < 0) {
++			log_emerg("radius:packet: failed to calculate HMAC\n");
++			return -1;
++		}
++		memcpy(hmac_ptr, hmac, HMAC_MD5_LEN);
++
++		/* Sync updated signed MA attribute value in the attribute list */
++		if (rad_packet_change_octets(pack, NULL, "Message-Authenticator",
++				hmac, HMAC_MD5_LEN)) {
++			log_emerg("radius:packet: failed to update Message-Authenticator attribute\n");
++			return -1;
++		}
++	}
++
+ 	while (1) {
+ 		if (addr)
+ 			n = sendto(fd, pack->buf, pack->len, 0, (struct sockaddr *)addr, sizeof(*addr));
+diff --git a/accel-pppd/radius/radius.c b/accel-pppd/radius/radius.c
+--- a/accel-pppd/radius/radius.c
++++ b/accel-pppd/radius/radius.c
+@@ -60,6 +60,8 @@
+ const char *conf_attr_tunnel_type;
+ 
+ int conf_acct_delay_start;
++int conf_ma_include_access_request;
++int conf_ma_require_access_response;
+ 
+ static LIST_HEAD(sessions);
+ static pthread_rwlock_t sessions_lock = PTHREAD_RWLOCK_INITIALIZER;
+@@ -70,92 +72,135 @@
+ static mempool_t rpd_pool;
+ static mempool_t auth_ctx_pool;
+ 
+-static void parse_framed_route(struct radius_pd_t *rpd, const char *attr)
+-{
+-	char str[32];
+-	char *ptr;
+-	long int prio = 0;
+-	in_addr_t dst;
+-	in_addr_t gw;
+-	int mask;
++/* Convert a dotted-quad IPv4 netmask to prefix length.
++ * Returns -1 if the mask bits are not contiguous.
++ */
++static int mask_to_prefix_len(in_addr_t netmask)
++{
++	uint32_t m = ntohl(netmask);
++	uint32_t inv = ~m;
++	int plen = 0;
++
++	if ((inv & (inv + 1)) != 0)
++		return -1;
++
++	/* Count leading 1 bits to get prefix length */
++	while (m & 0x80000000u) {
++		++plen;
++		m <<= 1;
++	}
++
++	return plen;
++}
++
++/* Parse a RADIUS Framed-Route string.
++ * Accepted format: "dst[/mask] [gateway] [metric]"
++ * - dst and gateway are IPv4 dotted-quad addresses
++ * - mask is either dotted-quad netmask or prefix length (0..32)
++ * - gateway and metric are optional, metric defaults to 0
++ */
++static int parse_framed_route(const char *str, struct framed_route *fr)
++{
++	const char *ptr;
++	struct in_addr dst;
++	struct in_addr gw;
++	struct in_addr netmask;
++	uint32_t metric;
++	uint32_t plen;
++	size_t len;
++
++	ptr = str + u_parse_spaces(str);
++
++	len = u_parse_ip4addr(ptr, &dst);
++	if (!len)
++		return -1;
++	ptr += len;
++
++	fr->dst = dst.s_addr;
++	fr->mask = 32;
++	fr->gw = 0;
++	fr->prio = 0;
++
++	if (*ptr == '/') {
++		++ptr;
++
++		len = u_parse_ip4addr(ptr, &netmask);
++		if (len) {
++			fr->mask = mask_to_prefix_len(netmask.s_addr);
++			if (fr->mask < 0)
++				return -1;
++			ptr += len;
++		} else {
++			len = u_parse_u32(ptr, &plen);
++			if (!len || plen > 32)
++				return -1;
++			fr->mask = plen;
++			ptr += len;
++		}
++	}
++
++	/* Destination must be a network prefix for the parsed mask. */
++	{
++		uint32_t d = ntohl(fr->dst);
++		uint32_t m = fr->mask ? (0xffffffffu << (32 - fr->mask)) : 0;
++		if ((d & ~m) != 0)
++			return -1;
++	}
++
++	len = u_parse_spaces(ptr);
++	if (!len && *ptr != '\0')
++		return -1;
++	ptr += len;
++
++	if (*ptr == '\0')
++		return 0;
++
++	len = u_parse_ip4addr(ptr, &gw);
++	if (!len)
++		return -1;
++	fr->gw = gw.s_addr;
++	ptr += len;
++
++	len = u_parse_spaces(ptr);
++	if (!len && *ptr != '\0')
++		return -1;
++	ptr += len;
++
++	if (*ptr == '\0')
++		return 0;
++
++	len = u_parse_u32(ptr, &metric);
++	if (!len)
++		return -1;
++	fr->prio = metric;
++	ptr += len;
++
++	if (!u_parse_endstr(ptr))
++		return -1;
++
++	return 0;
++}
++
++static void rad_add_framed_route(const char *str, struct radius_pd_t *rpd)
++{
+ 	struct framed_route *fr;
+ 
+-	ptr = strchr(attr, '/');
+-	if (ptr && ptr - attr > 16)
+-		goto out_err;
+-
+-	if (ptr) {
+-		memcpy(str, attr, ptr - attr);
+-		str[ptr - attr] = 0;
+-	} else {
+-		ptr = strchr(attr, ' ');
+-		if (ptr) {
+-			memcpy(str, attr, ptr - attr);
+-			str[ptr - attr] = 0;
+-		} else
+-			strcpy(str, attr);
+-	}
+-
+-	dst = inet_addr(str);
+-	if (dst == INADDR_NONE)
+-		goto out_err;
+-
+-	if (ptr) {
+-		if (*ptr == '/') {
+-			char *ptr2;
+-			for (ptr2 = ++ptr; *ptr2 && *ptr2 != '.' && *ptr2 != ' '; ptr2++);
+-			if (*ptr2 == '.' && ptr2 - ptr <= 16) {
+-				in_addr_t a;
+-				memcpy(str, ptr, ptr2 - ptr);
+-				str[ptr2 - ptr] = 0;
+-				a = ntohl(inet_addr(str));
+-				if (a == INADDR_NONE)
+-					goto out_err;
+-				mask = 33 - htonl(inet_addr(str));
+-				if (~((1<<(32 - mask)) - 1) != a)
+-					goto out_err;
+-			} else if (*ptr2 == ' ' || *ptr2 == 0) {
+-				char *ptr3;
+-				mask = strtol(ptr, &ptr3, 10);
+-				if (mask < 0 || mask > 32 || ptr3 != ptr2)
+-					goto out_err;
+-			} else
+-				goto out_err;
+-		} else
+-			mask = 32;
+-
+-		for (++ptr; *ptr && *ptr != ' '; ptr++);
+-		if (*ptr == ' ')
+-			gw = inet_addr(ptr + 1);
+-		else if (*ptr == 0)
+-			gw = 0;
+-		else
+-			goto out_err;
+-
+-		/* Parse priority, if any */
+-		if (*ptr) {
+-			for (++ptr; *ptr && *ptr != ' '; ptr++);
+-			if (*ptr == ' ')
+-				if (u_readlong(&prio, ptr + 1, 0, UINT32_MAX) < 0)
+-					goto out_err;
+-		}
+-	} else {
+-		mask = 32;
+-		gw = 0;
+-	}
+-
+-	fr = _malloc(sizeof (*fr));
+-	fr->dst = dst;
+-	fr->mask = mask;
+-	fr->gw = gw;
+-	fr->prio = prio;
++	fr = _malloc(sizeof(*fr));
++	if (!fr)
++		goto err;
++
++	if (parse_framed_route(str, fr) < 0)
++		goto err_fr;
++
+ 	fr->next = rpd->fr;
+ 	rpd->fr = fr;
+ 
+ 	return;
+ 
+-out_err:
+-	log_ppp_warn("radius: failed to parse Framed-Route=%s\n", attr);
++err_fr:
++	_free(fr);
++err:
++	log_ppp_warn("radius: failed to parse Framed-Route=%s\n", str);
+ }
+ 
+ /* Parse a RADIUS Framed-IPv6-Route string.
+@@ -315,12 +360,22 @@
+ 			} else if (attr->vendor->id == VENDOR_Accel_PPP) {
+ 				switch (attr->attr->id) {
+ 					case Accel_VRF_Name:
+-						log_ppp_info2("radius: setting vrf_name to %s\n", attr->val.string);
++						if (attr->len < 0 || attr->len >= IFNAMSIZ) {
++							log_ppp_warn("radius: invalid Accel-VRF-Name length=%d (must be 1..%d or 0 for default VRF), rejecting Access-Accept\n", attr->len, IFNAMSIZ - 1);
++							return -1;
++						}
++
+ 						if (rpd->ses->vrf_name)
+ 							_free(rpd->ses->vrf_name);
+ 						rpd->ses->vrf_name = _malloc(attr->len + 1);
++						if (!rpd->ses->vrf_name) {
++							log_ppp_error("radius: out of memory while setting vrf_name\n");
++							return -1;
++						}
++
+ 						memcpy(rpd->ses->vrf_name, attr->val.string, attr->len);
+ 						rpd->ses->vrf_name[attr->len] = 0;
++						log_ppp_info2("radius: setting vrf_name to %s\n", rpd->ses->vrf_name);
+ 						break;
+ 				}
+ 				continue;
+@@ -403,7 +458,7 @@
+ 				rpd->ses->ifname_rename[attr->len] = 0;
+ 				break;
+ 			case Framed_Route:
+-				parse_framed_route(rpd, attr->val.string);
++				rad_add_framed_route(attr->val.string, rpd);
+ 				break;
+ 			case Framed_IPv6_Route:
+ 				rad_add_framed_ipv6_route(attr->val.string, rpd);
+@@ -1105,6 +1160,12 @@
+ 	else
+ 		conf_acct_delay_start = 0;
+ 
++	opt = conf_get_opt("radius", "message-authenticator-include-access-request");
++	conf_ma_include_access_request = (opt && atoi(opt) > 0) ? 1 : 0;
++
++	opt = conf_get_opt("radius", "message-authenticator-require-access-response");
++	conf_ma_require_access_response = (opt && atoi(opt) > 0) ? 1 : 0;
++
+ 	return 0;
+ }
+ 
+diff --git a/accel-pppd/radius/radius.h b/accel-pppd/radius/radius.h
+--- a/accel-pppd/radius/radius.h
++++ b/accel-pppd/radius/radius.h
+@@ -109,6 +109,8 @@
+ 	struct timespec tv;
+ 	struct list_head attrs;
+ 	uint8_t *buf;
++	int message_authenticator;
++	uint8_t *secret;
+ };
+ 
+ struct rad_plugin_t
+diff --git a/accel-pppd/radius/radius_p.h b/accel-pppd/radius/radius_p.h
+--- a/accel-pppd/radius/radius_p.h
++++ b/accel-pppd/radius/radius_p.h
+@@ -4,12 +4,17 @@
+ #include <netinet/in.h>
+ #include <pthread.h>
+ #include <stdarg.h>
++#include <stddef.h>
+ 
+ #include "triton.h"
+ #include "radius.h"
+ #include "ppp.h"
+ #include "ipdb.h"
+ #include "pwdb.h"
++
++#define HMAC_MD5_LEN 16
++#define RADIUS_AUTHENTICATOR_OFFSET 4
++#define RADIUS_HEADER_LEN 20
+ 
+ struct rad_server_t;
+ 
+@@ -199,6 +204,8 @@
+ extern int conf_accounting;
+ extern const char *conf_attr_tunnel_type;
+ extern int conf_acct_delay_start;
++extern int conf_ma_include_access_request;
++extern int conf_ma_require_access_response;
+ 
+ int rad_check_nas_pack(struct rad_packet_t *pack);
+ struct radius_pd_t *rad_find_session(const char *sessionid, const char *username, const char *port_id, int port, in_addr_t ipaddr, const char *csid);
+@@ -211,10 +218,12 @@
+ struct rad_req_t *rad_req_alloc2(struct radius_pd_t *rpd, int code, const char *username, in_addr_t addr, int port);
+ struct rad_req_t *rad_req_alloc_empty();
+ int rad_req_acct_fill(struct rad_req_t *);
+-void rad_req_free(struct rad_req_t *);
++struct rad_server_t *rad_req_free(struct rad_req_t *);
+ int rad_req_send(struct rad_req_t *req);
+ int __rad_req_send(struct rad_req_t *req, int async);
+ int rad_req_read(struct triton_md_handler_t *h);
++int verify_response_authenticator(struct rad_req_t *req, struct rad_packet_t *pack);
++int verify_message_authenticator(struct rad_req_t *req, struct rad_packet_t *pack);
+ 
+ struct radius_pd_t *find_pd(struct ap_session *ses);
+ int rad_proc_attrs(struct rad_req_t *req);
+@@ -238,12 +247,13 @@
+ void rad_packet_free(struct rad_packet_t *);
+ void rad_packet_print(struct rad_packet_t *pack, struct rad_server_t *s, void (*print)(const char *fmt, ...));
+ int rad_packet_send(struct rad_packet_t *pck, int fd, struct sockaddr_in *addr);
++int rad_hmac_md5(const uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len, uint8_t out[HMAC_MD5_LEN]);
+ 
+ void dm_coa_cancel(struct radius_pd_t *pd);
+ 
+ struct rad_server_t *rad_server_get(int);
+ struct rad_server_t *rad_server_get2(int, in_addr_t, int);
+-void rad_server_put(struct rad_server_t *, int);
++struct rad_server_t *rad_server_put(struct rad_server_t *, int);
+ int rad_server_req_enter(struct rad_req_t *);
+ void rad_server_req_exit(struct rad_req_t *);
+ int rad_server_req_cancel(struct rad_req_t *, int full);
+diff --git a/accel-pppd/radius/req.c b/accel-pppd/radius/req.c
+--- a/accel-pppd/radius/req.c
++++ b/accel-pppd/radius/req.c
+@@ -18,6 +18,31 @@
+ static int make_socket(struct rad_req_t *req);
+ static mempool_t req_pool;
+ 
++static int refresh_packet_secret(struct rad_req_t *req)
++{
++	uint8_t *secret;
++
++	if (!req->pack || !req->pack->message_authenticator)
++		return 0;
++
++	if (!req->serv || !req->serv->secret)
++		return -1;
++
++	if (req->pack->secret && !strcmp((const char *)req->pack->secret, req->serv->secret))
++		return 0;
++
++	secret = (uint8_t *)_strdup(req->serv->secret);
++	if (!secret)
++		return -1;
++
++	if (req->pack->secret)
++		_free(req->pack->secret);
++
++	req->pack->secret = secret;
++
++	return 0;
++}
++
+ static struct rad_req_t *__rad_req_alloc(struct radius_pd_t *rpd, int code, const char *username, in_addr_t addr, int port, int prio)
+ {
+ 	struct rad_plugin_t *plugin;
+@@ -72,6 +97,19 @@
+ 	req->pack = rad_packet_alloc(code);
+ 	if (!req->pack)
+ 		goto out_err;
++
++	if (code == CODE_ACCESS_REQUEST && conf_ma_include_access_request) {
++		uint8_t buf[HMAC_MD5_LEN] = {0};
++		req->pack->message_authenticator = 1;
++		req->pack->secret = (uint8_t *)_strdup(req->serv->secret);
++		if (!req->pack->secret)
++			goto out_err;
++		if (rad_packet_add_octets(req->pack, NULL, "Message-Authenticator", buf, HMAC_MD5_LEN)) {
++			_free(req->pack->secret);
++			req->pack->secret = NULL;
++			goto out_err;
++		}
++	}
+ 
+ 	if (code == CODE_ACCOUNTING_REQUEST && rpd->acct_username)
+ 		username = rpd->acct_username;
+@@ -242,13 +280,15 @@
+ 	return 0;
+ }
+ 
+-void rad_req_free(struct rad_req_t *req)
+-{
++struct rad_server_t *rad_req_free(struct rad_req_t *req)
++{
++	struct rad_server_t *s = NULL;
++
+ 	assert(!req->active);
+ 	assert(!req->entry.next);
+ 
+ 	if (req->serv)
+-		rad_server_put(req->serv, req->type);
++		s = rad_server_put(req->serv, req->type);
+ 
+ 	if (req->hnd.tpd)
+ 		triton_md_unregister_handler(&req->hnd, 1);
+@@ -265,6 +305,8 @@
+ 		rad_packet_free(req->reply);
+ 
+ 	mempool_free(req);
++
++	return s;
+ }
+ 
+ static int make_socket(struct rad_req_t *req)
+@@ -364,6 +406,12 @@
+ 	if (!req->pack->buf && rad_packet_build(req->pack, req->RA))
+ 		goto out_err;
+ 
++	if (refresh_packet_secret(req))
++		goto out_err;
++
++	if (rad_packet_send(req->pack, req->hnd.fd, NULL))
++		goto out_err;
++
+ 	if (req->log) {
+ 		req->log("send ");
+ 		rad_packet_print(req->pack, req->serv, req->log);
+@@ -371,8 +419,6 @@
+ 
+ 	if (req->sent)
+ 		req->sent(req, 0);
+-
+-	rad_packet_send(req->pack, req->hnd.fd, NULL);
+ 
+ 	return 0;
+ 
+@@ -444,10 +490,24 @@
+ 
+ 		rad_server_reply(req->serv);
+ 
+-		if (pack->id == req->pack->id)
+-			break;
+-
+-		rad_packet_free(pack);
++		if (pack->id != req->pack->id) {
++			rad_packet_free(pack);
++			continue;
++		}
++
++		if (verify_response_authenticator(req, pack)) {
++			log_ppp_warn("radius:packet: invalid response authenticator for id %u from server(%i)\n", pack->id, req->serv->id);
++			rad_packet_free(pack);
++			continue;
++		}
++
++		if (verify_message_authenticator(req, pack)) {
++			log_ppp_warn("radius:packet: invalid message authenticator for id %u from server(%i)\n", pack->id, req->serv->id);
++			rad_packet_free(pack);
++			continue;
++		}
++
++		break;
+ 	}
+ 
+ 	req->reply = pack;
+diff --git a/accel-pppd/radius/serv.c b/accel-pppd/radius/serv.c
+--- a/accel-pppd/radius/serv.c
++++ b/accel-pppd/radius/serv.c
+@@ -93,16 +93,24 @@
+ 	return __rad_server_get(type, NULL, addr, port);
+ }
+ 
+-void rad_server_put(struct rad_server_t *s, int type)
+-{
++struct rad_server_t *rad_server_put(struct rad_server_t *s, int type)
++{
++	int do_close = 0;
++	int do_free = 0;
++
+ 	__sync_sub_and_fetch(&s->client_cnt[type], 1);
+ 
+ 	if ((s->need_free || s->need_close) && !s->client_cnt[0] && !s->client_cnt[1]) {
+-		if (s->need_close)
++		if (s->need_close) {
++			do_close = 1;
+ 			triton_context_call(&s->ctx, (triton_event_func)serv_ctx_close, &s->ctx);
+-		else
++		} else {
++			do_free = 1;
+ 			__free_server(s);
+-	}
++		}
++	} 
++
++	return (do_free || do_close) ? NULL : s;
+ }
+ 
+ static void req_wakeup(struct rad_req_t *req)
+@@ -133,7 +141,20 @@
+ 	}
+ 	pthread_mutex_unlock(&req->serv->lock);
+ 
+-	req->send(req, 1);
++	if (req->send(req, 1) == -2) {
++		/* socket setup failed: release the slot taken in
++		 * rad_server_req_exit() and drive the failover path,
++		 * otherwise the server's req_cnt leaks and the request
++		 * is orphaned */
++		req->active = 0;
++		pthread_mutex_lock(&req->serv->lock);
++		req->serv->req_cnt--;
++		pthread_mutex_unlock(&req->serv->lock);
++
++		rad_server_fail(req->serv);
++
++		req->send(req, -1);
++	}
+ }
+ 
+ static void req_wakeup_failed(struct rad_req_t *req)
+@@ -365,6 +386,11 @@
+ 	if (evp_ctx == NULL)
+ 		return -1;
+ 
++	/* RFC 2866: Accounting-Request authenticator is computed with
++	 * 16 zero bytes in the authenticator field before hashing.
++	 */
++	memset(req->RA, 0, sizeof(req->RA));
++
+ 	if (rad_packet_build(req->pack, req->RA)) {
+ 		EVP_MD_CTX_free(evp_ctx);
+ 		return -1;
+@@ -375,6 +401,11 @@
+ 	EVP_DigestUpdate(evp_ctx, secret, strlen(secret));
+ 	EVP_DigestFinal_ex(evp_ctx, req->pack->buf + 4, NULL);
+ 
++	/* Keep req->RA aligned with what is sent on wire so
++	 * response authenticator verification uses the right value.
++	 */
++	memcpy(req->RA, req->pack->buf + 4, sizeof(req->RA));
++
+ 	EVP_MD_CTX_free(evp_ctx);
+ 
+ 	return 0;
+@@ -390,13 +421,14 @@
+ 
+ static void acct_on_recv(struct rad_req_t *req)
+ {
+-	struct rad_server_t *s = req->serv;
+-
+-	rad_req_free(req);
+-
+-	if (req->serv->starting) {
+-		req->serv->starting = 0;
+-		req->serv->acct_on = 1;
++	struct rad_server_t *s = rad_req_free(req);
++
++	if (!s)
++		return;
++
++	if (s->starting) {
++		s->starting = 0;
++		s->acct_on = 1;
+ 	} else
+ 		__free_server(s);
+ }
+@@ -404,12 +436,15 @@
+ static void acct_on_timeout(struct triton_timer_t *t)
+ {
+ 	struct rad_req_t *req = container_of(t, typeof(*req), timeout);
+-	struct rad_server_t *s = req->serv;
+ 
+ 	log_switch(triton_context_self(), NULL);
+ 
+ 	if (req->try++ == conf_max_try) {
+-		rad_req_free(req);
++		struct rad_server_t *s = rad_req_free(req);
++
++		if (!s)
++			return;
++
+ 		if (s->starting)
+ 			s->starting = 0;
+ 		else
+@@ -423,6 +458,8 @@
+ static void send_acct_on(struct rad_server_t *s)
+ {
+ 	struct rad_req_t *req = rad_req_alloc_empty();
++	if (!req)
++		return;
+ 
+ 	log_switch(triton_context_self(), NULL);
+ 
+diff --git a/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c b/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c
+--- a/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c
++++ b/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c
+@@ -245,16 +245,21 @@
+ 	}
+ 
+ 	if (vpphook_data->vpppolicer_up) {
++		/*
++		 * Reverse of the install order: take the policer-input node out of
++		 * the feature arcs first, so no packet can reach it while the
++		 * policer it uses is unbound and deleted.
++		 */
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-unicast");
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-unicast");
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-multicast");
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-multicast");
++
+ 		vpppolicer_generate_name(policer_input, POLICER_NAME_MAX_LEN - 1, ses, vpphook_data->vpppolicer_up, vpphook_data->vpppolicer_up_burst, 1);
+ 		ret = vpppolicer_set_input(0, vpphook_data->vpp_sw_if_index, policer_input);
+ 		if (ret)
+ 			goto exit;
+ 		vpppolicer_add_del(0, policer_input, vpphook_data->vpppolicer_up, vpphook_data->vpppolicer_up_burst);
+-
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-unicast");
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-unicast");
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-multicast");
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-multicast");
+ 
+ 		vpphook_data->vpppolicer_up = 0;
+ 		vpphook_data->vpppolicer_up_burst = 0;
+diff --git a/accel-pppd/triton/mempool.c b/accel-pppd/triton/mempool.c
+--- a/accel-pppd/triton/mempool.c
++++ b/accel-pppd/triton/mempool.c
+@@ -162,6 +162,8 @@
+ 	it->magic1 = 0;
+ #endif
+ 
++	memset(it->ptr, 0, p->size);
++
+ 	spin_lock(&p->lock);
+ #ifdef MEMDEBUG
+ 	list_del(&it->entry);
+diff --git a/accel-pppd/utils.c b/accel-pppd/utils.c
+--- a/accel-pppd/utils.c
++++ b/accel-pppd/utils.c
+@@ -347,3 +347,14 @@
+ 
+ 	return 0;
+ }
++
++void __export u_strstrip(char *str, char c)
++{
++	char *src = str, *dst = str;
++	while (*src) {
++		if (*src != c)
++			*dst++ = *src;
++		src++;
++	}
++	*dst = '\0';
++}
+diff --git a/accel-pppd/utils.h b/accel-pppd/utils.h
+--- a/accel-pppd/utils.h
++++ b/accel-pppd/utils.h
+@@ -24,6 +24,7 @@
+ size_t u_parse_ip4cidr(const char *str, struct in_addr *netp, uint8_t *plen);
+ size_t u_parse_ip4range(const char *str, struct in_addr *base_ip, uint8_t *max);
+ 
++void u_strstrip(char *str, char c);
+ int u_randbuf(void *buf, size_t buf_len, int *err);
+ 
+ #endif
+diff --git a/drivers/ipoe/ipoe.c b/drivers/ipoe/ipoe.c
+--- a/drivers/ipoe/ipoe.c
++++ b/drivers/ipoe/ipoe.c
+@@ -15,6 +15,7 @@
+ #include <linux/init.h>
+ #include <linux/if_ether.h>
+ #include <linux/if_vlan.h>
++#include <linux/ipv6.h>
+ #include <linux/semaphore.h>
+ #include <linux/netfilter_ipv4.h>
+ #include <linux/u64_stats_sync.h>
+@@ -59,6 +60,14 @@
+ 
+ #ifndef RHEL_MAJOR
+ #define RHEL_MAJOR 0
++#endif
++
++/* ipv6.disable=1 leaves the IPv6 FIB uninitialized, so ip6_route_output()
++ * oopses; ipv6_mod_enabled() detects that (and CONFIG_IPV6=n) since 4.8 */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,8,0)
++#define ipoe_ipv6_enabled() ipv6_mod_enabled()
++#else
++#define ipoe_ipv6_enabled() 1
+ #endif
+ 
+ static inline void ipoe_flowi4_set_tos(struct flowi4 *fl4, __u8 dsfield)
+@@ -890,6 +899,9 @@
+ 			return RX_HANDLER_CONSUMED;
+ 		}
+ 	} else if (skb->protocol == htons(ETH_P_IPV6)) {
++		if (!ipoe_ipv6_enabled())
++			return RX_HANDLER_PASS;
++
+ 		if (!pskb_may_pull(skb, sizeof(*ip6h) + noff))
+ 			return RX_HANDLER_PASS;
+ 
+diff --git a/drivers/vlan_mon/vlan_mon.c b/drivers/vlan_mon/vlan_mon.c
+--- a/drivers/vlan_mon/vlan_mon.c
++++ b/drivers/vlan_mon/vlan_mon.c
+@@ -753,6 +753,9 @@
+ 	}
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,6,0)
++	vlan_pt.af_packet_net = &init_net;
++#endif
+ 	dev_add_pack(&vlan_pt);
+ 
+ 	return 0;
+diff --git a/tests/accel-pppd/pppoe/test_pppoe_radius_message_authenticator.py b/tests/accel-pppd/pppoe/test_pppoe_radius_message_authenticator.py
+--- /dev/null
++++ b/tests/accel-pppd/pppoe/test_pppoe_radius_message_authenticator.py
+@@ -0,0 +1,537 @@
++import hashlib
++import hmac
++import re
++import socket
++import struct
++import threading
++import time
++
++import pytest
++
++from common import process
++
++
++RADIUS_ACCESS_REQUEST = 1
++RADIUS_ACCESS_ACCEPT = 2
++RADIUS_ACCESS_REJECT = 3
++RADIUS_ACCOUNTING_REQUEST = 4
++RADIUS_ACCOUNTING_RESPONSE = 5
++RADIUS_MESSAGE_AUTHENTICATOR = 80
++RADIUS_FRAMED_IP_ADDRESS = 8
++
++RADIUS_SECRET = b"radiusSecretMA"
++RADIUS_BACKUP_SECRET = b"radiusBackupSecretMA"
++RADIUS_WRONG_SECRET = b"notTheRadiusSecret"
++ASSIGNED_IP = "192.0.2.42"
++USERNAME = "loginMA"
++
++# accel-pppd radius timeout (sec); negative tests must wait longer than this
++RADIUS_TIMEOUT = 1
++MAX_WAIT_TIME = 10.0
++
++# Response Message-Authenticator variants produced by the mock server
++MA_VALID = "valid"  # correct HMAC-MD5
++MA_NONE = "none"  # attribute omitted
++MA_BAD = "bad"  # HMAC computed with a wrong secret
++MA_DUP = "dup"  # two Message-Authenticator attributes
++MA_SHORT = "short"  # attribute value is 15 bytes instead of 16
++
++
++def radius_attr(attr_type, value):
++    return bytes([attr_type, len(value) + 2]) + value
++
++
++def radius_attrs(packet):
++    pos = 20
++    while pos < len(packet):
++        attr_type = packet[pos]
++        attr_len = packet[pos + 1]
++        assert attr_len >= 2
++        yield attr_type, pos, packet[pos + 2 : pos + attr_len]
++        pos += attr_len
++
++
++def find_message_authenticators(packet):
++    return [
++        (pos, value)
++        for attr_type, pos, value in radius_attrs(packet)
++        if attr_type == RADIUS_MESSAGE_AUTHENTICATOR
++    ]
++
++
++def verify_request_message_authenticator(packet, secret):
++    found = find_message_authenticators(packet)
++    assert len(found) == 1, "Access-Request must carry exactly one Message-Authenticator"
++    ma_pos, recv_ma = found[0]
++    assert len(recv_ma) == 16
++    assert recv_ma != bytes(16)
++
++    check_packet = bytearray(packet)
++    check_packet[ma_pos + 2 : ma_pos + 18] = bytes(16)
++    expected = hmac.new(secret, check_packet, hashlib.md5).digest()
++    assert recv_ma == expected, "Access-Request Message-Authenticator mismatch"
++
++
++def verify_request_has_no_message_authenticator(packet):
++    assert (
++        find_message_authenticators(packet) == []
++    ), "Access-Request must not carry Message-Authenticator"
++
++
++def make_radius_response(
++    code, req_packet, attrs, secret, ma_mode=MA_NONE, bad_response_auth=False
++):
++    req_id = req_packet[1]
++    req_auth = req_packet[4:20]
++
++    if ma_mode == MA_SHORT:
++        ma_attrs = radius_attr(RADIUS_MESSAGE_AUTHENTICATOR, bytes(15))
++    elif ma_mode == MA_DUP:
++        # The second attribute holds a fixed value, and the first one is signed
++        # over the packet as sent. Only the duplicate check can reject this
++        # packet, because the first MA would otherwise verify.
++        ma_attrs = radius_attr(RADIUS_MESSAGE_AUTHENTICATOR, bytes(16)) + radius_attr(
++            RADIUS_MESSAGE_AUTHENTICATOR, b"\x55" * 16
++        )
++    elif ma_mode in (MA_VALID, MA_BAD):
++        ma_attrs = radius_attr(RADIUS_MESSAGE_AUTHENTICATOR, bytes(16))
++    else:
++        ma_attrs = b""
++
++    body = ma_attrs + attrs
++    response = bytearray(
++        struct.pack("!BBH", code, req_id, 20 + len(body)) + req_auth + body
++    )
++
++    if ma_mode != MA_NONE:
++        # RFC 3579: HMAC over the packet with Request Authenticator in the
++        # header and the (first) Message-Authenticator value zeroed.
++        ma_secret = RADIUS_WRONG_SECRET if ma_mode == MA_BAD else secret
++        ma_len = 15 if ma_mode == MA_SHORT else 16
++        digest = hmac.new(ma_secret, response, hashlib.md5).digest()
++        response[22 : 22 + ma_len] = digest[:ma_len]
++
++    response_auth = bytearray(
++        hashlib.md5(response[:4] + req_auth + response[20:] + secret).digest()
++    )
++    if bad_response_auth:
++        response_auth[0] ^= 0xFF
++    response[4:20] = response_auth
++    return bytes(response)
++
++
++class RadiusServer:
++    """Minimal RADIUS auth/acct server.
++
++    reply_code:  RADIUS_ACCESS_ACCEPT, RADIUS_ACCESS_REJECT or None (silent)
++    ma_mode:     one of MA_* for the Access-* response
++    expect_request_ma: True/False - Access-Request must/must not carry MA
++    """
++
++    def __init__(
++        self,
++        secret=RADIUS_SECRET,
++        reply_code=RADIUS_ACCESS_ACCEPT,
++        ma_mode=MA_VALID,
++        bad_response_auth=False,
++        expect_request_ma=True,
++    ):
++        self.secret = secret
++        self.reply_code = reply_code
++        self.ma_mode = ma_mode
++        self.bad_response_auth = bad_response_auth
++        self.expect_request_ma = expect_request_ma
++
++        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
++        self.sock.bind(("127.0.0.1", 0))
++        self.sock.settimeout(0.1)
++        self.port = self.sock.getsockname()[1]
++        self.running = True
++        self.lock = threading.Lock()
++        self.access_requests = []
++        self.access_responses_sent = 0
++        self.error = None
++        self.thread = threading.Thread(target=self.run)
++        self.thread.start()
++
++    def handle_access_request(self, packet, addr):
++        if self.expect_request_ma:
++            verify_request_message_authenticator(packet, self.secret)
++        else:
++            verify_request_has_no_message_authenticator(packet)
++
++        with self.lock:
++            self.access_requests.append(packet)
++
++        if self.reply_code is None:
++            return
++
++        attrs = b""
++        if self.reply_code == RADIUS_ACCESS_ACCEPT:
++            attrs = radius_attr(RADIUS_FRAMED_IP_ADDRESS, socket.inet_aton(ASSIGNED_IP))
++
++        self.sock.sendto(
++            make_radius_response(
++                self.reply_code,
++                packet,
++                attrs,
++                self.secret,
++                self.ma_mode,
++                self.bad_response_auth,
++            ),
++            addr,
++        )
++        with self.lock:
++            self.access_responses_sent += 1
++
++    def run(self):
++        while self.running:
++            try:
++                packet, addr = self.sock.recvfrom(4096)
++            except socket.timeout:
++                continue
++            except OSError:
++                break
++
++            try:
++                if packet[0] == RADIUS_ACCESS_REQUEST:
++                    self.handle_access_request(packet, addr)
++                elif packet[0] == RADIUS_ACCOUNTING_REQUEST:
++                    self.sock.sendto(
++                        make_radius_response(
++                            RADIUS_ACCOUNTING_RESPONSE, packet, b"", self.secret
++                        ),
++                        addr,
++                    )
++            except Exception as error:  # surface any mock-server failure to the test
++                if self.error is None:
++                    self.error = error
++
++    def stop(self):
++        self.running = False
++        self.sock.close()
++        self.thread.join()
++
++
++def radius_server_line(server, backup=False):
++    return (
++        "server=127.0.0.1,"
++        + server.secret.decode()
++        + ",auth-port="
++        + str(server.port)
++        + ",acct-port="
++        + str(server.port)
++        + (",backup" if backup else "")
++    )
++
++
++def make_accel_pppd_config(veth_pair_netns, server_lines, include_ma, require_ma):
++    return (
++        """
++    [modules]
++    radius
++    pppoe
++    auth_pap
++    ippool
++
++    [core]
++    log-error=/dev/stderr
++
++    [log]
++    log-debug=/dev/stdout
++    log-file=/dev/stdout
++    log-emerg=/dev/stderr
++    level=5
++
++    [ip-pool]
++    gw-ip-address=192.0.2.1
++    192.0.2.2-255
++
++    [cli]
++    tcp=127.0.0.1:2001
++
++    [radius]
++    nas-identifier=accel-ppp-test
++    gw-ip-address=192.0.2.1
++    """
++        + "\n    ".join(server_lines)
++        + """
++    timeout="""
++        + str(RADIUS_TIMEOUT)
++        + """
++    max-try=1
++    verbose=1
++    message-authenticator-include-access-request="""
++        + str(include_ma)
++        + """
++    message-authenticator-require-access-response="""
++        + str(require_ma)
++        + """
++
++    [pppoe]
++    interface="""
++        + veth_pair_netns["veth_a"]
++    )
++
++
++# ---------------------------------------------------------------------------
++# Fixtures (overridable via indirect parametrization)
++# ---------------------------------------------------------------------------
++
++
++# {"include": 0|1, "require": 0|1}
++@pytest.fixture()
++def ma_config(request):
++    return getattr(request, "param", {"include": 1, "require": 1})
++
++
++# kwargs for RadiusServer (reply_code, ma_mode, bad_response_auth)
++@pytest.fixture()
++def radius_behavior(request):
++    return getattr(request, "param", {})
++
++
++@pytest.fixture()
++def radius_topology(request, ma_config, radius_behavior):
++    if getattr(request, "param", None) == "failover":
++        primary = RadiusServer(secret=RADIUS_SECRET, reply_code=None)
++        server = RadiusServer(secret=RADIUS_BACKUP_SECRET)
++        servers = [primary, server]
++    else:
++        primary = None
++        server = RadiusServer(
++            expect_request_ma=bool(ma_config["include"]), **radius_behavior
++        )
++        servers = [server]
++
++    yield {"primary": primary, "server": server}
++
++    for radius_server in servers:
++        radius_server.stop()
++
++
++@pytest.fixture()
++def radius_server(radius_topology):
++    return radius_topology["server"]
++
++
++@pytest.fixture()
++def accel_pppd_config(veth_pair_netns, radius_topology, ma_config):
++    primary = radius_topology["primary"]
++    server = radius_topology["server"]
++    server_lines = []
++    if primary:
++        server_lines.append(radius_server_line(primary))
++    server_lines.append(radius_server_line(server, backup=bool(primary)))
++
++    return make_accel_pppd_config(
++        veth_pair_netns,
++        server_lines,
++        ma_config["include"],
++        ma_config["require"],
++    )
++
++
++@pytest.fixture()
++def pppd_config(veth_pair_netns):
++    return (
++        """
++    nodetach
++    noipdefault
++    defaultroute
++    connect /bin/true
++    noauth
++    persist
++    mtu 1492
++    noaccomp
++    default-asyncmap
++    user """
++        + USERNAME
++        + """
++    password pass123
++    nic-"""
++        + veth_pair_netns["veth_b"]
++    )
++
++
++# ---------------------------------------------------------------------------
++# Helpers
++# ---------------------------------------------------------------------------
++
++
++def wait_for(predicate, max_wait_time=MAX_WAIT_TIME, step=0.1):
++    waited = 0.0
++    while waited < max_wait_time:
++        if predicate():
++            return True
++        time.sleep(step)
++        waited += step
++    return predicate()
++
++
++def is_session_active(accel_cmd):
++    exit_code, out, _err = process.run(
++        [accel_cmd, "show sessions match username log.nMA username,ip,state"]
++    )
++    assert exit_code == 0
++    return USERNAME in out and ASSIGNED_IP in out and "active" in out
++
++
++def radius_auth_lost(accel_cmd):
++    """Return list of 'auth lost (total)' counters, one per radius server."""
++    exit_code, out, _err = process.run([accel_cmd, "show stat"])
++    assert exit_code == 0
++    return [int(n) for n in re.findall(r"auth lost\(total/5m/1m\): (\d+)/", out)]
++
++
++def access_responses_sent(server):
++    with server.lock:
++        return server.access_responses_sent
++
++
++def assert_response_dropped(accel_cmd, radius_server):
++    # The server must actually have answered, otherwise "no session" proves nothing.
++    assert wait_for(lambda: access_responses_sent(radius_server) >= 1)
++    # A response rejected by accel-pppd is silently discarded, so the request
++    # ends up timing out and is accounted as "auth lost".
++    assert wait_for(lambda: sum(radius_auth_lost(accel_cmd)) >= 1)
++    assert not is_session_active(accel_cmd)
++    assert radius_server.error is None
++
++
++# ---------------------------------------------------------------------------
++# Positive cases: Access-Accept is accepted and the session comes up
++# ---------------------------------------------------------------------------
++
++
++@pytest.mark.parametrize(
++    "ma_config, radius_behavior",
++    [
++        pytest.param(
++            {"include": 1, "require": 1},
++            {"ma_mode": MA_VALID},
++            id="include-require-valid-ma",
++        ),
++        pytest.param(
++            {"include": 1, "require": 0},
++            {"ma_mode": MA_NONE},
++            id="not-required-missing-ma",
++        ),
++        pytest.param(
++            {"include": 1, "require": 0},
++            {"ma_mode": MA_VALID},
++            id="not-required-valid-ma",
++        ),
++        pytest.param(
++            {"include": 0, "require": 1},
++            {"ma_mode": MA_VALID},
++            id="request-ma-disabled",
++        ),
++    ],
++    indirect=True,
++)
++def test_pppoe_radius_message_authenticator(pppd_instance, accel_cmd, radius_server):
++    assert pppd_instance["is_started"]
++
++    assert wait_for(lambda: is_session_active(accel_cmd))
++    assert radius_server.error is None
++    assert len(radius_server.access_requests) >= 1
++    assert sum(radius_auth_lost(accel_cmd)) == 0
++
++
++# ---------------------------------------------------------------------------
++# Negative cases: Access-* response must be discarded
++# ---------------------------------------------------------------------------
++
++
++@pytest.mark.parametrize(
++    "radius_behavior",
++    [
++        pytest.param({"ma_mode": MA_NONE}, id="accept-missing-ma"),
++        pytest.param({"ma_mode": MA_BAD}, id="accept-wrong-ma"),
++        pytest.param({"ma_mode": MA_DUP}, id="accept-duplicate-ma"),
++        pytest.param({"ma_mode": MA_SHORT}, id="accept-short-ma"),
++        pytest.param(
++            {"ma_mode": MA_VALID, "bad_response_auth": True},
++            id="accept-valid-ma-bad-response-auth",
++        ),
++        pytest.param(
++            {"reply_code": RADIUS_ACCESS_REJECT, "ma_mode": MA_NONE},
++            id="reject-missing-ma",
++        ),
++        pytest.param(
++            {"reply_code": RADIUS_ACCESS_REJECT, "ma_mode": MA_BAD},
++            id="reject-wrong-ma",
++        ),
++    ],
++    indirect=True,
++)
++def test_pppoe_radius_message_authenticator_response_dropped(
++    pppd_instance, accel_cmd, radius_server
++):
++    assert pppd_instance["is_started"]
++
++    assert_response_dropped(accel_cmd, radius_server)
++
++
++@pytest.mark.parametrize(
++    "ma_config, radius_behavior",
++    [
++        pytest.param(
++            {"include": 1, "require": 0},
++            {"ma_mode": MA_BAD},
++            id="not-required-wrong-ma",
++        )
++    ],
++    indirect=True,
++)
++def test_pppoe_radius_message_authenticator_optional_response_dropped(
++    pppd_instance, accel_cmd, radius_server
++):
++    assert pppd_instance["is_started"]
++
++    assert_response_dropped(accel_cmd, radius_server)
++
++
++@pytest.mark.parametrize(
++    "radius_behavior",
++    [pytest.param({"reply_code": RADIUS_ACCESS_REJECT, "ma_mode": MA_VALID})],
++    ids=["reject-valid-ma"],
++    indirect=True,
++)
++def test_pppoe_radius_message_authenticator_reject_honored(
++    pppd_instance, accel_cmd, radius_server
++):
++    assert pppd_instance["is_started"]
++
++    assert wait_for(lambda: access_responses_sent(radius_server) >= 1)
++    # Give accel-pppd longer than the radius timeout. A dropped reply would
++    # show up as "auth lost" by then.
++    time.sleep(RADIUS_TIMEOUT + 1)
++
++    assert radius_server.error is None
++    assert sum(radius_auth_lost(accel_cmd)) == 0
++    assert not is_session_active(accel_cmd)
++
++
++# ---------------------------------------------------------------------------
++# Failover: Access-Request MA must be re-signed with the backup server secret
++# ---------------------------------------------------------------------------
++
++
++@pytest.mark.parametrize("radius_topology", ["failover"], indirect=True)
++def test_pppoe_radius_message_authenticator_failover(
++    pppd_instance, accel_cmd, radius_topology
++):
++    assert pppd_instance["is_started"]
++
++    assert wait_for(lambda: is_session_active(accel_cmd))
++
++    primary_radius_server = radius_topology["primary"]
++    radius_server = radius_topology["server"]
++
++    # Each server checks the request MA against its own secret.
++    assert primary_radius_server.error is None
++    assert radius_server.error is None
++    assert len(primary_radius_server.access_requests) >= 1
++    assert len(radius_server.access_requests) >= 1

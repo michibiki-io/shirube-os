@@ -1,0 +1,43 @@
+From b413dbc239841ce4d13824119df4be9c6f06647e Mon Sep 17 00:00:00 2001
+From: Jafar Al-Gharaibeh <jafar@atcorp.com>
+Date: Mon, 9 Mar 2026 14:36:22 -0500
+Subject: [PATCH] bgpd: fix off-by-one error in FlowSpec operator array bounds
+ check
+
+Change loop > BGP_PBR_MATCH_VAL_MAX to loop >= BGP_PBR_MATCH_VAL_MAX
+in bgp_flowspec_op_decode() and bgp_flowspec_bitmask_decode() to
+prevent writing one element past the end of the mval[] array when
+more than 5 chained operators are present in a FlowSpec component.
+
+Reported-by: Jiahao Lei
+Signed-off-by: Jafar Al-Gharaibeh <jafar@atcorp.com>
+(cherry picked from commit 0e6882bc72c0278988a47b2f0f73b7a91099a25c)
+---
+ bgpd/bgp_flowspec_util.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/bgpd/bgp_flowspec_util.c b/bgpd/bgp_flowspec_util.c
+index f2da778c2e66..5528a4f6a0e3 100644
+--- a/bgpd/bgp_flowspec_util.c
++++ b/bgpd/bgp_flowspec_util.c
+@@ -274,8 +274,10 @@ int bgp_flowspec_op_decode(enum bgp_flowspec_util_nlri_t type,
+ 	}
+ 
+ 	do {
+-		if (loop > BGP_PBR_MATCH_VAL_MAX)
++		if (loop >= BGP_PBR_MATCH_VAL_MAX) {
+ 			*error = -2;
++			return offset;
++		}
+ 
+ 		if (offset >= max_len) {
+ 			*error = -1;
+@@ -397,7 +399,7 @@ int bgp_flowspec_bitmask_decode(enum bgp_flowspec_util_nlri_t type,
+ 	}
+ 
+ 	do {
+-		if (loop > BGP_PBR_MATCH_VAL_MAX) {
++		if (loop >= BGP_PBR_MATCH_VAL_MAX) {
+ 			*error = -2;
+ 			return offset;
+ 		}

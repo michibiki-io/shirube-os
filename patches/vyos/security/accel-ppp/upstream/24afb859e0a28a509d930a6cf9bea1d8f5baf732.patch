@@ -1,0 +1,45 @@
+From 24afb859e0a28a509d930a6cf9bea1d8f5baf732 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 24 Apr 2026 12:03:19 -0700
+Subject: [PATCH] T8549: Accel-PPP DHCPv6: Fix for OOB read in print_status()
+ for Status code option
+
+- Fixed the incorrect bounds check for status_name array
+
+- Placed the missing comma in the status name array list
+---
+ accel-pppd/ipv6/dhcpv6_packet.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/accel-pppd/ipv6/dhcpv6_packet.c b/accel-pppd/ipv6/dhcpv6_packet.c
+index ed6930ac..b9a07ad1 100644
+--- a/accel-pppd/ipv6/dhcpv6_packet.c
++++ b/accel-pppd/ipv6/dhcpv6_packet.c
+@@ -608,20 +608,22 @@ static void print_ipv6addr_array(struct dhcpv6_option *opt, void (*print)(const
+ static void print_status(struct dhcpv6_option *opt, void (*print)(const char *fmt, ...))
+ {
+ 	struct dhcpv6_opt_status *o = (struct dhcpv6_opt_status *)opt->hdr;
+-	static char *status_name[] = {
++	static const char *status_name[] = {
+ 		"Success",
+ 		"UnspecFail",
+ 		"NoAddrsAvail",
+ 		"NoBindings",
+ 		"NotOnLink",
+-		"UseMulticast"
++		"UseMulticast",
+ 		"NoPrefixAvail"
+ 	};
++	unsigned int status_code = ntohs(o->code);
++	size_t status_name_count = sizeof(status_name) / sizeof(status_name[0]);
+ 
+-	if (ntohs(o->code) < 0 || ntohs(o->code) > sizeof(status_name))
+-		print(" %u", ntohs(o->code));
++	if (status_code >= status_name_count)
++		print(" %u", status_code);
+ 	else
+-		print(" %s", status_name[ntohs(o->code)]);
++		print(" %s", status_name[status_code]);
+ }
+ 
+ static void print_reconf(struct dhcpv6_option *opt, void (*print)(const char *fmt, ...))

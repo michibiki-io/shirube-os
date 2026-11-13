@@ -1,0 +1,39 @@
+From 107e0330cfe41073efbc94a85d105beadc560988 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 9 Aug 2026 07:15:01 +0300
+Subject: [PATCH] T9238: pptp: reject control messages shorter than the header
+ (port from accel-ppp 350)
+
+PPTP_CTRL_SIZE() evaluates to 0 for unrecognised control types, so a
+message declaring length 0 with such a type passed the length check,
+reached process_packet() and was logged as unknown, after which
+in_size -= 0 consumed nothing. The stale header stayed at the head of
+the buffer and every later byte queued behind it, so the connection
+could never make progress: it stalled until in_size reached
+PPTP_CTRL_SIZE_MAX, at which point read() was called with a zero-length
+buffer, returned 0 and was misreported as "disconnect by peer".
+
+Require the declared length to cover the header, alongside the existing
+upper bound.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 2ad648c3cdde7c5b439abde9566c6dedce966c9e)
+---
+ accel-pppd/ctrl/pptp/pptp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/accel-pppd/ctrl/pptp/pptp.c b/accel-pppd/ctrl/pptp/pptp.c
+index 53a65058..96194e22 100644
+--- a/accel-pppd/ctrl/pptp/pptp.c
++++ b/accel-pppd/ctrl/pptp/pptp.c
+@@ -515,6 +515,10 @@ static int pptp_read(struct triton_md_handler_t *h)
+ 				log_ppp_error("pptp: invalid magic\n");
+ 				goto drop;
+ 			}
++			if (ntohs(hdr->length) < sizeof(*hdr)) {
++				log_ppp_error("pptp: message is too short\n");
++				goto drop;
++			}
+ 			if (ntohs(hdr->length) >= PPTP_CTRL_SIZE_MAX) {
+ 				log_ppp_error("pptp: message is too long\n");
+ 				goto drop;

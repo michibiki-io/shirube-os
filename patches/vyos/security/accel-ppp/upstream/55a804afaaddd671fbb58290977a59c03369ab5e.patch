@@ -1,0 +1,101 @@
+From 55a804afaaddd671fbb58290977a59c03369ab5e Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Wed, 6 May 2026 23:45:59 -0700
+Subject: [PATCH] T8611: Accel-PPP RADIUS: Fix for buffer overflow via
+ oversized Accel-VRF-name VSA in Access-Accept msg
+
+- Validation checks added for vrf name length
+
+- Use safer memcpy() in place of strcpy()
+---
+ accel-pppd/ifcfg.c         | 14 ++++++++++++--
+ accel-pppd/net.c           | 15 ++++++++++++++-
+ accel-pppd/radius/radius.c | 10 +++++++++-
+ 3 files changed, 35 insertions(+), 4 deletions(-)
+
+diff --git a/accel-pppd/ifcfg.c b/accel-pppd/ifcfg.c
+index 2168708b..18cd464d 100644
+--- a/accel-pppd/ifcfg.c
++++ b/accel-pppd/ifcfg.c
+@@ -9,6 +9,7 @@
+ #include <arpa/inet.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
++#include <linux/if.h>
+ #include <linux/route.h>
+ #include "linux_ppp.h"
+ 
+@@ -359,8 +360,17 @@ int __export ap_session_rename(struct ap_session *ses, const char *ifname, int l
+ #ifdef HAVE_VRF
+ int __export ap_session_vrf(struct ap_session *ses, const char *vrf_name, int len)
+ {
+-	if (len == -1)
+-		len = strlen(vrf_name);
++	if (len == -1) {
++		if (!vrf_name)
++			len = 0;
++		else
++			len = strlen(vrf_name);
++	}
++
++	if (len < 0 || len >= IFNAMSIZ) {
++		log_ppp_error("vrf name length %d out of bounds (must be 0..%d)\n", len, IFNAMSIZ - 1);
++		return -1;
++	}
+ 
+ 	int vrf_ifindex = 0;
+ 
+diff --git a/accel-pppd/net.c b/accel-pppd/net.c
+index c619deed..3b74e832 100644
+--- a/accel-pppd/net.c
++++ b/accel-pppd/net.c
+@@ -223,9 +223,22 @@ static int def_get_ifindex(const char *ifname)
+ {
+ 	struct kern_net *n = container_of(net, typeof(*n), net);
+ 	struct ifreq ifr;
++	size_t ifname_len;
++
++	if (!ifname) {
++		log_ppp_error("interface name is NULL\n");
++		return -1;
++	}
++
++	ifname_len = strlen(ifname);
++	if (ifname_len >= IFNAMSIZ) {
++		log_ppp_error("interface name too long (%zu >= %d): '%s'\n", ifname_len, IFNAMSIZ, ifname);
++		return -1;
++	}
+ 
+ 	memset(&ifr, 0, sizeof(ifr));
+-	strcpy(ifr.ifr_name, ifname);
++	memcpy(ifr.ifr_name, ifname, ifname_len);
++	ifr.ifr_name[ifname_len] = '\0';
+ 
+ 	if (ioctl(n->sock, SIOCGIFINDEX, &ifr)) {
+ 		log_ppp_error("ioctl(SIOCGIFINDEX): %s\n", strerror(errno));
+diff --git a/accel-pppd/radius/radius.c b/accel-pppd/radius/radius.c
+index f00d4139..065b0785 100644
+--- a/accel-pppd/radius/radius.c
++++ b/accel-pppd/radius/radius.c
+@@ -358,12 +358,20 @@ int rad_proc_attrs(struct rad_req_t *req)
+ 			} else if (attr->vendor->id == VENDOR_Accel_PPP) {
+ 				switch (attr->attr->id) {
+ 					case Accel_VRF_Name:
+-						log_ppp_info2("radius: setting vrf_name to %s\n", attr->val.string);
++						if (attr->len < 0 || attr->len >= IFNAMSIZ) {
++							log_ppp_warn("radius: invalid Accel-VRF-Name length=%d (must be 1..%d or 0 for default VRF), rejecting Access-Accept\n", attr->len, IFNAMSIZ - 1);
++							return -1;
++						}
++
+ 						if (rpd->ses->vrf_name)
+ 							_free(rpd->ses->vrf_name);
+ 						rpd->ses->vrf_name = _malloc(attr->len + 1);
++						if (!rpd->ses->vrf_name)
++							break;
++
+ 						memcpy(rpd->ses->vrf_name, attr->val.string, attr->len);
+ 						rpd->ses->vrf_name[attr->len] = 0;
++						log_ppp_info2("radius: setting vrf_name to %s\n", rpd->ses->vrf_name);
+ 						break;
+ 				}
+ 				continue;

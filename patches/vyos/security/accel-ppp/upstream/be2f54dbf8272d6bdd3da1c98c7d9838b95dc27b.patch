@@ -1,0 +1,40 @@
+From be2f54dbf8272d6bdd3da1c98c7d9838b95dc27b Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Wed, 22 Apr 2026 13:22:13 -0700
+Subject: [PATCH] T8545: Accel-PPP Radius: Fix for unexpected RA failure of
+ Accounting-Response msg
+
+Response authenticator contains Request Authenticator in its MD5 hash. So, Request Authenticator (req->RA) needs to be updated to contain the computed MD5 hash for correct validation
+---
+ accel-pppd/radius/acct.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/accel-pppd/radius/acct.c b/accel-pppd/radius/acct.c
+index b050e4be..9d10085b 100644
+--- a/accel-pppd/radius/acct.c
++++ b/accel-pppd/radius/acct.c
+@@ -32,6 +32,11 @@ static int req_set_RA(struct rad_req_t *req, const char *secret)
+ 	if (evp_ctx == NULL)
+ 		return -1;
+ 
++	/* Request Authenticator is MD5 over the packet with the
++	 * authenticator field set to zeros.
++	 */
++	memset(req->RA, 0, sizeof(req->RA));
++
+ 	if (rad_packet_build(req->pack, req->RA))
+ 		return -1;
+ 
+@@ -40,6 +45,12 @@ static int req_set_RA(struct rad_req_t *req, const char *secret)
+ 	EVP_DigestUpdate(evp_ctx, secret, strlen(secret));
+ 	EVP_DigestFinal_ex(evp_ctx, req->pack->buf + 4, NULL);
+ 
++	/* The Response Authenticator from RADIUS server is MD5 hash that includes
++	 * the Request Authenticator. So, saving the computed Request Authenticator 
++	 * in order to validate the server's Accounting-Response later.
++	 */
++	memcpy(req->RA, req->pack->buf + 4, sizeof(req->RA));
++
+ 	EVP_MD_CTX_free(evp_ctx);
+ 
+ 	return 0;

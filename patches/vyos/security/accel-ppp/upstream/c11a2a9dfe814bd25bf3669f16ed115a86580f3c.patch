@@ -1,0 +1,53 @@
+From c11a2a9dfe814bd25bf3669f16ed115a86580f3c Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sat, 28 Feb 2026 08:25:59 +0200
+Subject: [PATCH] T9238: radius: fix stop accounting timeout flow and request
+ cleanup (port accel-ppp PR 301)
+
+When sending accounting STOP requests, the timer callback was
+incorrectly set to the START timeout handler.  This caused stop
+retries to follow the wrong termination path.
+
+Also clear rpd->acct_req before freeing on stop timeout/shutdown
+failures to avoid leaving a stale pointer.
+
+This bug is very nasty, revealed during stress tests, leading to
+memory corruption and other bad stuff when there is noticeable
+loss of radius "Stop" packets.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit bd936f6074b6b6c515cfd40a1c0215b3dfa7889d)
+---
+ accel-pppd/radius/acct.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/accel-pppd/radius/acct.c b/accel-pppd/radius/acct.c
+index b050e4be..30e772ad 100644
+--- a/accel-pppd/radius/acct.c
++++ b/accel-pppd/radius/acct.c
+@@ -430,12 +430,16 @@ static void rad_acct_stop_timeout(struct triton_timer_t *t)
+ 	}
+ 
+ 	if (req->try == conf_max_try) {
++		if (req->rpd)
++			req->rpd->acct_req = NULL;
+ 		rad_req_free(req);
+ 		return;
+ 	}
+ 
+ 	if (rad_req_send(req)) {
+ 		if (ap_shutdown) {
++			if (req->rpd)
++				req->rpd->acct_req = NULL;
+ 			rad_req_free(req);
+ 			return;
+ 		}
+@@ -538,7 +542,7 @@ int rad_acct_stop(struct radius_pd_t *rpd)
+ 	req_set_RA(req, req->serv->secret);
+ 
+ 	req->recv = rad_acct_stop_recv;
+-	req->timeout.expire = rad_acct_start_timeout;
++	req->timeout.expire = rad_acct_stop_timeout;
+ 	req->timeout.expire_tv.tv_sec = conf_timeout;
+ 	req->sent = rad_acct_stop_sent;
+ 	req->log = conf_verbose ? log_ppp_info1 : NULL;

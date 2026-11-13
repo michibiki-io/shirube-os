@@ -1,0 +1,41 @@
+From 7a578d6aa83aaa8e8d51b25254107971d80728ee Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 9 Aug 2026 07:05:38 +0300
+Subject: [PATCH] T9238: pptp: fix truncated control messages on partial write
+ (port from accel-ppp 350)
+
+post_msg() copies the unsent tail of a message into conn->out_buf and
+enables the write handler, but never sets conn->out_size. pptp_write()
+then computes out_size - out_pos as 0, writes nothing, sees out_pos ==
+out_size, disables itself and returns, so the buffered remainder is
+silently dropped. post_msg() still returns 0, so the caller believes the
+message was sent.
+
+The usual trigger is a peer that stops reading: once the send buffer
+fills, write() returns EAGAIN, n is set to 0 and the whole message is
+buffered and then discarded, losing replies such as
+Start-Ctrl-Conn-Reply, Outgoing-Call-Reply and Call-Disconnect-Notify.
+
+Record the remaining length so pptp_write() can flush it. out_pos is
+already 0 here: post_msg() returns early unless out_size is 0, which
+holds only before the first send or after pptp_write() has drained the
+buffer and reset both fields.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 5ca46e28fd1f0e055c40546b1c698fc970b6e114)
+---
+ accel-pppd/ctrl/pptp/pptp.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/accel-pppd/ctrl/pptp/pptp.c b/accel-pppd/ctrl/pptp/pptp.c
+index 24984db8..53a65058 100644
+--- a/accel-pppd/ctrl/pptp/pptp.c
++++ b/accel-pppd/ctrl/pptp/pptp.c
+@@ -149,6 +149,7 @@ static int post_msg(struct pptp_conn_t *conn, void *buf, int size)
+ 
+ 	if ( n<size ) {
+ 		memcpy(conn->out_buf, (uint8_t *)buf + n, size - n);
++		conn->out_size = size - n;
+ 		triton_md_enable_handler(&conn->hnd, MD_MODE_WRITE);
+ 	}
+ 

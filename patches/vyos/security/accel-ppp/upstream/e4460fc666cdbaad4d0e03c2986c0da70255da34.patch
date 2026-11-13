@@ -1,0 +1,51 @@
+From e4460fc666cdbaad4d0e03c2986c0da70255da34 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Mon, 6 Jul 2026 11:28:53 +0300
+Subject: [PATCH] T9238: pppoe: fix use-after-free in mac_filter_load() (port
+ accel-ppp PR 327)
+
+When a mac-filter file line contained an octet > 255, the error path freed
+the entry but kept writing to it and linked it into mac_list. Validate all
+octets before allocating so invalid lines are skipped entirely.
+
+This is not considered a security vulnerability: the mac-filter file can
+only be configured by an administrator with access to the daemon config,
+or the CLI, both of which require privileged access.
+
+Fixes #307
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 2ba4437b88dc54ebc5dea6ba1c2007b9cd4aa0e0)
+---
+ accel-pppd/ctrl/pppoe/mac_filter.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/accel-pppd/ctrl/pppoe/mac_filter.c b/accel-pppd/ctrl/pppoe/mac_filter.c
+index ba78df6b..3a6a00d6 100644
+--- a/accel-pppd/ctrl/pppoe/mac_filter.c
++++ b/accel-pppd/ctrl/pppoe/mac_filter.c
+@@ -92,15 +92,17 @@ static int mac_filter_load(const char *opt)
+ 			log_warn("pppoe: mac-filter:%s:%i: address is invalid\n", name, line);
+ 			continue;
+ 		}
+-		mac = _malloc(sizeof(*mac));
+ 		for (i = 0; i < ETH_ALEN; i++) {
+-			if (n[i] > 255) {
+-				log_warn("pppoe: mac-filter:%s:%i: address is invalid\n", name, line);
+-				_free(mac);
+-				continue;
+-			}
+-			mac->addr[i] = n[i];
++			if (n[i] > 255)
++				break;
+ 		}
++		if (i < ETH_ALEN) {
++			log_warn("pppoe: mac-filter:%s:%i: address is invalid\n", name, line);
++			continue;
++		}
++		mac = _malloc(sizeof(*mac));
++		for (i = 0; i < ETH_ALEN; i++)
++			mac->addr[i] = n[i];
+ 		list_add_tail(&mac->entry, &mac_list);
+ 	}
+ 	pthread_rwlock_unlock(&lock);

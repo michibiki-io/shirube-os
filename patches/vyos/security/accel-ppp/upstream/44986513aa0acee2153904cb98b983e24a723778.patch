@@ -1,0 +1,37 @@
+From 44986513aa0acee2153904cb98b983e24a723778 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 9 Aug 2026 00:54:07 +0300
+Subject: [PATCH] T9238: auth: fix challenge-name lifetime on reload (port
+ accel-ppp PR 347)
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 73206cf0c25043204a414603e1b6bf6bbb164c58)
+---
+ accel-pppd/auth/auth_chap_md5.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/accel-pppd/auth/auth_chap_md5.c b/accel-pppd/auth/auth_chap_md5.c
+index 17d094ce..ec417c8c 100644
+--- a/accel-pppd/auth/auth_chap_md5.c
++++ b/accel-pppd/auth/auth_chap_md5.c
+@@ -36,7 +36,7 @@ static int conf_timeout = 5;
+ static int conf_interval = 0;
+ static int conf_max_failure = 3;
+ static int conf_any_login = 0;
+-static const char *conf_challenge_name = "accel-ppp";
++static char *conf_challenge_name;
+ 
+ struct chap_hdr {
+ 	uint16_t proto;
+@@ -499,8 +499,9 @@ static void load_config(void)
+ 		conf_any_login = atoi(opt);
+ 
+ 	opt = conf_get_opt("auth", "challenge-name");
+-	if (opt)
+-		conf_challenge_name = opt;
++	if (conf_challenge_name)
++		_free(conf_challenge_name);
++	conf_challenge_name = _strdup(opt ? opt : "accel-ppp");
+ }
+ 
+ static void auth_chap_md5_init()

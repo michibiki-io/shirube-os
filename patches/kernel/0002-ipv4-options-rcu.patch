@@ -1,0 +1,32 @@
+Subject: CVE-2026-98432: defer both IPv4 option destructor frees
+
+Complete Linux stable commit 742f73df544e03744f2981c467d6542fe8172a2a
+Source: https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux/+/742f73df544e03744f2981c467d6542fe8172a2a
+Original diff retained verbatim in upstream/98432.patch.
+
+diff --git a/net/ipv4/af_inet.c b/net/ipv4/af_inet.c
+index f336b2d..c3dcdee 100644
+--- a/net/ipv4/af_inet.c
++++ b/net/ipv4/af_inet.c
+@@ -154,7 +154,7 @@ void inet_sock_destruct(struct sock *sk)
+ 	WARN_ON_ONCE(sk->sk_wmem_queued);
+ 	WARN_ON_ONCE(sk_forward_alloc_get(sk));
+ 
+-	kfree(rcu_dereference_protected(inet->inet_opt, 1));
++	kfree_rcu(rcu_dereference_protected(inet->inet_opt, 1), rcu);
+ 	dst_release(rcu_dereference_protected(sk->sk_dst_cache, 1));
+ 	dst_release(rcu_dereference_protected(sk->sk_rx_dst, 1));
+ }
+diff --git a/net/ipv4/tcp_ipv4.c b/net/ipv4/tcp_ipv4.c
+index 638303d..5120db6 100644
+--- a/net/ipv4/tcp_ipv4.c
++++ b/net/ipv4/tcp_ipv4.c
+@@ -1059,7 +1059,7 @@ static int tcp_v4_send_synack(const struct sock *sk, struct dst_entry *dst,
+  */
+ static void tcp_v4_reqsk_destructor(struct request_sock *req)
+ {
+-	kfree(rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1));
++	kfree_rcu(rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1), rcu);
+ }
+ 
+ #ifdef CONFIG_TCP_MD5SIG

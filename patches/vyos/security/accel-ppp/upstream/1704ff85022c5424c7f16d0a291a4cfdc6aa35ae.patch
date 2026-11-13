@@ -1,0 +1,57 @@
+From 1704ff85022c5424c7f16d0a291a4cfdc6aa35ae Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Mon, 6 Jul 2026 11:04:10 +0300
+Subject: [PATCH] T9238: ipoe: Fix OOPS if ipv6.disable=1 (port from accel-ppp
+ PR 326)
+
+ipoe_recv() handles every ETH_P_IPV6 frame arriving on an IPoE
+by calling ipoe_lookup_rt6()/ip6_route_output().
+On ipv6.disable=1 IPv6 FIB is not initialized.
+We can detect that by ipv6_mod_enabled() since kernel 4.8,
+and return RX_HANDLER_PASS, so packet falls thru normal stack and get discarded.
+
+Fixes: https://github.com/accel-ppp/accel-ppp/issues/313
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 6930d048efe7be06cd36e7413914be0bec4a45b5)
+---
+ drivers/ipoe/ipoe.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/ipoe/ipoe.c b/drivers/ipoe/ipoe.c
+index 57768c88..385c4588 100644
+--- a/drivers/ipoe/ipoe.c
++++ b/drivers/ipoe/ipoe.c
+@@ -15,6 +15,7 @@
+ #include <linux/init.h>
+ #include <linux/if_ether.h>
+ #include <linux/if_vlan.h>
++#include <linux/ipv6.h>
+ #include <linux/semaphore.h>
+ #include <linux/netfilter_ipv4.h>
+ #include <linux/u64_stats_sync.h>
+@@ -61,6 +62,14 @@
+ #define RHEL_MAJOR 0
+ #endif
+ 
++/* ipv6.disable=1 leaves the IPv6 FIB uninitialized, so ip6_route_output()
++ * oopses; ipv6_mod_enabled() detects that (and CONFIG_IPV6=n) since 4.8 */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,8,0)
++#define ipoe_ipv6_enabled() ipv6_mod_enabled()
++#else
++#define ipoe_ipv6_enabled() 1
++#endif
++
+ static inline void ipoe_flowi4_set_tos(struct flowi4 *fl4, __u8 dsfield)
+ {
+ #ifdef flowi4_dscp
+@@ -890,6 +899,9 @@ static rx_handler_result_t ipoe_recv(struct sk_buff **pskb)
+ 			return RX_HANDLER_CONSUMED;
+ 		}
+ 	} else if (skb->protocol == htons(ETH_P_IPV6)) {
++		if (!ipoe_ipv6_enabled())
++			return RX_HANDLER_PASS;
++
+ 		if (!pskb_may_pull(skb, sizeof(*ip6h) + noff))
+ 			return RX_HANDLER_PASS;
+ 

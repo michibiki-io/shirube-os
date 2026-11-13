@@ -1,0 +1,1219 @@
+{
+  "base": "3e30d9b74073bfa7af37434874a30d8c3275b598",
+  "through": "9c2c18ec0ae7693a14370c4bb36416c8fc287858",
+  "upstream": "https://github.com/accel-ppp/accel-ppp-ng",
+  "commits": [
+    {
+      "order": 1,
+      "commit": "a8ca0f3fd37353b3c742d704d077d4abbcbb50d1",
+      "subject": "T8439: L2TP - Add validation checks for Hidden AVP lengths",
+      "disposition": "include",
+      "rationale": "L2TP - Add validation checks for Hidden AVP lengths: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "be39fd13b11f10c0391dfc6e7f0b7c9e1caf47913b7a82fb2ec86eaca7db7e93",
+      "paths": [
+        "accel-pppd/ctrl/l2tp/packet.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 2,
+      "commit": "64e351d793aa5f390a31f0d883284be281c12e53",
+      "subject": "Merge pull request #24 from ritika0313/l2tp_crash",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 3,
+      "commit": "629434ffa6483527c3cfcf3fd537d7e8dbda0a40",
+      "subject": "ci: align push triggers with default branch and bump checkout to v4",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 4,
+      "commit": "c08bcb1270018e204259f1f1a05eff03e4660c8b",
+      "subject": "ci: ignore .worktrees/ directory",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 5,
+      "commit": "1405176a65596a7f16d95887a81f3efce905cd83",
+      "subject": "Merge pull request #27 from accel-ppp/ci/ignore-worktrees",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 6,
+      "commit": "d0a074763b5ce693a1baa509104a80260b253aaf",
+      "subject": "Merge pull request #26 from accel-ppp/ci/github-actions-cleanup",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 7,
+      "commit": "16122bb6a39e1b5a8a9ed73409bf4db394fe6e81",
+      "subject": "ci: drop Build-in-Container-Alpine build-only smoke check",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 8,
+      "commit": "fea684bc95515b87456f78095936b3aa0e27c321",
+      "subject": "ci: drop Build-in-Container-Gentoo smoke check",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 9,
+      "commit": "4a5ac5f2689f5637ff19a5d3116038b15328f2b3",
+      "subject": "ci: drop s390x big-endian test workflow",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 10,
+      "commit": "c979999bb973f45167e8a081da3c395fea26af40",
+      "subject": "ci: drop ubuntu:20.04 from Build-in-Container-Debian matrix",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 11,
+      "commit": "feb69b5811be2aa31b755dd59642a20aba4d76fc",
+      "subject": "ci: drop Ubuntu-20.04 from Test-in-Qemu matrix",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 12,
+      "commit": "c91b288c15754b77ca3e551ac17587adc1e1bab7",
+      "subject": "ci: drop Test-in-Alpine job from run-tests.yml",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 13,
+      "commit": "4a2e29264e30c26972e1bc0f7026b9507852f834",
+      "subject": "ci: drop x86_32 Alpine test workflow",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 14,
+      "commit": "90fe25ebf34a4cbe08f38c34361ae5993a2e8731",
+      "subject": "ci: rename debian:trixie matrix entry to debian:13",
+      "disposition": "exclude",
+      "rationale": "Upstream CI/workflow-only change; no shipped source or required dependency."
+    },
+    {
+      "order": 15,
+      "commit": "e28003d4ee679221a407f7d9492a7f5989dbd42c",
+      "subject": "Merge pull request #28 from accel-ppp/ci/drop-alpine-build",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 16,
+      "commit": "186c630273ed5c77deff409447c56b24c672b460",
+      "subject": "T9016: Fix MS-CHAP auth failure by loading legacy provider",
+      "disposition": "exclude",
+      "rationale": "OpenSSL legacy provider enablement changes algorithm availability; independent MS-CHAP compatibility feature, no selected fix requires it.",
+      "sha256": "ba2511002e9d8591db54b817030c9f276d71f93653239c74680bf64fe476b509",
+      "paths": [
+        "accel-pppd/main.c"
+      ]
+    },
+    {
+      "order": 17,
+      "commit": "69c867cca8d847a95277cbc8ccf2a53c140b120a",
+      "subject": "Merge pull request #31 from ritika0313/T9016-AP-ms-chap-legacy-provider-fix",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 18,
+      "commit": "a4c7b2ee5e77b67e84dd06cbac0be598048784ae",
+      "subject": "T8391: Fix permission error for custom MTU on bonding interface",
+      "disposition": "exclude",
+      "rationale": "Global bonding link-up policy change is independent of selected packet/authentication/lifetime fixes.",
+      "sha256": "5d6001168d2bdc9782eb6aaeaa5c83905e5b76d83ee35076d4883c87019e6cd4",
+      "paths": [
+        "accel-pppd/libnetlink/new_link_event.c"
+      ]
+    },
+    {
+      "order": 19,
+      "commit": "9874ea346672fbc6be7dd894425df7054a2b143a",
+      "subject": "Merge pull request #32 from ritika0313/T8391-ap-bonding-interface-permission-err",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 20,
+      "commit": "47126a6606dac44b1f49581a613f0e3cd71e154f",
+      "subject": "T9192: Accel-PPP: Fix RTM_NEWLINK handling and VPP/LCP callback detection",
+      "disposition": "exclude",
+      "rationale": "Independent kernel-netlink callback redesign with null/attribute-width guards and changed VPP UNKNOWN-state policy; no selected fix depends on it. Preserve existing notifier behavior; kernel event handling is outside the selected packet/authentication/lifetime families.",
+      "sha256": "a558faff4d4a32bcfc1c86f3b8ac6de67fe0f9f29c633c393a139faf6ad6c58a",
+      "paths": [
+        "accel-pppd/libnetlink/new_link_event.c"
+      ]
+    },
+    {
+      "order": 21,
+      "commit": "9654bb66fa129fc3c20b24612ea91fb43dd14f38",
+      "subject": "Merge pull request #33 from ritika0313/ap-vpp-bond-interface-cp-binding",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 22,
+      "commit": "bbacd993cf38826d35879eb67cbb8943b1905fca",
+      "subject": "T8598: Accel-PPP IPv6CP: Fix for stack memory leakage via ipv6-peer-interface-id calling-sid config",
+      "disposition": "include",
+      "rationale": "Accel-PPP IPv6CP: Fix for stack memory leakage via ipv6-peer-interface-id calling-sid config: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "3b50379a2612ab2ea2df6f0ef71a97d57f7ce7228e3c441b5797a0401e71b40a",
+      "paths": [
+        "accel-pppd/accel-ppp.conf",
+        "accel-pppd/accel-ppp.conf.5",
+        "accel-pppd/ppp/ipv6cp_opt_intfid.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 23,
+      "commit": "9b39997dc9db0e74424cd5bf5d1a8de4713f2d03",
+      "subject": "Merge pull request #35 from ritika0313/T8598-bp-security-fix",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 24,
+      "commit": "a9e5f8b4e5aa15dc81e0174ecb1f58d2434b9f67",
+      "subject": "T9187: Backport upstream fix # 310",
+      "disposition": "include",
+      "rationale": "Kernel >=6.6 packet handler namespace prerequisite; retains existing module API with version guard.",
+      "sha256": "e056de0663bdabcd714bbfdaee735c4ebe77dd88b1656163ff4665f5b6d3d778",
+      "paths": [
+        "drivers/vlan_mon/vlan_mon.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 25,
+      "commit": "c7b67eb010a99ceefe13d2f74fc672cb91ce0af9",
+      "subject": "Merge pull request #36 from ritika0313/T9187-bp-upstream-310",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 26,
+      "commit": "529843f2055905ed012ec94849cab4bd6de366d8",
+      "subject": "T9238: radius: Vendor attribute parsing over-reads (port from accel-ppp 297)",
+      "disposition": "include",
+      "rationale": "radius: Vendor attribute parsing over-reads (port from accel-ppp 297): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "f0cd1d0ac4410112c3da18c2f54983f246ab3d9cbcdc6d18897079ce37de9342",
+      "paths": [
+        "accel-pppd/radius/packet.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 27,
+      "commit": "e610ab345cb5770d76a3b2397ff9a9158dd877c3",
+      "subject": "T9238: radius: MS-CHAP2-Success unchecked memcpy(40 bytes) (port from accel-ppp 297)",
+      "disposition": "include",
+      "rationale": "radius: MS-CHAP2-Success unchecked memcpy(40 bytes) (port from accel-ppp 297): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "61146485d0c71e8121c8f53da2409464285519457cfe3453b1765ad673279e1a",
+      "paths": [
+        "accel-pppd/radius/auth.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 28,
+      "commit": "fab93be45eed9905a384a469b0598c76cd4694c1",
+      "subject": "T9238: radius: Fix use after free and more (port accel-ppp PR 299)",
+      "disposition": "include",
+      "rationale": "radius: Fix use after free and more (port accel-ppp PR 299): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "ba9691098b2c0841d4c31676744b5d2256204509d0e27cb09f8dd8ec0554609c",
+      "paths": [
+        "accel-pppd/radius/radius_p.h",
+        "accel-pppd/radius/req.c",
+        "accel-pppd/radius/serv.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 29,
+      "commit": "7ad6579efbc6565252a8b82041a985aa0326b380",
+      "subject": "T9238: fix: dict.c: split() could return 0, making dict_load read ptr[-1] (port from accel-ppp 315)",
+      "disposition": "include",
+      "rationale": "fix: dict.c: split() could return 0, making dict_load read ptr[-1] (port from accel-ppp 315): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "6278fb61e8e35f61539f21dd539355e940ed9c8844dc1a8bbadd7e617dfa057d",
+      "paths": [
+        "accel-pppd/radius/dict.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 30,
+      "commit": "c11a2a9dfe814bd25bf3669f16ed115a86580f3c",
+      "subject": "T9238: radius: fix stop accounting timeout flow and request cleanup (port accel-ppp PR 301)",
+      "disposition": "include",
+      "rationale": "radius: fix stop accounting timeout flow and request cleanup (port accel-ppp PR 301): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "75b713b03d100f2be3f1fa172d87e948d385bb8196c82bd87223e42b05791fd4",
+      "paths": [
+        "accel-pppd/radius/acct.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 31,
+      "commit": "43bc7b2d2dede0158f5476904f5cbb3898708444",
+      "subject": "T9238: radius: fix permanent socket leak in Acct-Stop retry path (port from accel-ppp 328)",
+      "disposition": "include",
+      "rationale": "radius: fix permanent socket leak in Acct-Stop retry path (port from accel-ppp 328): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "5a1532dde79862abf9a38750f5ee0ab67a5f16104733d3c07e38e769b23d8dec",
+      "paths": [
+        "accel-pppd/radius/acct.c"
+      ],
+      "after_overlapping_commits": [
+        "c11a2a9dfe814bd25bf3669f16ed115a86580f3c"
+      ]
+    },
+    {
+      "order": 32,
+      "commit": "2d1fe3b216a018de13ae8e8ab13891c04dc4a4e6",
+      "subject": "T9238: radius: fix request slot leak when queued request wakeup fails (port from accel-ppp 328)",
+      "disposition": "include",
+      "rationale": "radius: fix request slot leak when queued request wakeup fails (port from accel-ppp 328): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "788a9bb67b401b81a3f196872ac547f4ff464f0a7c59abc3df2b53f94449772f",
+      "paths": [
+        "accel-pppd/radius/serv.c"
+      ],
+      "after_overlapping_commits": [
+        "fab93be45eed9905a384a469b0598c76cd4694c1"
+      ]
+    },
+    {
+      "order": 33,
+      "commit": "2b0de7e128e78755c5568570aedcaa3d06861f72",
+      "subject": "T9238: sstp: drain PPP write queue before deferring (port from accel-ppp 323)",
+      "disposition": "include",
+      "rationale": "sstp: drain PPP write queue before deferring (port from accel-ppp 323): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "b3aceb020ba5c991fe337da452a91efe896e11eb57057f2e7bfeff13d72ee392",
+      "paths": [
+        "accel-pppd/ctrl/sstp/sstp.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 34,
+      "commit": "4b6cd6d5c2f8458853343a48d038202dc8c11461",
+      "subject": "T9238: strip: Fix invalid parsing (port from accel-ppp 315)",
+      "disposition": "include",
+      "rationale": "strip: Fix invalid parsing (port from accel-ppp 315): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "cf5083c491c35b5bd99b068c96f6ead29f67701f9a27983d806167d5caeb8197",
+      "paths": [
+        "accel-pppd/ctrl/ipoe/ipoe.c",
+        "accel-pppd/ctrl/pppoe/dpado.c",
+        "accel-pppd/utils.c",
+        "accel-pppd/utils.h"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 35,
+      "commit": "33437d0d48274230d8be8e2113efdc98f358a8db",
+      "subject": "T9238: pppoe/disc: fix init_net allocation size (port from accel-ppp 315)",
+      "disposition": "include",
+      "rationale": "pppoe/disc: fix init_net allocation size (port from accel-ppp 315): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "a7551fc05362267b853903104578494c39a0a02cf0102fba524de79b1761bb54",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/disc.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 36,
+      "commit": "e13a8074358d26bed28ad08d2e48066677e61d92",
+      "subject": "T9238: pppoe/disc: fix free_net memmove count and overlap handling (port from accel-ppp 315)",
+      "disposition": "include",
+      "rationale": "pppoe/disc: fix free_net memmove count and overlap handling (port from accel-ppp 315): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "d95c2337d4c67b7680915256383c369bc9786b87c096e7b08acc4bee4ce014a0",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/disc.c"
+      ],
+      "after_overlapping_commits": [
+        "33437d0d48274230d8be8e2113efdc98f358a8db"
+      ]
+    },
+    {
+      "order": 37,
+      "commit": "e042eab62fad37ec39da2e673b9a92fb6af080cc",
+      "subject": "T9238: pppoe/disc: drop packets with unsupported PPPoE type (port from accel-ppp 315)",
+      "disposition": "include",
+      "rationale": "pppoe/disc: drop packets with unsupported PPPoE type (port from accel-ppp 315): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "85505f1487a7949cc71aed74d803153242d71aff9cb138cf4b0f925b7a8c5e2f",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/disc.c"
+      ],
+      "after_overlapping_commits": [
+        "e13a8074358d26bed28ad08d2e48066677e61d92"
+      ]
+    },
+    {
+      "order": 38,
+      "commit": "2b8a23c5852b20b6cad21a4bf582bd5c0115c0b2",
+      "subject": "T9238: radius: Fix invalid check after mempool allocation (port from accel-ppp 297)",
+      "disposition": "include",
+      "rationale": "radius: Fix invalid check after mempool allocation (port from accel-ppp 297): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "83f494f49f554caea3c146f355a04eed89ba0ead25dfedb06b5fce8f33f28b9f",
+      "paths": [
+        "accel-pppd/radius/packet.c"
+      ],
+      "after_overlapping_commits": [
+        "529843f2055905ed012ec94849cab4bd6de366d8"
+      ]
+    },
+    {
+      "order": 39,
+      "commit": "72655d05785b208f7f441bc454b26e192f12faab",
+      "subject": "T9238: radius: Invalid integer and date parsing (port from accel-ppp 297)",
+      "disposition": "include",
+      "rationale": "radius: Invalid integer and date parsing (port from accel-ppp 297): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "0fbe8dc2bafb6f82aa66fd878578a6ba784ad2c6a717f11bc023977e7c258471",
+      "paths": [
+        "accel-pppd/radius/packet.c"
+      ],
+      "after_overlapping_commits": [
+        "2b8a23c5852b20b6cad21a4bf582bd5c0115c0b2"
+      ]
+    },
+    {
+      "order": 40,
+      "commit": "028f19beb368cccafa95b6d86185c729c4b864fc",
+      "subject": "T9238: log_file: don't register general target when log-file is unset (port accel-ppp PR 319)",
+      "disposition": "include",
+      "rationale": "log_file: don't register general target when log-file is unset (port accel-ppp PR 319): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "fedd74b2beef47bc1ea97a5f88187d219cdcfd159df1151f4fd9c834ef756f6c",
+      "paths": [
+        "accel-pppd/logs/log_file.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 41,
+      "commit": "e4460fc666cdbaad4d0e03c2986c0da70255da34",
+      "subject": "T9238: pppoe: fix use-after-free in mac_filter_load() (port accel-ppp PR 327)",
+      "disposition": "include",
+      "rationale": "pppoe: fix use-after-free in mac_filter_load() (port accel-ppp PR 327): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "3fb934c94c6c45ed0288bcb69ef8435efac45e73f6498797a26dc27fcf8c91c2",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/mac_filter.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 42,
+      "commit": "1704ff85022c5424c7f16d0a291a4cfdc6aa35ae",
+      "subject": "T9238: ipoe: Fix OOPS if ipv6.disable=1 (port from accel-ppp PR 326)",
+      "disposition": "include",
+      "rationale": "ipoe: Fix OOPS if ipv6.disable=1 (port from accel-ppp PR 326): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "aa168809994fbd1d01788d45a65cc3984795bbdfe4c32d39847e53c87f220a16",
+      "paths": [
+        "drivers/ipoe/ipoe.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 43,
+      "commit": "d62d8aacb78e5facc68a1cccba5faf112923bfbb",
+      "subject": "T9238: ppp: don't terminate session on IPV6CP TermReq unless IPv6 is required (port from accel-ppp PR 330)",
+      "disposition": "include",
+      "rationale": "ppp: don't terminate session on IPV6CP TermReq unless IPv6 is required (port from accel-ppp PR 330): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "c75338fbb0ad3df6d8c1eda46ca2909ba218234fa7846d3a229f7f601061ae8c",
+      "paths": [
+        "accel-pppd/ppp/ppp_ipv6cp.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 44,
+      "commit": "9c8a8ac402060ede104ebc0004d5de2fa6b7db04",
+      "subject": "T9238: ipoe: fix dhcpv4 relay reply packet leak (port from accel-ppp 331)",
+      "disposition": "include",
+      "rationale": "ipoe: fix dhcpv4 relay reply packet leak (port from accel-ppp 331): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "ec8fc1f48be823bd35d1bcd8bd084fc514c82fc248bf6634eeb87d173fbbbaf7",
+      "paths": [
+        "accel-pppd/ctrl/ipoe/ipoe.c"
+      ],
+      "after_overlapping_commits": [
+        "4b6cd6d5c2f8458853343a48d038202dc8c11461"
+      ]
+    },
+    {
+      "order": 45,
+      "commit": "a51f81577057e57b60cb22ce29302b6300e55981",
+      "subject": "T9238: ipoe: fix username string leak on early session teardown (port from accel-ppp 331)",
+      "disposition": "include",
+      "rationale": "ipoe: fix username string leak on early session teardown (port from accel-ppp 331): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "5f99318ff3bc1c6e4e0f7a0a6ac4af93e78b4a2fee38e7a402cf620be5f5fed6",
+      "paths": [
+        "accel-pppd/ctrl/ipoe/ipoe.c"
+      ],
+      "after_overlapping_commits": [
+        "9c8a8ac402060ede104ebc0004d5de2fa6b7db04"
+      ]
+    },
+    {
+      "order": 46,
+      "commit": "1807c6c712b9589acb7256b706c0791fe64c776e",
+      "subject": "T9238: ipv6: fix NULL deref and OOB read in dnssl/AFTR-Name config parsing (port accel-ppp PR 332)",
+      "disposition": "include",
+      "rationale": "ipv6: fix NULL deref and OOB read in dnssl/AFTR-Name config parsing (port accel-ppp PR 332): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "1000fbeee0d5f00239eb4857311d31ae36980f00c19f6601dc8eea0714c06c39",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6.c",
+        "accel-pppd/ipv6/nd.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 47,
+      "commit": "2fc996b2a15a761e71048a57e14a4d902ed37f0a",
+      "subject": "T9238: ppp: close unit fd only after session cleanup finishes (port accel-ppp PR 334)",
+      "disposition": "include",
+      "rationale": "ppp: close unit fd only after session cleanup finishes (port accel-ppp PR 334): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "2a438886e36175515753a93921937e979f469386db5a626570e8c8efcd2b10c3",
+      "paths": [
+        "accel-pppd/ppp/ppp.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 48,
+      "commit": "44986513aa0acee2153904cb98b983e24a723778",
+      "subject": "T9238: auth: fix challenge-name lifetime on reload (port accel-ppp PR 347)",
+      "disposition": "include",
+      "rationale": "auth: fix challenge-name lifetime on reload (port accel-ppp PR 347): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "51f04ced6190c40ca3f7a64115fea86011872d0093b4cf0140b944cb5209d235",
+      "paths": [
+        "accel-pppd/auth/auth_chap_md5.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 49,
+      "commit": "7a578d6aa83aaa8e8d51b25254107971d80728ee",
+      "subject": "T9238: pptp: fix truncated control messages on partial write (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: fix truncated control messages on partial write (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "b7b53eeb991a2ded63938b9aeb939217e66cad6ab57a8bd1057fcf8a69c7a417",
+      "paths": [
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 50,
+      "commit": "107e0330cfe41073efbc94a85d105beadc560988",
+      "subject": "T9238: pptp: reject control messages shorter than the header (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: reject control messages shorter than the header (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "7ee67413e3bada850f0c15d9053564ae74b012c7e0aa848b6c5b4d240d6718ed",
+      "paths": [
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": [
+        "7a578d6aa83aaa8e8d51b25254107971d80728ee"
+      ]
+    },
+    {
+      "order": 51,
+      "commit": "b9b6f978fdd1830663aa4627684be0984c88ede0",
+      "subject": "T9238: pptp: close call socket when Outgoing-Call-Reply cannot be sent (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: close call socket when Outgoing-Call-Reply cannot be sent (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "6b8697424196d4dc241a5fe4a073f6b058eb9db77822814d71e7c312fb68bdb5",
+      "paths": [
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": [
+        "107e0330cfe41073efbc94a85d105beadc560988"
+      ]
+    },
+    {
+      "order": 52,
+      "commit": "bf53a1420271294f408c4e3347fb41b345ed4a8b",
+      "subject": "T9238: pptp: check getsockname()/getpeername() results (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: check getsockname()/getpeername() results (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "321683bef6b5e0bdcafac800a244df7e7b08891c2b5e79b269127d1916bd5d5c",
+      "paths": [
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": [
+        "b9b6f978fdd1830663aa4627684be0984c88ede0"
+      ]
+    },
+    {
+      "order": 53,
+      "commit": "bd12e22002dfae57c41c055a3d9c7337722b1fce",
+      "subject": "T9238: pptp: fix byte order of peer call id in Call-Disconnect-Notify (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: fix byte order of peer call id in Call-Disconnect-Notify (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "3c5f14bdc4a37cc5692e4865e31ad5a86323da5ef0bb73f885fa43cf182491d7",
+      "paths": [
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": [
+        "bf53a1420271294f408c4e3347fb41b345ed4a8b"
+      ]
+    },
+    {
+      "order": 54,
+      "commit": "162dabbdd295b109ea28c6e25cca133b398d7c76",
+      "subject": "T9238: pptp: make echo-failure=0 disable the check explicitly (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: make echo-failure=0 disable the check explicitly (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "8b0e7eec3fce44463c1a5529519e272786207b74ac516485def031bd76b51914",
+      "paths": [
+        "accel-pppd/accel-ppp.conf.5",
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": [
+        "bbacd993cf38826d35879eb67cbb8943b1905fca",
+        "bd12e22002dfae57c41c055a3d9c7337722b1fce"
+      ]
+    },
+    {
+      "order": 55,
+      "commit": "1026a8e3166e0ef21b2580cb07224ee02ff5424b",
+      "subject": "T9238: pptp: pass a proper value to SO_REUSEADDR (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: pass a proper value to SO_REUSEADDR (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "227bd1a1b85cc8dad3f812e10ca335c83e44887ee39a77b01eaa4749e3319f3b",
+      "paths": [
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": [
+        "162dabbdd295b109ea28c6e25cca133b398d7c76"
+      ]
+    },
+    {
+      "order": 56,
+      "commit": "f03fd8d8fcc1f41037570f5f40e0007a128fd242",
+      "subject": "T9238: pptp: reject a malformed bind address (port from accel-ppp 350)",
+      "disposition": "include",
+      "rationale": "pptp: reject a malformed bind address (port from accel-ppp 350): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "584c49d0de70c5283e540223395cde487c1893e5054973d51a007f0a91ea7a42",
+      "paths": [
+        "accel-pppd/ctrl/pptp/pptp.c"
+      ],
+      "after_overlapping_commits": [
+        "1026a8e3166e0ef21b2580cb07224ee02ff5424b"
+      ]
+    },
+    {
+      "order": 57,
+      "commit": "da83e13e20c4cf7dadba1e55beb14bf6300778b0",
+      "subject": "T9238: log_pgsql: bound username and sessionid in log header (port from accel-ppp 352)",
+      "disposition": "include",
+      "rationale": "log_pgsql: bound username and sessionid in log header (port from accel-ppp 352): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "d9f7f97f68ca9d299c12e97b129107d3b65973baeaab78f47591839da2818e02",
+      "paths": [
+        "accel-pppd/logs/log_pgsql.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 58,
+      "commit": "93163c8cb985b2ad973d9986396d3240a1a420f6",
+      "subject": "T9238: pppoe: check for a truncated tag header in PADI (port from accel-ppp 352)",
+      "disposition": "include",
+      "rationale": "pppoe: check for a truncated tag header in PADI (port from accel-ppp 352): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "92529656205b48118dd86e4821136c04dc320212778f9dd35bbdca9e84615c18",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/pppoe.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 59,
+      "commit": "fb65878b1038a0569d899b884a296686fdef2583",
+      "subject": "T9252: update cmake minimum required version to 3.5",
+      "disposition": "exclude",
+      "rationale": "CMake minimum bump is independent build compatibility; selected fixes use existing build contracts.",
+      "sha256": "6f7141415f269d26f297c2ca99d827fa117990351c9757ba48a07503c7b93888",
+      "paths": [
+        "CMakeLists.txt"
+      ]
+    },
+    {
+      "order": 60,
+      "commit": "ef7323fd6dfe5655a46581733c86f4abcbfee548",
+      "subject": "T8464: DoS fix for missing Service-name tag in PPPoE PADR packet",
+      "disposition": "include",
+      "rationale": "DoS fix for missing Service-name tag in PPPoE PADR packet: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "f4088ae05b171593f8998cb83825bdf1ec9f9b25c0eaaaf5295c418ce072ddf5",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/pppoe.c"
+      ],
+      "after_overlapping_commits": [
+        "93163c8cb985b2ad973d9986396d3240a1a420f6"
+      ]
+    },
+    {
+      "order": 61,
+      "commit": "371e7f0a3e21d3040941330858274e104f1dfdcd",
+      "subject": "T8473: Fix for crash due to multiple Rapid-commit options present in SOLICIT pkt",
+      "disposition": "include",
+      "rationale": "Fix for crash due to multiple Rapid-commit options present in SOLICIT pkt: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "56321999698a2843f83091c92f2d270ac09cb91248e0c74084facf15b41a2f8d",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6.c",
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "1807c6c712b9589acb7256b706c0791fe64c776e"
+      ]
+    },
+    {
+      "order": 62,
+      "commit": "10a3e72d523c7fe910a23febe979a3de9cd55d8f",
+      "subject": "T8474: Fix for crash due to bad AFTR-Name option in SOLICIT msg",
+      "disposition": "include",
+      "rationale": "Fix for crash due to bad AFTR-Name option in SOLICIT msg: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "3cf5e0cb888872ce4b7a4c3e183a7bf61eca81d0b1afa372aad0efd0fb295083",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "371e7f0a3e21d3040941330858274e104f1dfdcd"
+      ]
+    },
+    {
+      "order": 63,
+      "commit": "bd1806e74baff0ef9b6a24a1a73741f8b7ca5125",
+      "subject": "T8475: Fix for crash due to too many Rapid-Forward msg layers in a packet",
+      "disposition": "include",
+      "rationale": "Fix for crash due to too many Rapid-Forward msg layers in a packet: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "542e7d9fd68b112f12c390bf02bfb4e20152a1d6eae6381bbe63536804754e42",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6.h",
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "10a3e72d523c7fe910a23febe979a3de9cd55d8f"
+      ]
+    },
+    {
+      "order": 64,
+      "commit": "248e7caa2cf5c2e1fcaad60abedd7ccfc6365d3b",
+      "subject": "T8526: Accel-PPP: Missing RADIUS Response Authenticator Verification",
+      "disposition": "include",
+      "rationale": "Accel-PPP: Missing RADIUS Response Authenticator Verification: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "e3d765bb9a30f4f57f7a6713f222d437fd7f810c54c4feed97ee8f5153657f74",
+      "paths": [
+        "accel-pppd/radius/auth.c",
+        "accel-pppd/radius/radius_p.h",
+        "accel-pppd/radius/req.c"
+      ],
+      "after_overlapping_commits": [
+        "e610ab345cb5770d76a3b2397ff9a9158dd877c3",
+        "fab93be45eed9905a384a469b0598c76cd4694c1"
+      ]
+    },
+    {
+      "order": 65,
+      "commit": "7ce6244f044f10650adadfcb34e8b6f095a8967b",
+      "subject": "T8543: Accel-PPP: Fix for buffer overflow via Frame-Route attribute in the RADIUS Access-Accept msg",
+      "disposition": "include",
+      "rationale": "Accel-PPP: Fix for buffer overflow via Frame-Route attribute in the RADIUS Access-Accept msg: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "5ebd9d09f3a3c01b1048e4556e0fc7c85aaff26a8f0aea817344f13fb60fb27b",
+      "paths": [
+        "accel-pppd/radius/radius.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 66,
+      "commit": "be2f54dbf8272d6bdd3da1c98c7d9838b95dc27b",
+      "subject": "T8545: Accel-PPP Radius: Fix for unexpected RA failure of Accounting-Response msg",
+      "disposition": "include",
+      "rationale": "Accel-PPP Radius: Fix for unexpected RA failure of Accounting-Response msg: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "c2e39f6bc2950acb53b20ac73f176d16914fbdd4da42861a3c7a604fda92ebba",
+      "paths": [
+        "accel-pppd/radius/acct.c"
+      ],
+      "after_overlapping_commits": [
+        "43bc7b2d2dede0158f5476904f5cbb3898708444"
+      ]
+    },
+    {
+      "order": 67,
+      "commit": "24afb859e0a28a509d930a6cf9bea1d8f5baf732",
+      "subject": "T8549: Accel-PPP DHCPv6: Fix for OOB read in print_status() for Status code option",
+      "disposition": "include",
+      "rationale": "Accel-PPP DHCPv6: Fix for OOB read in print_status() for Status code option: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "1c319e0b8d251ee159032b508b0640dfba4bcbb763dc6722fb2bb5c094f787e5",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "bd1806e74baff0ef9b6a24a1a73741f8b7ca5125"
+      ]
+    },
+    {
+      "order": 68,
+      "commit": "2fa647594e9d2c64e2f75e3e1537a748e5568d73",
+      "subject": "T8550: Accel-PPP SSTP: Zero length packet leading to infinite CPU loop",
+      "disposition": "include",
+      "rationale": "Accel-PPP SSTP: Zero length packet leading to infinite CPU loop: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "574e7c6f269a8768d6f39a0ef03578d9e7f5d2591ded12acf1ad43c2469c5a39",
+      "paths": [
+        "accel-pppd/ctrl/sstp/sstp.c"
+      ],
+      "after_overlapping_commits": [
+        "2b0de7e128e78755c5568570aedcaa3d06861f72"
+      ]
+    },
+    {
+      "order": 69,
+      "commit": "55a804afaaddd671fbb58290977a59c03369ab5e",
+      "subject": "T8611: Accel-PPP RADIUS: Fix for buffer overflow via oversized Accel-VRF-name VSA in Access-Accept msg",
+      "disposition": "include",
+      "rationale": "Accel-PPP RADIUS: Fix for buffer overflow via oversized Accel-VRF-name VSA in Access-Accept msg: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "f76944cc9b3c63e11e290f8f0528bb8affb847aad92e83533984d89b87b708e5",
+      "paths": [
+        "accel-pppd/ifcfg.c",
+        "accel-pppd/net.c",
+        "accel-pppd/radius/radius.c"
+      ],
+      "after_overlapping_commits": [
+        "7ce6244f044f10650adadfcb34e8b6f095a8967b"
+      ]
+    },
+    {
+      "order": 70,
+      "commit": "c93b36755c285ef05400fa7be34f7560f02fe2e3",
+      "subject": "T8825: Accel-PPP PPPoE: Fix buffer overflow caused by oversized Host-Uniq tag",
+      "disposition": "include",
+      "rationale": "Accel-PPP PPPoE: Fix buffer overflow caused by oversized Host-Uniq tag: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "d6429fb15efbe303260b80505455ef5b728cc50731cac00dea6bfbfad678dd2c",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/pppoe.c"
+      ],
+      "after_overlapping_commits": [
+        "ef7323fd6dfe5655a46581733c86f4abcbfee548"
+      ]
+    },
+    {
+      "order": 71,
+      "commit": "1a42ab408da86acde9292120835bd76eb82e8809",
+      "subject": "T8830: Accel-PPP: Fix heap data leak due to large, invalid packet length in LCP/IPCP/IPv6CP/CCP headers",
+      "disposition": "include",
+      "rationale": "Accel-PPP: Fix heap data leak due to large, invalid packet length in LCP/IPCP/IPv6CP/CCP headers: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "b656e14c9f373422d57edcabe86eedf658aad29ca4bf9477e83c669491c81f92",
+      "paths": [
+        "accel-pppd/ppp/ppp_ccp.c",
+        "accel-pppd/ppp/ppp_ipcp.c",
+        "accel-pppd/ppp/ppp_ipv6cp.c",
+        "accel-pppd/ppp/ppp_lcp.c",
+        "accel-pppd/triton/mempool.c"
+      ],
+      "after_overlapping_commits": [
+        "d62d8aacb78e5facc68a1cccba5faf112923bfbb"
+      ]
+    },
+    {
+      "order": 72,
+      "commit": "1957e7d1c131b65768f9fc4b3881e5fdb544f159",
+      "subject": "T8830: Enforce packet-type specific minimum LCP packet lengths",
+      "disposition": "include",
+      "rationale": "Enforce packet-type specific minimum LCP packet lengths: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "f6d277532067119e873eeca595fc8e0bca952c4f7672e066bb902378bd76b9d9",
+      "paths": [
+        "accel-pppd/ppp/ppp_lcp.c"
+      ],
+      "after_overlapping_commits": [
+        "1a42ab408da86acde9292120835bd76eb82e8809"
+      ]
+    },
+    {
+      "order": 73,
+      "commit": "64311652003f719a16cecbb1d5be71af02f57370",
+      "subject": "T8545: Accel-PPP: Part 2 for Accounting workflow - adding code to appropriately update RA for the validation to be done later",
+      "disposition": "include",
+      "rationale": "Accel-PPP: Part 2 for Accounting workflow - adding code to appropriately update RA for the validation to be done later: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "72eaf43f2ad70d4e15bcc818e80f76304a42e26a0bd380b07c06686ac5f9a7b3",
+      "paths": [
+        "accel-pppd/radius/serv.c"
+      ],
+      "after_overlapping_commits": [
+        "2d1fe3b216a018de13ae8e8ab13891c04dc4a4e6"
+      ],
+      "adaptation": "Final acct_on_recv hunk already supplied by fab93be45eed9905a384a469b0598c76cd4694c1 (stronger lifetime fix); retain both req_set_RA hunks. No semantic omission."
+    },
+    {
+      "order": 74,
+      "commit": "01baa010a45b01ff067405646da89411fd2cc02a",
+      "subject": "T8464: Accel-PPP: PADR packet with missing service-name tag bypasses cookie check",
+      "disposition": "include",
+      "rationale": "Accel-PPP: PADR packet with missing service-name tag bypasses cookie check: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "9a03e1a98fa47eeab902650eb86ba30383a6d2e01071c5cbcdee0f1b5e332e1a",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/pppoe.c"
+      ],
+      "after_overlapping_commits": [
+        "c93b36755c285ef05400fa7be34f7560f02fe2e3"
+      ]
+    },
+    {
+      "order": 75,
+      "commit": "8305387d80c7a5009988106702b23c6eeca8f57a",
+      "subject": "T8825: fixup - fix checks in add_tag2()",
+      "disposition": "include",
+      "rationale": "fixup - fix checks in add_tag2(): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "c4d38d51d013687b7cf4d1ccaa5a2a1d9922bc49d733cb67dee076e3a4636d99",
+      "paths": [
+        "accel-pppd/ctrl/pppoe/pppoe.c"
+      ],
+      "after_overlapping_commits": [
+        "01baa010a45b01ff067405646da89411fd2cc02a"
+      ]
+    },
+    {
+      "order": 76,
+      "commit": "f52607d4ae216e7d84d7bdacd8581a136248b3e2",
+      "subject": "T8545: fixup - Free EVP_MD_CTX for error path inside req_set_RA()",
+      "disposition": "include",
+      "rationale": "fixup - Free EVP_MD_CTX for error path inside req_set_RA(): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "818b7518232b2f843d67576517ee0bbf8bd662c7d3792bd69710f6580597feba",
+      "paths": [
+        "accel-pppd/radius/acct.c"
+      ],
+      "after_overlapping_commits": [
+        "be2f54dbf8272d6bdd3da1c98c7d9838b95dc27b"
+      ]
+    },
+    {
+      "order": 77,
+      "commit": "177238b1799456510d56637eaa210d62eedef353",
+      "subject": "T8611: fixup - Reject Access-Accept on vrf_name allocation failure",
+      "disposition": "include",
+      "rationale": "fixup - Reject Access-Accept on vrf_name allocation failure: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "527d1a69307b28649c486dd4b9c1c38a5ce6e14586f05e0ade0400a821e45b67",
+      "paths": [
+        "accel-pppd/ifcfg.c",
+        "accel-pppd/radius/radius.c"
+      ],
+      "after_overlapping_commits": [
+        "55a804afaaddd671fbb58290977a59c03369ab5e"
+      ]
+    },
+    {
+      "order": 78,
+      "commit": "2f18c76d92eef9d09805146847ee690234371963",
+      "subject": "T8550: fixup - cast sizeof(*hdr) to int to avoid warning",
+      "disposition": "include",
+      "rationale": "fixup - cast sizeof(*hdr) to int to avoid warning: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "21ff56e5affdd880d7f77c787fc5f42dd32118bcbe0a4c3db850ee3b4e44a708",
+      "paths": [
+        "accel-pppd/ctrl/sstp/sstp.c"
+      ],
+      "after_overlapping_commits": [
+        "2fa647594e9d2c64e2f75e3e1537a748e5568d73"
+      ]
+    },
+    {
+      "order": 79,
+      "commit": "3843773f15af477c39a326720ac5f3e713b373fb",
+      "subject": "T8474: fixup - fix the indentation white space in log string",
+      "disposition": "include",
+      "rationale": "fixup - fix the indentation white space in log string: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "3ad2957c498fcbbb734dfeb2a835ad3958b5a5630ddbb6c8467b0a0bc6216136",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "24afb859e0a28a509d930a6cf9bea1d8f5baf732"
+      ]
+    },
+    {
+      "order": 80,
+      "commit": "fa36f3cdf6ff9bf7327be04202cef02826edb2ee",
+      "subject": "T9282: RADIUS: Fix handling of invalid packet length in rad_packet_recv()",
+      "disposition": "include",
+      "rationale": "RADIUS: Fix handling of invalid packet length in rad_packet_recv(): affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "72c4ea724dfe30fdcb91e8071b291ef17d1a5293b726d8bb9da48496fd25c148",
+      "paths": [
+        "accel-pppd/radius/packet.c"
+      ],
+      "after_overlapping_commits": [
+        "72655d05785b208f7f441bc454b26e192f12faab"
+      ]
+    },
+    {
+      "order": 81,
+      "commit": "8cb6287d45f1098119552631305c04533966c03f",
+      "subject": "Merge pull request #40 from ritika0313/port-sec-fixes-to-rolling",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 82,
+      "commit": "cb69ccc686ee089e4a1e0de946b32991edb084e0",
+      "subject": "Merge pull request #41 from ritika0313/fix-radius-pkt-rcv-len",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 83,
+      "commit": "306fff82cf0adcfa3e7e221939c83605d2a671b4",
+      "subject": "Merge pull request #37 from ritika0313/port-upstream-security-stability-mem-fixes",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 84,
+      "commit": "d202233948a272e6b7f19633dc907a1bf79fec0d",
+      "subject": "T9325: radius: reject truncated attribute headers",
+      "disposition": "include",
+      "rationale": "radius: reject truncated attribute headers: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "50b26a5d1bae641a50fe5ce979323cc9f61bccc9d61612c22ebb381ae83993ee",
+      "paths": [
+        "accel-pppd/radius/packet.c"
+      ],
+      "after_overlapping_commits": [
+        "fa36f3cdf6ff9bf7327be04202cef02826edb2ee"
+      ]
+    },
+    {
+      "order": 85,
+      "commit": "ef78432ad2561f4d1cb7fe04d85e1cb7223d6575",
+      "subject": "T9325: dhcpv6: validate Status-Code option payload minimum length",
+      "disposition": "include",
+      "rationale": "dhcpv6: validate Status-Code option payload minimum length: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "555e3cb276ae1bd5d0f28c579db93e3b757edb0499232aeb74aef706427d4086",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "3843773f15af477c39a326720ac5f3e713b373fb"
+      ]
+    },
+    {
+      "order": 86,
+      "commit": "cc42de1342ca64c5acbffba72dd8fd3bdbd544ba",
+      "subject": "T9325: dhcpv6: validate inner Relay-Message in RELAY-FORW",
+      "disposition": "include",
+      "rationale": "dhcpv6: validate inner Relay-Message in RELAY-FORW: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "bbf59edd80cf6435c340ac11e968e41e18ef738276eba19159f18b5af106a042",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "ef78432ad2561f4d1cb7fe04d85e1cb7223d6575"
+      ]
+    },
+    {
+      "order": 87,
+      "commit": "8acbd5d760ab84aacd586ff8f5941f1160a87779",
+      "subject": "T9325: dhcpv6: fix reply buffer bounds and relay length encoding",
+      "disposition": "include",
+      "rationale": "dhcpv6: fix reply buffer bounds and relay length encoding: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "8f04bfa47786e3ffb2cdc1eb6ecb3d30d99fd77ed312c8c1028a282a26343458",
+      "paths": [
+        "accel-pppd/ipv6/dhcpv6.c",
+        "accel-pppd/ipv6/dhcpv6_packet.c"
+      ],
+      "after_overlapping_commits": [
+        "371e7f0a3e21d3040941330858274e104f1dfdcd",
+        "cc42de1342ca64c5acbffba72dd8fd3bdbd544ba"
+      ]
+    },
+    {
+      "order": 88,
+      "commit": "1210a0b84b7c22837676571cae42522d6f265873",
+      "subject": "Merge pull request #43 from ritika0313/follow-up-hardening-for-pr-40",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 89,
+      "commit": "dbefbdf150d85204ee3441a96aba78a9514f9f79",
+      "subject": "T9351: radius: support Message-Authenticator in Access-Request packets",
+      "disposition": "include",
+      "rationale": "radius: support Message-Authenticator in Access-Request packets: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "1fcaa8ad15367ba17c401b41bea33b72db837e186edb144376c3cc13e31692a2",
+      "paths": [
+        "accel-pppd/accel-ppp.conf",
+        "accel-pppd/accel-ppp.conf.5",
+        "accel-pppd/radius/packet.c",
+        "accel-pppd/radius/radius.c",
+        "accel-pppd/radius/radius.h",
+        "accel-pppd/radius/radius_p.h",
+        "accel-pppd/radius/req.c"
+      ],
+      "after_overlapping_commits": [
+        "bbacd993cf38826d35879eb67cbb8943b1905fca",
+        "162dabbdd295b109ea28c6e25cca133b398d7c76",
+        "d202233948a272e6b7f19633dc907a1bf79fec0d",
+        "177238b1799456510d56637eaa210d62eedef353",
+        "248e7caa2cf5c2e1fcaad60abedd7ccfc6365d3b"
+      ]
+    },
+    {
+      "order": 90,
+      "commit": "762017fd16267457b25fcfb3c9ed8e7db0305ca0",
+      "subject": "T9351: radius: locate Message-Authenticator attribute in the message before signing",
+      "disposition": "include",
+      "rationale": "radius: locate Message-Authenticator attribute in the message before signing: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "01504294e173543de22039ceca8297c30bba3783843a79f7ccd9c71db2d7aa00",
+      "paths": [
+        "accel-pppd/radius/packet.c",
+        "accel-pppd/radius/req.c"
+      ],
+      "after_overlapping_commits": [
+        "dbefbdf150d85204ee3441a96aba78a9514f9f79"
+      ]
+    },
+    {
+      "order": 91,
+      "commit": "09d7b71578dcd0ef7344fe4ba9b25c336ad98bf5",
+      "subject": "T9351: radius: refresh Access-Request Message-Authenticator secret on failover",
+      "disposition": "include",
+      "rationale": "radius: refresh Access-Request Message-Authenticator secret on failover: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "556d3e586ec4b4af1becb52815053b97217693cc5ede062b866201bbdaed7d15",
+      "paths": [
+        "accel-pppd/radius/req.c"
+      ],
+      "after_overlapping_commits": [
+        "762017fd16267457b25fcfb3c9ed8e7db0305ca0"
+      ]
+    },
+    {
+      "order": 92,
+      "commit": "02c3ceb1e5ea325a26437f2a0d43a8ed7d520d65",
+      "subject": "T9351: radius: support Message-Authenticator in Access responses",
+      "disposition": "include",
+      "rationale": "radius: support Message-Authenticator in Access responses: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "6a19abda0eea6ee932cb22cc880561d9648c5c25ea92354a58651fb44f8a9ddd",
+      "paths": [
+        "accel-pppd/accel-ppp.conf",
+        "accel-pppd/accel-ppp.conf.5",
+        "accel-pppd/radius/auth.c",
+        "accel-pppd/radius/radius.c",
+        "accel-pppd/radius/radius_p.h",
+        "accel-pppd/radius/req.c"
+      ],
+      "after_overlapping_commits": [
+        "dbefbdf150d85204ee3441a96aba78a9514f9f79",
+        "248e7caa2cf5c2e1fcaad60abedd7ccfc6365d3b",
+        "09d7b71578dcd0ef7344fe4ba9b25c336ad98bf5"
+      ]
+    },
+    {
+      "order": 93,
+      "commit": "6322e9bc16a87f3139a2c5bed119163947cdf468",
+      "subject": "T9351: radius: align Response Authenticator validation with new Message-Authenticator verification code",
+      "disposition": "include",
+      "rationale": "radius: align Response Authenticator validation with new Message-Authenticator verification code: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "3ac82b6cc2ec52d765c5cb718b4f2ddb50c21433c2f40cdf3a94dd7e64316406",
+      "paths": [
+        "accel-pppd/radius/auth.c"
+      ],
+      "after_overlapping_commits": [
+        "02c3ceb1e5ea325a26437f2a0d43a8ed7d520d65"
+      ]
+    },
+    {
+      "order": 94,
+      "commit": "25e2e10373b307805511ae2662cd5604b1c96547",
+      "subject": "T9351: tests: radius: cover scenarios for Message-authenticator attribute in access messages",
+      "disposition": "include",
+      "rationale": "tests: radius: cover scenarios for Message-authenticator attribute in access messages: affected paths present in authenticated baseline; retain complete fix and ordered overlap dependencies.",
+      "sha256": "e291c1018f72ca3ce8bcaeb2e0f8d7ea0253b772d9eb209a695c0badf2f4df3e",
+      "paths": [
+        "tests/accel-pppd/pppoe/test_pppoe_radius_message_authenticator.py"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 95,
+      "commit": "dd07b230613e208428ab6b70935071260dd102ca",
+      "subject": "Merge pull request #39 from ritika0313/port-adapted-radius-blast-protection",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 96,
+      "commit": "944d98ec787120938d89238cd91fdc8416a712d6",
+      "subject": "T9499: ppp: do not close the shared fd of a non-dev ppp session early",
+      "disposition": "include",
+      "rationale": "Required correction to 2fc996b: non-device VPP sessions share the channel fd; prevent early close and triton abort.",
+      "sha256": "e29add87d050c61f84bf3c37d98c34578f7356e7aa2109e95794acd7703c753d",
+      "paths": [
+        "accel-pppd/ppp/ppp.c"
+      ],
+      "after_overlapping_commits": [
+        "2fc996b2a15a761e71048a57e14a4d902ed37f0a"
+      ]
+    },
+    {
+      "order": 97,
+      "commit": "2405aef302c62f1e3b1cb4d4b7f4dce528d82594",
+      "subject": "Merge pull request #38 from ritika0313/T9252-update-cmake-version-3.5",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 98,
+      "commit": "fe0fe7da39c312570570f6c3f882621bdebf2640",
+      "subject": "T9506: session: end an idle session with TERM_IDLE_TIMEOUT",
+      "disposition": "exclude",
+      "rationale": "Accounting terminate-cause correction changes reporting only; not required for authenticator verification or memory safety.",
+      "sha256": "f19581476246d30449969188e375e0fa31c1f8f7c88cfb836276bd1846d87cf6",
+      "paths": [
+        "accel-pppd/session.c"
+      ]
+    },
+    {
+      "order": 99,
+      "commit": "0436560b5dea6c48d738888eadb17d4110a4c76e",
+      "subject": "T9502: vpp: remove the policer-input features before the policer",
+      "disposition": "include",
+      "rationale": "Applicable VPP policer lifetime fix: disable feature arcs before deleting reachable policer; retains hook API.",
+      "sha256": "86221d63523a569a765147b906c6d9bc7a3c69ae0b37b6e7d06c351c6097b7ac",
+      "paths": [
+        "accel-pppd/session_hooks/vyos_vpp/vpppolicer.c"
+      ],
+      "after_overlapping_commits": []
+    },
+    {
+      "order": 100,
+      "commit": "7e4ec885b953e775d16294a73995015906136555",
+      "subject": "Merge pull request #45 from ruben-herold/T9506-idle-timeout-terminate-cause",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 101,
+      "commit": "1516b7d94779057701310443f427b4368b53b3ab",
+      "subject": "Merge pull request #44 from ruben-herold/fix-non-dev-ppp-fd-close",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    },
+    {
+      "order": 102,
+      "commit": "9c2c18ec0ae7693a14370c4bb36416c8fc287858",
+      "subject": "Merge pull request #46 from ruben-herold/T9502-vpp-policer-remove-order",
+      "disposition": "exclude",
+      "rationale": "Merge topology only; single-parent changes are assessed separately in this ordered ledger."
+    }
+  ]
+}

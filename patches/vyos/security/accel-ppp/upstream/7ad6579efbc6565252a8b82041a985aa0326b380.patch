@@ -1,0 +1,32 @@
+From 7ad6579efbc6565252a8b82041a985aa0326b380 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Thu, 21 May 2026 17:03:17 +0300
+Subject: [PATCH] T9238: fix: dict.c: split() could return 0, making dict_load
+ read ptr[-1] (port from accel-ppp 315)
+
+If a RADIUS dictionary contains a line consisting of exactly one
+word with no trailing spaces (for example, standard keywords like
+"END-VENDOR\n"  or  "END-TLV\n" ), this bug getting triggered.
+Triggering crash is compiler dependent, it might not happen now,
+but a bit different compiler, flags, and it might crash on load.
+
+Reported-by: Khedor <khedor@gmail.com>
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 22c61e8e2e16ebe8e9576fe46487e3614982e8ac)
+---
+ accel-pppd/radius/dict.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/accel-pppd/radius/dict.c b/accel-pppd/radius/dict.c
+index 145c5da2..c181c7cd 100644
+--- a/accel-pppd/radius/dict.c
++++ b/accel-pppd/radius/dict.c
+@@ -92,7 +92,7 @@ static int dict_load(const char *fname)
+ 			continue;
+ 		r = split(buf, ptr);
+ 
+-		if (*ptr[r - 1] == '#')
++		if (r > 0 && *ptr[r - 1] == '#')
+ 			r--;
+ 
+ 		if (!strcmp(buf, "VENDOR")) {

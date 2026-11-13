@@ -1,0 +1,35 @@
+From c93b36755c285ef05400fa7be34f7560f02fe2e3 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Thu, 7 May 2026 23:00:53 -0700
+Subject: [PATCH] T8825: Accel-PPP PPPoE: Fix buffer overflow caused by
+ oversized Host-Uniq tag
+
+Fix applied to correctly check for OOB write before actually appending tags to a packet
+---
+ accel-pppd/ctrl/pppoe/pppoe.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/accel-pppd/ctrl/pppoe/pppoe.c b/accel-pppd/ctrl/pppoe/pppoe.c
+index 21ecbad1..92e5b371 100644
+--- a/accel-pppd/ctrl/pppoe/pppoe.c
++++ b/accel-pppd/ctrl/pppoe/pppoe.c
+@@ -834,12 +834,16 @@ static int add_tag2(uint8_t *pack, size_t pack_size, const struct pppoe_tag *t)
+ {
+ 	struct pppoe_hdr *hdr = (struct pppoe_hdr *)(pack + ETH_HLEN);
+ 	struct pppoe_tag *tag = (struct pppoe_tag *)(pack + ETH_HLEN + sizeof(*hdr) + ntohs(hdr->length));
+-	if (pack_size <= ETH_HLEN + sizeof(*hdr) + ntohs(hdr->length) + ntohs(t->tag_len) || ntohs(t->tag_len) < 0)
++	int tag_len = ntohs(t->tag_len);
++	if (pack_size <= ETH_HLEN + sizeof(*hdr) + ntohs(hdr->length) + sizeof(struct pppoe_tag) + tag_len
++			|| tag_len < 0) {
++		log_error("pppoe: invalid tag len");
+ 		return -1;
++	}
+ 
+-	memcpy(tag, t, sizeof(*t) + ntohs(t->tag_len));
++	memcpy(tag, t, sizeof(*t) + tag_len);
+ 
+-	hdr->length = htons(ntohs(hdr->length) + sizeof(*tag) + ntohs(t->tag_len));
++	hdr->length = htons(ntohs(hdr->length) + sizeof(*tag) + tag_len);
+ 	return 0;
+ }
+ 

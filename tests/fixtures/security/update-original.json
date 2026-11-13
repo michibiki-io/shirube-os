@@ -1,0 +1,10 @@
+{
+  "source_sha256": "e470a740eca8be41399bc1f1826db18293078569214b499f2cbfd2b523a4b64f",
+  "selection": "Exact update script, real process wrapper and default config from authenticated AMD64 corresponding source.",
+  "files": {
+    "data/config.boot.default": "a344ca067c84cb24eb16605a14245f284fc47bb8005086112cea799723a9e32c",
+    "src/conf_mode/system_update-check.py": "126c97cbe0143b885e18b3090e5e70c4d0fbf4e74cdfa3a747ea365780b05c9b",
+    "src/system/vyos-system-update-check.py": "a847f8a87b29feab7e1174b6f3ff2bbaf6c1627b2f40c9f3bcba49a3df6e75db",
+    "python/vyos/utils/process.py": "4e87b02cc1df82abcbe26270a7d549db94732885fe2d6c832084ec75bb419f35"
+  }
+}

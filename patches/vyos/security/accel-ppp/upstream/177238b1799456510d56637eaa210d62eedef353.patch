@@ -1,0 +1,50 @@
+From 177238b1799456510d56637eaa210d62eedef353 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 4 Sep 2026 19:14:51 -0700
+Subject: [PATCH] T8611: fixup - Reject Access-Accept on vrf_name allocation
+ failure              - Move vrf_ifindex declaration for pre-C99 compatibility
+
+---
+ accel-pppd/ifcfg.c         | 4 ++--
+ accel-pppd/radius/radius.c | 6 ++++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/accel-pppd/ifcfg.c b/accel-pppd/ifcfg.c
+index 18cd464d..8d781c25 100644
+--- a/accel-pppd/ifcfg.c
++++ b/accel-pppd/ifcfg.c
+@@ -360,6 +360,8 @@ int __export ap_session_rename(struct ap_session *ses, const char *ifname, int l
+ #ifdef HAVE_VRF
+ int __export ap_session_vrf(struct ap_session *ses, const char *vrf_name, int len)
+ {
++	int vrf_ifindex = 0;
++
+ 	if (len == -1) {
+ 		if (!vrf_name)
+ 			len = 0;
+@@ -372,8 +374,6 @@ int __export ap_session_vrf(struct ap_session *ses, const char *vrf_name, int le
+ 		return -1;
+ 	}
+ 
+-	int vrf_ifindex = 0;
+-
+ 	if (len) {
+ 		vrf_ifindex = ses->net->get_ifindex(vrf_name);
+ 		if (vrf_ifindex < 0) {
+diff --git a/accel-pppd/radius/radius.c b/accel-pppd/radius/radius.c
+index 065b0785..8aa9764d 100644
+--- a/accel-pppd/radius/radius.c
++++ b/accel-pppd/radius/radius.c
+@@ -366,8 +366,10 @@ int rad_proc_attrs(struct rad_req_t *req)
+ 						if (rpd->ses->vrf_name)
+ 							_free(rpd->ses->vrf_name);
+ 						rpd->ses->vrf_name = _malloc(attr->len + 1);
+-						if (!rpd->ses->vrf_name)
+-							break;
++						if (!rpd->ses->vrf_name) {
++							log_ppp_error("radius: out of memory while setting vrf_name\n");
++							return -1;
++						}
+ 
+ 						memcpy(rpd->ses->vrf_name, attr->val.string, attr->len);
+ 						rpd->ses->vrf_name[attr->len] = 0;

@@ -1,0 +1,35 @@
+From bd12e22002dfae57c41c055a3d9c7337722b1fce Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 9 Aug 2026 07:07:39 +0300
+Subject: [PATCH] T9238: pptp: fix byte order of peer call id in
+ Call-Disconnect-Notify (port from accel-ppp 350)
+
+conn->peer_call_id is assigned msg->call_id straight from the wire, so it
+holds a network order value, but send_pptp_call_disconnect_notify() then
+applies htons() to it. On little-endian hosts the field is swapped twice
+and a peer call id of 0x1234 is sent as 0x3412, so the peer cannot match
+the notify to its call. Big-endian hosts are unaffected, as both swaps
+are no-ops there.
+
+Store the call id in host order, which is what the htons() at the point
+of use expects. Nothing else reads the field.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit d76b2f6c6b8f2c510fae5beb24e261901a221d3c)
+---
+ accel-pppd/ctrl/pptp/pptp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/accel-pppd/ctrl/pptp/pptp.c b/accel-pppd/ctrl/pptp/pptp.c
+index 643ea10a..a0fa56bc 100644
+--- a/accel-pppd/ctrl/pptp/pptp.c
++++ b/accel-pppd/ctrl/pptp/pptp.c
+@@ -356,7 +356,7 @@ static int pptp_out_call_rqst(struct pptp_conn_t *conn)
+ 	}
+ 
+ 	conn->call_id = src_addr.sa_addr.pptp.call_id;
+-	conn->peer_call_id = msg->call_id;
++	conn->peer_call_id = ntohs(msg->call_id);
+ 	conn->ppp.fd = pptp_sock;
+ 	conn->ppp.ses.chan_name = _strdup(inet_ntoa(dst_addr.sa_addr.pptp.sin_addr));
+ 

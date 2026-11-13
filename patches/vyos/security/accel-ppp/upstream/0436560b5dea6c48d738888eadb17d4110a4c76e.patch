@@ -1,0 +1,51 @@
+From 0436560b5dea6c48d738888eadb17d4110a4c76e Mon Sep 17 00:00:00 2001
+From: Ruben Herold <ruben@puettmann.net>
+Date: Thu, 22 Oct 2026 17:37:42 +0200
+Subject: [PATCH] T9502: vpp: remove the policer-input features before the
+ policer
+
+vpppolicer_remove_limiter() unbinds the input policer from the interface
+and deletes it before it takes the policer-input node out of the ip4 and
+ip6 feature arcs. In between, packets of the interface can still reach
+policer_input_node_fn with a policer that is gone, which is a likely
+cause of the SIGBUS that VPP showed when many sessions with a rate limit
+ended at the same time.
+
+Remove the features first, as the reverse of the install order, then
+unbind and delete the policer.
+---
+ accel-pppd/session_hooks/vyos_vpp/vpppolicer.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c b/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c
+index 5c2bd312..9149fafc 100644
+--- a/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c
++++ b/accel-pppd/session_hooks/vyos_vpp/vpppolicer.c
+@@ -245,17 +245,22 @@ int vpppolicer_remove_limiter(struct ap_session *ses)
+ 	}
+ 
+ 	if (vpphook_data->vpppolicer_up) {
++		/*
++		 * Reverse of the install order: take the policer-input node out of
++		 * the feature arcs first, so no packet can reach it while the
++		 * policer it uses is unbound and deleted.
++		 */
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-unicast");
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-unicast");
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-multicast");
++		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-multicast");
++
+ 		vpppolicer_generate_name(policer_input, POLICER_NAME_MAX_LEN - 1, ses, vpphook_data->vpppolicer_up, vpphook_data->vpppolicer_up_burst, 1);
+ 		ret = vpppolicer_set_input(0, vpphook_data->vpp_sw_if_index, policer_input);
+ 		if (ret)
+ 			goto exit;
+ 		vpppolicer_add_del(0, policer_input, vpphook_data->vpppolicer_up, vpphook_data->vpppolicer_up_burst);
+ 
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-unicast");
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-unicast");
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip4-multicast");
+-		vpppoe_set_feature(vpphook_data->vpp_sw_if_index, 0, "policer-input", "ip6-multicast");
+-
+ 		vpphook_data->vpppolicer_up = 0;
+ 		vpphook_data->vpppolicer_up_burst = 0;
+ 	}

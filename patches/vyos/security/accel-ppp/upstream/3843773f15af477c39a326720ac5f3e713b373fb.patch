@@ -1,0 +1,24 @@
+From 3843773f15af477c39a326720ac5f3e713b373fb Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 4 Sep 2026 22:39:55 -0700
+Subject: [PATCH] T8474: fixup - fix the indentation white space in log string
+
+---
+ accel-pppd/ipv6/dhcpv6_packet.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/accel-pppd/ipv6/dhcpv6_packet.c b/accel-pppd/ipv6/dhcpv6_packet.c
+index b9a07ad1..ce835a8c 100644
+--- a/accel-pppd/ipv6/dhcpv6_packet.c
++++ b/accel-pppd/ipv6/dhcpv6_packet.c
+@@ -83,8 +83,8 @@ static int validate_aftr_name(const uint8_t *data, uint16_t len)
+ 
+ 		if (label_len == 0) {
+ 			if (!nonzero_label_present || offset != len) {
+-				log_warn("dhcpv6: invalid AFTR-Name option: missing non-zero label and/or\
+-					 invalid termination\n");
++				log_warn("dhcpv6: invalid AFTR-Name option: missing non-zero label "
++					 "and/or invalid termination\n");
+ 				return 0;
+ 			}
+ 			return 1;

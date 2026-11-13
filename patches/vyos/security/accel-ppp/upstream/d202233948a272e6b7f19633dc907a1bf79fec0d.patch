@@ -1,0 +1,34 @@
+From d202233948a272e6b7f19633dc907a1bf79fec0d Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 11 Sep 2026 12:08:11 -0700
+Subject: [PATCH] T9325: radius: reject truncated attribute headers
+
+The fix rejects the malformed case where exactly one byte remains
+ inside the RADIUS declared attribute region. Previously, the
+loop read both the attribute Type and Length bytes even though
+only the Type byte was available.
+
+Selectively ported from accel-ppp commit
+e0c63e6259bb4a75468e5680fb2d10934c2d035b
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+---
+ accel-pppd/radius/packet.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/accel-pppd/radius/packet.c b/accel-pppd/radius/packet.c
+index ceaf8a92..65213833 100644
+--- a/accel-pppd/radius/packet.c
++++ b/accel-pppd/radius/packet.c
+@@ -177,6 +177,11 @@ int rad_packet_recv(int fd, struct rad_packet_t **p, struct sockaddr_in *addr)
+ 	n = pack->len - 20;
+ 
+ 	while (n>0) {
++		if (n < 2) {
++			log_ppp_warn("radius:packet: truncated attribute header received\n");
++			goto out_err;
++		}
++
+ 		id = *ptr; ptr++;
+ 		len = *ptr - 2; ptr++;
+ 		if (len < 0) {

@@ -1,0 +1,70 @@
+From da83e13e20c4cf7dadba1e55beb14bf6300778b0 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Tue, 11 Aug 2026 21:00:46 +0300
+Subject: [PATCH] T9238: log_pgsql: bound username and sessionid in log header
+ (port from accel-ppp 352)
+
+set_hdr() copied the session username and sessionid into the message
+header chunk with strcpy(). That chunk comes from chunk_pool and holds
+only LOG_CHUNK_SIZE + 1 bytes, while the username is peer supplied and
+may be up to 255 bytes long (PAP), so a long username overflowed the
+chunk and corrupted the heap when log-pgsql was enabled.
+
+Use snprintf() to truncate both fields to the space left in the chunk.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit bb62ae7b29a20f7c2d4e26b9f5ad330f1bcc3d73)
+---
+ accel-pppd/logs/log_pgsql.c | 26 ++++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/accel-pppd/logs/log_pgsql.c b/accel-pppd/logs/log_pgsql.c
+index e4b5a9e9..99be5e64 100644
+--- a/accel-pppd/logs/log_pgsql.c
++++ b/accel-pppd/logs/log_pgsql.c
+@@ -12,6 +12,8 @@
+ 
+ #include "memdebug.h"
+ 
++#define min(x,y) ((x)<(y)?(x):(y))
++
+ static char *conf_conninfo;
+ static int conf_queue_max = 1000;
+ static char *conf_query;
+@@ -57,20 +59,28 @@ static void unpack_msg(struct log_msg_t *msg)
+ 
+ static void set_hdr(struct log_msg_t *msg, struct ap_session *ses)
+ {
++	const char *username = ses && ses->username ? ses->username : "";
++	const char *sessionid = ses && ses->username ? ses->sessionid : "";
+ 	struct tm tm;
++	int pos, len, avail;
+ 
+ 	localtime_r(&msg->timestamp.tv_sec, &tm);
+ 
+ 	strftime(msg->hdr->msg, LOG_CHUNK_SIZE, "%Y-%m-%d %H:%M:%S", &tm);
+-	msg->hdr->len = strlen(msg->hdr->msg) + 1;
+-	if (ses && ses->username) {
+-		strcpy(msg->hdr->msg + msg->hdr->len, ses->username);
+-		msg->hdr->len += strlen(ses->username) + 1;
+-		strcpy(msg->hdr->msg + msg->hdr->len, ses->sessionid);
+-		msg->hdr->len += strlen(ses->sessionid) + 1;
+-	} else
+-		memset(msg->hdr->msg + msg->hdr->len, 0, 2);
++	pos = strlen(msg->hdr->msg) + 1;
++
++	/* username is peer supplied and may be up to 255 bytes long,
++	 * truncate it to what is left of the chunk, keeping one byte
++	 * for the terminator of the sessionid */
++	avail = LOG_CHUNK_SIZE - pos - 1;
++	len = snprintf(msg->hdr->msg + pos, avail, "%s", username);
++	pos += min(len, avail - 1) + 1;
++
++	avail = LOG_CHUNK_SIZE - pos;
++	len = snprintf(msg->hdr->msg + pos, avail, "%s", sessionid);
++	pos += min(len, avail - 1) + 1;
+ 
++	msg->hdr->len = pos;
+ }
+ 
+ static void write_next_msg(void)

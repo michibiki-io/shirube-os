@@ -1,0 +1,35 @@
+From 9c8a8ac402060ede104ebc0004d5de2fa6b7db04 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Tue, 7 Jul 2026 01:12:45 +0300
+Subject: [PATCH] T9238: ipoe: fix dhcpv4 relay reply packet leak (port from
+ accel-ppp 331)
+
+dhcpv4_relay_read() takes a reference on the reply packet for every
+registered listener context and hands it over via triton_context_call().
+The receiving ipoe_ses_recv_dhcpv4_relay() consumes that reference by
+storing the packet in ses->dhcpv4_relay_reply, but the early-return
+branch taken when the original request is already gone dropped the
+reference without freeing the packet.
+
+This leaks one packet every time a relay reply races with the request
+being released, which happens regularly on busy relay-mode deployments.
+
+Reported-by: Louis Scalbert (#101)
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 7a7ab323158a63f222698f85179090e3b6030b96)
+---
+ accel-pppd/ctrl/ipoe/ipoe.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/accel-pppd/ctrl/ipoe/ipoe.c b/accel-pppd/ctrl/ipoe/ipoe.c
+index c7f61b08..0d52b577 100644
+--- a/accel-pppd/ctrl/ipoe/ipoe.c
++++ b/accel-pppd/ctrl/ipoe/ipoe.c
+@@ -2001,6 +2001,7 @@ static void ipoe_ses_recv_dhcpv4_relay(struct dhcpv4_packet *pack)
+ 
+ 	if (!ses->dhcpv4_request) {
+ 		ses->dhcpv4_relay_reply = NULL;
++		dhcpv4_packet_free(pack);
+ 		return;
+ 	}
+ 

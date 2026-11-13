@@ -1,0 +1,30 @@
+From 93163c8cb985b2ad973d9986396d3240a1a420f6 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Tue, 11 Aug 2026 21:29:49 +0300
+Subject: [PATCH] T9238: pppoe: check for a truncated tag header in PADI (port
+ from accel-ppp 352)
+
+The PADI tag loop read tag_len before checking that the tag header itself
+fits into the declared payload length, so a PADI ending with a partial tag
+made it read up to 2 bytes past the receive buffer. print_packet() and the
+PADR loop already have this check, add the missing one.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 86e71f2aa48d62e1c63253f0986d5f643410a263)
+---
+ accel-pppd/ctrl/pppoe/pppoe.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/accel-pppd/ctrl/pppoe/pppoe.c b/accel-pppd/ctrl/pppoe/pppoe.c
+index 4242761d..ca82ee69 100644
+--- a/accel-pppd/ctrl/pppoe/pppoe.c
++++ b/accel-pppd/ctrl/pppoe/pppoe.c
+@@ -1088,6 +1088,8 @@ static void pppoe_recv_PADI(struct pppoe_serv_t *serv, uint8_t *pack, int size)
+ 	len = ntohs(hdr->length);
+ 	for (n = 0; n < len; n += sizeof(*tag) + ntohs(tag->tag_len)) {
+ 		tag = (struct pppoe_tag *)(pack + ETH_HLEN + sizeof(*hdr) + n);
++		if (n + sizeof(*tag) > len)
++			return;
+ 		if (n + sizeof(*tag) + ntohs(tag->tag_len) > len)
+ 			return;
+ 		switch (ntohs(tag->tag_type)) {
