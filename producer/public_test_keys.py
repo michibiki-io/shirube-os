@@ -93,7 +93,7 @@ def cached_fixture_keys(root, member, package):
     the ordinary streaming scan of the complete cache file.
     """
     from .sanitize import path_in_root
-    from .release import SECRET
+    from .security_contract import SECRET
     member=PurePosixPath(member)
     match=re.fullmatch(r'(.+)\.cpython-311\.pyc',member.name)
     if member.parent.name!='__pycache__' or not match:return set()

@@ -9,70 +9,14 @@ from pathlib import Path
 
 from .library_cache import compiler_fingerprint, toolchain_identity
 from .native_stages import COMPILE_STAGES, select_jobs
+from .component_graph import graph, input_path, regular
 from .sources import sha256
 from .stage_artifacts import digest
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 CACHEABLE = ('native', 'vpp', 'kea', 'salt', 'runtime')
-COMMON_PRODUCER = (
-    '__init__', 'component_inputs', 'staged', 'native_stages', 'native_common', 'stage_artifacts',
-    'stage_metrics', 'library_cache', 'architecture', 'sources', 'resources',
-    'policy', 'collect', 'packages', 'signing', 'release', 'source_fixtures',
-    'public_test_keys', 'sanitize', 'branding', 'bash_source',
-    'network_diagnostics', 'package_notices', 'ocaml_sources', 'bundles', 'apt_archive',
-)
-COMMON_FILES = (
-    'containers/native/Dockerfile', 'containers/native/build.py',
-    'containers/native/apt-get',
-    'containers/native/apt-retries.conf', 'LICENSE', 'shirube-os-logo.svg',
-    'patches/vyos/force_mtu_host.sh',
-) + tuple('producer/' + name + '.py' for name in COMMON_PRODUCER)
-FILES = {
-    'native': ('containers/native/package.sh', 'containers/native/http_api.py',
-               'containers/native/reconstruct_http_rust.py',
-               'containers/native/library-prepare/frr.sh',
-               'containers/native/http-api.lock.json', 'containers/native/http-rust.lock.json',
-               'producer/recipes.py', 'producer/cargo_sources.py',
-               'producer/http_rust_sources.py', 'producer/debian_sources.py', 'producer/salt_cargo.py'),
-    'vpp': ('containers/native/extras.py.in', 'producer/vpp_inputs.py',
-            'containers/native/vpp-python.lock.json', 'containers/native/vpp-external.lock.json'),
-    'kea': ('containers/native/extras.py.in',),
-    'salt': ('containers/native/extras.py.in', 'producer/salt_sources.py',
-             'producer/salt_cargo.py', 'producer/salt_python.py', 'containers/native/salt-sources.lock.json'),
-    'runtime': ('containers/native/extras.py.in', 'containers/native/fpm_package.py',
-                'producer/go_modules.py', 'producer/go_notices.py'),
-    'kernel': ('containers/native/package.sh', 'containers/native/extras.py.in',
-               'containers/native/sign-modules.py.in', 'containers/native/fpm_package.py',
-               'producer/recipes.py', 'producer/go_modules.py', 'producer/go_notices.py',
-               'producer/embedded_notices.py', 'producer/sflow.py'),
-}
-EXTERNAL = {'native': (), 'vpp': ('vpp', 'vpp-patches'), 'kea': ('kea-packaging',),
-            'salt': ('salt-tools',), 'runtime': ('vyos-utils', 'i2util'),
-            'kernel': ('nat-rtsp', 'ipt-netflow')}
-LOCK_VALUES = {'native': ('http_api',), 'vpp': (), 'kea': ('kea_build_tool',), 'salt': (),
-               'runtime': ('go', 'go_dependency_overrides.telegraf', 'go_notice_overrides'),
-               'kernel': ('embedded_legal_notices.openvpn-dco', 'embedded_legal_notices.nat-rtsp',
-                          'embedded_legal_notices.vyos-ipt-netflow')}
-
-
-def input_path(project, name):
-    """Resolve only the Dockerfile's explicit aliases; never hash absolute names."""
-    project = Path(project)
-    if (project / 'containers/native').is_dir():
-        return project / name
-    if name.startswith('containers/native/'):
-        return project / 'native' / name.removeprefix('containers/native/')
-    if name.startswith('patches/vyos/'):
-        return project / 'vyos-patches' / name.removeprefix('patches/vyos/')
-    if name.startswith('patches/kernel/'):
-        return project.parent / 'kernel-patches' / name.removeprefix('patches/kernel/')
-    return project / name
-
-
 def required_file(project, name):
-    path = input_path(project, name)
-    if path.is_symlink() or not path.is_file():
-        raise ValueError('Missing/nonregular declared component input: ' + name)
+    path = regular(project, name)
     return {'sha256': sha256(path), 'executable': bool(path.stat().st_mode & 0o111)}
 
 
@@ -89,49 +33,35 @@ def manifest(project, stage, architecture):
     if stage not in COMPILE_STAGES or architecture not in {'amd64', 'arm64'}:
         raise ValueError('Unknown component or architecture')
     project = Path(project)
-    lock = json.loads((project / 'source-lock.json').read_text())
-    names = (*COMMON_FILES, *FILES[stage])
+    declaration, nodes = graph(project, stage)
+    lock = json.loads(regular(project, 'source-lock.json').read_text())
+    structured = {'source-lock.json', 'containers/native/packages.json',
+                  'containers/native/external-sources.lock.json'}
+    names = sorted((set(nodes) - structured) | {
+        'containers/native/inputs-common.json', 'containers/native/inputs-'+stage+'.json'})
     files = {name: required_file(project, name) for name in names}
-    # Kernel patches are applied in sorted filename order. Preserve paths/order,
-    # including additions/deletions; a missing declared tree is an error.
     patches = []
-    if stage == 'kernel':
-        root = input_path(project, 'patches/kernel/')
-        if root.is_symlink() or not root.is_dir():
-            raise ValueError('Missing declared kernel patch tree')
+    for prefix in declaration['trees']:
+        root = regular(project, prefix, directory=True)
         for path in sorted(root.rglob('*')):
-            if path.is_symlink() or not (path.is_file() or path.is_dir()):
-                raise ValueError('Nonregular kernel patch input')
-            if path.is_file():
-                name = 'patches/kernel/' + str(path.relative_to(root))
+            name = prefix+'/'+str(path.relative_to(root))
+            if path.is_dir():
+                regular(project, name, directory=True)
+            else:
                 patches.append({'path': name, **required_file(project, name)})
-    if stage in {'native', 'kernel'}:
-        recipe = 'containers/native/security_sources.py'
-        files[recipe] = required_file(project, recipe)
-        for component in (('frr', 'update-check') if stage == 'native' else ('accel-ppp',)):
-            prefix = 'patches/vyos/security/' + component + '/'
-            root = input_path(project, prefix)
-            if root.is_symlink() or not root.is_dir():
-                raise ValueError('Missing security patch tree')
-            for path in sorted(root.rglob('*')):
-                if path.is_symlink() or not (path.is_file() or path.is_dir()):
-                    raise ValueError('Nonregular security patch input')
-                if path.is_file():
-                    name = prefix + str(path.relative_to(root))
-                    patches.append({'path': name, **required_file(project, name)})
-    external = json.loads(input_path(project, 'containers/native/external-sources.lock.json').read_text())
-    catalog = json.loads(input_path(project, 'containers/native/packages.json').read_text())
+    external = json.loads(regular(project, 'containers/native/external-sources.lock.json').read_text())
+    catalog = json.loads(regular(project, 'containers/native/packages.json').read_text())
     jobs = select_jobs(catalog['jobs'], stage)
     if stage in {'native', 'kernel'} and not jobs:
         raise ValueError('Missing selected component jobs')
     selected = {job['name'] for job in jobs}
     if len(selected) != len(jobs) or any(dep not in selected for job in jobs for dep in job.get('requires', [])):
         raise ValueError('Incomplete component job graph')
-    keys = ('stream', 'container_bases.' + architecture, 'debian_snapshot', 'debian_security_snapshot', *LOCK_VALUES[stage])
+    keys = ('stream', 'container_bases.' + architecture, 'debian_snapshot', 'debian_security_snapshot', *declaration['lock_values'])
     return {'schema_version': SCHEMA_VERSION, 'stage': stage, 'architecture': architecture,
-            'toolchain': toolchain_identity(project, architecture),
+            'toolchain': toolchain_identity(project, architecture), 'graph': nodes,
             'source_values': {key: selected_value(lock, key) for key in keys},
-            'external': {key: selected_value(external, key) for key in EXTERNAL[stage]},
+            'external': {key: selected_value(external, key) for key in declaration['external']},
             'catalog': {**{key: selected_value(catalog, key) for key in ('schema_version', 'stream_version', 'source_sha256')},
                         'jobs': jobs}, 'files': files, 'patches': patches}
 
@@ -154,7 +84,7 @@ def main():
         print('key=shirube-staged-compiler-v2-' + args.architecture + '-' + toolchain_identity(args.project, args.architecture).removeprefix('sha256:'))
     else:
         if not args.stage: parser.error('--stage required for stage-key')
-        from .staged import build_scope
+        from .compile_scope import build_scope
         print('key=' + outer_key(build_scope(args.project, args.stage, args.architecture, compiler_fingerprint(), {})))
 
 

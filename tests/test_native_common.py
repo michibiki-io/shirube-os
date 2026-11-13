@@ -31,10 +31,11 @@ class NativeCommonTests(unittest.TestCase):
                     return copy2(lock if source == '/src/native/external-sources.lock.json' else source, destination)
 
                 with patch.object(native_common, 'Path', side_effect=mapped), \
+                     patch('producer.component_graph.declaration', return_value={'templates': ['extras.py.in', 'sign-modules.py.in']}), \
                      patch.object(native_common.subprocess, 'check_output',
                                   return_value=multiarch+'\n') as command, \
                      patch.object(native_common.shutil, 'copy2', side_effect=copy_lock) as copy:
-                    self.assertEqual(native_common.generate(architecture), output)
+                    self.assertEqual(native_common.generate(architecture, stage='kernel'), output)
                 command.assert_called_once_with(['dpkg-architecture', '-qDEB_HOST_MULTIARCH'], text=True)
                 copy.assert_called_once_with('/src/native/external-sources.lock.json',
                                              output / 'external-sources.lock.json')

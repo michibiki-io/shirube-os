@@ -147,7 +147,7 @@ class RenderedExtrasTests(unittest.TestCase):
             with self.subTest(architecture=architecture), \
                  patch.object(sys, 'path', list(sys.path)):
                 extras = types.ModuleType('rendered_extras')
-                template = Path('containers/native/extras.py.in').read_text().replace('@ARCH@', architecture)
+                template = (Path('containers/native/extra_common.py.in').read_text()+'\n'+Path('containers/native/extra_runtime.py.in').read_text().replace('from extra_common import *', '')).replace('@ARCH@', architecture)
                 exec(compile(template, 'extras-'+architecture+'.py', 'exec'), extras.__dict__)
                 from producer.resources import environment
                 base = {'PATH': '/bin', 'GOMODCACHE': '/same/modules', 'GOCACHE': '/same/build',
@@ -185,7 +185,7 @@ class RenderedExtrasTests(unittest.TestCase):
                                         'go_dependency_overrides': {'telegraf': {module: record}}}))
             extras = types.ModuleType('rendered_extras')
             stack.enter_context(patch.object(sys, 'path', list(sys.path)))
-            template = Path('containers/native/extras.py.in').read_text().replace('@ARCH@', architecture)
+            template = (Path('containers/native/extra_common.py.in').read_text()+'\n'+Path('containers/native/extra_runtime.py.in').read_text().replace('from extra_common import *', '')).replace('@ARCH@', architecture)
             exec(compile(template, 'extras-'+architecture+'.py', 'exec'), extras.__dict__)
             events = []
             attempts = {}

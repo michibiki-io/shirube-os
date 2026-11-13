@@ -60,7 +60,7 @@ def main():
             source=args.sources/job['source']
             if job.get('recipe') == 'frr':
                 sys.path.insert(0, str(native))
-                from security_sources import prepare_frr
+                from security_native import prepare_frr
                 prepare_frr(project, source)
             expected,_=identity(project,job,source,dependencies,args.architecture,fingerprint)
             key=expected['input_id'];image='shirube-library-cache:'+args.architecture+'-'+key

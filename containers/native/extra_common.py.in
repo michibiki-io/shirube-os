@@ -1,0 +1,94 @@
+# Copyright (c) 2026 michibiki.io; MIT. Modified 2026-11-08 for Shirube OS native architectures.
+#!/usr/bin/env python3
+"""Build missing ISO dependencies inside Docker, retaining provenance receipts."""
+import argparse
+import hashlib
+import json
+import os
+import re
+import shlex
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+import sys
+sys.path.insert(0,'/src')
+
+ROOT = Path('/opt/stream')
+OUT = Path('/debs')
+WORK = Path('/extra')
+
+
+def shell_environment():
+    from producer.resources import environment
+    env=environment();env.update(DEBIAN_FRONTEND='noninteractive',PATH='/opt/go/bin:'+os.environ['PATH'])
+    return env
+
+def shell(script, cwd=None):
+    from producer.resources import profile
+    budget=profile();jobs=str(budget['compile_jobs'])
+    script=script.replace('make -j2','make -j'+jobs)
+    env=shell_environment()
+    subprocess.run(['bash','-euo','pipefail','-c',script],cwd=cwd,check=True,env=env)
+
+def snapshot(path, target):
+    shutil.copytree(Path('/sources') / path, target, symlinks=True)
+    return target
+
+def git(name, target):
+    lock = json.loads((ROOT / 'external-sources.lock.json').read_text())[name]
+    target.mkdir()
+    shell('git init -q; git remote add origin '+lock['url']+'; git fetch --depth=80 origin '+lock['commit']+'; git checkout --detach FETCH_HEAD', target)
+    actual = subprocess.check_output(['git','rev-parse','HEAD'],cwd=target,text=True).strip()
+    if actual != lock['commit']:
+        raise ValueError('External Git source mismatch')
+    if lock.get('tag'):
+        shell('git fetch --depth=1 origin tag '+lock['tag'], target)
+    return target
+
+def copy_debs(root, pattern='**/*.deb'):
+    packages = list(root.glob(pattern))
+    found = 0
+    for path in packages:
+        if not path.is_file():
+            continue
+        if '-build-deps_' in path.name:
+            continue
+        architecture = subprocess.check_output(['dpkg-deb','-f',str(path),'Architecture'],text=True).strip()
+        if architecture not in ['@ARCH@','all']:
+            raise ValueError('Unexpected architecture: '+str(path))
+        target = OUT / path.name
+        if target.exists() and target.read_bytes() != path.read_bytes():
+            raise ValueError('Conflicting package: '+path.name)
+        shutil.copy2(path,target)
+        found += 1
+    if not found:
+        raise ValueError('No packages produced in '+str(root))
+
+def debian(source, unprivileged=False):
+    prepare="eval $(opam env --root=/opt/opam --set-root); dpkg-source --before-build .; mk-build-deps --install --remove --tool 'apt-get -y --no-install-recommends' debian/control; "
+    if unprivileged:
+        # Standard non-root dpkg-buildpackage/fakeroot preserves root package
+        # ownership while allowing upstream daemons to enforce their root guard.
+        shell(prepare+'true',source)
+        subprocess.run(['chown','nobody:nogroup',str(source.parent)],check=True)
+        subprocess.run(['chown','-R','nobody:nogroup',str(source)],check=True)
+        shell('runuser -u nobody -- dpkg-buildpackage -b -us -uc',source)
+    else:
+        shell(prepare+'dpkg-buildpackage -b -us -uc',source)
+
+def install_dependencies():
+    shell('apt-get update; apt-get install -y --no-install-recommends cmake libssl-dev liblua5.3-dev libpcre3-dev libnl-genl-3-dev libsnmp-dev libxtables-dev libcap-dev libunwind-dev llvm kmod dh-python python3-stdeb python3-dev')
+
+
+def execute(jobs):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('job', choices=tuple(jobs))
+    args = parser.parse_args()
+    WORK.mkdir(exist_ok=True)
+    OUT.mkdir(exist_ok=True)
+    work = WORK / args.job
+    work.mkdir()
+    jobs[args.job](work)
+    hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.deb'))}
+    (OUT / (args.job+'.json')).write_text(json.dumps({'status': 'PASS', 'artifacts': hashes}, indent=2)+'\n')

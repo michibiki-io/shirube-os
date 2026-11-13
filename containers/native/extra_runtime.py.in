@@ -1,0 +1,117 @@
+# Copyright (c) 2026 michibiki.io; MIT. Modified 2026-11-08 for Shirube OS native architectures.
+#!/usr/bin/env python3
+"""Build missing ISO dependencies inside Docker, retaining provenance receipts."""
+import argparse
+import hashlib
+import json
+import os
+import re
+import shlex
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+import sys
+sys.path.insert(0,'/src')
+
+ROOT = Path('/opt/stream')
+OUT = Path('/debs')
+WORK = Path('/extra')
+
+
+from extra_common import *
+
+def base(work):
+    # The snapshot predates the vendor's package rename; preserve the real PAM
+    # implementation and change only its Debian identity to the required name.
+    pam=snapshot('libpam-radius-auth_1.5.0-cl3u7/libpam-radius-auth',work/'pam')
+    for path in (pam/'debian').iterdir():
+        if path.is_file():
+            try: text=path.read_text()
+            except UnicodeError: continue
+            path.write_text(text.replace('libpam-radius-auth','vyos-libpam-radius-auth'))
+        if path.name.startswith('libpam-radius-auth.'):
+            path.rename(path.with_name(path.name.replace('libpam-radius-auth.','vyos-libpam-radius-auth.',1)))
+    debian(pam)
+    # Preserve the already verified unchanged helper packages; only the PAM
+    # namespace changes in this rebuild.
+    for package in work.glob('radius-shell*.deb'): package.unlink()
+    utils=git('vyos-utils',work/'utils'); debian(utils)
+    humps=snapshot('humps_v3.8.0/humps',work/'humps')
+    shell('apt-get install -y --no-install-recommends python3-pytest; python3 setup.py --command-packages=stdeb.command bdist_deb',humps)
+    ddclient=snapshot('ddclient_debian_3.11.2-1/ddclient',work/'ddclient'); debian(ddclient)
+    i2util=git('i2util',work/'i2util'); debian(i2util)
+    development=list(work.glob('libi2util-dev_*_@ARCH@.deb'))
+    if len(development)!=1:raise ValueError('Exactly one source-built I2util development package required')
+    # OWAMP's loose >=1.4 dependency otherwise selects Debian's older 1.6
+    # library, rather than the exact public source recipe just built above.
+    shell('apt-get install -y --no-install-recommends '+str(development[0]))
+    owamp=snapshot('owamp_v4.4.6/owamp',work/'owamp'); debian(owamp,unprivileged=True)
+    otp=snapshot('openvpn-otp_9781ff1/openvpn-otp',work/'otp')
+    shell('apt-get install -y --no-install-recommends openvpn; ./autogen.sh; ./configure --prefix=/usr; make -j2; mkdir -p package/usr/lib/openvpn; cp src/.libs/openvpn-otp.so package/usr/lib/openvpn/; python3 /src/native/fpm_package.py -s dir -t deb -n openvpn-otp -v 9781ff1 --depends openvpn --architecture @ARCH@ -C package --package ..',otp)
+    relay=snapshot('udp-broadcast-relay_9a0f13b4b5938bfe0af0d0d4e99dfc127c068e28/udp-broadcast-relay',work/'relay')
+    for patch in sorted(Path('/sources/vyos-build/vyos-build/scripts/package-build/udp-broadcast-relay/patches').glob('**/*.patch')):
+        shell('patch --fuzz=0 -p1 < '+str(patch),relay)
+    debian(relay)
+    copy_debs(work)
+
+
+def go_packages(work):
+    from producer.go_modules import prepare_dependencies
+    jobs=[('node_exporter_v1.9.1/node_exporter','node_exporter','node-exporter','1.9.1'),
+          ('frr_exporter_v1.5.0/frr_exporter','frr_exporter','frr-exporter','1.5.0'),
+          ('blackbox_exporter_v0.26.0/blackbox_exporter','blackbox_exporter','blackbox-exporter','0.26.0')]
+    for path,binary,name,version in jobs:
+        source=snapshot(path,work/name)
+        # The optional btrfs collector links ioctl v1.0.0, whose exact source
+        # ZIP has no permission notice. Use upstream's supported exclusion on
+        # both architectures; do not waive the unresolved dependency license.
+        tags='-tags nobtrfs' if name=='node-exporter' else ''
+        prepare_dependencies(['/opt/go/bin/go','list','-deps',*shlex.split(tags),'.'],
+                             cwd=source,env=shell_environment())
+        shell(f'go build {tags} -ldflags "-X github.com/prometheus/common/version.Version={version}" -o {binary}',source)
+        actual=subprocess.check_output([str(source/binary),'--version'],stderr=subprocess.STDOUT,text=True)
+        if not re.search(r'(?<![0-9])'+re.escape(version)+r'(?![0-9])',actual):
+            raise ValueError('Source-built exporter version mismatch')
+        if name=='node-exporter':
+            info=subprocess.check_output(['/opt/go/bin/go','version','-m',str(source/binary)],text=True)
+            if '\tdep\tgithub.com/dennwc/ioctl\t' in info:
+                raise ValueError('Unresolved optional ioctl dependency remains linked')
+        (source/'SHIRUBE-BUILD.json').write_text(json.dumps({'version':version,'build_tags':['nobtrfs'] if tags else [],
+            'compiler_version':json.loads(Path('/src/source-lock.json').read_text())['go']['version']},indent=2)+'\n')
+        shell(f'mkdir -p package/usr/sbin; cp {binary} package/usr/sbin/; python3 /src/native/fpm_package.py -s dir -t deb -n {name} -v {version} --architecture @ARCH@ -C package --package ..',source)
+    source=snapshot('telegraf_v1.28.3/telegraf',work/'telegraf')
+    from producer.go_modules import module_hash,escape
+    from producer.sources import sha256
+    lock=json.loads(Path('/src/source-lock.json').read_text())
+    for module,record in lock['go_dependency_overrides']['telegraf'].items():
+        version=record['version']
+        subprocess.run(['/opt/go/bin/go','mod','edit','-require='+module+'@'+version],cwd=source,check=True)
+        result=json.loads(prepare_dependencies(['/opt/go/bin/go','mod','download','-json',module+'@'+version],cwd=source))
+        archive=Path(result['Zip'])
+        if sha256(archive)!=record['sha256'] or module_hash(archive,module,version)!=record['h1']:
+            raise ValueError('Fixed licensed Go dependency source differs')
+    prepare_dependencies(['/opt/go/bin/go','list','-deps','./cmd/telegraf'],
+                         cwd=source,env=shell_environment())
+    shell('go build -ldflags "-X github.com/influxdata/telegraf/internal.Version=1.28.3" -o telegraf ./cmd/telegraf',source)
+    actual=subprocess.check_output([str(source/'telegraf'),'--version'],stderr=subprocess.STDOUT,text=True)
+    if not re.search(r'(?<![0-9])1\.28\.3(?![0-9])',actual):raise ValueError('Source-built Telegraf version mismatch')
+    shell('mkdir -p package/usr/bin; cp telegraf package/usr/bin/; python3 /src/native/fpm_package.py -s dir -t deb -n telegraf -v 1.28.3-1 --architecture @ARCH@ -C package --package ..',source)
+    copy_debs(work)
+
+
+def podman(work):
+    source=snapshot('podman_v4.9.5/podman',work/'podman')
+    shell(r'''apt-get install -y --no-install-recommends libseccomp-dev libgpgme-dev libapparmor-dev libsystemd-dev libsubid-dev go-md2man
+# The release target only needs the snapshot's packaged manual generator;
+# install.tools also downloads unrelated test/lint executables.
+make -j1 podman-release RELEASE_NUMBER=4.9.5 GOMD2MAN=/usr/bin/go-md2man GIT_COMMIT= PREFIX=/usr RELEASE_PREFIX=/usr SOURCE_DATE_EPOCH=1773859634
+archive=podman-release-@ARCH@.tar.gz
+tar -xf "$archive"
+python3 /src/native/fpm_package.py -s dir -t deb -n podman -v 4.9.5 --architecture @ARCH@ --depends conmon --depends crun --depends netavark --depends libgpgme11 --depends fuse-overlayfs --depends golang-github-containers-common -C podman-v4.9.5 --package ..
+''',source)
+    copy_debs(work)
+
+
+if __name__ == '__main__':
+    execute({'base': base, 'go': go_packages, 'podman': podman})

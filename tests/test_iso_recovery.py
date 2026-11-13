@@ -14,7 +14,7 @@ import unittest
 from unittest.mock import patch
 from types import SimpleNamespace
 
-from producer import staged
+from producer import staged_release as staged, stage_transport
 from producer.collect import files
 from producer.native_stages import copy_selected
 from producer.notices import NOTICE, mark_changed, snapshot
@@ -142,6 +142,7 @@ class ISOInputRetirementTests(unittest.TestCase):
                 stack.enter_context(patch.object(sys, 'stdin', io.StringIO('{}')))
                 stack.enter_context(patch('os.dup2'))
             stack.enter_context(patch.object(staged, 'Path', side_effect=self.mapped))
+            stack.enter_context(patch.object(stage_transport, 'Path', side_effect=self.mapped))
             stack.enter_context(patch('producer.architecture.native'))
             admission = stack.enter_context(patch('producer.architecture.require_storage', side_effect=storage))
             stack.enter_context(patch('producer.library_cache.compiler_fingerprint', return_value=self.compiler))
@@ -357,17 +358,18 @@ class WritableInputBoundaryTests(unittest.TestCase):
 
     def test_other_stage_flags_rejected_before_side_effects_in_both_clis(self):
         launcher = load_module('stage_launcher_boundary', 'scripts/run-native-stage.py')
-        for stage in staged.STAGES:
+        from producer import staged as public_staged
+        for stage in public_staged.STAGES:
             if stage in {'iso', 'clearance', 'guests'}:
                 continue
-            for cli in (launcher, staged):
+            for cli in (launcher, public_staged):
                 with self.subTest(stage=stage, cli=cli.__name__):
                     argv = (['launcher', '--stage', stage, '--architecture', 'amd64',
                              '--image', 'sha256:'+'b'*64] if cli is launcher else ['staged', stage, 'amd64'])
                     argv += ['--commit', 'c'*40, '--version', 'v2026.03.0',
                              '--inputs', '/tmp/task-inputs', '--output', '/tmp/task-output',
                              '--discard-input-archives']
-                    with patch.object(sys, 'argv', argv), patch.object(cli.subprocess, 'check_output') as read, \
+                    with patch.object(sys, 'argv', argv), patch('subprocess.check_output') as read, \
                          patch('producer.architecture.native') as native:
                         with self.assertRaisesRegex(ValueError, 'requires ISO'):
                             cli.main()

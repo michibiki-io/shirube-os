@@ -65,7 +65,7 @@ def inventory(root):
             raise ValueError('Private identity or raw compiler state in stage transfer')
         # Reuse the release scanner: parser source may contain a delimiter,
         # but a private key's armored bytes require an exact public fixture.
-        from .release import SECRET
+        from .security_contract import SECRET
         with path.open('rb') as stream:
             tail = b''
             while data := stream.read(1024 * 1024):

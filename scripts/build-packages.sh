@@ -26,4 +26,4 @@ docker build --platform "linux/$architecture" --build-arg "BASE=$base" \
 image=$(cat "$work/image.id")
 [[ $(docker image inspect "$image" --format '{{.Architecture}}') == "$architecture" ]]
 docker run --rm --platform "linux/$architecture" --cpus="$build_cpus" --memory="${build_memory}g" --memory-swap="${build_memory}g" \
-  --pids-limit=4096 -v "$output:/output" "$image" "$architecture"
+  --pids-limit=4096 -v "$output:/output" "$image" /src/native/build.py "$architecture"

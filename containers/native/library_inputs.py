@@ -28,7 +28,7 @@ def main():
     extract(args.output/'outer'/member,args.output/'sources',
             prefixes=sorted({job['source'].split('/')[0] for job in jobs if eligible(job)}))
 
-    from security_sources import prepare_frr
+    from security_native import prepare_frr
     for job in jobs:
         if eligible(job) and job.get('recipe') == 'frr':
             prepare_frr(Path('/src'), args.output/'sources'/job['source'])

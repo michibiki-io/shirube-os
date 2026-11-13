@@ -1,0 +1,118 @@
+{
+  "component": "native",
+  "module": "producer.compile_native",
+  "templates": [],
+  "roots": [
+    "producer/compile_native.py",
+    "producer/recipes.py",
+    "containers/native/package_common.sh",
+    "containers/native/package_validate.sh",
+    "containers/native/package_native.sh",
+    "containers/native/security_native.py",
+    "containers/native/package_native_early.sh",
+    "containers/native/library-prepare/frr.sh",
+    "containers/native/http-api.lock.json",
+    "containers/native/http-rust.lock.json",
+    "containers/native/library-common.sh",
+    "containers/native/library_worker.py",
+    "containers/native/Dockerfile.library",
+    "containers/native/library-prepare/debian.sh",
+    "containers/native/library-prepare/libyang.sh",
+    "containers/native/library-prepare/frr.sh",
+    "containers/native/library-prepare/nftables.sh"
+  ],
+  "graph": {
+    "containers/native/Dockerfile.library": [],
+    "containers/native/http-api.lock.json": [],
+    "containers/native/http-rust.lock.json": [],
+    "containers/native/http_api.py": [
+      "LICENSE",
+      "containers/native/http-api.lock.json",
+      "containers/native/http-rust.lock.json",
+      "containers/native/reconstruct_http_rust.py",
+      "producer/architecture.py",
+      "producer/cargo_sources.py",
+      "producer/http_rust_sources.py",
+      "producer/packages.py",
+      "producer/sources.py"
+    ],
+    "containers/native/library-common.sh": [],
+    "containers/native/library-prepare/debian.sh": [],
+    "containers/native/library-prepare/frr.sh": [],
+    "containers/native/library-prepare/libyang.sh": [],
+    "containers/native/library-prepare/nftables.sh": [],
+    "containers/native/library_worker.py": [
+      "producer/resources.py"
+    ],
+    "containers/native/package_common.sh": [],
+    "containers/native/package_native.sh": [
+      "containers/native/security_native.py"
+    ],
+    "containers/native/package_native_early.sh": [
+      "containers/native/http_api.py"
+    ],
+    "containers/native/package_validate.sh": [],
+    "containers/native/reconstruct_http_rust.py": [
+      "producer/architecture.py",
+      "producer/cargo_sources.py",
+      "producer/sources.py"
+    ],
+    "containers/native/security_common.py": [],
+    "containers/native/security_native.py": [
+      "containers/native/security_common.py"
+    ],
+    "producer/bundles.py": [
+      "producer/source_contract.py",
+      "producer/source_fixtures.py",
+      "producer/sources.py"
+    ],
+    "producer/cargo_sources.py": [
+      "producer/debian_sources.py",
+      "producer/salt_cargo.py",
+      "producer/sources.py"
+    ],
+    "producer/compile_native.py": [
+      "containers/native/security_native.py",
+      "producer/native_stages.py",
+      "producer/ocaml_sources.py",
+      "producer/source_selectors.py"
+    ],
+    "producer/debian_sources.py": [
+      "producer/sources.py"
+    ],
+    "producer/http_rust_sources.py": [
+      "producer/sources.py"
+    ],
+    "producer/ocaml_sources.py": [
+      "producer/bundles.py",
+      "producer/sources.py"
+    ],
+    "producer/salt_cargo.py": [
+      "producer/sources.py"
+    ],
+    "producer/source_contract.py": [
+      "producer/security_contract.py"
+    ]
+  },
+  "external": [],
+  "lock_values": [
+    "http_api"
+  ],
+  "trees": [
+    "patches/vyos/security/frr",
+    "patches/vyos/security/update-check"
+  ],
+  "dynamic": {
+    "producer/native_stages.py": [
+      "producer/compile_native.py"
+    ],
+    "producer/native_common.py": [],
+    "producer/recipes.py": [
+      "containers/native/package_common.sh",
+      "containers/native/package_validate.sh",
+      "containers/native/package_native.sh",
+      "containers/native/package_native_early.sh"
+    ]
+  },
+  "dynamic_imports": {}
+}

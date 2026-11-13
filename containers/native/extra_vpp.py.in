@@ -1,0 +1,43 @@
+# Copyright (c) 2026 michibiki.io; MIT. Modified 2026-11-08 for Shirube OS native architectures.
+#!/usr/bin/env python3
+"""Build missing ISO dependencies inside Docker, retaining provenance receipts."""
+import argparse
+import hashlib
+import json
+import os
+import re
+import shlex
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+import sys
+sys.path.insert(0,'/src')
+
+ROOT = Path('/opt/stream')
+OUT = Path('/debs')
+WORK = Path('/extra')
+
+
+from extra_common import *
+
+def vpp(work):
+    source = git('vpp',work/'vpp')
+    patches = git('vpp-patches',work/'patches')
+    for patch in sorted((patches/'patches/vpp').glob('*.patch')):
+        subprocess.run(['git','-c','user.name=michibiki-io source preparation','-c','user.email=maintainers@michibiki.io','am',str(patch)],
+            cwd=source,env=dict(os.environ,GIT_COMMITTER_DATE='2026-03-18T00:00:00Z'),check=True)
+    from producer.vpp_inputs import prepare,prepare_external
+    prepare(json.loads(Path('/src/native/vpp-python.lock.json').read_text()),source/'build/external/downloads',Path('/public-inputs/vpp-python'))
+    prepare_external(json.loads(Path('/src/native/vpp-external.lock.json').read_text()),source/'build/external/downloads',Path('/public-inputs/vpp-external'))
+    # Upstream skips its unpinned pip download when the fixed Meson archive is
+    # already present. Disable index access as well: missing inputs must fail.
+    # CMake also invokes pip in an isolated PEP 517 environment for vpp-papi.
+    # That environment must resolve setuptools from these same fixed wheels.
+    wheelhouse=source/'build/external/downloads'
+    shell('export PIP_NO_INDEX=1 PIP_NO_CACHE_DIR=1 PIP_FIND_LINKS='+shlex.quote(str(wheelhouse))+'; make UNATTENDED=yes VPP_ENABLE_SYSTEMD_NOTIFY=ON install-dep; make MAKE_PARALLEL_JOBS="$MAKE_PARALLEL_JOBS" VPP_EXTRA_CMAKE_ARGS="-DVPP_ENABLE_SYSTEMD_NOTIFY=ON" pkg-deb',source)
+    copy_debs(source/'build-root')
+
+
+if __name__ == '__main__':
+    execute({'vpp': vpp})

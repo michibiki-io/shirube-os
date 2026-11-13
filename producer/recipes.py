@@ -15,3 +15,16 @@ def package_script(script, output, snapshot, stream_build, local_debs, jobs=None
             raise ValueError('Unsafe native recipe path')
     pattern=r'(?<![A-Za-z0-9_./-])(?:'+ '|'.join(map(re.escape,roots))+r')(?=$|[/\s\'\"])'
     return re.sub(pattern,lambda match:roots[match.group()],script)
+
+
+def component_script(native, stage):
+    """Assemble whole physical shell inputs before path/concurrency rendering."""
+    from pathlib import Path
+    if stage not in {'native', 'kernel'}:
+        raise ValueError('No package recipe for stage')
+    native = Path(native)
+    script = (native / ('package_'+stage+'.sh')).read_text()
+    common = (native/'package_common.sh').read_text()
+    early = (native/'package_native_early.sh').read_text() if stage == 'native' else ''
+    return script.replace('# @COMMON@', common.replace('# @EARLY@', early)).replace(
+        '# @VALIDATE@', (native/'package_validate.sh').read_text())

@@ -89,9 +89,9 @@ class ComponentInputTests(unittest.TestCase):
             ('containers/native/external-sources.lock.json', ('i2util',), ('runtime',)),
             ('containers/native/external-sources.lock.json', ('nat-rtsp',), ('kernel',)),
             ('source-lock.json', ('kea_build_tool',), ('kea',)),
-            ('source-lock.json', ('go',), ('runtime',)),
+            ('source-lock.json', ('go',), ('runtime', 'kernel')),
             ('source-lock.json', ('go_dependency_overrides', 'telegraf'), ('runtime',)),
-            ('source-lock.json', ('go_notice_overrides',), ('runtime',)),
+            ('source-lock.json', ('go_notice_overrides',), ('runtime', 'kernel')),
             ('containers/native/http-api.lock.json', ('version',), ('native',)),
             ('containers/native/http-rust.lock.json', ('rustc_version_output',), ('native',)),
             ('containers/native/salt-sources.lock.json', ('python',), ('salt',)),
@@ -109,11 +109,11 @@ class ComponentInputTests(unittest.TestCase):
                  ('producer/vpp_inputs.py', ('vpp',)),
                  ('producer/salt_python.py', ('salt',)),
                  ('containers/native/http_api.py', ('native',)),
-                 ('containers/native/package.sh', ('native', 'kernel')),
-                 ('containers/native/extras.py.in', ('vpp', 'kea', 'salt', 'runtime', 'kernel')),
+                 ('containers/native/package_common.sh', ('native', 'kernel')),
+                 ('containers/native/extra_common.py.in', ('vpp', 'kea', 'salt', 'runtime', 'kernel')),
                  ('patches/kernel/new.patch', ('kernel',)),
                  ('patches/vyos/force_mtu_host.sh', STAGES),
-                 ('producer/apt_archive.py', STAGES),
+                 ('producer/source_selectors.py', STAGES), ('producer/apt_archive.py', STAGES),
                  ('producer/stage_artifacts.py', STAGES), ('producer/branding.py', STAGES),
                  ('producer/native_common.py', STAGES), ('LICENSE', STAGES), ('shirube-os-logo.svg', STAGES)]
         for name, changed in cases:
@@ -148,15 +148,16 @@ class ComponentInputTests(unittest.TestCase):
 
     def test_missing_required_files_unknown_selections_and_patch_tree_fail_closed(self):
         for stage in STAGES:
-            name = inputs.FILES[stage][0]; path = self.project/name; saved = path.read_bytes(); path.unlink()
+            name = 'producer/compile_'+stage+'.py'; path = self.project/name; saved = path.read_bytes(); path.unlink()
             with self.subTest(stage=stage), self.assertRaises(ValueError): inputs.manifest(self.project, stage, 'amd64')
             path.write_bytes(saved)
         shutil.rmtree(self.project/'patches/kernel')
         with self.assertRaises(ValueError): inputs.manifest(self.project, 'kernel', 'amd64')
         with self.assertRaises(ValueError): inputs.manifest(self.project, 'unknown', 'amd64')
         with self.assertRaises(ValueError): inputs.manifest(self.project, 'native', 'mips')
-        with patch.dict(inputs.LOCK_VALUES, native=('nonexistent',)):
-            with self.assertRaises(ValueError): inputs.manifest(self.project, 'native', 'amd64')
+        path = self.project/'containers/native/inputs-native.json'
+        data=json.loads(path.read_text()); data['lock_values'].append('nonexistent'); path.write_text(json.dumps(data))
+        with self.assertRaises(ValueError): inputs.manifest(self.project, 'native', 'amd64')
 
     def test_host_container_aliases_equal_for_each_stage_and_architecture(self):
         container = component_project(self.directory/'src', container=True)

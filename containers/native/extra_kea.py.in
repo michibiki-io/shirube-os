@@ -1,0 +1,60 @@
+# Copyright (c) 2026 michibiki.io; MIT. Modified 2026-11-08 for Shirube OS native architectures.
+#!/usr/bin/env python3
+"""Build missing ISO dependencies inside Docker, retaining provenance receipts."""
+import argparse
+import hashlib
+import json
+import os
+import re
+import shlex
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+import sys
+sys.path.insert(0,'/src')
+
+ROOT = Path('/opt/stream')
+OUT = Path('/debs')
+WORK = Path('/extra')
+
+
+from extra_common import *
+
+def kea(work):
+    source=snapshot('isc-kea_Kea-3.0.2/isc-kea',work/'isc-kea')
+    packaging=git('kea-packaging',work/'packaging')
+    if (source/'debian').exists(): shutil.rmtree(source/'debian')
+    shutil.copytree(packaging/'debian',source/'debian')
+    shell(r'''sed -i 's/{VERSION}/3.0.2/g; s/{ISC_VERSION}/vyos/g' debian/changelog
+sed -i 's/{ISC_VERSION}/vyos/g; /meson compile -C build doc/d' debian/rules
+sed -Ei '/^Package: isc-kea-(premium|subscriber)/,/^$/d' debian/control
+sed -i '/usr\/share\/man/d; /usr\/share\/doc\/kea/d' debian/*.install
+printf 'usr/share/doc/kea/*\nusr/share/kea/meson-info/*\n' >> debian/not-installed
+rm -f debian/isc-kea-doc.install debian/isc-kea-subscriber* debian/isc-kea-premium*
+''',source)
+    rules=source/'debian/rules'
+    text=rules.read_text()
+    if 'meson compile -C build' not in text: raise ValueError('Unexpected Kea compile rule')
+    from producer.resources import profile
+    parallel=str(profile()['compile_jobs'])
+    rules.write_text(text.replace('meson compile -C build','meson compile -C build -j '+parallel).replace('meson test -C build','meson test -C build --num-processes '+parallel))
+    # The pinned packaging omits Meson from Build-Depends. Keep Kea's
+    # newer tool separate from VPP's upstream-pinned Meson bootstrap.
+    from producer.sources import download,sha256,extract
+    tool=json.loads(Path('/src/source-lock.json').read_text())['kea_build_tool']
+    inputs=source/'shirube-corresponding-inputs';inputs.mkdir()
+    archive=inputs/('meson-'+tool['version']+'.tar.gz')
+    download(tool['url'],archive)
+    if sha256(archive)!=tool['sha256']:raise ValueError('Kea Meson source checksum mismatch')
+    extract(archive,work/'build-tools')
+    meson=work/'build-tools'/('meson-'+tool['version'])/'meson.py'
+    if not meson.is_file():raise ValueError('Kea Meson entry point missing')
+    rules.write_text(rules.read_text().replace('meson ', 'python3 '+str(meson)+' '))
+    shell('apt-get install -y --no-install-recommends ninja-build',source)
+    debian(source)
+    copy_debs(work)
+
+
+if __name__ == '__main__':
+    execute({'kea': kea})

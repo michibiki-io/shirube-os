@@ -1,0 +1,60 @@
+{
+  "component": "vpp",
+  "module": "producer.compile_vpp",
+  "templates": [
+    "extra_common.py.in",
+    "extra_vpp.py.in"
+  ],
+  "roots": [
+    "producer/compile_vpp.py",
+    "containers/native/extra_common.py.in",
+    "containers/native/extra_vpp.py.in"
+  ],
+  "graph": {
+    "containers/native/extra_common.py.in": [
+      "producer/resources.py"
+    ],
+    "containers/native/extra_vpp.py.in": [
+      "containers/native/extra_common.py.in",
+      "containers/native/vpp-external.lock.json",
+      "containers/native/vpp-python.lock.json",
+      "producer/vpp_inputs.py"
+    ],
+    "containers/native/vpp-external.lock.json": [],
+    "containers/native/vpp-python.lock.json": [],
+    "producer/compile_vpp.py": [
+      "producer/native_stages.py",
+      "producer/select_vpp.py",
+      "producer/source_selectors.py",
+      "producer/vpp_sdk.py"
+    ],
+    "producer/select_vpp.py": [
+      "producer/source_selectors.py",
+      "producer/sources.py"
+    ],
+    "producer/vpp_inputs.py": [
+      "producer/sources.py"
+    ],
+    "producer/vpp_sdk.py": [
+      "producer/architecture.py",
+      "producer/native_stages.py"
+    ]
+  },
+  "external": [
+    "vpp",
+    "vpp-patches"
+  ],
+  "lock_values": [],
+  "trees": [],
+  "dynamic": {
+    "producer/native_stages.py": [
+      "producer/compile_vpp.py"
+    ],
+    "producer/native_common.py": [
+      "containers/native/extra_common.py.in",
+      "containers/native/extra_vpp.py.in"
+    ],
+    "producer/recipes.py": []
+  },
+  "dynamic_imports": {}
+}

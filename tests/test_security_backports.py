@@ -70,6 +70,38 @@ class SecurityTests(unittest.TestCase):
         result = subprocess.run([str(binary)], capture_output=True, text=True, timeout=10)
         self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
 
+    def test_retained_native_and_kernel_recipes_replay_with_complete_companion_inventory(self):
+        for component, fixture in [('frr','frr-original'), ('update-check','update-original'),
+                                   ('accel-ppp','accel-original')]:
+            with self.subTest(component=component):
+                source = self.fixture(fixture, '-retention')
+                first = (security.prepare_frr(ROOT, source) if component == 'frr'
+                         else security.apply(ROOT, component, source))
+                retained = source/'shirube-corresponding-inputs'/('security-'+component)
+                self.assertEqual(set(first['inputs']), {'recipe.py','security_common.py'})
+                for name, expected in first['inputs'].items():
+                    self.assertEqual(sha((retained/name).read_bytes()), expected)
+                    self.assertIn('Copyright (c) 2026 michibiki.io; MIT License', (retained/name).read_text())
+                self.assertEqual(first['recipe_sha256'], first['inputs']['recipe.py'])
+                self.assertEqual(first['patches'], security.inputs(ROOT, component))
+                # Replay with just original source plus retained recipe/companion/patches.
+                replay = self.fixture(fixture, '-replay')
+                project = self.work/('retained-project-'+component)
+                shutil.copytree(retained/'patches', project/'vyos-patches/security'/component)
+                isolated = self.work/('retained-recipe-'+component)
+                shutil.copytree(retained, isolated)
+                result = subprocess.run([sys.executable,str(isolated/'recipe.py'),component,str(replay),
+                    '--project',str(project)],capture_output=True,text=True,cwd=project,
+                    env={**os.environ, 'PYTHONPATH': ''})
+                self.assertEqual(result.returncode, 0, result.stderr)
+                replay_receipt=replay/'shirube-corresponding-inputs'/('security-'+component)/'receipt.json'
+                self.assertEqual(first,json.loads(replay_receipt.read_text()))
+                # Repeated preparation checks all retained companion bytes.
+                companion=retained/'security_common.py'; companion.write_bytes(companion.read_bytes()+b'\n# changed\n')
+                with self.assertRaises(ValueError):
+                    if component == 'frr': security.prepare_frr(ROOT,source)
+                    else: security.apply(ROOT,component,source)
+
     def test_immutable_provenance_hashes(self):
         kernel = ROOT/'patches/kernel'
         record = json.loads((kernel/'upstream/provenance.json').read_text())
@@ -91,7 +123,7 @@ class SecurityTests(unittest.TestCase):
         self.assertEqual(additions(original), additions(adapted))
 
     def apply_kernel(self, source, receipt):
-        script = (ROOT/'containers/native/package.sh').read_text()
+        script = (ROOT/'containers/native/package_kernel.sh').read_text()
         helper = script[script.index('apply_kernel_tool_fixes() {'):script.index('\npackage_kernel()')]
         helper = helper.replace('/kernel-patches/', str(ROOT/'patches/kernel')+'/')
         return subprocess.run(['bash', '-c', 'set -euo pipefail\n'+helper+'\napply_kernel_tool_fixes'],
@@ -433,7 +465,7 @@ struct rad_dict_attr_t dictionary={"Message-Authenticator"};
         # Execute both existing normalization recipes on fully applied Stream
         # and security hunks, then replay quilt order to the identical result.
         expected = {str(p.relative_to(source)): p.read_bytes() for p in source.rglob('*.c')}
-        ordinary = (ROOT/'containers/native/package.sh').read_text()
+        ordinary = (ROOT/'containers/native/package_native.sh').read_text()
         start = ordinary.index('        if [ -e .pc ];')
         end = ordinary.index('\n    fi\n    # Quilt patches', start)
         ordinary = ordinary[start:end]
@@ -785,7 +817,7 @@ for(int kind=0;kind<2;kind++)for(int count=0;count<=7;count++){
             with self.assertRaises(ValueError):security.prepare_frr(project,source)
             p.write_bytes(saved)
         # Both native and library entry points prepare before restore/identity.
-        for name,prep,lookup in [('containers/native/build.py','prepare_frr(', 'cached=restore('),
+        for name,prep,lookup in [('containers/native/build_compile.py','recipe.prepare(', 'cached=restore('),
                                  ('scripts/build-library-cache.py','prepare_frr(', 'expected,_=identity(')]:
             text=(ROOT/name).read_text();self.assertLess(text.index(prep),text.index(lookup))
 

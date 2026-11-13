@@ -1,0 +1,67 @@
+{
+  "component": "runtime",
+  "module": "producer.compile_runtime",
+  "templates": [
+    "extra_common.py.in",
+    "extra_runtime.py.in"
+  ],
+  "roots": [
+    "producer/compile_runtime.py",
+    "containers/native/extra_common.py.in",
+    "containers/native/extra_runtime.py.in",
+    "producer/go_modules.py",
+    "producer/go_notices.py"
+  ],
+  "graph": {
+    "containers/native/extra_common.py.in": [
+      "producer/resources.py"
+    ],
+    "containers/native/extra_runtime.py.in": [
+      "containers/native/extra_common.py.in",
+      "containers/native/fpm_package.py",
+      "producer/go_modules.py",
+      "producer/sources.py",
+      "source-lock.json"
+    ],
+    "containers/native/fpm_package.py": [
+      "producer/architecture.py",
+      "producer/go_modules.py",
+      "producer/go_notices.py",
+      "producer/sources.py",
+      "source-lock.json"
+    ],
+    "producer/compile_runtime.py": [
+      "containers/native/external-sources.lock.json",
+      "producer/native_stages.py",
+      "producer/select_runtime.py",
+      "producer/source_selectors.py"
+    ],
+    "producer/go_modules.py": [],
+    "producer/go_notices.py": [],
+    "producer/select_runtime.py": [
+      "producer/source_selectors.py",
+      "producer/sources.py"
+    ]
+  },
+  "external": [
+    "vyos-utils",
+    "i2util"
+  ],
+  "lock_values": [
+    "go",
+    "go_dependency_overrides.telegraf",
+    "go_notice_overrides"
+  ],
+  "trees": [],
+  "dynamic": {
+    "producer/native_stages.py": [
+      "producer/compile_runtime.py"
+    ],
+    "producer/native_common.py": [
+      "containers/native/extra_common.py.in",
+      "containers/native/extra_runtime.py.in"
+    ],
+    "producer/recipes.py": []
+  },
+  "dynamic_imports": {}
+}

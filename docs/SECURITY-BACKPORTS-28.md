@@ -144,7 +144,7 @@ stubbed command runner. These checks do not start services or change credentials
 
 ## Caches and corresponding source
 
-`security_sources.py` is bound into native/kernel component identities. Every FRR
+`security_native.py` and `security_kernel.py` are bound to native and kernel identities respectively; `security_common.py` is shared by both. `security_sources.py` is a legacy entry shim outside compile closures. Every FRR
 and vyos-1x update-check/calling-sid patch byte binds native; every accel patch,
 original, state and inventory byte binds kernel. Kernel's existing recursive patch identity includes
 the complete original/combined patches. FRR library identities bind prepared
@@ -153,18 +153,18 @@ lookup/context. Both architectures have mutation coverage. Compiler identities
 remain unchanged. Isolated patch mutations leave unrelated component/library
 inputs unchanged.
 
-The existing whole-file shared recipe identities mean changes to `build.py`,
-`component_inputs.py`, `collect.py` and `extras.py.in` invalidate other component
-caches once for this implementation. This conservative shared-recipe invalidation
-is unavoidable without changing the cache contract. Subsequent package patch
-mutations are scoped as above; no compiler identity is changed.
+Issue #30 separates physical component recipes and declarations from shared
+execution/security contracts. See [STAGED-BUILD.md](STAGED-BUILD.md#component-identities-and-physical-dependency-boundaries-issues-17-and-30)
+for the current dependency table, one-time schema migration and maintenance rules.
+Subsequent component-only recipe/patch changes leave unrelated inputs stable;
+shared contract changes still invalidate every affected component.
 
 Retain authenticated original sources and shared project source, not compiler
 workspaces. The project archive contains all new patches and ordered recipes.
 FRR source retains its quilt additions. Native package receipts are exported as
 `security-patches.json` and collected with existing build inputs, including on
 FRR library restore. Accel's explicit `shirube-corresponding-inputs` retains the
-whole patch set/recipe/receipt even where preferred-path selectors omit the newly
+`recipe.py` and its `security_common.py` companion, both bound in the receipt input hash inventory, plus the whole patch set/receipt even where preferred-path selectors omit the newly
 added upstream test. That test is fully reconstructable from the retained patch.
 Kernel receipt names and original-source reconstruction remain unchanged.
 
@@ -175,13 +175,13 @@ From the repository root, offline:
 ```sh
 PYTHONPATH=tests:. python3 -m unittest test_security_backports test_component_inputs test_library_cache test_native_stages test_recipes -v
 PYTHONPATH=tests:. python3 -m unittest test_sources test_reconstruction -v
-python3 -m py_compile containers/native/security_sources.py containers/native/build.py containers/native/library_inputs.py scripts/build-library-cache.py producer/component_inputs.py producer/collect.py tests/test_security_backports.py
-bash -n containers/native/package.sh
+python3 -m py_compile containers/native/security_sources.py containers/native/security_native.py containers/native/security_kernel.py containers/native/security_common.py containers/native/build_compile.py containers/native/build_release.py containers/native/library_inputs.py scripts/build-library-cache.py producer/component_graph.py producer/component_inputs.py producer/collect.py tests/test_security_backports.py
+bash -n containers/native/package.sh containers/native/package_common.sh containers/native/package_native_early.sh containers/native/package_native.sh containers/native/package_kernel.sh containers/native/package_validate.sh
 git diff --check
 git diff --cached --check
 ```
 
-Passed: 51 focused security/component tests and 20 source/reconstruction tests; source hashes and complete patch equivalence, zero-fuzz Stream/repository
+Historical issue #28 verification: 51 focused security/component tests and 20 source/reconstruction tests; source hashes and complete patch equivalence, zero-fuzz Stream/repository
 application, repeat receipts, partial-state rejection, both architecture input
 mutations, FRR library context binding and normalization, new-file reconstruction,
 real update wrapper arguments/shell settings, and small C harnesses with UBSan.

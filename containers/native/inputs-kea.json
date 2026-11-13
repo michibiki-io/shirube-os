@@ -1,0 +1,52 @@
+{
+  "component": "kea",
+  "module": "producer.compile_kea",
+  "templates": [
+    "extra_common.py.in",
+    "extra_kea.py.in"
+  ],
+  "roots": [
+    "producer/compile_kea.py",
+    "containers/native/extra_common.py.in",
+    "containers/native/extra_kea.py.in"
+  ],
+  "graph": {
+    "containers/native/extra_common.py.in": [
+      "producer/resources.py"
+    ],
+    "containers/native/extra_kea.py.in": [
+      "containers/native/extra_common.py.in",
+      "producer/resources.py",
+      "producer/sources.py",
+      "source-lock.json"
+    ],
+    "producer/compile_kea.py": [
+      "producer/native_stages.py",
+      "producer/select_kea.py",
+      "producer/source_selectors.py",
+      "source-lock.json"
+    ],
+    "producer/select_kea.py": [
+      "producer/source_selectors.py",
+      "producer/sources.py"
+    ]
+  },
+  "external": [
+    "kea-packaging"
+  ],
+  "lock_values": [
+    "kea_build_tool"
+  ],
+  "trees": [],
+  "dynamic": {
+    "producer/native_stages.py": [
+      "producer/compile_kea.py"
+    ],
+    "producer/native_common.py": [
+      "containers/native/extra_common.py.in",
+      "containers/native/extra_kea.py.in"
+    ],
+    "producer/recipes.py": []
+  },
+  "dynamic_imports": {}
+}
