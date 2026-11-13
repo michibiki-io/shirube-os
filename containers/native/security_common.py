@@ -2,7 +2,6 @@
 
 Copyright (c) 2026 michibiki.io; MIT License (see NOTICE).
 """
-import argparse
 import hashlib
 import json
 from pathlib import Path
