@@ -22,6 +22,10 @@ def export_material(stage, sources, packages, destination, architecture):
         metadata['members'] = copy_selected(tracked_source_files(root), target)
         (target / 'shirube-stage-source.json').write_text(json.dumps(metadata) + '\n')
     copy_selected([(Path('/kernel-signing/cert.der'), 'cert.der')], destination / 'signing')
+    # finish_compile has audited every package/module before this export. The
+    # workflow uploads compiler results only if the whole stage succeeds.
+    from .kernel_compile_cache import finish
+    finish()
 
 
 def prepare_runtime(debs):

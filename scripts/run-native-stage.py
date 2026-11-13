@@ -18,6 +18,18 @@ def run(*args, **kwargs):
     return subprocess.run(args, check=True, **kwargs)
 
 
+def validate_kernel_cache(stage, root, other_paths):
+    root = Path(root).absolute()
+    if (stage != 'kernel' or any(p.is_symlink() for p in (root, *root.parents))
+            or len(root.parts) < 3 or not root.is_dir()):
+        raise ValueError('Dedicated kernel compiler cache directory required')
+    for other in other_paths:
+        if other and (root.resolve().is_relative_to(other.resolve()) or other.resolve().is_relative_to(root.resolve())):
+            raise ValueError('Kernel compiler cache must not overlap stage/source paths')
+    if any(p.name != 'seed.tar' or p.is_symlink() or not p.is_file() for p in root.iterdir()):
+        raise ValueError('Only admitted kernel compiler seed may enter a fresh build')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--stage', choices=STAGES, required=True)
@@ -25,6 +37,7 @@ def main():
     parser.add_argument('--commit', required=True); parser.add_argument('--version', required=True)
     parser.add_argument('--image', required=True); parser.add_argument('--inputs', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True); parser.add_argument('--cache', type=Path)
+    parser.add_argument('--kernel-compile-cache', type=Path, help='Dedicated trusted kernel compiler-result artifact input/output')
     parser.add_argument('--discard-input-archives', action='store_true',
                         help='ISO, clearance and guests only: allow retirement of task-owned downloaded input tars')
     args = parser.parse_args()
@@ -32,6 +45,9 @@ def main():
         if len(args.inputs.resolve().parts) < 3:
             raise ValueError('Dedicated task input directory required, not a host root')
         validate_discard_inputs(args.stage, args.inputs, args.output, args.cache)
+    if args.kernel_compile_cache:
+        validate_kernel_cache(args.stage, args.kernel_compile_cache,
+                              (args.inputs, args.output, args.cache, Path.cwd()))
     native(args.architecture); attribution(args.commit, args.version)
     if (not re.fullmatch('sha256:[0-9a-f]{64}', args.image)
             or subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()!=args.commit
@@ -58,6 +74,9 @@ def main():
                 args.cache.mkdir(parents=True,exist_ok=True)
                 cache_mount=['-v',str(args.cache.resolve())+':/stage-cache']
                 cache_args=['--cache','/stage-cache']
+            if args.kernel_compile_cache:
+                cache_mount += ['-v', str(args.kernel_compile_cache.resolve()) + ':/kernel-compile-cache',
+                                '-e', 'SHIRUBE_KERNEL_COMPILE_CACHE=/kernel-compile-cache']
             # ISO assembly requires mount privileges; integration needs SYS_ADMIN
             # for NetBird offline network namespaces. No Docker socket,
             # host identities, host PID/network or publication token is shared.

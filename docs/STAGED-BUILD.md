@@ -169,10 +169,12 @@ it is not this staging engine.
 Kernel + modules + accel compile/sign in one private container. It consumes the
 verified VPP DEBs and `vpp-sdk/{source,generated,lib}`: explicit upstream/generated
 headers and link-library inventories, including filenames used by accel's CPATH
-and LIBRARY_PATH. Only signed DEBs, public certificate and selected key-free
-source/build inputs leave the job. The SDK includes notices through the retained
-VPP corresponding-source/patch material. No signing-key or compiler-state cache
-exists. Package and ISO signature audits still use the matching public certificate.
+and LIBRARY_PATH. Stage transfers contain only signed DEBs, public certificate
+and selected key-free source/build inputs. The SDK includes notices through the retained
+VPP corresponding-source/patch material. No signing-key or build-tree cache
+exists. The separate optional compiler-result boundary is described under
+“Kernel compiler results before signing (Issue #36)” below. Package and ISO
+signature audits still use the matching public certificate.
 
 `native`, `vpp`, `kea`, `salt` and `runtime` can reuse verified unsigned payloads.
 Each entry is rechecked against the compiler/input scope and payload inventory;
@@ -256,7 +258,7 @@ Successful eligible stages save only after success when there was no exact
 outer hit. Compiler BuildKit export is optional (`ignore-error=true`). Restore
 attempts and optional exports do not establish verified reuse. Original content
 attribution, exact inventory/hash/scope validation and all downstream gates
-remain required; kernel signing and kernel state are never cached. Hosted warm
+remain required; kernel signing and key-owning build-tree state are never cached. Hosted warm
 acceptance, capacity, warm performance and actual cross-run reuse remain NOT_RUN.
 Actions caches are acceleration, while Actions artifacts are required handoffs.
 Cache eviction cannot replace an artifact or a failed prerequisite.
@@ -839,3 +841,117 @@ review completion and staged hosted acceptance remain pending.
 比較、容量・時間の余裕、両アーキテクチャのゲスト検証は未実施です。
 既存のライセンス不一致を解消したとは扱いません。
 受け入れ条件を満たした、または高速化を実証したという判定はできません。
+
+## Kernel compiler results before signing (Issue #36)
+
+Kernel **stage transfers remain uncacheable**. The optional compiler-result
+artifact is a separate boundary, not an addition to `CACHEABLE` or the existing
+stage cache. `stage_artifacts.inventory` still rejects raw `.o`/`.ko`, private
+keys and compiler trees. Every run starts from the authenticated source archive,
+runs `mrproper`, removes archived keys and configures/patches a fresh tree. Kbuild
+creates a new signing identity. Certificate objects, assembly (including embedded
+certificate `.incbin` data), generated module metadata, host tools and all links
+bypass the compiler cache. The final kernel link, in-tree module signing, all
+external modules/accel-ppp work and current-certificate package/module audits run
+normally in the same private key-owning container. No old signed package,
+kernel/module, key or complete build tree is saved or restored.
+
+The first candidate was ccache: its narrow C-to-object boundary fits the existing
+recipe without restoring Kbuild state. The native compiler image installs Debian
+ccache from the existing signed, pinned APT snapshot. A private configuration
+forces preprocessor mode, content compiler checks, no direct/depend mode, no
+sloppiness, no hardlinks and no remote backend; inherited `CCACHE_*` options are
+removed. The source/config namespace hashes the fresh post-clean/post-patch tree,
+architecture, installed package fingerprint and compiler/ccache/assembler/linker
+and GCC backend contents. Each invocation additionally hashes **all** arguments.
+The preprocessor sees current ordinary/generated headers; content changes cannot
+be hidden by preserved mtimes. The wrapper excludes certificate compilation,
+`.mod.c`, response files, plugins, specs, alternate backends and profiling inputs.
+Unsupported ccache commands/directives fall back to the real compiler; in
+particular ccache itself rejects `.incbin` reuse. `Module.symvers` and external
+ABI processing are not restored: modpost, metadata compilation and external
+modules run fresh. The optional fixture's preexisting ABI file also participates
+in the source namespace. See the [ccache 4.7.5 manual](https://ccache.dev/manual/4.7.5.html)
+for preprocessor hashing and unsupported-directive behavior.
+
+Only the admitted canonical repository's merged-main **Release** path imports or
+exports these artifacts. Main dispatch and PR validation remain fresh builds for
+this feature. The kernel job inherits the caller's existing permission cap:
+Release supplies `actions: read`; PR validation supplies only `contents: read`.
+The host-only importer keeps the token out of Docker. It searches at most ten
+successful Release runs and accepts an immutable upload only after checking the
+canonical repository ID, Release event/path, successful completed run, exact
+merged main PR/source commit, reusable workflow SHA/ref, matching successful
+kernel job/attempt and upload timing, artifact ownership/expiry and GitHub's
+artifact ZIP SHA-256. Then it validates the receipt, archive length/digest and
+regular ZIP members. A matching internal digest alone proves neither producer
+identity nor compiler correctness. Trust includes GitHub's API/artifact service,
+the approved main workflow/source, signed compiler inputs and trusted main
+maintainers; a malicious trusted compiler/writer is outside the integrity check's
+claim. Changing these trust boundaries requires a separate design review.
+
+The container receives only that admitted seed and checks architecture/toolchain,
+every result member, size and digest before writing any cached byte. Foreign,
+corrupt, unsafe, missing, expired or unavailable input causes fresh compilation;
+there is no fallback to a shared Actions cache or another writer. The host's
+`--kernel-compile-cache` option is an explicit trusted-operator boundary for local
+use, not an authenticity checker for arbitrary local files. Do not supply an
+untrusted local seed. Unexpected local export state fails the build closed.
+
+The dedicated store has a 1 GiB ccache eviction target. Export/import enforce a
+2 GiB tar limit, 64 MiB per result, 50,000 results and an 8 MiB manifest limit.
+Only regular ccache result files are exported; configuration, logs, temporary
+files, statistics, source trees and signing state are excluded. The uncompressed
+ZIP must contain exactly `export.tar` and `provenance.json`; the optional artifact
+is retained for seven days. Artifact/transfer preparation temporarily needs both
+ZIP and tar space (in addition to the private store), and eviction/expiry or no
+successful compatible producer means a miss. These optional compiler artifacts
+do not replace required same-run stage handoffs. An upload occurs only after
+the entire kernel stage, including external modules and package audits, succeeds;
+an unsuccessful Release is never imported. No cache deletion or capacity purchase
+is part of this change. Adding ccache changes the compiler fingerprint, so the
+existing compiler/component caches incur a one-time identity miss.
+
+`kernel-compiler-cache/metrics.json` records per-run ccache counters separately
+from stage wall time: `RESTORED` means an admitted store was restored, **not** a
+compiler hit. Use `preprocessed_cache_hit` and `cache_miss` counters. The kernel
+group includes source/dependency acquisition, tools, external modules,
+accel-ppp/sflow, signing, packaging and audits; its whole time is not compiler CPU
+time. Fresh generated timestamps/headers may reduce hits, and namespace changes
+conservatively invalidate reuse. The small compiler and adversarial fixtures
+verify cold/warm reuse, current-certificate signatures after key rotation, source,
+header/generated-header/config/option/compiler/architecture/ABI changes,
+corruption, foreign/untrusted producers and bounded archives. Both architecture
+**configuration paths** are covered; the native fixture is not an ARM64 kernel
+build. Full kernel/ISO/guest builds, exact production recipe integration, hosted
+artifact import/warm hits, capacity peaks and actual full-kernel speedup are
+**NOT_RUN**. No measured speedup percentage is claimed.
+
+### 日本語: 署名前の kernel compiler 結果再利用
+
+kernel の stage cache 除外と `.o`/`.ko` の転送拒否は維持します。
+通常の kernel C コンパイルだけを ccache の対象とし、証明書依存 object、assembly、
+module metadata、tools、最終 link、全 module の署名・現行証明書による検証は毎回実行します。
+鍵、鍵入り build tree、署名済み kernel/module/package は保存しません。
+外部 module と accel-ppp は従来どおりビルドします。
+
+共有 cache の digest を信頼性の証明には使いません。
+既存 admission を通った canonical repository の merged-main Release だけが入出力し、
+host 側で run・PR・workflow・成功 job・artifact の由来と digest を独立に検証します。
+token は build container に渡しません。
+PR validation と main dispatch はこの機能では常に fresh build です。
+不正・異種・非信頼・期限切れ・取得不能の入力を使わず、通常コンパイルへ戻します。
+ローカル用の専用 cache 引数は、trusted operator が検証済みの入力を渡す境界です。
+
+content で compiler・設定・source・header・生成 header・引数を識別し、
+direct/depend mode、sloppiness、時刻や compiler 名だけの identity は使いません。
+保存対象は compiler 結果だけです。ccache の目標上限は 1 GiB、tar は 2 GiB、
+1結果は 64 MiB、結果数は 50,000、manifest は 8 MiB、artifact 保持は7日です。
+一時 ZIP/tar の追加容量が必要で、eviction や期限切れは正常な miss になります。
+compiler fingerprint の変更により既存 cache は一度 miss します。
+
+小さな実 compiler と不正入力 fixture で検証します。
+ARM64 は設定経路の検証であり、実 ARM64 kernel の生成ではありません。
+full kernel/ISO/guest build、production recipe の実行、hosted warm hit、容量ピーク、
+実高速化率は **NOT_RUN** です。group 全時間を compiler 時間と見なさず、
+restore 状態と実 compiler hit/miss の統計も区別します。

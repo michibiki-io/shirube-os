@@ -13,7 +13,7 @@ RUN rm -f /etc/apt/sources.list.d/debian.sources && \
       ca-certificates curl minisign git python3 python3-debian python3-setuptools python3-all \
       python3-pip python3-stdeb python3-lxml python3-jinja2 python3-pystache python3-git python3-tomli \
       python3-tomli-w python3-yaml python3-jsonschema python3-pexpect \
-      build-essential devscripts equivs debhelper dh-python dh-autoreconf fakeroot \
+      build-essential ccache devscripts equivs debhelper dh-python dh-autoreconf fakeroot \
       libtool pkg-config quilt bc rsync kmod cpio bison flex libelf-dev libssl-dev \
       dwarves libdw-dev libslang2-dev libtraceevent-dev libpfm4-dev python3-dev \
       cmake libffi-dev libpcre2-dev libzmq3-dev opam gnupg apt-utils squashfs-tools \

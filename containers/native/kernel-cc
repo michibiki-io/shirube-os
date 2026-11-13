@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+"""Kernel-only compiler boundary; does not intercept host tools or modules."""
+import json
+import os
+from pathlib import Path
+import sys
+sys.path.insert(0, '/src')
+from producer.kernel_compile_cache import STATE, compile_command
+
+args = sys.argv[1:]
+data = json.loads(STATE.read_text())
+command, env = compile_command(args, data)
+os.execvpe(command[0], command, env)
