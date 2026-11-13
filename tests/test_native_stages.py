@@ -9,7 +9,7 @@ import unittest
 from unittest.mock import patch
 
 from producer.native_stages import select_jobs, snapshot_files, copy_selected, restore_ocaml_evidence
-from producer.compile_vpp import export_vpp_sdk
+from producer.vpp_sdk import export_vpp_sdk
 from producer.collect import tracked_source_files, vpp_source_files, files
 from producer.staged import DEPENDENCIES, merge_tree, build_scope
 from producer.pipeline import complete_candidate

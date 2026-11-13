@@ -84,9 +84,35 @@ class ComponentGraphTests(unittest.TestCase):
                     after = self.scopes(arch, propagate=True)
                     self.assertEqual({s for s in COMPONENTS if before[s] != after[s]}, expected)
 
+    def test_full_build_accel_missing_sdk_uses_scoped_helper_both_architectures(self):
+        # Execute the actual rendered fallback, stopping at the SDK call before any build.
+        import importlib.util
+        from producer import vpp_sdk
+        class SDKReached(Exception): pass
+        for arch, multi in [('amd64', 'x86_64-linux-gnu'), ('arm64', 'aarch64-linux-gnu')]:
+            modules = {}
+            for name in ('extra_common', 'extra_kernel'):
+                source = (self.project/('containers/native/'+name+'.py.in')).read_text()
+                target = self.root/(arch+'-'+name+'.py')
+                target.write_text(source.replace('@ARCH@', arch).replace('@MULTIARCH@', multi))
+                spec = importlib.util.spec_from_file_location(name, target)
+                module = importlib.util.module_from_spec(spec)
+                with patch.dict(sys.modules, modules): spec.loader.exec_module(module)
+                modules[name] = module
+            kernel = modules['extra_kernel']
+            missing = self.root/(arch+'-missing-sdk')
+            original = self.root/(arch+'-vpp-source')
+            def mapped(value):
+                return {'/vpp-sdk':missing, '/extra/vpp/vpp':original}.get(str(value), Path(value))
+            with self.subTest(arch=arch), patch.object(kernel, 'headers', return_value='synthetic-headers'), \
+                 patch.object(kernel, 'Path', side_effect=mapped), \
+                 patch.object(vpp_sdk, 'export_vpp_sdk', side_effect=SDKReached) as export:
+                with self.assertRaises(SDKReached): kernel.accel(self.root/'work')
+                export.assert_called_once_with(original, missing, multi, arch)
+
     def test_component_specific_sdk_and_signing_helper_code_is_scoped(self):
         # Mutate actual helper behavior, not only a comment or patch filename.
-        cases = [('producer/compile_vpp.py', "'header_counts': counts", "'mutated_header_counts': counts", {'vpp', 'kernel'}),
+        cases = [('producer/vpp_sdk.py', "'header_counts': counts", "'mutated_header_counts': counts", {'vpp', 'kernel'}),
                  ('producer/compile_kernel.py', "signing / 'key.pem'", "signing / 'changed-key.pem'", {'kernel'})]
         for arch in ARCHITECTURES:
             before = self.scopes(arch, propagate=True)
@@ -272,7 +298,7 @@ class ComponentGraphTests(unittest.TestCase):
                       'producer/stage_transport.py','producer/stage_metrics.py',
                       'producer/compile_scope.py','producer/component_graph.py','producer/source_selectors.py',
                       'producer/select_vpp.py','producer/select_kea.py','producer/select_runtime.py','producer/image_templates.py',
-                      'producer/security_contract.py','producer/source_contract.py']
+                      'producer/security_contract.py','producer/source_contract.py','producer/vpp_sdk.py']
         for arch in ARCHITECTURES:
             before={s:build_scope(self.project,s,arch,COMPILER,{d:'a'*64 for d in DEPENDENCIES[s]})
                     for s in ('integration','iso','clearance','guests')}

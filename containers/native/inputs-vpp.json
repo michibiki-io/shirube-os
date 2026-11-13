@@ -26,7 +26,7 @@
       "producer/native_stages.py",
       "producer/select_vpp.py",
       "producer/source_selectors.py",
-      "producer/architecture.py"
+      "producer/vpp_sdk.py"
     ],
     "producer/select_vpp.py": [
       "producer/source_selectors.py",
@@ -34,6 +34,10 @@
     ],
     "producer/vpp_inputs.py": [
       "producer/sources.py"
+    ],
+    "producer/vpp_sdk.py": [
+      "producer/architecture.py",
+      "producer/native_stages.py"
     ]
   },
   "external": [

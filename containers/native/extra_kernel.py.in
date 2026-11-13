@@ -103,7 +103,7 @@ python3 /src/native/fpm_package.py -s dir -t deb -n jool -v {jool_version()} --a
 def accel(work):
     kernel=headers()
     if not Path('/vpp-sdk').exists():
-        from producer.native_stages import export_vpp_sdk
+        from producer.vpp_sdk import export_vpp_sdk
         export_vpp_sdk(Path('/extra/vpp/vpp'),Path('/vpp-sdk'),'@MULTIARCH@','@ARCH@')
     # VPP's runtime postinst changes sysctls. Compilation needs only its SDK
     # and libraries, so never execute that runtime setup in a build sandbox.

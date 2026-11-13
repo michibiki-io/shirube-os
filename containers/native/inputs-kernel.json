@@ -29,9 +29,9 @@
       "containers/native/security_kernel.py",
       "containers/native/sign-modules.py.in",
       "producer/embedded_notices.py",
-      "producer/native_stages.py",
       "producer/sflow.py",
-      "source-lock.json"
+      "source-lock.json",
+      "producer/vpp_sdk.py"
     ],
     "containers/native/fpm_package.py": [
       "producer/architecture.py",
@@ -58,7 +58,11 @@
     ],
     "producer/go_modules.py": [],
     "producer/go_notices.py": [],
-    "producer/sflow.py": []
+    "producer/sflow.py": [],
+    "producer/vpp_sdk.py": [
+      "producer/architecture.py",
+      "producer/native_stages.py"
+    ]
   },
   "external": [
     "nat-rtsp",
