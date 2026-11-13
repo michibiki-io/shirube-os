@@ -12,32 +12,11 @@ CHECKS = {'build', 'architecture', 'module_signatures', 'branding', 'licenses',
           'unprovisioned_boot', 'provisioned_access', 'identity_regeneration', 'netbird',
           'cloud_init', 'iso_boot_modes'}
 ROLES = {'iso', 'qcow2', 'vmdk', 'source', 'licenses', 'evidence'}
-LIMIT = 2 * 1024**3
 RELEASE_ASSET_LIMIT = 1000
-# A format delimiter is also ordinary text in SSH/key-parser source and ELF
-# executables. Require following armored key bytes, including encrypted PEM
-# headers, so those programs remain buildable without allowing actual keys.
-SECRET = re.compile(
-    rb'-----BEGIN (?:RSA |EC |DSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----[ \t]*'
-    rb'(?:\r?\n|\\n)(?:(?:Proc-Type|DEK-Info):[^\r\n]{1,256}\r?\n)*'
-    rb'(?:\r?\n)*[A-Za-z0-9/+]{32}')
+from .security_contract import SECRET
 
 
-def filename(name):
-    if not isinstance(name, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]{0,199}', name):
-        raise ValueError('Unsafe asset name')
-    return name
-
-
-def scan_secrets(path):
-    """Streaming PEM/OpenSSH detection; does not claim to find every credential."""
-    tail = b''
-    with Path(path).open('rb') as source:
-        while chunk := source.read(1024**2):
-            data = tail + chunk
-            if SECRET.search(data):
-                raise ValueError('Private key material in release content')
-            tail = data[-1024:]
+from .source_contract import filename, scan_secrets, LIMIT
 
 
 def verify_vpp_inputs(component):

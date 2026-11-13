@@ -21,7 +21,8 @@ from producer.packages import audit
 from producer.notices import snapshot, mark_changed, PACKAGE_MODIFICATIONS
 from producer.sanitize import HOSTS
 from producer.integration import notice_bytes
-from producer.native_common import generate, run
+from producer.image_templates import generate
+from producer.native_common import run
 
 
 def guest_package(arch, version):

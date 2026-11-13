@@ -17,7 +17,7 @@ import zipfile
 
 from component_fixture import component_project
 from producer.component_inputs import CACHEABLE, outer_key
-from producer import staged
+from producer import staged, staged_compile
 from producer.stage_artifacts import pack
 from producer.sources import sha256
 from test_workflow_cache_ci import workflow, expression_value, mappings
@@ -162,10 +162,10 @@ class ImportTests(unittest.TestCase):
             return original_path(value,*parts)
         output=self.root/'output'; output.mkdir()
         compile_mock=Mock(side_effect=AssertionError('Compilation must not execute'))
-        with patch.object(staged,'Path',side_effect=mapped), patch('producer.architecture.native'), \
+        with patch.object(staged_compile,'Path',side_effect=mapped), patch('producer.architecture.native'), \
              patch('producer.library_cache.compiler_fingerprint',return_value=self.compiler), \
-             patch.object(staged,'restore_inputs',return_value=({},{})), \
-             patch.dict(sys.modules,{'build':SimpleNamespace(main=compile_mock)}), \
+             patch.object(staged_compile,'restore_inputs',return_value=({},{})), \
+             patch.dict(sys.modules,{'native':SimpleNamespace(build_compile=SimpleNamespace(main=compile_mock))}), \
              patch.object(sys,'argv',['staged','native','amd64','--commit',self.commit,'--version','v2026.03.9',
                                       '--output',str(output),'--cache',str(self.cache)]), \
              patch.object(sys,'path',list(sys.path)):

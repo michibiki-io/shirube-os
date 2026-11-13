@@ -1,0 +1,71 @@
+{
+  "component": "salt",
+  "module": "producer.compile_salt",
+  "templates": [
+    "extra_common.py.in",
+    "extra_salt.py.in"
+  ],
+  "roots": [
+    "producer/compile_salt.py",
+    "containers/native/extra_common.py.in",
+    "containers/native/extra_salt.py.in"
+  ],
+  "graph": {
+    "containers/native/extra_common.py.in": [
+      "producer/resources.py"
+    ],
+    "containers/native/extra_salt.py.in": [
+      "containers/native/extra_common.py.in",
+      "containers/native/salt-sources.lock.json",
+      "producer/salt_cargo.py",
+      "producer/salt_python.py",
+      "producer/salt_sources.py"
+    ],
+    "containers/native/salt-sources.lock.json": [],
+    "producer/bundles.py": [
+      "producer/source_contract.py",
+      "producer/source_fixtures.py",
+      "producer/sources.py"
+    ],
+    "producer/charset_source.py": [],
+    "producer/compile_salt.py": [
+      "containers/native/salt-sources.lock.json",
+      "producer/native_stages.py",
+      "producer/source_selectors.py"
+    ],
+    "producer/libxcrypt_source.py": [],
+    "producer/salt_cargo.py": [
+      "producer/sources.py"
+    ],
+    "producer/salt_python.py": [
+      "producer/sources.py"
+    ],
+    "producer/salt_sources.py": [
+      "containers/native/salt-sources.lock.json",
+      "producer/bundles.py",
+      "producer/charset_source.py",
+      "producer/libxcrypt_source.py",
+      "producer/sanitize.py",
+      "producer/sources.py"
+    ],
+    "producer/source_contract.py": [
+      "producer/security_contract.py"
+    ]
+  },
+  "external": [
+    "salt-tools"
+  ],
+  "lock_values": [],
+  "trees": [],
+  "dynamic": {
+    "producer/native_stages.py": [
+      "producer/compile_salt.py"
+    ],
+    "producer/native_common.py": [
+      "containers/native/extra_common.py.in",
+      "containers/native/extra_salt.py.in"
+    ],
+    "producer/recipes.py": []
+  },
+  "dynamic_imports": {}
+}

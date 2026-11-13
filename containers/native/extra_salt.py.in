@@ -1,0 +1,49 @@
+# Copyright (c) 2026 michibiki.io; MIT. Modified 2026-11-08 for Shirube OS native architectures.
+#!/usr/bin/env python3
+"""Build missing ISO dependencies inside Docker, retaining provenance receipts."""
+import argparse
+import hashlib
+import json
+import os
+import re
+import shlex
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+import sys
+sys.path.insert(0,'/src')
+
+ROOT = Path('/opt/stream')
+OUT = Path('/debs')
+WORK = Path('/extra')
+
+
+from extra_common import *
+
+def salt(work):
+    source=snapshot('salt_v3006.21/salt',work/'salt')
+    shell("git init -q; git add .; GIT_AUTHOR_DATE=2026-03-18T00:00:00Z GIT_COMMITTER_DATE=2026-03-18T00:00:00Z git -c user.name='Stream snapshot' -c user.email=maintainers@vyos.net commit -qm 'Verified source snapshot'; git tag v3006.21",source)
+    git('salt-tools',source/'python-tools-scripts')
+    from producer.salt_sources import pin_build
+    pin_build(source,'@ARCH@',Path('/src/native/salt-sources.lock.json'))
+    from producer.salt_cargo import prepare as prepare_cargo, patch_sdk_environment
+    cargo_home=prepare_cargo(Path('/src/native/salt-sources.lock.json'),work/'cargo-inputs',
+                             Path('/public-inputs/salt-cargo'))
+    from producer.salt_python import prepare as prepare_python
+    python_inputs=prepare_python(Path('/src/native/salt-sources.lock.json'),'@ARCH@',
+                                 work/'python-inputs',Path('/public-inputs/salt-python'))
+    patch_sdk_environment(source,cargo_home,python_inputs)
+    runtime_arch='x86_64' if '@ARCH@'=='amd64' else 'arm64'
+    shell(r'''apt-get install -y --no-install-recommends libssl-dev libffi-dev python3-dev python3-pip python3-venv patchelf fakeroot dpkg-dev cargo dh-make libgdbm-dev liblzma-dev libzmq3-dev pkg-config bash-completion
+python3 -m venv venv-build
+venv-build/bin/python3 -m pip install pip==25.2
+venv-build/bin/python3 -m pip install -r requirements/static/ci/py3.11/tools.txt ./python-tools-scripts relenv==0.22.3 build==1.3.0 msgpack-python==0.5.6 ppbt==0.1.8 setuptools==66.1.1 tornado==6.6
+export PYTHONPATH=$PWD
+venv-build/bin/tools pkg build deb --relenv-version=0.22.3 --python-version=3.11.14 --arch=@SALT_ARCH@
+'''.replace('@SALT_ARCH@',runtime_arch),source)
+    copy_debs(work)
+
+
+if __name__ == '__main__':
+    execute({'salt': salt})

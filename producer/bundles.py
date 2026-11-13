@@ -3,7 +3,7 @@ import gzip
 import hashlib
 from pathlib import Path
 import tarfile
-from .release import LIMIT, filename, scan_secrets
+from .source_contract import LIMIT, filename, scan_secrets
 from .sources import sha256
 
 

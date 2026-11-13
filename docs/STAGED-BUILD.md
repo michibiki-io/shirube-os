@@ -271,7 +271,7 @@ that diagnostic cannot clear a candidate. Metrics and diagnostics are separate f
 assets. GitHub download/upload step timings and compiler preparation resource
 peaks still require job-log evidence; worker wall time excludes those outer steps.
 
-### Component identities and conservative shared inputs (issue #17)
+### Component identities and physical dependency boundaries (issues #17 and #30)
 
 [`producer/component_inputs.py`](../producer/component_inputs.py) defines one
 versioned manifest for each existing compile boundary. `build_scope()` hashes
@@ -284,7 +284,7 @@ selected job graphs fail closed. Repository `containers/native` and `patches/*`
 paths normalize to the Dockerfile's `/src/native`, `/src/vyos-patches` and
 `/kernel-patches` aliases; host/container equivalence is regression-tested.
 Compile identities never hash the entire `source-lock.json` or producer tree.
-Noncompile scope retains the existing broad inputs.
+Noncompile scopes recursively cover native Python/shell/template/JSON inputs and producer Python modules, including the relocated library preparation scripts.
 
 | Component | Additional selected inputs |
 | --- | --- |
@@ -307,20 +307,129 @@ independent input. The current `.dockerignore` excludes Git/work/output/Python
 cache artifacts and does not exclude declared build inputs. Same-run compiler
 artifact validation still checks it and the complete current COPY context.
 
-The full `build.py`, `producer/native_common.py`, shared contract modules, and
-(for stages using it) `extras.py.in` are conservative recipe inputs. Edits to an unrelated function
-in those shared files can still miss multiple component caches. This is deliberate;
-function-text hashing could omit a transitive dependency. New build dependencies
-must be declared and covered by mutation tests. The generic `go_notice()` helper
-moved unchanged to `producer/go_notices.py`, shared by FPM and NetBird consumers,
-so NetBird-specific code can change without losing runtime notice dependencies.
-The `generate()` and `run()` helpers moved unchanged from `image.py` to
-`producer/native_common.py`; `image.py` reexports them for existing consumers.
-Compile stages import the shared helpers directly and no longer include
-`image.py` in their manifests. NetBird lock/code (including guest packaging in
-`image.py`), guest, cloud-init and GeoIP-only changes leave these compile
-identities stable; integration/downstream identities remain broad and include
-`image.py`.
+The physical dependency graph lives in `containers/native/inputs-common.json`
+and six independent `inputs-{native,vpp,kea,salt,runtime,kernel}.json` declarations.
+Each declaration records roots, direct graph edges, explicit dynamic routes and
+normalized dynamic-import expressions,
+rendered templates, source-lock selections, external revision selections and
+complete patch trees. The common declaration contains no component registry.
+`producer/component_graph.py` validates and traverses the graph;
+`component_inputs.py` hashes every whole physical recipe/helper/declaration file
+and executable bit. The three structured documents (`source-lock.json`,
+`packages.json`, `external-sources.lock.json`) retain explicit selected-value
+semantics; recipes never use function-text hashing or hash exclusions.
+
+| Boundary | Physical inputs and dispatch |
+| --- | --- |
+| Shared stage execution/transport | `staged.py` public dispatch, `staged_compile.py` restore/cache/compile/pack/save/cleanup, `stage_transport.py` exact cohort/metadata/ancestry validation, `stage_metrics.py`; all whole-file hashed in every compile graph |
+| Shared compiler engine | `build_compile.py`, `native_stages.py`, `native_common.py`, `recipes.py`; authentication, execution, selected package jobs, all-DEB auditing and transfer export |
+| Shared security/source contracts | `security_contract.py`, `stage_artifacts.py`, `source_selectors.py`, source fixture and public-test-key contracts; `source_contract.py` for archive-producing native/Salt exporters |
+| Per-component export/declarations | `producer/compile_<component>.py`, `inputs-<component>.json`; source roots, extras selection and source/export selectors; VPP SDK export resides in `compile_vpp.py`, kernel-only VPP/signing workspace preparation in `compile_kernel.py` |
+| Native packages | `package_native.sh`, `package_native_early.sh`, `security_native.py`, HTTP/Rust inputs, library recipes; FRR/update-check hooks in `compile_native.py` |
+| Kernel | `package_kernel.sh`, `extra_kernel.py.in`, `security_kernel.py`, signing template and complete kernel/accel security patch trees |
+| VPP / Kea / Salt / runtime extras | Corresponding `extra_<component>.py.in`; `extra_common.py.in` shares execution/packaging helpers; `select_vpp.py`, `select_kea.py`, `select_runtime.py` own export details |
+| Native/kernel shared preparation | `package_common.sh`, `package_validate.sh`, `security_common.py`; common changes invalidate both |
+| ISO / clearance / guests / full release | `build_release.py`, `image.py`, `image_templates.py`, `collect.py`, `staged_release.py`, pipeline and integration/guest modules; outside every compile closure |
+
+`build.py` routes legacy full builds to `build_release.py`; staged compilation
+uses `python -m producer.staged`, whose literal `ENGINES[stage]` route selects
+`staged_compile.py`; that engine calls `build_compile.py` directly. The facade,
+selected engine, shared restore validator and resource metrics are whole-file
+inputs in every compile closure. The graph audit independently resolves this
+literal table for the selected component and requires the resulting module edge;
+normalized expression declarations still reject new undeclared dynamic calls.
+Downstream routes select `staged_release.py`, whose integration/ISO/clearance/guest
+bodies remain physically outside compile closures. The existing public scope,
+transfer and downstream APIs remain available through the facade. Both
+`--stage value` and `--stage=value` select the compile engine in `build.py`. The producer image now has the generic
+`python3` entry point; package/ISO/release launchers explicitly pass `build.py`.
+Docker COPY layout is unchanged. The whole Dockerfile remains an environment
+recipe input, while same-run image admission still inventories the full COPY
+context independently of compile scopes. Its COPY destinations are not Python
+imports: the static recipe audit below examines Python and shell recipes.
+
+The compile generator renders only the selected declaration's templates. The
+wildcard ISO generator resides in `image_templates.py`; compile closures do not
+import it. Collection reexports preferred-source selectors for its existing
+callers but selectors do not import collection. NetBird/guest/cloud-init/GeoIP,
+full-release orchestration and clearance-only edits leave all compile keys
+stable. A VPP input change affects VPP directly and kernel through the verified
+predecessor input **and payload** identity. Kernel and signing remain fresh.
+FPM still inspects every ELF payload for Go dependencies, including kernel
+packages; kernel therefore also declares the Go SDK and Go notice overrides.
+No non-target binary audit is skipped to achieve isolation.
+
+Security preparation retains the selected native or kernel module as standalone
+`recipe.py` plus `security_common.py`. Receipts bind both complete files in an
+`inputs` hash inventory, the original `recipe_sha256`, and every patch/provenance
+input. Both companions preserve their legal notice. Replay requires only the
+original source, the retained companions and patch tree; native replay supports
+FRR quilt preparation as well as update-check application. Native changes never
+alter a kernel retained recipe, and kernel changes never alter native/library
+source identity; a shared security helper change affects both.
+
+The offline audit derives module-level and delayed Python imports, bare native
+imports, and both architecture renderings of templates. It resolves literal
+`/src/`, `/opt/stream/` and patch aliases, constant path joins, literal shell paths,
+`Path(...).glob/rglob(...)`, and literal `copytree` inputs. Every discovered file
+must be an explicit graph edge or a member of a declared complete patch tree.
+Missing/unknown nodes, declarations, omitted rendered templates, unresolved local imports, undeclared known
+forms of dynamic import, nonregular inputs and symlinks at files or any ancestor
+(including mapped parent patch directories) fail closed. Literal selected lock
+reads and external `git('name', ...)` calls are also checked against selections.
+
+This is syntax analysis, not an arbitrary Python/shell interpreter. Variable
+path construction, computed dictionary keys, imported/aliased callables,
+reflection, shell expansion through variables and dependencies discovered in
+upstream sources cannot all be inferred. Directory roots alone do not mean all
+members are consumed. Declare these routes/trees/selected values explicitly,
+review their callers and add a mutation test. Existing dynamic routes include
+component module dispatch, selected template/shell rendering, library worker and
+prepare-script copying, authenticated source snapshot selectors and external Git
+selection. Upstream scripts/patches remain bound by authenticated Stream and
+external revisions, locks and complete source inventories. Do not claim this
+check proves detection of every possible dynamic dependency.
+
+Focused driver regressions mutate the facade, compile execution engine, shared
+restore/transport validator, cache implementation, transfer contract and metrics
+files on both architectures; each changes all six compile scopes. A mutation of
+`staged_release.py` changes none. They also check every new module in downstream
+scopes, VPP-to-kernel propagation, host/container identity, public CLI dispatch,
+real scope/pack/unpack/cache-hit wiring and fresh kernel execution. These are
+local fixture checks; hosted CI, full builds and hosted cross-run HIT are NOT_RUN.
+
+Maintenance requires updating the owning component declaration and its direct
+edges whenever imports/helpers/recipes are added, moved or removed. Shared edges
+belong in the common declaration only when consumed by all compile paths. Keep
+noncompile-only modules physically separate. Run the component input/graph tests
+on both architectures, require exact affected-stage sets, and mutate every new
+production location in all four downstream scopes. A new undeclared import must
+fail even if a recipe edit already changed today's key.
+
+Manifest schema 2 and `component-manifest-v2` deliberately migrate all component
+identities once. Existing Actions key format, exact inner-scope validation,
+effective compiler fingerprint, same-run compiler binding, attribution and the
+fixed fallback whitelist/expiry remain unchanged. There is no old-key
+compatibility assertion, prefix restore, cache deletion/re-save or priming.
+To reproduce the base/current comparison without builds or cache access:
+
+```sh
+python3 scripts/compare-component-inputs.py \
+  --base 6e09074a425c91748e7fc39c12010ce2d8018837 \
+  --output /tmp/component-input-comparison
+PYTHONPATH=.:tests python3 -m unittest test_component_inputs test_component_graph
+```
+
+The comparison extracts an immutable Git archive into a temporary directory
+(no branch/worktree), fixes the effective fingerprint to `sha256:` followed by
+64 `b` characters and kernel's predecessor to 64 `a` characters, and emits full
+base/current manifests/scopes plus added/removed/changed input lists and keys.
+Schema migration is separate from postmigration mutation tests: the latter
+also derive kernel's predecessor from VPP input identity and a fixed synthetic
+payload identity to prove propagation. These offline records do not demonstrate
+hosted cache reuse. Full compiler/image/package/guest builds and actual hosted
+cross-run HIT remain **NOT_RUN** for issue #30. Required Test CI and independent
+PR reviews are publication gates owned by the publishing workflow.
 
 The compiler BuildKit namespace uses `toolchain_identity()` rather than producer
 COPY content. BuildKit still receives the complete actual current context and

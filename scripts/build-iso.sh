@@ -94,7 +94,7 @@ else
 fi
 container_id=$(docker create "${runtime_args[@]}" --label "io.michibiki.shirube.task=$task_nonce" --privileged \
   --cpus="$build_cpus" --memory="${build_memory}g" --memory-swap="${build_memory}g" --pids-limit=4096 \
-  -v "$output:/output" -v "$private/project-source.tar:/project-source.tar:ro" "${cache_args[@]}" "$image" "$architecture" \
+  -v "$output:/output" -v "$private/project-source.tar:/project-source.tar:ro" "${cache_args[@]}" "$image" /src/native/build.py "$architecture" \
   --target iso --version "$version" --commit "$commit" "${source_args[@]}" "${source_audit_args[@]}" "${library_args[@]}")
 if [[ -n ${SHIRUBE_BUILD_STATE_FILE:-} ]]; then
   [[ ! -e "$SHIRUBE_BUILD_STATE_FILE" ]] || { echo 'Build state file must be new' >&2; exit 1; }

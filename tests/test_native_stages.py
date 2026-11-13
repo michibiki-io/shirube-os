@@ -8,7 +8,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from producer.native_stages import select_jobs, export_vpp_sdk, snapshot_files, copy_selected, restore_ocaml_evidence
+from producer.native_stages import select_jobs, snapshot_files, copy_selected, restore_ocaml_evidence
+from producer.compile_vpp import export_vpp_sdk
 from producer.collect import tracked_source_files, vpp_source_files, files
 from producer.staged import DEPENDENCIES, merge_tree, build_scope
 from producer.pipeline import complete_candidate
@@ -113,7 +114,7 @@ class StagedI2utilTests(unittest.TestCase):
         return Path(value,*parts)
 
     def export(self,revision=None):
-        from producer import native_stages
+        from producer import native_stages, compile_runtime
         original=subprocess.check_output
         def observe(args,**kwargs):
             if args[-2:]==['rev-parse','HEAD']:
@@ -121,8 +122,10 @@ class StagedI2utilTests(unittest.TestCase):
                 return revision if revision is not None else self.lock['commit']+'\n'
             return original(args,**kwargs)
         with patch.object(native_stages,'Path',side_effect=self.mapped_path), \
-             patch.object(native_stages,'SNAPSHOTS',{}), \
-             patch.object(native_stages,'GIT_SOURCES',{'runtime':('base/i2util',)}), \
+             patch.object(compile_runtime,'Path',side_effect=self.mapped_path), \
+             patch.object(native_stages,'component',return_value=compile_runtime), \
+             patch.object(compile_runtime,'SNAPSHOTS',{}), \
+             patch.object(compile_runtime,'GIT_SOURCES',{'runtime':('base/i2util',)}), \
              patch.object(subprocess,'check_output',side_effect=observe) as git:
             native_stages.export_compile('runtime',self.sources,self.root/'packages',
                                          self.root/'export','amd64')
@@ -213,7 +216,7 @@ class StageEntryPointTests(unittest.TestCase):
         """Exercise the real transfer/cache dispatch, mocking only compilation."""
         import sys
         from types import SimpleNamespace
-        from producer import staged
+        from producer import staged, staged_compile
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);src=root/'src';src.mkdir()
             from component_fixture import component_project
@@ -250,11 +253,11 @@ class StageEntryPointTests(unittest.TestCase):
                 if work.exists():
                     import shutil
                     shutil.rmtree(work)
-                with patch.object(staged,'Path',side_effect=mapped), \
+                with patch.object(staged_compile,'Path',side_effect=mapped), \
                      patch('producer.architecture.native'), \
                      patch('producer.library_cache.compiler_fingerprint',return_value=compiler), \
-                     patch.object(staged,'restore_inputs',return_value=({},{})), \
-                     patch.dict(sys.modules,{'build':SimpleNamespace(main=synthetic_compile)}), \
+                     patch.object(staged_compile,'restore_inputs',return_value=({},{})), \
+                     patch.dict(sys.modules,{'native':SimpleNamespace(build_compile=SimpleNamespace(main=synthetic_compile))}), \
                      patch.object(sys,'argv',['staged','native','amd64','--commit',commit,'--version','v2026.03.0',
                                               '--output',str(output),'--cache',str(root/'cache')]), \
                      patch.object(sys,'path',list(sys.path)):
@@ -305,7 +308,7 @@ class SourceHandoffTests(unittest.TestCase):
 
     def test_guest_stage_consumes_same_iso_generation_and_certificate_without_assembly(self):
         import sys
-        from producer import staged
+        from producer import staged_release as staged
         from producer.sources import sha256
         from itertools import product
         from producer.pipeline import complete_candidate
@@ -375,7 +378,7 @@ class SourceHandoffTests(unittest.TestCase):
 
 class PrerequisiteTests(unittest.TestCase):
     def test_missing_extra_and_cross_arch_prerequisites_fail_before_consumption(self):
-        from producer import staged
+        from producer import staged_release as staged
         from producer.stage_artifacts import pack, scope
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);inputs=root/'inputs';inputs.mkdir();payload=root/'payload';payload.mkdir()
@@ -402,7 +405,7 @@ class AssemblyHandoffTests(unittest.TestCase):
     def test_export_contains_actual_assembled_debs_after_metadata_repair(self):
         import sys
         from types import SimpleNamespace
-        from producer import staged
+        from producer import staged_release as staged
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary);merged=root/'merged';(merged/'debs').mkdir(parents=True)
             (merged/'debs/original_1_amd64.deb').write_bytes(b'synthetic original package')
@@ -441,7 +444,8 @@ class ContentIdentityTests(unittest.TestCase):
             (root/'guest/service.py').write_text('new guest behavior')
             self.assertEqual(before,build_scope(root,'vpp','amd64',compiler,{}))
             self.assertNotEqual(downstream,build_scope(root,'clearance','amd64',compiler,{'iso':'c'*64}))
-            (root/'native/extras.py.in').write_text('changed compiler recipe')
+            path=root/'native/extra_vpp.py.in'
+            path.write_text(path.read_text()+'\n# changed compiler recipe\n')
             self.assertNotEqual(before,build_scope(root,'vpp','amd64',compiler,{}))
 
 

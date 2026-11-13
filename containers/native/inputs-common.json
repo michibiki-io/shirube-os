@@ -1,0 +1,169 @@
+{
+  "roots": [
+    "producer/__init__.py",
+    "producer/component_inputs.py",
+    "producer/compile_scope.py",
+    "producer/native_stages.py",
+    "producer/native_common.py",
+    "containers/native/build_compile.py",
+    "containers/native/Dockerfile",
+    "containers/native/apt-get",
+    "containers/native/apt-retries.conf",
+    "containers/native/install_gems.py",
+    "containers/native/rubygems.lock.json",
+    "LICENSE",
+    "shirube-os-logo.svg",
+    "patches/vyos/force_mtu_host.sh",
+    "source-lock.json",
+    "containers/native/packages.json",
+    "containers/native/external-sources.lock.json",
+    "producer/staged.py"
+  ],
+  "graph": {
+    "LICENSE": [],
+    "containers/native/Dockerfile": [],
+    "containers/native/apt-get": [],
+    "containers/native/apt-retries.conf": [],
+    "containers/native/build_compile.py": [
+      "LICENSE",
+      "containers/native/packages.json",
+      "patches/vyos/force_mtu_host.sh",
+      "producer/architecture.py",
+      "producer/bash_source.py",
+      "producer/branding.py",
+      "producer/component_graph.py",
+      "producer/library_cache.py",
+      "producer/native_stages.py",
+      "producer/network_diagnostics.py",
+      "producer/packages.py",
+      "producer/recipes.py",
+      "producer/resources.py",
+      "producer/sources.py",
+      "shirube-os-logo.svg",
+      "source-lock.json"
+    ],
+    "containers/native/external-sources.lock.json": [],
+    "containers/native/install_gems.py": [],
+    "containers/native/packages.json": [],
+    "containers/native/rubygems.lock.json": [],
+    "patches/vyos/force_mtu_host.sh": [],
+    "producer/__init__.py": [],
+    "producer/architecture.py": [],
+    "producer/bash_source.py": [
+      "producer/sources.py"
+    ],
+    "producer/branding.py": [
+      "producer/policy.py",
+      "producer/sanitize.py"
+    ],
+    "producer/compile_scope.py": [
+      "producer/component_inputs.py",
+      "producer/native_stages.py",
+      "producer/stage_artifacts.py"
+    ],
+    "producer/component_graph.py": [],
+    "producer/component_inputs.py": [
+      "producer/compile_scope.py",
+      "producer/component_graph.py",
+      "producer/library_cache.py",
+      "producer/native_stages.py",
+      "producer/sources.py",
+      "producer/stage_artifacts.py"
+    ],
+    "producer/library_cache.py": [
+      "producer/packages.py",
+      "producer/sources.py"
+    ],
+    "producer/native_common.py": [
+      "containers/native/external-sources.lock.json",
+      "producer/component_graph.py"
+    ],
+    "producer/native_stages.py": [
+      "containers/native/packages.json",
+      "producer/component_graph.py",
+      "producer/library_cache.py",
+      "producer/native_common.py",
+      "producer/package_notices.py",
+      "producer/packages.py",
+      "producer/source_selectors.py",
+      "producer/sources.py",
+      "producer/stage_artifacts.py"
+    ],
+    "producer/network_diagnostics.py": [
+      "producer/sanitize.py",
+      "producer/sources.py"
+    ],
+    "producer/package_notices.py": [],
+    "producer/packages.py": [
+      "producer/architecture.py",
+      "producer/public_test_keys.py",
+      "producer/security_contract.py",
+      "producer/signing.py"
+    ],
+    "producer/policy.py": [],
+    "producer/public_test_keys.py": [
+      "producer/sanitize.py",
+      "producer/security_contract.py"
+    ],
+    "producer/recipes.py": [],
+    "producer/resources.py": [],
+    "producer/sanitize.py": [],
+    "producer/security_contract.py": [],
+    "producer/signing.py": [],
+    "producer/source_fixtures.py": [
+      "producer/public_test_keys.py"
+    ],
+    "producer/source_selectors.py": [
+      "producer/sources.py",
+      "producer/stage_artifacts.py"
+    ],
+    "producer/sources.py": [],
+    "producer/stage_artifacts.py": [
+      "producer/policy.py",
+      "producer/security_contract.py",
+      "producer/source_fixtures.py",
+      "producer/sources.py"
+    ],
+    "shirube-os-logo.svg": [],
+    "source-lock.json": [],
+    "producer/staged.py": [
+      "producer/native_stages.py",
+      "producer/stage_transport.py",
+      "producer/staged_compile.py"
+    ],
+    "producer/staged_compile.py": [
+      "producer/architecture.py",
+      "producer/policy.py",
+      "producer/library_cache.py",
+      "producer/stage_metrics.py",
+      "producer/native_stages.py",
+      "producer/compile_scope.py",
+      "producer/stage_artifacts.py",
+      "producer/sources.py",
+      "producer/stage_transport.py",
+      "containers/native/build_compile.py",
+      "containers/native/packages.json",
+      "source-lock.json"
+    ],
+    "producer/stage_transport.py": [
+      "producer/sources.py",
+      "producer/stage_artifacts.py"
+    ],
+    "producer/stage_metrics.py": [
+      "producer/resources.py"
+    ]
+  },
+  "dynamic": {
+    "producer/native_stages.py": [],
+    "producer/native_common.py": [],
+    "producer/recipes.py": []
+  },
+  "dynamic_imports": {
+    "producer/native_stages.py": [
+      "declaration(Path('/src'), stage)['module']"
+    ],
+    "producer/staged.py": [
+      "ENGINES[stage]"
+    ]
+  }
+}

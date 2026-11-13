@@ -60,7 +60,7 @@ def main():
             '{{(index .NetworkSettings.Networks "'+fixture.network+'").IPAddress}}',fixture.container).decode().strip()
         # The candidate retains public-input network access. Only its
         # isolated guest-test connection joins the local fixture network.
-        producer_command=[args.image,args.architecture,'--target','release','--version',args.version,
+        producer_command=[args.image,'/src/native/build.py',args.architecture,'--target','release','--version',args.version,
                           '--commit',args.commit,'--netbird-fixture-stdin','--qemu-accelerator',args.qemu_accelerator,*library_args]
         if args.staged_inputs:
             library_mounts += ['-v',str(args.staged_inputs.resolve())+':/inputs:'+('rw' if args.discard_input_archives else 'ro')]

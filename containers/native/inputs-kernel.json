@@ -1,0 +1,94 @@
+{
+  "component": "kernel",
+  "module": "producer.compile_kernel",
+  "templates": [
+    "extra_common.py.in",
+    "extra_kernel.py.in",
+    "sign-modules.py.in"
+  ],
+  "roots": [
+    "producer/compile_kernel.py",
+    "containers/native/extra_common.py.in",
+    "containers/native/extra_kernel.py.in",
+    "containers/native/sign-modules.py.in",
+    "producer/recipes.py",
+    "containers/native/package_common.sh",
+    "containers/native/package_validate.sh",
+    "containers/native/package_kernel.sh",
+    "containers/native/security_kernel.py",
+    "producer/go_modules.py",
+    "producer/go_notices.py"
+  ],
+  "graph": {
+    "containers/native/extra_common.py.in": [
+      "producer/resources.py"
+    ],
+    "containers/native/extra_kernel.py.in": [
+      "containers/native/extra_common.py.in",
+      "containers/native/fpm_package.py",
+      "containers/native/security_kernel.py",
+      "containers/native/sign-modules.py.in",
+      "producer/embedded_notices.py",
+      "producer/native_stages.py",
+      "producer/sflow.py",
+      "source-lock.json"
+    ],
+    "containers/native/fpm_package.py": [
+      "producer/architecture.py",
+      "producer/go_modules.py",
+      "producer/go_notices.py",
+      "producer/sources.py",
+      "source-lock.json"
+    ],
+    "containers/native/package_common.sh": [],
+    "containers/native/package_kernel.sh": [],
+    "containers/native/package_validate.sh": [],
+    "containers/native/security_common.py": [],
+    "containers/native/security_kernel.py": [
+      "containers/native/security_common.py"
+    ],
+    "containers/native/sign-modules.py.in": [],
+    "producer/compile_kernel.py": [
+      "producer/native_stages.py",
+      "producer/source_selectors.py",
+      "producer/stage_artifacts.py"
+    ],
+    "producer/embedded_notices.py": [
+      "producer/sources.py"
+    ],
+    "producer/go_modules.py": [],
+    "producer/go_notices.py": [],
+    "producer/sflow.py": []
+  },
+  "external": [
+    "nat-rtsp",
+    "ipt-netflow"
+  ],
+  "lock_values": [
+    "embedded_legal_notices.openvpn-dco",
+    "embedded_legal_notices.nat-rtsp",
+    "embedded_legal_notices.vyos-ipt-netflow",
+    "go",
+    "go_notice_overrides"
+  ],
+  "trees": [
+    "patches/kernel",
+    "patches/vyos/security/accel-ppp"
+  ],
+  "dynamic": {
+    "producer/native_stages.py": [
+      "producer/compile_kernel.py"
+    ],
+    "producer/native_common.py": [
+      "containers/native/extra_common.py.in",
+      "containers/native/extra_kernel.py.in",
+      "containers/native/sign-modules.py.in"
+    ],
+    "producer/recipes.py": [
+      "containers/native/package_common.sh",
+      "containers/native/package_validate.sh",
+      "containers/native/package_kernel.sh"
+    ]
+  },
+  "dynamic_imports": {}
+}

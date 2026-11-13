@@ -10,7 +10,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from producer import native_stages, staged
+from producer import native_stages, staged, staged_compile, stage_transport, compile_kernel
 
 
 ARCHITECTURES = ('amd64', 'arm64')
@@ -71,7 +71,9 @@ class ExtraStageAPTTests(unittest.TestCase):
             generate = Mock(return_value=root / 'generated')
             exporter = Mock(side_effect=export)
             with patch.object(native_stages, 'Path', side_effect=mapped), \
-                 patch.object(staged, 'Path', side_effect=mapped), \
+                 patch.object(compile_kernel, 'Path', side_effect=mapped), \
+                 patch.object(staged_compile, 'Path', side_effect=mapped), \
+                 patch.object(stage_transport, 'Path', side_effect=mapped), \
                  patch('producer.native_common.generate', generate), \
                  patch('producer.native_common.run', run), \
                  patch.object(native_stages, 'export_compile', exporter), \
@@ -92,9 +94,9 @@ class ExtraStageAPTTests(unittest.TestCase):
                 with self.subTest(stage=stage, architecture=architecture), self.environment(stage, architecture) as env:
                     self.finish(env, stage, architecture)
                     self.assertEqual(env.events, [STRICT_UPDATE, *[
-                        ('python3', str(env.root / 'generated/extras.py'), job) for job in recipes
+                        ('python3', str(env.root / ('generated/extra_'+stage+'.py')), job) for job in recipes
                     ], ('export', stage)])
-                    env.generate.assert_called_once_with(architecture)
+                    env.generate.assert_called_once_with(architecture, stage=stage)
                     env.export.assert_called_once()
                     receipt = json.loads((env.root / 'export/provenance' / (stage + '-compiler.json')).read_text())
                     self.assertEqual(receipt['post_build_compiler_fingerprint'], COMPILER)
@@ -121,6 +123,41 @@ class ExtraStageAPTTests(unittest.TestCase):
                 self.assertEqual(env.events, [('export', 'native')])
                 env.export.assert_called_once()
 
+    def test_kernel_cli_restores_real_vpp_transfer_and_always_builds_fresh(self):
+        from producer.stage_artifacts import pack
+        for architecture in ARCHITECTURES:
+            with self.subTest(architecture=architecture), self.environment('kernel', architecture) as env:
+                payload = env.root/'vpp-payload'; payload.mkdir()
+                (payload/'sdk.txt').write_text('verified synthetic SDK')
+                vpp_scope = staged.build_scope(env.root/'src', 'vpp', architecture, COMPILER, {})
+                record = pack(payload, env.root/'inputs/vpp.tar', vpp_scope, 'c'*40, 'v2026.03.0')
+                (env.root/'inputs/vpp.json').write_text(json.dumps(record))
+                builds = []
+                def compile_catalog():
+                    self.assertEqual((env.root/'stage-dependencies/vpp/sdk.txt').read_text(),
+                                     'verified synthetic SDK')
+                    builds.append(tuple(sys.argv))
+                    output = Path(sys.argv[sys.argv.index('--output')+1])/'stage'
+                    output.mkdir(); (output/'kernel.txt').write_text('fresh '+str(len(builds)))
+                cache = env.root/'cache'; cache.mkdir()
+                (cache/'sentinel').write_text('never touched by kernel')
+                for attempt in ('first', 'second'):
+                    shutil.rmtree(env.root/'stage-dependencies')
+                    shutil.rmtree(env.root/'build-private')
+                    output = env.root/attempt; output.mkdir()
+                    with patch('producer.architecture.native'), \
+                         patch.dict(sys.modules, {'native': SimpleNamespace(build_compile=SimpleNamespace(main=compile_catalog))}), \
+                         patch.object(sys, 'argv', ['staged', 'kernel', architecture, '--commit', 'c'*40,
+                             '--version', 'v2026.03.0', '--inputs', str(env.root/'inputs'),
+                             '--output', str(output), '--cache', str(cache)]):
+                        staged.main()
+                    receipt = json.loads((output/'transfer.json').read_text())
+                    self.assertEqual(receipt['scope']['stage'], 'kernel')
+                    self.assertEqual(set(receipt['scope']['dependencies']), {'vpp'})
+                    self.assertEqual(json.loads((output/'resources.json').read_text())['cache'], 'DISABLED')
+                self.assertEqual(len(builds), 2)
+                self.assertEqual([p.name for p in cache.iterdir()], ['sentinel'])
+
     def test_verified_cache_hit_bypasses_finish_and_refresh(self):
         """Real stage dispatch/scope/pack/unpack; only catalog compilation is synthetic."""
         for architecture in ARCHITECTURES:
@@ -140,7 +177,7 @@ class ExtraStageAPTTests(unittest.TestCase):
                             if path.exists(): shutil.rmtree(path)
                         if (env.root / 'sources').is_symlink(): (env.root / 'sources').unlink()
                         with patch('producer.architecture.native') as native, \
-                             patch.dict(sys.modules, {'build': SimpleNamespace(main=compile_catalog)}), \
+                             patch.dict(sys.modules, {'native': SimpleNamespace(build_compile=SimpleNamespace(main=compile_catalog))}), \
                              patch.object(sys, 'argv', ['staged', stage, architecture, '--commit', commit,
                                  '--version', 'v2026.03.0', '--inputs', str(env.root / 'inputs'),
                                  '--output', str(output), '--cache', str(env.root / 'cache')]):

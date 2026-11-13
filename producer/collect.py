@@ -10,8 +10,6 @@ from .bundles import bundle
 from .sources import sha256
 from .sanitize import path_in_root
 
-GENERATED={'.git','__pycache__','.pytest_cache','.debhelper','shirube-stage-source.json'}
-SUFFIXES={'.o','.ko','.a','.so','.cmi','.cmo','.cmx','.pyc','.deb'}
 
 
 def http_dependencies(rootfs):
@@ -290,26 +288,7 @@ def merge_bundled_components(children):
     return list(result.values())
 
 
-def files(root, exclude=()):
-    root=Path(root).resolve()
-    excluded=[Path(member) for member in exclude]
-    def omitted(relative):
-        return any(relative==member or member in relative.parents for member in excluded)
-    for directory,children,names in os.walk(root,followlinks=False):
-        base=Path(directory)
-        children[:]=sorted(name for name in children if name not in GENERATED
-                           and not omitted((base/name).relative_to(root)))
-        for name in sorted(names):
-            path=base/name;relative=path.relative_to(root)
-            if name in GENERATED or omitted(relative):continue
-            if name.startswith('.') and name.endswith('.cmd'):continue
-            if name in {'signing_key.pem','vmlinux','System.map'} or path.suffix in SUFFIXES:continue
-            if path.is_file():
-                # os.walk does not enter directory symlinks. Resolve file
-                # aliases only, avoiding repeated ancestor lookups per file.
-                resolved=path.resolve() if path.is_symlink() else path
-                if not resolved.is_relative_to(root):raise ValueError('Source symlink escapes component')
-                yield resolved,str(relative)
+
 
 
 def shared_build_inputs(project,builder,patches,destination):
@@ -341,120 +320,20 @@ def project_recipe(project, shared, destination):
     return destination
 
 
-def tracked_source_files(root):
-    """Export patched tracked source, materializing confined directory aliases."""
-    root=Path(root).resolve()
-    if (root/'shirube-stage-source.json').is_file():
-        from .stage_artifacts import member_name
-        members=json.loads((root/'shirube-stage-source.json').read_text())['members']
-        if not members or len(members)!=len(set(members)):raise ValueError('Incomplete staged source member set')
-        for name in members:
-            path=root/member_name(name)
-            if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(root):
-                raise ValueError('Staged preferred source member missing/unsafe')
-            yield path,name
-        return
-    names=subprocess.check_output(['git','-C',str(root),'ls-files','-z']).decode().split('\0')
-    for name in sorted(filter(None,names)):
-        path=Path(name)
-        if path.is_absolute() or '..' in path.parts or '.git' in path.parts:
-            raise ValueError('Unsafe tracked source path')
-        source=root/path
-        if source.is_symlink():
-            if not source.resolve().is_relative_to(root):raise ValueError('External VPP source link')
-            if source.is_dir():
-                # Materialize this confined directory alias from the same
-                # tracked tree; archives intentionally contain regular files.
-                prefix=source.resolve().relative_to(root)
-                for tracked in sorted(filter(None,names)):
-                    try:relative=Path(tracked).relative_to(prefix)
-                    except ValueError:continue
-                    target=root/tracked
-                    if target.is_file():
-                        if not target.resolve().is_relative_to(root):raise ValueError('External VPP source link')
-                        yield target.resolve(),name+'/'+str(relative)
-                continue
-        if not source.is_file():raise ValueError('Missing patched tracked source')
-        yield source.resolve(),name
-
-
-def vpp_source_files(root):
-    """Export patched tracked source and original external inputs, not build trees."""
-    root=Path(root).resolve()
-    if (root/'shirube-stage-source.json').is_file():
-        yield from tracked_source_files(root)
-        return
-    yield from tracked_source_files(root)
-    cache=root/'build/external/downloads'
-    if not cache.is_dir():raise ValueError('Original VPP external source inputs missing')
-    found=False
-    for source,relative in files(cache):
-        found=True;yield source,'build/external/downloads/'+relative
-    if not found:raise ValueError('Empty VPP external source input set')
-
-
-def kea_source_files(root, preferred, packaging, tool):
-    """Retain original Kea plus actual prepared recipes, excluding build trees."""
-    root,preferred,packaging=map(Path,[root,preferred,packaging])
-    if (root/'shirube-stage-source.json').is_file():
-        yield from tracked_source_files(root)
-        return
-    yield from files(preferred,exclude=('debian','build'))
-    names=subprocess.check_output(['git','-C',str(packaging),'ls-files','-z','--','debian'],text=True).split('\0')
-    recipes=set(filter(None,names))|{'debian/not-installed'}
-    for member in sorted(recipes):
-        relative=Path(member)
-        if relative.is_absolute() or '..' in relative.parts or relative.parts[0]!='debian':
-            raise ValueError('Unsafe Kea packaging recipe')
-        actual=root/relative
-        # The build deliberately removes premium/subscriber/doc install lists.
-        if not actual.exists():continue
-        if actual.is_symlink() or not actual.is_file():raise ValueError('Nonregular Kea packaging recipe')
-        yield actual,member
-    for member in ['debian/rules','debian/control','debian/changelog','debian/not-installed']:
-        if member not in recipes or not (root/member).is_file():raise ValueError('Missing prepared Kea recipe')
-    member='shirube-corresponding-inputs/meson-'+tool['version']+'.tar.gz'
-    archive=root/member
-    if archive.is_symlink() or not archive.is_file() or sha256(archive)!=tool['sha256']:
-        raise ValueError('Original Kea Meson build source differs')
-    yield archive,member
 
 
 
-def i2util_revision_evidence(source, lock):
-    """Observe the locked Git revision before exporting a key-free source tree."""
-    source=Path(source)
-    if (source/'shirube-stage-source.json').exists():
-        raise ValueError('Static I2util export requires original Git source')
-    actual=subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],text=True).strip()
-    if actual!=lock['commit']:raise ValueError('Static I2util source revision differs')
-    return {'schema_version':1,'commit':actual,
-            'lock_sha256':hashlib.sha256(json.dumps(lock,sort_keys=True).encode()).hexdigest(),
-            'files':[{'name':name,'sha256':sha256(path)} for path,name in tracked_source_files(source)]}
 
 
-def staged_i2util_files(source, lock):
-    """Revalidate compiler-observed revision evidence and every retained byte.
 
-    The enclosing stage transfer authenticates this evidence; metadata alone
-    never substitutes for checking the current lock and source inventory.
-    """
-    marker=source/'shirube-stage-source.json'
-    if marker.is_symlink() or not marker.is_file():
-        raise ValueError('Static I2util staged revision evidence missing/unsafe')
-    data=json.loads(marker.read_text())
-    if not isinstance(data,dict) or not isinstance(data.get('revision_evidence'),dict):
-        raise ValueError('Static I2util staged revision evidence missing/invalid')
-    selected=list(tracked_source_files(source))
-    expected={'schema_version':1,'commit':lock['commit'],
-              'lock_sha256':hashlib.sha256(json.dumps(lock,sort_keys=True).encode()).hexdigest(),
-              'files':[{'name':name,'sha256':sha256(path)} for path,name in selected]}
-    if (data.get('kind')!='tracked' or not selected
-            or data.get('revision_evidence')!=expected
-            or not {'LICENSE','debian/copyright'}.issubset({name for _,name in selected})
-            or any('.git' in Path(name).parts or name=='shirube-stage-source.json' for _,name in selected)):
-        raise ValueError('Static I2util staged revision evidence differs')
-    return selected
+
+
+
+
+
+
+
+
 
 
 def static_i2util(output,arch,version,project,shared,material=None):
@@ -907,3 +786,11 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
     inventory={'schema_version':1,'shipped_packages':shipped,'components':components}
     path=output/f'shirube-os-{version}-{arch}-licenses.json';path.write_text(json.dumps(inventory,indent=2)+'\n')
     return {'inventory':path,'archives':assets,'cleared':all(x['redistributable'] for x in components)}
+
+from .source_selectors import files, tracked_source_files
+
+from .select_vpp import vpp_source_files
+
+from .select_kea import kea_source_files
+
+from .select_runtime import i2util_revision_evidence, staged_i2util_files

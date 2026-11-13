@@ -7,7 +7,7 @@ from pathlib import Path
 import subprocess
 import tarfile
 from .architecture import check_elf
-from .release import SECRET
+from .security_contract import SECRET
 from .signing import verify_module
 
 
