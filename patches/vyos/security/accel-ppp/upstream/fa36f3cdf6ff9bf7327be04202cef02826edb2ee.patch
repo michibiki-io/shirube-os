@@ -1,0 +1,38 @@
+From fa36f3cdf6ff9bf7327be04202cef02826edb2ee Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 6 Sep 2026 01:29:45 -0700
+Subject: [PATCH] T9282: RADIUS: Fix handling of invalid packet length in
+ rad_packet_recv()
+
+As per RFC 2865:
+- Reject packets with invalid(short) packet length
+- Ignore trailing bytes when received bytes > declared packet length
+---
+ accel-pppd/radius/packet.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/accel-pppd/radius/packet.c b/accel-pppd/radius/packet.c
+index 3c2ef99d..a7257c82 100644
+--- a/accel-pppd/radius/packet.c
++++ b/accel-pppd/radius/packet.c
+@@ -164,13 +164,18 @@ int rad_packet_recv(int fd, struct rad_packet_t **p, struct sockaddr_in *addr)
+ 	pack->id = *ptr; ptr++;
+ 	pack->len = ntohs(*(uint16_t*)ptr); ptr += 2;
+ 
++	if (pack->len < 20) {
++		log_ppp_warn("radius:packet: invalid packet length %i\n", pack->len);
++		goto out_err;
++	}
++
+ 	if (pack->len > n) {
+-		log_ppp_warn("radius:packet: short packet received %i, expected %i\n", pack->len, n);
++		log_ppp_warn("radius:packet: short packet received %i, expected %i\n", n, pack->len);
+ 		goto out_err;
+ 	}
+ 
+ 	ptr += 16;
+-	n -= 20;
++	n = pack->len - 20;
+ 
+ 	while (n>0) {
+ 		id = *ptr; ptr++;

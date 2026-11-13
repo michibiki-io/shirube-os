@@ -1,0 +1,99 @@
+From 1807c6c712b9589acb7256b706c0791fe64c776e Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Tue, 7 Jul 2026 01:38:36 +0300
+Subject: [PATCH] T9238: ipv6: fix NULL deref and OOB read in dnssl/AFTR-Name
+ config parsing (port accel-ppp PR 332)
+
+add_dnssl() in nd.c and dhcpv6.c, and its copy add_aftr_gw() in
+dhcpv6.c, call strlen(val) before the "if (!val)" guard, so a dnssl
+option without a value crashes on config load before the check is
+ever reached (also reported by cppcheck: "Either the condition '!val'
+is redundant or there is possible null pointer dereference").
+
+Moving strlen() after the guard is not enough: an empty value such as
+a bare "dnssl=" or "aftr-gw=" passes the NULL check with n == 0 and
+the following "val[n - 1]" reads one byte before the string.
+
+Reject both NULL and empty values before taking the length.
+
+Note these functions are only reached from the config parser (the
+[ipv6-dns] section and the ipv6-dhcp "aftr-gw" option) at startup or
+on config reload; nothing from received packets flows into them. So
+this is a robustness fix for invalid/malformed configuration files
+(local DoS at worst), not a remotely triggerable issue.
+
+The NULL-check ordering in add_dnssl() was originally fixed by
+[anp/hsw] in PR #13; this extends it to empty values and to the same
+pattern in add_aftr_gw().
+
+Co-authored-by: [anp/hsw] <sysop@880.ru>
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+Co-authored-by: [anp/hsw] <sysop@880.ru>
+(cherry picked from commit d8273ebd5232f038a4775fe2ad55203a8be11a57)
+---
+ accel-pppd/ipv6/dhcpv6.c | 12 ++++++++----
+ accel-pppd/ipv6/nd.c     |  6 ++++--
+ 2 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/accel-pppd/ipv6/dhcpv6.c b/accel-pppd/ipv6/dhcpv6.c
+index 345d07ef..ff41aa45 100644
+--- a/accel-pppd/ipv6/dhcpv6.c
++++ b/accel-pppd/ipv6/dhcpv6.c
+@@ -960,13 +960,15 @@ static int dhcpv6_read(struct triton_md_handler_t *h)
+ 
+ static void add_aftr_gw(const char *val)
+ {
+-	int n = strlen(val);
++	int n;
+ 	const char *ptr;
+ 	uint8_t *buf;
+ 
+-	if (!val)
++	if (!val || !*val)
+ 		return;
+ 
++	n = strlen(val);
++
+ 	if (val[n - 1] == '.')
+ 		n++;
+ 	else
+@@ -1007,13 +1009,15 @@ static void add_aftr_gw(const char *val)
+ 
+ static void add_dnssl(const char *val)
+ {
+-	int n = strlen(val);
++	int n;
+ 	const char *ptr;
+ 	uint8_t *buf;
+ 
+-	if (!val)
++	if (!val || !*val)
+ 		return;
+ 
++	n = strlen(val);
++
+ 	if (val[n - 1] == '.')
+ 		n++;
+ 	else
+diff --git a/accel-pppd/ipv6/nd.c b/accel-pppd/ipv6/nd.c
+index 43974d31..31fbd397 100644
+--- a/accel-pppd/ipv6/nd.c
++++ b/accel-pppd/ipv6/nd.c
+@@ -494,13 +494,15 @@ static void ev_ses_finishing(struct ap_session *ses)
+ 
+ static void add_dnssl(const char *val)
+ {
+-	int n = strlen(val);
++	int n;
+ 	const char *ptr;
+ 	uint8_t *buf;
+ 
+-	if (!val)
++	if (!val || !*val)
+ 		return;
+ 
++	n = strlen(val);
++
+ 	if (val[n - 1] == '.')
+ 		n++;
+ 	else

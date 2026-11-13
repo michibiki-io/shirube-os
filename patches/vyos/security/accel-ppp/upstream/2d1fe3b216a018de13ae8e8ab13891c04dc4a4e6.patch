@@ -1,0 +1,54 @@
+From 2d1fe3b216a018de13ae8e8ab13891c04dc4a4e6 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Mon, 6 Jul 2026 12:43:08 +0300
+Subject: [PATCH] T9238: radius: fix request slot leak when queued request
+ wakeup fails (port from accel-ppp 328)
+
+req_wakeup() ignored the return value of req->send(req, 1). When a
+request dequeued from the req-limit queue failed at socket setup
+(__rad_req_send returns -2, e.g. under ephemeral port exhaustion or a
+routing error), the server's req_cnt slot taken in
+rad_server_req_exit() was never released and the request was orphaned
+with no callback and no timer.
+
+Leaked slots accumulate until req_cnt permanently saturates req-limit,
+after which every request queues forever and the server is effectively
+dead until restart.
+
+Handle -2 the same way rad_server_req_enter() does: release the slot,
+mark the server failed and drive the request through the regular
+failover path so it either retries on another server or reports the
+failure to its owner.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 1a9923a07c1283b30a5b02a1668f57015f26232e)
+---
+ accel-pppd/radius/serv.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/accel-pppd/radius/serv.c b/accel-pppd/radius/serv.c
+index 73a9f4bc..1346e4ef 100644
+--- a/accel-pppd/radius/serv.c
++++ b/accel-pppd/radius/serv.c
+@@ -141,7 +141,20 @@ static void req_wakeup(struct rad_req_t *req)
+ 	}
+ 	pthread_mutex_unlock(&req->serv->lock);
+ 
+-	req->send(req, 1);
++	if (req->send(req, 1) == -2) {
++		/* socket setup failed: release the slot taken in
++		 * rad_server_req_exit() and drive the failover path,
++		 * otherwise the server's req_cnt leaks and the request
++		 * is orphaned */
++		req->active = 0;
++		pthread_mutex_lock(&req->serv->lock);
++		req->serv->req_cnt--;
++		pthread_mutex_unlock(&req->serv->lock);
++
++		rad_server_fail(req->serv);
++
++		req->send(req, -1);
++	}
+ }
+ 
+ static void req_wakeup_failed(struct rad_req_t *req)

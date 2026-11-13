@@ -1,0 +1,94 @@
+From 1a42ab408da86acde9292120835bd76eb82e8809 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Mon, 11 May 2026 22:38:31 -0700
+Subject: [PATCH] T8830: Accel-PPP: Fix heap data leak due to large, invalid
+ packet length in LCP/IPCP/IPv6CP/CCP headers
+
+- Appropriate upper bound checks added for validation of the length field
+
+- memset() added in mempool_free() to zero the buffer upon free to prevent residual data from surviving across buffer reuse
+---
+ accel-pppd/ppp/ppp_ccp.c    | 5 +++++
+ accel-pppd/ppp/ppp_ipcp.c   | 5 +++++
+ accel-pppd/ppp/ppp_ipv6cp.c | 5 +++++
+ accel-pppd/ppp/ppp_lcp.c    | 5 +++++
+ accel-pppd/triton/mempool.c | 2 ++
+ 5 files changed, 22 insertions(+)
+
+diff --git a/accel-pppd/ppp/ppp_ccp.c b/accel-pppd/ppp/ppp_ccp.c
+index cac62671..4ff937bf 100644
+--- a/accel-pppd/ppp/ppp_ccp.c
++++ b/accel-pppd/ppp/ppp_ccp.c
+@@ -665,6 +665,11 @@ static void ccp_recv(struct ppp_handler_t*h)
+ 		log_ppp_warn("CCP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > ccp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("CCP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != ccp->fsm.id)
+ 		return;
+diff --git a/accel-pppd/ppp/ppp_ipcp.c b/accel-pppd/ppp/ppp_ipcp.c
+index 416fba93..6fbf334f 100644
+--- a/accel-pppd/ppp/ppp_ipcp.c
++++ b/accel-pppd/ppp/ppp_ipcp.c
+@@ -675,6 +675,11 @@ static void ipcp_recv(struct ppp_handler_t*h)
+ 		log_ppp_warn("IPCP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > ipcp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("IPCP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != ipcp->fsm.id)
+ 		return;
+diff --git a/accel-pppd/ppp/ppp_ipv6cp.c b/accel-pppd/ppp/ppp_ipv6cp.c
+index 1194b314..26c1b6f1 100644
+--- a/accel-pppd/ppp/ppp_ipv6cp.c
++++ b/accel-pppd/ppp/ppp_ipv6cp.c
+@@ -675,6 +675,11 @@ static void ipv6cp_recv(struct ppp_handler_t*h)
+ 		log_ppp_warn("IPV6CP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > ipv6cp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("IPV6CP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != ipv6cp->fsm.id)
+ 		return;
+diff --git a/accel-pppd/ppp/ppp_lcp.c b/accel-pppd/ppp/ppp_lcp.c
+index c5f9f2de..9b928d9b 100644
+--- a/accel-pppd/ppp/ppp_lcp.c
++++ b/accel-pppd/ppp/ppp_lcp.c
+@@ -748,6 +748,11 @@ static void lcp_recv(struct ppp_handler_t*h)
+ 		log_ppp_warn("LCP: short packet received\n");
+ 		return;
+ 	}
++	if (ntohs(hdr->len) + 2 > lcp->ppp->buf_size) {
++		if (conf_ppp_verbose)
++			log_ppp_warn("LCP: invalid length field, discarding packet\n");
++		return;
++	}
+ 
+ 	if ((hdr->code == CONFACK || hdr->code == CONFNAK || hdr->code == CONFREJ) && hdr->id != lcp->fsm.id)
+ 		return;
+diff --git a/accel-pppd/triton/mempool.c b/accel-pppd/triton/mempool.c
+index ea6d1e6d..49fac778 100644
+--- a/accel-pppd/triton/mempool.c
++++ b/accel-pppd/triton/mempool.c
+@@ -162,6 +162,8 @@ void __export mempool_free(void *ptr)
+ 	it->magic1 = 0;
+ #endif
+ 
++	memset(it->ptr, 0, p->size);
++
+ 	spin_lock(&p->lock);
+ #ifdef MEMDEBUG
+ 	list_del(&it->entry);

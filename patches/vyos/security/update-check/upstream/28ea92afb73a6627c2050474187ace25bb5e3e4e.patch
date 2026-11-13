@@ -1,0 +1,227 @@
+From 28ea92afb73a6627c2050474187ace25bb5e3e4e Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Wed, 27 May 2026 11:33:57 -0500
+Subject: [PATCH] T8598: CLI support to configure a secret which will be used
+ along with calling-station-id, to generate Peer Interface Identifier (IID)
+ (BP 2188)
+
+(cherry picked from commit 5354959b60c97df699ad14ef561ab9aa92b37922)
+---
+ data/templates/accel-ppp/ppp-options.j2       |  3 +++
+ .../ppp-options-ipv6-interface-id.xml.i       | 13 +++++++++
+ src/conf_mode/service_pppoe-server.py         | 27 +++++++++++++++++++
+ src/conf_mode/vpn_l2tp.py                     | 22 +++++++++++++++
+ src/conf_mode/vpn_pptp.py                     | 22 +++++++++++++++
+ src/conf_mode/vpn_sstp.py                     | 22 +++++++++++++++
+ 6 files changed, 109 insertions(+)
+
+diff --git a/data/templates/accel-ppp/ppp-options.j2 b/data/templates/accel-ppp/ppp-options.j2
+index f2d2519d9b9..82403e01d18 100644
+--- a/data/templates/accel-ppp/ppp-options.j2
++++ b/data/templates/accel-ppp/ppp-options.j2
+@@ -30,6 +30,9 @@ ipv6-peer-intf-id=ipv4
+ ipv6-peer-intf-id={{ ppp_options.ipv6_peer_interface_id }}
+ {%         endif %}
+ {%     endif %}
++{%     if ppp_options.ipv6_peer_interface_id_secret is vyos_defined %}
++ipv6-peer-intf-id-secret={{ ppp_options.ipv6_peer_interface_id_secret }}
++{%     endif %}
+ ipv6-accept-peer-intf-id={{ "1" if ppp_options.ipv6_accept_peer_interface_id is vyos_defined else "0" }}
+ {% endif %}
+ {# MTU #}
+diff --git a/interface-definitions/include/accel-ppp/ppp-options-ipv6-interface-id.xml.i b/interface-definitions/include/accel-ppp/ppp-options-ipv6-interface-id.xml.i
+index c4cf0a458d5..86d17be6c15 100644
+--- a/interface-definitions/include/accel-ppp/ppp-options-ipv6-interface-id.xml.i
++++ b/interface-definitions/include/accel-ppp/ppp-options-ipv6-interface-id.xml.i
+@@ -45,6 +45,19 @@
+     </constraint>
+   </properties>
+ </leafNode>
++<leafNode name="ipv6-peer-interface-id-secret">
++  <properties>
++    <help>Secret key for generating calling-sid based IPv6 peer interface identifier (IID)</help>
++    <valueHelp>
++      <format>txt</format>
++      <description>Secret key string used with ipv6-peer-interface-id calling-sid</description>
++    </valueHelp>
++    <constraint>
++        <regex>[!-~]{16,128}</regex>
++    </constraint>
++      <constraintErrorMessage>Secret must be 16 to 128 printable non-whitespace ASCII characters</constraintErrorMessage>
++  </properties>
++</leafNode>
+ <leafNode name="ipv6-accept-peer-interface-id">
+   <properties>
+     <help>Accept peer interface identifier</help>
+diff --git a/src/conf_mode/service_pppoe-server.py b/src/conf_mode/service_pppoe-server.py
+index 1f6f6ecc776..5a59df3721d 100755
+--- a/src/conf_mode/service_pppoe-server.py
++++ b/src/conf_mode/service_pppoe-server.py
+@@ -41,6 +41,17 @@
+ 
+ pppoe_conf = r'/run/accel-pppd/pppoe.conf'
+ pppoe_chap_secrets = r'/run/accel-pppd/pppoe.chap-secrets'
++iid_secret_min_len = 16
++iid_secret_max_len = 128
++
++
++def _is_safe_ascii_secret(value):
++    # Restrict to ASCII printable non-whitespace characters.
++    return value.isascii() and all(ch.isprintable() and not ch.isspace() for ch in value)
++
++
++def _is_valid_iid_secret(value):
++    return iid_secret_min_len <= len(value) <= iid_secret_max_len and _is_safe_ascii_secret(value)
+ 
+ 
+ def base_ifname(ifname):
+@@ -127,6 +138,11 @@ def get_config(config=None):
+         is_node_changed(conf, base + ['authentication', 'radius']),
+         is_node_changed(conf, base + ['authentication', 'mode']),
+         is_node_changed(conf, base + ['authentication', 'protocols']),
++
++        # IPv6 peer IID mode/secret affect negotiated session state.
++        # Restart is required to force existing sessions to re-negotiate.
++        is_node_changed(conf, base + ['ppp-options', 'ipv6-peer-interface-id']),
++        is_node_changed(conf, base + ['ppp-options', 'ipv6-peer-interface-id-secret']),
+         any(
+             base_ifname(iface) in all_changed_vpp_ifaces
+             for iface in pppoe.get('interface', {})
+@@ -175,6 +191,17 @@ def verify(pppoe):
+     verify_accel_ppp_wins_servers(pppoe)
+     verify_pado_delay(pppoe)
+ 
++    peer_id_mode = dict_search('ppp_options.ipv6_peer_interface_id', pppoe)
++    peer_id_secret = dict_search('ppp_options.ipv6_peer_interface_id_secret', pppoe)
++    if peer_id_mode == 'calling-sid':
++        if not peer_id_secret:
++            raise ConfigError('ppp-options ipv6-peer-interface-id calling-sid requires ipv6-peer-interface-id-secret')
++        if not _is_valid_iid_secret(peer_id_secret):
++            raise ConfigError(
++                f'ppp-options ipv6-peer-interface-id-secret must be {iid_secret_min_len} to '
++                f'{iid_secret_max_len} printable non-whitespace ASCII characters'
++            )
++
+     if 'interface' not in pppoe:
+         raise ConfigError('At least one listen interface must be defined!')
+ 
+diff --git a/src/conf_mode/vpn_l2tp.py b/src/conf_mode/vpn_l2tp.py
+index d6f5e4c287d..bf4c9eadd0f 100755
+--- a/src/conf_mode/vpn_l2tp.py
++++ b/src/conf_mode/vpn_l2tp.py
+@@ -37,6 +37,17 @@
+ 
+ l2tp_conf = '/run/accel-pppd/l2tp.conf'
+ l2tp_chap_secrets = '/run/accel-pppd/l2tp.chap-secrets'
++iid_secret_min_len = 16
++iid_secret_max_len = 128
++
++
++def _is_safe_ascii_secret(value):
++    # Restrict to ASCII printable non-whitespace characters.
++    return value.isascii() and all(ch.isprintable() and not ch.isspace() for ch in value)
++
++
++def _is_valid_iid_secret(value):
++    return iid_secret_min_len <= len(value) <= iid_secret_max_len and _is_safe_ascii_secret(value)
+ 
+ def get_config(config=None):
+     if config:
+@@ -69,6 +80,17 @@ def verify(l2tp):
+     verify_accel_ppp_name_servers(l2tp)
+     verify_accel_ppp_wins_servers(l2tp)
+ 
++    peer_id_mode = dict_search('ppp_options.ipv6_peer_interface_id', l2tp)
++    peer_id_secret = dict_search('ppp_options.ipv6_peer_interface_id_secret', l2tp)
++    if peer_id_mode == 'calling-sid':
++        if not peer_id_secret:
++            raise ConfigError('ppp-options ipv6-peer-interface-id calling-sid requires ipv6-peer-interface-id-secret')
++        if not _is_valid_iid_secret(peer_id_secret):
++            raise ConfigError(
++                f'ppp-options ipv6-peer-interface-id-secret must be {iid_secret_min_len} to '
++                f'{iid_secret_max_len} printable non-whitespace ASCII characters'
++            )
++
+     return None
+ 
+ 
+diff --git a/src/conf_mode/vpn_pptp.py b/src/conf_mode/vpn_pptp.py
+index c116197794c..ff96ff95aa6 100755
+--- a/src/conf_mode/vpn_pptp.py
++++ b/src/conf_mode/vpn_pptp.py
+@@ -35,6 +35,17 @@
+ 
+ pptp_conf = '/run/accel-pppd/pptp.conf'
+ pptp_chap_secrets = '/run/accel-pppd/pptp.chap-secrets'
++iid_secret_min_len = 16
++iid_secret_max_len = 128
++
++
++def _is_safe_ascii_secret(value):
++    # Restrict to ASCII printable non-whitespace characters.
++    return value.isascii() and all(ch.isprintable() and not ch.isspace() for ch in value)
++
++
++def _is_valid_iid_secret(value):
++    return iid_secret_min_len <= len(value) <= iid_secret_max_len and _is_safe_ascii_secret(value)
+ 
+ 
+ def get_config(config=None):
+@@ -67,6 +78,17 @@ def verify(pptp):
+     verify_accel_ppp_name_servers(pptp)
+     verify_accel_ppp_wins_servers(pptp)
+ 
++    peer_id_mode = dict_search('ppp_options.ipv6_peer_interface_id', pptp)
++    peer_id_secret = dict_search('ppp_options.ipv6_peer_interface_id_secret', pptp)
++    if peer_id_mode == 'calling-sid':
++        if not peer_id_secret:
++            raise ConfigError('ppp-options ipv6-peer-interface-id calling-sid requires ipv6-peer-interface-id-secret')
++        if not _is_valid_iid_secret(peer_id_secret):
++            raise ConfigError(
++                f'ppp-options ipv6-peer-interface-id-secret must be {iid_secret_min_len} to '
++                f'{iid_secret_max_len} printable non-whitespace ASCII characters'
++            )
++
+ 
+ def generate(pptp):
+     if not pptp:
+diff --git a/src/conf_mode/vpn_sstp.py b/src/conf_mode/vpn_sstp.py
+index 5382fc71176..a4e84c42f70 100755
+--- a/src/conf_mode/vpn_sstp.py
++++ b/src/conf_mode/vpn_sstp.py
+@@ -46,6 +46,17 @@
+ cert_file_path = os.path.join(cfg_dir, 'sstp-cert.pem')
+ cert_key_path = os.path.join(cfg_dir, 'sstp-cert.key')
+ ca_cert_file_path = os.path.join(cfg_dir, 'sstp-ca.pem')
++iid_secret_min_len = 16
++iid_secret_max_len = 128
++
++
++def _is_safe_ascii_secret(value):
++    # Restrict to ASCII printable non-whitespace characters.
++    return value.isascii() and all(ch.isprintable() and not ch.isspace() for ch in value)
++
++
++def _is_valid_iid_secret(value):
++    return iid_secret_min_len <= len(value) <= iid_secret_max_len and _is_safe_ascii_secret(value)
+ 
+ 
+ def get_config(config=None):
+@@ -82,6 +93,17 @@ def verify(sstp):
+     verify_accel_ppp_name_servers(sstp)
+     verify_accel_ppp_wins_servers(sstp)
+ 
++    peer_id_mode = dict_search('ppp_options.ipv6_peer_interface_id', sstp)
++    peer_id_secret = dict_search('ppp_options.ipv6_peer_interface_id_secret', sstp)
++    if peer_id_mode == 'calling-sid':
++        if not peer_id_secret:
++            raise ConfigError('ppp-options ipv6-peer-interface-id calling-sid requires ipv6-peer-interface-id-secret')
++        if not _is_valid_iid_secret(peer_id_secret):
++            raise ConfigError(
++                f'ppp-options ipv6-peer-interface-id-secret must be {iid_secret_min_len} to '
++                f'{iid_secret_max_len} printable non-whitespace ASCII characters'
++            )
++
+     if 'ssl' not in sstp:
+         raise ConfigError('SSL missing on SSTP config!')
+ 

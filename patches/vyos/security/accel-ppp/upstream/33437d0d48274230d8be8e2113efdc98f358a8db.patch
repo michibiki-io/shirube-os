@@ -1,0 +1,37 @@
+From 33437d0d48274230d8be8e2113efdc98f358a8db Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 22 May 2026 20:14:57 +0300
+Subject: [PATCH] T9238: pppoe/disc: fix init_net allocation size (port from
+ accel-ppp 315)
+
+In init_net(), the buffer for struct disc_net was sized as
+
+    n = _malloc(sizeof(*net) + (HASH_BITS + 1) * sizeof(struct tree));
+
+but 'net' is the const struct ap_net * argument, not the disc_net being
+allocated. sizeof(*net) is therefore sizeof(struct ap_net), which is
+substantially smaller than sizeof(struct disc_net). Every field of *n
+written past the ap_net-sized prefix (ctx, hnd, net, refs, etc.) lands
+in unallocated heap memory.
+
+Use sizeof(*n) so the allocation matches the actual destination type.
+
+Authored-by: khedor <khedor@gmail.com>
+(cherry picked from commit 4823556fbbadcd5205175d423ebca627dc317843)
+---
+ accel-pppd/ctrl/pppoe/disc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/accel-pppd/ctrl/pppoe/disc.c b/accel-pppd/ctrl/pppoe/disc.c
+index 8a82e1d2..d844c7fd 100644
+--- a/accel-pppd/ctrl/pppoe/disc.c
++++ b/accel-pppd/ctrl/pppoe/disc.c
+@@ -77,7 +77,7 @@ static struct disc_net *init_net(const struct ap_net *net)
+ 	fcntl(sock, F_SETFD, FD_CLOEXEC);
+ 	net->set_nonblocking(sock, 1);
+ 
+-	n = _malloc(sizeof(*net) + (HASH_BITS + 1) * sizeof(struct tree));
++	n = _malloc(sizeof(*n) + (HASH_BITS + 1) * sizeof(struct tree));
+ 	tree = n->tree;
+ 
+ 	for (i = 0; i <= HASH_BITS; i++) {

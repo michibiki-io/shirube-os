@@ -1,0 +1,77 @@
+From d62d8aacb78e5facc68a1cccba5faf112923bfbb Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Tue, 7 Jul 2026 00:51:40 +0300
+Subject: [PATCH] T9238: ppp: don't terminate session on IPV6CP TermReq unless
+ IPv6 is required (port from accel-ppp PR 330)
+
+Some broken CPE routers (e.g. Phicomm KE2M, older Linksys) negotiate
+IPV6CP successfully but then fail to configure IPv6 locally and send
+IPV6CP TermReq while intending to keep using the session for IPv4.
+accel-ppp currently terminates the whole session on any IPV6CP TermReq,
+which violates the RFC 1661 section 3.7 implementation note:
+
+  "the fact that one NCP has Closed is not sufficient reason to cause
+   the termination of the PPP link, even if that NCP was the only NCP
+   currently in the Opened state."
+
+Terminate the session only when ipv6=require. Otherwise mark the layer
+passive so session bring-up can proceed if IPV6CP never started.
+
+The TermReq handler change alone is not enough for these routers: they
+send TermReq *after* IPV6CP has opened, so ipv6cp->started is already
+set and ipv6cp_layer_finished() (reached via TermAck or the restart
+timer once the FSM winds down through Stopping->Stopped) would still
+kill the session through its started branch. Apply the same policy
+there: only terminate if ipv6=require, otherwise log and keep the
+session running IPv4-only.
+
+In require mode the TermReq path still records TERM_USER_REQUEST as
+before (and sets ses->terminating, so layer_finished doesn't override
+the cause); TERM_USER_ERROR in layer_finished now only covers genuine
+negotiation failures.
+
+Based on the fix proposed by Marek Michalkiewicz and reworked by
+Alarig Le Lay.
+
+Closes: https://github.com/accel-ppp/accel-ppp/issues/57
+Supersedes: https://github.com/accel-ppp/accel-ppp/pull/298
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit a9dd25763194f0df41f2a0c2b135f5c872886ae4)
+---
+ accel-pppd/ppp/ppp_ipv6cp.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/accel-pppd/ppp/ppp_ipv6cp.c b/accel-pppd/ppp/ppp_ipv6cp.c
+index 1194b314..7f278daa 100644
+--- a/accel-pppd/ppp/ppp_ipv6cp.c
++++ b/accel-pppd/ppp/ppp_ipv6cp.c
+@@ -205,8 +205,12 @@ static void ipv6cp_layer_finished(struct ppp_fsm_t *fsm)
+ 			ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_ERROR, 0);
+ 		else
+ 			ppp_layer_passive(ipv6cp->ppp, &ipv6cp->ld);
+-	} else if (!ipv6cp->ppp->ses.terminating)
+-		ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_ERROR, 0);
++	} else if (!ipv6cp->ppp->ses.terminating) {
++		if (conf_ipv6 == IPV6_REQUIRE)
++			ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_ERROR, 0);
++		else
++			log_ppp_info1("ipv6cp: closed, session continues without IPv6\n");
++	}
+ 
+ 	fsm->fsm_state = FSM_Closed;
+ }
+@@ -738,7 +742,12 @@ static void ipv6cp_recv(struct ppp_handler_t*h)
+ 			if (conf_ppp_verbose)
+ 				log_ppp_info2("recv [IPV6CP TermReq id=%x]\n", hdr->id);
+ 			ppp_fsm_recv_term_req(&ipv6cp->fsm);
+-			ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_REQUEST, 0);
++			/* RFC 1661 sec 3.7: closing one NCP is not sufficient reason
++			 * to terminate the PPP link */
++			if (conf_ipv6 == IPV6_REQUIRE)
++				ap_session_terminate(&ipv6cp->ppp->ses, TERM_USER_REQUEST, 0);
++			else
++				ppp_layer_passive(ipv6cp->ppp, &ipv6cp->ld);
+ 			break;
+ 		case TERMACK:
+ 			if (conf_ppp_verbose)

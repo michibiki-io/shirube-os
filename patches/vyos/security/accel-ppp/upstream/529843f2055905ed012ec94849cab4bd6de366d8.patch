@@ -1,0 +1,37 @@
+From 529843f2055905ed012ec94849cab4bd6de366d8 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 6 Feb 2026 18:02:00 +0200
+Subject: [PATCH] T9238: radius: Vendor attribute parsing over-reads (port from
+ accel-ppp 297)
+
+When parsing vendor-specific attributes (type 26),
+the code reads internal structure without checking that the attribute data is long enough.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 96ff385e6b9084b4c6ba58292e396e18ff7d04d5)
+---
+ accel-pppd/radius/packet.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/accel-pppd/radius/packet.c b/accel-pppd/radius/packet.c
+index 3c2ef99d..eec2f4d6 100644
+--- a/accel-pppd/radius/packet.c
++++ b/accel-pppd/radius/packet.c
+@@ -184,9 +184,17 @@ int rad_packet_recv(int fd, struct rad_packet_t **p, struct sockaddr_in *addr)
+ 			goto out_err;
+ 		}
+ 		if (id == 26) {
++			if (len < 4) {
++				log_ppp_warn("radius:packet: vendor attribute too short (%i)\n", len);
++				goto out_err;
++			}
+ 			vendor_id = ntohl(*(uint32_t *)ptr);
+ 			vendor = rad_dict_find_vendor_id(vendor_id);
+ 			if (vendor) {
++				if (len < 4 + vendor->tag + vendor->len) {
++					log_ppp_warn("radius:packet: vendor %i attribute too short (%i)\n", vendor_id, len);
++					goto out_err;
++				}
+ 				ptr += 4;
+ 
+ 				if (vendor->tag == 2)

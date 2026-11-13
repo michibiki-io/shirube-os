@@ -242,6 +242,7 @@ else
     dpkg-source --before-build .
     mk-build-deps --install --remove --tool 'apt-get -y --no-install-recommends' debian/control
     if [ "$BUILD_RECIPE" = vyos-1x ]; then
+        python3 /src/native/security_sources.py update-check .
         snapshot_git_import
         # Keep upstream build-time tests, but never build the optional on-image
         # smoketest toolkit, which carries fixed VPN/private-key test fixtures.

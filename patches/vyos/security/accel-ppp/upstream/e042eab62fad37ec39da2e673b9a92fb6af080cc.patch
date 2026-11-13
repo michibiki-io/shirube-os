@@ -1,0 +1,44 @@
+From e042eab62fad37ec39da2e673b9a92fb6af080cc Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 22 May 2026 20:15:23 +0300
+Subject: [PATCH] T9238: pppoe/disc: drop packets with unsupported PPPoE type
+ (port from accel-ppp 315)
+
+The unsupported-PPPoE-type branch in disc_read() logs a warning but
+falls through to forward() instead of dropping the packet. Compare
+with the unsupported-version branch immediately above, which has the
+same shape but continues:
+
+    if (hdr->ver != 1) {
+        if (conf_verbose)
+            log_warn(...unsupported version...);
+        continue;
+    }
+
+    if (hdr->type != 1) {
+        if (conf_verbose)
+            log_warn(...unsupported type...);
+        /* falls through into forward() */
+    }
+
+Add the missing continue so malformed packets are dropped instead of
+processed.
+
+Authored-by: khedor <khedor@gmail.com>
+(cherry picked from commit 028e2090389d2b8968dfb30e4d956264718613e5)
+---
+ accel-pppd/ctrl/pppoe/disc.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/accel-pppd/ctrl/pppoe/disc.c b/accel-pppd/ctrl/pppoe/disc.c
+index 17ebd4ec..e5dc942a 100644
+--- a/accel-pppd/ctrl/pppoe/disc.c
++++ b/accel-pppd/ctrl/pppoe/disc.c
+@@ -363,6 +363,7 @@ static int disc_read(struct triton_md_handler_t *h)
+ 		if (hdr->type != 1) {
+ 			if (conf_verbose)
+ 				log_warn("pppoe: discarding packet (unsupported type %i)\n", hdr->type);
++			continue;
+ 		}
+ 
+ 		if (forward(net, src.sll_ifindex, pack, n))

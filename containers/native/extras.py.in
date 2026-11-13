@@ -358,6 +358,8 @@ def accel(work):
     common=Path('/sources/vyos-build/vyos-build/scripts/package-build/linux-kernel')
     for patch in sorted((common/'patches/accel-ppp-ng').glob('*.patch')):
         shell('patch --fuzz=0 -p1 < '+str(patch),source)
+    from native.security_sources import apply as apply_security
+    apply_security(Path('/src'), 'accel-ppp', source)
     if (source/'build').exists(): shutil.rmtree(source/'build')
     (source/'build').mkdir()
     shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR=6.6.128-vyos -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/vpp-sdk/source/vpp-api:/vpp-sdk/source:/vpp-sdk/generated LIBRARY_PATH=/vpp-sdk/lib make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')

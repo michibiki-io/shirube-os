@@ -30,6 +30,7 @@ COMMON_FILES = (
 FILES = {
     'native': ('containers/native/package.sh', 'containers/native/http_api.py',
                'containers/native/reconstruct_http_rust.py',
+               'containers/native/library-prepare/frr.sh',
                'containers/native/http-api.lock.json', 'containers/native/http-rust.lock.json',
                'producer/recipes.py', 'producer/cargo_sources.py',
                'producer/http_rust_sources.py', 'producer/debian_sources.py', 'producer/salt_cargo.py'),
@@ -104,6 +105,20 @@ def manifest(project, stage, architecture):
             if path.is_file():
                 name = 'patches/kernel/' + str(path.relative_to(root))
                 patches.append({'path': name, **required_file(project, name)})
+    if stage in {'native', 'kernel'}:
+        recipe = 'containers/native/security_sources.py'
+        files[recipe] = required_file(project, recipe)
+        for component in (('frr', 'update-check') if stage == 'native' else ('accel-ppp',)):
+            prefix = 'patches/vyos/security/' + component + '/'
+            root = input_path(project, prefix)
+            if root.is_symlink() or not root.is_dir():
+                raise ValueError('Missing security patch tree')
+            for path in sorted(root.rglob('*')):
+                if path.is_symlink() or not (path.is_file() or path.is_dir()):
+                    raise ValueError('Nonregular security patch input')
+                if path.is_file():
+                    name = prefix + str(path.relative_to(root))
+                    patches.append({'path': name, **required_file(project, name)})
     external = json.loads(input_path(project, 'containers/native/external-sources.lock.json').read_text())
     catalog = json.loads(input_path(project, 'containers/native/packages.json').read_text())
     jobs = select_jobs(catalog['jobs'], stage)

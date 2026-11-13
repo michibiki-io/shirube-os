@@ -1,0 +1,104 @@
+From bf53a1420271294f408c4e3347fb41b345ed4a8b Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 9 Aug 2026 07:14:41 +0300
+Subject: [PATCH] T9238: pptp: check getsockname()/getpeername() results (port
+ from accel-ppp 350)
+
+Both calls were issued on an uninitialised struct sockaddr_in and their
+results ignored, so a failure would build the tunnel endpoints, and the
+call socket's local call id, out of stack garbage. Fail the call instead.
+
+In pptp_connect() the local address was fetched into the same variable
+that held the peer address obtained from accept(), so a failure there
+would silently set called-station-id to the calling station. Read it
+into its own variable before the connection is set up, and re-arm the
+address length before each accept() rather than leaving it at whatever
+the previous iteration wrote.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit a62e3abe2aae259f90289b431e086490020d49ed)
+---
+ accel-pppd/ctrl/pptp/pptp.c | 31 ++++++++++++++++++++++++-------
+ 1 file changed, 24 insertions(+), 7 deletions(-)
+
+diff --git a/accel-pppd/ctrl/pptp/pptp.c b/accel-pppd/ctrl/pptp/pptp.c
+index c7426b34..643ea10a 100644
+--- a/accel-pppd/ctrl/pptp/pptp.c
++++ b/accel-pppd/ctrl/pptp/pptp.c
+@@ -307,7 +307,10 @@ static int pptp_out_call_rqst(struct pptp_conn_t *conn)
+ 	src_addr.sa_protocol = PX_PROTO_PPTP;
+ 	src_addr.sa_addr.pptp.call_id = 0;
+ 	addrlen = sizeof(addr);
+-	getsockname(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen);
++	if (getsockname(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen)) {
++		log_ppp_error("pptp: getsockname: %s\n", strerror(errno));
++		return -1;
++	}
+ 	src_addr.sa_addr.pptp.sin_addr = addr.sin_addr;
+ 
+ 	memset(&dst_addr, 0, sizeof(dst_addr));
+@@ -315,7 +318,10 @@ static int pptp_out_call_rqst(struct pptp_conn_t *conn)
+ 	dst_addr.sa_protocol = PX_PROTO_PPTP;
+ 	dst_addr.sa_addr.pptp.call_id = htons(msg->call_id);
+ 	addrlen = sizeof(addr);
+-	getpeername(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen);
++	if (getpeername(conn->hnd.fd, (struct sockaddr*)&addr, &addrlen)) {
++		log_ppp_error("pptp: getpeername: %s\n", strerror(errno));
++		return -1;
++	}
+ 	dst_addr.sa_addr.pptp.sin_addr = addr.sin_addr;
+ 
+ 	pptp_sock = socket(AF_PPPOX, SOCK_STREAM, PX_PROTO_PPTP);
+@@ -332,7 +338,11 @@ static int pptp_out_call_rqst(struct pptp_conn_t *conn)
+ 		return -1;
+ 	}
+ 	addrlen = sizeof(src_addr);
+-	getsockname(pptp_sock, (struct sockaddr*)&src_addr, &addrlen);
++	if (getsockname(pptp_sock, (struct sockaddr*)&src_addr, &addrlen)) {
++		log_ppp_error("pptp: getsockname: %s\n", strerror(errno));
++		close(pptp_sock);
++		return -1;
++	}
+ 
+ 	if (connect(pptp_sock, (struct sockaddr*)&dst_addr, sizeof(dst_addr))) {
+ 		log_ppp_error("failed to connect PPTP socket (%s)\n", strerror(errno));
+@@ -641,12 +651,13 @@ struct pptp_serv_t
+ 
+ static int pptp_connect(struct triton_md_handler_t *h)
+ {
+-  struct sockaddr_in addr;
+-	socklen_t size = sizeof(addr);
++  struct sockaddr_in addr, laddr;
++	socklen_t size;
+ 	int sock;
+ 	struct pptp_conn_t *conn;
+ 
+ 	while(1) {
++		size = sizeof(addr);
+ 		sock = accept(h->fd, (struct sockaddr *)&addr, &size);
+ 		if (sock < 0) {
+ 			if (errno == EAGAIN)
+@@ -683,6 +694,13 @@ static int pptp_connect(struct triton_md_handler_t *h)
+ 			continue;
+ 		}
+ 
++		size = sizeof(laddr);
++		if (getsockname(sock, (struct sockaddr *)&laddr, &size)) {
++			log_error("pptp: getsockname: %s, closing connection...\n", strerror(errno));
++			close(sock);
++			continue;
++		}
++
+ 		if (fcntl(sock, F_SETFL, O_NONBLOCK)) {
+ 			log_error("pptp: failed to set nonblocking mode: %s, closing connection...\n", strerror(errno));
+ 			close(sock);
+@@ -715,8 +733,7 @@ static int pptp_connect(struct triton_md_handler_t *h)
+ 		conn->ctrl.calling_station_id = _malloc(17);
+ 		conn->ctrl.called_station_id = _malloc(17);
+ 		u_inet_ntoa(addr.sin_addr.s_addr, conn->ctrl.calling_station_id);
+-		getsockname(sock, (struct sockaddr*)&addr, &size);
+-		u_inet_ntoa(addr.sin_addr.s_addr, conn->ctrl.called_station_id);
++		u_inet_ntoa(laddr.sin_addr.s_addr, conn->ctrl.called_station_id);
+ 
+ 		ppp_init(&conn->ppp);
+ 		conn->ppp.ses.ctrl = &conn->ctrl;

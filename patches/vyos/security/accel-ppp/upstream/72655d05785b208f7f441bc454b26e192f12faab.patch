@@ -1,0 +1,48 @@
+From 72655d05785b208f7f441bc454b26e192f12faab Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 6 Feb 2026 18:09:44 +0200
+Subject: [PATCH] T9238: radius: Invalid integer and date parsing (port from
+ accel-ppp 297)
+
+Actually 3 fixes in same place:
+
+INTEGER: size mismatch now breaks instead of falling through - a malformed INTEGER attribute is rejected rather than silently parsed with a wrong size
+INTEGER/DATE split: each case has its own break, no more fallthrough
+DATE: strictly requires len == 4 (per RFC 2865), warns and skips otherwise instead of silently accepting 1 or 2-byte dates
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit e09b9c81d54c326c3eca2267d38d91db0ca93f8a)
+---
+ accel-pppd/radius/packet.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/accel-pppd/radius/packet.c b/accel-pppd/radius/packet.c
+index b5bfc0cd..19bf42c3 100644
+--- a/accel-pppd/radius/packet.c
++++ b/accel-pppd/radius/packet.c
+@@ -252,9 +252,10 @@ int rad_packet_recv(int fd, struct rad_packet_t **p, struct sockaddr_in *addr)
+ 						attr->val.octets = ptr;
+ 						break;
+ 					case ATTR_TYPE_INTEGER:
+-						if (len != da->size)
++						if (len != da->size) {
+ 							log_ppp_warn("radius:packet: attribute %s has invalid length %i (must be %i)\n", da->name, len, da->size);
+-					case ATTR_TYPE_DATE:
++							break;
++						}
+ 						if (len == 4)
+ 							attr->val.integer = ntohl(*(uint32_t*)ptr);
+ 						else if (len == 2)
+@@ -262,6 +263,12 @@ int rad_packet_recv(int fd, struct rad_packet_t **p, struct sockaddr_in *addr)
+ 						else if (len == 1)
+ 							attr->val.integer = *ptr;
+ 						break;
++					case ATTR_TYPE_DATE:
++						if (len == 4)
++							attr->val.integer = ntohl(*(uint32_t*)ptr);
++						else
++							log_ppp_warn("radius:packet: attribute %s has invalid length %i (must be 4)\n", da->name, len);
++						break;
+ 					case ATTR_TYPE_IPADDR:
+ 					case ATTR_TYPE_IFID:
+ 					case ATTR_TYPE_IPV6ADDR:

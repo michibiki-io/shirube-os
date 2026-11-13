@@ -1,0 +1,46 @@
+From 162dabbdd295b109ea28c6e25cca133b398d7c76 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Sun, 9 Aug 2026 07:15:43 +0300
+Subject: [PATCH] T9238: pptp: make echo-failure=0 disable the check explicitly
+ (port from accel-ppp 350)
+
+load_config() accepts echo-failure=0, but the test for it was
+"++echo_sent == conf_echo_failure", which can never match once the
+counter has been incremented, so a zero left dead peers undetected
+without saying so anywhere. Test the option first and compare with >=,
+which keeps the behaviour for every configured value and makes the
+disabled case readable, and document it in accel-ppp.conf.5.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit a9f666ea84927427a27261b81aa77435d4296d28)
+---
+ accel-pppd/accel-ppp.conf.5 | 2 +-
+ accel-pppd/ctrl/pptp/pptp.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/accel-pppd/accel-ppp.conf.5 b/accel-pppd/accel-ppp.conf.5
+index 0842f450..50537873 100644
+--- a/accel-pppd/accel-ppp.conf.5
++++ b/accel-pppd/accel-ppp.conf.5
+@@ -580,7 +580,7 @@ If this option is given and greater than zero then pptp module will send echo-re
+ seconds.
+ .TP
+ .BI "echo-failure=" n
+-Specifies maximum number of echo-requests may be sent without valid echo-reply, if exceeds connection will be terminated.
++Specifies maximum number of echo-requests may be sent without valid echo-reply, if exceeds connection will be terminated. Zero disables the check: echo-requests are still sent, but missing replies never terminate the connection (default 3).
+ .TP
+ .BI "timeout=" n
+ Timeout waiting reply from client in seconds (default 5).
+diff --git a/accel-pppd/ctrl/pptp/pptp.c b/accel-pppd/ctrl/pptp/pptp.c
+index a0fa56bc..c8cf2e99 100644
+--- a/accel-pppd/ctrl/pptp/pptp.c
++++ b/accel-pppd/ctrl/pptp/pptp.c
+@@ -456,7 +456,7 @@ static void pptp_send_echo(struct triton_timer_t *t)
+ 		.header = PPTP_HEADER_CTRL(PPTP_ECHO_RQST),
+ 	};
+ 
+-	if (++conn->echo_sent == conf_echo_failure) {
++	if (conf_echo_failure && ++conn->echo_sent >= conf_echo_failure) {
+ 		log_ppp_warn("pptp: no echo reply\n");
+ 		disconnect(conn);
+ 		return;

@@ -1,0 +1,38 @@
+From 944d98ec787120938d89238cd91fdc8416a712d6 Mon Sep 17 00:00:00 2001
+From: Ruben Herold <ruben@puettmann.net>
+Date: Thu, 22 Oct 2026 10:15:02 +0200
+Subject: [PATCH] T9499: ppp: do not close the shared fd of a non-dev ppp
+ session early
+
+destablish_ppp() closes unit_fd after the session cleanup since
+2fc996b (T9238). For a non-dev ppp session (VPP) unit_fd is the same
+file descriptor as ppp->fd and the channel handler, which is
+unregistered afterwards in destroy_ppp_channel(). The handler then runs
+epoll_ctl(EPOLL_CTL_DEL) on a closed descriptor, EBADF makes triton
+call abort(), and accel-pppd dies with every other session.
+
+Do not close unit_fd for a non-dev ppp session, destroy_ppp_channel()
+takes care of the descriptor as before.
+
+Signed-off-by: Ruben Herold <ruben@puettmann.net>
+---
+ accel-pppd/ppp/ppp.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/accel-pppd/ppp/ppp.c b/accel-pppd/ppp/ppp.c
+index 235b4b62..52dd2fc3 100644
+--- a/accel-pppd/ppp/ppp.c
++++ b/accel-pppd/ppp/ppp.c
+@@ -368,7 +368,11 @@ static void destablish_ppp(struct ppp_t *ppp)
+ 	 * radattr removal) has finished, so the kernel cannot give the same
+ 	 * unit index (and thus ifname) to a new session while cleanup still
+ 	 * references the ifname. */
+-	if (!uc)
++	if (!uc
++#ifdef HAVE_SESSION_HOOKS
++	    && !is_non_dev_ppp
++#endif /* HAVE_SESSION_HOOKS */
++	    )
+ 		close(ppp->unit_fd);
+ 
+ 	ppp->unit_fd = -1;

@@ -690,7 +690,7 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
                                 'arch/x86/boot/bzImage','vmlinux.btf','Module.symvers',
                                 'modules.order','modules.builtin','modules.builtin.modinfo')
                 source_files=files(preferred_root,exclude=kernel_outputs if native_jobs[name]=='kernel' else ())
-                for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256','manifest.json']:
+                for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256','security-patches.json','manifest.json']:
                     build_input=package_output/native_jobs[name]/member
                     if build_input.is_file():inputs.append((build_input,'native-build/'+member,'build_inputs'))
             elif kind=='kea':

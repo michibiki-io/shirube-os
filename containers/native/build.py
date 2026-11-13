@@ -148,6 +148,10 @@ def main():
     from producer.network_diagnostics import prepare as prepare_network_diagnostics
     preparation['network_diagnostics']=prepare_network_diagnostics(sources,Path('/src/vyos-patches/force_mtu_host.sh'))
     (args.output/'source-preparation.json').write_text(json.dumps(preparation, indent=2)+'\n')
+    from native.security_sources import prepare_frr
+    for job in jobs:
+        if job.get('recipe') == 'frr':
+            prepare_frr(Path('/src'), sources/job['source'])
     default=sources/'vyos-1x/vyos-1x/data/config.boot.default'
     if default.is_file():
         console='ttyAMA0' if args.architecture=='arm64' else 'ttyS0'
@@ -210,6 +214,12 @@ def main():
             artifacts.append({'name': deb.name, 'sha256': sha256(deb), 'architecture': actual})
         if not artifacts:
             raise ValueError('No package outputs')
+        security_component = {'frr': 'frr', 'vyos-1x': 'update-check'}.get(job.get('recipe'))
+        if security_component:
+            receipt = output/'source/shirube-corresponding-inputs'/('security-'+security_component)/'receipt.json'
+            if not receipt.is_file():
+                raise ValueError('Missing package security patch receipt')
+            shutil.copy2(receipt, exported/'security-patches.json')
         if args.stage:
             for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256']:
                 if (output/member).is_file():shutil.copy2(output/member,exported/member)

@@ -1,0 +1,153 @@
+From fab93be45eed9905a384a469b0598c76cd4694c1 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Wed, 18 Feb 2026 19:30:09 +0200
+Subject: [PATCH] T9238: radius: Fix use after free and more (port accel-ppp PR
+ 299)
+
+Situation is a bit complex. Even one problem we fix easily,
+such as saving server as variable, rad_req_free might free
+server in theory, and s will be invalid.
+This is a bit of rewrite, but proper fix.
+Fixes problem in 2 functions.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 7bd6843c6fed0ec2ff25ba8892f1a7a28d98e6fb)
+---
+ accel-pppd/radius/radius_p.h |  4 ++--
+ accel-pppd/radius/req.c      |  8 ++++++--
+ accel-pppd/radius/serv.c     | 36 +++++++++++++++++++++++++-----------
+ 3 files changed, 33 insertions(+), 15 deletions(-)
+
+diff --git a/accel-pppd/radius/radius_p.h b/accel-pppd/radius/radius_p.h
+index e1e4585a..9744861e 100644
+--- a/accel-pppd/radius/radius_p.h
++++ b/accel-pppd/radius/radius_p.h
+@@ -211,7 +211,7 @@ struct rad_req_t *rad_req_alloc(struct radius_pd_t *rpd, int code, const char *u
+ struct rad_req_t *rad_req_alloc2(struct radius_pd_t *rpd, int code, const char *username, in_addr_t addr, int port);
+ struct rad_req_t *rad_req_alloc_empty();
+ int rad_req_acct_fill(struct rad_req_t *);
+-void rad_req_free(struct rad_req_t *);
++struct rad_server_t *rad_req_free(struct rad_req_t *);
+ int rad_req_send(struct rad_req_t *req);
+ int __rad_req_send(struct rad_req_t *req, int async);
+ int rad_req_read(struct triton_md_handler_t *h);
+@@ -243,7 +243,7 @@ void dm_coa_cancel(struct radius_pd_t *pd);
+ 
+ struct rad_server_t *rad_server_get(int);
+ struct rad_server_t *rad_server_get2(int, in_addr_t, int);
+-void rad_server_put(struct rad_server_t *, int);
++struct rad_server_t *rad_server_put(struct rad_server_t *, int);
+ int rad_server_req_enter(struct rad_req_t *);
+ void rad_server_req_exit(struct rad_req_t *);
+ int rad_server_req_cancel(struct rad_req_t *, int full);
+diff --git a/accel-pppd/radius/req.c b/accel-pppd/radius/req.c
+index be74f047..722e51d6 100644
+--- a/accel-pppd/radius/req.c
++++ b/accel-pppd/radius/req.c
+@@ -242,13 +242,15 @@ int rad_req_acct_fill(struct rad_req_t *req)
+ 	return 0;
+ }
+ 
+-void rad_req_free(struct rad_req_t *req)
++struct rad_server_t *rad_req_free(struct rad_req_t *req)
+ {
++	struct rad_server_t *s = NULL;
++
+ 	assert(!req->active);
+ 	assert(!req->entry.next);
+ 
+ 	if (req->serv)
+-		rad_server_put(req->serv, req->type);
++		s = rad_server_put(req->serv, req->type);
+ 
+ 	if (req->hnd.tpd)
+ 		triton_md_unregister_handler(&req->hnd, 1);
+@@ -265,6 +267,8 @@ void rad_req_free(struct rad_req_t *req)
+ 		rad_packet_free(req->reply);
+ 
+ 	mempool_free(req);
++
++	return s;
+ }
+ 
+ static int make_socket(struct rad_req_t *req)
+diff --git a/accel-pppd/radius/serv.c b/accel-pppd/radius/serv.c
+index d45f4217..73a9f4bc 100644
+--- a/accel-pppd/radius/serv.c
++++ b/accel-pppd/radius/serv.c
+@@ -93,16 +93,24 @@ struct rad_server_t *rad_server_get2(int type, in_addr_t addr, int port)
+ 	return __rad_server_get(type, NULL, addr, port);
+ }
+ 
+-void rad_server_put(struct rad_server_t *s, int type)
++struct rad_server_t *rad_server_put(struct rad_server_t *s, int type)
+ {
++	int do_close = 0;
++	int do_free = 0;
++
+ 	__sync_sub_and_fetch(&s->client_cnt[type], 1);
+ 
+ 	if ((s->need_free || s->need_close) && !s->client_cnt[0] && !s->client_cnt[1]) {
+-		if (s->need_close)
++		if (s->need_close) {
++			do_close = 1;
+ 			triton_context_call(&s->ctx, (triton_event_func)serv_ctx_close, &s->ctx);
+-		else
++		} else {
++			do_free = 1;
+ 			__free_server(s);
+-	}
++		}
++	} 
++
++	return (do_free || do_close) ? NULL : s;
+ }
+ 
+ static void req_wakeup(struct rad_req_t *req)
+@@ -390,13 +398,14 @@ static void acct_on_sent(struct rad_req_t *req, int res)
+ 
+ static void acct_on_recv(struct rad_req_t *req)
+ {
+-	struct rad_server_t *s = req->serv;
++	struct rad_server_t *s = rad_req_free(req);
+ 
+-	rad_req_free(req);
++	if (!s)
++		return;
+ 
+-	if (req->serv->starting) {
+-		req->serv->starting = 0;
+-		req->serv->acct_on = 1;
++	if (s->starting) {
++		s->starting = 0;
++		s->acct_on = 1;
+ 	} else
+ 		__free_server(s);
+ }
+@@ -404,12 +413,15 @@ static void acct_on_recv(struct rad_req_t *req)
+ static void acct_on_timeout(struct triton_timer_t *t)
+ {
+ 	struct rad_req_t *req = container_of(t, typeof(*req), timeout);
+-	struct rad_server_t *s = req->serv;
+ 
+ 	log_switch(triton_context_self(), NULL);
+ 
+ 	if (req->try++ == conf_max_try) {
+-		rad_req_free(req);
++		struct rad_server_t *s = rad_req_free(req);
++
++		if (!s)
++			return;
++
+ 		if (s->starting)
+ 			s->starting = 0;
+ 		else
+@@ -423,6 +435,8 @@ static void acct_on_timeout(struct triton_timer_t *t)
+ static void send_acct_on(struct rad_server_t *s)
+ {
+ 	struct rad_req_t *req = rad_req_alloc_empty();
++	if (!req)
++		return;
+ 
+ 	log_switch(triton_context_self(), NULL);
+ 

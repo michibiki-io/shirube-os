@@ -1,0 +1,16 @@
+{
+  "upstream": "https://github.com/vyos/vyos-1x/commit/",
+  "files": {
+    "0001-9698284cbe5a8515b453a58859e4c61f1a910337.patch": "d10c592e176bf5d63ae238bc208ac80785a593d9c21b8ecb55b4ab5376dd9c43",
+    "0002-28ea92afb73a6627c2050474187ace25bb5e3e4e.patch": "5c50b90ab26abdfcd703e69d9b8cabfb1b52f2111b069696409860ed5fc6380b",
+    "upstream/28ea92afb73a6627c2050474187ace25bb5e3e4e.patch": "22b33179d635155f4fe7d11ce29978dea904d2a55b2f8e3c8f2b677012cc53e3"
+  },
+  "dependencies": [
+    {
+      "commit": "28ea92afb73a6627c2050474187ace25bb5e3e4e",
+      "backport_of": "5354959b60c97df699ad14ef561ab9aa92b37922",
+      "purpose": "Complete calling-sid CLI dependency of accel-ppp bbacd993; AC10 configuration compatibility.",
+      "adaptation": "Only PPPoE restart hunk context: pinned radius/dynamic-author and mode entries replace upstream radius, mode and protocols context. Both added IID restart conditions and all 109 upstream additions are unchanged. Other hunks apply unchanged with line offsets."
+    }
+  ]
+}

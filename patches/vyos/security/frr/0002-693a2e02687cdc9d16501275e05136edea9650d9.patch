@@ -1,0 +1,30 @@
+From 693a2e02687cdc9d16501275e05136edea9650d9 Mon Sep 17 00:00:00 2001
+From: Donatas Abraitis <donatas@opensourcerouting.org>
+Date: Tue, 10 Mar 2026 20:16:10 +0200
+Subject: [PATCH] bgpd: Check if the NHC length is enough to fill TLV value +
+ TLV header
+
+BGP_NHC_TLV_MIN_LEN is 4 bytes (TLV code + TLV length), and when we parse TLVs,
+we subtract BGP_NHC_TLV_MIN_LEN as well, so we should include BGP_NHC_TLV_MIN_LEN
+when checking the remaining length too.
+
+Reported-by: Jiahao Lei
+
+Signed-off-by: Donatas Abraitis <donatas@opensourcerouting.org>
+---
+ bgpd/bgp_attr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bgpd/bgp_attr.c b/bgpd/bgp_attr.c
+index 6bcf5f690613..b707e0531e94 100644
+--- a/bgpd/bgp_attr.c
++++ b/bgpd/bgp_attr.c
+@@ -3887,7 +3887,7 @@ static int bgp_attr_nhc(struct bgp_attr_parser_args *args)
+ 		tlv_code = stream_getw(s);
+ 		tlv_length = stream_getw(s);
+ 
+-		if (length < tlv_length) {
++		if (length < tlv_length + BGP_NHC_TLV_MIN_LEN) {
+ 			zlog_err("%pBP rcvd BGP NHC TLV length %d exceeds remaining length %d",
+ 				 peer, tlv_length, length);
+ 			bgp_nhc_free(nhc);

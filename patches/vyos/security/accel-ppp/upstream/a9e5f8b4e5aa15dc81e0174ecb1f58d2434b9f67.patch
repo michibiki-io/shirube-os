@@ -1,0 +1,24 @@
+From a9e5f8b4e5aa15dc81e0174ecb1f58d2434b9f67 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 14 Aug 2026 09:54:05 -0700
+Subject: [PATCH] T9187: Backport upstream fix # 310 Fix vlan_mon kernel issue
+ for ETH_P_ALL packet handler registration
+
+---
+ drivers/vlan_mon/vlan_mon.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/vlan_mon/vlan_mon.c b/drivers/vlan_mon/vlan_mon.c
+index d5f42c91..8b699230 100644
+--- a/drivers/vlan_mon/vlan_mon.c
++++ b/drivers/vlan_mon/vlan_mon.c
+@@ -753,6 +753,9 @@ static int __init vlan_mon_init(void)
+ 	}
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,6,0)
++	vlan_pt.af_packet_net = &init_net;
++#endif
+ 	dev_add_pack(&vlan_pt);
+ 
+ 	return 0;

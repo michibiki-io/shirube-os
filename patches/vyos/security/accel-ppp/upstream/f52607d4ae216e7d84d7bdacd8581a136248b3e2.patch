@@ -1,0 +1,26 @@
+From f52607d4ae216e7d84d7bdacd8581a136248b3e2 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Fri, 4 Sep 2026 19:08:58 -0700
+Subject: [PATCH] T8545: fixup - Free EVP_MD_CTX for error path inside
+ req_set_RA()
+
+---
+ accel-pppd/radius/acct.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/accel-pppd/radius/acct.c b/accel-pppd/radius/acct.c
+index 9d10085b..3440cbd5 100644
+--- a/accel-pppd/radius/acct.c
++++ b/accel-pppd/radius/acct.c
+@@ -37,8 +37,10 @@ static int req_set_RA(struct rad_req_t *req, const char *secret)
+ 	 */
+ 	memset(req->RA, 0, sizeof(req->RA));
+ 
+-	if (rad_packet_build(req->pack, req->RA))
++	if (rad_packet_build(req->pack, req->RA)) {
++		EVP_MD_CTX_free(evp_ctx);
+ 		return -1;
++	}
+ 
+ 	EVP_DigestInit_ex(evp_ctx, EVP_md5(), NULL);
+ 	EVP_DigestUpdate(evp_ctx, req->pack->buf, req->pack->len);

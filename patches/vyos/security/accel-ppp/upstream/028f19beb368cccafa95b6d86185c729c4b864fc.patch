@@ -1,0 +1,51 @@
+From 028f19beb368cccafa95b6d86185c729c4b864fc Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Thu, 4 Jun 2026 17:43:25 +0300
+Subject: [PATCH] T9238: log_file: don't register general target when log-file
+ is unset (port accel-ppp PR 319)
+
+The general log target was registered unconditionally in init(), even
+when no log-file= option was configured. The backing log_file pointer is
+only allocated when the option is present, so the first general-routed
+log message dereferenced NULL in queue_log() (spin_lock(&NULL->lock)),
+crashing the daemon. This made commenting out log-file= a foot-gun.
+
+Guard the registration on log_file being allocated, mirroring how the
+fail/per-user/per-session targets are already conditional. Also bail out
+of general_reopen() early when log-file is unset, so a SIGHUP after a
+config reload that dropped log-file can't call open(NULL, ...).
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 5fc07183e90b5ce7c9d3ede955266ba575388965)
+---
+ accel-pppd/logs/log_file.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/accel-pppd/logs/log_file.c b/accel-pppd/logs/log_file.c
+index 481afa1e..103441b9 100644
+--- a/accel-pppd/logs/log_file.c
++++ b/accel-pppd/logs/log_file.c
+@@ -385,7 +385,12 @@ static void general_reopen(void)
+ {
+ 	const char *fname = conf_get_opt("log", "log-file");
+ 	int old_fd = -1;
+- 	int fd = open(fname, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, S_IRUSR | S_IWUSR);
++	int fd;
++
++	if (!fname)
++		return;
++
++	fd = open(fname, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, S_IRUSR | S_IWUSR);
+ 	if (fd < 0) {
+ 		log_emerg("log_file: open '%s': %s\n", fname, strerror(errno));
+ 		return;
+@@ -710,7 +715,8 @@ static void init(void)
+ 	if (opt && atoi(opt) > 0)
+ 		conf_copy = 1;
+ 
+-	log_register_target(&general_target);
++	if (log_file)
++		log_register_target(&general_target);
+ 
+ 	if (conf_per_user_dir) {
+ 		log_register_target(&per_user_target);

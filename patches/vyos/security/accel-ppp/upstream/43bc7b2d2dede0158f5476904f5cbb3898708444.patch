@@ -1,0 +1,86 @@
+From 43bc7b2d2dede0158f5476904f5cbb3898708444 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Mon, 6 Jul 2026 12:42:50 +0300
+Subject: [PATCH] T9238: radius: fix permanent socket leak in Acct-Stop retry
+ path (port from accel-ppp 328)
+
+When an accounting Stop request cannot be retransmitted because no
+server is available (single server inside its fail-timeout window,
+server removed on config reload, or a transient socket/connect error
+that marks the server failed), rad_acct_stop_timeout() reset req->try
+and returned. The retransmit timer is one-shot (no period), so it
+never fired again: the request leaked forever together with its open
+UDP socket, epoll registration and timerfd.
+
+The same dead end existed in rad_acct_stop_sent(): a deferred Stop
+request (req->rpd == NULL) whose queued send was cancelled by
+rad_server_fail() fell through the failure branch without freeing the
+request or scheduling a retry.
+
+With the RADIUS client bound to a source address (bind=/nas-ip-address)
+every leaked socket pins one ephemeral port. On a busy NAS each session
+terminating during a short RADIUS outage leaks one socket; after months
+of uptime the ephemeral port range is exhausted and every new request
+fails with "radius:bind: Address already in use" followed by
+"no available servers", requiring a restart.
+
+Fix by re-arming the one-shot timer on send failure instead of
+resetting the try counter, so retries are bounded by max-try and the
+request is freed cleanly once attempts are exhausted.
+
+Both defects date back to the accounting rewrite (62e89248, 2014).
+
+Fixes: https://github.com/accel-ppp/accel-ppp/issues/324
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 8a94a47e8068dbc8b308cea0b875c516d2ad13f5)
+---
+ accel-pppd/radius/acct.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/accel-pppd/radius/acct.c b/accel-pppd/radius/acct.c
+index 30e772ad..e778d82b 100644
+--- a/accel-pppd/radius/acct.c
++++ b/accel-pppd/radius/acct.c
+@@ -376,6 +376,16 @@ static void rad_acct_stop_sent(struct rad_req_t *req, int res)
+ 				rpd->acct_req = NULL;
+ 		} else if (req->rpd)
+ 			rad_acct_stop_defer(req->rpd);
++		else {
++			/* deferred request: the timeout timer is one-shot and
++			 * nobody else references this request, re-arm it to
++			 * retry later, otherwise the request and its socket
++			 * leak */
++			if (req->timeout.tpd)
++				triton_timer_mod(&req->timeout, 0);
++			else
++				triton_timer_add(NULL, &req->timeout, 0);
++		}
+ 
+ 		return;
+ 	}
+@@ -429,7 +439,7 @@ static void rad_acct_stop_timeout(struct triton_timer_t *t)
+ 			req->pack->id++;
+ 	}
+ 
+-	if (req->try == conf_max_try) {
++	if (req->try >= conf_max_try) {
+ 		if (req->rpd)
+ 			req->rpd->acct_req = NULL;
+ 		rad_req_free(req);
+@@ -443,7 +453,14 @@ static void rad_acct_stop_timeout(struct triton_timer_t *t)
+ 			rad_req_free(req);
+ 			return;
+ 		}
+-		req->try = 0;
++		/* no server available at the moment; the timeout timer is
++		 * one-shot, re-arm it to retry later, otherwise the request
++		 * and its socket leak; failed attempts count towards
++		 * conf_max_try so the request is freed above eventually */
++		if (req->timeout.tpd)
++			triton_timer_mod(&req->timeout, 0);
++		else
++			triton_timer_add(req->rpd ? req->rpd->ses->ctrl->ctx : NULL, &req->timeout, 0);
+ 	}
+ }
+ 

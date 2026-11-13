@@ -1,0 +1,79 @@
+From 2fc996b2a15a761e71048a57e14a4d902ed37f0a Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Mon, 6 Jul 2026 19:16:29 +0300
+Subject: [PATCH] T9238: ppp: close unit fd only after session cleanup finishes
+ (port accel-ppp PR 334)
+
+destablish_ppp() closed the ppp unit fd (via
+triton_md_unregister_handler(..., 1)) before calling
+ap_session_finished(). Closing the fd releases the ppp unit index, so
+the kernel can assign the same unit (and thus the same pppX ifname) to
+a new session while the old session's cleanup is still running.
+
+pppd_compat performs its cleanup from the EV_SES_FINISHED handler: it
+runs the ip-down script (blocking the context until the script exits)
+and then deletes radattr.pppX. If the unit index is reused in that
+window, the ip-down script is executed with an IFNAME that now belongs
+to a different, active session, and remove_radattr() deletes the
+radattr file of that new session. External accounting/shaper scripts
+that read radattr.pppX then fail for a live session.
+
+Fix this by unregistering the unit fd handler without closing the fd
+and closing it only after ap_session_finished() returns, unless the fd
+was handed to the unit cache. This keeps the unit index reserved until
+session cleanup has finished, so the ifname cannot be reused early.
+
+The unit-cache path is not affected (the cached fd already keeps the
+unit reserved); the race only hits configurations with unit-cache
+disabled. Only PPP sessions (PPPoE/PPTP/L2TP/SSTP) go through this
+path; IPoE is unaffected. Note the unit index is now held slightly
+longer during teardown (while ip-down runs) - this is intentional.
+
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit 1d67a133e31cfe0c6cff01a3417c1e7eb4eb6e38)
+---
+ accel-pppd/ppp/ppp.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/accel-pppd/ppp/ppp.c b/accel-pppd/ppp/ppp.c
+index 23312128..235b4b62 100644
+--- a/accel-pppd/ppp/ppp.c
++++ b/accel-pppd/ppp/ppp.c
+@@ -333,7 +333,7 @@ static void destablish_ppp(struct ppp_t *ppp)
+ 		if (ppp->ses.net != def_net) {
+ 			if (net->move_link(def_net, ppp->ses.ifindex)) {
+ 				log_ppp_warn("failed to attach to default namespace\n");
+-				triton_md_unregister_handler(&ppp->unit_hnd, 1);
++				triton_md_unregister_handler(&ppp->unit_hnd, 0);
+ 				goto skip;
+ 			}
+ 			ppp->ses.net = def_net;
+@@ -346,7 +346,7 @@ static void destablish_ppp(struct ppp_t *ppp)
+ 			strncpy(ifr.ifr_name, ppp->ses.ifname, IFNAMSIZ);
+ 			if (net->sock_ioctl(SIOCSIFNAME, &ifr)) {
+ 				log_ppp_warn("failed to rename ppp to default name\n");
+-				triton_md_unregister_handler(&ppp->unit_hnd, 1);
++				triton_md_unregister_handler(&ppp->unit_hnd, 0);
+ 				goto skip;
+ 			}
+ 		}
+@@ -359,11 +359,18 @@ static void destablish_ppp(struct ppp_t *ppp)
+ 		uc->fd = ppp->unit_fd;
+ 		uc->unit_idx = ppp->ses.unit_idx;
+ 	} else
+-		triton_md_unregister_handler(&ppp->unit_hnd, 1);
++		triton_md_unregister_handler(&ppp->unit_hnd, 0);
+ 
+ skip:
+ 	ap_session_finished(&ppp->ses);
+ 
++	/* The unit fd is closed only after session cleanup (ip-down scripts,
++	 * radattr removal) has finished, so the kernel cannot give the same
++	 * unit index (and thus ifname) to a new session while cleanup still
++	 * references the ifname. */
++	if (!uc)
++		close(ppp->unit_fd);
++
+ 	ppp->unit_fd = -1;
+ 
+ 	destroy_ppp_channel(ppp, is_non_dev_ppp);

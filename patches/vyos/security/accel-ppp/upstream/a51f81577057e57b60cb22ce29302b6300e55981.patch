@@ -1,0 +1,75 @@
+From a51f81577057e57b60cb22ce29302b6300e55981 Mon Sep 17 00:00:00 2001
+From: Ritika Chopra <r.chopra@vyos.io>
+Date: Tue, 7 Jul 2026 01:13:29 +0300
+Subject: [PATCH] T9238: ipoe: fix username string leak on early session
+ teardown (port from accel-ppp 331)
+
+The ipoe-level ses->username always holds an allocated string
+(_strdup of ifname/calling-station-id, u_inet_ntoa buffer or lua
+result), but ipoe_session_free() never released it. Ownership is
+normally transferred in auth_result() via ap_session_set_username(),
+so the string was leaked whenever a session died before auth_result()
+ran: termination while starting, PWDB_WAIT never completing, or
+ipoe_create_interface() failure.
+
+The create-interface failure path also leaked the freshly allocated
+local copy outright, since it returned before the string was stored
+anywhere.
+
+Store the string in ses->username as soon as it is obtained and free
+it in ipoe_session_free(). auth_result() clears ses->username before
+handing ownership to ap_session_set_username(), so no double free is
+possible.
+
+Reported-by: Louis Scalbert (#101)
+Authored-by: Denys Fedoryshchenko <denys.f@collabora.com>
+(cherry picked from commit e12b38501be622c9c8e030de86a28721d797e542)
+---
+ accel-pppd/ctrl/ipoe/ipoe.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/accel-pppd/ctrl/ipoe/ipoe.c b/accel-pppd/ctrl/ipoe/ipoe.c
+index 0d52b577..1fb18450 100644
+--- a/accel-pppd/ctrl/ipoe/ipoe.c
++++ b/accel-pppd/ctrl/ipoe/ipoe.c
+@@ -754,6 +754,10 @@ static void ipoe_session_start(struct ipoe_session *ses)
+ 		return;
+ 	}
+ 
++	/* take ownership now so the string is freed by ipoe_session_free()
++	 * even if the session terminates before auth_result() consumes it */
++	ses->username = username;
++
+ 	ses->ses.unit_idx = ses->serv->ifindex;
+ 
+ 	triton_event_fire(EV_CTRL_STARTING, &ses->ses);
+@@ -764,9 +768,9 @@ static void ipoe_session_start(struct ipoe_session *ses)
+ 	if (ses->serv->opt_shared && ipoe_create_interface(ses))
+ 		return;
+ 
+-	if (conf_noauth)
++	if (conf_noauth) {
+ 		r = PWDB_SUCCESS;
+-	else {
++	} else {
+ #ifdef RADIUS
+ 		if (radius_loaded) {
+ 			ses->radius.send_access_request = ipoe_rad_send_auth_request;
+@@ -783,7 +787,6 @@ static void ipoe_session_start(struct ipoe_session *ses)
+ 		} else
+ 			pass = username;
+ 
+-		ses->username = username;
+ 		r = pwdb_check(&ses->ses, (pwdb_callback)auth_result, ses, username, PPP_PAP, pass);
+ 
+ 		if (r == PWDB_WAIT)
+@@ -1213,6 +1216,9 @@ static void ipoe_session_free(struct ipoe_session *ses)
+ 	if (ses->l4_redirect_ipset)
+ 		_free(ses->l4_redirect_ipset);
+ 
++	if (ses->username)
++		_free(ses->username);
++
+ 	triton_context_unregister(&ses->ctx);
+ 
+ 	if (ses->data)
