@@ -12,7 +12,10 @@ class PolicyTests(unittest.TestCase):
         self.assertTrue(eligible('pull_request_target', event, ['NOTICE']))
         self.assertTrue(eligible('pull_request_target', event, ['scripts/build-release.sh']))
         self.assertFalse(eligible('push', event, ['producer/disks.py']))
-        self.assertFalse(eligible('pull_request', event, ['docs/build.md']))
+        # Exclusions belong to actions.image_paths; raw/unknown paths default safe.
+        self.assertTrue(eligible('pull_request', event, ['docs/build.md']))
+        self.assertTrue(eligible('pull_request', event, ['new-root.conf']))
+        self.assertFalse(eligible('pull_request', event, []))
         event['pull_request']['merged'] = False
         self.assertFalse(eligible('pull_request', event, ['source-lock.json']))
         event['pull_request']['merged'] = True

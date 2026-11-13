@@ -25,8 +25,154 @@ PUBLICATION_PATHS = frozenset({
 })
 
 
+# Audited at df54e44: only unittest consumers, never guest acceptance inputs.
+# Exact entries: new tests/fixtures/scripts/docs default to release until reviewed.
+UNIT_TEST_PATHS = frozenset({
+    'tests/component_fixture.py',
+    'tests/test_apt_archive.py',
+    'tests/test_bash_source.py',
+    'tests/test_boot_menus.py',
+    'tests/test_bundles.py',
+    'tests/test_cargo_sources.py',
+    'tests/test_charset_source.py',
+    'tests/test_cloud_init.py',
+    'tests/test_collect.py',
+    'tests/test_compiler_artifact.py',
+    'tests/test_component_graph.py',
+    'tests/test_component_inputs.py',
+    'tests/test_compose_sources.py',
+    'tests/test_debian_optional_source_export.py',
+    'tests/test_debian_source_export.py',
+    'tests/test_debian_sources.py',
+    'tests/test_debootstrap.py',
+    'tests/test_embedded_notices.py',
+    'tests/test_erasure.py',
+    'tests/test_execution.py',
+    'tests/test_extra_stage_apt.py',
+    'tests/test_factory_audit.py',
+    'tests/test_factory_layer.py',
+    'tests/test_first_boot.py',
+    'tests/test_fpm_notices.py',
+    'tests/test_gem_lock.py',
+    'tests/test_geoip.py',
+    'tests/test_go_dependency_transport.py',
+    'tests/test_go_modules.py',
+    'tests/test_go_source_export.py',
+    'tests/test_guest_diagnostics.py',
+    'tests/test_guest_retirement.py',
+    'tests/test_http_rust_sources.py',
+    'tests/test_integration.py',
+    'tests/test_iso_recovery.py',
+    'tests/test_kbd_source_export.py',
+    'tests/test_library_cache.py',
+    'tests/test_libxcrypt_source.py',
+    'tests/test_livebuild_sources.py',
+    'tests/test_livebuild_transport.py',
+    'tests/test_native_common.py',
+    'tests/test_native_stages.py',
+    'tests/test_native_trial.py',
+    'tests/test_netbird.py',
+    'tests/test_netbird_fixture.py',
+    'tests/test_netbird_guest.py',
+    'tests/test_netbird_sources.py',
+    'tests/test_network_diagnostics.py',
+    'tests/test_notice_approval.py',
+    'tests/test_notices.py',
+    'tests/test_ocaml_sources.py',
+    'tests/test_opentracing_source_export.py',
+    'tests/test_package_notices.py',
+    'tests/test_packages.py',
+    'tests/test_policy.py',
+    'tests/test_public_test_keys.py',
+    'tests/test_recipes.py',
+    'tests/test_reconstruction.py',
+    'tests/test_release.py',
+    'tests/test_release_stage_import.py',
+    'tests/test_runner_probe.py',
+    'tests/test_runtime_sources.py',
+    'tests/test_salt_cargo.py',
+    'tests/test_salt_python.py',
+    'tests/test_salt_sources.py',
+    'tests/test_sanitize.py',
+    'tests/test_secrets.py',
+    'tests/test_security_backports.py',
+    'tests/test_snapshot_fetch.py',
+    'tests/test_source_batches.py',
+    'tests/test_source_closures.py',
+    'tests/test_source_delta.py',
+    'tests/test_source_fixtures.py',
+    'tests/test_source_reuse.py',
+    'tests/test_sources.py',
+    'tests/test_stage_artifacts.py',
+    'tests/test_storage.py',
+    'tests/test_strip_policy.py',
+    'tests/test_vpp_inputs.py',
+    'tests/test_vpp_legal.py',
+    'tests/test_workflow_cache_ci.py',
+    'tests/test_workflow_cache_mode.py',
+    'tests/test_workflow_concurrency.py',
+    'tests/test_workspace.py',
+})
+
+# Test workflow -> check-workflows.sh -> the two checkers; no release consumer.
+CI_PATHS = frozenset({
+    '.github/workflows/test.yml',
+    'scripts/check-workflows.sh',
+    'scripts/check_workflow_concurrency.py',
+    'scripts/check_workflow_cache_mode.py',
+})
+
+# Explanatory Markdown only; fixtures, evidence and legal inputs are not exempt.
+DOC_PATHS = frozenset({
+    'README.md',
+    'docs/BUILD.md',
+    'docs/FIRST_BOOT.md',
+    'docs/LICENSES.md',
+    'docs/NETBIRD.md',
+    'docs/RELEASE.md',
+    'docs/SECURITY-BACKPORTS-28.md',
+    'docs/STAGED-BUILD.md',
+    'docs/VALIDATION.md',
+})
+
+NON_IMAGE_PATHS = PUBLICATION_PATHS | UNIT_TEST_PATHS | CI_PATHS | DOC_PATHS
+
+
 def image_paths(paths):
-    return [path for path in paths if path not in PUBLICATION_PATHS]
+    return [path for path in paths if path not in NON_IMAGE_PATHS]
+
+
+def changed_file_paths(pages, expected):
+    """Require the complete API inventory; include both sides of every rename."""
+    if type(expected) is not int or expected <= 0:
+        raise ValueError('A positive changed-file count is required')
+    if not isinstance(pages, list) or not pages or any(not isinstance(page, list) for page in pages):
+        raise ValueError('Malformed changed-file pages')
+    changed = [item for page in pages for item in page]
+    if len(changed) != expected:
+        raise ValueError('Incomplete changed-file inventory; refusing to classify trigger')
+
+    def path(value):
+        if (not isinstance(value, str) or not value
+                or any(c in value for c in ('\\', '\x00', '\n', '\r'))
+                or any(part in {'', '.', '..'} for part in value.split('/'))):
+            raise ValueError('Malformed changed-file path')
+        return value
+
+    paths, seen = [], set()
+    for item in changed:
+        if (not isinstance(item, dict) or not isinstance(item.get('status'), str)
+                or item['status'] not in {
+                'added', 'removed', 'modified', 'renamed', 'copied', 'changed', 'unchanged'}):
+            raise ValueError('Malformed changed-file record')
+        name = path(item.get('filename'))
+        if name in seen:
+            raise ValueError('Duplicate changed-file record')
+        seen.add(name)
+        paths.append(name)
+        if item['status'] == 'renamed' or 'previous_filename' in item:
+            paths.append(path(item.get('previous_filename')))
+    return paths
 
 
 def artifact_evidence(artifact, artifact_id, digest, run_id, attempt, version, commit):
@@ -184,14 +330,19 @@ def resolve():
     pr = event.get('pull_request', {})
     # The trigger itself excludes direct pushes. Fetch all changed-file pages.
     number = pr.get('number') or event.get('number')
-    if not isinstance(number, int):
+    if type(number) is not int or number <= 0:
+        print(json.dumps({'release_impact': 'skip', 'reason': 'missing-pr-number'}, sort_keys=True))
         emit({'eligible':'false'}); return
     pages = gh('api', '--paginate', '--slurp', f'repos/{REPO}/pulls/{number}/files', json_result=True)
-    changed=[item for page in pages for item in page]
-    if isinstance(pr.get('changed_files'),int) and len(changed)!=pr['changed_files']:
-        raise ValueError('Incomplete changed-file inventory; refusing to classify trigger')
-    paths=[path for item in changed for path in [item['filename'],item.get('previous_filename','')] if path]
-    if not eligible(os.environ['GITHUB_EVENT_NAME'], event, image_paths(paths)):
+    paths = changed_file_paths(pages, pr.get('changed_files'))
+    inputs = image_paths(paths)
+    allowed = eligible(os.environ['GITHUB_EVENT_NAME'], event, inputs)
+    # Bounded, deterministic run evidence; no allocation or gate reuse on skips.
+    print(json.dumps({'release_impact': 'release' if allowed else 'skip',
+                      'reason': ('artifact-validation-or-unclassified-path' if allowed else
+                                 'event-not-eligible' if inputs else 'only-reviewed-non-image-paths'),
+                      'changed_files': pr['changed_files'], 'release_paths': len(inputs)}, sort_keys=True))
+    if not allowed:
         emit({'eligible':'false'}); return
     commit = pr['merge_commit_sha']
     identity(commit)

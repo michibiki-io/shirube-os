@@ -373,7 +373,7 @@ class ActionsTests(unittest.TestCase):
                 'head':{'sha':'c'*40},'merge_commit_sha':'a'*40}}))
             created=[]
             def gh(*args,**kwargs):
-                if args[0]=='api' and args[-1].endswith('/files'):return [[{'filename':'producer/pipeline.py'}]]
+                if args[0]=='api' and args[-1].endswith('/files'):return [[{'filename':'producer/pipeline.py', 'status': 'modified'}]]
                 if args[0]=='api' and '/compare/' in args[-1]:
                     self.assertEqual(args[-1], f'repos/{actions.REPO}/compare/{"b"*40}...{"c"*40}?per_page=100')
                     return [{'base_commit':{'sha':'b'*40},'total_commits':1,
@@ -406,7 +406,7 @@ class ActionsTests(unittest.TestCase):
             event.write_text(json.dumps({'action':'closed','number':1,'pull_request':{'merged':True,'changed_files':1,'base':{'ref':'main'},'merge_commit_sha':'a'*40}}))
             def gh(*args,**kwargs):
                 self.assertEqual(args[0],'api')
-                return [[{'filename':'producer/pipeline.py'}]]
+                return [[{'filename':'producer/pipeline.py', 'status': 'modified'}]]
             def git(*args):
                 if args==('status','--porcelain'):return ''
                 return 'a'*40
@@ -417,7 +417,7 @@ class ActionsTests(unittest.TestCase):
     def test_incomplete_changed_file_pages_fail_before_any_release(self):
         with tempfile.TemporaryDirectory() as temporary:
             event=Path(temporary)/'event.json';event.write_text(json.dumps({'number':1,'pull_request':{'changed_files':2}}))
-            with patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event)}),patch.object(actions,'gh',return_value=[[{'filename':'README.md'}]]),patch.object(actions,'releases') as releases:
+            with patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event)}),patch.object(actions,'gh',return_value=[[{'filename':'README.md', 'status': 'modified'}]]),patch.object(actions,'releases') as releases:
                 with self.assertRaises(ValueError):actions.resolve()
                 releases.assert_not_called()
 
@@ -451,7 +451,7 @@ class IndividualCommitTests(unittest.TestCase):
         created = []
         def gh(*args, **kwargs):
             if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/pulls/1/files'):
-                return [[{'filename': 'producer/pipeline.py'}]]
+                return [[{'filename': 'producer/pipeline.py', 'status': 'modified'}]]
             if args == ('api', '--paginate', '--slurp',
                         f'repos/{actions.REPO}/compare/{self.base}...{self.head}?per_page=100'):
                 if isinstance(self.pages, Exception):
@@ -592,7 +592,7 @@ class ReleaseReservationTests(unittest.TestCase):
     def resolve(self, commit):
         def gh(*args, **kwargs):
             if args == ('api', '--paginate', '--slurp', f'repos/{actions.REPO}/pulls/1/files'):
-                return [[{'filename': 'producer/pipeline.py'}]]
+                return [[{'filename': 'producer/pipeline.py', 'status': 'modified'}]]
             if args == ('api', '--paginate', '--slurp',
                         f'repos/{actions.REPO}/compare/{"e"*40}...{commit}?per_page=100'):
                 return [{'base_commit': {'sha': 'e'*40}, 'total_commits': 1,
@@ -790,11 +790,11 @@ class PublicationClassificationTests(unittest.TestCase):
     def test_each_exact_path_and_docs_are_non_image_before_allocation(self):
         event = {'action': 'closed', 'pull_request': {'number': 24, 'merged': True,
                  'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40, 'changed_files': 1}}
-        for path in sorted(actions.PUBLICATION_PATHS) + ['docs/RELEASE.md']:
+        for path in sorted(actions.NON_IMAGE_PATHS):
             with self.subTest(path=path), tempfile.TemporaryDirectory() as tmp:
                 payload = Path(tmp)/'event.json'
                 payload.write_text(json.dumps(event))
-                with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload), 'GITHUB_EVENT_NAME': 'pull_request_target'}), patch.object(actions, 'gh', return_value=[[{'filename': path}]]), patch.object(actions, 'emit') as emit, patch.object(actions, 'identity') as identity, patch.object(actions, 'releases') as releases:
+                with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload), 'GITHUB_EVENT_NAME': 'pull_request_target'}), patch.object(actions, 'gh', return_value=[[{'filename': path, 'status': 'modified'}]]), patch.object(actions, 'emit') as emit, patch.object(actions, 'identity') as identity, patch.object(actions, 'releases') as releases:
                     actions.resolve()
                     emit.assert_called_once_with({'eligible': 'false'})
                     identity.assert_not_called()
@@ -836,7 +836,8 @@ class PublicationClassificationTests(unittest.TestCase):
         event = {'action': 'closed', 'pull_request': {'merged': True,
                  'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40}}
         for path in ['producer/new.py', 'producer/policy.py', 'source-lock.json',
-                     '.github/workflows/release.yml', 'tests/test_release.py', 'containers/native/Dockerfile']:
+                     '.github/workflows/release.yml', 'tests/fixtures/security/frr-original.json',
+                     'unknown-root.conf', 'tests/test_future.py', 'docs/future.md', 'containers/native/Dockerfile']:
             for paths in [[path], ['producer/actions.py', path], [path, 'producer/actions.py']]:
                 with self.subTest(paths=paths):
                     self.assertTrue(actions.eligible('pull_request_target', event, actions.image_paths(paths)))
@@ -885,11 +886,11 @@ class ArtifactBindingTests(unittest.TestCase):
                                     ('producer/new.py', 'producer/actions.py')]:
             with self.subTest(source=source), tempfile.TemporaryDirectory() as tmp:
                 payload = Path(tmp)/'event'; payload.write_text(json.dumps(event))
-                pages = [[{'filename': destination, 'previous_filename': source}], [{'filename': 'docs/RELEASE.md'}]]
+                pages = [[{'filename': destination, 'previous_filename': source, 'status': 'renamed'}], [{'filename': 'docs/RELEASE.md', 'status': 'modified'}]]
                 with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload), 'GITHUB_EVENT_NAME': 'pull_request_target'}), patch.object(actions, 'gh', return_value=pages), patch.object(actions, 'eligible', return_value=False) as eligible:
                     with patch.object(actions, 'emit'):
                         actions.resolve()
-                    self.assertEqual(eligible.call_args.args[2], ['producer/new.py', 'docs/RELEASE.md'])
+                    self.assertEqual(eligible.call_args.args[2], ['producer/new.py'])
 
     def test_missing_release_ownership_and_wrong_attempt_environment_fail_closed(self):
         original = copy.deepcopy(self.draft)
@@ -915,3 +916,139 @@ class ArtifactBindingTests(unittest.TestCase):
         with patch.dict(os.environ, self.environment), patch.object(actions, 'identity'), patch.object(actions, 'gh', side_effect=api) as gh, patch.object(actions, 'download'), patch.object(actions, 'validate', side_effect=validate):
             with self.assertRaises(ValueError): actions.promote()
             self.assertFalse(any(c.args[:2] == ('release', 'edit') for c in gh.call_args_list))
+
+
+class ReleaseImpactTests(unittest.TestCase):
+    """Issue #34 AC1-4: audited exclusions and fail-closed allocation boundary."""
+    def setUp(self):
+        self.event = {'action': 'closed', 'number': 34, 'pull_request': {
+            'merged': True, 'base': {'ref': 'main'}, 'merge_commit_sha': 'a'*40,
+            'changed_files': 1}}
+
+    def test_real_33_inputs_and_acceptance_contracts_release(self):
+        # Real PR #33 input paths, regardless of its lint description.
+        paths = ['containers/native/security_native.py', 'containers/native/security_common.py',
+                 'producer/policy.py', 'producer/release.py', 'producer/clearance.py',
+                 'producer/staged_release.py', 'guest/first-boot.sh', 'schemas/release.json',
+                 'source-lock.json', 'LICENSE', 'LICENSES/new.md', 'NOTICE', 'license-audit.json',
+                 'third_party/new', 'patches/new.patch', 'scripts/test-netbird-guest.py',
+                 'scripts/test-iso-console.py', 'scripts/build-release.sh', '.dockerignore',
+                 '.github/workflows/release.yml', '.github/workflows/staged-candidate.yml',
+                 '.github/workflows/validate-staged.yml', '.github/workflows/native-trial.yml',
+                 'tests/fixtures/security/README.md', 'docs/evidence/new.json',
+                 'tests/test_new.py', 'docs/new.md', 'new-root.txt']
+        for path in paths:
+            for inventory in ([path], ['tests/test_policy.py', path], [path, 'producer/actions.py']):
+                with self.subTest(paths=inventory):
+                    self.assertTrue(actions.eligible('pull_request_target', self.event,
+                                                    actions.image_paths(inventory)))
+
+    def test_exclusions_are_exact_and_keep_retired_publication_entries(self):
+        self.assertEqual(actions.PUBLICATION_PATHS, {
+            'producer/actions.py', 'producer/recover_release.py', 'tests/test_actions.py',
+            'tests/test_recover_release.py', '.github/workflows/recover-release.yml'})
+        for path in sorted(actions.NON_IMAGE_PATHS):
+            with self.subTest(path=path):
+                self.assertEqual(actions.image_paths([path]), [])
+                self.assertEqual(actions.image_paths([path+'.bak']), [path+'.bak'])
+        self.assertNotIn('producer/policy.py', actions.NON_IMAGE_PATHS)
+        self.assertNotIn('tests/fixtures/security/README.md', actions.NON_IMAGE_PATHS)
+
+    def test_rename_both_sides_deletion_and_mixed_pages(self):
+        for source, target in [('tests/test_policy.py', 'new-root'),
+                               ('new-root', 'tests/test_policy.py'),
+                               ('producer/pipeline.py', 'docs/RELEASE.md'),
+                               ('docs/RELEASE.md', 'producer/pipeline.py')]:
+            with self.subTest(source=source, target=target):
+                paths = actions.changed_file_paths([[{'filename': target, 'status': 'renamed',
+                                                      'previous_filename': source}],
+                                                    [{'filename': 'README.md', 'status': 'modified'}]], 2)
+                self.assertTrue(actions.eligible('pull_request_target', self.event, actions.image_paths(paths)))
+        for status in ('added', 'modified', 'removed'):
+            for path, expected in [('tests/test_policy.py', False), ('unclassified', True)]:
+                with self.subTest(status=status, path=path):
+                    paths = actions.changed_file_paths([[{'filename': path, 'status': status}]], 1)
+                    self.assertEqual(actions.eligible('pull_request_target', self.event,
+                                                     actions.image_paths(paths)), expected)
+        paths = actions.changed_file_paths([[{'filename': 'docs/RELEASE.md', 'status': 'renamed',
+                                              'previous_filename': 'README.md'}]], 1)
+        self.assertFalse(actions.eligible('pull_request_target', self.event, actions.image_paths(paths)))
+
+    @staticmethod
+    def invalid_inventories():
+        valid = [[{'filename': 'README.md', 'status': 'modified'}]]
+        cases = [(valid, count) for count in (None, True, False, '1', 0, -1, 2, 1.0)]
+        cases += [(pages, 1) for pages in (None, {}, [], [[]], [None], [{}], [[None]], [[{}]],
+                  [[{'filename': 'README.md'}]], [[{'filename': 'README.md', 'status': {}}]],
+                  [[{'filename': 'README.md', 'status': 'unknown'}]],
+                  [[{'filename': 'README.md', 'status': 'renamed'}]])]
+        for path in (None, '', 1, '/README.md', '../README.md', 'docs/../README.md',
+                     './README.md', 'docs//README.md', 'docs/', 'bad\npath', 'bad\rpath',
+                     'bad\x00path', 'docs\\README.md'):
+            cases.append(([[{'filename': path, 'status': 'modified'}]], 1))
+            cases.append(([[{'filename': 'README.md', 'status': 'renamed',
+                             'previous_filename': path}]], 1))
+        cases.append((valid+valid, 2))
+        return cases
+
+    def test_malformed_inventory_fails_before_every_allocation_boundary(self):
+        for pages, count in self.invalid_inventories():
+            with self.subTest(pages=pages, count=count), tempfile.TemporaryDirectory() as tmp:
+                event = copy.deepcopy(self.event)
+                event['pull_request']['changed_files'] = count
+                payload = Path(tmp)/'event.json';payload.write_text(json.dumps(event))
+                with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload),
+                                             'GITHUB_EVENT_NAME': 'pull_request_target'}), \
+                     patch.object(actions, 'gh', return_value=pages) as gh, \
+                     patch.object(actions, 'emit') as emit, patch.object(actions, 'identity') as identity, \
+                     patch.object(actions, 'releases') as releases, \
+                     patch.object(actions, 'next_version') as version, \
+                     patch.object(actions, 'integration_preflight') as preflight, \
+                     patch.object(actions, 'git') as git:
+                    with self.assertRaises(ValueError):actions.resolve()
+                    for operation in (emit, identity, releases, version, preflight, git):
+                        operation.assert_not_called()
+                    gh.assert_called_once_with('api', '--paginate', '--slurp',
+                                               f'repos/{actions.REPO}/pulls/34/files', json_result=True)
+
+    def test_impact_reason_and_no_allocation_for_skips(self):
+        import io
+        for path, event_name, reason in [
+                ('tests/test_policy.py', 'pull_request_target', 'only-reviewed-non-image-paths'),
+                ('.github/workflows/test.yml', 'pull_request_target', 'only-reviewed-non-image-paths'),
+                ('README.md', 'pull_request_target', 'only-reviewed-non-image-paths'),
+                ('producer/actions.py', 'pull_request_target', 'only-reviewed-non-image-paths'),
+                ('new-root', 'push', 'event-not-eligible'),
+                ('new-root', 'pull_request_target', 'artifact-validation-or-unclassified-path')]:
+            with self.subTest(path=path, event_name=event_name), tempfile.TemporaryDirectory() as tmp:
+                payload = Path(tmp)/'event.json';payload.write_text(json.dumps(self.event))
+                output = io.StringIO()
+                with patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(payload), 'GITHUB_EVENT_NAME': event_name}), \
+                     patch.object(actions, 'gh', return_value=[[{'filename': path, 'status': 'modified'}]]) as gh, \
+                     patch.object(actions, 'emit') as emit, patch.object(actions, 'identity', side_effect=RuntimeError('boundary')) as identity, \
+                     patch.object(actions, 'releases') as releases, patch.object(actions, 'next_version') as version, \
+                     patch.object(actions, 'integration_preflight') as preflight, patch.object(actions, 'git') as git, \
+                     patch('sys.stdout', output):
+                    if reason == 'artifact-validation-or-unclassified-path':
+                        with self.assertRaisesRegex(RuntimeError, 'boundary'):actions.resolve()
+                        identity.assert_called_once_with('a'*40)
+                    else:
+                        actions.resolve();emit.assert_called_once_with({'eligible': 'false'})
+                        identity.assert_not_called()
+                    for operation in (releases, version, preflight, git):operation.assert_not_called()
+                    self.assertEqual(json.loads(output.getvalue()), {
+                        'release_impact': 'release' if reason == 'artifact-validation-or-unclassified-path' else 'skip',
+                        'reason': reason, 'changed_files': 1,
+                        'release_paths': int(path == 'new-root')})
+                    self.assertEqual(gh.call_count, 1)
+
+    def test_all_trusted_event_guards_remain_required(self):
+        variants = [('push', self.event)]
+        for field, value in [('merged', False), ('merge_commit_sha', 'a'*39),
+                             ('merge_commit_sha', 'not-a-sha'), ('base', {'ref': 'other'})]:
+            event=copy.deepcopy(self.event);event['pull_request'][field]=value
+            variants.append(('pull_request_target', event))
+        event=copy.deepcopy(self.event);event['action']='opened';variants.append(('pull_request_target', event))
+        for name, event in variants:
+            with self.subTest(name=name, event=event):
+                self.assertFalse(actions.eligible(name, event, actions.image_paths(['unknown-root'])))
