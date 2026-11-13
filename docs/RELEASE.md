@@ -164,7 +164,12 @@ silently turn a larger change into a skip: a count mismatch fails closed.
 | Validation contracts | Eligible: guest, clearance, release validators, schemas and their scripts; `release.yml`, `staged-candidate.yml`, `validate-staged.yml` and `native-trial.yml` remain eligible. Unit-test success does not establish fresh guest acceptance. |
 | Publication/orchestration controls | Only the five exact `PUBLICATION_PATHS` entries from Issues #24/#26 are excluded. This includes retired paths so deletion inventories still classify correctly. |
 | CI-only inputs | Exact `UNIT_TEST_PATHS` and `CI_PATHS` entries are excluded. The current root test modules and `component_fixture.py` have only unittest/test consumers. Test invokes `check-workflows.sh`, which invokes the two workflow checkers; no artifact/guest workflow consumes these scripts. `tests/fixtures/` stays eligible. |
-| Explanatory docs | Only exact `DOC_PATHS` entries (README and current explanatory Markdown in docs) are excluded. Native Docker COPY and downstream input contracts do not consume them. Legal Markdown, fixtures and non-Markdown evidence stay eligible. |
+| Explanatory docs | Only exact `DOC_PATHS` entries (README and current explanatory Markdown in docs) are excluded. Native Docker COPY and image-stage input contracts do not consume them as image inputs. Legal Markdown, fixtures and non-Markdown evidence stay eligible. |
+
+The commit-wide `git archive` still includes tracked tests and docs in
+`project-source.tar`, which ships as a source asset. Excluded-only updates reach
+that published source snapshot at the next eligible release; they do not update
+a previously published release.
 
 These sets in `producer/actions.py` are the complete exclusion inventory; there
 are no directory or suffix exemptions. **Every unclassified path requires a
@@ -181,7 +186,9 @@ For a valid inventory, resolve logs bounded JSON with `release_impact` (`release
 or `skip`), `reason`, `changed_files`, and `release_paths` (relevant path sides).
 `only-reviewed-non-image-paths` explains a pure excluded change;
 `artifact-validation-or-unclassified-path` explains an eligible change;
-`event-not-eligible` explains rejected event admission. Missing PR numbers log
+`event-not-eligible` explains rejected event admission when a release-relevant
+path remains; an excluded-only inventory uses `only-reviewed-non-image-paths`
+even for a rejected event. Missing PR numbers log
 `missing-pr-number`. Existing `eligible` outputs still gate downstream builds.
 A skip allocates no version, tag or draft. Eligible releases retain every existing
 gate and do not reuse old PASS evidence. Ordinary PR Test remains unfiltered;
@@ -203,7 +210,9 @@ unit-testの成功を新しいguest試験の合格として扱いません。
 
 除外は`actions.py`に列挙した完全一致パスだけです。
 既存の公開制御5パス、unit-testからだけ参照される現行テストとhelper、Test専用のworkflowとchecker、
-成果物入力に含まれない既存の説明Markdownを区別して保持します。
+Docker COPYと画像stageの入力に含まれない既存の説明Markdownを区別して保持します。
+ただしtrackedのテストと文書はコミット全体の`git archive`に含まれ、`project-source.tar`として公開ソースに同梱されます。
+除外だけの更新は次の適格releaseで公開ソースへ反映し、公開済みreleaseは更新しません。
 fixture、法的入力、Markdown以外のevidenceは除外しません。
 未知のrootファイル、新しいテストや文書、workflowは安全側で画像対象とします。
 削除も同じ規則で判定し、混合変更やrenameの片側に対象パスがあればreleaseします。
@@ -215,7 +224,9 @@ fixture、法的入力、Markdown以外のevidenceは除外しません。
 
 実行ログのJSONに判定、理由、変更件数、対象パス側の数を残します。
 除外だけの変更は`only-reviewed-non-image-paths`、対象変更は`artifact-validation-or-unclassified-path`です。
-イベント条件を満たさない場合は`event-not-eligible`、PR番号がない場合は`missing-pr-number`です。
+対象パスが残り、イベント条件を満たさない場合は`event-not-eligible`です。
+除外パスだけならイベント不適格時も`only-reviewed-non-image-paths`を優先します。
+PR番号がない場合は`missing-pr-number`です。
 skipでは版、tag、draftを割り当てません。
 対象releaseの全ゲートを維持し、古いPASSは再利用しません。
 通常のPR Testにパスフィルターを追加せず、手動回避、label、cache変更、guest再利用も追加しません。
