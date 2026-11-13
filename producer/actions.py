@@ -305,7 +305,7 @@ def cumulative_history(revision):
     for sha in git('rev-list', '--reverse', '--topo-order', revision).splitlines():
         raw = subprocess.check_output(['git', 'diff-tree', '--root', '-m', '--no-commit-id',
                                        '--name-only', '--no-renames', '-r', '-z', sha])
-        changed = [p.decode() for p in raw.split(b'\0') if p]
+        changed = sorted({p.decode() for p in raw.split(b'\0') if p})
         if changed:
             changed_file_paths([[{'filename': p, 'status': 'changed'} for p in changed]], len(changed))
         paths.update(changed)

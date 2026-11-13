@@ -53,11 +53,19 @@ class TaxonomyTests(unittest.TestCase):
             with self.assertRaises(ValueError): policy.declared_consumers(tmp)
 
     def test_real_37_inventory_is_validation_only_and_10_security_product(self):
-        paths = subprocess.check_output(['git','diff','--name-only','9972d0c','325a7d9'],cwd=ROOT,text=True).splitlines()
+        # Public PR #37's complete 14-path inventory, independent of clone depth.
+        paths = ['.github/workflows/staged-candidate.yml', '.github/workflows/test.yml',
+            'containers/native/Dockerfile', 'containers/native/inputs-kernel.json',
+            'containers/native/kernel-cc', 'containers/native/package_kernel.sh',
+            'docs/STAGED-BUILD.md', 'producer/compile_kernel.py',
+            'producer/kernel_compile_cache.py', 'scripts/kernel_compile_cache.py',
+            'scripts/run-native-stage.py', 'tests/test_kernel_compile_cache.py',
+            'tests/test_release_stage_import.py', 'tests/test_workflow_cache_ci.py']
         result = policy.classify(paths, policy.declared_consumers(ROOT))
         self.assertEqual((result['publication'],result['validation']), ('none','candidate'))
-        paths = subprocess.check_output(['git','diff','--name-only','6e09074^1','6e09074'],cwd=ROOT,text=True).splitlines()
-        self.assertEqual(policy.classify(paths, policy.declared_consumers(ROOT))['publication'], 'publish')
+        # v.10's security backports are product inputs, not compiler infrastructure.
+        self.assertEqual(policy.classify(['patches/kernel/security.patch',
+            'patches/vyos/security.patch'], policy.declared_consumers(ROOT))['publication'], 'publish')
 
     def test_complete_pagination_rename_and_deletion_union(self):
         for old,new,expected in [('docs/new.md','unknown','hold'),('unknown','docs/new.md','hold'),
@@ -142,13 +150,29 @@ class ResolutionTests(unittest.TestCase):
 
 
 class HistoryTests(unittest.TestCase):
-    def test_intervening_infra_and_deleted_unknown_are_recorded_with_identities(self):
-        paths,commits=actions.cumulative_history('df54e44..325a7d9')
-        self.assertIn('containers/native/Dockerfile',paths)
-        self.assertTrue(any(c['sha']=='c777174c1f08c5dd44dd6b0d8f1e51ce76f257ee' for c in commits))
-        self.assertTrue(all('Change roles:' in c['message'] for c in commits))
-        identities=actions.dependency_evidence(['containers/native/Dockerfile'], '325a7d938ec8eff662a82d23f14632ddcabe74ad')
-        self.assertNotEqual(identities['containers/native/Dockerfile']['before'],identities['containers/native/Dockerfile']['after'])
+    def test_merge_parent_paths_are_unioned_before_strict_inventory_validation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
+            git('init','-q','-b','main');git('config','user.name','Fixture');git('config','user.email','fixture@example.invalid')
+            file=root/'guest/product';file.parent.mkdir();file.write_text('first\nmiddle\nlast\n')
+            git('add','.');git('commit','-qm','baseline');base=git('rev-parse','HEAD')
+            git('checkout','-qb','side');file.write_text('side\nmiddle\nlast\n')
+            git('commit','-qam','side product change')
+            git('checkout','-q','main');file.write_text('first\nmiddle\nmain\n')
+            git('commit','-qam','main product change')
+            git('merge','--no-ff','-qm','merge product','side');head=git('rev-parse','HEAD')
+            raw=git('diff-tree','-m','--no-commit-id','--name-only','-r',head)
+            self.assertEqual(raw.splitlines().count('guest/product'),2)
+            cwd=Path.cwd()
+            try:
+                os.chdir(root)
+                paths,commits=actions.cumulative_history(base+'..'+head)
+                self.assertEqual(paths,['guest/product']);self.assertEqual(len(commits),3)
+                self.assertTrue(all('Change roles: product' in c['message'] for c in commits))
+                identities=actions.dependency_evidence(paths,head)
+                self.assertNotEqual(identities['guest/product']['before'],identities['guest/product']['after'])
+            finally:os.chdir(cwd)
 
     def test_workflow_keeps_validation_and_cache_writers_separate(self):
         text=(ROOT/'.github/workflows/release.yml').read_text()
@@ -206,7 +230,6 @@ class DeferredProductTests(unittest.TestCase):
                 file=root/path;file.parent.mkdir(parents=True,exist_ok=True);file.write_text(text)
                 git('add','--',path);git('commit','-qm',message);return git('rev-parse','HEAD')
             baseline=commit('source-lock.json',(ROOT/'source-lock.json').read_text(),'baseline')
-            git('tag','v2026.03.0')
             records=[{'tag_name':'v2026.03.0','target_commitish':baseline,'draft':False,'prerelease':False}]
             created=[];notes=[];queries=[];current={}
             def api(*args,**kw):
@@ -229,10 +252,13 @@ class DeferredProductTests(unittest.TestCase):
                     'base':{'ref':'main','sha':base},'head':{'sha':sha}}}))
                 with patch.object(actions,'emit') as output:actions.resolve()
                 return output.call_args.args[0]
+            real_git=actions.git
+            def published_git(*args):
+                return baseline if args==('rev-parse','v2026.03.0^{commit}') else real_git(*args)
             cwd=Path.cwd()
             try:
                 os.chdir(root)
-                with patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event_file),'GITHUB_EVENT_NAME':'pull_request_target'}), \
+                with patch.object(actions,'git',side_effect=published_git), patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event_file),'GITHUB_EVENT_NAME':'pull_request_target'}), \
                         patch.object(actions,'gh',side_effect=api),patch.object(actions,'releases',side_effect=releases), \
                         patch.object(actions,'integration_preflight'):
                     infra=resolve('containers/native/Dockerfile','infra','compiler infrastructure')
