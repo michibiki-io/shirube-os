@@ -649,8 +649,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   kernel:
-    permissions:
-      contents: read
+    # Inherit caller permissions: only Release grants actions:read for import.
     cache-mode: read
     needs: [admission, compiler, vpp]
     strategy:
@@ -687,6 +686,19 @@ jobs:
         run: |
           python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Admit optional trusted kernel compiler results
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target'
+        timeout-minutes: 11
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          CACHE_MODE: ${{ inputs.cache-mode }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
+        run: |
+          python3 scripts/kernel_compile_cache.py import --directory "$KERNEL_CACHE" \
+            --architecture "$ARCHITECTURE" --commit "$SOURCE_COMMIT"
       - name: Execute kernel with verified predecessors
         env:
           STAGE: kernel
@@ -696,11 +708,36 @@ jobs:
           COMPILER_IMAGE: ${{ steps.image.outputs.imageid }}
           STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
           STAGE_OUTPUT: ${{ runner.temp }}/stage-output
-          STAGE_CACHE: ${{ runner.temp }}/stage-cache
+          KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
+          KERNEL_CACHE_ENABLED: ${{ needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' }}
         run: |
+          compiler_cache=()
+          if [ "$KERNEL_CACHE_ENABLED" = true ]; then
+            compiler_cache=(--kernel-compile-cache "$KERNEL_CACHE")
+          fi
           python3 scripts/run-native-stage.py --stage "$STAGE" --architecture "$ARCHITECTURE" \
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
-            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT"
+            --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" "${compiler_cache[@]}"
+      - name: Bind successful compiler results to trusted producer
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && success()
+        env:
+          CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
+        run: |
+          python3 scripts/kernel_compile_cache.py receipt --directory "$KERNEL_CACHE" \
+            --architecture "$ARCHITECTURE" --commit "$SOURCE_COMMIT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && success()
+        with:
+          name: shirube-kernel-compiler-v1-${{ matrix.architecture }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/kernel-compiler-cache/export.tar
+            ${{ runner.temp }}/kernel-compiler-cache/provenance.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: shirube-stage-${{ matrix.architecture }}-kernel
@@ -718,6 +755,7 @@ jobs:
           path: |
             ${{ runner.temp }}/stage-output/*resources.json
             ${{ runner.temp }}/stage-output/*diagnostic.json
+            ${{ runner.temp }}/kernel-compiler-cache/metrics.json
           if-no-files-found: warn
           retention-days: 14
   integration:

@@ -41,7 +41,10 @@
       "source-lock.json"
     ],
     "containers/native/package_common.sh": [],
-    "containers/native/package_kernel.sh": [],
+    "containers/native/package_kernel.sh": [
+      "producer/kernel_compile_cache.py",
+      "containers/native/kernel-cc"
+    ],
     "containers/native/package_validate.sh": [],
     "containers/native/security_common.py": [],
     "containers/native/security_kernel.py": [
@@ -51,7 +54,8 @@
     "producer/compile_kernel.py": [
       "producer/native_stages.py",
       "producer/source_selectors.py",
-      "producer/stage_artifacts.py"
+      "producer/stage_artifacts.py",
+      "producer/kernel_compile_cache.py"
     ],
     "producer/embedded_notices.py": [
       "producer/sources.py"
@@ -62,6 +66,14 @@
     "producer/vpp_sdk.py": [
       "producer/architecture.py",
       "producer/native_stages.py"
+    ],
+    "containers/native/kernel-cc": [
+      "producer/kernel_compile_cache.py"
+    ],
+    "producer/kernel_compile_cache.py": [
+      "producer/library_cache.py",
+      "producer/sources.py",
+      "producer/stage_artifacts.py"
     ]
   },
   "external": [

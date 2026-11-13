@@ -90,8 +90,11 @@ class WorkflowCacheCITests(unittest.TestCase):
         for node in mappings(self.staged):
             if 'GH_TOKEN' in node:
                 self.assertEqual(node['GH_TOKEN'],'${{ github.token }}')
-                self.assertEqual(set(node),{'GH_TOKEN','CACHE_WRITE','CACHE_MODE','CACHE_HIT','STAGE',
-                                            'ARCHITECTURE','SOURCE_COMMIT','STAGE_KEY','STAGE_CACHE'})
+                expected = ({'GH_TOKEN','CACHE_WRITE','CACHE_MODE','SOURCE_COMMIT','ARCHITECTURE','KERNEL_CACHE'}
+                            if 'KERNEL_CACHE' in node else
+                            {'GH_TOKEN','CACHE_WRITE','CACHE_MODE','CACHE_HIT','STAGE',
+                             'ARCHITECTURE','SOURCE_COMMIT','STAGE_KEY','STAGE_CACHE'})
+                self.assertEqual(set(node), expected)
             self.assertNotIn('secrets',node)
             self.assertNotEqual(node.get('contents'),'write')
 
@@ -163,13 +166,13 @@ class WorkflowCacheCITests(unittest.TestCase):
                 {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
             commands=[step['run'] for step in job['steps'] if 'run' in step]
             cacheable = stage in {'native','vpp','kea','salt','runtime'}
-            self.assertEqual(len(commands),4 if cacheable else 2)
+            self.assertEqual(len(commands),4 if cacheable or stage == 'kernel' else 2)
             if cacheable:
                 self.assertIn('producer.component_inputs stage-key',commands[1])
                 self.assertIn('--read-only --network none',commands[1])
                 self.assertIn('--entrypoint python3',commands[1])
             self.assertIn('producer.compiler_artifact load',commands[0])
-            self.assertIn('scripts/run-native-stage.py',commands[-1])
+            self.assertEqual(sum('scripts/run-native-stage.py' in command for command in commands), 1)
             self.assertEqual('--discard-archive' in commands[0], stage in {'iso', 'clearance', 'guests'})
             self.assertEqual('--discard-input-archives' in commands[-1], stage in {'iso', 'clearance', 'guests'})
             self.assertNotIn('scripts/build-release.sh',commands[-1])
@@ -250,6 +253,30 @@ class WorkflowCacheCITests(unittest.TestCase):
             if name=='kernel':
                 self.assertFalse(saves)
                 self.assertNotIn('--cache',execute['run'])
+
+    def test_kernel_compiler_artifact_is_release_only_and_never_stage_cache(self):
+        job = self.staged['jobs']['kernel']
+        self.assertNotIn('permissions', job)  # Caller cap; PR caller has no actions:read.
+        importer = next(s for s in job['steps'] if 'kernel_compile_cache.py import' in s.get('run', ''))
+        receipt = next(s for s in job['steps'] if 'kernel_compile_cache.py receipt' in s.get('run', ''))
+        export = next(s for s in job['steps'] if s.get('with', {}).get('name', '').startswith('shirube-kernel-compiler-'))
+        for admitted in ['true', 'false']:
+            for event in ['pull_request_target', 'pull_request', 'workflow_dispatch']:
+                for success in [True, False]:
+                    context = {'needs.admission.outputs.cache-write': admitted,
+                               'github.event_name': event, 'success()': success}
+                    eligible = admitted == 'true' and event == 'pull_request_target'
+                    self.assertEqual(expression_value(importer['if'], context), eligible)
+                    self.assertEqual(expression_value(receipt['if'], context), eligible and success)
+                    self.assertEqual(expression_value(export['if'], context), eligible and success)
+        self.assertEqual(export['with']['retention-days'], '7')
+        self.assertEqual(set(export['with']['path'].splitlines()), {
+            '${{ runner.temp }}/kernel-compiler-cache/export.tar',
+            '${{ runner.temp }}/kernel-compiler-cache/provenance.json'})
+        self.assertNotIn('overwrite', export['with'])
+        execute = next(s for s in job['steps'] if 'run-native-stage.py' in s.get('run', ''))
+        self.assertNotIn('GH_TOKEN', execute['env'])
+        self.assertIn('--kernel-compile-cache', execute['run'])
 
     def test_actual_cache_expressions_event_mode_hit_success_matrix(self):
         jobs = self.staged['jobs']
@@ -427,6 +454,7 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertNotIn('name', unit)  # GitHub uses the job ID as its check name.
         self.assertEqual(unit['runs-on'], 'ubuntu-24.04')
         self.assertEqual([s.get('name') for s in unit['steps'] if 'run' in s], [
+            'Prepare small compiler fixture (no kernel build)',
             'Unit and failure-path tests', 'Shell syntax',
             'Workflow structure, expressions and security context'])
         hosted = test['jobs']['hosted-capability']

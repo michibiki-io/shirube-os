@@ -434,13 +434,18 @@ class WorkflowImportTests(unittest.TestCase):
         for caller in (release['jobs']['build'],validation['jobs']['validate'],validation['jobs']['validate-main']):
             for name,job in staged_workflow['jobs'].items():
                 effective=job.get('permissions',caller['permissions'])
-                self.assertEqual(effective,caller['permissions'] if name in CACHEABLE else {'contents':'read'})
+                self.assertEqual(effective,caller['permissions'] if name in (*CACHEABLE, 'kernel') else {'contents':'read'})
         for name,job in staged_workflow['jobs'].items():
             steps=[s for s in job['steps'] if 'GH_TOKEN' in s.get('env',{})]
-            self.assertEqual(len(steps),1 if name in CACHEABLE else 0)
+            self.assertEqual(len(steps),1 if name in (*CACHEABLE, 'kernel') else 0)
             if not steps: continue
             step=steps[0]
             self.assertEqual(step['env']['GH_TOKEN'],'${{ github.token }}')
+            if name == 'kernel':
+                self.assertIn('scripts/kernel_compile_cache.py import', step['run'])
+                self.assertNotIn('docker', step['run'])
+                self.assertEqual(step['if'], "needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target'")
+                continue
             self.assertIn('scripts/import_release_stage.py',step['run'])
             self.assertNotIn('docker',step['run'])
             self.assertEqual(step['env']['STAGE_KEY'],'${{ steps.scope.outputs.key }}')

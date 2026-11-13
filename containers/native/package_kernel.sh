@@ -30,7 +30,11 @@ package_kernel() {
     export KBUILD_BUILD_USER=michibiki-io KBUILD_BUILD_HOST=shirube-os
     export DEBFULLNAME=michibiki-io DEBEMAIL=maintainers@michibiki.io
     # perf's wrapper ignores MAKEFLAGS and otherwise selects all online CPUs.
-    make ARCH="$KERNEL_ARCH" -j2 bindeb-pkg JOBS=2 PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config BUILD_TOOLS=1 LOCALVERSION=-vyos KDEB_PKGVERSION=6.6.128-1 KDEB_CHANGELOG_DIST=unstable
+    local compiler=()
+    if [ -n "${SHIRUBE_KERNEL_COMPILE_CACHE:-}" ]; then
+        compiler=(CC=/src/native/kernel-cc)
+    fi
+    make "${compiler[@]}" ARCH="$KERNEL_ARCH" -j2 bindeb-pkg JOBS=2 PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config BUILD_TOOLS=1 LOCALVERSION=-vyos KDEB_PKGVERSION=6.6.128-1 KDEB_CHANGELOG_DIST=unstable
     # The snapshot's perf packaging hardcodes only three dependencies, despite
     # linking libpython/libdw/libcrypto/etc. Derive runtime dependencies from the
     # actual native binary so installation cannot silently omit required libs.
@@ -73,5 +77,6 @@ package_kernel() {
     touch .scmversion
     export PATCH_RECEIPT=/output/kernel-tool-patches.sha256
     apply_kernel_tool_fixes
+    PYTHONPATH=/src python3 -m producer.kernel_compile_cache --root "$PWD" --architecture "$DEB_ARCH"
     package_kernel
 # @VALIDATE@
