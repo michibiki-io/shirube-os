@@ -14,132 +14,7 @@ from .sources import sha256
 
 REPO = 'michibiki-io/shirube-os'
 
-# Exact publication-only paths, not directory exemptions. New/unknown image
-# inputs and both sides of renames still reach policy.eligible before allocation.
-# Keep the three retired recovery paths: deleted files remain in the PR inventory,
-# so these exact entries keep the deletion PR non-image after merge.
-PUBLICATION_PATHS = frozenset({
-    'producer/actions.py', 'producer/recover_release.py',
-    'tests/test_actions.py', 'tests/test_recover_release.py',
-    '.github/workflows/recover-release.yml',
-})
-
-
-# Audited at df54e44: only unittest consumers, never guest acceptance inputs.
-# Exact entries: new tests/fixtures/scripts/docs default to release until reviewed.
-UNIT_TEST_PATHS = frozenset({
-    'tests/component_fixture.py',
-    'tests/test_apt_archive.py',
-    'tests/test_bash_source.py',
-    'tests/test_boot_menus.py',
-    'tests/test_bundles.py',
-    'tests/test_cargo_sources.py',
-    'tests/test_charset_source.py',
-    'tests/test_cloud_init.py',
-    'tests/test_collect.py',
-    'tests/test_compiler_artifact.py',
-    'tests/test_component_graph.py',
-    'tests/test_component_inputs.py',
-    'tests/test_compose_sources.py',
-    'tests/test_debian_optional_source_export.py',
-    'tests/test_debian_source_export.py',
-    'tests/test_debian_sources.py',
-    'tests/test_debootstrap.py',
-    'tests/test_embedded_notices.py',
-    'tests/test_erasure.py',
-    'tests/test_execution.py',
-    'tests/test_extra_stage_apt.py',
-    'tests/test_factory_audit.py',
-    'tests/test_factory_layer.py',
-    'tests/test_first_boot.py',
-    'tests/test_fpm_notices.py',
-    'tests/test_gem_lock.py',
-    'tests/test_geoip.py',
-    'tests/test_go_dependency_transport.py',
-    'tests/test_go_modules.py',
-    'tests/test_go_source_export.py',
-    'tests/test_guest_diagnostics.py',
-    'tests/test_guest_retirement.py',
-    'tests/test_http_rust_sources.py',
-    'tests/test_integration.py',
-    'tests/test_iso_recovery.py',
-    'tests/test_kbd_source_export.py',
-    'tests/test_library_cache.py',
-    'tests/test_libxcrypt_source.py',
-    'tests/test_livebuild_sources.py',
-    'tests/test_livebuild_transport.py',
-    'tests/test_native_common.py',
-    'tests/test_native_stages.py',
-    'tests/test_native_trial.py',
-    'tests/test_netbird.py',
-    'tests/test_netbird_fixture.py',
-    'tests/test_netbird_guest.py',
-    'tests/test_netbird_sources.py',
-    'tests/test_network_diagnostics.py',
-    'tests/test_notice_approval.py',
-    'tests/test_notices.py',
-    'tests/test_ocaml_sources.py',
-    'tests/test_opentracing_source_export.py',
-    'tests/test_package_notices.py',
-    'tests/test_packages.py',
-    'tests/test_policy.py',
-    'tests/test_public_test_keys.py',
-    'tests/test_recipes.py',
-    'tests/test_reconstruction.py',
-    'tests/test_release.py',
-    'tests/test_release_stage_import.py',
-    'tests/test_runner_probe.py',
-    'tests/test_runtime_sources.py',
-    'tests/test_salt_cargo.py',
-    'tests/test_salt_python.py',
-    'tests/test_salt_sources.py',
-    'tests/test_sanitize.py',
-    'tests/test_secrets.py',
-    'tests/test_security_backports.py',
-    'tests/test_snapshot_fetch.py',
-    'tests/test_source_batches.py',
-    'tests/test_source_closures.py',
-    'tests/test_source_delta.py',
-    'tests/test_source_fixtures.py',
-    'tests/test_source_reuse.py',
-    'tests/test_sources.py',
-    'tests/test_stage_artifacts.py',
-    'tests/test_storage.py',
-    'tests/test_strip_policy.py',
-    'tests/test_vpp_inputs.py',
-    'tests/test_vpp_legal.py',
-    'tests/test_workflow_cache_ci.py',
-    'tests/test_workflow_cache_mode.py',
-    'tests/test_workflow_concurrency.py',
-    'tests/test_workspace.py',
-})
-
-# Test workflow -> check-workflows.sh -> the two checkers; no release consumer.
-CI_PATHS = frozenset({
-    '.github/workflows/test.yml',
-    'scripts/check-workflows.sh',
-    'scripts/check_workflow_concurrency.py',
-    'scripts/check_workflow_cache_mode.py',
-})
-
-# Explanatory Markdown only; fixtures, evidence and legal inputs are not exempt.
-DOC_PATHS = frozenset({
-    'README.md',
-    'docs/BUILD.md',
-    'docs/FIRST_BOOT.md',
-    'docs/LICENSES.md',
-    'docs/NETBIRD.md',
-    'docs/RELEASE.md',
-    'docs/SECURITY-BACKPORTS-28.md',
-    'docs/STAGED-BUILD.md',
-    'docs/VALIDATION.md',
-})
-
-NON_IMAGE_PATHS = PUBLICATION_PATHS | UNIT_TEST_PATHS | CI_PATHS | DOC_PATHS
-
-
-def image_paths(paths):
-    return [path for path in paths if path not in NON_IMAGE_PATHS]
+from . import release_plan
 
 
 def changed_file_paths(pages, expected):
@@ -335,18 +210,20 @@ def resolve():
         emit({'eligible':'false'}); return
     pages = gh('api', '--paginate', '--slurp', f'repos/{REPO}/pulls/{number}/files', json_result=True)
     paths = changed_file_paths(pages, pr.get('changed_files'))
-    inputs = image_paths(paths)
-    allowed = eligible(os.environ['GITHUB_EVENT_NAME'], event, inputs)
-    # Bounded, deterministic run evidence; no allocation or gate reuse on skips.
-    print(json.dumps({'release_impact': 'release' if allowed else 'skip',
-                      'reason': ('artifact-validation-or-unclassified-path' if allowed else
-                                 'event-not-eligible' if inputs else 'only-reviewed-non-image-paths'),
-                      'changed_files': pr['changed_files'], 'release_paths': len(inputs)}, sort_keys=True))
-    if not allowed:
-        emit({'eligible':'false'}); return
+    if not eligible(os.environ['GITHUB_EVENT_NAME'], event, ['event-admission']):
+        emit({'eligible': 'false', 'publication': 'none', 'validation': 'none'}); return
     commit = pr['merge_commit_sha']
     identity(commit)
+    decision = release_plan.plan(paths, commit,
+        consumers=release_plan.declared_consumers(Path('.')),
+        run=os.environ.get('GITHUB_RUN_ID', ''), attempt=os.environ.get('GITHUB_RUN_ATTEMPT', ''),
+        inputs=dependency_evidence(paths, commit))
+    decision['gates']['focused'] = 'passed'
+    save_plan(decision)
     stream_version=json.loads(Path('source-lock.json').read_text())['stream']['version']
+    if decision['publication'] != 'publish':
+        complete_resolution(decision, 'v'+stream_version+'.0')
+        return
     existing = releases()
     matching=[]
     for record in existing:
@@ -361,7 +238,9 @@ def resolve():
         require_stream_version(version,stream_version)
         if not selected['draft']:
             verify_published(version, commit)
-            emit({'eligible':'true','noop':'true','commit':commit,'version':version})
+            decision['gates'].update(candidate='skipped-not-required', aggregate='skipped-not-required', publication='passed')
+            decision['published_evidence'] = 'verified-own-source-version-only'
+            complete_resolution(decision, version, noop=True)
             return
         require_not_superseded(version, existing)
         integration_preflight(version)
@@ -376,7 +255,18 @@ def resolve():
             revision = previous_commit+'..'+commit
         else:
             revision = commit
-        commits = individual_commits(pr)
+        cumulative, commits = cumulative_history(revision)
+        accumulated = release_plan.classify(cumulative, release_plan.declared_consumers(Path('.')))
+        decision['cumulative'] = {'baseline': previous_commit if previous else None, **accumulated}
+        if accumulated['publication'] == 'hold':
+            decision.update(publication='hold', reason='cumulative-unknown-role', candidate_only=True, deferred=True)
+            decision['gates']['publication'] = 'skipped-not-required'
+            complete_resolution(decision, 'v'+stream_version+'.0')
+            return
+        original = individual_commits(pr)
+        present = {c['sha'] for c in commits}
+        commits.extend(dict(c, message=c['message']+'\n\nCurrent PR original message')
+                       for c in original if c['sha'] not in present)
         # Failed candidates keep their reserved versions. A later merged commit
         # must advance past those drafts without changing their ownership.
         reserved = [r['tag_name'] for r in existing if r['draft'] and
@@ -393,12 +283,137 @@ def resolve():
             # finds this draft and cannot allocate a different version.
             gh('release','create',version,'--repo',REPO,'--draft','--target',commit,
                '--title','Shirube OS '+version,'--notes-file',notes.name)
-    emit({'eligible':'true','noop':'false','commit':commit,'version':version})
+    complete_resolution(decision, version)
+
+
+
+def dependency_evidence(paths, commit):
+    """Immutable Git object identities for both sides, not claims of binary equality."""
+    parent = git('rev-parse', commit+'^1')
+    def tree(ref):
+        raw = subprocess.check_output(['git', 'ls-tree', '-rz', ref])
+        return {row.split(b'\t', 1)[1].decode(): row.split(b'\t', 1)[0].decode()
+                for row in raw.split(b'\0') if row}
+    before, after = tree(parent), tree(commit)
+    return {p: {'before': before.get(p, 'absent'), 'after': after.get(p, 'absent')}
+            for p in sorted(set(paths))}
+
+
+def cumulative_history(revision):
+    """All intervening commits, including non-published merges; no title inference."""
+    commits, paths = [], set()
+    for sha in git('rev-list', '--reverse', '--topo-order', revision).splitlines():
+        raw = subprocess.check_output(['git', 'diff-tree', '--root', '-m', '--no-commit-id',
+                                       '--name-only', '--no-renames', '-r', '-z', sha])
+        changed = [p.decode() for p in raw.split(b'\0') if p]
+        if changed:
+            changed_file_paths([[{'filename': p, 'status': 'changed'} for p in changed]], len(changed))
+        paths.update(changed)
+        message = git('show', '-s', '--format=%B', sha)
+        impact = release_plan.classify(changed, release_plan.declared_consumers(Path('.')))
+        commits.append({'sha': sha, 'subject': message.splitlines()[0],
+                        'message': message+'\n\nChange roles: '+','.join(sorted(impact['roles']))+
+                        '; publication='+impact['publication']+'; validation='+impact['validation']})
+    if not commits:
+        raise ValueError('Empty cumulative release history')
+    return sorted(paths), commits
+
+
+def complete_resolution(decision, version, noop=False):
+    decision.update(version=version, noop=noop)
+    save_plan(decision)
+    print(json.dumps({k: decision[k] for k in ('publication', 'validation', 'reason', 'source_commit')}, sort_keys=True))
+    emit({'eligible': str(decision['publication'] == 'publish').lower(), 'noop': str(noop).lower(),
+          'publication': decision['publication'], 'validation': decision['validation'],
+          'commit': decision['source_commit'], 'version': version})
+
+
+def save_plan(decision):
+    directory = os.environ.get('SHIRUBE_PLAN_DIRECTORY')
+    if directory:
+        root = Path(directory); root.mkdir(parents=True, exist_ok=True)
+        (root/'plan.json').write_text(json.dumps(decision, sort_keys=True, indent=2)+'\n')
+
+
+def require_product_event():
+    """A candidate version string or rerun never authorizes release mutations."""
+    if os.environ.get('SHIRUBE_PUBLICATION_DECISION') != 'publish':
+        raise ValueError('A resolved product publication decision is required')
+    event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+    pr = event.get('pull_request', {})
+    if not eligible(os.environ['GITHUB_EVENT_NAME'], event, ['event-admission']):
+        raise ValueError('Product publication event required')
+    paths = changed_file_paths(gh('api', '--paginate', '--slurp',
+        f"repos/{REPO}/pulls/{pr.get('number') or event.get('number')}/files", json_result=True), pr.get('changed_files'))
+    if release_plan.classify(paths, release_plan.declared_consumers(Path('.')))['publication'] != 'publish':
+        raise ValueError('Validation-only or held candidates cannot enter release mutation paths')
+    if pr['merge_commit_sha'] != os.environ.get('SHIRUBE_SOURCE_COMMIT'):
+        raise ValueError('Product source differs from event')
+
+
+def aggregate(root, commit, version):
+    """Identical shared provenance/checksum/both-architecture contract for all candidates."""
+    candidates=[json.loads((root/f'candidate-{a}.json').read_text()) for a in ['amd64','arm64']]
+    manifest=dict(candidates[0]); manifest['architectures']={}; manifest['assets']=[]
+    for candidate in candidates:
+        for key in ['schema_version','manifest_kind','provider','project','version','source_commit','source_clean','upstream']:
+            if candidate[key]!=manifest[key]:
+                raise ValueError('Candidates disagree on shared source/version/provenance')
+        for arch, record in candidate['architectures'].items():
+            if arch in manifest['architectures']:
+                raise ValueError('Duplicate architecture candidate')
+            manifest['architectures'][arch]=record
+        manifest['assets'].extend(candidate['assets'])
+    for arch in ['amd64','arm64']:
+        (root/f'candidate-{arch}.json').unlink()
+    (root/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    names=sorted([x['name'] for x in manifest['assets']]+['manifest.json'])
+    (root/'SHA256SUMS').write_text(''.join(f'{sha256(root/name)}  {name}\n' for name in names))
+    validate(root,commit,version)
+
+
+def validate_candidates():
+    commit, version = os.environ['SHIRUBE_SOURCE_COMMIT'], os.environ['SHIRUBE_VERSION']
+    identity(commit)
+    source = Path(os.environ['SHIRUBE_CANDIDATES_DIRECTORY'])
+    with tempfile.TemporaryDirectory(dir=source.parent) as temporary:
+        root = Path(temporary)
+        for arch in ('amd64', 'arm64'):
+            candidate = source/('shirube-candidate-'+arch)
+            record = validate(candidate, commit, version, architectures={arch})
+            (root/('candidate-'+arch+'.json')).write_text(json.dumps(record))
+            for item in record['assets']:
+                destination = root/item['name']
+                if destination.exists(): raise ValueError('Candidate asset names overlap')
+                original = candidate/item['name']
+                if original.is_symlink() or not original.is_file():
+                    raise ValueError('Regular same-run candidate assets required')
+                # Same filesystem links avoid a second multi-GB asset set.
+                os.link(original, destination)
+        aggregate(root, commit, version)
+
+
+def evidence():
+    root = Path(os.environ['SHIRUBE_PLAN_DIRECTORY'])
+    decision = json.loads((root/'plan.json').read_text())
+    results = {k: v['result'] if isinstance(v, dict) else v
+               for k, v in json.loads(os.environ['SHIRUBE_JOB_RESULTS']).items()}
+    # resolve already passed its focused checks; required outputs never infer PASS.
+    gates = {'focused': results.get('resolve'),
+             'candidate': results.get('build') if decision['publication'] == 'publish' else results.get('candidate-validation'),
+             'aggregate': results.get('candidate-check'),
+             'publication': results.get('resolve') if decision.get('noop') else results.get('publish')}
+    final, passed = release_plan.outcomes(decision, gates)
+    (root/'result.json').write_text(json.dumps(final, sort_keys=True, indent=2)+'\n')
+    with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
+        output.write('```json\n'+json.dumps(final, sort_keys=True, indent=2)+'\n```\n')
+    if not passed: raise ValueError('Required validation/publication failed or was not run')
 
 
 def stage():
     arch,version,commit = (os.environ[x] for x in ['SHIRUBE_ARCHITECTURE','SHIRUBE_VERSION','SHIRUBE_SOURCE_COMMIT'])
     identity(commit)
+    require_product_event()
     root = Path(os.environ['SHIRUBE_CANDIDATE_DIRECTORY'])
     manifest = validate(root, commit, version, architectures={arch})
     live = require_draft(version, commit)
@@ -426,6 +441,7 @@ def stage():
 def publish():
     version,commit = (os.environ[x] for x in ['SHIRUBE_VERSION','SHIRUBE_SOURCE_COMMIT'])
     identity(commit)
+    require_product_event()
     live = get_release(version, include_drafts=True)
     if not live['draft']:
         verify_published(version,commit); return
@@ -436,23 +452,7 @@ def publish():
         raise FileExistsError('Fresh public destination required')
     with tempfile.TemporaryDirectory() as temporary:
         root=Path(temporary)/'candidates'; download(version,root)
-        candidates=[json.loads((root/f'candidate-{a}.json').read_text()) for a in ['amd64','arm64']]
-        manifest=dict(candidates[0]); manifest['architectures']={}; manifest['assets']=[]
-        for candidate in candidates:
-            for key in ['schema_version','manifest_kind','provider','project','version','source_commit','source_clean','upstream']:
-                if candidate[key]!=manifest[key]:
-                    raise ValueError('Candidates disagree on shared source/version/provenance')
-            for arch, record in candidate['architectures'].items():
-                if arch in manifest['architectures']:
-                    raise ValueError('Duplicate architecture candidate')
-                manifest['architectures'][arch]=record
-            manifest['assets'].extend(candidate['assets'])
-        for arch in ['amd64','arm64']:
-            (root/f'candidate-{arch}.json').unlink()
-        (root/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
-        names=sorted([x['name'] for x in manifest['assets']]+['manifest.json'])
-        (root/'SHA256SUMS').write_text(''.join(f'{sha256(root/name)}  {name}\n' for name in names))
-        validate(root,commit,version)
+        aggregate(root, commit, version)
         for asset in live['assets']:
             if asset['name'] in {'candidate-amd64.json','candidate-arm64.json','manifest.json','SHA256SUMS'}:
                 require_draft(version,commit)
@@ -474,6 +474,7 @@ def publish():
 def promote():
     version,commit=(os.environ[x] for x in ['SHIRUBE_VERSION','SHIRUBE_SOURCE_COMMIT'])
     identity(commit)
+    require_product_event()
     live=get_release(version, include_drafts=True)
     if not live['draft']:
         verify_published(version,commit);return
@@ -512,7 +513,7 @@ def promote():
 
 
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument('command',choices=['resolve','stage','publish','promote'])
+    parser=argparse.ArgumentParser(); parser.add_argument('command',choices=['resolve','stage','publish','promote','validate_candidates','evidence'])
     args=parser.parse_args(); globals()[args.command]()
 
 

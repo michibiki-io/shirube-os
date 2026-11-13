@@ -1,0 +1,257 @@
+"""Independent publication and required-evidence boundary fixtures; no OS build."""
+import copy
+import json
+import os
+from pathlib import Path
+import subprocess
+import tempfile
+import unittest
+from unittest.mock import patch
+from producer import actions, release_plan as policy
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+class TaxonomyTests(unittest.TestCase):
+    def test_semantic_matrix_and_extension_families(self):
+        cases = [(['guest/new-command.sh'], 'publish', 'candidate'),
+                 (['source-lock.json'], 'publish', 'candidate'),
+                 (['LICENSES/new.md'], 'publish', 'candidate'),
+                 (['producer/branding.py'], 'publish', 'candidate'),
+                 (['containers/native/Dockerfile'], 'none', 'candidate'),
+                 (['producer/kernel_compile_cache.py'], 'none', 'candidate'),
+                 (['producer/compile_new.py'], 'none', 'candidate'),
+                 (['producer/actions.py'], 'none', 'focused'),
+                 (['producer/release_plan.py'], 'none', 'focused'),
+                 (['.github/workflows/release.yml'], 'none', 'focused'),
+                 (['.github/workflows/test.yml'], 'none', 'focused'),
+                 (['docs/new-guide.md', 'tests/test_new.py'], 'none', 'focused'),
+                 (['tests/new_fixture.py'], 'none', 'focused'),
+                 (['tests/fixtures/security/README.md'], 'none', 'candidate'),
+                 (['schemas/new.json'], 'none', 'candidate'),
+                 (['producer/security_contract.py'], 'none', 'candidate'),
+                 (['producer/new_unclassified.py'], 'hold', 'candidate'),
+                 (['unknown-root'], 'hold', 'candidate'),
+                 (['unknown-root', 'guest/product.sh'], 'hold', 'candidate'),
+                 (['guest/product.sh', 'containers/native/Dockerfile'], 'publish', 'candidate')]
+        for paths, publication, validation in cases:
+            with self.subTest(paths=paths):
+                result = policy.classify(paths)
+                self.assertEqual((result['publication'], result['validation']), (publication, validation))
+                self.assertEqual(result['prior_guest_evidence'], 'NOT_REUSED')
+
+    def test_consumer_overrides_docs_and_test_families(self):
+        for path in ['docs/boot.md', 'tests/test_boot.py']:
+            self.assertEqual(policy.role(path), 'docs' if path.startswith('docs') else 'test')
+            self.assertEqual(policy.classify([path], {path})['validation'], 'candidate')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)/'containers/native'; root.mkdir(parents=True)
+            (root/'inputs-common.json').write_text(json.dumps({'roots':['tests/test_boot.py'],
+                'graph': {'producer/build.py':['docs/boot.md']}}))
+            self.assertEqual(policy.declared_consumers(tmp), {'producer/build.py','tests/test_boot.py','docs/boot.md'})
+            (root/'inputs-common.json').write_text('{broken')
+            with self.assertRaises(ValueError): policy.declared_consumers(tmp)
+
+    def test_real_37_inventory_is_validation_only_and_10_security_product(self):
+        paths = subprocess.check_output(['git','diff','--name-only','9972d0c','325a7d9'],cwd=ROOT,text=True).splitlines()
+        result = policy.classify(paths, policy.declared_consumers(ROOT))
+        self.assertEqual((result['publication'],result['validation']), ('none','candidate'))
+        paths = subprocess.check_output(['git','diff','--name-only','6e09074^1','6e09074'],cwd=ROOT,text=True).splitlines()
+        self.assertEqual(policy.classify(paths, policy.declared_consumers(ROOT))['publication'], 'publish')
+
+    def test_complete_pagination_rename_and_deletion_union(self):
+        for old,new,expected in [('docs/new.md','unknown','hold'),('unknown','docs/new.md','hold'),
+                                 ('guest/old','docs/new.md','publish')]:
+            pages = [[{'filename':new,'status':'renamed','previous_filename':old}],
+                     [{'filename':'producer/actions.py','status':'removed'}]]
+            paths=actions.changed_file_paths(pages,2)
+            self.assertEqual(policy.classify(paths)['publication'], expected)
+        self.assertEqual(policy.classify(actions.changed_file_paths([[{'filename':'guest/old','status':'removed'}]],1))['publication'],'publish')
+
+    def test_required_status_is_not_inferred_from_skips_or_missing_results(self):
+        for path in ['guest/product', 'containers/native/Dockerfile', 'unknown-root']:
+            plan=policy.plan([path], 'a'*40)
+            for actual in ['failure','cancelled','skipped',None]:
+                results={'focused':'success','candidate':actual,'aggregate':'success','publication':'skipped'}
+                final,ok=policy.outcomes(plan,results)
+                self.assertFalse(ok)
+                self.assertNotEqual(final['gates']['candidate'],'passed')
+        plan=policy.plan(['docs/guide.md'], 'a'*40)
+        result,ok=policy.outcomes(plan,{'focused':'success','publication':'skipped'})
+        self.assertTrue(ok); self.assertEqual(result['gates']['candidate'],'skipped-not-required')
+        self.assertEqual(result['prior_guest_evidence'],'NOT_REUSED')
+        plan=policy.plan(['unknown-root'],'a'*40)
+        result,ok=policy.outcomes(plan,{'focused':'success','candidate':'success','aggregate':'success'})
+        self.assertTrue(ok);self.assertEqual(result['status'],'validated-publication-held')
+
+
+class ResolutionTests(unittest.TestCase):
+    def setUp(self):
+        self.event={'action':'closed','number':38,'pull_request':{'merged':True,
+            'changed_files':1,'merge_commit_sha':'a'*40,'base':{'ref':'main'}}}
+        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+        self.file=Path(self.tmp.name)/'event';self.file.write_text(json.dumps(self.event))
+        self.env={'GITHUB_EVENT_PATH':str(self.file),'GITHUB_EVENT_NAME':'pull_request_target',
+                  'SHIRUBE_PUBLICATION_DECISION':'publish', 'SHIRUBE_PLAN_DIRECTORY':self.tmp.name,'SHIRUBE_SOURCE_COMMIT':'a'*40}
+
+    def test_none_hold_and_control_never_query_or_allocate_even_on_retry(self):
+        for path,expected in [('docs/new.md','none'),('tests/test_new.py','none'),
+                ('producer/actions.py','none'),('containers/native/Dockerfile','none'),('new-root','hold')]:
+            for attempt in ['1','2']:
+                with self.subTest(path=path,attempt=attempt), patch.dict(os.environ,{**self.env,'GITHUB_RUN_ATTEMPT':attempt}), \
+                    patch.object(actions,'gh',return_value=[[{'filename':path,'status':'modified'}]]) as gh, \
+                    patch.object(actions,'identity') as identity, patch.object(actions,'dependency_evidence',return_value={}), \
+                    patch.object(actions,'emit') as emit, patch.object(actions,'releases') as releases, \
+                    patch.object(actions,'next_version') as version, patch.object(actions,'integration_preflight') as preflight:
+                    actions.resolve()
+                    self.assertEqual(emit.call_args.args[0]['publication'],expected)
+                    self.assertEqual(emit.call_args.args[0]['version'],'v2026.03.0')
+                    identity.assert_called_once_with('a'*40)
+                    for side_effect in [releases,version,preflight]: side_effect.assert_not_called()
+                    self.assertEqual(gh.call_count,1)
+                    plan=json.loads((Path(self.tmp.name)/'plan.json').read_text())
+                    self.assertTrue(plan['candidate_only']);self.assertEqual(plan['gates']['publication'],'skipped-not-required')
+
+    def test_cumulative_unknown_blocks_before_version_allocation(self):
+        with patch.dict(os.environ,self.env), patch.object(actions,'identity'), \
+             patch.object(actions,'dependency_evidence',return_value={}),patch.object(actions,'emit') as emit, \
+             patch.object(actions,'gh',return_value=[[{'filename':'guest/product','status':'modified'}]]) as gh, \
+             patch.object(actions,'releases',return_value=[]), \
+             patch.object(actions,'cumulative_history',return_value=(['unknown-root','guest/product'],[{}])), \
+             patch.object(actions,'next_version') as version,patch.object(actions,'integration_preflight') as preflight:
+            actions.resolve()
+            self.assertEqual(emit.call_args.args[0]['publication'],'hold')
+            self.assertEqual(emit.call_args.args[0]['version'],'v2026.03.0')
+            version.assert_not_called();preflight.assert_not_called();self.assertEqual(gh.call_count,1)
+            self.assertEqual(json.loads((Path(self.tmp.name)/'plan.json').read_text())['reason'],'cumulative-unknown-role')
+
+    def test_each_mutation_entry_rejects_candidate_without_release_query(self):
+        self.env.update(SHIRUBE_VERSION='v2026.03.0',SHIRUBE_ARCHITECTURE='amd64')
+        for path in ['containers/native/Dockerfile','unknown-root','docs/new.md']:
+            for command in [actions.stage,actions.publish,actions.promote]:
+                with self.subTest(path=path,command=command.__name__),patch.dict(os.environ,self.env), \
+                    patch.object(actions,'identity'),patch.object(actions,'gh',return_value=[[{'filename':path,'status':'modified'}]]) as gh, \
+                    patch.object(actions,'releases') as releases:
+                    with self.assertRaisesRegex(ValueError,'cannot enter'): command()
+                    releases.assert_not_called();self.assertEqual(gh.call_count,1)
+
+    def test_invalid_event_cannot_use_product_path_to_authorize_mutation(self):
+        with patch.dict(os.environ,{**self.env,'GITHUB_EVENT_NAME':'push'}),patch.object(actions,'gh') as gh:
+            with self.assertRaisesRegex(ValueError,'event required'):actions.require_product_event()
+            gh.assert_not_called()
+
+
+class HistoryTests(unittest.TestCase):
+    def test_intervening_infra_and_deleted_unknown_are_recorded_with_identities(self):
+        paths,commits=actions.cumulative_history('df54e44..325a7d9')
+        self.assertIn('containers/native/Dockerfile',paths)
+        self.assertTrue(any(c['sha']=='c777174c1f08c5dd44dd6b0d8f1e51ce76f257ee' for c in commits))
+        self.assertTrue(all('Change roles:' in c['message'] for c in commits))
+        identities=actions.dependency_evidence(['containers/native/Dockerfile'], '325a7d938ec8eff662a82d23f14632ddcabe74ad')
+        self.assertNotEqual(identities['containers/native/Dockerfile']['before'],identities['containers/native/Dockerfile']['after'])
+
+    def test_workflow_keeps_validation_and_cache_writers_separate(self):
+        text=(ROOT/'.github/workflows/release.yml').read_text()
+        self.assertIn('candidate-validation:',text);self.assertIn('candidate-check:',text)
+        self.assertIn('needs: [resolve, build, candidate-validation, candidate-check, stage, publish]',text)
+        inline=(ROOT/'.github/workflows/staged-candidate.yml').read_text()
+        self.assertIn("and os.environ['PURPOSE'] == 'release'",inline)
+
+class CandidateAggregateTests(unittest.TestCase):
+    def test_same_run_architecture_validation_and_aggregate_are_both_required(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp); records={}
+            for arch in ('amd64','arm64'):
+                directory=source/('shirube-candidate-'+arch);directory.mkdir()
+                name=arch+'.iso';(directory/name).write_bytes(arch.encode())
+                records[arch]={'schema_version':1,'manifest_kind':'release','provider':'michibiki-io',
+                    'project':'Shirube OS','version':'v2026.03.0','source_commit':'a'*40,
+                    'source_clean':True,'upstream':{'version':'2026.03'},
+                    'architectures':{arch:{}},'assets':[{'name':name}]}
+            seen=[]
+            def validator(root,commit,version,**kw):
+                self.assertEqual((commit,version),('a'*40,'v2026.03.0'))
+                if kw:
+                    arch=next(iter(kw['architectures']));seen.append(arch);return records[arch]
+                combined=json.loads((root/'manifest.json').read_text())
+                self.assertEqual(set(combined['architectures']),{'amd64','arm64'})
+                self.assertEqual(set(p.name for p in root.iterdir()),{'amd64.iso','arm64.iso','manifest.json','SHA256SUMS'})
+                self.assertIn('manifest.json',(root/'SHA256SUMS').read_text());seen.append('aggregate')
+            with patch.dict(os.environ,{'SHIRUBE_SOURCE_COMMIT':'a'*40,'SHIRUBE_VERSION':'v2026.03.0',
+                    'SHIRUBE_CANDIDATES_DIRECTORY':tmp}),patch.object(actions,'identity'), \
+                    patch.object(actions,'validate',side_effect=validator),patch.object(actions,'gh') as gh:
+                actions.validate_candidates();self.assertEqual(seen,['amd64','arm64','aggregate']);gh.assert_not_called()
+                for field,value in [('source_commit','b'*40),('version','v2026.03.1'),('upstream',{})]:
+                    original=records['arm64'][field];records['arm64'][field]=value
+                    with self.assertRaisesRegex(ValueError,'shared source'):actions.validate_candidates()
+                    records['arm64'][field]=original
+                with patch.object(actions,'aggregate',side_effect=ValueError('aggregate gate failed')):
+                    with self.assertRaisesRegex(ValueError,'aggregate gate failed'):actions.validate_candidates()
+                gh.assert_not_called()
+
+    def test_held_or_validation_decision_cannot_reach_any_mutation(self):
+        for decision in ['none','hold','']:
+            with patch.dict(os.environ,{'SHIRUBE_PUBLICATION_DECISION':decision}),patch.object(actions,'gh') as gh:
+                with self.assertRaisesRegex(ValueError,'resolved product'):actions.require_product_event()
+                gh.assert_not_called()
+
+class DeferredProductTests(unittest.TestCase):
+    def test_none_hold_taxonomy_then_product_keeps_history_without_version_churn(self):
+        """Real Git history, mocked remote effects; never builds or creates a Release."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)/'checkout';root.mkdir();event_file=Path(tmp)/'event'
+            def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
+            git('init','-q');git('config','user.name','Fixture');git('config','user.email','fixture@example.invalid')
+            def commit(path,text,message):
+                file=root/path;file.parent.mkdir(parents=True,exist_ok=True);file.write_text(text)
+                git('add','--',path);git('commit','-qm',message);return git('rev-parse','HEAD')
+            baseline=commit('source-lock.json',(ROOT/'source-lock.json').read_text(),'baseline')
+            git('tag','v2026.03.0')
+            records=[{'tag_name':'v2026.03.0','target_commitish':baseline,'draft':False,'prerelease':False}]
+            created=[];notes=[];queries=[];current={}
+            def api(*args,**kw):
+                if args[:3]==('api','--paginate','--slurp') and '/files' in args[3]:
+                    return [[{'filename':current['path'],'status':'modified'}]]
+                if args[:3]==('api','--paginate','--slurp') and '/compare/' in args[3]:
+                    return [{'base_commit':{'sha':current['base']},'total_commits':1,
+                             'commits':[{'sha':current['sha'],'commit':{'message':current['message']}}]}]
+                if args[:2]==('release','create'):
+                    created.append(args[2]);notes.append(Path(args[args.index('--notes-file')+1]).read_text())
+                    records.append({'tag_name':args[2],'target_commitish':current['sha'],'draft':True,'prerelease':False})
+                    return ''
+                raise AssertionError(args)
+            def releases():queries.append(current['sha']);return records
+            def resolve(path,text,message):
+                base=git('rev-parse','HEAD');sha=commit(path,text,message)
+                current.update(path=path,sha=sha,base=base,message=message)
+                event_file.write_text(json.dumps({'action':'closed','number':1,'pull_request':{
+                    'merged':True,'changed_files':1,'commits':1,'merge_commit_sha':sha,
+                    'base':{'ref':'main','sha':base},'head':{'sha':sha}}}))
+                with patch.object(actions,'emit') as output:actions.resolve()
+                return output.call_args.args[0]
+            cwd=Path.cwd()
+            try:
+                os.chdir(root)
+                with patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event_file),'GITHUB_EVENT_NAME':'pull_request_target'}), \
+                        patch.object(actions,'gh',side_effect=api),patch.object(actions,'releases',side_effect=releases), \
+                        patch.object(actions,'integration_preflight'):
+                    infra=resolve('containers/native/Dockerfile','infra','compiler infrastructure')
+                    held=resolve('unclassified-input','unknown','deferred input')
+                    self.assertEqual((infra['publication'],held['publication']),('none','hold'))
+                    self.assertEqual(queries,[]);self.assertEqual(created,[])
+                    product=resolve('guest/product','fix','product fix deferred')
+                    self.assertEqual(product['publication'],'hold');self.assertEqual(created,[])
+                    original_role=policy.role
+                    def extended(path,consumers=()):
+                        return 'build' if path=='unclassified-input' else original_role(path,consumers)
+                    with patch.object(policy,'role',side_effect=extended):
+                        count=len(queries)
+                        taxonomy=resolve('producer/release_plan.py','reviewed role extension','classify deferred input')
+                        self.assertEqual(taxonomy['publication'],'none');self.assertEqual(len(queries),count)
+                        final=resolve('guest/product','final fix','publish product')
+                    self.assertEqual(final['version'],'v2026.03.1');self.assertEqual(created,['v2026.03.1'])
+                    for message in ['compiler infrastructure','deferred input','product fix deferred',
+                                    'classify deferred input','publish product']:
+                        self.assertIn(message,notes[0])
+                    self.assertIn('Change roles: build',notes[0]);self.assertEqual(final['publication'],'publish')
+            finally:os.chdir(cwd)

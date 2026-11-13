@@ -12,7 +12,7 @@ class PolicyTests(unittest.TestCase):
         self.assertTrue(eligible('pull_request_target', event, ['NOTICE']))
         self.assertTrue(eligible('pull_request_target', event, ['scripts/build-release.sh']))
         self.assertFalse(eligible('push', event, ['producer/disks.py']))
-        # Exclusions belong to actions.image_paths; raw/unknown paths default safe.
+        # This legacy helper admits event shape; release_plan owns semantic decisions.
         self.assertTrue(eligible('pull_request', event, ['docs/build.md']))
         self.assertTrue(eligible('pull_request', event, ['new-root.conf']))
         self.assertFalse(eligible('pull_request', event, []))
