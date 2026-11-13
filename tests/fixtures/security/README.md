@@ -15,7 +15,9 @@ under `LICENSES/`. FRR and accel fixtures also retain upstream COPYING files.
   changes are already present in the upstream baseline; normalize before replay.
 - accel-ppp: original targets of the selected complete series; added test files
   are deliberately absent. Reconstruct them through the production patch.
-- update-check: exact old script, process wrapper and default configuration.
+- update-check: ten exact pinned vyos-1x files: old update scripts, process wrapper,
+  default configuration, and all six calling-sid CLI/template/verification targets.
+  Both complete upstream patches replay through the same production path.
 
 Run `PYTHONPATH=tests:. python3 -m unittest test_security_backports -v` from the
 repository root. Tests use local `patch`, `bash`, a C compiler with UBSan, and

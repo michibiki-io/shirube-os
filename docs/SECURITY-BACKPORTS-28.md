@@ -21,7 +21,7 @@ source excerpts, not a full source or binary audit. GPL/LGPL license texts are i
 | Kernel RCU | `742f73df544e03744f2981c467d6542fe8172a2a`: defer both IPv4 option destructor frees. No API adaptation. |
 | Kernel checksum | Full prerequisite `33aa3b7f4afbd3da85401c914b5e47ef91a86fb0`, then `a65f69e0f38ffbed1b128029e09097436416dc8b`. Includes SCTP checksum export, NFQUEUE helper, IPv4/bridge/netfilter/xfrm callers. |
 | FRR | `b413dbc239841ce4d13824119df4be9c6f06647e`, `693a2e02687cdc9d16501275e05136edea9650d9`, `7676cad65114aa23adde583d91d9d29e2debd045` against `168ade7da94dde087d33ec8de983777249ccac68` plus Stream quilt. |
-| update-check | Verbatim `9698284cbe5a8515b453a58859e4c61f1a910337`: pass `wall` an argument list through the real process wrapper. |
+| vyos-1x | Verbatim `9698284cbe5a8515b453a58859e4c61f1a910337`: pass `wall` an argument list through the real process wrapper; complete calling-sid dependency `28ea92afb73a6627c2050474187ace25bb5e3e4e` (backport of `5354959b60c97df699ad14ef561ab9aa92b37922`). |
 | accel-ppp-ng | Pinned `3e30d9b74073bfa7af37434874a30d8c3275b598`; 69 selected complete commits through `9c2c18ec0ae7693a14370c4bb36416c8fc287858`. See the 102-entry `inventory.json` for every disposition, affected path, hash and ordered overlap dependency. |
 
 The existing kernel helper applies top-level patches in sorted order after Stream
@@ -88,11 +88,57 @@ verify the complete final state. All complete originals remain under `upstream/`
 Message-Authenticator controls retain upstream opt-in defaults and response
 compatibility; this work does not silently require it for existing RADIUS servers.
 
+## calling-sid configuration compatibility (AC10)
+
+The selected accel-ppp `bbacd993` fix requires `ipv6-peer-intf-id-secret`.
+The actual pinned vyos-1x source exposed calling-sid without a secret CLI node or
+rendering. Complete upstream dependency
+[28ea92afb73a6627c2050474187ace25bb5e3e4e](https://github.com/vyos/vyos-1x/commit/28ea92afb73a6627c2050474187ace25bb5e3e4e)
+is applied after the existing update-check RCE fix through
+`patches/vyos/security/update-check/0002-28ea92afb73a6627c2050474187ace25bb5e3e4e.patch`.
+Its unmodified original is retained under that directory's `upstream/`; provenance
+records hashes for both patches. This is a dependency of the existing security
+fix and AC10 compatibility, without a wholesale vyos-1x update or new package.
+
+All 109 upstream additions are preserved: shared CLI XML, exact daemon option
+rendering, pure validation helpers and explicit ConfigError guards in PPPoE,
+L2TP, PPTP and SSTP, plus PPPoE restart detection for mode and secret changes.
+Only the PPPoE restart hunk context differs: the pinned source has
+`authentication radius dynamic-author` and `authentication mode`, while upstream
+has `authentication radius`, `authentication mode` and `authentication protocols`.
+The backport preserves the pinned authentication entries and inserts both IID
+conditions unchanged. Other hunks apply unchanged with line offsets and zero fuzz.
+
+Operators of existing calling-sid deployments must configure
+`ppp-options ipv6-peer-interface-id-secret` with a 16–128 character printable,
+non-whitespace ASCII secret before committing that configuration with this fix.
+The template renders the exact `ipv6-peer-intf-id-secret` daemon option.
+Missing or invalid secrets in calling-sid mode raise ConfigError instead of
+silently negotiating with IID0. No secret is generated or assigned by this work;
+diagnostics name the constraint without printing supplied secret values.
+Other IID modes and default configuration retain their existing behavior.
+Changing the IID mode or secret restarts PPPoE sessions so they renegotiate,
+as upstream intends; operators should account for that interruption.
+
+The ten-file update fixture includes all six exact old dependency targets from
+the verified v2026.03.8 AMD64 source-0506 archive (3,603,752 bytes, SHA-256
+`e470a740eca8be41399bc1f1826db18293078569214b499f2cbfd2b523a4b64f`).
+Offline checks replay the full original with the documented context mapping,
+compare all six results, repeat preparation, reject a partial hunk, and reconstruct
+from collected inputs. They execute all four full verification functions with
+system dependencies stubbed; boundaries 15/16/128/129 and whitespace, control,
+non-ASCII and missing values are checked against the shared XML constraint.
+Local Jinja2 renders the actual template using a narrow `vyos_defined` test and
+chainable undefined handling; this does not exercise the full VyOS renderer.
+Full PPPoE get_config runs with configuration/system stubs to check changed and
+unchanged restart inputs; the production restart branch is also executed with a
+stubbed command runner. These checks do not start services or change credentials.
+
 ## Caches and corresponding source
 
 `security_sources.py` is bound into native/kernel component identities. Every FRR
-and update-check patch byte binds native; every accel patch, original, state and
-inventory byte binds kernel. Kernel's existing recursive patch identity includes
+and vyos-1x update-check/calling-sid patch byte binds native; every accel patch,
+original, state and inventory byte binds kernel. Kernel's existing recursive patch identity includes
 the complete original/combined patches. FRR library identities bind prepared
 source containing the quilt patches, exact preparation recipe and receipts before
 lookup/context. Both architectures have mutation coverage. Compiler identities
@@ -120,13 +166,14 @@ From the repository root, offline:
 
 ```sh
 PYTHONPATH=tests:. python3 -m unittest test_security_backports test_component_inputs test_library_cache test_native_stages test_recipes -v
+PYTHONPATH=tests:. python3 -m unittest test_sources test_reconstruction -v
 python3 -m py_compile containers/native/security_sources.py containers/native/build.py containers/native/library_inputs.py scripts/build-library-cache.py producer/component_inputs.py producer/collect.py tests/test_security_backports.py
 bash -n containers/native/package.sh
 git diff --check
 git diff --cached --check
 ```
 
-Passed: 46 focused tests; source hashes and complete patch equivalence, zero-fuzz Stream/repository
+Passed: 51 focused security/component tests and 20 source/reconstruction tests; source hashes and complete patch equivalence, zero-fuzz Stream/repository
 application, repeat receipts, partial-state rejection, both architecture input
 mutations, FRR library context binding and normalization, new-file reconstruction,
 real update wrapper arguments/shell settings, and small C harnesses with UBSan.
@@ -160,6 +207,6 @@ guest/E2E, exploit tests, independent ARM64 artifact validation and full license
 suites. The fixture harnesses and extracted guard checks retain the simulation
 limits described above.
 
-These are local validation results. CI and PR review evidence must be recorded on
-the PR for its exact head commit, including the normal Test workflow, Codex review
-and Claude Opus 5.5/medium review. The initial PR is Draft; no merge is performed.
+These are local validation results. Each updated PR head requires its exact-head
+Test results and independent Claude re-review on the PR. The initial Draft PR
+remains unmerged.

@@ -564,6 +564,185 @@ for(int kind=0;kind<2;kind++)for(int count=0;count<=7;count++){
         default=(source/'data/config.boot.default').read_text()
         self.assertNotIn('update-check',default)
 
+    def calling_source(self):
+        source = self.fixture('update-original')
+        security.apply(ROOT, 'update-check', source)
+        return source
+
+    def test_calling_sid_complete_upstream_replay_repeat_partial_and_reconstruction(self):
+        from collections import Counter
+        source = self.calling_source()
+        root = security.patch_root(ROOT)/'update-check'
+        original = (root/'upstream/28ea92afb73a6627c2050474187ace25bb5e3e4e.patch').read_text()
+        adapted = next(root.glob('0002-*.patch')).read_text()
+        additions = lambda text: Counter(line for line in text.splitlines()
+                                        if line.startswith('+') and not line.startswith('+++'))
+        self.assertEqual(additions(original), additions(adapted))
+        # Replay the complete original with only its incompatible old context
+        # mapped to the exact pinned restart list; no added line is rewritten.
+        replay = original.replace("        is_node_changed(conf, base + ['authentication', 'radius']),",
+                                  "        is_node_changed(conf, base + ['authentication', 'radius', 'dynamic-author']),")
+        replay = replay.replace("         is_node_changed(conf, base + ['authentication', 'protocols']),\n", '')
+        replay = replay.replace('@@ -127,6 +138,11 @@', '@@ -125,5 +136,10 @@')
+        self.assertEqual(replay, adapted)
+        other = self.fixture('update-original', '-upstream')
+        patchfile = self.work/'replay.patch'; patchfile.write_text(replay)
+        result = security.run_patch(other, patchfile)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        targets = re.findall(r'^--- a/(.+)$', original, re.M)
+        for name in targets:
+            self.assertEqual((source/name).read_bytes(), (other/name).read_bytes())
+        first = security.apply(ROOT, 'update-check', source)
+        self.assertEqual(first, security.apply(ROOT, 'update-check', source))
+        preferred = self.fixture('update-original', '-preferred')
+        retained = dict((name, path) for path, name in native_stages.snapshot_files(source, preferred))
+        prefix = 'shirube-corresponding-inputs/security-update-check/'
+        for name in ['recipe.py', 'receipt.json', 'patches/'+next(root.glob('0002-*.patch')).name,
+                     'patches/upstream/28ea92afb73a6627c2050474187ace25bb5e3e4e.patch']:
+            self.assertIn(prefix+name, retained)
+        # Reconstruct using only original fixture + collected preparation inputs.
+        project = self.work/'reconstruction'; destination = project/'vyos-patches/security/update-check'
+        shutil.copytree(source/prefix/'patches', destination)
+        recipe = source/prefix/'recipe.py'
+        result = subprocess.run([sys.executable, str(recipe), 'update-check', str(preferred),
+                                 '--project', str(project)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
+        self.assertEqual(first, json.loads((preferred/prefix/'receipt.json').read_text()))
+        for name in targets:
+            self.assertEqual((source/name).read_bytes(), (preferred/name).read_bytes())
+        # One missing rendering hunk inside an otherwise applied patch is rejected.
+        template = source/'data/templates/accel-ppp/ppp-options.j2'
+        template.write_bytes((other/template.relative_to(source)).read_bytes().replace(
+            b'ipv6-peer-intf-id-secret={{ ppp_options.ipv6_peer_interface_id_secret }}\n', b''))
+        with self.assertRaisesRegex(ValueError, 'partial'):
+            security.apply(ROOT, 'update-check', source)
+
+    def calling_env(self, source, name):
+        """Execute full production functions; stub VyOS system/service dependencies."""
+        tree = ast.parse((source/'src/conf_mode'/name).read_text())
+        def search(key, data):
+            for part in key.split('.'):
+                if not isinstance(data, dict): return None
+                data = data.get(part)
+            return data
+        class ConfigError(Exception): pass
+        env = {'dict_search': search, 'ConfigError': ConfigError,
+               'check_port_availability': lambda *a: True,
+               'is_listen_port_bind_service': lambda *a: False}
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id.startswith('verify_'):
+                env[node.func.id] = lambda *a, **kw: None
+        selected = [n for n in tree.body if
+                    isinstance(n, ast.FunctionDef) and n.name in {
+                        '_is_safe_ascii_secret', '_is_valid_iid_secret', 'verify', 'get_config', 'base_ifname'}
+                    or isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id in {
+                        'iid_secret_min_len', 'iid_secret_max_len', 'pppoe_chap_secrets'} for t in n.targets)]
+        exec(compile(ast.Module(selected, type_ignores=[]), name, 'exec'), env)
+        return env
+
+    def test_calling_sid_shared_cli_and_four_full_verify_paths(self):
+        import xml.etree.ElementTree as ET
+        source = self.calling_source()
+        xml = source/'interface-definitions/include/accel-ppp/ppp-options-ipv6-interface-id.xml.i'
+        tree = ET.fromstring('<root>'+xml.read_text()+'</root>')
+        nodes = tree.findall("leafNode[@name='ipv6-peer-interface-id-secret']")
+        self.assertEqual(len(nodes), 1)
+        regex = nodes[0].findtext('properties/constraint/regex')
+        self.assertEqual(regex, '[!-~]{16,128}')
+        values = [(None, False), ('', False), ('a'*15, False), ('a'*16, True),
+                  ('~'*128, True), ('a'*129, False)]
+        values += [('a'*16+c, False) for c in [' ', '\t', '\n', '\r', '\x00', '\x1f', '\x7f', '\u00a0', '\u00e9']]
+        values += [(''.join(chr(i) for i in range(33,127)), True)]
+        for name in ['service_pppoe-server.py', 'vpn_l2tp.py', 'vpn_pptp.py', 'vpn_sstp.py']:
+            env = self.calling_env(source, name)
+            for value, valid in values:
+                with self.subTest(path=name, length=None if value is None else len(value), valid=valid):
+                    config = {'interface': {}, 'port': '443',
+                              'ssl': {'certificate': 'cert', 'ca_certificate': 'ca'},
+                              'ppp_options': {'ipv6_peer_interface_id': 'calling-sid'}}
+                    if value is not None: config['ppp_options']['ipv6_peer_interface_id_secret'] = value
+                    self.assertEqual(bool(re.fullmatch(regex, value or '')), valid)
+                    if valid:
+                        env['verify'](config)
+                    else:
+                        with self.assertRaises(env['ConfigError']) as caught: env['verify'](config)
+                        # Errors name the option/constraint, never the supplied secret.
+                        self.assertIn('ipv6-peer-interface-id', str(caught.exception))
+                        if value and len(value) >= 15: self.assertNotIn(value, str(caught.exception))
+            for mode in [None, 'random', 'ipv4-addr', 'fixed', '::1']:
+                config = {'interface': {}, 'port': '443', 'ssl': {'certificate': 'c', 'ca_certificate': 'c'},
+                          'ppp_options': {}}
+                if mode: config['ppp_options']['ipv6_peer_interface_id'] = mode
+                env['verify'](config)  # No secret required in other/default modes.
+            env['verify']({'remove': True} if name.startswith('service') else None)
+
+    def test_calling_sid_actual_jinja_option_and_other_modes_unchanged(self):
+        # Local Jinja only; no package install or full VyOS renderer/daemon.
+        from jinja2 import Environment, ChainableUndefined, Undefined
+        source = self.calling_source()
+        env = Environment(undefined=ChainableUndefined, trim_blocks=True, lstrip_blocks=True)
+        env.tests['vyos_defined'] = lambda value: not isinstance(value, Undefined) and value is not None
+        text = (source/'data/templates/accel-ppp/ppp-options.j2').read_text()
+        old = self.fixture('update-original', '-render')
+        original = env.from_string((old/'data/templates/accel-ppp/ppp-options.j2').read_text())
+        template = env.from_string(text)
+        for mode in [None, 'random', 'ipv4-addr', 'fixed', '::1', 'calling-sid']:
+            options = {'ipv6': 'allow'}
+            if mode: options['ipv6_peer_interface_id'] = mode
+            config = {'ppp_options': options, 'authentication': {'radius': {}}}
+            self.assertEqual(template.render(**config), original.render(**config))
+            if mode == 'calling-sid':
+                # Synthetic fixture only, never an operator credential.
+                options['ipv6_peer_interface_id_secret'] = '!SyntheticTest~16'
+                output = template.render(**config).splitlines()
+                self.assertEqual(output.count('ipv6-peer-intf-id-secret=!SyntheticTest~16'), 1)
+                self.assertIn('ipv6-peer-intf-id=calling-sid', output)
+        config = {'ppp_options': {}, 'authentication': {'radius': {}}}
+        self.assertEqual(template.render(**config), original.render(**config))
+        self.assertNotIn('ipv6-peer-intf-id-secret=', template.render(**config))
+
+    def test_calling_sid_full_pppoe_get_config_restart_conditions(self):
+        source = self.calling_source()
+        env = self.calling_env(source, 'service_pppoe-server.py')
+        class Conf:
+            def exists(self, path): return path == ['service', 'pppoe-server']
+        env.update(get_accel_dict=lambda *a: {'interface': {}}, node_changed=lambda *a, **kw: [],
+                   Diff=types.SimpleNamespace(DELETE=1, ADD=2))
+        base = ['service', 'pppoe-server']
+        # Exercise full get_config, including the existing restart list.
+        for changed, restart in [(None, False), (['ppp-options', 'ipv6-peer-interface-id'], True),
+                                 (['ppp-options', 'ipv6-peer-interface-id-secret'], True),
+                                 (['ppp-options', 'mru'], False),
+                                 (['authentication', 'mode'], True), (['interface'], True)]:
+            env['is_node_changed'] = lambda conf, path: changed is not None and path == base+changed
+            result = env['get_config'](Conf())
+            self.assertEqual('restart_required' in result, restart)
+        # Existing apply consumes restart_required to restart sessions.
+        tree = ast.parse((source/'src/conf_mode/service_pppoe-server.py').read_text())
+        apply = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'apply')
+        restart = next(n for n in ast.walk(apply) if isinstance(n, ast.If)
+                       and isinstance(n.test, ast.Compare) and ast.unparse(n.test) == "'restart_required' in pppoe")
+        calls = []; env.update(call=calls.append, systemd_service='accel-ppp-test.service')
+        for required in [False, True]:
+            env['pppoe'] = {'restart_required': {}} if required else {}
+            exec(compile(ast.Module([restart], type_ignores=[]), '<production restart>', 'exec'), env)
+            self.assertEqual(calls[-1], 'systemctl '+('restart' if required else 'reload-or-restart')+' accel-ppp-test.service')
+
+    def test_calling_sid_each_input_bound_to_native_cache_only(self):
+        project = component_project(self.work/'project')
+        stages = (*component_inputs.CACHEABLE, 'kernel')
+        root = security.patch_root(project)/'update-check'
+        paths = [next(root.glob('0002-*.patch')), *root.joinpath('upstream').glob('*.patch'), root/'provenance.json']
+        for arch in ['amd64', 'arm64']:
+            before = {s: component_inputs.manifest(project, s, arch) for s in stages}
+            compiler = library_cache.toolchain_identity(project, arch)
+            for path in paths:
+                saved = path.read_bytes(); path.write_bytes(saved+b'\n')
+                after = {s: component_inputs.manifest(project, s, arch) for s in stages}
+                self.assertEqual({s for s in stages if before[s] != after[s]}, {'native'})
+                self.assertEqual(compiler, library_cache.toolchain_identity(project, arch))
+                path.write_bytes(saved)
+
     def test_both_arch_component_mutation_and_library_context_binding(self):
         project=component_project(self.work/'project')
         fingerprint='sha256:'+'a'*64
