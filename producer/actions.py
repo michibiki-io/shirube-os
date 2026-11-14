@@ -304,9 +304,11 @@ def cumulative_history(revision):
     commits, paths = [], set()
     for sha in git('rev-list', '--reverse', '--topo-order', revision).splitlines():
         parents = git('rev-list', '--parents', '-n', '1', sha).split()[1:]
-        comparison = [parents[0], sha] if parents else ['--root', sha]
-        # Side commits are already included by rev-list. Other merge parents
-        # would reintroduce main-side changes from before the published baseline.
+        comparison = (['-c', sha] if len(parents) > 1 else
+                      [parents[0], sha] if parents else ['--root', sha])
+        # Non-merge commits are already included by rev-list. Combined merge
+        # diffs retain merge-only resolutions without reimporting either side's
+        # already-published history (including main merges into a feature).
         raw = subprocess.check_output(['git', 'diff-tree', '--no-commit-id',
                                        '--name-only', '--no-renames', '-r', '-z', *comparison])
         changed = sorted({p.decode() for p in raw.split(b'\0') if p})

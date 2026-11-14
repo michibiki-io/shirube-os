@@ -150,7 +150,7 @@ class ResolutionTests(unittest.TestCase):
 
 
 class HistoryTests(unittest.TestCase):
-    def test_merge_uses_first_parent_without_duplicate_inventory(self):
+    def test_merge_combined_paths_do_not_duplicate_inventory(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
@@ -191,10 +191,35 @@ class HistoryTests(unittest.TestCase):
                 os.chdir(root)
                 paths,commits=actions.cumulative_history(baseline+'..HEAD')
                 self.assertEqual(paths,['guest/product']);self.assertEqual(len(commits),2)
-                self.assertTrue(all('publication=publish' in c['message'] for c in commits))
+                self.assertTrue(any('publication=publish' in c['message'] for c in commits))
                 all_paths,_=actions.cumulative_history('HEAD')
                 self.assertIn('README.md',all_paths)  # Root commit still covered.
                 self.assertIn('already-published-unknown',all_paths)
+            finally:os.chdir(cwd)
+
+    def test_feature_sync_merge_excludes_published_paths_but_keeps_merge_edits(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
+            git('init','-q','-b','main');git('config','user.name','Fixture');git('config','user.email','fixture@example.invalid')
+            (root/'README.md').write_text('root');git('add','.');git('commit','-qm','root')
+            git('checkout','-qb','side');(root/'guest').mkdir();(root/'guest/product').write_text('product')
+            git('add','.');git('commit','-qm','side product')
+            git('checkout','-q','main');(root/'already-published-unknown').write_text('published')
+            git('add','.');git('commit','-qm','published main');baseline=git('rev-parse','HEAD')
+            git('checkout','-q','side');git('merge','--no-ff','--no-commit','main')
+            (root/'merge-only-unknown').write_text('merge resolution')
+            git('add','.');git('commit','-qm','sync main with merge edit')
+            git('checkout','-q','main');git('merge','--no-ff','-qm','merge side','side')
+            cwd=Path.cwd()
+            try:
+                os.chdir(root)
+                paths,commits=actions.cumulative_history(baseline+'..HEAD')
+                self.assertEqual(paths,['guest/product','merge-only-unknown'])
+                self.assertEqual(len(commits),3)
+                sync=next(c for c in commits if c['subject']=='sync main with merge edit')
+                self.assertIn('Change roles: unknown',sync['message'])
+                self.assertEqual(policy.classify(paths)['publication'],'hold')
             finally:os.chdir(cwd)
 
     def test_rerun_evidence_keeps_plan_and_current_attempt_distinct(self):
