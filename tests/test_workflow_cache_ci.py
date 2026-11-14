@@ -82,8 +82,10 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual({name: job['permissions'] for name, job in self.release['jobs'].items()}, {
             'resolve': {'contents': 'write', 'pull-requests': 'read'},
             'build': {'contents': 'read', 'actions': 'read'},
-            'stage': {'contents': 'write', 'actions': 'read'},
-            'publish': {'contents': 'write', 'actions': 'read'}})
+            'stage': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
+            'publish': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
+            'candidate-validation': {'contents':'read'}, 'candidate-check': {'contents':'read'},
+            'evidence': {'contents':'read'}})
         for node in mappings(self.validation):
             self.assertNotIn('GH_TOKEN',node)
             self.assertNotIn('secrets',node)
@@ -150,7 +152,7 @@ class WorkflowCacheCITests(unittest.TestCase):
                          "needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'")
         self.assertEqual(self.release['jobs']['build']['with'], {
             'commit': '${{ needs.resolve.outputs.commit }}',
-            'version': '${{ needs.resolve.outputs.version }}', 'cache-mode': 'warm'})
+            'version': '${{ needs.resolve.outputs.version }}', 'cache-mode': 'warm', 'purpose':'release'})
 
     def test_heavy_stages_and_real_dependencies_have_separate_jobs(self):
         from producer.staged import DEPENDENCIES
@@ -316,13 +318,13 @@ class WorkflowCacheCITests(unittest.TestCase):
                                                      mode == 'warm', name)
 
     def admission(self, event='workflow_dispatch', ref='refs/heads/main', commit='a'*40,
-                  sha='a'*40, repo='michibiki-io/shirube-os', data=None, mode='cold'):
+                  sha='a'*40, repo='michibiki-io/shirube-os', data=None, mode='cold', purpose='release'):
         if data is None:
             data = {'repository': {'full_name': repo}}
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); event_path=root/'event.json'; event_path.write_text(json.dumps(data))
             output=root/'output'
-            env={**os.environ, 'SOURCE_COMMIT':commit, 'CACHE_MODE':mode,
+            env={**os.environ, 'SOURCE_COMMIT':commit, 'CACHE_MODE':mode, 'PURPOSE':purpose,
                  'GITHUB_SHA':sha, 'GITHUB_REF':ref, 'GITHUB_REPOSITORY':repo,
                  'GITHUB_EVENT_NAME':event, 'GITHUB_EVENT_PATH':str(event_path),
                  'GITHUB_OUTPUT':str(output)}
@@ -355,6 +357,8 @@ class WorkflowCacheCITests(unittest.TestCase):
         fork_release['repository']['full_name']='fork/shirube-os'
         fork_release['pull_request']['base']['repo']['full_name']='fork/shirube-os'
         cases.append(({'event':'pull_request_target','commit':'b'*40,'repo':'fork/shirube-os','data':fork_release},True,False))
+        cases.append(({'event':'pull_request_target','commit':'b'*40,'data':release,'purpose':'validation'},True,False))
+        cases.append(({'purpose':'unknown'},False,False))
         for event in ('push','workflow_run','workflow_call','schedule','unknown'):
             cases.append(({'event':event},False,False))
         for path,value in [(('action',),'opened'), (('pull_request','merged'),False),
@@ -423,13 +427,13 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual(self.release['on'],{'pull_request_target':{'types':['closed'],'branches':['main']}})
         jobs=self.release['jobs']
         self.assertEqual(jobs['resolve']['if'],'github.event.pull_request.merged == true')
-        self.assertEqual(set(jobs['resolve']['outputs']), {'eligible','noop','commit','version'})
+        self.assertEqual(set(jobs['resolve']['outputs']), {'eligible','noop','commit','version','publication','validation','plan-artifact'})
         self.assertNotIn('timeout_minutes', Path('producer/actions.py').read_text())
         self.assertEqual(jobs['stage']['strategy']['matrix']['architecture'],['amd64','arm64'])
-        self.assertEqual(jobs['stage']['needs'],['resolve','build'])
+        self.assertEqual(jobs['stage']['needs'],['resolve','build','candidate-check'])
         self.assertEqual(jobs['stage']['steps'][-1]['run'],'python3 -m producer.actions stage')
         publish=jobs['publish']
-        self.assertEqual(publish['needs'],['resolve','build','stage'])
+        self.assertEqual(publish['needs'],['resolve','build','stage','candidate-check'])
         self.assertIn("needs.build.result == 'success'",publish['if'])
         self.assertIn("needs.stage.result == 'success'",publish['if'])
         verify,upload,promote=publish['steps'][1:]

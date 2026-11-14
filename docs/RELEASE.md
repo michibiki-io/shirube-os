@@ -149,98 +149,161 @@ status checkやmerge queueの要件が変わる場合は、PR専用の起動条�
 
 English
 
-`producer.policy.eligible` retains the closed, merged PR-to-main and full
-40-character merge-SHA checks. `producer.actions.resolve` first fetches **all**
-changed-file pages and requires a positive integer `changed_files` count, an exact
-count match, unique filenames, valid relative paths and well-formed status records.
-A renamed entry requires `previous_filename`; both sides are classified. Missing,
-malformed, empty, duplicate or truncated inventory fails before release lookup,
-version/tag allocation, preflight or draft creation. GitHub's file-list cap cannot
-silently turn a larger change into a skip: a count mismatch fails closed.
+Publication and validation are independent decisions in `producer/release_plan.py`
+(policy schema 1). The publication values are `publish`, `none`, and `hold`;
+validation is `focused` or `candidate`. Classification uses semantic consumer roles,
+not PR titles, labels, or whether a compiler edit might produce identical bytes.
+A build improvement may change bytes while remaining validation-only.
 
-| Category | Image release policy |
-| --- | --- |
-| Artifact inputs | Eligible: native/shared recipes, containers, source lock, patches, legal/source material and other build inputs. PR #33's `containers/native/security_native.py` and `containers/native/security_common.py` remain eligible despite being a lint fix. |
-| Validation contracts | Eligible: guest, clearance, release validators, schemas and their scripts; `release.yml`, `staged-candidate.yml`, `validate-staged.yml` and `native-trial.yml` remain eligible. Unit-test success does not establish fresh guest acceptance. |
-| Publication/orchestration controls | Only the five exact `PUBLICATION_PATHS` entries from Issues #24/#26 are excluded. This includes retired paths so deletion inventories still classify correctly. |
-| CI-only inputs | Exact `UNIT_TEST_PATHS` and `CI_PATHS` entries are excluded. The current root test modules and `component_fixture.py` have only unittest/test consumers. Test invokes `check-workflows.sh`, which invokes the two workflow checkers; no artifact/guest workflow consumes these scripts. `tests/fixtures/` stays eligible. |
-| Explanatory docs | Only exact `DOC_PATHS` entries (README and current explanatory Markdown in docs) are excluded. Native Docker COPY and image-stage input contracts do not consume them as image inputs. Legal Markdown, fixtures and non-Markdown evidence stay eligible. |
+| Semantic change | Publication | Required verification |
+| --- | --- | --- |
+| Product behavior/configuration, pinned sources, patches, legal material | publish | Both native architectures, current candidate, aggregate and all existing publication gates |
+| Compiler/toolchain/build/package/cache infrastructure, including #37 | none | Same current dual-architecture candidate and aggregate; no Release upload |
+| Publication/orchestration control | none | Focused orchestration/contract tests; candidate/guest skipped-not-required |
+| CI-only workflow checks | none | Focused checks and ordinary unfiltered PR CI |
+| Explanatory docs and root unittest modules/helpers | none | Ordinary PR CI; no new guest PASS |
+| Artifact/source/security/guest acceptance contracts, schemas, fixtures/evidence | none unless product also changes | Current candidate and aggregate under the changed contract |
+| Known product mixed with infrastructure | publish | Union of required gates |
+| Unknown role, including either rename side or a deleted path | hold | Conservative current candidate and aggregate; no version reservation |
+| Invalid inventory/untrusted event | blocked/rejected | No allocation or build |
+| Failure/cancellation | no publication | Required failed/unrun remains visible; no cleanup of a product reservation |
 
-The commit-wide `git archive` still includes tracked tests and docs in
-`project-source.tar`, which ships as a source asset. Excluded-only updates reach
-that published source snapshot at the next eligible release; they do not update
-a previously published release.
+Product paths include `guest/`, `patches/`, `third_party/`, `LICENSES/`, source and
+package-selection locks, product branding/configuration generators and the native
+image definition. Build roles include compiler/native/stage/component recipe
+families, containers, build scripts, artifact workflows and context controls.
+Publication controllers (`actions.py`, `release_plan.py`, and the release workflow)
+are focused control inputs. Root `tests/test_*.py` and `tests/*_fixture.py` are
+unittest families; explanatory `README.md`/`docs/**/*.md` are docs families.
+`tests/fixtures/`, `docs/evidence/`, schemas and examples are acceptance inputs,
+never suffix-exempt. Explicit compile declaration consumers override docs/test
+families. New unknown producer modules/root files hold rather than mint a version.
+The exact role table and ordered matching rules are executable in the policy.
 
-These sets in `producer/actions.py` are the complete exclusion inventory; there
-are no directory or suffix exemptions. **Every unclassified path requires a
-release**, including new root files, tests, docs and workflows. Deletions use the
-same rules. A mixed change or either relevant rename side requires release.
-The audited lists and classification live in the existing publication controller;
-future list maintenance must not edit shared compile input `producer/policy.py`.
-Before adding an exclusion, inspect actual Docker copies, tracked input declarations,
-imports and script/fixture/workflow consumers, then add a focused regression.
-A new build consumer of an excluded path requires removing its exclusion.
-This initial policy change itself is eligible because `policy.py` is an artifact input.
+Extension contract: identify the installed product, build, validation or control
+consumer first; update the semantic role/dependency declaration and add positive,
+negative and consumer-mutation regressions. A new executable consumer of a doc or
+fixture must declare that input. Inspect Docker copies, compile input declarations,
+imports, shell/workflow consumers and the source/security contract. Do not add an
+issue-number exemption or silently treat unfamiliar input as harmless. Product
+roles precede consumer overrides; consumed docs/tests precede their ordinary roles.
+Changing classification alone is control work, not a product-release request.
 
-For a valid inventory, resolve logs bounded JSON with `release_impact` (`release`
-or `skip`), `reason`, `changed_files`, and `release_paths` (relevant path sides).
-`only-reviewed-non-image-paths` explains a pure excluded change;
-`artifact-validation-or-unclassified-path` explains an eligible change;
-`event-not-eligible` explains rejected event admission when a release-relevant
-path remains; an excluded-only inventory uses `only-reviewed-non-image-paths`
-even for a rejected event. Missing PR numbers log
-`missing-pr-number`. Existing `eligible` outputs still gate downstream builds.
-A skip allocates no version, tag or draft. Eligible releases retain every existing
-gate and do not reuse old PASS evidence. Ordinary PR Test remains unfiltered;
-no manual bypass, label, compiler/kernel cache change or guest reuse is added.
+The resolver retains complete paginated file inventory validation: positive integer
+count, exact unique records, well-formed status and relative paths, rename origins
+and both sides, additions and deletions. It admits only a closed/merged main PR
+with a full merge SHA, then verifies the exact clean merged checkout even for a
+nonpublication decision. Classification precedes release lookup, allocation and
+preflight. `none`/current-diff `hold` never query releases or allocate versions.
+
+A product-triggered run may read the latest published ancestor and classify **all
+intervening commits** before allocation. An unresolved cumulative unknown changes
+publication to hold. A taxonomy-only merge does not publish a held product;
+deferred content can ship in a later product-triggered, fully classified release.
+Notes include the full published-to-current history, commit messages/SHA and role
+reasons, plus original current-PR messages absent after squash/rebase. Initial
+publication covers reachable history. Reserved draft reruns retain ownership;
+published-product reruns only identify and fully verify their own exact existing
+publication, with no new build, allocation or mutation.
+
+Candidate-only runs use fixed `v<stream>.0` **without release lookup/reservation**.
+The number may equal a public version; source commit/run/attempt, candidate-only
+plan identity and the forbidden Release mutation paths distinguish the candidate.
+Read-only candidate jobs use the same staged workflow and same-run immutable
+compiler/architecture artifacts. Both candidates are downloaded and individually
+validated, then the existing shared-provenance/combined manifest/checksum/full
+validator runs locally. No release staging, asset upload or promotion occurs.
+Every mutation entry also requires a product decision and rechecks the event's
+product inventory and exact source; a candidate version string is not authority.
+
+Only the original product `build` caller retains the write cache cap and release
+purpose. Validation-only uses `read` and `purpose: validation`; inline admission
+withholds cache-writer status. Existing main dispatch behavior is unchanged.
+The kernel importer still recognizes only the original successful product `build`
+job provenance, not the new validation job. Content scopes, artifact digests,
+architecture/source identity, fresh kernel keys/signing, source clearance and
+current guest checks are unchanged. No signed kernel or old guest PASS is reused.
+Changed compiler or acceptance dependencies justify a current candidate; unchanged
+control/docs/test changes never enter the expensive kernel/guest path. Prior
+published evidence proves only its recorded source/version/bytes/contracts.
+Compile caches can assist work only through their existing trust/content gates;
+a hit never proves binary equality or guest acceptance.
+
+`release-plan-<attempt>` records source/run/attempt, policy SHA-256, roles, Git
+before/after blob+mode identities, required scopes, invalidation/non-reuse reasons
+and required-but-unrun gates before candidate execution. `release-evidence-<attempt>`
+and the final job summary record `passed`, `failed`, `required-but-unrun`, or
+`skipped-not-required`. A skipped publish cannot hide a required validation failure.
+If cancellation prevents the final job from running, the initial plan remains
+unrun evidence and the Actions cancellation is authoritative; it is never PASS.
+A product candidate reserves its owned draft before compilation and publishes only
+after both architectures, aggregate, remote assets and verified Actions upload.
+Failure/cancellation retains that draft; later product allocation skips reserved
+versions. Candidate-only failure leaves Actions evidence without a reservation.
+Existing .12, empty .13 draft and cancelled run 43462814939 are not modified.
+
+The commit-wide `git archive` still includes docs/tests in `project-source.tar`.
+They reach published corresponding sources in the next product release, without
+rewriting prior published bytes. This change itself is control/build validation
+only: it does not request an official Release on merge. Its staged-workflow change
+requires candidate validation after a human merge; that hosted acceptance and
+actual product Release acceptance are **NOT_RUN** during implementation.
 
 日本語
 
-`producer.policy.eligible`はclosedかつmergedのmain向けPRと、40文字のmerge SHAの条件を維持します。
-`resolve`は変更一覧の全ページを取得し、正の整数の件数、件数一致、一意なファイル名、
-正しい相対パスとstatusを検証してから分類します。
-renameには元パスを必須とし、両側を判定します。
-欠落、不正、空、重複、打ち切りがある一覧は、release取得、版やtagの割り当て、preflight、draft作成より前に失敗します。
-API上限で一覧が打ち切られた場合も件数不一致で拒否します。
+**公開判定**（publish/none/hold）と**検証 scope**（focused/candidate）を別々に決めます。
+製品の動作、設定、固定 source、patch、法的入力は製品公開の対象です。
+compiler、toolchain、build、cache の変更は、バイナリが変わる可能性があっても検証専用です。
+公開制御と CI の変更には限定した契約試験を要求し、文書と単体試験だけの変更には通常の PR CI を行います。
+受入契約、fixture、schema、証拠資料は候補検証の対象で、文書や test の拡張子だけでは除外しません。
+未知、削除、rename 両側を分類し、未知が製品と混ざる場合も公開を保留します。
 
-成果物入力と受入契約は対象を維持します。
-PR #33のnative/sharedの2ファイルはlint修正でも対象です。
-guest、clearance、release検証、schemaとそのスクリプト、成果物の生成や検証を行う4つのworkflowも対象です。
-unit-testの成功を新しいguest試験の合格として扱いません。
+分類の拡張では、製品、build、受入、制御の消費先を調べ、意味上の規則と依存宣言を更新します。
+肯定例、反例、消費先追加の mutation test を追加します。
+新しい test や説明文書を1件ずつ除外リストへ登録する必要はありません。
+実行入力として宣言された文書や試験ファイルは、通常の文書や単体試験より優先して候補検証の対象にします。
+分類規則だけの変更では製品公開を行いません。
 
-除外は`actions.py`に列挙した完全一致パスだけです。
-既存の公開制御5パス、unit-testからだけ参照される現行テストとhelper、Test専用のworkflowとchecker、
-Docker COPYと画像stageの入力に含まれない既存の説明Markdownを区別して保持します。
-ただしtrackedのテストと文書はコミット全体の`git archive`に含まれ、`project-source.tar`として公開ソースに同梱されます。
-除外だけの更新は次の適格releaseで公開ソースへ反映し、公開済みreleaseは更新しません。
-fixture、法的入力、Markdown以外のevidenceは除外しません。
-未知のrootファイル、新しいテストや文書、workflowは安全側で画像対象とします。
-削除も同じ規則で判定し、混合変更やrenameの片側に対象パスがあればreleaseします。
+全ページの変更一覧と件数、一意性、status、相対パス、rename 元を検証してから分類します。
+信頼済みの merged-main イベントと正確で clean な merged checkout を確認します。
+現行差分が none/hold の場合は Release を参照せず、版、tag、draft を割り当てません。
+製品公開の契機では前回公開以降の全 commit を再分類し、未知が残れば割当前に保留します。
+保留内容は、後続の製品公開で分類されるまで繰り延べます。
+notes は途中の基盤変更や保留変更も含む全範囲と分類理由、現行 PR の元メッセージを記録します。
+公開済み製品 commit の再実行だけは、所有する版と全資産を読み取り検証して終了します。
 
-除外追加の前にDocker COPY、入力宣言、import、scriptとfixtureとworkflowの消費先を確認し、回帰テストを追加します。
-除外済みパスが新たにビルド入力になった場合は除外を外します。
-リストの保守は`actions.py`で行い、共有compile入力の`policy.py`を編集しません。
-今回の初回変更は`policy.py`を変更するため画像対象です。
+検証専用候補は Release を参照せず固定の Stream 互換 `.0` を帰属表示に使います。
+数字は公開版と一致しえますが、commit/run/attempt と候補専用記録、公開経路の禁止で区別します。
+同一 run の両 architecture の候補を個別検証してからローカルで集約し、既存の provenance、manifest、checksum、両 architecture の validator を通します。
+Release への staging、upload、promotion は行いません。
+公開関数も製品判定とイベントの製品入力、正確な source を再確認します。
 
-実行ログのJSONに判定、理由、変更件数、対象パス側の数を残します。
-除外だけの変更は`only-reviewed-non-image-paths`、対象変更は`artifact-validation-or-unclassified-path`です。
-対象パスが残り、イベント条件を満たさない場合は`event-not-eligible`です。
-除外パスだけならイベント不適格時も`only-reviewed-non-image-paths`を優先します。
-PR番号がない場合は`missing-pr-number`です。
-skipでは版、tag、draftを割り当てません。
-対象releaseの全ゲートを維持し、古いPASSは再利用しません。
-通常のPR Testにパスフィルターを追加せず、手動回避、label、cache変更、guest再利用も追加しません。
+検証専用 caller の cache 権限は read で、inline admission は writer にしません。
+従来の製品 build と main dispatch の信頼境界を保持します。
+compiler 入力や受入契約の変更には現行候補を要求し、新規署名と現行 guest 検証を維持します。
+制御、文書、単体試験だけの変更では高価な kernel/guest 作業を行いません。
+cache hit や過去版の PASS を現行成果物の同一性や合格として扱いません。
 
-### Focused acceptance evidence / 限定テストとの対応
+plan artifact は実行前の required-but-unrun と source/run/attempt、policy hash、変更前後の Git object/mode、分類と無効化理由を記録します。
+最終 evidence と job summary は passed、failed、required-but-unrun、skipped-not-required を区別します。
+publish が skip しても、必須の候補検証が失敗した run は成功になりません。
+取消により最終記録が走らない場合も、初期 plan は未実施の証拠として残り、取消を PASS としません。
+製品候補の失敗や取消では所有 draft を保持し、検証専用では予約自体を作りません。
+既存の公開済み .12、空の .13 draft、取消済み run は変更しません。
 
-| AC | Focused tests / 限定テスト |
+tracked の文書と試験は引き続き project-source.tar に入り、次の製品公開で対応 source に含まれます。
+今回の差分は制御と build 基盤で、merge による正式 Release の新規作成は要求しません。
+staged workflow の変更に対する hosted candidate 検証は人間の merge 後に必要です。
+その実行と製品 Release の実受入は、実装時点では NOT_RUN です。
+
+| AC | Focused evidence / 限定した証拠 |
 | --- | --- |
-| AC1 | `PublicationClassificationTests.test_each_exact_path_and_docs_are_non_image_before_allocation`; `ReleaseImpactTests.test_exclusions_are_exact_and_keep_retired_publication_entries` cover every exact exclusion and suffix near-misses. / 全除外と似た名前を確認。 |
-| AC2 | `ReleaseImpactTests.test_real_33_inputs_and_acceptance_contracts_release` covers actual #33 paths, validation and unknown inputs. / 実際の#33入力と受入契約を確認。 |
-| AC3 | `ReleaseImpactTests.test_malformed_inventory_fails_before_every_allocation_boundary`, `test_rename_both_sides_deletion_and_mixed_pages`, and existing paginated retirement/rename tests cover bad inventories and both rename sides. / 不正一覧と両rename方向を確認。 |
-| AC4 | `ReleaseImpactTests.test_impact_reason_and_no_allocation_for_skips`, `test_all_trusted_event_guards_remain_required`, `PolicyTests.test_only_relevant_merged_pr_is_eligible`, and `WorkflowCacheCITests.test_test_events_names_permissions_and_runners` cover run reasons, allocation boundaries and unfiltered PR CI. / 判定理由、割当境界、通常PR CIを確認。 |
-| AC5–6 | Exact-head Test CI and independent review links are recorded on the issue/PR. Local scope is focused unit/action/workflow checks; full builds, guest runs and full/hull harness are NOT_RUN. / 最終headのCIと独立レビューはIssueとPRに記録。重い試験は未実施。 |
-
+| AC1 | `TaxonomyTests`: semantic matrix, new families, consumers, #37 infrastructure and v.10 product regression, rename/deletion |
+| AC2 | `ResolutionTests`, retained `ReleaseImpactTests`: no release lookup/allocation for none/hold/retry; strict malformed inventory rejection and event guards |
+| AC3 | `TaxonomyTests` status matrix, `CandidateAggregateTests`, workflow admission/dependency tests: skip is not PASS, failed/unrun required work fails |
+| AC4 | Same-run individual/aggregate validation and rejection fixtures; existing release, artifact, source, cache/signing tests remain unchanged in scope |
+| AC5 | Retained reservation/rerun/supersession/commit-pagination tests and `HistoryTests`; cumulative hold and full notes history |
+| AC6 | Actual own diff classification, focused suites and workflow checks, exact-head Test CI and independent reviews; hosted candidate/Release NOT_RUN |
 
 ## Version allocation
 
@@ -284,7 +347,11 @@ rejects that superseded unpublished draft rather than publishing an older versio
 after its successor. `publish` checks again before changing aggregate assets, and
 `promote` checks both before validation and immediately before publication. These
 checks also cover **Re-run failed jobs**, which can reuse a successful `resolve`
-job's old outputs without running that job again.
+job's old outputs without running that job again. The evidence job downloads the
+plan artifact named by those resolve outputs, not the current attempt number.
+Its result records `plan_run_attempt` and `evidence_run_attempt` separately.
+部分再実行でも resolve 出力が指す元の plan を読み、plan の生成 attempt と
+evidence の生成 attempt を別々に記録します。
 This does not change verification-only reruns of an already published release.
 Only published releases establish the release ancestry check. Draft reservations
 affect version allocation and baseline-downgrade checks; they do not establish
@@ -423,15 +490,15 @@ The published bytes remained unchanged. Metadata SHA256 values were:
 Issue #26 retires the one-time workflow, module and dedicated tests; their
 implementation remains in Git history. Normal artifact/run/source binding,
 ownership/inventory checks and promotion regressions remain in place.
-`producer.actions.resolve` preserves the five exact `PUBLICATION_PATHS`
-entries within the reviewed non-image exclusions described above, before identity
-checks, release lookup or version allocation. The three
+Historically, Issue #26 used five exact publication exclusions. The semantic
+policy above now classifies those controller/test/deletion paths before release
+lookup or allocation, while also verifying checkout identity. The three
 retired entries (`.github/workflows/recover-release.yml`,
 `producer/recover_release.py`, `tests/test_recover_release.py`) remain because
 removed files are included in the deletion PR's complete changed-file inventory.
 Together with `producer/actions.py` and `tests/test_actions.py`, these exact
-exemptions keep that PR non-image after merge. Both rename origins and destinations
-are classified; unknown relevant paths and mixed image changes remain eligible.
+exemptions keep that PR non-image after merge. Both rename origins and destinations are classified; unknown roles hold
+publication and require candidate validation, while known mixed product changes publish.
 This completion does not change unrelated historical hosted, OCI or cache evidence.
 
 日本語
@@ -455,10 +522,11 @@ metadataのSHA256は次のとおりです。
 
 Issue #26で一回限りのworkflow、module、専用テストを削除し、実装はGit履歴に残します。
 通常公開のartifact、run、sourceの対応検証、所有権と一覧の検証、公開処理の回帰テストは保持します。
-`producer.actions.resolve`はidentity確認、release取得、版の割り当てより前に、
-上記の監査済み非画像除外の一部として`PUBLICATION_PATHS`の5つの完全一致パスを維持します。
+Issue #26 当時の5つの完全一致除外は、現在は上記の意味上の制御、試験、削除の分類で扱います。
+checkout identity は非公開経路でも確認し、Release 参照と割当前に分類します。
 削除した3パス（`.github/workflows/recover-release.yml`、`producer/recover_release.py`、
 `tests/test_recover_release.py`）も削除PRの全変更一覧に含まれるため、除外に残します。
 `producer/actions.py`、`tests/test_actions.py`と合わせて、削除PRをmerge後もイメージ対象外に保ちます。
-rename元とrename先の両方を判定し、未知の関連パスやイメージ入力との混合変更は対象のままです。
+rename元とrename先の両方を判定し、未知は公開を保留して候補検証を要求します。
+既知の製品入力との混合変更は製品公開の対象です。
 今回の完了によって、無関係な過去のhosted、OCI、cacheの検証記録は変わりません。

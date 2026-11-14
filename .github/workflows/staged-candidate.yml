@@ -11,6 +11,9 @@ on:
       cache-mode:
         type: string
         default: warm
+      purpose:
+        type: string
+        default: validation
 # Cache jobs inherit the caller's effective mode and cap; do not set a workflow
 # default here, which would override that inheritance. Other jobs opt into read.
 # Importing jobs also inherit token permissions: only Release supplies actions:read.
@@ -31,6 +34,7 @@ jobs:
         env:
           SOURCE_COMMIT: ${{ inputs.commit }}
           CACHE_MODE: ${{ inputs.cache-mode }}
+          PURPOSE: ${{ inputs.purpose }}
         run: |
           python3 -I - <<'PYCODE'
           import json, os, re
@@ -49,6 +53,7 @@ jobs:
           require(re.fullmatch('[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repo) is not None)
           require(data.get('repository', {}).get('full_name') == repo)
           require(os.environ['CACHE_MODE'] in {'cold', 'warm'})
+          require(os.environ['PURPOSE'] in {'release', 'validation'})
           write = False
           if event == 'workflow_dispatch':
               require(ref.startswith('refs/heads/') and len(ref) > len('refs/heads/'))
@@ -61,7 +66,7 @@ jobs:
               require(ref == 'refs/heads/main' and pr.get('base', {}).get('ref') == 'main')
               require(pr.get('base', {}).get('repo', {}).get('full_name') == repo)
               require(commit == pr.get('merge_commit_sha'))
-              write = repo == 'michibiki-io/shirube-os'
+              write = repo == 'michibiki-io/shirube-os' and os.environ['PURPOSE'] == 'release'
           elif event == 'pull_request':
               pr = data.get('pull_request', {})
               require(data.get('action') == 'labeled')
