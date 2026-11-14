@@ -82,8 +82,8 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual({name: job['permissions'] for name, job in self.release['jobs'].items()}, {
             'resolve': {'contents': 'write', 'pull-requests': 'read'},
             'build': {'contents': 'read', 'actions': 'read'},
-            'stage': {'contents': 'write', 'actions': 'read'},
-            'publish': {'contents': 'write', 'actions': 'read'},
+            'stage': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
+            'publish': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
             'candidate-validation': {'contents':'read'}, 'candidate-check': {'contents':'read'},
             'evidence': {'contents':'read'}})
         for node in mappings(self.validation):
@@ -427,7 +427,7 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual(self.release['on'],{'pull_request_target':{'types':['closed'],'branches':['main']}})
         jobs=self.release['jobs']
         self.assertEqual(jobs['resolve']['if'],'github.event.pull_request.merged == true')
-        self.assertEqual(set(jobs['resolve']['outputs']), {'eligible','noop','commit','version','publication','validation'})
+        self.assertEqual(set(jobs['resolve']['outputs']), {'eligible','noop','commit','version','publication','validation','plan-artifact'})
         self.assertNotIn('timeout_minutes', Path('producer/actions.py').read_text())
         self.assertEqual(jobs['stage']['strategy']['matrix']['architecture'],['amd64','arm64'])
         self.assertEqual(jobs['stage']['needs'],['resolve','build','candidate-check'])

@@ -347,7 +347,11 @@ rejects that superseded unpublished draft rather than publishing an older versio
 after its successor. `publish` checks again before changing aggregate assets, and
 `promote` checks both before validation and immediately before publication. These
 checks also cover **Re-run failed jobs**, which can reuse a successful `resolve`
-job's old outputs without running that job again.
+job's old outputs without running that job again. The evidence job downloads the
+plan artifact named by those resolve outputs, not the current attempt number.
+Its result records `plan_run_attempt` and `evidence_run_attempt` separately.
+部分再実行でも resolve 出力が指す元の plan を読み、plan の生成 attempt と
+evidence の生成 attempt を別々に記録します。
 This does not change verification-only reruns of an already published release.
 Only published releases establish the release ancestry check. Draft reservations
 affect version allocation and baseline-downgrade checks; they do not establish

@@ -303,8 +303,12 @@ def cumulative_history(revision):
     """All intervening commits, including non-published merges; no title inference."""
     commits, paths = [], set()
     for sha in git('rev-list', '--reverse', '--topo-order', revision).splitlines():
-        raw = subprocess.check_output(['git', 'diff-tree', '--root', '-m', '--no-commit-id',
-                                       '--name-only', '--no-renames', '-r', '-z', sha])
+        parents = git('rev-list', '--parents', '-n', '1', sha).split()[1:]
+        comparison = [parents[0], sha] if parents else ['--root', sha]
+        # Side commits are already included by rev-list. Other merge parents
+        # would reintroduce main-side changes from before the published baseline.
+        raw = subprocess.check_output(['git', 'diff-tree', '--no-commit-id',
+                                       '--name-only', '--no-renames', '-r', '-z', *comparison])
         changed = sorted({p.decode() for p in raw.split(b'\0') if p})
         if changed:
             changed_file_paths([[{'filename': p, 'status': 'changed'} for p in changed]], len(changed))
@@ -404,6 +408,8 @@ def evidence():
              'aggregate': results.get('candidate-check'),
              'publication': results.get('resolve') if decision.get('noop') else results.get('publish')}
     final, passed = release_plan.outcomes(decision, gates)
+    final['plan_run_attempt'] = decision['run_attempt']
+    final['evidence_run_attempt'] = os.environ['GITHUB_RUN_ATTEMPT']
     (root/'result.json').write_text(json.dumps(final, sort_keys=True, indent=2)+'\n')
     with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
         output.write('```json\n'+json.dumps(final, sort_keys=True, indent=2)+'\n```\n')

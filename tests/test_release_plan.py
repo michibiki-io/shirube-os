@@ -150,7 +150,7 @@ class ResolutionTests(unittest.TestCase):
 
 
 class HistoryTests(unittest.TestCase):
-    def test_merge_parent_paths_are_unioned_before_strict_inventory_validation(self):
+    def test_merge_uses_first_parent_without_duplicate_inventory(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
@@ -174,8 +174,47 @@ class HistoryTests(unittest.TestCase):
                 self.assertNotEqual(identities['guest/product']['before'],identities['guest/product']['after'])
             finally:os.chdir(cwd)
 
+    def test_merge_does_not_reintroduce_pre_baseline_main_paths(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
+            git('init','-q','-b','main');git('config','user.name','Fixture');git('config','user.email','fixture@example.invalid')
+            (root/'README.md').write_text('root');git('add','.');git('commit','-qm','root')
+            git('checkout','-qb','side')
+            (root/'guest').mkdir();(root/'guest/product').write_text('product')
+            git('add','.');git('commit','-qm','side product')
+            git('checkout','-q','main');(root/'already-published-unknown').write_text('published')
+            git('add','.');git('commit','-qm','published main');baseline=git('rev-parse','HEAD')
+            git('tag','baseline');git('merge','--no-ff','-qm','merge product','side')
+            cwd=Path.cwd()
+            try:
+                os.chdir(root)
+                paths,commits=actions.cumulative_history(baseline+'..HEAD')
+                self.assertEqual(paths,['guest/product']);self.assertEqual(len(commits),2)
+                self.assertTrue(all('publication=publish' in c['message'] for c in commits))
+                all_paths,_=actions.cumulative_history('HEAD')
+                self.assertIn('README.md',all_paths)  # Root commit still covered.
+                self.assertIn('already-published-unknown',all_paths)
+            finally:os.chdir(cwd)
+
+    def test_rerun_evidence_keeps_plan_and_current_attempt_distinct(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            decision=policy.plan(['docs/example.md'],'a'*40,run='123',attempt='1')
+            (root/'plan.json').write_text(json.dumps(decision))
+            env={'SHIRUBE_PLAN_DIRECTORY':tmp,'SHIRUBE_JOB_RESULTS':json.dumps({'resolve':{'result':'success'}}),
+                 'GITHUB_STEP_SUMMARY':str(root/'summary'),'GITHUB_RUN_ATTEMPT':'2'}
+            with patch.dict(os.environ,env):actions.evidence()
+            result=json.loads((root/'result.json').read_text())
+            self.assertEqual(result['plan_run_attempt'],'1');self.assertEqual(result['evidence_run_attempt'],'2')
+            self.assertEqual(result['status'],'passed-required-scope')
+            self.assertEqual(json.loads((root/'plan.json').read_text()),decision)
+
     def test_workflow_keeps_validation_and_cache_writers_separate(self):
         text=(ROOT/'.github/workflows/release.yml').read_text()
+        self.assertIn('plan-artifact: release-plan-${{ github.run_attempt }}',text)
+        self.assertIn('name: ${{ needs.resolve.outputs.plan-artifact }}',text)
+        self.assertNotIn('name: release-plan-${{ github.run_attempt }}',text.split('  evidence:',1)[1])
         self.assertIn('candidate-validation:',text);self.assertIn('candidate-check:',text)
         self.assertIn('needs: [resolve, build, candidate-validation, candidate-check, stage, publish]',text)
         inline=(ROOT/'.github/workflows/staged-candidate.yml').read_text()

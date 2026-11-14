@@ -25,6 +25,7 @@ jobs:
       validation: ${{ steps.plan.outputs.validation }}
       commit: ${{ steps.plan.outputs.commit }}
       version: ${{ steps.plan.outputs.version }}
+      plan-artifact: release-plan-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -112,6 +113,7 @@ jobs:
     permissions:
       contents: write
       actions: read
+      pull-requests: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -139,6 +141,7 @@ jobs:
     permissions:
       contents: write
       actions: read
+      pull-requests: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -186,7 +189,7 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          name: release-plan-${{ github.run_attempt }}
+          name: ${{ needs.resolve.outputs.plan-artifact }}
           path: ${{ runner.temp }}/release-plan
       - name: Record required, skipped, failed and unrun gates independently of publication
         env:
