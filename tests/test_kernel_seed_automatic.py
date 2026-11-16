@@ -29,6 +29,7 @@ class IndexedRemote:
     def __init__(self, kind='automatic-seed', arch='amd64', key='f'*64):
         _, self.run, self.export, self.receipt, self.pr, self.job = kernel_tests.ProducerTests().fixture(arch)
         self.arch, self.key, self.kind = arch, key, kind
+        self.deadline = float('inf')  # Fake remote has no expiring network budget.
         filename, event, prefix = host.PRODUCER_KINDS[kind]
         self.run.update(path='.github/workflows/'+filename, event=event)
         self.job['name'] = f"{prefix} / kernel ({arch}, ubuntu-24.04{'-arm' if arch == 'arm64' else ''})"
@@ -372,7 +373,7 @@ class EvidenceTests(unittest.TestCase):
 
 
 class IndexCLITests(unittest.TestCase):
-    def invoke(self, remote, env, event, reject=False):
+    def invoke(self, remote, env, event, reject=False, error=ValueError):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             (root/'provenance.json').write_text(json.dumps(remote.receipt))
@@ -387,7 +388,7 @@ class IndexCLITests(unittest.TestCase):
             with patch.dict(os.environ, env, clear=True), patch.object(host.sys, 'argv', argv), \
                  patch.object(host, 'API', return_value=remote) as api:
                 if reject:
-                    with self.assertRaises(ValueError):
+                    with self.assertRaises(error):
                         host.main()
                     self.assertFalse((root/'index.json').exists())
                 else:
