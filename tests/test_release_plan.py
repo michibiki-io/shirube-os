@@ -53,19 +53,56 @@ class TaxonomyTests(unittest.TestCase):
             with self.assertRaises(ValueError): policy.declared_consumers(tmp)
 
     def test_issue40_complete_inventory_is_nonpublishing_candidate(self):
-        paths = ['.github/workflows/release.yml', '.github/workflows/staged-candidate.yml',
-                 '.github/workflows/validate-staged.yml', 'producer/kernel_compile_cache.py',
-                 'scripts/kernel_compile_cache.py', 'scripts/run-native-stage.py',
-                 'tests/test_kernel_compile_cache.py', 'tests/test_workflow_cache_ci.py',
-                 'tests/test_release_plan.py', 'tests/test_release_stage_import.py', 'docs/STAGED-BUILD.md',
-                 '.github/workflows/kernel-seed.yml', 'producer/actions.py', 'producer/release_plan.py',
-                 'tests/test_kernel_seed.py', 'tests/test_release_execution.py', 'docs/RELEASE.md']
-        consumers=policy.declared_consumers(ROOT)
-        result=policy.classify(paths, consumers)
-        self.assertEqual((result['publication'],result['validation']),('none','candidate'))
-        self.assertEqual(result['automatic_execution'],'focused')
-        for path in paths:
-            self.assertNotIn(policy.role(path,consumers), {'product','unknown'})
+        # Frozen complete 24-path historical inventory for the Issue 40 fix;
+        # independent of Git history, later source changes and unrelated files.
+        # Discover the unit fixtures so snapshots cannot be silently omitted.
+        # Verify the current PR diff separately in the task/coordinator proof.
+        paths = {'.github/workflows/kernel-seed.yml', '.github/workflows/release.yml',
+                 '.github/workflows/staged-candidate.yml', '.github/workflows/validate-staged.yml',
+                 'docs/RELEASE.md', 'docs/STAGED-BUILD.md', 'producer/actions.py',
+                 'producer/kernel_compile_cache.py', 'producer/kernel_seed.py',
+                 'producer/release_plan.py', 'scripts/kernel_compile_cache.py',
+                 'scripts/kernel_seed_plan.py', 'scripts/run-native-stage.py',
+                 'tests/test_kernel_cache_capability.py', 'tests/test_kernel_compile_cache.py',
+                 'tests/test_kernel_seed.py', 'tests/test_kernel_seed_automatic.py',
+                 'tests/test_release_execution.py', 'tests/test_release_plan.py',
+                 'tests/test_release_stage_import.py', 'tests/test_workflow_cache_ci.py'}
+        snapshots = {p.relative_to(ROOT).as_posix()
+                     for p in (ROOT/'tests').glob('kernel_cache_legacy*_fixture.py')}
+        self.assertEqual(len(snapshots), 3)
+        paths.update(snapshots)
+        consumers = policy.declared_consumers(ROOT)
+        result = policy.plan(paths, 'a'*40, consumers=consumers)
+        self.assertEqual((result['publication'], result['validation'], result['automatic_execution']),
+                         ('none', 'candidate', 'focused'))
+        self.assertEqual(result['execution_deferred_gates'], ['candidate', 'aggregate'])
+        self.assertEqual(result['gates']['publication'], 'skipped-not-required')
+        for path in snapshots:
+            self.assertEqual(policy.role(path, consumers), 'test')
+        self.assertFalse(set(result['roles']) & {'product', 'acceptance', 'unknown'})
+
+    def test_legacy_snapshots_do_not_exempt_acceptance_product_or_consumed_fixtures(self):
+        snapshots = sorted(p.relative_to(ROOT).as_posix()
+                           for p in (ROOT/'tests').glob('kernel_cache_legacy*_fixture.py'))
+        for path in snapshots:
+            # An actual compile consumer overrides even these test-only names.
+            result = policy.plan([path], 'a'*40, consumers={path})
+            self.assertEqual(policy.role(path, {path}), 'build')
+            self.assertEqual(result['validation'], 'candidate')
+            self.assertEqual(result['gates']['candidate'], 'required-but-deferred')
+        for path, role, publication in [
+                ('tests/fixtures/kernel_cache_legacy/kernel_compile_cache.py', 'acceptance', 'none'),
+                ('tests/fixtures/security/kernel-original.json', 'acceptance', 'none'),
+                ('tests/kernel_cache_legacy/nested_fixture.py', 'unknown', 'hold'),
+                ('guest/kernel_cache_legacy_import_fixture.py', 'product', 'publish')]:
+            with self.subTest(path=path):
+                result = policy.plan(['scripts/kernel_seed_plan.py', path], 'a'*40)
+                self.assertEqual(policy.role(path), role)
+                self.assertEqual((result['publication'], result['validation'], result['automatic_execution']),
+                                 (publication, 'candidate', 'candidate'))
+                self.assertEqual(result['execution_deferred_gates'], [])
+                self.assertEqual(result['gates']['candidate'], 'required-but-unrun')
+                self.assertEqual(result['gates']['aggregate'], 'required-but-unrun')
 
     def test_real_37_inventory_is_validation_only_and_10_security_product(self):
         # Public PR #37's complete 14-path inventory, independent of clone depth.

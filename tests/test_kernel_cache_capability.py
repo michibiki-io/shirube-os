@@ -18,9 +18,13 @@ from tests import test_kernel_compile_cache as contracts
 ROOT = Path(__file__).resolve().parents[1]
 # Frozen from e1c89f3: writer-only host importer/launcher and the bounded
 # implicit-export function. Keep runnable with a shallow CI checkout.
-LEGACY = ROOT/'tests/fixtures/kernel_cache_legacy'
-FILES = ('scripts/kernel_compile_cache.py', 'scripts/run-native-stage.py',
-         'producer/kernel_compile_cache.py')
+LEGACY = {
+    'scripts/kernel_compile_cache.py': 'kernel_cache_legacy_import_fixture.py',
+    'scripts/run-native-stage.py': 'kernel_cache_legacy_launcher_fixture.py',
+    'producer/kernel_compile_cache.py': 'kernel_cache_legacy_finish_fixture.py',
+}
+FILES = tuple(LEGACY)
+
 
 DRIVER = r'''
 import importlib.util
@@ -91,7 +95,7 @@ class KernelCacheCapabilityTests(unittest.TestCase):
         cls.probe = next(s for s in cls.job['steps'] if s.get('id') == 'kernel-cache-capability')
         cls.importer = next(s for s in cls.job['steps'] if 'kernel_compile_cache.py import' in s.get('run',''))
         cls.execute = next(s for s in cls.job['steps'] if 'run-native-stage.py' in s.get('run',''))
-        cls.old = {name: (LEGACY/('implicit_export.py' if name.startswith('producer/') else Path(name).name)).read_text()
+        cls.old = {name: (ROOT/'tests'/LEGACY[name]).read_text()
                    for name in FILES}
         cls.current = {name: (ROOT/name).read_text() for name in FILES}
 
