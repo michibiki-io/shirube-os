@@ -537,10 +537,14 @@ The ten unsigned transfers total **6,268,180,480 bytes**, before cache compressi
 in addition to compiler caches. Quota and eviction can prevent durable reuse.
 Per import, free disk must cover the ZIP, tar, unpacked payload, metadata and
 512 MiB margin; scratch is cleaned on failure and success. No cache deletion or
-capacity purchase is performed. `GH_TOKEN` exists only in the five host import
-steps. Release's build caller adds `actions: read`; those jobs inherit caller
-permissions, while compiler/admission and other jobs explicitly keep
-`contents: read`. PR/manual callers retain their existing contents-only grants.
+capacity purchase is performed. For component imports, `GH_TOKEN` exists only in the five host import steps,
+which remain gated by writer admission, `pull_request_target`, warm mode and an
+outer-cache miss. Product Release and validation callers supply `actions: read`;
+`native`/`vpp`/`kea`/`salt`/`runtime` and kernel inherit that cap. Compiler/admission
+and other jobs explicitly keep `contents: read`. In validation contexts the five
+component token steps remain disabled; manual-main component cache saving stays
+separate from kernel artifact ownership. The kernel host importer is described
+below.
 
 Small mocked fixtures cover integrity and the real stage cache HIT/repack path.
 Historical metric scope equality is a compatibility observation, not full artifact
@@ -573,8 +577,13 @@ stageが独立して再検証し、現commitとversionへ再梱包しても`cont
 quotaやevictionで保存と保持が制限される場合があります。
 各取り込みではZIP、tar、展開payload、metadata、512 MiBの余裕を確保します。
 cache削除や容量購入は行いません。
-tokenは5つのhost stepだけに渡し、Release callerの`actions: read`を継承させます。
-他のjobとPR、手動callerは既存の`contents: read`を維持します。
+component import の token は5つの host step だけに渡します。
+各 step は既存の writer admission、`pull_request_target`、warm、外側 cache miss の条件で制御します。
+Release と validation caller は `actions: read` を渡し、5つの component job と kernel が継承します。
+compiler、admission、その他の job は明示的な `contents: read` を維持します。
+validation では component の token step は無効です。
+manual-main の component cache 保存は、kernel artifact の writer 権限とは別の既存方針です。
+kernel の host importer は後述します。
 
 小さなmock fixtureで実stageのHITと来歴の再梱包を検証します。
 過去10scopeの一致は互換性の観測であり、実artifact全体の検証ではありません。
@@ -874,12 +883,35 @@ modules run fresh. The optional fixture's preexisting ABI file also participates
 in the source namespace. See the [ccache 4.7.5 manual](https://ccache.dev/manual/4.7.5.html)
 for preprocessor hashing and unsupported-directive behavior.
 
-Only the admitted canonical repository's merged-main **Release** path imports or
-exports these artifacts. Main dispatch and PR validation remain fresh builds for
-this feature. The kernel job inherits the caller's existing permission cap:
-Release supplies `actions: read`; PR validation supplies only `contents: read`.
-The host-only importer keeps the token out of Docker. It searches at most ten
-successful Release runs and accepts an immutable upload only after checking the
+Kernel readers and writers have separate admission checks (Issue #40). Canonical
+merged-main candidate validation, labeled PR validation (same-repository or fork
+heads), and manual main/feature validation may read. A run in a foreign repository
+cannot import. The host rechecks repository name/ID, supported event/action/ref,
+and exact resolved commit independently of `cache-write`; main dispatch still
+requires the exact workflow SHA. Warm mode may retrieve; cold creates an empty
+run-local store without constructing an API client or fetching an old seed.
+Only the existing exact merged-main product-Release writer may export, create a
+receipt or upload a reusable artifact. Validation conclusions cannot establish
+producer authority. Manual-main component-cache writers remain unchanged and do
+not become kernel writers.
+
+Supported caller jobs (`build`, `candidate-validation`, `validate`, `validate-main`)
+supply `actions: read`. Kernel and the five component jobs inherit that scope;
+other jobs retain explicit contents-only permissions. The five component import
+steps retain their writer/merged-Release/warm/miss conditions, so validation cannot
+use them. Checkout never persists credentials. The kernel token exists only in
+the host import step, never Docker arguments, recipes, cache contents or logs.
+The mount enables compiler-result consumption by default; only the explicit
+`--kernel-compile-cache-write` flag enables export via
+`SHIRUBE_KERNEL_COMPILE_CACHE_WRITE=true`. Readers write diagnostic metrics but
+never create `export.tar` or `provenance.json`. The local launcher flag is a trusted
+operator boundary, not a new source of producer authority.
+
+The importer examines only the latest ten successful `release.yml`
+`pull_request_target` runs, including candidate-only and noop runs. These can hide
+an unexpired compatible producer outside the window; that is a normal miss, and
+the search is not expanded. No producer may yet exist. It accepts an immutable
+upload only after checking the
 canonical repository ID, Release event/path, successful completed run, exact
 merged main PR/source commit, reusable workflow SHA/ref, matching successful
 kernel job/attempt and upload timing, artifact ownership/expiry and GitHub's
@@ -932,6 +964,40 @@ build. Full kernel/ISO/guest builds, exact production recipe integration, hosted
 artifact import/warm hits, capacity peaks and actual full-kernel speedup are
 **NOT_RUN**. No measured speedup percentage is claimed.
 
+Issue #40 local evidence (2026-11-16): **PASSED**, 81 focused tests, zero skips,
+using gcc, OpenSSL and the official Debian ccache tool. Reproduce with ccache and
+its runtime libraries available in the command's environment:
+
+```sh
+PYTHONPATH=tests:. python3 -m unittest tests.test_kernel_compile_cache \
+  tests.test_workflow_cache_ci tests.test_release_plan tests.test_release_stage_import \
+  tests.test_stage_artifacts tests.test_workflow_cache_mode -v
+python3 scripts/check_workflow_concurrency.py .github/workflows/*.yml
+python3 -m scripts.check_workflow_cache_mode .github/workflows/*.yml
+bash -n scripts/*.sh containers/native/package.sh containers/native/package_kernel.sh
+```
+
+Pinned actionlint 1.7.12 also passed with only the repository's existing
+unsupported `queue`/`cache-mode` diagnostics suppressed, as in
+`scripts/check-workflows.sh`. The matrix executes host admission/import fallback,
+launcher flags and effective per-job permissions/token conditions for both
+architecture settings. A real small compiler-result tar passes mocked GitHub
+producer/ZIP gates, then yields a compiler hit; content changes miss and
+architecture/toolchain changes reject the seed. Readers cannot call export,
+create a receipt or upload a reusable artifact. Key rotation produces fresh
+certificate-dependent objects, final links and current-certificate signatures;
+old-certificate signatures fail verification. This is local fixture evidence,
+not evidence of hosted retrieval or a real ARM64 compilation.
+
+**FAILED:** no outstanding focused checks. Earlier local attempts exposed stale
+permission assertions and test invocation errors; these were corrected before
+the passing run. **NOT_RUN:** required exact-head normal Test CI (not run locally; PR checks record its result),
+GitHub acceptance of caller permissions, actual seed availability/expiry/network
+behavior, hosted warm hit, capacity peak and full-kernel speedup. No full/hull,
+kernel, ISO or guest build was started. The complete changed-path inventory is
+covered by a regression asserting `publication=none`, `validation=candidate`;
+publication and required acceptance gates are unchanged.
+
 ### 日本語: 署名前の kernel compiler 結果再利用
 
 kernel の stage cache 除外と `.o`/`.ko` の転送拒否は維持します。
@@ -941,10 +1007,31 @@ module metadata、tools、最終 link、全 module の署名・現行証明書�
 外部 module と accel-ppp は従来どおりビルドします。
 
 共有 cache の digest を信頼性の証明には使いません。
-既存 admission を通った canonical repository の merged-main Release だけが入出力し、
-host 側で run・PR・workflow・成功 job・artifact の由来と digest を独立に検証します。
-token は build container に渡しません。
-PR validation と main dispatch はこの機能では常に fresh build です。
+Issue #40 では reader と writer の admission を分離します。
+canonical repository の merged-main 検証、同一 repository または fork head の PR label 検証、
+main/feature の手動検証が読取対象です。別 repository 内の run は import できません。
+host は repository 名と ID、event、action、ref、解決済みの exact commit を再検証します。
+main dispatch は workflow の exact SHA と一致する必要があります。
+warm のみ取得し、cold は API client を作らず空の run-local store を使います。
+export、receipt、共有 artifact upload は、既存の exact merged-main product Release writer だけに許可します。
+validation run の成功は producer の根拠になりません。
+manual-main の component cache 保存方針は維持し、kernel writer には拡張しません。
+
+4つの caller job（`build`、`candidate-validation`、`validate`、`validate-main`）は
+`actions: read` を渡し、kernel と5つの component job が継承します。
+その他の job は明示的な contents-only 権限を維持します。
+component の token step は既存の writer、merged-Release、warm、miss 条件を維持するため、validation では実行しません。
+checkout は認証情報を保存しません。kernel の token は host の import step だけに渡し、
+Docker 引数、recipe、cache 内容、log には含めません。
+専用 mount は既定で読取用です。明示的な `--kernel-compile-cache-write` だけが
+`SHIRUBE_KERNEL_COMPILE_CACHE_WRITE=true` を渡して export を有効にします。
+reader は診断 metrics を記録しますが、`export.tar` と `provenance.json` は作りません。
+このローカル引数は trusted operator 用であり、producer の信頼性を証明するものではありません。
+
+探索は `release.yml` の成功した `pull_request_target` run の最新10件に限ります。
+candidate-only と noop も件数に含むため、7日の期限内でも producer が窓外なら正常な miss になります。
+探索範囲は拡大しません。互換 producer がまだ存在しない場合もあります。
+host は run、PR、workflow、成功 job、artifact の由来と digest を独立に検証します。
 不正・異種・非信頼・期限切れ・取得不能の入力を使わず、通常コンパイルへ戻します。
 ローカル用の専用 cache 引数は、trusted operator が検証済みの入力を渡す境界です。
 
@@ -963,3 +1050,22 @@ ARM64 は設定経路の検証であり、実 ARM64 kernel の生成ではあり
 full kernel/ISO/guest build、production recipe の実行、hosted warm hit、容量ピーク、
 実高速化率は **NOT_RUN** です。group 全時間を compiler 時間と見なさず、
 restore 状態と実 compiler hit/miss の統計も区別します。
+
+Issue #40 のローカル証跡（2026-11-16）は **PASSED** です。
+gcc、OpenSSL、公式 Debian ccache を使い、上記コマンドの限定81試験が成功しました。skip は0件です。
+workflow の queue/cache-mode validator、固定版 actionlint 1.7.12、bash 構文検査も成功しました。
+actionlint では既存の `queue` と `cache-mode` の未対応診断だけを除外しています。
+両 architecture 設定で host admission、取得失敗時の fallback、launcher 引数、job の実効権限と token step 条件を検証します。
+小さな実 compiler の tar は mock GitHub の producer/ZIP 検証を通り、実 hit counter が増加します。
+content 変更では miss となり、architecture と toolchain の変更では seed を拒否します。
+reader の export、receipt、共有 upload は無効です。
+鍵の更新後は証明書依存 object、最終 link、署名を新規生成し、旧証明書での検証は失敗します。
+これはローカル fixture の結果であり、hosted 取得や実 ARM64 コンパイルの証跡ではありません。
+
+**FAILED:** 未解決の限定検査失敗はありません。
+途中のローカル試験で古い権限期待値と試験の呼出方法に誤りがあり、修正後に全件成功しました。
+**NOT_RUN:** exact-head の通常 Test CI（ローカルでは未実行。結果は PR checks に記録）、GitHub での caller 権限の受理、
+実 seed の存在、実環境での失効と通信、hosted warm hit、容量ピーク、full-kernel の高速化です。
+full/hull、kernel、ISO、guest build は開始していません。
+変更パス全体が `publication=none`、`validation=candidate` になる回帰試験を追加しました。
+公開条件と必須の合格条件は維持します。

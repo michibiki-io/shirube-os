@@ -140,7 +140,7 @@ def export(store, archive, expected):
     return {'entries': len(records), 'skipped_capacity': skipped}
 
 
-def prepare(root, mount, architecture, *, state=STATE):
+def prepare(root, mount, architecture, *, state=STATE, write=False):
     root, mount, state = Path(root), Path(mount), Path(state)
     require(root.is_dir() and mount.is_dir() and not mount.is_symlink() and not state.exists())
     toolchain = tools()
@@ -176,7 +176,7 @@ remote_storage =
 namespace = {namespace}
 ''')
     data = dict(root=str(root.resolve()), store=str(store), config=str(config), scope=scope,
-                status=status, namespace=namespace, mount=str(mount))
+                status=status, namespace=namespace, mount=str(mount), write=write)
     state.write_text(json.dumps(data, sort_keys=True) + '\n')
     subprocess.run(['ccache', '--zero-stats'], env=environment(data), check=True)
     return data
@@ -229,7 +229,8 @@ def finish(*, state=STATE):
     stats = subprocess.check_output(['ccache', '--print-stats'], env=env, text=True)
     report = {'scope': data['scope'], 'namespace': data['namespace'], 'restore': data['status'],
               'statistics': dict(line.split() for line in stats.splitlines())}
-    report['export'] = export(data['store'], Path(data['mount']) / 'export.tar', data['scope'])
+    if data['write']:
+        report['export'] = export(data['store'], Path(data['mount']) / 'export.tar', data['scope'])
     (Path(data['mount']) / 'metrics.json').write_text(json.dumps(report, sort_keys=True) + '\n')
 
 
@@ -240,7 +241,8 @@ def main():
     args = parser.parse_args()
     mount = os.environ.get('SHIRUBE_KERNEL_COMPILE_CACHE')
     if mount:
-        prepare(args.root, mount, args.architecture)
+        prepare(args.root, mount, args.architecture,
+                write=os.environ.get('SHIRUBE_KERNEL_COMPILE_CACHE_WRITE') == 'true')
 
 
 if __name__ == '__main__':

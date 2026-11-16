@@ -73,7 +73,7 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual(release['uses'],'./.github/workflows/staged-candidate.yml')
         self.assertEqual(release['uses'],validation['uses'])
         self.assertEqual(release['permissions'],{'contents':'read','actions':'read'})
-        self.assertEqual(validation['permissions'],{'contents':'read'})
+        self.assertEqual(validation['permissions'],{'contents':'read','actions':'read'})
         self.assertEqual(set(self.validation['on']),{'workflow_dispatch','pull_request'})
         self.assertEqual(self.validation['on']['pull_request']['types'],['labeled'])
         self.assertEqual(self.validation['permissions'],{'contents':'read'})
@@ -84,7 +84,7 @@ class WorkflowCacheCITests(unittest.TestCase):
             'build': {'contents': 'read', 'actions': 'read'},
             'stage': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
             'publish': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
-            'candidate-validation': {'contents':'read'}, 'candidate-check': {'contents':'read'},
+            'candidate-validation': {'contents':'read','actions':'read'}, 'candidate-check': {'contents':'read'},
             'evidence': {'contents':'read'}})
         for node in mappings(self.validation):
             self.assertNotIn('GH_TOKEN',node)
@@ -146,7 +146,7 @@ class WorkflowCacheCITests(unittest.TestCase):
         for name in ('validate', 'validate-main'):
             self.assertEqual(jobs[name]['needs'], 'resolve')
             self.assertEqual(jobs[name]['uses'], './.github/workflows/staged-candidate.yml')
-            self.assertEqual(jobs[name]['permissions'], {'contents': 'read'})
+            self.assertEqual(jobs[name]['permissions'], {'contents': 'read', 'actions': 'read'})
             self.assertEqual(jobs[name]['with'], jobs['validate']['with'])
         self.assertEqual(self.release['jobs']['build']['if'],
                          "needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'")
@@ -256,9 +256,9 @@ class WorkflowCacheCITests(unittest.TestCase):
                 self.assertFalse(saves)
                 self.assertNotIn('--cache',execute['run'])
 
-    def test_kernel_compiler_artifact_is_release_only_and_never_stage_cache(self):
+    def test_kernel_compiler_readers_and_release_only_writers_never_stage_cache(self):
         job = self.staged['jobs']['kernel']
-        self.assertNotIn('permissions', job)  # Caller cap; PR caller has no actions:read.
+        self.assertNotIn('permissions', job)  # Inherits caller actions:read cap.
         importer = next(s for s in job['steps'] if 'kernel_compile_cache.py import' in s.get('run', ''))
         receipt = next(s for s in job['steps'] if 'kernel_compile_cache.py receipt' in s.get('run', ''))
         export = next(s for s in job['steps'] if s.get('with', {}).get('name', '').startswith('shirube-kernel-compiler-'))
@@ -266,9 +266,10 @@ class WorkflowCacheCITests(unittest.TestCase):
             for event in ['pull_request_target', 'pull_request', 'workflow_dispatch']:
                 for success in [True, False]:
                     context = {'needs.admission.outputs.cache-write': admitted,
+                               'github.repository': 'michibiki-io/shirube-os',
                                'github.event_name': event, 'success()': success}
                     eligible = admitted == 'true' and event == 'pull_request_target'
-                    self.assertEqual(expression_value(importer['if'], context), eligible)
+                    self.assertTrue(expression_value(importer['if'], context))
                     self.assertEqual(expression_value(receipt['if'], context), eligible and success)
                     self.assertEqual(expression_value(export['if'], context), eligible and success)
         self.assertEqual(export['with']['retention-days'], '7')
@@ -279,6 +280,53 @@ class WorkflowCacheCITests(unittest.TestCase):
         execute = next(s for s in job['steps'] if 'run-native-stage.py' in s.get('run', ''))
         self.assertNotIn('GH_TOKEN', execute['env'])
         self.assertIn('--kernel-compile-cache', execute['run'])
+
+    def test_effective_permissions_and_token_steps_for_every_caller_and_job(self):
+        components = {'native', 'vpp', 'kea', 'salt', 'runtime'}
+        inheriting = components | {'kernel'}
+        callers = [self.release['jobs'][name] for name in ('build','candidate-validation')]
+        callers += [self.validation['jobs'][name] for name in ('validate','validate-main')]
+        for caller in callers:
+            self.assertEqual(caller['permissions'], {'contents':'read','actions':'read'})
+            for name, job in self.staged['jobs'].items():
+                effective = job.get('permissions', caller['permissions'])
+                self.assertEqual(effective, {'contents':'read','actions':'read'}
+                                 if name in inheriting else {'contents':'read'}, name)
+                for step in job['steps']:
+                    if 'GH_TOKEN' not in step.get('env', {}): continue
+                    self.assertIn(name, inheriting)
+                    for writer in ('true','false'):
+                        for event in ('pull_request_target','workflow_dispatch','pull_request'):
+                            for repo in ('michibiki-io/shirube-os','foreign/repo'):
+                                context = {'needs.admission.outputs.cache-write':writer,
+                                           'github.event_name':event,'github.repository':repo,
+                                           'inputs.cache-mode':'warm','steps.cache.outputs.cache-hit':'false'}
+                                expected = (repo == 'michibiki-io/shirube-os' if name == 'kernel'
+                                            else writer == 'true' and event == 'pull_request_target')
+                                for mode in ('cold','warm'):
+                                    for hit in ('true','false',''):
+                                        context.update({'inputs.cache-mode':mode, 'steps.cache.outputs.cache-hit':hit})
+                                        enabled = expected and (name == 'kernel' or (mode == 'warm' and hit != 'true'))
+                                        self.assertEqual(expression_value(step['if'],context),enabled)
+        kernel = self.staged['jobs']['kernel']
+        execute = next(s for s in kernel['steps'] if 'run-native-stage.py' in s.get('run',''))
+        self.assertEqual(execute['env']['KERNEL_CACHE_WRITE'],
+            "${{ needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' }}")
+        # Execute the actual shell assembly with a mocked Python launcher.
+        for enabled in ('true','false'):
+            for writer in ('true','false'):
+                with tempfile.TemporaryDirectory() as temp:
+                    root=Path(temp); capture=root/'args'; python=root/'python3'
+                    python.write_text('#!/bin/sh\nprintf "%s\\n" "$@" > "$CAPTURE"\n')
+                    python.chmod(0o755)
+                    env={**os.environ, **{key:'fixture' for key in execute['env']},
+                         'KERNEL_CACHE_ENABLED':enabled,'KERNEL_CACHE_WRITE':writer,
+                         'PATH':temp+':'+os.environ['PATH'],'CAPTURE':str(capture)}
+                    subprocess.run(['bash','-eu','-c',execute['run']],env=env,check=True)
+                    args=capture.read_text().splitlines()
+                    self.assertEqual('--kernel-compile-cache' in args, enabled == 'true')
+                    self.assertEqual('--kernel-compile-cache-write' in args,
+                                     enabled == 'true' and writer == 'true')
 
     def test_actual_cache_expressions_event_mode_hit_success_matrix(self):
         jobs = self.staged['jobs']

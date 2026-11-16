@@ -38,6 +38,8 @@ def main():
     parser.add_argument('--image', required=True); parser.add_argument('--inputs', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True); parser.add_argument('--cache', type=Path)
     parser.add_argument('--kernel-compile-cache', type=Path, help='Dedicated trusted kernel compiler-result artifact input/output')
+    parser.add_argument('--kernel-compile-cache-write', action='store_true',
+                        help='Trusted product-Release operator only: export reusable compiler results')
     parser.add_argument('--discard-input-archives', action='store_true',
                         help='ISO, clearance and guests only: allow retirement of task-owned downloaded input tars')
     args = parser.parse_args()
@@ -45,6 +47,8 @@ def main():
         if len(args.inputs.resolve().parts) < 3:
             raise ValueError('Dedicated task input directory required, not a host root')
         validate_discard_inputs(args.stage, args.inputs, args.output, args.cache)
+    if args.kernel_compile_cache_write and not args.kernel_compile_cache:
+        raise ValueError('Kernel compiler export requires a dedicated mount')
     if args.kernel_compile_cache:
         validate_kernel_cache(args.stage, args.kernel_compile_cache,
                               (args.inputs, args.output, args.cache, Path.cwd()))
@@ -76,7 +80,8 @@ def main():
                 cache_args=['--cache','/stage-cache']
             if args.kernel_compile_cache:
                 cache_mount += ['-v', str(args.kernel_compile_cache.resolve()) + ':/kernel-compile-cache',
-                                '-e', 'SHIRUBE_KERNEL_COMPILE_CACHE=/kernel-compile-cache']
+                                '-e', 'SHIRUBE_KERNEL_COMPILE_CACHE=/kernel-compile-cache',
+                                '-e', 'SHIRUBE_KERNEL_COMPILE_CACHE_WRITE=' + str(args.kernel_compile_cache_write).lower()]
             # ISO assembly requires mount privileges; integration needs SYS_ADMIN
             # for NetBird offline network namespaces. No Docker socket,
             # host identities, host PID/network or publication token is shared.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Host-only trusted Release admission for optional kernel compiler results.
+"""Host-only canonical readers and trusted Release kernel compiler producers.
 
 No token enters the build. An artifact digest is integrity evidence only: the
 producer's main merge, workflow revision, successful job and upload must also
@@ -43,6 +43,34 @@ def current_context(env, event, commit):
             and pr.get('base', {}).get('ref') == 'main' and same_repo(pr.get('base', {}).get('repo', {}))
             and re.fullmatch('[0-9a-f]{40}', commit) and pr.get('merge_commit_sha') == commit)
     return pr
+
+
+def consumer_context(env, event, commit):
+    """Canonical exact-source readers, independent of shared-cache ownership."""
+    require(env.get('GITHUB_REPOSITORY') == REPO and same_repo(event.get('repository', {}))
+            and re.fullmatch('[0-9a-f]{40}', commit)
+            and re.fullmatch('[0-9a-f]{40}', env.get('GITHUB_SHA', ''))
+            and env.get('CACHE_MODE') in {'cold', 'warm'})
+    name, ref = env.get('GITHUB_EVENT_NAME'), env.get('GITHUB_REF', '')
+    pr = event.get('pull_request', {})
+    if name == 'workflow_dispatch':
+        require(ref.startswith('refs/heads/') and len(ref) > len('refs/heads/'))
+        if ref == 'refs/heads/main':
+            require(commit == env['GITHUB_SHA'])
+    elif name == 'pull_request_target':
+        require(event.get('action') == 'closed' and pr.get('state') == 'closed'
+                and pr.get('merged') is True and ref == 'refs/heads/main'
+                and pr.get('base', {}).get('ref') == 'main'
+                and same_repo(pr.get('base', {}).get('repo', {}))
+                and commit == pr.get('merge_commit_sha'))
+    elif name == 'pull_request':
+        require(event.get('action') == 'labeled'
+                and event.get('label', {}).get('name') in {'validate-staged', 'validate-staged-warm'}
+                and re.fullmatch(r'refs/pull/[1-9][0-9]*/merge', ref)
+                and same_repo(pr.get('base', {}).get('repo', {}))
+                and commit == pr.get('head', {}).get('sha'))
+    else:
+        require(False)
 
 
 def instant(value):
@@ -140,7 +168,11 @@ def main():
     parser.add_argument('--architecture', choices=('amd64', 'arm64'), required=True)
     parser.add_argument('--commit', required=True)
     args = parser.parse_args()
-    pr = current_context(os.environ, json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text()), args.commit)
+    event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+    if args.operation == 'import':
+        consumer_context(os.environ, event, args.commit)
+    else:
+        pr = current_context(os.environ, event, args.commit)
     directory = args.directory
     require(not directory.is_symlink() and directory.resolve() != Path('/') and len(directory.resolve().parts) >= 3)
     if args.operation == 'import':

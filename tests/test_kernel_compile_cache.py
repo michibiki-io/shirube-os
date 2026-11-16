@@ -1,4 +1,5 @@
 """Small real compiler + adversarial archives; no kernel/image build."""
+import copy
 import hashlib
 import http.client
 import contextlib
@@ -90,7 +91,8 @@ class CacheArchiveTests(unittest.TestCase):
             result = cache.export(self.store, self.root/'bounded-bytes', self.scope)
             self.assertEqual(result, {'entries': 0, 'skipped_capacity': 2})
         for name, kind in [('a/b/leakR', tarfile.SYMTYPE), ('../escape', tarfile.REGTYPE),
-                           ('signing_key.pem', tarfile.REGTYPE), ('a/b/12345R', tarfile.FIFOTYPE)]:
+                           ('signing_key.pem', tarfile.REGTYPE), ('a/b/12345R', tarfile.FIFOTYPE), ('a/b/linkR', tarfile.LNKTYPE),
+                           ('/absolute', tarfile.REGTYPE), ('directory', tarfile.DIRTYPE)]:
             archive = self.root/'unsafe.tar'
             with tarfile.open(archive, 'w') as output:
                 member = tarfile.TarInfo(name); member.type = kind
@@ -175,6 +177,8 @@ class RealCompilerTests(unittest.TestCase):
 
     def test_key_rotation_restored_compiler_hit_and_new_signature_only(self):
         body, _ = self.compile()
+        self.data['write'] = True
+        self.state.write_text(json.dumps(self.data))
         cache.finish(state=self.state)
         # Export contains compiler results only, never cert/private build state.
         with tarfile.open(self.mount/'export.tar') as archive:
@@ -217,6 +221,37 @@ class RealCompilerTests(unittest.TestCase):
                 with self.assertRaises(ValueError): verify_module(signed, keys[0])
                 with self.assertRaises(ValueError): verify_module(signatures[0], cert)
 
+    def test_readonly_seed_reuse_invalidation_and_no_export(self):
+        self.compile()
+        # A trusted writer fixture supplies only the narrow compiler store.
+        writer_tar = self.base/'writer.tar'
+        cache.export(self.data['store'], writer_tar, self.data['scope'])
+        admit_fixture_seed(writer_tar.read_bytes(), self.mount)
+        original_namespace = self.data['namespace']
+        for mutation in ('same', 'content', 'architecture', 'toolchain'):
+            (self.source/'out.o').unlink(missing_ok=True)
+            self.state.unlink(); shutil.rmtree(self.base/'kernel-ccache')
+            if mutation == 'content':
+                (self.source/'header.h').write_text('#define VALUE 99\n')
+            toolchain = self.data['scope']['toolchain'] if mutation != 'toolchain' else 'f'*64
+            with patch.object(cache, 'tools', return_value=toolchain):
+                self.data = cache.prepare(self.source, self.mount,
+                    'arm64' if mutation == 'architecture' else 'amd64', state=self.state)
+            self.compile()
+            if mutation == 'same':
+                self.assertEqual(self.data['namespace'], original_namespace)
+                self.assertGreater(self.stats()['preprocessed_cache_hit'], 0)
+            else:
+                self.assertEqual(self.stats()['preprocessed_cache_hit'], 0)
+                self.assertGreater(self.stats()['cache_miss'], 0)
+            if mutation in ('architecture', 'toolchain'):
+                self.assertEqual(self.data['status'], 'MISS_INVALID')
+            with patch.object(cache, 'export', side_effect=AssertionError('readonly export')):
+                cache.finish(state=self.state)
+            self.assertTrue((self.mount/'metrics.json').is_file())
+            self.assertFalse((self.mount/'export.tar').exists())
+            self.assertFalse((self.mount/'provenance.json').exists())
+
     def test_invalid_seed_falls_back_to_fresh_compile(self):
         self.state.unlink(); shutil.rmtree(self.base/'kernel-ccache')
         (self.mount/'seed.tar').write_bytes(b'corrupt')
@@ -251,7 +286,14 @@ class ProducerTests(unittest.TestCase):
             api,run,artifact,receipt,pr,job=self.fixture(arch)
             host.verify_producer(api,run,artifact,receipt,arch)
             for obj,key,value in [(run,'event','pull_request'),(run,'path','.github/workflows/test.yml'),
-                                  (run,'conclusion','failure'),(run,'repository',dict(id=1,full_name='foreign/repo')),
+                                  (run,'conclusion','failure'),(run,'conclusion','cancelled'),
+                                  (run,'run_attempt',2),(run,'head_sha','f'*40),
+                                  (run,'head_repository',dict(id=1,full_name='foreign/repo')),
+                                  (receipt,'source_commit','f'*40),(receipt,'run_attempt',2),
+                                  (job,'name',f'candidate-validation / kernel ({arch}, ubuntu-24.04)'),
+                                  (job,'run_attempt',2),(job,'head_sha','f'*40),
+                                  (artifact,'expires_at','2000-01-01T00:00:00Z'),
+                                  (artifact,'created_at','2026-01-01T03:00:00Z'),(run,'repository',dict(id=1,full_name='foreign/repo')),
                                   (run,'referenced_workflows',[]),(receipt,'architecture','foreign'),
                                   (pr,'merged',False),(pr,'merge_commit_sha','f'*40),
                                   (job,'conclusion','failure'),(artifact,'digest','not-a-digest'),
@@ -263,7 +305,7 @@ class ProducerTests(unittest.TestCase):
 
     def test_actual_import_checks_zip_digest_and_provenance_before_seed(self):
         for arch in ['amd64','arm64']:
-            for invalid in ['none','digest','untrusted','zip-link','export-digest']:
+            for invalid in ['none','digest','untrusted','zip-link','export-digest','zip-path','zip-extra','zip-duplicate']:
                 api,run,artifact,receipt,pr,job=self.fixture(arch)
                 with tempfile.TemporaryDirectory() as temp:
                     root=Path(temp); directory=root/'admitted'; directory.mkdir()
@@ -275,7 +317,14 @@ class ProducerTests(unittest.TestCase):
                     with zipfile.ZipFile(buffer,'w') as z:
                         info=zipfile.ZipInfo('export.tar')
                         if invalid=='zip-link': info.external_attr=(0o120777 << 16)
+                        if invalid=='zip-path': info.filename='../export.tar'
                         z.writestr(info,payload);z.writestr('provenance.json',json.dumps(receipt))
+                        if invalid=='zip-extra': z.writestr('private.pem','secret')
+                        if invalid=='zip-duplicate':
+                            import warnings
+                            with warnings.catch_warnings():
+                                warnings.simplefilter('ignore', UserWarning)
+                                z.writestr('export.tar',payload)
                     content=buffer.getvalue(); artifact.update(id=4,name=f'shirube-kernel-compiler-v1-{arch}-1',
                                                               size_in_bytes=len(content),digest='sha256:'+hashlib.sha256(content).hexdigest())
                     if invalid=='digest': artifact['digest']='sha256:'+'f'*64
@@ -309,7 +358,7 @@ class ProducerTests(unittest.TestCase):
                 root=Path(temp); path=root/'event.json';path.write_text(json.dumps(event))
                 destination=root/'cache';output=io.StringIO()
                 env=dict(CACHE_WRITE='true',CACHE_MODE='warm',GITHUB_EVENT_NAME='pull_request_target',
-                         GITHUB_REPOSITORY=host.REPO,GITHUB_REF='refs/heads/main',GITHUB_EVENT_PATH=str(path))
+                         GITHUB_REPOSITORY=host.REPO,GITHUB_REF='refs/heads/main',GITHUB_SHA='a'*40,GITHUB_EVENT_PATH=str(path))
                 argv=['kernel_compile_cache.py','import','--directory',str(destination),
                       '--architecture','amd64','--commit','a'*40]
                 with patch.object(host.sys,'argv',argv),patch.dict(os.environ,env), \
@@ -320,6 +369,40 @@ class ProducerTests(unittest.TestCase):
                 self.assertNotIn('private',output.getvalue())
                 self.assertEqual(list(destination.iterdir()),[])
 
+    def test_ten_successful_runs_without_producer_is_normal_miss_no_expansion(self):
+        calls=[]
+        class Remote:
+            def json(self, path):
+                calls.append(path)
+                if path.startswith('actions/workflows/'):
+                    return {'workflow_runs':[{'id':i} for i in range(11)]}
+                if '/artifacts?' in path:return {'total_count':0,'artifacts':[]}
+                return {'id':int(path.split('/')[-1]),'run_attempt':1}
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            self.assertEqual(host.import_cache(Remote(),root,'amd64'),'MISS')
+            self.assertEqual(list(root.iterdir()),[])
+        self.assertIn('per_page=10',calls[0])
+        self.assertEqual(len(calls),21)
+        self.assertNotIn('actions/runs/10',calls)
+
+    def test_writer_receipt_still_binds_each_architecture(self):
+        _,_,_,_,pr,_=self.fixture();pr['number']=2
+        event=dict(repository=pr['base']['repo'],action='closed',pull_request=pr)
+        for arch in ('amd64','arm64'):
+            with tempfile.TemporaryDirectory() as temp:
+                root=Path(temp); path=root/'event.json';path.write_text(json.dumps(event))
+                mount=root/'cache';mount.mkdir();(mount/'export.tar').write_bytes(b'writer results')
+                env=dict(CACHE_WRITE='true',GITHUB_EVENT_NAME='pull_request_target',
+                         GITHUB_REPOSITORY=host.REPO,GITHUB_REF='refs/heads/main',
+                         GITHUB_EVENT_PATH=str(path),GITHUB_RUN_ID='10',GITHUB_RUN_ATTEMPT='1')
+                argv=['cache','receipt','--directory',str(mount),'--architecture',arch,'--commit','a'*40]
+                with patch.dict(os.environ,env),patch.object(host.sys,'argv',argv):host.main()
+                receipt=json.loads((mount/'provenance.json').read_text())
+                self.assertEqual(receipt['architecture'],arch)
+                self.assertEqual(receipt['source_commit'],'a'*40)
+                self.assertEqual(receipt['export_sha256'],hashlib.sha256(b'writer results').hexdigest())
+
     def test_current_writer_requires_exact_merged_main_and_existing_admission(self):
         _,_,_,_,pr,_=self.fixture();pr['number']=2
         event=dict(repository=pr['base']['repo'],action='closed',pull_request=pr)
@@ -328,6 +411,135 @@ class ProducerTests(unittest.TestCase):
         for key,value in [('CACHE_WRITE','false'),('GITHUB_EVENT_NAME','pull_request'),('GITHUB_REF','refs/heads/feature')]:
             changed=dict(env,**{key:value})
             with self.assertRaises(ValueError):host.current_context(changed,event,'a'*40)
+
+
+def admit_fixture_seed(payload, directory):
+    """Small real results travel through the same host gates as mocked artifacts."""
+    _, run, artifact, receipt, pr, job = ProducerTests().fixture()
+    receipt.update(export_sha256=hashlib.sha256(payload).hexdigest(), export_bytes=len(payload))
+    buffer=io.BytesIO()
+    with zipfile.ZipFile(buffer,'w') as archive:
+        archive.writestr('export.tar',payload)
+        archive.writestr('provenance.json',json.dumps(receipt))
+    content=buffer.getvalue()
+    artifact.update(id=4,name='shirube-kernel-compiler-v1-amd64-1',size_in_bytes=len(content),
+                    digest='sha256:'+hashlib.sha256(content).hexdigest())
+    class Remote:
+        def json(self, path):
+            if path.startswith('actions/workflows/'):return {'workflow_runs':[run]}
+            if path.endswith('/artifacts?per_page=100'):return {'total_count':1,'artifacts':[artifact]}
+            if path.startswith('actions/artifacts/'):return artifact
+            if path.startswith('pulls/'):return pr
+            if '/jobs?' in path:return {'total_count':1,'jobs':[job]}
+            return run
+        def download(self, identity, target, size):
+            if (identity,size) != (4,len(content)):raise AssertionError('wrong artifact')
+            target.write_bytes(content)
+    if host.import_cache(Remote(),directory,'amd64') != 'RESTORED_TRUSTED_ARTIFACT':
+        raise AssertionError('trusted fixture not restored')
+
+
+class ConsumerTests(unittest.TestCase):
+    def contexts(self):
+        repo = dict(full_name=host.REPO, id=host.REPO_ID)
+        env = dict(GITHUB_REPOSITORY=host.REPO, GITHUB_SHA='a'*40, CACHE_WRITE='false')
+        merged = dict(repository=repo, action='closed', pull_request=dict(
+            number=40, state='closed', merged=True, merge_commit_sha='b'*40,
+            base=dict(ref='main', repo=repo)))
+        yield dict(env, GITHUB_EVENT_NAME='pull_request_target', GITHUB_REF='refs/heads/main'), merged, 'b'*40
+        for head_repo in (repo, dict(full_name='fork/shirube-os', id=123)):
+            for label in ('validate-staged', 'validate-staged-warm'):
+                pr = dict(repository=repo, action='labeled', label=dict(name=label),
+                    pull_request=dict(base=dict(repo=repo), head=dict(sha='b'*40, repo=head_repo)))
+                yield dict(env, GITHUB_EVENT_NAME='pull_request', GITHUB_REF='refs/pull/40/merge'), pr, 'b'*40
+        for ref, commit in [('refs/heads/main', 'a'*40), ('refs/heads/feature/cache', 'b'*40)]:
+            yield dict(env, GITHUB_EVENT_NAME='workflow_dispatch', GITHUB_REF=ref), dict(repository=repo), commit
+
+    def invoke(self, env, event, commit, arch, mode, operation='import', failure=None):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); path=root/'event.json'; path.write_text(json.dumps(event))
+            destination=root/'cache'; output=io.StringIO()
+            argv=['cache', operation, '--directory', str(destination), '--architecture', arch, '--commit', commit]
+            with patch.dict(os.environ, dict(env, CACHE_MODE=mode, GITHUB_EVENT_PATH=str(path)), clear=True), \
+                 patch.object(host.sys, 'argv', argv), patch.object(host, 'API') as api, \
+                 patch.object(host, 'import_cache', return_value='MISS', side_effect=failure) as remote, \
+                 contextlib.redirect_stdout(output):
+                host.main()
+                self.assertEqual(remote.call_count, int(mode == 'warm'))
+                self.assertEqual(api.call_count, int(mode == 'warm'))
+                self.assertEqual(list(destination.iterdir()), [])
+                self.assertIn('MISS' if mode == 'warm' else 'COLD', output.getvalue())
+                self.assertNotIn('private response', output.getvalue())
+
+    def test_all_canonical_consumers_cold_warm_both_arches_without_writer(self):
+        for env, event, commit in self.contexts():
+            for arch in ('amd64', 'arm64'):
+                for mode in ('cold', 'warm'):
+                    with self.subTest(env=env, event=event, arch=arch, mode=mode):
+                        self.invoke(env,event,commit,arch,mode)
+                        if mode == 'warm':
+                            self.invoke(env,event,commit,arch,mode, failure=OSError('private response'))
+                with self.assertRaises(ValueError):
+                    self.invoke(env,event,commit,arch,'warm','receipt')
+
+    def test_foreign_malformed_unsupported_never_fetch(self):
+        for env, event, commit in self.contexts():
+            bad = [(dict(env, GITHUB_REPOSITORY='fork/shirube-os'), event, commit),
+                   (dict(env, GITHUB_EVENT_NAME='push'), event, commit),
+                   (dict(env, GITHUB_SHA='main'), event, commit),
+                   (dict(env, GITHUB_REF='refs/tags/v1'), event, commit),
+                   (env, dict(event, repository=dict(full_name=host.REPO,id=1)), commit),
+                   (env, event, 'main')]
+            foreign=copy.deepcopy(event);foreign['repository']=dict(full_name='fork/shirube-os',id=123)
+            bad.append((dict(env,GITHUB_REPOSITORY='fork/shirube-os'),foreign,commit))
+            if env['GITHUB_EVENT_NAME'] != 'workflow_dispatch' or env['GITHUB_REF'] == 'refs/heads/main':
+                bad.append((env,event,'c'*40))
+            if 'pull_request' in event:
+                bad.append((env,dict(event, action='opened'),commit))
+                changed=copy.deepcopy(event);changed['pull_request']['base']['repo']['id']=1
+                bad.append((env,changed,commit))
+                if env['GITHUB_EVENT_NAME'] == 'pull_request':
+                    bad.append((env,dict(event,label=dict(name='unrelated')),commit))
+                    bad.append((dict(env,GITHUB_REF='refs/pull/0/merge'),event,commit))
+                else:
+                    for key,value in [('state','open'),('merged',False)]:
+                        changed=copy.deepcopy(event);changed['pull_request'][key]=value
+                        bad.append((env,changed,commit))
+            for changed, data, source in bad:
+                with patch.object(host, 'import_cache') as remote, self.subTest(env=changed, data=data):
+                    for arch in ('amd64','arm64'):
+                        with self.assertRaises(ValueError): self.invoke(changed,data,source,arch,'warm')
+                    remote.assert_not_called()
+
+    def test_launcher_passes_explicit_write_capability_and_no_host_credentials(self):
+        spec=importlib.util.spec_from_file_location('launcher40','scripts/run-native-stage.py')
+        launcher=importlib.util.module_from_spec(spec);spec.loader.exec_module(launcher)
+        for write in (False, True):
+            with tempfile.TemporaryDirectory() as temp:
+                root=Path(temp); mount=root/'cache';mount.mkdir(); output=root/'output'
+                calls=[]
+                def run(*args, **kwargs):
+                    calls.append(args)
+                    if args[0]=='docker':
+                        for name in ('transfer.tar','transfer.json','resources.json'):
+                            (output/name).write_text('fixture')
+                def check(args, **kwargs):
+                    if args[:2]==['git','rev-parse']:return 'a'*40
+                    if args[:2]==['git','status']:return ''
+                    return 'amd64'
+                argv=['launcher','--stage','kernel','--architecture','amd64','--commit','a'*40,
+                      '--version','v2026.03.0','--image','sha256:'+'b'*64,'--inputs',str(root/'inputs'),
+                      '--output',str(output),'--kernel-compile-cache',str(mount)]
+                if write:argv.append('--kernel-compile-cache-write')
+                with patch.object(launcher.sys,'argv',argv), patch.object(launcher,'run',side_effect=run), \
+                     patch.object(launcher.subprocess,'check_output',side_effect=check), \
+                     patch.object(launcher,'native'), patch.dict(os.environ,{'GH_TOKEN':'host-secret'}):
+                    launcher.main()
+                docker=next(c for c in calls if c[0]=='docker')
+                self.assertIn('SHIRUBE_KERNEL_COMPILE_CACHE_WRITE='+str(write).lower(),docker)
+                self.assertNotIn('host-secret',str(docker))
+                self.assertNotIn('GH_TOKEN',str(docker))
+                self.assertNotIn('--env-file',docker)
 
 
 if __name__ == '__main__':

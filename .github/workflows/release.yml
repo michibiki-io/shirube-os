@@ -71,6 +71,7 @@ jobs:
     if: needs.resolve.outputs.publication != 'publish' && needs.resolve.outputs.validation == 'candidate'
     permissions:
       contents: read
+      actions: read
     uses: ./.github/workflows/staged-candidate.yml
     with:
       commit: ${{ needs.resolve.outputs.commit }}

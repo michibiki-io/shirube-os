@@ -52,6 +52,18 @@ class TaxonomyTests(unittest.TestCase):
             (root/'inputs-common.json').write_text('{broken')
             with self.assertRaises(ValueError): policy.declared_consumers(tmp)
 
+    def test_issue40_complete_inventory_is_nonpublishing_candidate(self):
+        paths = ['.github/workflows/release.yml', '.github/workflows/staged-candidate.yml',
+                 '.github/workflows/validate-staged.yml', 'producer/kernel_compile_cache.py',
+                 'scripts/kernel_compile_cache.py', 'scripts/run-native-stage.py',
+                 'tests/test_kernel_compile_cache.py', 'tests/test_workflow_cache_ci.py',
+                 'tests/test_release_plan.py', 'tests/test_release_stage_import.py', 'docs/STAGED-BUILD.md']
+        consumers=policy.declared_consumers(ROOT)
+        result=policy.classify(paths, consumers)
+        self.assertEqual((result['publication'],result['validation']),('none','candidate'))
+        for path in paths:
+            self.assertNotIn(policy.role(path,consumers), {'product','unknown'})
+
     def test_real_37_inventory_is_validation_only_and_10_security_product(self):
         # Public PR #37's complete 14-path inventory, independent of clone depth.
         paths = ['.github/workflows/staged-candidate.yml', '.github/workflows/test.yml',

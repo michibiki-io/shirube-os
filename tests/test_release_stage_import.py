@@ -431,7 +431,8 @@ class WorkflowImportTests(unittest.TestCase):
         staged_workflow=workflow('staged-candidate.yml');release=workflow('release.yml');validation=workflow('validate-staged.yml')
         self.assertNotIn('permissions',staged_workflow)
         self.assertEqual(release['jobs']['build']['permissions'],{'contents':'read','actions':'read'})
-        for caller in (release['jobs']['build'],validation['jobs']['validate'],validation['jobs']['validate-main']):
+        for caller in (release['jobs']['build'],release['jobs']['candidate-validation'],
+                       validation['jobs']['validate'],validation['jobs']['validate-main']):
             for name,job in staged_workflow['jobs'].items():
                 effective=job.get('permissions',caller['permissions'])
                 self.assertEqual(effective,caller['permissions'] if name in (*CACHEABLE, 'kernel') else {'contents':'read'})
@@ -444,7 +445,7 @@ class WorkflowImportTests(unittest.TestCase):
             if name == 'kernel':
                 self.assertIn('scripts/kernel_compile_cache.py import', step['run'])
                 self.assertNotIn('docker', step['run'])
-                self.assertEqual(step['if'], "needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target'")
+                self.assertEqual(step['if'], "github.repository == 'michibiki-io/shirube-os'")
                 continue
             self.assertIn('scripts/import_release_stage.py',step['run'])
             self.assertNotIn('docker',step['run'])
