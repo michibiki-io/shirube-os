@@ -856,9 +856,11 @@ jobs:
           ARCHITECTURE: ${{ matrix.architecture }}
           SELECTED_ARCHITECTURES: ${{ inputs.architectures }}
         run: |
-          echo "Selected architectures: $SELECTED_ARCHITECTURES" >> "$GITHUB_STEP_SUMMARY"
-          echo "Seed $ARCHITECTURE chain uploaded: $SOURCE_COMMIT / run $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT" >> "$GITHUB_STEP_SUMMARY"
-          echo 'Run-level seed scope success requires every selected architecture job to succeed and a successful run conclusion. Full candidate/aggregate/ISO/guest/Release acceptance: NOT_RUN. Existing pending validation remains pending.' >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "Selected architectures: $SELECTED_ARCHITECTURES"
+            echo "Seed $ARCHITECTURE chain uploaded: $SOURCE_COMMIT / run $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT"
+            echo 'Run-level seed scope success requires every selected architecture job to succeed and a successful run conclusion. Full candidate/aggregate/ISO/guest/Release acceptance: NOT_RUN. Existing pending validation remains pending.'
+          } >> "$GITHUB_STEP_SUMMARY"
   integration:
     if: inputs.purpose != 'seed'
     permissions:
