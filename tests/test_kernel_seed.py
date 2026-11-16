@@ -161,6 +161,30 @@ class SeedAuthorityTests(unittest.TestCase):
 
 
 class SeedGraphTests(unittest.TestCase):
+    def test_architecture_upload_summary_does_not_claim_run_scope_passed(self):
+        steps = workflow('staged-candidate.yml')['jobs']['kernel']['steps']
+        step = next(s for s in steps if 'GITHUB_STEP_SUMMARY' in s.get('run', ''))
+        self.assertTrue(expression_value(step['if'], {'inputs.purpose': 'seed'}))
+        self.assertFalse(expression_value(step['if'], {'inputs.purpose': 'validation'}))
+        self.assertEqual(step['env']['ARCHITECTURE'], '${{ matrix.architecture }}')
+        for arch in ('amd64', 'arm64'):
+            # This job may finish while the other architecture fails or is pending.
+            with self.subTest(arch=arch), tempfile.TemporaryDirectory() as temp:
+                summary = Path(temp) / 'summary'
+                env = dict(SOURCE_COMMIT='a'*40, ARCHITECTURE=arch,
+                           GITHUB_RUN_ID='10', GITHUB_RUN_ATTEMPT='2',
+                           GITHUB_STEP_SUMMARY=str(summary))
+                subprocess.run(['bash', '-e', '-c', step['run']], env=env,
+                               capture_output=True, check=True)
+                text = summary.read_text()
+                self.assertIn(f'Seed {arch} chain uploaded:', text)
+                self.assertIn('a'*40 + ' / run 10 attempt 2', text)
+                self.assertNotIn('PASSED', text)
+                self.assertIn('Run-level seed scope success requires both architecture jobs to succeed '
+                              'and a successful run conclusion.', text)
+                self.assertIn('Full candidate/aggregate/ISO/guest/Release acceptance: NOT_RUN.', text)
+                self.assertIn('Existing pending validation remains pending.', text)
+
     def test_dedicated_manual_graph_and_effective_permissions(self):
         caller=workflow('kernel-seed.yml')
         self.assertEqual(set(caller['on']),{'workflow_dispatch'})

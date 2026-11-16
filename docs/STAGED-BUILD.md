@@ -1024,10 +1024,21 @@ Keep the required seven-day compiler/VPP handoffs and the seven-day bounded
 kernel compiler export, provenance and diagnostics. The unused signed kernel
 stage tar may be created locally by the established engine, but is not uploaded.
 No image artifact is produced. Existing full workflows keep their graph/uploads.
-The seed summary states seed scope PASSED and full acceptance NOT_RUN. A failed,
+Each architecture summary reports only that architecture's chain upload and full
+acceptance NOT_RUN. Run-level seed scope success requires both architecture jobs
+to succeed and a successful run conclusion. A failed,
 cancelled or partial run cannot supply an admissible seed, even if one architecture
 uploaded an artifact. Inspect both architecture jobs and provenance before treating
 the run as successful. Kernel tokens have only host-side Actions read access.
+
+Seed discovery is bound to the run's latest attempt: artifact names and successful
+job provenance must match that attempt. After **Re-run failed jobs**, only rerun
+architectures can supply admissible seeds once the run succeeds; an untouched
+architecture's artifact from the previous attempt misses discovery. For example,
+rerunning only failed arm64 leaves the earlier amd64 seed undiscoverable in that
+run. If both architecture seeds are required, choose **Re-run all jobs** or a new
+dispatch only when the operator intends the compilation and storage cost.
+Provenance remains attempt-bound; there is no cross-attempt compatibility fallback.
 
 Release receipts retain schema 1 with a real merged PR. Dedicated seed receipts
 use schema 2, `producer_kind=kernel-seed`, `workflow_sha` and `source_ref`, without
@@ -1148,10 +1159,18 @@ compiler/component の共有 cache 書込は増やさず、caller の cache cap 
 必要な同一 run の compiler/VPP 転送と、上限付き kernel compiler export、provenance、診断を7日保持します。
 既存 engine がローカルで作る kernel stage tar は upload せず、image artifact も作りません。
 通常の full workflow の graph と upload は維持します。
-summary は seed scope PASSED と full acceptance NOT_RUN を区別します。
+architecture ごとの summary は、その chain の upload 完了と full acceptance NOT_RUN だけを示します。
+run 全体の seed scope 成功には、両 architecture の job 成功と run の成功 conclusion が必要です。
 片方の artifact があっても、失敗、取消、途中の run は producer にできません。
 両 architecture の job 成功と provenance を確認します。
 token は host の Actions read 操作だけに使います。
+
+seed の探索は run の最新 attempt に限定し、artifact 名と成功 job の provenance がその attempt と一致する必要があります。
+Re-run failed jobs 後に run が成功しても、再実行した architecture の seed だけが受入可能です。
+再実行しなかった architecture の前 attempt の artifact は探索で miss になります。
+たとえば失敗した arm64 だけを再実行すると、その run の以前の amd64 seed は見つかりません。
+両 architecture の seed が必要な場合は、operator がコンパイルと保存の費用を意図するときだけ Re-run all jobs または新規 dispatch を選びます。
+provenance は attempt に束縛したままとし、attempt をまたぐ互換 fallback は設けません。
 
 Release receipt の schema 1 は実 merged PR に結び付きます。
 seed receipt の schema 2 は `producer_kind=kernel-seed`、`workflow_sha`、`source_ref` を持ち、`source_pr` は持ちません。

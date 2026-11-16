@@ -783,14 +783,14 @@ jobs:
             ${{ runner.temp }}/kernel-compiler-cache/metrics.json
           if-no-files-found: warn
           retention-days: ${{ inputs.purpose == 'seed' && 7 || 14 }}
-      - name: Report successful seed scope without promoting full validation
+      - name: Report architecture seed upload without promoting full validation
         if: inputs.purpose == 'seed'
         env:
           SOURCE_COMMIT: ${{ inputs.commit }}
           ARCHITECTURE: ${{ matrix.architecture }}
         run: |
-          echo "Seed compiler results uploaded: $SOURCE_COMMIT / $ARCHITECTURE / run $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT" >> "$GITHUB_STEP_SUMMARY"
-          echo 'Seed scope PASSED. Full candidate/aggregate/ISO/guest/Release: NOT_RUN. Existing pending validation remains pending.' >> "$GITHUB_STEP_SUMMARY"
+          echo "Seed $ARCHITECTURE chain uploaded: $SOURCE_COMMIT / run $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Run-level seed scope success requires both architecture jobs to succeed and a successful run conclusion. Full candidate/aggregate/ISO/guest/Release acceptance: NOT_RUN. Existing pending validation remains pending.' >> "$GITHUB_STEP_SUMMARY"
   integration:
     if: inputs.purpose != 'seed'
     permissions:
