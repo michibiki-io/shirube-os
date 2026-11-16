@@ -244,6 +244,7 @@ class SeedGraphTests(unittest.TestCase):
                                      'cache-write=false\nkernel-write=true\nmatrix='+json.dumps({'include':[{'architecture':'amd64','runner':'ubuntu-24.04'}, {'architecture':'arm64','runner':'ubuntu-24.04-arm'}]}, separators=(',',':'))+'\n' if key is None else '')
         jobs=workflow('staged-candidate.yml')['jobs']
         ctx={'needs.admission.outputs.cache-write':'false','needs.admission.outputs.kernel-write':'true',
+             'steps.kernel-cache-capability.outputs.supported':'true',
              'success()':True,'steps.cache.outputs.cache-hit':'false','steps.toolchain.outputs.key':'fixture',
              'github.event_name':'workflow_dispatch','inputs.cache-mode':'warm'}
         compiler=next(s for s in jobs['compiler']['steps'] if s.get('id')=='image')

@@ -432,21 +432,50 @@ class WorkflowImportTests(unittest.TestCase):
         self.assertNotIn('permissions',staged_workflow)
         self.assertEqual(release['jobs']['build']['permissions'],{'contents':'read','actions':'read'})
         for caller in (release['jobs']['build'],release['jobs']['candidate-validation'],
-                       validation['jobs']['validate'],validation['jobs']['validate-main']):
+                       validation['jobs']['validate'],validation['jobs']['validate-main'],
+                       release['jobs']['kernel-seed'],workflow('kernel-seed.yml')['jobs']['seed']):
+            self.assertEqual(caller['permissions'],{'contents':'read','actions':'read'})
             for name,job in staged_workflow['jobs'].items():
                 effective=job.get('permissions',caller['permissions'])
                 self.assertEqual(effective,caller['permissions'] if name in (*CACHEABLE, 'kernel') else {'contents':'read'})
         for name,job in staged_workflow['jobs'].items():
             steps=[s for s in job['steps'] if 'GH_TOKEN' in s.get('env',{})]
-            self.assertEqual(len(steps),1 if name in (*CACHEABLE, 'kernel') else 0)
+            if name == 'kernel':
+                importer = next(s for s in job['steps'] if 'kernel_compile_cache.py import' in s.get('run',''))
+                index = next(s for s in job['steps'] if s.get('id') == 'kernel-index')
+                self.assertEqual(steps, [importer, index])
+                for step in steps:
+                    self.assertEqual(step['env']['GH_TOKEN'], '${{ github.token }}')
+                    self.assertNotIn('docker', step['run'].lower())
+                    self.assertNotIn('run-native-stage', step['run'])
+                    self.assertEqual(step['env']['SOURCE_COMMIT'], '${{ inputs.commit }}')
+                    self.assertEqual(step['env']['ARCHITECTURE'], '${{ matrix.architecture }}')
+                    self.assertEqual(step['env']['KERNEL_CACHE'], '${{ runner.temp }}/kernel-compiler-cache')
+                    self.assertEqual(step['env']['PRODUCER_KIND'], '${{ inputs.producer-kind }}')
+                self.assertEqual(importer['if'], "github.repository == 'michibiki-io/shirube-os' && steps.kernel-cache-capability.outputs.supported == 'true'")
+                self.assertEqual(index['if'], "needs.admission.outputs.kernel-write == 'true' && steps.kernel-cache-capability.outputs.supported == 'true' && success()")
+                self.assertIn('kernel_compile_cache.py index', index['run'])
+                self.assertEqual(index['env']['EXPORT_ARTIFACT_ID'], '${{ steps.kernel-export.outputs.artifact-id }}')
+                self.assertEqual(index['env']['EXPORT_ARTIFACT_DIGEST'], '${{ steps.kernel-export.outputs.artifact-digest }}')
+                self.assertEqual(index['env']['KERNEL_CACHE_WRITE'], '${{ needs.admission.outputs.kernel-write }}')
+                for supported in ('true','false','', 'malformed'):
+                    for repo in ('michibiki-io/shirube-os','foreign/repo'):
+                        for writer in ('true','false'):
+                            for success in (True,False):
+                                context = {'github.repository':repo, 'steps.kernel-cache-capability.outputs.supported':supported,
+                                           'needs.admission.outputs.kernel-write':writer, 'success()':success}
+                                self.assertEqual(expression_value(importer['if'],context), repo == 'michibiki-io/shirube-os' and supported == 'true')
+                                self.assertEqual(expression_value(index['if'],context), writer == 'true' and supported == 'true' and success)
+                for other in job['steps']:
+                    if other not in steps:
+                        for node in mappings(other):
+                            self.assertNotIn('GH_TOKEN', node)
+                            self.assertFalse(any('github.token' in str(v) for v in node.values() if isinstance(v,str)))
+                continue
+            self.assertEqual(len(steps),1 if name in CACHEABLE else 0)
             if not steps: continue
             step=steps[0]
             self.assertEqual(step['env']['GH_TOKEN'],'${{ github.token }}')
-            if name == 'kernel':
-                self.assertIn('scripts/kernel_compile_cache.py import', step['run'])
-                self.assertNotIn('docker', step['run'])
-                self.assertEqual(step['if'], "github.repository == 'michibiki-io/shirube-os'")
-                continue
             self.assertIn('scripts/import_release_stage.py',step['run'])
             self.assertNotIn('docker',step['run'])
             self.assertEqual(step['env']['STAGE_KEY'],'${{ steps.scope.outputs.key }}')

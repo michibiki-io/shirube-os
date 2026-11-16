@@ -20,6 +20,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.import_release_stage import API
 from producer.sources import sha256
 
+# Source capability declaration: host readers plus an explicitly opted-in export
+# in run-native-stage/inner engine. Workflows inspect this literal without import.
+KERNEL_CACHE_CONTRACT = 'reader-v1-explicit-export'
+
 REPO = 'michibiki-io/shirube-os'
 REPO_ID = 1449410161
 LIMIT = 2 * 1024**3

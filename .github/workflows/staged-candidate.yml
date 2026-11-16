@@ -719,8 +719,33 @@ jobs:
         run: |
           python3 -m producer.compiler_artifact load --directory "$COMPILER_ARTIFACT" \
             --commit "$SOURCE_COMMIT" --architecture "$ARCHITECTURE" --run-id "$RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Inspect optional kernel cache source contract
+        id: kernel-cache-capability
+        run: |
+          python3 - <<'PYTHON'
+          import ast
+          import os
+          from pathlib import Path
+
+          supported = False
+          try:
+              # Parse only: never execute checked-out source to probe support.
+              tree = ast.parse(Path('scripts/kernel_compile_cache.py').read_text())
+              declarations = [node for node in tree.body if isinstance(node, ast.Assign)
+                              and any(isinstance(t, ast.Name) and t.id == 'KERNEL_CACHE_CONTRACT'
+                                      for t in node.targets)]
+              stores = [node for node in ast.walk(tree) if isinstance(node, ast.Name)
+                        and node.id == 'KERNEL_CACHE_CONTRACT' and isinstance(node.ctx, ast.Store)]
+              supported = (len(stores) == 1 and len(declarations) == 1 and len(declarations[0].targets) == 1
+                           and isinstance(declarations[0].value, ast.Constant)
+                           and declarations[0].value.value == 'reader-v1-explicit-export')
+          except (OSError, SyntaxError, UnicodeError, ValueError):
+              pass
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('supported=' + str(supported).lower() + '\n')
+          PYTHON
       - name: Admit optional trusted kernel compiler results
-        if: github.repository == 'michibiki-io/shirube-os'
+        if: github.repository == 'michibiki-io/shirube-os' && steps.kernel-cache-capability.outputs.supported == 'true'
         timeout-minutes: 11
         env:
           GH_TOKEN: ${{ github.token }}
@@ -744,7 +769,7 @@ jobs:
           STAGE_INPUTS: ${{ runner.temp }}/stage-inputs
           STAGE_OUTPUT: ${{ runner.temp }}/stage-output
           KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
-          KERNEL_CACHE_ENABLED: ${{ github.repository == 'michibiki-io/shirube-os' }}
+          KERNEL_CACHE_ENABLED: ${{ github.repository == 'michibiki-io/shirube-os' && steps.kernel-cache-capability.outputs.supported == 'true' }}
           KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write == 'true' }}
         run: |
           compiler_cache=()
@@ -758,7 +783,7 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" "${compiler_cache[@]}"
       - name: Bind successful compiler results to trusted producer
-        if: needs.admission.outputs.kernel-write == 'true' && success()
+        if: needs.admission.outputs.kernel-write == 'true' && steps.kernel-cache-capability.outputs.supported == 'true' && success()
         env:
           CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
           KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write }}
@@ -770,7 +795,7 @@ jobs:
           python3 scripts/kernel_compile_cache.py receipt --directory "$KERNEL_CACHE" \
             --architecture "$ARCHITECTURE" --commit "$SOURCE_COMMIT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        if: needs.admission.outputs.kernel-write == 'true' && success()
+        if: needs.admission.outputs.kernel-write == 'true' && steps.kernel-cache-capability.outputs.supported == 'true' && success()
         id: kernel-export
         with:
           name: shirube-kernel-compiler-v1-${{ matrix.architecture }}-${{ github.run_attempt }}
@@ -782,7 +807,7 @@ jobs:
           retention-days: 7
       - name: Bind tiny coverage index to uploaded export metadata
         id: kernel-index
-        if: needs.admission.outputs.kernel-write == 'true' && success()
+        if: needs.admission.outputs.kernel-write == 'true' && steps.kernel-cache-capability.outputs.supported == 'true' && success()
         env:
           GH_TOKEN: ${{ github.token }}
           KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write }}
@@ -796,7 +821,7 @@ jobs:
           python3 scripts/kernel_compile_cache.py index --directory "$KERNEL_CACHE" \
             --architecture "$ARCHITECTURE" --commit "$SOURCE_COMMIT" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        if: needs.admission.outputs.kernel-write == 'true' && success()
+        if: needs.admission.outputs.kernel-write == 'true' && steps.kernel-cache-capability.outputs.supported == 'true' && success()
         with:
           name: ${{ steps.kernel-index.outputs.index-name }}
           path: ${{ runner.temp }}/kernel-compiler-cache/index.json

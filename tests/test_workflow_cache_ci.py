@@ -173,7 +173,7 @@ class WorkflowCacheCITests(unittest.TestCase):
                     {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
             commands=[step['run'] for step in job['steps'] if 'run' in step]
             cacheable = stage in {'native','vpp','kea','salt','runtime'}
-            self.assertEqual(len(commands),6 if stage == 'kernel' else 4 if cacheable else 2)
+            self.assertEqual(len(commands),7 if stage == 'kernel' else 4 if cacheable else 2)
             if cacheable:
                 self.assertIn('producer.component_inputs stage-key',commands[1])
                 self.assertIn('--read-only --network none',commands[1])
@@ -272,6 +272,7 @@ class WorkflowCacheCITests(unittest.TestCase):
                 for success in [True, False]:
                     context = {'needs.admission.outputs.cache-write': admitted,
                                'github.repository': 'michibiki-io/shirube-os',
+                               'steps.kernel-cache-capability.outputs.supported':'true',
                                'github.event_name': event, 'success()': success,
                                'needs.admission.outputs.kernel-write': str(admitted == 'true' and event == 'pull_request_target').lower()}
                     eligible = admitted == 'true' and event == 'pull_request_target'
@@ -306,6 +307,7 @@ class WorkflowCacheCITests(unittest.TestCase):
                             for repo in ('michibiki-io/shirube-os','foreign/repo'):
                                 context = {'needs.admission.outputs.cache-write':writer,
                                            'github.event_name':event,'github.repository':repo,
+                                           'steps.kernel-cache-capability.outputs.supported':'true',
                                            'inputs.cache-mode':'warm','steps.cache.outputs.cache-hit':'false',
                                            'needs.admission.outputs.kernel-write':writer,'success()':True}
                                 expected = (repo == 'michibiki-io/shirube-os' if name == 'kernel'
