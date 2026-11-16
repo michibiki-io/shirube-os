@@ -406,14 +406,27 @@ def evidence():
     identity(source)
     if decision['source_commit'] != source or decision['run_id'] != os.environ['GITHUB_RUN_ID']:
         raise ValueError('Plan source/run does not match this evidence run')
-    results = {k: v['result'] if isinstance(v, dict) else v
-               for k, v in json.loads(os.environ['SHIRUBE_JOB_RESULTS']).items()}
+    jobs = json.loads(os.environ['SHIRUBE_JOB_RESULTS'])
+    results = {k: v['result'] if isinstance(v, dict) else v for k, v in jobs.items()}
     # resolve already passed its focused checks; required outputs never infer PASS.
     gates = {'focused': results.get('resolve'),
              'candidate': results.get('build') if decision['publication'] == 'publish' else results.get('candidate-validation'),
              'aggregate': results.get('candidate-check'),
              'publication': results.get('resolve') if decision.get('noop') else results.get('publish')}
     final, passed = release_plan.outcomes(decision, gates)
+    seed_results = {name: results.get(name) for name in ('seed-plan', 'kernel-seed')}
+    final['kernel_seed_jobs'] = seed_results
+    seed_plan = jobs.get('seed-plan', {})
+    maintenance_status = seed_plan.get('outputs', {}).get('status', 'not-requested') if isinstance(seed_plan, dict) else 'not-requested'
+    final['kernel_seed_status'] = maintenance_status
+    if passed and maintenance_status.startswith('pending-'):
+        final['status'] = 'pending-required-validation' if final['pending_required_gates'] else 'pending-kernel-seed'
+
+    # A failed attempted maintenance chain is a failed workflow, independently
+    # of intentionally deferred full validation. Covered/unknown are not gates.
+    if any(value in {'failure', 'cancelled'} for value in seed_results.values()):
+        final['status'] = 'failed'
+        passed = False
     final['plan_run_attempt'] = decision['run_attempt']
     final['evidence_run_attempt'] = os.environ['GITHUB_RUN_ATTEMPT']
     (root/'result.json').write_text(json.dumps(final, sort_keys=True, indent=2)+'\n')

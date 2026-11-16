@@ -134,7 +134,7 @@ class SeedAuthorityTests(unittest.TestCase):
         with self.assertRaises(ValueError):host.verify_producer(SeedRemote(run,artifact,receipt,job),run,artifact,receipt,'amd64')
 
     def test_seed_receipt_cli_admission_rejects_before_api_or_write(self):
-        base = dict(KERNEL_CACHE_WRITE='true', CACHE_WRITE='false', GITHUB_EVENT_NAME='workflow_dispatch',
+        base = dict(PRODUCER_KIND='manual-seed', KERNEL_CACHE_WRITE='true', CACHE_WRITE='false', GITHUB_EVENT_NAME='workflow_dispatch',
                     GITHUB_REPOSITORY=host.REPO, GITHUB_REF='refs/heads/main', GITHUB_SHA='a'*40,
                     GITHUB_WORKFLOW_SHA='a'*40,
                     GITHUB_WORKFLOW_REF=host.REPO+'/.github/workflows/kernel-seed.yml@refs/heads/main',
@@ -146,6 +146,8 @@ class SeedAuthorityTests(unittest.TestCase):
                               ('GITHUB_REPOSITORY','fork/repo'), ('REPOSITORY_ID',1), ('GITHUB_EVENT_NAME','pull_request')]:
                 with self.subTest(arch=arch,key=key), tempfile.TemporaryDirectory() as temp:
                     root=Path(temp); mount=root/'cache';mount.mkdir();(mount/'export.tar').write_bytes(b'results')
+                    from tests.test_kernel_seed_automatic import measurements
+                    (mount/'metrics.json').write_text(json.dumps(measurements(arch)))
                     event=root/'event';event.write_text(json.dumps({'repository':{'full_name':host.REPO,'id':value if key=='REPOSITORY_ID' else host.REPO_ID}}))
                     env=dict(base,GITHUB_EVENT_PATH=str(event))
                     if key and key!='REPOSITORY_ID':env[key]=value
@@ -156,7 +158,7 @@ class SeedAuthorityTests(unittest.TestCase):
                             self.assertFalse((mount/'provenance.json').exists())
                         else:
                             host.main();receipt=json.loads((mount/'provenance.json').read_text())
-                            self.assertEqual(receipt['producer_kind'],'kernel-seed');self.assertNotIn('source_pr',receipt)
+                            self.assertEqual(receipt['producer_kind'],'manual-seed');self.assertNotIn('source_pr',receipt)
                         api.assert_not_called()
 
 
@@ -180,7 +182,7 @@ class SeedGraphTests(unittest.TestCase):
                 self.assertIn(f'Seed {arch} chain uploaded:', text)
                 self.assertIn('a'*40 + ' / run 10 attempt 2', text)
                 self.assertNotIn('PASSED', text)
-                self.assertIn('Run-level seed scope success requires both architecture jobs to succeed '
+                self.assertIn('Run-level seed scope success requires every selected architecture job to succeed '
                               'and a successful run conclusion.', text)
                 self.assertIn('Full candidate/aggregate/ISO/guest/Release acceptance: NOT_RUN.', text)
                 self.assertIn('Existing pending validation remains pending.', text)
@@ -188,7 +190,7 @@ class SeedGraphTests(unittest.TestCase):
     def test_dedicated_manual_graph_and_effective_permissions(self):
         caller=workflow('kernel-seed.yml')
         self.assertEqual(set(caller['on']),{'workflow_dispatch'})
-        self.assertEqual(set(caller['jobs']),{'seed'})
+        self.assertEqual(set(caller['jobs']),{'plan','seed'})
         self.assertEqual(caller['cache-mode'],'read')
         job=caller['jobs']['seed']
         self.assertEqual(job['permissions'],{'contents':'read','actions':'read'})
@@ -198,15 +200,14 @@ class SeedGraphTests(unittest.TestCase):
         self.assertNotIn('source-ref',caller['on']['workflow_dispatch']['inputs'])
         for repo in (host.REPO,'fork/repo'):
             for ref in ('refs/heads/main','refs/heads/feature/x','refs/tags/v1'):
-                self.assertEqual(expression_value(job['if'],{'github.repository':repo,'github.ref':ref}),
+                self.assertEqual(expression_value(caller['jobs']['plan']['if'],{'github.repository':repo,'github.ref':ref}),
                                  repo == host.REPO and ref == 'refs/heads/main')
         jobs=workflow('staged-candidate.yml')['jobs']
         for purpose in ('seed','release','validation'):
             selected={name for name,node in jobs.items() if 'if' not in node or expression_value(node['if'],{'inputs.purpose':purpose})}
             self.assertEqual(selected,{'admission','compiler','vpp','kernel'} if purpose == 'seed' else set(jobs))
         for name in ('compiler','vpp','kernel'):
-            self.assertEqual(jobs[name]['strategy']['matrix']['include'],[
-                {'architecture':'amd64','runner':'ubuntu-24.04'}, {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
+            self.assertEqual(jobs[name]['strategy']['matrix'], '${{ fromJSON(needs.admission.outputs.matrix) }}')
             self.assertEqual(jobs[name].get('permissions',job['permissions']),
                              {'contents':'read'} if name=='compiler' else job['permissions'])
         self.assertEqual(jobs['kernel']['needs'],['admission','compiler','vpp'])
@@ -216,11 +217,14 @@ class SeedGraphTests(unittest.TestCase):
         self.assertFalse(expression_value(stage_upload['if'],{'inputs.purpose':'seed'}))
         self.assertTrue(expression_value(stage_upload['if'],{'inputs.purpose':'validation'}))
         for node in mappings(caller):
-            self.assertNotIn('secrets',node);self.assertNotIn('GH_TOKEN',node)
+            self.assertNotIn('secrets',node)
+            if 'GH_TOKEN' in node:
+                self.assertEqual(node['GH_TOKEN'],'${{ github.token }}')
+                self.assertEqual(node['PRODUCER_KIND'],'manual-seed')
 
     def test_executable_inline_seed_admission_and_no_component_writer(self):
         admission=workflow('staged-candidate.yml')['jobs']['admission']['steps'][0]['run']
-        base=dict(SOURCE_COMMIT='a'*40,CACHE_MODE='warm',PURPOSE='seed',GITHUB_SHA='a'*40,
+        base=dict(SOURCE_COMMIT='a'*40,CACHE_MODE='warm',PURPOSE='seed',PRODUCER_KIND='manual-seed',ARCHITECTURES='amd64,arm64',GITHUB_SHA='a'*40,
                   GITHUB_WORKFLOW_SHA='a'*40,GITHUB_REF='refs/heads/main',GITHUB_REPOSITORY=host.REPO,
                   GITHUB_EVENT_NAME='workflow_dispatch',
                   GITHUB_WORKFLOW_REF=host.REPO+'/.github/workflows/kernel-seed.yml@refs/heads/main')
@@ -237,7 +241,7 @@ class SeedGraphTests(unittest.TestCase):
                     result=subprocess.run(['bash','-e','-c',admission],env=env,capture_output=True)
                     self.assertEqual(result.returncode==0,key is None)
                     self.assertEqual(output.read_text() if output.exists() else '',
-                                     'cache-write=false\nkernel-write=true\n' if key is None else '')
+                                     'cache-write=false\nkernel-write=true\nmatrix='+json.dumps({'include':[{'architecture':'amd64','runner':'ubuntu-24.04'}, {'architecture':'arm64','runner':'ubuntu-24.04-arm'}]}, separators=(',',':'))+'\n' if key is None else '')
         jobs=workflow('staged-candidate.yml')['jobs']
         ctx={'needs.admission.outputs.cache-write':'false','needs.admission.outputs.kernel-write':'true',
              'success()':True,'steps.cache.outputs.cache-hit':'false','steps.toolchain.outputs.key':'fixture',

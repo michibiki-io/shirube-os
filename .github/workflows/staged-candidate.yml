@@ -14,6 +14,12 @@ on:
       purpose:
         type: string
         default: validation
+      producer-kind:
+        type: string
+        default: ''
+      architectures:
+        type: string
+        default: amd64,arm64
 # Cache jobs inherit the caller's effective mode and cap; do not set a workflow
 # default here, which would override that inheritance. Other jobs opt into read.
 # Kernel and five component jobs inherit actions:read from supported callers.
@@ -29,6 +35,7 @@ jobs:
     outputs:
       cache-write: ${{ steps.admit.outputs.cache-write }}
       kernel-write: ${{ steps.admit.outputs.kernel-write }}
+      matrix: ${{ steps.admit.outputs.matrix }}
     steps:
       # Trusted inline code only: no checkout, project imports or image execution.
       - id: admit
@@ -37,6 +44,8 @@ jobs:
           SOURCE_COMMIT: ${{ inputs.commit }}
           CACHE_MODE: ${{ inputs.cache-mode }}
           PURPOSE: ${{ inputs.purpose }}
+          PRODUCER_KIND: ${{ inputs.producer-kind }}
+          ARCHITECTURES: ${{ inputs.architectures }}
         run: |
           python3 -I - <<'PYCODE'
           import json, os, re
@@ -58,11 +67,6 @@ jobs:
           require(os.environ['PURPOSE'] in {'release', 'validation', 'seed'})
           write = False
           seed = os.environ['PURPOSE'] == 'seed'
-          if seed:
-              require(repo == 'michibiki-io/shirube-os' and data.get('repository', {}).get('id') == 1449410161)
-              require(event == 'workflow_dispatch' and ref == 'refs/heads/main' and commit == sha)
-              require(os.environ.get('GITHUB_WORKFLOW_REF') == repo + '/.github/workflows/kernel-seed.yml@refs/heads/main')
-              require(os.environ.get('GITHUB_WORKFLOW_SHA') == commit)
           if event == 'workflow_dispatch':
               require(ref.startswith('refs/heads/') and len(ref) > len('refs/heads/'))
               if ref == 'refs/heads/main':
@@ -84,9 +88,35 @@ jobs:
               require(commit == pr.get('head', {}).get('sha'))
           else:
               require(False)
+          kinds = {
+              'build': ('release.yml', 'pull_request_target', 'release'),
+              'candidate-validation': ('release.yml', 'pull_request_target', 'validation'),
+              'validate-main': ('validate-staged.yml', 'workflow_dispatch', 'validation'),
+              'manual-seed': ('kernel-seed.yml', 'workflow_dispatch', 'seed'),
+              'automatic-seed': ('release.yml', 'pull_request_target', 'seed'),
+          }
+          kind = os.environ['PRODUCER_KIND']
+          kernel_write = bool(kind)
+          if kernel_write:
+              require(kind in kinds)
+              workflow, allowed_event, purpose = kinds[kind]
+              require(repo == 'michibiki-io/shirube-os' and data.get('repository', {}).get('id') == 1449410161)
+              require(event == allowed_event and ref == 'refs/heads/main' and os.environ['PURPOSE'] == purpose)
+              require(os.environ.get('GITHUB_WORKFLOW_REF') == repo + '/.github/workflows/' + workflow + '@refs/heads/main')
+              if event == 'workflow_dispatch':
+                  require(os.environ.get('GITHUB_WORKFLOW_SHA') == commit == sha)
+              else:
+                  require(data['pull_request']['base']['repo'].get('id') == 1449410161)
+          require(not seed or kind in {'manual-seed', 'automatic-seed'})
+          selected = os.environ['ARCHITECTURES'].split(',')
+          require(bool(selected) and len(set(selected)) == len(selected) and set(selected) <= {'amd64', 'arm64'})
+          require(seed or set(selected) == {'amd64', 'arm64'})
+          matrix = {'include': [dict(architecture=a, runner='ubuntu-24.04'+('-arm' if a == 'arm64' else ''))
+                                for a in ('amd64', 'arm64') if a in selected]}
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write('cache-write=' + str(write).lower() + '\n')
-              output.write('kernel-write=' + str(seed or (write and event == 'pull_request_target')).lower() + '\n')
+              output.write('kernel-write=' + str(kernel_write).lower() + '\n')
+              output.write('matrix=' + json.dumps(matrix, separators=(',', ':')) + '\n')
           PYCODE
   compiler:
     permissions:
@@ -94,12 +124,7 @@ jobs:
     needs: [admission]
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - architecture: amd64
-            runner: ubuntu-24.04
-          - architecture: arm64
-            runner: ubuntu-24.04-arm
+      matrix: ${{ fromJSON(needs.admission.outputs.matrix) }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 120
     steps:
@@ -263,12 +288,7 @@ jobs:
     needs: [admission, compiler]
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - architecture: amd64
-            runner: ubuntu-24.04
-          - architecture: arm64
-            runner: ubuntu-24.04-arm
+      matrix: ${{ fromJSON(needs.admission.outputs.matrix) }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 180
     steps:
@@ -672,12 +692,7 @@ jobs:
     needs: [admission, compiler, vpp]
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - architecture: amd64
-            runner: ubuntu-24.04
-          - architecture: arm64
-            runner: ubuntu-24.04-arm
+      matrix: ${{ fromJSON(needs.admission.outputs.matrix) }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 180
     steps:
@@ -711,6 +726,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
           KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write }}
+          PRODUCER_KIND: ${{ inputs.producer-kind }}
           CACHE_MODE: ${{ inputs.cache-mode }}
           SOURCE_COMMIT: ${{ inputs.commit }}
           ARCHITECTURE: ${{ matrix.architecture }}
@@ -746,6 +762,7 @@ jobs:
         env:
           CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
           KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write }}
+          PRODUCER_KIND: ${{ inputs.producer-kind }}
           SOURCE_COMMIT: ${{ inputs.commit }}
           ARCHITECTURE: ${{ matrix.architecture }}
           KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
@@ -754,6 +771,7 @@ jobs:
             --architecture "$ARCHITECTURE" --commit "$SOURCE_COMMIT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: needs.admission.outputs.kernel-write == 'true' && success()
+        id: kernel-export
         with:
           name: shirube-kernel-compiler-v1-${{ matrix.architecture }}-${{ github.run_attempt }}
           path: |
@@ -762,6 +780,29 @@ jobs:
           if-no-files-found: error
           compression-level: 0
           retention-days: 7
+      - name: Bind tiny coverage index to uploaded export metadata
+        id: kernel-index
+        if: needs.admission.outputs.kernel-write == 'true' && success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write }}
+          PRODUCER_KIND: ${{ inputs.producer-kind }}
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+          KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
+          EXPORT_ARTIFACT_ID: ${{ steps.kernel-export.outputs.artifact-id }}
+          EXPORT_ARTIFACT_DIGEST: ${{ steps.kernel-export.outputs.artifact-digest }}
+        run: |
+          python3 scripts/kernel_compile_cache.py index --directory "$KERNEL_CACHE" \
+            --architecture "$ARCHITECTURE" --commit "$SOURCE_COMMIT" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: needs.admission.outputs.kernel-write == 'true' && success()
+        with:
+          name: ${{ steps.kernel-index.outputs.index-name }}
+          path: ${{ runner.temp }}/kernel-compiler-cache/index.json
+          if-no-files-found: error
+          retention-days: 7
+          overwrite: true
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: inputs.purpose != 'seed'
         with:
@@ -788,9 +829,11 @@ jobs:
         env:
           SOURCE_COMMIT: ${{ inputs.commit }}
           ARCHITECTURE: ${{ matrix.architecture }}
+          SELECTED_ARCHITECTURES: ${{ inputs.architectures }}
         run: |
+          echo "Selected architectures: $SELECTED_ARCHITECTURES" >> "$GITHUB_STEP_SUMMARY"
           echo "Seed $ARCHITECTURE chain uploaded: $SOURCE_COMMIT / run $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT" >> "$GITHUB_STEP_SUMMARY"
-          echo 'Run-level seed scope success requires both architecture jobs to succeed and a successful run conclusion. Full candidate/aggregate/ISO/guest/Release acceptance: NOT_RUN. Existing pending validation remains pending.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Run-level seed scope success requires every selected architecture job to succeed and a successful run conclusion. Full candidate/aggregate/ISO/guest/Release acceptance: NOT_RUN. Existing pending validation remains pending.' >> "$GITHUB_STEP_SUMMARY"
   integration:
     if: inputs.purpose != 'seed'
     permissions:

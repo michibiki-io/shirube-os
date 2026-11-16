@@ -287,6 +287,31 @@ class RealCompilerTests(unittest.TestCase):
                 self.assertFalse((self.mount/'export.tar').exists())
             for name,content in originals.items():(self.source/name).write_text(content)
 
+    def test_measured_modern_index_real_compiler_roundtrip(self):
+        from tests.test_kernel_seed_automatic import IndexedRemote
+        cold, _ = self.compile()
+        self.data['write'] = True
+        self.state.write_text(json.dumps(self.data))
+        cache.finish(state=self.state)
+        metrics = json.loads((self.mount/'metrics.json').read_text())
+        self.assertGreater(metrics['export']['entries'], 0)
+        remote = IndexedRemote('automatic-seed')
+        remote.payload = (self.mount/'export.tar').read_bytes()
+        remote.receipt.update(export_sha256=hashlib.sha256(remote.payload).hexdigest(), export_bytes=len(remote.payload),
+                              measured={k:metrics[k] for k in ('scope','namespace','export')})
+        remote.refresh()
+        self.assertEqual(host.find_index(remote,'amd64',remote.key)[0],'covered')
+        self.assertEqual(remote.downloads,[5])
+        self.assertEqual(host.import_cache(remote,self.mount,'amd64',remote.key),'RESTORED_TRUSTED_ARTIFACT')
+        self.state.unlink();shutil.rmtree(self.base/'kernel-ccache');(self.source/'out.o').unlink()
+        self.data=cache.prepare(self.source,self.mount,'amd64',state=self.state)
+        warm, _=self.compile()
+        self.assertEqual(cold,warm);self.assertGreater(self.stats()['preprocessed_cache_hit'],0)
+        # Certificate-dependent compilation and links/signing retain their
+        # dedicated key-rotation fixture above; the indexed store has no keys.
+        with tarfile.open(self.mount/'seed.tar') as archive:
+            self.assertTrue(all(n=='manifest.json' or cache.RESULT.fullmatch(n) for n in archive.getnames()))
+
     def test_invalid_seed_falls_back_to_fresh_compile(self):
         self.state.unlink(); shutil.rmtree(self.base/'kernel-ccache')
         (self.mount/'seed.tar').write_bytes(b'corrupt')
@@ -433,7 +458,9 @@ class ProducerTests(unittest.TestCase):
             with tempfile.TemporaryDirectory() as temp:
                 root=Path(temp); path=root/'event.json';path.write_text(json.dumps(event))
                 mount=root/'cache';mount.mkdir();(mount/'export.tar').write_bytes(b'writer results')
-                env=dict(CACHE_WRITE='true',GITHUB_EVENT_NAME='pull_request_target',
+                from tests.test_kernel_seed_automatic import measurements
+                (mount/'metrics.json').write_text(json.dumps(measurements(arch)))
+                env=dict(PRODUCER_KIND='build',KERNEL_CACHE_WRITE='true',GITHUB_WORKFLOW_REF=host.REPO+'/.github/workflows/release.yml@refs/heads/main',CACHE_WRITE='true',GITHUB_EVENT_NAME='pull_request_target',
                          GITHUB_REPOSITORY=host.REPO,GITHUB_REF='refs/heads/main',
                          GITHUB_EVENT_PATH=str(path),GITHUB_RUN_ID='10',GITHUB_RUN_ATTEMPT='1')
                 argv=['cache','receipt','--directory',str(mount),'--architecture',arch,'--commit','a'*40]
@@ -446,7 +473,7 @@ class ProducerTests(unittest.TestCase):
     def test_current_writer_requires_exact_merged_main_and_existing_admission(self):
         _,_,_,_,pr,_=self.fixture();pr['number']=2
         event=dict(repository=pr['base']['repo'],action='closed',pull_request=pr)
-        env=dict(CACHE_WRITE='true',GITHUB_EVENT_NAME='pull_request_target',GITHUB_REPOSITORY=host.REPO,GITHUB_REF='refs/heads/main')
+        env=dict(PRODUCER_KIND='build',KERNEL_CACHE_WRITE='true',GITHUB_WORKFLOW_REF=host.REPO+'/.github/workflows/release.yml@refs/heads/main',CACHE_WRITE='true',GITHUB_EVENT_NAME='pull_request_target',GITHUB_REPOSITORY=host.REPO,GITHUB_REF='refs/heads/main')
         host.current_context(env,event,'a'*40)
         for key,value in [('CACHE_WRITE','false'),('GITHUB_EVENT_NAME','pull_request'),('GITHUB_REF','refs/heads/feature')]:
             changed=dict(env,**{key:value})

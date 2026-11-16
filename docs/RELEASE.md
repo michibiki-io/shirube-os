@@ -219,9 +219,9 @@ product inventory and exact source; a candidate version string is not authority.
 Only the original product `build` caller retains the write cache cap and release
 purpose. Validation-only uses `read` and `purpose: validation`; inline admission
 withholds cache-writer status. Existing main dispatch behavior is unchanged.
-The kernel importer recognizes successful product `build` provenance and the
-distinct dedicated canonical-main `kernel-seed.yml` dispatch. Ordinary validation
-cannot mint seeds. See [seed operation and trust](STAGED-BUILD.md#dedicated-kernel-seed-operation). Content scopes, artifact digests,
+Kernel writer admission independently recognizes product `build`, merged-main
+`candidate-validation`, manual `validate-main`, manual seed and automatic seed
+provenance. PR/fork/feature validation remains read-only. See [seed operation and trust](STAGED-BUILD.md#dedicated-kernel-seed-operation). Content scopes, artifact digests,
 architecture/source identity, fresh kernel keys/signing, source clearance and
 current guest checks are unchanged. No signed kernel or old guest PASS is reused.
 Changed compiler or acceptance dependencies justify a current candidate; unchanged
@@ -279,7 +279,9 @@ notes は途中の基盤変更や保留変更も含む全範囲と分類理由�
 Release への staging、upload、promotion は行いません。
 公開関数も製品判定とイベントの製品入力、正確な source を再確認します。
 
-検証専用 caller の cache 権限は read で、inline admission は writer にしません。
+検証専用 caller の component cache 権限は read のままです。
+kernel writer は独立し、明示的な build、candidate-validation、validate-main、manual-seed、automatic-seed を検証します。
+PR/fork/feature は読取専用で、miss しても privileged main 作業は起動しません。
 従来の製品 build と main dispatch の信頼境界を保持します。
 compiler 入力や受入契約の変更には現行候補を要求し、新規署名と現行 guest 検証を維持します。
 制御、文書、単体試験だけの変更では高価な kernel/guest 作業を行いません。
@@ -302,7 +304,8 @@ staged workflow の変更でも candidate 検証の必要性は維持し、既�
 Required validation and automatic execution are separate. A complete known merge
 inventory with **build present**, publication `none`, and roles confined to
 build/control/ci/test/docs runs focused checks automatically. It does not start a
-full candidate, product build or seed. Shared workflow/launcher changes keep their
+full candidate or product build. Relevant changes may ensure missing kernel
+seed coverage after acquiring the shared producer queue (see the seed operation). Shared workflow/launcher changes keep their
 conservative candidate/aggregate requirement; this policy does not classify them
 as kernel-only. Control/test/docs-only behavior remains focused with full gates
 skipped-not-required. Product, acceptance, unknown and mixed inventories retain
@@ -315,14 +318,14 @@ from `passed-required-scope`. `result.json`, the step summary and a warning
 annotation prominently show PENDING. This intentional deferral alone completes
 the planning/evidence workflow without failure. An actually performed required
 failure/cancellation, missing/failed focused checks, or any other missing required
-work still fails. Deferred means neither passed nor failed. These green planning
+work or an attempted seed-chain failure still fails. Deferred means neither passed nor failed. These green planning
 runs count toward the importer's latest-ten-successful-Release-run search window
 and can push an older seed out of discovery; a safe cold compile is the fallback.
 
 | Evidence | Meaning |
 | --- | --- |
 | Focused passed | Lightweight checks succeeded for that exact merge; full pending remains |
-| Seed scope passed | Both kernel seed chains succeeded; full/aggregate/ISO/guest/Release NOT_RUN |
+| Seed scope passed | Every selected kernel seed chain succeeded; full/aggregate/ISO/guest/Release NOT_RUN |
 | Full candidate and aggregate passed | Independent same-source full validation evidence; publication still separately guarded |
 | Required-but-deferred | Intentionally unrun; pending, never full acceptance |
 | Required-but-unrun | Missing required work outside intentional deferral; failure |
@@ -350,7 +353,8 @@ both fresh architecture candidates, aggregate, stage and verified upload gates.
 
 必要な検証と自動実行を分離します。
 完全な変更一覧に build が含まれ、publication が none で、role が build/control/ci/test/docs に限られる merge では focused だけを自動実行します。
-full candidate、製品 build、seed は起動しません。
+full candidate と製品 build は起動しません。
+関連する変更では、共通 producer queue 取得後に不足する kernel seed だけ補充できます。
 共有 workflow や launcher の変更に対する candidate/aggregate の必要性は残り、kernel-only とは分類しません。
 control/test/docs だけなら従来どおり focused と skipped-not-required です。
 product、acceptance、unknown、混在は既存の保守的な自動実行を維持します。
@@ -365,10 +369,10 @@ result.json、step summary、warning annotation の3点に PENDING を表示し�
 この green planning run も Release 成功 run の最新10件の探索窓を消費します。
 古い seed が窓外になる場合は、安全な通常コンパイルへ戻します。
 
-focused 成功はその merge の軽量検査、seed 成功は両 kernel chain の seed 生成だけを示します。
+focused 成功はその merge の軽量検査、seed 成功は選択した全 kernel chain の seed 生成だけを示します。
 full candidate と aggregate の成功は exact source の独立した検証です。
 required-but-deferred は未実施で pending、required-but-unrun は延期対象外の欠落で失敗、skipped-not-required は policy 上不要です。
-必須検証の failure/cancellation は延期で隠しません。
+必須検証の failure/cancellation と実行した seed の失敗は延期で隠しません。
 seed 成功では full/ISO/guest/Release の NOT_RUN や既存 pending は解消しません。
 
 後で full 検証する場合、validate-staged.yml に exact source-ref、Stream 互換 version、cold/warm を指定して手動実行します。
@@ -386,14 +390,16 @@ seed dispatch は別操作です。
 過去の guest/seed/manual 成功で代替せず、公開は製品 admission、両候補、aggregate、stage、検証済み upload の gate を独立に要求します。
 実 seed 生成、hosted 取得と hit、storage peak、full-kernel 高速化は実測まで NOT_RUN です。
 
-| AC | Focused evidence / 限定した証拠 |
+| Revised Issue #40 AC | Implementation and focused evidence / 実装と限定した証拠 |
 | --- | --- |
-| AC1 | `TaxonomyTests`: semantic matrix, new families, consumers, #37 infrastructure and v.10 product regression, rename/deletion |
-| AC2 | `ResolutionTests`, retained `ReleaseImpactTests`: no release lookup/allocation for none/hold/retry; strict malformed inventory rejection and event guards |
-| AC3 | `TaxonomyTests` status matrix, `CandidateAggregateTests`, workflow admission/dependency tests: skip is not PASS, failed/unrun required work fails |
-| AC4 | Same-run individual/aggregate validation and rejection fixtures; existing release, artifact, source, cache/signing tests remain unchanged in scope |
-| AC5 | Retained reservation/rerun/supersession/commit-pagination tests and `HistoryTests`; cumulative hold and full notes history |
-| AC6 | Actual own diff classification, focused suites and workflow checks, exact-head Test CI and independent reviews; hosted candidate/Release NOT_RUN |
+| AC1 | Inline admission and `ConsumerTests` / `AdmissionAndQueueTests`: entrypoints, cold/warm, fork heads and independent kernel writer |
+| AC2 | `kernel_seed` source key, `IndexTests`, `InputAndDecisionTests`, actual compiler result and key-rotation fixtures |
+| AC3 | `PRODUCER_KINDS`, `verify_producer`, index/export ownership, ZIP and attempt adversarial tests |
+| AC4 | Post-queue planner, missing/covered/unknown/superseded/expiry/manual decisions; no full-build fallback chain |
+| AC5 | Shared top-level queue, isolated PR/feature groups, validated selected matrix, existing complete seed recipe |
+| AC6 | `release_plan`, `EvidenceTests`, history/classification/deferred execution tests; future product validation remains fresh |
+| AC7 | Focused compiler/signing/provenance/workflow fixtures and validators; exact-head Test CI and independent PR review are separate evidence, heavy workflows NOT_RUN |
+| AC8 | This policy and bilingual seed operation, bounds, queue/attempt/partial-failure costs and bootstrap explanation |
 
 ## Version allocation
 

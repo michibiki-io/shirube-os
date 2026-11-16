@@ -257,7 +257,7 @@ class HistoryTests(unittest.TestCase):
         self.assertIn('name: ${{ needs.resolve.outputs.plan-artifact }}',text)
         self.assertNotIn('name: release-plan-${{ github.run_attempt }}',text.split('  evidence:',1)[1])
         self.assertIn('candidate-validation:',text);self.assertIn('candidate-check:',text)
-        self.assertIn('needs: [resolve, build, candidate-validation, candidate-check, stage, publish]',text)
+        self.assertIn('needs: [resolve, build, candidate-validation, seed-plan, kernel-seed, candidate-check, stage, publish]',text)
         inline=(ROOT/'.github/workflows/staged-candidate.yml').read_text()
         self.assertIn("and os.environ['PURPOSE'] == 'release'",inline)
 

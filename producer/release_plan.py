@@ -20,7 +20,7 @@ PRODUCT_MODULES = {'branding', 'cloud_init', 'cloud_init_guest', 'image_template
                    'installer_admin', 'netbird', 'netbird_guest', 'sflow'}
 # Naming families are an extension contract, not an exemption for all producer code.
 BUILD_PREFIXES = ('compile_', 'compiler_', 'native_', 'staged', 'stage_', 'component_',
-                  'library_cache', 'kernel_compile_cache', 'apt_archive', 'workspace',
+                  'library_cache', 'kernel_compile_cache', 'kernel_seed', 'apt_archive', 'workspace',
                   'resources', 'architecture', 'recipes', 'packages', 'debootstrap',
                   'livebuild_', 'snapshot_fetch', 'strip_policy')
 ACCEPTANCE_PREFIXES = ('source', 'security_', 'public_test_keys', 'signing', 'collect',
