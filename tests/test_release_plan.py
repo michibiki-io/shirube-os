@@ -57,10 +57,13 @@ class TaxonomyTests(unittest.TestCase):
                  '.github/workflows/validate-staged.yml', 'producer/kernel_compile_cache.py',
                  'scripts/kernel_compile_cache.py', 'scripts/run-native-stage.py',
                  'tests/test_kernel_compile_cache.py', 'tests/test_workflow_cache_ci.py',
-                 'tests/test_release_plan.py', 'tests/test_release_stage_import.py', 'docs/STAGED-BUILD.md']
+                 'tests/test_release_plan.py', 'tests/test_release_stage_import.py', 'docs/STAGED-BUILD.md',
+                 '.github/workflows/kernel-seed.yml', 'producer/actions.py', 'producer/release_plan.py',
+                 'tests/test_kernel_seed.py', 'tests/test_release_execution.py', 'docs/RELEASE.md']
         consumers=policy.declared_consumers(ROOT)
         result=policy.classify(paths, consumers)
         self.assertEqual((result['publication'],result['validation']),('none','candidate'))
+        self.assertEqual(result['automatic_execution'],'focused')
         for path in paths:
             self.assertNotIn(policy.role(path,consumers), {'product','unknown'})
 
@@ -89,7 +92,7 @@ class TaxonomyTests(unittest.TestCase):
         self.assertEqual(policy.classify(actions.changed_file_paths([[{'filename':'guest/old','status':'removed'}]],1))['publication'],'publish')
 
     def test_required_status_is_not_inferred_from_skips_or_missing_results(self):
-        for path in ['guest/product', 'containers/native/Dockerfile', 'unknown-root']:
+        for path in ['guest/product', 'schemas/acceptance.json', 'unknown-root']:
             plan=policy.plan([path], 'a'*40)
             for actual in ['failure','cancelled','skipped',None]:
                 results={'focused':'success','candidate':actual,'aggregate':'success','publication':'skipped'}
@@ -240,8 +243,9 @@ class HistoryTests(unittest.TestCase):
             decision=policy.plan(['docs/example.md'],'a'*40,run='123',attempt='1')
             (root/'plan.json').write_text(json.dumps(decision))
             env={'SHIRUBE_PLAN_DIRECTORY':tmp,'SHIRUBE_JOB_RESULTS':json.dumps({'resolve':{'result':'success'}}),
-                 'GITHUB_STEP_SUMMARY':str(root/'summary'),'GITHUB_RUN_ATTEMPT':'2'}
-            with patch.dict(os.environ,env):actions.evidence()
+                 'GITHUB_STEP_SUMMARY':str(root/'summary'),'GITHUB_RUN_ATTEMPT':'2',
+                 'GITHUB_RUN_ID':'123','SHIRUBE_SOURCE_COMMIT':'a'*40}
+            with patch.dict(os.environ,env),patch.object(actions,'identity'):actions.evidence()
             result=json.loads((root/'result.json').read_text())
             self.assertEqual(result['plan_run_attempt'],'1');self.assertEqual(result['evidence_run_attempt'],'2')
             self.assertEqual(result['status'],'passed-required-scope')
@@ -336,10 +340,12 @@ class DeferredProductTests(unittest.TestCase):
                 os.chdir(root)
                 with patch.object(actions,'git',side_effect=published_git), patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event_file),'GITHUB_EVENT_NAME':'pull_request_target'}), \
                         patch.object(actions,'gh',side_effect=api),patch.object(actions,'releases',side_effect=releases), \
-                        patch.object(actions,'integration_preflight'):
+                        patch.object(actions,'integration_preflight'),patch.object(actions,'save_plan') as plans:
                     infra=resolve('containers/native/Dockerfile','infra','compiler infrastructure')
                     held=resolve('unclassified-input','unknown','deferred input')
                     self.assertEqual((infra['publication'],held['publication']),('none','hold'))
+                    self.assertEqual(infra['automatic-execution'],'focused')
+                    self.assertEqual(held['automatic-execution'],'candidate')
                     self.assertEqual(queries,[]);self.assertEqual(created,[])
                     product=resolve('guest/product','fix','product fix deferred')
                     self.assertEqual(product['publication'],'hold');self.assertEqual(created,[])
@@ -356,4 +362,14 @@ class DeferredProductTests(unittest.TestCase):
                                     'classify deferred input','publish product']:
                         self.assertIn(message,notes[0])
                     self.assertIn('Change roles: build',notes[0]);self.assertEqual(final['publication'],'publish')
+                    fresh=plans.call_args.args[0]
+                    self.assertEqual(fresh['source_commit'],git('rev-parse','HEAD'))
+                    self.assertEqual(final['commit'],fresh['source_commit'])
+                    self.assertEqual(fresh['automatic_execution'],'candidate')
+                    self.assertEqual(fresh['execution_deferred_gates'],[])
+                    self.assertEqual(fresh['prior_guest_evidence'],'NOT_REUSED')
+                    self.assertIn('containers/native/Dockerfile',fresh['cumulative']['roles']['build'])
+                    self.assertEqual(fresh['gates']['candidate'],'required-but-unrun')
+                    self.assertEqual(fresh['gates']['aggregate'],'required-but-unrun')
+                    self.assertEqual(fresh['gates']['publication'],'required-but-unrun')
             finally:os.chdir(cwd)

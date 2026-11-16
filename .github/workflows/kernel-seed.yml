@@ -1,0 +1,27 @@
+name: Produce trusted kernel compiler seed
+on:
+  workflow_dispatch:
+    inputs:
+      cache-mode:
+        description: Intentional prior-cache use (cold still produces a new seed)
+        type: choice
+        options: [cold, warm]
+        default: warm
+cache-mode: read
+permissions:
+  contents: read
+concurrency:
+  group: shirube-kernel-seed
+  cancel-in-progress: false
+jobs:
+  seed:
+    if: github.repository == 'michibiki-io/shirube-os' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/staged-candidate.yml
+    with:
+      commit: ${{ github.sha }}
+      version: v2026.03.0
+      cache-mode: ${{ inputs.cache-mode }}
+      purpose: seed

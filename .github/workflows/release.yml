@@ -23,6 +23,7 @@ jobs:
       noop: ${{ steps.plan.outputs.noop }}
       publication: ${{ steps.plan.outputs.publication }}
       validation: ${{ steps.plan.outputs.validation }}
+      automatic-execution: ${{ steps.plan.outputs.automatic-execution }}
       commit: ${{ steps.plan.outputs.commit }}
       version: ${{ steps.plan.outputs.version }}
       plan-artifact: release-plan-${{ github.run_attempt }}
@@ -68,7 +69,7 @@ jobs:
   candidate-validation:
     cache-mode: read
     needs: resolve
-    if: needs.resolve.outputs.publication != 'publish' && needs.resolve.outputs.validation == 'candidate'
+    if: needs.resolve.outputs.publication != 'publish' && needs.resolve.outputs.automatic-execution == 'candidate'
     permissions:
       contents: read
       actions: read
@@ -196,6 +197,7 @@ jobs:
         env:
           SHIRUBE_PLAN_DIRECTORY: ${{ runner.temp }}/release-plan
           SHIRUBE_JOB_RESULTS: ${{ toJSON(needs) }}
+          SHIRUBE_SOURCE_COMMIT: ${{ github.event.pull_request.merge_commit_sha }}
         run: python3 -m producer.actions evidence
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()

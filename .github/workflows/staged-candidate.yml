@@ -28,6 +28,7 @@ jobs:
     timeout-minutes: 5
     outputs:
       cache-write: ${{ steps.admit.outputs.cache-write }}
+      kernel-write: ${{ steps.admit.outputs.kernel-write }}
     steps:
       # Trusted inline code only: no checkout, project imports or image execution.
       - id: admit
@@ -54,13 +55,19 @@ jobs:
           require(re.fullmatch('[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repo) is not None)
           require(data.get('repository', {}).get('full_name') == repo)
           require(os.environ['CACHE_MODE'] in {'cold', 'warm'})
-          require(os.environ['PURPOSE'] in {'release', 'validation'})
+          require(os.environ['PURPOSE'] in {'release', 'validation', 'seed'})
           write = False
+          seed = os.environ['PURPOSE'] == 'seed'
+          if seed:
+              require(repo == 'michibiki-io/shirube-os' and data.get('repository', {}).get('id') == 1449410161)
+              require(event == 'workflow_dispatch' and ref == 'refs/heads/main' and commit == sha)
+              require(os.environ.get('GITHUB_WORKFLOW_REF') == repo + '/.github/workflows/kernel-seed.yml@refs/heads/main')
+              require(os.environ.get('GITHUB_WORKFLOW_SHA') == commit)
           if event == 'workflow_dispatch':
               require(ref.startswith('refs/heads/') and len(ref) > len('refs/heads/'))
               if ref == 'refs/heads/main':
                   require(commit == sha)
-                  write = repo == 'michibiki-io/shirube-os'
+                  write = repo == 'michibiki-io/shirube-os' and not seed
           elif event == 'pull_request_target':
               pr = data.get('pull_request', {})
               require(data.get('action') == 'closed' and pr.get('state') == 'closed' and pr.get('merged') is True)
@@ -79,6 +86,7 @@ jobs:
               require(False)
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write('cache-write=' + str(write).lower() + '\n')
+              output.write('kernel-write=' + str(seed or (write and event == 'pull_request_target')).lower() + '\n')
           PYCODE
   compiler:
     permissions:
@@ -150,6 +158,7 @@ jobs:
           retention-days: 7
           overwrite: true
   native:
+    if: inputs.purpose != 'seed'
     needs: [admission, compiler]
     strategy:
       fail-fast: false
@@ -350,8 +359,9 @@ jobs:
             ${{ runner.temp }}/stage-output/*resources.json
             ${{ runner.temp }}/stage-output/*diagnostic.json
           if-no-files-found: warn
-          retention-days: 14
+          retention-days: ${{ inputs.purpose == 'seed' && 7 || 14 }}
   kea:
+    if: inputs.purpose != 'seed'
     needs: [admission, compiler]
     strategy:
       fail-fast: false
@@ -453,6 +463,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   salt:
+    if: inputs.purpose != 'seed'
     needs: [admission, compiler]
     strategy:
       fail-fast: false
@@ -554,6 +565,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   runtime:
+    if: inputs.purpose != 'seed'
     needs: [admission, compiler]
     strategy:
       fail-fast: false
@@ -698,6 +710,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write }}
           CACHE_MODE: ${{ inputs.cache-mode }}
           SOURCE_COMMIT: ${{ inputs.commit }}
           ARCHITECTURE: ${{ matrix.architecture }}
@@ -716,7 +729,7 @@ jobs:
           STAGE_OUTPUT: ${{ runner.temp }}/stage-output
           KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
           KERNEL_CACHE_ENABLED: ${{ github.repository == 'michibiki-io/shirube-os' }}
-          KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' }}
+          KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write == 'true' }}
         run: |
           compiler_cache=()
           if [ "$KERNEL_CACHE_ENABLED" = true ]; then
@@ -729,9 +742,10 @@ jobs:
             --commit "$SOURCE_COMMIT" --version "$VERSION" --image "$COMPILER_IMAGE" \
             --inputs "$STAGE_INPUTS" --output "$STAGE_OUTPUT" "${compiler_cache[@]}"
       - name: Bind successful compiler results to trusted producer
-        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && success()
+        if: needs.admission.outputs.kernel-write == 'true' && success()
         env:
           CACHE_WRITE: ${{ needs.admission.outputs.cache-write }}
+          KERNEL_CACHE_WRITE: ${{ needs.admission.outputs.kernel-write }}
           SOURCE_COMMIT: ${{ inputs.commit }}
           ARCHITECTURE: ${{ matrix.architecture }}
           KERNEL_CACHE: ${{ runner.temp }}/kernel-compiler-cache
@@ -739,7 +753,7 @@ jobs:
           python3 scripts/kernel_compile_cache.py receipt --directory "$KERNEL_CACHE" \
             --architecture "$ARCHITECTURE" --commit "$SOURCE_COMMIT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        if: needs.admission.outputs.cache-write == 'true' && github.event_name == 'pull_request_target' && success()
+        if: needs.admission.outputs.kernel-write == 'true' && success()
         with:
           name: shirube-kernel-compiler-v1-${{ matrix.architecture }}-${{ github.run_attempt }}
           path: |
@@ -749,6 +763,7 @@ jobs:
           compression-level: 0
           retention-days: 7
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: inputs.purpose != 'seed'
         with:
           name: shirube-stage-${{ matrix.architecture }}-kernel
           path: |
@@ -767,8 +782,17 @@ jobs:
             ${{ runner.temp }}/stage-output/*diagnostic.json
             ${{ runner.temp }}/kernel-compiler-cache/metrics.json
           if-no-files-found: warn
-          retention-days: 14
+          retention-days: ${{ inputs.purpose == 'seed' && 7 || 14 }}
+      - name: Report successful seed scope without promoting full validation
+        if: inputs.purpose == 'seed'
+        env:
+          SOURCE_COMMIT: ${{ inputs.commit }}
+          ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          echo "Seed compiler results uploaded: $SOURCE_COMMIT / $ARCHITECTURE / run $GITHUB_RUN_ID attempt $GITHUB_RUN_ATTEMPT" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Seed scope PASSED. Full candidate/aggregate/ISO/guest/Release: NOT_RUN. Existing pending validation remains pending.' >> "$GITHUB_STEP_SUMMARY"
   integration:
+    if: inputs.purpose != 'seed'
     permissions:
       contents: read
     cache-mode: read
@@ -845,6 +869,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   iso:
+    if: inputs.purpose != 'seed'
     permissions:
       contents: read
     cache-mode: read
@@ -941,6 +966,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   clearance:
+    if: inputs.purpose != 'seed'
     permissions:
       contents: read
     cache-mode: read
@@ -1013,6 +1039,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
   guests:
+    if: inputs.purpose != 'seed'
     permissions:
       contents: read
     cache-mode: read

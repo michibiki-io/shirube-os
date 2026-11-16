@@ -150,7 +150,7 @@ status checkやmerge queueの要件が変わる場合は、PR専用の起動条�
 English
 
 Publication and validation are independent decisions in `producer/release_plan.py`
-(policy schema 1). The publication values are `publish`, `none`, and `hold`;
+(policy schema 2). The publication values are `publish`, `none`, and `hold`;
 validation is `focused` or `candidate`. Classification uses semantic consumer roles,
 not PR titles, labels, or whether a compiler edit might produce identical bytes.
 A build improvement may change bytes while remaining validation-only.
@@ -158,7 +158,7 @@ A build improvement may change bytes while remaining validation-only.
 | Semantic change | Publication | Required verification |
 | --- | --- | --- |
 | Product behavior/configuration, pinned sources, patches, legal material | publish | Both native architectures, current candidate, aggregate and all existing publication gates |
-| Compiler/toolchain/build/package/cache infrastructure, including #37 | none | Same current dual-architecture candidate and aggregate; no Release upload |
+| Compiler/toolchain/build/package/cache infrastructure | none | Current dual-architecture candidate and aggregate remain required; known build-only merges automatically run focused checks and explicitly defer these gates |
 | Publication/orchestration control | none | Focused orchestration/contract tests; candidate/guest skipped-not-required |
 | CI-only workflow checks | none | Focused checks and ordinary unfiltered PR CI |
 | Explanatory docs and root unittest modules/helpers | none | Ordinary PR CI; no new guest PASS |
@@ -219,8 +219,9 @@ product inventory and exact source; a candidate version string is not authority.
 Only the original product `build` caller retains the write cache cap and release
 purpose. Validation-only uses `read` and `purpose: validation`; inline admission
 withholds cache-writer status. Existing main dispatch behavior is unchanged.
-The kernel importer still recognizes only the original successful product `build`
-job provenance, not the new validation job. Content scopes, artifact digests,
+The kernel importer recognizes successful product `build` provenance and the
+distinct dedicated canonical-main `kernel-seed.yml` dispatch. Ordinary validation
+cannot mint seeds. See [seed operation and trust](STAGED-BUILD.md#dedicated-kernel-seed-operation). Content scopes, artifact digests,
 architecture/source identity, fresh kernel keys/signing, source clearance and
 current guest checks are unchanged. No signed kernel or old guest PASS is reused.
 Changed compiler or acceptance dependencies justify a current candidate; unchanged
@@ -231,9 +232,9 @@ a hit never proves binary equality or guest acceptance.
 
 `release-plan-<attempt>` records source/run/attempt, policy SHA-256, roles, Git
 before/after blob+mode identities, required scopes, invalidation/non-reuse reasons
-and required-but-unrun gates before candidate execution. `release-evidence-<attempt>`
-and the final job summary record `passed`, `failed`, `required-but-unrun`, or
-`skipped-not-required`. A skipped publish cannot hide a required validation failure.
+and required-but-unrun or required-but-deferred gates before candidate execution. `release-evidence-<attempt>`
+and the final job summary record `passed`, `failed`, `required-but-unrun`,
+`required-but-deferred`, or `skipped-not-required`. A skipped publish cannot hide a required validation failure.
 If cancellation prevents the final job from running, the initial plan remains
 unrun evidence and the Actions cancellation is authoritative; it is never PASS.
 A product candidate reserves its owned draft before compilation and publishes only
@@ -246,8 +247,8 @@ The commit-wide `git archive` still includes docs/tests in `project-source.tar`.
 They reach published corresponding sources in the next product release, without
 rewriting prior published bytes. This change itself is control/build validation
 only: it does not request an official Release on merge. Its staged-workflow change
-requires candidate validation after a human merge; that hosted acceptance and
-actual product Release acceptance are **NOT_RUN** during implementation.
+retains required candidate validation, with automatic execution deferred as below;
+hosted candidate and actual product Release acceptance are **NOT_RUN** during implementation.
 
 日本語
 
@@ -285,7 +286,7 @@ compiler 入力や受入契約の変更には現行候補を要求し、新規�
 cache hit や過去版の PASS を現行成果物の同一性や合格として扱いません。
 
 plan artifact は実行前の required-but-unrun と source/run/attempt、policy hash、変更前後の Git object/mode、分類と無効化理由を記録します。
-最終 evidence と job summary は passed、failed、required-but-unrun、skipped-not-required を区別します。
+最終 evidence と job summary は passed、failed、required-but-unrun、required-but-deferred、skipped-not-required を区別します。
 publish が skip しても、必須の候補検証が失敗した run は成功になりません。
 取消により最終記録が走らない場合も、初期 plan は未実施の証拠として残り、取消を PASS としません。
 製品候補の失敗や取消では所有 draft を保持し、検証専用では予約自体を作りません。
@@ -293,8 +294,97 @@ publish が skip しても、必須の候補検証が失敗した run は成功�
 
 tracked の文書と試験は引き続き project-source.tar に入り、次の製品公開で対応 source に含まれます。
 今回の差分は制御と build 基盤で、merge による正式 Release の新規作成は要求しません。
-staged workflow の変更に対する hosted candidate 検証は人間の merge 後に必要です。
+staged workflow の変更でも candidate 検証の必要性は維持し、既知の非公開 build 基盤変更では自動実行だけを延期します。
 その実行と製品 Release の実受入は、実装時点では NOT_RUN です。
+
+### Automatic execution and pending full validation
+
+Required validation and automatic execution are separate. A complete known merge
+inventory with **build present**, publication `none`, and roles confined to
+build/control/ci/test/docs runs focused checks automatically. It does not start a
+full candidate, product build or seed. Shared workflow/launcher changes keep their
+conservative candidate/aggregate requirement; this policy does not classify them
+as kernel-only. Control/test/docs-only behavior remains focused with full gates
+skipped-not-required. Product, acceptance, unknown and mixed inventories retain
+their existing conservative automatic scope. Rename origins, deletions and every
+paginated file participate; malformed/incomplete inventories reject classification.
+
+After focused success, intentionally unrun candidate/aggregate gates remain
+`required-but-deferred`; evidence status is `pending-required-validation`, distinct
+from `passed-required-scope`. `result.json`, the step summary and a warning
+annotation prominently show PENDING. This intentional deferral alone completes
+the planning/evidence workflow without failure. An actually performed required
+failure/cancellation, missing/failed focused checks, or any other missing required
+work still fails. Deferred means neither passed nor failed. These green planning
+runs count toward the importer's latest-ten-successful-Release-run search window
+and can push an older seed out of discovery; a safe cold compile is the fallback.
+
+| Evidence | Meaning |
+| --- | --- |
+| Focused passed | Lightweight checks succeeded for that exact merge; full pending remains |
+| Seed scope passed | Both kernel seed chains succeeded; full/aggregate/ISO/guest/Release NOT_RUN |
+| Full candidate and aggregate passed | Independent same-source full validation evidence; publication still separately guarded |
+| Required-but-deferred | Intentionally unrun; pending, never full acceptance |
+| Required-but-unrun | Missing required work outside intentional deferral; failure |
+| Skipped-not-required | Policy does not require this gate |
+| Failed/cancelled | Required performed work did not succeed; never masked by deferral |
+
+To request full validation later, explicitly dispatch `validate-staged.yml` with
+`source-ref` set to the exact desired source, a stream-compatible version and an
+intentional cold/warm mode. Main dispatch requires source == workflow SHA; for an
+older source use the supported feature workflow ref and resolved exact commit.
+Record source/run/attempt, both architecture candidates and actual guest/gate
+results. Leave absent aggregate evidence unrun; a manual run name cannot supply it.
+The seed dispatch is separate and does not satisfy these full gates.
+
+Deferred records are immutable per-run evidence. Later manual full validation
+creates independent evidence for its exact source; it never rewrites or clears
+old pending records. There is no cross-run ledger, backfill or daemon. The next
+product candidate builds and freshly validates **its exact merged source**, which
+includes every intervening unvalidated infrastructure change. Published-to-current
+history remains cumulative. Old guest, seed or manual evidence cannot substitute
+for that fresh validation. Publication independently requires product admission,
+both fresh architecture candidates, aggregate, stage and verified upload gates.
+
+### 日本語: 自動実行と full 検証の延期
+
+必要な検証と自動実行を分離します。
+完全な変更一覧に build が含まれ、publication が none で、role が build/control/ci/test/docs に限られる merge では focused だけを自動実行します。
+full candidate、製品 build、seed は起動しません。
+共有 workflow や launcher の変更に対する candidate/aggregate の必要性は残り、kernel-only とは分類しません。
+control/test/docs だけなら従来どおり focused と skipped-not-required です。
+product、acceptance、unknown、混在は既存の保守的な自動実行を維持します。
+rename の両側、削除、全 page の変更を含め、不完全や不正な一覧は拒否します。
+
+focused 成功後、意図して未実行の candidate/aggregate を required-but-deferred と記録します。
+status は pending-required-validation で、passed-required-scope と区別します。
+result.json、step summary、warning annotation の3点に PENDING を表示します。
+この延期だけなら planning/evidence workflow は失敗せず完了します。
+実行した必須検証の失敗や取消、focused の未実施や失敗、それ以外の必須検証の欠落は失敗にします。
+延期は合格でも失敗でもありません。
+この green planning run も Release 成功 run の最新10件の探索窓を消費します。
+古い seed が窓外になる場合は、安全な通常コンパイルへ戻します。
+
+focused 成功はその merge の軽量検査、seed 成功は両 kernel chain の seed 生成だけを示します。
+full candidate と aggregate の成功は exact source の独立した検証です。
+required-but-deferred は未実施で pending、required-but-unrun は延期対象外の欠落で失敗、skipped-not-required は policy 上不要です。
+必須検証の failure/cancellation は延期で隠しません。
+seed 成功では full/ISO/guest/Release の NOT_RUN や既存 pending は解消しません。
+
+後で full 検証する場合、validate-staged.yml に exact source-ref、Stream 互換 version、cold/warm を指定して手動実行します。
+main dispatch は source と workflow SHA の一致が必要です。
+古い source は既存の feature workflow ref から exact commit に解決します。
+source/run/attempt と両 architecture、実際の guest と gate の結果を記録します。
+aggregate の証跡がなければ未実施のまま残し、手動 run の名前から合格を推定しません。
+seed dispatch は別操作です。
+
+延期記録は run ごとに不変です。
+後の手動 full 検証は、その exact source の独立証跡になり、過去の pending を書き換えたり消し込んだりしません。
+横断台帳、backfill、daemon は作りません。
+次の product 候補は、その間の未検証基盤変更をすべて含む現行 merged source を全体として新規検証します。
+公開後から現行までの累積履歴も維持します。
+過去の guest/seed/manual 成功で代替せず、公開は製品 admission、両候補、aggregate、stage、検証済み upload の gate を独立に要求します。
+実 seed 生成、hosted 取得と hit、storage peak、full-kernel 高速化は実測まで NOT_RUN です。
 
 | AC | Focused evidence / 限定した証拠 |
 | --- | --- |

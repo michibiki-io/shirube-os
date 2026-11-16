@@ -330,7 +330,7 @@ def complete_resolution(decision, version, noop=False):
     save_plan(decision)
     print(json.dumps({k: decision[k] for k in ('publication', 'validation', 'reason', 'source_commit')}, sort_keys=True))
     emit({'eligible': str(decision['publication'] == 'publish').lower(), 'noop': str(noop).lower(),
-          'publication': decision['publication'], 'validation': decision['validation'],
+          'publication': decision['publication'], 'validation': decision['validation'], 'automatic-execution': decision['automatic_execution'],
           'commit': decision['source_commit'], 'version': version})
 
 
@@ -402,6 +402,10 @@ def validate_candidates():
 def evidence():
     root = Path(os.environ['SHIRUBE_PLAN_DIRECTORY'])
     decision = json.loads((root/'plan.json').read_text())
+    source = os.environ['SHIRUBE_SOURCE_COMMIT']
+    identity(source)
+    if decision['source_commit'] != source or decision['run_id'] != os.environ['GITHUB_RUN_ID']:
+        raise ValueError('Plan source/run does not match this evidence run')
     results = {k: v['result'] if isinstance(v, dict) else v
                for k, v in json.loads(os.environ['SHIRUBE_JOB_RESULTS']).items()}
     # resolve already passed its focused checks; required outputs never infer PASS.
@@ -415,6 +419,11 @@ def evidence():
     (root/'result.json').write_text(json.dumps(final, sort_keys=True, indent=2)+'\n')
     with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
         output.write('```json\n'+json.dumps(final, sort_keys=True, indent=2)+'\n```\n')
+    if final.get('pending_required_gates'):
+        message = 'PENDING: required-but-deferred candidate/aggregate validation; seed success is not full validation.'
+        print('::warning::' + message)
+        with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
+            output.write('\n**' + message + '**\n')
     if not passed: raise ValueError('Required validation/publication failed or was not run')
 
 

@@ -252,6 +252,41 @@ class RealCompilerTests(unittest.TestCase):
             self.assertFalse((self.mount/'export.tar').exists())
             self.assertFalse((self.mount/'provenance.json').exists())
 
+    def test_dedicated_seed_real_compiler_lifecycle_both_architecture_scopes(self):
+        from tests.test_kernel_seed import fixture, SeedRemote
+        originals = {name:(self.source/name).read_text() for name in ('plain.c','header.h','.config')}
+        for arch in ('amd64','arm64'):
+            (self.source/'out.o').unlink(missing_ok=True)
+            self.state.unlink(); shutil.rmtree(self.base/'kernel-ccache')
+            self.data=cache.prepare(self.source,self.mount,arch,state=self.state,write=True)
+            self.compile();self.assertGreater(self.stats()['cache_miss'],0)
+            cache.finish(state=self.state)
+            payload=(self.mount/'export.tar').read_bytes();(self.mount/'export.tar').unlink()
+            remote=SeedRemote(*fixture(arch),payload=payload)
+            (self.mount/'seed.tar').unlink(missing_ok=True)
+            self.assertEqual(host.import_cache(remote,self.mount,arch),'RESTORED_TRUSTED_ARTIFACT')
+            producer_toolchain=self.data['scope']['toolchain']
+            for mutation in ('same','content','config','arguments','architecture','toolchain'):
+                for name,content in originals.items():(self.source/name).write_text(content)
+                (self.source/'out.o').unlink(missing_ok=True)
+                self.state.unlink();shutil.rmtree(self.base/'kernel-ccache')
+                if mutation=='content':(self.source/'header.h').write_text('#define VALUE 99\n')
+                if mutation=='config':(self.source/'.config').write_text('CONFIG_MODULE_SIG_ALL=y\nCONFIG_NEW=y\n')
+                with patch.object(cache,'tools',return_value='f'*64 if mutation=='toolchain' else producer_toolchain):
+                    self.data=cache.prepare(self.source,self.mount,
+                        ('arm64' if arch=='amd64' else 'amd64') if mutation=='architecture' else arch,state=self.state)
+                # Artifact restore and a compiler hit are separately observable.
+                self.assertEqual(self.stats()['preprocessed_cache_hit'],0)
+                self.assertEqual(self.data['status'],'MISS_INVALID' if mutation in {'architecture','toolchain'} else 'RESTORED')
+                self.compile(extra=('-DNEW_OPTION=1',) if mutation=='arguments' else ())
+                if mutation=='same':self.assertGreater(self.stats()['preprocessed_cache_hit'],0)
+                else:
+                    self.assertEqual(self.stats()['preprocessed_cache_hit'],0)
+                    self.assertGreater(self.stats()['cache_miss'],0)
+                with patch.object(cache,'export',side_effect=AssertionError('reader exported')):cache.finish(state=self.state)
+                self.assertFalse((self.mount/'export.tar').exists())
+            for name,content in originals.items():(self.source/name).write_text(content)
+
     def test_invalid_seed_falls_back_to_fresh_compile(self):
         self.state.unlink(); shutil.rmtree(self.base/'kernel-ccache')
         (self.mount/'seed.tar').write_bytes(b'corrupt')
@@ -273,7 +308,7 @@ class ProducerTests(unittest.TestCase):
         artifact=dict(workflow_run=dict(id=10,repository_id=host.REPO_ID,head_sha='b'*40),expired=False,
                       expires_at='2099-01-01T00:00:00Z',digest='sha256:'+'c'*64,created_at='2026-01-01T02:00:00Z')
         runner='ubuntu-24.04'+('-arm' if arch=='arm64' else '')
-        job=dict(name=f'build / kernel ({arch}, {runner})',run_id=10,run_attempt=1,head_sha='b'*40,
+        job=dict(name=f'build / kernel ({arch}, {runner})',run_id=10,head_sha='b'*40,
                  status='completed',conclusion='success',started_at='2026-01-01T01:30:00Z',completed_at='2026-01-01T02:30:00Z')
         pr=dict(state='closed',merged=True,merge_commit_sha='a'*40,base=dict(ref='main',repo=repo),
                 head=dict(sha='b'*40,ref='feature/#2'),merged_at='2026-01-01T00:00:00Z')
@@ -291,7 +326,7 @@ class ProducerTests(unittest.TestCase):
                                   (run,'head_repository',dict(id=1,full_name='foreign/repo')),
                                   (receipt,'source_commit','f'*40),(receipt,'run_attempt',2),
                                   (job,'name',f'candidate-validation / kernel ({arch}, ubuntu-24.04)'),
-                                  (job,'run_attempt',2),(job,'head_sha','f'*40),
+                                  (job,'run_id',999),(job,'head_sha','f'*40),
                                   (artifact,'expires_at','2000-01-01T00:00:00Z'),
                                   (artifact,'created_at','2026-01-01T03:00:00Z'),(run,'repository',dict(id=1,full_name='foreign/repo')),
                                   (run,'referenced_workflows',[]),(receipt,'architecture','foreign'),
@@ -369,21 +404,26 @@ class ProducerTests(unittest.TestCase):
                 self.assertNotIn('private',output.getvalue())
                 self.assertEqual(list(destination.iterdir()),[])
 
-    def test_ten_successful_runs_without_producer_is_normal_miss_no_expansion(self):
+    def test_ten_successful_including_deferred_runs_without_producer_is_normal_miss_no_expansion(self):
+        # Green intentional-deferral Release runs have no kernel artifact but
+        # still consume all ten slots; neither search expands to an older seed.
         calls=[]
         class Remote:
             def json(self, path):
                 calls.append(path)
                 if path.startswith('actions/workflows/'):
-                    return {'workflow_runs':[{'id':i} for i in range(11)]}
+                    return {'workflow_runs':[{'id':i} for i in range(20 if 'kernel-seed' in path else 0, 31 if 'kernel-seed' in path else 11)]}
                 if '/artifacts?' in path:return {'total_count':0,'artifacts':[]}
-                return {'id':int(path.split('/')[-1]),'run_attempt':1}
+                return {'id':int(path.split('/')[-1]),'run_attempt':1,
+                        'path':'.github/workflows/' + ('kernel-seed.yml' if int(path.split('/')[-1]) >= 20 else 'release.yml'),
+                        'event':'workflow_dispatch' if int(path.split('/')[-1]) >= 20 else 'pull_request_target'}
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp)
             self.assertEqual(host.import_cache(Remote(),root,'amd64'),'MISS')
             self.assertEqual(list(root.iterdir()),[])
         self.assertIn('per_page=10',calls[0])
-        self.assertEqual(len(calls),21)
+        self.assertEqual(len(calls),42)
+        self.assertNotIn('actions/runs/30',calls)
         self.assertNotIn('actions/runs/10',calls)
 
     def test_writer_receipt_still_binds_each_architecture(self):
