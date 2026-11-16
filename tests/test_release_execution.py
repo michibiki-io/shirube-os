@@ -106,6 +106,7 @@ class ExecutionPolicyTests(unittest.TestCase):
             with tempfile.TemporaryDirectory() as temp:
                 root=Path(temp);plan=policy.plan(['scripts/run-native-stage.py'],'a'*40,run='123',attempt='1',
                     inputs={'scripts/run-native-stage.py':{'before':'b'*64,'after':'c'*64}})
+                plan['seed_trigger'] = {'changed_files': 1, 'pages': [[{'filename': 'scripts/run-native-stage.py', 'status': 'modified'}]]}
                 original=json.dumps(plan);(root/'plan.json').write_text(original)
                 env={'SHIRUBE_PLAN_DIRECTORY':temp,'SHIRUBE_SOURCE_COMMIT':'a'*40,'GITHUB_RUN_ID':'123',
                      'GITHUB_RUN_ATTEMPT':'2','GITHUB_STEP_SUMMARY':str(root/'summary'),
@@ -120,6 +121,8 @@ class ExecutionPolicyTests(unittest.TestCase):
                 final=json.loads((root/'result.json').read_text())
                 self.assertEqual(final['status'],'pending-required-validation' if focused=='success' else 'failed')
                 self.assertEqual(final['dependency_changes'],plan['dependency_changes'])
+                self.assertEqual(final['seed_trigger'], {'changed_files': 1})
+                self.assertNotIn('\"pages\"', (root/'summary').read_text())
                 self.assertEqual(final['plan_run_attempt'],'1');self.assertEqual(final['evidence_run_attempt'],'2')
                 self.assertIn('required-but-deferred',(root/'summary').read_text())
                 self.assertIn('::warning::PENDING',stdout.getvalue())

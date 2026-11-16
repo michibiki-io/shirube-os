@@ -425,6 +425,10 @@ def evidence():
              'aggregate': results.get('candidate-check'),
              'publication': results.get('resolve') if decision.get('noop') else results.get('publish')}
     final, passed = release_plan.outcomes(decision, gates)
+    # The immutable plan artifact retains the full inventory. Do not duplicate
+    # all pages in both final evidence and its human-facing step summary.
+    if 'seed_trigger' in final:
+        final['seed_trigger'] = {k: v for k, v in final['seed_trigger'].items() if k != 'pages'}
     seed_results = {name: results.get(name) for name in ('seed-plan', 'kernel-seed')}
     final['kernel_seed_jobs'] = seed_results
     seed_plan = jobs.get('seed-plan', {})

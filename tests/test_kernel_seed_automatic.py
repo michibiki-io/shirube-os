@@ -603,6 +603,27 @@ class MergedInventoryCLITests(unittest.TestCase):
             planner.main()
         return json.loads(output.read_text()), probe.call_count
 
+    def test_resolve_saved_plan_round_trips_into_automatic_trigger(self):
+        from producer import actions
+        self.history('rebase', 'orchestration')
+        event_path = self.root/'resolve-event.json'
+        event_path.write_text(json.dumps(self.event))
+        directory = self.root/'resolve-plan'
+        env = dict(self.env, GITHUB_EVENT_PATH=str(event_path),
+                   SHIRUBE_PLAN_DIRECTORY=str(directory),
+                   SHIRUBE_SOURCE_COMMIT=self.merged)
+        with patch.dict(os.environ, env, clear=True), \
+             patch.object(actions, 'gh', return_value=self.pages), \
+             patch.object(actions, 'identity'), \
+             patch.object(actions, 'dependency_evidence', return_value={}), \
+             patch.object(actions, 'emit'):
+            actions.resolve()
+            changed, before, trigger = planner.automatic_trigger(directory/'plan.json', self.event, self.merged)
+        self.assertEqual(set(changed), {item['filename'] for page in self.pages for item in page})
+        self.assertEqual(before, self.base)
+        self.assertEqual(trigger['commits'], 2)
+        self.assertEqual(trigger['head_commit'], self.head)
+
     def test_real_merge_squash_rebase_complete_inventory_and_old_graph(self):
         # Separate fixture instance per mode keeps all Git operations genuine.
         for mode in ('merge', 'squash', 'rebase', 'fast-forward'):

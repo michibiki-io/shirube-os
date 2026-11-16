@@ -1055,6 +1055,9 @@ an earlier relevant commit followed by docs-only changes. Missing original Git
 objects are fetched by exact SHA from the canonical origin, never by PR branch.
 Missing or malformed inventory, unavailable objects or invalid graphs produce
 visible `pending-unknown` without a coverage lookup or compilation.
+Measured: merge, squash, rebase and fast-forward handling passes local tiny Git
+fixtures. Actual GitHub merges, hosted artifact retrieval, exact original-head
+SHA fetch and object retention remain NOT_RUN; these fixtures are not hosted evidence.
 
 For manual recovery use **Run workflow → main → cache-mode warm**, with
 `architectures` defaulting to `amd64,arm64`. Warm ensures selected coverage and
@@ -1223,6 +1226,9 @@ merge、squash、複数 commit の rebase に対応し、最後が docs の変�
 不足する Git object は canonical origin から固定 SHA で取得し、PR branch は参照しません。
 一覧の欠落や不正、object の取得失敗、graph の不正は coverage の取得やコンパイルをせず、
 pending-unknown として表示します。
+実測済みなのは小さなローカル Git fixture による merge・squash・rebase・fast-forward の判定です。
+実 GitHub merge、hosted artifact 取得、元 head の SHA 指定 fetch と object 保持は NOT_RUN で、
+ローカル fixture は hosted 動作の証跡ではありません。
 
 Release、手動 seed、main full validation は共通の top-level `shirube-os-release` queue を取得します。
 queue は max、取消なしとし、PR/feature は別 group に分離します。
