@@ -52,6 +52,58 @@ class TaxonomyTests(unittest.TestCase):
             (root/'inputs-common.json').write_text('{broken')
             with self.assertRaises(ValueError): policy.declared_consumers(tmp)
 
+    def test_issue40_complete_inventory_is_nonpublishing_candidate(self):
+        # Frozen complete 24-path historical inventory for the Issue 40 fix;
+        # independent of Git history, later source changes and unrelated files.
+        # Discover the unit fixtures so snapshots cannot be silently omitted.
+        # Verify the current PR diff separately in the task/coordinator proof.
+        paths = {'.github/workflows/kernel-seed.yml', '.github/workflows/release.yml',
+                 '.github/workflows/staged-candidate.yml', '.github/workflows/validate-staged.yml',
+                 'docs/RELEASE.md', 'docs/STAGED-BUILD.md', 'producer/actions.py',
+                 'producer/kernel_compile_cache.py', 'producer/kernel_seed.py',
+                 'producer/release_plan.py', 'scripts/kernel_compile_cache.py',
+                 'scripts/kernel_seed_plan.py', 'scripts/run-native-stage.py',
+                 'tests/test_kernel_cache_capability.py', 'tests/test_kernel_compile_cache.py',
+                 'tests/test_kernel_seed.py', 'tests/test_kernel_seed_automatic.py',
+                 'tests/test_release_execution.py', 'tests/test_release_plan.py',
+                 'tests/test_release_stage_import.py', 'tests/test_workflow_cache_ci.py'}
+        snapshots = {p.relative_to(ROOT).as_posix()
+                     for p in (ROOT/'tests').glob('kernel_cache_legacy*_fixture.py')}
+        self.assertEqual(len(snapshots), 3)
+        paths.update(snapshots)
+        consumers = policy.declared_consumers(ROOT)
+        result = policy.plan(paths, 'a'*40, consumers=consumers)
+        self.assertEqual((result['publication'], result['validation'], result['automatic_execution']),
+                         ('none', 'candidate', 'focused'))
+        self.assertEqual(result['execution_deferred_gates'], ['candidate', 'aggregate'])
+        self.assertEqual(result['gates']['publication'], 'skipped-not-required')
+        for path in snapshots:
+            self.assertEqual(policy.role(path, consumers), 'test')
+        self.assertFalse(set(result['roles']) & {'product', 'acceptance', 'unknown'})
+
+    def test_legacy_snapshots_do_not_exempt_acceptance_product_or_consumed_fixtures(self):
+        snapshots = sorted(p.relative_to(ROOT).as_posix()
+                           for p in (ROOT/'tests').glob('kernel_cache_legacy*_fixture.py'))
+        for path in snapshots:
+            # An actual compile consumer overrides even these test-only names.
+            result = policy.plan([path], 'a'*40, consumers={path})
+            self.assertEqual(policy.role(path, {path}), 'build')
+            self.assertEqual(result['validation'], 'candidate')
+            self.assertEqual(result['gates']['candidate'], 'required-but-deferred')
+        for path, role, publication in [
+                ('tests/fixtures/kernel_cache_legacy/kernel_compile_cache.py', 'acceptance', 'none'),
+                ('tests/fixtures/security/kernel-original.json', 'acceptance', 'none'),
+                ('tests/kernel_cache_legacy/nested_fixture.py', 'unknown', 'hold'),
+                ('guest/kernel_cache_legacy_import_fixture.py', 'product', 'publish')]:
+            with self.subTest(path=path):
+                result = policy.plan(['scripts/kernel_seed_plan.py', path], 'a'*40)
+                self.assertEqual(policy.role(path), role)
+                self.assertEqual((result['publication'], result['validation'], result['automatic_execution']),
+                                 (publication, 'candidate', 'candidate'))
+                self.assertEqual(result['execution_deferred_gates'], [])
+                self.assertEqual(result['gates']['candidate'], 'required-but-unrun')
+                self.assertEqual(result['gates']['aggregate'], 'required-but-unrun')
+
     def test_real_37_inventory_is_validation_only_and_10_security_product(self):
         # Public PR #37's complete 14-path inventory, independent of clone depth.
         paths = ['.github/workflows/staged-candidate.yml', '.github/workflows/test.yml',
@@ -77,7 +129,7 @@ class TaxonomyTests(unittest.TestCase):
         self.assertEqual(policy.classify(actions.changed_file_paths([[{'filename':'guest/old','status':'removed'}]],1))['publication'],'publish')
 
     def test_required_status_is_not_inferred_from_skips_or_missing_results(self):
-        for path in ['guest/product', 'containers/native/Dockerfile', 'unknown-root']:
+        for path in ['guest/product', 'schemas/acceptance.json', 'unknown-root']:
             plan=policy.plan([path], 'a'*40)
             for actual in ['failure','cancelled','skipped',None]:
                 results={'focused':'success','candidate':actual,'aggregate':'success','publication':'skipped'}
@@ -118,6 +170,9 @@ class ResolutionTests(unittest.TestCase):
                     for side_effect in [releases,version,preflight]: side_effect.assert_not_called()
                     self.assertEqual(gh.call_count,1)
                     plan=json.loads((Path(self.tmp.name)/'plan.json').read_text())
+                    self.assertEqual(plan['seed_trigger']['pages'], [[{'filename':path,'status':'modified'}]])
+                    self.assertEqual(plan['seed_trigger']['changed_files'], 1)
+                    self.assertEqual(plan['seed_trigger']['source_commit'], 'a'*40)
                     self.assertTrue(plan['candidate_only']);self.assertEqual(plan['gates']['publication'],'skipped-not-required')
 
     def test_cumulative_unknown_blocks_before_version_allocation(self):
@@ -228,8 +283,9 @@ class HistoryTests(unittest.TestCase):
             decision=policy.plan(['docs/example.md'],'a'*40,run='123',attempt='1')
             (root/'plan.json').write_text(json.dumps(decision))
             env={'SHIRUBE_PLAN_DIRECTORY':tmp,'SHIRUBE_JOB_RESULTS':json.dumps({'resolve':{'result':'success'}}),
-                 'GITHUB_STEP_SUMMARY':str(root/'summary'),'GITHUB_RUN_ATTEMPT':'2'}
-            with patch.dict(os.environ,env):actions.evidence()
+                 'GITHUB_STEP_SUMMARY':str(root/'summary'),'GITHUB_RUN_ATTEMPT':'2',
+                 'GITHUB_RUN_ID':'123','SHIRUBE_SOURCE_COMMIT':'a'*40}
+            with patch.dict(os.environ,env),patch.object(actions,'identity'):actions.evidence()
             result=json.loads((root/'result.json').read_text())
             self.assertEqual(result['plan_run_attempt'],'1');self.assertEqual(result['evidence_run_attempt'],'2')
             self.assertEqual(result['status'],'passed-required-scope')
@@ -241,7 +297,7 @@ class HistoryTests(unittest.TestCase):
         self.assertIn('name: ${{ needs.resolve.outputs.plan-artifact }}',text)
         self.assertNotIn('name: release-plan-${{ github.run_attempt }}',text.split('  evidence:',1)[1])
         self.assertIn('candidate-validation:',text);self.assertIn('candidate-check:',text)
-        self.assertIn('needs: [resolve, build, candidate-validation, candidate-check, stage, publish]',text)
+        self.assertIn('needs: [resolve, build, candidate-validation, seed-plan, kernel-seed, candidate-check, stage, publish]',text)
         inline=(ROOT/'.github/workflows/staged-candidate.yml').read_text()
         self.assertIn("and os.environ['PURPOSE'] == 'release'",inline)
 
@@ -324,10 +380,12 @@ class DeferredProductTests(unittest.TestCase):
                 os.chdir(root)
                 with patch.object(actions,'git',side_effect=published_git), patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event_file),'GITHUB_EVENT_NAME':'pull_request_target'}), \
                         patch.object(actions,'gh',side_effect=api),patch.object(actions,'releases',side_effect=releases), \
-                        patch.object(actions,'integration_preflight'):
+                        patch.object(actions,'integration_preflight'),patch.object(actions,'save_plan') as plans:
                     infra=resolve('containers/native/Dockerfile','infra','compiler infrastructure')
                     held=resolve('unclassified-input','unknown','deferred input')
                     self.assertEqual((infra['publication'],held['publication']),('none','hold'))
+                    self.assertEqual(infra['automatic-execution'],'focused')
+                    self.assertEqual(held['automatic-execution'],'candidate')
                     self.assertEqual(queries,[]);self.assertEqual(created,[])
                     product=resolve('guest/product','fix','product fix deferred')
                     self.assertEqual(product['publication'],'hold');self.assertEqual(created,[])
@@ -344,4 +402,14 @@ class DeferredProductTests(unittest.TestCase):
                                     'classify deferred input','publish product']:
                         self.assertIn(message,notes[0])
                     self.assertIn('Change roles: build',notes[0]);self.assertEqual(final['publication'],'publish')
+                    fresh=plans.call_args.args[0]
+                    self.assertEqual(fresh['source_commit'],git('rev-parse','HEAD'))
+                    self.assertEqual(final['commit'],fresh['source_commit'])
+                    self.assertEqual(fresh['automatic_execution'],'candidate')
+                    self.assertEqual(fresh['execution_deferred_gates'],[])
+                    self.assertEqual(fresh['prior_guest_evidence'],'NOT_REUSED')
+                    self.assertIn('containers/native/Dockerfile',fresh['cumulative']['roles']['build'])
+                    self.assertEqual(fresh['gates']['candidate'],'required-but-unrun')
+                    self.assertEqual(fresh['gates']['aggregate'],'required-but-unrun')
+                    self.assertEqual(fresh['gates']['publication'],'required-but-unrun')
             finally:os.chdir(cwd)

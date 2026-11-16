@@ -73,7 +73,7 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual(release['uses'],'./.github/workflows/staged-candidate.yml')
         self.assertEqual(release['uses'],validation['uses'])
         self.assertEqual(release['permissions'],{'contents':'read','actions':'read'})
-        self.assertEqual(validation['permissions'],{'contents':'read'})
+        self.assertEqual(validation['permissions'],{'contents':'read','actions':'read'})
         self.assertEqual(set(self.validation['on']),{'workflow_dispatch','pull_request'})
         self.assertEqual(self.validation['on']['pull_request']['types'],['labeled'])
         self.assertEqual(self.validation['permissions'],{'contents':'read'})
@@ -84,15 +84,17 @@ class WorkflowCacheCITests(unittest.TestCase):
             'build': {'contents': 'read', 'actions': 'read'},
             'stage': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
             'publish': {'contents': 'write', 'actions': 'read', 'pull-requests': 'read'},
-            'candidate-validation': {'contents':'read'}, 'candidate-check': {'contents':'read'},
-            'evidence': {'contents':'read'}})
+            'candidate-validation': {'contents':'read','actions':'read'}, 'candidate-check': {'contents':'read'},
+            'evidence': {'contents':'read'}, 'seed-plan': {'contents':'read','actions':'read'},
+            'kernel-seed': {'contents':'read','actions':'read'}})
         for node in mappings(self.validation):
             self.assertNotIn('GH_TOKEN',node)
             self.assertNotIn('secrets',node)
         for node in mappings(self.staged):
             if 'GH_TOKEN' in node:
                 self.assertEqual(node['GH_TOKEN'],'${{ github.token }}')
-                expected = ({'GH_TOKEN','CACHE_WRITE','CACHE_MODE','SOURCE_COMMIT','ARCHITECTURE','KERNEL_CACHE'}
+                expected = (({'GH_TOKEN','CACHE_WRITE','KERNEL_CACHE_WRITE','PRODUCER_KIND','CACHE_MODE','SOURCE_COMMIT','ARCHITECTURE','KERNEL_CACHE'} if 'CACHE_MODE' in node else
+                             {'GH_TOKEN','KERNEL_CACHE_WRITE','PRODUCER_KIND','SOURCE_COMMIT','ARCHITECTURE','KERNEL_CACHE','EXPORT_ARTIFACT_ID','EXPORT_ARTIFACT_DIGEST'})
                             if 'KERNEL_CACHE' in node else
                             {'GH_TOKEN','CACHE_WRITE','CACHE_MODE','CACHE_HIT','STAGE',
                              'ARCHITECTURE','SOURCE_COMMIT','STAGE_KEY','STAGE_CACHE'})
@@ -146,13 +148,13 @@ class WorkflowCacheCITests(unittest.TestCase):
         for name in ('validate', 'validate-main'):
             self.assertEqual(jobs[name]['needs'], 'resolve')
             self.assertEqual(jobs[name]['uses'], './.github/workflows/staged-candidate.yml')
-            self.assertEqual(jobs[name]['permissions'], {'contents': 'read'})
-            self.assertEqual(jobs[name]['with'], jobs['validate']['with'])
+            self.assertEqual(jobs[name]['permissions'], {'contents': 'read', 'actions': 'read'})
+            self.assertEqual({k:v for k,v in jobs[name]['with'].items() if k != 'producer-kind'}, jobs['validate']['with'])
         self.assertEqual(self.release['jobs']['build']['if'],
                          "needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop != 'true'")
         self.assertEqual(self.release['jobs']['build']['with'], {
             'commit': '${{ needs.resolve.outputs.commit }}',
-            'version': '${{ needs.resolve.outputs.version }}', 'cache-mode': 'warm', 'purpose':'release'})
+            'version': '${{ needs.resolve.outputs.version }}', 'cache-mode': 'warm', 'purpose':'release', 'producer-kind':'build'})
 
     def test_heavy_stages_and_real_dependencies_have_separate_jobs(self):
         from producer.staged import DEPENDENCIES
@@ -163,12 +165,15 @@ class WorkflowCacheCITests(unittest.TestCase):
             job=jobs[stage]
             self.assertEqual(set(job['needs']),{'admission','compiler',*dependencies})
             self.assertLess(int(job['timeout-minutes']),360)
-            self.assertEqual(job['strategy']['matrix']['include'],[
-                {'architecture':'amd64','runner':'ubuntu-24.04'},
-                {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
+            if stage in {'vpp', 'kernel'}:
+                self.assertEqual(job['strategy']['matrix'], '${{ fromJSON(needs.admission.outputs.matrix) }}')
+            else:
+                self.assertEqual(job['strategy']['matrix']['include'],[
+                    {'architecture':'amd64','runner':'ubuntu-24.04'},
+                    {'architecture':'arm64','runner':'ubuntu-24.04-arm'}])
             commands=[step['run'] for step in job['steps'] if 'run' in step]
             cacheable = stage in {'native','vpp','kea','salt','runtime'}
-            self.assertEqual(len(commands),4 if cacheable or stage == 'kernel' else 2)
+            self.assertEqual(len(commands),7 if stage == 'kernel' else 4 if cacheable else 2)
             if cacheable:
                 self.assertIn('producer.component_inputs stage-key',commands[1])
                 self.assertIn('--read-only --network none',commands[1])
@@ -176,7 +181,7 @@ class WorkflowCacheCITests(unittest.TestCase):
             self.assertIn('producer.compiler_artifact load',commands[0])
             self.assertEqual(sum('scripts/run-native-stage.py' in command for command in commands), 1)
             self.assertEqual('--discard-archive' in commands[0], stage in {'iso', 'clearance', 'guests'})
-            self.assertEqual('--discard-input-archives' in commands[-1], stage in {'iso', 'clearance', 'guests'})
+            self.assertEqual('--discard-input-archives' in (commands[-2] if stage == 'kernel' else commands[-1]), stage in {'iso', 'clearance', 'guests'})
             self.assertNotIn('scripts/build-release.sh',commands[-1])
             downloads=[step['with']['name'] for step in job['steps']
                        if step.get('uses','').startswith('actions/download-artifact@')]
@@ -256,9 +261,9 @@ class WorkflowCacheCITests(unittest.TestCase):
                 self.assertFalse(saves)
                 self.assertNotIn('--cache',execute['run'])
 
-    def test_kernel_compiler_artifact_is_release_only_and_never_stage_cache(self):
+    def test_kernel_compiler_readers_and_release_only_writers_never_stage_cache(self):
         job = self.staged['jobs']['kernel']
-        self.assertNotIn('permissions', job)  # Caller cap; PR caller has no actions:read.
+        self.assertNotIn('permissions', job)  # Inherits caller actions:read cap.
         importer = next(s for s in job['steps'] if 'kernel_compile_cache.py import' in s.get('run', ''))
         receipt = next(s for s in job['steps'] if 'kernel_compile_cache.py receipt' in s.get('run', ''))
         export = next(s for s in job['steps'] if s.get('with', {}).get('name', '').startswith('shirube-kernel-compiler-'))
@@ -266,9 +271,12 @@ class WorkflowCacheCITests(unittest.TestCase):
             for event in ['pull_request_target', 'pull_request', 'workflow_dispatch']:
                 for success in [True, False]:
                     context = {'needs.admission.outputs.cache-write': admitted,
-                               'github.event_name': event, 'success()': success}
+                               'github.repository': 'michibiki-io/shirube-os',
+                               'steps.kernel-cache-capability.outputs.supported':'true',
+                               'github.event_name': event, 'success()': success,
+                               'needs.admission.outputs.kernel-write': str(admitted == 'true' and event == 'pull_request_target').lower()}
                     eligible = admitted == 'true' and event == 'pull_request_target'
-                    self.assertEqual(expression_value(importer['if'], context), eligible)
+                    self.assertTrue(expression_value(importer['if'], context))
                     self.assertEqual(expression_value(receipt['if'], context), eligible and success)
                     self.assertEqual(expression_value(export['if'], context), eligible and success)
         self.assertEqual(export['with']['retention-days'], '7')
@@ -279,6 +287,56 @@ class WorkflowCacheCITests(unittest.TestCase):
         execute = next(s for s in job['steps'] if 'run-native-stage.py' in s.get('run', ''))
         self.assertNotIn('GH_TOKEN', execute['env'])
         self.assertIn('--kernel-compile-cache', execute['run'])
+
+    def test_effective_permissions_and_token_steps_for_every_caller_and_job(self):
+        components = {'native', 'vpp', 'kea', 'salt', 'runtime'}
+        inheriting = components | {'kernel'}
+        callers = [self.release['jobs'][name] for name in ('build','candidate-validation')]
+        callers += [self.validation['jobs'][name] for name in ('validate','validate-main')]
+        for caller in callers:
+            self.assertEqual(caller['permissions'], {'contents':'read','actions':'read'})
+            for name, job in self.staged['jobs'].items():
+                effective = job.get('permissions', caller['permissions'])
+                self.assertEqual(effective, {'contents':'read','actions':'read'}
+                                 if name in inheriting else {'contents':'read'}, name)
+                for step in job['steps']:
+                    if 'GH_TOKEN' not in step.get('env', {}): continue
+                    self.assertIn(name, inheriting)
+                    for writer in ('true','false'):
+                        for event in ('pull_request_target','workflow_dispatch','pull_request'):
+                            for repo in ('michibiki-io/shirube-os','foreign/repo'):
+                                context = {'needs.admission.outputs.cache-write':writer,
+                                           'github.event_name':event,'github.repository':repo,
+                                           'steps.kernel-cache-capability.outputs.supported':'true',
+                                           'inputs.cache-mode':'warm','steps.cache.outputs.cache-hit':'false',
+                                           'needs.admission.outputs.kernel-write':writer,'success()':True}
+                                expected = (repo == 'michibiki-io/shirube-os' if name == 'kernel'
+                                            else writer == 'true' and event == 'pull_request_target')
+                                for mode in ('cold','warm'):
+                                    for hit in ('true','false',''):
+                                        context.update({'inputs.cache-mode':mode, 'steps.cache.outputs.cache-hit':hit})
+                                        enabled = ((writer == 'true') if 'EXPORT_ARTIFACT_ID' in step.get('env',{})
+                                                   else expected and (name == 'kernel' or (mode == 'warm' and hit != 'true')))
+                                        self.assertEqual(expression_value(step['if'],context),enabled)
+        kernel = self.staged['jobs']['kernel']
+        execute = next(s for s in kernel['steps'] if 'run-native-stage.py' in s.get('run',''))
+        self.assertEqual(execute['env']['KERNEL_CACHE_WRITE'],
+            "${{ needs.admission.outputs.kernel-write == 'true' }}")
+        # Execute the actual shell assembly with a mocked Python launcher.
+        for enabled in ('true','false'):
+            for writer in ('true','false'):
+                with tempfile.TemporaryDirectory() as temp:
+                    root=Path(temp); capture=root/'args'; python=root/'python3'
+                    python.write_text('#!/bin/sh\nprintf "%s\\n" "$@" > "$CAPTURE"\n')
+                    python.chmod(0o755)
+                    env={**os.environ, **{key:'fixture' for key in execute['env']},
+                         'KERNEL_CACHE_ENABLED':enabled,'KERNEL_CACHE_WRITE':writer,
+                         'PATH':temp+':'+os.environ['PATH'],'CAPTURE':str(capture)}
+                    subprocess.run(['bash','-eu','-c',execute['run']],env=env,check=True)
+                    args=capture.read_text().splitlines()
+                    self.assertEqual('--kernel-compile-cache' in args, enabled == 'true')
+                    self.assertEqual('--kernel-compile-cache-write' in args,
+                                     enabled == 'true' and writer == 'true')
 
     def test_actual_cache_expressions_event_mode_hit_success_matrix(self):
         jobs = self.staged['jobs']
@@ -327,7 +385,7 @@ class WorkflowCacheCITests(unittest.TestCase):
             env={**os.environ, 'SOURCE_COMMIT':commit, 'CACHE_MODE':mode, 'PURPOSE':purpose,
                  'GITHUB_SHA':sha, 'GITHUB_REF':ref, 'GITHUB_REPOSITORY':repo,
                  'GITHUB_EVENT_NAME':event, 'GITHUB_EVENT_PATH':str(event_path),
-                 'GITHUB_OUTPUT':str(output)}
+                 'GITHUB_OUTPUT':str(output), 'PRODUCER_KIND':'', 'ARCHITECTURES':'amd64,arm64'}
             result=subprocess.run(['bash','-e','-c',self.staged['jobs']['admission']['steps'][0]['run']],
                                   cwd=temp, env=env, capture_output=True, text=True)
             return result.returncode, output.read_text().strip() if output.exists() else ''
@@ -374,7 +432,8 @@ class WorkflowCacheCITests(unittest.TestCase):
             with self.subTest(context=context):
                 status,output=self.admission(**context)
                 self.assertEqual(status==0,admitted)
-                self.assertEqual(output, 'cache-write='+str(writes).lower() if admitted else '')
+                self.assertEqual(output, ('cache-write='+str(writes).lower()+'\nkernel-write='+
+                    'false'+'\nmatrix='+json.dumps({'include':[{'architecture':'amd64','runner':'ubuntu-24.04'}, {'architecture':'arm64','runner':'ubuntu-24.04-arm'}]}, separators=(',',':'))) if admitted else '')
                 for mode in ('cold','warm'):
                     for hit in ('true','false',''):
                         for success in (True,False):
@@ -419,7 +478,7 @@ class WorkflowCacheCITests(unittest.TestCase):
                     result=subprocess.run(['bash','-e','-c',guard['run']],cwd=temp,capture_output=True,
                         env={**os.environ,'PATH':temp+':'+os.environ['PATH'],'RESOLVED_SHA':resolved,
                              'CALLER_EVENT':'workflow_dispatch','CALLER_REF':ref,'WORKFLOW_SHA':'a'*40,
-                             'GITHUB_OUTPUT':str(output)})
+                             'GITHUB_OUTPUT':str(output), 'PRODUCER_KIND':'', 'ARCHITECTURES':'amd64,arm64'})
                     self.assertEqual(result.returncode==0,admitted)
                     self.assertEqual(output.exists(),admitted)
 
@@ -427,7 +486,7 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertEqual(self.release['on'],{'pull_request_target':{'types':['closed'],'branches':['main']}})
         jobs=self.release['jobs']
         self.assertEqual(jobs['resolve']['if'],'github.event.pull_request.merged == true')
-        self.assertEqual(set(jobs['resolve']['outputs']), {'eligible','noop','commit','version','publication','validation','plan-artifact'})
+        self.assertEqual(set(jobs['resolve']['outputs']), {'eligible','noop','commit','version','publication','validation','automatic-execution','plan-artifact'})
         self.assertNotIn('timeout_minutes', Path('producer/actions.py').read_text())
         self.assertEqual(jobs['stage']['strategy']['matrix']['architecture'],['amd64','arm64'])
         self.assertEqual(jobs['stage']['needs'],['resolve','build','candidate-check'])

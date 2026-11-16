@@ -23,6 +23,7 @@ jobs:
       noop: ${{ steps.plan.outputs.noop }}
       publication: ${{ steps.plan.outputs.publication }}
       validation: ${{ steps.plan.outputs.validation }}
+      automatic-execution: ${{ steps.plan.outputs.automatic-execution }}
       commit: ${{ steps.plan.outputs.commit }}
       version: ${{ steps.plan.outputs.version }}
       plan-artifact: release-plan-${{ github.run_attempt }}
@@ -65,18 +66,78 @@ jobs:
       version: ${{ needs.resolve.outputs.version }}
       cache-mode: warm
       purpose: release
+      producer-kind: build
   candidate-validation:
     cache-mode: read
     needs: resolve
-    if: needs.resolve.outputs.publication != 'publish' && needs.resolve.outputs.validation == 'candidate'
+    if: needs.resolve.outputs.publication != 'publish' && needs.resolve.outputs.automatic-execution == 'candidate'
     permissions:
       contents: read
+      actions: read
     uses: ./.github/workflows/staged-candidate.yml
     with:
       commit: ${{ needs.resolve.outputs.commit }}
       version: ${{ needs.resolve.outputs.version }}
       cache-mode: warm
       purpose: validation
+      producer-kind: candidate-validation
+  seed-plan:
+    needs: resolve
+    if: needs.resolve.outputs.publication != 'publish' && needs.resolve.outputs.automatic-execution == 'focused'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      selected: ${{ steps.probe.outputs.selected }}
+      status: ${{ steps.probe.outputs.status }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ needs.resolve.outputs.commit }}
+          fetch-depth: 0
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
+      - name: Read this run's complete merged PR inventory
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        continue-on-error: true
+        with:
+          name: ${{ needs.resolve.outputs.plan-artifact }}
+          path: ${{ runner.temp }}/release-plan
+      - name: Check compatible coverage after acquiring producer queue
+        id: probe
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KERNEL_CACHE_WRITE: 'true'
+          PRODUCER_KIND: automatic-seed
+          SOURCE_COMMIT: ${{ needs.resolve.outputs.commit }}
+        run: |
+          python3 scripts/kernel_seed_plan.py --automatic --commit "$SOURCE_COMMIT" \
+            --release-plan "${{ runner.temp }}/release-plan/plan.json" \
+            --output "${{ runner.temp }}/kernel-seed-plan/plan.json"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: kernel-seed-plan-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/kernel-seed-plan/plan.json
+          if-no-files-found: error
+          retention-days: 30
+  kernel-seed:
+    needs: [resolve, seed-plan]
+    if: needs.seed-plan.outputs.selected != ''
+    cache-mode: read
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/staged-candidate.yml
+    with:
+      commit: ${{ needs.resolve.outputs.commit }}
+      version: ${{ needs.resolve.outputs.version }}
+      purpose: seed
+      producer-kind: automatic-seed
+      architectures: ${{ needs.seed-plan.outputs.selected }}
+      cache-mode: warm
   candidate-check:
     needs: [resolve, build, candidate-validation]
     if: always() && needs.resolve.result == 'success' && needs.resolve.outputs.validation == 'candidate' && needs.resolve.outputs.noop != 'true' && (needs.build.result == 'success' || needs.candidate-validation.result == 'success')
@@ -175,7 +236,7 @@ jobs:
           SHIRUBE_ACTIONS_ARTIFACT_DIGEST: ${{ steps.assets.outputs.artifact-digest }}
         run: python3 -m producer.actions promote
   evidence:
-    needs: [resolve, build, candidate-validation, candidate-check, stage, publish]
+    needs: [resolve, build, candidate-validation, seed-plan, kernel-seed, candidate-check, stage, publish]
     if: always() && github.event.pull_request.merged == true
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -195,6 +256,7 @@ jobs:
         env:
           SHIRUBE_PLAN_DIRECTORY: ${{ runner.temp }}/release-plan
           SHIRUBE_JOB_RESULTS: ${{ toJSON(needs) }}
+          SHIRUBE_SOURCE_COMMIT: ${{ github.event.pull_request.merge_commit_sha }}
         run: python3 -m producer.actions evidence
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()

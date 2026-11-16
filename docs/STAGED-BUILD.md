@@ -537,10 +537,14 @@ The ten unsigned transfers total **6,268,180,480 bytes**, before cache compressi
 in addition to compiler caches. Quota and eviction can prevent durable reuse.
 Per import, free disk must cover the ZIP, tar, unpacked payload, metadata and
 512 MiB margin; scratch is cleaned on failure and success. No cache deletion or
-capacity purchase is performed. `GH_TOKEN` exists only in the five host import
-steps. Release's build caller adds `actions: read`; those jobs inherit caller
-permissions, while compiler/admission and other jobs explicitly keep
-`contents: read`. PR/manual callers retain their existing contents-only grants.
+capacity purchase is performed. For component imports, `GH_TOKEN` exists only in the five host import steps,
+which remain gated by writer admission, `pull_request_target`, warm mode and an
+outer-cache miss. Product Release and validation callers supply `actions: read`;
+`native`/`vpp`/`kea`/`salt`/`runtime` and kernel inherit that cap. Compiler/admission
+and other jobs explicitly keep `contents: read`. In validation contexts the five
+component token steps remain disabled; manual-main component cache saving stays
+separate from kernel artifact ownership. The kernel host importer is described
+below.
 
 Small mocked fixtures cover integrity and the real stage cache HIT/repack path.
 Historical metric scope equality is a compatibility observation, not full artifact
@@ -573,8 +577,13 @@ stageが独立して再検証し、現commitとversionへ再梱包しても`cont
 quotaやevictionで保存と保持が制限される場合があります。
 各取り込みではZIP、tar、展開payload、metadata、512 MiBの余裕を確保します。
 cache削除や容量購入は行いません。
-tokenは5つのhost stepだけに渡し、Release callerの`actions: read`を継承させます。
-他のjobとPR、手動callerは既存の`contents: read`を維持します。
+component import の token は5つの host step だけに渡します。
+各 step は既存の writer admission、`pull_request_target`、warm、外側 cache miss の条件で制御します。
+Release と validation caller は `actions: read` を渡し、5つの component job と kernel が継承します。
+compiler、admission、その他の job は明示的な `contents: read` を維持します。
+validation では component の token step は無効です。
+manual-main の component cache 保存は、kernel artifact の writer 権限とは別の既存方針です。
+kernel の host importer は後述します。
 
 小さなmock fixtureで実stageのHITと来歴の再梱包を検証します。
 過去10scopeの一致は互換性の観測であり、実artifact全体の検証ではありません。
@@ -874,26 +883,72 @@ modules run fresh. The optional fixture's preexisting ABI file also participates
 in the source namespace. See the [ccache 4.7.5 manual](https://ccache.dev/manual/4.7.5.html)
 for preprocessor hashing and unsupported-directive behavior.
 
-Only the admitted canonical repository's merged-main **Release** path imports or
-exports these artifacts. Main dispatch and PR validation remain fresh builds for
-this feature. The kernel job inherits the caller's existing permission cap:
-Release supplies `actions: read`; PR validation supplies only `contents: read`.
-The host-only importer keeps the token out of Docker. It searches at most ten
-successful Release runs and accepts an immutable upload only after checking the
-canonical repository ID, Release event/path, successful completed run, exact
-merged main PR/source commit, reusable workflow SHA/ref, matching successful
-kernel job/attempt and upload timing, artifact ownership/expiry and GitHub's
-artifact ZIP SHA-256. Then it validates the receipt, archive length/digest and
-regular ZIP members. A matching internal digest alone proves neither producer
-identity nor compiler correctness. Trust includes GitHub's API/artifact service,
-the approved main workflow/source, signed compiler inputs and trusted main
-maintainers; a malicious trusted compiler/writer is outside the integrity check's
-claim. Changing these trust boundaries requires a separate design review.
+Kernel readers and writers have separate admission checks (Issue #40). Canonical
+merged-main candidate validation, labeled PR validation (same-repository or fork
+heads), and manual main/feature validation may read. A run in a foreign repository
+cannot import. The host rechecks repository name/ID, supported event/action/ref,
+and exact resolved commit independently of `cache-write`; main dispatch still
+requires the exact workflow SHA. Warm mode may retrieve; cold creates an empty
+run-local store without constructing an API client or fetching an old seed.
+Kernel writers use explicit kinds: `build` and `candidate-validation` in
+`release.yml`, `validate-main` in `validate-staged.yml`, `manual-seed` in
+`kernel-seed.yml`, and `automatic-seed` under Release's `kernel-seed` caller.
+Every kind has an allowlisted workflow/event/job prefix and canonical repository
+ID. Existing required full builds export from their existing kernel work; no
+second chain is started after their failure. Other component-cache permissions
+are unchanged. PR/fork/feature readers cannot write or request privileged main work.
+
+Supported full/seed caller jobs supply `actions: read`. Kernel and five component
+jobs inherit it; other jobs retain contents-only permissions. Component token
+imports retain their writer/merged-Release/warm/miss conditions. Checkout never
+persists credentials. Kernel credentials exist only in host import/index metadata
+steps, never Docker arguments, recipes, cache contents or logs.
+The mount enables compiler-result consumption by default; only the explicit
+`--kernel-compile-cache-write` flag enables export via
+`SHIRUBE_KERNEL_COMPILE_CACHE_WRITE=true`. Readers write diagnostic metrics but
+never create `export.tar` or `provenance.json`. The local launcher flag is a trusted
+operator boundary, not a new source of producer authority.
+
+Discovery first searches repository artifact metadata by the exact versioned
+architecture/input-key index name, across **all** allowlisted kinds. At most ten
+indexes are inspected, with a 64 KiB ZIP and uncompressed JSON bound each; no
+compiler build or 2 GiB export download is used for coverage. A verified match
+can prove coverage even in a truncated window. An exhausted/incomplete window,
+API failure, malformed ZIP or corrupt record is unknown, never confirmed absence.
+Completed failed/cancelled runs and expired artifacts cannot provide coverage;
+in-flight claims are pending. A complete empty compatible-index search is missing.
+
+The key combines `component_inputs.manifest(kernel, arch)`, the VPP manifest,
+source-only compiler identity and a versioned protocol. It has no commit/run ID
+or host compiler fingerprint. Both before/after dependency inventories are checked,
+including graph safety, renamed/deleted dependencies and patch trees. The separate
+orchestration trigger inventory requests lookup without changing compile identity.
+
+After a successful complete kernel recipe, schema-3 export provenance records
+exact source/run/attempt/kind/key and **measured** toolchain envelope, prepared-tree
+namespace and nonzero exported result count. Upload export first, then obtain its
+actual artifact ID/digest/size/timing/expiry from GitHub and upload a separate tiny
+index binding those fields. Index and export independently require canonical
+repository ID, allowed workflow/event, immutable source, referenced reusable
+workflow SHA/ref, exact successful architecture job from the attempt-specific
+endpoint, whole completed successful run, ownership, timing, expiry and ZIP digest.
+A later main advance does not invalidate authentic immutable evidence. Dispatch
+uses its main run/workflow SHA, never an invented PR. An index is a planning hint;
+actual toolchain/prepared tree/config/argv checks still determine compiler reuse.
+
+Only after all compatible indexes have been considered may readers fall back to
+strict legacy schema-1 Release and schema-2 dedicated-seed receipts: ten successful
+Release runs then ten successful manual seed runs. Deferred green planning runs
+consume that legacy Release window. Unindexed legacy exports cannot prove new
+coverage; a compatible index cannot be hidden by an incompatible older Release.
+All searches remain bounded. Trust includes GitHub's API/artifact service,
+approved main workflow/source, compiler inputs and trusted main maintainers;
+digests alone cannot authenticate a producer or a malicious trusted compiler.
 
 The container receives only that admitted seed and checks architecture/toolchain,
 every result member, size and digest before writing any cached byte. Foreign,
 corrupt, unsafe, missing, expired or unavailable input causes fresh compilation;
-there is no fallback to a shared Actions cache or another writer. The host's
+there is no fallback to a shared Actions cache or an unapproved writer. The host's
 `--kernel-compile-cache` option is an explicit trusted-operator boundary for local
 use, not an authenticity checker for arbitrary local files. Do not supply an
 untrusted local seed. Unexpected local export state fails the build closed.
@@ -901,8 +956,8 @@ untrusted local seed. Unexpected local export state fails the build closed.
 The dedicated store has ccache eviction targets of 1 GiB and 45,000 files. Export/import enforce a
 2 GiB tar limit, 64 MiB per result, 50,000 results and an 8 MiB manifest limit.
 Export retains a bounded subset if count, individual-result size, manifest or
-tar capacity would be exceeded; metrics report `skipped_capacity`. Capacity alone
-cannot fail a correctly signed build. Unknown files, links and malformed state
+tar capacity would be exceeded; metrics report `skipped_capacity`. A bounded nonzero subset remains usable; zero exported results cannot advertise
+coverage and fail producer receipt creation. Unknown files, links and malformed state
 still fail closed. Optional importer failures (including interrupted HTTP reads)
 are redacted and fall back to a fresh build without a seed.
 Only regular ccache result files are exported; configuration, logs, temporary
@@ -913,7 +968,7 @@ ZIP and tar space (in addition to the private store), and eviction/expiry or no
 successful compatible producer means a miss. These optional compiler artifacts
 do not replace required same-run stage handoffs. An upload occurs only after
 the entire kernel stage, including external modules and package audits, succeeds;
-an unsuccessful Release is never imported. No cache deletion or capacity purchase
+an unsuccessful Release or seed run is never imported. No cache deletion or capacity purchase
 is part of this change. Adding ccache changes the compiler fingerprint, so the
 existing compiler/component caches incur a one-time identity miss.
 
@@ -932,6 +987,137 @@ build. Full kernel/ISO/guest builds, exact production recipe integration, hosted
 artifact import/warm hits, capacity peaks and actual full-kernel speedup are
 **NOT_RUN**. No measured speedup percentage is claimed.
 
+Issue #40 focused local validation uses gcc, OpenSSL and the official Debian
+ccache tool, with zero permitted skips for the real compiler/key fixtures.
+Reproduce with ccache and its runtime libraries available in the environment:
+
+```sh
+PYTHONPATH=tests:. python3 -m unittest tests.test_kernel_seed_automatic \
+  tests.test_kernel_compile_cache tests.test_kernel_seed tests.test_workflow_cache_ci \
+  tests.test_workflow_cache_mode tests.test_workflow_concurrency tests.test_release_plan \
+  tests.test_release_execution tests.test_component_inputs tests.test_component_graph -v
+python3 scripts/check_workflow_concurrency.py .github/workflows/*.yml
+python3 -m scripts.check_workflow_cache_mode .github/workflows/*.yml
+bash -n scripts/*.sh containers/native/package.sh containers/native/package_kernel.sh
+```
+
+Pinned actionlint 1.7.12 also passed with only the repository's existing
+unsupported `queue`/`cache-mode` diagnostics suppressed, as in
+`scripts/check-workflows.sh`. The matrix executes host admission/import fallback,
+launcher flags and effective per-job permissions/token conditions for both
+architecture settings. A real small compiler-result tar passes mocked GitHub
+producer/ZIP gates, then yields a compiler hit; content changes miss and
+architecture/toolchain changes reject the seed. Readers cannot call export,
+create a receipt or upload a reusable artifact. Key rotation produces fresh
+certificate-dependent objects, final links and current-certificate signatures;
+old-certificate signatures fail verification. This is local fixture evidence,
+not evidence of hosted retrieval or a real ARM64 compilation.
+
+**FAILED:** no outstanding focused checks. Earlier local attempts exposed stale
+permission assertions and test invocation errors; these were corrected before
+the passing run. **NOT_RUN:** required exact-head normal Test CI (not run locally; PR checks record its result),
+GitHub acceptance of caller permissions, actual seed availability/expiry/network
+behavior, hosted warm hit, capacity peak and full-kernel speedup. No full/hull,
+kernel, ISO or guest build was started. The complete changed-path inventory is
+covered by a regression asserting `publication=none`, `validation=candidate`;
+publication and required acceptance gates are unchanged.
+
+### Dedicated kernel seed operation
+
+Relevant canonical-main merges automatically ensure coverage when no full
+kernel build is already planned. Kernel/VPP/compiler input changes and seed
+orchestration changes (including bootstrap) trigger lookup; unrelated components
+and docs/tests-only changes do not. A necessary product/full-main build is already
+the producer, even if it later fails. The shared top-level `shirube-os-release`
+queue is acquired **before** probing. Release, manual seed and main validation
+use `queue: max`, no cancellation; PR/feature groups are separate. The reusable
+workflow never nests this lock. Queued duplicate demand rechecks completed coverage;
+there is no in-flight ownership claim. Queued automatic maintenance with superseded
+input keys records `pending-superseded`, preserving its source; required full work
+always executes its bound source. The queue can wait behind full guest time and
+seed work can delay a later Release. It has no scheduler priority guarantee.
+
+Only confirmed missing/expired/incompatible architectures run. Covered is a no-op;
+unknown is visible `pending-unknown`, not an excuse to compile. Expiry while idle
+starts nothing; the next relevant merge, necessary trusted build or manual warm
+operation can repair it. There is no timer, retry controller, dispatch bridge,
+actions-write permission or mutable cross-run ledger.
+
+Relevance uses the complete paginated merged-PR file inventory already validated
+by this run's resolve job, including both rename paths and deletions. Its release
+plan artifact binds repository, PR, merged source, original base/head, file and commit counts, run
+and attempt. The planner checks that binding against the event. The before graph
+comes from the merged source’s first parent and original PR head merge base;
+for an unrewritten linear fast-forward it precedes the complete PR commit count.
+The event base may already name the merged tip. The after graph uses the exact
+merged source. This covers merge, squash and multi-commit rebase merges, including
+an earlier relevant commit followed by docs-only changes. Missing original Git
+objects are fetched by exact SHA from the canonical origin, never by PR branch.
+Missing or malformed inventory, unavailable objects or invalid graphs produce
+visible `pending-unknown` without a coverage lookup or compilation.
+Measured: merge, squash, rebase and fast-forward handling passes local tiny Git
+fixtures. Actual GitHub merges, hosted artifact retrieval, exact original-head
+SHA fetch and object retention remain NOT_RUN; these fixtures are not hosted evidence.
+
+For manual recovery use **Run workflow → main → cache-mode warm**, with
+`architectures` defaulting to `amd64,arm64`. Warm ensures selected coverage and
+skips already covered architectures. Cold explicitly forces only selected
+architectures, without prior compiler/VPP/kernel cache fetches. No source-ref
+override exists. Record immutable `github.sha`, run ID and attempt. Checkout and
+local reusable workflow use that source even if main advances later.
+
+Selected native architectures reuse the existing compiler job and verified same-run
+compiler → VPP → kernel handoffs. A valid compiler/VPP cache may accelerate them;
+a miss builds them. Only the normal complete kernel recipe runs, including fresh
+keys, certificate-dependent compilation, links, external modules, module signing,
+current-certificate checks and package/source audits. Seed mode skips native,
+Kea, Salt, runtime, integration, ISO, whole-image clearance and guest jobs. It does
+not reserve a version or create, stage or publish a Release. Compiler/component
+shared-cache writes stay disabled; the seed caller uses the read cache cap.
+
+Keep the required seven-day compiler/VPP handoffs and the seven-day bounded
+kernel compiler export, provenance and diagnostics. The unused signed kernel
+stage tar may be created locally by the established engine, but is not uploaded.
+No image artifact is produced. Existing full workflows keep their graph/uploads.
+Each architecture summary reports only that architecture's chain upload and full
+acceptance NOT_RUN. Run-level seed scope success requires every selected architecture job
+to succeed and a successful run conclusion. A failed,
+cancelled or partial run cannot supply an admissible seed, even if one architecture
+uploaded an artifact. Inspect all selected architecture jobs and provenance before treating
+the run as successful. Kernel tokens have only host-side Actions read access.
+
+Seed discovery is bound to the run's latest attempt: artifact names and successful
+job provenance must match that attempt. After **Re-run failed jobs**, only rerun
+architectures can supply admissible seeds once the run succeeds; an untouched
+architecture's artifact from the previous attempt misses discovery. For example,
+rerunning only failed arm64 leaves the earlier amd64 seed undiscoverable in that
+run. If both architecture seeds are required, choose **Re-run all jobs** or a new
+dispatch only when the operator intends the compilation and storage cost.
+Provenance remains attempt-bound; there is no cross-attempt compatibility fallback.
+An old-attempt index still visible under the same key makes coverage unknown;
+manual warm does not force past that uncertainty. An intentional new cold
+selection can recover it. This design does not solve partial-failure reuse.
+
+New producers use schema 3 with measured coverage fields and their explicit kind.
+Genuine old Release/seed receipts retain strict legacy consumption only. Producer
+and consumer commits may differ: actual compiler/backend, source/config/header
+contents and every argument must still be compatible. Restoring an artifact is
+not itself a compiler hit; inspect per-run counters. Zero-result exports cannot
+advertise coverage and fail producer receipt creation.
+
+The first seed can cost a full compiler/VPP/kernel chain on **each** architecture.
+Historical full-path observations were about 74 amd64 + 55 arm64 runner-minutes;
+these are not seed-workflow measurements. Store targets remain 1 GiB, exports
+2 GiB, retention seven days. ZIP/tar, same-run compiler/VPP transfers and private
+workspaces add transient storage; peak usage and actual savings are **NOT_RUN**.
+No deletion or capacity purchase is needed by this procedure.
+
+The focused local fixtures cover both architecture scopes with real gcc/ccache,
+trusted seed import, hit counters and source/config/argument/toolchain invalidation,
+plus fresh key/signature verification. They do not measure hosted retrieval, a
+hosted compiler hit, real ARM64 code generation or full-kernel speedup. Real seed
+generation and the expanded workflow's hosted permission acceptance are **NOT_RUN**.
+
 ### 日本語: 署名前の kernel compiler 結果再利用
 
 kernel の stage cache 除外と `.o`/`.ko` の転送拒否は維持します。
@@ -941,19 +1127,59 @@ module metadata、tools、最終 link、全 module の署名・現行証明書�
 外部 module と accel-ppp は従来どおりビルドします。
 
 共有 cache の digest を信頼性の証明には使いません。
-既存 admission を通った canonical repository の merged-main Release だけが入出力し、
-host 側で run・PR・workflow・成功 job・artifact の由来と digest を独立に検証します。
-token は build container に渡しません。
-PR validation と main dispatch はこの機能では常に fresh build です。
-不正・異種・非信頼・期限切れ・取得不能の入力を使わず、通常コンパイルへ戻します。
-ローカル用の専用 cache 引数は、trusted operator が検証済みの入力を渡す境界です。
+Issue #40 では reader と writer の admission を分離します。
+canonical repository の merged-main 検証、同一 repository または fork head の PR label 検証、
+main/feature の手動検証が読取対象です。別 repository 内の run は import できません。
+host は repository 名と ID、event、action、ref、解決済みの exact commit を再検証します。
+main dispatch は workflow の exact SHA と一致する必要があります。
+warm のみ取得し、cold は API client を作らず空の run-local store を使います。
+export、receipt、共有 artifact upload は、exact merged-main product Release writer と
+canonical main の full candidate、manual full validation、manual/automatic seed に許可します。
+kernel writer の admission は component cache の書込権限と独立しています。
+validation run の成功は producer の根拠になりません。
+manual-main の component cache 保存方針は維持し、kernel writer は明示的な kind で独立に検証します。
+
+caller job（`build`、`candidate-validation`、`validate`、`validate-main`、`seed`、`kernel-seed`）は
+`actions: read` を渡し、kernel と5つの component job が継承します。
+その他の job は明示的な contents-only 権限を維持します。
+component の token step は既存の writer、merged-Release、warm、miss 条件を維持するため、validation では実行しません。
+checkout は認証情報を保存しません。kernel の token は host の import と index metadata step だけに渡し、
+Docker 引数、recipe、cache 内容、log には含めません。
+専用 mount は既定で読取用です。明示的な `--kernel-compile-cache-write` だけが
+`SHIRUBE_KERNEL_COMPILE_CACHE_WRITE=true` を渡して export を有効にします。
+reader は診断 metrics を記録しますが、`export.tar` と `provenance.json` は作りません。
+このローカル引数は trusted operator 用であり、producer の信頼性を証明するものではありません。
+
+最初に architecture と入力 key を含む exact index 名で repository artifact metadata を検索します。
+全 producer kind を横断し、最大10件の小さな index を調べます。
+ZIP と JSON はそれぞれ64 KiB以内とし、coverage 判定のために compiler や2 GiB export を取得しません。
+完全な探索で互換 index がなければ missing、探索上限、API 障害、破損は unknown とします。
+期限切れや失敗 run は coverage にならず、実行中の run も完了済みの証拠にはしません。
+互換 index があれば、不一致の古い Release に隠されず選択できます。
+その後に限り、schema 1 Release と schema 2 手動 seed の厳格な legacy fallback を使います。
+legacy の探索は成功した Release 最新10件、続いて手動 seed 最新10件です。
+延期で green になった planning run もこの legacy 窓を消費します。
+index のない legacy artifact は新しい coverage を証明できません。
+
+key は kernel と VPP の宣言済み manifest、source-only compiler identity、versioned protocol から作ります。
+commit、run、host の compiler fingerprint は含めません。
+変更前後の宣言、依存 graph、rename、削除、patch tree を検査します。
+別の orchestration trigger 一覧により、compile identity を変えず lookup を要求できます。
+実際の toolchain、prepared tree、設定、引数による reuse 検証は維持します。
+
+schema 3 は source、run、attempt、kind、key と、実測した toolchain envelope、namespace、非ゼロの export 件数を記録します。
+export upload 後に GitHub の実 artifact ID、digest、size、時刻、期限を取得し、別の index に束縛します。
+index と export は repository ID、workflow/event、exact source、reusable SHA、architecture job、whole-run 成功、attempt、所有者、時刻、期限、digest を独立に検証します。
+後の main 前進は不変の正当な producer を失効させません。
+dispatch には架空の PR を作りません。
 
 content で compiler・設定・source・header・生成 header・引数を識別し、
 direct/depend mode、sloppiness、時刻や compiler 名だけの identity は使いません。
 保存対象は compiler 結果だけです。ccache の目標上限は 1 GiB と45,000ファイル、tar は 2 GiB、
 1結果は 64 MiB、結果数は 50,000、manifest は 8 MiB、artifact 保持は7日です。
 一時 ZIP/tar の追加容量が必要で、eviction や期限切れは正常な miss になります。
-容量を超える結果は export から除外して統計に記録し、正常に署名した build は継続します。
+容量を超える結果は export から除外して統計に記録します。
+非ゼロの subset は利用できますが、結果0件では producer receipt を拒否します。
 未知ファイルと link は引き続き拒否します。
 HTTP 読み取り中の切断を含む任意 import の障害は、内容を公開せず fresh build に戻します。
 compiler fingerprint の変更により既存 cache は一度 miss します。
@@ -963,3 +1189,148 @@ ARM64 は設定経路の検証であり、実 ARM64 kernel の生成ではあり
 full kernel/ISO/guest build、production recipe の実行、hosted warm hit、容量ピーク、
 実高速化率は **NOT_RUN** です。group 全時間を compiler 時間と見なさず、
 restore 状態と実 compiler hit/miss の統計も区別します。
+
+Issue #40 は gcc、OpenSSL、公式 Debian ccache を使った限定試験で確認します。
+実 compiler と鍵の fixture は skip を認めず、ccache と必要な library を環境に用意します。
+workflow の queue/cache-mode validator、固定版 actionlint 1.7.12、bash 構文検査も成功しました。
+actionlint では既存の `queue` と `cache-mode` の未対応診断だけを除外しています。
+両 architecture 設定で host admission、取得失敗時の fallback、launcher 引数、job の実効権限と token step 条件を検証します。
+小さな実 compiler の tar は mock GitHub の producer/ZIP 検証を通り、実 hit counter が増加します。
+content 変更では miss となり、architecture と toolchain の変更では seed を拒否します。
+reader の export、receipt、共有 upload は無効です。
+鍵の更新後は証明書依存 object、最終 link、署名を新規生成し、旧証明書での検証は失敗します。
+これはローカル fixture の結果であり、hosted 取得や実 ARM64 コンパイルの証跡ではありません。
+
+**FAILED:** 未解決の限定検査失敗はありません。
+途中のローカル試験で古い権限期待値と試験の呼出方法に誤りがあり、修正後に全件成功しました。
+**NOT_RUN:** exact-head の通常 Test CI（ローカルでは未実行。結果は PR checks に記録）、GitHub での caller 権限の受理、
+実 seed の存在、実環境での失効と通信、hosted warm hit、容量ピーク、full-kernel の高速化です。
+full/hull、kernel、ISO、guest build は開始していません。
+変更パス全体が `publication=none`、`validation=candidate` になる回帰試験を追加しました。
+公開条件と必須の合格条件は維持します。
+
+### 日本語: 専用 kernel seed の手動操作
+
+関連する canonical main merge では、必要な full kernel build が予定されていない場合だけ coverage を自動確認します。
+kernel/VPP/compiler 入力と seed orchestration の変更（bootstrap を含む）が対象です。
+無関係な component や docs/tests だけの変更では生成しません。
+必要な full build があればその既存処理から保存し、失敗後に別 chain を起動しません。
+
+関連性は、この run の resolve が全ページを取得・検証した merged PR の変更一覧で判定します。
+rename の新旧パスと削除を含み、release plan artifact の repository、PR、merged source、
+元の base/head、変更ファイル数、commit 数、run、attempt を event と照合します。
+変更前 graph は merged source の第1親と元の PR head の共通祖先から読みます。
+書換えのない線形 fast-forward では、PR 全 commit より前の graph を使います。
+event の base が merge 後の tip でも判定でき、変更後 graph は固定 merged source から読みます。
+merge、squash、複数 commit の rebase に対応し、最後が docs の変更でも先行する関連変更を見落としません。
+不足する Git object は canonical origin から固定 SHA で取得し、PR branch は参照しません。
+一覧の欠落や不正、object の取得失敗、graph の不正は coverage の取得やコンパイルをせず、
+pending-unknown として表示します。
+実測済みなのは小さなローカル Git fixture による merge・squash・rebase・fast-forward の判定です。
+実 GitHub merge、hosted artifact 取得、元 head の SHA 指定 fetch と object 保持は NOT_RUN で、
+ローカル fixture は hosted 動作の証跡ではありません。
+
+Release、手動 seed、main full validation は共通の top-level `shirube-os-release` queue を取得します。
+queue は max、取消なしとし、PR/feature は別 group に分離します。
+reusable workflow 内では同じ lock を入れ子にしません。
+slot 取得後に coverage を再確認するため、待機中に完了した producer と重複しません。
+入力 key が後続 main に置き換わった自動 maintenance は pending-superseded と記録し、source を切り替えません。
+必須 full 検証は常に元の exact source で実行します。
+guest の完了待ちや seed による後続 Release の遅延もあり、scheduler の優先制御はありません。
+
+確認できた不足 arch だけ compiler → VPP → kernel を実行します。
+covered は生成なし、探索上限、API 障害、破損は pending-unknown として可視化します。
+idle 中の失効では何も起動せず、次の関連 merge、必要な trusted build、手動 warm が補充します。
+timer、retry controller、dispatch bridge、actions-write、横断台帳は作りません。
+
+手動復旧は kernel-seed.yml の Run workflow で main と cache-mode warm を選びます。
+architectures の既定は amd64,arm64 です。
+warm は指定 arch の coverage を確保し、既存の互換 arch を省略します。
+cold は指定 arch だけを強制生成し、過去の compiler/VPP/kernel cache を取得しません。
+source-ref の上書きはなく、不変の github.sha、run ID、attempt に束縛します。
+main が後で前進しても source を変更せず、dispatch に架空の merged PR を付けません。
+
+指定 architecture だけで既存の compiler → VPP → kernel を実行します。
+compiler と VPP の有効な cache を利用でき、miss 時はそれらも build します。
+同一 run の compiler と VPP の source、architecture、入力、digest を検証してから使います。
+kernel の新規鍵、証明書依存コンパイル、link、module 署名、現行証明書の確認、package と source の監査は維持します。
+native、Kea、Salt、runtime、integration、ISO、全体 clearance、guest は実行しません。
+版の予約、Release の作成や staging、公開も行いません。
+compiler/component の共有 cache 書込は増やさず、caller の cache cap は read です。
+
+必要な同一 run の compiler/VPP 転送と、上限付き kernel compiler export、provenance、診断を7日保持します。
+既存 engine がローカルで作る kernel stage tar は upload せず、image artifact も作りません。
+通常の full workflow の graph と upload は維持します。
+architecture ごとの summary は、その chain の upload 完了と full acceptance NOT_RUN だけを示します。
+run 全体の seed scope 成功には、指定した全 architecture の job 成功と run の成功 conclusion が必要です。
+片方の artifact があっても、失敗、取消、途中の run は producer にできません。
+指定した全 architecture の job 成功と provenance を確認します。
+token は host の Actions read 操作だけに使います。
+
+seed の探索は run の最新 attempt に限定し、artifact 名と成功 job の provenance がその attempt と一致する必要があります。
+Re-run failed jobs 後に run が成功しても、再実行した architecture の seed だけが受入可能です。
+再実行しなかった architecture の前 attempt の artifact は探索で miss になります。
+たとえば失敗した arm64 だけを再実行すると、その run の以前の amd64 seed は見つかりません。
+両 architecture の seed が必要な場合は、operator がコンパイルと保存の費用を意図するときだけ Re-run all jobs または新規 dispatch を選びます。
+provenance は attempt に束縛したままとし、attempt をまたぐ互換 fallback は設けません。
+同じ key の旧 attempt index が残ると coverage は unknown になり、warm は強制生成しません。
+費用を意図した新規 cold 選択で復旧できます。
+部分失敗の sibling 再利用は解決しません。
+
+新規 producer は明示 kind と実測値を含む schema 3 を使います。
+旧 schema 1/2 は厳格な legacy 読取だけを維持します。
+結果0件では coverage を広告せず、receipt 作成を失敗させます。
+GitHub の run source、main branch、workflow path/event、reusable SHA、attempt ごとの成功 kernel job、artifact 所有権、時刻、期限、digest、ZIP/tar を独立に検証します。
+receipt の自己申告だけでは通常検証を producer に昇格できません。
+producer と consumer の commit が異なっても実入力が互換なら再利用できます。
+architecture、compiler/backend、source、設定、header、全引数の相違は拒否または miss になります。
+artifact の restore と実 compiler hit は別で、metrics の counter で判断します。
+
+初回は両 architecture の compiler/VPP/kernel 全体をコンパイルする費用がかかりえます。
+過去の full path 観測値は amd64 約74分、arm64 約55 runner-minutes で、seed workflow の実測値ではありません。
+ccache 目標1 GiB、export 上限2 GiB、保持7日は維持します。
+一時 ZIP/tar、compiler/VPP 転送、private workspace も容量を使い、peak と高速化は未測定です。
+cache 削除や容量購入はこの操作に含みません。
+
+限定したローカル fixture は両 architecture の設定経路で gcc/ccache、信頼済み seed import、hit counter、入力変更による miss、新規鍵と署名を検証します。
+実 seed 生成、hosted 取得、hosted hit、実 ARM64 code 生成、storage peak、full-kernel 高速化は NOT_RUN です。
+拡張した workflow の hosted 権限受理と通常 CI は、別途実行した結果だけを証拠にします。
+
+### Automatic seed bootstrap on Issue #40 merge
+
+The #41 inventory is nonpublishing build/control/test/docs: required
+candidate/aggregate scope remains conservative, automatic execution is focused.
+Its orchestration changes request coverage after the shared queue slot. If the
+exact merged input key remains current and the bounded metadata search confirms
+no compatible indexes, both compiler→VPP→kernel chains run. One covered
+architecture skips that chain; both covered means no compilation. Unknown or
+superseded demand is visible pending. No product version/Release, full candidate,
+aggregate, ISO or guest is started by seed maintenance. Full validation remains
+required-but-deferred; later product work freshly validates all intervening
+infrastructure at its own exact merged source. This supersedes the earlier
+manual-only/no-automatic-seed merge prediction.
+
+The cold bootstrap reference is approximately 74 amd64 + 55 arm64 = **129 total
+runner-minutes**, plus hosted provisioning, transfer and shared-queue wait. These
+are historical full-path observations, not measured seed performance or a wall
+clock promise. Real seed generation, hosted retrieval/hit, speedup and peak
+storage remain **NOT_RUN / unmeasured** until separately measured. Focused local
+fixtures cannot establish hosted permissions acceptance or actual ARM64 output.
+
+### 日本語: Issue #40 merge 時の自動 seed bootstrap
+
+#41 の変更一覧は非公開の build/control/test/docs です。
+必要な candidate/aggregate は維持し、自動実行は focused とします。
+orchestration 変更のため共通 queue 取得後に coverage を調べます。
+merged input key が現行のままで、上限付き metadata 探索が互換 index の不在を確認できた場合は、両 compiler→VPP→kernel chain を実行します。
+片方が covered なら不足側だけ、両方 covered ならコンパイルしません。
+unknown や superseded は pending として記録します。
+seed maintenance から製品版、Release、full candidate、aggregate、ISO、guest は起動しません。
+full 検証は required-but-deferred のままで、次の製品変更が途中の基盤変更も含めた exact merged source を新規に検証します。
+以前の手動限定で自動生成しないという merge 予測を置き換えます。
+
+cold bootstrap の参考値は amd64 約74分、arm64 約55分、合計129 runner-minutes です。
+これに hosted の起動、転送、共通 queue の待ち時間が加わります。
+過去の full path の観測値であり、seed の実測値や所要時間の保証ではありません。
+実 seed 生成、hosted 取得と hit、高速化、容量ピークは NOT_RUN または未測定です。
+限定したローカル fixture だけでは hosted 権限受理や実 ARM64 出力を証明できません。

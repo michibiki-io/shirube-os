@@ -219,6 +219,17 @@ def resolve():
         run=os.environ.get('GITHUB_RUN_ID', ''), attempt=os.environ.get('GITHUB_RUN_ATTEMPT', ''),
         inputs=dependency_evidence(paths, commit))
     decision['gates']['focused'] = 'passed'
+    # Preserve the already validated complete PR inventory for the same-run seed
+    # planner. A last-parent diff loses earlier commits after a rebase merge.
+    decision['seed_trigger'] = {
+        'schema_version': 1, 'repository': event.get('repository'),
+        'pr_number': number, 'source_commit': commit,
+        'base_commit': pr.get('base', {}).get('sha'),
+        'head_commit': pr.get('head', {}).get('sha'),
+        'changed_files': pr.get('changed_files'), 'commits': pr.get('commits'),
+        'pages': [[{k: item[k] for k in ('filename', 'status', 'previous_filename') if k in item}
+                   for item in page] for page in pages],
+    }
     save_plan(decision)
     stream_version=json.loads(Path('source-lock.json').read_text())['stream']['version']
     if decision['publication'] != 'publish':
@@ -330,7 +341,7 @@ def complete_resolution(decision, version, noop=False):
     save_plan(decision)
     print(json.dumps({k: decision[k] for k in ('publication', 'validation', 'reason', 'source_commit')}, sort_keys=True))
     emit({'eligible': str(decision['publication'] == 'publish').lower(), 'noop': str(noop).lower(),
-          'publication': decision['publication'], 'validation': decision['validation'],
+          'publication': decision['publication'], 'validation': decision['validation'], 'automatic-execution': decision['automatic_execution'],
           'commit': decision['source_commit'], 'version': version})
 
 
@@ -402,19 +413,45 @@ def validate_candidates():
 def evidence():
     root = Path(os.environ['SHIRUBE_PLAN_DIRECTORY'])
     decision = json.loads((root/'plan.json').read_text())
-    results = {k: v['result'] if isinstance(v, dict) else v
-               for k, v in json.loads(os.environ['SHIRUBE_JOB_RESULTS']).items()}
+    source = os.environ['SHIRUBE_SOURCE_COMMIT']
+    identity(source)
+    if decision['source_commit'] != source or decision['run_id'] != os.environ['GITHUB_RUN_ID']:
+        raise ValueError('Plan source/run does not match this evidence run')
+    jobs = json.loads(os.environ['SHIRUBE_JOB_RESULTS'])
+    results = {k: v['result'] if isinstance(v, dict) else v for k, v in jobs.items()}
     # resolve already passed its focused checks; required outputs never infer PASS.
     gates = {'focused': results.get('resolve'),
              'candidate': results.get('build') if decision['publication'] == 'publish' else results.get('candidate-validation'),
              'aggregate': results.get('candidate-check'),
              'publication': results.get('resolve') if decision.get('noop') else results.get('publish')}
     final, passed = release_plan.outcomes(decision, gates)
+    # The immutable plan artifact retains the full inventory. Do not duplicate
+    # all pages in both final evidence and its human-facing step summary.
+    if 'seed_trigger' in final:
+        final['seed_trigger'] = {k: v for k, v in final['seed_trigger'].items() if k != 'pages'}
+    seed_results = {name: results.get(name) for name in ('seed-plan', 'kernel-seed')}
+    final['kernel_seed_jobs'] = seed_results
+    seed_plan = jobs.get('seed-plan', {})
+    maintenance_status = seed_plan.get('outputs', {}).get('status', 'not-requested') if isinstance(seed_plan, dict) else 'not-requested'
+    final['kernel_seed_status'] = maintenance_status
+    if passed and maintenance_status.startswith('pending-'):
+        final['status'] = 'pending-required-validation' if final['pending_required_gates'] else 'pending-kernel-seed'
+
+    # A failed attempted maintenance chain is a failed workflow, independently
+    # of intentionally deferred full validation. Covered/unknown are not gates.
+    if any(value in {'failure', 'cancelled'} for value in seed_results.values()):
+        final['status'] = 'failed'
+        passed = False
     final['plan_run_attempt'] = decision['run_attempt']
     final['evidence_run_attempt'] = os.environ['GITHUB_RUN_ATTEMPT']
     (root/'result.json').write_text(json.dumps(final, sort_keys=True, indent=2)+'\n')
     with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
         output.write('```json\n'+json.dumps(final, sort_keys=True, indent=2)+'\n```\n')
+    if final.get('pending_required_gates'):
+        message = 'PENDING: required-but-deferred candidate/aggregate validation; seed success is not full validation.'
+        print('::warning::' + message)
+        with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as output:
+            output.write('\n**' + message + '**\n')
     if not passed: raise ValueError('Required validation/publication failed or was not run')
 
 

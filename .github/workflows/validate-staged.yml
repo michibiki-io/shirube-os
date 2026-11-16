@@ -21,7 +21,8 @@ cache-mode: read
 permissions:
   contents: read
 concurrency:
-  group: shirube-staged-validation-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.repository == 'michibiki-io/shirube-os' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && 'shirube-os-release' || format('shirube-staged-validation-{0}-{1}', github.repository, github.event.pull_request.number || github.ref) }}
+  queue: max
   cancel-in-progress: false
 jobs:
   resolve:
@@ -56,8 +57,9 @@ jobs:
     needs: resolve
     permissions:
       contents: read
+      actions: read
     uses: ./.github/workflows/staged-candidate.yml
-    with: &validation-inputs
+    with:
       commit: ${{ needs.resolve.outputs.commit }}
       version: ${{ inputs.version || 'v2026.03.0' }}
       cache-mode: ${{ inputs.cache-mode || (github.event_name == 'pull_request' && github.event.label.name == 'validate-staged-warm' && 'warm') || 'cold' }}
@@ -67,5 +69,10 @@ jobs:
     needs: resolve
     permissions:
       contents: read
+      actions: read
     uses: ./.github/workflows/staged-candidate.yml
-    with: *validation-inputs
+    with:
+      commit: ${{ needs.resolve.outputs.commit }}
+      version: ${{ inputs.version || 'v2026.03.0' }}
+      cache-mode: ${{ inputs.cache-mode || (github.event_name == 'pull_request' && github.event.label.name == 'validate-staged-warm' && 'warm') || 'cold' }}
+      producer-kind: validate-main

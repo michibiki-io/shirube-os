@@ -9,7 +9,7 @@ import json
 from pathlib import PurePosixPath, Path
 import re
 
-POLICY_VERSION = 1
+POLICY_VERSION = 2
 CANDIDATE_ROLES = {'product', 'build', 'acceptance', 'unknown'}
 PRODUCT_FILES = {'source-lock.json', 'LICENSE', 'NOTICE', 'license-audit.json',
                  'shirube-os-logo.svg', 'containers/native/packages.json',
@@ -20,7 +20,7 @@ PRODUCT_MODULES = {'branding', 'cloud_init', 'cloud_init_guest', 'image_template
                    'installer_admin', 'netbird', 'netbird_guest', 'sflow'}
 # Naming families are an extension contract, not an exemption for all producer code.
 BUILD_PREFIXES = ('compile_', 'compiler_', 'native_', 'staged', 'stage_', 'component_',
-                  'library_cache', 'kernel_compile_cache', 'apt_archive', 'workspace',
+                  'library_cache', 'kernel_compile_cache', 'kernel_seed', 'apt_archive', 'workspace',
                   'resources', 'architecture', 'recipes', 'packages', 'debootstrap',
                   'livebuild_', 'snapshot_fetch', 'strip_policy')
 ACCEPTANCE_PREFIXES = ('source', 'security_', 'public_test_keys', 'signing', 'collect',
@@ -82,7 +82,9 @@ def classify(paths, consumers=()):
         roles.setdefault(selected, []).append(path)
     publication = 'hold' if 'unknown' in roles else 'publish' if 'product' in roles else 'none'
     validation = 'candidate' if set(roles) & CANDIDATE_ROLES else 'focused'
-    return {'schema_version': POLICY_VERSION, 'publication': publication,
+    automatic = ('focused' if publication == 'none' and 'build' in roles
+                 and set(roles) <= {'build', 'control', 'ci', 'test', 'docs'} else validation)
+    return {'automatic_execution': automatic, 'schema_version': POLICY_VERSION, 'publication': publication,
             'validation': validation, 'roles': roles,
             'reason': 'unknown-role' if publication == 'hold' else
                       'product-input' if publication == 'publish' else 'no-product-input',
@@ -117,19 +119,34 @@ def plan(paths, commit, *, consumers=(), run='', attempt='', inputs=None):
                        'candidate': 'required-but-unrun' if result['validation'] == 'candidate' else 'skipped-not-required',
                        'aggregate': 'required-but-unrun' if result['validation'] == 'candidate' else 'skipped-not-required',
                        'publication': 'required-but-unrun' if result['publication'] == 'publish' else 'skipped-not-required'}
+    result['execution_deferred_gates'] = (['candidate', 'aggregate']
+        if result['validation'] == 'candidate' and result['automatic_execution'] == 'focused' else [])
+    for gate in result['execution_deferred_gates']:
+        result['gates'][gate] = 'required-but-deferred'
     return result
 
 
 def outcomes(plan, results):
-    """No success-by-skipped-publish: missing required work always fails."""
+    """Only intentional candidate/aggregate deferral can complete with pending work."""
     result = dict(plan); result['gates'] = dict(plan['gates'])
     failed = []
+    pending = []
     for gate, status in result['gates'].items():
         if status == 'skipped-not-required':
             continue
         actual = results.get(gate)
+        deferred = (gate in plan.get('execution_deferred_gates', [])
+                    and gate in {'candidate', 'aggregate'}
+                    and plan.get('automatic_execution') == 'focused'
+                    and plan['publication'] == 'none' and 'build' in plan['roles']
+                    and set(plan['roles']) <= {'build', 'control', 'ci', 'test', 'docs'})
+        if deferred and actual in {None, 'skipped'}:
+            result['gates'][gate] = 'required-but-deferred'
+            pending.append(gate)
+            continue
         result['gates'][gate] = ('passed' if actual == 'success' else
                                  'failed' if actual in {'failure', 'cancelled'} else 'required-but-unrun')
         if actual != 'success': failed.append(gate)
-    result['status'] = 'failed' if failed else 'validated-publication-held' if plan['publication'] == 'hold' else 'passed-required-scope'
+    result['pending_required_gates'] = pending
+    result['status'] = 'failed' if failed else 'pending-required-validation' if pending else 'validated-publication-held' if plan['publication'] == 'hold' else 'passed-required-scope'
     return result, not failed
