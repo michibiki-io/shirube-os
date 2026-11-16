@@ -1334,3 +1334,71 @@ cold bootstrap の参考値は amd64 約74分、arm64 約55分、合計129 runne
 過去の full path の観測値であり、seed の実測値や所要時間の保証ではありません。
 実 seed 生成、hosted 取得と hit、高速化、容量ピークは NOT_RUN または未測定です。
 限定したローカル fixture だけでは hosted 権限受理や実 ARM64 出力を証明できません。
+
+### Uploaded export metadata visibility and Issue #42 recovery limits
+
+The index writer retries only HTTP 404 from the metadata GET for the exact
+export artifact ID returned by its immediately preceding upload. There are at
+most five requests, with 1, 2, 4 and 8 second delays inside the existing 600-second
+API deadline. No sleep starts if it would consume the remaining budget; the
+writer rechecks the deadline before every request, including after an oversleep.
+Persistent 404 or deadline exhaustion fails the index step without creating a
+usable index. Non-404 HTTP errors, transport/parse failures and invalid metadata
+fail immediately. All existing ID/digest/name/source/repository/run/attempt
+checks remain enforced. Reader searches and the shared API have no new retry,
+endpoint fallback or token changes.
+
+[Run 43876756963, ARM64 job 133369094071](https://github.com/michibiki-io/shirube-os/actions/runs/43876756963/job/133369094071)
+after PR #41 completed both kernel compilations and both export uploads. ARM64
+export `14239225818` finalized at `2026-11-16T15:18:18.271Z`, then its immediate
+metadata GET returned HTTP 404 and index creation failed. AMD64 index upload
+succeeded. A later metadata GET returned the unexpired ARM64 export; visibility
+delay is suspected, not established using the original job token. These are
+compilation/upload and index-failure observations, not hosted recovery, cache-hit
+or full OS validation measurements.
+
+The failed whole run is not a trusted seed for either architecture, including
+its uploaded AMD64 index. This fix cannot retroactively admit those artifacts.
+Re-run failed jobs recompiles ARM64. If it succeeds, the still-visible attempt-1
+AMD64 index remains under the unchanged coverage key but fails latest-attempt
+validation. Without another valid current producer index, AMD64 coverage becomes
+unknown rather than missing; automatic/warm selection does not force past that
+uncertainty. An intentional cold selection can recover it with recompilation.
+Re-run all or a fresh seed can recompile both architectures. This patch leaves
+existing artifacts untouched and adds no repair/attestation trust path; reuse
+without recompilation requires a separate approved design.
+
+Merging this fix can itself trigger existing automatic seed maintenance because
+its writer is in the orchestration trigger inventory. No merge, heavy seed/OS
+build, dispatch, workflow rerun, cache deletion or artifact repair is part of
+this implementation. Deterministic fake-response/clock/sleep tests establish the
+retry behavior, not successful hosted recovery, actual compiler hits or complete
+OS validation.
+
+### 日本語: export metadata の再試行と Issue #42 の復旧制限
+
+index writer は、直前の upload が返した同じ export artifact ID の metadata GET に限り、HTTP 404 を再試行します。
+最大5要求、待機は1、2、4、8秒で、既存の600秒 API deadline を使います。
+残予算を使い切る待機は開始せず、待機が長引いた場合も含めて各要求前に deadline を再確認します。
+404 の継続と期限切れは index step を失敗させ、利用可能な index を生成しません。
+非404、通信失敗、parse 失敗、不正な metadata は再試行せず、既存の provenance 検証も維持します。
+reader 探索、共有 API、endpoint、token は変更しません。
+
+#41 merge 後の run `43876756963` では両 architecture のコンパイルと export upload が成功しました。
+ARM64 export `14239225818` は `2026-11-16T15:18:18.271Z` に finalize しましたが、直後の metadata GET が404となり index 作成が失敗しました。
+AMD64 index upload は成功しました。
+後の GET では未失効の ARM64 export を取得できましたが、当時の job token による再現はしておらず、可視化遅延は推測です。
+これらはコンパイルと upload の成功、および index 失敗の観測であり、hosted 復旧、cache hit、full OS 検証の成功ではありません。
+
+run 全体が失敗しているため、既存 AMD64 index も含めて trusted seed には使えず、この修正で遡って救済することもできません。
+Re-run failed jobs は ARM64 を再コンパイルします。
+成功した場合も、同じ coverage key に残る旧 attempt 1 の AMD64 index は最新 attempt 検証で拒否されます。
+他に有効な現行 producer index がなければ AMD64 coverage は missing ではなく unknown となり、自動/warm は強制補充しません。
+意図的な cold 選択で復旧できますが、再コンパイルを伴います。
+Re-run all や新規 seed は両 architecture を再コンパイルし得ます。
+既存 artifact は変更せず、新しい repair/attestation 経路も追加しません。
+再コンパイルなしでの再利用には別途承認と設計が必要です。
+
+writer は既存の orchestration trigger inventory に含まれるため、この修正の merge 自体が自動 seed maintenance を起動し得ます。
+今回の実装では merge、重い seed/OS build、dispatch、workflow 再実行、cache 削除、artifact 修復を行いません。
+fake response、clock、sleep による決定的テストが確認するのは retry 動作だけで、hosted 復旧、実 compiler hit、OS 全体の検証は未実施です。

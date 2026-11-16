@@ -15,6 +15,8 @@ import shutil
 import stat
 import sys
 import tempfile
+import time
+from urllib.error import HTTPError
 import zipfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.import_release_stage import API
@@ -369,6 +371,26 @@ def restore_artifact(api, directory, architecture, run, artifact, expected):
         target.rename(directory/'seed.tar')
 
 
+def uploaded_export_metadata(api, identity):
+    """Retry only visibility 404s for this writer's just-uploaded export ID."""
+    path = f'actions/artifacts/{identity}'
+    for attempt in range(5):
+        if time.monotonic() >= api.deadline:
+            raise TimeoutError('Export metadata deadline exhausted')
+        try:
+            return api.json(path)
+        except HTTPError as error:
+            error.close()
+            if error.code != 404 or attempt == 4:
+                raise
+        delay = 2 ** attempt
+        # Do not start a sleep that consumes the entire remaining budget.
+        # Recheck before requesting, since sleep may overshoot its interval.
+        if api.deadline - time.monotonic() <= delay:
+            raise TimeoutError('Export metadata deadline exhausted')
+        time.sleep(delay)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('operation', choices=('import', 'receipt', 'index'))
@@ -406,7 +428,7 @@ def main():
                 and receipt['run_attempt'] == int(os.environ['GITHUB_RUN_ATTEMPT']))
         validate_measurements(receipt, args.architecture)
         identity = int(os.environ['EXPORT_ARTIFACT_ID'])
-        artifact = api.json(f'actions/artifacts/{identity}')
+        artifact = uploaded_export_metadata(api, identity)
         validate_artifact(artifact, limit=LIMIT + 1024**2)
         output_digest = os.environ['EXPORT_ARTIFACT_DIGEST']
         require(re.fullmatch('[0-9a-f]{64}', output_digest) is not None)
