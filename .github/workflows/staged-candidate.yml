@@ -722,7 +722,7 @@ jobs:
       - name: Inspect optional kernel cache source contract
         id: kernel-cache-capability
         run: |
-          python3 - <<'PYTHON'
+          python3 -I - <<'PYTHON'
           import ast
           import os
           from pathlib import Path

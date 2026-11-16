@@ -497,3 +497,236 @@ class IndexArchiveTests(unittest.TestCase):
                 else:good.download(identity,target,size)
         self.assertEqual(host.find_index(Remote(),'amd64',good.key)[0],'covered')
         self.assertNotIn(4,good.downloads)
+
+
+class MergedInventoryCLITests(unittest.TestCase):
+    """Real tiny Git histories drive the automatic CLI, with no remote service."""
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.source = component_project(self.root/'source')
+        self.old_cwd = Path.cwd()
+        os.chdir(self.source)
+        self.addCleanup(os.chdir, self.old_cwd)
+        self.git('init', '-b', 'main')
+        self.git('config', 'user.email', 'fixture@example.invalid')
+        self.git('config', 'user.name', 'Fixture')
+        self.git('config', 'commit.gpgsign', 'false')
+        # An input consumed only by the old graph; deleting both it and its
+        # declaration must still be relevant against the complete before tree.
+        self.name = 'docs/old-kernel-input.txt'
+        path = self.source/self.name
+        path.parent.mkdir(); path.write_text('input\n')
+        declaration = self.source/'containers/native/inputs-kernel.json'
+        self.declaration = json.loads(declaration.read_text())
+        self.declaration['roots'].append(self.name)
+        self.declaration['graph'][self.name] = []
+        declaration.write_text(json.dumps(self.declaration))
+        self.commit('baseline')
+        self.base = self.git('rev-parse', 'HEAD')
+
+    def git(self, *args):
+        return subprocess.check_output(['git', *args], text=True, stderr=subprocess.PIPE).strip()
+
+    def commit(self, message):
+        self.git('add', '-A'); self.git('commit', '-m', message)
+        return self.git('rev-parse', 'HEAD')
+
+    def history(self, mode, change='deleted-graph'):
+        self.git('checkout', '-b', 'feature')
+        if change == 'deleted-graph':
+            (self.source/self.name).unlink()
+            declaration = dict(self.declaration)
+            declaration['roots'] = [p for p in declaration['roots'] if p != self.name]
+            declaration['graph'] = {p: edges for p, edges in declaration['graph'].items() if p != self.name}
+            (self.source/'containers/native/inputs-kernel.json').write_text(json.dumps(declaration))
+        elif change == 'orchestration':
+            (self.source/'scripts').mkdir(exist_ok=True)
+            (self.source/'scripts/kernel_seed_plan.py').write_text('# bootstrap\n')
+        elif change == 'rename':
+            self.git('mv', self.name, 'docs/new-kernel-input.txt')
+            declaration = json.loads(json.dumps(self.declaration).replace(self.name, 'docs/new-kernel-input.txt'))
+            (self.source/'containers/native/inputs-kernel.json').write_text(json.dumps(declaration))
+        else:
+            (self.source/'docs/unrelated.md').write_text('unrelated\n')
+        self.commit('first relevant change')
+        (self.source/'README.md').write_text('last docs only\n')
+        self.head = self.commit('last docs only')
+        raw = self.git('diff', '--name-status', '--no-renames', self.base, self.head)
+        self.pages = [[dict(status={'A':'added','D':'removed','M':'modified'}[line.split('\t')[0]],
+                            filename=line.split('\t')[1]) for line in raw.splitlines()]]
+        self.git('checkout', 'main')
+        if mode == 'fast-forward':
+            self.main_before = self.base
+        else:
+            (self.source/'docs/main-only.md').write_text('main advanced\n')
+            self.main_before = self.commit('main advanced independently')
+        if mode == 'merge':
+            self.git('merge', '--no-ff', 'feature', '-m', 'merge')
+        elif mode == 'squash':
+            self.git('merge', '--squash', 'feature'); self.commit('squash')
+        elif mode == 'fast-forward':
+            self.git('merge', '--ff-only', 'feature')
+        else:
+            self.git('checkout', 'feature'); self.git('rebase', 'main')
+            self.git('checkout', 'main'); self.git('merge', '--ff-only', 'feature')
+        self.merged = self.git('rev-parse', 'HEAD')
+        self.git('remote', 'add', 'origin', str(self.source))
+        _, _, self.env, self.event = AdmissionAndQueueTests().invoke('automatic-seed')
+        self.event['pull_request'].update(number=40, merge_commit_sha=self.merged,
+            changed_files=len(self.pages[0]), commits=2, head=dict(sha=self.head))
+        self.event['pull_request']['base']['sha'] = self.main_before
+        self.env.update(GITHUB_SHA=self.merged, GITHUB_WORKFLOW_SHA=self.merged,
+                        GITHUB_RUN_ID='10', GITHUB_RUN_ATTEMPT='2', KERNEL_CACHE_WRITE='true')
+        pr = self.event['pull_request']
+        self.record = dict(source_commit=self.merged, run_id='10', run_attempt='2',
+            seed_trigger=dict(schema_version=1, repository=self.event['repository'],
+                pr_number=40, source_commit=self.merged, base_commit=self.main_before,
+                head_commit=self.head, changed_files=pr['changed_files'], commits=2, pages=self.pages))
+
+    def invoke(self, record=True, full=False):
+        event_path = self.root/'event.json'; event_path.write_text(json.dumps(self.event))
+        inventory_path = self.root/'release-plan.json'
+        if record == 'malformed': inventory_path.write_text('{broken')
+        elif record: inventory_path.write_text(json.dumps(self.record))
+        elif inventory_path.exists(): inventory_path.unlink()
+        output = self.root/'plan.json'
+        env = dict(self.env, GITHUB_EVENT_PATH=str(event_path),
+                   GITHUB_OUTPUT=str(self.root/'output'), GITHUB_STEP_SUMMARY=str(self.root/'summary'))
+        argv = ['planner', '--automatic', '--commit', self.merged,
+                '--release-plan', str(inventory_path), '--output', str(output)]
+        if full: argv.append('--full-planned')
+        with patch.dict(os.environ, env, clear=True), patch.object(planner.sys, 'argv', argv), \
+             patch.object(planner, 'API', return_value=None), \
+             patch.object(planner, 'find_index', return_value=('missing', None)) as probe:
+            planner.main()
+        return json.loads(output.read_text()), probe.call_count
+
+    def test_real_merge_squash_rebase_complete_inventory_and_old_graph(self):
+        # Separate fixture instance per mode keeps all Git operations genuine.
+        for mode in ('merge', 'squash', 'rebase', 'fast-forward'):
+            with self.subTest(mode=mode):
+                fixture = MergedInventoryCLITests()
+                fixture.setUp()
+                try:
+                    fixture.history(mode)
+                    if mode == 'rebase':
+                        changed = fixture.git('diff', '--name-only', fixture.merged+'^1', fixture.merged).splitlines()
+                        with planner.snapshot(fixture.merged+'^1') as old:
+                            self.assertFalse(seed.relevant(changed, old, fixture.source))
+                    result, calls = fixture.invoke()
+                    self.assertEqual((result['status'], calls), ('seed-required', 2))
+                    self.assertEqual(result['selected'], list(seed.ARCHITECTURES))
+                    self.assertEqual(result['source_commit'], fixture.merged)
+                    self.assertEqual(result['trigger_inventory']['before_commit'], fixture.base)
+                    fixture.event['pull_request']['base']['sha'] = fixture.merged
+                    fixture.record['seed_trigger']['base_commit'] = fixture.merged
+                    result, calls = fixture.invoke()
+                    self.assertEqual((result['status'], calls), ('seed-required', 2))
+                    self.assertEqual(result['trigger_inventory']['before_commit'], fixture.base)
+                finally:
+                    fixture.doCleanups()
+
+    def test_real_rebase_earlier_only_orchestration_and_unrelated(self):
+        self.history('rebase', 'orchestration')
+        result, calls = self.invoke()
+        self.assertEqual((result['status'], calls), ('seed-required', 2))
+        self.record['seed_trigger']['pages'] = [[dict(filename='README.md', status='modified')]]
+        self.record['seed_trigger']['changed_files'] = 1
+        self.event['pull_request']['changed_files'] = 1
+        result, calls = self.invoke()
+        self.assertEqual((result['status'], calls), ('irrelevant', 0))
+
+    def test_missing_malformed_incomplete_provenance_unknown_before_probe_and_full_priority(self):
+        self.history('rebase')
+        original = copy.deepcopy(self.record)
+        mutations = [lambda r: r.update(run_id='11'), lambda r: r.update(run_attempt='1'),
+            lambda r: r.update(source_commit='f'*40),
+            lambda r: r['seed_trigger'].update(base_commit='f'*40),
+            lambda r: r['seed_trigger'].update(head_commit='f'*40),
+            lambda r: r['seed_trigger'].update(source_commit='f'*40),
+            lambda r: r['seed_trigger'].update(repository=dict(id=1, full_name=host.REPO)),
+            lambda r: r['seed_trigger'].update(pr_number=41),
+            lambda r: r['seed_trigger'].update(schema_version=2),
+            lambda r: r['seed_trigger'].update(schema_version=True),
+            lambda r: r['seed_trigger'].update(changed_files=True),
+            lambda r: r['seed_trigger'].update(commits=True),
+            lambda r: r['seed_trigger'].update(commits=0),
+            lambda r: r['seed_trigger'].update(pages=[]),
+            lambda r: r['seed_trigger'].update(pages=[r['seed_trigger']['pages'][0][:-1]]),
+            lambda r: r['seed_trigger']['pages'][0][0].update(status='invalid'),
+            lambda r: r['seed_trigger']['pages'][0][0].update(filename='../invalid'),
+            lambda r: r['seed_trigger']['pages'][0][0].update(status='renamed'),
+            lambda r: r.pop('seed_trigger')]
+        for mutate in mutations:
+            self.record = copy.deepcopy(original); mutate(self.record)
+            result, calls = self.invoke()
+            self.assertEqual((result['status'], result['selected'], calls), ('pending-unknown', [], 0))
+            self.assertIn('status=pending-unknown', (self.root/'output').read_text())
+        result, calls = self.invoke(record=False)
+        self.assertEqual((result['status'], calls), ('pending-unknown', 0))
+        result, calls = self.invoke(record='malformed')
+        self.assertEqual((result['status'], calls), ('pending-unknown', 0))
+        result, calls = self.invoke(record=False, full=True)
+        self.assertEqual((result['status'], calls), ('existing-required-work', 0))
+        for name in ('commits', 'changed_files'):
+            self.record = copy.deepcopy(original)
+            saved = self.event['pull_request'][name]
+            self.record['seed_trigger'][name] = 1
+            self.event['pull_request'][name] = True
+            result, calls = self.invoke()
+            self.assertEqual((result['status'], calls), ('pending-unknown', 0))
+            self.event['pull_request'][name] = saved
+
+    def test_rename_previous_path_and_deleted_input_survive_inventory(self):
+        self.history('rebase', 'rename')
+        self.record['seed_trigger']['pages'][0] = [
+            dict(filename='docs/new-name.txt', previous_filename=self.name, status='renamed'),
+            dict(filename='README.md', status='modified'),
+            dict(filename='containers/native/inputs-kernel.json', status='modified')]
+        self.record['seed_trigger']['changed_files'] = 3
+        self.event['pull_request']['changed_files'] = 3
+        result, calls = self.invoke()
+        self.assertEqual((result['status'], calls), ('seed-required', 2))
+
+    def test_real_unrelated_rebase_is_noop(self):
+        self.history('rebase', 'unrelated')
+        result, calls = self.invoke()
+        self.assertEqual((result['status'], result['selected'], calls), ('irrelevant', [], 0))
+
+    def test_malformed_old_graph_is_unknown(self):
+        declaration = self.source/'containers/native/inputs-kernel.json'
+        declaration.write_text('{malformed')
+        self.base = self.commit('malformed baseline')
+        # Fix the after tree, so it is specifically before-graph validation
+        # which blocks the plan rather than source-key construction.
+        self.git('checkout', '-b', 'repair')
+        declaration.write_text(json.dumps(self.declaration))
+        self.commit('repair')
+        self.git('checkout', 'main')
+        # history writes a valid final graph in its first commit.
+        self.history('rebase')
+        result, calls = self.invoke()
+        self.assertEqual((result['status'], calls), ('pending-unknown', 0))
+
+    def test_original_rebase_head_missing_from_main_checkout_is_fetched_by_sha(self):
+        self.history('rebase')
+        clone = self.root/'main-checkout'
+        self.git('clone', '--no-local', '--single-branch', '--branch', 'main', str(self.source), str(clone))
+        os.chdir(clone)
+        self.assertNotEqual(subprocess.run(['git', 'cat-file', '-e', self.head+'^{commit}'],
+                                          capture_output=True).returncode, 0)
+        result, calls = self.invoke()
+        self.assertEqual((result['status'], calls), ('seed-required', 2))
+        self.assertEqual(self.git('rev-parse', 'HEAD'), self.merged)
+        self.assertEqual(self.git('rev-parse', self.head+'^{commit}'), self.head)
+
+    def test_workflow_current_run_inventory_download_failure_continues_to_unknown(self):
+        job = workflow('release.yml')['jobs']['seed-plan']
+        download = next(s for s in job['steps'] if s.get('name') == "Read this run's complete merged PR inventory")
+        self.assertEqual(download['with']['name'], '${{ needs.resolve.outputs.plan-artifact }}')
+        self.assertNotIn('run-id', download['with'])
+        self.assertIn(download['continue-on-error'], (True, 'true'))
+        self.assertEqual(job['permissions'], {'contents': 'read', 'actions': 'read'})
+        self.assertIn('--release-plan', next(s for s in job['steps'] if s.get('id') == 'probe')['run'])

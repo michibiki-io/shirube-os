@@ -1043,6 +1043,19 @@ starts nothing; the next relevant merge, necessary trusted build or manual warm
 operation can repair it. There is no timer, retry controller, dispatch bridge,
 actions-write permission or mutable cross-run ledger.
 
+Relevance uses the complete paginated merged-PR file inventory already validated
+by this run's resolve job, including both rename paths and deletions. Its release
+plan artifact binds repository, PR, merged source, original base/head, file and commit counts, run
+and attempt. The planner checks that binding against the event. The before graph
+comes from the merged source’s first parent and original PR head merge base;
+for an unrewritten linear fast-forward it precedes the complete PR commit count.
+The event base may already name the merged tip. The after graph uses the exact
+merged source. This covers merge, squash and multi-commit rebase merges, including
+an earlier relevant commit followed by docs-only changes. Missing original Git
+objects are fetched by exact SHA from the canonical origin, never by PR branch.
+Missing or malformed inventory, unavailable objects or invalid graphs produce
+visible `pending-unknown` without a coverage lookup or compilation.
+
 For manual recovery use **Run workflow → main → cache-mode warm**, with
 `architectures` defaulting to `amd64,arm64`. Warm ensures selected coverage and
 skips already covered architectures. Cold explicitly forces only selected
@@ -1199,6 +1212,17 @@ full/hull、kernel、ISO、guest build は開始していません。
 kernel/VPP/compiler 入力と seed orchestration の変更（bootstrap を含む）が対象です。
 無関係な component や docs/tests だけの変更では生成しません。
 必要な full build があればその既存処理から保存し、失敗後に別 chain を起動しません。
+
+関連性は、この run の resolve が全ページを取得・検証した merged PR の変更一覧で判定します。
+rename の新旧パスと削除を含み、release plan artifact の repository、PR、merged source、
+元の base/head、変更ファイル数、commit 数、run、attempt を event と照合します。
+変更前 graph は merged source の第1親と元の PR head の共通祖先から読みます。
+書換えのない線形 fast-forward では、PR 全 commit より前の graph を使います。
+event の base が merge 後の tip でも判定でき、変更後 graph は固定 merged source から読みます。
+merge、squash、複数 commit の rebase に対応し、最後が docs の変更でも先行する関連変更を見落としません。
+不足する Git object は canonical origin から固定 SHA で取得し、PR branch は参照しません。
+一覧の欠落や不正、object の取得失敗、graph の不正は coverage の取得やコンパイルをせず、
+pending-unknown として表示します。
 
 Release、手動 seed、main full validation は共通の top-level `shirube-os-release` queue を取得します。
 queue は max、取消なしとし、PR/feature は別 group に分離します。

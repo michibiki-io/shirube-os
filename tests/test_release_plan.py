@@ -170,6 +170,9 @@ class ResolutionTests(unittest.TestCase):
                     for side_effect in [releases,version,preflight]: side_effect.assert_not_called()
                     self.assertEqual(gh.call_count,1)
                     plan=json.loads((Path(self.tmp.name)/'plan.json').read_text())
+                    self.assertEqual(plan['seed_trigger']['pages'], [[{'filename':path,'status':'modified'}]])
+                    self.assertEqual(plan['seed_trigger']['changed_files'], 1)
+                    self.assertEqual(plan['seed_trigger']['source_commit'], 'a'*40)
                     self.assertTrue(plan['candidate_only']);self.assertEqual(plan['gates']['publication'],'skipped-not-required')
 
     def test_cumulative_unknown_blocks_before_version_allocation(self):

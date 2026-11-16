@@ -219,6 +219,17 @@ def resolve():
         run=os.environ.get('GITHUB_RUN_ID', ''), attempt=os.environ.get('GITHUB_RUN_ATTEMPT', ''),
         inputs=dependency_evidence(paths, commit))
     decision['gates']['focused'] = 'passed'
+    # Preserve the already validated complete PR inventory for the same-run seed
+    # planner. A last-parent diff loses earlier commits after a rebase merge.
+    decision['seed_trigger'] = {
+        'schema_version': 1, 'repository': event.get('repository'),
+        'pr_number': number, 'source_commit': commit,
+        'base_commit': pr.get('base', {}).get('sha'),
+        'head_commit': pr.get('head', {}).get('sha'),
+        'changed_files': pr.get('changed_files'), 'commits': pr.get('commits'),
+        'pages': [[{k: item[k] for k in ('filename', 'status', 'previous_filename') if k in item}
+                   for item in page] for page in pages],
+    }
     save_plan(decision)
     stream_version=json.loads(Path('source-lock.json').read_text())['stream']['version']
     if decision['publication'] != 'publish':

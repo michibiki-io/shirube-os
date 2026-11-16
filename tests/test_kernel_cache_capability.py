@@ -27,17 +27,19 @@ FILES = tuple(LEGACY)
 
 
 DRIVER = r'''
+import subprocess
+import sys
+
+args = sys.argv[1:]
+if args in (['-'], ['-I', '-']):
+    raise SystemExit(subprocess.run([sys.executable, *args], stdin=sys.stdin).returncode)
+
 import importlib.util
 import json
 import os
 from pathlib import Path
-import subprocess
-import sys
 from unittest.mock import patch
 
-args = sys.argv[1:]
-if args == ['-']:
-    raise SystemExit(subprocess.run([sys.executable, '-'], stdin=sys.stdin).returncode)
 path = args[0]
 spec = importlib.util.spec_from_file_location('checked_source', path)
 module = importlib.util.module_from_spec(spec)
@@ -123,6 +125,40 @@ class KernelCacheCapabilityTests(unittest.TestCase):
             self.assertIn('current_context',result.stderr)
             self.assertFalse((root/'cache').exists())
             self.assertIn("report['export'] = export(", self.old['producer/kernel_compile_cache.py'])
+
+    def test_probe_does_not_execute_shadow_modules(self):
+        for source, files, supported in [('old',self.old,'false'),('current',self.current,'true')]:
+            for location in ('checkout', 'pythonpath'):
+                for module in ('ast', 'pathlib'):
+                    for driver in (False, True):
+                        with self.subTest(source=source,location=location,module=module,driver=driver), tempfile.TemporaryDirectory() as temp:
+                            root=Path(temp); project=root/'project'; project.mkdir(); self.source(project,files)
+                            shadow=project if location == 'checkout' else root/'pythonpath'
+                            shadow.mkdir(exist_ok=True)
+                            sentinel=root/'shadow-executed'
+                            # Executable but harmless: record import, then stop before
+                            # a shadow module can masquerade as a standard library API.
+                            (shadow/(module+'.py')).write_text(
+                                f'with open({str(sentinel)!r}, "w") as output: output.write("executed")\n'
+                                'raise RuntimeError("shadow module executed")\n')
+                            env=dict(os.environ,PYTHONPATH=str(shadow) if location == 'pythonpath' else '')
+                            if driver:
+                                (root/'driver.py').write_text(DRIVER)
+                                shim=root/'bin/python3'; shim.parent.mkdir()
+                                shim.write_text('#!/bin/sh\nexec '+sys.executable+' "$FIXTURE_DRIVER" "$@"\n'); shim.chmod(0o755)
+                                env.update(FIXTURE_DRIVER=str(root/'driver.py'),
+                                           PATH=str(shim.parent)+':'+os.environ['PATH'])
+                            self.assertEqual(self.probe_source(project,env),supported)
+                            self.assertFalse(sentinel.exists())
+                            # Sensitivity control: the original command must execute
+                            # the very same fixture, including through the shell driver.
+                            old_run=self.probe['run'].replace('python3 -I -', 'python3 -', 1)
+                            self.assertNotEqual(old_run,self.probe['run'])
+                            with unittest.mock.patch.dict(self.probe,run=old_run):
+                                with self.assertRaises(subprocess.CalledProcessError) as failure:
+                                    self.probe_source(project,env)
+                            self.assertIn(b'shadow module executed',failure.exception.stderr)
+                            self.assertEqual(sentinel.read_text(),'executed')
 
     def test_legacy_inner_export_is_implicit_only_when_cache_state_exists(self):
         # Execute the frozen old finish function: a mounted reader used to
