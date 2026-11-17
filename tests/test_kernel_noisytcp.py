@@ -306,6 +306,9 @@ int main(void){
         source = self.patched()
         text = (source/'net/ipv4/inet_connection_sock.c').read_text()
         timer = existing.function(text, 'reqsk_timer_handler')
+        drop = existing.function(text, '__inet_csk_reqsk_queue_drop')
+        self.assertIn('if (!from_timer && timer_delete_sync(&req->rsk_timer))', drop)
+        self.assertIn('__inet_csk_reqsk_queue_drop(sk_listener, nreq, true)', timer)
         start = timer.index('\tif (nreq) {', timer.index('Even if we can clone'))
         cleanup = timer[start:timer.index('\ndrop:', start)]
         clones = []
@@ -324,12 +327,15 @@ void reqsk_migrate_reset(struct request_sock *r){r->resets++;}
 #define __NET_INC_STATS(n,k) ((void)0)
 #define reqsk_queue_removed(q,r) ((void)0)
 void timer_failure(int lost_ehash,int lookup){
- struct request_sock r={3-lost_ehash+lookup,0},*nreq=&r;void *queue=NULL;
+ /* An armed timer retains its reference on the no_ownership path. */
+ struct request_sock r={3+lookup,0},*nreq=&r;void *queue=NULL;
  calls=frees=0;
  if(lost_ehash)goto no_ownership;
 '''+cleanup+r'''
- assert(calls==3-lost_ehash && r.refs==lookup && r.resets==1);
- assert(frees==!lookup);if(lookup){reqsk_put(&r);assert(frees==1);}
+ assert(calls==3-lost_ehash && r.refs==lookup+lost_ehash && r.resets==1);
+ assert(frees==(!lookup && !lost_ehash));
+ if(lost_ehash){reqsk_put(&r);assert(r.refs==lookup && frees==!lookup);}
+ if(lookup){reqsk_put(&r);assert(frees==1);}
 }
 void hashdance_failure(int lookup){
  struct request_sock r={1+lookup,0},*nreq=&r;calls=frees=0;
