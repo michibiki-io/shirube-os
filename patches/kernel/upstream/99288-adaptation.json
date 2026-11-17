@@ -239,7 +239,7 @@
       "trim_context_before": 0,
       "trim_context_after": 0,
       "reason": "Exact upstream change; unchanged 6.6 context.",
-      "annotation_adaptation": true,
+      "annotation_adaptation": false,
       "purge_adaptation": false
     },
     {
@@ -252,7 +252,7 @@
       "trim_context_before": 0,
       "trim_context_after": 0,
       "reason": "Exact upstream change; unchanged 6.6 context.",
-      "annotation_adaptation": true,
+      "annotation_adaptation": false,
       "purge_adaptation": false
     },
     {
@@ -278,7 +278,7 @@
       "trim_context_before": 0,
       "trim_context_after": 0,
       "reason": "Exact upstream change; unchanged 6.6 context.",
-      "annotation_adaptation": true,
+      "annotation_adaptation": false,
       "purge_adaptation": false
     }
   ],

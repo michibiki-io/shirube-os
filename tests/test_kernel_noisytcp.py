@@ -3,6 +3,7 @@ from collections import Counter
 import copy
 import difflib
 import hashlib
+import itertools
 import json
 from pathlib import Path
 import re
@@ -76,7 +77,32 @@ def oracle(source, record):
         delta = ''.join(difflib.unified_diff(before.splitlines(True), after.splitlines(True)))
         # unified_diff without filenames uses ---/+++ framing, never source lines.
         delta = ''.join(s for s in delta.splitlines(True) if not s.startswith(('---', '+++')))
-        assert changes(delta) == changes(body, normalize_annotation=entry['annotation_adaptation']), (entry['file'], entry['hunk'])
+        signed = ''.join(line for line in body.splitlines(True) if line[0] in '+-')
+        assert ('__signed_wrap' in signed) == entry['annotation_adaptation']
+        assert changes(delta) == changes(body, normalize_annotation=entry['annotation_adaptation']), 'signed change multiplicity'
+        # Account for context trimming and the two explicitly allowed context
+        # spellings as well as signed lines; neither flag is descriptive only.
+        lines = body.splitlines(True)
+        leading = len(lines) - len(list(itertools.dropwhile(lambda line: line[0] == ' ', lines)))
+        trailing = len(lines) - len(list(itertools.dropwhile(lambda line: line[0] == ' ', reversed(lines))))
+        left, right = entry['trim_context_before'], entry['trim_context_after']
+        assert isinstance(left, int) and 0 <= left <= leading
+        assert isinstance(right, int) and 0 <= right <= trailing
+        kept = lines[left:len(lines)-right if right else None]
+        purge = (entry['original'], entry['file'], entry['hunk']) == (
+            '99288-ordering.patch', 'net/ipv4/inet_timewait_sock.c', 2)
+        assert entry['purge_adaptation'] == purge
+        for signs, actual in [(' -', before), (' +', after)]:
+            projected = ''.join(line[1:] for line in kept if line[0] in signs)
+            if entry['annotation_adaptation']:
+                projected = projected.replace('static inline __signed_wrap\nvoid __refcount_add(',
+                                              'static inline void __refcount_add(')
+                projected = projected.replace(' __signed_wrap', '')
+            if purge:
+                assert projected.count('check_net(sock_net(sk))') == 2
+                projected = projected.replace('check_net(sock_net(sk))',
+                                              'refcount_read(&sock_net(sk)->ns.count)')
+            assert projected == actual, 'adapted context and image'
         text = expected[entry['file']]
         assert text.count(before) == 1
         expected[entry['file']] = text.replace(before, after, 1)
@@ -123,12 +149,31 @@ class NoisyTCPTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
         for name, text in expected.items():
             self.assertEqual((source/name).read_text(), text, name)
-        # Detect missing duplicate puts/setters and dropped entire hunks, not sets.
+        # Detect dropped entire hunk entries via coverage, independently of content.
         for index, entry in enumerate(record['entries']):
             broken = copy.deepcopy(record)
             broken['entries'].pop(index)
             with self.assertRaises(AssertionError):
                 oracle(self.fixture(suffix='-missing-hunk-'+str(index)), broken)
+
+    def test_oracle_rejects_duplicate_put_loss_and_inaccurate_adaptation_metadata(self):
+        source = self.prepared()
+        record = json.loads((PATCHES/'upstream/99288-adaptation.json').read_text())
+        broken = copy.deepcopy(record)
+        entry = broken['entries'][0]  # stable icsk hunk 1, all keys retained
+        self.assertEqual((entry['original'], entry['file'], entry['hunk']),
+                         ('99288-stable.patch', 'net/ipv4/inet_connection_sock.c', 1))
+        self.assertEqual(entry['after'].count('\t\treqsk_put(nreq);\n'), 3)
+        entry['after'] = entry['after'].replace('\t\treqsk_put(nreq);\n', '', 1)
+        with self.assertRaisesRegex(AssertionError, 'signed change multiplicity'):
+            oracle(source, broken)
+        for field, index in [('annotation_adaptation', 17),
+                             ('purge_adaptation', 13), ('trim_context_after', 2)]:
+            broken = copy.deepcopy(record)
+            value = broken['entries'][index][field]
+            broken['entries'][index][field] = not value if isinstance(value, bool) else value - 1
+            with self.subTest(field=field), self.assertRaises(AssertionError):
+                oracle(source, broken)
 
     def test_full_sequence_idempotence_receipt_and_partial_incompatible_rejection(self):
         source = self.patched()
