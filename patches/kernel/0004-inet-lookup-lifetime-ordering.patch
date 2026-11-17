@@ -1,0 +1,316 @@
+From: Shirube maintainers <maintainers@michibiki.io>
+Subject: [PATCH] inet: backport complete lookup lifetime and ordering fixes to 6.6.128
+
+Retain upstream authorship in upstream/99288-*.patch. Combined to preserve
+the existing zero-fuzz forward/reverse application contract. See
+upstream/99288-adaptation.json for every original hunk and narrow adaptation.
+
+--- a/include/linux/refcount.h
++++ b/include/linux/refcount.h
+@@ -87,6 +87,15 @@
+  * The decrements dec_and_test() and sub_and_test() also provide acquire
+  * ordering on success.
+  *
++ * refcount_{add|inc}_not_zero_acquire() and refcount_set_release() provide
++ * acquire and release ordering for cases when the memory occupied by the
++ * object might be reused to store another object. This is important for the
++ * cases where secondary validation is required to detect such reuse, e.g.
++ * SLAB_TYPESAFE_BY_RCU. The secondary validation checks have to happen after
++ * the refcount is taken, hence acquire order is necessary. Similarly, when the
++ * object is initialized, all stores to its attributes should be visible before
++ * the refcount is set, otherwise a stale attribute value might be used by
++ * another task which succeeds in taking a refcount to the new object.
+  */
+ 
+ #ifndef _LINUX_REFCOUNT_H
+@@ -137,6 +146,31 @@
+ }
+ 
+ /**
++ * refcount_set_release - set a refcount's value with release ordering
++ * @r: the refcount
++ * @n: value to which the refcount will be set
++ *
++ * This function should be used when memory occupied by the object might be
++ * reused to store another object -- consider SLAB_TYPESAFE_BY_RCU.
++ *
++ * Provides release memory ordering which will order previous memory operations
++ * against this store. This ensures all updates to this object are visible
++ * once the refcount is set and stale values from the object previously
++ * occupying this memory are overwritten with new ones.
++ *
++ * This function should be called only after new object is fully initialized.
++ * After this call the object should be considered visible to other tasks even
++ * if it was not yet added into an object collection normally used to discover
++ * it. This is because other tasks might have discovered the object previously
++ * occupying the same memory and after memory reuse they can succeed in taking
++ * refcount to the new object and start using it.
++ */
++static inline void refcount_set_release(refcount_t *r, int n)
++{
++	atomic_set_release(&r->refs, n);
++}
++
++/**
+  * refcount_read - get a refcount's value
+  * @r: the refcount
+  *
+@@ -188,6 +222,52 @@
+ 	return __refcount_add_not_zero(i, r, NULL);
+ }
+ 
++static inline __must_check
++bool __refcount_add_not_zero_acquire(int i, refcount_t *r, int *oldp)
++{
++	int old = refcount_read(r);
++
++	do {
++		if (!old)
++			break;
++	} while (!atomic_try_cmpxchg_acquire(&r->refs, &old, old + i));
++
++	if (oldp)
++		*oldp = old;
++
++	if (unlikely(old < 0 || old + i < 0))
++		refcount_warn_saturate(r, REFCOUNT_ADD_NOT_ZERO_OVF);
++
++	return old;
++}
++
++/**
++ * refcount_add_not_zero_acquire - add a value to a refcount with acquire ordering unless it is 0
++ *
++ * @i: the value to add to the refcount
++ * @r: the refcount
++ *
++ * Will saturate at REFCOUNT_SATURATED and WARN.
++ *
++ * This function should be used when memory occupied by the object might be
++ * reused to store another object -- consider SLAB_TYPESAFE_BY_RCU.
++ *
++ * Provides acquire memory ordering on success, it is assumed the caller has
++ * guaranteed the object memory to be stable (RCU, etc.). It does provide a
++ * control dependency and thereby orders future stores. See the comment on top.
++ *
++ * Use of this function is not recommended for the normal reference counting
++ * use case in which references are taken and released one at a time.  In these
++ * cases, refcount_inc_not_zero_acquire() should instead be used to increment a
++ * reference count.
++ *
++ * Return: false if the passed refcount is 0, true otherwise
++ */
++static inline __must_check bool refcount_add_not_zero_acquire(int i, refcount_t *r)
++{
++	return __refcount_add_not_zero_acquire(i, r, NULL);
++}
++
+ static inline void __refcount_add(int i, refcount_t *r, int *oldp)
+ {
+ 	int old = atomic_fetch_add_relaxed(i, &r->refs);
+@@ -243,6 +323,32 @@
+ static inline __must_check bool refcount_inc_not_zero(refcount_t *r)
+ {
+ 	return __refcount_inc_not_zero(r, NULL);
++}
++
++static inline __must_check bool __refcount_inc_not_zero_acquire(refcount_t *r, int *oldp)
++{
++	return __refcount_add_not_zero_acquire(1, r, oldp);
++}
++
++/**
++ * refcount_inc_not_zero_acquire - increment a refcount with acquire ordering unless it is 0
++ * @r: the refcount to increment
++ *
++ * Similar to refcount_inc_not_zero(), but provides acquire memory ordering on
++ * success.
++ *
++ * This function should be used when memory occupied by the object might be
++ * reused to store another object -- consider SLAB_TYPESAFE_BY_RCU.
++ *
++ * Provides acquire memory ordering on success, it is assumed the caller has
++ * guaranteed the object memory to be stable (RCU, etc.). It does provide a
++ * control dependency and thereby orders future stores. See the comment on top.
++ *
++ * Return: true if the increment was successful, false otherwise
++ */
++static inline __must_check bool refcount_inc_not_zero_acquire(refcount_t *r)
++{
++	return __refcount_inc_not_zero_acquire(r, NULL);
+ }
+ 
+ static inline void __refcount_inc(refcount_t *r, int *oldp)
+--- a/net/core/filter.c
++++ b/net/core/filter.c
+@@ -7498,7 +7498,7 @@
+ 	if (sk_unhashed(sk))
+ 		return -EOPNOTSUPP;
+ 	if (sk_is_refcounted(sk) &&
+-	    unlikely(!refcount_inc_not_zero(&sk->sk_refcnt)))
++	    unlikely(!refcount_inc_not_zero_acquire(&sk->sk_refcnt)))
+ 		return -ENOENT;
+ 
+ 	skb_orphan(skb);
+--- a/net/ipv4/inet_connection_sock.c
++++ b/net/ipv4/inet_connection_sock.c
+@@ -1040,8 +1040,8 @@
+ 		 * hold another count to prevent use-after-free and
+ 		 * call reqsk_put() just before return.
+ 		 */
+-		refcount_set(&nreq->rsk_refcnt, 2 + 1);
+ 		timer_setup(&nreq->rsk_timer, reqsk_timer_handler, TIMER_PINNED);
++		refcount_set_release(&nreq->rsk_refcnt, 2 + 1);
+ 		reqsk_queue_migrated(&inet_csk(nsk)->icsk_accept_queue, req);
+ 
+ 		req = nreq;
+@@ -1116,10 +1116,14 @@
+ 	 */
+ 	if (nreq) {
+ 		__NET_INC_STATS(net, LINUX_MIB_TCPMIGRATEREQFAILURE);
++		/* The timer was not armed, drop its reference here. */
++		reqsk_put(nreq);
+ no_ownership:
+ 		reqsk_migrate_reset(nreq);
+ 		reqsk_queue_removed(queue, nreq);
+-		__reqsk_free(nreq);
++		/* Drop the temporary reference and the one reserved for ehash. */
++		reqsk_put(nreq);
++		reqsk_put(nreq);
+ 	}
+ 
+ drop:
+@@ -1381,7 +1385,7 @@
+ 				goto child_put;
+ 			}
+ 
+-			refcount_set(&nreq->rsk_refcnt, 1);
++			refcount_set_release(&nreq->rsk_refcnt, 1);
+ 			if (inet_csk_reqsk_queue_add(sk, nreq, child)) {
+ 				__NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPMIGRATEREQSUCCESS);
+ 				reqsk_migrate_reset(req);
+@@ -1391,7 +1395,7 @@
+ 
+ 			__NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPMIGRATEREQFAILURE);
+ 			reqsk_migrate_reset(nreq);
+-			__reqsk_free(nreq);
++			reqsk_put(nreq);
+ 		} else if (inet_csk_reqsk_queue_add(sk, req, child)) {
+ 			return child;
+ 		}
+@@ -1435,7 +1439,7 @@
+ 		if (nsk) {
+ 			nreq = inet_reqsk_clone(req, nsk);
+ 			if (nreq) {
+-				refcount_set(&nreq->rsk_refcnt, 1);
++				refcount_set_release(&nreq->rsk_refcnt, 1);
+ 
+ 				if (inet_csk_reqsk_queue_add(nsk, nreq, child)) {
+ 					__NET_INC_STATS(sock_net(nsk),
+@@ -1445,7 +1449,7 @@
+ 					__NET_INC_STATS(sock_net(nsk),
+ 							LINUX_MIB_TCPMIGRATEREQFAILURE);
+ 					reqsk_migrate_reset(nreq);
+-					__reqsk_free(nreq);
++					reqsk_put(nreq);
+ 				}
+ 
+ 				/* inet_csk_reqsk_queue_add() has already
+--- a/net/ipv4/inet_hashtables.c
++++ b/net/ipv4/inet_hashtables.c
+@@ -516,10 +516,11 @@
+ 		if (sk->sk_hash != hash)
+ 			continue;
+ 		if (likely(inet_match(net, sk, acookie, ports, dif, sdif))) {
+-			if (unlikely(!refcount_inc_not_zero(&sk->sk_refcnt)))
++			if (unlikely(!refcount_inc_not_zero_acquire(&sk->sk_refcnt)))
+ 				goto out;
+-			if (unlikely(!inet_match(net, sk, acookie,
+-						 ports, dif, sdif))) {
++			if (unlikely(hlist_nulls_unhashed_lockless(&sk->sk_nulls_node) ||
++				     !inet_match(net, sk, acookie, ports, dif,
++						 sdif))) {
+ 				sock_gen_put(sk);
+ 				goto begin;
+ 			}
+--- a/net/ipv4/inet_timewait_sock.c
++++ b/net/ipv4/inet_timewait_sock.c
+@@ -161,7 +161,7 @@
+ 	 * Also note that after this point, we lost our implicit reference
+ 	 * so we are not allowed to use tw anymore.
+ 	 */
+-	refcount_set(&tw->tw_refcnt, 3);
++	refcount_set_release(&tw->tw_refcnt, 3);
+ }
+ EXPORT_SYMBOL_GPL(inet_twsk_hashdance);
+ 
+@@ -305,7 +305,7 @@
+ 			if (refcount_read(&sock_net(sk)->ns.count))
+ 				continue;
+ 
+-			if (unlikely(!refcount_inc_not_zero(&sk->sk_refcnt)))
++			if (unlikely(!refcount_inc_not_zero_acquire(&sk->sk_refcnt)))
+ 				continue;
+ 
+ 			if (refcount_read(&sock_net(sk)->ns.count)) {
+--- a/net/ipv4/syncookies.c
++++ b/net/ipv4/syncookies.c
+@@ -201,7 +201,7 @@
+ 	child = icsk->icsk_af_ops->syn_recv_sock(sk, skb, req, dst,
+ 						 NULL, &own_req);
+ 	if (child) {
+-		refcount_set(&req->rsk_refcnt, 1);
++		refcount_set_release(&req->rsk_refcnt, 1);
+ 		tcp_sk(child)->tsoffset = tsoff;
+ 		sock_rps_save_rxhash(child, skb);
+ 
+@@ -215,6 +215,8 @@
+ 
+ 		bh_unlock_sock(child);
+ 		sock_put(child);
++		reqsk_put(req);
++		return NULL;
+ 	}
+ 	__reqsk_free(req);
+ 
+--- a/net/ipv4/tcp_fastopen.c
++++ b/net/ipv4/tcp_fastopen.c
+@@ -278,7 +278,7 @@
+ 	inet_csk_reset_xmit_timer(child, ICSK_TIME_RETRANS,
+ 				  req->timeout, TCP_RTO_MAX);
+ 
+-	refcount_set(&req->rsk_refcnt, 2);
++	refcount_set_release(&req->rsk_refcnt, 2);
+ 
+ 	sk_mark_napi_id_set(child, skb);
+ 
+--- a/net/ipv4/tcp_input.c
++++ b/net/ipv4/tcp_input.c
+@@ -7210,7 +7210,9 @@
+ 		if (!inet_csk_reqsk_queue_add(sk, req, fastopen_sk)) {
+ 			bh_unlock_sock(fastopen_sk);
+ 			sock_put(fastopen_sk);
+-			goto drop_and_free;
++			/* tcp_disconnect() already dropped one reqsk ref. */
++			reqsk_put(req);
++			goto drop;
+ 		}
+ 		sk->sk_data_ready(sk);
+ 		bh_unlock_sock(fastopen_sk);
+--- a/net/ipv6/inet6_hashtables.c
++++ b/net/ipv6/inet6_hashtables.c
+@@ -72,10 +72,12 @@
+ 			continue;
+ 		if (!inet6_match(net, sk, saddr, daddr, ports, dif, sdif))
+ 			continue;
+-		if (unlikely(!refcount_inc_not_zero(&sk->sk_refcnt)))
++		if (unlikely(!refcount_inc_not_zero_acquire(&sk->sk_refcnt)))
+ 			goto out;
+ 
+-		if (unlikely(!inet6_match(net, sk, saddr, daddr, ports, dif, sdif))) {
++		if (unlikely(hlist_nulls_unhashed_lockless(&sk->sk_nulls_node) ||
++			     !inet6_match(net, sk, saddr, daddr, ports, dif,
++					  sdif))) {
+ 			sock_gen_put(sk);
+ 			goto begin;
+ 		}

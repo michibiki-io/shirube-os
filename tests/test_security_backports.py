@@ -191,7 +191,10 @@ class SecurityTests(unittest.TestCase):
         self.assertEqual(self.apply_kernel(source, receipt).returncode, 0)
         self.assertEqual(first, receipt.read_bytes())
         targets = set()
-        for p in (ROOT/'patches/kernel/upstream').glob('*.patch'):
+        # Strict byte oracle covers exactly the three originals replayed above.
+        # New 6.6 adaptations have their own per-hunk provenance oracle.
+        for name in ['nfqueue-prerequisite.patch', '98432.patch', '99999.patch']:
+            p = ROOT/'patches/kernel/upstream'/name
             targets.update(re.findall(r'^--- a/(.+)$', p.read_text(), re.M))
         for name in targets:
             self.assertEqual((source/name).read_bytes(), (original/name).read_bytes(), name)
