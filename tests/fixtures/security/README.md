@@ -7,9 +7,14 @@ Archive owners, timestamps and local paths are omitted. Source-file notices and
 upstream patch attribution are retained; GPL-2.0 and LGPL-2.1 texts are available
 under `LICENSES/`. FRR and accel fixtures also retain upstream COPYING files.
 
-- Kernel: 32 selected Linux 6.6.128 corresponding-source files, including all
-  Stream and new patch targets and prerequisite API headers, plus four exact
-  Stream patches. Stream hunks are already present in those source bytes.
+- Kernel: 55 selected Linux 6.6.128 corresponding-source files, including all
+  Stream/security targets, request ownership and atomic acquire/release headers,
+  plus four exact Stream patches. All ordinary members match the authenticated
+  v2026.03.12 AMD64 source archive; the new networking/header targets also match
+  the independently checked ARM64 archive. Stream hunks are already present.
+  The per-hunk 99288 oracle preserves repeated signed lines and exact complete
+  post-images; old three-original replay remains a separate strict byte oracle.
+  Atomic/ordering checks and C stubs are not real ARM64 concurrency validation.
 - FRR: selected files from immutable upstream 168ade7, plus ten complete Stream
   patches. The quilt series scaffold models Stream preparation. Several Stream
   changes are already present in the upstream baseline; normalize before replay.

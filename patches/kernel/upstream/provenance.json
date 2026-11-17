@@ -16,6 +16,34 @@
       "commit": "a65f69e0f38ffbed1b128029e09097436416dc8b",
       "path": "upstream/99999.patch",
       "sha256": "b1edfa0cca0ef84110e4f8120a7ba15c2daa922790ce52c8b378332d7bbb82eb"
+    },
+    {
+      "commit": "4e2b3ef19e0e04adca38442f07dd6bc93c712bf1",
+      "path": "upstream/99288-mainline.patch",
+      "sha256": "4f2eaee9028f9db7b4703bdd982a1c387b3731f214b8ee7c2c4537fb9409c082",
+      "url": "https://git.kernel.org/stable/c/4e2b3ef19e0e04adca38442f07dd6bc93c712bf1",
+      "role": "reference-only equivalent stable fix"
+    },
+    {
+      "commit": "d69100340b4cae08d40f898f1b601032403f6be6",
+      "path": "upstream/99288-stable.patch",
+      "sha256": "202ae3b8e2571f891ffaa1500c63ba831da96d0fd66085e5998d2f3eddec87a3",
+      "url": "https://git.kernel.org/stable/c/d69100340b4cae08d40f898f1b601032403f6be6",
+      "role": "hunk-mapped 6.6 adaptation"
+    },
+    {
+      "commit": "5b5d8f351dd96f56a58bb516a80e2d4d742fe4e2",
+      "path": "upstream/99288-ordering.patch",
+      "sha256": "8af24bf5010c8ca7520662c8ae7a92810e97af632d1188c1cb6588af456e6898",
+      "url": "https://git.kernel.org/stable/c/5b5d8f351dd96f56a58bb516a80e2d4d742fe4e2",
+      "role": "hunk-mapped 6.6 adaptation"
+    },
+    {
+      "commit": "7f8ceea0c58039dcea3d31b8d5da58aa5f6e12bf",
+      "path": "upstream/99288-refcount-api.patch",
+      "sha256": "cfe086eb83cad59695eb78118693277c42cecc1e43a4baafb408b7d4599bb363",
+      "url": "https://git.kernel.org/stable/c/7f8ceea0c58039dcea3d31b8d5da58aa5f6e12bf",
+      "role": "hunk-mapped 6.6 adaptation"
     }
   ],
   "production": [
@@ -30,6 +58,14 @@
     {
       "path": "0003-ipv4-checksum-with-nfqueue.patch",
       "sha256": "1ba59999194afd3229055aba7c11119e49e89bf8f961791f5d546a5769f8d95d"
+    },
+    {
+      "path": "0004-inet-lookup-lifetime-ordering.patch",
+      "sha256": "05fa4fcca79a6203a8f5da370f5cef5e6731094bf42f2943e11b72556495ebb6"
     }
-  ]
+  ],
+  "adaptation_oracle": {
+    "path": "upstream/99288-adaptation.json",
+    "sha256": "a2ad307a9cccadb781b4840db5bd8a2cd67d410e06e04e258809da3c2e67941a"
+  }
 }
