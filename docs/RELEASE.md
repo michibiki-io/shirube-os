@@ -627,82 +627,43 @@ rename元とrename先の両方を判定し、未知は公開を保留して候�
 既知の製品入力との混合変更は製品公開の対象です。
 今回の完了によって、無関係な過去のhosted、OCI、cacheの検証記録は変わりません。
 
-## One-time v2026.03.14 recovery (Issue #46)
+## Completed v2026.03.14 recovery (Issues #46, #48 and #50)
 
-[Original Release attempt 1](https://github.com/michibiki-io/shirube-os/actions/runs/44030573245/attempts/1)
-produced both architecture candidates. Candidate-check timed out; on
-[attempt 2](https://github.com/michibiki-io/shirube-os/actions/runs/44030573245/attempts/2)
-it passed, but staging and publication were not run. Draft ID **448240202**
-was reserved for product commit 0a1eeb67a9e6f56b59c601ca9db06c59f0c80c9b and had
-no assets. The separate controller commit is not the product source.
+[Shirube OS v2026.03.14](https://github.com/michibiki-io/shirube-os/releases/tag/v2026.03.14)
+was published on 2026-11-20 at 04:39 UTC as release 448240202 from product
+source `0a1eeb67a9e6f56b59c601ca9db06c59f0c80c9b`. The earlier
+[recovery attempt](https://github.com/michibiki-io/shirube-os/actions/runs/44652548222)
+timed out waiting for an upload response. [Recovery run 44672002992](https://github.com/michibiki-io/shirube-os/actions/runs/44672002992)
+completed staging, independent remote validation, Actions upload and publication
+without rebuilding. Its distinct controller commit was
+`748533d4b5af798a10a7ef6dc6c5bd41bccc713c`.
 
-After normal PR approval and merge, and only with separate authorization for
-actual release recovery, dispatch **Recover v2026.03.14 publication** on
-**main**, without inputs. Do not re-run the old build, merge a newer product
-change, or edit the draft while recovering. Main can advance without invalidating
-the run only if it still contains the dispatched controller commit.
-The original archives are pinned
-by run, ID, compressed size, SHA-256 and exact expiry:
+The release contains 182 assets: 90 for each architecture plus `manifest.json`
+and `SHA256SUMS`. At retirement, the two metadata files matched the API
+SHA-256 values, and all 180 payload names, sizes and digests matched the
+published inventory. The payloads were not downloaded again for this retirement.
+[Actions artifact 14601997719](https://github.com/michibiki-io/shirube-os/actions/runs/44672002992/artifacts/14601997719)
+has GitHub-reported upload SHA-256
+`a77d302ecd3759db77082de29076ab7f9632c74f3916ab6e696ec9259414805a`; the
+archive was not downloaded for this check and follows normal retention.
 
-| Architecture | Artifact ID | Expires (UTC) |
-| --- | --- | --- |
-| amd64 | 14324155876 | 2026-11-24 11:19:43 |
-| arm64 | 14325887299 | 2026-11-24 11:52:17 |
-
-Start well before the earlier expiry so that the entire job can finish while
-both candidate archives remain available. The job has a 180-minute hard limit,
-not a completion-time guarantee. The append window is at most 120 minutes
-from staging step start (or earlier candidate expiry), reserving nominal time
-for remote verification and the new Actions upload. The socket idle timeout is
-five minutes, with a separate ten-minute total deadline for each POST. An
-append may start only if that deadline and its backoff fit the append window.
-Before staging, the runner measures the disk for both retained payloads plus
-the largest original archive and headroom (about 29.9 GB). The earlier failed
-run measured 91.37 GB free; a new runner rechecks that rather than assuming
-it. After payload staging, only local scratch payload links are released before
-the fresh independent remote download; the draft assets are unchanged.
-There is no build, guest rerun, signing, cache priming or automatic execution.
-
-[Recovery run 44652548222](https://github.com/michibiki-io/shirube-os/actions/runs/44652548222)
-timed out waiting for an upload response in attempt 1 and left a partial draft.
-After the resume PR is merged and with separate recovery authorization, use
-a new attempt-1 dispatch on main, not the old run's Actions re-run. The workflow
-verifies both exact original archives and the complete canonical inventory
-before any append. It compares every existing asset (including any metadata)
-by name, size and digest, and readbacks preserve the verified live IDs. A valid
-subset is kept. It appends only missing payload, downloads all remote payload
-and validates the aggregate independently, then appends only missing metadata
-and verifies all remotely stored metadata. A timeout with a matching live asset
-is treated as success, without another POST. Only a still-absent timeout target
-can be retried once after repeated complete unchanged readback; an unknown,
-conflicting or starter entry stops the run without deletion or overwrite.
-A job timeout remains an ambiguous interruption; preserve the draft and use
-the same checks on any later authorized new dispatch. If a final request has
-an uncertain outcome, inspect the pinned release ID, tag, asset inventory and
-linked verified Actions artifact before any further action. The new artifact uses
-normal repository retention; the release notes retain the artifact ID and digest
-as audit evidence even after GitHub expires the downloadable archive. Retire this one-time
-workflow and controller after verified publication. The ordinary Release stage
-skip and any permanent gate changes are outside Issue #46. Verify the ordinary
-release path separately before the next product release; retiring this
-workflow does not repair that path.
+The one-time entry point, controller and dedicated tests are retired from main
+and remain in Git history. Keep the workflow and controller's exact control-path
+entries; the dedicated test path is covered by the general test rule. These
+deletions appear in this change inventory and in later cumulative release
+classification. Nothing here changes the normal Release path or removes the
+published assets, tag, Actions artifact, or historical runs.
 
 ### 日本語
 
-v2026.03.14 の候補は両アーキテクチャで生成済みです。元 run の初回は
-候補検証がタイムアウトし、再試行で検証は成功しましたが、staging と公開は
-未実行でした。初回の復旧 run 44652548222 は upload 応答待ちで停止し、予約済み draft
-**448240202** に一部 asset が残りました。再開の対象はこの draft だけです。
+v2026.03.14 は 2026年11月20日 13:39 JST に公開されました。初回の復旧は
+upload 応答待ちで中断しましたが、run 44672002992 は再ビルドせず、staging、
+公開先からの再取得・検証、Actions artifact の作成、正式公開まで完了しました。
+製品ソースと復旧を実行したコードのコミットは上記のとおり別です。
 
-PR の承認・merge 後、実際の公開が承認された場合に限り、main で
-**Recover v2026.03.14 publication** を入力なしで実行します。期限が早い
-amd64 は **11 月 24 日 11:19:43 UTC** です。転送、検証、公開が期限前に
-完了するよう余裕を持たせてください。再ビルド、再署名、ゲスト再実行は
-行いません。実行中は draft を編集せず、別の製品変更を先に merge しません。
-
-書き込み後に失敗した場合は、未公開の draft をそのまま残して調査します。
-asset の削除・上書き・再試行はしません。公開結果が不明な場合は同じ ID・
-tag・asset 一覧・新しい Actions artifact を照合してください。新しい artifact は
-通常どおりの保持期限に従い、archive が失効しても ID と digest は公開ノートに残ります。公開確認後に
-復旧用の workflow・controller を削除しますが、この撤去は通常の Release
-経路の修復を意味しません。次の製品公開の前に通常経路を別途確認します。
+公開済み182件のうち、manifest と checksum は実ファイルの SHA-256 を照合し、
+残る180件は名前・サイズ・digest を公開 API と照合しました。撤去時に180件を
+再取得してはいません。復旧専用の入口だけを撤去し、通常の公開処理や公開済み
+成果物・tag・run 履歴は変更しません。削除パスも今回と今後の累積リリース判定に
+含まれるため、workflow と復旧用コードの完全一致の control 分類は残します。
+専用テストは共通の test 分類で扱います。
