@@ -656,9 +656,12 @@ from staging step start (or earlier candidate expiry), reserving nominal time
 for remote verification and the new Actions upload. The socket idle timeout is
 five minutes, with a separate ten-minute total deadline for each POST. An
 append may start only if that deadline and its backoff fit the append window.
-The runner measures the required disk for both canonical and independently
-downloaded payload trees, or the largest overlapping original archive, before
-staging. There is no build, guest rerun, signing, cache priming or automatic execution.
+Before staging, the runner measures the disk for both retained payloads plus
+the largest original archive and headroom (about 29.9 GB). The earlier failed
+run measured 91.37 GB free; a new runner rechecks that rather than assuming
+it. After payload staging, only local scratch payload links are released before
+the fresh independent remote download; the draft assets are unchanged.
+There is no build, guest rerun, signing, cache priming or automatic execution.
 
 [Recovery run 44652548222](https://github.com/michibiki-io/shirube-os/actions/runs/44652548222)
 timed out waiting for an upload response in attempt 1 and left a partial draft.

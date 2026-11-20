@@ -327,10 +327,9 @@ actions.identity(commit)
 
 def capacity(root):
     sizes = [p.size for p in CANDIDATES.values()]
-    # Prior extracted payload + current archive and extraction can overlap.
-    # Later the canonical payload and independent readback coexist. Hardlinks
-    # in the canonical tree do not duplicate the extracted data blocks.
-    needed = max(sum(sizes)+max(sizes), 2*sum(sizes)) + HEADROOM
+    # The peak is both extracted payloads plus one in-flight original ZIP.
+    # Local payload links are removed before the independent remote download.
+    needed = sum(sizes) + max(sizes) + HEADROOM
     free = shutil.disk_usage(root).free
     print(f'Recovery capacity: required={needed} free={free} bytes', flush=True)
     require(free >= needed, 'Not enough space on the recovery filesystem before staging')
@@ -455,7 +454,12 @@ def upload_deadline():
         signal.signal(signal.SIGALRM, previous)
 
 
-def upload(path, size, digest):
+def require_append_budget(name, deadline):
+    require(time.monotonic() + UPLOAD_TOTAL_SECONDS + sum(VISIBILITY_DELAYS) + 1 <= deadline,
+            f'Asset {name}: insufficient append time budget; preserve draft')
+
+
+def upload(path, size, digest, *, deadline):
     """One append to the pinned ID, with no redirect, label, overwrite or hidden retry."""
     name = filename(path.name)
     require_owned_draft(release_identity())
@@ -463,6 +467,9 @@ def upload(path, size, digest):
     phase = 'send'
     try:
         with path.open('rb') as source:
+            # The release identity read may have consumed the time available
+            # after the first admission check. Recheck at the POST boundary.
+            require_append_budget(name, deadline)
             try:
                 with upload_deadline():
                     connection.request('POST', UPLOAD_PATH+'?'+urlencode({'name': name}), source, {
@@ -533,12 +540,11 @@ def append_missing(path, expected, before, deadline):
     name = filename(path.name)
     require(name in expected and name not in before, f'Asset {name}: append must target missing canonical bytes')
     for attempt in (1, 2):
-        require(time.monotonic() + UPLOAD_TOTAL_SECONDS + sum(VISIBILITY_DELAYS) + 1 <= deadline,
-                f'Asset {name}: insufficient append time budget; preserve draft')
+        require_append_budget(name, deadline)
         print(f'Asset {name}: POST attempt {attempt}', flush=True)
         reply, retryable = None, False
         try:
-            reply = upload(path, expected[name]['size'], expected[name]['digest'][7:])
+            reply = upload(path, expected[name]['size'], expected[name]['digest'][7:], deadline=deadline)
             outcome = '201'
         except AmbiguousUpload as error:
             outcome, retryable = str(error), error.retryable
@@ -623,6 +629,10 @@ def stage():
         if name not in staged:
             staged = append_missing(canonical/name, expected, staged, deadline)
     draft(staged)
+    # These are only our freshly created local links, not release assets.
+    # Preserve the independently derived metadata and expected inventory.
+    for name in payload:
+        (canonical/name).unlink()
     public = root/'public'
     public.mkdir()
     for name in payload:

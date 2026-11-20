@@ -243,18 +243,18 @@ class Publication(unittest.TestCase):
             response.status = 201
             expected = {'id':7, 'name':asset.name, 'size':len(data), 'digest':'sha256:'+digest(data)}
             response.read.return_value = json.dumps(dict(expected, state='uploaded')).encode()
-            self.assertEqual(recovery.upload(asset, len(data), digest(data)), expected)
+            self.assertEqual(recovery.upload(asset, len(data), digest(data), deadline=float('inf')), expected)
             self.assertEqual(connect.call_args.args, ('uploads.github.com',))
             method, url, _, headers = session.request.call_args.args
             self.assertEqual((method,url), ('POST', f'/repos/{recovery.REPO}/releases/{recovery.RELEASE_ID}/assets?name=verified.iso'))
             self.assertEqual(headers['Content-Length'], str(len(data)))
             response.status = 422
             with self.assertRaisesRegex(recovery.AmbiguousUpload, 'HTTP 422'):
-                recovery.upload(asset, len(data), digest(data))
+                recovery.upload(asset, len(data), digest(data), deadline=float('inf'))
             self.assertEqual(session.request.call_count, 2)  # one per attempted input, no retry
             identity.return_value = {'draft':False, 'body':'notes'}
             with self.assertRaisesRegex(ValueError, 'no longer the original draft'):
-                recovery.upload(asset, len(data), digest(data))
+                recovery.upload(asset, len(data), digest(data), deadline=float('inf'))
             self.assertEqual(session.request.call_count, 2)
 
     def test_socket_timeout_and_201_body_timeout_have_distinct_retry_eligibility(self):
@@ -265,16 +265,40 @@ class Publication(unittest.TestCase):
             session=connect.return_value
             session.getresponse.side_effect=TimeoutError('socket details must not appear')
             with self.assertRaisesRegex(recovery.AmbiguousUpload,'^response headers: timeout$') as fail:
-                recovery.upload(f,7,digest(b'payload'))
+                recovery.upload(f,7,digest(b'payload'),deadline=float('inf'))
             self.assertTrue(fail.exception.retryable)
             self.assertEqual(connect.call_args.kwargs['timeout'],recovery.UPLOAD_IDLE_SECONDS)
             session.getresponse.side_effect=None
             session.getresponse.return_value.status=201
             session.getresponse.return_value.read.side_effect=TimeoutError('details must not appear')
             with self.assertRaisesRegex(recovery.AmbiguousUpload,'^response body: timeout$') as fail:
-                recovery.upload(f,7,digest(b'payload'))
+                recovery.upload(f,7,digest(b'payload'),deadline=float('inf'))
             self.assertFalse(fail.exception.retryable)
             self.assertEqual(session.close.call_count,2)
+
+    def test_slow_ownership_api_cannot_start_post_past_append_budget(self):
+        now = [1]
+        def identity():
+            now[0] = 1900
+            return {'draft':True,'body':'notes'}
+        wanted={'canonical.iso':{'size':7,'digest':'sha256:'+digest(b'payload')}}
+        with tempfile.TemporaryDirectory() as tmp, patch.object(recovery,'release_identity',side_effect=identity), \
+                patch.object(recovery,'DRAFT_BODY_SHA256',digest(b'notes')), patch.object(recovery,'HTTPSConnection') as connect, \
+                patch.object(recovery.time,'monotonic',side_effect=lambda:now[0]):
+            f=Path(tmp)/'canonical.iso'; f.write_bytes(b'payload')
+            with self.assertRaisesRegex(ValueError,'insufficient append time'):
+                recovery.append_missing(f,wanted,{},2000)
+            connect.return_value.request.assert_not_called()
+
+    def test_capacity_covers_two_extracted_payloads_and_one_inflight_zip(self):
+        sizes=[p.size for p in recovery.CANDIDATES.values()]
+        need=sum(sizes)+max(sizes)+recovery.HEADROOM
+        with patch.object(recovery.shutil,'disk_usage') as usage:
+            usage.return_value.free=need-1
+            with self.assertRaisesRegex(ValueError,'Not enough space'):
+                recovery.capacity(Path('fixture'))
+            usage.return_value.free=need
+            recovery.capacity(Path('fixture'))
 
     def test_new_actions_proof_requires_exact_controller_run_and_artifact(self):
         env = {'SHIRUBE_ACTIONS_ARTIFACT_ID':'6789', 'SHIRUBE_ACTIONS_ARTIFACT_DIGEST':'a'*64}
@@ -316,7 +340,7 @@ class Publication(unittest.TestCase):
                 patch.object(recovery,'read_owned_inventory',side_effect=[old,old,latest]) as read, \
                 patch.object(recovery.time,'sleep') as backoff, patch.object(recovery.time,'monotonic',return_value=1):
             self.assertEqual(recovery.append_missing(Path('new.iso'),expected,old,2000),latest)
-        upload.assert_called_once_with(Path('new.iso'),2,'b'*64)
+        upload.assert_called_once_with(Path('new.iso'),2,'b'*64,deadline=2000)
         self.assertEqual(read.call_count,3)
         self.assertEqual([c.args[0] for c in backoff.call_args_list], [1,5,15])
 
@@ -391,7 +415,7 @@ class Publication(unittest.TestCase):
         payload = dict(by_arch.values())
         canonical = {**payload, **{n:n.encode() for n in recovery.METADATA}}
         names = list(canonical)
-        scenarios = [((),None), ((names[0],),None), ((names[0],names[2]),None), (tuple(names),None),
+        scenarios = [((),None), ((names[0],),None), ((names[0],names[2]),None), ((names[0],names[1],names[2]),None), (tuple(names),None),
                      ((names[0],),'unknown'), ((names[0],),'digest'), ((names[0],),'starter'),
                      ((names[0],),'zero-size'), ((names[0],),'no-digest'), ((names[0],),'duplicate-id'),
                      ((names[0],),'duplicate-name'), ((names[2],),'metadata-mismatch'),
@@ -440,7 +464,7 @@ class Publication(unittest.TestCase):
                         data=canonical[n]
                         if destination.name=='public' and failure=='aggregate-mismatch': data=b'wrong'
                         (destination/n).write_bytes(data)
-                def upload(path,size,sha):
+                def upload(path,size,sha,*,deadline):
                     stages.append('upload:'+path.name); posted.append(path.name)
                     data=path.read_bytes()
                     self.assertEqual((size,sha),(len(data),digest(data)))
@@ -450,6 +474,10 @@ class Publication(unittest.TestCase):
                     return recovery.asset_identity(rec[-1])
                 def download(record,directory):
                     name=record['name']; stages.append('download:'+name)
+                    if name in payload:
+                        self.assertFalse(any((scratch/'canonical'/n).exists() for n in payload))
+                    else:
+                        self.assertTrue((scratch/'canonical'/name).is_file())
                     if (failure=='remote-byte' and name in payload or
                             failure=='metadata-byte' and name in recovery.METADATA):
                         raise ValueError('independent download differs')
