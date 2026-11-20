@@ -42,7 +42,6 @@ jobs:
           path: ${{ runner.temp }}/shirube-recover14/public/*
           if-no-files-found: error
           compression-level: 0
-          retention-days: 7
       - name: Promote only after verifying this recovery run's successful upload
         env:
           GH_TOKEN: ${{ github.token }}

@@ -158,7 +158,7 @@ class Sources(unittest.TestCase):
                     self.assertEqual(recovery.controller_context(), (root/'original-source', CONTEXT))
                 self.assertEqual([c.args for c in clean.call_args_list],
                                  [(controller,HEAD),(root/'original-source', recovery.SOURCE)])
-                self.assertEqual(git.call_count, 2)
+                git.assert_called_once_with(['git','merge-base','--is-ancestor',recovery.SOURCE,HEAD], check=True)
                 for change in ({'GITHUB_REF': 'refs/tags/main'}, {'GITHUB_SHA': recovery.SOURCE},
                                {'GITHUB_RUN_ATTEMPT': '2'}, {'GITHUB_REPOSITORY': 'other/fork'},
                                {'GITHUB_EVENT_NAME': 'pull_request_target'}):
@@ -174,6 +174,25 @@ class Sources(unittest.TestCase):
                 with patch.dict(os.environ, env, clear=True):
                     with self.assertRaisesRegex(ValueError, 'inputs'):
                         recovery.controller_context()
+
+    def test_later_main_uses_fresh_compare_and_refuses_detached_or_wrong_bases(self):
+        advanced = '7'*40  # Not required to exist in the checkout's local graph.
+        branch = {'commit': {'sha': advanced}}
+        proof = {'base_commit':{'sha':HEAD}, 'merge_base_commit':{'sha':HEAD},
+                 'status':'ahead', 'behind_by':0, 'ahead_by':2}
+        with patch.object(recovery,'api',side_effect=[branch,proof]) as api:
+            recovery.verify_controller_on_main(HEAD)
+        self.assertEqual([call.args for call in api.call_args_list],
+                         [('branches/main',), (f'compare/{HEAD}...{advanced}?per_page=1',)])
+        for changed in ({'status':'diverged','behind_by':1}, {'merge_base_commit':{'sha':'0'*40}},
+                        {'status':'behind','ahead_by':0}, {'base_commit':{'sha':advanced}},
+                        {'ahead_by':0}):
+            with self.subTest(changed=changed), patch.object(recovery,'api',side_effect=[branch,{**proof,**changed}]):
+                with self.assertRaisesRegex(ValueError,'does not contain'):
+                    recovery.verify_controller_on_main(HEAD)
+        with patch.object(recovery, 'api', return_value={'commit': {'sha': HEAD}}) as api:
+            recovery.verify_controller_on_main(HEAD)
+        api.assert_called_once_with('branches/main')
 
     def test_original_validator_uses_separate_source_and_exact_archives_without_credentials(self):
         source, payload = Path('/fixture/source'), Path('/fixture/assets')
@@ -425,5 +444,6 @@ class WorkflowIsolation(unittest.TestCase):
         self.assertEqual(steps[3]['id'],'assets')
         self.assertTrue(steps[3]['with']['name'].startswith(f'shirube-os-{recovery.VERSION}-{recovery.SOURCE}-'))
         self.assertEqual(steps[3]['with']['if-no-files-found'],'error')
+        self.assertNotIn('retention-days', steps[3]['with'])  # Use normal repository retention.
         self.assertTrue(steps[4]['run'].endswith(' promote'))
         self.assertFalse(any(s.get('if') or s.get('continue-on-error') for s in steps))

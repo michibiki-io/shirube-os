@@ -244,6 +244,20 @@ def clean_checkout(root, commit):
             'Unexpected exact checkout root, source or cleanliness')
 
 
+def verify_controller_on_main(controller_sha):
+    live_main = api('branches/main')['commit']['sha']
+    require(re.fullmatch('[0-9a-f]{40}', live_main), 'Missing live main identity')
+    if live_main == controller_sha:
+        return
+    # The job checkout may predate a later main merge. Compare two immutable
+    # SHAs on GitHub instead of assuming that new commit is in the local graph.
+    ancestry = api(f'compare/{controller_sha}...{live_main}?per_page=1')
+    require(ancestry.get('base_commit', {}).get('sha') == controller_sha
+            and ancestry.get('merge_base_commit', {}).get('sha') == controller_sha
+            and ancestry.get('status') == 'ahead' and ancestry.get('behind_by') == 0
+            and valid_id(ancestry.get('ahead_by')), 'Current main does not contain the pinned controller')
+
+
 def controller_context():
     env = os.environ
     controller_sha = env.get('GITHUB_SHA', '')
@@ -275,10 +289,8 @@ def controller_context():
             and run.get('repository', {}).get('id') == REPOSITORY_ID
             and run.get('head_repository', {}).get('id') == REPOSITORY_ID,
             'Current Actions run is not the trusted main recovery')
-    live_main = api('branches/main')['commit']['sha']
-    require(re.fullmatch('[0-9a-f]{40}', live_main), 'Missing live main identity')
-    for ancestor, descendant in ((SOURCE, controller_sha), (controller_sha, live_main)):
-        subprocess.run(['git', 'merge-base', '--is-ancestor', ancestor, descendant], check=True)
+    subprocess.run(['git', 'merge-base', '--is-ancestor', SOURCE, controller_sha], check=True)
+    verify_controller_on_main(controller_sha)
     return source, {'run_id': run_id, 'attempt': '1', 'controller': controller_sha}
 
 

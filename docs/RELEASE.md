@@ -639,7 +639,9 @@ no assets. The separate controller commit is not the product source.
 After normal PR approval and merge, and only with separate authorization for
 actual release recovery, dispatch **Recover v2026.03.14 publication** on
 **main**, without inputs. Do not re-run the old build, merge a newer product
-change, or edit the draft while recovering. The original archives are pinned
+change, or edit the draft while recovering. Main can advance without invalidating
+the run only if it still contains the dispatched controller commit.
+The original archives are pinned
 by run, ID, compressed size, SHA-256 and exact expiry:
 
 | Architecture | Artifact ID | Expires (UTC) |
@@ -658,7 +660,9 @@ A failure before staging leaves the draft unchanged. A failure after an
 append may leave an unpublished partial draft; preserve it for inspection. Do
 not delete assets or use an Actions re-run to resume it. If a final request has
 an uncertain outcome, inspect the pinned release ID, tag, asset inventory and
-linked verified Actions artifact before any further action. Retire this one-time
+linked verified Actions artifact before any further action. The new artifact uses
+normal repository retention; the release notes retain the artifact ID and digest
+as audit evidence even after GitHub expires the downloadable archive. Retire this one-time
 workflow and controller after verified publication. The ordinary Release stage
 skip and any permanent gate changes are outside Issue #46. Verify the ordinary
 release path separately before the next product release; retiring this
@@ -678,6 +682,7 @@ amd64 は **11 月 24 日 11:19:43 UTC** です。転送、検証、公開が期
 
 書き込み後に失敗した場合は、未公開の draft をそのまま残して調査します。
 asset の削除・上書き・再試行はしません。公開結果が不明な場合は同じ ID・
-tag・asset 一覧・新しい Actions artifact を照合してください。公開確認後に
+tag・asset 一覧・新しい Actions artifact を照合してください。新しい artifact は
+通常どおりの保持期限に従い、archive が失効しても ID と digest は公開ノートに残ります。公開確認後に
 復旧用の workflow・controller を削除しますが、この撤去は通常の Release
 経路の修復を意味しません。次の製品公開の前に通常経路を別途確認します。
