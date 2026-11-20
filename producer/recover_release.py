@@ -1,14 +1,16 @@
 """Temporary publish-only recovery of the pinned v2026.03.14 draft."""
 import argparse
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import hashlib
-from http.client import HTTPSConnection
+from http.client import HTTPException, HTTPSConnection
 import json
 import os
 from pathlib import Path
 import re
 import shutil
+import signal
 import stat
 import subprocess
 import sys
@@ -35,6 +37,10 @@ UPLOAD_HOST = 'uploads.github.com'
 UPLOAD_PATH = f'/repos/{REPO}/{RELEASE_PATH}/assets'
 CHUNK = 1024**2
 HEADROOM = 1024**3
+UPLOAD_IDLE_SECONDS = 300
+UPLOAD_TOTAL_SECONDS = 600
+APPEND_WINDOW_SECONDS = 120 * 60
+VISIBILITY_DELAYS = (0, 5, 15)
 UPLOAD_STEP = 'Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9'
 
 
@@ -321,7 +327,9 @@ actions.identity(commit)
 
 def capacity(root):
     sizes = [p.size for p in CANDIDATES.values()]
-    needed = max(2*max(sizes), sum(sizes)) + HEADROOM
+    # The peak is both extracted payloads plus one in-flight original ZIP.
+    # Local payload links are removed before the independent remote download.
+    needed = sum(sizes) + max(sizes) + HEADROOM
     free = shutil.disk_usage(root).free
     print(f'Recovery capacity: required={needed} free={free} bytes', flush=True)
     require(free >= needed, 'Not enough space on the recovery filesystem before staging')
@@ -368,12 +376,12 @@ def check_tag(*, optional):
 
 
 def asset_identity(asset):
+    name = filename(asset.get('name'))
     require(valid_id(asset.get('id')) and valid_id(asset.get('size')) and asset['size'] < LIMIT
-            and asset.get('state') == 'uploaded'
-            and re.fullmatch('sha256:[0-9a-f]{64}', asset.get('digest') or ''),
-            'Unexpected release asset identity, size, state or digest')
-    return {'id': asset['id'], 'size': asset['size'], 'digest': asset['digest'],
-            'name': filename(asset.get('name'))}
+            and asset.get('state') == 'uploaded' and isinstance(asset.get('digest'), str)
+            and re.fullmatch('sha256:[0-9a-f]{64}', asset['digest']),
+            f'Asset {name}: invalid ID, size, digest or state (including starter); preserve draft')
+    return {'id': asset['id'], 'size': asset['size'], 'digest': asset['digest'], 'name': name}
 
 
 def inventory(assets):
@@ -408,42 +416,148 @@ def live_release():
     return live
 
 
-def draft(expected):
+def owned_draft():
     all_releases = actions.releases()
     require([r.get('id') for r in all_releases if r.get('tag_name') == VERSION] == [RELEASE_ID],
             'Release tag does not uniquely identify the pinned draft')
     actions.require_not_superseded(VERSION, all_releases)
     live = live_release()
     require_owned_draft(live)
-    require(inventory(live['assets']) == expected, 'Draft contains unexpected assets; do not overwrite or retry')
     check_tag(optional=True)
     return live
 
 
-def upload(path, size, digest):
-    """Append raw bytes to the pinned ID, with no redirect, label, overwrite or retry."""
+def draft(expected):
+    live = owned_draft()
+    require(inventory(live['assets']) == expected, 'Draft contains unexpected assets; do not overwrite or retry')
+    return live
+
+
+class AmbiguousUpload(Exception):
+    def __init__(self, classification, *, retryable=False):
+        super().__init__(classification)
+        self.retryable = retryable
+
+
+@contextmanager
+def upload_deadline():
+    """The Linux runner has one synchronous POST; bound total time as well as socket idle time."""
+    require(not any(signal.getitimer(signal.ITIMER_REAL)), 'Unexpected existing upload deadline')
+    def expired(*_):
+        raise TimeoutError('Upload total deadline elapsed')
+    previous = signal.signal(signal.SIGALRM, expired)
+    try:
+        signal.setitimer(signal.ITIMER_REAL, UPLOAD_TOTAL_SECONDS)
+        yield
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous)
+
+
+def require_append_budget(name, deadline):
+    require(time.monotonic() + UPLOAD_TOTAL_SECONDS + sum(VISIBILITY_DELAYS) + 1 <= deadline,
+            f'Asset {name}: insufficient append time budget; preserve draft')
+
+
+def upload(path, size, digest, *, deadline):
+    """One append to the pinned ID, with no redirect, label, overwrite or hidden retry."""
     name = filename(path.name)
-    # Batch boundaries verify the complete asset inventory; the immediate
-    # read here also stops writes if an operator changed or published the draft.
     require_owned_draft(release_identity())
-    connection = HTTPSConnection(UPLOAD_HOST, timeout=60, blocksize=CHUNK)
+    connection = HTTPSConnection(UPLOAD_HOST, timeout=UPLOAD_IDLE_SECONDS, blocksize=CHUNK)
+    phase = 'send'
     try:
         with path.open('rb') as source:
-            connection.request('POST', UPLOAD_PATH+'?'+urlencode({'name': name}), source, {
-                'Authorization': 'Bearer '+os.environ['GH_TOKEN'],
-                'Accept': 'application/vnd.github+json', 'Content-Type': 'application/octet-stream',
-                'Content-Length': str(size), 'User-Agent': 'shirube-os-recover-release',
-                'X-GitHub-Api-Version': '2022-11-28',
-            })
-        response = connection.getresponse()
-        require(response.status == 201, f'Asset append not confirmed ({response.status}); preserve draft')
-        reply = asset_identity(json.loads(response.read(CHUNK)))
+            # The release identity read may have consumed the time available
+            # after the first admission check. Recheck at the POST boundary.
+            require_append_budget(name, deadline)
+            try:
+                with upload_deadline():
+                    connection.request('POST', UPLOAD_PATH+'?'+urlencode({'name': name}), source, {
+                        'Authorization': 'Bearer '+os.environ['GH_TOKEN'],
+                        'Accept': 'application/vnd.github+json', 'Content-Type': 'application/octet-stream',
+                        'Content-Length': str(size), 'User-Agent': 'shirube-os-recover-release',
+                        'X-GitHub-Api-Version': '2022-11-28',
+                    })
+                    phase = 'response headers'
+                    response = connection.getresponse()
+                    if response.status in (408, 422, 500, 502, 503, 504):
+                        # 422 can be a late commit; 502 can leave a starter.
+                        # Neither status alone provides evidence for a repeat.
+                        raise AmbiguousUpload(f'{phase}: HTTP {response.status}')
+                    require(response.status == 201,
+                            f'Asset {name}: definite HTTP {response.status}; preserve draft')
+                    phase = 'response body'
+                    content = response.read(CHUNK)
+            except TimeoutError:
+                # Once 201 was known, only readback is allowed, even if its
+                # response body timed out.
+                raise AmbiguousUpload(f'{phase}: timeout', retryable=phase != 'response body') from None
+            except (OSError, HTTPException):
+                raise AmbiguousUpload(f'{phase}: transport interrupted') from None
+        try:
+            payload = json.loads(content)
+        except (ValueError, UnicodeError):
+            raise AmbiguousUpload('response body: 201 without readable JSON') from None
+        require(isinstance(payload, dict), f'Asset {name}: invalid 201 response; preserve draft')
+        reply = asset_identity(payload)
+        require((reply['name'], reply['size'], reply['digest']) == (name, size, 'sha256:'+digest),
+                f'Asset {name}: 201 response conflicts with canonical bytes; preserve draft')
+        return reply
     finally:
         connection.close()
-    require((reply['name'], reply['size'], reply['digest']) == (name, size, 'sha256:'+digest),
-            'Appended asset differs from verified input; preserve draft')
-    time.sleep(1)  # Pace mutating API calls; uploads are deliberately serial.
-    return reply
+
+
+def read_owned_inventory():
+    live = live_release()
+    require_owned_draft(live)
+    return inventory(live['assets'])
+
+
+def require_canonical_subset(actual, expected):
+    for name, record in actual.items():
+        require(name in expected, f'Asset {name}: unexpected name in pinned draft; preserve draft')
+        require({key: record[key] for key in ('size', 'digest')} == expected[name],
+                f'Asset {name}: size/SHA-256 differs from canonical bytes; preserve draft')
+
+
+def read_append(expected, before, name, reply):
+    for delay in VISIBILITY_DELAYS:
+        if delay:
+            time.sleep(delay)
+        actual = read_owned_inventory()
+        require_canonical_subset(actual, expected)
+        require(all(actual.get(k) == v for k, v in before.items())
+                and set(actual)-set(before) <= {name},
+                f'Asset {name}: other verified assets changed during append; preserve draft')
+        if name in actual:
+            require(reply is None or reply == actual[name],
+                    f'Asset {name}: live ID differs from 201 response; preserve draft')
+            return actual
+    return None  # Repeated complete and unchanged reads, not a failed or partial read.
+
+
+def append_missing(path, expected, before, deadline):
+    name = filename(path.name)
+    require(name in expected and name not in before, f'Asset {name}: append must target missing canonical bytes')
+    for attempt in (1, 2):
+        require_append_budget(name, deadline)
+        print(f'Asset {name}: POST attempt {attempt}', flush=True)
+        reply, retryable = None, False
+        try:
+            reply = upload(path, expected[name]['size'], expected[name]['digest'][7:], deadline=deadline)
+            outcome = '201'
+        except AmbiguousUpload as error:
+            outcome, retryable = str(error), error.retryable
+        time.sleep(1)  # Pace writes (GitHub secondary rate limits), including retry.
+        print(f'Asset {name}: {outcome}; reconciling live inventory', flush=True)
+        after = read_append(expected, before, name, reply)
+        if after is not None:
+            print(f'Asset {name}: verified live ID {after[name]["id"]}', flush=True)
+            return after
+        require(attempt == 1 and retryable,
+                f'Asset {name}: append not confirmed after bounded readback ({outcome}); preserve draft')
+        print(f'Asset {name}: absent from unchanged inventories; allowing one timeout retry', flush=True)
+    raise AssertionError('Unreachable append state')
 
 
 def download_asset(asset, root):
@@ -455,16 +569,21 @@ def state_root():
     return Path(os.environ['RUNNER_TEMP'])/'shirube-recover14'
 
 
-def stage():
-    source, context = controller_context()
-    root = state_root()
-    root.mkdir()  # Never reuse partial state.
-    capacity(root)
-    original_evidence(root)
-    staged = {}
-    draft(staged)
-    public = root/'public'
-    public.mkdir()
+def aggregate_view(source, root, manifests):
+    for arch, manifest in manifests.items():
+        (root/f'candidate-{arch}.json').write_text(json.dumps(manifest))
+    original_validator(source, 'aggregate', root)
+
+
+def asset_bytes(path):
+    return {'size': path.stat().st_size, 'digest': 'sha256:'+actions.sha256(path)}
+
+
+def canonical_inputs(source, root):
+    """Verify and retain both original candidates before any release writes."""
+    canonical = root/'canonical'
+    canonical.mkdir()
+    manifests, expected = {}, {}
     for arch, pin in CANDIDATES.items():
         with tempfile.TemporaryDirectory(dir=root) as tmp:
             work = Path(tmp)
@@ -472,32 +591,70 @@ def stage():
             extract_candidate(work/'archive.zip', work/'candidate', pin.size)
             (work/'archive.zip').unlink()
             manifest = original_validator(source, 'candidate', work/'candidate', arch)
-            items = manifest['assets']
-            require(len(staged)+len(items)+len(METADATA) <= RELEASE_ASSET_LIMIT
-                    and all(a['name'].startswith(f'shirube-os-{VERSION}-{arch}')
-                            and a['name'] not in staged for a in items), 'Candidate is not architecture-owned')
-            draft(staged)
-            for item in items:
-                added = upload(work/'candidate'/item['name'], item['size'], item['sha256'])
-                staged[added['name']] = added
-            (public/f'candidate-{arch}.json').write_text(json.dumps(manifest))
-            draft(staged)
-    if sum(a['size'] for a in staged.values()) > sum(p.size for p in CANDIDATES.values()):
-        raise ValueError('Remote download exceeds pinned recovery footprint')
-    # These are fetched from GitHub by exact ID, not reused local candidate
-    # files. Aggregate uses original manifests and fully verifies both arches.
-    for asset in staged.values():
-        download_asset(asset, public)
+            manifests[arch] = manifest
+            for item in manifest['assets']:
+                name = filename(item['name'])
+                require(name.startswith(f'shirube-os-{VERSION}-{arch}') and name not in expected,
+                        f'Asset {name}: candidate name not architecture-owned or duplicate')
+                original = work/'candidate'/name
+                require(original.is_file() and not original.is_symlink(), f'Asset {name}: not a regular file')
+                os.link(original, canonical/name)
+                expected[name] = {'size': item['size'], 'digest': 'sha256:'+item['sha256']}
+    require(len(expected)+len(METADATA) <= RELEASE_ASSET_LIMIT
+            and sum(a['size'] for a in expected.values()) <= sum(p.size for p in CANDIDATES.values()),
+            'Canonical output exceeds the pinned release footprint')
+    aggregate_view(source, canonical, manifests)
+    expected.update({name: asset_bytes(canonical/name) for name in METADATA})
+    require({p.name for p in canonical.iterdir()} == set(expected), 'Unexpected canonical artifact scope')
+    return canonical, manifests, expected
+
+
+def stage():
+    # Reserve nominal time within the 180-minute job for independent remote
+    # verification and the new artifact. Keep the earlier artifact expiry.
+    remaining = min((datetime.fromisoformat(p.expiry)-utcnow()).total_seconds() for p in CANDIDATES.values())
+    deadline = time.monotonic() + min(APPEND_WINDOW_SECONDS, remaining)
+    source, context = controller_context()
+    root = state_root()
+    root.mkdir()  # Never reuse local files or proof from another dispatch.
+    capacity(root)
+    original_evidence(root)
+    canonical, manifests, expected = canonical_inputs(source, root)
+    staged = inventory(owned_draft()['assets'])
+    require_canonical_subset(staged, expected)
+    print(f'Verified {len(staged)} existing draft assets against {len(expected)} canonical files', flush=True)
+
+    payload = [name for name in expected if name not in METADATA]
+    for name in payload:
+        if name not in staged:
+            staged = append_missing(canonical/name, expected, staged, deadline)
     draft(staged)
-    original_validator(source, 'aggregate', public)
+    # These are only our freshly created local links, not release assets.
+    # Preserve the independently derived metadata and expected inventory.
+    for name in payload:
+        (canonical/name).unlink()
+    public = root/'public'
+    public.mkdir()
+    for name in payload:
+        download_asset(staged[name], public)
+    aggregate_view(source, public, manifests)
+    for name in METADATA:
+        require(asset_bytes(public/name) == expected[name],
+                f'Asset {name}: independent aggregate disagrees with canonical bytes; preserve draft')
+    # Follow the original order: no metadata append until all actually staged
+    # payload bytes pass fresh aggregate validation. Existing metadata was
+    # already compared to the canonical inventory even before payload writes.
+    draft(staged)
     with tempfile.TemporaryDirectory(dir=root) as tmp:
         for name in METADATA:
-            path = public/name
-            record = upload(path, path.stat().st_size, actions.sha256(path))
-            download_asset(record, Path(tmp))
-            staged[name] = record
+            if name not in staged:
+                staged = append_missing(canonical/name, expected, staged, deadline)
+            download_asset(staged[name], Path(tmp))
+            require(asset_bytes(Path(tmp)/name) == expected[name],
+                    f'Asset {name}: independent metadata bytes differ; preserve draft')
     confirmed = draft(staged)
-    require({p.name for p in public.iterdir()} == set(staged), 'Unexpected output artifact scope')
+    require(set(staged) == set(expected) == {p.name for p in public.iterdir()},
+            'Unexpected output artifact scope')
     snapshot = actions.release_snapshot(confirmed)
     (root/'verified-draft.json').write_text(json.dumps({'context': context, 'assets': staged,
                                                        'snapshot': snapshot}))

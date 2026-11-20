@@ -650,15 +650,34 @@ by run, ID, compressed size, SHA-256 and exact expiry:
 | arm64 | 14325887299 | 2026-11-24 11:52:17 |
 
 Start well before the earlier expiry so that the entire job can finish while
-both artifacts remain available. The 180-minute job budget covers download,
-full original-source validation, staging, independent download and validation
-again, and the output Actions upload. It uses the existing release queue and
-fails before staging if the working filesystem cannot hold the measured peak.
+both candidate archives remain available. The job has a 180-minute hard limit,
+not a completion-time guarantee. The append window is at most 120 minutes
+from staging step start (or earlier candidate expiry), reserving nominal time
+for remote verification and the new Actions upload. The socket idle timeout is
+five minutes, with a separate ten-minute total deadline for each POST. An
+append may start only if that deadline and its backoff fit the append window.
+Before staging, the runner measures the disk for both retained payloads plus
+the largest original archive and headroom (about 29.9 GB). The earlier failed
+run measured 91.37 GB free; a new runner rechecks that rather than assuming
+it. After payload staging, only local scratch payload links are released before
+the fresh independent remote download; the draft assets are unchanged.
 There is no build, guest rerun, signing, cache priming or automatic execution.
 
-A failure before staging leaves the draft unchanged. A failure after an
-append may leave an unpublished partial draft; preserve it for inspection. Do
-not delete assets or use an Actions re-run to resume it. If a final request has
+[Recovery run 44652548222](https://github.com/michibiki-io/shirube-os/actions/runs/44652548222)
+timed out waiting for an upload response in attempt 1 and left a partial draft.
+After the resume PR is merged and with separate recovery authorization, use
+a new attempt-1 dispatch on main, not the old run's Actions re-run. The workflow
+verifies both exact original archives and the complete canonical inventory
+before any append. It compares every existing asset (including any metadata)
+by name, size and digest, and readbacks preserve the verified live IDs. A valid
+subset is kept. It appends only missing payload, downloads all remote payload
+and validates the aggregate independently, then appends only missing metadata
+and verifies all remotely stored metadata. A timeout with a matching live asset
+is treated as success, without another POST. Only a still-absent timeout target
+can be retried once after repeated complete unchanged readback; an unknown,
+conflicting or starter entry stops the run without deletion or overwrite.
+A job timeout remains an ambiguous interruption; preserve the draft and use
+the same checks on any later authorized new dispatch. If a final request has
 an uncertain outcome, inspect the pinned release ID, tag, asset inventory and
 linked verified Actions artifact before any further action. The new artifact uses
 normal repository retention; the release notes retain the artifact ID and digest
@@ -672,7 +691,8 @@ workflow does not repair that path.
 
 v2026.03.14 の候補は両アーキテクチャで生成済みです。元 run の初回は
 候補検証がタイムアウトし、再試行で検証は成功しましたが、staging と公開は
-未実行でした。今回の復旧は予約済みの空 draft **448240202** のみを対象にします。
+未実行でした。初回の復旧 run 44652548222 は upload 応答待ちで停止し、予約済み draft
+**448240202** に一部 asset が残りました。再開の対象はこの draft だけです。
 
 PR の承認・merge 後、実際の公開が承認された場合に限り、main で
 **Recover v2026.03.14 publication** を入力なしで実行します。期限が早い
