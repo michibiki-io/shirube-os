@@ -249,13 +249,32 @@ class Publication(unittest.TestCase):
             self.assertEqual((method,url), ('POST', f'/repos/{recovery.REPO}/releases/{recovery.RELEASE_ID}/assets?name=verified.iso'))
             self.assertEqual(headers['Content-Length'], str(len(data)))
             response.status = 422
-            with self.assertRaisesRegex(ValueError, 'not confirmed'):
+            with self.assertRaisesRegex(recovery.AmbiguousUpload, 'HTTP 422'):
                 recovery.upload(asset, len(data), digest(data))
             self.assertEqual(session.request.call_count, 2)  # one per attempted input, no retry
             identity.return_value = {'draft':False, 'body':'notes'}
             with self.assertRaisesRegex(ValueError, 'no longer the original draft'):
                 recovery.upload(asset, len(data), digest(data))
             self.assertEqual(session.request.call_count, 2)
+
+    def test_socket_timeout_and_201_body_timeout_have_distinct_retry_eligibility(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {'GH_TOKEN':'dummy-token'}), \
+                patch.object(recovery,'release_identity',return_value={'draft':True,'body':'notes'}), \
+                patch.object(recovery,'DRAFT_BODY_SHA256',digest(b'notes')), patch.object(recovery,'HTTPSConnection') as connect:
+            f=Path(tmp)/'canonical.iso'; f.write_bytes(b'payload')
+            session=connect.return_value
+            session.getresponse.side_effect=TimeoutError('socket details must not appear')
+            with self.assertRaisesRegex(recovery.AmbiguousUpload,'^response headers: timeout$') as fail:
+                recovery.upload(f,7,digest(b'payload'))
+            self.assertTrue(fail.exception.retryable)
+            self.assertEqual(connect.call_args.kwargs['timeout'],recovery.UPLOAD_IDLE_SECONDS)
+            session.getresponse.side_effect=None
+            session.getresponse.return_value.status=201
+            session.getresponse.return_value.read.side_effect=TimeoutError('details must not appear')
+            with self.assertRaisesRegex(recovery.AmbiguousUpload,'^response body: timeout$') as fail:
+                recovery.upload(f,7,digest(b'payload'))
+            self.assertFalse(fail.exception.retryable)
+            self.assertEqual(session.close.call_count,2)
 
     def test_new_actions_proof_requires_exact_controller_run_and_artifact(self):
         env = {'SHIRUBE_ACTIONS_ARTIFACT_ID':'6789', 'SHIRUBE_ACTIONS_ARTIFACT_DIGEST':'a'*64}
@@ -287,88 +306,187 @@ class Publication(unittest.TestCase):
             evidence.assert_not_called()
             upload.assert_not_called()
 
-    def test_stage_uses_remote_bytes_before_aggregate_metadata_or_ready_receipt(self):
-        with tempfile.TemporaryDirectory() as tmp, patch.object(recovery, 'controller_context', return_value=(ROOT,CONTEXT)), \
-                patch.object(recovery, 'state_root', return_value=Path(tmp)/'runner'), \
-                patch.object(recovery, 'capacity'), patch.object(recovery, 'original_evidence'), patch.object(recovery, 'draft'), \
-                patch.object(recovery, 'extract_candidate'), patch.object(recovery, 'original_validator') as validate, \
-                patch.object(recovery, 'original_archive', side_effect=lambda pin,dst: dst.touch()), \
-                patch.object(recovery, 'upload') as upload, patch.object(recovery, 'download_asset') as download:
-            names = [f'shirube-os-{recovery.VERSION}-{arch}.iso' for arch in recovery.CANDIDATES]
-            records = [dict(id=i, name=n, size=1, digest='sha256:'+'a'*64) for i,n in enumerate(names,1)]
-            validate.side_effect = [{'assets':[dict(name=n, size=1, sha256='a'*64)]} for n in names]
-            upload.side_effect = records
-            download.side_effect = ValueError('Downloaded digest differs')
-            with self.assertRaisesRegex(ValueError, 'digest'):
-                recovery.stage()
-            self.assertEqual([c.args[-1] for c in validate.call_args_list], list(recovery.CANDIDATES))
-            self.assertEqual([c.args[0].name for c in upload.call_args_list], names)
-            download.assert_called_once_with(records[0], Path(tmp)/'runner/public')
-            self.assertFalse((Path(tmp)/'runner/verified-draft.json').exists())
+    def test_append_reconciles_timeout_after_commit_despite_delayed_visibility(self):
+        old = {'old.iso': {'id':1,'name':'old.iso','size':1,'digest':'sha256:'+'a'*64}}
+        new = {'id':2,'name':'new.iso','size':2,'digest':'sha256:'+'b'*64}
+        latest = {**old,'new.iso':new}
+        expected = {n:{k:a[k] for k in ('size','digest')} for n,a in latest.items()}
+        failure = recovery.AmbiguousUpload('response headers: timeout', retryable=True)
+        with patch.object(recovery,'upload',side_effect=failure) as upload, \
+                patch.object(recovery,'read_owned_inventory',side_effect=[old,old,latest]) as read, \
+                patch.object(recovery.time,'sleep') as backoff, patch.object(recovery.time,'monotonic',return_value=1):
+            self.assertEqual(recovery.append_missing(Path('new.iso'),expected,old,2000),latest)
+        upload.assert_called_once_with(Path('new.iso'),2,'b'*64)
+        self.assertEqual(read.call_count,3)
+        self.assertEqual([c.args[0] for c in backoff.call_args_list], [1,5,15])
 
-    def test_stage_verified_output_is_from_independent_downloads_and_pinned_manifests(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            scratch = Path(tmp)/'runner'
-            content, staged, observations = {}, {}, []
-            assets = [('amd64', b'amd64 bytes'), ('arm64', b'arm64 bytes')]
+    def test_append_repeats_only_one_timeout_after_three_unchanged_absent_reads(self):
+        new = {'id':2,'name':'new.iso','size':2,'digest':'sha256:'+'b'*64}
+        expected = {'new.iso': {k:new[k] for k in ('size','digest')}}
+        timeout = recovery.AmbiguousUpload('response headers: timeout',retryable=True)
+        for result, reads, expected_second_success in [
+                (new,[{}, {}, {}, {'new.iso':new}],True),
+                (recovery.AmbiguousUpload('response: HTTP 422'),[{}, {}, {}, {'new.iso':new}],True),
+                (timeout,[{}, {}, {}, {}, {}, {}],False)]:
+            with self.subTest(result=result), patch.object(recovery,'upload',side_effect=[timeout,result]) as upload, \
+                    patch.object(recovery,'read_owned_inventory',side_effect=reads), patch.object(recovery.time,'sleep'), \
+                    patch.object(recovery.time,'monotonic',return_value=1):
+                if expected_second_success:
+                    self.assertEqual(recovery.append_missing(Path('new.iso'),expected,{},2000),{'new.iso':new})
+                else:
+                    with self.assertRaisesRegex(ValueError,'not confirmed'):
+                        recovery.append_missing(Path('new.iso'),expected,{},2000)
+                self.assertEqual(upload.call_count,2)
 
-            def asset_name(arch):
-                return f'shirube-os-{recovery.VERSION}-{arch}.iso'
+    def test_append_stops_on_definite_success_or_non_retryable_ambiguous_absence(self):
+        new = {'id':2,'name':'new.iso','size':2,'digest':'sha256:'+'b'*64}
+        expected = {'new.iso': {k:new[k] for k in ('size','digest')}}
+        for response in (new, recovery.AmbiguousUpload('HTTP 502'), recovery.AmbiguousUpload('response body: timeout')):
+            with self.subTest(response=response), patch.object(recovery,'upload',side_effect=[response]) as upload, \
+                    patch.object(recovery,'read_owned_inventory',return_value={}) as read, patch.object(recovery.time,'sleep'), \
+                    patch.object(recovery.time,'monotonic',return_value=1):
+                with self.assertRaisesRegex(ValueError,'not confirmed'):
+                    recovery.append_missing(Path('new.iso'),expected,{},2000)
+                upload.assert_called_once()
+                self.assertEqual(read.call_count,3)
 
-            def candidate_archive(pin, destination):
-                arch = pin.name.removeprefix('shirube-candidate-')
-                payload = dict(assets)[arch]
-                with zipfile.ZipFile(destination, 'w') as archive:
-                    archive.writestr('manifest.json', '{}')
-                    archive.writestr('SHA256SUMS', 'fixture')
-                    archive.writestr(asset_name(arch), payload)
+    def test_failed_readback_conflicts_and_budget_never_grant_retry(self):
+        before = {'old.iso':{'id':1,'name':'old.iso','size':1,'digest':'sha256:'+'a'*64}}
+        new = {'id':2,'name':'new.iso','size':2,'digest':'sha256:'+'b'*64}
+        other = {'id':3,'name':'other.iso','size':3,'digest':'sha256:'+'c'*64}
+        expected = {n:{k:a[k] for k in ('size','digest')} for n,a in
+                    {**before,'new.iso':new,'other.iso':other}.items()}
+        outcomes = [RuntimeError('read failed'),
+                    {**before,'other.iso':other},
+                    {'new.iso':new},
+                    {'old.iso':dict(before['old.iso'],id=99)},
+                    {**before,'new.iso':dict(new,digest='sha256:'+'e'*64)}]
+        timeout = recovery.AmbiguousUpload('response headers: timeout',retryable=True)
+        for observed in outcomes:
+            with self.subTest(observed=observed), patch.object(recovery,'upload',side_effect=[timeout]) as upload, \
+                    patch.object(recovery,'read_owned_inventory',side_effect=[observed]), patch.object(recovery.time,'sleep'), \
+                    patch.object(recovery.time,'monotonic',return_value=1):
+                with self.assertRaises((ValueError,RuntimeError)):
+                    recovery.append_missing(Path('new.iso'),expected,before,2000)
+                upload.assert_called_once()
+        with patch.object(recovery,'upload',return_value=new) as upload, \
+                patch.object(recovery,'read_owned_inventory',return_value={**before,'new.iso':dict(new,id=11)}), \
+                patch.object(recovery.time,'sleep'), patch.object(recovery.time,'monotonic',return_value=1):
+            with self.assertRaisesRegex(ValueError,'live ID differs'):
+                recovery.append_missing(Path('new.iso'),expected,before,2000)
+            upload.assert_called_once()
+        with patch.object(recovery,'upload') as upload, patch.object(recovery.time,'monotonic',return_value=1):
+            with self.assertRaisesRegex(ValueError,'insufficient append time'):
+                recovery.append_missing(Path('new.iso'),expected,before,100)
+            upload.assert_not_called()
+        with patch.object(recovery,'upload',side_effect=[timeout]) as upload, \
+                patch.object(recovery,'read_owned_inventory',return_value=before), patch.object(recovery.time,'sleep'), \
+                patch.object(recovery.time,'monotonic',side_effect=[1,1700]):
+            with self.assertRaisesRegex(ValueError,'insufficient append time'):
+                recovery.append_missing(Path('new.iso'),expected,before,2000)
+            upload.assert_called_once()
 
-            def validator(source, phase, root, arch=None):
-                observations.append(phase + (arch or ''))
-                if arch:
-                    path = root/asset_name(arch)
-                    self.assertEqual(path.read_bytes(), dict(assets)[arch])
-                    return {'architectures': {arch: {'generation': arch*8}},
-                            'assets': [{'name': path.name, 'size': path.stat().st_size,
-                                        'sha256': digest(path.read_bytes())}]}
-                for architecture, payload in assets:
-                    self.assertEqual((root/asset_name(architecture)).read_bytes(), payload)
-                    (root/f'candidate-{architecture}.json').unlink()
-                for name in recovery.METADATA:
-                    (root/name).write_text(name)
-
-            def upload(path, size, sha):
-                blob = path.read_bytes()
-                self.assertEqual((len(blob), digest(blob)), (size, sha))
-                content[path.name] = blob
-                staged[path.name] = {'name':path.name, 'size':size, 'id':len(staged)+1,
-                                     'digest':'sha256:'+sha,'state':'uploaded'}
-                return recovery.asset_identity(staged[path.name])
-
-            def download(asset, directory):
-                name = asset['name']
-                observations.append('download:'+name)
-                self.assertEqual(asset, recovery.asset_identity(staged[name]))
-                (directory/name).write_bytes(content[name])
-
-            def draft(expected):
-                self.assertEqual(expected, recovery.inventory(staged.values()))
-                return {'id':recovery.RELEASE_ID,'draft':True,'body':'pinned','assets':list(staged.values())}
-
-            with patch.object(recovery,'controller_context',return_value=(ROOT,CONTEXT)), \
-                    patch.object(recovery,'state_root',return_value=scratch), patch.object(recovery,'capacity'), \
-                    patch.object(recovery,'original_evidence'), patch.object(recovery,'draft',side_effect=draft), \
-                    patch.object(recovery,'original_archive',side_effect=candidate_archive), \
-                    patch.object(recovery,'original_validator',side_effect=validator), \
-                    patch.object(recovery,'upload',side_effect=upload), patch.object(recovery,'download_asset',side_effect=download):
-                recovery.stage()
-            receipt = json.loads((scratch/'verified-draft.json').read_text())
-            self.assertEqual(receipt['assets'], recovery.inventory(staged.values()))
-            self.assertEqual(receipt['context'], CONTEXT)
-            self.assertEqual({p.name:p.read_bytes() for p in (scratch/'public').iterdir()}, content)
-            self.assertEqual(observations, ['candidateamd64','candidatearm64'] +
-                         ['download:'+asset_name(arch) for arch,_ in assets] + ['aggregate'] +
-                         ['download:'+name for name in recovery.METADATA])
+    def test_stage_validates_full_canonical_and_remote_bytes_before_or_after_any_reentry(self):
+        by_arch = {a:(f'shirube-os-{recovery.VERSION}-{a}.iso',a.encode()) for a in recovery.CANDIDATES}
+        payload = dict(by_arch.values())
+        canonical = {**payload, **{n:n.encode() for n in recovery.METADATA}}
+        names = list(canonical)
+        scenarios = [((),None), ((names[0],),None), ((names[0],names[2]),None), (tuple(names),None),
+                     ((names[0],),'unknown'), ((names[0],),'digest'), ((names[0],),'starter'),
+                     ((names[0],),'zero-size'), ((names[0],),'no-digest'), ((names[0],),'duplicate-id'),
+                     ((names[0],),'duplicate-name'), ((names[2],),'metadata-mismatch'),
+                     ((names[0],),'arm-invalid'), ((names[0],),'remote-byte'), ((names[0],),'metadata-byte'),
+                     ((names[0],),'aggregate-mismatch')]
+        for seed, failure in scenarios:
+            with self.subTest(seed=seed,failure=failure), tempfile.TemporaryDirectory() as tmp:
+                scratch = Path(tmp)/'runner'
+                remote = {n:canonical[n] for n in seed}
+                stages, posted, rec = [], [], []
+                def uploaded(name, blob):
+                    return {'name':name, 'size':len(blob),'digest':'sha256:'+digest(blob),
+                            'id':len(rec)+1, 'state':'uploaded'}
+                for name in seed:
+                    rec.append(uploaded(name,remote[name]))
+                if failure=='unknown':
+                    rec.append(uploaded('unexpected.txt',b'x'))
+                elif failure in ('digest','metadata-mismatch'):
+                    rec[0]['digest']='sha256:'+'9'*64
+                elif failure=='starter':
+                    rec[0]['state']='starter'
+                elif failure=='zero-size':
+                    rec[0]['size']=0
+                elif failure=='no-digest':
+                    rec[0]['digest']=None
+                elif failure=='duplicate-id':
+                    rec.append(dict(uploaded(names[1],canonical[names[1]]),id=rec[0]['id']))
+                elif failure=='duplicate-name':
+                    rec.append(dict(rec[0],id=99))
+                def archive(pin,destination):
+                    name, data=by_arch[pin.name.removeprefix('shirube-candidate-')]
+                    with zipfile.ZipFile(destination,'w') as z:
+                        z.writestr('manifest.json','{}'); z.writestr('SHA256SUMS','fixture')
+                        z.writestr(name,data)
+                def validator(source,phase,destination,arch=None):
+                    if arch:
+                        stages.append(arch)
+                        if arch=='arm64' and failure=='arm-invalid': raise ValueError('arm rejected')
+                        name,blob=by_arch[arch]
+                        self.assertEqual((destination/name).read_bytes(),blob)
+                        return {'assets':[{'name':name,'size':len(blob),'sha256':digest(blob)}]}
+                    stages.append(destination.name+'-aggregate')
+                    for name, data in payload.items(): self.assertEqual((destination/name).read_bytes(),data)
+                    for a in by_arch: (destination/f'candidate-{a}.json').unlink()
+                    for n in recovery.METADATA:
+                        data=canonical[n]
+                        if destination.name=='public' and failure=='aggregate-mismatch': data=b'wrong'
+                        (destination/n).write_bytes(data)
+                def upload(path,size,sha):
+                    stages.append('upload:'+path.name); posted.append(path.name)
+                    data=path.read_bytes()
+                    self.assertEqual((size,sha),(len(data),digest(data)))
+                    self.assertEqual(data,canonical[path.name])
+                    self.assertNotIn(path.name,remote)
+                    remote[path.name]=data; rec.append(uploaded(path.name,data))
+                    return recovery.asset_identity(rec[-1])
+                def download(record,directory):
+                    name=record['name']; stages.append('download:'+name)
+                    if (failure=='remote-byte' and name in payload or
+                            failure=='metadata-byte' and name in recovery.METADATA):
+                        raise ValueError('independent download differs')
+                    (directory/name).write_bytes(remote[name])
+                def current():
+                    return {'id':recovery.RELEASE_ID,'draft':True,'body':'pinned','assets':rec[:]}
+                with patch.object(recovery,'controller_context',return_value=(ROOT,CONTEXT)), \
+                        patch.object(recovery,'utcnow',return_value=NOW), patch.object(recovery,'state_root',return_value=scratch), \
+                        patch.object(recovery,'capacity'), patch.object(recovery,'original_evidence'), \
+                        patch.object(recovery,'owned_draft',side_effect=current), \
+                        patch.object(recovery,'read_owned_inventory',side_effect=lambda:recovery.inventory(rec)), \
+                        patch.object(recovery,'original_archive',side_effect=archive), \
+                        patch.object(recovery,'original_validator',side_effect=validator), \
+                        patch.object(recovery,'upload',side_effect=upload), patch.object(recovery,'download_asset',side_effect=download), \
+                        patch.object(recovery.time,'sleep'):
+                    if failure:
+                        with self.assertRaises(ValueError): recovery.stage()
+                        self.assertFalse((scratch/'verified-draft.json').exists())
+                        if failure=='metadata-byte':
+                            self.assertEqual(posted,[names[1],names[2]])  # stop before second metadata POST
+                        elif failure in ('remote-byte','aggregate-mismatch'):
+                            self.assertEqual(posted,[names[1]])  # payload only
+                        else:
+                            self.assertEqual(posted,[])  # untrusted initial state: no POST
+                        continue
+                    recovery.stage()
+                self.assertEqual(posted,[n for n in names if n not in seed])
+                self.assertEqual(stages[:3],['amd64','arm64','canonical-aggregate'])
+                self.assertLess(stages.index('download:'+names[1]),stages.index('public-aggregate'))
+                for metadata in recovery.METADATA:
+                    self.assertGreater(stages.index('download:'+metadata),stages.index('public-aggregate'))
+                    if metadata not in seed:
+                        self.assertGreater(stages.index('upload:'+metadata),stages.index('public-aggregate'))
+                receipt = json.loads((scratch/'verified-draft.json').read_text())
+                self.assertEqual(receipt['assets'],recovery.inventory(rec))
+                self.assertEqual(receipt['context'],CONTEXT)
+                self.assertEqual({p.name:p.read_bytes() for p in (scratch/'public').iterdir()},canonical)
 
     def test_promotion_never_repeats_or_mutates_on_stale_proof(self):
         for condition in ('success','uncertain','bad-upload','expired','changed'):
@@ -409,6 +527,11 @@ class WorkflowIsolation(unittest.TestCase):
         consumers = release_plan.declared_consumers(ROOT)
         self.assertTrue({recovery.WORKFLOW,'producer/recover_release.py'} <= release_plan.CONTROL_FILES)
         self.assertFalse(relevant(paths, ROOT, ROOT))
+        resume_paths = paths-{recovery.WORKFLOW}
+        resume_plan = release_plan.classify(resume_paths, consumers)
+        self.assertEqual((resume_plan['publication'],resume_plan['validation'],resume_plan['automatic_execution']),
+                         ('none','focused','focused'))
+        self.assertFalse(relevant(resume_paths, ROOT, ROOT))
         jobs = workflow('release.yml')['jobs']
         for files, publication, kind in [(paths,'none','focused'),
                  (paths|{'producer/recover_release_extra.py'},'hold','candidate'),
