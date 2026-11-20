@@ -633,7 +633,7 @@ rename元とrename先の両方を判定し、未知は公開を保留して候�
 was published on 2026-11-20 at 04:39 UTC as release 448240202 from product
 source `0a1eeb67a9e6f56b59c601ca9db06c59f0c80c9b`. The earlier
 [recovery attempt](https://github.com/michibiki-io/shirube-os/actions/runs/44652548222)
-timed out while staging. [Recovery run 44672002992](https://github.com/michibiki-io/shirube-os/actions/runs/44672002992)
+timed out waiting for an upload response. [Recovery run 44672002992](https://github.com/michibiki-io/shirube-os/actions/runs/44672002992)
 completed staging, independent remote validation, Actions upload and publication
 without rebuilding. Its distinct controller commit was
 `748533d4b5af798a10a7ef6dc6c5bd41bccc713c`.
@@ -648,8 +648,9 @@ has GitHub-reported upload SHA-256
 archive was not downloaded for this check and follows normal retention.
 
 The one-time entry point, controller and dedicated tests are retired from main
-and remain in Git history. Keep the exact retired control-path classifications:
-the deletion appears in this change inventory and in later cumulative release
+and remain in Git history. Keep the workflow and controller's exact control-path
+entries; the dedicated test path is covered by the general test rule. These
+deletions appear in this change inventory and in later cumulative release
 classification. Nothing here changes the normal Release path or removes the
 published assets, tag, Actions artifact, or historical runs.
 
@@ -664,4 +665,5 @@ upload 応答待ちで中断しましたが、run 44672002992 は再ビルドせ
 残る180件は名前・サイズ・digest を公開 API と照合しました。撤去時に180件を
 再取得してはいません。復旧専用の入口だけを撤去し、通常の公開処理や公開済み
 成果物・tag・run 履歴は変更しません。削除パスも今回と今後の累積リリース判定に
-含まれるため、既存の完全一致の制御パス分類は残します。
+含まれるため、workflow と復旧用コードの完全一致の control 分類は残します。
+専用テストは共通の test 分類で扱います。
