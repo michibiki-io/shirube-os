@@ -1,0 +1,50 @@
+name: Recover v2026.03.14 publication
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: shirube-os-release
+  queue: max
+  cancel-in-progress: false
+jobs:
+  recover:
+    if: github.repository == 'michibiki-io/shirube-os' && github.ref == 'refs/heads/main' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: read
+    defaults:
+      run:
+        working-directory: controller
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+          path: controller
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 0a1eeb67a9e6f56b59c601ca9db06c59f0c80c9b
+          persist-credentials: false
+          path: original-source
+      - name: Stage exact candidates and independently verify remote bytes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B -m producer.recover_release stage
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        id: assets
+        with:
+          name: shirube-os-v2026.03.14-0a1eeb67a9e6f56b59c601ca9db06c59f0c80c9b-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/shirube-recover14/public/*
+          if-no-files-found: error
+          compression-level: 0
+      - name: Promote only after verifying this recovery run's successful upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHIRUBE_ACTIONS_ARTIFACT_ID: ${{ steps.assets.outputs.artifact-id }}
+          SHIRUBE_ACTIONS_ARTIFACT_DIGEST: ${{ steps.assets.outputs.artifact-digest }}
+        run: python3 -B -m producer.recover_release promote

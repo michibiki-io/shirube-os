@@ -626,3 +626,63 @@ checkout identity は非公開経路でも確認し、Release 参照と割当前
 rename元とrename先の両方を判定し、未知は公開を保留して候補検証を要求します。
 既知の製品入力との混合変更は製品公開の対象です。
 今回の完了によって、無関係な過去のhosted、OCI、cacheの検証記録は変わりません。
+
+## One-time v2026.03.14 recovery (Issue #46)
+
+[Original Release attempt 1](https://github.com/michibiki-io/shirube-os/actions/runs/44030573245/attempts/1)
+produced both architecture candidates. Candidate-check timed out; on
+[attempt 2](https://github.com/michibiki-io/shirube-os/actions/runs/44030573245/attempts/2)
+it passed, but staging and publication were not run. Draft ID **448240202**
+was reserved for product commit 0a1eeb67a9e6f56b59c601ca9db06c59f0c80c9b and had
+no assets. The separate controller commit is not the product source.
+
+After normal PR approval and merge, and only with separate authorization for
+actual release recovery, dispatch **Recover v2026.03.14 publication** on
+**main**, without inputs. Do not re-run the old build, merge a newer product
+change, or edit the draft while recovering. Main can advance without invalidating
+the run only if it still contains the dispatched controller commit.
+The original archives are pinned
+by run, ID, compressed size, SHA-256 and exact expiry:
+
+| Architecture | Artifact ID | Expires (UTC) |
+| --- | --- | --- |
+| amd64 | 14324155876 | 2026-11-24 11:19:43 |
+| arm64 | 14325887299 | 2026-11-24 11:52:17 |
+
+Start well before the earlier expiry so that the entire job can finish while
+both artifacts remain available. The 180-minute job budget covers download,
+full original-source validation, staging, independent download and validation
+again, and the output Actions upload. It uses the existing release queue and
+fails before staging if the working filesystem cannot hold the measured peak.
+There is no build, guest rerun, signing, cache priming or automatic execution.
+
+A failure before staging leaves the draft unchanged. A failure after an
+append may leave an unpublished partial draft; preserve it for inspection. Do
+not delete assets or use an Actions re-run to resume it. If a final request has
+an uncertain outcome, inspect the pinned release ID, tag, asset inventory and
+linked verified Actions artifact before any further action. The new artifact uses
+normal repository retention; the release notes retain the artifact ID and digest
+as audit evidence even after GitHub expires the downloadable archive. Retire this one-time
+workflow and controller after verified publication. The ordinary Release stage
+skip and any permanent gate changes are outside Issue #46. Verify the ordinary
+release path separately before the next product release; retiring this
+workflow does not repair that path.
+
+### 日本語
+
+v2026.03.14 の候補は両アーキテクチャで生成済みです。元 run の初回は
+候補検証がタイムアウトし、再試行で検証は成功しましたが、staging と公開は
+未実行でした。今回の復旧は予約済みの空 draft **448240202** のみを対象にします。
+
+PR の承認・merge 後、実際の公開が承認された場合に限り、main で
+**Recover v2026.03.14 publication** を入力なしで実行します。期限が早い
+amd64 は **11 月 24 日 11:19:43 UTC** です。転送、検証、公開が期限前に
+完了するよう余裕を持たせてください。再ビルド、再署名、ゲスト再実行は
+行いません。実行中は draft を編集せず、別の製品変更を先に merge しません。
+
+書き込み後に失敗した場合は、未公開の draft をそのまま残して調査します。
+asset の削除・上書き・再試行はしません。公開結果が不明な場合は同じ ID・
+tag・asset 一覧・新しい Actions artifact を照合してください。新しい artifact は
+通常どおりの保持期限に従い、archive が失効しても ID と digest は公開ノートに残ります。公開確認後に
+復旧用の workflow・controller を削除しますが、この撤去は通常の Release
+経路の修復を意味しません。次の製品公開の前に通常経路を別途確認します。
