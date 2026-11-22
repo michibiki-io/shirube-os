@@ -164,7 +164,7 @@ jobs:
         run: python3 -m producer.actions validate_candidates
   stage:
     needs: [resolve, build, candidate-check]
-    if: needs.resolve.outputs.publication == 'publish' && needs.candidate-check.result == 'success'
+    if: ${{ !cancelled() && needs.resolve.result == 'success' && needs.build.result == 'success' && needs.candidate-check.result == 'success' && needs.resolve.outputs.publication == 'publish' && needs.resolve.outputs.eligible == 'true' && needs.resolve.outputs.noop == 'false' }}
     strategy:
       fail-fast: false
       matrix:
