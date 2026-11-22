@@ -490,7 +490,18 @@ class WorkflowCacheCITests(unittest.TestCase):
         self.assertNotIn('timeout_minutes', Path('producer/actions.py').read_text())
         self.assertEqual(jobs['stage']['strategy']['matrix']['architecture'],['amd64','arm64'])
         self.assertEqual(jobs['stage']['needs'],['resolve','build','candidate-check'])
-        self.assertEqual(jobs['stage']['steps'][-1]['run'],'python3 -m producer.actions stage')
+        checkout,download,stage=jobs['stage']['steps']
+        self.assertEqual(checkout['with']['ref'],'${{ needs.resolve.outputs.commit }}')
+        self.assertEqual(checkout['with']['persist-credentials'],'false')
+        self.assertEqual(download['with']['name'],'shirube-candidate-${{ matrix.architecture }}')
+        self.assertEqual(stage['run'],'python3 -m producer.actions stage')
+        self.assertEqual(stage['env'],{
+            'GH_TOKEN':'${{ github.token }}',
+            'SHIRUBE_CANDIDATE_DIRECTORY':download['with']['path'],
+            'SHIRUBE_ARCHITECTURE':'${{ matrix.architecture }}',
+            'SHIRUBE_VERSION':'${{ needs.resolve.outputs.version }}',
+            'SHIRUBE_PUBLICATION_DECISION':'${{ needs.resolve.outputs.publication }}',
+            'SHIRUBE_SOURCE_COMMIT':'${{ needs.resolve.outputs.commit }}'})
         publish=jobs['publish']
         self.assertEqual(publish['needs'],['resolve','build','stage','candidate-check'])
         self.assertIn("needs.build.result == 'success'",publish['if'])
@@ -504,6 +515,52 @@ class WorkflowCacheCITests(unittest.TestCase):
         for job in jobs.values():
             if 'runs-on' in job:self.assertEqual(job['runs-on'],'ubuntu-24.04')
             if 'timeout-minutes' in job:self.assertLess(int(job['timeout-minutes']),360)
+
+    def test_stage_gate_tolerates_skipped_alternate_validation_but_fails_closed(self):
+        jobs=self.release['jobs']
+        guard=jobs['stage']['if']
+        outputs={'eligible':'true','noop':'false','publication':'publish',
+                 'automatic-execution':'candidate'}
+        results={name:'success' for name in jobs['stage']['needs']}
+        # The alternate candidate job is intentionally skipped on the publish path.
+        self.assertFalse(expression_value(jobs['candidate-validation']['if'],
+            {f'needs.resolve.outputs.{name}':value for name,value in outputs.items()}))
+        results['candidate-validation']='skipped'
+
+        def admitted(expression, job_results=results, resolve_outputs=outputs, cancelled=False):
+            # Model only the status-function override and implicit success() with
+            # the skipped ancestor, not the hosted scheduler or matrix execution.
+            success=not cancelled and all(result=='success' for result in job_results.values())
+            statuses={'!cancelled()':not cancelled,'cancelled()':cancelled,
+                      'always()':True,'success()':success,
+                      'failure()':'failure' in job_results.values()}
+            if not any(status in expression for status in statuses) and not success:
+                return False
+            context={f'needs.{name}.result':job_results.get(name,'')
+                     for name in jobs['stage']['needs']}
+            context.update({f'needs.resolve.outputs.{name}':resolve_outputs.get(name,'')
+                            for name in outputs})
+            return expression_value(expression,{**statuses,**context})
+
+        original="needs.resolve.outputs.publication == 'publish' && needs.candidate-check.result == 'success'"
+        self.assertTrue(expression_value(original,{'needs.resolve.outputs.publication':'publish',
+                                                   'needs.candidate-check.result':'success'}))
+        self.assertFalse(admitted(original))
+        self.assertTrue(admitted(guard))
+        self.assertFalse(admitted(guard,cancelled=True))
+        for job in jobs['stage']['needs']:
+            for result in ('failure','cancelled','skipped',None):
+                with self.subTest(job=job,result=result):
+                    changed=dict(results,**{job:result})
+                    if result is None: del changed[job]
+                    self.assertFalse(admitted(guard,changed))
+        for name,values in [('eligible',('false','',None)),('noop',('true','unexpected','',None)),
+                            ('publication',('none','hold','',None))]:
+            for value in values:
+                with self.subTest(output=name,value=value):
+                    changed=dict(outputs,**{name:value})
+                    if value is None: del changed[name]
+                    self.assertFalse(admitted(guard,resolve_outputs=changed))
 
     def test_test_events_names_permissions_and_runners(self):
         test = workflow('test.yml')
