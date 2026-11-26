@@ -43,7 +43,7 @@ The historical patches in the root of
 unchanged as 6.6.128 evidence; the build uses only the versioned
 [`linux-6.6.163`](../patches/kernel/linux-6.6.163) series.
 Every Stream patch must match its exact retained recipe hash. Build receipts
-record the Stream inputs (`recipe-checksums.txt`), active local patch
+record the Stream inputs (`recipe-checksums.txt`), active local patches
 (`kernel-tool-patches.sha256`) and effective source state
 (`kernel-patch-state.txt`). Zero-fuzz application to a fresh tree does not create
 backups for moved lines. Unknown patches, changed hashes, ambiguous application
@@ -58,6 +58,13 @@ and partial or changed effective source fail before packaging.
 | Historical Shirube 0001 perf libdw unwind, 0002 IPv4 option RCU cleanup | Both reverse-apply cleanly to the stable source with zero fuzz. Stable already has the libdw compatibility code and the deferred cleanup of both socket/request IPv4 options. |
 | Historical Shirube 0003 checksum and nfqueue | The stable source has the checksum-start boundary helper in `include/net/ip.h`, the IPv4 output/XFRM, CHECKSUM and nfqueue checks, and their prerequisite behavior. Context defaults changed; do not reapply. |
 | Historical Shirube 0004 lookup lifetime and ordering | Stable already has the request reference-release paths, including syncookies/TFO, and post-acquire unhashed guards for both IP versions. A narrow local patch retains the original ordering companion [5b5d8f351dd9](https://git.kernel.org/stable/c/5b5d8f351dd96f56a58bb516a80e2d4d742fe4e2) and refcount primitives [7f8ceea0c580](https://git.kernel.org/stable/c/7f8ceea0c58039dcea3d31b8d5da58aa5f6e12bf), including their 6.6 adaptations. Acquire use sites are BPF socket assignment, IPv4/IPv6 established lookups and timewait purge; release sites are all three request migration sites (after timer initialization where applicable), timewait publication, SYN cookies and TFO. The already-present stable guards and lifetime logic remain intact. |
+
+The local perf compatibility patch applies [Dmitry Safonov's submitted
+fix](https://lore.kernel.org/lkml/20261126-perf-string-h-v1-1-8f5c39ff30f0@arista.com/)
+to the exact 6.6.163 context. It changes only the `jitdump.c` include so perf
+sees its own `strlcpy()` declaration on Bookworm. A local compile of that file
+against Bookworm headers failed before the change and passed after it; this is
+not evidence that the full native perf packages built.
 
 After all Stream and Shirube changes, the production recipe verifies the reviewed
 full-file hashes of the affected source files. The replay was tested against the

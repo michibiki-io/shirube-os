@@ -18,7 +18,7 @@ apply_kernel_patches() {
     local stream_series=("$stream"/*.patch)
     local repository_series=("$series"/*.patch)
     test "${#stream_series[@]}" -eq 4
-    test "${#repository_series[@]}" -eq 1
+    test "${#repository_series[@]}" -eq 2
     # Never infer equivalence from a failed patch application. Match every
     # original recipe and verify the exact upstream DNAT behavior separately.
     (cd "$stream" && sha256sum --check --strict "$series/stream-patches.sha256")

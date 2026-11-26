@@ -1,0 +1,23 @@
+From: Dmitry Safonov <dima@arista.com>
+Subject: [PATCH] perf/build: Include linux/string.h by jitdump.c for strlcpy()
+
+The perf tools string header declares the built-in strlcpy() fallback when
+the system C library predates glibc 2.38, as on Debian Bookworm.
+
+Submitted upstream (not merged):
+https://lore.kernel.org/lkml/20261126-perf-string-h-v1-1-8f5c39ff30f0@arista.com/
+Message-ID: <20261126-perf-string-h-v1-1-8f5c39ff30f0@arista.com>
+Signed-off-by: Dmitry Safonov <dima@arista.com>
+[Shirube: use the exact Linux 6.6.163 diff context.]
+
+--- a/tools/perf/util/jitdump.c
++++ b/tools/perf/util/jitdump.c
+@@ -5,7 +5,7 @@
+ #include <libgen.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <string.h>
++#include <linux/string.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <inttypes.h>

@@ -133,6 +133,21 @@ class KernelABI(unittest.TestCase):
         result=run(copy)
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)
         self.assertIn('upstream-equivalent v4-0001-',(self.work/'state').read_text())
+        perf=Path('tools/perf/util/jitdump.c')
+        original=(source/perf).read_bytes()
+        old_header=b'#include <string.h>\n'
+        self.assertEqual(original.count(old_header),1)
+        self.assertEqual((copy/perf).read_bytes(),
+                         original.replace(old_header,b'#include <linux/string.h>\n'))
+        self.assertIn('applied-shirube 0002-perf-jitdump-use-tools-string-header.patch',
+                      (self.work/'state').read_text())
+        # Unrelated contents are still checked when the one-line patch applies.
+        changed_perf=self.work/'changed-perf'
+        shutil.copytree(source,changed_perf)
+        (changed_perf/perf).write_bytes(original+b'\n')
+        failed=run(changed_perf)
+        self.assertNotEqual(failed.returncode,0)
+        self.assertIn('tools/perf/util/jitdump.c: FAILED',failed.stdout)
         # Reject a modified effective source file even if every patch still applies.
         unexpected=self.work/'unexpected'
         shutil.copytree(source,unexpected)
