@@ -265,10 +265,10 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
     from producer.livebuild_sources import configure_sources
     configure_retry()
     configure_sources()
+    root=generate(arch)
     abi=json.loads(Path('/src/source-lock.json').read_text())['kernel']
     validate_kernel_source(abi)
     release=abi['kernel_release']
-    root=generate(arch)
     source_link=Path('/sources')
     if not source_link.exists() and not source_link.is_symlink():source_link.symlink_to(sources)
     elif prepared is None or source_link.resolve()!=Path(sources).resolve():
