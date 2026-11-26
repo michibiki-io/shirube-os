@@ -164,8 +164,7 @@ class SecurityTests(unittest.TestCase):
         self.assertEqual(additions(original), additions(adapted))
 
     def apply_kernel(self, source, receipt):
-        script = (ROOT/'containers/native/package_kernel.sh').read_text()
-        helper = script[script.index('apply_kernel_tool_fixes() {'):script.index('\npackage_kernel()')]
+        helper = (ROOT/'tests/fixtures/security/kernel-6.6.128-apply.sh').read_text()
         helper = helper.replace('/kernel-patches/', str(ROOT/'patches/kernel')+'/')
         return subprocess.run(['bash', '-c', 'set -euo pipefail\n'+helper+'\napply_kernel_tool_fixes'],
                               cwd=source, env={**os.environ, 'PATCH_RECEIPT': str(receipt)}, capture_output=True, text=True)

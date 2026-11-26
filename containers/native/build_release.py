@@ -14,6 +14,7 @@ import time
 sys.path.insert(0, '/src')
 from producer.architecture import native
 from producer.packages import audit
+import producer.kernel_source as kernel_source
 from producer.sources import fetch, extract, sha256
 
 
@@ -55,7 +56,8 @@ def main():
     native(args.architecture)
     if args.stage and (args.target != 'packages' or args.job):
         raise ValueError('Compile stages cannot also select a target or individual jobs')
-    lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
+    source_lock = json.loads(Path('/src/source-lock.json').read_text())
+    lock = source_lock['stream']
     if args.include_sources and args.target!='iso':
         raise ValueError('Separate source audit is only valid for a complete ISO target')
     management=None
@@ -128,7 +130,7 @@ def main():
     if args.stage:
         from producer.native_stages import select_jobs, component
         jobs = select_jobs(jobs, args.stage)
-    roots = {job['source'].split('/')[0] for job in jobs} | {'vyos-build'}
+    roots, kernel = kernel_source.source_paths(jobs, source_lock)
     if args.stage: roots.update(component(args.stage).ROOTS[args.stage])
     if args.target in {'iso','release'}:
         roots |= {'jool-4.1.9+bf4c7e3669','libpam-radius-auth_1.5.0-cl3u7','humps_v3.8.0','ddclient_debian_3.11.2-1','owamp_v4.4.6','openvpn-otp_9781ff1','udp-broadcast-relay_9a0f13b4b5938bfe0af0d0d4e99dfc127c068e28','node_exporter_v1.9.1','frr_exporter_v1.5.0','blackbox_exporter_v0.26.0','telegraf_v1.28.3','isc-kea_Kea-3.0.2','salt_v3006.21','podman_v4.9.5','ovpn-dco-v0.2.20231117','accel-ppp-ng-3e30d9b','host-sflow_v2.1.21-1'}
@@ -136,12 +138,14 @@ def main():
     # absolute build-host links. Rebuild them from the adjacent original sources;
     # never follow or rewrite archived external links into the build host.
     preparation = extract(nested, sources, prefixes=roots, exclude=(
-        'linux-kernel-6.6.128/linux-6.6.128/debian/linux-headers',
         'accel-ppp-ng-3e30d9b/accel-ppp-ng/build',
     ))
     preparation['authenticated_input']={'archive_sha256':lock['sha256'],
         'nested_member':nested_member,'nested_sha256':sha256(nested),
         'outer_selection':outer_preparation['selected_roots']}
+    if kernel:
+        preparation['kernel_input'] = kernel_source.acquire(
+            kernel, sources, preparation['authenticated_input'], verified_input=args.verified_input)
     from producer.branding import prepare_source_artwork
     prepare_source_artwork(sources,Path('/src/shirube-os-logo.svg'),Path('/src/LICENSE'))
     from producer.bash_source import prepare as prepare_bash_source
@@ -171,6 +175,9 @@ def main():
                 shutil.copy2(deb, dependencies/deb.name)
         env = dict(os.environ, BUILD_RECIPE=job.get('recipe', 'debian'), STREAM_VERSION=lock['version'],
                    HOST_UID='0', HOST_GID='0')
+        is_kernel = job['name'] == 'kernel'
+        if is_kernel:
+            env.update(kernel_source.build_environment(kernel))
         cached=None
         if args.cached_libraries:
             from producer.library_cache import restore,eligible
@@ -207,13 +214,15 @@ def main():
         if not artifacts:
             raise ValueError('No package outputs')
         native_receipt(job, output, exported)
-        if args.stage:
-            for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256']:
-                if (output/member).is_file():shutil.copy2(output/member,exported/member)
+        if is_kernel:
+            receipt_digests = kernel_source.copy_receipts(output, exported)
         (exported/'manifest.json').write_text(json.dumps({'status':'PASS', 'stage':'package-tranche',
             'resources':resources,'elapsed_seconds':round(time.monotonic()-started,3),
             'library_cache':cached or {'status':'MISS'},
-            'source_sha256':lock['sha256'], 'artifacts':artifacts, 'iso':'NOT_BUILT',
+            'source_sha256':kernel['sha256'] if is_kernel else lock['sha256'],
+            **({'kernel_input': preparation['kernel_input'],
+                'kernel_build_receipts': receipt_digests} if is_kernel else {}),
+            'artifacts':artifacts, 'iso':'NOT_BUILT',
             'local_boot':'NOT_RUN', 'oci':'NOT_RUN'}, indent=2)+'\n')
         completed[job['name']] = output
     if args.stage:
@@ -229,6 +238,7 @@ def main():
         receipt={'kind':'iso-build','project':'Shirube OS',
             'version':args.version,'source_commit':args.commit,'architecture':args.architecture,
             'upstream_stream_version':'2026.03','source_sha256':lock['sha256'],'source_signature':'PASS',
+            'kernel_input':preparation['kernel_input'],
             'iso':image.name,'sha256':sha256(image),'local_boot':'NOT_RUN','oci':'NOT_RUN',
             'release_clearance':'NOT_CLEARED','source_collection':'NOT_RUN',
             'complete_source_reconstruction':'NOT_RUN','license_clearance':'NOT_RUN'}

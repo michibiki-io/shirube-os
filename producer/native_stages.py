@@ -8,6 +8,7 @@ from pathlib import Path
 import shutil
 import subprocess
 
+from .kernel_source import RETAINED
 from .source_selectors import files
 from .sources import sha256
 
@@ -78,12 +79,12 @@ def export_compile(stage, sources, packages, destination, architecture):
     material = destination / 'material'
     catalog = json.loads(Path('/src/native/packages.json').read_text())['jobs']
     for job in select_jobs(catalog, stage):
-        copy_selected(files(sources / job['source'], exclude=(
-            'debian', 'include/generated', 'arch/arm64/include/generated', 'arch/x86/include/generated',
-            'certs/signing_key.x509', 'arch/arm64/boot/Image', 'arch/arm64/boot/Image.gz',
-            'arch/x86/boot/bzImage', 'vmlinux.btf', 'Module.symvers', 'modules.order',
-            'modules.builtin', 'modules.builtin.modinfo') if job['name'] == 'kernel' else ()),
-            material / 'sources' / job['source'])
+        if job['name'] == 'kernel':
+            # The signed archive itself is the complete preferred tree. Do
+            # not reconstruct it from selectors or export compiler scratch.
+            copy_selected(files(sources / RETAINED), material / 'sources' / RETAINED)
+        else:
+            copy_selected(files(sources / job['source']), material / 'sources' / job['source'])
         if job['name'] == 'vyos-http-api-tools':
             copy_selected(files(Path('/build-private') / job['name'] / 'source'),
                           material / 'native' / job['name'])

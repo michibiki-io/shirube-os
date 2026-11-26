@@ -13,6 +13,7 @@ import subprocess
 import sys
 import tarfile
 import threading
+import tomllib
 sys.path.insert(0,'/src')
 from producer.architecture import check_elf, check_kernel, check_pe
 from producer.branding import install as install_brand
@@ -22,8 +23,51 @@ from producer.notices import snapshot, mark_changed, PACKAGE_MODIFICATIONS
 from producer.sanitize import HOSTS
 from producer.integration import notice_bytes
 from producer.image_templates import generate
+from producer.kernel_source import validate as validate_kernel_source
 from producer.native_common import run
 
+
+
+def configure_kernel_abi(defaults, version):
+    """Change only the authenticated Stream's known kernel version selector."""
+    text=defaults.read_text()
+    decoded=tomllib.loads(text)
+    if decoded['kernel_version']!='6.6.128' or decoded['kernel_flavor']!='vyos':
+        raise ValueError('Unexpected Stream kernel ABI defaults')
+    text,count=re.subn(r'^kernel_version = "6\.6\.128"$',
+                       f'kernel_version = "{version}"',text,flags=re.M)
+    if count!=1:
+        raise ValueError('Unexpected Stream kernel ABI defaults')
+    defaults.write_text(text)
+
+
+def verify_live_grub(root, release):
+    """Ensure generated live entries use the matched kernel and initramfs."""
+    counts={'linux':0,'initrd':0}
+    for path in (Path(root)/'boot/grub').rglob('*.cfg'):
+        for command,target in re.findall(r'^\s*(linux(?:efi)?|initrd(?:efi)?)\s+(/live/\S+)',
+                                         path.read_text(),re.M):
+            prefix=command.removesuffix('efi')
+            filename='vmlinuz' if prefix=='linux' else 'initrd.img'
+            if target!=f'/live/{filename}-{release}':
+                raise ValueError('Generated GRUB menu refers to the wrong kernel ABI')
+            counts[prefix]+=1
+    if not counts['linux'] or counts['linux']!=counts['initrd']:
+        raise ValueError('Generated GRUB menu does not pair the live kernel and initramfs')
+
+
+def live_kernel_image(debs, arch, abi):
+    release, version=abi['kernel_release'], abi['package_version']
+    name=f'linux-image-{release}'
+    images=sorted(debs.glob('linux-image-*-vyos_*.deb'))
+    expected=debs/f'{name}_{version}_{arch}.deb'
+    if images!=[expected]:
+        raise ValueError('Exactly one matching kernel image package must reach the ISO builder')
+    def field(key):
+        return subprocess.check_output(['dpkg-deb','-f',str(expected),key],text=True).strip()
+    if (field('Package'),field('Version'),field('Architecture'))!=(name,version,arch):
+        raise ValueError('Wrong kernel package ABI for ISO')
+    return expected
 
 def guest_package(arch, version):
     debs=Path('/debs'); work=Path('/guest-package'); work.mkdir()
@@ -221,6 +265,9 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
     from producer.livebuild_sources import configure_sources
     configure_retry()
     configure_sources()
+    abi=json.loads(Path('/src/source-lock.json').read_text())['kernel']
+    validate_kernel_source(abi)
+    release=abi['kernel_release']
     root=generate(arch)
     source_link=Path('/sources')
     if not source_link.exists() and not source_link.is_symlink():source_link.symlink_to(sources)
@@ -228,6 +275,7 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         raise ValueError('Source input root differs from prepared material')
     debs=Path('/debs');debs.mkdir()
     for package in packages.rglob('*.deb'):shutil.copy2(package,debs/package.name)
+    live_kernel_image(debs,arch,abi)
     signing=Path('/kernel-signing');signing.mkdir(mode=0o700)
     if prepared is None:
         kernel=Path('/build-private/kernel/source/certs')
@@ -283,7 +331,9 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         preserve_runtime_bindings(source/'data/live-build-config/hooks/live/92-strip-symbols.chroot',
                                   Path('/extra'))
         env['VYOS1X_REPO_URL']=str(one)
-        defaults=source/'data/defaults.toml';text=defaults.read_text()
+        defaults=source/'data/defaults.toml'
+        configure_kernel_abi(defaults,abi['version'])
+        text=defaults.read_text()
         text=text.replace('http://deb.debian.org/debian-security','http://snapshot.debian.org/archive/debian-security/20261105T000000Z/').replace('http://deb.debian.org/debian','http://snapshot.debian.org/archive/debian/20261105T000000Z/')
         for url in ['https://vyos.io','https://support.vyos.io','https://vyos.dev','https://docs.vyos.io/en/latest','https://blog.vyos.io']:
             text=text.replace(url,'https://github.com/michibiki-io/shirube-os')
@@ -319,10 +369,10 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         hosts.write_text(HOSTS)
         factory=source/'data/live-build-config/includes.chroot/usr/libexec/shirube/factory_prepare.py'
         factory.parent.mkdir(parents=True,exist_ok=True);shutil.copy2('/src/guest/factory_prepare.py',factory)
-        hook.write_text('#!/bin/sh\nset -eu\npython3 /usr/lib/python3/dist-packages/vyos/xml_ref/update_cache.py\ndepmod -a 6.6.128-vyos\nSHIRUBE_BUILD_CHROOT=1 python3 /usr/libexec/shirube/factory_prepare.py '+arch+'\nrm /usr/libexec/shirube/factory_prepare.py\n')
+        hook.write_text('#!/bin/sh\nset -eu\npython3 /usr/lib/python3/dist-packages/vyos/xml_ref/update_cache.py\ndepmod -a '+release+'\nSHIRUBE_BUILD_CHROOT=1 python3 /usr/libexec/shirube/factory_prepare.py '+arch+'\nrm /usr/libexec/shirube/factory_prepare.py\n')
         hook.chmod(0o755)
         binary_hook=source/'data/live-build-config/hooks/live/100-shirube.binary'
-        binary_hook.write_text('#!/usr/bin/python3\nimport sys\nfrom pathlib import Path\nsys.path.insert(0,"/src")\nfrom producer.branding import boot_menus\nboot_menus(Path.cwd(),'+repr(arch)+','+repr(version)+')\n')
+        binary_hook.write_text('#!/usr/bin/python3\nimport sys\nfrom pathlib import Path\nsys.path.insert(0,"/src")\nfrom producer.branding import boot_menus\nfrom native.image import verify_live_grub\nboot_menus(Path.cwd(),'+repr(arch)+','+repr(version)+')\nverify_live_grub(Path.cwd(),'+repr(release)+')\n')
         binary_hook.chmod(0o755)
         with (source/'data/live-build-config/environment.chroot').open('a') as target:target.write('\nVPP_INSTALL_SKIP_SYSCTL=1\n')
         mark_changed(original_build)
@@ -337,9 +387,15 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         from producer.boot_media import inspect as inspect_boot_media
         inspect_boot_media(image,arch)
         verify=work/'verify';verify.mkdir()
-        for item,name in [('/boot/grub/efi.img','efi.img'),('/live/vmlinuz-6.6.128-vyos','vmlinuz'),('/live/filesystem.packages','filesystem.packages')]:
+        for item,name in [('/boot/grub/efi.img','efi.img'),(f'/live/vmlinuz-{release}','vmlinuz'),
+                          (f'/live/initrd.img-{release}','initrd'),('/live/filesystem.packages','filesystem.packages')]:
             run('xorriso','-osirrox','on','-indev',str(image),'-extract',item,str(verify/name))
-        if any(line.split()[0]=='vyos-1x-smoketest' for line in (verify/'filesystem.packages').read_text().splitlines() if line.strip()):
+        installed=[line.split() for line in (verify/'filesystem.packages').read_text().splitlines() if line.strip()]
+        kernel_entries=[fields for fields in installed if re.fullmatch(r'linux-image-.*-vyos(?::\w+)?',fields[0])]
+        if kernel_entries not in ([[f'linux-image-{release}',abi['package_version']]],
+                                  [[f'linux-image-{release}:{arch}',abi['package_version']]]):
+            raise ValueError('ISO package manifest does not match the kernel ABI')
+        if any(fields[0]=='vyos-1x-smoketest' for fields in installed):
             raise ValueError('On-image smoketest fixtures must not enter the distribution')
         efi='BOOTAA64.EFI' if arch=='arm64' else 'BOOTX64.EFI'
         run('mcopy','-i',str(verify/'efi.img'),f'::/EFI/BOOT/{efi}',str(verify/'boot.efi'));check_pe((verify/'boot.efi').read_bytes(),arch)

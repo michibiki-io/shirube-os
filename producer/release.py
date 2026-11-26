@@ -61,7 +61,10 @@ def verify_source_integrity(root, inventory, assets):
     components = set()
     members = {}
     from .source_fixtures import allowances
+    from .kernel_source import (BUILD_RECEIPTS, KEY_FILE, SOURCE_MEMBER_PREFIX,
+                                VERIFICATION, locked_source, scan_original)
     public_vectors=allowances(inventory)
+    verified_kernel_sources = set()
     for asset in assets:
         if asset['role'] != 'source':
             continue
@@ -88,6 +91,16 @@ def verify_source_integrity(root, inventory, assets):
                 if key_match and (asset['name'],member.name,digest.hexdigest()) not in public_vectors:
                     raise ValueError('Private signing key in source bundle')
                 members[key] = digest.hexdigest()
+                # The original kernel tar preserves upstream links/modes, but
+                # wrapping it is not permission to bypass the per-file scan.
+                if member.name.startswith(SOURCE_MEMBER_PREFIX) and member.name.endswith('.tar.xz'):
+                    pinned = locked_source()
+                    if (member.name != SOURCE_MEMBER_PREFIX + pinned['source_root'] + '.tar.xz'
+                            or members[key] != pinned['sha256']):
+                        raise ValueError('Nested kernel.org corresponding source is not the locked archive')
+                    with archive.extractfile(member) as stream:
+                        scan_original(stream, pinned['source_root'], pinned['sha256'])
+                    verified_kernel_sources.add(key)
     def check_references(component):
         for category in ('sources', 'license_files', 'build_inputs'):
             if not component.get(category):
@@ -109,6 +122,38 @@ def verify_source_integrity(root, inventory, assets):
             identity=(child['name'],child['version'])
             if identity in identities:raise ValueError('Duplicate bundled component')
             identities.add(identity);check_references(child)
+        if component.get('source_package') == 'linux-upstream':
+            # Older Stream packages keep their historical plain tree/source
+            # provenance. New kernel.org packages cannot omit the exact tar and
+            # fall back to that historical path.
+            pinned = locked_source()
+            origin = component.get('source_origin', {}).get('kernel_org', {})
+            if origin or component.get('source_version') == pinned['package_version']:
+                source = component['sources']
+                builds = {(r['member'], r['sha256']) for r in component['build_inputs']}
+                notices = {(r['member'], r['sha256']) for r in component['license_files']}
+                build_names = {name for name, _ in builds}
+                locked_evidence = {
+                    (SOURCE_MEMBER_PREFIX + pinned['source_root'] + '.tar.sign', pinned['signature_sha256']),
+                    (SOURCE_MEMBER_PREFIX + KEY_FILE, pinned['key_sha256']),
+                }
+                locked_notices = {(SOURCE_MEMBER_PREFIX + 'notices/' + name, sha)
+                                  for name, sha in pinned['notices'].items()}
+                required_recipes = {'native-build/' + name for name in (*BUILD_RECEIPTS, 'manifest.json')}
+                required_recipes.add(SOURCE_MEMBER_PREFIX + VERIFICATION)
+                if (component.get('source_version') != pinned['package_version']
+                        or component.get('source_identity') != pinned['sha256']
+                        or origin.get('signature') != 'PASS'
+                        or any(origin.get(name) != pinned[name] for name in (
+                            'sha256', 'source_root', 'kernel_release', 'signer_fingerprint',
+                            'signature_sha256', 'key_sha256'))
+                        or not locked_evidence <= builds
+                        or not locked_notices <= notices
+                        or not required_recipes <= build_names
+                        or len(source) != 1
+                        or source[0]['sha256'] != pinned['sha256']
+                        or (source[0]['asset'], source[0]['member']) not in verified_kernel_sources):
+                    raise ValueError('Kernel.org license/source provenance is incomplete or inconsistent')
         if component.get('source_package')=='vpp':
             verify_vpp_inputs(component)
     for component in inventory['components']:

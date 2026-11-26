@@ -5,11 +5,16 @@ import argparse
 import gzip
 import hashlib
 import io
+import json
 import lzma
 from pathlib import Path
 import subprocess
 import tarfile
 import tempfile
+import sys
+sys.path.insert(0,'/src')
+
+from producer.kernel_source import validate as validate_kernel_source
 
 MAGIC=b'~Module signature appended~\n'
 KEYDIR=Path('/kernel-signing')
@@ -31,14 +36,20 @@ def verify(data, certificate):
             raise ValueError('Module signature verification failed: '+result.stderr.decode(errors='replace')[-1200:])
 
 
-def reference_key_matches():
+def reference_key_matches(release,version):
     key=KEYDIR/'key.pem'; cert=KEYDIR/'cert.der'
     if not key.is_file() or not cert.is_file(): raise ValueError('Matching kernel signing key/certificate is required')
     public_key=subprocess.check_output(['openssl','pkey','-in',str(key),'-pubout'])
     public_cert=subprocess.check_output(['openssl','x509','-inform','DER','-in',str(cert),'-pubkey','-noout'])
     if public_key!=public_cert: raise ValueError('Kernel signing key does not match its certificate')
-    images=list(Path('/debs').glob('linux-image-6.6.128-vyos_*_@ARCH@.deb'))
-    if len(images)!=1: raise ValueError('Exactly one native kernel image is required')
+    name=f'linux-image-{release}'
+    images=list(Path('/debs').glob('linux-image-*-vyos_*.deb'))
+    if len(images)!=1 or images[0].name!=f'{name}_{version}_@ARCH@.deb':
+        raise ValueError('Exactly one matching native kernel image is required')
+    def field(key):
+        return subprocess.check_output(['dpkg-deb','-f',str(images[0]),key],text=True).strip()
+    if (field('Package'),field('Version'),field('Architecture'))!=(name,version,'@ARCH@'):
+        raise ValueError('Wrong kernel image package ABI')
     with images[0].open('rb') as stream: image_hash=hashlib.file_digest(stream,'sha256').hexdigest()
     marker=KEYDIR/'verified'
     identity=image_hash+' '+hashlib.sha256(cert.read_bytes()).hexdigest()
@@ -49,6 +60,9 @@ def reference_key_matches():
                 found=False
                 for member in archive:
                     if not member.isfile() or not member.name.endswith(('.ko','.ko.xz','.ko.gz','.ko.zst')): continue
+                    name=member.name.removeprefix('./').removeprefix('usr/')
+                    if not name.startswith(f'lib/modules/{release}/'):
+                        raise ValueError('Kernel image contains a module under the wrong release')
                     data=archive.extractfile(member).read()
                     if member.name.endswith('.xz'): data=lzma.decompress(data)
                     elif member.name.endswith('.gz'): data=gzip.decompress(data)
@@ -61,15 +75,25 @@ def reference_key_matches():
     marker.write_text(identity)
 
 
+def verify_vermagic(module,release):
+    vermagic=subprocess.check_output(['modinfo','-F','vermagic',str(module)],text=True).split()
+    if not vermagic or vermagic[0]!=release or 'modversions' not in vermagic:
+        raise ValueError('Module vermagic does not match the kernel ABI: '+module.name)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory',type=Path)
     args=parser.parse_args()
-    reference_key_matches()
-    tool=Path('/usr/src/linux-headers-6.6.128-vyos/scripts/sign-file')
+    kernel=json.loads(Path('/src/source-lock.json').read_text())['kernel']
+    validate_kernel_source(kernel)
+    release=kernel['kernel_release']
+    reference_key_matches(release,kernel['package_version'])
+    tool=Path(f'/usr/src/linux-headers-{release}/scripts/sign-file')
     modules=list(args.directory.rglob('*.ko'))
     if not modules: raise ValueError('No modules found to sign')
     for module in modules:
+        verify_vermagic(module,release)
         subprocess.run([str(tool),'sha512',str(KEYDIR/'key.pem'),str(KEYDIR/'cert.der'),str(module)],check=True)
         verify(module.read_bytes(),KEYDIR/'cert.der')
         print('Signed and verified: '+str(module),flush=True)

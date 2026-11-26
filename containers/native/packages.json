@@ -129,7 +129,8 @@
     },
     {
       "name": "kernel",
-      "source": "linux-kernel-6.6.128/linux-6.6.128",
+      "source": "linux-6.6.163",
+      "source_origin": "kernel.org",
       "recipe": "kernel"
     }
   ]

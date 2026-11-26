@@ -34,6 +34,7 @@
       "producer/bash_source.py",
       "producer/branding.py",
       "producer/component_graph.py",
+      "producer/kernel_source.py",
       "producer/library_cache.py",
       "producer/native_stages.py",
       "producer/network_diagnostics.py",
@@ -72,6 +73,10 @@
       "producer/sources.py",
       "producer/stage_artifacts.py"
     ],
+    "producer/kernel_source.py": [
+      "producer/security_contract.py",
+      "producer/sources.py"
+    ],
     "producer/library_cache.py": [
       "producer/packages.py",
       "producer/sources.py"
@@ -83,6 +88,7 @@
     "producer/native_stages.py": [
       "containers/native/packages.json",
       "producer/component_graph.py",
+      "producer/kernel_source.py",
       "producer/library_cache.py",
       "producer/native_common.py",
       "producer/package_notices.py",
