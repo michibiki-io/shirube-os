@@ -207,8 +207,17 @@ class AuthenticationTests(unittest.TestCase):
         with patch('producer.kernel_source.locked_source', return_value=lock):
             verified = verify_source_integrity(self.root, inventory, [{'role': 'source', 'name': asset.name}])
             self.assertEqual(verified[(asset.name, 'kernel.org/linux-6.6.163.tar.xz')], lock['sha256'])
+            for key, value in (
+                    ('stream_archive_sha256', '0' * 64),
+                    ('stream_nested_member', 'vyos-2026.02-sources/vyos-tarballs/vyos_tarballs.tar.gz'),
+                    ('stream_nested_sha256', 'not-a-sha256'),
+                    ('stream_nested_sha256', None)):
+                with self.subTest(key=key, value=value):
+                    component['source_origin'] = {**receipt, key: value}
+                    with self.assertRaisesRegex(ValueError, 'Kernel Stream source provenance'):
+                        verify_source_integrity(self.root, inventory, [{'role': 'source', 'name': asset.name}])
             component['source_origin'] = {}
-            with self.assertRaisesRegex(ValueError, 'provenance'):
+            with self.assertRaisesRegex(ValueError, 'Kernel.org license/source provenance'):
                 verify_source_integrity(self.root, inventory, [{'role': 'source', 'name': asset.name}])
         with self.assertRaisesRegex(ValueError, 'Installed Linux source identity'):
             kernel.corresponding_inputs(lock, LOCK['stream'], retained, packages, 'linux-upstream', '6.6.128-1')

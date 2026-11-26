@@ -19,6 +19,10 @@ from .security_contract import SECRET
 from .source_contract import filename, scan_secrets, LIMIT
 
 
+def _source_lock():
+    return json.loads((Path(__file__).resolve().parents[1] / 'source-lock.json').read_text())
+
+
 def verify_vpp_inputs(component):
     """Every retained external archive needs its own source/notice decision."""
     import hashlib
@@ -127,7 +131,8 @@ def verify_source_integrity(root, inventory, assets):
             # provenance. New kernel.org packages cannot omit the exact tar and
             # fall back to that historical path.
             pinned = locked_source()
-            origin = component.get('source_origin', {}).get('kernel_org', {})
+            provenance = component.get('source_origin', {})
+            origin = provenance.get('kernel_org', {})
             if origin or component.get('source_version') == pinned['package_version']:
                 source = component['sources']
                 builds = {(r['member'], r['sha256']) for r in component['build_inputs']}
@@ -154,6 +159,17 @@ def verify_source_integrity(root, inventory, assets):
                         or source[0]['sha256'] != pinned['sha256']
                         or (source[0]['asset'], source[0]['member']) not in verified_kernel_sources):
                     raise ValueError('Kernel.org license/source provenance is incomplete or inconsistent')
+                stream = _source_lock()['stream']
+                nested_member = f"vyos-{stream['version']}-sources/vyos-tarballs/vyos_tarballs.tar.gz"
+                nested_digest = provenance.get('stream_nested_sha256')
+                # The build receipts bind the observed nested bytes. The
+                # release verifier checks their identity metadata without
+                # fetching or independently pinning a second archive.
+                if (provenance.get('stream_archive_sha256') != stream['sha256']
+                        or provenance.get('stream_nested_member') != nested_member
+                        or not isinstance(nested_digest, str)
+                        or not re.fullmatch('[0-9a-f]{64}', nested_digest)):
+                    raise ValueError('Kernel Stream source provenance is incomplete or inconsistent')
         if component.get('source_package')=='vpp':
             verify_vpp_inputs(component)
     for component in inventory['components']:
@@ -190,7 +206,7 @@ def validate(root, expected_commit, expected_version, *, architectures=ARCHES):
             or not re.fullmatch('[0-9a-f]{40}', expected_commit)):
         raise ValueError('Release identity/clean-source mismatch')
     upstream = manifest.get('upstream', {})
-    lock=json.loads((Path(__file__).resolve().parents[1]/'source-lock.json').read_text())
+    lock=_source_lock()
     require_stream_version(expected_version,lock['stream']['version'])
     if (upstream.get('version') != lock['stream']['version']
             or upstream.get('sha256') != lock['stream']['sha256']
