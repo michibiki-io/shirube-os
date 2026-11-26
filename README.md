@@ -82,6 +82,11 @@ the image to its recorded hash and the evidence to see what was tested.
 scope of repository checks. A static check does not prove that an image boots,
 and a past result applies to the recorded artifacts, not to a later commit.
 
+The [Linux 6.6.163 candidate evidence](docs/KERNEL-6.6.163.md) documents source,
+patch, and configuration checks, not a published release. Native builds, signed
+modules, installed boot, and networking require separate results for AMD64 and
+ARM64 on the exact candidate commit.
+
 ### Development and support
 
 - [Build inputs and native runners](docs/BUILD.md)
@@ -163,6 +168,11 @@ VyOS との提携や VyOS による推奨もありません。上流コンポー
 リポジトリで行った検証の範囲は[検証状況と過去の結果](docs/VALIDATION.md)に記録しています。
 静的チェックだけでは起動を確認できません。過去の試験結果は記録された成果物に対するもので、
 後続のコミットを検証した結果ではありません。
+
+[Linux 6.6.163 候補の検証記録](docs/KERNEL-6.6.163.md)は、ソース、パッチ、
+設定の確認結果であり、リリースの公開を示すものではありません。ネイティブビルド、
+署名済みモジュール、インストール後の起動、ネットワーク動作は、同じ候補コミットで
+AMD64 と ARM64 をそれぞれ検証した結果が必要です。
 
 ### 開発とサポート
 
