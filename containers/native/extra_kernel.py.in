@@ -21,9 +21,9 @@ JOOL_SOURCE = 'jool-4.1.9+bf4c7e3669/Jool-7f08c42c615ed63cf0fdc1522d91aa0809f6d9
 
 
 from extra_common import *
-from producer.kernel_source import validate as validate_kernel_source
 
 def kernel_abi():
+    from producer.kernel_source import validate as validate_kernel_source
     kernel = json.loads(Path('/src/source-lock.json').read_text())['kernel']
     validate_kernel_source(kernel)
     return kernel['kernel_release'], kernel['package_version']

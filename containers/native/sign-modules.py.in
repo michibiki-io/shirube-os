@@ -14,8 +14,6 @@ import tempfile
 import sys
 sys.path.insert(0,'/src')
 
-from producer.kernel_source import validate as validate_kernel_source
-
 MAGIC=b'~Module signature appended~\n'
 KEYDIR=Path('/kernel-signing')
 
@@ -85,6 +83,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory',type=Path)
     args=parser.parse_args()
+    from producer.kernel_source import validate as validate_kernel_source
     kernel=json.loads(Path('/src/source-lock.json').read_text())['kernel']
     validate_kernel_source(kernel)
     release=kernel['kernel_release']
