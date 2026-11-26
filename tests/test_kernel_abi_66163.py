@@ -1,4 +1,5 @@
 """Issue #54's ABI gates and exact effective kernel patch replay."""
+from contextlib import ExitStack, nullcontext
 import hashlib
 import importlib.machinery
 import importlib.util
@@ -7,8 +8,10 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tarfile
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -65,6 +68,101 @@ class KernelABI(unittest.TestCase):
         grub.write_text(grub.read_text().replace('initrd.img-6.6.163','initrd.img-6.6.128'))
         with self.assertRaisesRegex(ValueError,'wrong kernel ABI'):
             self.image.verify_live_grub(self.work,ABI['kernel_release'])
+
+    def test_assemble_uses_kernel_abi_not_apt_release_in_live_hooks_and_paths(self):
+        version='v2026.03.15'
+        for arch in ('amd64','arm64'):
+            with self.subTest(arch=arch), ExitStack() as stack:
+                root=self.work/arch
+                sources=root/'sources'
+                builder=sources/'vyos-build/vyos-build'
+                for name,contents in {
+                    'data/defaults.toml':'kernel_version = "6.6.128"\nkernel_flavor = "vyos"\n',
+                    'data/build-flavors/generic.toml':'packages = []\n',
+                    f'data/architectures/{arch}.toml':'packages = []\n',
+                    'data/live-build-config/bootloaders/grub-pc/grub.cfg':'LINUX_LIVE\n',
+                    'data/live-build-config/hooks/live/40-init-geoip-database.chroot':'',
+                    'data/live-build-config/hooks/live/92-strip-symbols.chroot':'',
+                    'data/live-build-config/rootfs/excludes':'usr/share/doc/*/!(copyright*|README*)\n',
+                    'scripts/image-build/build-vyos-image':'#!/bin/sh\n',
+                }.items():
+                    target=builder/name
+                    target.parent.mkdir(parents=True,exist_ok=True)
+                    target.write_text(contents)
+                (sources/'vyos-1x/vyos-1x').mkdir(parents=True)
+                packages=root/'packages';packages.mkdir()
+                (packages/f'vyos-1x_1_{arch}.deb').touch()
+                prepared=root/'prepared';(prepared/'signing').mkdir(parents=True)
+                (prepared/'signing/cert.der').write_bytes(b'fixture cert')
+                output=root/'output';output.mkdir()
+                public=root/'public.asc';public.write_text('fixture key')
+                release=ABI['kernel_release']
+                extracted=[]
+                signed=[]
+
+                def command(*args,**kwargs):
+                    if args[0]=='gpg':
+                        signed.append((args[-2],args[-1]))
+                    if args[0]=='xorriso':
+                        member,path=args[-2:]
+                        extracted.append(member)
+                        qualifier=f':{arch}' if arch=='arm64' else ''
+                        Path(path).write_text(f'linux-image-{release}{qualifier} {ABI["package_version"]}\n'
+                                              if member.endswith('filesystem.packages') else 'fixture')
+                    elif args[0]=='mcopy':
+                        Path(args[-1]).write_bytes(b'fixture')
+
+                def build(_path,source,actual_arch,actual_version,*args):
+                    self.assertEqual((actual_arch,actual_version),(arch,version))
+                    hooks=source/'data/live-build-config/hooks/live'
+                    chroot_hook=hooks/'099-shirube.chroot'
+                    grub_hook=hooks/'100-shirube.binary'
+                    self.assertIn(f'depmod -a {release}',chroot_hook.read_text().splitlines())
+                    subprocess.run(['sh','-n',str(chroot_hook)],check=True)
+                    grub_text=grub_hook.read_text()
+                    self.assertIn(f'verify_live_grub(Path.cwd(),{release!r})',grub_text.splitlines())
+                    compile(grub_text,str(grub_hook),'exec')
+                    (source/'build').mkdir()
+                    (source/'build'/f'vyos-{version[1:]}-generic-{arch}.iso').touch()
+
+                original_copy=shutil.copy2
+                def copy(source,destination,*args,**kwargs):
+                    if source=='/src/guest/factory_prepare.py':
+                        source=ROOT/'guest/factory_prepare.py'
+                    return original_copy(source,destination,*args,**kwargs)
+
+                def map_path(value):
+                    value=Path(value)
+                    if str(value)=='/src/source-lock.json':
+                        return ROOT/'source-lock.json'
+                    return root/str(value).lstrip('/') if value.is_absolute() and not value.is_relative_to(root) else value
+
+                for name in ('producer.debootstrap.configure_retry','producer.livebuild_sources.configure_sources',
+                             'producer.geoip.replace_hook','producer.strip_policy.preserve_runtime_bindings',
+                             'producer.boot_media.inspect'):
+                    stack.enter_context(patch(name))
+                stack.enter_context(patch('producer.signing.build_keys',return_value=nullcontext({
+                    'repository_home':root,'repository_public_key':public,'repository_fingerprint':'fixture'})))
+                stack.enter_context(patch.dict(sys.modules,{'repo_metadata':SimpleNamespace(
+                    mapuser_compatibility=lambda _path:None)}))
+                stack.enter_context(patch.object(sys,'path',list(sys.path)))
+                stack.enter_context(patch.object(shutil,'copy2',side_effect=copy))
+                for name,options in {
+                    'Path':{'side_effect':map_path},'generate':{'return_value':root/'templates'},
+                    'live_kernel_image':{},'audit':{'return_value':{'signed_modules_verified':1}},
+                    'run':{'side_effect':command},'run_image_builder':{'side_effect':build},
+                    'check_pe':{},'check_kernel':{},
+                }.items():
+                    stack.enter_context(patch.object(self.image,name,**options))
+                stack.enter_context(patch.object(self.image.http.server,'ThreadingHTTPServer'))
+                stack.enter_context(patch.object(self.image.threading,'Thread'))
+                result=self.image.assemble(sources,packages,arch,version,output,prepared=prepared)
+                apt_release=root/'iso-work/repo/dists/circinus/Release'
+                self.assertEqual(signed,[(str(apt_release)+'.gpg',str(apt_release)),
+                                         (str(apt_release.parent/'InRelease'),str(apt_release))])
+                self.assertEqual(extracted,['/boot/grub/efi.img',f'/live/vmlinuz-{release}',
+                                           f'/live/initrd.img-{release}','/live/filesystem.packages'])
+                self.assertIn(f'linux-image-{release}',result['packages'])
 
     @unittest.skipUnless(shutil.which('dpkg-deb'),'dpkg-deb required')
     def test_iso_kernel_package_metadata_not_just_filename(self):

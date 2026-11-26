@@ -268,7 +268,7 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
     root=generate(arch)
     abi=json.loads(Path('/src/source-lock.json').read_text())['kernel']
     validate_kernel_source(abi)
-    release=abi['kernel_release']
+    kernel_release=abi['kernel_release']
     source_link=Path('/sources')
     if not source_link.exists() and not source_link.is_symlink():source_link.symlink_to(sources)
     elif prepared is None or source_link.resolve()!=Path(sources).resolve():
@@ -301,14 +301,14 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
     for package in debs.glob('*.deb'):shutil.copy2(package,pool/package.name)
     index=repo/f'dists/circinus/main/binary-{arch}/Packages';index.parent.mkdir(parents=True)
     with index.open('w') as target:run('dpkg-scanpackages','--multiversion','pool','/dev/null',cwd=repo,stdout=target)
-    release=repo/'dists/circinus/Release'
-    with release.open('w') as target:run('apt-ftparchive','-o','APT::FTPArchive::Release::Origin=Shirube OS','-o','APT::FTPArchive::Release::Suite=circinus','-o','APT::FTPArchive::Release::Codename=circinus','-o',f'APT::FTPArchive::Release::Architectures={arch}','-o','APT::FTPArchive::Release::Components=main','release','dists/circinus',cwd=repo,stdout=target)
+    apt_release=repo/'dists/circinus/Release'
+    with apt_release.open('w') as target:run('apt-ftparchive','-o','APT::FTPArchive::Release::Origin=Shirube OS','-o','APT::FTPArchive::Release::Suite=circinus','-o','APT::FTPArchive::Release::Codename=circinus','-o',f'APT::FTPArchive::Release::Architectures={arch}','-o','APT::FTPArchive::Release::Components=main','release','dists/circinus',cwd=repo,stdout=target)
     from producer.signing import build_keys
     with build_keys(Path('/build-private')) as keys:
         env=dict(os.environ,GNUPGHOME=str(keys['repository_home']),VPP_INSTALL_SKIP_SYSCTL='1')
         public=work/'repository.asc';shutil.copy2(keys['repository_public_key'],public)
-        run('gpg','--batch','--yes','--armor','--detach-sign','--output',str(release)+'.gpg',str(release),env=env)
-        run('gpg','--batch','--yes','--clearsign','--output',str(release.parent/'InRelease'),str(release),env=env)
+        run('gpg','--batch','--yes','--armor','--detach-sign','--output',str(apt_release)+'.gpg',str(apt_release),env=env)
+        run('gpg','--batch','--yes','--clearsign','--output',str(apt_release.parent/'InRelease'),str(apt_release),env=env)
         source=work/'vyos-build';shutil.copytree(sources/'vyos-build/vyos-build',source,symlinks=True)
         original_build=snapshot(source)
         from producer.geoip import replace_hook
@@ -369,10 +369,10 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         hosts.write_text(HOSTS)
         factory=source/'data/live-build-config/includes.chroot/usr/libexec/shirube/factory_prepare.py'
         factory.parent.mkdir(parents=True,exist_ok=True);shutil.copy2('/src/guest/factory_prepare.py',factory)
-        hook.write_text('#!/bin/sh\nset -eu\npython3 /usr/lib/python3/dist-packages/vyos/xml_ref/update_cache.py\ndepmod -a '+release+'\nSHIRUBE_BUILD_CHROOT=1 python3 /usr/libexec/shirube/factory_prepare.py '+arch+'\nrm /usr/libexec/shirube/factory_prepare.py\n')
+        hook.write_text('#!/bin/sh\nset -eu\npython3 /usr/lib/python3/dist-packages/vyos/xml_ref/update_cache.py\ndepmod -a '+kernel_release+'\nSHIRUBE_BUILD_CHROOT=1 python3 /usr/libexec/shirube/factory_prepare.py '+arch+'\nrm /usr/libexec/shirube/factory_prepare.py\n')
         hook.chmod(0o755)
         binary_hook=source/'data/live-build-config/hooks/live/100-shirube.binary'
-        binary_hook.write_text('#!/usr/bin/python3\nimport sys\nfrom pathlib import Path\nsys.path.insert(0,"/src")\nfrom producer.branding import boot_menus\nfrom native.image import verify_live_grub\nboot_menus(Path.cwd(),'+repr(arch)+','+repr(version)+')\nverify_live_grub(Path.cwd(),'+repr(release)+')\n')
+        binary_hook.write_text('#!/usr/bin/python3\nimport sys\nfrom pathlib import Path\nsys.path.insert(0,"/src")\nfrom producer.branding import boot_menus\nfrom native.image import verify_live_grub\nboot_menus(Path.cwd(),'+repr(arch)+','+repr(version)+')\nverify_live_grub(Path.cwd(),'+repr(kernel_release)+')\n')
         binary_hook.chmod(0o755)
         with (source/'data/live-build-config/environment.chroot').open('a') as target:target.write('\nVPP_INSTALL_SKIP_SYSCTL=1\n')
         mark_changed(original_build)
@@ -387,13 +387,13 @@ def assemble(sources, packages, arch, version, output, *, prepared=None):
         from producer.boot_media import inspect as inspect_boot_media
         inspect_boot_media(image,arch)
         verify=work/'verify';verify.mkdir()
-        for item,name in [('/boot/grub/efi.img','efi.img'),(f'/live/vmlinuz-{release}','vmlinuz'),
-                          (f'/live/initrd.img-{release}','initrd'),('/live/filesystem.packages','filesystem.packages')]:
+        for item,name in [('/boot/grub/efi.img','efi.img'),(f'/live/vmlinuz-{kernel_release}','vmlinuz'),
+                          (f'/live/initrd.img-{kernel_release}','initrd'),('/live/filesystem.packages','filesystem.packages')]:
             run('xorriso','-osirrox','on','-indev',str(image),'-extract',item,str(verify/name))
         installed=[line.split() for line in (verify/'filesystem.packages').read_text().splitlines() if line.strip()]
         kernel_entries=[fields for fields in installed if re.fullmatch(r'linux-image-.*-vyos(?::\w+)?',fields[0])]
-        if kernel_entries not in ([[f'linux-image-{release}',abi['package_version']]],
-                                  [[f'linux-image-{release}:{arch}',abi['package_version']]]):
+        if kernel_entries not in ([[f'linux-image-{kernel_release}',abi['package_version']]],
+                                  [[f'linux-image-{kernel_release}:{arch}',abi['package_version']]]):
             raise ValueError('ISO package manifest does not match the kernel ABI')
         if any(fields[0]=='vyos-1x-smoketest' for fields in installed):
             raise ValueError('On-image smoketest fixtures must not enter the distribution')
