@@ -7,6 +7,7 @@ import re
 import shutil
 import subprocess
 from .bundles import bundle
+from . import kernel_source
 from .sources import sha256
 from .sanitize import path_in_root
 
@@ -308,15 +309,31 @@ def shared_build_inputs(project,builder,patches,destination):
     return [reference for category in records.values() for reference in category]
 
 
-def project_recipe(project, shared, destination):
+def project_recipe(project, shared, destination, *, kernel_input=None):
     """Bind each component to the complete project archive retained once."""
     references=[item for item in shared if item['member']=='project-source.tar']
     if len(references)!=1 or references[0]['sha256']!=sha256(Path(project)):
         raise ValueError('Exact shared project reconstruction input missing')
     destination=Path(destination)
-    destination.write_text(json.dumps({'project_source':references[0],
-        'instructions':'Restore the referenced project archive and use its documented reconstruction recipes.'},
-        sort_keys=True,indent=2)+'\n')
+    recipe = {'project_source':references[0],
+              'instructions':'Restore the referenced project archive and use its documented reconstruction recipes.'}
+    if kernel_input is not None:
+        root = kernel_input['kernel_org']['source_root']
+        recipe['kernel'] = {
+            'preferred_source': 'kernel.org/' + root + '.tar.xz',
+            'detached_signature': 'kernel.org/' + root + '.tar.sign',
+            'release_publisher_key': 'kernel.org/' + kernel_source.KEY_FILE,
+            'verification': 'kernel.org/' + kernel_source.VERIFICATION,
+            'stream_recipes_in_shared_inputs': 'stream-builder/scripts/package-build/linux-kernel/',
+            'effective_build_inputs': ['native-build/' + name for name in kernel_source.BUILD_RECEIPTS],
+            'instructions': [
+                'Verify the exact tar.xz digest and its detached signature over the uncompressed tar before extracting.',
+                'Restore the original tar including its modes and symlinks, not a flattened file list.',
+                'Use the authenticated Stream recipes from the shared source archive and the exact Shirube project recipe in containers/native/package_kernel.sh.',
+                'Regenerate the configured, patched source and compare the configuration and patch receipts. Do not reuse a prior kernel signing key.',
+            ],
+        }
+    destination.write_text(json.dumps(recipe, sort_keys=True,indent=2)+'\n')
     return destination
 
 
@@ -424,9 +441,13 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
     for job in catalog['jobs']:
         for deb in (package_output/job['name']).glob('*.deb'):
             name=subprocess.check_output(['dpkg-deb','-f',str(deb),'Package'],text=True).strip()
-            custom[name]=(Path(material)/'native'/job['name'] if material and job['name']=='vyos-http-api-tools'
-                          else P('/sources')/job['source'] if material else Path('/build-private')/job['name']/'source')
-            native_preferred[name]=P('/sources')/job['source']
+            if job['name'] == 'kernel':
+                custom[name] = P('/sources') / kernel_source.RETAINED
+                native_preferred[name] = custom[name]
+            else:
+                custom[name]=(Path(material)/'native'/job['name'] if material and job['name']=='vyos-http-api-tools'
+                              else P('/sources')/job['source'] if material else Path('/build-private')/job['name']/'source')
+                native_preferred[name]=P('/sources')/job['source']
             native_jobs[name]=job['name']
     extras={
       'vpp':'vpp/vpp','libvpp':'vpp/vpp','nat-rtsp':'modules/rtsp','vyos-ipt-netflow':'modules/netflow',
@@ -460,7 +481,8 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
     else:
         ocaml_records,ocaml_dependencies=retain_ocaml(Path('/opt/opam'),ocaml_archive,work/'ocaml',files)
     assets.append(ocaml_archive)
-    source_identity=json.loads(Path('/src/source-lock.json').read_text())['stream']['sha256']
+    source_lock = json.loads(Path('/src/source-lock.json').read_text())
+    source_identity = source_lock['stream']['sha256']
     for line in listing.splitlines():
         name,binary_version,architecture,source_name,source_version=line.split('\t')
         print('SOURCE: '+name+' '+binary_version+' '+architecture,flush=True)
@@ -481,7 +503,7 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
                 match=next((path for prefix,path in extras.items()
                     if name.startswith(prefix) or source_name.startswith(prefix)),None)
                 if match:source=P('/extra')/match
-            inputs=[];nested=[];debian_tree=None;debian_export=None
+            inputs=[];nested=[];debian_tree=None;debian_export=None;kernel_input=None
             if name=='cloud-init' and matching:
                 cloud_lock=json.loads(Path('/src/source-lock.json').read_text())['cloud_init']
                 original=P('/guest-cloud-init/upstream.tar.gz')
@@ -563,15 +585,18 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
             preferred_root=native_preferred.get(name) if matching and name!='vyos-http-api-tools' else None
             if preferred_root is not None:
                 if not preferred_root.is_dir():raise ValueError('Missing authenticated native preferred source')
-                kernel_outputs=('debian','include/generated','arch/arm64/include/generated',
-                                'arch/x86/include/generated','certs/signing_key.x509',
-                                'arch/arm64/boot/Image','arch/arm64/boot/Image.gz',
-                                'arch/x86/boot/bzImage','vmlinux.btf','Module.symvers',
-                                'modules.order','modules.builtin','modules.builtin.modinfo')
-                source_files=files(preferred_root,exclude=kernel_outputs if native_jobs[name]=='kernel' else ())
-                for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256','security-patches.json','manifest.json']:
-                    build_input=package_output/native_jobs[name]/member
-                    if build_input.is_file():inputs.append((build_input,'native-build/'+member,'build_inputs'))
+                if native_jobs[name] == 'kernel':
+                    origin = source_lock['kernel']['sha256']
+                    members, kernel_input = kernel_source.corresponding_inputs(
+                        source_lock['kernel'], source_lock['stream'], preferred_root,
+                        package_output/'kernel', source_name, source_version)
+                    inputs.extend(members)
+                    source_files = ()  # The complete preferred source is the signed archive.
+                else:
+                    source_files=files(preferred_root)
+                    for member in ['security-patches.json','manifest.json']:
+                        build_input=package_output/native_jobs[name]/member
+                        if build_input.is_file():inputs.append((build_input,'native-build/'+member,'build_inputs'))
             elif kind=='kea':
                 tool=json.loads(Path('/src/source-lock.json').read_text())['kea_build_tool']
                 source_files=kea_source_files(source,P('/sources/isc-kea_Kea-3.0.2/isc-kea'),
@@ -660,7 +685,7 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
             cached_recipe=source.parent/'cache-build-inputs'
             if cached_recipe.is_dir():
                 for path,relative in files(cached_recipe):inputs.append((path,'library-cache/'+relative,'build_inputs'))
-            recipe=project_recipe(project,shared,component/'build-reconstruction.json')
+            recipe=project_recipe(project,shared,component/'build-reconstruction.json',kernel_input=kernel_input)
             inputs.extend([(copyright_file,'copyright','license_files'),(recipe,'build-reconstruction.json','build_inputs')])
             for notice,member in distribution_notices(Path('/src')):
                 inputs.append((notice,'distribution-notices/'+member,'license_files'))
@@ -702,7 +727,9 @@ def collect(rootfs, package_output, output, arch, version, work, *, material=Non
                               [{'member':'source/build/external/downloads/'+r['source']['filename'],
                                 'sha256':r['source']['sha256']}]}
                     for r in vpp_inputs['components']}
-            if preferred_root is not None:
+            if kernel_input is not None:
+                provenance = {**kernel_input, 'native_job': 'kernel'}
+            elif preferred_root is not None:
                 provenance.update(preferred_stream_member=str(preferred_root.relative_to(P('/sources'))),
                                   native_job=native_jobs[name])
             if name=='shirube-integration':

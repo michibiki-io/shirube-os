@@ -29,9 +29,10 @@
       "containers/native/security_kernel.py",
       "containers/native/sign-modules.py.in",
       "producer/embedded_notices.py",
+      "producer/kernel_source.py",
       "producer/sflow.py",
-      "source-lock.json",
-      "producer/vpp_sdk.py"
+      "producer/vpp_sdk.py",
+      "source-lock.json"
     ],
     "containers/native/fpm_package.py": [
       "producer/architecture.py",
@@ -50,7 +51,10 @@
     "containers/native/security_kernel.py": [
       "containers/native/security_common.py"
     ],
-    "containers/native/sign-modules.py.in": [],
+    "containers/native/sign-modules.py.in": [
+      "producer/kernel_source.py",
+      "source-lock.json"
+    ],
     "producer/compile_kernel.py": [
       "producer/native_stages.py",
       "producer/source_selectors.py",
@@ -71,6 +75,7 @@
       "producer/kernel_compile_cache.py"
     ],
     "producer/kernel_compile_cache.py": [
+      "producer/kernel_source.py",
       "producer/library_cache.py",
       "producer/sources.py",
       "producer/stage_artifacts.py"
@@ -81,6 +86,7 @@
     "ipt-netflow"
   ],
   "lock_values": [
+    "kernel",
     "embedded_legal_notices.openvpn-dco",
     "embedded_legal_notices.nat-rtsp",
     "embedded_legal_notices.vyos-ipt-netflow",

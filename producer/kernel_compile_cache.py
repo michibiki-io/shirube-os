@@ -15,6 +15,7 @@ import shutil
 import subprocess
 import tarfile
 
+from .kernel_source import compiler_source_identity
 from .library_cache import compiler_fingerprint, tree_identity
 from .sources import sha256
 from .stage_artifacts import digest
@@ -148,7 +149,8 @@ def prepare(root, mount, architecture, *, state=STATE, write=False):
     # Run after mrproper, old key removal, configuration and patches, before
     # Kbuild generates any key. Content-only identity; no timestamp relaxation.
     require(not (root / 'certs/signing_key.pem').exists())
-    namespace = digest({'scope': scope, 'sources_config': tree_identity(root)})
+    namespace = digest({'scope': scope, 'sources_config': tree_identity(root),
+                        'upstream_kernel': compiler_source_identity()})
     store = state.parent / 'kernel-ccache'
     require(not store.exists())
     status = 'MISS'

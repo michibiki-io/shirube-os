@@ -15,6 +15,7 @@ import time
 sys.path.insert(0, '/src')
 from producer.architecture import native
 from producer.packages import audit
+import producer.kernel_source as kernel_source
 from producer.sources import fetch, extract, sha256
 
 
@@ -47,7 +48,8 @@ def main():
     native(args.architecture)
     from producer.component_graph import graph
     graph(Path('/src'), args.stage)
-    lock = json.loads(Path('/src/source-lock.json').read_text())['stream']
+    source_lock = json.loads(Path('/src/source-lock.json').read_text())
+    lock = source_lock['stream']
     if any(args.output.iterdir()):
         raise ValueError('A new empty task output directory is required')
     work = Path('/build-private')
@@ -81,18 +83,20 @@ def main():
     completed = {}
     from producer.native_stages import select_jobs, component
     jobs = order(select_jobs(catalog['jobs'], args.stage))
-    roots = {job['source'].split('/')[0] for job in jobs} | {'vyos-build'}
+    roots, kernel = kernel_source.source_paths(jobs, source_lock)
     if args.stage: roots.update(component(args.stage).ROOTS[args.stage])
     # These signed-archive directories contain previous compiler output, including
     # absolute build-host links. Rebuild them from the adjacent original sources;
     # never follow or rewrite archived external links into the build host.
     preparation = extract(nested, sources, prefixes=roots, exclude=(
-        'linux-kernel-6.6.128/linux-6.6.128/debian/linux-headers',
         'accel-ppp-ng-3e30d9b/accel-ppp-ng/build',
     ))
     preparation['authenticated_input']={'archive_sha256':lock['sha256'],
         'nested_member':nested_member,'nested_sha256':sha256(nested),
         'outer_selection':outer_preparation['selected_roots']}
+    if kernel:
+        preparation['kernel_input'] = kernel_source.acquire(
+            kernel, sources, preparation['authenticated_input'], verified_input=args.verified_input)
     from producer.branding import prepare_source_artwork
     prepare_source_artwork(sources,Path('/src/shirube-os-logo.svg'),Path('/src/LICENSE'))
     from producer.bash_source import prepare as prepare_bash_source
@@ -123,6 +127,9 @@ def main():
                 shutil.copy2(deb, dependencies/deb.name)
         env = dict(os.environ, BUILD_RECIPE=job.get('recipe', 'debian'), STREAM_VERSION=lock['version'],
                    HOST_UID='0', HOST_GID='0')
+        is_kernel = job['name'] == 'kernel'
+        if is_kernel:
+            env.update(kernel_source.build_environment(kernel))
         cached=None
         if args.cached_libraries:
             from producer.library_cache import restore,eligible
@@ -160,13 +167,15 @@ def main():
             raise ValueError('No package outputs')
         if hasattr(recipe, 'receipt'):
             recipe.receipt(job, output, exported)
-        if args.stage:
-            for member in ['kernel.config','recipe-checksums.txt','kernel-tool-patches.sha256']:
-                if (output/member).is_file():shutil.copy2(output/member,exported/member)
+        if is_kernel:
+            receipt_digests = kernel_source.copy_receipts(output, exported)
         (exported/'manifest.json').write_text(json.dumps({'status':'PASS', 'stage':'package-tranche',
             'resources':resources,'elapsed_seconds':round(time.monotonic()-started,3),
             'library_cache':cached or {'status':'MISS'},
-            'source_sha256':lock['sha256'], 'artifacts':artifacts, 'iso':'NOT_BUILT',
+            'source_sha256':kernel['sha256'] if is_kernel else lock['sha256'],
+            **({'kernel_input': preparation['kernel_input'],
+                'kernel_build_receipts': receipt_digests} if is_kernel else {}),
+            'artifacts':artifacts, 'iso':'NOT_BUILT',
             'local_boot':'NOT_RUN', 'oci':'NOT_RUN'}, indent=2)+'\n')
         completed[job['name']] = output
     if args.stage:

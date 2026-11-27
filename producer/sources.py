@@ -63,11 +63,13 @@ def fetch(lock, destination):
     return archive
 
 
-def extract(archive, destination, prefixes=None, exclude=()):
+def extract(archive, destination, prefixes=None, exclude=(), *, audit=None):
     """Stream authenticated sources into private staging, then publish atomically.
 
     Links are created only after regular writes finish. Late unsafe members or
     link failures leave neither partial destination content nor staging output.
+    An optional audit copies and inspects each selected regular input before
+    committing the private extraction.
     """
     import os
     import tempfile
@@ -117,7 +119,10 @@ def extract(archive, destination, prefixes=None, exclude=()):
                 else:
                     target.parent.mkdir(parents=True, exist_ok=True)
                     with source.extractfile(member) as data, target.open('xb') as output:
-                        shutil.copyfileobj(data, output)
+                        if audit is None:
+                            shutil.copyfileobj(data, output)
+                        else:
+                            audit(member.name, data, output)
                     target.chmod(0o755 if member.mode & 0o111 else 0o644)
         pending = [member for member in links if member.islnk()]
         while pending:

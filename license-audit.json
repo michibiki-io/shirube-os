@@ -29183,6 +29183,38 @@
       ],
       "scope": "Exact source/version and actual copyright document. Complete original declaration read, original standard license terms retained, shared-source binary notice variants kept distinct. No parent OS, complete reconstruction or OCI clearance."
     },
+    "linux-upstream@6.6.163-1#08ca57ee614714958ffc6aa6451e34fb96fc398001e7e16ff7fc6dbfccb94688#b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112": {
+      "source_identity": "08ca57ee614714958ffc6aa6451e34fb96fc398001e7e16ff7fc6dbfccb94688",
+      "copyright_sha256": "b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112",
+      "evidence_member": "copyright",
+      "redistributable": true,
+      "license": "GPL-2.0-only WITH Linux-syscall-note",
+      "reviewed_on": "2026-11-26",
+      "required_notice_files": [
+        {
+          "path": "LICENSES/Native-original-notices/linux-upstream/b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112.txt",
+          "sha256": "b309c172b26dc93d33be9fb4ff6a12e6f1eb5c64e63e59a4fe7ab6691b74d112"
+        },
+        {
+          "path": "LICENSES/GPL-2.0.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "LICENSES/Native-original-notices/linux-upstream/original-COPYING",
+          "sha256": "fb5a425bd3b3cd6071a3a9aff9909a859e7c1158d54d32e07658398cd67eb6a0"
+        },
+        {
+          "path": "LICENSES/Linux-original-syscall-note.txt",
+          "sha256": "8e378ab93586eb55135d3bc119cce787f7324f48394777d00c34fa3d0be3303f"
+        }
+      ],
+      "conditions": [
+        "Preserve every original copyright, license, disclaimer and nonendorsement scope and supply complete corresponding preferred source, actual modifications and build/install inputs.",
+        "This record binds the actual original package copyright document independently from other binary packages built from the same source; no source or notice variant inherits this permission.",
+        "The kernel binary remains GPLv2-only. The syscall note applies to the described user-space interface use; it is not a general exemption for kernel modules or a grant to relicense the kernel. Preserve all individual source file SPDX terms and complete original LICENSES tree."
+      ],
+      "scope": "Exact kernel.org Linux 6.6.163 signed source archive and generated 6.6.163-1 notice only. Independently verified upstream COPYING and Linux-syscall-note and generated packaging copyright heredoc; retained notice bytes match those reviewed here. Original per-file terms and all LICENSES files remain in the complete upstream archive. Stream and local modifications and recipes are separate inputs. No inherited 6.6.128 approval, parent OS, binary reconstruction, or OCI clearance."
+    },
     "i2util@4.4.6-2#0d6eb92e50f03f44e1a45421966b858a8c2eb8707fbc90710e705029716a013e#b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a": {
       "source_identity": "0d6eb92e50f03f44e1a45421966b858a8c2eb8707fbc90710e705029716a013e",
       "copyright_sha256": "b46f09cb40e0d9f5e211f3c79e81ec485c7f1ed1a511e5c477dc9f878f8dbd0a",

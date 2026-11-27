@@ -21,7 +21,13 @@ JOOL_SOURCE = 'jool-4.1.9+bf4c7e3669/Jool-7f08c42c615ed63cf0fdc1522d91aa0809f6d9
 
 
 from extra_common import *
-JOOL_SOURCE = 'jool-4.1.9+bf4c7e3669/Jool-7f08c42c615ed63cf0fdc1522d91aa0809f6d990'
+
+def kernel_abi():
+    from producer.kernel_source import validate as validate_kernel_source
+    kernel = json.loads(Path('/src/source-lock.json').read_text())['kernel']
+    validate_kernel_source(kernel)
+    return kernel['kernel_release'], kernel['package_version']
+
 
 def jool_version():
     text=(Path('/sources')/JOOL_SOURCE/'configure.ac').read_text()
@@ -32,19 +38,34 @@ def jool_version():
 
 
 def headers():
+    release,version=kernel_abi()
     # Kernel headers are the exact native package built in the kernel stage.
-    packages=list(OUT.glob('linux-headers-6.6.128-vyos_*_@ARCH@.deb'))
-    if len(packages)!=1: raise ValueError('Exactly one matching kernel headers package is required')
-    path=Path('/usr/src/linux-headers-6.6.128-vyos')
-    identity=hashlib.sha256(packages[0].read_bytes()).hexdigest()
+    packages=list(OUT.glob('linux-headers-*-vyos_*.deb'))
+    name=f'linux-headers-{release}'
+    if len(packages)!=1 or packages[0].name!=f'{name}_{version}_@ARCH@.deb':
+        raise ValueError('Exactly one matching kernel headers package is required')
+    package=packages[0]
+    def field(key):
+        return subprocess.check_output(['dpkg-deb','-f',str(package),key],text=True).strip()
+    if (field('Package'),field('Version'),field('Architecture'))!=(name,version,'@ARCH@'):
+        raise ValueError('Wrong kernel headers package ABI')
+    path=Path('/usr/src')/name
+    with package.open('rb') as stream:
+        identity=hashlib.file_digest(stream,'sha256').hexdigest()
     marker=path/'.source-deb-sha256'
-    if marker.is_file() and marker.read_text()==identity: return path
+    def validate_release(headers):
+        version_file=headers/'include/config/kernel.release'
+        if not version_file.is_file() or version_file.read_text().strip()!=release:
+            raise ValueError('Kernel headers contain the wrong release')
+    if marker.is_file() and marker.read_text()==identity:
+        validate_release(path)
+        return path
     # Extract only usr/src into its final location. Extracting the entire legacy
     # archive onto / replaces Debian's merged-/usr /lib symlink with a directory.
     with tempfile.TemporaryDirectory() as temporary:
         subprocess.run(['dpkg-deb','-x',str(packages[0]),temporary],check=True)
-        staged=Path(temporary)/'usr/src/linux-headers-6.6.128-vyos'
-        if not staged.is_dir(): raise ValueError('Kernel headers path missing')
+        staged=Path(temporary)/'usr/src'/name
+        validate_release(staged)
         if path.exists(): shutil.rmtree(path)
         shutil.copytree(staged,path,symlinks=True)
     marker.write_text(identity)
@@ -52,6 +73,7 @@ def headers():
 
 
 def modules(work):
+    release,version=kernel_abi()
     kernel=headers()
     common=Path('/sources/vyos-build/vyos-build/scripts/package-build/linux-kernel')
     ovpn=snapshot('ovpn-dco-v0.2.20231117/ovpn-dco',work/'ovpn')
@@ -59,18 +81,18 @@ def modules(work):
     retain_embedded_notices(ovpn,'openvpn-dco',Path('/src/source-lock.json'))
     shell(f'''make KERNEL_SRC={kernel} clean
 make -j2 KERNEL_SRC={kernel}
-mkdir -p package/lib/modules/6.6.128-vyos/extra
-cp drivers/net/ovpn-dco/ovpn-dco-v2.ko package/lib/modules/6.6.128-vyos/extra/
+mkdir -p package/lib/modules/{release}/extra
+cp drivers/net/ovpn-dco/ovpn-dco-v2.ko package/lib/modules/{release}/extra/
 python3 /opt/stream/sign-modules.py package
-python3 /src/native/fpm_package.py -s dir -t deb -n openvpn-dco -v 0.2.20231117 --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',ovpn)
+python3 /src/native/fpm_package.py -s dir -t deb -n openvpn-dco -v 0.2.20231117 --architecture @ARCH@ --depends 'linux-image-{release} (= {version})' -C package --package ..''',ovpn)
     rtsp=git('nat-rtsp',work/'rtsp')
     retain_embedded_notices(rtsp,'nat-rtsp',Path('/src/source-lock.json'))
     shell(f'''make KERNELDIR={kernel} clean
 make -j2 KERNELDIR={kernel}
-mkdir -p package/lib/modules/6.6.128-vyos/extra
-cp nf_conntrack_rtsp.ko nf_nat_rtsp.ko package/lib/modules/6.6.128-vyos/extra/
+mkdir -p package/lib/modules/{release}/extra
+cp nf_conntrack_rtsp.ko nf_nat_rtsp.ko package/lib/modules/{release}/extra/
 python3 /opt/stream/sign-modules.py package
-python3 /src/native/fpm_package.py -s dir -t deb -n nat-rtsp -v 5.3-2-g475af0a --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',rtsp)
+python3 /src/native/fpm_package.py -s dir -t deb -n nat-rtsp -v 5.3-2-g475af0a --architecture @ARCH@ --depends 'linux-image-{release} (= {version})' -C package --package ..''',rtsp)
     netflow=git('ipt-netflow',work/'netflow')
     for patch in sorted((common/'patches/ipt-netflow').glob('*.patch')):
         shell('patch --fuzz=0 -p1 < '+str(patch),netflow)
@@ -78,25 +100,25 @@ python3 /src/native/fpm_package.py -s dir -t deb -n nat-rtsp -v 5.3-2-g475af0a -
     shell(f'''./configure --enable-direction --enable-macaddress --enable-vlan --enable-sampler --enable-aggregation --kdir={kernel}
 make clean
 make -j2 all
-mkdir -p package/lib/modules/6.6.128-vyos/extra package/lib/@MULTIARCH@/xtables
-cp ipt_NETFLOW.ko package/lib/modules/6.6.128-vyos/extra/
+mkdir -p package/lib/modules/{release}/extra package/lib/@MULTIARCH@/xtables
+cp ipt_NETFLOW.ko package/lib/modules/{release}/extra/
 cp libipt_NETFLOW.so libip6t_NETFLOW.so package/lib/@MULTIARCH@/xtables/
 python3 /opt/stream/sign-modules.py package
-python3 /src/native/fpm_package.py -s dir -t deb -n vyos-ipt-netflow -v 2.6-67-g6135551 --architecture @ARCH@ --depends linux-image-6.6.128-vyos -C package --package ..''',netflow)
+python3 /src/native/fpm_package.py -s dir -t deb -n vyos-ipt-netflow -v 2.6-67-g6135551 --architecture @ARCH@ --depends 'linux-image-{release} (= {version})' -C package --package ..''',netflow)
     jool=snapshot(JOOL_SOURCE,work/'jool')
     shell(f'''apt-get install -y --no-install-recommends libnl-genl-3-dev
 ./autogen.sh
 ./configure --prefix=/usr
 make KERNEL_DIR={kernel} clean
-make -j2
+make -j2 KERNEL_DIR={kernel}
 make -C {kernel} M=$PWD/src/mod/common modules
 make -C {kernel} M=$PWD/src/mod/nat64 modules
 make -C {kernel} M=$PWD/src/mod/siit modules
 make DESTDIR=$PWD/package install
-mkdir -p package/lib/modules/6.6.128-vyos/extra
-cp src/mod/common/jool_common.ko src/mod/nat64/jool.ko src/mod/siit/jool_siit.ko package/lib/modules/6.6.128-vyos/extra/
+mkdir -p package/lib/modules/{release}/extra
+cp src/mod/common/jool_common.ko src/mod/nat64/jool.ko src/mod/siit/jool_siit.ko package/lib/modules/{release}/extra/
 python3 /opt/stream/sign-modules.py package
-python3 /src/native/fpm_package.py -s dir -t deb -n jool -v {jool_version()} --architecture @ARCH@ --depends linux-image-6.6.128-vyos --depends libnl-3-200 --depends libnl-genl-3-200 -C package --package ..''',jool)
+python3 /src/native/fpm_package.py -s dir -t deb -n jool -v {jool_version()} --architecture @ARCH@ --depends 'linux-image-{release} (= {version})' --depends libnl-3-200 --depends libnl-genl-3-200 -C package --package ..''',jool)
     copy_debs(work)
 
 
@@ -105,6 +127,7 @@ def accel(work):
     if not Path('/vpp-sdk').exists():
         from producer.vpp_sdk import export_vpp_sdk
         export_vpp_sdk(Path('/extra/vpp/vpp'),Path('/vpp-sdk'),'@MULTIARCH@','@ARCH@')
+    release,_=kernel_abi()
     # VPP's runtime postinst changes sysctls. Compilation needs only its SDK
     # and libraries, so never execute that runtime setup in a build sandbox.
     sdk=work/'vpp-sdk'
@@ -124,7 +147,7 @@ def accel(work):
     apply_security(Path('/src'), 'accel-ppp', source)
     if (source/'build').exists(): shutil.rmtree(source/'build')
     (source/'build').mkdir()
-    shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR=6.6.128-vyos -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/vpp-sdk/source/vpp-api:/vpp-sdk/source:/vpp-sdk/generated LIBRARY_PATH=/vpp-sdk/lib make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')
+    shell(f'cmake -DBUILD_IPOE_DRIVER=TRUE -DBUILD_VLAN_MON_DRIVER=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DKDIR={kernel} -DLUA=5.3 -DMODULES_KDIR={release} -DHAVE_VPP=1 -DHAVE_SESSION_HOOKS=1 -DCPACK_TYPE=Debian12 ..; CPATH=/usr/include/vpp-api:/vpp-sdk/source/vpp-api:/vpp-sdk/source:/vpp-sdk/generated LIBRARY_PATH=/vpp-sdk/lib make -j2; python3 /opt/stream/sign-modules.py .; cpack -G DEB',source/'build')
     copy_debs(work)
     sflow=snapshot('host-sflow_v2.1.21-1/host-sflow',work/'sflow')
     from producer.sflow import prepare as prepare_sflow
